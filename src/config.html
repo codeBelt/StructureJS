@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<!-- @if NODE_ENV == 'DEVELOPMENT' -->
+<html lang="en">
+<!-- @endif -->
+
+<!-- @if NODE_ENV == 'PRODUCTION' -->
+<html lang="en" manifest="offline.appcache">
+<!-- @endif -->
+
+    <head>
+        <!-- The current version of the application -->
+        <meta name="version" content="<!-- @echo buildVersion -->"/>
+
+        <!-- Define charset for HTML5 Doctype -->
+        <meta charset="utf-8" />
+
+        <!-- build:css assets/styles/app.min.css -->
+            <link rel="stylesheet" media="screen, projection" href="assets/styles/reset.css" />
+            <link rel="stylesheet" media="screen, projection" href="assets/styles/style.css" />
+        <!-- endbuild -->
+
+    </head>
+    <body>
+
+    <div class="wrapper">
+        <div class="splitPair">
+            <span class="message message_stage js-message">Stage has received the event</span>
+            <button id="js-clearButton" type="button">Clear</button>
+        </div>
+    </div>
+
+    <script id="containerTemplate" type="text/template">
+        <div class="container">
+            <div class="container-hd">
+                <p>{{title}}</p>
+            </div>
+            <div class="container-bd js-panelContent">
+                <div class="splitPair">
+                    <span class="message js-message">Event bubbled by.</span>
+                    <input type="checkbox" class="splitPair-input"/>
+                </div>
+            </div>
+        </div>
+    </script>
+        <!-- @if NODE_ENV == 'DEVELOPMENT' -->
+            <script src="assets/vendor/require/require.js" data-main="assets/scripts/AppBootstrap.js"></script>
+            <script src="assets/scripts/config.js"></script>
+        <!-- @endif -->
+
+        <!-- @if NODE_ENV == 'PRODUCTION' -->
+            <script src="assets/scripts/require.js" data-main="assets/scripts/app.min.js"></script>
+        <!-- @endif -->
+    </body>
+</html>

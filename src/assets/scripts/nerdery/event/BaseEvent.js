@@ -1,0 +1,203 @@
+define(function(require, exports, module) {
+    'use strict';
+
+    var BaseEvent = (function () {
+
+        BaseEvent.ACTIVATE = 'BaseEvent.activate';
+
+        BaseEvent.ADDED = 'BaseEvent.added';
+
+        BaseEvent.ADDED_TO_STAGE = 'BaseEvent.addedToStage';
+
+        BaseEvent.CANCEL = 'BaseEvent.cancel';
+
+        BaseEvent.CHANGE = 'BaseEvent.change';
+
+        BaseEvent.CLEAR = 'BaseEvent.clear';
+
+        BaseEvent.CLOSE = 'BaseEvent.close';
+
+        BaseEvent.CLOSING = 'BaseEvent.closing';
+
+        BaseEvent.COMPLETE = 'BaseEvent.complete';
+
+        BaseEvent.CONNECT = 'BaseEvent.connect';
+
+        BaseEvent.COPY = 'BaseEvent.copy';
+
+        BaseEvent.CUT = 'BaseEvent.cut';
+
+        BaseEvent.DEACTIVATE = 'BaseEvent.deactivate';
+
+        BaseEvent.DISPLAYING = 'BaseEvent.displaying';
+
+        BaseEvent.ENTER_FRAME = 'BaseEvent.enterFrame';
+
+        BaseEvent.EXIT_FRAME = 'BaseEvent.exitFrame';
+
+        BaseEvent.EXITING = 'BaseEvent.exiting';
+
+        BaseEvent.FULLSCREEN = 'BaseEvent.fullScreen';
+
+        BaseEvent.INIT = 'BaseEvent.init';
+
+        BaseEvent.NETWORK_CHANGE = 'BaseEvent.networkChange';
+
+        BaseEvent.OPEN = 'BaseEvent.open';
+
+        BaseEvent.PASTE = 'BaseEvent.paste';
+
+        BaseEvent.PREPARING = 'BaseEvent.preparing';
+
+        BaseEvent.REMOVED = 'BaseEvent.removed';
+
+        BaseEvent.RENDER = 'BaseEvent.render';
+
+        BaseEvent.RESIZE = 'BaseEvent.resize';
+
+        /**
+         * <p>The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
+         *
+         * <p>The properties of the {{#crossLink "BaseEvent"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.
+         * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
+         * detailed information.</p>
+         * @class BaseEvent
+         * @example
+                // Example: how to create a custom event by extending BaseEvent.
+                class CountryEvent extends BaseEvent {
+                    public CLASS_NAME:string = 'CountryEvent';
+
+                    public static CHANGE_COUNTRY:string = "CountryEvent.changeCountry";
+
+                    public countryName:string = null;
+
+                    constructor(type:string, countryName:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {
+                        super(type, bubbles, cancelable, data);
+
+                        this.countryName = countryName;
+                    }
+                }
+         * @param type {string} The type of event. The type is case-sensitive.
+         * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
+         * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink "EventDispatcher/parent:property"}}{{/crossLink}})
+         * (containers of containers of etc.) of the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink "Stage"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
+         * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
+         * @param [data=null] {any} Use to pass any type of data with the event.
+         * @module StructureTS
+         * @submodule event
+         * @constructor
+         * @version 0.1.0
+         **/
+        function BaseEvent(type, bubbles, cancelable, data) {
+            if (typeof bubbles === "undefined") { bubbles = false; }
+            if (typeof cancelable === "undefined") { cancelable = false; }
+            if (typeof data === "undefined") { data = null; }
+
+            /**
+             * @overridden BaseObject.CLASS_NAME
+             */
+            this.CLASS_NAME = 'BaseEvent';
+
+            /**
+             * The type of event.
+             *
+             * @property type
+             * @type {string}
+             * @default null
+             * @readOnly
+             */
+            this.type = type;
+
+            /**
+             * A reference to the object that originally dispatched the event.
+             *
+             * @property target
+             * @type {any}
+             * @default null
+             * @readOnly
+             */
+            this.target = null;
+
+            /**
+             * The currentTarget property always points to the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
+             *
+             * @property currentTarget
+             * @type {any}
+             * @default null
+             * @readOnly
+             */
+            this.currentTarget = null;
+
+            /**
+             * Use to pass any type of data with the event.
+             *
+             * @property data
+             * @type {any}
+             * @default null
+             */
+            this.data = data;
+
+            /**
+             * Indicates whether an event is a bubbling event.
+             *
+             * @property bubble
+             * @type {boolean}
+             * @default false
+             */
+            this.bubble = bubbles;
+            /**
+             * Indicates whether the behavior associated with the event can be prevented.
+             *
+             * @property cancelable
+             * @type {boolean}
+             * @default false
+             */
+            this.cancelable = cancelable;
+            /**
+             *
+             * @property isPropagationStopped
+             * @type {boolean}
+             * @default false
+             * @readOnly
+             */
+            this.isPropagationStopped = false;
+            /**
+             *
+             * @property isImmediatePropagationStopped
+             * @type {boolean}
+             * @default false
+             * @readOnly
+             */
+            this.isImmediatePropagationStopped = false;
+        }
+
+        /**
+         * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
+         * This method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()
+         * method prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
+         * This method can be called in any phase of
+         *
+         * @method stopPropagation
+         */
+        BaseEvent.prototype.stopPropagation = function () {
+            this.isPropagationStopped = true;
+        };
+
+        /**
+         * Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
+         * This method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()
+         * method doesn't take effect until all the event listeners in the current node finish processing.
+         *
+         * @method stopImmediatePropagation
+         */
+        BaseEvent.prototype.stopImmediatePropagation = function () {
+            this.stopPropagation();
+            this.isImmediatePropagationStopped = true;
+        };
+
+        return BaseEvent;
+    })();
+
+    module.exports = BaseEvent;
+
+});
