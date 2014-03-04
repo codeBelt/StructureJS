@@ -1,4 +1,7 @@
-##StructureJS
+##StructureJS (ReadMe In Progress)
+
+#####WebStorm & Sublime Text Templates/Snippets
+[https://gist.github.com/codeBelt/9166803](https://gist.github.com/codeBelt/9166803)
 
 ####Core Classes
 * ___DOMElement___
