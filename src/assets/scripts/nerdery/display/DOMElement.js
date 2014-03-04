@@ -30,7 +30,7 @@ define(function(require, exports, module) {
             /**
              * @overridden DisplayObjectContainer.CLASS_NAME
              */
-            this.CLASS_NAME = 'DOMElement'
+            this.CLASS_NAME = 'DOMElement';
 
             /**
              * Whether or not the display object is visible. Display objects that are not visible are disabled.
@@ -62,6 +62,16 @@ define(function(require, exports, module) {
             this.$element = null;
 
             /**
+             * If a jQuery object was passed into the constructor this will be set as true and
+             * this class will not try add the view to the DOM because it should already exists.
+             *
+             * @property _isReference
+             * @type {boolean}
+             * @private
+             */
+            this._isReference = false;
+
+            /**
              * Holds onto the value passed into the constructor.
              *
              * @property _type
@@ -79,7 +89,10 @@ define(function(require, exports, module) {
              */
             this._params = null;
 
-            if (type) {
+            if (type instanceof jQuery) {
+                this.$element = type;
+                this._isReference = true;
+            } else if (type) {
                 this._type = type;
                 this._params = params;
             }
@@ -95,14 +108,7 @@ define(function(require, exports, module) {
             type = this._type || type;
             params = this._params || params;
 
-            // If the raw element is not null it must of been set before this addChild was called and
-            // we should it as the element for this display object.
-            if (this.element != null) {
-                this.$element = jQuery(this.element);
-                return this;
-            }
-
-            if (!this.$element) {
+            if (this.$element == null) {
                 var html = TemplateFactory.createTemplate(type, params);
                 if (html) {
                     this.$element = jQuery(html);
@@ -132,7 +138,7 @@ define(function(require, exports, module) {
                 throw new Error('[' + this.getQualifiedClassName() + '] You cannot use the addChild method if the parent object is not added to the DOM.');
             }
 
-            if (!child.isCreated) {
+            if (child.isCreated === false) {
                 child.createChildren(); // Render the item before adding to the DOM
                 child.isCreated = true;
             }
@@ -140,8 +146,10 @@ define(function(require, exports, module) {
             // Adds the cid to the DOM element so we can know what what Class object the element belongs too.
             child.$element.attr('data-cid', child.cid);
 
-            child.$element.addEventListener('DOMNodeInsertedIntoDocument', child, this.onAddedToDom, this);
-            this.$element.append(child.$element);
+            if (this._isReference === false) {
+                child.$element.addEventListener('DOMNodeInsertedIntoDocument', child, this.onAddedToDom, this);
+                this.$element.append(child.$element);
+            }
 
             child.layoutChildren();
 
@@ -175,10 +183,13 @@ define(function(require, exports, module) {
             if (index < 0 || index >= length) {
                 this.addChild(child);
             } else {
-                if (!child.isCreated) {
+                if (child.isCreated === false) {
                     child.createChildren(); // Render the item before adding to the DOM
                     child.isCreated = true;
                 }
+
+                // Adds the cid to the DOM element so we can know what what Class object the element belongs too.
+                child.$element.attr('data-cid', child.cid);
                 child.$element.addEventListener('DOMNodeInsertedIntoDocument', child, this.onAddedToDom, this);
                 child.layoutChildren();
 
