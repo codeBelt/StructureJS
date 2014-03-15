@@ -50,11 +50,11 @@ Core Class:
 
 DOMElement
 
-All your view will extend DOMElement.Now let me show how our views should work. All of our views with have createChilderen, layoutChildren, enable, disable and distroy.  Where you can do addChild, addChildAt, removeChild and there are serval other convenient methods. This allows us to have event bubbling. One thing I should not is the DOMElement extends EventDispatcher. This allows us to listen and dispatch event with in our views. More on EventDispatcher later. Lets create a view. The eventListener plugin….
+All your view will extend DOMElement.Now let me show how our views should work. All of our views with have createChildren, layoutChildren, enable, disable and destroy.  Where you can do addChild, addChildAt, removeChild and there are several other convenient methods. This allows us to have event bubbling. One thing I should not is the DOMElement extends EventDispatcher. This allows us to listen and dispatch event with in our views. More on EventDispatcher later. Lets create a view. The eventListener plugin….
 
 If we look at the markup you will notice all view have a CID and that gets added to the html element. This can help with debugging and/or be useful in the way an object need to be retrieved. Just a not all the core classes get a CID.
 
-So we saw how our views show work. Now lets briefly talk about the EventDispacther class and the BaseObject. First the EventDispacther can be used to create your Controller or Model classes that need to dispatch events. 
+So we saw how our views show work. Now lets briefly talk about the EventDispatcher class and the BaseObject. First the EventDispatcher can be used to create your Controller or Model classes that need to dispatch events.
 
 When ever you want to create a Event Class you should extend BaseEvent .
 
