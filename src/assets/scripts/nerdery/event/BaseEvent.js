@@ -1,6 +1,44 @@
 define(function(require, exports, module) {
     'use strict';
 
+    /**
+     * <p>The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
+     *
+     * <p>The properties of the {{#crossLink "BaseEvent"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.
+     * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
+     * detailed information.</p>
+     * @class BaseEvent
+     * @example
+     // Example: how to create a custom event by extending BaseEvent.
+        var Extend = require('nerdery/util/Extend');
+        var BaseEvent = require('nerdery/event/BaseEvent');
+
+        var CountryEvent = (function () {
+
+            var _super = Extend(CountryEvent, BaseEvent);
+
+            CountryEvent.CHANGE_COUNTRY = "CountryEvent.changeCountry";
+
+            function CountryEvent(type, bubbles, cancelable, data) {
+                _super.call(this, type, bubbles, cancelable, data);
+
+                this.CLASS_NAME = 'CountryEvent';
+                this.countryName = null;
+            }
+
+            return CountryEvent;
+        })();
+     * @param type {string} The type of event. The type is case-sensitive.
+     * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
+     * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink "EventDispatcher/parent:property"}}{{/crossLink}})
+     * (containers of containers of etc.) of the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink "Stage"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
+     * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
+     * @param [data=null] {any} Use to pass any type of data with the event.
+     * @module Nerdery
+     * @submodule event
+     * @constructor
+     * @version 0.1.0
+     **/
     var BaseEvent = (function () {
 
         BaseEvent.ACTIVATE = 'BaseEvent.activate';
@@ -55,39 +93,6 @@ define(function(require, exports, module) {
 
         BaseEvent.RESIZE = 'BaseEvent.resize';
 
-        /**
-         * <p>The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
-         *
-         * <p>The properties of the {{#crossLink "BaseEvent"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.
-         * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
-         * detailed information.</p>
-         * @class BaseEvent
-         * @example
-                // Example: how to create a custom event by extending BaseEvent.
-                class CountryEvent extends BaseEvent {
-                    public CLASS_NAME:string = 'CountryEvent';
-
-                    public static CHANGE_COUNTRY:string = "CountryEvent.changeCountry";
-
-                    public countryName:string = null;
-
-                    constructor(type:string, countryName:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {
-                        super(type, bubbles, cancelable, data);
-
-                        this.countryName = countryName;
-                    }
-                }
-         * @param type {string} The type of event. The type is case-sensitive.
-         * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
-         * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink "EventDispatcher/parent:property"}}{{/crossLink}})
-         * (containers of containers of etc.) of the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink "Stage"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
-         * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
-         * @param [data=null] {any} Use to pass any type of data with the event.
-         * @module StructureTS
-         * @submodule event
-         * @constructor
-         * @version 0.1.0
-         **/
         function BaseEvent(type, bubbles, cancelable, data) {
             if (typeof bubbles === "undefined") { bubbles = false; }
             if (typeof cancelable === "undefined") { cancelable = false; }
@@ -106,7 +111,7 @@ define(function(require, exports, module) {
              * @default null
              * @readOnly
              */
-            this.type = type;
+            this.type = null;
 
             /**
              * A reference to the object that originally dispatched the event.
@@ -135,7 +140,7 @@ define(function(require, exports, module) {
              * @type {any}
              * @default null
              */
-            this.data = data;
+            this.data = null;
 
             /**
              * Indicates whether an event is a bubbling event.
@@ -144,7 +149,8 @@ define(function(require, exports, module) {
              * @type {boolean}
              * @default false
              */
-            this.bubble = bubbles;
+            this.bubble = false;
+
             /**
              * Indicates whether the behavior associated with the event can be prevented.
              *
@@ -152,7 +158,8 @@ define(function(require, exports, module) {
              * @type {boolean}
              * @default false
              */
-            this.cancelable = cancelable;
+            this.cancelable = false;
+
             /**
              *
              * @property isPropagationStopped
@@ -161,6 +168,7 @@ define(function(require, exports, module) {
              * @readOnly
              */
             this.isPropagationStopped = false;
+
             /**
              *
              * @property isImmediatePropagationStopped
@@ -169,7 +177,33 @@ define(function(require, exports, module) {
              * @readOnly
              */
             this.isImmediatePropagationStopped = false;
+
+            this.type = type;
+            this.bubble = bubbles;
+            this.cancelable = cancelable;
+            this.data = data;
         }
+
+        /**
+         * Duplicates an instance of an BaseEvent subclass.
+         *
+         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
+         * You do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch
+         * an event—that is, when you call dispatchEvent(event) from a handler that is handling event.
+         *
+         * The new Event object includes all the properties of the original.
+         *
+         * When creating your own custom Event class, you must override the inherited Event.clone() method in order for it
+         * to duplicate the properties of your custom class. If you do not set all the properties that you add in your event
+         * subclass, those properties will not have the correct values when listeners handle the redispatched event.
+         *
+         * @method clone
+         * @returns {BaseEvent}
+         * @public
+         */
+        BaseEvent.prototype.clone = function () {
+            return new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+        };
 
         /**
          * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
@@ -178,6 +212,7 @@ define(function(require, exports, module) {
          * This method can be called in any phase of
          *
          * @method stopPropagation
+         * @public
          */
         BaseEvent.prototype.stopPropagation = function () {
             this.isPropagationStopped = true;
@@ -189,6 +224,7 @@ define(function(require, exports, module) {
          * method doesn't take effect until all the event listeners in the current node finish processing.
          *
          * @method stopImmediatePropagation
+         * @public
          */
         BaseEvent.prototype.stopImmediatePropagation = function () {
             this.stopPropagation();

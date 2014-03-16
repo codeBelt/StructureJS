@@ -5,15 +5,15 @@ define(function(require, exports, module) {
     var EventDispatcher = require('nerdery/event/EventDispatcher');
 
     /**
-    * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
-    *
-    * @class DisplayObjectContainer
-    * @extends EventDispatcher
-    * @module StructureTS
-    * @submodule view
-    * @constructor
-    * @version 0.1.1
-    **/
+     * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
+     *
+     * @class DisplayObjectContainer
+     * @extends EventDispatcher
+     * @module Nerdery
+     * @submodule view
+     * @constructor
+     * @version 0.1.1
+     **/
     var DisplayObjectContainer = (function () {
 
         var _super = Extend(DisplayObjectContainer, EventDispatcher);
@@ -97,22 +97,20 @@ define(function(require, exports, module) {
              */
             this.unscaledHeight = 100;
         }
+
         /**
          * The createChildren function is intended to provide a consistent place for the creation and adding
          * of children to the view. It will automatically be called the first time that the view is added
          * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
          * their overridden methods.
-         * @example
-         public createChildren():void {
-        this._childInstance = new DisplayObjectContainer();
-        this.addChild(this._childInstance);
-        }
+         *
          * @method createChildren
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
         DisplayObjectContainer.prototype.createChildren = function () {
+            // Meant to be overridden because the extended class should call the createChildren method.
             return this;
         };
 
@@ -185,7 +183,14 @@ define(function(require, exports, module) {
         };
 
         /**
-         * @overridden DisplayObjectContainer.swapChildrenAt
+         * Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.
+         *
+         * @method swapChildren
+         * @param index1 {int} The index position of the first child object.
+         * @param index2 {int} The index position of the second child object.
+         * @returns {DisplayObjectContainer} Returns an instance of itself.
+         * @public
+         * @chainable
          */
         DisplayObjectContainer.prototype.swapChildrenAt = function (index1, index2) {
             if (index1 < 0 || index1 < 0 || index1 >= this.numChildren || index2 >= this.numChildren) {
@@ -201,10 +206,11 @@ define(function(require, exports, module) {
         };
 
         /**
+         * Returns the index position of a child DisplayObjectContainer instance.
          *
          * @method getChildIndex
-         * @param child {DisplayObjectContainer}
-         * @returns {number}
+         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to identify.
+         * @returns {int} The index position of the child display object to identify.
          * @public
          */
         DisplayObjectContainer.prototype.getChildIndex = function (child) {
@@ -212,10 +218,11 @@ define(function(require, exports, module) {
         };
 
         /**
+         * Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.
          *
          * @method contains
-         * @param child {DisplayObjectContainer}
-         * @returns {number}
+         * @param child {DisplayObjectContainer} The child object to test.
+         * @returns {boolean}  true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.
          * @public
          */
         DisplayObjectContainer.prototype.contains = function (child) {
@@ -302,7 +309,7 @@ define(function(require, exports, module) {
          * @param unscaledWidth {number} The width within which the component should lay itself out.
          * @param unscaledHeight {number} The height within which the component should lay itself out.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @@public
+         * @public
          * @chainable
          */
         DisplayObjectContainer.prototype.setSize = function (unscaledWidth, unscaledHeight) {

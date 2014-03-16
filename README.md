@@ -16,6 +16,26 @@
 * ___EventBroker___
 	* EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications. Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type. Basically the EventBroker class is a static version of the EventDispatcher class.
 	
+
+
+* ___BaseEvent___
+	* DOMElement extends EventDispatcher
+	
+
+* ___ValueObject___
+	* Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+	
+___eventListener jQuery Plugin___ - 
+
+
+
+```
+//BaseEvent(type:string, bubbles:boolean=false, cancelable:boolean=false, data:*=null)
+var event = new BaseEvent(BaseEvent.CHANGE, true, false, {data: "any data type"});
+this.dispatchEvent(event);
+```
+
+
 ```
 // Dispatching an event globally.
 var event = new BaseEvent(BaseEvent.CHANGE);
@@ -29,23 +49,6 @@ ExampleView.prototype.handlerMethod(event) {
     console.log("Hey");
 }
 ```
-
-* ___BaseEvent___
-	* DOMElement extends EventDispatcher
-	
-```
-//BaseEvent(type:string, bubbles:boolean=false, cancelable:boolean=false, data:*=null)
-var event = new BaseEvent(BaseEvent.CHANGE, true, false, {data: "any data type"});
-this.dispatchEvent(event);
-```
-
-* ___ValueObject___
-	* Value Object (VO) is a design pattern used to transfer data between software application subsystems.
-	
-___eventListener jQuery Plugin___ - 
-
-
-
 Core Class:
 
 DOMElement

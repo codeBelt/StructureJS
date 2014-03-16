@@ -73,7 +73,7 @@
             
                 <li><a href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureTS.html">StructureTS</a></li>
+                <li><a href="../modules/Nerdery.html">Nerdery</a></li>
             
                 <li><a href="../modules/util.html">util</a></li>
             
@@ -119,21 +119,17 @@
     
 
     
-        <div class="extends">
-            Extends <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a>
-        </div>
-    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_nerdery_model_ValueObject.js.html#l12"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;model&#x2F;ValueObject.js:12</code></a>
+            Defined in: <a href="../files/src_assets_scripts_nerdery_model_ValueObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;model&#x2F;ValueObject.js:8</code></a>
         </div>
     
 
     
         
             Module: <a href="../modules/model.html">model</a><br>
-            Parent Module: <a href="../modules/StructureTS.html">StructureTS</a>
+            Parent Module: <a href="../modules/Nerdery.html">Nerdery</a>
         
     
 
@@ -192,7 +188,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_model_ValueObject.js.html#l12"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;model&#x2F;ValueObject.js:12</code></a>
+        <a href="../files/src_assets_scripts_nerdery_model_ValueObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;model&#x2F;ValueObject.js:8</code></a>
         
         </p>
 
@@ -249,8 +245,6 @@
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
         
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
-        
         
         
     </ul>
@@ -263,7 +257,7 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods extends">
+                    <ul class="index-list methods">
                         
                             <li class="index-item method public">
                                 <a href="#method_clone">clone</a>
@@ -279,22 +273,8 @@
                                 
                             </li>
                         
-                            <li class="index-item method public inherited">
-                                <a href="#method_destroy">destroy</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method public">
                                 <a href="#method_fromJSON">fromJSON</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
 
                                 
                                 
@@ -325,28 +305,6 @@
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties extends">
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_cid">cid</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property protected inherited">
-                                <a href="#property_CLASS_NAME">CLASS_NAME</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -503,83 +461,6 @@
 </div>
 
                 
-                    <div id="method_destroy" class="method item public inherited">
-    <h3 class="name"><code>destroy</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseObject.html#method_destroy">BaseObject</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l50"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:50</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The purpose of the destroy method is to make an object ready for garbage collection. This
-should be thought of as a one way function. Once destroy is called no further methods should be
-called on the object or properties accessed. It is the responsibility of those who implement this
-function to stop all running Timers, all running Sounds, remove any event
-listeners and take any other steps necessary to make an object eligible for garbage collection.
-It is critical that all subclasses call the super for this function in their overridden methods.</p>
-<p>Note: super.destroy(); should be called first before you clean up any other objects/items in the current classs.
-The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destroy</a> method also calls the
-<a href="../classes/EventDispatcher.html#method_disable" class="crosslink">disable</a> method on all classes that extend
-<a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a>.</p>
-
-    </div>
-
-    
-
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code> public destroy():void {
-     super.destroy();
-
-     this._childInstance.destroy();
-     this._childInstance = null;
- }</code></pre>
-
-            </div>
-        </div>
-    
-</div>
-
-                
                     <div id="method_fromJSON" class="method item public">
     <h3 class="name"><code>fromJSON</code></h3>
 
@@ -666,87 +547,6 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
 
     
 
-    
-</div>
-
-                
-                    <div id="method_getQualifiedClassName" class="method item public inherited">
-    <h3 class="name"><code>getQualifiedClassName</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseObject.html#method_getQualifiedClassName">BaseObject</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l38"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:38</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the fully qualified class name of an object.</p>
-
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                    <p>Returns the class name.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code> instance.getQualifiedClassName();</code></pre>
-
-            </div>
-        </div>
     
 </div>
 
@@ -990,104 +790,6 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             </div>
         
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_cid" class="property item public inherited">
-    <h3 class="name"><code>cid</code></h3>
-    <span class="type">Int</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseObject.html#property_cid">BaseObject</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l27"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:27</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The cid or client id is a unique identifier automatically assigned to most StructureTS objects upon instantiation.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> null</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_CLASS_NAME" class="property item protected inherited">
-    <h3 class="name"><code>CLASS_NAME</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-        <span class="flag final">final</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseObject.html#property_CLASS_NAME">BaseObject</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l18"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:18</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a StructureTS object.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         

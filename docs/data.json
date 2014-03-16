@@ -114,8 +114,8 @@
         }
     },
     "modules": {
-        "StructureTS": {
-            "name": "StructureTS",
+        "Nerdery": {
+            "name": "Nerdery",
             "submodules": {
                 "view": 1,
                 "event": 1,
@@ -139,7 +139,7 @@
             "fors": {},
             "namespaces": {},
             "file": "src/assets/scripts/nerdery/BaseObject.js",
-            "line": 6
+            "line": 7
         },
         "view": {
             "name": "view",
@@ -152,11 +152,11 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
-            "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base class for all objects that can be placed into the HTML DOM.",
+            "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
             "file": "src/assets/scripts/nerdery/display/Stage.js",
-            "line": 12
+            "line": 8
         },
         "event": {
             "name": "event",
@@ -169,11 +169,11 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "description": "<p>The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>\n\n<p>The properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.</p>",
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 11
+            "line": 7
         },
         "model": {
             "name": "model",
@@ -184,11 +184,11 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.",
             "file": "src/assets/scripts/nerdery/model/ValueObject.js",
-            "line": 12
+            "line": 8
         },
         "util": {
             "name": "util",
@@ -201,11 +201,11 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "description": "The StringUtil...",
             "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 26
+            "line": 4
         },
         "core": {
             "name": "core",
@@ -216,11 +216,11 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
-            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureTS classes.",
+            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.",
             "file": "src/assets/scripts/nerdery/BaseObject.js",
-            "line": 6
+            "line": 7
         }
     },
     "classes": {
@@ -232,14 +232,29 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 14,
-            "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base class for all objects that can be placed into the HTML DOM.",
+            "line": 10,
+            "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
             "submodule": "view",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "[any=null] Either a jQuery object or template you want to use the as the view. Check out the examples below."
+                },
+                {
+                    "name": "params",
+                    "description": "[any=null] Any data you would like to pass into the jQuery element or template that is being created."
+                }
+            ],
             "extends": "DisplayObjectContainer",
             "is_constructor": 1,
-            "version": "0.1.2"
+            "version": "0.1.2",
+            "example": [
+                "\n   // Example of using DOMElement with out extending it.\n   var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n   this.addChild(aLink);",
+                "\n   // Example of a view passing in a jQuery object.\n   var view = new CustomView($('.selector');\n   this.addChild(view);\n\n   // Example of a view extending DOMElement when passing in a jQuery object.\n   var Extend = require('nerdery/util/Extend');\n   var DOMElement = require('nerdery/display/DOMElement');\n\n   var ClassName = (function () {\n\n       var _super = Extend(ClassName, DOMElement);\n\n       function ClassName($element) {\n           _super.call(this, $element);\n\n           this.CLASS_NAME = 'ClassName';\n       }\n\n       ClassName.prototype.createChildren = function () {\n           _super.prototype.createChildren.call(this);\n\n           // Create and add your child objects to this parent class.\n       }\n\n       ClassName.prototype.layoutChildren = function () {\n           // Layout or update the child objects in this parent class.\n\n           return this;\n       }\n\n       ClassName.prototype.enable = function () {\n           if (this.isEnabled === true) return this;\n\n           // Enable the child objects and add any event listeners.\n\n           return _super.prototype.enable.call(this);\n       }\n\n       ClassName.prototype.disable = function () {\n           if (this.isEnabled === false) return this;\n\n           // Disable the child objects and remove any event listeners.\n\n           return _super.prototype.disable.call(this);\n       }\n\n       ClassName.prototype.destroy = function () {\n           _super.prototype.destroy.call(this);\n\n           // Destroy the child objects and references in this parent class to prevent memory leaks.\n       }\n\n       return ClassName;\n   })();",
+                "\n   // Example of a view extending DOMElement with template passed into createChildren.\n   var view:CustomView = new CustomView();\n   this.addChild(view);\n\n   // Example of a view extending DOMElement when passing in a jQuery object.\n   var Extend = require('nerdery/util/Extend');\n   var DOMElement = require('nerdery/display/DOMElement');\n   var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n   var ClassName = (function () {\n\n       var _super = Extend(ClassName, DOMElement);\n\n       function ClassName() {\n           _super.call(this);\n\n           this.CLASS_NAME = 'ClassName';\n       }\n\n       ClassName.prototype.createChildren = function () {\n           _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});\n\n           // Create and add your child objects to this parent class.\n       }\n\n       ClassName.prototype.layoutChildren = function () {\n           // Layout or update the child objects in this parent class.\n\n           return this;\n       }\n\n       ClassName.prototype.enable = function () {\n           if (this.isEnabled === true) return this;\n\n           // Enable the child objects and add any event listeners.\n\n           return _super.prototype.enable.call(this);\n       }\n\n       ClassName.prototype.disable = function () {\n           if (this.isEnabled === false) return this;\n\n           // Disable the child objects and remove any event listeners.\n\n           return _super.prototype.disable.call(this);\n       }\n\n       ClassName.prototype.destroy = function () {\n           _super.prototype.destroy.call(this);\n\n           // Destroy the child objects and references in this parent class to prevent memory leaks.\n       }\n\n       return ClassName;\n   })();"
+            ]
         },
         "DisplayObjectContainer": {
             "name": "DisplayObjectContainer",
@@ -249,7 +264,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
             "line": 7,
@@ -267,13 +282,13 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/display/Stage.js",
-            "line": 12,
+            "line": 8,
             "description": "The {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main or root class.",
             "example": [
-                "\n         //This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n\n              class MainClass extends Stage {\n\n             constructor() {\n                 super();\n             }\n\n             public createChildren():void {\n                 super.createChildren();\n                 // Add children classes.\n             }\n\n              public enable():void {\n                 if (this.isEnabled === true) return;\n                 // Add listeners and/or enable children.\n                 super.enable();\n              }\n\n              public disable():void {\n                 if (this.isEnabled === false) return;\n                 // Remove listeners and/or disable children.\n                 super.disable();\n              }\n\n              public destroy():void {\n                 super.destroy();\n                 // Add items to clean up.\n              }\n\n         }\n\n         //<b>Instantiation Example</b><br>\n         //This example illustrates how to instantiation your main or root class.\n\n              var app = new MainClass();\n              app.appendTo('body');"
+                "\n    // This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n       define(function (require, exports, module) {\n           'use strict';\n\n           var Extend = require('nerdery/util/Extend');\n           var Stage = require('replace/path/Stage');\n\n           var MainClass = (function () {\n\n           var _super = Extend(MainClass, Stage);\n\n               function MainClass() {\n                   _super.call(this);\n\n                   this.CLASS_NAME = 'MainClass';\n               }\n\n               MainClass.prototype.createChildren = function () {\n                   _super.prototype.createChildren.call(this);\n\n                   // Create and add your child objects to this parent class.\n               }\n\n               MainClass.prototype.layoutChildren = function () {\n                   // Layout or update the child objects in this parent class.\n\n                   return this;\n               }\n\n               MainClass.prototype.enable = function () {\n                   if (this.isEnabled === true) return this;\n\n                   // Enable the child objects and add any event listeners.\n\n                   return _super.prototype.enable.call(this);\n               }\n\n               MainClass.prototype.disable = function () {\n                   if (this.isEnabled === false) return this;\n\n                   // Disable the child objects and remove any event listeners.\n\n                   return _super.prototype.disable.call(this);\n               }\n\n               MainClass.prototype.destroy = function () {\n                   _super.prototype.destroy.call(this);\n\n                   // Destroy the child objects and references in this parent class to prevent memory leaks.\n               }\n\n               return MainClass;\n           })();\n\n           module.exports = MainClass;\n       });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiation your main or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');"
             ],
             "submodule": "view",
             "extends": "DOMElement",
@@ -288,14 +303,14 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 58,
+            "line": 4,
             "description": "<p>The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>\n\n<p>The properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.</p>",
             "submodule": "event",
             "example": [
-                "\n               // Example: how to create a custom event by extending BaseEvent.\n               class CountryEvent extends BaseEvent {\n                   public CLASS_NAME:string = 'CountryEvent';\n\n                   public static CHANGE_COUNTRY:string = \"CountryEvent.changeCountry\";\n\n                   public countryName:string = null;\n\n                   constructor(type:string, countryName:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {\n                       super(type, bubbles, cancelable, data);\n\n                       this.countryName = countryName;\n                   }\n               }"
+                "\n    // Example: how to create a custom event by extending BaseEvent.\n       var Extend = require('nerdery/util/Extend');\n       var BaseEvent = require('nerdery/event/BaseEvent');\n\n       var CountryEvent = (function () {\n\n           var _super = Extend(CountryEvent, BaseEvent);\n\n           CountryEvent.CHANGE_COUNTRY = \"CountryEvent.changeCountry\";\n\n           function CountryEvent(type, bubbles, cancelable, data) {\n               _super.call(this, type, bubbles, cancelable, data);\n\n               this.CLASS_NAME = 'CountryEvent';\n               this.countryName = null;\n           }\n\n           return CountryEvent;\n       })();"
             ],
             "params": [
                 {
@@ -336,10 +351,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/event/EventBroker.js",
-            "line": 29,
+            "line": 6,
             "description": "EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.\nLoosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.",
             "submodule": "event",
             "static": 1,
@@ -353,10 +368,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 11,
+            "line": 7,
             "description": "The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class.\nThe EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.",
             "submodule": "event",
             "extends": "BaseObject",
@@ -371,10 +386,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/model/ValueObject.js",
-            "line": 12,
+            "line": 8,
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.",
             "submodule": "model",
             "params": [
@@ -385,7 +400,6 @@
                     "optional": true
                 }
             ],
-            "extends": "BaseObject",
             "is_constructor": 1,
             "version": "0.1.0"
         },
@@ -397,10 +411,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 16,
+            "line": 4,
             "description": "The StringUtil...",
             "submodule": "util",
             "is_constructor": 1,
@@ -415,7 +429,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/util/TemplateFactory.js",
             "line": 9,
@@ -432,10 +446,10 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 26,
+            "line": 4,
             "description": "A Utility class that has several static methods to assist in development.",
             "submodule": "util",
             "is_constructor": 1,
@@ -449,11 +463,11 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "Nerdery",
             "namespace": "",
             "file": "src/assets/scripts/nerdery/BaseObject.js",
-            "line": 6,
-            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureTS classes.",
+            "line": 7,
+            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.",
             "submodule": "core",
             "is_constructor": 1,
             "version": "0.1.0"
@@ -462,15 +476,15 @@
     "classitems": [
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 30,
+            "line": 147,
             "overridden": "DisplayObjectContainer.CLASS_NAME",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 35,
+            "line": 152,
             "description": "Whether or not the display object is visible. Display objects that are not visible are disabled.\nFor example, if visible=false for an InteractiveObject instance, it cannot be clicked.",
             "itemtype": "property",
             "name": "_isVisible",
@@ -479,71 +493,106 @@
             "access": "private",
             "tagname": "",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 46,
+            "line": 163,
             "description": "A cached of the DOM Element.",
             "itemtype": "property",
             "name": "element",
             "type": "{Element}",
             "default": "null",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 55,
+            "line": 172,
             "description": "A cached jQuery object for the view's element.",
             "itemtype": "property",
             "name": "$element",
             "type": "{JQuery}",
             "default": "null",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 64,
+            "line": 181,
+            "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try add the view to the DOM because it should already exists.",
+            "itemtype": "property",
+            "name": "_isReference",
+            "type": "{boolean}",
+            "access": "private",
+            "tagname": "",
+            "class": "DOMElement",
+            "module": "Nerdery",
+            "submodule": "view"
+        },
+        {
+            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "line": 191,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_type",
             "type": "{string}",
             "default": "null",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 73,
+            "line": 200,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_params",
             "type": "{any}",
             "default": "null",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 88,
-            "overridden": "DisplayObjectContainer.createChildren",
+            "line": 218,
+            "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.",
+            "example": [
+                "\n           // EXAMPLE 1: By default your view class will be a div element:\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this);\n\n               this._childInstance = new DOMElement();\n               this.addChild(this._childInstance);\n           }\n\n           // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:\n           ClassName.prototype.createChildren() {\n               _super.prototype.createChildren.call(this, 'ul');\n           }\n\n           // Then you could nest other elements inside this base view/element.\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n               var li = new DOMElement('li', {text: 'Robert is cool'});\n               this.addChild(li);\n           }\n\n           // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below inline Handlebar template in your html file.\n           <script id=\"todoTemplate\" type=\"text/template\">\n               <div id=\"htmlTemplatel\" class=\"js-todo\">\n                   <div id=\"input-wrapper\">\n                       <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                       <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n                   </div>\n               </div>\n           </script>\n\n           // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\". There is a second optional argument where you can pass data for the Handlebar template to use.\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });\n\n           }\n\n           // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.\n           var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this, HomeTemplate, {data: \"some data\"});\n\n           }"
+            ],
+            "itemtype": "method",
+            "name": "createChildren",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "[string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template."
+                },
+                {
+                    "name": "params",
+                    "description": "[any=null] Any data you would like to pass into the jQuery element or template that is being created."
+                }
+            ],
+            "return": {
+                "description": "Returns an instance of itself.",
+                "type": "DOMElement"
+            },
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 119,
+            "line": 298,
             "overridden": "DisplayObjectContainer.addChild",
             "example": [
-                "\n     container.addChild(domElementInstance);"
+                "\n           container.addChild(domElementInstance);"
             ],
             "itemtype": "method",
             "name": "addChild",
@@ -560,12 +609,12 @@
             },
             "chainable": 1,
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 151,
+            "line": 332,
             "description": "Gets called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layoutChildren:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.",
             "itemtype": "method",
             "name": "onDomAdded",
@@ -579,50 +628,36 @@
             "access": "private",
             "tagname": "",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 166,
+            "line": 347,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 195,
+            "line": 379,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 208,
-            "itemtype": "method",
-            "name": "getChildAt",
-            "params": [
-                {
-                    "name": "index",
-                    "description": "",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "DOMElement"
-            },
-            "access": "public",
-            "tagname": "",
+            "line": 392,
+            "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 219,
+            "line": 399,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -637,16 +672,15 @@
                 "description": "",
                 "type": "DOMElement"
             },
-            "override": "",
             "access": "public",
             "tagname": "",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 256,
+            "line": 435,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -662,13 +696,15 @@
                 "description": "Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.\nIf the 'data-cid' property exists is on an HTML element a DOMElement will not be create for that element because it will be assumed it already exists as a DOMElement.",
                 "type": "Array"
             },
+            "access": "public",
+            "tagname": "",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 292,
+            "line": 472,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -688,12 +724,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 313,
+            "line": 493,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -706,12 +742,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 332,
+            "line": 512,
             "description": "Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)\nto 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though\nthey are invisible.",
             "itemtype": "method",
             "name": "alpha",
@@ -727,12 +763,12 @@
             },
             "chainable": 1,
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 347,
+            "line": 527,
             "itemtype": "method",
             "name": "visible",
             "params": [
@@ -746,15 +782,15 @@
                 "type": "Any"
             },
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 366,
+            "line": 546,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -762,7 +798,7 @@
             "line": 24,
             "overridden": "EventDispatcher.CLASS_NAME",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -776,7 +812,7 @@
             "access": "protected",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -791,7 +827,7 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -805,7 +841,7 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -819,7 +855,7 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -833,7 +869,7 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -847,7 +883,7 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
@@ -861,16 +897,13 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 100,
+            "line": 101,
             "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.",
-            "example": [
-                "\n        public createChildren():void {\n       this._childInstance = new DisplayObjectContainer();\n       this.addChild(this._childInstance);\n       }"
-            ],
             "itemtype": "method",
             "name": "createChildren",
             "return": {
@@ -881,12 +914,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 119,
+            "line": 117,
             "description": "Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other\nchildren in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)\n\nIf you add a child object that already has a different parent, the object is removed from the child\nlist of the other parent object.",
             "itemtype": "method",
             "name": "addChild",
@@ -905,12 +938,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 146,
+            "line": 144,
             "description": "Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.\nThe child is added at the index position specified. An index of 0 represents the back\n(bottom) of the display list for this DisplayObjectContainerContainer object.",
             "itemtype": "method",
             "name": "addChildAt",
@@ -934,12 +967,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 172,
+            "line": 170,
             "description": "Swaps two DisplayObjectContainer's with each other.",
             "itemtype": "method",
             "name": "swapChildren",
@@ -963,64 +996,87 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 187,
-            "overridden": "DisplayObjectContainer.swapChildrenAt",
+            "line": 185,
+            "description": "Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.",
+            "itemtype": "method",
+            "name": "swapChildren",
+            "params": [
+                {
+                    "name": "index1",
+                    "description": "The index position of the first child object.",
+                    "type": "Int"
+                },
+                {
+                    "name": "index2",
+                    "description": "The index position of the second child object.",
+                    "type": "Int"
+                }
+            ],
+            "return": {
+                "description": "Returns an instance of itself.",
+                "type": "DisplayObjectContainer"
+            },
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 203,
+            "line": 208,
+            "description": "Returns the index position of a child DisplayObjectContainer instance.",
             "itemtype": "method",
             "name": "getChildIndex",
             "params": [
                 {
                     "name": "child",
-                    "description": "",
+                    "description": "The DisplayObjectContainer instance to identify.",
                     "type": "DisplayObjectContainer"
                 }
             ],
             "return": {
-                "description": "",
-                "type": "Number"
+                "description": "The index position of the child display object to identify.",
+                "type": "Int"
             },
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 214,
+            "line": 220,
+            "description": "Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.",
             "itemtype": "method",
             "name": "contains",
             "params": [
                 {
                     "name": "child",
-                    "description": "",
+                    "description": "The child object to test.",
                     "type": "DisplayObjectContainer"
                 }
             ],
             "return": {
-                "description": "",
-                "type": "Number"
+                "description": "true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.",
+                "type": "Boolean"
             },
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 225,
+            "line": 232,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -1039,12 +1095,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 249,
+            "line": 256,
             "description": "Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if\nno other references to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -1056,12 +1112,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 269,
+            "line": 276,
             "description": "Returns the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "getChildAt",
@@ -1077,12 +1133,12 @@
                 "type": "DisplayObjectContainer"
             },
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 280,
+            "line": 287,
             "description": "Gets a DisplayObjectContainer by its cid.",
             "itemtype": "method",
             "name": "getChildByCid",
@@ -1101,12 +1157,12 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 297,
+            "line": 304,
             "description": "The setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
             "params": [
                 {
@@ -1124,14 +1180,16 @@
                 "description": "Returns an instance of itself.",
                 "type": "DisplayObjectContainer"
             },
+            "access": "public",
+            "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 318,
+            "line": 325,
             "description": "The layoutComponent method provides a common function to handle updating child objects.",
             "itemtype": "method",
             "name": "layoutChildren",
@@ -1143,28 +1201,28 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
-            "line": 330,
+            "line": 337,
             "overridden": "EventDispatcher.destroy",
             "class": "DisplayObjectContainer",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/Stage.js",
-            "line": 63,
+            "line": 87,
             "overridden": "DOMElement.CLASS_NAME",
             "class": "Stage",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/display/Stage.js",
-            "line": 69,
+            "line": 93,
             "description": "The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.",
             "itemtype": "method",
             "name": "appendTo",
@@ -1184,20 +1242,20 @@
             ],
             "chainable": 1,
             "class": "Stage",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "view"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 96,
+            "line": 101,
             "overridden": "BaseObject.CLASS_NAME",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 101,
+            "line": 106,
             "description": "The type of event.",
             "itemtype": "property",
             "name": "type",
@@ -1205,12 +1263,12 @@
             "default": "null",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 111,
+            "line": 116,
             "description": "A reference to the object that originally dispatched the event.",
             "itemtype": "property",
             "name": "target",
@@ -1218,12 +1276,12 @@
             "default": "null",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 121,
+            "line": 126,
             "description": "The currentTarget property always points to the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).",
             "itemtype": "property",
             "name": "currentTarget",
@@ -1231,122 +1289,115 @@
             "default": "null",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 131,
+            "line": 136,
             "description": "Use to pass any type of data with the event.",
             "itemtype": "property",
             "name": "data",
             "type": "{any}",
             "default": "null",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 140,
+            "line": 145,
             "description": "Indicates whether an event is a bubbling event.",
             "itemtype": "property",
             "name": "bubble",
             "type": "{boolean}",
             "default": "false",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 148,
+            "line": 154,
             "description": "Indicates whether the behavior associated with the event can be prevented.",
             "itemtype": "property",
             "name": "cancelable",
             "type": "{boolean}",
             "default": "false",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 156,
+            "line": 163,
             "itemtype": "property",
             "name": "isPropagationStopped",
             "type": "{boolean}",
             "default": "false",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 164,
+            "line": 172,
             "itemtype": "property",
             "name": "isImmediatePropagationStopped",
             "type": "{boolean}",
             "default": "false",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 174,
+            "line": 187,
+            "description": "Duplicates an instance of an BaseEvent subclass.\n\nReturns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.\nYou do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch\nan event—that is, when you call dispatchEvent(event) from a handler that is handling event.\n\nThe new Event object includes all the properties of the original.\n\nWhen creating your own custom Event class, you must override the inherited Event.clone() method in order for it\nto duplicate the properties of your custom class. If you do not set all the properties that you add in your event\nsubclass, those properties will not have the correct values when listeners handle the redispatched event.",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "",
+                "type": "BaseEvent"
+            },
+            "access": "public",
+            "tagname": "",
+            "class": "BaseEvent",
+            "module": "Nerdery",
+            "submodule": "event"
+        },
+        {
+            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "line": 208,
             "description": "Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.\nThis method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()\nmethod prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.\nThis method can be called in any phase of",
             "itemtype": "method",
             "name": "stopPropagation",
+            "access": "public",
+            "tagname": "",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
-            "line": 186,
+            "line": 221,
             "description": "Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.\nThis method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()\nmethod doesn't take effect until all the event listeners in the current node finish processing.",
             "itemtype": "method",
             "name": "stopImmediatePropagation",
+            "access": "public",
+            "tagname": "",
             "class": "BaseEvent",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventBroker.js",
-            "line": 8,
-            "description": "The fully qualified class name of the object. Use {{#crossLink \"BaseObject/getQualifiedClassName:method\"}}{{/crossLink}} method to retrieve the class name of a StructureTS object.",
-            "itemtype": "property",
-            "name": "CLASS_NAME",
-            "type": "{string}",
-            "final": 1,
-            "access": "protected",
-            "tagname": "",
-            "static": 1,
-            "class": "EventBroker",
-            "module": "StructureTS"
-        },
-        {
-            "file": "src/assets/scripts/nerdery/event/EventBroker.js",
-            "line": 19,
-            "description": "A reference to the EventDispatcher object.",
-            "itemtype": "property",
-            "name": "_eventDispatcher",
-            "type": "{EventDispatcher}",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "class": "EventBroker",
-            "module": "StructureTS"
-        },
-        {
-            "file": "src/assets/scripts/nerdery/event/EventBroker.js",
-            "line": 43,
+            "line": 24,
             "description": "Registers an event listener object with an EventBroker object so that the listener receives notification of an event.",
             "example": [
-                "\n     EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n     private handlerMethod(event:BaseEvent):void {\n         console.log(event.target + \" sent the event.\");\n     }"
+                "\n       EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event) {\n           console.log(event.target + \" sent the event.\");\n       }"
             ],
             "itemtype": "method",
             "name": "addEventListener",
@@ -1378,15 +1429,15 @@
             "access": "public",
             "tagname": "",
             "class": "EventBroker",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventBroker.js",
-            "line": 63,
+            "line": 45,
             "description": "Removes a specified listener from the EventBroker object.",
             "example": [
-                "\n     EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n     private handlerMethod(event:BaseEvent):void {\n         console.log(event.target + \" sent the event.\");\n     }"
+                "\n       EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event:BaseEvent):void {\n           console.log(event.target + \" sent the event.\");\n       }"
             ],
             "itemtype": "method",
             "name": "removeEventListener",
@@ -1411,15 +1462,15 @@
             "access": "public",
             "tagname": "",
             "class": "EventBroker",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventBroker.js",
-            "line": 82,
+            "line": 65,
             "description": "<p>Dispatches an event within the EventBroker object.</p>",
             "example": [
-                "\n     var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);\n     EventBroker.dispatchEvent(event);\n\n     // Here is a common inline event being dispatched\n     EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
+                "\n        var event = new BaseEvent(BaseEvent.CHANGE);\n        EventBroker.dispatchEvent(event);\n\n        // Here is a common inline event being dispatched\n        EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
             ],
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -1434,7 +1485,7 @@
             "access": "public",
             "tagname": "",
             "class": "EventBroker",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
@@ -1442,12 +1493,12 @@
             "line": 25,
             "overridden": "BaseObject.CLASS_NAME",
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 30,
+            "line": 29,
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
             "name": "_listeners",
@@ -1455,12 +1506,12 @@
             "access": "private",
             "tagname": "",
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 39,
+            "line": 37,
             "description": "Indicates the object that contains child object. Use the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy.",
             "itemtype": "property",
             "name": "parent",
@@ -1468,12 +1519,12 @@
             "access": "public",
             "tagname": "",
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 50,
+            "line": 47,
             "description": "The isEnabled property is used to keep track of the enabled state of the object.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -1482,15 +1533,15 @@
             "access": "protected",
             "tagname": "",
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 61,
+            "line": 60,
             "description": "Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.",
             "example": [
-                "\n     instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n     private handlerMethod(event:BaseEvent):void {\n         console.log(event.target + \" sent the event.\");\n     }"
+                "\n       instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event):void {\n           console.log(event.target + \" sent the event.\");\n       }"
             ],
             "itemtype": "method",
             "name": "addEventListener",
@@ -1522,7 +1573,7 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
@@ -1530,7 +1581,7 @@
             "line": 103,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "example": [
-                "\n     instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n     private handlerMethod(event:BaseEvent):void {\n         console.log(event.target + \" sent the event.\");\n     }"
+                "\n       instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event):void {\n           console.log(event.target + \" sent the event.\");\n       }"
             ],
             "itemtype": "method",
             "name": "removeEventListener",
@@ -1556,15 +1607,15 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 135,
+            "line": 136,
             "description": "<p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>",
             "example": [
-                "\n     var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);\n     instance.dispatchEvent(event);\n\n     // Here is a common inline event being dispatched\n     instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
+                "\n       var event = new BaseEvent(BaseEvent.CHANGE);\n       instance.dispatchEvent(event);\n\n       // Here is a common inline event being dispatched\n       instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
             ],
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -1579,23 +1630,23 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 188,
+            "line": 189,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 200,
+            "line": 201,
             "description": "The enable method is responsible for enabling event listeners and/or children of the containing objects.",
             "example": [
-                "\n     public enable():void {\n         if (this.isEnabled === true) return;\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         super.enable();\n     }"
+                "\n       ClassName.prototype.enable = function () {\n           if (this.isEnabled === true) return this;\n\n           this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n           this._childInstance.enable();\n\n           return _super.prototype.enable.call(this);\n       }"
             ],
             "itemtype": "method",
             "name": "enable",
@@ -1603,15 +1654,15 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
             "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 223,
+            "line": 224,
             "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
             "example": [
-                "\n     public disable():void {\n         if (this.isEnabled === false) return;\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         super.enable();\n     }"
+                "\n       ClassName.prototype.disable = function () {\n           if (this.isEnabled === false) return this;\n\n           this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n           this._childInstance.disable();\n\n           return _super.prototype.disable.call(this);\n       }"
             ],
             "itemtype": "method",
             "name": "disable",
@@ -1619,7 +1670,7 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "event"
         },
         {
@@ -1627,7 +1678,7 @@
             "line": 25,
             "overridden": "BaseObject.CLASS_NAME",
             "class": "ValueObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "model"
         },
         {
@@ -1646,7 +1697,7 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "model"
         },
         {
@@ -1662,7 +1713,7 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "model"
         },
         {
@@ -1678,7 +1729,7 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "model"
         },
         {
@@ -1697,7 +1748,7 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "model"
         },
         {
@@ -1712,7 +1763,7 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "model"
         },
         {
@@ -1727,7 +1778,7 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "model"
         },
         {
@@ -1735,7 +1786,7 @@
             "line": 6,
             "description": "A bind polyfill for browsers that don't support the bind method.",
             "class": "StringUtil",
-            "module": "StructureTS"
+            "module": "Nerdery"
         },
         {
             "file": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
@@ -1752,37 +1803,25 @@
                 "type": "String"
             },
             "class": "StringUtil",
-            "module": "StructureTS"
+            "module": "Nerdery"
         },
         {
             "file": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
             "line": 53,
             "description": "The jQuery addEventListener plugin",
             "class": "StringUtil",
-            "module": "StructureTS"
+            "module": "Nerdery"
         },
         {
             "file": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
             "line": 88,
             "description": "The jQuery removeEventListener plugin",
             "class": "StringUtil",
-            "module": "StructureTS"
+            "module": "Nerdery"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 6,
-            "description": "The fully qualified class name of the object.",
-            "itemtype": "property",
-            "name": "CLASS_NAME",
-            "type": "{string}",
-            "final": 1,
-            "static": 1,
-            "class": "StringUtil",
-            "module": "StructureTS"
-        },
-        {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 30,
+            "line": 21,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getExtension",
@@ -1801,12 +1840,12 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 43,
+            "line": 34,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToCamelCase",
@@ -1825,12 +1864,12 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 60,
+            "line": 51,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToPascalCase",
@@ -1849,12 +1888,12 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 80,
+            "line": 71,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "camelCaseToHyphen",
@@ -1873,12 +1912,12 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 95,
+            "line": 86,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "createUUID",
@@ -1890,12 +1929,12 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 113,
+            "line": 104,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "queryStringToObject",
@@ -1914,15 +1953,15 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 139,
+            "line": 130,
             "description": "Remove all whitespace from the string passed in.",
             "example": [
-                "\n     var str = \"   a b    c d e f g \";\n     StringUtil.removeAllWhitespace(str);\n     // \"abcdefg\""
+                "\n        var str = \"   a b    c d e f g \";\n        StringUtil.removeAllWhitespace(str);\n        // \"abcdefg\""
             ],
             "itemtype": "method",
             "name": "removeAllWhitespace",
@@ -1941,12 +1980,12 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 156,
+            "line": 146,
             "description": "Remove leading and trailing whitespace.",
             "example": [
                 "\n     var str = \"   a b    c d e f g \";\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // \"a b    c d e f g\""
@@ -1968,12 +2007,12 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/StringUtil.js",
-            "line": 173,
+            "line": 163,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -1996,53 +2035,15 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "StructureTS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/assets/scripts/nerdery/util/TemplateFactory.js",
-            "line": 20,
-            "description": "The fully qualified class name of the object.",
-            "itemtype": "property",
-            "name": "CLASS_NAME",
-            "type": "{string}",
-            "final": 1,
-            "static": 1,
-            "class": "TemplateFactory",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 6,
-            "description": "The fully qualified class name of the object.",
-            "itemtype": "property",
-            "name": "CLASS_NAME",
-            "type": "{string}",
-            "final": 1,
-            "static": 1,
-            "class": "Util",
-            "module": "StructureTS"
-        },
-        {
-            "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 16,
-            "description": "Keeps track of the count for the uniqueId method.",
-            "itemtype": "property",
-            "name": "_idCounter",
-            "type": "{init}",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "class": "Util",
-            "module": "StructureTS"
-        },
-        {
-            "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 39,
+            "line": 21,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
             "example": [
-                "\n     var property:number = Util.uniqueId();\n     // 1\n\n     var property:string = Util.uniqueId('yomama_');\n     // yomama_1"
+                "\n        var property:number = Util.uniqueId();\n        // 1\n\n        var property:string = Util.uniqueId('yomama_');\n        // yomama_1"
             ],
             "itemtype": "method",
             "name": "uniqueId",
@@ -2062,12 +2063,12 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 64,
+            "line": 46,
             "itemtype": "method",
             "name": "deletePropertyFromObject",
             "params": [
@@ -2090,12 +2091,12 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 101,
+            "line": 83,
             "itemtype": "method",
             "name": "renamePropertyOnObject",
             "params": [
@@ -2123,12 +2124,12 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 120,
+            "line": 102,
             "itemtype": "method",
             "name": "clone",
             "params": [
@@ -2146,12 +2147,12 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/util/Util.js",
-            "line": 162,
+            "line": 148,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "toBoolean",
@@ -2170,13 +2171,13 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "util"
         },
         {
             "file": "src/assets/scripts/nerdery/BaseObject.js",
-            "line": 18,
-            "description": "The fully qualified class name of the object. Use {{#crossLink \"BaseObject/getQualifiedClassName:method\"}}{{/crossLink}} method to retrieve the class name of a StructureTS object.",
+            "line": 17,
+            "description": "The fully qualified class name of the object. Use {{#crossLink \"BaseObject/getQualifiedClassName:method\"}}{{/crossLink}} method to retrieve the class name of a  object.",
             "itemtype": "property",
             "name": "CLASS_NAME",
             "type": "{string}",
@@ -2184,13 +2185,13 @@
             "access": "protected",
             "tagname": "",
             "class": "BaseObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "core"
         },
         {
             "file": "src/assets/scripts/nerdery/BaseObject.js",
-            "line": 27,
-            "description": "The cid or client id is a unique identifier automatically assigned to most StructureTS objects upon instantiation.",
+            "line": 26,
+            "description": "The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.",
             "itemtype": "property",
             "name": "cid",
             "type": "{int}",
@@ -2199,7 +2200,7 @@
             "access": "public",
             "tagname": "",
             "class": "BaseObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "core"
         },
         {
@@ -2207,7 +2208,7 @@
             "line": 38,
             "description": "Returns the fully qualified class name of an object.",
             "example": [
-                "\n     instance.getQualifiedClassName();"
+                "\n        instance.getQualifiedClassName();"
             ],
             "itemtype": "method",
             "name": "getQualifiedClassName",
@@ -2218,97 +2219,97 @@
             "access": "public",
             "tagname": "",
             "class": "BaseObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "core"
         },
         {
             "file": "src/assets/scripts/nerdery/BaseObject.js",
-            "line": 50,
+            "line": 51,
             "description": "The purpose of the destroy method is to make an object ready for garbage collection. This\nshould be thought of as a one way function. Once destroy is called no further methods should be\ncalled on the object or properties accessed. It is the responsibility of those who implement this\nfunction to stop all running Timers, all running Sounds, remove any event\nlisteners and take any other steps necessary to make an object eligible for garbage collection.\nIt is critical that all subclasses call the super for this function in their overridden methods.\n\nNote: super.destroy(); should be called first before you clean up any other objects/items in the current classs.\nThe {{#crossLink \"BaseObject/destroy:method\"}}{{/crossLink}} method also calls the\n{{#crossLink \"EventDispatcher/disable:method\"}}{{/crossLink}} method on all classes that extend\n{{#crossLink \"EventDispatcher\"}}{{/crossLink}}.",
             "example": [
-                "\n     public destroy():void {\n         super.destroy();\n\n         this._childInstance.destroy();\n         this._childInstance = null;\n     }"
+                "\n       ClassName.prototype.destroy() {\n           _super.prototype.destroy.call(this);\n\n           this._childInstance.destroy();\n           this._childInstance = null;\n       }"
             ],
             "itemtype": "method",
             "name": "destroy",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
             "access": "public",
             "tagname": "",
             "class": "BaseObject",
-            "module": "StructureTS",
+            "module": "Nerdery",
             "submodule": "core"
         }
     ],
     "warnings": [
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:14"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:10"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:30"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:147"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:218"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:88"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:298"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:298"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:119"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:119"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:166"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:195"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:208"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:219"
-        },
-        {
-            "message": "unknown tag: override",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:219"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:256"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:292"
-        },
-        {
-            "message": "unknown tag: override",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:292"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:313"
-        },
-        {
-            "message": "unknown tag: override",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:313"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:332"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
             "line": " src/assets/scripts/nerdery/display/DOMElement.js:347"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:366"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:379"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:392"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:399"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:435"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:472"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:472"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:493"
+        },
+        {
+            "message": "unknown tag: override",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:493"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:512"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:527"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:546"
         },
         {
             "message": "unknown tag: version",
@@ -2320,87 +2321,91 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:100"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:101"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:119"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:117"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:146"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:144"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:172"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:187"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:170"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:203"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:185"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:214"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:208"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:225"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:220"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:249"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:232"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:269"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:256"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:280"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:276"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:287"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:280"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:287"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:297"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:304"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:318"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:325"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:330"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:337"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/display/Stage.js:12"
+            "line": " src/assets/scripts/nerdery/display/Stage.js:8"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/Stage.js:63"
+            "line": " src/assets/scripts/nerdery/display/Stage.js:87"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:58"
+            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:4"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:96"
+            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:101"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:187"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/event/EventBroker.js:29"
+            "line": " src/assets/scripts/nerdery/event/EventBroker.js:6"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:11"
+            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:7"
         },
         {
             "message": "unknown tag: overridden",
@@ -2412,11 +2417,11 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:188"
+            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:189"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:12"
+            "line": " src/assets/scripts/nerdery/model/ValueObject.js:8"
         },
         {
             "message": "unknown tag: overridden",
@@ -2444,43 +2449,43 @@
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:16"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:4"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:30"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:21"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:43"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:34"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:60"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:51"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:80"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:71"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:95"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:86"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:113"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:104"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:139"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:130"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:156"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:146"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:173"
+            "line": " src/assets/scripts/nerdery/util/StringUtil.js:163"
         },
         {
             "message": "unknown tag: version",
@@ -2488,31 +2493,31 @@
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/util/Util.js:26"
+            "line": " src/assets/scripts/nerdery/util/Util.js:4"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:39"
+            "line": " src/assets/scripts/nerdery/util/Util.js:21"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:64"
+            "line": " src/assets/scripts/nerdery/util/Util.js:46"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:101"
+            "line": " src/assets/scripts/nerdery/util/Util.js:83"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:120"
+            "line": " src/assets/scripts/nerdery/util/Util.js:102"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:162"
+            "line": " src/assets/scripts/nerdery/util/Util.js:148"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/BaseObject.js:6"
+            "line": " src/assets/scripts/nerdery/BaseObject.js:7"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -2520,47 +2525,43 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:30"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:147"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:88"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:347"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:166"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:379"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:195"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:392"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:366"
+            "line": " src/assets/scripts/nerdery/display/DOMElement.js:546"
         },
         {
             "message": "Missing item type",
             "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:24"
         },
         {
-            "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:187"
-        },
-        {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:297"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:304"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:330"
+            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:337"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/Stage.js:63"
+            "line": " src/assets/scripts/nerdery/display/Stage.js:87"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:96"
+            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:101"
         },
         {
             "message": "Missing item type",
@@ -2568,7 +2569,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:188"
+            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:189"
         },
         {
             "message": "Missing item type",

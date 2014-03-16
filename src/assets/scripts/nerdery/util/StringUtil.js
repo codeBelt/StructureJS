@@ -1,30 +1,21 @@
 define(function(require, exports, module) {
     'use strict';
 
+    /**
+     * The StringUtil...
+     *
+     * @class StringUtil
+     * @module Nerdery
+     * @submodule util
+     * @constructor
+     * @static
+     * @version 0.1.0
+     **/
     var StringUtil = (function () {
 
-        /**
-         * The fully qualified class name of the object.
-         *
-         * @property CLASS_NAME
-         * @type {string}
-         * @final
-         * @static
-         */
         StringUtil.CLASS_NAME = 'StringUtil';
 
-        /**
-         * The StringUtil...
-         *
-         * @class StringUtil
-         * @module StructureTS
-         * @submodule util
-         * @constructor
-         * @static
-         * @version 0.1.0
-         **/
         function StringUtil() {
-
         }
 
         /**
@@ -139,10 +130,9 @@ define(function(require, exports, module) {
         /**
          * Remove all whitespace from the string passed in.
          * @example
-         *      var str = "   a b    c d e f g ";
-         *      StringUtil.removeAllWhitespace(str);
-         *      // "abcdefg"
-         *
+         var str = "   a b    c d e f g ";
+         StringUtil.removeAllWhitespace(str);
+         // "abcdefg"
          * @method removeAllWhitespace
          * @param str {string}
          * @returns {string}

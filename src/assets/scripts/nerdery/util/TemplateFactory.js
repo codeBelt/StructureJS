@@ -10,25 +10,18 @@ define(function(require, exports, module) {
      * YUIDoc_comment
      *
      * @class TemplateFactory
-     * @module StructureTS
+     * @module Nerdery
      * @submodule util
      * @constructor
      * @version 0.1.0
      **/
     var TemplateFactory = (function () {
 
-        /**
-         * The fully qualified class name of the object.
-         *
-         * @property CLASS_NAME
-         * @type {string}
-         * @final
-         * @static
-         */
         TemplateFactory.CLASS_NAME = 'TemplateFactory';
 
         TemplateFactory.UNDERSCORE = 'underscore';
         TemplateFactory.HANDLEBARS = 'handlebars';
+
         TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
         TemplateFactory.templateNamespace = 'JST';
 

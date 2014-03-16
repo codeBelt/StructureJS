@@ -14,7 +14,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ValueObject"
     ],
     "modules": [
-        "StructureTS",
+        "Nerdery",
         "core",
         "event",
         "model",
@@ -25,7 +25,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "core",
             "name": "core",
-            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureTS classes."
+            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes."
         },
         {
             "displayName": "event",
@@ -38,8 +38,8 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems."
         },
         {
-            "displayName": "StructureTS",
-            "name": "StructureTS"
+            "displayName": "Nerdery",
+            "name": "Nerdery"
         },
         {
             "displayName": "util",
@@ -49,7 +49,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "view",
             "name": "view",
-            "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base class for all objects that can be placed into the HTML DOM."
+            "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM."
         }
     ]
 } };

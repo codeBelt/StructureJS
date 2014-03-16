@@ -3,20 +3,19 @@ define(function(require, exports, module) {
 
     var Util = require('nerdery/util/Util');
 
-    /**
-    * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureTS classes.
-    *
-    * @class BaseObject
-    * @module StructureTS
-    * @submodule core
-    * @constructor
-    * @version 0.1.0
-    **/
     var BaseObject = (function () {
-
+        /**
+         * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.
+         *
+         * @class BaseObject
+         * @module Nerdery
+         * @submodule core
+         * @constructor
+         * @version 0.1.0
+         **/
         function BaseObject() {
             /**
-             * The fully qualified class name of the object. Use {{#crossLink "BaseObject/getQualifiedClassName:method"}}{{/crossLink}} method to retrieve the class name of a StructureTS object.
+             * The fully qualified class name of the object. Use {{#crossLink "BaseObject/getQualifiedClassName:method"}}{{/crossLink}} method to retrieve the class name of a  object.
              *
              * @property CLASS_NAME
              * @type {string}
@@ -25,7 +24,7 @@ define(function(require, exports, module) {
              */
             this.CLASS_NAME = 'BaseObject';
             /**
-             * The cid or client id is a unique identifier automatically assigned to most StructureTS objects upon instantiation.
+             * The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.
              *
              * @property cid
              * @type {int}
@@ -33,12 +32,14 @@ define(function(require, exports, module) {
              * @writeOnce
              * @public
              */
+            this.cid = null;
             this.cid = Util.uniqueId();
         }
         /**
          * Returns the fully qualified class name of an object.
+         *
          * @example
-         *      instance.getQualifiedClassName();
+         instance.getQualifiedClassName();
          * @method getQualifiedClassName
          * @returns {string} Returns the class name.
          * @public
@@ -60,18 +61,18 @@ define(function(require, exports, module) {
          * {{#crossLink "EventDispatcher/disable:method"}}{{/crossLink}} method on all classes that extend
          * {{#crossLink "EventDispatcher"}}{{/crossLink}}.
          * @example
-         *      public destroy():void {
-        *          super.destroy();
-        *
-        *          this._childInstance.destroy();
-        *          this._childInstance = null;
-        *      }
+        ClassName.prototype.destroy() {
+            _super.prototype.destroy.call(this);
+
+            this._childInstance.destroy();
+            this._childInstance = null;
+        }
          * @method destroy
+         * @return {void}
          * @public
          */
         BaseObject.prototype.destroy = function () {
         };
-
         return BaseObject;
     })();
 

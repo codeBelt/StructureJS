@@ -73,7 +73,7 @@
             
                 <li><a href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureTS.html">StructureTS</a></li>
+                <li><a href="../modules/Nerdery.html">Nerdery</a></li>
             
                 <li><a href="../modules/util.html">util</a></li>
             
@@ -122,14 +122,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l6"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:6</code></a>
+            Defined in: <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:7</code></a>
         </div>
     
 
     
         
             Module: <a href="../modules/core.html">core</a><br>
-            Parent Module: <a href="../modules/StructureTS.html">StructureTS</a>
+            Parent Module: <a href="../modules/Nerdery.html">Nerdery</a>
         
     
 
@@ -139,7 +139,7 @@
 
 
 <div class="box intro">
-    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all StructureTS classes.</p>
+    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all  classes.</p>
 
 </div>
 
@@ -178,7 +178,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l6"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:6</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:7</code></a>
         
         </p>
 
@@ -286,6 +286,10 @@
     
 
     
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
 
     
 
@@ -312,7 +316,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l50"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:50</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l51"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:51</code></a>
         
         </p>
 
@@ -339,18 +343,30 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
 
     
         <div class="example">
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> public destroy():void {
-     super.destroy();
+                <pre class="code prettyprint"><code>   ClassName.prototype.destroy() {
+       _super.prototype.destroy.call(this);
 
-     this._childInstance.destroy();
-     this._childInstance = null;
- }</code></pre>
+       this._childInstance.destroy();
+       this._childInstance = null;
+   }</code></pre>
 
             </div>
         </div>
@@ -434,7 +450,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> instance.getQualifiedClassName();</code></pre>
+                <pre class="code prettyprint"><code>    instance.getQualifiedClassName();</code></pre>
 
             </div>
         </div>
@@ -475,7 +491,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l27"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:27</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l26"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:26</code></a>
         
         </p>
 
@@ -485,7 +501,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
     </div>
 
     <div class="description">
-        <p>The cid or client id is a unique identifier automatically assigned to most StructureTS objects upon instantiation.</p>
+        <p>The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.</p>
 
     </div>
 
@@ -526,7 +542,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l18"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:18</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l17"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:17</code></a>
         
         </p>
 
@@ -536,7 +552,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
     </div>
 
     <div class="description">
-        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a StructureTS object.</p>
+        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a  object.</p>
 
     </div>
 

@@ -2,21 +2,26 @@ define(function (require, exports, module)
 {
     'use strict';
 
-    var Extend = this.__extends || function (d, b)
+    var Extend = function (inheritorClass, baseClass)
     {
-        for (var p in b)
+        for (var p in baseClass)
         {
-            if (b.hasOwnProperty(p)) d[p] = b[p];
+            if (baseClass.hasOwnProperty(p))
+            {
+                // Add any static properties from the baseClass to the inheritorClass.
+                inheritorClass[p] = baseClass[p];
+            }
         }
+
         function __()
         {
-            this.constructor = d;
+            this.constructor = inheritorClass;
         }
 
-        __.prototype = b.prototype;
-        d.prototype = new __();
+        __.prototype = baseClass.prototype;
+        inheritorClass.prototype = new __();
 
-        return b;
+        return baseClass;
     };
 
     module.exports = Extend;

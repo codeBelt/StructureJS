@@ -5,20 +5,20 @@ define(function(require, exports, module) {
     var Util = require('nerdery/util/Util');
     var BaseObject = require('nerdery/BaseObject');
 
+    /**
+     * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+     *
+     * @class ValueObject
+     * @param [data] {any} Provide a way to update the value object upon initialization.
+     * @module Nerdery
+     * @submodule model
+     * @constructor
+     * @version 0.1.0
+     **/
     var ValueObject = (function () {
 
         var _super = Extend(ValueObject, BaseObject);
 
-        /**
-         * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
-         *
-         * @class ValueObject
-         * @param [data] {any} Provide a way to update the value object upon initialization.
-         * @extends BaseObject
-         * @submodule model
-         * @constructor
-         * @version 0.1.0
-         **/
         function ValueObject() {
             _super.call(this);
 

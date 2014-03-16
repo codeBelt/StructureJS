@@ -3,39 +3,20 @@ define(function(require, exports, module) {
 
     var EventDispatcher = require('nerdery/event/EventDispatcher');
 
+    /**
+     * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
+     * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
+     *
+     * @class EventBroker
+     * @module Nerdery
+     * @submodule event
+     * @static
+     * @version 0.1.0
+     **/
     var EventBroker = (function () {
 
-        /**
-         * The fully qualified class name of the object. Use {{#crossLink "BaseObject/getQualifiedClassName:method"}}{{/crossLink}} method to retrieve the class name of a StructureTS object.
-         *
-         * @property CLASS_NAME
-         * @type {string}
-         * @final
-         * @protected
-         * @static
-         */
         EventBroker.CLASS_NAME = 'EventBroker';
 
-        /**
-         * A reference to the EventDispatcher object.
-         *
-         * @property _eventDispatcher
-         * @type {EventDispatcher}
-         * @private
-         * @static
-         */
-        EventBroker._eventDispatcher = new EventDispatcher();
-
-        /**
-         * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
-         * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
-         *
-         * @class EventBroker
-         * @module StructureTS
-         * @submodule event
-         * @static
-         * @version 0.1.0
-         **/
         function EventBroker() {
             throw new Error('[EventBroker] Do instantiation the EventBroker class because it is a static class.');
         }
@@ -43,10 +24,11 @@ define(function(require, exports, module) {
         /**
          * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
          * @example
-         *      EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *      private handlerMethod(event:BaseEvent):void {
-        *          console.log(event.target + " sent the event.");
-        *      }
+        EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+        ClassName.prototype.handlerMethod(event) {
+            console.log(event.target + " sent the event.");
+        }
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
@@ -63,10 +45,11 @@ define(function(require, exports, module) {
         /**
          * Removes a specified listener from the EventBroker object.
          * @example
-         *      EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *      private handlerMethod(event:BaseEvent):void {
-        *          console.log(event.target + " sent the event.");
-        *      }
+        EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+        ClassName.prototype.handlerMethod(event:BaseEvent):void {
+            console.log(event.target + " sent the event.");
+        }
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
@@ -82,11 +65,11 @@ define(function(require, exports, module) {
         /**
          * <p>Dispatches an event within the EventBroker object.</p>
          * @example
-         *      var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
-         *      EventBroker.dispatchEvent(event);
-         *
-         *      // Here is a common inline event being dispatched
-         *      EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+         var event = new BaseEvent(BaseEvent.CHANGE);
+         EventBroker.dispatchEvent(event);
+
+         // Here is a common inline event being dispatched
+         EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          * @method dispatchEvent
          * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
          * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
@@ -96,6 +79,8 @@ define(function(require, exports, module) {
         EventBroker.dispatchEvent = function (event) {
             EventBroker._eventDispatcher.dispatchEvent(event);
         };
+
+        EventBroker._eventDispatcher = new EventDispatcher();
 
         return EventBroker;
     })();

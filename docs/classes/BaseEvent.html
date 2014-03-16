@@ -73,7 +73,7 @@
             
                 <li><a href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureTS.html">StructureTS</a></li>
+                <li><a href="../modules/Nerdery.html">Nerdery</a></li>
             
                 <li><a href="../modules/util.html">util</a></li>
             
@@ -122,14 +122,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l58"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:58</code></a>
+            Defined in: <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l4"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:4</code></a>
         </div>
     
 
     
         
             Module: <a href="../modules/event.html">event</a><br>
-            Parent Module: <a href="../modules/StructureTS.html">StructureTS</a>
+            Parent Module: <a href="../modules/Nerdery.html">Nerdery</a>
         
     
 
@@ -209,7 +209,7 @@ detailed information.</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l58"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:58</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l4"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:4</code></a>
         
         </p>
 
@@ -309,20 +309,25 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>           // Example: how to create a custom event by extending BaseEvent.
-           class CountryEvent extends BaseEvent {
-               public CLASS_NAME:string = &#39;CountryEvent&#39;;
+                <pre class="code prettyprint"><code>// Example: how to create a custom event by extending BaseEvent.
+   var Extend = require(&#39;nerdery/util/Extend&#39;);
+   var BaseEvent = require(&#39;nerdery/event/BaseEvent&#39;);
 
-               public static CHANGE_COUNTRY:string = &quot;CountryEvent.changeCountry&quot;;
+   var CountryEvent = (function () {
 
-               public countryName:string = null;
+       var _super = Extend(CountryEvent, BaseEvent);
 
-               constructor(type:string, countryName:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {
-                   super(type, bubbles, cancelable, data);
+       CountryEvent.CHANGE_COUNTRY = &quot;CountryEvent.changeCountry&quot;;
 
-                   this.countryName = countryName;
-               }
-           }</code></pre>
+       function CountryEvent(type, bubbles, cancelable, data) {
+           _super.call(this, type, bubbles, cancelable, data);
+
+           this.CLASS_NAME = &#39;CountryEvent&#39;;
+           this.countryName = null;
+       }
+
+       return CountryEvent;
+   })();</code></pre>
 
             </div>
         </div>
@@ -356,14 +361,21 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
 
                     <ul class="index-list methods">
                         
-                            <li class="index-item method">
+                            <li class="index-item method public">
+                                <a href="#method_clone">clone</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
                                 <a href="#method_stopImmediatePropagation">stopImmediatePropagation</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method public">
                                 <a href="#method_stopPropagation">stopPropagation</a>
 
                                 
@@ -450,17 +462,23 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_stopImmediatePropagation" class="method item">
-    <h3 class="name"><code>stopImmediatePropagation</code></h3>
+                    <div id="method_clone" class="method item public">
+    <h3 class="name"><code>clone</code></h3>
 
     
         <span class="paren">()</span>
     
 
     
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+        </span>
+    
 
     
 
+    
+        <span class="flag public">public</span>
     
 
     
@@ -482,7 +500,83 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l186"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:186</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l187"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:187</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Duplicates an instance of an BaseEvent subclass.</p>
+<p>Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
+You do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch
+an event—that is, when you call dispatchEvent(event) from a handler that is handling event.</p>
+<p>The new Event object includes all the properties of the original.</p>
+<p>When creating your own custom Event class, you must override the inherited Event.clone() method in order for it
+to duplicate the properties of your custom class. If you do not set all the properties that you add in your event
+subclass, those properties will not have the correct values when listeners handle the redispatched event.</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_stopImmediatePropagation" class="method item public">
+    <h3 class="name"><code>stopImmediatePropagation</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l221"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:221</code></a>
         
         </p>
 
@@ -507,7 +601,7 @@ method doesn&#39;t take effect until all the event listeners in the current node
 </div>
 
                 
-                    <div id="method_stopPropagation" class="method item">
+                    <div id="method_stopPropagation" class="method item public">
     <h3 class="name"><code>stopPropagation</code></h3>
 
     
@@ -518,6 +612,8 @@ method doesn&#39;t take effect until all the event listeners in the current node
 
     
 
+    
+        <span class="flag public">public</span>
     
 
     
@@ -539,7 +635,7 @@ method doesn&#39;t take effect until all the event listeners in the current node
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l174"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:174</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l208"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:208</code></a>
         
         </p>
 
@@ -596,7 +692,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l140"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:140</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l145"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:145</code></a>
         
         </p>
 
@@ -643,7 +739,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l148"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:148</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l154"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:154</code></a>
         
         </p>
 
@@ -690,7 +786,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l121"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:121</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l126"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:126</code></a>
         
         </p>
 
@@ -737,7 +833,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l131"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:131</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l136"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:136</code></a>
         
         </p>
 
@@ -784,7 +880,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l164"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:164</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l172"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:172</code></a>
         
         </p>
 
@@ -830,7 +926,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l156"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:156</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l163"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:163</code></a>
         
         </p>
 
@@ -876,7 +972,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l111"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:111</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l116"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:116</code></a>
         
         </p>
 
@@ -923,7 +1019,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l101"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:101</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_BaseEvent.js.html#l106"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;BaseEvent.js:106</code></a>
         
         </p>
 

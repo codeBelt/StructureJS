@@ -73,7 +73,7 @@
             
                 <li><a href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureTS.html">StructureTS</a></li>
+                <li><a href="../modules/Nerdery.html">Nerdery</a></li>
             
                 <li><a href="../modules/util.html">util</a></li>
             
@@ -126,14 +126,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l11"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:11</code></a>
+            Defined in: <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:7</code></a>
         </div>
     
 
     
         
             Module: <a href="../modules/event.html">event</a><br>
-            Parent Module: <a href="../modules/StructureTS.html">StructureTS</a>
+            Parent Module: <a href="../modules/Nerdery.html">Nerdery</a>
         
     
 
@@ -183,7 +183,7 @@ The EventDispatcher provides methods for managing prioritized queues of event li
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l11"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:11</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:7</code></a>
         
         </p>
 
@@ -403,7 +403,7 @@ The EventDispatcher provides methods for managing prioritized queues of event li
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l61"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:61</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l60"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:60</code></a>
         
         </p>
 
@@ -500,10 +500,11 @@ The EventDispatcher provides methods for managing prioritized queues of event li
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
- private handlerMethod(event:BaseEvent):void {
-     console.log(event.target + &quot; sent the event.&quot;);
- }</code></pre>
+                <pre class="code prettyprint"><code>   instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+   ClassName.prototype.handlerMethod(event):void {
+       console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
 
             </div>
         </div>
@@ -518,6 +519,10 @@ The EventDispatcher provides methods for managing prioritized queues of event li
         <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
     
 
     
@@ -542,7 +547,7 @@ The EventDispatcher provides methods for managing prioritized queues of event li
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l50"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:50</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l51"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:51</code></a>
         
         </p>
 
@@ -569,18 +574,30 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
 
     
         <div class="example">
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> public destroy():void {
-     super.destroy();
+                <pre class="code prettyprint"><code>   ClassName.prototype.destroy() {
+       _super.prototype.destroy.call(this);
 
-     this._childInstance.destroy();
-     this._childInstance = null;
- }</code></pre>
+       this._childInstance.destroy();
+       this._childInstance = null;
+   }</code></pre>
 
             </div>
         </div>
@@ -624,7 +641,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l223"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:223</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l224"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:224</code></a>
         
         </p>
 
@@ -648,14 +665,14 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> public disable():void {
-     if (this.isEnabled === false) return;
+                <pre class="code prettyprint"><code>   ClassName.prototype.disable = function () {
+       if (this.isEnabled === false) return this;
 
-     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.disable();
+       this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+       this._childInstance.disable();
 
-     super.enable();
- }</code></pre>
+       return _super.prototype.disable.call(this);
+   }</code></pre>
 
             </div>
         </div>
@@ -709,7 +726,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l135"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:135</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l136"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:136</code></a>
         
         </p>
 
@@ -757,11 +774,11 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
- instance.dispatchEvent(event);
+                <pre class="code prettyprint"><code>   var event = new BaseEvent(BaseEvent.CHANGE);
+   instance.dispatchEvent(event);
 
- // Here is a common inline event being dispatched
- instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+   // Here is a common inline event being dispatched
+   instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
 
             </div>
         </div>
@@ -805,7 +822,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l200"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:200</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l201"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:201</code></a>
         
         </p>
 
@@ -829,14 +846,14 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> public enable():void {
-     if (this.isEnabled === true) return;
+                <pre class="code prettyprint"><code>   ClassName.prototype.enable = function () {
+       if (this.isEnabled === true) return this;
 
-     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.enable();
+       this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+       this._childInstance.enable();
 
-     super.enable();
- }</code></pre>
+       return _super.prototype.enable.call(this);
+   }</code></pre>
 
             </div>
         </div>
@@ -917,7 +934,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> instance.getQualifiedClassName();</code></pre>
+                <pre class="code prettyprint"><code>    instance.getQualifiedClassName();</code></pre>
 
             </div>
         </div>
@@ -1063,10 +1080,11 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
- private handlerMethod(event:BaseEvent):void {
-     console.log(event.target + &quot; sent the event.&quot;);
- }</code></pre>
+                <pre class="code prettyprint"><code>   instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+   ClassName.prototype.handlerMethod(event):void {
+       console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
 
             </div>
         </div>
@@ -1107,7 +1125,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l30"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:30</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l29"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:29</code></a>
         
         </p>
 
@@ -1151,7 +1169,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l27"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:27</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l26"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:26</code></a>
         
         </p>
 
@@ -1161,7 +1179,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     </div>
 
     <div class="description">
-        <p>The cid or client id is a unique identifier automatically assigned to most StructureTS objects upon instantiation.</p>
+        <p>The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.</p>
 
     </div>
 
@@ -1199,7 +1217,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l18"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:18</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l17"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:17</code></a>
         
         </p>
 
@@ -1209,7 +1227,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     </div>
 
     <div class="description">
-        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a StructureTS object.</p>
+        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a  object.</p>
 
     </div>
 
@@ -1246,7 +1264,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l50"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:50</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l47"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:47</code></a>
         
         </p>
 
@@ -1295,7 +1313,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l39"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:39</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l37"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:37</code></a>
         
         </p>
 

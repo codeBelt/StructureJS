@@ -4,21 +4,21 @@ define(function(require, exports, module) {
     var Extend = require('nerdery/util/Extend');
     var BaseObject = require('nerdery/BaseObject');
 
+    /**
+     * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
+     * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
+     *
+     * @class EventDispatcher
+     * @extends BaseObject
+     * @module Nerdery
+     * @submodule event
+     * @constructor
+     * @version 0.1.0
+     **/
     var EventDispatcher = (function () {
 
         var _super = Extend(EventDispatcher, BaseObject);
 
-        /**
-         * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
-         * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
-         *
-         * @class EventDispatcher
-         * @extends BaseObject
-         * @module StructureTS
-         * @submodule event
-         * @constructor
-         * @version 0.1.0
-         **/
         function EventDispatcher() {
             _super.call(this);
 
@@ -26,7 +26,6 @@ define(function(require, exports, module) {
              * @overridden BaseObject.CLASS_NAME
              */
             this.CLASS_NAME = 'EventDispatcher';
-
             /**
              * Holds a reference to added listeners.
              *
@@ -34,8 +33,7 @@ define(function(require, exports, module) {
              * @type {array}
              * @private
              */
-            this._listeners = [];
-
+            this._listeners = null;
             /**
              * Indicates the object that contains child object. Use the parent property
              * to specify a relative path to display objects that are above the current display object in the display
@@ -46,7 +44,6 @@ define(function(require, exports, module) {
              * @public
              */
             this.parent = null;
-
             /**
              * The isEnabled property is used to keep track of the enabled state of the object.
              *
@@ -56,15 +53,18 @@ define(function(require, exports, module) {
              * @protected
              */
             this.isEnabled = false;
+
+            this._listeners = [];
         }
 
         /**
          * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
          * @example
-         *      instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *      private handlerMethod(event:BaseEvent):void {
-        *          console.log(event.target + " sent the event.");
-        *      }
+        instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+        ClassName.prototype.handlerMethod(event):void {
+            console.log(event.target + " sent the event.");
+        }
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
@@ -103,10 +103,11 @@ define(function(require, exports, module) {
         /**
          * Removes a specified listener from the EventDispatcher object.
          * @example
-         *      instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *      private handlerMethod(event:BaseEvent):void {
-        *          console.log(event.target + " sent the event.");
-        *      }
+        instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+        ClassName.prototype.handlerMethod(event):void {
+            console.log(event.target + " sent the event.");
+        }
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
@@ -135,11 +136,11 @@ define(function(require, exports, module) {
         /**
          * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
          * @example
-         *      var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
-         *      instance.dispatchEvent(event);
-         *
-         *      // Here is a common inline event being dispatched
-         *      instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+        var event = new BaseEvent(BaseEvent.CHANGE);
+        instance.dispatchEvent(event);
+
+        // Here is a common inline event being dispatched
+        instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          * @method dispatchEvent
          * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
          * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
@@ -200,14 +201,14 @@ define(function(require, exports, module) {
         /**
          * The enable method is responsible for enabling event listeners and/or children of the containing objects.
          * @example
-         *      public enable():void {
-        *          if (this.isEnabled === true) return;
-        *
-        *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-        *          this._childInstance.enable();
-        *
-        *          super.enable();
-        *      }
+        ClassName.prototype.enable = function () {
+            if (this.isEnabled === true) return this;
+
+            this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+            this._childInstance.enable();
+
+            return _super.prototype.enable.call(this);
+        }
          * @method enable
          * @public
          * @chainable
@@ -223,14 +224,14 @@ define(function(require, exports, module) {
         /**
          * The disable method is responsible for disabling event listeners and/or children of the containing objects.
          * @example
-         *      public disable():void {
-        *          if (this.isEnabled === false) return;
-        *
-        *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-        *          this._childInstance.disable();
-        *
-        *          super.enable();
-        *      }
+        ClassName.prototype.disable = function () {
+            if (this.isEnabled === false) return this;
+
+            this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+            this._childInstance.disable();
+
+            return _super.prototype.disable.call(this);
+        }
          * @method disable
          * @public
          * @chainable

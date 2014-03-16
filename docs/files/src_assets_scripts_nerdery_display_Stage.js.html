@@ -73,7 +73,7 @@
             
                 <li><a href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureTS.html">StructureTS</a></li>
+                <li><a href="../modules/Nerdery.html">Nerdery</a></li>
             
                 <li><a href="../modules/util.html">util</a></li>
             
@@ -125,61 +125,85 @@ define(function(require, exports, module) {
     var Extend = require(&#x27;nerdery/util/Extend&#x27;);
     var DOMElement = require(&#x27;nerdery/display/DOMElement&#x27;);
 
+    /**
+     * The {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class should be extended by your main or root class.
+     * @example
+     // This example illustrates how to setup your main or root class when extending the {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class.
+        define(function (require, exports, module) {
+            &#x27;use strict&#x27;;
+
+            var Extend = require(&#x27;nerdery/util/Extend&#x27;);
+            var Stage = require(&#x27;replace/path/Stage&#x27;);
+
+            var MainClass = (function () {
+
+            var _super = Extend(MainClass, Stage);
+
+                function MainClass() {
+                    _super.call(this);
+
+                    this.CLASS_NAME = &#x27;MainClass&#x27;;
+                }
+
+                MainClass.prototype.createChildren = function () {
+                    _super.prototype.createChildren.call(this);
+
+                    // Create and add your child objects to this parent class.
+                }
+
+                MainClass.prototype.layoutChildren = function () {
+                    // Layout or update the child objects in this parent class.
+
+                    return this;
+                }
+
+                MainClass.prototype.enable = function () {
+                    if (this.isEnabled === true) return this;
+
+                    // Enable the child objects and add any event listeners.
+
+                    return _super.prototype.enable.call(this);
+                }
+
+                MainClass.prototype.disable = function () {
+                    if (this.isEnabled === false) return this;
+
+                    // Disable the child objects and remove any event listeners.
+
+                    return _super.prototype.disable.call(this);
+                }
+
+                MainClass.prototype.destroy = function () {
+                    _super.prototype.destroy.call(this);
+
+                    // Destroy the child objects and references in this parent class to prevent memory leaks.
+                }
+
+                return MainClass;
+            })();
+
+            module.exports = MainClass;
+        });
+     *
+     * &lt;b&gt;Instantiation Example&lt;/b&gt;&lt;br&gt;
+     * This example illustrates how to instantiation your main or root class.
+     *
+     *      var app = new MainClass();
+     *      app.appendTo(&#x27;body&#x27;);
+     *
+     * @class Stage
+     * @extends DOMElement
+     * @module Nerdery
+     * @submodule view
+     * @constructor
+     * @version 0.1.0
+     **/
     var Stage = (function () {
 
         var _super = Extend(Stage, DOMElement);
 
-        /**
-         * The {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class should be extended by your main or root class.
-         * @example
-          //This example illustrates how to setup your main or root class when extending the {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class.
-
-               class MainClass extends Stage {
-
-              constructor() {
-                  super();
-              }
-
-              public createChildren():void {
-                  super.createChildren();
-                  // Add children classes.
-              }
-
-               public enable():void {
-                  if (this.isEnabled === true) return;
-                  // Add listeners and/or enable children.
-                  super.enable();
-               }
-
-               public disable():void {
-                  if (this.isEnabled === false) return;
-                  // Remove listeners and/or disable children.
-                  super.disable();
-               }
-
-               public destroy():void {
-                  super.destroy();
-                  // Add items to clean up.
-               }
-
-          }
-
-          //&lt;b&gt;Instantiation Example&lt;/b&gt;&lt;br&gt;
-          //This example illustrates how to instantiation your main or root class.
-
-               var app = new MainClass();
-               app.appendTo(&#x27;body&#x27;);
-
-         * @class Stage
-         * @extends DOMElement
-         * @module StructureTS
-         * @submodule view
-         * @constructor
-         * @version 0.1.0
-         **/
         function Stage() {
             _super.call(this);
-
             /**
              * @overridden DOMElement.CLASS_NAME
              */

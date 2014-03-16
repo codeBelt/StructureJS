@@ -73,7 +73,7 @@
             
                 <li><a href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureTS.html">StructureTS</a></li>
+                <li><a href="../modules/Nerdery.html">Nerdery</a></li>
             
                 <li><a href="../modules/util.html">util</a></li>
             
@@ -126,14 +126,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l14"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:14</code></a>
+            Defined in: <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l10"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:10</code></a>
         </div>
     
 
     
         
             Module: <a href="../modules/view.html">view</a><br>
-            Parent Module: <a href="../modules/StructureTS.html">StructureTS</a>
+            Parent Module: <a href="../modules/Nerdery.html">Nerdery</a>
         
     
 
@@ -143,7 +143,7 @@
 
 
 <div class="box intro">
-    <p>The <a href="../classes/DOMElement.html" class="crosslink">DOMElement</a> class is the base class for all objects that can be placed into the HTML DOM.</p>
+    <p>The <a href="../classes/DOMElement.html" class="crosslink">DOMElement</a> class is the base view class for all objects that can be placed into the HTML DOM.</p>
 
 </div>
 
@@ -154,7 +154,23 @@
     <h3 class="name"><code>DOMElement</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>params</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -182,7 +198,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l14"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:14</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l10"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:10</code></a>
         
         </p>
 
@@ -197,9 +213,163 @@
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">type</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>[any=null] Either a jQuery object or template you want to use the as the view. Check out the examples below.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>[any=null] Any data you would like to pass into the jQuery element or template that is being created.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
 
     
 
+    
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <p>   // Example of using DOMElement with out extending it.
+   var aLink = new DOMElement(&#39;a&#39;, {text: &#39;Google&#39;, href: &#39;<a href="http://www.google.com">http://www.google.com</a>&#39;, &#39;class&#39;: &#39;externalLink&#39;});
+   this.addChild(aLink);</p>
+<p>   // Example of a view passing in a jQuery object.
+   var view = new CustomView($(&#39;.selector&#39;);
+   this.addChild(view);</p>
+<p>   // Example of a view extending DOMElement when passing in a jQuery object.
+   var Extend = require(&#39;nerdery/util/Extend&#39;);
+   var DOMElement = require(&#39;nerdery/display/DOMElement&#39;);</p>
+<p>   var ClassName = (function () {</p>
+<pre class="code prettyprint"><code>   var _super = Extend(ClassName, DOMElement);
+
+   function ClassName($element) {
+       _super.call(this, $element);
+
+       this.CLASS_NAME = &#39;ClassName&#39;;
+   }
+
+   ClassName.prototype.createChildren = function () {
+       _super.prototype.createChildren.call(this);
+
+       // Create and add your child objects to this parent class.
+   }
+
+   ClassName.prototype.layoutChildren = function () {
+       // Layout or update the child objects in this parent class.
+
+       return this;
+   }
+
+   ClassName.prototype.enable = function () {
+       if (this.isEnabled === true) return this;
+
+       // Enable the child objects and add any event listeners.
+
+       return _super.prototype.enable.call(this);
+   }
+
+   ClassName.prototype.disable = function () {
+       if (this.isEnabled === false) return this;
+
+       // Disable the child objects and remove any event listeners.
+
+       return _super.prototype.disable.call(this);
+   }
+
+   ClassName.prototype.destroy = function () {
+       _super.prototype.destroy.call(this);
+
+       // Destroy the child objects and references in this parent class to prevent memory leaks.
+   }
+
+   return ClassName;</code></pre>
+<p>   })();</p>
+<p>   // Example of a view extending DOMElement with template passed into createChildren.
+   var view:CustomView = new CustomView();
+   this.addChild(view);</p>
+<p>   // Example of a view extending DOMElement when passing in a jQuery object.
+   var Extend = require(&#39;nerdery/util/Extend&#39;);
+   var DOMElement = require(&#39;nerdery/display/DOMElement&#39;);
+   var HomeTemplate = require(&#39;hbs!templates/home/homeTemplate&#39;);</p>
+<p>   var ClassName = (function () {</p>
+<pre class="code prettyprint"><code>   var _super = Extend(ClassName, DOMElement);
+
+   function ClassName() {
+       _super.call(this);
+
+       this.CLASS_NAME = &#39;ClassName&#39;;
+   }
+
+   ClassName.prototype.createChildren = function () {
+       _super.prototype.createChildren.call(this, HomeTemplate, {data: &#39;some data&#39;});
+
+       // Create and add your child objects to this parent class.
+   }
+
+   ClassName.prototype.layoutChildren = function () {
+       // Layout or update the child objects in this parent class.
+
+       return this;
+   }
+
+   ClassName.prototype.enable = function () {
+       if (this.isEnabled === true) return this;
+
+       // Enable the child objects and add any event listeners.
+
+       return _super.prototype.enable.call(this);
+   }
+
+   ClassName.prototype.disable = function () {
+       if (this.isEnabled === false) return this;
+
+       // Disable the child objects and remove any event listeners.
+
+       return _super.prototype.disable.call(this);
+   }
+
+   ClassName.prototype.destroy = function () {
+       _super.prototype.destroy.call(this);
+
+       // Destroy the child objects and references in this parent class to prevent memory leaks.
+   }
+
+   return ClassName;</code></pre>
+<p>   })();</p>
+
+            </div>
+        </div>
     
 </div>
 
@@ -307,7 +477,7 @@
                                 
                             </li>
                         
-                            <li class="index-item method public inherited">
+                            <li class="index-item method inherited">
                                 <a href="#method_getChildAt">getChildAt</a>
 
                                 
@@ -328,7 +498,7 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method public">
                                 <a href="#method_getChildren">getChildren</a>
 
                                 
@@ -377,7 +547,7 @@
                                 
                             </li>
                         
-                            <li class="index-item method public inherited">
+                            <li class="index-item method public inherited inherited">
                                 <a href="#method_swapChildren">swapChildren</a>
 
                                 
@@ -403,6 +573,13 @@
                         
                             <li class="index-item property">
                                 <a href="#property_$element">$element</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property private">
+                                <a href="#property__isReference">_isReference</a>
 
                                 
                                 
@@ -582,7 +759,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l119"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:119</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l298"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:298</code></a>
         
         </p>
 
@@ -643,7 +820,7 @@
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> container.addChild(domElementInstance);</code></pre>
+                <pre class="code prettyprint"><code>       container.addChild(domElementInstance);</code></pre>
 
             </div>
         </div>
@@ -704,7 +881,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l146"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:146</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l144"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:144</code></a>
         
         </p>
 
@@ -844,7 +1021,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l61"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:61</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l60"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:60</code></a>
         
         </p>
 
@@ -941,10 +1118,11 @@ The child is added at the index position specified. An index of 0 represents the
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
- private handlerMethod(event:BaseEvent):void {
-     console.log(event.target + &quot; sent the event.&quot;);
- }</code></pre>
+                <pre class="code prettyprint"><code>   instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+   ClassName.prototype.handlerMethod(event):void {
+       console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
 
             </div>
         </div>
@@ -1000,7 +1178,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l332"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:332</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l512"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:512</code></a>
         
         </p>
 
@@ -1081,7 +1259,7 @@ they are invisible.</p>
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Boolean</span>
         </span>
     
 
@@ -1107,7 +1285,7 @@ they are invisible.</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l214"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:214</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l220"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:220</code></a>
         
         </p>
 
@@ -1118,7 +1296,8 @@ they are invisible.</p>
     </div>
 
     <div class="description">
-        
+        <p>Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.</p>
+
     </div>
 
     
@@ -1136,7 +1315,8 @@ they are invisible.</p>
                     
 
                     <div class="param-description">
-                         
+                        <p>The child object to test.</p>
+
                     </div>
 
                     
@@ -1153,8 +1333,10 @@ they are invisible.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type">Number</span>:
+                        <span class="type">Boolean</span>:
                     
+                    <p>true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.</p>
+
                 
             </div>
         </div>
@@ -1164,16 +1346,32 @@ they are invisible.</p>
 </div>
 
                 
-                    <div id="method_createChildren" class="method item public inherited">
+                    <div id="method_createChildren" class="method item public">
     <h3 class="name"><code>createChildren</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>params</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
         </span>
     
 
@@ -1195,13 +1393,16 @@ they are invisible.</p>
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/DisplayObjectContainer.html#method_createChildren">
+                DisplayObjectContainer
+            </a>
             
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_createChildren">DisplayObjectContainer</a>:
+            but overwritten in
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l100"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:100</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l218"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:218</code></a>
         
         </p>
 
@@ -1216,9 +1417,50 @@ they are invisible.</p>
 of children to the view. It will automatically be called the first time that the view is added
 to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
 their overridden methods.</p>
+<p>This method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">type</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>[string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>[any=null] Any data you would like to pass into the jQuery element or template that is being created.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -1228,7 +1470,7 @@ their overridden methods.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
                     
                     <p>Returns an instance of itself.</p>
 
@@ -1242,10 +1484,50 @@ their overridden methods.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code>    public createChildren():void {
-   this._childInstance = new DisplayObjectContainer();
-   this.addChild(this._childInstance);
-   }</code></pre>
+                <pre class="code prettyprint"><code>       // EXAMPLE 1: By default your view class will be a div element:
+       ClassName.prototype.createChildren():void {
+           _super.prototype.createChildren.call(this);
+
+           this._childInstance = new DOMElement();
+           this.addChild(this._childInstance);
+       }
+
+       // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
+       ClassName.prototype.createChildren() {
+           _super.prototype.createChildren.call(this, &#39;ul&#39;);
+       }
+
+       // Then you could nest other elements inside this base view/element.
+       ClassName.prototype.createChildren():void {
+           _super.prototype.createChildren.call(this, &#39;ul&#39;, {id: &#39;myId&#39;, &#39;class&#39;: &#39;myClass anotherClass&#39;});
+
+           var li = new DOMElement(&#39;li&#39;, {text: &#39;Robert is cool&#39;});
+           this.addChild(li);
+       }
+
+       // EXAMPLE 3: So that&#39;s cool but what if you wanted a block of html to be your view. Let&#39;s say you had the below inline Handlebar template in your html file.
+       &lt;script id=&quot;todoTemplate&quot; type=&quot;text/template&quot;&gt;
+           &lt;div id=&quot;htmlTemplatel&quot; class=&quot;js-todo&quot;&gt;
+               &lt;div id=&quot;input-wrapper&quot;&gt;
+                   &lt;input type=&quot;text&quot; class=&quot;list-input&quot; placeholder=&quot;{{ data.text }}&quot;&gt;
+                   &lt;input type=&quot;button&quot; class=&quot;list-item-submit&quot; value=&quot;Add&quot;&gt;
+               &lt;/div&gt;
+           &lt;/div&gt;
+       &lt;/script&gt;
+
+       // You would just pass in the id or class selector of the template which in this case is &quot;#todoTemplate&quot;. There is a second optional argument where you can pass data for the Handlebar template to use.
+       ClassName.prototype.createChildren():void {
+           _super.prototype.createChildren.call(this, &#39;#todoTemplate&#39;, { data: this.viewData });
+
+       }
+
+       // EXAMPLE 4: One more way. Let&#39;s say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.
+       var HomeTemplate = require(&#39;hbs!templates/HomeTemplate&#39;);
+
+       ClassName.prototype.createChildren():void {
+           _super.prototype.createChildren.call(this, HomeTemplate, {data: &quot;some data&quot;});
+
+       }</code></pre>
 
             </div>
         </div>
@@ -1260,6 +1542,10 @@ their overridden methods.</p>
         <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
     
 
     
@@ -1284,7 +1570,7 @@ their overridden methods.</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l50"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:50</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l51"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:51</code></a>
         
         </p>
 
@@ -1311,18 +1597,30 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
+    
 
     
         <div class="example">
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> public destroy():void {
-     super.destroy();
+                <pre class="code prettyprint"><code>   ClassName.prototype.destroy() {
+       _super.prototype.destroy.call(this);
 
-     this._childInstance.destroy();
-     this._childInstance = null;
- }</code></pre>
+       this._childInstance.destroy();
+       this._childInstance = null;
+   }</code></pre>
 
             </div>
         </div>
@@ -1363,7 +1661,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l223"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:223</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l224"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:224</code></a>
         
         </p>
 
@@ -1387,14 +1685,14 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> public disable():void {
-     if (this.isEnabled === false) return;
+                <pre class="code prettyprint"><code>   ClassName.prototype.disable = function () {
+       if (this.isEnabled === false) return this;
 
-     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.disable();
+       this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+       this._childInstance.disable();
 
-     super.enable();
- }</code></pre>
+       return _super.prototype.disable.call(this);
+   }</code></pre>
 
             </div>
         </div>
@@ -1445,7 +1743,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l135"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:135</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l136"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:136</code></a>
         
         </p>
 
@@ -1493,11 +1791,11 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
- instance.dispatchEvent(event);
+                <pre class="code prettyprint"><code>   var event = new BaseEvent(BaseEvent.CHANGE);
+   instance.dispatchEvent(event);
 
- // Here is a common inline event being dispatched
- instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+   // Here is a common inline event being dispatched
+   instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
 
             </div>
         </div>
@@ -1538,7 +1836,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l200"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:200</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l201"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:201</code></a>
         
         </p>
 
@@ -1562,14 +1860,14 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> public enable():void {
-     if (this.isEnabled === true) return;
+                <pre class="code prettyprint"><code>   ClassName.prototype.enable = function () {
+       if (this.isEnabled === true) return this;
 
-     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.enable();
+       this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+       this._childInstance.enable();
 
-     super.enable();
- }</code></pre>
+       return _super.prototype.enable.call(this);
+   }</code></pre>
 
             </div>
         </div>
@@ -1625,7 +1923,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l219"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:219</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l399"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:399</code></a>
         
         </p>
 
@@ -1684,7 +1982,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 </div>
 
                 
-                    <div id="method_getChildAt" class="method item public">
+                    <div id="method_getChildAt" class="method item inherited">
     <h3 class="name"><code>getChildAt</code></h3>
 
     
@@ -1703,14 +2001,12 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
+            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
         </span>
     
 
     
 
-    
-        <span class="flag public">public</span>
     
 
     
@@ -1723,16 +2019,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_getChildAt">
-                DisplayObjectContainer
-            </a>
             
-            but overwritten in
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#method_getChildAt">DisplayObjectContainer</a>:
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l208"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:208</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l276"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:276</code></a>
         
         </p>
 
@@ -1743,7 +2036,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     </div>
 
     <div class="description">
-        
+        <p>Returns the child display object instance that exists at the specified index.</p>
+
     </div>
 
     
@@ -1755,13 +2049,14 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <li class="param">
                     
                         <code class="param-name">index</code>
-                        <span class="type">Number</span>
+                        <span class="type">Int</span>
                     
 
                     
 
                     <div class="param-description">
-                         
+                        <p>The index position of the child object.</p>
+
                     </div>
 
                     
@@ -1778,8 +2073,10 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
                     
+                    <p>The child display object at the specified index position.</p>
+
                 
             </div>
         </div>
@@ -1834,7 +2131,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l280"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:280</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l287"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:287</code></a>
         
         </p>
 
@@ -1911,7 +2208,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Int</span>
         </span>
     
 
@@ -1937,7 +2234,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l203"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:203</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l208"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:208</code></a>
         
         </p>
 
@@ -1948,7 +2245,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     </div>
 
     <div class="description">
-        
+        <p>Returns the index position of a child DisplayObjectContainer instance.</p>
+
     </div>
 
     
@@ -1966,7 +2264,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                     
 
                     <div class="param-description">
-                         
+                        <p>The DisplayObjectContainer instance to identify.</p>
+
                     </div>
 
                     
@@ -1983,8 +2282,10 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <div class="returns-description">
                 
                     
-                        <span class="type">Number</span>:
+                        <span class="type">Int</span>:
                     
+                    <p>The index position of the child display object to identify.</p>
+
                 
             </div>
         </div>
@@ -1994,7 +2295,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 </div>
 
                 
-                    <div id="method_getChildren" class="method item">
+                    <div id="method_getChildren" class="method item public">
     <h3 class="name"><code>getChildren</code></h3>
 
     
@@ -2020,6 +2321,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     
 
     
+        <span class="flag public">public</span>
+    
 
     
 
@@ -2040,7 +2343,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l256"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:256</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l435"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:435</code></a>
         
         </p>
 
@@ -2176,7 +2479,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> instance.getQualifiedClassName();</code></pre>
+                <pre class="code prettyprint"><code>    instance.getQualifiedClassName();</code></pre>
 
             </div>
         </div>
@@ -2221,7 +2524,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l318"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:318</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l325"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:325</code></a>
         
         </p>
 
@@ -2302,7 +2605,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l151"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:151</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l332"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:332</code></a>
         
         </p>
 
@@ -2399,7 +2702,7 @@ The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l292"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:292</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l472"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:472</code></a>
         
         </p>
 
@@ -2502,7 +2805,7 @@ to the child exist. The index positions of any objects above the child in the pa
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l313"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:313</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l493"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:493</code></a>
         
         </p>
 
@@ -2676,10 +2979,11 @@ references to the children exist.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
- private handlerMethod(event:BaseEvent):void {
-     console.log(event.target + &quot; sent the event.&quot;);
- }</code></pre>
+                <pre class="code prettyprint"><code>   instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+   ClassName.prototype.handlerMethod(event):void {
+       console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
 
             </div>
         </div>
@@ -2734,13 +3038,16 @@ references to the children exist.</p>
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/DisplayObjectContainer.html#method_swapChildren">
+                DisplayObjectContainer
+            </a>
             
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_swapChildren">DisplayObjectContainer</a>:
+            but overwritten in
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l172"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:172</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DisplayObjectContainer.js.html#l170"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DisplayObjectContainer.js:170</code></a>
         
         </p>
 
@@ -2863,7 +3170,7 @@ references to the children exist.</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l347"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:347</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l527"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:527</code></a>
         
         </p>
 
@@ -2951,7 +3258,7 @@ references to the children exist.</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l55"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:55</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l172"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:172</code></a>
         
         </p>
 
@@ -2967,6 +3274,54 @@ references to the children exist.</p>
 
     
         <p><strong>Default:</strong> null</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property__isReference" class="property item private">
+    <h3 class="name"><code>_isReference</code></h3>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l181"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:181</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>If a jQuery object was passed into the constructor this will be set as true and
+this class will not try add the view to the DOM because it should already exists.</p>
+
+    </div>
+
     
 
     
@@ -3000,7 +3355,7 @@ references to the children exist.</p>
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l35"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:35</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l152"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:152</code></a>
         
         </p>
 
@@ -3047,7 +3402,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l30"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:30</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l29"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:29</code></a>
         
         </p>
 
@@ -3092,7 +3447,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l73"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:73</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l200"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:200</code></a>
         
         </p>
 
@@ -3139,7 +3494,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l64"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:64</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l191"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:191</code></a>
         
         </p>
 
@@ -3229,7 +3584,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l27"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:27</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l26"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:26</code></a>
         
         </p>
 
@@ -3239,7 +3594,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
     </div>
 
     <div class="description">
-        <p>The cid or client id is a unique identifier automatically assigned to most StructureTS objects upon instantiation.</p>
+        <p>The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.</p>
 
     </div>
 
@@ -3277,7 +3632,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l18"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:18</code></a>
+        <a href="../files/src_assets_scripts_nerdery_BaseObject.js.html#l17"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;BaseObject.js:17</code></a>
         
         </p>
 
@@ -3287,7 +3642,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
     </div>
 
     <div class="description">
-        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a StructureTS object.</p>
+        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a  object.</p>
 
     </div>
 
@@ -3322,7 +3677,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l46"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:46</code></a>
+        <a href="../files/src_assets_scripts_nerdery_display_DOMElement.js.html#l163"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;display&#x2F;DOMElement.js:163</code></a>
         
         </p>
 
@@ -3460,7 +3815,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l50"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:50</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l47"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:47</code></a>
         
         </p>
 
@@ -3552,7 +3907,7 @@ For example, if visible=false for an InteractiveObject instance, it cannot be cl
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l39"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:39</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventDispatcher.js.html#l37"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventDispatcher.js:37</code></a>
         
         </p>
 

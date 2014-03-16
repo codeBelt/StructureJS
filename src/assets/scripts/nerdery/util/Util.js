@@ -1,49 +1,31 @@
 define(function(require, exports, module) {
     'use strict';
 
+    /**
+     * A Utility class that has several static methods to assist in development.
+     *
+     * @class Util
+     * @module Nerdery
+     * @submodule util
+     * @constructor
+     * @version 0.2.0
+     **/
     var Util = (function () {
 
-        /**
-         * The fully qualified class name of the object.
-         *
-         * @property CLASS_NAME
-         * @type {string}
-         * @final
-         * @static
-         */
         Util.CLASS_NAME = 'Util';
 
-        /**
-         * Keeps track of the count for the uniqueId method.
-         *
-         * @property _idCounter
-         * @type {init}
-         * @private
-         * @static
-         */
         Util._idCounter = 0;
 
-        /**
-         * A Utility class that has several static methods to assist in development.
-         *
-         * @class Util
-         * @module StructureTS
-         * @submodule util
-         * @constructor
-         * @version 0.2.0
-         **/
         function Util() {
-
         }
-
         /**
          * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
          * @example
-         *      var property:number = Util.uniqueId();
-         *      // 1
-         *
-         *      var property:string = Util.uniqueId('yomama_');
-         *      // yomama_1
+         var property:number = Util.uniqueId();
+         // 1
+
+         var property:string = Util.uniqueId('yomama_');
+         // yomama_1
          * @method uniqueId
          * @param [prefix] {string} The string value used for the prefix.
          * @returns {init|string} Returns the unique identifier.
@@ -125,6 +107,10 @@ define(function(require, exports, module) {
          * @static
          */
         Util.clone = function (obj) {
+            //other scripts: http://davidwalsh.name/javascript-clone
+            //http://oranlooney.com/functional-javascript/
+            //http://oranlooney.com/deep-copy-javascript/
+            // Handle the 3 simple types, and null or undefined
             if (null == obj || "object" != typeof obj) {
                 return obj;
             }

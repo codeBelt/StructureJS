@@ -73,7 +73,7 @@
             
                 <li><a href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureTS.html">StructureTS</a></li>
+                <li><a href="../modules/Nerdery.html">Nerdery</a></li>
             
                 <li><a href="../modules/util.html">util</a></li>
             
@@ -122,14 +122,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l29"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:29</code></a>
+            Defined in: <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l6"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:6</code></a>
         </div>
     
 
     
         
             Module: <a href="../modules/event.html">event</a><br>
-            Parent Module: <a href="../modules/StructureTS.html">StructureTS</a>
+            Parent Module: <a href="../modules/Nerdery.html">Nerdery</a>
         
     
 
@@ -153,8 +153,6 @@ Loosely coupled event handling, the subscriber does not have to know the publish
         
             <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
         
-        
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
         
         
         
@@ -201,32 +199,6 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                 </div>
             
 
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties">
-                        
-                            <li class="index-item property private">
-                                <a href="#property__eventDispatcher">_eventDispatcher</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property protected">
-                                <a href="#property_CLASS_NAME">CLASS_NAME</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
             
 
             
@@ -303,7 +275,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l43"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:43</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l24"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:24</code></a>
         
         </p>
 
@@ -400,10 +372,11 @@ Loosely coupled event handling, the subscriber does not have to know the publish
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
- private handlerMethod(event:BaseEvent):void {
-     console.log(event.target + &quot; sent the event.&quot;);
- }</code></pre>
+                <pre class="code prettyprint"><code>   EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+   ClassName.prototype.handlerMethod(event) {
+       console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
 
             </div>
         </div>
@@ -457,7 +430,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l82"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:82</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l65"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:65</code></a>
         
         </p>
 
@@ -505,11 +478,11 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
- EventBroker.dispatchEvent(event);
+                <pre class="code prettyprint"><code>    var event = new BaseEvent(BaseEvent.CHANGE);
+    EventBroker.dispatchEvent(event);
 
- // Here is a common inline event being dispatched
- EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+    // Here is a common inline event being dispatched
+    EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
 
             </div>
         </div>
@@ -575,7 +548,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l63"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:63</code></a>
+        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l45"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:45</code></a>
         
         </p>
 
@@ -656,10 +629,11 @@ To keep things consistent this parameter is required.</p>
             <h4>Example:</h4>
 
             <div class="example-content">
-                <pre class="code prettyprint"><code> EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
- private handlerMethod(event:BaseEvent):void {
-     console.log(event.target + &quot; sent the event.&quot;);
- }</code></pre>
+                <pre class="code prettyprint"><code>   EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+   ClassName.prototype.handlerMethod(event:BaseEvent):void {
+       console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
 
             </div>
         </div>
@@ -670,116 +644,6 @@ To keep things consistent this parameter is required.</p>
             </div>
         
 
-        
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property__eventDispatcher" class="property item private">
-    <h3 class="name"><code>_eventDispatcher</code></h3>
-    <span class="type"><a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a></span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/StructureTS.html">StructureTS</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l19"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:19</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A reference to the EventDispatcher object.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_CLASS_NAME" class="property item protected">
-    <h3 class="name"><code>CLASS_NAME</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-        <span class="flag final">final</span>
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    <div class="meta">
-        
-            
-                
-                    <p>Provided by the <a href="../modules/StructureTS.html">StructureTS</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_assets_scripts_nerdery_event_EventBroker.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;nerdery&#x2F;event&#x2F;EventBroker.js:8</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The fully qualified class name of the object. Use <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="crosslink">getQualifiedClassName</a> method to retrieve the class name of a StructureTS object.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
         
 
         
