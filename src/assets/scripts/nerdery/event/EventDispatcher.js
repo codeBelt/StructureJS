@@ -86,16 +86,16 @@ define(function(require, exports, module) {
             var i = list.length;
             while (--i > -1) {
                 listener = list[i];
-                if (listener.c === callback && listener.s === scope) {
+                if (listener.callback === callback && listener.scope === scope) {
                     // If same callback and scope is found then remove it. Then add the current one below.
                     list.splice(i, 1);
-                } else if (index === 0 && listener.pr < priority) {
+                } else if (index === 0 && listener.priority < priority) {
                     index = i + 1;
                 }
             }
 
             // Add the event listener to the list array at the index value.
-            list.splice(index, 0, { c: callback, s: scope, pr: priority });
+            list.splice(index, 0, { callback: callback, scope: scope, priority: priority });
 
             return this;
         };
@@ -123,7 +123,7 @@ define(function(require, exports, module) {
                 var i = list.length;
                 while (--i > -1) {
                     // If the callback and the scope are the same then remove the event listener.
-                    if (list[i].c === callback && list[i].s === scope) {
+                    if (list[i].callback === callback && list[i].scope === scope) {
                         list.splice(i, 1);
                         break;
                     }
@@ -168,7 +168,7 @@ define(function(require, exports, module) {
                     }
 
                     listener = list[i];
-                    listener.c.call(listener.s, event);
+                    listener.callback.call(listener.scope, event);
                 }
             }
 
@@ -214,8 +214,7 @@ define(function(require, exports, module) {
          * @chainable
          */
         EventDispatcher.prototype.enable = function () {
-            if (this.isEnabled === true)
-                return this;
+            if (this.isEnabled === true) return this;
 
             this.isEnabled = true;
             return this;
@@ -237,11 +236,21 @@ define(function(require, exports, module) {
          * @chainable
          */
         EventDispatcher.prototype.disable = function () {
-            if (this.isEnabled === false)
-                return this;
+            if (this.isEnabled === false) return this;
 
             this.isEnabled = false;
             return this;
+        };
+
+        /**
+         * Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.
+         *
+         * @method getEventListeners
+         * @return {array} Returns an array dictionary of the different event listener(s) on the object.
+         * @public
+         */
+        EventDispatcher.prototype.getEventListeners = function () {
+            return this._listeners;
         };
 
         return EventDispatcher;
