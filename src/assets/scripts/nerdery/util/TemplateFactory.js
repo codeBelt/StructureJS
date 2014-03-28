@@ -1,8 +1,8 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-    var Handlebars = require('Handlebars');
+    var Handlebars = require('handlebars');
     var StringUtil = require('nerdery/util/StringUtil');
     var DOMElement = require('nerdery/display/DOMElement');
 

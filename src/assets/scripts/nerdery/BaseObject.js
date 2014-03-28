@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     var Util = require('nerdery/util/Util');

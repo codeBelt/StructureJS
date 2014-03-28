@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     var jQuery = require('nerdery/plugin/jquery.eventListener');
@@ -179,6 +179,16 @@ define(function(require, exports, module) {
             this.$element = null;
 
             /**
+             * If a jQuery object was passed into the constructor this will be set as true and
+             * this class will not try add the view to the DOM because it should already exists.
+             *
+             * @property _isReference
+             * @type {boolean}
+             * @private
+             */
+            this._isReference = false;
+
+            /**
              * Holds onto the value passed into the constructor.
              *
              * @property _type
@@ -198,6 +208,7 @@ define(function(require, exports, module) {
 
             if (type instanceof jQuery) {
                 this.$element = type;
+                this._isReference = true;
             } else if (type) {
                 this._type = type;
                 this._params = params;
@@ -307,8 +318,12 @@ define(function(require, exports, module) {
 
             // Adds the cid to the DOM element so we can know what what Class object the element belongs too.
             child.$element.attr('data-cid', child.cid);
-            child.$element.addEventListener('DOMNodeInsertedIntoDocument', child, this.onAddedToDom, this);
-            this.$element.append(child.$element);
+
+            // If the child object is not already a reference of a jQuery object in the DOM then append it.
+            if (child._isReference === false) {
+                child.$element.addEventListener('DOMNodeInsertedIntoDocument', child, this.onAddedToDom, this);
+                this.$element.append(child.$element);
+            }
 
             child.layoutChildren();
 
