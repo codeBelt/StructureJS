@@ -319,7 +319,7 @@ define(function (require, exports, module) { // jshint ignore:line
             // Adds the cid to the DOM element so we can know what what Class object the element belongs too.
             child.$element.attr('data-cid', child.cid);
 
-            // If the child object is not already a reference of a jQuery object in the DOM then append it.
+            // If the child object is not a reference of a jQuery object in the DOM then append it.
             if (child._isReference === false) {
                 child.$element.addEventListener('DOMNodeInsertedIntoDocument', child, this.onAddedToDom, this);
                 this.$element.append(child.$element);
