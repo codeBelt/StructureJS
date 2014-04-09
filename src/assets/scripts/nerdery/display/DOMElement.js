@@ -314,6 +314,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (child.isCreated === false) {
                 child.createChildren(); // Render the item before adding to the DOM
                 child.isCreated = true;
+                child.enable();
             }
 
             // Adds the cid to the DOM element so we can know what what Class object the element belongs too.
@@ -360,6 +361,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 if (child.isCreated === false) {
                     child.createChildren(); // Render the item before adding to the DOM
                     child.isCreated = true;
+                    child.enable();
                 }
 
                 // Adds the cid to the DOM element so we can know what what Class object the element belongs too.
