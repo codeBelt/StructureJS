@@ -19,120 +19,120 @@ define(function (require, exports, module) { // jshint ignore:line
      * @constructor
      * @version 0.1.2
      * @example
-    // Example of using DOMElement with out extending it.
-    var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
-    this.addChild(aLink);
+        // Example of using DOMElement with out extending it.
+        var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
+        this.addChild(aLink);
     * @example
-    // Example of a view passing in a jQuery object.
-    var view = new CustomView($('.selector');
-    this.addChild(view);
+        // Example of a view passing in a jQuery object.
+        var view = new CustomView($('.selector');
+        this.addChild(view);
 
-    // Example of a view extending DOMElement when passing in a jQuery object.
-    var Extend = require('nerdery/util/Extend');
-    var DOMElement = require('nerdery/display/DOMElement');
+        // Example of a view extending DOMElement when passing in a jQuery object.
+        var Extend = require('nerdery/util/Extend');
+        var DOMElement = require('nerdery/display/DOMElement');
 
-    var ClassName = (function () {
+        var ClassName = (function () {
 
-        var _super = Extend(ClassName, DOMElement);
+            var _super = Extend(ClassName, DOMElement);
 
-        function ClassName($element) {
-            _super.call(this, $element);
+            function ClassName($element) {
+                _super.call(this, $element);
 
-            this.CLASS_NAME = 'ClassName';
-        }
+                this.CLASS_NAME = 'ClassName';
+            }
 
-        ClassName.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+            ClassName.prototype.createChildren = function () {
+                _super.prototype.createChildren.call(this);
 
-            // Create and add your child objects to this parent class.
-        }
+                // Create and add your child objects to this parent class.
+            }
 
-        ClassName.prototype.layoutChildren = function () {
-            // Layout or update the child objects in this parent class.
+            ClassName.prototype.layoutChildren = function () {
+                // Layout or update the child objects in this parent class.
 
-            return this;
-        }
+                return this;
+            }
 
-        ClassName.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            ClassName.prototype.enable = function () {
+                if (this.isEnabled === true) return this;
 
-            // Enable the child objects and add any event listeners.
+                // Enable the child objects and add any event listeners.
 
-            return _super.prototype.enable.call(this);
-        }
+                return _super.prototype.enable.call(this);
+            }
 
-        ClassName.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            ClassName.prototype.disable = function () {
+                if (this.isEnabled === false) return this;
 
-            // Disable the child objects and remove any event listeners.
+                // Disable the child objects and remove any event listeners.
 
-            return _super.prototype.disable.call(this);
-        }
+                return _super.prototype.disable.call(this);
+            }
 
-        ClassName.prototype.destroy = function () {
-            _super.prototype.destroy.call(this);
+            ClassName.prototype.destroy = function () {
+                _super.prototype.destroy.call(this);
 
-            // Destroy the child objects and references in this parent class to prevent memory leaks.
-        }
+                // Destroy the child objects and references in this parent class to prevent memory leaks.
+            }
 
-        return ClassName;
-    })();
+            return ClassName;
+        })();
     * @example
-    // Example of a view extending DOMElement with template passed into createChildren.
-    var view:CustomView = new CustomView();
-    this.addChild(view);
+        // Example of a view extending DOMElement with template passed into createChildren.
+        var view:CustomView = new CustomView();
+        this.addChild(view);
 
-    // Example of a view extending DOMElement when passing in a jQuery object.
-    var Extend = require('nerdery/util/Extend');
-    var DOMElement = require('nerdery/display/DOMElement');
-    var HomeTemplate = require('hbs!templates/home/homeTemplate');
+        // Example of a view extending DOMElement when passing in a jQuery object.
+        var Extend = require('nerdery/util/Extend');
+        var DOMElement = require('nerdery/display/DOMElement');
+        var HomeTemplate = require('hbs!templates/home/homeTemplate');
 
-    var ClassName = (function () {
+        var ClassName = (function () {
 
-        var _super = Extend(ClassName, DOMElement);
+            var _super = Extend(ClassName, DOMElement);
 
-        function ClassName() {
-            _super.call(this);
+            function ClassName() {
+                _super.call(this);
 
-            this.CLASS_NAME = 'ClassName';
-        }
+                this.CLASS_NAME = 'ClassName';
+            }
 
-        ClassName.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
+            ClassName.prototype.createChildren = function () {
+                _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
 
-            // Create and add your child objects to this parent class.
-        }
+                // Create and add your child objects to this parent class.
+            }
 
-        ClassName.prototype.layoutChildren = function () {
-            // Layout or update the child objects in this parent class.
+            ClassName.prototype.layoutChildren = function () {
+                // Layout or update the child objects in this parent class.
 
-            return this;
-        }
+                return this;
+            }
 
-        ClassName.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            ClassName.prototype.enable = function () {
+                if (this.isEnabled === true) return this;
 
-            // Enable the child objects and add any event listeners.
+                // Enable the child objects and add any event listeners.
 
-            return _super.prototype.enable.call(this);
-        }
+                return _super.prototype.enable.call(this);
+            }
 
-        ClassName.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            ClassName.prototype.disable = function () {
+                if (this.isEnabled === false) return this;
 
-            // Disable the child objects and remove any event listeners.
+                // Disable the child objects and remove any event listeners.
 
-            return _super.prototype.disable.call(this);
-        }
+                return _super.prototype.disable.call(this);
+            }
 
-        ClassName.prototype.destroy = function () {
-            _super.prototype.destroy.call(this);
+            ClassName.prototype.destroy = function () {
+                _super.prototype.destroy.call(this);
 
-            // Destroy the child objects and references in this parent class to prevent memory leaks.
-        }
+                // Destroy the child objects and references in this parent class to prevent memory leaks.
+            }
 
-        return ClassName;
-    })();
+            return ClassName;
+        })();
      **/
     var DOMElement = (function () {
 
