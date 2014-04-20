@@ -15,7 +15,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * (containers of containers of etc.) of the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink "Stage"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
      * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
      * @param [data=null] {any} Use to pass any type of data with the event.
-     * @module StructureTS
+     * @module StructureJS
      * @submodule event
      * @constructor
      * @version 0.1.0

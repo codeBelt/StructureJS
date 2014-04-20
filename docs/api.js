@@ -10,11 +10,13 @@ YUI.add("yuidoc-meta", function(Y) {
         "Stage",
         "StringUtil",
         "TemplateFactory",
+        "Timer",
+        "TimerEvent",
         "Util",
         "ValueObject"
     ],
     "modules": [
-        "Nerdery",
+        "StructureJS",
         "core",
         "event",
         "model",
@@ -38,8 +40,8 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems."
         },
         {
-            "displayName": "Nerdery",
-            "name": "Nerdery"
+            "displayName": "StructureJS",
+            "name": "StructureJS"
         },
         {
             "displayName": "util",

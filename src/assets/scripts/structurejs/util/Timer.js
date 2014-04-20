@@ -10,7 +10,7 @@ define(function (require, exports, module) { // jshint ignore:line
      *
      * @class Timer
      * @extends EventDispatcher
-     * @module StructureTS
+     * @module StructureJS
      * @submodule util
      * @constructor
      * @version 0.1.0

@@ -236,7 +236,7 @@ module.exports = function(grunt) {
                 version: '<%= pkg.appVersion %>',
                 url: '<%= pkg.homepage %>',
                 options: {
-                    paths: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/nerdery/',
+                    paths: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/structurejs/',
                     outdir: '<%= BASE_PATH %>docs',
                     themedir: '',
                     extension: '.js',                                   // Default '.js' <comma-separated list of file extensions>
@@ -348,7 +348,7 @@ module.exports = function(grunt) {
         'express-keepalive'
     ]);
 
-    grunt.registerTask('doc', [
+    grunt.registerTask('docs', [
         'yuidoc'
     ]);
 

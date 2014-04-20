@@ -6,8 +6,8 @@
         "url": ""
     },
     "files": {
-        "src/assets/scripts/nerdery/display/DOMElement.js": {
-            "name": "src/assets/scripts/nerdery/display/DOMElement.js",
+        "src/assets/scripts/structurejs/display/DOMElement.js": {
+            "name": "src/assets/scripts/structurejs/display/DOMElement.js",
             "modules": {},
             "classes": {
                 "DOMElement": 1
@@ -15,8 +15,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/display/DisplayObjectContainer.js": {
-            "name": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+        "src/assets/scripts/structurejs/display/DisplayObjectContainer.js": {
+            "name": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "modules": {},
             "classes": {
                 "DisplayObjectContainer": 1
@@ -24,8 +24,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/display/Stage.js": {
-            "name": "src/assets/scripts/nerdery/display/Stage.js",
+        "src/assets/scripts/structurejs/display/Stage.js": {
+            "name": "src/assets/scripts/structurejs/display/Stage.js",
             "modules": {},
             "classes": {
                 "Stage": 1
@@ -33,8 +33,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/event/BaseEvent.js": {
-            "name": "src/assets/scripts/nerdery/event/BaseEvent.js",
+        "src/assets/scripts/structurejs/event/BaseEvent.js": {
+            "name": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "modules": {},
             "classes": {
                 "BaseEvent": 1
@@ -42,8 +42,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/event/EventBroker.js": {
-            "name": "src/assets/scripts/nerdery/event/EventBroker.js",
+        "src/assets/scripts/structurejs/event/EventBroker.js": {
+            "name": "src/assets/scripts/structurejs/event/EventBroker.js",
             "modules": {},
             "classes": {
                 "EventBroker": 1
@@ -51,8 +51,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/event/EventDispatcher.js": {
-            "name": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+        "src/assets/scripts/structurejs/event/EventDispatcher.js": {
+            "name": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "modules": {},
             "classes": {
                 "EventDispatcher": 1
@@ -60,8 +60,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/model/ValueObject.js": {
-            "name": "src/assets/scripts/nerdery/model/ValueObject.js",
+        "src/assets/scripts/structurejs/event/TimerEvent.js": {
+            "name": "src/assets/scripts/structurejs/event/TimerEvent.js",
+            "modules": {},
+            "classes": {
+                "TimerEvent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/assets/scripts/structurejs/model/ValueObject.js": {
+            "name": "src/assets/scripts/structurejs/model/ValueObject.js",
             "modules": {},
             "classes": {
                 "ValueObject": 1
@@ -69,15 +78,15 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/plugin/jquery.eventListener.js": {
-            "name": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
+        "src/assets/scripts/structurejs/plugin/jquery.eventListener.js": {
+            "name": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/util/StringUtil.js": {
-            "name": "src/assets/scripts/nerdery/util/StringUtil.js",
+        "src/assets/scripts/structurejs/util/StringUtil.js": {
+            "name": "src/assets/scripts/structurejs/util/StringUtil.js",
             "modules": {},
             "classes": {
                 "StringUtil": 1
@@ -85,8 +94,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/util/TemplateFactory.js": {
-            "name": "src/assets/scripts/nerdery/util/TemplateFactory.js",
+        "src/assets/scripts/structurejs/util/TemplateFactory.js": {
+            "name": "src/assets/scripts/structurejs/util/TemplateFactory.js",
             "modules": {},
             "classes": {
                 "TemplateFactory": 1
@@ -94,8 +103,17 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/util/Util.js": {
-            "name": "src/assets/scripts/nerdery/util/Util.js",
+        "src/assets/scripts/structurejs/util/Timer.js": {
+            "name": "src/assets/scripts/structurejs/util/Timer.js",
+            "modules": {},
+            "classes": {
+                "Timer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/assets/scripts/structurejs/util/Util.js": {
+            "name": "src/assets/scripts/structurejs/util/Util.js",
             "modules": {},
             "classes": {
                 "Util": 1
@@ -103,8 +121,8 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/assets/scripts/nerdery/BaseObject.js": {
-            "name": "src/assets/scripts/nerdery/BaseObject.js",
+        "src/assets/scripts/structurejs/BaseObject.js": {
+            "name": "src/assets/scripts/structurejs/BaseObject.js",
             "modules": {},
             "classes": {
                 "BaseObject": 1
@@ -114,8 +132,8 @@
         }
     },
     "modules": {
-        "Nerdery": {
-            "name": "Nerdery",
+        "StructureJS": {
+            "name": "StructureJS",
             "submodules": {
                 "view": 1,
                 "event": 1,
@@ -130,15 +148,17 @@
                 "BaseEvent": 1,
                 "EventBroker": 1,
                 "EventDispatcher": 1,
+                "TimerEvent": 1,
                 "ValueObject": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
+                "Timer": 1,
                 "Util": 1,
                 "BaseObject": 1
             },
             "fors": {},
             "namespaces": {},
-            "file": "src/assets/scripts/nerdery/BaseObject.js",
+            "file": "src/assets/scripts/structurejs/BaseObject.js",
             "line": 7
         },
         "view": {
@@ -152,10 +172,10 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
             "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
-            "file": "src/assets/scripts/nerdery/display/Stage.js",
+            "file": "src/assets/scripts/structurejs/display/Stage.js",
             "line": 8
         },
         "event": {
@@ -164,15 +184,16 @@
             "classes": {
                 "BaseEvent": 1,
                 "EventBroker": 1,
-                "EventDispatcher": 1
+                "EventDispatcher": 1,
+                "TimerEvent": 1
             },
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
             "description": "<p>The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>\n\n<p>The properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.</p>",
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/TimerEvent.js",
             "line": 7
         },
         "model": {
@@ -184,10 +205,10 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.",
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 8
         },
         "util": {
@@ -196,15 +217,16 @@
             "classes": {
                 "StringUtil": 1,
                 "TemplateFactory": 1,
+                "Timer": 1,
                 "Util": 1
             },
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
             "description": "The StringUtil...",
-            "file": "src/assets/scripts/nerdery/util/Util.js",
+            "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 4
         },
         "core": {
@@ -216,10 +238,10 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.",
-            "file": "src/assets/scripts/nerdery/BaseObject.js",
+            "file": "src/assets/scripts/structurejs/BaseObject.js",
             "line": 7
         }
     },
@@ -232,8 +254,8 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "module": "StructureJS",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 10,
             "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
             "submodule": "view",
@@ -251,9 +273,9 @@
             "is_constructor": 1,
             "version": "0.1.2",
             "example": [
-                "\n   // Example of using DOMElement with out extending it.\n   var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n   this.addChild(aLink);",
-                "\n   // Example of a view passing in a jQuery object.\n   var view = new CustomView($('.selector');\n   this.addChild(view);\n\n   // Example of a view extending DOMElement when passing in a jQuery object.\n   var Extend = require('nerdery/util/Extend');\n   var DOMElement = require('nerdery/display/DOMElement');\n\n   var ClassName = (function () {\n\n       var _super = Extend(ClassName, DOMElement);\n\n       function ClassName($element) {\n           _super.call(this, $element);\n\n           this.CLASS_NAME = 'ClassName';\n       }\n\n       ClassName.prototype.createChildren = function () {\n           _super.prototype.createChildren.call(this);\n\n           // Create and add your child objects to this parent class.\n       }\n\n       ClassName.prototype.layoutChildren = function () {\n           // Layout or update the child objects in this parent class.\n\n           return this;\n       }\n\n       ClassName.prototype.enable = function () {\n           if (this.isEnabled === true) return this;\n\n           // Enable the child objects and add any event listeners.\n\n           return _super.prototype.enable.call(this);\n       }\n\n       ClassName.prototype.disable = function () {\n           if (this.isEnabled === false) return this;\n\n           // Disable the child objects and remove any event listeners.\n\n           return _super.prototype.disable.call(this);\n       }\n\n       ClassName.prototype.destroy = function () {\n           _super.prototype.destroy.call(this);\n\n           // Destroy the child objects and references in this parent class to prevent memory leaks.\n       }\n\n       return ClassName;\n   })();",
-                "\n   // Example of a view extending DOMElement with template passed into createChildren.\n   var view:CustomView = new CustomView();\n   this.addChild(view);\n\n   // Example of a view extending DOMElement when passing in a jQuery object.\n   var Extend = require('nerdery/util/Extend');\n   var DOMElement = require('nerdery/display/DOMElement');\n   var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n   var ClassName = (function () {\n\n       var _super = Extend(ClassName, DOMElement);\n\n       function ClassName() {\n           _super.call(this);\n\n           this.CLASS_NAME = 'ClassName';\n       }\n\n       ClassName.prototype.createChildren = function () {\n           _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});\n\n           // Create and add your child objects to this parent class.\n       }\n\n       ClassName.prototype.layoutChildren = function () {\n           // Layout or update the child objects in this parent class.\n\n           return this;\n       }\n\n       ClassName.prototype.enable = function () {\n           if (this.isEnabled === true) return this;\n\n           // Enable the child objects and add any event listeners.\n\n           return _super.prototype.enable.call(this);\n       }\n\n       ClassName.prototype.disable = function () {\n           if (this.isEnabled === false) return this;\n\n           // Disable the child objects and remove any event listeners.\n\n           return _super.prototype.disable.call(this);\n       }\n\n       ClassName.prototype.destroy = function () {\n           _super.prototype.destroy.call(this);\n\n           // Destroy the child objects and references in this parent class to prevent memory leaks.\n       }\n\n       return ClassName;\n   })();"
+                "\n       // Example of using DOMElement with out extending it.\n       var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n       this.addChild(aLink);",
+                "\n       // Example of a view passing in a jQuery object.\n       var view = new CustomView($('.selector');\n       this.addChild(view);\n\n       // Example of a view extending DOMElement when passing in a jQuery object.\n       var Extend = require('structurejs/util/Extend');\n       var DOMElement = require('structurejs/display/DOMElement');\n\n       var ClassName = (function () {\n\n           var _super = Extend(ClassName, DOMElement);\n\n           function ClassName($element) {\n               _super.call(this, $element);\n\n               this.CLASS_NAME = 'ClassName';\n           }\n\n           ClassName.prototype.createChildren = function () {\n               _super.prototype.createChildren.call(this);\n\n               // Create and add your child objects to this parent class.\n           }\n\n           ClassName.prototype.layoutChildren = function () {\n               // Layout or update the child objects in this parent class.\n\n               return this;\n           }\n\n           ClassName.prototype.enable = function () {\n               if (this.isEnabled === true) return this;\n\n               // Enable the child objects and add any event listeners.\n\n               return _super.prototype.enable.call(this);\n           }\n\n           ClassName.prototype.disable = function () {\n               if (this.isEnabled === false) return this;\n\n               // Disable the child objects and remove any event listeners.\n\n               return _super.prototype.disable.call(this);\n           }\n\n           ClassName.prototype.destroy = function () {\n               _super.prototype.destroy.call(this);\n\n               // Destroy the child objects and references in this parent class to prevent memory leaks.\n           }\n\n           return ClassName;\n       })();",
+                "\n       // Example of a view extending DOMElement with template passed into createChildren.\n       var view:CustomView = new CustomView();\n       this.addChild(view);\n\n       // Example of a view extending DOMElement when passing in a jQuery object.\n       var Extend = require('structurejs/util/Extend');\n       var DOMElement = require('structurejs/display/DOMElement');\n       var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n       var ClassName = (function () {\n\n           var _super = Extend(ClassName, DOMElement);\n\n           function ClassName() {\n               _super.call(this);\n\n               this.CLASS_NAME = 'ClassName';\n           }\n\n           ClassName.prototype.createChildren = function () {\n               _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});\n\n               // Create and add your child objects to this parent class.\n           }\n\n           ClassName.prototype.layoutChildren = function () {\n               // Layout or update the child objects in this parent class.\n\n               return this;\n           }\n\n           ClassName.prototype.enable = function () {\n               if (this.isEnabled === true) return this;\n\n               // Enable the child objects and add any event listeners.\n\n               return _super.prototype.enable.call(this);\n           }\n\n           ClassName.prototype.disable = function () {\n               if (this.isEnabled === false) return this;\n\n               // Disable the child objects and remove any event listeners.\n\n               return _super.prototype.disable.call(this);\n           }\n\n           ClassName.prototype.destroy = function () {\n               _super.prototype.destroy.call(this);\n\n               // Destroy the child objects and references in this parent class to prevent memory leaks.\n           }\n\n           return ClassName;\n       })();"
             ]
         },
         "DisplayObjectContainer": {
@@ -264,9 +286,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 7,
             "description": "The {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.",
             "submodule": "view",
@@ -282,13 +304,13 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/display/Stage.js",
+            "file": "src/assets/scripts/structurejs/display/Stage.js",
             "line": 8,
             "description": "The {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main or root class.",
             "example": [
-                "\n    // This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n       define(function (require, exports, module) {\n           'use strict';\n\n           var Extend = require('nerdery/util/Extend');\n           var Stage = require('replace/path/Stage');\n\n           var MainClass = (function () {\n\n           var _super = Extend(MainClass, Stage);\n\n               function MainClass() {\n                   _super.call(this);\n\n                   this.CLASS_NAME = 'MainClass';\n               }\n\n               MainClass.prototype.createChildren = function () {\n                   _super.prototype.createChildren.call(this);\n\n                   // Create and add your child objects to this parent class.\n               }\n\n               MainClass.prototype.layoutChildren = function () {\n                   // Layout or update the child objects in this parent class.\n\n                   return this;\n               }\n\n               MainClass.prototype.enable = function () {\n                   if (this.isEnabled === true) return this;\n\n                   // Enable the child objects and add any event listeners.\n\n                   return _super.prototype.enable.call(this);\n               }\n\n               MainClass.prototype.disable = function () {\n                   if (this.isEnabled === false) return this;\n\n                   // Disable the child objects and remove any event listeners.\n\n                   return _super.prototype.disable.call(this);\n               }\n\n               MainClass.prototype.destroy = function () {\n                   _super.prototype.destroy.call(this);\n\n                   // Destroy the child objects and references in this parent class to prevent memory leaks.\n               }\n\n               return MainClass;\n           })();\n\n           module.exports = MainClass;\n       });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiation your main or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');"
+                "\n    // This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n       define(function (require, exports, module) {\n           'use strict';\n\n           var Extend = require('structurejs/util/Extend');\n           var Stage = require('replace/path/Stage');\n\n           var MainClass = (function () {\n\n           var _super = Extend(MainClass, Stage);\n\n               function MainClass() {\n                   _super.call(this);\n\n                   this.CLASS_NAME = 'MainClass';\n               }\n\n               MainClass.prototype.createChildren = function () {\n                   _super.prototype.createChildren.call(this);\n\n                   // Create and add your child objects to this parent class.\n               }\n\n               MainClass.prototype.layoutChildren = function () {\n                   // Layout or update the child objects in this parent class.\n\n                   return this;\n               }\n\n               MainClass.prototype.enable = function () {\n                   if (this.isEnabled === true) return this;\n\n                   // Enable the child objects and add any event listeners.\n\n                   return _super.prototype.enable.call(this);\n               }\n\n               MainClass.prototype.disable = function () {\n                   if (this.isEnabled === false) return this;\n\n                   // Disable the child objects and remove any event listeners.\n\n                   return _super.prototype.disable.call(this);\n               }\n\n               MainClass.prototype.destroy = function () {\n                   _super.prototype.destroy.call(this);\n\n                   // Destroy the child objects and references in this parent class to prevent memory leaks.\n               }\n\n               return MainClass;\n           })();\n\n           module.exports = MainClass;\n       });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiation your main or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');"
             ],
             "submodule": "view",
             "extends": "DOMElement",
@@ -303,14 +325,14 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 4,
             "description": "<p>The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>\n\n<p>The properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.</p>",
             "submodule": "event",
             "example": [
-                "\n    // Example: how to create a custom event by extending BaseEvent.\n       var Extend = require('nerdery/util/Extend');\n       var BaseEvent = require('nerdery/event/BaseEvent');\n\n       var CountryEvent = (function () {\n\n           var _super = Extend(CountryEvent, BaseEvent);\n\n           CountryEvent.CHANGE_COUNTRY = \"CountryEvent.changeCountry\";\n\n           function CountryEvent(type, bubbles, cancelable, data) {\n               _super.call(this, type, bubbles, cancelable, data);\n\n               this.CLASS_NAME = 'CountryEvent';\n               this.countryName = null;\n           }\n\n           return CountryEvent;\n       })();"
+                "\n    // Example: how to create a custom event by extending BaseEvent.\n       var Extend = require('structurejs/util/Extend');\n       var BaseEvent = require('structurejs/event/BaseEvent');\n\n       var CountryEvent = (function () {\n\n           var _super = Extend(CountryEvent, BaseEvent);\n\n           CountryEvent.CHANGE_COUNTRY = \"CountryEvent.changeCountry\";\n\n           function CountryEvent(type, bubbles, cancelable, data) {\n               _super.call(this, type, bubbles, cancelable, data);\n\n               this.CLASS_NAME = 'CountryEvent';\n               this.countryName = null;\n           }\n\n           return CountryEvent;\n       })();"
             ],
             "params": [
                 {
@@ -351,9 +373,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/event/EventBroker.js",
+            "file": "src/assets/scripts/structurejs/event/EventBroker.js",
             "line": 6,
             "description": "EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.\nLoosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.",
             "submodule": "event",
@@ -368,13 +390,59 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 7,
             "description": "The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class.\nThe EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.",
             "submodule": "event",
             "extends": "BaseObject",
+            "is_constructor": 1,
+            "version": "0.1.0"
+        },
+        "TimerEvent": {
+            "name": "TimerEvent",
+            "shortname": "TimerEvent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/assets/scripts/structurejs/event/TimerEvent.js",
+            "line": 7,
+            "description": "The TimerEvent...",
+            "submodule": "event",
+            "extends": "BaseEvent",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event. The type is case-sensitive.",
+                    "type": "String"
+                },
+                {
+                    "name": "bubbles",
+                    "description": "Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.\nNote: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink \"EventDispatcher/parent:property\"}}{{/crossLink}})\n(containers of containers of etc.) of the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink \"Stage\"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "cancelable",
+                    "description": "Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "data",
+                    "description": "Use to pass any type of data with the event.",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
             "is_constructor": 1,
             "version": "0.1.0"
         },
@@ -386,9 +454,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 8,
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.",
             "submodule": "model",
@@ -411,9 +479,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 4,
             "description": "The StringUtil...",
             "submodule": "util",
@@ -429,12 +497,30 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/util/TemplateFactory.js",
+            "file": "src/assets/scripts/structurejs/util/TemplateFactory.js",
             "line": 9,
             "description": "YUIDoc_comment",
             "submodule": "util",
+            "is_constructor": 1,
+            "version": "0.1.0"
+        },
+        "Timer": {
+            "name": "Timer",
+            "shortname": "Timer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 8,
+            "description": "Constructs a new Timer object with the specified delay and repeatCount states.",
+            "submodule": "util",
+            "extends": "EventDispatcher",
             "is_constructor": 1,
             "version": "0.1.0"
         },
@@ -446,9 +532,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/util/Util.js",
+            "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 4,
             "description": "A Utility class that has several static methods to assist in development.",
             "submodule": "util",
@@ -463,9 +549,9 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "Nerdery",
+            "module": "StructureJS",
             "namespace": "",
-            "file": "src/assets/scripts/nerdery/BaseObject.js",
+            "file": "src/assets/scripts/structurejs/BaseObject.js",
             "line": 7,
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.",
             "submodule": "core",
@@ -475,15 +561,15 @@
     },
     "classitems": [
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 147,
             "overridden": "DisplayObjectContainer.CLASS_NAME",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 152,
             "description": "Whether or not the display object is visible. Display objects that are not visible are disabled.\nFor example, if visible=false for an InteractiveObject instance, it cannot be clicked.",
             "itemtype": "property",
@@ -493,11 +579,11 @@
             "access": "private",
             "tagname": "",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 163,
             "description": "A cached of the DOM Element.",
             "itemtype": "property",
@@ -505,11 +591,11 @@
             "type": "{Element}",
             "default": "null",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 172,
             "description": "A cached jQuery object for the view's element.",
             "itemtype": "property",
@@ -517,11 +603,11 @@
             "type": "{JQuery}",
             "default": "null",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 181,
             "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try add the view to the DOM because it should already exists.",
             "itemtype": "property",
@@ -530,11 +616,11 @@
             "access": "private",
             "tagname": "",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 191,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
@@ -542,11 +628,11 @@
             "type": "{string}",
             "default": "null",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 200,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
@@ -554,11 +640,11 @@
             "type": "{any}",
             "default": "null",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 218,
             "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.",
             "example": [
@@ -584,11 +670,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
             "line": 298,
             "overridden": "DisplayObjectContainer.addChild",
             "example": [
@@ -609,12 +695,12 @@
             },
             "chainable": 1,
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 332,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 334,
             "description": "Gets called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layoutChildren:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.",
             "itemtype": "method",
             "name": "onDomAdded",
@@ -628,36 +714,36 @@
             "access": "private",
             "tagname": "",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 347,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 349,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 379,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 383,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 392,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 396,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 399,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 403,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -675,12 +761,12 @@
             "access": "public",
             "tagname": "",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 435,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 439,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -699,12 +785,12 @@
             "access": "public",
             "tagname": "",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 472,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 476,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -724,12 +810,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 493,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 497,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -742,12 +828,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 512,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 516,
             "description": "Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)\nto 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though\nthey are invisible.",
             "itemtype": "method",
             "name": "alpha",
@@ -763,12 +849,12 @@
             },
             "chainable": 1,
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 527,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 531,
             "itemtype": "method",
             "name": "visible",
             "params": [
@@ -782,27 +868,27 @@
                 "type": "Any"
             },
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DOMElement.js",
-            "line": 546,
+            "file": "src/assets/scripts/structurejs/display/DOMElement.js",
+            "line": 550,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 24,
             "overridden": "EventDispatcher.CLASS_NAME",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 29,
             "description": "The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.",
             "itemtype": "property",
@@ -812,11 +898,11 @@
             "access": "protected",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 39,
             "description": "Returns the number of children of this object.",
             "itemtype": "property",
@@ -827,11 +913,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 50,
             "description": "A reference to the child DisplayObjectContainer instances to this parent object instance.",
             "itemtype": "property",
@@ -841,11 +927,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 60,
             "description": "A property providing access to the width.",
             "itemtype": "property",
@@ -855,11 +941,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 70,
             "description": "A property providing access to the height.",
             "itemtype": "property",
@@ -869,11 +955,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 80,
             "description": "A property providing access to the unscaledWidth.",
             "itemtype": "property",
@@ -883,11 +969,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 90,
             "description": "A property providing access to the unscaledHeight.",
             "itemtype": "property",
@@ -897,11 +983,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 101,
             "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.",
             "itemtype": "method",
@@ -914,11 +1000,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 117,
             "description": "Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other\nchildren in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)\n\nIf you add a child object that already has a different parent, the object is removed from the child\nlist of the other parent object.",
             "itemtype": "method",
@@ -938,11 +1024,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 144,
             "description": "Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.\nThe child is added at the index position specified. An index of 0 represents the back\n(bottom) of the display list for this DisplayObjectContainerContainer object.",
             "itemtype": "method",
@@ -967,11 +1053,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 170,
             "description": "Swaps two DisplayObjectContainer's with each other.",
             "itemtype": "method",
@@ -996,11 +1082,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 185,
             "description": "Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.",
             "itemtype": "method",
@@ -1025,11 +1111,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 208,
             "description": "Returns the index position of a child DisplayObjectContainer instance.",
             "itemtype": "method",
@@ -1048,11 +1134,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 220,
             "description": "Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.",
             "itemtype": "method",
@@ -1071,11 +1157,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 232,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
@@ -1095,11 +1181,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 256,
             "description": "Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if\nno other references to the children exist.",
             "itemtype": "method",
@@ -1112,11 +1198,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 276,
             "description": "Returns the child display object instance that exists at the specified index.",
             "itemtype": "method",
@@ -1133,11 +1219,11 @@
                 "type": "DisplayObjectContainer"
             },
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 287,
             "description": "Gets a DisplayObjectContainer by its cid.",
             "itemtype": "method",
@@ -1157,11 +1243,11 @@
             "access": "public",
             "tagname": "",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 304,
             "description": "The setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
             "params": [
@@ -1184,11 +1270,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 325,
             "description": "The layoutComponent method provides a common function to handle updating child objects.",
             "itemtype": "method",
@@ -1201,27 +1287,27 @@
             "tagname": "",
             "chainable": 1,
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/DisplayObjectContainer.js",
+            "file": "src/assets/scripts/structurejs/display/DisplayObjectContainer.js",
             "line": 337,
             "overridden": "EventDispatcher.destroy",
             "class": "DisplayObjectContainer",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/Stage.js",
+            "file": "src/assets/scripts/structurejs/display/Stage.js",
             "line": 87,
             "overridden": "DOMElement.CLASS_NAME",
             "class": "Stage",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/display/Stage.js",
+            "file": "src/assets/scripts/structurejs/display/Stage.js",
             "line": 93,
             "description": "The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.",
             "itemtype": "method",
@@ -1242,19 +1328,19 @@
             ],
             "chainable": 1,
             "class": "Stage",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "view"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 101,
             "overridden": "BaseObject.CLASS_NAME",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 106,
             "description": "The type of event.",
             "itemtype": "property",
@@ -1263,11 +1349,11 @@
             "default": "null",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 116,
             "description": "A reference to the object that originally dispatched the event.",
             "itemtype": "property",
@@ -1276,11 +1362,11 @@
             "default": "null",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 126,
             "description": "The currentTarget property always points to the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).",
             "itemtype": "property",
@@ -1289,11 +1375,11 @@
             "default": "null",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 136,
             "description": "Use to pass any type of data with the event.",
             "itemtype": "property",
@@ -1301,11 +1387,11 @@
             "type": "{any}",
             "default": "null",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 145,
             "description": "Indicates whether an event is a bubbling event.",
             "itemtype": "property",
@@ -1313,11 +1399,11 @@
             "type": "{boolean}",
             "default": "false",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 154,
             "description": "Indicates whether the behavior associated with the event can be prevented.",
             "itemtype": "property",
@@ -1325,11 +1411,11 @@
             "type": "{boolean}",
             "default": "false",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 163,
             "itemtype": "property",
             "name": "isPropagationStopped",
@@ -1337,11 +1423,11 @@
             "default": "false",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 172,
             "itemtype": "property",
             "name": "isImmediatePropagationStopped",
@@ -1349,11 +1435,11 @@
             "default": "false",
             "readonly": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 187,
             "description": "Duplicates an instance of an BaseEvent subclass.\n\nReturns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.\nYou do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch\nan event—that is, when you call dispatchEvent(event) from a handler that is handling event.\n\nThe new Event object includes all the properties of the original.\n\nWhen creating your own custom Event class, you must override the inherited Event.clone() method in order for it\nto duplicate the properties of your custom class. If you do not set all the properties that you add in your event\nsubclass, those properties will not have the correct values when listeners handle the redispatched event.",
             "itemtype": "method",
@@ -1365,11 +1451,11 @@
             "access": "public",
             "tagname": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 208,
             "description": "Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.\nThis method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()\nmethod prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.\nThis method can be called in any phase of",
             "itemtype": "method",
@@ -1377,11 +1463,11 @@
             "access": "public",
             "tagname": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/BaseEvent.js",
+            "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
             "line": 221,
             "description": "Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.\nThis method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()\nmethod doesn't take effect until all the event listeners in the current node finish processing.",
             "itemtype": "method",
@@ -1389,11 +1475,11 @@
             "access": "public",
             "tagname": "",
             "class": "BaseEvent",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventBroker.js",
+            "file": "src/assets/scripts/structurejs/event/EventBroker.js",
             "line": 24,
             "description": "Registers an event listener object with an EventBroker object so that the listener receives notification of an event.",
             "example": [
@@ -1429,11 +1515,11 @@
             "access": "public",
             "tagname": "",
             "class": "EventBroker",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventBroker.js",
+            "file": "src/assets/scripts/structurejs/event/EventBroker.js",
             "line": 45,
             "description": "Removes a specified listener from the EventBroker object.",
             "example": [
@@ -1462,11 +1548,11 @@
             "access": "public",
             "tagname": "",
             "class": "EventBroker",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventBroker.js",
+            "file": "src/assets/scripts/structurejs/event/EventBroker.js",
             "line": 65,
             "description": "<p>Dispatches an event within the EventBroker object.</p>",
             "example": [
@@ -1485,19 +1571,19 @@
             "access": "public",
             "tagname": "",
             "class": "EventBroker",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 25,
             "overridden": "BaseObject.CLASS_NAME",
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 29,
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
@@ -1506,11 +1592,11 @@
             "access": "private",
             "tagname": "",
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 37,
             "description": "Indicates the object that contains child object. Use the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy.",
             "itemtype": "property",
@@ -1519,11 +1605,11 @@
             "access": "public",
             "tagname": "",
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 47,
             "description": "The isEnabled property is used to keep track of the enabled state of the object.",
             "itemtype": "property",
@@ -1533,11 +1619,11 @@
             "access": "protected",
             "tagname": "",
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 60,
             "description": "Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.",
             "example": [
@@ -1573,11 +1659,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 103,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "example": [
@@ -1607,11 +1693,11 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 136,
             "description": "<p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>",
             "example": [
@@ -1630,19 +1716,19 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 189,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
             "line": 201,
             "description": "The enable method is responsible for enabling event listeners and/or children of the containing objects.",
             "example": [
@@ -1654,12 +1740,12 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/event/EventDispatcher.js",
-            "line": 224,
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
+            "line": 223,
             "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
             "example": [
                 "\n       ClassName.prototype.disable = function () {\n           if (this.isEnabled === false) return this;\n\n           this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n           this._childInstance.disable();\n\n           return _super.prototype.disable.call(this);\n       }"
@@ -1670,19 +1756,43 @@
             "tagname": "",
             "chainable": 1,
             "class": "EventDispatcher",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "event"
         },
         {
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/event/EventDispatcher.js",
+            "line": 245,
+            "description": "Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.",
+            "itemtype": "method",
+            "name": "getEventListeners",
+            "return": {
+                "description": "Returns an array dictionary of the different event listener(s) on the object.",
+                "type": "Array"
+            },
+            "access": "public",
+            "tagname": "",
+            "class": "EventDispatcher",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/event/TimerEvent.js",
+            "line": 38,
+            "overridden": "BaseObject.CLASS_NAME",
+            "class": "TimerEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 25,
             "overridden": "BaseObject.CLASS_NAME",
             "class": "ValueObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "model"
         },
         {
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 31,
             "description": "Provide a way to update the value object.",
             "itemtype": "method",
@@ -1697,11 +1807,11 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "model"
         },
         {
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 42,
             "description": "...",
             "itemtype": "method",
@@ -1713,11 +1823,11 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "model"
         },
         {
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 54,
             "description": "...",
             "itemtype": "method",
@@ -1729,11 +1839,11 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "model"
         },
         {
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 65,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
@@ -1748,11 +1858,11 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "model"
         },
         {
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 79,
             "itemtype": "method",
             "name": "clone",
@@ -1763,11 +1873,11 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "model"
         },
         {
-            "file": "src/assets/scripts/nerdery/model/ValueObject.js",
+            "file": "src/assets/scripts/structurejs/model/ValueObject.js",
             "line": 90,
             "itemtype": "method",
             "name": "copy",
@@ -1778,18 +1888,18 @@
             "access": "public",
             "tagname": "",
             "class": "ValueObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "model"
         },
         {
-            "file": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
+            "file": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "line": 6,
             "description": "A bind polyfill for browsers that don't support the bind method.",
             "class": "StringUtil",
-            "module": "Nerdery"
+            "module": "StructureJS"
         },
         {
-            "file": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
+            "file": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "line": 27,
             "description": "Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
             "params": [
@@ -1803,24 +1913,24 @@
                 "type": "String"
             },
             "class": "StringUtil",
-            "module": "Nerdery"
+            "module": "StructureJS"
         },
         {
-            "file": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
+            "file": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "line": 53,
             "description": "The jQuery addEventListener plugin",
             "class": "StringUtil",
-            "module": "Nerdery"
+            "module": "StructureJS"
         },
         {
-            "file": "src/assets/scripts/nerdery/plugin/jquery.eventListener.js",
+            "file": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "line": 88,
             "description": "The jQuery removeEventListener plugin",
             "class": "StringUtil",
-            "module": "Nerdery"
+            "module": "StructureJS"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 21,
             "description": "YUIDoc_comment",
             "itemtype": "method",
@@ -1840,11 +1950,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 34,
             "description": "YUIDoc_comment",
             "itemtype": "method",
@@ -1864,11 +1974,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 51,
             "description": "YUIDoc_comment",
             "itemtype": "method",
@@ -1888,11 +1998,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 71,
             "description": "YUIDoc_comment",
             "itemtype": "method",
@@ -1912,11 +2022,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 86,
             "description": "YUIDoc_comment",
             "itemtype": "method",
@@ -1929,11 +2039,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 104,
             "description": "YUIDoc_comment",
             "itemtype": "method",
@@ -1953,11 +2063,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 130,
             "description": "Remove all whitespace from the string passed in.",
             "example": [
@@ -1980,11 +2090,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 146,
             "description": "Remove leading and trailing whitespace.",
             "example": [
@@ -2007,11 +2117,11 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/StringUtil.js",
+            "file": "src/assets/scripts/structurejs/util/StringUtil.js",
             "line": 163,
             "itemtype": "method",
             "name": "truncate",
@@ -2035,11 +2145,208 @@
             "tagname": "",
             "static": 1,
             "class": "StringUtil",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/Util.js",
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 27,
+            "overridden": "BaseObject.CLASS_NAME",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 32,
+            "description": "A reference to the setInterval object.",
+            "itemtype": "property",
+            "name": "_timer",
+            "type": "{Function}",
+            "access": "private",
+            "tagname": "",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 41,
+            "description": "The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.",
+            "itemtype": "property",
+            "name": "currentCount",
+            "type": "{int}",
+            "access": "private",
+            "tagname": "",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 50,
+            "description": "The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.\n<strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.",
+            "itemtype": "property",
+            "name": "delay",
+            "type": "{number}",
+            "access": "private",
+            "tagname": "",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 60,
+            "description": "The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.",
+            "itemtype": "property",
+            "name": "repeatCount",
+            "type": "{int}",
+            "access": "private",
+            "tagname": "",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 69,
+            "description": "The timer's current state; true if the timer is running, otherwise false.",
+            "itemtype": "property",
+            "name": "running",
+            "type": "{boolean}",
+            "readonly": "",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 82,
+            "description": "Returns the total number of times the timer has fired since it started at zero.",
+            "itemtype": "method",
+            "name": "getCurrentCount",
+            "return": {
+                "description": "The total number of times the timer has fired since it started at zero.",
+                "type": "Number"
+            },
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 92,
+            "description": "Returns the delay time in milliseconds.",
+            "itemtype": "method",
+            "name": "getDelay",
+            "return": {
+                "description": "Returns the delay time in milliseconds.",
+                "type": "Number"
+            },
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 102,
+            "description": "Sets the delay, in milliseconds, between timer events.",
+            "itemtype": "method",
+            "name": "setDelay",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 116,
+            "description": "Returns the total number of times the timer is set to run.",
+            "itemtype": "method",
+            "name": "getRepeatCount",
+            "return": {
+                "description": "Returns the total number of times the timer is set to run.",
+                "type": "Number"
+            },
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 126,
+            "description": "Set the total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.",
+            "itemtype": "method",
+            "name": "setRepeatCount",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 141,
+            "description": "Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.",
+            "itemtype": "method",
+            "name": "reset",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 154,
+            "description": "Starts the timer, if it is not already running.",
+            "itemtype": "method",
+            "name": "start",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 174,
+            "description": "Stops the timer.",
+            "itemtype": "method",
+            "name": "stop",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 186,
+            "itemtype": "method",
+            "name": "decrementCounter",
+            "access": "private",
+            "tagname": "",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Timer.js",
+            "line": 205,
+            "overridden": "EventDispatcher.destroy",
+            "class": "Timer",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 21,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
             "example": [
@@ -2063,11 +2370,11 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/Util.js",
+            "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 46,
             "itemtype": "method",
             "name": "deletePropertyFromObject",
@@ -2091,11 +2398,11 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/Util.js",
+            "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 83,
             "itemtype": "method",
             "name": "renamePropertyOnObject",
@@ -2124,11 +2431,11 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/Util.js",
+            "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 102,
             "itemtype": "method",
             "name": "clone",
@@ -2147,11 +2454,11 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/util/Util.js",
+            "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 148,
             "description": "YUIDoc_comment",
             "itemtype": "method",
@@ -2171,11 +2478,11 @@
             "tagname": "",
             "static": 1,
             "class": "Util",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/assets/scripts/nerdery/BaseObject.js",
+            "file": "src/assets/scripts/structurejs/BaseObject.js",
             "line": 17,
             "description": "The fully qualified class name of the object. Use {{#crossLink \"BaseObject/getQualifiedClassName:method\"}}{{/crossLink}} method to retrieve the class name of a  object.",
             "itemtype": "property",
@@ -2185,11 +2492,11 @@
             "access": "protected",
             "tagname": "",
             "class": "BaseObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "core"
         },
         {
-            "file": "src/assets/scripts/nerdery/BaseObject.js",
+            "file": "src/assets/scripts/structurejs/BaseObject.js",
             "line": 26,
             "description": "The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.",
             "itemtype": "property",
@@ -2200,11 +2507,11 @@
             "access": "public",
             "tagname": "",
             "class": "BaseObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "core"
         },
         {
-            "file": "src/assets/scripts/nerdery/BaseObject.js",
+            "file": "src/assets/scripts/structurejs/BaseObject.js",
             "line": 38,
             "description": "Returns the fully qualified class name of an object.",
             "example": [
@@ -2219,11 +2526,11 @@
             "access": "public",
             "tagname": "",
             "class": "BaseObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "core"
         },
         {
-            "file": "src/assets/scripts/nerdery/BaseObject.js",
+            "file": "src/assets/scripts/structurejs/BaseObject.js",
             "line": 51,
             "description": "The purpose of the destroy method is to make an object ready for garbage collection. This\nshould be thought of as a one way function. Once destroy is called no further methods should be\ncalled on the object or properties accessed. It is the responsibility of those who implement this\nfunction to stop all running Timers, all running Sounds, remove any event\nlisteners and take any other steps necessary to make an object eligible for garbage collection.\nIt is critical that all subclasses call the super for this function in their overridden methods.\n\nNote: super.destroy(); should be called first before you clean up any other objects/items in the current classs.\nThe {{#crossLink \"BaseObject/destroy:method\"}}{{/crossLink}} method also calls the\n{{#crossLink \"EventDispatcher/disable:method\"}}{{/crossLink}} method on all classes that extend\n{{#crossLink \"EventDispatcher\"}}{{/crossLink}}.",
             "example": [
@@ -2238,358 +2545,402 @@
             "access": "public",
             "tagname": "",
             "class": "BaseObject",
-            "module": "Nerdery",
+            "module": "StructureJS",
             "submodule": "core"
         }
     ],
     "warnings": [
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:10"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:10"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:147"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:147"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:218"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:218"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:298"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:298"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:298"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:298"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:347"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:349"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:379"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:383"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:392"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:396"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:399"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:403"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:435"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:439"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:472"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:476"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:472"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:476"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:493"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:497"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:493"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:497"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:512"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:516"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:527"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:531"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:546"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:550"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:7"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:7"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:24"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:24"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:101"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:101"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:117"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:117"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:144"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:144"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:170"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:170"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:185"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:185"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:208"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:208"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:220"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:220"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:232"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:232"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:256"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:256"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:276"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:276"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:287"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:287"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:287"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:287"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:304"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:304"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:325"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:325"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:337"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:337"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/display/Stage.js:8"
+            "line": " src/assets/scripts/structurejs/display/Stage.js:8"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/display/Stage.js:87"
+            "line": " src/assets/scripts/structurejs/display/Stage.js:87"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:4"
+            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:4"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:101"
+            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:101"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:187"
+            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:187"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/event/EventBroker.js:6"
+            "line": " src/assets/scripts/structurejs/event/EventBroker.js:6"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:7"
+            "line": " src/assets/scripts/structurejs/event/EventDispatcher.js:7"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:25"
+            "line": " src/assets/scripts/structurejs/event/EventDispatcher.js:25"
         },
         {
             "message": "unknown tag: hide",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:103"
+            "line": " src/assets/scripts/structurejs/event/EventDispatcher.js:103"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:189"
+            "line": " src/assets/scripts/structurejs/event/EventDispatcher.js:189"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:8"
+            "line": " src/assets/scripts/structurejs/event/TimerEvent.js:7"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:25"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:42"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:54"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:79"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:90"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/plugin/jquery.eventListener.js:27"
+            "line": " src/assets/scripts/structurejs/event/TimerEvent.js:38"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:4"
+            "line": " src/assets/scripts/structurejs/model/ValueObject.js:8"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/assets/scripts/structurejs/model/ValueObject.js:25"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:21"
+            "line": " src/assets/scripts/structurejs/model/ValueObject.js:42"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:34"
+            "line": " src/assets/scripts/structurejs/model/ValueObject.js:54"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:51"
+            "line": " src/assets/scripts/structurejs/model/ValueObject.js:79"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:71"
+            "line": " src/assets/scripts/structurejs/model/ValueObject.js:90"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:86"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:104"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:130"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:146"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/StringUtil.js:163"
+            "line": " src/assets/scripts/structurejs/plugin/jquery.eventListener.js:27"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/util/TemplateFactory.js:9"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:4"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:21"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:34"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:51"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:71"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:86"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:104"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:130"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:146"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:163"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/util/Util.js:4"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:21"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:46"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:83"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:102"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/util/Util.js:148"
+            "line": " src/assets/scripts/structurejs/util/TemplateFactory.js:9"
         },
         {
             "message": "unknown tag: version",
-            "line": " src/assets/scripts/nerdery/BaseObject.js:7"
+            "line": " src/assets/scripts/structurejs/util/Timer.js:8"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/assets/scripts/structurejs/util/Timer.js:27"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/nerdery/BaseObject.js:38"
+            "line": " src/assets/scripts/structurejs/util/Timer.js:82"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/Timer.js:92"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/Timer.js:116"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/assets/scripts/structurejs/util/Timer.js:205"
+        },
+        {
+            "message": "unknown tag: version",
+            "line": " src/assets/scripts/structurejs/util/Util.js:4"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/Util.js:21"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/Util.js:46"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/Util.js:83"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/Util.js:102"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/util/Util.js:148"
+        },
+        {
+            "message": "unknown tag: version",
+            "line": " src/assets/scripts/structurejs/BaseObject.js:7"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/assets/scripts/structurejs/BaseObject.js:38"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:147"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:147"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:347"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:349"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:379"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:383"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:392"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:396"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DOMElement.js:546"
+            "line": " src/assets/scripts/structurejs/display/DOMElement.js:550"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:24"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:24"
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:304"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:304"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/DisplayObjectContainer.js:337"
+            "line": " src/assets/scripts/structurejs/display/DisplayObjectContainer.js:337"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/display/Stage.js:87"
+            "line": " src/assets/scripts/structurejs/display/Stage.js:87"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/event/BaseEvent.js:101"
+            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:101"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:25"
+            "line": " src/assets/scripts/structurejs/event/EventDispatcher.js:25"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/event/EventDispatcher.js:189"
+            "line": " src/assets/scripts/structurejs/event/EventDispatcher.js:189"
         },
         {
             "message": "Missing item type",
-            "line": " src/assets/scripts/nerdery/model/ValueObject.js:25"
+            "line": " src/assets/scripts/structurejs/event/TimerEvent.js:38"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/assets/scripts/structurejs/model/ValueObject.js:25"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",
-            "line": " src/assets/scripts/nerdery/plugin/jquery.eventListener.js:6"
+            "line": " src/assets/scripts/structurejs/plugin/jquery.eventListener.js:6"
         },
         {
             "message": "Missing item type\nGenerates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
-            "line": " src/assets/scripts/nerdery/plugin/jquery.eventListener.js:27"
+            "line": " src/assets/scripts/structurejs/plugin/jquery.eventListener.js:27"
         },
         {
             "message": "Missing item type\nThe jQuery addEventListener plugin",
-            "line": " src/assets/scripts/nerdery/plugin/jquery.eventListener.js:53"
+            "line": " src/assets/scripts/structurejs/plugin/jquery.eventListener.js:53"
         },
         {
             "message": "Missing item type\nThe jQuery removeEventListener plugin",
-            "line": " src/assets/scripts/nerdery/plugin/jquery.eventListener.js:88"
+            "line": " src/assets/scripts/structurejs/plugin/jquery.eventListener.js:88"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/assets/scripts/structurejs/util/Timer.js:27"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/assets/scripts/structurejs/util/Timer.js:205"
         }
     ]
 }
