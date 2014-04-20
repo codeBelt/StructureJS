@@ -2,9 +2,9 @@ define(function (require, exports, module) {
     'use strict';
 
     // Imports
-    var Extend = require('nerdery/util/Extend');
-    var DOMElement = require('nerdery/display/DOMElement');
-    var BaseEvent = require('nerdery/event/BaseEvent');
+    var Extend = require('structurejs/util/Extend');
+    var DOMElement = require('structurejs/display/DOMElement');
+    var BaseEvent = require('structurejs/event/BaseEvent');
     var ParentView = require('view/ParentView');
 
     /**

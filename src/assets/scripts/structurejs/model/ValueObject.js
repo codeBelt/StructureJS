@@ -1,16 +1,16 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var Extend = require('nerdery/util/Extend');
-    var Util = require('nerdery/util/Util');
-    var BaseObject = require('nerdery/BaseObject');
+    var Extend = require('structurejs/util/Extend');
+    var Util = require('structurejs/util/Util');
+    var BaseObject = require('structurejs/BaseObject');
 
     /**
      * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
      *
      * @class ValueObject
      * @param [data] {any} Provide a way to update the value object upon initialization.
-     * @module Nerdery
+     * @module StructureJS
      * @submodule model
      * @constructor
      * @version 0.1.0

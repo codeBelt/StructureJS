@@ -5,7 +5,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * A Utility class that has several static methods to assist in development.
      *
      * @class Util
-     * @module Nerdery
+     * @module StructureJS
      * @submodule util
      * @constructor
      * @version 0.2.0

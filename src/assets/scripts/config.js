@@ -10,7 +10,7 @@ require.config({
         jquery: '../vendor/jquery/jquery-1.9.1',
         lodash: '../vendor/lodash/lodash.compat',
         Handlebars: '../vendor/handlebars/handlebars-v1.3.0',
-        eventListener: 'nerdery/plugin/jquery.eventListener',
+        eventListener: 'structurejs/plugin/jquery.eventListener',
 
         //shortcut paths
         templates: '../templates',

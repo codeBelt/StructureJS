@@ -1,14 +1,14 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var Util = require('nerdery/util/Util');
+    var Util = require('structurejs/util/Util');
 
     var BaseObject = (function () {
         /**
          * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.
          *
          * @class BaseObject
-         * @module Nerdery
+         * @module StructureJS
          * @submodule core
          * @constructor
          * @version 0.1.0

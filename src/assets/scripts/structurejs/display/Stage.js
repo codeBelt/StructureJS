@@ -2,8 +2,8 @@ define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
-    var Extend = require('nerdery/util/Extend');
-    var DOMElement = require('nerdery/display/DOMElement');
+    var Extend = require('structurejs/util/Extend');
+    var DOMElement = require('structurejs/display/DOMElement');
 
     /**
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
@@ -12,7 +12,7 @@ define(function (require, exports, module) { // jshint ignore:line
         define(function (require, exports, module) {
             'use strict';
 
-            var Extend = require('nerdery/util/Extend');
+            var Extend = require('structurejs/util/Extend');
             var Stage = require('replace/path/Stage');
 
             var MainClass = (function () {
@@ -73,7 +73,7 @@ define(function (require, exports, module) { // jshint ignore:line
      *
      * @class Stage
      * @extends DOMElement
-     * @module Nerdery
+     * @module StructureJS
      * @submodule view
      * @constructor
      * @version 0.1.0

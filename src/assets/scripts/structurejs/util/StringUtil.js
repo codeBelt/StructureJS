@@ -5,7 +5,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * The StringUtil...
      *
      * @class StringUtil
-     * @module Nerdery
+     * @module StructureJS
      * @submodule util
      * @constructor
      * @static

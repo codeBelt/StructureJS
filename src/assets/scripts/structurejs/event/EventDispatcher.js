@@ -1,8 +1,8 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var Extend = require('nerdery/util/Extend');
-    var BaseObject = require('nerdery/BaseObject');
+    var Extend = require('structurejs/util/Extend');
+    var BaseObject = require('structurejs/BaseObject');
 
     /**
      * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
@@ -10,7 +10,7 @@ define(function (require, exports, module) { // jshint ignore:line
      *
      * @class EventDispatcher
      * @extends BaseObject
-     * @module Nerdery
+     * @module StructureJS
      * @submodule event
      * @constructor
      * @version 0.1.0

@@ -1,14 +1,14 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var EventDispatcher = require('nerdery/event/EventDispatcher');
+    var EventDispatcher = require('structurejs/event/EventDispatcher');
 
     /**
      * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
      * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
      *
      * @class EventBroker
-     * @module Nerdery
+     * @module StructureJS
      * @submodule event
      * @static
      * @version 0.1.0

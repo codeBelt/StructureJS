@@ -1,11 +1,11 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var jQuery = require('nerdery/plugin/jquery.eventListener');
-    var Extend = require('nerdery/util/Extend');
-    var DisplayObjectContainer = require('nerdery/display/DisplayObjectContainer');
-    var BaseEvent = require('nerdery/event/BaseEvent');
-    var TemplateFactory = require('nerdery/util/TemplateFactory');
+    var jQuery = require('structurejs/plugin/jquery.eventListener');
+    var Extend = require('structurejs/util/Extend');
+    var DisplayObjectContainer = require('structurejs/display/DisplayObjectContainer');
+    var BaseEvent = require('structurejs/event/BaseEvent');
+    var TemplateFactory = require('structurejs/util/TemplateFactory');
 
     /**
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
@@ -14,7 +14,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @param type [any=null] Either a jQuery object or template you want to use the as the view. Check out the examples below.
      * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
      * @extends DisplayObjectContainer
-     * @module Nerdery
+     * @module StructureJS
      * @submodule view
      * @constructor
      * @version 0.1.2
@@ -28,8 +28,8 @@ define(function (require, exports, module) { // jshint ignore:line
         this.addChild(view);
 
         // Example of a view extending DOMElement when passing in a jQuery object.
-        var Extend = require('nerdery/util/Extend');
-        var DOMElement = require('nerdery/display/DOMElement');
+        var Extend = require('structurejs/util/Extend');
+        var DOMElement = require('structurejs/display/DOMElement');
 
         var ClassName = (function () {
 
@@ -83,8 +83,8 @@ define(function (require, exports, module) { // jshint ignore:line
         this.addChild(view);
 
         // Example of a view extending DOMElement when passing in a jQuery object.
-        var Extend = require('nerdery/util/Extend');
-        var DOMElement = require('nerdery/display/DOMElement');
+        var Extend = require('structurejs/util/Extend');
+        var DOMElement = require('structurejs/display/DOMElement');
         var HomeTemplate = require('hbs!templates/home/homeTemplate');
 
         var ClassName = (function () {

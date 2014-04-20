@@ -2,10 +2,10 @@ define(function (require, exports, module) {
     'use strict';
 
     // Imports
-    var Extend = require('nerdery/util/Extend');
-    var Stage = require('nerdery/display/Stage');
-    var BaseEvent = require('nerdery/event/BaseEvent');
-    var EventBroker = require('nerdery/event/EventBroker');
+    var Extend = require('structurejs/util/Extend');
+    var Stage = require('structurejs/display/Stage');
+    var BaseEvent = require('structurejs/event/BaseEvent');
+    var EventBroker = require('structurejs/event/EventBroker');
     var GrandparentView = require('view/GrandparentView');
 
     /**

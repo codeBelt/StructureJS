@@ -3,14 +3,14 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var $ = require('jquery');
     var Handlebars = require('handlebars');
-    var StringUtil = require('nerdery/util/StringUtil');
-    var DOMElement = require('nerdery/display/DOMElement');
+    var StringUtil = require('structurejs/util/StringUtil');
+    var DOMElement = require('structurejs/display/DOMElement');
 
     /**
      * YUIDoc_comment
      *
      * @class TemplateFactory
-     * @module Nerdery
+     * @module StructureJS
      * @submodule util
      * @constructor
      * @version 0.1.0

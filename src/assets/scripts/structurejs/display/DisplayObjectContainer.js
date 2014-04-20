@@ -1,15 +1,15 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var Extend = require('nerdery/util/Extend');
-    var EventDispatcher = require('nerdery/event/EventDispatcher');
+    var Extend = require('structurejs/util/Extend');
+    var EventDispatcher = require('structurejs/event/EventDispatcher');
 
     /**
      * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
      * @class DisplayObjectContainer
      * @extends EventDispatcher
-     * @module Nerdery
+     * @module StructureJS
      * @submodule view
      * @constructor
      * @version 0.1.1
