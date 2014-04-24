@@ -77,6 +77,9 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          */
         EventBroker.dispatchEvent = function (event) {
+            event.target = EventBroker;
+            event.currentTarget = EventBroker;
+
             EventBroker._eventDispatcher.dispatchEvent(event);
         };
 

@@ -41,6 +41,13 @@ define(function (require, exports, module) { // jshint ignore:line
             this.CLASS_NAME = 'TimerEvent';
         }
 
+        /**
+         * @overridden BaseEvent.clone
+         */
+        TimerEvent.prototype.clone = function () {
+            return new TimerEvent(this.type, this.bubble, this.cancelable, this.data);
+        };
+
         return TimerEvent;
     })();
 

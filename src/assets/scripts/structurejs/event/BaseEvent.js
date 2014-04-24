@@ -1,6 +1,9 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
+    var Extend = require('structurejs/util/Extend');
+    var BaseObject = require('structurejs/BaseObject');
+
     /**
      * <p>The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
      *
@@ -8,6 +11,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
      * detailed information.</p>
      * @class BaseEvent
+     * @extends BaseObject
      * @example
      // Example: how to create a custom event by extending BaseEvent.
         var Extend = require('structurejs/util/Extend');
@@ -40,6 +44,8 @@ define(function (require, exports, module) { // jshint ignore:line
      * @version 0.1.0
      **/
     var BaseEvent = (function () {
+
+        var _super = Extend(BaseEvent, BaseObject);
 
         BaseEvent.ACTIVATE = 'BaseEvent.activate';
 
@@ -97,6 +103,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof bubbles === "undefined") { bubbles = false; }
             if (typeof cancelable === "undefined") { cancelable = false; }
             if (typeof data === "undefined") { data = null; }
+            _super.call(this);
 
             /**
              * @overridden BaseObject.CLASS_NAME
