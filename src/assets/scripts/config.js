@@ -9,7 +9,7 @@ require.config({
         //main libraries
         jquery: '../vendor/jquery/jquery-1.9.1',
         lodash: '../vendor/lodash/lodash.compat',
-        Handlebars: '../vendor/handlebars/handlebars-v1.3.0',
+        handlebars: '../vendor/handlebars/handlebars-v1.3.0',
         eventListener: 'structurejs/plugin/jquery.eventListener',
 
         //shortcut paths
@@ -42,7 +42,7 @@ require.config({
         json2: {
             exports: 'JSON'
         },
-        Handlebars: {
+        handlebars: {
             exports: 'Handlebars'
         }
     },
@@ -56,6 +56,6 @@ require.config({
     },
     deps: [
         'json2',
-        'Handlebars'
+        'handlebars'
     ]
 });
