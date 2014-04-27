@@ -109,7 +109,12 @@ define(function (require, exports, module) { // jshint ignore:line
                 this.layoutChildren();
             }
 
-            if (enabled) {
+            if (enabled === false)
+            {
+                this.disable();
+            }
+            else
+            {
                 this.enable();
             }
 
