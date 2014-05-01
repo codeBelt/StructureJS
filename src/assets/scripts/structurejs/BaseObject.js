@@ -45,7 +45,9 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          */
         BaseObject.prototype.getQualifiedClassName = function () {
-            return this.CLASS_NAME;
+            var funcNameRegex = /function (.{1,})\(/;
+            var results = (funcNameRegex).exec(this.constructor.toString());
+            return (results && results.length > 1) ? results[1] : '';
         };
 
         /**
