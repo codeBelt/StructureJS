@@ -21,11 +21,6 @@ define(function (require, exports, module) {
         function ChildView() {
             _super.call(this);
 
-            /**
-             * @overridden DOMElement.CLASS_NAME
-             */
-            this.CLASS_NAME = 'ChildView';
-
             this._panelContainer = null;
             this._dispatchButton = null;
             this._sonMessage = null;

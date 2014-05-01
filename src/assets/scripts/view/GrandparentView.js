@@ -21,10 +21,6 @@ define(function (require, exports, module) {
         function GrandparentView() {
             _super.call(this);
 
-            /**
-             * @overridden DOMElement.CLASS_NAME
-             */
-            this.CLASS_NAME = 'GrandparentView';
             this._panelContainer = null;
             this._parentView = null;
             this._grandparentMessage = null;

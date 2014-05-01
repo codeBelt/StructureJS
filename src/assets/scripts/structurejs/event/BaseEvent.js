@@ -26,7 +26,6 @@ define(function (require, exports, module) { // jshint ignore:line
             function CountryEvent(type, bubbles, cancelable, data) {
                 _super.call(this, type, bubbles, cancelable, data);
 
-                this.CLASS_NAME = 'CountryEvent';
                 this.countryName = null;
             }
 
@@ -104,11 +103,6 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof cancelable === "undefined") { cancelable = false; }
             if (typeof data === "undefined") { data = null; }
             _super.call(this);
-
-            /**
-             * @overridden BaseObject.CLASS_NAME
-             */
-            this.CLASS_NAME = 'BaseEvent';
 
             /**
              * The type of event.

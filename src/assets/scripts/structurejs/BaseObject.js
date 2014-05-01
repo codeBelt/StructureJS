@@ -15,15 +15,6 @@ define(function (require, exports, module) { // jshint ignore:line
          **/
         function BaseObject() {
             /**
-             * The fully qualified class name of the object. Use {{#crossLink "BaseObject/getQualifiedClassName:method"}}{{/crossLink}} method to retrieve the class name of a  object.
-             *
-             * @property CLASS_NAME
-             * @type {string}
-             * @final
-             * @protected
-             */
-            this.CLASS_NAME = 'BaseObject';
-            /**
              * The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.
              *
              * @property cid
@@ -34,6 +25,8 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.cid = null;
             this.cid = Util.uniqueId();
+
+            console.log("getQualifiedClassName", this.getQualifiedClassName(), this.cid);
         }
         /**
          * Returns the fully qualified class name of an object.
@@ -45,9 +38,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          */
         BaseObject.prototype.getQualifiedClassName = function () {
-            var funcNameRegex = /function (.{1,})\(/;
-            var results = (funcNameRegex).exec(this.constructor.toString());
-            return (results && results.length > 1) ? results[1] : '';
+            return Util.getClassName(this);
         };
 
         /**

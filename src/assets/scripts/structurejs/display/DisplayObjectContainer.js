@@ -22,11 +22,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this);
 
             /**
-             * @overridden EventDispatcher.CLASS_NAME
-             */
-            this.CLASS_NAME = 'DisplayObjectContainer';
-
-            /**
              * The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.
              *
              * @property isCreated

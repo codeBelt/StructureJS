@@ -25,11 +25,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this);
 
             /**
-            * @overridden BaseObject.CLASS_NAME
-            */
-            this.CLASS_NAME = 'Timer';
-
-            /**
             * A reference to the setInterval object.
             *
             * @property _timer

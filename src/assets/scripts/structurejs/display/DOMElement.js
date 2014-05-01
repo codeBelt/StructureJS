@@ -37,8 +37,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
             function ClassName($element) {
                 _super.call(this, $element);
-
-                this.CLASS_NAME = 'ClassName';
             }
 
             ClassName.prototype.createChildren = function () {
@@ -93,8 +91,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
             function ClassName() {
                 _super.call(this);
-
-                this.CLASS_NAME = 'ClassName';
             }
 
             ClassName.prototype.createChildren = function () {
@@ -143,11 +139,6 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof params === "undefined") { params = null; }
 
             _super.call(this);
-
-            /**
-             * @overridden DisplayObjectContainer.CLASS_NAME
-             */
-            this.CLASS_NAME = 'DOMElement';
 
             /**
              * Whether or not the display object is visible. Display objects that are not visible are disabled.

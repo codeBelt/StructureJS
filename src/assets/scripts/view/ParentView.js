@@ -22,10 +22,6 @@ define(function (require, exports, module) {
         function ParentView() {
             _super.call(this);
 
-            /**
-             * @overridden DOMElement.CLASS_NAME
-             */
-            this.CLASS_NAME = 'ParentView';
             this._panelContainer = null;
             this._childView = null;
             this._parentMessage = null;

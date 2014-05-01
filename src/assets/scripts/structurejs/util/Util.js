@@ -160,6 +160,22 @@ define(function (require, exports, module) { // jshint ignore:line
             return (strNum == "1" || strNum == "true");
         };
 
+        /**
+         * Returns the name of the class object passed in.
+         *
+         * @method getClassName
+         * @param classObject {Object}
+         * @returns {string} Returns the name of the class object passed in.
+         * @public
+         * @static
+         */
+        Util.getClassName = function (classObject) {
+            var funcNameRegex = /function (.{1,})\(/;
+            var results = (funcNameRegex).exec(classObject.constructor.toString());
+
+            return (results && results.length > 1) ? results[1] : '';
+        };
+
         return Util;
     })();
 

@@ -21,8 +21,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
                 function MainClass() {
                     _super.call(this);
-
-                    this.CLASS_NAME = 'MainClass';
                 }
 
                 MainClass.prototype.createChildren = function () {
@@ -84,10 +82,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
         function Stage() {
             _super.call(this);
-            /**
-             * @overridden DOMElement.CLASS_NAME
-             */
-            this.CLASS_NAME = 'Stage';
         }
 
         /**

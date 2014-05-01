@@ -21,11 +21,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
         function ValueObject() {
             _super.call(this);
-
-            /**
-             * @overridden BaseObject.CLASS_NAME
-             */
-            this.CLASS_NAME = 'ValueObject';
         }
 
         /**

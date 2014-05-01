@@ -23,10 +23,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this);
 
             /**
-             * @overridden BaseObject.CLASS_NAME
-             */
-            this.CLASS_NAME = 'EventDispatcher';
-            /**
              * Holds a reference to added listeners.
              *
              * @property _listeners

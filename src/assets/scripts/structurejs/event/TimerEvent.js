@@ -34,11 +34,6 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof data === "undefined") { data = null; }
 
             _super.call(this, type, bubbles, cancelable, data);
-
-            /**
-             * @overridden BaseObject.CLASS_NAME
-             */
-            this.CLASS_NAME = 'TimerEvent';
         }
 
         /**

@@ -22,11 +22,6 @@ define(function (require, exports, module) {
         function EventBubblingApp() {
             _super.call(this);
 
-            /**
-             * @overridden Stage.CLASS_NAME
-             */
-            this.CLASS_NAME = 'EventBubblingApp';
-
             this._grandpaView = null;
             this._clearButton = null;
             this._$stageMessage = null;
