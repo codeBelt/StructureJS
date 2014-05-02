@@ -5,7 +5,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var Extend = require('structurejs/util/Extend');
     var DOMElement = require('structurejs/display/DOMElement');
     var BaseEvent = require('structurejs/event/BaseEvent');
-    var ChildView = require('view/ChildView');
+    var ChildView = require('example2/view/ChildView');
     var ContainerTemplate = require('hbs!templates/ContainerTemplate');
 
     /**

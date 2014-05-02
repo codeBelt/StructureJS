@@ -4,7 +4,7 @@
 require(
     [
         'example1/SimonApp',
-        'EventBubblingApp',
+        'example2/EventBubblingApp',
         'jquery'
     ],
     function(

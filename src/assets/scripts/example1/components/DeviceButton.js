@@ -66,7 +66,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (this.isEnabled === false) return this;
 
             this.$element.removeEventListener('click', this.onClick, this);
-            this.$element.css('cursor','none');
+            this.$element.css('cursor','default');
 
             return _super.prototype.disable.call(this);
         };

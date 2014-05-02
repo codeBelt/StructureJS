@@ -6,7 +6,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var Stage = require('structurejs/display/Stage');
     var BaseEvent = require('structurejs/event/BaseEvent');
     var EventBroker = require('structurejs/event/EventBroker');
-    var GrandparentView = require('view/GrandparentView');
+    var GrandparentView = require('example2/view/GrandparentView');
 
     /**
      * YUIDoc_comment
