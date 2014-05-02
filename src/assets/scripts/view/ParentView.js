@@ -1,4 +1,4 @@
-define(function (require, exports, module) {
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     // Imports
@@ -39,7 +39,7 @@ define(function (require, exports, module) {
             this._panelContainer.addChild(this._childView);
 
             this._parentMessage = this.getChild('.js-message');
-        }
+        };
 
         /**
          * @overridden DOMElement.layoutChildren
@@ -49,7 +49,7 @@ define(function (require, exports, module) {
             this._childView.layoutChildren();
 
             return this;
-        }
+        };
 
         /**
          * @overridden DOMElement.enable
@@ -62,7 +62,7 @@ define(function (require, exports, module) {
             this._childView.enable();
 
             return _super.prototype.enable.call(this);
-        }
+        };
 
         /**
          * @overridden DOMElement.disable
@@ -75,7 +75,7 @@ define(function (require, exports, module) {
             this._childView.disable();
 
             return _super.prototype.disable.call(this);
-        }
+        };
 
         /**
          * @overridden DOMElement.destroy
@@ -88,7 +88,7 @@ define(function (require, exports, module) {
 
             this._panelContainer.destroy();
             this._panelContainer = null;
-        }
+        };
 
         ParentView.prototype.onBubbled = function (event) {
             var checkbox = this._panelContainer.$element.find('[type=checkbox]').first().prop('checked');
@@ -98,7 +98,7 @@ define(function (require, exports, module) {
             }
 
             this._parentMessage.$element.css('opacity', 1);
-        }
+        };
 
         return ParentView;
     })();

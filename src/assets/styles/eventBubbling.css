@@ -1,4 +1,4 @@
-* {
+.eventBubblingApp * {
     box-sizing: border-box;
 }
 
@@ -10,9 +10,7 @@ html, body {
     font-family: arial, sans-serif;
 }
 
-.wrapper {
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+.eventBubblingApp {
     margin: auto;
     width:350px;
     height: 400px;

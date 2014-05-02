@@ -17,13 +17,20 @@
 
         <!-- build:css assets/styles/app.min.css -->
             <link rel="stylesheet" media="screen, projection" href="assets/styles/reset.css" />
-            <link rel="stylesheet" media="screen, projection" href="assets/styles/style.css" />
+            <link rel="stylesheet" media="screen, projection" href="assets/styles/simon.css" />
+            <link rel="stylesheet" media="screen, projection" href="assets/styles/eventBubbling.css" />
         <!-- endbuild -->
 
     </head>
     <body>
 
-    <div class="wrapper">
+    <div class="simonApp js-simonApp">
+        <h1>SIMON</h1>
+        <div class="simonApp-device js-simonApp-device">
+        </div>
+    </div>
+
+    <div class="eventBubblingApp js-eventBubblingApp">
         <div class="splitPair">
             <span class="message message_stage js-message">Stage has received the event</span>
             <button id="js-clearButton" type="button">Clear</button>

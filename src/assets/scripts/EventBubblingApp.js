@@ -1,4 +1,4 @@
-define(function (require, exports, module) {
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     // Imports
@@ -38,7 +38,7 @@ define(function (require, exports, module) {
 
             this._clearButton = this.getChild('#js-clearButton');
             this._$stageMessage = this.$element.find('.js-message');
-        }
+        };
 
         /**
          * @overridden Stage.layoutChildren
@@ -48,7 +48,7 @@ define(function (require, exports, module) {
             this._grandpaView.layoutChildren();
 
             return this;
-        }
+        };
 
         /**
          * @overridden Stage.enable
@@ -63,7 +63,7 @@ define(function (require, exports, module) {
             this._grandpaView.enable();
 
             return _super.prototype.enable.call(this);
-        }
+        };
 
         /**
          * @overridden Stage.disable
@@ -77,7 +77,7 @@ define(function (require, exports, module) {
             this._grandpaView.disable();
 
             return _super.prototype.disable.call(this);
-        }
+        };
 
         /**
          * @overridden Stage.destroy
@@ -92,15 +92,15 @@ define(function (require, exports, module) {
             this._clearButton = null;
 
             this._$stageMessage = null;
-        }
+        };
 
         EventBubblingApp.prototype.onClearClick = function (event) {
             this.layoutChildren();
-        }
+        };
 
         EventBubblingApp.prototype.onBubbled = function (event) {
             this._$stageMessage.css('opacity', 1);
-        }
+        };
 
         return EventBubblingApp;
     })();

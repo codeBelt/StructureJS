@@ -1,4 +1,4 @@
-define(function (require, exports, module) {
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     // Imports
@@ -38,7 +38,7 @@ define(function (require, exports, module) {
             this._panelContainer.addChild(this._dispatchButton);
 
             this._sonMessage = this.getChild('.js-message');
-        }
+        };
 
         /**
          * @overridden DOMElement.layoutChildren
@@ -47,7 +47,7 @@ define(function (require, exports, module) {
             this._sonMessage.$element.css('opacity', 0);
 
             return this;
-        }
+        };
 
         /**
          * @overridden DOMElement.enable
@@ -60,7 +60,7 @@ define(function (require, exports, module) {
             this._dispatchButton.$element.addEventListener('click', this.onButtonClick, this);
 
             return _super.prototype.enable.call(this);
-        }
+        };
 
         /**
          * @overridden DOMElement.disable
@@ -73,7 +73,7 @@ define(function (require, exports, module) {
             this._dispatchButton.$element.removeEventListener('click', this.onButtonClick, this);
 
             return _super.prototype.disable.call(this);
-        }
+        };
 
         /**
          * @overridden DOMElement.destroy
@@ -86,14 +86,14 @@ define(function (require, exports, module) {
 
             this._panelContainer.destroy();
             this._panelContainer = null;
-        }
+        };
 
         ChildView.prototype.onButtonClick = function (event) {
             event.preventDefault();
 
             this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
             EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
-        }
+        };
 
         ChildView.prototype.onBubbled = function (event) {
             var checkbox = this._panelContainer.$element.find('[type=checkbox]').first().prop('checked');
@@ -103,7 +103,7 @@ define(function (require, exports, module) {
             }
 
             this._sonMessage.$element.css('opacity', 1);
-        }
+        };
 
         return ChildView;
     })();

@@ -4,6 +4,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var Util = require('structurejs/util/Util');
 
     var BaseObject = (function () {
+
         /**
          * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.
          *
@@ -25,9 +26,8 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.cid = null;
             this.cid = Util.uniqueId();
-
-            console.log("getQualifiedClassName", this.getQualifiedClassName(), this.cid);
         }
+
         /**
          * Returns the fully qualified class name of an object.
          *
@@ -66,6 +66,7 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         BaseObject.prototype.destroy = function () {
         };
+
         return BaseObject;
     })();
 

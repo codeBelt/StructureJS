@@ -3,18 +3,23 @@
  */
 require(
     [
+        'example1/SimonApp',
         'EventBubblingApp',
         'jquery'
     ],
     function(
+        SimonApp,
         EventBubblingApp,
         $
     ) {
         'use strict';
 
         $(document).ready(function () {
-            var app = new EventBubblingApp();
-            app.appendTo('.wrapper');
+            var simon = new SimonApp();
+            simon.appendTo('.js-simonApp');
+
+            var bubbling = new EventBubblingApp();
+            bubbling.appendTo('.js-eventBubblingApp');
         });
     }
 );
