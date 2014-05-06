@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>core - Single-Page-Application-GruntJS</title>
+    <title>src/assets/scripts/structurejs/display/Stage.js - Single-Page-Application-GruntJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,50 +118,135 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>core Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src/assets/scripts/structurejs/display/Stage.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:8</code></a>
-        </div>
-    
+    var $ = require(&#x27;jquery&#x27;);
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var DOMElement = require(&#x27;structurejs/display/DOMElement&#x27;);
 
-    
-</div>
+    /**
+     * The {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class should be extended by your main or root class.
+     * @example
+     // This example illustrates how to setup your main or root class when extending the {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class.
+        define(function (require, exports, module) {
+            &#x27;use strict&#x27;;
 
+            var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+            var Stage = require(&#x27;replace/path/Stage&#x27;);
 
+            var MainClass = (function () {
 
-<div class="box intro">
-    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all  classes.</p>
+            var _super = Extend(MainClass, Stage);
 
-</div>
+                function MainClass() {
+                    _super.call(this);
+                }
 
+                MainClass.prototype.createChildren = function () {
+                    _super.prototype.createChildren.call(this);
 
+                    // Create and add your child objects to this parent class.
+                }
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+                MainClass.prototype.layoutChildren = function () {
+                    // Layout or update the child objects in this parent class.
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/BaseObject.html">
-                        BaseObject
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
+                    return this;
+                }
 
-    <div class="yui3-u-1-2">
-        
-    </div>
+                MainClass.prototype.enable = function () {
+                    if (this.isEnabled === true) return this;
+
+                    // Enable the child objects and add any event listeners.
+
+                    return _super.prototype.enable.call(this);
+                }
+
+                MainClass.prototype.disable = function () {
+                    if (this.isEnabled === false) return this;
+
+                    // Disable the child objects and remove any event listeners.
+
+                    return _super.prototype.disable.call(this);
+                }
+
+                MainClass.prototype.destroy = function () {
+                    _super.prototype.destroy.call(this);
+
+                    // Destroy the child objects and references in this parent class to prevent memory leaks.
+                }
+
+                return MainClass;
+            })();
+
+            module.exports = MainClass;
+        });
+     *
+     * &lt;b&gt;Instantiation Example&lt;/b&gt;&lt;br&gt;
+     * This example illustrates how to instantiation your main or root class.
+     *
+     *      var app = new MainClass();
+     *      app.appendTo(&#x27;body&#x27;);
+     *
+     * @class Stage
+     * @extends DOMElement
+     * @module StructureJS
+     * @submodule view
+     * @constructor
+     * @version 0.1.0
+     **/
+    var Stage = (function () {
+
+        var _super = Extend(Stage, DOMElement);
+
+        function Stage() {
+            _super.call(this);
+        }
+
+        /**
+         * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
+         *
+         * @method appendTo
+         * @param type {string} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+         * @param [enabled=true] {boolean} Sets the enabled state of the object.
+         * @chainable
+         */
+        Stage.prototype.appendTo = function (type, enabled) {
+            if (typeof enabled === &quot;undefined&quot;) { enabled = true; }
+            this.$element = jQuery(type);
+            this.$element.attr(&#x27;data-cid&#x27;, this.cid);
+
+            if (!this.isCreated) {
+                this.createChildren();
+                this.isCreated = true;
+                this.layoutChildren();
+            }
+
+            if (enabled === false)
+            {
+                this.disable();
+            }
+            else
+            {
+                this.enable();
+            }
+
+            return this;
+        };
+
+        return Stage;
+    })();
+
+    module.exports = Stage;
+
+});
+
+    </pre>
 </div>
 
                     </div>

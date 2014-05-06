@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>core - Single-Page-Application-GruntJS</title>
+    <title>src/assets/scripts/structurejs/BaseObject.js - Single-Page-Application-GruntJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,50 +118,88 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>core Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src/assets/scripts/structurejs/BaseObject.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:8</code></a>
-        </div>
-    
+    var Util = require(&#x27;structurejs/util/Util&#x27;);
 
-    
-</div>
+    var BaseObject = (function () {
+
+        /**
+         * The {{#crossLink &quot;BaseObject&quot;}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.
+         *
+         * @class BaseObject
+         * @module StructureJS
+         * @submodule core
+         * @constructor
+         * @version 0.1.0
+         **/
+        function BaseObject() {
+            /**
+             * The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.
+             *
+             * @property cid
+             * @type {int}
+             * @default null
+             * @writeOnce
+             * @public
+             */
+            this.cid = null;
+            this.cid = Util.uniqueId();
+        }
+
+        /**
+         * Returns the fully qualified class name of an object.
+         *
+         * @example
+         instance.getQualifiedClassName();
+         * @method getQualifiedClassName
+         * @returns {string} Returns the class name.
+         * @public
+         */
+        BaseObject.prototype.getQualifiedClassName = function () {
+            return Util.getClassName(this);
+        };
+
+        /**
+         * The purpose of the destroy method is to make an object ready for garbage collection. This
+         * should be thought of as a one way function. Once destroy is called no further methods should be
+         * called on the object or properties accessed. It is the responsibility of those who implement this
+         * function to stop all running Timers, all running Sounds, remove any event
+         * listeners and take any other steps necessary to make an object eligible for garbage collection.
+         * It is critical that all subclasses call the super for this function in their overridden methods.
+         *
+         * Note: super.destroy(); should be called first before you clean up any other objects/items in the current classs.
+         * The {{#crossLink &quot;BaseObject/destroy:method&quot;}}{{/crossLink}} method also calls the
+         * {{#crossLink &quot;EventDispatcher/disable:method&quot;}}{{/crossLink}} method on all classes that extend
+         * {{#crossLink &quot;EventDispatcher&quot;}}{{/crossLink}}.
+         * @example
+        ClassName.prototype.destroy() {
+            _super.prototype.destroy.call(this);
+
+            this._childInstance.destroy();
+            this._childInstance = null;
+        }
+         * @method destroy
+         * @return {void}
+         * @public
+         */
+        BaseObject.prototype.destroy = function () {
+        };
+
+        return BaseObject;
+    })();
+
+    module.exports = BaseObject;
+
+});
 
 
-
-<div class="box intro">
-    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all  classes.</p>
-
-</div>
-
-
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/BaseObject.html">
-                        BaseObject
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+    </pre>
 </div>
 
                     </div>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/assets/scripts/structurejs/event/BaseEvent.js - Single-Page-Application-GruntJS</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="Single-Page-Application-GruntJS"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a href="../classes/Util.html">Util</a></li>
+            
+                <li><a href="../classes/ValueObject.html">ValueObject</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/core.html">core</a></li>
+            
+                <li><a href="../modules/event.html">event</a></li>
+            
+                <li><a href="../modules/model.html">model</a></li>
+            
+                <li><a href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a href="../modules/util.html">util</a></li>
+            
+                <li><a href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/assets/scripts/structurejs/event/BaseEvent.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
+
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var BaseObject = require(&#x27;structurejs/BaseObject&#x27;);
+
+    /**
+     * &lt;p&gt;The {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.&lt;/p&gt;
+     *
+     * &lt;p&gt;The properties of the {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} class carry basic information about an event, such as the event&#x27;s type or whether the event&#x27;s default behavior can be canceled.
+     * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
+     * detailed information.&lt;/p&gt;
+     * @class BaseEvent
+     * @extends BaseObject
+     * @example
+     // Example: how to create a custom event by extending BaseEvent.
+        var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+        var BaseEvent = require(&#x27;structurejs/event/BaseEvent&#x27;);
+
+        var CountryEvent = (function () {
+
+            var _super = Extend(CountryEvent, BaseEvent);
+
+            CountryEvent.CHANGE_COUNTRY = &quot;CountryEvent.changeCountry&quot;;
+
+            function CountryEvent(type, bubbles, cancelable, data) {
+                _super.call(this, type, bubbles, cancelable, data);
+
+                this.countryName = null;
+            }
+
+            return CountryEvent;
+        })();
+     * @param type {string} The type of event. The type is case-sensitive.
+     * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
+     * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink &quot;EventDispatcher/parent:property&quot;}}{{/crossLink}})
+     * (containers of containers of etc.) of the {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink &quot;Stage&quot;}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
+     * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
+     * @param [data=null] {any} Use to pass any type of data with the event.
+     * @module StructureJS
+     * @submodule event
+     * @constructor
+     * @version 0.1.0
+     **/
+    var BaseEvent = (function () {
+
+        var _super = Extend(BaseEvent, BaseObject);
+
+        BaseEvent.ACTIVATE = &#x27;BaseEvent.activate&#x27;;
+
+        BaseEvent.ADDED = &#x27;BaseEvent.added&#x27;;
+
+        BaseEvent.ADDED_TO_STAGE = &#x27;BaseEvent.addedToStage&#x27;;
+
+        BaseEvent.CANCEL = &#x27;BaseEvent.cancel&#x27;;
+
+        BaseEvent.CHANGE = &#x27;BaseEvent.change&#x27;;
+
+        BaseEvent.CLEAR = &#x27;BaseEvent.clear&#x27;;
+
+        BaseEvent.CLOSE = &#x27;BaseEvent.close&#x27;;
+
+        BaseEvent.CLOSING = &#x27;BaseEvent.closing&#x27;;
+
+        BaseEvent.COMPLETE = &#x27;BaseEvent.complete&#x27;;
+
+        BaseEvent.CONNECT = &#x27;BaseEvent.connect&#x27;;
+
+        BaseEvent.COPY = &#x27;BaseEvent.copy&#x27;;
+
+        BaseEvent.CUT = &#x27;BaseEvent.cut&#x27;;
+
+        BaseEvent.DEACTIVATE = &#x27;BaseEvent.deactivate&#x27;;
+
+        BaseEvent.DISPLAYING = &#x27;BaseEvent.displaying&#x27;;
+
+        BaseEvent.ENTER_FRAME = &#x27;BaseEvent.enterFrame&#x27;;
+
+        BaseEvent.EXIT_FRAME = &#x27;BaseEvent.exitFrame&#x27;;
+
+        BaseEvent.EXITING = &#x27;BaseEvent.exiting&#x27;;
+
+        BaseEvent.FULLSCREEN = &#x27;BaseEvent.fullScreen&#x27;;
+
+        BaseEvent.INIT = &#x27;BaseEvent.init&#x27;;
+
+        BaseEvent.NETWORK_CHANGE = &#x27;BaseEvent.networkChange&#x27;;
+
+        BaseEvent.OPEN = &#x27;BaseEvent.open&#x27;;
+
+        BaseEvent.PASTE = &#x27;BaseEvent.paste&#x27;;
+
+        BaseEvent.PREPARING = &#x27;BaseEvent.preparing&#x27;;
+
+        BaseEvent.REMOVED = &#x27;BaseEvent.removed&#x27;;
+
+        BaseEvent.RENDER = &#x27;BaseEvent.render&#x27;;
+
+        BaseEvent.RESIZE = &#x27;BaseEvent.resize&#x27;;
+
+        function BaseEvent(type, bubbles, cancelable, data) {
+            if (typeof bubbles === &quot;undefined&quot;) { bubbles = false; }
+            if (typeof cancelable === &quot;undefined&quot;) { cancelable = false; }
+            if (typeof data === &quot;undefined&quot;) { data = null; }
+            _super.call(this);
+
+            /**
+             * The type of event.
+             *
+             * @property type
+             * @type {string}
+             * @default null
+             * @readOnly
+             */
+            this.type = null;
+
+            /**
+             * A reference to the object that originally dispatched the event.
+             *
+             * @property target
+             * @type {any}
+             * @default null
+             * @readOnly
+             */
+            this.target = null;
+
+            /**
+             * The currentTarget property always points to the {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
+             *
+             * @property currentTarget
+             * @type {any}
+             * @default null
+             * @readOnly
+             */
+            this.currentTarget = null;
+
+            /**
+             * Use to pass any type of data with the event.
+             *
+             * @property data
+             * @type {any}
+             * @default null
+             */
+            this.data = null;
+
+            /**
+             * Indicates whether an event is a bubbling event.
+             *
+             * @property bubble
+             * @type {boolean}
+             * @default false
+             */
+            this.bubble = false;
+
+            /**
+             * Indicates whether the behavior associated with the event can be prevented.
+             *
+             * @property cancelable
+             * @type {boolean}
+             * @default false
+             */
+            this.cancelable = false;
+
+            /**
+             *
+             * @property isPropagationStopped
+             * @type {boolean}
+             * @default false
+             * @readOnly
+             */
+            this.isPropagationStopped = false;
+
+            /**
+             *
+             * @property isImmediatePropagationStopped
+             * @type {boolean}
+             * @default false
+             * @readOnly
+             */
+            this.isImmediatePropagationStopped = false;
+
+            this.type = type;
+            this.bubble = bubbles;
+            this.cancelable = cancelable;
+            this.data = data;
+        }
+
+        /**
+         * Duplicates an instance of an BaseEvent subclass.
+         *
+         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
+         * You do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch
+         * an event—that is, when you call dispatchEvent(event) from a handler that is handling event.
+         *
+         * The new Event object includes all the properties of the original.
+         *
+         * When creating your own custom Event class, you must override the inherited Event.clone() method in order for it
+         * to duplicate the properties of your custom class. If you do not set all the properties that you add in your event
+         * subclass, those properties will not have the correct values when listeners handle the redispatched event.
+         *
+         * @method clone
+         * @returns {BaseEvent}
+         * @public
+         */
+        BaseEvent.prototype.clone = function () {
+            return new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+        };
+
+        /**
+         * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
+         * This method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()
+         * method prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
+         * This method can be called in any phase of
+         *
+         * @method stopPropagation
+         * @public
+         */
+        BaseEvent.prototype.stopPropagation = function () {
+            this.isPropagationStopped = true;
+        };
+
+        /**
+         * Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
+         * This method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()
+         * method doesn&#x27;t take effect until all the event listeners in the current node finish processing.
+         *
+         * @method stopImmediatePropagation
+         * @public
+         */
+        BaseEvent.prototype.stopImmediatePropagation = function () {
+            this.stopPropagation();
+            this.isImmediatePropagationStopped = true;
+        };
+
+        return BaseEvent;
+    })();
+
+    module.exports = BaseEvent;
+
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

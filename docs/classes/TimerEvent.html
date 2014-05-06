@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>BaseEvent - Single-Page-Application-GruntJS</title>
+    <title>TimerEvent - Single-Page-Application-GruntJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,19 +118,19 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>BaseEvent Class</h1>
+                        <h1>TimerEvent Class</h1>
 <div class="box meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a>
+            Extends <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:7</code></a>
+            Defined in: <a href="../files/src_assets_scripts_structurejs_event_TimerEvent.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;TimerEvent.js:7</code></a>
         </div>
     
 
@@ -147,18 +147,15 @@
 
 
 <div class="box intro">
-    <p>The <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a> class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
+    <p>The TimerEvent...</p>
 
-<p>The properties of the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a> class carry basic information about an event, such as the event&#39;s type or whether the event&#39;s default behavior can be canceled.
-For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
-detailed information.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_BaseEvent" class="method item">
-    <h3 class="name"><code>BaseEvent</code></h3>
+        <div id="method_TimerEvent" class="method item">
+    <h3 class="name"><code>TimerEvent</code></h3>
 
     
         <div class="args">
@@ -217,7 +214,7 @@ detailed information.</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:7</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_TimerEvent.js.html#l7"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;TimerEvent.js:7</code></a>
         
         </p>
 
@@ -313,32 +310,6 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
     
 
     
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>// Example: how to create a custom event by extending BaseEvent.
-   var Extend = require(&#39;structurejs/util/Extend&#39;);
-   var BaseEvent = require(&#39;structurejs/event/BaseEvent&#39;);
-
-   var CountryEvent = (function () {
-
-       var _super = Extend(CountryEvent, BaseEvent);
-
-       CountryEvent.CHANGE_COUNTRY = &quot;CountryEvent.changeCountry&quot;;
-
-       function CountryEvent(type, bubbles, cancelable, data) {
-           _super.call(this, type, bubbles, cancelable, data);
-
-           this.countryName = null;
-       }
-
-       return CountryEvent;
-   })();</code></pre>
-
-            </div>
-        </div>
-    
 </div>
 
     </div>
@@ -368,7 +339,7 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
 
                     <ul class="index-list methods extends">
                         
-                            <li class="index-item method public">
+                            <li class="index-item method public inherited">
                                 <a href="#method_clone">clone</a>
 
                                 
@@ -389,14 +360,14 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
                                 
                             </li>
                         
-                            <li class="index-item method public">
+                            <li class="index-item method public inherited">
                                 <a href="#method_stopImmediatePropagation">stopImmediatePropagation</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method public">
+                            <li class="index-item method public inherited">
                                 <a href="#method_stopPropagation">stopPropagation</a>
 
                                 
@@ -413,14 +384,14 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
 
                     <ul class="index-list properties extends">
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_bubble">bubble</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_cancelable">cancelable</a>
 
                                 
@@ -434,42 +405,42 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_currentTarget">currentTarget</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_data">data</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_isImmediatePropagationStopped">isImmediatePropagationStopped</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_isPropagationStopped">isPropagationStopped</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_target">target</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_type">type</a>
 
                                 
@@ -490,7 +461,7 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_clone" class="method item public">
+                    <div id="method_clone" class="method item public inherited">
     <h3 class="name"><code>clone</code></h3>
 
     
@@ -520,11 +491,8 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#method_clone">BaseEvent</a>:
             
         
         
@@ -744,7 +712,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
 </div>
 
                 
-                    <div id="method_stopImmediatePropagation" class="method item public">
+                    <div id="method_stopImmediatePropagation" class="method item public inherited">
     <h3 class="name"><code>stopImmediatePropagation</code></h3>
 
     
@@ -770,11 +738,8 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#method_stopImmediatePropagation">BaseEvent</a>:
             
         
         
@@ -803,7 +768,7 @@ method doesn&#39;t take effect until all the event listeners in the current node
 </div>
 
                 
-                    <div id="method_stopPropagation" class="method item public">
+                    <div id="method_stopPropagation" class="method item public inherited">
     <h3 class="name"><code>stopPropagation</code></h3>
 
     
@@ -829,11 +794,8 @@ method doesn&#39;t take effect until all the event listeners in the current node
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#method_stopPropagation">BaseEvent</a>:
             
         
         
@@ -871,7 +833,7 @@ This method can be called in any phase of</p>
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_bubble" class="property item">
+                    <div id="property_bubble" class="property item inherited">
     <h3 class="name"><code>bubble</code></h3>
     <span class="type">Boolean</span>
 
@@ -886,11 +848,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_bubble">BaseEvent</a>:
             
         
         
@@ -918,7 +877,7 @@ This method can be called in any phase of</p>
 </div>
 
                 
-                    <div id="property_cancelable" class="property item">
+                    <div id="property_cancelable" class="property item inherited">
     <h3 class="name"><code>cancelable</code></h3>
     <span class="type">Boolean</span>
 
@@ -933,11 +892,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_cancelable">BaseEvent</a>:
             
         
         
@@ -1011,7 +967,7 @@ This method can be called in any phase of</p>
 </div>
 
                 
-                    <div id="property_currentTarget" class="property item">
+                    <div id="property_currentTarget" class="property item inherited">
     <h3 class="name"><code>currentTarget</code></h3>
     <span class="type">Any</span>
 
@@ -1026,11 +982,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_currentTarget">BaseEvent</a>:
             
         
         
@@ -1058,7 +1011,7 @@ This method can be called in any phase of</p>
 </div>
 
                 
-                    <div id="property_data" class="property item">
+                    <div id="property_data" class="property item inherited">
     <h3 class="name"><code>data</code></h3>
     <span class="type">Any</span>
 
@@ -1073,11 +1026,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_data">BaseEvent</a>:
             
         
         
@@ -1105,7 +1055,7 @@ This method can be called in any phase of</p>
 </div>
 
                 
-                    <div id="property_isImmediatePropagationStopped" class="property item">
+                    <div id="property_isImmediatePropagationStopped" class="property item inherited">
     <h3 class="name"><code>isImmediatePropagationStopped</code></h3>
     <span class="type">Boolean</span>
 
@@ -1120,11 +1070,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_isImmediatePropagationStopped">BaseEvent</a>:
             
         
         
@@ -1151,7 +1098,7 @@ This method can be called in any phase of</p>
 </div>
 
                 
-                    <div id="property_isPropagationStopped" class="property item">
+                    <div id="property_isPropagationStopped" class="property item inherited">
     <h3 class="name"><code>isPropagationStopped</code></h3>
     <span class="type">Boolean</span>
 
@@ -1166,11 +1113,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_isPropagationStopped">BaseEvent</a>:
             
         
         
@@ -1197,7 +1141,7 @@ This method can be called in any phase of</p>
 </div>
 
                 
-                    <div id="property_target" class="property item">
+                    <div id="property_target" class="property item inherited">
     <h3 class="name"><code>target</code></h3>
     <span class="type">Any</span>
 
@@ -1212,11 +1156,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_target">BaseEvent</a>:
             
         
         
@@ -1244,7 +1185,7 @@ This method can be called in any phase of</p>
 </div>
 
                 
-                    <div id="property_type" class="property item">
+                    <div id="property_type" class="property item inherited">
     <h3 class="name"><code>type</code></h3>
     <span class="type">String</span>
 
@@ -1259,11 +1200,8 @@ This method can be called in any phase of</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_type">BaseEvent</a>:
             
         
         

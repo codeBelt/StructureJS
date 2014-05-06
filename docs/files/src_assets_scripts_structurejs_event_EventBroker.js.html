@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>core - Single-Page-Application-GruntJS</title>
+    <title>src/assets/scripts/structurejs/event/EventBroker.js - Single-Page-Application-GruntJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,50 +118,104 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>core Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src/assets/scripts/structurejs/event/EventBroker.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:8</code></a>
-        </div>
-    
+    var EventDispatcher = require(&#x27;structurejs/event/EventDispatcher&#x27;);
 
-    
-</div>
+    /**
+     * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
+     * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
+     *
+     * @class EventBroker
+     * @module StructureJS
+     * @submodule event
+     * @static
+     * @version 0.1.0
+     **/
+    var EventBroker = (function () {
 
+        EventBroker.CLASS_NAME = &#x27;EventBroker&#x27;;
 
+        function EventBroker() {
+            throw new Error(&#x27;[EventBroker] Do instantiation the EventBroker class because it is a static class.&#x27;);
+        }
 
-<div class="box intro">
-    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all  classes.</p>
+        /**
+         * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
+         * @example
+        EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
-</div>
+        ClassName.prototype.handlerMethod(event) {
+            console.log(event.target + &quot; sent the event.&quot;);
+        }
+         * @method addEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+         * @param scope {any} Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#x27;t generally maintained.
+         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+         * @static
+         * @public
+         */
+        EventBroker.addEventListener = function (type, callback, scope, priority) {
+            if (typeof priority === &quot;undefined&quot;) { priority = 0; }
+            EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
+        };
 
+        /**
+         * Removes a specified listener from the EventBroker object.
+         * @example
+        EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
+        ClassName.prototype.handlerMethod(event:BaseEvent):void {
+            console.log(event.target + &quot; sent the event.&quot;);
+        }
+         * @method removeEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener object to remove.
+         * @param scope {any} The scope of the listener object to be removed.
+         * To keep things consistent this parameter is required.
+         * @static
+         * @public
+         */
+        EventBroker.removeEventListener = function (type, callback, scope) {
+            EventBroker._eventDispatcher.removeEventListener(type, callback, scope);
+        };
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+        /**
+         * &lt;p&gt;Dispatches an event within the EventBroker object.&lt;/p&gt;
+         * @example
+         var event = new BaseEvent(BaseEvent.CHANGE);
+         EventBroker.dispatchEvent(event);
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/BaseObject.html">
-                        BaseObject
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
+         // Here is a common inline event being dispatched
+         EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+         * @method dispatchEvent
+         * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
+         * extend the {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}}.
+         * @static
+         * @public
+         */
+        EventBroker.dispatchEvent = function (event) {
+            event.target = EventBroker;
+            event.currentTarget = EventBroker;
 
-    <div class="yui3-u-1-2">
-        
-    </div>
+            EventBroker._eventDispatcher.dispatchEvent(event);
+        };
+
+        EventBroker._eventDispatcher = new EventDispatcher();
+
+        return EventBroker;
+    })();
+
+    module.exports = EventBroker;
+
+});
+    </pre>
 </div>
 
                     </div>

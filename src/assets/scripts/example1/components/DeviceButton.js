@@ -20,7 +20,16 @@ define(function (require, exports, module) { // jshint ignore:line
         var _super = Extend(DeviceButton, DOMElement);
 
         function DeviceButton(color, index) {
-            _super.call(this, DeviceButtonTemplate, {buttonColor: color});
+            _super.call(this);
+
+            /**
+             * YUIDoc_comment
+             *
+             * @property _color
+             * @type {string}
+             * @private
+             */
+            this._color = color;
 
             /**
              * YUIDoc_comment
@@ -36,7 +45,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.createChildren
          */
         DeviceButton.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+            _super.prototype.createChildren.call(this, DeviceButtonTemplate, {buttonColor: this._color});
         };
 
         /**

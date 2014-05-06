@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>core - Single-Page-Application-GruntJS</title>
+    <title>src/assets/scripts/structurejs/model/ValueObject.js - Single-Page-Application-GruntJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,50 +118,120 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>core Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src/assets/scripts/structurejs/model/ValueObject.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:8</code></a>
-        </div>
-    
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var Util = require(&#x27;structurejs/util/Util&#x27;);
+    var BaseObject = require(&#x27;structurejs/BaseObject&#x27;);
 
-    
-</div>
+    /**
+     * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+     *
+     * @class ValueObject
+     * @param [data] {any} Provide a way to update the value object upon initialization.
+     * @module StructureJS
+     * @submodule model
+     * @constructor
+     * @version 0.1.0
+     **/
+    var ValueObject = (function () {
 
+        var _super = Extend(ValueObject, BaseObject);
 
+        function ValueObject() {
+            _super.call(this);
+        }
 
-<div class="box intro">
-    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all  classes.</p>
+        /**
+         * Provide a way to update the value object.
+         *
+         * @method update
+         * @param data {any}
+         * @public
+         */
+        ValueObject.prototype.update = function (data) {
+            return this;
+        };
 
-</div>
+        /**
+         * ...
+         *
+         * @method toJSON
+         * @returns {ValueObject}
+         * @public
+         */
+        ValueObject.prototype.toJSON = function () {
+            var clone = this.clone();
+            return Util.deletePropertyFromObject(clone, [&#x27;cid&#x27;]);
+        };
 
+        /**
+         * ...
+         *
+         * @method toJSONString
+         * @returns {string}
+         * @public
+         */
+        ValueObject.prototype.toJSONString = function () {
+            return JSON.stringify(this.toJSON());
+        };
 
+        /**
+         * Converts the string json data into an Object and calls the {{#crossLink &quot;ValueObject/update:method&quot;}}{{/crossLink}} method with the converted Object.
+         *
+         * @method fromJSON
+         * @param json {string}
+         * @public
+         */
+        ValueObject.prototype.fromJSON = function (json) {
+            var parsedData = JSON.parse(json);
+            this.update(parsedData);
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+            return this;
+        };
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/BaseObject.html">
-                        BaseObject
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
+        /**
+         *
+         *
+         * @method clone
+         * @returns {Object}
+         * @public
+         */
+        ValueObject.prototype.clone = function () {
+            return Util.clone(this);
+        };
 
-    <div class="yui3-u-1-2">
-        
-    </div>
+        /**
+         *
+         *
+         * @method copy
+         * @returns {IValueObject}
+         * @public
+         */
+        ValueObject.prototype.copy = function () {
+            var copy = new Object();
+
+            for (var key in this) {
+                if (this.hasOwnProperty(key)) {
+                    copy[key] = this[key];
+                }
+            }
+
+            return copy;
+        };
+
+        return ValueObject;
+    })();
+
+    module.exports = ValueObject;
+
+});
+    </pre>
 </div>
 
                     </div>

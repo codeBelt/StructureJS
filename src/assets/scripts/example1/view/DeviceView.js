@@ -75,7 +75,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this._buttonList = [];
 
             this._blueButton = new DeviceButton('blue', 0);
-            this.addChildAt(this._blueButton, 0);
+            this.addChild(this._blueButton);
 
             this._redButton = new DeviceButton('red', 1);
             this.addChildAt(this._redButton, 0);
@@ -149,7 +149,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this._yellowButton.destroy();
             this._yellowButton = null;
         };
-
 
         /**
          * YUIDoc_comment
