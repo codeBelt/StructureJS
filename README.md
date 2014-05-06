@@ -4,10 +4,10 @@
 [WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
 
 #####Example
-[Examples](http://codebelt.github.io/StructureCore/web/)
+[Examples](http://codebelt.github.io/StructureJS/web/)
 
 #####Documentation
-[Docs](http://codebelt.github.io/StructureCore/docs/)
+[Docs](http://codebelt.github.io/StructureJS/docs/)
 
 ####Core Classes
 * ___DOMElement___

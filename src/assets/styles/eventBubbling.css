@@ -10,6 +10,12 @@ html, body {
     font-family: arial, sans-serif;
 }
 
+h1 {
+    color: #ffffff;
+    font-size: 22px;
+    margin: 10px;
+}
+
 .eventBubblingApp {
     margin: auto;
     width:350px;
