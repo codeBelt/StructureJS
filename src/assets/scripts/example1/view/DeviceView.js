@@ -4,10 +4,11 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Extend = require('structurejs/util/Extend');
     var DOMElement = require('structurejs/display/DOMElement');
+
     var DeviceButton = require('example1/components/DeviceButton');
 
     /**
-     * YUIDoc_comment
+     * The parent view that holds onto the colored buttons.
      *
      * @class DeviceView
      * @extends DOMElement
@@ -21,8 +22,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this, $element);
 
             /**
-             * YUIDoc_comment
-             *
              * @property _redButton
              * @type {DeviceButton}
              * @private
@@ -30,8 +29,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this._redButton = null;
 
             /**
-             * YUIDoc_comment
-             *
              * @property _greenButton
              * @type {DeviceButton}
              * @private
@@ -39,8 +36,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this._greenButton = null;
 
             /**
-             * YUIDoc_comment
-             *
              * @property _yellowButton
              * @type {DeviceButton}
              * @private
@@ -48,8 +43,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this._yellowButton = null;
 
             /**
-             * YUIDoc_comment
-             *
              * @property _blueButton
              * @type {DeviceButton}
              * @private
@@ -57,13 +50,14 @@ define(function (require, exports, module) { // jshint ignore:line
             this._blueButton = null;
 
             /**
-             * YUIDoc_comment
+             * A list of the buttons so we can get the correct one by this index
+             * number being passed into animateButton method.
              *
-             * @property buttonList
+             * @property _buttonList
              * @type {DeviceButton[]}
              * @private
              */
-            this.buttonList = null;
+            this._buttonList = null;
         }
 
         /**
@@ -78,7 +72,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this.addChild(this._blueButton);
 
             this._redButton = new DeviceButton('red', 1);
-            this.addChildAt(this._redButton, 0);
+            this.addChildAt(this._redButton, 0);// Example of the addChildAt method.
 
             this._greenButton = new DeviceButton('green', 2);
             this.addChild(this._greenButton);
@@ -86,10 +80,11 @@ define(function (require, exports, module) { // jshint ignore:line
             this._yellowButton = new DeviceButton('yellow', 3);
             this.addChild(this._yellowButton);
 
-            this.swapChildren(this._blueButton, this._greenButton);
+            this.swapChildren(this._blueButton, this._greenButton);// Example of the swapChildren method.
 
+            // Hold on to the colored buttons in the same order as there index id.
             this._buttonList.push(this._blueButton);
-            this._buttonList.push(this._redButton)
+            this._buttonList.push(this._redButton);
             this._buttonList.push(this._greenButton);
             this._buttonList.push(this._yellowButton);
         };
@@ -151,10 +146,11 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * YUIDoc_comment
+         * This method accepts a index position for the _buttonList array and will
+         * call the animate method on that button.
          *
          * @method animateButton
-         * @param buttonIndex {number}
+         * @param buttonIndex {int}
          * @private
          */
         DeviceView.prototype.animateButton = function (buttonIndex) {

@@ -5,11 +5,12 @@ define(function (require, exports, module) { // jshint ignore:line
     var Extend = require('structurejs/util/Extend');
     var DOMElement = require('structurejs/display/DOMElement');
     var BaseEvent = require('structurejs/event/BaseEvent');
+
     var DeviceButtonTemplate = require('hbs!templates/DeviceButtonTemplate');
     var GameVO = require('example1/model/GameVO');
 
     /**
-     * YUIDoc_comment
+     * A generic button class to be used to create the four different colored buttons.
      *
      * @class DeviceButton
      * @extends DOMElement
@@ -23,8 +24,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this);
 
             /**
-             * YUIDoc_comment
-             *
              * @property _color
              * @type {string}
              * @private
@@ -32,26 +31,26 @@ define(function (require, exports, module) { // jshint ignore:line
             this._color = color;
 
             /**
-             * YUIDoc_comment
-             *
-             * @property indexId
+             * @property _indexId
              * @type {number}
              * @public
              */
-            this.indexId = index;
+            this._indexId = index;
         }
 
         /**
          * @overridden DOMElement.createChildren
          */
         DeviceButton.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, DeviceButtonTemplate, {buttonColor: this._color});
+            _super.prototype.createChildren.call(this, DeviceButtonTemplate, {buttonColor: this._color});// Example of passing a template in.
+
         };
 
         /**
          * @overridden DOMElement.layoutChildren
          */
         DeviceButton.prototype.layoutChildren = function () {
+            // Layout or update the child objects in this parent class.
 
             return this;
         };
@@ -89,29 +88,34 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * YUIDoc_comment
+         * A helper method to trigger the CSS transitions.
          *
          * @method animate
          * @public
          */
         DeviceButton.prototype.animate = function () {
             this.$element.addClass('active');
+
             setTimeout(function() {
                 this.$element.removeClass('active');
             }.bind(this), 250);
         };
 
         /**
-         * YUIDoc_comment
+         * On click of the button it will animate itself and dispatch an event so the SimonApp
+         * can respond to the CHANGE event. Probably should of create and dispatched a custom event.
          *
          * @method onClick
+         * @param event {jQueryEventObject}
          * @private
          */
         DeviceButton.prototype.onClick = function (event) {
+            event.preventDefault();
+
             this.animate();
 
             var gameVO = new GameVO();
-            gameVO.buttonIndex = this.indexId;
+            gameVO.buttonIndex = this._indexId;
 
             this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, gameVO));
         };
