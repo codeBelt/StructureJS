@@ -153,8 +153,21 @@ define(function (require, exports, module) { // jshint ignore:line
                 this.countryName = null;
             }
 
+            CountryEvent.prototype.clone = function () {
+                return new CountryEvent(this.type, this.bubble, this.cancelable, this.data);
+            };
+
             return CountryEvent;
         })();
+
+     * @example
+     // Example: how to use the custom event.
+     var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
+     instance.dispatchEvent(event);
+
+     // OR
+
+     instance.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));
      * @param type {string} The type of event. The type is case-sensitive.
      * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
      * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink &quot;EventDispatcher/parent:property&quot;}}{{/crossLink}})

@@ -333,7 +333,8 @@
             "submodule": "event",
             "extends": "BaseObject",
             "example": [
-                "\n    // Example: how to create a custom event by extending BaseEvent.\n       var Extend = require('structurejs/util/Extend');\n       var BaseEvent = require('structurejs/event/BaseEvent');\n\n       var CountryEvent = (function () {\n\n           var _super = Extend(CountryEvent, BaseEvent);\n\n           CountryEvent.CHANGE_COUNTRY = \"CountryEvent.changeCountry\";\n\n           function CountryEvent(type, bubbles, cancelable, data) {\n               _super.call(this, type, bubbles, cancelable, data);\n\n               this.countryName = null;\n           }\n\n           return CountryEvent;\n       })();"
+                "\n    // Example: how to create a custom event by extending BaseEvent.\n       var Extend = require('structurejs/util/Extend');\n       var BaseEvent = require('structurejs/event/BaseEvent');\n\n       var CountryEvent = (function () {\n\n           var _super = Extend(CountryEvent, BaseEvent);\n\n           CountryEvent.CHANGE_COUNTRY = \"CountryEvent.changeCountry\";\n\n           function CountryEvent(type, bubbles, cancelable, data) {\n               _super.call(this, type, bubbles, cancelable, data);\n\n               this.countryName = null;\n           }\n\n           CountryEvent.prototype.clone = function () {\n               return new CountryEvent(this.type, this.bubble, this.cancelable, this.data);\n           };\n\n           return CountryEvent;\n       })();",
+                "\n    // Example: how to use the custom event.\n    var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);\n    instance.dispatchEvent(event);\n\n    // OR\n\n    instance.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));"
             ],
             "params": [
                 {
@@ -1310,7 +1311,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 107,
+            "line": 120,
             "description": "The type of event.",
             "itemtype": "property",
             "name": "type",
@@ -1323,7 +1324,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 117,
+            "line": 130,
             "description": "A reference to the object that originally dispatched the event.",
             "itemtype": "property",
             "name": "target",
@@ -1336,7 +1337,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 127,
+            "line": 140,
             "description": "The currentTarget property always points to the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).",
             "itemtype": "property",
             "name": "currentTarget",
@@ -1349,7 +1350,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 137,
+            "line": 150,
             "description": "Use to pass any type of data with the event.",
             "itemtype": "property",
             "name": "data",
@@ -1361,7 +1362,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 146,
+            "line": 159,
             "description": "Indicates whether an event is a bubbling event.",
             "itemtype": "property",
             "name": "bubble",
@@ -1373,7 +1374,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 155,
+            "line": 168,
             "description": "Indicates whether the behavior associated with the event can be prevented.",
             "itemtype": "property",
             "name": "cancelable",
@@ -1385,7 +1386,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 164,
+            "line": 177,
             "itemtype": "property",
             "name": "isPropagationStopped",
             "type": "{boolean}",
@@ -1397,7 +1398,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 173,
+            "line": 186,
             "itemtype": "property",
             "name": "isImmediatePropagationStopped",
             "type": "{boolean}",
@@ -1409,7 +1410,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 188,
+            "line": 201,
             "description": "Duplicates an instance of an BaseEvent subclass.\n\nReturns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.\nYou do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch\nan event—that is, when you call dispatchEvent(event) from a handler that is handling event.\n\nThe new Event object includes all the properties of the original.\n\nWhen creating your own custom Event class, you must override the inherited Event.clone() method in order for it\nto duplicate the properties of your custom class. If you do not set all the properties that you add in your event\nsubclass, those properties will not have the correct values when listeners handle the redispatched event.",
             "itemtype": "method",
             "name": "clone",
@@ -1425,7 +1426,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 209,
+            "line": 222,
             "description": "Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.\nThis method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()\nmethod prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.\nThis method can be called in any phase of",
             "itemtype": "method",
             "name": "stopPropagation",
@@ -1437,7 +1438,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 222,
+            "line": 235,
             "description": "Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.\nThis method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()\nmethod doesn't take effect until all the event listeners in the current node finish processing.",
             "itemtype": "method",
             "name": "stopImmediatePropagation",
@@ -2643,7 +2644,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:188"
+            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:201"
         },
         {
             "message": "unknown tag: version",
