@@ -4,7 +4,7 @@
 [WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
 
 #####Example
-[Examples](http://codebelt.github.io/StructureJS/web/)
+[Examples](http://codebelt.github.io/StructureJS/src/)
 
 #####Documentation
 [Docs](http://codebelt.github.io/StructureJS/docs/)
