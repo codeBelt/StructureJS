@@ -2,6 +2,7 @@ define(function (require, exports, module)
 {
     'use strict';
 
+    // Snippet From TypeScript Compiler
     var Extend = function (inheritorClass, baseClass)
     {
         for (var p in baseClass)

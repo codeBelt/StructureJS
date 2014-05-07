@@ -9,6 +9,10 @@
 #####Documentation
 [Docs](http://codebelt.github.io/StructureJS/docs/)
 
+#####Vidoe
+[StructureJS Overview](http://www.codebelt.com/javascript/StructureJS_web.mp4)
+
+
 ####Core Classes
 * ___DOMElement___
 	* All your view classes will extend the DOMElement class and all your views will have the following lifecycle: createChilderen, layoutChildren, enable, disable and distroy. The DOMElement has several convenient methods (addChild, addChildAt, removeChild, getChild, etc.) to provide a structured base for your view classes. Within your views you will be able to listen and dispatch class based events. This is because DOMElement extends the EventDispacter class and your views will support event bubbling, stopPropagation and stopImmediatePropagation.		
