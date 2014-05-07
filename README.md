@@ -1,15 +1,15 @@
 ##StructureJS
 
-#####WebStorm & Sublime Text Templates/Snippets
+#####WebStorm & Sublime Text Templates/Snippets:
 [WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
 
-#####Example
+#####Example:
 [Examples](http://codebelt.github.io/StructureJS/src/)
 
-#####Documentation
+#####Documentation:
 [Docs](http://codebelt.github.io/StructureJS/docs/)
 
-#####Vidoe
+#####Video:
 [StructureJS Overview](http://www.codebelt.com/javascript/StructureJS_web.mp4)
 
 
