@@ -334,7 +334,7 @@
             "extends": "BaseObject",
             "example": [
                 "\n    // Example: how to create a custom event by extending BaseEvent.\n       var Extend = require('structurejs/util/Extend');\n       var BaseEvent = require('structurejs/event/BaseEvent');\n\n       var CountryEvent = (function () {\n\n           var _super = Extend(CountryEvent, BaseEvent);\n\n           CountryEvent.CHANGE_COUNTRY = \"CountryEvent.changeCountry\";\n\n           function CountryEvent(type, bubbles, cancelable, data) {\n               _super.call(this, type, bubbles, cancelable, data);\n\n               this.countryName = null;\n           }\n\n           CountryEvent.prototype.clone = function () {\n               return new CountryEvent(this.type, this.bubble, this.cancelable, this.data);\n           };\n\n           return CountryEvent;\n       })();",
-                "\n    // Example: how to use the custom event.\n    var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);\n    instance.dispatchEvent(event);\n\n    // OR\n\n    instance.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));"
+                "\n    // Example: how to use the custom event.\n    var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);\n    this.dispatchEvent(event);\n\n    // Here is a common inline event being dispatched\n    this.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));"
             ],
             "params": [
                 {
@@ -642,7 +642,7 @@
             "line": 209,
             "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.",
             "example": [
-                "\n           // EXAMPLE 1: By default your view class will be a div element:\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this);\n\n               this._childInstance = new DOMElement();\n               this.addChild(this._childInstance);\n           }\n\n           // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:\n           ClassName.prototype.createChildren() {\n               _super.prototype.createChildren.call(this, 'ul');\n           }\n\n           // Then you could nest other elements inside this base view/element.\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n               var li = new DOMElement('li', {text: 'Robert is cool'});\n               this.addChild(li);\n           }\n\n           // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below inline Handlebar template in your html file.\n           <script id=\"todoTemplate\" type=\"text/template\">\n               <div id=\"htmlTemplatel\" class=\"js-todo\">\n                   <div id=\"input-wrapper\">\n                       <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                       <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n                   </div>\n               </div>\n           </script>\n\n           // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\". There is a second optional argument where you can pass data for the Handlebar template to use.\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });\n\n           }\n\n           // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.\n           var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n           ClassName.prototype.createChildren():void {\n               _super.prototype.createChildren.call(this, HomeTemplate, {data: \"some data\"});\n\n           }"
+                "\n           // EXAMPLE 1: By default your view class will be a div element:\n           ClassName.prototype.createChildren() {\n               _super.prototype.createChildren.call(this);\n\n               this._childInstance = new DOMElement();\n               this.addChild(this._childInstance);\n           }\n\n           // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:\n           ClassName.prototype.createChildren() {\n               _super.prototype.createChildren.call(this, 'ul');\n           }\n\n           // Then you could nest other elements inside this base view/element.\n           ClassName.prototype.createChildren() {\n               _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n               var li = new DOMElement('li', {text: 'Robert is cool'});\n               this.addChild(li);\n           }\n\n           // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below inline Handlebar template in your html file.\n           <script id=\"todoTemplate\" type=\"text/template\">\n               <div id=\"htmlTemplatel\" class=\"js-todo\">\n                   <div id=\"input-wrapper\">\n                       <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                       <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n                   </div>\n               </div>\n           </script>\n\n           // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\". There is a second optional argument where you can pass data for the Handlebar template to use.\n           ClassName.prototype.createChildren() {\n               _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });\n\n           }\n\n           // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.\n           var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n           ClassName.prototype.createChildren() {\n               _super.prototype.createChildren.call(this, HomeTemplate, {data: \"some data\"});\n\n           }"
             ],
             "itemtype": "method",
             "name": "createChildren",
@@ -1311,7 +1311,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 120,
+            "line": 119,
             "description": "The type of event.",
             "itemtype": "property",
             "name": "type",
@@ -1324,7 +1324,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 130,
+            "line": 129,
             "description": "A reference to the object that originally dispatched the event.",
             "itemtype": "property",
             "name": "target",
@@ -1337,7 +1337,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 140,
+            "line": 139,
             "description": "The currentTarget property always points to the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).",
             "itemtype": "property",
             "name": "currentTarget",
@@ -1350,7 +1350,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 150,
+            "line": 149,
             "description": "Use to pass any type of data with the event.",
             "itemtype": "property",
             "name": "data",
@@ -1362,7 +1362,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 159,
+            "line": 158,
             "description": "Indicates whether an event is a bubbling event.",
             "itemtype": "property",
             "name": "bubble",
@@ -1374,7 +1374,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 168,
+            "line": 167,
             "description": "Indicates whether the behavior associated with the event can be prevented.",
             "itemtype": "property",
             "name": "cancelable",
@@ -1386,7 +1386,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 177,
+            "line": 176,
             "itemtype": "property",
             "name": "isPropagationStopped",
             "type": "{boolean}",
@@ -1398,7 +1398,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 186,
+            "line": 185,
             "itemtype": "property",
             "name": "isImmediatePropagationStopped",
             "type": "{boolean}",
@@ -1410,7 +1410,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 201,
+            "line": 200,
             "description": "Duplicates an instance of an BaseEvent subclass.\n\nReturns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.\nYou do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch\nan event—that is, when you call dispatchEvent(event) from a handler that is handling event.\n\nThe new Event object includes all the properties of the original.\n\nWhen creating your own custom Event class, you must override the inherited Event.clone() method in order for it\nto duplicate the properties of your custom class. If you do not set all the properties that you add in your event\nsubclass, those properties will not have the correct values when listeners handle the redispatched event.",
             "itemtype": "method",
             "name": "clone",
@@ -1426,7 +1426,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 222,
+            "line": 221,
             "description": "Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.\nThis method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()\nmethod prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.\nThis method can be called in any phase of",
             "itemtype": "method",
             "name": "stopPropagation",
@@ -1438,7 +1438,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/BaseEvent.js",
-            "line": 235,
+            "line": 234,
             "description": "Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.\nThis method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()\nmethod doesn't take effect until all the event listeners in the current node finish processing.",
             "itemtype": "method",
             "name": "stopImmediatePropagation",
@@ -1465,7 +1465,7 @@
                 },
                 {
                     "name": "callback",
-                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void",
+                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)",
                     "type": "Function"
                 },
                 {
@@ -1493,7 +1493,7 @@
             "line": 45,
             "description": "Removes a specified listener from the EventBroker object.",
             "example": [
-                "\n       EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event:BaseEvent):void {\n           console.log(event.target + \" sent the event.\");\n       }"
+                "\n       EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event:BaseEvent) {\n           console.log(event.target + \" sent the event.\");\n       }"
             ],
             "itemtype": "method",
             "name": "removeEventListener",
@@ -1589,7 +1589,7 @@
             "line": 56,
             "description": "Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.",
             "example": [
-                "\n       instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event):void {\n           console.log(event.target + \" sent the event.\");\n       }"
+                "\n       instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event) {\n           console.log(event.target + \" sent the event.\");\n       }"
             ],
             "itemtype": "method",
             "name": "addEventListener",
@@ -1601,7 +1601,7 @@
                 },
                 {
                     "name": "callback",
-                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void",
+                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)",
                     "type": "Function"
                 },
                 {
@@ -1629,7 +1629,7 @@
             "line": 99,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "example": [
-                "\n       instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event):void {\n           console.log(event.target + \" sent the event.\");\n       }"
+                "\n       instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event) {\n           console.log(event.target + \" sent the event.\");\n       }"
             ],
             "itemtype": "method",
             "name": "removeEventListener",
@@ -2644,7 +2644,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:201"
+            "line": " src/assets/scripts/structurejs/event/BaseEvent.js:200"
         },
         {
             "message": "unknown tag: version",

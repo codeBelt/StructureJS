@@ -58,12 +58,12 @@ define(function (require, exports, module) { // jshint ignore:line
          * @example
         instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
-        ClassName.prototype.handlerMethod(event):void {
+        ClassName.prototype.handlerMethod(event) {
             console.log(event.target + " sent the event.");
         }
          * @method addEventListener
          * @param type {String} The type of event.
-         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)
          * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @public
@@ -101,7 +101,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @example
         instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
-        ClassName.prototype.handlerMethod(event):void {
+        ClassName.prototype.handlerMethod(event) {
             console.log(event.target + " sent the event.");
         }
          * @method removeEventListener

@@ -339,7 +339,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * This method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.
          * @example
             // EXAMPLE 1: By default your view class will be a div element:
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this);
 
                 this._childInstance = new DOMElement();
@@ -352,7 +352,7 @@ define(function (require, exports, module) { // jshint ignore:line
             }
 
             // Then you could nest other elements inside this base view/element.
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this, &#x27;ul&#x27;, {id: &#x27;myId&#x27;, &#x27;class&#x27;: &#x27;myClass anotherClass&#x27;});
 
                 var li = new DOMElement(&#x27;li&#x27;, {text: &#x27;Robert is cool&#x27;});
@@ -370,7 +370,7 @@ define(function (require, exports, module) { // jshint ignore:line
             &lt;/script&gt;
 
             // You would just pass in the id or class selector of the template which in this case is &quot;#todoTemplate&quot;. There is a second optional argument where you can pass data for the Handlebar template to use.
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this, &#x27;#todoTemplate&#x27;, { data: this.viewData });
 
             }
@@ -378,7 +378,7 @@ define(function (require, exports, module) { // jshint ignore:line
             // EXAMPLE 4: One more way. Let&#x27;s say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.
             var HomeTemplate = require(&#x27;hbs!templates/HomeTemplate&#x27;);
 
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this, HomeTemplate, {data: &quot;some data&quot;});
 
             }

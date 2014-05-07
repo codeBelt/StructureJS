@@ -215,7 +215,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * This method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.
          * @example
             // EXAMPLE 1: By default your view class will be a div element:
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this);
 
                 this._childInstance = new DOMElement();
@@ -228,7 +228,7 @@ define(function (require, exports, module) { // jshint ignore:line
             }
 
             // Then you could nest other elements inside this base view/element.
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
 
                 var li = new DOMElement('li', {text: 'Robert is cool'});
@@ -246,7 +246,7 @@ define(function (require, exports, module) { // jshint ignore:line
             </script>
 
             // You would just pass in the id or class selector of the template which in this case is "#todoTemplate". There is a second optional argument where you can pass data for the Handlebar template to use.
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });
 
             }
@@ -254,7 +254,7 @@ define(function (require, exports, module) { // jshint ignore:line
             // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.
             var HomeTemplate = require('hbs!templates/HomeTemplate');
 
-            ClassName.prototype.createChildren():void {
+            ClassName.prototype.createChildren() {
                 _super.prototype.createChildren.call(this, HomeTemplate, {data: "some data"});
 
             }

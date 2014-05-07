@@ -831,7 +831,7 @@ The child is added at the index position specified. An index of 0 represents the
                     
 
                     <div class="param-description">
-                        <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void</p>
+                        <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)</p>
 
                     </div>
 
@@ -884,7 +884,7 @@ The child is added at the index position specified. An index of 0 represents the
             <div class="example-content">
                 <pre class="code prettyprint"><code>   instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
-   ClassName.prototype.handlerMethod(event):void {
+   ClassName.prototype.handlerMethod(event) {
        console.log(event.target + &quot; sent the event.&quot;);
    }</code></pre>
 
@@ -2304,7 +2304,7 @@ no other references to the children exist.</p>
             <div class="example-content">
                 <pre class="code prettyprint"><code>   instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
-   ClassName.prototype.handlerMethod(event):void {
+   ClassName.prototype.handlerMethod(event) {
        console.log(event.target + &quot; sent the event.&quot;);
    }</code></pre>
 

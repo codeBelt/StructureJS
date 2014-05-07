@@ -341,11 +341,10 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
    })();</code></pre>
 <pre class="code prettyprint"><code>// Example: how to use the custom event.
 var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
-instance.dispatchEvent(event);
+this.dispatchEvent(event);
 
-// OR
-
-instance.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));</code></pre>
+// Here is a common inline event being dispatched
+this.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));</code></pre>
 
             </div>
         </div>
@@ -539,7 +538,7 @@ instance.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));</code></p
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l201"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:201</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l200"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:200</code></a>
         
         </p>
 
@@ -789,7 +788,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l235"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:235</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l234"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:234</code></a>
         
         </p>
 
@@ -848,7 +847,7 @@ method doesn&#39;t take effect until all the event listeners in the current node
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l222"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:222</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l221"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:221</code></a>
         
         </p>
 
@@ -905,7 +904,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l159"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:159</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l158"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:158</code></a>
         
         </p>
 
@@ -952,7 +951,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l168"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:168</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l167"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:167</code></a>
         
         </p>
 
@@ -1045,7 +1044,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l140"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:140</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l139"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:139</code></a>
         
         </p>
 
@@ -1092,7 +1091,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l150"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:150</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l149"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:149</code></a>
         
         </p>
 
@@ -1139,7 +1138,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l186"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:186</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l185"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:185</code></a>
         
         </p>
 
@@ -1185,7 +1184,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l177"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:177</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l176"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:176</code></a>
         
         </p>
 
@@ -1231,7 +1230,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l130"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:130</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l129"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:129</code></a>
         
         </p>
 
@@ -1278,7 +1277,7 @@ This method can be called in any phase of</p>
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l120"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:120</code></a>
+        <a href="../files/src_assets_scripts_structurejs_event_BaseEvent.js.html#l119"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;BaseEvent.js:119</code></a>
         
         </p>
 

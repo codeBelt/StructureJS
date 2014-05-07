@@ -325,7 +325,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                     
 
                     <div class="param-description">
-                        <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void</p>
+                        <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)</p>
 
                     </div>
 
@@ -635,7 +635,7 @@ To keep things consistent this parameter is required.</p>
             <div class="example-content">
                 <pre class="code prettyprint"><code>   EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
-   ClassName.prototype.handlerMethod(event:BaseEvent):void {
+   ClassName.prototype.handlerMethod(event:BaseEvent) {
        console.log(event.target + &quot; sent the event.&quot;);
    }</code></pre>
 
