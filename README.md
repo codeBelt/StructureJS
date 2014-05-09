@@ -1,5 +1,7 @@
 ##StructureJS
 
+A workflow and several core class to help structure and build JavaScript applications.
+
 #####WebStorm & Sublime Text Templates/Snippets:
 [WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
 
