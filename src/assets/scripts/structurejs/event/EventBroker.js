@@ -15,8 +15,6 @@ define(function (require, exports, module) { // jshint ignore:line
      **/
     var EventBroker = (function () {
 
-        EventBroker.CLASS_NAME = 'EventBroker';
-
         function EventBroker() {
             throw new Error('[EventBroker] Do instantiation the EventBroker class because it is a static class.');
         }

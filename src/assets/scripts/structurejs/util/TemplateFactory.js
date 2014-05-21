@@ -1,7 +1,7 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var $ = require('jquery');
+    var jQuery = require('jquery');
     var Handlebars = require('handlebars');
     var StringUtil = require('structurejs/util/StringUtil');
     var DOMElement = require('structurejs/display/DOMElement');
@@ -16,8 +16,6 @@ define(function (require, exports, module) { // jshint ignore:line
      * @version 0.1.0
      **/
     var TemplateFactory = (function () {
-
-        TemplateFactory.CLASS_NAME = 'TemplateFactory';
 
         TemplateFactory.UNDERSCORE = 'underscore';
         TemplateFactory.HANDLEBARS = 'handlebars';

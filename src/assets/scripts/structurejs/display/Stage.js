@@ -1,7 +1,7 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    var $ = require('jquery');
+    var jQuery = require('jquery');
     var Extend = require('structurejs/util/Extend');
     var DOMElement = require('structurejs/display/DOMElement');
 

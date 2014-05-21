@@ -12,8 +12,6 @@ define(function (require, exports, module) { // jshint ignore:line
      **/
     var Util = (function () {
 
-        Util.CLASS_NAME = 'Util';
-
         Util._idCounter = 0;
 
         function Util() {

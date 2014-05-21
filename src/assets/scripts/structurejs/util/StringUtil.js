@@ -13,8 +13,6 @@ define(function (require, exports, module) { // jshint ignore:line
      **/
     var StringUtil = (function () {
 
-        StringUtil.CLASS_NAME = 'StringUtil';
-
         function StringUtil() {
         }
 
