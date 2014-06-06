@@ -155,7 +155,7 @@ define(function (require, exports, module) { // jshint ignore:line
              * A cached of the DOM Element.
              *
              * @property element
-             * @type {Element}
+             * @type {HTMLElement}
              * @default null
              */
             this.element = null;
