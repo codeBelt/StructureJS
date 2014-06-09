@@ -238,7 +238,7 @@ module.exports = function(grunt) {
                 options: {
                     paths: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/structurejs/',
                     outdir: '<%= BASE_PATH %>docs',
-                    themedir: '',
+                    themedir: 'friendly-theme',
                     extension: '.js',                                   // Default '.js' <comma-separated list of file extensions>
                     exclude: ''
                 }

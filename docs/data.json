@@ -85,6 +85,22 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/assets/scripts/structurejs/util/Extend.js": {
+            "name": "src/assets/scripts/structurejs/util/Extend.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/assets/scripts/structurejs/util/MobileUtil.js": {
+            "name": "src/assets/scripts/structurejs/util/MobileUtil.js",
+            "modules": {},
+            "classes": {
+                "MobileUtil": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/assets/scripts/structurejs/util/StringUtil.js": {
             "name": "src/assets/scripts/structurejs/util/StringUtil.js",
             "modules": {},
@@ -150,6 +166,7 @@
                 "EventDispatcher": 1,
                 "TimerEvent": 1,
                 "ValueObject": 1,
+                "MobileUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
                 "Timer": 1,
@@ -215,6 +232,7 @@
             "name": "util",
             "submodules": {},
             "classes": {
+                "MobileUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
                 "Timer": 1,
@@ -225,7 +243,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The StringUtil...",
+            "description": "The MobileUtil...",
             "file": "src/assets/scripts/structurejs/util/Util.js",
             "line": 4
         },
@@ -472,6 +490,23 @@
             ],
             "is_constructor": 1,
             "version": "0.1.0"
+        },
+        "MobileUtil": {
+            "name": "MobileUtil",
+            "shortname": "MobileUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/assets/scripts/structurejs/util/MobileUtil.js",
+            "line": 6,
+            "description": "The MobileUtil...",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S."
         },
         "StringUtil": {
             "name": "StringUtil",
@@ -1450,7 +1485,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/EventBroker.js",
-            "line": 24,
+            "line": 22,
             "description": "Registers an event listener object with an EventBroker object so that the listener receives notification of an event.",
             "example": [
                 "\n       EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event) {\n           console.log(event.target + \" sent the event.\");\n       }"
@@ -1490,7 +1525,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/EventBroker.js",
-            "line": 45,
+            "line": 43,
             "description": "Removes a specified listener from the EventBroker object.",
             "example": [
                 "\n       EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n       ClassName.prototype.handlerMethod(event:BaseEvent) {\n           console.log(event.target + \" sent the event.\");\n       }"
@@ -1523,7 +1558,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/event/EventBroker.js",
-            "line": 65,
+            "line": 63,
             "description": "<p>Dispatches an event within the EventBroker object.</p>",
             "example": [
                 "\n        var event = new BaseEvent(BaseEvent.CHANGE);\n        EventBroker.dispatchEvent(event);\n\n        // Here is a common inline event being dispatched\n        EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
@@ -1849,7 +1884,7 @@
             "file": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "line": 6,
             "description": "A bind polyfill for browsers that don't support the bind method.",
-            "class": "StringUtil",
+            "class": "MobileUtil",
             "module": "StructureJS"
         },
         {
@@ -1866,26 +1901,33 @@
                 "description": "",
                 "type": "String"
             },
-            "class": "StringUtil",
+            "class": "MobileUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "line": 53,
             "description": "The jQuery addEventListener plugin",
-            "class": "StringUtil",
+            "class": "MobileUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/assets/scripts/structurejs/plugin/jquery.eventListener.js",
             "line": 88,
             "description": "The jQuery removeEventListener plugin",
-            "class": "StringUtil",
+            "class": "MobileUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/assets/scripts/structurejs/util/Extend.js",
+            "line": 4,
+            "description": "Snippet from TypeScript compiler.",
+            "class": "MobileUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 21,
+            "line": 19,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getExtension",
@@ -1909,7 +1951,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 34,
+            "line": 32,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToCamelCase",
@@ -1933,7 +1975,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 51,
+            "line": 49,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToPascalCase",
@@ -1957,7 +1999,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 71,
+            "line": 69,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "camelCaseToHyphen",
@@ -1981,7 +2023,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 86,
+            "line": 84,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "createUUID",
@@ -1998,7 +2040,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 104,
+            "line": 102,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "queryStringToObject",
@@ -2022,7 +2064,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 130,
+            "line": 128,
             "description": "Remove all whitespace from the string passed in.",
             "example": [
                 "\n        var str = \"   a b    c d e f g \";\n        StringUtil.removeAllWhitespace(str);\n        // \"abcdefg\""
@@ -2049,7 +2091,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 146,
+            "line": 144,
             "description": "Remove leading and trailing whitespace.",
             "example": [
                 "\n     var str = \"   a b    c d e f g \";\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // \"a b    c d e f g\""
@@ -2076,7 +2118,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/StringUtil.js",
-            "line": 163,
+            "line": 161,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -2293,7 +2335,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/Util.js",
-            "line": 21,
+            "line": 19,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
             "example": [
                 "\n        var property:number = Util.uniqueId();\n        // 1\n\n        var property:string = Util.uniqueId('yomama_');\n        // yomama_1"
@@ -2321,7 +2363,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/Util.js",
-            "line": 46,
+            "line": 44,
             "itemtype": "method",
             "name": "deletePropertyFromObject",
             "params": [
@@ -2349,7 +2391,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/Util.js",
-            "line": 83,
+            "line": 81,
             "itemtype": "method",
             "name": "renamePropertyOnObject",
             "params": [
@@ -2382,7 +2424,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/Util.js",
-            "line": 102,
+            "line": 100,
             "itemtype": "method",
             "name": "clone",
             "params": [
@@ -2405,7 +2447,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/Util.js",
-            "line": 148,
+            "line": 146,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "toBoolean",
@@ -2429,7 +2471,7 @@
         },
         {
             "file": "src/assets/scripts/structurejs/util/Util.js",
-            "line": 163,
+            "line": 161,
             "description": "Returns the name of the class object passed in.",
             "itemtype": "method",
             "name": "getClassName",
@@ -2700,39 +2742,39 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:21"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:19"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:34"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:32"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:51"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:49"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:71"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:69"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:86"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:84"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:104"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:102"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:130"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:128"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:146"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:144"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/StringUtil.js:163"
+            "line": " src/assets/scripts/structurejs/util/StringUtil.js:161"
         },
         {
             "message": "unknown tag: version",
@@ -2764,27 +2806,27 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/Util.js:21"
+            "line": " src/assets/scripts/structurejs/util/Util.js:19"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/Util.js:46"
+            "line": " src/assets/scripts/structurejs/util/Util.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/Util.js:83"
+            "line": " src/assets/scripts/structurejs/util/Util.js:81"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/Util.js:102"
+            "line": " src/assets/scripts/structurejs/util/Util.js:100"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/Util.js:148"
+            "line": " src/assets/scripts/structurejs/util/Util.js:146"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/assets/scripts/structurejs/util/Util.js:163"
+            "line": " src/assets/scripts/structurejs/util/Util.js:161"
         },
         {
             "message": "unknown tag: version",
@@ -2841,6 +2883,10 @@
         {
             "message": "Missing item type\nThe jQuery removeEventListener plugin",
             "line": " src/assets/scripts/structurejs/plugin/jquery.eventListener.js:88"
+        },
+        {
+            "message": "Missing item type\nSnippet from TypeScript compiler.",
+            "line": " src/assets/scripts/structurejs/util/Extend.js:4"
         },
         {
             "message": "Missing item type",

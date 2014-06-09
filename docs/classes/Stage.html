@@ -3,31 +3,35 @@
 <head>
     <meta charset="utf-8">
     <title>Stage - Single-Page-Application-GruntJS</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+    <script src="../assets/vendor/yui-min.js"></script>
 </head>
-<body class="yui3-skin-sam">
+<body>
 
 <div id="doc">
-    <div id="hd" class="yui3-g header">
-        <div class="yui3-u-3-4">
-            
-                <h1><img src="../assets/css/logo.png" title="Single-Page-Application-GruntJS"></h1>
-            
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">Single-Page-Application-GruntJS</h1> <span class="project-version">0.1.0</span>
+                
+                
+                    <p class="description">A sample single page JavaScript application workflow boilerplate with Grunt.js</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
         </div>
-        <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.1.0</em>
-        </div>
-    </div>
-    <div id="bd" class="yui3-g">
+    </header>
+    <div id="bd" class="main-body">
 
-        <div class="yui3-u-1-4">
-            <div id="docs-sidebar" class="sidebar apidocs">
-                <div id="api-list">
-    <h2 class="off-left">APIs</h2>
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
     <div id="api-tabview" class="tabview">
         <ul class="tabs">
             <li><a href="#api-classes">Classes</a></li>
@@ -41,84 +45,60 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/BaseEvent.html">BaseEvent</a></li>
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
-                <li><a href="../classes/BaseObject.html">BaseObject</a></li>
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
-                <li><a href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
-                <li><a href="../classes/DOMElement.html">DOMElement</a></li>
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
             
-                <li><a href="../classes/EventBroker.html">EventBroker</a></li>
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
             
-                <li><a href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
-                <li><a href="../classes/Stage.html">Stage</a></li>
+                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
             
-                <li><a href="../classes/StringUtil.html">StringUtil</a></li>
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
-                <li><a href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
             
-                <li><a href="../classes/Timer.html">Timer</a></li>
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
             
-                <li><a href="../classes/TimerEvent.html">TimerEvent</a></li>
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
             
-                <li><a href="../classes/Util.html">Util</a></li>
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
-                <li><a href="../classes/ValueObject.html">ValueObject</a></li>
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
             
-                <li><a href="../modules/core.html">core</a></li>
+                <li><a class="module" href="../modules/core.html">core</a></li>
             
-                <li><a href="../modules/event.html">event</a></li>
+                <li><a class="module" href="../modules/event.html">event</a></li>
             
-                <li><a href="../modules/model.html">model</a></li>
+                <li><a class="module" href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureJS.html">StructureJS</a></li>
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
-                <li><a href="../modules/util.html">util</a></li>
+                <li><a class="module" href="../modules/util.html">util</a></li>
             
-                <li><a href="../modules/view.html">view</a></li>
+                <li><a class="module" href="../modules/view.html">view</a></li>
             
             </ul>
         </div>
     </div>
 </div>
 
-            </div>
         </div>
-        <div class="yui3-u-3-4">
-                <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited" checked>
-            Inherited
-        </label>
 
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <h1>Stage Class</h1>
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>Stage Class</h1>
 <div class="box meta">
     
 
@@ -151,11 +131,1231 @@
 
 </div>
 
+<!-- Class member index -->
+
+<a name="index" class="anchor-link"></a>
+<div class="index">
+<h2>Index</h2>
+
+    <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited">
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+
+
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties extends">
+            
+                <li class="index-item property inherited">
+                    <a href="#property_$element">$element</a>
+
+                    
+                </li>
+            
+                <li class="index-item property private inherited">
+                    <a href="#property__isReference">_isReference</a>
+
+                    
+                </li>
+            
+                <li class="index-item property private inherited">
+                    <a href="#property__isVisible">_isVisible</a>
+
+                    
+                </li>
+            
+                <li class="index-item property private inherited">
+                    <a href="#property__listeners">_listeners</a>
+
+                    
+                </li>
+            
+                <li class="index-item property inherited">
+                    <a href="#property__params">_params</a>
+
+                    
+                </li>
+            
+                <li class="index-item property inherited">
+                    <a href="#property__type">_type</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_children">children</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_cid">cid</a>
+
+                    
+                </li>
+            
+                <li class="index-item property inherited">
+                    <a href="#property_element">element</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_height">height</a>
+
+                    
+                </li>
+            
+                <li class="index-item property protected inherited">
+                    <a href="#property_isCreated">isCreated</a>
+
+                    
+                </li>
+            
+                <li class="index-item property protected inherited">
+                    <a href="#property_isEnabled">isEnabled</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_numChildren">numChildren</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_parent">parent</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_unscaledHeight">unscaledHeight</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_unscaledWidth">unscaledWidth</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_width">width</a>
+
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div class="index-section methods">
+        <h3>Methods</h3>
+
+        <ul class="index-list methods extends">
+
+            
+                <li class="index-item method constructor">
+                    <a href="#method_Stage">Stage</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
+            
+
+            
+                <li class="index-item method inherited inherited">
+                    <a href="#method_addChild">addChild</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_addChildAt">addChildAt</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_addEventListener">addEventListener</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_alpha">alpha</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_appendTo">appendTo</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_contains">contains</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited inherited">
+                    <a href="#method_createChildren">createChildren</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_destroy">destroy</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_disable">disable</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_dispatchEvent">dispatchEvent</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_enable">enable</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getChild">getChild</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_getChildAt">getChildAt</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getChildByCid">getChildByCid</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getChildIndex">getChildIndex</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getChildren">getChildren</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getEventListeners">getEventListeners</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_layoutChildren">layoutChildren</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method private inherited">
+                    <a href="#method_onDomAdded">onDomAdded</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited inherited">
+                    <a href="#method_removeChild">removeChild</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited inherited">
+                    <a href="#method_removeChildren">removeChildren</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_removeEventListener">removeEventListener</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited inherited">
+                    <a href="#method_swapChildren">swapChildren</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_visible">visible</a>
+
+                    
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+</div>
+
+
+<div class="class-detail">
+
+
+    <div class="properties-detail">
+        <h2>Properties</h2>
+
+        
+            <a name="property_$element" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>$element</code>
+    <span class="type">JQuery</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DOMElement.html#property_$element" class="type">DOMElement</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l163"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:163</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A cached jQuery object for the view&#39;s element.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__isReference" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_isReference</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DOMElement.html#property__isReference" class="type">DOMElement</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l172"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:172</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>If a jQuery object was passed into the constructor this will be set as true and
+this class will not try add the view to the DOM because it should already exists.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__isVisible" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_isVisible</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DOMElement.html#property__isVisible" class="type">DOMElement</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l143"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:143</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Whether or not the display object is visible. Display objects that are not visible are disabled.
+For example, if visible=false for an InteractiveObject instance, it cannot be clicked.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">true</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__listeners" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_listeners</code>
+    <span class="type">Array</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property__listeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_event_EventDispatcher.js.html#l25"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventDispatcher.js:25</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Holds a reference to added listeners.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__params" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>_params</code>
+    <span class="type">Any</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DOMElement.html#property__params" class="type">DOMElement</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l191"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:191</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Holds onto the value passed into the constructor.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__type" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>_type</code>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DOMElement.html#property__type" class="type">DOMElement</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l182"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:182</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Holds onto the value passed into the constructor.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_children" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>children</code>
+    <span class="type">Array</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_children" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l45"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:45</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the child DisplayObjectContainer instances to this parent object instance.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_cid" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>cid</code>
+    <span class="type">Int</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#property_cid" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l18"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:18</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_element" class="anchor-link"></a>
+<div class="property item inherited">
+    <h3 class="name"><code>element</code>
+    <span class="type">Element</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DOMElement.html#property_element" class="type">DOMElement</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l154"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:154</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A cached of the DOM Element.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_height" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>height</code>
+    <span class="type">Number</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_height" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l65"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:65</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A property providing access to the height.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isCreated" class="anchor-link"></a>
+<div class="property item protected inherited">
+    <h3 class="name"><code>isCreated</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_isCreated" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l24"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:24</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isEnabled" class="anchor-link"></a>
+<div class="property item protected inherited">
+    <h3 class="name"><code>isEnabled</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property_isEnabled" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_event_EventDispatcher.js.html#l43"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventDispatcher.js:43</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_numChildren" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>numChildren</code>
+    <span class="type">Init</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_numChildren" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l34"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:34</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Returns the number of children of this object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_parent" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>parent</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property_parent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_event_EventDispatcher.js.html#l33"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventDispatcher.js:33</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the object that contains child object. Use the parent property
+to specify a relative path to display objects that are above the current display object in the display
+list hierarchy.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_unscaledHeight" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>unscaledHeight</code>
+    <span class="type">Number</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_unscaledHeight" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l85"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:85</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A property providing access to the unscaledHeight.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">100</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_unscaledWidth" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>unscaledWidth</code>
+    <span class="type">Number</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_unscaledWidth" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l75"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:75</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A property providing access to the unscaledWidth.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">100</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_width" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>width</code>
+    <span class="type">Number</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_width" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l55"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:55</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A property providing access to the width.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Stage" class="method item">
-    <h3 class="name"><code>Stage</code></h3>
+        <a name="method_Stage" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>Stage</code>
 
     
         <span class="paren">()</span>
@@ -174,6 +1374,8 @@
     
 
     
+
+    </h3>
 
     <div class="meta">
         
@@ -196,20 +1398,22 @@
         
     </div>
 
-    <div class="description">
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
         
-    </div>
 
-    
+        
 
-    
+        
+            <div class="example">
+                <h4>Example:</h4>
 
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>// This example illustrates how to setup your main or root class when extending the <a href="../classes/Stage.html" class="crosslink">Stage</a> class.
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>// This example illustrates how to setup your main or root class when extending the <a href="../classes/Stage.html" class="crosslink">Stage</a> class.
    define(function (require, exports, module) {
        &#39;use strict&#39;;
 
@@ -268,358 +1472,23 @@ This example illustrates how to instantiation your main or root class.</p>
 <pre class="code prettyprint"><code> var app = new MainClass();
  app.appendTo(&#39;body&#39;);</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
     </div>
 
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
 
         
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods extends">
-                        
-                            <li class="index-item method inherited inherited">
-                                <a href="#method_addChild">addChild</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_addChildAt">addChildAt</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_addEventListener">addEventListener</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_alpha">alpha</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_appendTo">appendTo</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_contains">contains</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited inherited">
-                                <a href="#method_createChildren">createChildren</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_destroy">destroy</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_disable">disable</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_dispatchEvent">dispatchEvent</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_enable">enable</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_getChild">getChild</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_getChildAt">getChildAt</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_getChildByCid">getChildByCid</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_getChildIndex">getChildIndex</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_getChildren">getChildren</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_getEventListeners">getEventListeners</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_layoutChildren">layoutChildren</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method private inherited">
-                                <a href="#method_onDomAdded">onDomAdded</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited inherited">
-                                <a href="#method_removeChild">removeChild</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited inherited">
-                                <a href="#method_removeChildren">removeChildren</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited">
-                                <a href="#method_removeEventListener">removeEventListener</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public inherited inherited">
-                                <a href="#method_swapChildren">swapChildren</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_visible">visible</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-                <div class="index-section properties">
-                    <h3>Properties</h3>
-
-                    <ul class="index-list properties extends">
-                        
-                            <li class="index-item property inherited">
-                                <a href="#property_$element">$element</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private inherited">
-                                <a href="#property__isReference">_isReference</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private inherited">
-                                <a href="#property__isVisible">_isVisible</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property private inherited">
-                                <a href="#property__listeners">_listeners</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property inherited">
-                                <a href="#property__params">_params</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property inherited">
-                                <a href="#property__type">_type</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_children">children</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_cid">cid</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property inherited">
-                                <a href="#property_element">element</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_height">height</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property protected inherited">
-                                <a href="#property_isCreated">isCreated</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property protected inherited">
-                                <a href="#property_isEnabled">isEnabled</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_numChildren">numChildren</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_parent">parent</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_unscaledHeight">unscaledHeight</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_unscaledWidth">unscaledWidth</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property public inherited">
-                                <a href="#property_width">width</a>
-
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_addChild" class="method item inherited">
-    <h3 class="name"><code>addChild</code></h3>
+            <a name="method_addChild" class="anchor-link"></a>
+<div class="method item inherited inherited">
+    <h3 class="name"><code>addChild</code>
 
     
         <div class="args">
@@ -655,10 +1524,12 @@ This example illustrates how to instantiation your main or root class.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_addChild">
+            <a href="../classes/DisplayObjectContainer.html#method_addChild" class="type">
                 DisplayObjectContainer
             </a>
             
@@ -676,67 +1547,71 @@ This example illustrates how to instantiation your main or root class.</p>
         
     </div>
 
-    <div class="description">
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">child</code>
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The DOMElement instance to add as a child of this object instance.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>       container.addChild(domElementInstance);</code></pre>
+
+                </div>
+            </div>
         
     </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">child</code>
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The DOMElement instance to add as a child of this object instance.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>       container.addChild(domElementInstance);</code></pre>
-
-            </div>
-        </div>
-    
 </div>
 
-                
-                    <div id="method_addChildAt" class="method item public inherited">
-    <h3 class="name"><code>addChildAt</code></h3>
+        
+            <a name="method_addChildAt" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>addChildAt</code>
 
     
         <div class="args">
@@ -780,11 +1655,13 @@ This example illustrates how to instantiation your main or root class.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_addChildAt">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObjectContainer.html#method_addChildAt" class="type">DisplayObjectContainer</a>:
             
         
         
@@ -798,77 +1675,81 @@ This example illustrates how to instantiation your main or root class.</p>
         
     </div>
 
-    <div class="description">
-        <p>Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.
 The child is added at the index position specified. An index of 0 represents the back
 (bottom) of the display list for this DisplayObjectContainerContainer object.</p>
 
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">child</code>
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The DisplayObjectContainer instance to add as a child of this object instance.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">index</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The index position to which the child is added. If you specify a currently occupied index position, the child object that exists at that position and all higher positions are moved up one position in the child list.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">child</code>
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>The DisplayObjectContainer instance to add as a child of this object instance.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                    <li class="param">
+                        
+                            <code class="param-name">index</code>
+                            <span class="type">Int</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The index position to which the child is added. If you specify a currently occupied index position, the child object that exists at that position and all higher positions are moved up one position in the child list.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_addEventListener" class="method item public inherited">
-    <h3 class="name"><code>addEventListener</code></h3>
+        
+            <a name="method_addEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>addEventListener</code>
 
     
         <div class="args">
@@ -920,11 +1801,13 @@ The child is added at the index position specified. An index of 0 represents the
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/EventDispatcher.html#method_addEventListener">EventDispatcher</a>:
+                <a href="../classes/EventDispatcher.html#method_addEventListener" class="type">EventDispatcher</a>:
             
         
         
@@ -938,107 +1821,111 @@ The child is added at the index position specified. An index of 0 represents the
         
     </div>
 
-    <div class="description">
-        <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">type</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The type of event.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">callback</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">scope</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#39;t generally maintained.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[priority=0]</code>
-                        <span class="type">Int</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">String</span>
+                        
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#39;t generally maintained.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[priority=0]</code>
+                            <span class="type">Int</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>   instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
    ClassName.prototype.handlerMethod(event) {
        console.log(event.target + &quot; sent the event.&quot;);
    }</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_alpha" class="method item inherited">
-    <h3 class="name"><code>alpha</code></h3>
+        
+            <a name="method_alpha" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>alpha</code>
 
     
         <div class="args">
@@ -1074,11 +1961,13 @@ The child is added at the index position specified. An index of 0 represents the
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DOMElement.html#method_alpha">DOMElement</a>:
+                <a href="../classes/DOMElement.html#method_alpha" class="type">DOMElement</a>:
             
         
         
@@ -1092,60 +1981,64 @@ The child is added at the index position specified. An index of 0 represents the
         
     </div>
 
-    <div class="description">
-        <p>Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)
 to 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though
 they are invisible.</p>
 
-    </div>
+        </div>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">number</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
+                <ul class="params-list">
+                
+                    <li class="param">
                         
-                    </div>
+                            <code class="param-name">number</code>
+                            <span class="type">Object</span>
+                        
 
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
+                        
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+                        <div class="param-description">
+                            
+                        </div>
 
-            <div class="returns-description">
+                        
+                    </li>
                 
-                    
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
-
-                
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_appendTo" class="method item">
-    <h3 class="name"><code>appendTo</code></h3>
+        
+            <a name="method_appendTo" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>appendTo</code>
 
     
         <div class="args">
@@ -1183,6 +2076,8 @@ they are invisible.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             
@@ -1204,62 +2099,66 @@ they are invisible.</p>
         
     </div>
 
-    <div class="description">
-        <p>The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">type</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[enabled=true]</code>
-                        <span class="type">Boolean</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Sets the enabled state of the object.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-    
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[enabled=true]</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Sets the enabled state of the object.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_contains" class="method item public inherited">
-    <h3 class="name"><code>contains</code></h3>
+        
+            <a name="method_contains" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>contains</code>
 
     
         <div class="args">
@@ -1295,11 +2194,13 @@ they are invisible.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_contains">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObjectContainer.html#method_contains" class="type">DisplayObjectContainer</a>:
             
         
         
@@ -1313,59 +2214,63 @@ they are invisible.</p>
         
     </div>
 
-    <div class="description">
-        <p>Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">child</code>
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The child object to test.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type">Boolean</span>:
-                    
-                    <p>true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">child</code>
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>The child object to test.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                        <p>true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_createChildren" class="method item public inherited">
-    <h3 class="name"><code>createChildren</code></h3>
+        
+            <a name="method_createChildren" class="anchor-link"></a>
+<div class="method item public inherited inherited">
+    <h3 class="name"><code>createChildren</code>
 
     
         <div class="args">
@@ -1409,10 +2314,12 @@ they are invisible.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_createChildren">
+            <a href="../classes/DisplayObjectContainer.html#method_createChildren" class="type">
                 DisplayObjectContainer
             </a>
             
@@ -1430,79 +2337,81 @@ they are invisible.</p>
         
     </div>
 
-    <div class="description">
-        <p>The createChildren function is intended to provide a consistent place for the creation and adding
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The createChildren function is intended to provide a consistent place for the creation and adding
 of children to the view. It will automatically be called the first time that the view is added
 to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
 their overridden methods.</p>
 <p>This method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.</p>
 
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">type</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>[string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">params</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>[any=null] Any data you would like to pass into the jQuery element or template that is being created.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">Object</span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>[string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                    <li class="param">
+                        
+                            <code class="param-name">params</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>[any=null] Any data you would like to pass into the jQuery element or template that is being created.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+        
+            <div class="returns">
+                <h4>Returns:</h4>
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>       // EXAMPLE 1: By default your view class will be a div element:
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>       // EXAMPLE 1: By default your view class will be a div element:
        ClassName.prototype.createChildren() {
            _super.prototype.createChildren.call(this);
 
@@ -1547,14 +2456,16 @@ their overridden methods.</p>
 
        }</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_destroy" class="method item public inherited">
-    <h3 class="name"><code>destroy</code></h3>
+        
+            <a name="method_destroy" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>destroy</code>
 
     
         <span class="paren">()</span>
@@ -1580,11 +2491,13 @@ their overridden methods.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/BaseObject.html#method_destroy">BaseObject</a>:
+                <a href="../classes/BaseObject.html#method_destroy" class="type">BaseObject</a>:
             
         
         
@@ -1598,8 +2511,10 @@ their overridden methods.</p>
         
     </div>
 
-    <div class="description">
-        <p>The purpose of the destroy method is to make an object ready for garbage collection. This
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The purpose of the destroy method is to make an object ready for garbage collection. This
 should be thought of as a one way function. Once destroy is called no further methods should be
 called on the object or properties accessed. It is the responsibility of those who implement this
 function to stop all running Timers, all running Sounds, remove any event
@@ -1610,44 +2525,46 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
 <a href="../classes/EventDispatcher.html#method_disable" class="crosslink">disable</a> method on all classes that extend
 <a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a>.</p>
 
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Void</span>:
-                    
-                
-            </div>
         </div>
-    
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+        
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   ClassName.prototype.destroy() {
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Void</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>   ClassName.prototype.destroy() {
        _super.prototype.destroy.call(this);
 
        this._childInstance.destroy();
        this._childInstance = null;
    }</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_disable" class="method item public inherited">
-    <h3 class="name"><code>disable</code></h3>
+        
+            <a name="method_disable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>disable</code>
 
     
         <span class="paren">()</span>
@@ -1671,11 +2588,13 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/EventDispatcher.html#method_disable">EventDispatcher</a>:
+                <a href="../classes/EventDispatcher.html#method_disable" class="type">EventDispatcher</a>:
             
         
         
@@ -1689,21 +2608,23 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
         
     </div>
 
-    <div class="description">
-        <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
 
-    
+        </div>
 
-    
+        
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+        
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   ClassName.prototype.disable = function () {
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>   ClassName.prototype.disable = function () {
        if (this.isEnabled === false) return this;
 
        this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
@@ -1712,14 +2633,16 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
        return _super.prototype.disable.call(this);
    }</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_dispatchEvent" class="method item public inherited">
-    <h3 class="name"><code>dispatchEvent</code></h3>
+        
+            <a name="method_dispatchEvent" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>dispatchEvent</code>
 
     
         <div class="args">
@@ -1753,11 +2676,13 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/EventDispatcher.html#method_dispatchEvent">EventDispatcher</a>:
+                <a href="../classes/EventDispatcher.html#method_dispatchEvent" class="type">EventDispatcher</a>:
             
         
         
@@ -1771,58 +2696,62 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
         
     </div>
 
-    <div class="description">
-        <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
-    </div>
+    <div class="extended-detail">
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
+        <div class="description">
+            <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
+        </div>
 
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">event</code>
-                        <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
-                    
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-                    
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+                        
 
-                    <div class="param-description">
-                        <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
+                        
+
+                        <div class="param-description">
+                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
 extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
 
-                    </div>
+                        </div>
 
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
 
-    
+        
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+        
+            <div class="example">
+                <h4>Example:</h4>
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   var event = new BaseEvent(BaseEvent.CHANGE);
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>   var event = new BaseEvent(BaseEvent.CHANGE);
    instance.dispatchEvent(event);
 
    // Here is a common inline event being dispatched
    instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_enable" class="method item public inherited">
-    <h3 class="name"><code>enable</code></h3>
+        
+            <a name="method_enable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>enable</code>
 
     
         <span class="paren">()</span>
@@ -1846,11 +2775,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/EventDispatcher.html#method_enable">EventDispatcher</a>:
+                <a href="../classes/EventDispatcher.html#method_enable" class="type">EventDispatcher</a>:
             
         
         
@@ -1864,21 +2795,23 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
         
     </div>
 
-    <div class="description">
-        <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
 
-    
+        </div>
 
-    
+        
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+        
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   ClassName.prototype.enable = function () {
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>   ClassName.prototype.enable = function () {
        if (this.isEnabled === true) return this;
 
        this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
@@ -1887,14 +2820,16 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
        return _super.prototype.enable.call(this);
    }</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_getChild" class="method item public inherited">
-    <h3 class="name"><code>getChild</code></h3>
+        
+            <a name="method_getChild" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getChild</code>
 
     
         <div class="args">
@@ -1930,11 +2865,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DOMElement.html#method_getChild">DOMElement</a>:
+                <a href="../classes/DOMElement.html#method_getChild" class="type">DOMElement</a>:
             
         
         
@@ -1948,57 +2885,61 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
         
     </div>
 
-    <div class="description">
-        <p>Returns a DOMElement object with the first found DOM element by the passed in selector.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Returns a DOMElement object with the first found DOM element by the passed in selector.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">selector</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>DOM id name, DOM class name or a DOM tag name.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
-                    
+                    <li class="param">
+                        
+                            <code class="param-name">selector</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>DOM id name, DOM class name or a DOM tag name.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_getChildAt" class="method item inherited">
-    <h3 class="name"><code>getChildAt</code></h3>
+        
+            <a name="method_getChildAt" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>getChildAt</code>
 
     
         <div class="args">
@@ -2032,11 +2973,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_getChildAt">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObjectContainer.html#method_getChildAt" class="type">DisplayObjectContainer</a>:
             
         
         
@@ -2050,59 +2993,63 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
         
     </div>
 
-    <div class="description">
-        <p>Returns the child display object instance that exists at the specified index.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Returns the child display object instance that exists at the specified index.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">index</code>
-                        <span class="type">Int</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The index position of the child object.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
-                    
-                    <p>The child display object at the specified index position.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">index</code>
+                            <span class="type">Int</span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>The index position of the child object.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                        
+                        <p>The child display object at the specified index position.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_getChildByCid" class="method item public inherited">
-    <h3 class="name"><code>getChildByCid</code></h3>
+        
+            <a name="method_getChildByCid" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getChildByCid</code>
 
     
         <div class="args">
@@ -2138,11 +3085,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_getChildByCid">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObjectContainer.html#method_getChildByCid" class="type">DisplayObjectContainer</a>:
             
         
         
@@ -2156,56 +3105,60 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
         
     </div>
 
-    <div class="description">
-        <p>Gets a DisplayObjectContainer by its cid.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Gets a DisplayObjectContainer by its cid.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">cid</code>
-                        <span class="type">Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
-                    
+                    <li class="param">
+                        
+                            <code class="param-name">cid</code>
+                            <span class="type">Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_getChildIndex" class="method item public inherited">
-    <h3 class="name"><code>getChildIndex</code></h3>
+        
+            <a name="method_getChildIndex" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getChildIndex</code>
 
     
         <div class="args">
@@ -2241,11 +3194,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_getChildIndex">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObjectContainer.html#method_getChildIndex" class="type">DisplayObjectContainer</a>:
             
         
         
@@ -2259,59 +3214,63 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
         
     </div>
 
-    <div class="description">
-        <p>Returns the index position of a child DisplayObjectContainer instance.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Returns the index position of a child DisplayObjectContainer instance.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">child</code>
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The DisplayObjectContainer instance to identify.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type">Int</span>:
-                    
-                    <p>The index position of the child display object to identify.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">child</code>
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>The DisplayObjectContainer instance to identify.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Int</span>:
+                        
+                        <p>The index position of the child display object to identify.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_getChildren" class="method item public inherited">
-    <h3 class="name"><code>getChildren</code></h3>
+        
+            <a name="method_getChildren" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getChildren</code>
 
     
         <div class="args">
@@ -2347,11 +3306,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DOMElement.html#method_getChildren">DOMElement</a>:
+                <a href="../classes/DOMElement.html#method_getChildren" class="type">DOMElement</a>:
             
         
         
@@ -2365,61 +3326,65 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
         
     </div>
 
-    <div class="description">
-        <p>Gets all the HTML elements children of this object.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Gets all the HTML elements children of this object.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[selector]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children this parent element.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
+                    <li class="param">
+                        
+                            <code class="param-name optional">[selector]</code>
+                            <span class="type">String</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children this parent element.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
                     
-                        <span class="type">Array</span>:
-                    
-                    <p>Returns a list of DOMElement&#39;s. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
+                        
+                            <span class="type">Array</span>:
+                        
+                        <p>Returns a list of DOMElement&#39;s. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
 If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement will not be create for that element because it will be assumed it already exists as a DOMElement.</p>
 
-                
+                    
+                </div>
             </div>
-        </div>
-    
+        
 
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_getEventListeners" class="method item public inherited">
-    <h3 class="name"><code>getEventListeners</code></h3>
+        
+            <a name="method_getEventListeners" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getEventListeners</code>
 
     
         <span class="paren">()</span>
@@ -2445,11 +3410,13 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/EventDispatcher.html#method_getEventListeners">EventDispatcher</a>:
+                <a href="../classes/EventDispatcher.html#method_getEventListeners" class="type">EventDispatcher</a>:
             
         
         
@@ -2463,35 +3430,39 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
         
     </div>
 
-    <div class="description">
-        <p>Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.</p>
 
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Array</span>:
-                    
-                    <p>Returns an array dictionary of the different event listener(s) on the object.</p>
-
-                
-            </div>
         </div>
-    
 
-    
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Array</span>:
+                        
+                        <p>Returns an array dictionary of the different event listener(s) on the object.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_getQualifiedClassName" class="method item public inherited">
-    <h3 class="name"><code>getQualifiedClassName</code></h3>
+        
+            <a name="method_getQualifiedClassName" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getQualifiedClassName</code>
 
     
         <span class="paren">()</span>
@@ -2517,11 +3488,13 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/BaseObject.html#method_getQualifiedClassName">BaseObject</a>:
+                <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="type">BaseObject</a>:
             
         
         
@@ -2535,44 +3508,48 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
         
     </div>
 
-    <div class="description">
-        <p>Returns the fully qualified class name of an object.</p>
+    <div class="extended-detail">
 
+        <div class="description">
+            <p>Returns the fully qualified class name of an object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">String</span>:
+                        
+                        <p>Returns the class name.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    instance.getQualifiedClassName();</code></pre>
+
+                </div>
+            </div>
+        
     </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">String</span>:
-                    
-                    <p>Returns the class name.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-        <div class="example">
-            <h4>Example:</h4>
-
-            <div class="example-content">
-                <pre class="code prettyprint"><code>    instance.getQualifiedClassName();</code></pre>
-
-            </div>
-        </div>
-    
 </div>
 
-                
-                    <div id="method_layoutChildren" class="method item public inherited">
-    <h3 class="name"><code>layoutChildren</code></h3>
+        
+            <a name="method_layoutChildren" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>layoutChildren</code>
 
     
         <span class="paren">()</span>
@@ -2600,11 +3577,13 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_layoutChildren">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObjectContainer.html#method_layoutChildren" class="type">DisplayObjectContainer</a>:
             
         
         
@@ -2618,35 +3597,39 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
         
     </div>
 
-    <div class="description">
-        <p>The layoutComponent method provides a common function to handle updating child objects.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>The layoutComponent method provides a common function to handle updating child objects.</p>
 
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
-
-                
-            </div>
         </div>
-    
 
-    
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_onDomAdded" class="method item private inherited">
-    <h3 class="name"><code>onDomAdded</code></h3>
+        
+            <a name="method_onDomAdded" class="anchor-link"></a>
+<div class="method item private inherited">
+    <h3 class="name"><code>onDomAdded</code>
 
     
         <div class="args">
@@ -2678,11 +3661,13 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DOMElement.html#method_onDomAdded">DOMElement</a>:
+                <a href="../classes/DOMElement.html#method_onDomAdded" class="type">DOMElement</a>:
             
         
         
@@ -2696,45 +3681,49 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
         
     </div>
 
-    <div class="description">
-        <p>Gets called when the child object is added to the DOM.
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Gets called when the child object is added to the DOM.
 The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent.ADDED event.</p>
 
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">event</code>
-                        <span class="type">JQueryEventObject</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-    
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">JQueryEventObject</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_removeChild" class="method item public inherited">
-    <h3 class="name"><code>removeChild</code></h3>
+        
+            <a name="method_removeChild" class="anchor-link"></a>
+<div class="method item public inherited inherited">
+    <h3 class="name"><code>removeChild</code>
 
     
         <div class="args">
@@ -2772,10 +3761,12 @@ The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent
 
     
 
+    </h3>
+
     <div class="meta">
         
             <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_removeChild">
+            <a href="../classes/DisplayObjectContainer.html#method_removeChild" class="type">
                 DisplayObjectContainer
             </a>
             
@@ -2793,61 +3784,65 @@ The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent
         
     </div>
 
-    <div class="description">
-        <p>Removes the specified child object instance from the child list of the parent object instance.
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes the specified child object instance from the child list of the parent object instance.
 The parent property of the removed child is set to null , and the object is garbage collected if no other references
 to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.</p>
 
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">child</code>
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The DisplayObjectContainer instance to remove.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">child</code>
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>The DisplayObjectContainer instance to remove.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_removeChildren" class="method item public inherited">
-    <h3 class="name"><code>removeChildren</code></h3>
+        
+            <a name="method_removeChildren" class="anchor-link"></a>
+<div class="method item public inherited inherited">
+    <h3 class="name"><code>removeChildren</code>
 
     
         <span class="paren">()</span>
@@ -2875,10 +3870,12 @@ to the child exist. The index positions of any objects above the child in the pa
 
     
 
+    </h3>
+
     <div class="meta">
         
             <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_removeChildren">
+            <a href="../classes/DisplayObjectContainer.html#method_removeChildren" class="type">
                 DisplayObjectContainer
             </a>
             
@@ -2896,37 +3893,41 @@ to the child exist. The index positions of any objects above the child in the pa
         
     </div>
 
-    <div class="description">
-        <p>Removes all child object instances from the child list of the parent object instance.
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes all child object instances from the child list of the parent object instance.
 The parent property of the removed children is set to null , and the objects are garbage collected if no other
 references to the children exist.</p>
 
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
-
-                
-            </div>
         </div>
-    
 
-    
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_removeEventListener" class="method item public inherited">
-    <h3 class="name"><code>removeEventListener</code></h3>
+        
+            <a name="method_removeEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>removeEventListener</code>
 
     
         <div class="args">
@@ -2972,11 +3973,13 @@ references to the children exist.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/EventDispatcher.html#method_removeEventListener">EventDispatcher</a>:
+                <a href="../classes/EventDispatcher.html#method_removeEventListener" class="type">EventDispatcher</a>:
             
         
         
@@ -2990,90 +3993,94 @@ references to the children exist.</p>
         
     </div>
 
-    <div class="description">
-        <p>Removes a specified listener from the EventDispatcher object.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Removes a specified listener from the EventDispatcher object.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">type</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The type of event.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">callback</code>
-                        <span class="type">Function</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The listener object to remove.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">scope</code>
-                        <span class="type">Any</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The scope of the listener object to be removed.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">String</span>
+                        
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>   instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener object to remove.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The scope of the listener object to be removed.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>   instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
    ClassName.prototype.handlerMethod(event) {
        console.log(event.target + &quot; sent the event.&quot;);
    }</code></pre>
 
+                </div>
             </div>
-        </div>
-    
+        
+    </div>
 </div>
 
-                
-                    <div id="method_swapChildren" class="method item public inherited">
-    <h3 class="name"><code>swapChildren</code></h3>
+        
+            <a name="method_swapChildren" class="anchor-link"></a>
+<div class="method item public inherited inherited">
+    <h3 class="name"><code>swapChildren</code>
 
     
         <div class="args">
@@ -3117,10 +4124,12 @@ references to the children exist.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_swapChildren">
+            <a href="../classes/DisplayObjectContainer.html#method_swapChildren" class="type">
                 DisplayObjectContainer
             </a>
             
@@ -3138,75 +4147,79 @@ references to the children exist.</p>
         
     </div>
 
-    <div class="description">
-        <p>Swaps two DisplayObjectContainer&#39;s with each other.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Swaps two DisplayObjectContainer&#39;s with each other.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">child1</code>
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The DisplayObjectContainer instance to be swap.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">child2</code>
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The DisplayObjectContainer instance to be swap.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
-                    
-                    <p>Returns an instance of itself.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">child1</code>
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>The DisplayObjectContainer instance to be swap.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                    <li class="param">
+                        
+                            <code class="param-name">child2</code>
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The DisplayObjectContainer instance to be swap.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_visible" class="method item inherited">
-    <h3 class="name"><code>visible</code></h3>
+        
+            <a name="method_visible" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>visible</code>
 
     
         <div class="args">
@@ -3240,11 +4253,13 @@ references to the children exist.</p>
 
     
 
+    </h3>
+
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/DOMElement.html#method_visible">DOMElement</a>:
+                <a href="../classes/DOMElement.html#method_visible" class="type">DOMElement</a>:
             
         
         
@@ -3258,848 +4273,78 @@ references to the children exist.</p>
         
     </div>
 
-    <div class="description">
-        
-    </div>
+    <div class="extended-detail">
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
+        <div class="description">
             
-                <li class="param">
-                    
-                        <code class="param-name">value</code>
-                        <span class="type">Object</span>
-                    
+        </div>
 
-                    
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-                    <div class="param-description">
+                <ul class="params-list">
+                
+                    <li class="param">
                         
-                    </div>
+                            <code class="param-name">value</code>
+                            <span class="type">Object</span>
+                        
 
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
+                        
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+                        <div class="param-description">
+                            
+                        </div>
 
-            <div class="returns-description">
+                        
+                    </li>
                 
-                    
-                        <span class="type">Any</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
+                </ul>
             </div>
         
 
         
-            <div id="properties" class="api-class-tabpanel">
-                <h2 class="off-left">Properties</h2>
-
-                
-                    <div id="property_$element" class="property item inherited">
-    <h3 class="name"><code>$element</code></h3>
-    <span class="type">JQuery</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DOMElement.html#property_$element">DOMElement</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l163"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:163</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A cached jQuery object for the view&#39;s element.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> null</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__isReference" class="property item private inherited">
-    <h3 class="name"><code>_isReference</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DOMElement.html#property__isReference">DOMElement</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l172"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:172</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>If a jQuery object was passed into the constructor this will be set as true and
-this class will not try add the view to the DOM because it should already exists.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__isVisible" class="property item private inherited">
-    <h3 class="name"><code>_isVisible</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DOMElement.html#property__isVisible">DOMElement</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l143"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:143</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Whether or not the display object is visible. Display objects that are not visible are disabled.
-For example, if visible=false for an InteractiveObject instance, it cannot be clicked.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> true</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__listeners" class="property item private inherited">
-    <h3 class="name"><code>_listeners</code></h3>
-    <span class="type">Array</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/EventDispatcher.html#property__listeners">EventDispatcher</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_event_EventDispatcher.js.html#l25"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventDispatcher.js:25</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Holds a reference to added listeners.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__params" class="property item inherited">
-    <h3 class="name"><code>_params</code></h3>
-    <span class="type">Any</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DOMElement.html#property__params">DOMElement</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l191"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:191</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Holds onto the value passed into the constructor.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> null</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__type" class="property item inherited">
-    <h3 class="name"><code>_type</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DOMElement.html#property__type">DOMElement</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l182"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:182</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Holds onto the value passed into the constructor.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> null</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_children" class="property item public inherited">
-    <h3 class="name"><code>children</code></h3>
-    <span class="type">Array</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_children">DisplayObjectContainer</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l45"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:45</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A reference to the child DisplayObjectContainer instances to this parent object instance.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_cid" class="property item public inherited">
-    <h3 class="name"><code>cid</code></h3>
-    <span class="type">Int</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseObject.html#property_cid">BaseObject</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l18"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:18</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> null</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_element" class="property item inherited">
-    <h3 class="name"><code>element</code></h3>
-    <span class="type">Element</span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DOMElement.html#property_element">DOMElement</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DOMElement.js.html#l154"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DOMElement.js:154</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A cached of the DOM Element.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> null</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_height" class="property item public inherited">
-    <h3 class="name"><code>height</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_height">DisplayObjectContainer</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l65"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:65</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A property providing access to the height.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> 0</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_isCreated" class="property item protected inherited">
-    <h3 class="name"><code>isCreated</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_isCreated">DisplayObjectContainer</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l24"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:24</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> false</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_isEnabled" class="property item protected inherited">
-    <h3 class="name"><code>isEnabled</code></h3>
-    <span class="type">Boolean</span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/EventDispatcher.html#property_isEnabled">EventDispatcher</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_event_EventDispatcher.js.html#l43"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventDispatcher.js:43</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> false</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_numChildren" class="property item public inherited">
-    <h3 class="name"><code>numChildren</code></h3>
-    <span class="type">Init</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_numChildren">DisplayObjectContainer</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l34"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:34</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns the number of children of this object.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> 0</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_parent" class="property item public inherited">
-    <h3 class="name"><code>parent</code></h3>
-    <span class="type">Any</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/EventDispatcher.html#property_parent">EventDispatcher</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_event_EventDispatcher.js.html#l33"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventDispatcher.js:33</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Indicates the object that contains child object. Use the parent property
-to specify a relative path to display objects that are above the current display object in the display
-list hierarchy.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_unscaledHeight" class="property item public inherited">
-    <h3 class="name"><code>unscaledHeight</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_unscaledHeight">DisplayObjectContainer</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l85"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:85</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A property providing access to the unscaledHeight.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> 100</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_unscaledWidth" class="property item public inherited">
-    <h3 class="name"><code>unscaledWidth</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_unscaledWidth">DisplayObjectContainer</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l75"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:75</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A property providing access to the unscaledWidth.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> 100</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_width" class="property item public inherited">
-    <h3 class="name"><code>width</code></h3>
-    <span class="type">Number</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_width">DisplayObjectContainer</a>:
-            
-        
-        
-        <a href="../files/src_assets_scripts_structurejs_display_DisplayObjectContainer.js.html#l55"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;display&#x2F;DisplayObjectContainer.js:55</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A property providing access to the width.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> 0</p>
-    
-
-    
-
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-                    </div>
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Any</span>:
+                        
+                    
                 </div>
             </div>
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
         </div>
+
+    </div>
+
+
+
+
+</div>
+
+
+            </div>
+        </div>
+
     </div>
 </div>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
 <script src="../assets/js/yui-prettify.js"></script>
 <script src="../assets/../api.js"></script>
 <script src="../assets/js/api-filter.js"></script>

@@ -3,31 +3,35 @@
 <head>
     <meta charset="utf-8">
     <title>Util - Single-Page-Application-GruntJS</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+    <script src="../assets/vendor/yui-min.js"></script>
 </head>
-<body class="yui3-skin-sam">
+<body>
 
 <div id="doc">
-    <div id="hd" class="yui3-g header">
-        <div class="yui3-u-3-4">
-            
-                <h1><img src="../assets/css/logo.png" title="Single-Page-Application-GruntJS"></h1>
-            
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">Single-Page-Application-GruntJS</h1> <span class="project-version">0.1.0</span>
+                
+                
+                    <p class="description">A sample single page JavaScript application workflow boilerplate with Grunt.js</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
         </div>
-        <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.1.0</em>
-        </div>
-    </div>
-    <div id="bd" class="yui3-g">
+    </header>
+    <div id="bd" class="main-body">
 
-        <div class="yui3-u-1-4">
-            <div id="docs-sidebar" class="sidebar apidocs">
-                <div id="api-list">
-    <h2 class="off-left">APIs</h2>
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
     <div id="api-tabview" class="tabview">
         <ul class="tabs">
             <li><a href="#api-classes">Classes</a></li>
@@ -41,84 +45,60 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/BaseEvent.html">BaseEvent</a></li>
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
-                <li><a href="../classes/BaseObject.html">BaseObject</a></li>
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
-                <li><a href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
-                <li><a href="../classes/DOMElement.html">DOMElement</a></li>
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
             
-                <li><a href="../classes/EventBroker.html">EventBroker</a></li>
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
             
-                <li><a href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
-                <li><a href="../classes/Stage.html">Stage</a></li>
+                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
             
-                <li><a href="../classes/StringUtil.html">StringUtil</a></li>
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
-                <li><a href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
             
-                <li><a href="../classes/Timer.html">Timer</a></li>
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
             
-                <li><a href="../classes/TimerEvent.html">TimerEvent</a></li>
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
             
-                <li><a href="../classes/Util.html">Util</a></li>
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
-                <li><a href="../classes/ValueObject.html">ValueObject</a></li>
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
             
-                <li><a href="../modules/core.html">core</a></li>
+                <li><a class="module" href="../modules/core.html">core</a></li>
             
-                <li><a href="../modules/event.html">event</a></li>
+                <li><a class="module" href="../modules/event.html">event</a></li>
             
-                <li><a href="../modules/model.html">model</a></li>
+                <li><a class="module" href="../modules/model.html">model</a></li>
             
-                <li><a href="../modules/StructureJS.html">StructureJS</a></li>
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
-                <li><a href="../modules/util.html">util</a></li>
+                <li><a class="module" href="../modules/util.html">util</a></li>
             
-                <li><a href="../modules/view.html">view</a></li>
+                <li><a class="module" href="../modules/view.html">view</a></li>
             
             </ul>
         </div>
     </div>
 </div>
 
-            </div>
         </div>
-        <div class="yui3-u-3-4">
-                <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited" checked>
-            Inherited
-        </label>
 
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-            <div class="apidocs">
-                <div id="docs-main">
-                    <div class="content">
-                        <h1>Util Class</h1>
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>Util Class</h1>
 <div class="box meta">
     
 
@@ -147,11 +127,134 @@
 
 </div>
 
+<!-- Class member index -->
+
+<a name="index" class="anchor-link"></a>
+<div class="index">
+<h2>Index</h2>
+
+    <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited">
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="index-section methods">
+        <h3>Methods</h3>
+
+        <ul class="index-list methods">
+
+            
+                <li class="index-item method constructor">
+                    <a href="#method_Util">Util</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
+            
+
+            
+                <li class="index-item method public">
+                    <a href="#method_clone">clone</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_deletePropertyFromObject">deletePropertyFromObject</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_getClassName">getClassName</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_renamePropertyOnObject">renamePropertyOnObject</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_toBoolean">toBoolean</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_uniqueId">uniqueId</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+</div>
+
+
+<div class="class-detail">
+
+
+
+
+
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Util" class="method item">
-    <h3 class="name"><code>Util</code></h3>
+        <a name="method_Util" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>Util</code>
 
     
         <span class="paren">()</span>
@@ -170,6 +273,8 @@
     
 
     
+
+    </h3>
 
     <div class="meta">
         
@@ -192,114 +297,31 @@
         
     </div>
 
-    <div class="description">
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
         
     </div>
-
-    
-
-    
-
-    
 </div>
 
     </div>
 
 
-<div id="classdocs" class="tabview">
-    <ul class="api-class-tabs">
-        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
 
         
-            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-        
-        
-        
-        
-    </ul>
-
-    <div>
-        <div id="index" class="api-class-tabpanel index">
-            <h2 class="off-left">Item Index</h2>
-
-            
-                <div class="index-section methods">
-                    <h3>Methods</h3>
-
-                    <ul class="index-list methods">
-                        
-                            <li class="index-item method public">
-                                <a href="#method_clone">clone</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public">
-                                <a href="#method_deletePropertyFromObject">deletePropertyFromObject</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public">
-                                <a href="#method_getClassName">getClassName</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public">
-                                <a href="#method_renamePropertyOnObject">renamePropertyOnObject</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public">
-                                <a href="#method_toBoolean">toBoolean</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public">
-                                <a href="#method_uniqueId">uniqueId</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                    </ul>
-                </div>
-            
-
-            
-
-            
-
-            
-        </div>
-
-        
-            <div id="methods" class="api-class-tabpanel">
-                <h2 class="off-left">Methods</h2>
-
-                
-                    <div id="method_clone" class="method item public">
-    <h3 class="name"><code>clone</code></h3>
+            <a name="method_clone" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>clone</code>
 
     
         <div class="args">
@@ -337,6 +359,8 @@
 
     
 
+    </h3>
+
     <div class="meta">
         
             
@@ -348,7 +372,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l102"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:102</code></a>
+        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l100"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:100</code></a>
         
         </p>
 
@@ -358,58 +382,62 @@
         
     </div>
 
-    <div class="description">
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">obj</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The object you to clone.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Any</span>:
+                        
+                        <p>Returns a clone object of the one passed in.</p>
+
+                    
+                </div>
+            </div>
+        
+
         
     </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">obj</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The object you to clone.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Any</span>:
-                    
-                    <p>Returns a clone object of the one passed in.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
 </div>
 
-                
-                    <div id="method_deletePropertyFromObject" class="method item public">
-    <h3 class="name"><code>deletePropertyFromObject</code></h3>
+        
+            <a name="method_deletePropertyFromObject" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>deletePropertyFromObject</code>
 
     
         <div class="args">
@@ -453,6 +481,8 @@
 
     
 
+    </h3>
+
     <div class="meta">
         
             
@@ -464,7 +494,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l46"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:46</code></a>
+        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l44"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:44</code></a>
         
         </p>
 
@@ -474,74 +504,78 @@
         
     </div>
 
-    <div class="description">
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">object</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The object you want to remove properties from.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">list</code>
+                            <span class="type">Array</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>A list of property names you want to remove from the object.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Any</span>:
+                        
+                        <p>Returns the object passed in without the removed the properties.</p>
+
+                    
+                </div>
+            </div>
+        
+
         
     </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">object</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The object you want to remove properties from.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">list</code>
-                        <span class="type">Array</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>A list of property names you want to remove from the object.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Any</span>:
-                    
-                    <p>Returns the object passed in without the removed the properties.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
 </div>
 
-                
-                    <div id="method_getClassName" class="method item public">
-    <h3 class="name"><code>getClassName</code></h3>
+        
+            <a name="method_getClassName" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>getClassName</code>
 
     
         <div class="args">
@@ -579,6 +613,8 @@
 
     
 
+    </h3>
+
     <div class="meta">
         
             
@@ -590,7 +626,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l163"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:163</code></a>
+        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l161"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:161</code></a>
         
         </p>
 
@@ -600,58 +636,62 @@
         
     </div>
 
-    <div class="description">
-        <p>Returns the name of the class object passed in.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Returns the name of the class object passed in.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">classObject</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type">String</span>:
-                    
-                    <p>Returns the name of the class object passed in.</p>
+                    <li class="param">
+                        
+                            <code class="param-name">classObject</code>
+                            <span class="type">Object</span>
+                        
 
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">String</span>:
+                        
+                        <p>Returns the name of the class object passed in.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_renamePropertyOnObject" class="method item public">
-    <h3 class="name"><code>renamePropertyOnObject</code></h3>
+        
+            <a name="method_renamePropertyOnObject" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>renamePropertyOnObject</code>
 
     
         <div class="args">
@@ -701,6 +741,8 @@
 
     
 
+    </h3>
+
     <div class="meta">
         
             
@@ -712,7 +754,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l83"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:83</code></a>
+        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l81"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:81</code></a>
         
         </p>
 
@@ -722,88 +764,92 @@
         
     </div>
 
-    <div class="description">
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">object</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The object you want to rename properties from.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">oldName</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">newName</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Any</span>:
+                        
+                        <p>Returns the object passed in renamed properties.</p>
+
+                    
+                </div>
+            </div>
+        
+
         
     </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">object</code>
-                        <span class="type">Object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The object you want to rename properties from.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">oldName</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">newName</code>
-                        <span class="type">String</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Any</span>:
-                    
-                    <p>Returns the object passed in renamed properties.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
 </div>
 
-                
-                    <div id="method_toBoolean" class="method item public">
-    <h3 class="name"><code>toBoolean</code></h3>
+        
+            <a name="method_toBoolean" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>toBoolean</code>
 
     
         <div class="args">
@@ -841,6 +887,8 @@
 
     
 
+    </h3>
+
     <div class="meta">
         
             
@@ -852,7 +900,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l148"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:148</code></a>
+        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l146"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:146</code></a>
         
         </p>
 
@@ -862,56 +910,60 @@
         
     </div>
 
-    <div class="description">
-        <p>YUIDoc_comment</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>YUIDoc_comment</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">strNum</code>
-                        <span class="type">String | Number</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type">Boolean</span>:
-                    
+                    <li class="param">
+                        
+                            <code class="param-name">strNum</code>
+                            <span class="type">String | Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
 </div>
 
-                
-                    <div id="method_uniqueId" class="method item public">
-    <h3 class="name"><code>uniqueId</code></h3>
+        
+            <a name="method_uniqueId" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>uniqueId</code>
 
     
         <div class="args">
@@ -949,6 +1001,8 @@
 
     
 
+    </h3>
+
     <div class="meta">
         
             
@@ -960,7 +1014,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l21"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:21</code></a>
+        <a href="../files/src_assets_scripts_structurejs_util_Util.js.html#l19"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;Util.js:19</code></a>
         
         </p>
 
@@ -970,90 +1024,96 @@
         
     </div>
 
-    <div class="description">
-        <p>Generates a unique ID. If a prefix is passed in, the value will be appended to it.</p>
+    <div class="extended-detail">
 
-    </div>
+        <div class="description">
+            <p>Generates a unique ID. If a prefix is passed in, the value will be appended to it.</p>
 
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[prefix]</code>
-                        <span class="type">String</span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The string value used for the prefix.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
         </div>
-    
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
+        
+            <div class="params">
+                <h4>Parameters:</h4>
 
-            <div class="returns-description">
+                <ul class="params-list">
                 
-                    
-                        <span class="type">Init | String</span>:
-                    
-                    <p>Returns the unique identifier.</p>
+                    <li class="param">
+                        
+                            <code class="param-name optional">[prefix]</code>
+                            <span class="type">String</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
 
+                        
+
+                        <div class="param-description">
+                            <p>The string value used for the prefix.</p>
+
+                        </div>
+
+                        
+                    </li>
                 
+                </ul>
             </div>
-        </div>
-    
+        
 
-    
-        <div class="example">
-            <h4>Example:</h4>
+        
+            <div class="returns">
+                <h4>Returns:</h4>
 
-            <div class="example-content">
-                <pre class="code prettyprint"><code>    var property:number = Util.uniqueId();
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Init | String</span>:
+                        
+                        <p>Returns the unique identifier.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    var property:number = Util.uniqueId();
     // 1
 
     var property:string = Util.uniqueId(&#39;yomama_&#39;);
     // yomama_1</code></pre>
 
+                </div>
             </div>
-        </div>
-    
-</div>
-
-                
-            </div>
-        
-
-        
-
-        
-
         
     </div>
 </div>
 
-                    </div>
-                </div>
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
             </div>
         </div>
+
     </div>
 </div>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
 <script src="../assets/js/yui-prettify.js"></script>
 <script src="../assets/../api.js"></script>
 <script src="../assets/js/api-filter.js"></script>

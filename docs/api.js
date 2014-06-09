@@ -7,6 +7,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "DisplayObjectContainer",
         "EventBroker",
         "EventDispatcher",
+        "MobileUtil",
         "Stage",
         "StringUtil",
         "TemplateFactory",
@@ -46,7 +47,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "util",
             "name": "util",
-            "description": "The StringUtil..."
+            "description": "The MobileUtil..."
         },
         {
             "displayName": "view",
