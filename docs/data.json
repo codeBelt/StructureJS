@@ -1,7 +1,7 @@
 {
     "project": {
-        "name": "Single-Page-Application-GruntJS",
-        "description": "A sample single page JavaScript application workflow boilerplate with Grunt.js",
+        "name": "StructureJS",
+        "description": "Code and documentation for the StructureJS library.",
         "version": "0.1.0",
         "url": ""
     },
@@ -617,7 +617,7 @@
             "description": "A cached of the DOM Element.",
             "itemtype": "property",
             "name": "element",
-            "type": "{Element}",
+            "type": "{HTMLElement}",
             "default": "null",
             "class": "DOMElement",
             "module": "StructureJS",

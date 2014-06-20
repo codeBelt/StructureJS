@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>model - StructureJS</title>
+    <title>src/assets/scripts/structurejs/util/Extend.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -98,50 +98,46 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>model Module</h1>
-<div class="box clearfix meta">
-    
+                <h1 class="file-heading">File: src/assets/scripts/structurejs/util/Extend.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_model_ValueObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;model&#x2F;ValueObject.js:8</code></a>
-        </div>
-    
+    /**
+     * Snippet from TypeScript compiler.
+     */
+    var Extend = function (inheritorClass, baseClass)
+    {
+        for (var p in baseClass)
+        {
+            if (baseClass.hasOwnProperty(p))
+            {
+                // Add any static properties from the baseClass to the inheritorClass.
+                inheritorClass[p] = baseClass[p];
+            }
+        }
 
-    
-</div>
+        // Creates an anonymous Class and sets the constructor as the inheritorClass.
+        function __()
+        {
+            this.constructor = inheritorClass;
+        }
 
+        // Sets the anonymous Class prototype to the baseClass prototype.
+        __.prototype = baseClass.prototype;
 
+        // Sets the inheritorClass prototype as the baseClass and sets the constructor as the inheritorClass.
+        inheritorClass.prototype = new __();
 
-<div class="box intro">
-    <p>Value Object (VO) is a design pattern used to transfer data between software application subsystems.</p>
+        return baseClass;
+    };
 
-</div>
+    module.exports = Extend;
 
-
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/ValueObject.html">
-                        ValueObject
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+});
+    </pre>
 </div>
 
             </div>

@@ -1,10 +1,10 @@
 {
-    "name": "Single-Page-Application-GruntJS",
+    "name": "StructureJS",
     "version": "0.2.0",
 
     "appVersion": "0.1.0",
-    "description": "A sample single page JavaScript application workflow boilerplate with Grunt.js",
-    "url": "http://www.codebelt.com/javascript/single-page-javascript-application-workflow/",
+    "description": "Code and documentation for the StructureJS library.",
+    "url": "https://github.com/codeBelt/StructureJS",
     "developedBy": "codeBelt",
 
     "devDependencies": {

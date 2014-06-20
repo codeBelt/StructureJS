@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>model - StructureJS</title>
+    <title>src/assets/scripts/structurejs/util/MobileUtil.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -98,50 +98,60 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>model Module</h1>
-<div class="box clearfix meta">
-    
+                <h1 class="file-heading">File: src/assets/scripts/structurejs/util/MobileUtil.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_model_ValueObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;model&#x2F;ValueObject.js:8</code></a>
-        </div>
-    
+    // Imports
 
-    
-</div>
+    /**
+     * The MobileUtil...
+     *
+     * @class MobileUtil
+     * @module StructureJS
+     * @submodule util
+     * @constructor
+     * @author Robert S.
+     **/
+    var MobileUtil = (function () {
 
+        function MobileUtil() {
+        }
 
+        MobileUtil.isAndroid = function () {
+            return !!navigator.userAgent.match(/Android/i);
+        };
 
-<div class="box intro">
-    <p>Value Object (VO) is a design pattern used to transfer data between software application subsystems.</p>
+        MobileUtil.isBlackBerry = function () {
+            return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
+        };
 
-</div>
+        MobileUtil.isiOS = function () {
+            return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        };
 
+        MobileUtil.isOpera = function () {
+            return !!navigator.userAgent.match(/Opera Mini/i);
+        };
 
+        MobileUtil.isWindows = function () {
+            return !!navigator.userAgent.match(/IEMobile/i);
+        };
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+        MobileUtil.isMobile = function () {
+            return (MobileUtil.isAndroid() || MobileUtil.isBlackBerry() || MobileUtil.isiOS() || MobileUtil.isOpera() || MobileUtil.isWindows());
+        };
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/ValueObject.html">
-                        ValueObject
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
+        return MobileUtil;
+    })();
 
-    <div class="yui3-u-1-2">
-        
-    </div>
+    module.exports = MobileUtil;
+
+});
+    </pre>
 </div>
 
             </div>
