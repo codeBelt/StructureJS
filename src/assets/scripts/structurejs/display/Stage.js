@@ -97,9 +97,10 @@ define(function (require, exports, module) { // jshint ignore:line
             this.$element = jQuery(type);
             this.$element.attr('data-cid', this.cid);
 
-            if (!this.isCreated) {
+            if (this.isCreated == false) {
                 this.createChildren();
                 this.isCreated = true;
+                this.createComponents();
                 this.layoutChildren();
             }
 

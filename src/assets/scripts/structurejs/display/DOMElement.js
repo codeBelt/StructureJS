@@ -6,6 +6,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var DisplayObjectContainer = require('structurejs/display/DisplayObjectContainer');
     var BaseEvent = require('structurejs/event/BaseEvent');
     var TemplateFactory = require('structurejs/util/TemplateFactory');
+    var ComponentFactory = require('structurejs/util/ComponentFactory');
 
     /**
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
@@ -197,8 +198,18 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this._params = null;
 
+            /**
+             * YUIDoc_comment
+             *
+             * @property components
+             * @type {Array}
+             * @public
+             */
+            this.components = [];
+
             if (type instanceof jQuery) {
                 this.$element = type;
+                this.element = this.$element[0];
                 this._isReference = true;
             } else if (type) {
                 this._type = type;
@@ -302,6 +313,11 @@ define(function (require, exports, module) { // jshint ignore:line
                 throw new Error('[' + this.getQualifiedClassName() + '] You cannot use the addChild method if the parent object is not added to the DOM.');
             }
 
+            // If an empty jQuery object is passed into the constructor then don't run the code below.
+            if (child._isReference === true && child.$element.length == 0) {
+                return this;
+            }
+
             if (child.isCreated === false) {
                 child.createChildren(); // Render the item before adding to the DOM
                 child.isCreated = true;
@@ -316,6 +332,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 this.$element.append(child.$element);
             }
 
+            child.createComponents();
             child.enable();
             child.layoutChildren();
 
@@ -344,6 +361,11 @@ define(function (require, exports, module) { // jshint ignore:line
             var children = this.$element.children();
             var length = children.length;
 
+            // If an empty jQuery object is passed into the constructor then don't run the code below.
+            if (child._isReference === true && child.$element.length == 0) {
+                return this;
+            }
+
             // If the index passed in is less than 0 and greater than
             // the total number of children then place the item at the end.
             if (index < 0 || index >= length) {
@@ -364,6 +386,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 // Adds the child before the a child already in the DOM.
                 jQuery(children.get(index)).before(child.$element);
 
+                child.createComponents();// TODO: make sure if removeChild is called this work propper
                 child.enable();
                 child.layoutChildren();
             }
@@ -485,6 +508,21 @@ define(function (require, exports, module) { // jshint ignore:line
             return this;
         };
 
+
+        /**
+         * Removes the child display object instance that exists at the specified index.
+         *
+         * @method removeChildAt
+         * @param index {int} The index position of the child object.
+         * @public
+         * @chainable
+         */
+        DOMElement.prototype.removeChildAt = function(index) {
+            this.removeChild(this.getChildAt(index));
+
+            return this;
+        };
+
         /**
          * Removes all child object instances from the child list of the parent object instance.
          * The parent property of the removed children is set to null , and the objects are garbage collected if no other
@@ -544,8 +582,26 @@ define(function (require, exports, module) { // jshint ignore:line
         DOMElement.prototype.destroy = function () {
             _super.prototype.destroy.call(this);
 
+            this.$element.unbind();
+            this.$element.remove();
+
             this.$element = null;
             this.element = null;
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method createComponents
+         * @private
+         */
+        DOMElement.prototype.createComponents = function() {
+            var length = this.components.length;
+            var temp;
+            for (var i = 0; i < length; i++) {
+                temp = this.components[i];
+                ComponentFactory.create(this.$element.find(temp.selector), temp.componentClass, this);
+            }
         };
 
         return DOMElement;

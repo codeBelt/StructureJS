@@ -3,6 +3,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var Extend = require('structurejs/util/Extend');
     var BaseObject = require('structurejs/BaseObject');
+    var BaseEvent = require('structurejs/event/BaseEvent');
 
     /**
      * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
@@ -143,13 +144,19 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          * @chainable
          */
-        EventDispatcher.prototype.dispatchEvent = function (event) {
+        EventDispatcher.prototype.dispatchEvent = function (type, data) {
+            var event = type;
+
+            if (typeof event == 'string') {
+                event = new BaseEvent(type, false, true, data);
+            }
+
             // If target is null then set it to the object that dispatched the event.
             if (event.target == null) {
                 event.target = this;
                 event.currentTarget = this;
             }
-
+            
             // Get the list of event listener(s) by the associated type value.
             var list = this._listeners[event.type];
             if (list) {

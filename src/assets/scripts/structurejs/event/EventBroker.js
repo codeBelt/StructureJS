@@ -2,6 +2,7 @@ define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     var EventDispatcher = require('structurejs/event/EventDispatcher');
+    var BaseEvent = require('structurejs/event/BaseEvent');
 
     /**
      * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
@@ -74,7 +75,13 @@ define(function (require, exports, module) { // jshint ignore:line
          * @static
          * @public
          */
-        EventBroker.dispatchEvent = function (event) {
+        EventBroker.dispatchEvent = function (type, data) {
+            var event = type;
+
+            if (typeof event == 'string') {
+                event = new BaseEvent(type, false, false, data);
+            }
+
             event.target = EventBroker;
             event.currentTarget = EventBroker;
 
