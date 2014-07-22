@@ -100,7 +100,6 @@ define(function (require, exports, module) { // jshint ignore:line
             if (this.isCreated == false) {
                 this.createChildren();
                 this.isCreated = true;
-                this.createComponents();
                 this.layoutChildren();
             }
 

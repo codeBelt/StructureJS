@@ -276,7 +276,7 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * YUIDoc_comment
+        * Clear or remove all objects from the collection
         *
         * @method clear
         * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.

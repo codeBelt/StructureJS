@@ -198,15 +198,6 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this._params = null;
 
-            /**
-             * YUIDoc_comment
-             *
-             * @property components
-             * @type {Array}
-             * @public
-             */
-            this.components = [];
-
             if (type instanceof jQuery) {
                 this.$element = type;
                 this.element = this.$element[0];
@@ -332,7 +323,6 @@ define(function (require, exports, module) { // jshint ignore:line
                 this.$element.append(child.$element);
             }
 
-            child.createComponents();
             child.enable();
             child.layoutChildren();
 
@@ -386,7 +376,6 @@ define(function (require, exports, module) { // jshint ignore:line
                 // Adds the child before the a child already in the DOM.
                 jQuery(children.get(index)).before(child.$element);
 
-                child.createComponents();// TODO: make sure if removeChild is called this work propper
                 child.enable();
                 child.layoutChildren();
             }
@@ -582,8 +571,11 @@ define(function (require, exports, module) { // jshint ignore:line
         DOMElement.prototype.destroy = function () {
             _super.prototype.destroy.call(this);
 
-            this.$element.unbind();
-            this.$element.remove();
+            // If the addChild method is never called before the destroyed the $element will be null and cause an TypeError.
+            if (this.$element != null) {
+                this.$element.unbind();
+                this.$element.remove();
+            }
 
             this.$element = null;
             this.element = null;
@@ -595,12 +587,12 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method createComponents
          * @private
          */
-        DOMElement.prototype.createComponents = function() {
-            var length = this.components.length;
-            var temp;
+        DOMElement.prototype.createComponents = function(componentList) {
+            var length = componentList.length;
+            var obj;
             for (var i = 0; i < length; i++) {
-                temp = this.components[i];
-                ComponentFactory.create(this.$element.find(temp.selector), temp.componentClass, this);
+                obj = componentList[i];
+                ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
             }
         };
 

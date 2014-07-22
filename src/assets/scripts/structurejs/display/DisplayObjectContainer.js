@@ -53,6 +53,25 @@ define(function (require, exports, module) { // jshint ignore:line
             this.children = [];
 
             /**
+             * A property providing access to the x position.
+             *
+             * @property x
+             * @type {number}
+             * @default 0
+             * @public
+             */
+            this.x = 0;
+            /**
+             * A property providing access to the y position.
+             *
+             * @property y
+             * @type {number}
+             * @default 0
+             * @public
+             */
+            this.y = 0;
+
+            /**
              * A property providing access to the width.
              *
              * @property width

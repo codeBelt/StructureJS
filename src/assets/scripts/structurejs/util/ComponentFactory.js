@@ -33,6 +33,8 @@ define(function (require, exports, module) { // jshint ignore:line
                 list.push(component);
             }
 
+//            console.log("scope", scope.getQualifiedClassName(), length, scope.children);
+
             return list;
         };
 
