@@ -7,11 +7,14 @@ define(function (require, exports, module) { // jshint ignore:line
      * YUIDoc_comment
      *
      * @class URLContentType
-     * @module StructureTS
+     * @module StructureJS
      * @submodule net
      * @constructor
      **/
     var URLContentType = (function () {
+
+        function URLContentType() {
+        }
 
         URLContentType.DEFAULT = "application/x-www-form-urlencoded";
         URLContentType.ATOM = "application/atom+xml";
@@ -36,9 +39,6 @@ define(function (require, exports, module) { // jshint ignore:line
         URLContentType.REAL_AUDIO = "audio/vnd.rn-realaudio";
         URLContentType.WAV = "audio/vnd.wave";
         URLContentType.WEBM = "audio/webm";
-
-        function URLContentType() {
-        }
 
         return URLContentType;
     })();

@@ -12,7 +12,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * YUIDoc_comment
      *
      * @class URLLoader
-     * @module StructureTS
+     * @module StructureJS
      * @extends EventDispatcher
      * @submodule net
      * @constructor

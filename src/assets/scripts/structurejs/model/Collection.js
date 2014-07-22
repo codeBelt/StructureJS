@@ -12,7 +12,7 @@ define(function (require, exports, module) { // jshint ignore:line
     *
     * @class Collection
     * @extends EventDispatcher
-    * @module StructureTS
+    * @module StructureJS
     * @submodule model
     * @constructor
     * @version 0.2.1
@@ -43,6 +43,7 @@ define(function (require, exports, module) { // jshint ignore:line
             */
             this.length = 0;
         }
+
         /**
         * Add an item to the current collection
         * Requires that the item must be an instance of {{#crossLink "IValueObject"}}{{/crossLink}} or extends the {{#crossLink "ValueObject"}}{{/crossLink}} class.
@@ -301,6 +302,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this.items = null;
             this.length = null;
         };
+
         return Collection;
     })();
 

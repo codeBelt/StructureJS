@@ -7,11 +7,14 @@ define(function (require, exports, module) { // jshint ignore:line
      * YUIDoc_comment
      *
      * @class URLLoaderDataFormat
-     * @module StructureTS
+     * @module StructureJS
      * @submodule net
      * @constructor
      **/
     var URLLoaderDataFormat = (function () {
+
+        function URLLoaderDataFormat() {
+        }
 
         URLLoaderDataFormat.XML = "xml";
         URLLoaderDataFormat.HTML = "html";
@@ -19,9 +22,6 @@ define(function (require, exports, module) { // jshint ignore:line
         URLLoaderDataFormat.JSON = "json";
         URLLoaderDataFormat.JSONP = "jsonp";
         URLLoaderDataFormat.TEXT = "text";
-
-        function URLLoaderDataFormat() {
-        }
 
         return URLLoaderDataFormat;
     })();

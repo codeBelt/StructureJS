@@ -13,7 +13,8 @@ define(function (require, exports, module) { // jshint ignore:line
      **/
     var URLRequestMethod = (function () {
 
-        URLRequestMethod.CLASS_NAME = 'URLRequestMethod';
+        function URLRequestMethod() {
+        }
 
         URLRequestMethod.DELETE = "DELETE";
         URLRequestMethod.GET = "GET";
@@ -21,9 +22,6 @@ define(function (require, exports, module) { // jshint ignore:line
         URLRequestMethod.PUT = "PUT";
         URLRequestMethod.HEAD = "HEAD";
         URLRequestMethod.OPTIONS = "OPTIONS";
-
-        function URLRequestMethod() {
-        }
 
         return URLRequestMethod;
     })();
