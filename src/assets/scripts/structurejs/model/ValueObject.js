@@ -31,6 +31,12 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          */
         ValueObject.prototype.update = function (data) {
+            for (var key in data) {
+                if (this.hasOwnProperty(key)) {
+                    this[key] = data[key];
+                }
+            }
+
             return this;
         };
 
