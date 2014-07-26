@@ -259,7 +259,7 @@ module.exports = function(grunt) {
                     sourcemap: false,
                     declaration: false,
                     nolib: false,
-                    comments: false
+                    comments: true
                 }
             }
         },

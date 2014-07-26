@@ -25,6 +25,15 @@
 import DOMElement = require('../display/DOMElement')
 import StringUtil = require('../util/StringUtil')
 
+/**
+ * YUIDoc_comment
+ *
+ * @class TemplateFactory
+ * @module StructureTS
+ * @submodule util
+ * @constructor
+ * @version 0.1.0
+ **/
 class TemplateFactory
 {
     public static UNDERSCORE:string = 'underscore';
@@ -33,41 +42,28 @@ class TemplateFactory
     public static templateEngine:string = TemplateFactory.HANDLEBARS;
     public static templateNamespace:string = 'JST';
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class TemplateFactory
-     * @module StructureTS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
     }
 
-    public static createTemplate(templatePath:string, data:Object = null):string
+    public static createTemplate(templatePath:any, data:Object = null):string
     {
         return TemplateFactory.create(templatePath, data);
     }
 
-    public static createView(templatePath:string, data:Object = null):DOMElement
+    private static create(templatePath:any, data:Object = null):string
     {
-        var template:string = TemplateFactory.create(templatePath, data);
-
-        var view:DOMElement = new DOMElement();
-        view.$element = jQuery(template);
-        return view;
-    }
-
-    private static create(templatePath:string, data:Object = null):string
-    {
-        //Checks the first charactor to see if it is a "." or "#".
+        //Checks the first character to see if it is a "." or "#".
         var regex = /^([.#])(.+)/;
         var template:string = null;
+        var isFunctionTemplate = typeof templatePath === 'function';
         var isClassOrIdName:boolean = regex.test(templatePath);
 
-        if (isClassOrIdName)
+        if(isFunctionTemplate)
+        {
+            template = templatePath(data);
+        }
+        else if (isClassOrIdName)
         {
             var htmlString:string = jQuery(templatePath).html();
             htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);

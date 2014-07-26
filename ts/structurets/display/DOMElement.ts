@@ -25,9 +25,11 @@
 import DisplayObjectContainer = require("DisplayObjectContainer");
 import BaseEvent = require("../event/BaseEvent");
 import TemplateFactory = require("../util/TemplateFactory");
+import ComponentFactory = require("../util/ComponentFactory");
 
 class DOMElement extends DisplayObjectContainer
 {
+    'use strict';
     /**
      * Whether or not the display object is visible. Display objects that are not visible are disabled.
      * For example, if visible=false for an InteractiveObject instance, it cannot be clicked.
@@ -595,6 +597,22 @@ class DOMElement extends DisplayObjectContainer
 
         this.$element = null;
         this.element = null;
+    }
+
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method createComponents
+     * @public
+     */
+    public createComponents(componentList:DOMElement[]):void {
+        var length = componentList.length;
+        var obj:any;
+        for (var i = 0; i < length; i++) {
+            obj = componentList[i];
+            ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+        }
     }
 
 }

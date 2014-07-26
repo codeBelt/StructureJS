@@ -31,15 +31,6 @@ define(function (require, exports, module) { // jshint ignore:line
             return TemplateFactory.create(templatePath, data);
         };
 
-        TemplateFactory.createView = function (templatePath, data) {
-            if (typeof data === "undefined") { data = null; }
-            var template = TemplateFactory.create(templatePath, data);
-
-            var view = new DOMElement();
-            view.$element = jQuery(template);
-            return view;
-        };
-
         TemplateFactory.create = function (templatePath, data) {
             if (typeof data === "undefined") { data = null; }
             //Checks the first charactor to see if it is a "." or "#".
