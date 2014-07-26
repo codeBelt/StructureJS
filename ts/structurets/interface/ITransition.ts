@@ -33,7 +33,7 @@ import DOMElement = require('../display/DOMElement')
  * @constructor
  * @version 0.1.0
  **/
-export interface ITransition extends IEventDispatcher
+interface ITransition extends IEventDispatcher
 {
 
     createTransition(transitionType:string, sectionStage:DisplayObjectContainer, currentView:DOMElement, nextView:DOMElement, duration?:number):ITransition;

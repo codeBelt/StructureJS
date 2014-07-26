@@ -23,6 +23,7 @@
  */
 
 import ValueObject = require('../ValueObject')
+import IValueObject = require('../../interface/IValueObject')
 
 class LanguageConfigVO extends ValueObject
 {

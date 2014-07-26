@@ -429,4 +429,4 @@ class BaseEvent extends BaseObject
 
 }
 
-export = BaseObject;
+export = BaseEvent;

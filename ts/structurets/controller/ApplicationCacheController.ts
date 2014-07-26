@@ -264,8 +264,8 @@ class ApplicationCacheController
     /**
      * Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.
      * @example
-     ApplicationCacheController.addEventListener(BaseEvent.CHANGE, handlerMethod, this);
-     private handlerMethod(event:BaseEvent):void {
+     ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, handlerMethod, this);
+     private handlerMethod(event:ApplicationCacheEvent):void {
                console.log(event.target + " sent the event.");
            }
      * @method addEventListener
@@ -283,8 +283,8 @@ class ApplicationCacheController
     /**
      * Removes a specified listener from the ApplicationCacheController object.
      * @example
-     ApplicationCacheController.removeEventListener(BaseEvent.CHANGE, handlerMethod, this);
-     private handlerMethod(event:BaseEvent):void {
+     ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, handlerMethod, this);
+     private handlerMethod(event:ApplicationCacheEvent):void {
                console.log(event.target + " sent the event.");
            }
      * @method removeEventListener
@@ -302,20 +302,21 @@ class ApplicationCacheController
     /**
      * <p>Dispatches an event within the ApplicationCacheController object.</p>
      * @example
-     var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
+     var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
      ApplicationCacheController.dispatchEvent(event);
 
      // Here is a common inline event being dispatched
-     ApplicationCacheController.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+     ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
      * @method dispatchEvent
-     * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-     * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
+     * @param event {ApplicationCacheEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
+     * extend the {{#crossLink "ApplicationCacheEvent"}}{{/crossLink}}.
      * @static
      */
-    public static dispatchEvent(event:BaseEvent):any
+    public static dispatchEvent(event:ApplicationCacheEvent):any
     {
         ApplicationCacheController._eventDispatcher.dispatchEvent(event);
     }
 
 }
+
 export = ApplicationCacheController;

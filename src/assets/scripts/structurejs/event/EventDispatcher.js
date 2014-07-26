@@ -180,13 +180,6 @@ define(function (require, exports, module) { // jshint ignore:line
                     return this;
                 }
 
-                // Clone the event because this EventDispatcher class modifies the currentTarget property when bubbling.
-                // We need to set the target to the previous target so we can keep track of the original origin of where
-                // the event was dispatched for the first time.
-                var previousTarget = event.target;
-                event = event.clone();
-                event.target = previousTarget;
-
                 // Assign the current object that is currently processing the event (i.e. bubbling at) in the display list hierarchy.
                 event.currentTarget = this;
 

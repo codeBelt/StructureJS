@@ -23,6 +23,8 @@
  */
 
 import BaseRequest = require('BaseRequest')
+import URLRequest = require('../net/URLRequest')
+import URLContentType = require('../net/URLContentType')
 
 class JsonRequest extends BaseRequest
 {

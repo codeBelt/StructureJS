@@ -23,6 +23,7 @@
  */
 
 import EventDispatcher = require('EventDispatcher')
+import BaseEvent = require('BaseEvent')
 
 class EventBroker
 {

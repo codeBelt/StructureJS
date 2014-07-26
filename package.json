@@ -26,6 +26,7 @@
         "grunt-preprocess": "4.0.0",
         "grunt-env": "0.4.1",
         "grunt-express": "1.2.1",
+        "grunt-typescript": "0.3.8",
         "grunt-open": "0.2.2"
     }
 }

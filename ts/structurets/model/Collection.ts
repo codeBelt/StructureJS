@@ -23,6 +23,7 @@
  */
 
 import ICollection = require('../interface/ICollection')
+import IValueObject = require('../interface/IValueObject')
 import ValueObject = require('../model/ValueObject')
 import EventDispatcher = require('../event/EventDispatcher')
 import BaseEvent = require('../event/BaseEvent')

@@ -24,6 +24,7 @@
 
 import EventDispatcher = require('../event/EventDispatcher')
 import DOMElement = require('../display/DOMElement')
+import DisplayObjectContainer = require('../display/DisplayObjectContainer')
 import TransitionFactory = require('../util/TransitionFactory')
 import ITransition = require('../interface/ITransition')
 import TransitionType = require('../constant/TransitionType')

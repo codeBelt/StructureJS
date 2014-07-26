@@ -23,6 +23,7 @@
  */
 
 import IDataStore = require('../interface/IDataStore')
+import LoaderEvent = require('../event/LoaderEvent')
 import EventDispatcher = require('../event/EventDispatcher')
 import URLRequest = require('../net/URLRequest')
 import URLLoader = require('../net/URLLoader')

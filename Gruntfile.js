@@ -246,6 +246,25 @@ module.exports = function(grunt) {
         },
 
         /**
+         * Compiles the TypeScript files into one JavaScript file.
+         */
+        typescript: {
+            main: {
+                src: ['<%= BASE_PATH %>' + '**/*.ts'],
+                outdir: '<%= BASE_PATH %>js',
+                options: {
+                    target: 'es3', //or es5
+                    module: 'AMD',
+                    basePath: '',
+                    sourcemap: false,
+                    declaration: false,
+                    nolib: false,
+                    comments: false
+                }
+            }
+        },
+
+        /**
          * Creates a node.js Express Server to test our code in a server like environment.
          * Note: We are using the watch task to keep the server running.
          */

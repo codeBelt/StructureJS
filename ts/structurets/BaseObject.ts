@@ -29,7 +29,7 @@
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>
 
-import BaseEvent = require("./util/Util");
+import Util = require("util/Util");
 
 class BaseObject
 {
