@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -31,10 +31,18 @@
 
 import Util = require("util/Util");
 
+/**
+ * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
+ *
+ * @class BaseObject
+ * @module StructureJS
+ * @submodule core
+ * @constructor
+ **/
 class BaseObject
 {
     /**
-     * The cid or client id is a unique identifier automatically assigned to most StructureTS objects upon instantiation.
+     * The cid or client id is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
      *
      * @property cid
      * @type {int}
@@ -44,15 +52,6 @@ class BaseObject
      */
     public cid:number = null;
 
-    /**
-     * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureTS classes.
-     *
-     * @class BaseObject
-     * @module StructureTS
-     * @submodule core
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         this.cid = Util.uniqueId();
@@ -85,8 +84,8 @@ class BaseObject
      * {{#crossLink "EventDispatcher/disable:method"}}{{/crossLink}} method on all classes that extend
      * {{#crossLink "EventDispatcher"}}{{/crossLink}}.
      * @example
-     public destroy():void {
-            super.destroy();
+     ClassName.prototype.destroy = function() {
+            _super.prototype.destroy.call(this);
 
             this._childInstance.destroy();
             this._childInstance = null;

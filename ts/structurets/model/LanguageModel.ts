@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -43,7 +43,7 @@ class LanguageModel extends EventDispatcher
      * The LanguageModel...
      *
      * @class LanguageModel
-     * @module StructureTS
+     * @module StructureJS
      * @submodule model
      * @constructor
      * @version 0.1.0
@@ -53,7 +53,7 @@ class LanguageModel extends EventDispatcher
         super();
 
         this._localStorageController = new LocalStorageController();
-        this._localStorageController.setNamespace('StructureTS.');
+        this._localStorageController.setNamespace('StructureJS.');
         this.currentLanguage = this._localStorageController.getItem('language', true);
     }
 

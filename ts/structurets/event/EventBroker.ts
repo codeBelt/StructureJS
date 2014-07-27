@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -42,7 +42,7 @@ class EventBroker
      * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
      *
      * @class EventBroker
-     * @module StructureTS
+     * @module StructureJS
      * @submodule event
      * @static
      * @version 0.1.0
@@ -56,7 +56,7 @@ class EventBroker
      * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
      * @example
      EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     private handlerMethod(event:BaseEvent):void {
+     ClassName.prototype.handlerMethod = function (event) {
                console.log(event.target + " sent the event.");
            }
      * @method addEventListener
@@ -76,7 +76,7 @@ class EventBroker
      * Removes a specified listener from the EventBroker object.
      * @example
      EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     private handlerMethod(event:BaseEvent):void {
+     ClassName.prototype.handlerMethod = function (event) {
                console.log(event.target + " sent the event.");
            }
      * @method removeEventListener

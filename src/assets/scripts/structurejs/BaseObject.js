@@ -6,13 +6,12 @@ define(function (require, exports, module) { // jshint ignore:line
     var BaseObject = (function () {
 
         /**
-         * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes.
+         * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
          *
          * @class BaseObject
          * @module StructureJS
          * @submodule core
          * @constructor
-         * @version 0.1.0
          **/
         function BaseObject() {
             /**
@@ -24,7 +23,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @writeOnce
              * @public
              */
-            this.cid = null;
             this.cid = Util.uniqueId();
         }
 
@@ -54,7 +52,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * {{#crossLink "EventDispatcher/disable:method"}}{{/crossLink}} method on all classes that extend
          * {{#crossLink "EventDispatcher"}}{{/crossLink}}.
          * @example
-        ClassName.prototype.destroy() {
+        ClassName.prototype.destroy = function() {
             _super.prototype.destroy.call(this);
 
             this._childInstance.destroy();
@@ -64,7 +62,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @return {void}
          * @public
          */
-        BaseObject.prototype.destroy = function () {
+        BaseObject.prototype.destroy = function() {
         };
 
         return BaseObject;

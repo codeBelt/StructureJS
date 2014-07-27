@@ -115,7 +115,7 @@ class NetworkMonitor
      * Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.
      * @example
      *      NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this.handlerMethod, this);
-     *      private handlerMethod(event:NetworkMonitorEvent):void {
+     *      ClassName.prototype.handlerMethod = function (event) {
      *          console.log(event.status, event.connected);
      *      }
      * @method addEventListener

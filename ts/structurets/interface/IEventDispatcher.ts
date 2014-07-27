@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -30,7 +30,7 @@ import BaseEvent = require('../event/BaseEvent')
  *
  * @class IValueObject
  * @extends ICore
- * @module StructureTS
+ * @module StructureJS
  * @submodule interface
  * @interface
  * @version 0.1.0

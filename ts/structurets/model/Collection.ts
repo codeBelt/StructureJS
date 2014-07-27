@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -55,7 +55,7 @@ class Collection extends EventDispatcher implements ICollection
      *
      * @class Collection
      * @extends EventDispatcher
-     * @module StructureTS
+     * @module StructureJS
      * @submodule model
      * @constructor
      * @version 0.2.1

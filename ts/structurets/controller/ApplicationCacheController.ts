@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -60,7 +60,7 @@ class ApplicationCacheController
      * The ApplicationCacheController...
      *
      * @class ApplicationCacheController
-     * @module StructureTS
+     * @module StructureJS
      * @submodule controller
      * @constructor
      * @version 0.1.0
@@ -264,8 +264,8 @@ class ApplicationCacheController
     /**
      * Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.
      * @example
-     ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, handlerMethod, this);
-     private handlerMethod(event:ApplicationCacheEvent):void {
+     ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
+     ClassName.prototype.handlerMethod = function(event) {
                console.log(event.target + " sent the event.");
            }
      * @method addEventListener
@@ -283,8 +283,8 @@ class ApplicationCacheController
     /**
      * Removes a specified listener from the ApplicationCacheController object.
      * @example
-     ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, handlerMethod, this);
-     private handlerMethod(event:ApplicationCacheEvent):void {
+     ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
+     ClassName.prototype.handlerMethod = function(event) {
                console.log(event.target + " sent the event.");
            }
      * @method removeEventListener

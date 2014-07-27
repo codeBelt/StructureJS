@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -38,7 +38,7 @@ class LanguageConfigVO extends ValueObject
      * @class LanguageConfigVO
      * @param [data] {any} Provide a way to update the value object upon initialization.
      * @constructor
-     * @module StructureTS
+     * @module StructureJS
      * @version 0.1.0
      **/
     constructor(data:any = null)

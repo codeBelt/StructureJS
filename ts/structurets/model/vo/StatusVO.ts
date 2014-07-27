@@ -31,7 +31,7 @@ class StatusVO extends ValueObject
      * @class StatusVO
      * @param [data] {any} Provide a way to update the value object upon initialization.
      * @extends ValueObject
-     * @module StructureTS
+     * @module StructureJS
      * @constructor
      **/
     constructor(data:any = null)

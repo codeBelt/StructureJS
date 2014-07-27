@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -73,7 +73,7 @@ class DateUtil
      * The DateUtil...
      *
      * @class DateUtil
-     * @module StructureTS
+     * @module StructureJS
      * @submodule util
      * @constructor
      * @version 0.1.0

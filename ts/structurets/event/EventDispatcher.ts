@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureTS
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -63,7 +63,7 @@ class EventDispatcher extends BaseObject
      *
      * @class EventDispatcher
      * @extends BaseObject
-     * @module StructureTS
+     * @module StructureJS
      * @submodule event
      * @constructor
      * @version 0.1.0
@@ -79,7 +79,7 @@ class EventDispatcher extends BaseObject
      * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
      * @example
      instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     private handlerMethod(event:BaseEvent):void {
+     ClassName.prototype.handlerMethod = function (event) {
                    console.log(event.target + " sent the event.");
                }
      * @method addEventListener
@@ -243,13 +243,13 @@ class EventDispatcher extends BaseObject
     /**
      * The enable method is responsible for enabling event listeners and/or children of the containing objects.
      * @example
-     public enable():void {
+     ClassName.prototype.enable = function () {
                if (this.isEnabled === true) return;
 
                this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
                this._childInstance.enable();
 
-               super.enable();
+               return .enable();
            }
      * @method enable
      * @public
