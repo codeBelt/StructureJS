@@ -22,6 +22,14 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * A Utility class that has several static methods to assist in development.
+ *
+ * @class Util
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class Util
 {
     /**
@@ -34,15 +42,6 @@ class Util
      */
     private static _idCounter:number = 0;
 
-    /**
-     * A Utility class that has several static methods to assist in development.
-     *
-     * @class Util
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.2.0
-     **/
     constructor()
     {
     }

@@ -25,6 +25,15 @@
 import EventDispatcher = require('../event/EventDispatcher')
 import TimerEvent = require('../event/TimerEvent')
 
+/**
+ * Constructs a new Timer object with the specified delay and repeatCount states.
+ *
+ * @class Timer
+ * @extends EventDispatcher
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class Timer extends EventDispatcher
 {
     /**
@@ -73,16 +82,6 @@ class Timer extends EventDispatcher
      */
     public running:boolean = false;
 
-    /**
-     * Constructs a new Timer object with the specified delay and repeatCount states.
-     *
-     * @class Timer
-     * @extends EventDispatcher
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(delay:number, repeatCount:number = 0)
     {
         super();

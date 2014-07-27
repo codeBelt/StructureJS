@@ -26,20 +26,19 @@ import IDataStore = require('../interface/IDataStore')
 import EventDispatcher = require('../event/EventDispatcher')
 import LoaderEvent = require('../event/LoaderEvent')
 
+/**
+ * The AssetLoader...
+ *
+ * @class AssetLoader
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class AssetLoader extends EventDispatcher
 {
     private static _instance:AssetLoader;
     public _dataStores:IDataStore[] = [];
 
-    /**
-     * The AssetLoader...
-     *
-     * @class AssetLoader
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         super();

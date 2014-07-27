@@ -28,6 +28,15 @@ import ValueObject = require('../model/ValueObject')
 import EventDispatcher = require('../event/EventDispatcher')
 import BaseEvent = require('../event/BaseEvent')
 
+/**
+ * YUIDoc_comment
+ *
+ * @class Collection
+ * @extends EventDispatcher
+ * @module StructureJS
+ * @submodule model
+ * @constructor
+ **/
 class Collection extends EventDispatcher implements ICollection
 {
     /**
@@ -50,16 +59,6 @@ class Collection extends EventDispatcher implements ICollection
      */
     public length:number = 0;
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class Collection
-     * @extends EventDispatcher
-     * @module StructureJS
-     * @submodule model
-     * @constructor
-     * @version 0.2.1
-     **/
     constructor()
     {
         super();

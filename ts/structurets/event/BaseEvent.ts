@@ -24,6 +24,37 @@
 
 import BaseObject = require("../BaseObject");
 
+/**
+ * <p>The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
+ *
+ * <p>The properties of the {{#crossLink "BaseEvent"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.
+ * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
+ * detailed information.</p>
+ * @class BaseEvent
+ * @extends BaseObject
+ * @example
+ // Example: how to create a custom event by extending BaseEvent.
+ class CountryEvent extends BaseEvent {
+           public static CHANGE_COUNTRY:string = "CountryEvent.changeCountry";
+
+           public countryName:string = null;
+
+           constructor(type:string, countryName:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {
+               super(type, bubbles, cancelable, data);
+
+               this.countryName = countryName;
+           }
+       }
+ * @param type {string} The type of event. The type is case-sensitive.
+ * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
+ * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink "EventDispatcher/parent:property"}}{{/crossLink}})
+ * (containers of containers of etc.) of the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink "Stage"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
+ * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
+ * @param [data=null] {any} Use to pass any type of data with the event.
+ * @module StructureJS
+ * @submodule event
+ * @constructor
+ **/
 class BaseEvent extends BaseObject
 {
     /**
@@ -335,38 +366,6 @@ class BaseEvent extends BaseObject
      */
     public isImmediatePropagationStopped:boolean = false;
 
-    /**
-     * <p>The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
-     *
-     * <p>The properties of the {{#crossLink "BaseEvent"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.
-     * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
-     * detailed information.</p>
-     * @class BaseEvent
-     * @extends BaseObject
-     * @example
-     // Example: how to create a custom event by extending BaseEvent.
-     class CountryEvent extends BaseEvent {
-           public static CHANGE_COUNTRY:string = "CountryEvent.changeCountry";
-
-           public countryName:string = null;
-
-           constructor(type:string, countryName:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {
-               super(type, bubbles, cancelable, data);
-
-               this.countryName = countryName;
-           }
-       }
-     * @param type {string} The type of event. The type is case-sensitive.
-     * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
-     * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink "EventDispatcher/parent:property"}}{{/crossLink}})
-     * (containers of containers of etc.) of the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink "Stage"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
-     * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
-     * @param [data=null] {any} Use to pass any type of data with the event.
-     * @module StructureJS
-     * @submodule event
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
         super();

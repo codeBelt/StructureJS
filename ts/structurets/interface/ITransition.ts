@@ -31,13 +31,11 @@ import DOMElement = require('../display/DOMElement')
  *
  * @class ITransition
  * @constructor
- * @version 0.1.0
  **/
 interface ITransition extends IEventDispatcher
 {
-
     createTransition(transitionType:string, sectionStage:DisplayObjectContainer, currentView:DOMElement, nextView:DOMElement, duration?:number):ITransition;
     complete():any;
-
 }
+
 export = ITransition;

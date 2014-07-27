@@ -22,21 +22,19 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * A MerchantUtility class that has several static methods to assist in development.
+ *
+ * @class MerchantUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class MerchantUtil
 {
-    /**
-     * A MerchantUtility class that has several static methods to assist in development.
-     *
-     * @class MerchantUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
     }
-
 
     /**
      * Determines if credit card is valid using the Luhn formula.

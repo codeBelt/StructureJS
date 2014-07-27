@@ -3,19 +3,19 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var Util = require('structurejs/util/Util');
 
+    /**
+     * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
+     *
+     * @class BaseObject
+     * @module StructureJS
+     * @submodule core
+     * @constructor
+     **/
     var BaseObject = (function () {
 
-        /**
-         * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
-         *
-         * @class BaseObject
-         * @module StructureJS
-         * @submodule core
-         * @constructor
-         **/
         function BaseObject() {
             /**
-             * The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.
+             * The cid or client id is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
              *
              * @property cid
              * @type {int}
@@ -23,9 +23,9 @@ define(function (require, exports, module) { // jshint ignore:line
              * @writeOnce
              * @public
              */
+            this.cid = null;
             this.cid = Util.uniqueId();
         }
-
         /**
          * Returns the fully qualified class name of an object.
          *
@@ -52,19 +52,18 @@ define(function (require, exports, module) { // jshint ignore:line
          * {{#crossLink "EventDispatcher/disable:method"}}{{/crossLink}} method on all classes that extend
          * {{#crossLink "EventDispatcher"}}{{/crossLink}}.
          * @example
-        ClassName.prototype.destroy = function() {
-            _super.prototype.destroy.call(this);
+         ClassName.prototype.destroy = function() {
+        _super.prototype.destroy.call(this);
 
-            this._childInstance.destroy();
-            this._childInstance = null;
+        this._childInstance.destroy();
+        this._childInstance = null;
         }
          * @method destroy
          * @return {void}
          * @public
          */
-        BaseObject.prototype.destroy = function() {
+        BaseObject.prototype.destroy = function () {
         };
-
         return BaseObject;
     })();
 

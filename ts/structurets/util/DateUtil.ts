@@ -22,6 +22,14 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The DateUtil...
+ *
+ * @class DateUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class DateUtil
 {
     /**
@@ -68,16 +76,6 @@ class DateUtil
      */
     public static SHORT_MONTH_LABELS:any[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-
-    /**
-     * The DateUtil...
-     *
-     * @class DateUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
     }

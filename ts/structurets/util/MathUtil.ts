@@ -22,18 +22,17 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The MathUtil...
+ *
+ * @class MathUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ * @static
+ **/
 class MathUtil
 {
-    /**
-     * The MathUtil...
-     *
-     * @class MathUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @static
-     * @version 0.1.0
-     **/
     constructor()
     {
     }

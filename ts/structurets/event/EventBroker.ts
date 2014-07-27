@@ -25,6 +25,15 @@
 import EventDispatcher = require('EventDispatcher')
 import BaseEvent = require('BaseEvent')
 
+/**
+ * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
+ * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
+ *
+ * @class EventBroker
+ * @module StructureJS
+ * @submodule event
+ * @static
+ **/
 class EventBroker
 {
     /**
@@ -37,16 +46,6 @@ class EventBroker
      */
     private static _eventDispatcher:EventDispatcher = new EventDispatcher();
 
-    /**
-     * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
-     * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
-     *
-     * @class EventBroker
-     * @module StructureJS
-     * @submodule event
-     * @static
-     * @version 0.1.0
-     **/
     constructor()
     {
         throw new Error('[EventBroker] Do instantiation the EventBroker class because it is a static class.');

@@ -25,22 +25,21 @@
 import CanvasElement = require('CanvasElement')
 import MathUtil = require('../util/MathUtil')
 
+/**
+ * The Bitmap...
+ *
+ * @class Bitmap
+ * @extends CanvasElement
+ * @module StructureJS
+ * @submodule view
+ * @constructor
+ **/
 class Bitmap extends CanvasElement
 {
     private _image:HTMLImageElement = null;
 
     public ready:boolean = false;
 
-    /**
-     * The Bitmap...
-     *
-     * @class Bitmap
-     * @extends CanvasElement
-     * @module StructureJS
-     * @submodule view
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(image:HTMLImageElement)
     {
         super();

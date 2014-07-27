@@ -2,6 +2,13 @@ import EventDispatcher = require('../event/EventDispatcher')
 import NavigatorEvents = require('../event/native/NavigatorEvents')
 import NetworkMonitorEvent = require('../event/NetworkMonitorEvent')
 
+/**
+ * YUIDoc_comment
+ *
+ * @class NetworkMonitor
+ * @constructor
+ * @static
+ **/
 class NetworkMonitor
 {
     /**
@@ -23,14 +30,6 @@ class NetworkMonitor
      */
     private static _initialized:boolean = false;
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class NetworkMonitor
-     * @constructor
-     * @static
-     * @version 0.1.0
-     **/
     constructor()
     {
         throw new Error('[NetworkMonitor] Do instantiation the NetworkMonitor class because it is a static class.');

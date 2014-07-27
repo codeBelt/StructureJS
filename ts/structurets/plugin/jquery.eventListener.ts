@@ -1,10 +1,6 @@
 (function ($, window, document)
 {
     /**
-     * @version 0.3.0
-     */
-
-    /**
      * A bind polyfill for browsers that don't support the bind method.
      */
     if (!Function.prototype.bind)

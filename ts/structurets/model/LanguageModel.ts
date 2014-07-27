@@ -30,6 +30,14 @@ import LanguageEvent = require('../event/LanguageEvent')
 import BaseRequest = require('../request/BaseRequest')
 import LanguageConfigVO = require('vo/LanguageConfigVO')
 
+/**
+ * The LanguageModel...
+ *
+ * @class LanguageModel
+ * @module StructureJS
+ * @submodule model
+ * @constructor
+ **/
 class LanguageModel extends EventDispatcher
 {
     private _request:BaseRequest = null;
@@ -39,15 +47,6 @@ class LanguageModel extends EventDispatcher
     public currentLanguage:string = null;
     public data:any = null;
 
-    /**
-     * The LanguageModel...
-     *
-     * @class LanguageModel
-     * @module StructureJS
-     * @submodule model
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         super();

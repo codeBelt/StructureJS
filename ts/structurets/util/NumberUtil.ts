@@ -22,17 +22,16 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The NumberUtil...
+ *
+ * @class NumberUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class NumberUtil
 {
-    /**
-     * The NumberUtil...
-     *
-     * @class NumberUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
     }

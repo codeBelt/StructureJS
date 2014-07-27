@@ -25,6 +25,15 @@
 import DisplayObjectContainer = require('DisplayObjectContainer')
 import Canvas = require('Canvas')
 
+/**
+ * The CanvasElement...
+ *
+ * @class CanvasElement
+ * @extends DisplayObjectContainer
+ * @module StructureJS
+ * @submodule view
+ * @constructor
+ **/
 class CanvasElement extends DisplayObjectContainer
 {
     public stage:Canvas = null;
@@ -37,16 +46,6 @@ class CanvasElement extends DisplayObjectContainer
     public alpha:number = 1;
     public visible:boolean = true;
 
-    /**
-     * The CanvasElement...
-     *
-     * @class CanvasElement
-     * @extends DisplayObjectContainer
-     * @module StructureJS
-     * @submodule view
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         super();

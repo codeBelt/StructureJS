@@ -22,6 +22,12 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * YUIDoc_comment
+ *
+ * @class TransitionType
+ * @constructor
+ **/
 class TransitionType
 {
     public static NONE:string = 'none';
@@ -32,13 +38,6 @@ class TransitionType
     public static CROSSFADE:string = 'crossFade';
     public static FADE_OUT_AND_IN:string = 'fadeOutAndIn';
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class TransitionType
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         throw new Error('[TransitionType] Do instantiation the TransitionType class because it is a static class.');

@@ -27,6 +27,14 @@ import LoaderEvent = require('../event/LoaderEvent')
 import URLRequest = require('URLRequest')
 import URLLoaderDataFormat = require('URLLoaderDataFormat')
 
+/**
+ * The URLLoader...
+ *
+ * @class URLLoader
+ * @module StructureJS
+ * @submodule net
+ * @constructor
+ **/
 class URLLoader extends EventDispatcher
 {
     /**
@@ -62,15 +70,6 @@ class URLLoader extends EventDispatcher
      */
     private _defer:Object = null;
 
-    /**
-     * The URLLoader...
-     *
-     * @class URLLoader
-     * @module StructureJS
-     * @submodule net
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(request:URLRequest = null)
     {
         super();

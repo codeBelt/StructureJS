@@ -24,20 +24,19 @@
 
 import CanvasElement = require('CanvasElement')
 
+/**
+ * The Canvas...
+ *
+ * @class Canvas
+ * @extends CanvasElement
+ * @module StructureJS
+ * @submodule view
+ * @constructor
+ **/
 class Canvas extends CanvasElement
 {
     public element:any = null;
 
-    /**
-     * The Canvas...
-     *
-     * @class Canvas
-     * @extends CanvasElement
-     * @module StructureJS
-     * @submodule view
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         super();

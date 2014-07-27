@@ -22,17 +22,16 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The MobileUtil...
+ *
+ * @class MobileUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class MobileUtil
 {
-    /**
-     * The MobileUtil...
-     *
-     * @class MobileUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
     }

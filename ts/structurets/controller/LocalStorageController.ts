@@ -26,6 +26,14 @@ import EventDispatcher = require('../event/EventDispatcher')
 import LocalStorageEvent = require('../event/LocalStorageEvent')
 import ValueObject = require('../model/ValueObject')
 
+/**
+ * The LocalStorageController...
+ *
+ * @class LocalStorageController
+ * @module StructureJS
+ * @submodule controller
+ * @constructor
+ **/
 class LocalStorageController extends EventDispatcher
 {
     /**
@@ -48,15 +56,6 @@ class LocalStorageController extends EventDispatcher
      */
     private _localStorage:Storage = null;
 
-    /**
-     * The LocalStorageController...
-     *
-     * @class LocalStorageController
-     * @module StructureJS
-     * @submodule controller
-     * @constructor
-     * @version 0.1.1
-     **/
     constructor()
     {
         super();

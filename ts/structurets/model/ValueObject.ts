@@ -26,18 +26,17 @@ import IValueObject = require('../interface/IValueObject')
 import BaseObject = require('../BaseObject')
 import Util = require('../util/Util')
 
+/**
+ * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+ *
+ * @class ValueObject
+ * @param [data] {any} Provide a way to update the value object upon initialization.
+ * @module StructureJS
+ * @submodule model
+ * @constructor
+ **/
 class ValueObject extends BaseObject implements IValueObject
 {
-    /**
-     * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
-     *
-     * @class ValueObject
-     * @param [data] {any} Provide a way to update the value object upon initialization.
-     * @module StructureJS
-     * @submodule model
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         super();

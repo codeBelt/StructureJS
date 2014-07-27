@@ -24,14 +24,12 @@
 
 import DOMElement = require("display/DOMElement");
 
-class Stage extends DOMElement
-{
-    /**
-     * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
-     * @example
-     This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
+/**
+ * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
+ * @example
+ This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
 
-     class MainClass extends Stage {
+ class MainClass extends Stage {
 
            constructor() {
                super();
@@ -60,20 +58,22 @@ class Stage extends DOMElement
             }
 
        }
-     *
-     * <b>Instantiation Example</b><br>
-     * This example illustrates how to instantiation your main or root class.
-     *
-     *      var app = new MainClass();
-     *      app.appendTo('body');
-     *
-     * @class Stage
-     * @extends DOMElement
-     * @module StructureJS
-     * @submodule view
-     * @constructor
-     * @version 0.1.0
-     **/
+ *
+ * <b>Instantiation Example</b><br>
+ * This example illustrates how to instantiation your main or root class.
+ *
+ *      var app = new MainClass();
+ *      app.appendTo('body');
+ *
+ * @class Stage
+ * @extends DOMElement
+ * @module StructureJS
+ * @submodule view
+ * @constructor
+ * @version 0.1.0
+ **/
+class Stage extends DOMElement
+{
     constructor()
     {
         super();

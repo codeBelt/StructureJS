@@ -25,6 +25,16 @@
 import BaseObject = require("../BaseObject");
 import BaseEvent = require("BaseEvent");
 
+/**
+ * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
+ * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
+ *
+ * @class EventDispatcher
+ * @extends BaseObject
+ * @module StructureJS
+ * @submodule event
+ * @constructor
+ **/
 class EventDispatcher extends BaseObject
 {
     /**
@@ -57,17 +67,6 @@ class EventDispatcher extends BaseObject
      */
     public isEnabled:boolean = false;
 
-    /**
-     * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
-     * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
-     *
-     * @class EventDispatcher
-     * @extends BaseObject
-     * @module StructureJS
-     * @submodule event
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         super();

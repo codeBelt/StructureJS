@@ -31,7 +31,6 @@ import IEventDispatcher = require('IEventDispatcher')
  * @module StructureJS
  * @submodule interface
  * @interface
- * @version 0.1.0
  **/
 interface IDisplayObject extends IEventDispatcher
 {

@@ -26,6 +26,13 @@ import EventDispatcher = require("../event/EventDispatcher");
 import CarouselEvent = require("../event/CarouselEvent");
 import DOMElement = require("../display/DOMElement");
 
+/**
+ * YUIDoc_comment
+ *
+ * @class CarouselComponent
+ * @extends EventDispatcher
+ * @constructor
+ **/
 class CarouselComponent extends EventDispatcher
 {
     public static DIRECTION_LEFT:string = 'directionLeft';
@@ -50,14 +57,6 @@ class CarouselComponent extends EventDispatcher
     public loop:boolean = false;
     public crazy:boolean = false;
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class CarouselComponent
-     * @extends EventDispatcher
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(itemWidth, itemHeight, totalItemsVisible, container)
     {
         super();

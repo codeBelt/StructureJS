@@ -29,6 +29,14 @@ import URLLoader = require('../net/URLLoader')
 import RequestEvent = require('../event/RequestEvent')
 import LoaderEvent = require('../event/LoaderEvent')
 
+/**
+ * The BaseRequest...
+ *
+ * @class BaseRequest
+ * @module StructureJS
+ * @submodule net
+ * @constructor
+ **/
 class BaseRequest extends EventDispatcher implements IDataStore
 {
     /**
@@ -96,15 +104,6 @@ class BaseRequest extends EventDispatcher implements IDataStore
      */
     public src:string = null;
 
-    /**
-     * The BaseRequest...
-     *
-     * @class BaseRequest
-     * @module StructureJS
-     * @submodule net
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(baseUrl:string, endpoint:string = '')
     {
         super();

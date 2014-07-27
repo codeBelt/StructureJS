@@ -22,17 +22,16 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The BrowserUtil...
+ *
+ * @class BrowserUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class BrowserUtil
 {
-    /**
-     * The BrowserUtil...
-     *
-     * @class BrowserUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
     }

@@ -22,18 +22,18 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The URLContentType...
+ *
+ * @class URLContentType
+ * @module StructureJS
+ * @submodule net
+ * @constructor
+ **/
 class URLContentType
 {
 //http://www.freeformatter.com/mime-types-list.html
-    /**
-     * The URLContentType...
-     *
-     * @class URLContentType
-     * @module StructureJS
-     * @submodule net
-     * @constructor
-     * @version 0.1.0
-     **/
+
     constructor()
     {
     }

@@ -21,18 +21,16 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
+/**
+ * A ValidationUtility class that has several static methods to assist in development.
+ *
+ * @class ValidationUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class ValidationUtil
 {
-    /**
-     * A ValidationUtility class that has several static methods to assist in development.
-     *
-     * @class ValidationUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         //http://msdn.microsoft.com/en-us/library/ff650303.aspx

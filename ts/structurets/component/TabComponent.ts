@@ -28,6 +28,13 @@ import BaseEvent = require('../event/BaseEvent')
 import MouseEvents = require('../event/native/MouseEvents')
 import DOMElement = require('../display/DOMElement')
 
+/**
+ * YUIDoc_comment
+ *
+ * @class TabComponent
+ * @extends EventDispatcher
+ * @constructor
+ **/
 class TabComponent extends EventDispatcher
 {
     /**
@@ -84,14 +91,6 @@ class TabComponent extends EventDispatcher
      */
     public activeClassName:string = 'active';
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class TabComponent
-     * @extends EventDispatcher
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor($container:JQuery, tabName:string = 'tabbutton', tabContent:string = 'tabcontent')
     {
         super();

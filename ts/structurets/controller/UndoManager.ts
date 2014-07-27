@@ -24,17 +24,17 @@
 
 import EventDispatcher = require('../event/EventDispatcher')
 
+/**
+ * The UndoManager...
+ *
+ * @class UndoManager
+ * @module StructureJS
+ * @submodule controller
+ * @constructor
+ **/
 class UndoManager extends EventDispatcher
 {
-    /**
-     * The UndoManager...
-     *
-     * @class UndoManager
-     * @module StructureJS
-     * @submodule controller
-     * @constructor
-     * @version 0.1.0
-     **/
+
     constructor()
     {
         super();

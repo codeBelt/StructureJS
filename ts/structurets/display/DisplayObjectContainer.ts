@@ -24,6 +24,15 @@
 
 import EventDispatcher = require("../event/EventDispatcher");
 
+/**
+ * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
+ *
+ * @class DisplayObjectContainer
+ * @extends EventDispatcher
+ * @module StructureJS
+ * @submodule view
+ * @constructor
+ **/
 class DisplayObjectContainer extends EventDispatcher
 {
     /**
@@ -117,16 +126,6 @@ class DisplayObjectContainer extends EventDispatcher
      */
     public unscaledHeight:number = 100;
 
-    /**
-     * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
-     *
-     * @class DisplayObjectContainer
-     * @extends EventDispatcher
-     * @module StructureJS
-     * @submodule view
-     * @constructor
-     * @version 0.1.1
-     **/
     constructor()
     {
         super();

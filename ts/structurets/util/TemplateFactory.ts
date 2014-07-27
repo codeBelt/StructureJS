@@ -32,7 +32,6 @@ import StringUtil = require('../util/StringUtil')
  * @module StructureJS
  * @submodule util
  * @constructor
- * @version 0.1.0
  **/
 class TemplateFactory
 {

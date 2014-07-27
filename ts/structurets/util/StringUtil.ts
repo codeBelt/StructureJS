@@ -22,18 +22,17 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The StringUtil...
+ *
+ * @class StringUtil
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ * @static
+ **/
 class StringUtil
 {
-    /**
-     * The StringUtil...
-     *
-     * @class StringUtil
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @static
-     * @version 0.1.0
-     **/
     constructor()
     {
     }

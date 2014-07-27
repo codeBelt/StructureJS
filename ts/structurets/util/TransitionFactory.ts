@@ -35,6 +35,15 @@ import TransitionPushDown = require('../controller/transition/TransitionPushDown
 import TransitionCrossFade = require('../controller/transition/TransitionCrossFade')
 import TransitionFadeOutAndIn = require('../controller/transition/TransitionFadeOutAndIn')
 
+/**
+ * YUIDoc_comment
+ *
+ * @class TransitionFactory
+ * @extends BaseObject
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class TransitionFactory extends BaseObject
 {
     /**
@@ -46,16 +55,6 @@ class TransitionFactory extends BaseObject
      */
     private _transitions:Object = {};
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class TransitionFactory
-     * @extends BaseObject
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
         super();

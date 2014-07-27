@@ -31,6 +31,13 @@ import TransitionType = require('../constant/TransitionType')
 import TransitionManagerEvent = require('../event/TransitionManagerEvent')
 import TweenEvent = require('../event/TweenEvent')
 
+/**
+ * YUIDoc_comment
+ *
+ * @class TransitionManager
+ * @extends BaseController
+ * @constructor
+ **/
 class TransitionManager extends EventDispatcher
 {
     public static READY:string = 'ready';
@@ -44,14 +51,6 @@ class TransitionManager extends EventDispatcher
     private _transitionFactory:TransitionFactory = new TransitionFactory();
     private _runningTransition:ITransition = null;
 
-    /**
-     * YUIDoc_comment
-     *
-     * @class TransitionManager
-     * @extends BaseController
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(displayContainer:DOMElement)
     {
         super();

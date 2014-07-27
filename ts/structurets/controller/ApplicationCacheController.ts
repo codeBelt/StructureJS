@@ -25,6 +25,14 @@
 import ApplicationCacheEvent = require('../event/ApplicationCacheEvent')
 import EventDispatcher = require('../event/EventDispatcher')
 
+/**
+ * The ApplicationCacheController...
+ *
+ * @class ApplicationCacheController
+ * @module StructureJS
+ * @submodule controller
+ * @constructor
+ **/
 class ApplicationCacheController
 {
     /**
@@ -56,15 +64,6 @@ class ApplicationCacheController
      */
     public static isEnabled:boolean = false;
 
-    /**
-     * The ApplicationCacheController...
-     *
-     * @class ApplicationCacheController
-     * @module StructureJS
-     * @submodule controller
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
     }

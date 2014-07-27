@@ -22,17 +22,16 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+ * The DataLoader...
+ *
+ * @class DataLoader
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class DataLoader
 {
-    /**
-     * The DataLoader...
-     *
-     * @class DataLoader
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor()
     {
 

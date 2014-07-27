@@ -26,6 +26,14 @@ import IDataStore = require('../interface/IDataStore')
 import EventDispatcher = require('../event/EventDispatcher')
 import LoaderEvent = require('../event/LoaderEvent')
 
+/**
+ * The ImageLoader...
+ *
+ * @class ImageLoader
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class ImageLoader extends EventDispatcher implements IDataStore
 {
     private _image:HTMLImageElement = null;
@@ -34,15 +42,6 @@ class ImageLoader extends EventDispatcher implements IDataStore
     public src:string;
     public complete:boolean = false;
 
-    /**
-     * The ImageLoader...
-     *
-     * @class ImageLoader
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(path:string)
     {
         super();

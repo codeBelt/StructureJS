@@ -30,6 +30,14 @@ import URLLoader = require('../net/URLLoader')
 import URLRequestMethod = require('../net/URLRequestMethod')
 import URLLoaderDataFormat = require('../net/URLLoaderDataFormat')
 
+/**
+ * The HtmlLoader...
+ *
+ * @class HtmlLoader
+ * @module StructureJS
+ * @submodule util
+ * @constructor
+ **/
 class HtmlLoader extends EventDispatcher implements IDataStore
 {
     private _urlLoader:URLLoader = null;
@@ -38,15 +46,6 @@ class HtmlLoader extends EventDispatcher implements IDataStore
     public src:string;
     public complete:boolean = false;
 
-    /**
-     * The HtmlLoader...
-     *
-     * @class HtmlLoader
-     * @module StructureJS
-     * @submodule util
-     * @constructor
-     * @version 0.1.0
-     **/
     constructor(path:string)
     {
         super();

@@ -13,7 +13,7 @@ Sucks. I know.
 
 
 define([
-  'template/helpers/yeller',
+  'yeller',
 ], function(){
   return {};
 });
