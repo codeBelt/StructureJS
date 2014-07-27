@@ -37,6 +37,7 @@ class TransitionPushLeft extends BaseTransition
      * @module StructureJS
      * @submodule controller
      * @constructor
+ * @author Robert S. (www.codeBelt.com)
      * @version 0.1.0
      **/
     constructor()

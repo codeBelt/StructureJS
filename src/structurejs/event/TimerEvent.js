@@ -18,26 +18,24 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule event
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      **/
     var TimerEvent = (function () {
-
-        TimerEvent.TIMER = 'TimerEvent.timer';
-
-        TimerEvent.TIMER_COMPLETE = 'TimerEvent.timerComplete';
 
         var _super = Extend(TimerEvent, BaseEvent);
 
         function TimerEvent(type, bubbles, cancelable, data) {
             _super.call(this, type, bubbles, cancelable, data);
         }
-
         /**
          * @overridden BaseEvent.clone
          */
         TimerEvent.prototype.clone = function () {
             return new TimerEvent(this.type, this.bubble, this.cancelable, this.data);
         };
+        TimerEvent.TIMER = 'TimerEvent.timer';
 
+        TimerEvent.TIMER_COMPLETE = 'TimerEvent.timerComplete';
         return TimerEvent;
     })();
 

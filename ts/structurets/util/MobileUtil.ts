@@ -29,6 +29,7 @@
  * @module StructureJS
  * @submodule util
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class MobileUtil
 {

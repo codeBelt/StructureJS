@@ -8,11 +8,9 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule util
      * @constructor
-     * @version 0.2.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var Util = (function () {
-
-        Util._idCounter = 0;
 
         function Util() {
         }
@@ -173,7 +171,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
             return (results && results.length > 1) ? results[1] : '';
         };
-
+        Util._idCounter = 0;
         return Util;
     })();
 

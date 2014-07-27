@@ -105,8 +105,14 @@ class EventBroker
      * @static
      * @public
      */
-    public static dispatchEvent(event:BaseEvent):void
+    public static dispatchEvent(type:any, data:any = null):void
     {
+        var event = type;
+
+        if (typeof event == 'string') {
+            event = new BaseEvent(type, false, false, data);
+        }
+
         event.target = EventBroker;
         event.currentTarget = EventBroker;
 

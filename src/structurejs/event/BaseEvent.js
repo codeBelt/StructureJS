@@ -52,12 +52,136 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule event
      * @constructor
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var BaseEvent = (function () {
 
         var _super = Extend(BaseEvent, BaseObject);
 
+        function BaseEvent(type, bubbles, cancelable, data) {
+            if (typeof bubbles === "undefined") { bubbles = false; }
+            if (typeof cancelable === "undefined") { cancelable = false; }
+            if (typeof data === "undefined") { data = null; }
+            _super.call(this);
+            /**
+             * The type of event.
+             *
+             * @property type
+             * @type {string}
+             * @default null
+             * @readOnly
+             */
+            this.type = null;
+            /**
+             * A reference to the object that originally dispatched the event.
+             *
+             * @property target
+             * @type {any}
+             * @default null
+             * @readOnly
+             */
+            this.target = null;
+            /**
+             * The currentTarget property always points to the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
+             *
+             * @property currentTarget
+             * @type {any}
+             * @default null
+             * @readOnly
+             */
+            this.currentTarget = null;
+            /**
+             * Use to pass any type of data with the event.
+             *
+             * @property data
+             * @type {any}
+             * @default null
+             */
+            this.data = null;
+            /**
+             * Indicates whether an event is a bubbling event.
+             *
+             * @property bubble
+             * @type {boolean}
+             * @default false
+             */
+            this.bubble = false;
+            /**
+             * Indicates whether the behavior associated with the event can be prevented.
+             *
+             * @property cancelable
+             * @type {boolean}
+             * @default false
+             */
+            this.cancelable = false;
+            /**
+             *
+             * @property isPropagationStopped
+             * @type {boolean}
+             * @default false
+             * @readOnly
+             */
+            this.isPropagationStopped = false;
+            /**
+             *
+             * @property isImmediatePropagationStopped
+             * @type {boolean}
+             * @default false
+             * @readOnly
+             */
+            this.isImmediatePropagationStopped = false;
+
+            this.type = type;
+            this.bubble = bubbles;
+            this.cancelable = cancelable;
+            this.data = data;
+        }
+        /**
+         * Duplicates an instance of an BaseEvent subclass.
+         *
+         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
+         * You do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch
+         * an event—that is, when you call dispatchEvent(event) from a handler that is handling event.
+         *
+         * The new BaseEvent object includes all the properties of the original.
+         *
+         * When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
+         * to duplicate the properties of your custom class. If you do not set all the properties that you add in your event
+         * subclass, those properties will not have the correct values when listeners handle the redispatched event.
+         *
+         * @method clone
+         * @returns {BaseEvent}
+         * @public
+         */
+        BaseEvent.prototype.clone = function () {
+            return new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+        };
+
+        /**
+         * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
+         * This method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()
+         * method prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
+         * This method can be called in any phase of
+         *
+         * @method stopPropagation
+         * @public
+         */
+        BaseEvent.prototype.stopPropagation = function () {
+            this.isPropagationStopped = true;
+        };
+
+        /**
+         * Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
+         * This method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()
+         * method doesn't take effect until all the event listeners in the current node finish processing.
+         *
+         * @method stopImmediatePropagation
+         * @public
+         */
+        BaseEvent.prototype.stopImmediatePropagation = function () {
+            this.stopPropagation();
+            this.isImmediatePropagationStopped = true;
+        };
         BaseEvent.ACTIVATE = 'BaseEvent.activate';
 
         BaseEvent.ADDED = 'BaseEvent.added';
@@ -110,140 +234,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
         BaseEvent.RESIZE = 'BaseEvent.resize';
 
-        function BaseEvent(type, bubbles, cancelable, data) {
-            if (typeof bubbles === "undefined") { bubbles = false; }
-            if (typeof cancelable === "undefined") { cancelable = false; }
-            if (typeof data === "undefined") { data = null; }
-            _super.call(this);
-
-            /**
-             * The type of event.
-             *
-             * @property type
-             * @type {string}
-             * @default null
-             * @readOnly
-             */
-            this.type = null;
-
-            /**
-             * A reference to the object that originally dispatched the event.
-             *
-             * @property target
-             * @type {any}
-             * @default null
-             * @readOnly
-             */
-            this.target = null;
-
-            /**
-             * The currentTarget property always points to the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
-             *
-             * @property currentTarget
-             * @type {any}
-             * @default null
-             * @readOnly
-             */
-            this.currentTarget = null;
-
-            /**
-             * Use to pass any type of data with the event.
-             *
-             * @property data
-             * @type {any}
-             * @default null
-             */
-            this.data = null;
-
-            /**
-             * Indicates whether an event is a bubbling event.
-             *
-             * @property bubble
-             * @type {boolean}
-             * @default false
-             */
-            this.bubble = false;
-
-            /**
-             * Indicates whether the behavior associated with the event can be prevented.
-             *
-             * @property cancelable
-             * @type {boolean}
-             * @default false
-             */
-            this.cancelable = false;
-
-            /**
-             *
-             * @property isPropagationStopped
-             * @type {boolean}
-             * @default false
-             * @readOnly
-             */
-            this.isPropagationStopped = false;
-
-            /**
-             *
-             * @property isImmediatePropagationStopped
-             * @type {boolean}
-             * @default false
-             * @readOnly
-             */
-            this.isImmediatePropagationStopped = false;
-
-            this.type = type;
-            this.bubble = bubbles;
-            this.cancelable = cancelable;
-            this.data = data;
-        }
-
-        /**
-         * Duplicates an instance of an BaseEvent subclass.
-         *
-         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
-         * You do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch
-         * an event—that is, when you call dispatchEvent(event) from a handler that is handling event.
-         *
-         * The new Event object includes all the properties of the original.
-         *
-         * When creating your own custom Event class, you must override the inherited Event.clone() method in order for it
-         * to duplicate the properties of your custom class. If you do not set all the properties that you add in your event
-         * subclass, those properties will not have the correct values when listeners handle the redispatched event.
-         *
-         * @method clone
-         * @returns {BaseEvent}
-         * @public
-         */
-        BaseEvent.prototype.clone = function () {
-            return new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
-        };
-
-        /**
-         * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
-         * This method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()
-         * method prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
-         * This method can be called in any phase of
-         *
-         * @method stopPropagation
-         * @public
-         */
-        BaseEvent.prototype.stopPropagation = function () {
-            this.isPropagationStopped = true;
-        };
-
-        /**
-         * Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
-         * This method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()
-         * method doesn't take effect until all the event listeners in the current node finish processing.
-         *
-         * @method stopImmediatePropagation
-         * @public
-         */
-        BaseEvent.prototype.stopImmediatePropagation = function () {
-            this.stopPropagation();
-            this.isImmediatePropagationStopped = true;
-        };
-
+        BaseEvent.SELECTED = 'BaseEvent.selected';
         return BaseEvent;
     })();
 

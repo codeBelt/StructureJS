@@ -14,6 +14,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule controller
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      **/
     var LocalStorageController = (function () {
 
@@ -21,7 +22,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
         function LocalStorageController() {
             _super.call(this);
-
             /**
              * Current user namespace. The namespace is optional.
              *
@@ -31,8 +31,7 @@ define(function (require, exports, module) { // jshint ignore:line
              * @optional
              * @private
              */
-            this._namespace = 'defaultNamespace.';
-
+            this._namespace = 'defaultNamespace';
             /**
              * A reference to window.localStorage for faster access.
              *
@@ -46,7 +45,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
             window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
         }
-
         /**
          * Set storage namespace
          *
@@ -101,7 +99,7 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         LocalStorageController.prototype.getItem = function (key, useNamespace) {
             if (typeof useNamespace === "undefined") { useNamespace = false; }
-            if (useNamespace == true) {
+            if (useNamespace) {
                 key = this.getNamespace() + key;
             }
 
@@ -230,7 +228,6 @@ define(function (require, exports, module) { // jshint ignore:line
         LocalStorageController.prototype.onLocalStorageEvent = function (event) {
             this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
         };
-        
         return LocalStorageController;
     })();
 

@@ -4,19 +4,20 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
 
     /**
-     * YUIDoc_comment
+     * The URLContentType...
      *
      * @class URLContentType
      * @module StructureJS
      * @submodule net
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      **/
     var URLContentType = (function () {
 
         function URLContentType() {
         }
-
         URLContentType.DEFAULT = "application/x-www-form-urlencoded";
+
         URLContentType.ATOM = "application/atom+xml";
         URLContentType.JSON = "application/json";
         URLContentType.PDF = "application/pdf";
@@ -39,7 +40,6 @@ define(function (require, exports, module) { // jshint ignore:line
         URLContentType.REAL_AUDIO = "audio/vnd.rn-realaudio";
         URLContentType.WAV = "audio/vnd.wave";
         URLContentType.WEBM = "audio/webm";
-
         return URLContentType;
     })();
 

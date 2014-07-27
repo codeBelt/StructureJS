@@ -10,6 +10,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule core
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      **/
     var BaseObject = (function () {
 

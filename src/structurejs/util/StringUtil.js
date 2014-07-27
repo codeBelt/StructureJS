@@ -8,14 +8,13 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule util
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      * @static
-     * @version 0.1.0
      **/
     var StringUtil = (function () {
 
         function StringUtil() {
         }
-
         /**
          * YUIDoc_comment
          *
@@ -175,6 +174,32 @@ define(function (require, exports, module) { // jshint ignore:line
             }
         };
 
+        /**
+         * Replaces each format item in a specified string with the text equivalent of a corresponding object's value.
+         * @example
+         *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
+         *      // 'Robert is cool. Very cool and smart!'
+         *
+         * @method format
+         * @returns {string}
+         * @param str {string}
+         * @param ...rest {Array}
+         * @public
+         * @static
+         */
+        StringUtil.format = function (str) {
+            var rest = [];
+            for (var _i = 0; _i < (arguments.length - 1); _i++) {
+                rest[_i] = arguments[_i + 1];
+            }
+            var length = rest.length;
+            for (var i = 0; i < length; i++) {
+                var reg = new RegExp("\\{" + i + "\\}", "gm");
+                str = str.replace(reg, rest[i]);
+            }
+
+            return str;
+        };
         return StringUtil;
     })();
 

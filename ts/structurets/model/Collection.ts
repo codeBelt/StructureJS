@@ -36,6 +36,7 @@ import BaseEvent = require('../event/BaseEvent')
  * @module StructureJS
  * @submodule model
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class Collection extends EventDispatcher implements ICollection
 {

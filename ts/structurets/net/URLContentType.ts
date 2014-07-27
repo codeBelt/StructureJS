@@ -29,6 +29,7 @@
  * @module StructureJS
  * @submodule net
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class URLContentType
 {

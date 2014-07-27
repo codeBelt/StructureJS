@@ -38,6 +38,7 @@ import Util = require("util/Util");
  * @module StructureJS
  * @submodule core
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class BaseObject
 {

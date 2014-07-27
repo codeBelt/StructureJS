@@ -33,6 +33,7 @@ import MathUtil = require('../util/MathUtil')
  * @module StructureJS
  * @submodule view
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class Bitmap extends CanvasElement
 {

@@ -18,26 +18,26 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule event
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      **/
     var LoaderEvent = (function () {
-
-        LoaderEvent.COMPLETE = "LoaderEvent.complete";
-
-        LoaderEvent.LOAD_COMPLETE = "LoaderEvent.loadComplete";
 
         var _super = Extend(LoaderEvent, BaseEvent);
 
         function LoaderEvent(type, bubbles, cancelable, data) {
             _super.call(this, type, bubbles, cancelable, data);
         }
-
         /**
          * @overridden BaseEvent.clone
          */
         LoaderEvent.prototype.clone = function () {
             return new LoaderEvent(this.type, this.bubble, this.cancelable, this.data);
         };
+        LoaderEvent.COMPLETE = "LoaderEvent.complete";
 
+        LoaderEvent.LOAD_COMPLETE = "LoaderEvent.loadComplete";
+
+        LoaderEvent.ERROR = "LoaderEvent.error";
         return LoaderEvent;
     })();
 

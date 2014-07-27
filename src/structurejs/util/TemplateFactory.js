@@ -13,19 +13,12 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule util
      * @constructor
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var TemplateFactory = (function () {
 
-        TemplateFactory.UNDERSCORE = 'underscore';
-        TemplateFactory.HANDLEBARS = 'handlebars';
-
-        TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
-        TemplateFactory.templateNamespace = 'JST';
-
         function TemplateFactory() {
         }
-
         TemplateFactory.createTemplate = function (templatePath, data) {
             if (typeof data === "undefined") { data = null; }
             return TemplateFactory.create(templatePath, data);
@@ -33,13 +26,13 @@ define(function (require, exports, module) { // jshint ignore:line
 
         TemplateFactory.create = function (templatePath, data) {
             if (typeof data === "undefined") { data = null; }
-            //Checks the first charactor to see if it is a "." or "#".
+            //Checks the first character to see if it is a "." or "#".
             var regex = /^([.#])(.+)/;
             var template = null;
-            var isRequirePlugin = typeof templatePath === 'function';
+            var isFunctionTemplate = typeof templatePath === 'function';
             var isClassOrIdName = regex.test(templatePath);
 
-            if(isRequirePlugin) {
+            if (isFunctionTemplate) {
                 template = templatePath(data);
             } else if (isClassOrIdName) {
                 var htmlString = jQuery(templatePath).html();
@@ -71,7 +64,11 @@ define(function (require, exports, module) { // jshint ignore:line
 
             return template;
         };
+        TemplateFactory.UNDERSCORE = 'underscore';
+        TemplateFactory.HANDLEBARS = 'handlebars';
 
+        TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
+        TemplateFactory.templateNamespace = 'JST';
         return TemplateFactory;
     })();
 

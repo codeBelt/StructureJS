@@ -37,6 +37,7 @@ import URLLoaderDataFormat = require('../net/URLLoaderDataFormat')
  * @module StructureJS
  * @submodule util
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class HtmlLoader extends EventDispatcher implements IDataStore
 {

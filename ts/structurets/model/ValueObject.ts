@@ -34,6 +34,7 @@ import Util = require('../util/Util')
  * @module StructureJS
  * @submodule model
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class ValueObject extends BaseObject implements IValueObject
 {
@@ -51,6 +52,12 @@ class ValueObject extends BaseObject implements IValueObject
      */
     public update(data:any):any
     {
+        for (var key in data) {
+            if (this.hasOwnProperty(key)) {
+                this[key] = data[key];
+            }
+        }
+
         return this;
     }
 

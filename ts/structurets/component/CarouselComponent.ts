@@ -32,6 +32,7 @@ import DOMElement = require("../display/DOMElement");
  * @class CarouselComponent
  * @extends EventDispatcher
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class CarouselComponent extends EventDispatcher
 {

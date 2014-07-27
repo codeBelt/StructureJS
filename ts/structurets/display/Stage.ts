@@ -27,37 +27,60 @@ import DOMElement = require("display/DOMElement");
 /**
  * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
  * @example
- This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
+ // This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
+ define(function (require, exports, module) {
+            'use strict';
 
- class MainClass extends Stage {
+            var Extend = require('structurejs/util/Extend');
+            var Stage = require('replace/path/Stage');
 
-           constructor() {
-               super();
-           }
+            var MainClass = (function () {
 
-           public createChildren():void {
-               super.createChildren();
-               // Add children classes.
-           }
+            var _super = Extend(MainClass, Stage);
 
-            public enable():void {
-               if (this.isEnabled === true) return;
-               // Add listeners and/or enable children.
-               super.enable();
-            }
+                function MainClass() {
+                    _super.call(this);
+                }
 
-            public disable():void {
-               if (this.isEnabled === false) return;
-               // Remove listeners and/or disable children.
-               super.disable();
-            }
+                MainClass.prototype.createChildren = function () {
+                    _super.prototype.createChildren.call(this);
 
-            public destroy():void {
-               super.destroy();
-               // Add items to clean up.
-            }
+                    // Create and add your child objects to this parent class.
+                }
 
-       }
+                MainClass.prototype.layoutChildren = function () {
+                    // Layout or update the child objects in this parent class.
+
+                    return this;
+                }
+
+                MainClass.prototype.enable = function () {
+                    if (this.isEnabled === true) return this;
+
+                    // Enable the child objects and add any event listeners.
+
+                    return _super.prototype.enable.call(this);
+                }
+
+                MainClass.prototype.disable = function () {
+                    if (this.isEnabled === false) return this;
+
+                    // Disable the child objects and remove any event listeners.
+
+                    return _super.prototype.disable.call(this);
+                }
+
+                MainClass.prototype.destroy = function () {
+                    _super.prototype.destroy.call(this);
+
+                    // Destroy the child objects and references in this parent class to prevent memory leaks.
+                }
+
+                return MainClass;
+            })();
+
+            module.exports = MainClass;
+        });
  *
  * <b>Instantiation Example</b><br>
  * This example illustrates how to instantiation your main or root class.
@@ -70,7 +93,7 @@ import DOMElement = require("display/DOMElement");
  * @module StructureJS
  * @submodule view
  * @constructor
- * @version 0.1.0
+ * @author Robert S. (www.codeBelt.com)
  **/
 class Stage extends DOMElement
 {

@@ -31,9 +31,11 @@ import URLLoaderDataFormat = require('URLLoaderDataFormat')
  * The URLLoader...
  *
  * @class URLLoader
+ * @extends EventDispatcher
  * @module StructureJS
  * @submodule net
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class URLLoader extends EventDispatcher
 {
@@ -63,12 +65,12 @@ class URLLoader extends EventDispatcher
 
     /**
      *
-     * @property _defer
-     * @type {jQuery.Deferred}
+     * @property _xhr
+     * @type {JQueryXHR}
      * @default null
      * @private
      */
-    private _defer:Object = null;
+    private _xhr:JQueryXHR = null;
 
     constructor(request:URLRequest = null)
     {
@@ -85,7 +87,7 @@ class URLLoader extends EventDispatcher
         this.ready = false;
         var self:URLLoader = this;
 
-        jQuery.ajax({
+        this._xhr = jQuery.ajax({
             type: request.method,
             url: request.url,
             data: request.data,
@@ -100,34 +102,48 @@ class URLLoader extends EventDispatcher
 
     public onLoadSuccess():void
     {
-        //console.log('[' + this.getQualifiedClassName() + ']', 'onLoadSuccess', arguments);
+        //console.log("onLoadSuccess", arguments);
     }
 
     public onBeforeSend():void
     {
-        //console.log('[' + this.getQualifiedClassName() + ']', 'onBeforeSend', arguments);
+        //console.log("onBeforeSend", arguments);
     }
 
     public onLoadError():void
     {
-        console.log('[' + this.getQualifiedClassName() + ']', 'onLoadError', arguments);
+        //console.log("[URLLoader] - onLoadError", arguments);
         this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
     }
 
     public onComplete(data):void
     {
+        this.ready = true;
         //console.log('[' + this.getQualifiedClassName() + ']', 'onComplete', data);
         this.data = data.responseText;
         this.ready = true;
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE));
+        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
     }
 
     public destroy():void
     {
         super.destroy();
 
-        this._defer = null;
+        this.abort();
         this.data = null;
+        this._xhr = null;
+    }
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method abort
+     * @public
+     */
+    private abort():void {
+        if (this._xhr != null) {
+            this._xhr.abort();
+        }
     }
 
 }

@@ -9,13 +9,13 @@ define(function (require, exports, module) { // jshint ignore:line
     var URLLoaderDataFormat = require('structurejs/net/URLLoaderDataFormat');
 
     /**
-     * YUIDoc_comment
+     * The URLLoader...
      *
      * @class URLLoader
      * @module StructureJS
-     * @extends EventDispatcher
      * @submodule net
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      **/
     var URLLoader = (function () {
 
@@ -24,7 +24,6 @@ define(function (require, exports, module) { // jshint ignore:line
         function URLLoader(request) {
             if (typeof request === "undefined") { request = null; }
             _super.call(this);
-
             /**
              *
              * @property dataFormat
@@ -48,8 +47,8 @@ define(function (require, exports, module) { // jshint ignore:line
             this.ready = false;
             /**
              *
-             * @property _defer
-             * @type {jQuery.Deferred}
+             * @property _xhr
+             * @type {JQueryXHR}
              * @default null
              * @private
              */
@@ -85,14 +84,16 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         URLLoader.prototype.onLoadError = function () {
-            console.log("[URLLoader] - onLoadError", arguments);
+            //console.log("[URLLoader] - onLoadError", arguments);
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
         };
 
         URLLoader.prototype.onComplete = function (data) {
             this.ready = true;
 
-            console.log("[URLLoader] - onComplete", data);
+            //console.log('[' + this.getQualifiedClassName() + ']', 'onComplete', data);
             this.data = data.responseText;
+            this.ready = true;
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
         };
 
@@ -100,7 +101,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.prototype.destroy.call(this);
 
             this.abort();
-
             this.data = null;
             this._xhr = null;
         };
@@ -111,12 +111,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method abort
          * @public
          */
-        URLLoader.prototype.abort = function() {
+        URLLoader.prototype.abort = function () {
             if (this._xhr != null) {
                 this._xhr.abort();
             }
         };
-
         return URLLoader;
     })();
 

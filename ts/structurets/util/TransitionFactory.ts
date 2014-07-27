@@ -39,10 +39,10 @@ import TransitionFadeOutAndIn = require('../controller/transition/TransitionFade
  * YUIDoc_comment
  *
  * @class TransitionFactory
- * @extends BaseObject
  * @module StructureJS
  * @submodule util
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class TransitionFactory extends BaseObject
 {

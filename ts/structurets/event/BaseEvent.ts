@@ -34,17 +34,35 @@ import BaseObject = require("../BaseObject");
  * @extends BaseObject
  * @example
  // Example: how to create a custom event by extending BaseEvent.
- class CountryEvent extends BaseEvent {
-           public static CHANGE_COUNTRY:string = "CountryEvent.changeCountry";
+ var Extend = require('structurejs/util/Extend');
+ var BaseEvent = require('structurejs/event/BaseEvent');
 
-           public countryName:string = null;
+ var CountryEvent = (function () {
 
-           constructor(type:string, countryName:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {
-               super(type, bubbles, cancelable, data);
+            var _super = Extend(CountryEvent, BaseEvent);
 
-               this.countryName = countryName;
-           }
-       }
+            CountryEvent.CHANGE_COUNTRY = "CountryEvent.changeCountry";
+
+            function CountryEvent(type, bubbles, cancelable, data) {
+                _super.call(this, type, bubbles, cancelable, data);
+
+                this.countryName = null;
+            }
+
+            CountryEvent.prototype.clone = function () {
+                return new CountryEvent(this.type, this.bubble, this.cancelable, this.data);
+            };
+
+            return CountryEvent;
+        })();
+
+ * @example
+ // Example: how to use the custom event.
+ var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
+ this.dispatchEvent(event);
+
+ // Here is a common inline event being dispatched
+ this.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));
  * @param type {string} The type of event. The type is case-sensitive.
  * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
  * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink "EventDispatcher/parent:property"}}{{/crossLink}})
@@ -54,6 +72,7 @@ import BaseObject = require("../BaseObject");
  * @module StructureJS
  * @submodule event
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class BaseEvent extends BaseObject
 {
@@ -290,6 +309,15 @@ class BaseEvent extends BaseObject
      * @static
      */
     public static RESIZE:string = 'BaseEvent.resize';
+
+    /**
+     * The BaseEvent.SELECTED constant defines the value of the type property of a selected event object.
+     *
+     * @event SELECTED
+     * @type {string}
+     * @static
+     */
+    public static SELECTED:string = 'BaseEvent.selected';
 
     /**
      * The type of event.

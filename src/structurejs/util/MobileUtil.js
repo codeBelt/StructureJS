@@ -10,13 +10,12 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule util
      * @constructor
-     * @author Robert S.
+     * @author Robert S. (www.codeBelt.com)
      **/
     var MobileUtil = (function () {
 
         function MobileUtil() {
         }
-
         MobileUtil.isAndroid = function () {
             return !!navigator.userAgent.match(/Android/i);
         };
@@ -40,7 +39,6 @@ define(function (require, exports, module) { // jshint ignore:line
         MobileUtil.isMobile = function () {
             return (MobileUtil.isAndroid() || MobileUtil.isBlackBerry() || MobileUtil.isiOS() || MobileUtil.isOpera() || MobileUtil.isWindows());
         };
-
         return MobileUtil;
     })();
 

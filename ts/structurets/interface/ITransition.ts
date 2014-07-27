@@ -31,6 +31,7 @@ import DOMElement = require('../display/DOMElement')
  *
  * @class ITransition
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 interface ITransition extends IEventDispatcher
 {

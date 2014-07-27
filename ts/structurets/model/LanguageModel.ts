@@ -37,6 +37,7 @@ import LanguageConfigVO = require('vo/LanguageConfigVO')
  * @module StructureJS
  * @submodule model
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class LanguageModel extends EventDispatcher
 {

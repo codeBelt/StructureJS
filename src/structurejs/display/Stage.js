@@ -9,7 +9,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
      * @example
      // This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
-        define(function (require, exports, module) {
+     define(function (require, exports, module) {
             'use strict';
 
             var Extend = require('structurejs/util/Extend');
@@ -74,7 +74,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule view
      * @constructor
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var Stage = (function () {
 
@@ -83,7 +83,6 @@ define(function (require, exports, module) { // jshint ignore:line
         function Stage() {
             _super.call(this);
         }
-
         /**
          * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
          *
@@ -103,18 +102,14 @@ define(function (require, exports, module) { // jshint ignore:line
                 this.layoutChildren();
             }
 
-            if (enabled === false)
-            {
+            if (enabled === false) {
                 this.disable();
-            }
-            else
-            {
+            } else {
                 this.enable();
             }
 
             return this;
         };
-
         return Stage;
     })();
 

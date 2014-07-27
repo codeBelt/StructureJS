@@ -29,6 +29,7 @@ import DOMElement = require("../display/DOMElement");
  *
  * @class ComponentFactory
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class ComponentFactory
 {

@@ -14,7 +14,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule event
      * @constructor
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var EventDispatcher = (function () {
 
@@ -22,7 +22,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
         function EventDispatcher() {
             _super.call(this);
-
             /**
              * Holds a reference to added listeners.
              *
@@ -53,18 +52,16 @@ define(function (require, exports, module) { // jshint ignore:line
 
             this._listeners = [];
         }
-
         /**
          * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
          * @example
-        instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-
-        ClassName.prototype.handlerMethod(event) {
-            console.log(event.target + " sent the event.");
+         instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         ClassName.prototype.handlerMethod = function (event) {
+        console.log(event.target + " sent the event.");
         }
          * @method addEventListener
          * @param type {String} The type of event.
-         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)
+         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
          * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @public
@@ -100,10 +97,9 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Removes a specified listener from the EventDispatcher object.
          * @example
-        instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-
-        ClassName.prototype.handlerMethod(event) {
-            console.log(event.target + " sent the event.");
+         instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         ClassName.prototype.handlerMethod = function (event) {
+        console.log(event.target + " sent the event.");
         }
          * @method removeEventListener
          * @param type {String} The type of event.
@@ -133,11 +129,11 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
          * @example
-        var event = new BaseEvent(BaseEvent.CHANGE);
-        instance.dispatchEvent(event);
+         var event = new BaseEvent(BaseEvent.CHANGE);
+         instance.dispatchEvent(event);
 
-        // Here is a common inline event being dispatched
-        instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+         // Here is a common inline event being dispatched
+         instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          * @method dispatchEvent
          * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
          * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
@@ -145,6 +141,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         EventDispatcher.prototype.dispatchEvent = function (type, data) {
+            if (typeof data === "undefined") { data = null; }
             var event = type;
 
             if (typeof event == 'string') {
@@ -156,7 +153,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 event.target = this;
                 event.currentTarget = this;
             }
-            
+
             // Get the list of event listener(s) by the associated type value.
             var list = this._listeners[event.type];
             if (list) {
@@ -180,6 +177,14 @@ define(function (require, exports, module) { // jshint ignore:line
                     return this;
                 }
 
+                /*
+                 // Clone the event because this EventDispatcher class modifies the currentTarget property when bubbling.
+                 // We need to set the target to the previous target so we can keep track of the original origin of where
+                 // the event was dispatched for the first time.
+                 var previousTarget:string = event.target;
+                 event = event.clone();
+                 event.target = previousTarget;
+                 */
                 // Assign the current object that is currently processing the event (i.e. bubbling at) in the display list hierarchy.
                 event.currentTarget = this;
 
@@ -218,7 +223,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         EventDispatcher.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true)
+                return this;
 
             this.isEnabled = true;
             return this;
@@ -240,7 +246,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         EventDispatcher.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false)
+                return this;
 
             this.isEnabled = false;
             return this;
@@ -256,7 +263,6 @@ define(function (require, exports, module) { // jshint ignore:line
         EventDispatcher.prototype.getEventListeners = function () {
             return this._listeners;
         };
-
         return EventDispatcher;
     })();
 

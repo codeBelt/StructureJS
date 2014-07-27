@@ -27,6 +27,7 @@
  *
  * @class TransitionType
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class TransitionType
 {

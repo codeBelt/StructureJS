@@ -13,7 +13,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule model
      * @constructor
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var ValueObject = (function () {
 
@@ -22,7 +22,6 @@ define(function (require, exports, module) { // jshint ignore:line
         function ValueObject() {
             _super.call(this);
         }
-
         /**
          * Provide a way to update the value object.
          *
@@ -80,8 +79,8 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          *
          *
-         * @method clone
-         * @returns {Object}
+         * @method Object
+         * @returns {any}
          * @public
          */
         ValueObject.prototype.clone = function () {
@@ -106,7 +105,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
             return copy;
         };
-
         return ValueObject;
     })();
 

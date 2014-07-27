@@ -37,6 +37,7 @@ import TweenEvent = require('../event/TweenEvent')
  * @class TransitionManager
  * @extends BaseController
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class TransitionManager extends EventDispatcher
 {

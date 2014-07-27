@@ -36,6 +36,7 @@ import URLContentType = require('URLContentType')
  * @module StructureJS
  * @submodule net
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class URLRequest extends BaseObject
 {

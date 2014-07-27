@@ -12,25 +12,23 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule event
      * @static
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var EventBroker = (function () {
 
         function EventBroker() {
             throw new Error('[EventBroker] Do instantiation the EventBroker class because it is a static class.');
         }
-
         /**
          * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
          * @example
-        EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-
-        ClassName.prototype.handlerMethod(event) {
-            console.log(event.target + " sent the event.");
+         EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         ClassName.prototype.handlerMethod = function (event) {
+        console.log(event.target + " sent the event.");
         }
          * @method addEventListener
          * @param type {String} The type of event.
-         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)
+         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
          * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @static
@@ -44,10 +42,9 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Removes a specified listener from the EventBroker object.
          * @example
-        EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-
-        ClassName.prototype.handlerMethod(event:BaseEvent) {
-            console.log(event.target + " sent the event.");
+         EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         ClassName.prototype.handlerMethod = function (event) {
+        console.log(event.target + " sent the event.");
         }
          * @method removeEventListener
          * @param type {String} The type of event.
@@ -64,7 +61,7 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * <p>Dispatches an event within the EventBroker object.</p>
          * @example
-         var event = new BaseEvent(BaseEvent.CHANGE);
+         var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
          EventBroker.dispatchEvent(event);
 
          // Here is a common inline event being dispatched
@@ -76,6 +73,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          */
         EventBroker.dispatchEvent = function (type, data) {
+            if (typeof data === "undefined") { data = null; }
             var event = type;
 
             if (typeof event == 'string') {
@@ -87,9 +85,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
             EventBroker._eventDispatcher.dispatchEvent(event);
         };
-
         EventBroker._eventDispatcher = new EventDispatcher();
-
         return EventBroker;
     })();
 

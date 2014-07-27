@@ -37,6 +37,7 @@ import ComponentFactory = require("../util/ComponentFactory");
  * @module StructureJS
  * @submodule view
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  * @example
  // Example of using DOMElement with out extending it.
  var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});

@@ -33,6 +33,7 @@ import ValueObject = require('../model/ValueObject')
  * @module StructureJS
  * @submodule controller
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class LocalStorageController extends EventDispatcher
 {

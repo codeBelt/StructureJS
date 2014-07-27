@@ -6,6 +6,7 @@ define(function (require, exports, module) { // jshint ignore:line
      *
      * @class ComponentFactory
      * @constructor
+     * @author Robert S. (www.codeBelt.com)
      **/
     var ComponentFactory = (function () {
 
@@ -35,7 +36,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
             return list;
         };
-
         return ComponentFactory;
     })();
 

@@ -34,6 +34,7 @@ import BaseEvent = require("BaseEvent");
  * @module StructureJS
  * @submodule event
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class EventDispatcher extends BaseObject
 {
@@ -124,7 +125,7 @@ class EventDispatcher extends BaseObject
      * Removes a specified listener from the EventDispatcher object.
      * @example
      instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     private handlerMethod(event:BaseEvent):void {
+     ClassName.prototype.handlerMethod = function (event) {
                    console.log(event.target + " sent the event.");
                }
      * @method removeEventListener
@@ -159,7 +160,7 @@ class EventDispatcher extends BaseObject
     /**
      * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
      * @example
-     var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
+     var event = new BaseEvent(BaseEvent.CHANGE);
      instance.dispatchEvent(event);
 
      // Here is a common inline event being dispatched
@@ -170,8 +171,14 @@ class EventDispatcher extends BaseObject
      * @public
      * @chainable
      */
-    public dispatchEvent(event:BaseEvent):EventDispatcher
+    public dispatchEvent(type:any, data:any = null):EventDispatcher
     {
+        var event = type;
+
+        if (typeof event == 'string') {
+            event = new BaseEvent(type, false, true, data);
+        }
+
         // If target is null then set it to the object that dispatched the event.
         if (event.target == null)
         {
@@ -243,13 +250,13 @@ class EventDispatcher extends BaseObject
      * The enable method is responsible for enabling event listeners and/or children of the containing objects.
      * @example
      ClassName.prototype.enable = function () {
-               if (this.isEnabled === true) return;
+            if (this.isEnabled === true) return this;
 
-               this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-               this._childInstance.enable();
+            this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+            this._childInstance.enable();
 
-               return .enable();
-           }
+            return _super.prototype.enable.call(this);
+        }
      * @method enable
      * @public
      * @chainable
@@ -265,14 +272,14 @@ class EventDispatcher extends BaseObject
     /**
      * The disable method is responsible for disabling event listeners and/or children of the containing objects.
      * @example
-     public disable():void {
-               if (this.isEnabled === false) return;
-     
-               this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-               this._childInstance.disable();
-     
-               super.enable();
-           }
+     ClassName.prototype.disable = function () {
+            if (this.isEnabled === false) return this;
+
+            this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+            this._childInstance.disable();
+
+            return _super.prototype.disable.call(this);
+        }
      * @method disable
      * @public
      * @chainable

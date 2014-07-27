@@ -32,6 +32,7 @@ import EventDispatcher = require("../event/EventDispatcher");
  * @module StructureJS
  * @submodule view
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class DisplayObjectContainer extends EventDispatcher
 {

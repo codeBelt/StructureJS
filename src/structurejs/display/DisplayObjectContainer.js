@@ -12,7 +12,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule view
      * @constructor
-     * @version 0.1.1
+     * @author Robert S. (www.codeBelt.com)
      **/
     var DisplayObjectContainer = (function () {
 
@@ -20,7 +20,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
         function DisplayObjectContainer() {
             _super.call(this);
-
             /**
              * The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.
              *
@@ -30,7 +29,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @protected
              */
             this.isCreated = false;
-
             /**
              * Returns the number of children of this object.
              *
@@ -41,7 +39,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.numChildren = 0;
-
             /**
              * A reference to the child DisplayObjectContainer instances to this parent object instance.
              *
@@ -51,7 +48,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.children = [];
-
             /**
              * A property providing access to the x position.
              *
@@ -70,7 +66,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.y = 0;
-
             /**
              * A property providing access to the width.
              *
@@ -80,7 +75,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.width = 0;
-
             /**
              * A property providing access to the height.
              *
@@ -90,7 +84,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.height = 0;
-
             /**
              * A property providing access to the unscaledWidth.
              *
@@ -100,7 +93,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.unscaledWidth = 100;
-
             /**
              * A property providing access to the unscaledHeight.
              *
@@ -111,7 +103,6 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.unscaledHeight = 100;
         }
-
         /**
          * The createChildren function is intended to provide a consistent place for the creation and adding
          * of children to the view. It will automatically be called the first time that the view is added
@@ -357,7 +348,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this.children = [];
             this.numChildren = 0;
         };
-
         return DisplayObjectContainer;
     })();
 

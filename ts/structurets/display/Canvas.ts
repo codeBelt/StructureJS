@@ -32,6 +32,7 @@ import CanvasElement = require('CanvasElement')
  * @module StructureJS
  * @submodule view
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class Canvas extends CanvasElement
 {

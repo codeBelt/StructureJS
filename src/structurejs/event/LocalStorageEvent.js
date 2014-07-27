@@ -20,17 +20,14 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule event
      * @constructor
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      **/
     var LocalStorageEvent = (function () {
-
-        LocalStorageEvent.STORAGE = 'storage';
 
         var _super = Extend(LocalStorageEvent, BaseEvent);
 
         function LocalStorageEvent(type, bubbles, cancelable, nativeEvent) {
             _super.call(this, type, bubbles, cancelable, nativeEvent);
-
             /**
              * YUIDoc_comment
              *
@@ -49,15 +46,13 @@ define(function (require, exports, module) { // jshint ignore:line
 
             this._nativeEvent = nativeEvent;
         }
-
         /**
          * @overridden BaseEvent.clone
          */
         LocalStorageEvent.prototype.clone = function () {
             return new LocalStorageEvent(this.type, this.bubble, this.cancelable, this._nativeEvent);
         };
-
-
+        LocalStorageEvent.STORAGE = 'storage';
         return LocalStorageEvent;
     })();
 

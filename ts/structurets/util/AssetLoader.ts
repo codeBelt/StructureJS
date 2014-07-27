@@ -33,6 +33,7 @@ import LoaderEvent = require('../event/LoaderEvent')
  * @module StructureJS
  * @submodule util
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class AssetLoader extends EventDispatcher
 {

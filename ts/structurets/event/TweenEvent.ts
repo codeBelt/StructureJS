@@ -14,6 +14,7 @@ import BaseEvent = require('BaseEvent')
  * @module StructureJS
  * @submodule event
  * @constructor
+ * @author Robert S. (www.codeBelt.com)
  **/
 class TweenEvent extends BaseEvent
 {
