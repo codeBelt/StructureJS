@@ -501,6 +501,20 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
+         * Removes the child display object instance that exists at the specified index.
+         *
+         * @method removeChildAt
+         * @param index {int} The index position of the child object.
+         * @public
+         * @chainable
+         */
+        DOMElement.prototype.removeChildAt = function (index) {
+            this.removeChild(this.getChildAt(index));
+
+            return this;
+        };
+
+        /**
          * Removes all child object instances from the child list of the parent object instance.
          * The parent property of the removed children is set to null , and the objects are garbage collected if no other
          * references to the children exist.
