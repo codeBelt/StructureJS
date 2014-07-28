@@ -202,6 +202,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
             if (type instanceof jQuery) {
                 this.$element = type;
+                this.element = this.$element[0];
                 this._isReference = true;
             } else if (type) {
                 this._type = type;
@@ -304,6 +305,11 @@ define(function (require, exports, module) { // jshint ignore:line
                 throw new Error('[' + this.getQualifiedClassName() + '] You cannot use the addChild method if the parent object is not added to the DOM.');
             }
 
+            // If an empty jQuery object is passed into the constructor then don't run the code below.
+            if (child._isReference === true && child.$element.length == 0) {
+                return this;
+            }
+
             if (child.isCreated === false) {
                 child.createChildren(); // Render the item before adding to the DOM
                 child.isCreated = true;
@@ -360,6 +366,11 @@ define(function (require, exports, module) { // jshint ignore:line
         DOMElement.prototype.addChildAt = function (child, index) {
             var children = this.$element.children();
             var length = children.length;
+
+            // If an empty jQuery object is passed into the constructor then don't run the code below.
+            if (child._isReference === true && child.$element.length == 0) {
+                return this;
+            }
 
             // If the index passed in is less than 0 and greater than
             // the total number of children then place the item at the end.
