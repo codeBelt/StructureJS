@@ -221,13 +221,9 @@ class BaseRequest extends EventDispatcher implements IDataStore
      */
     public destroy():void
     {
-        super.destroy();
-
-        this.data = null;
-        this._request = null;
-
         this._loader.destroy();
-        this._loader = null;
+
+        super.destroy();
     }
 
 }

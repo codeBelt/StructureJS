@@ -134,10 +134,6 @@ class TabComponent extends EventDispatcher
     public destroy():void
     {
         super.destroy();
-
-        this._$container = null;
-        this._$tabButtons = null;
-        this._$tabContent = null;
     }
 
     public changeTabByIndex(index:number):void

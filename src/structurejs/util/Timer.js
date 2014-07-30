@@ -195,10 +195,9 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden EventDispatcher.destroy
          */
         Timer.prototype.destroy = function () {
-            _super.prototype.destroy.call(this);
-
             this.stop();
-            this._timer = null;
+
+            _super.prototype.destroy.call(this);
         };
         return Timer;
     })();

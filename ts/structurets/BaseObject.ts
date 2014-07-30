@@ -76,27 +76,29 @@ class BaseObject
      * The purpose of the destroy method is to make an object ready for garbage collection. This
      * should be thought of as a one way function. Once destroy is called no further methods should be
      * called on the object or properties accessed. It is the responsibility of those who implement this
-     * function to stop all running Timers, all running Sounds, remove any event
-     * listeners and take any other steps necessary to make an object eligible for garbage collection.
-     * It is critical that all subclasses call the super for this function in their overridden methods.
+     * function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
+     * object eligible for garbage collection.
      *
-     * Note: super.destroy(); should be called first before you clean up any other objects/items in the current classs.
-     * The {{#crossLink "BaseObject/destroy:method"}}{{/crossLink}} method also calls the
-     * {{#crossLink "EventDispatcher/disable:method"}}{{/crossLink}} method on all classes that extend
-     * {{#crossLink "EventDispatcher"}}{{/crossLink}}.
+     * By default the destroy method will null out all properties of the class automatically. You should call destroy
+     * on other objects before calling the super.
+     *
      * @example
-     ClassName.prototype.destroy = function() {
-            _super.prototype.destroy.call(this);
-
-            this._childInstance.destroy();
-            this._childInstance = null;
-        }
+     * ClassName.prototype.destroy = function() {
+     *      this._childInstance.destroy();
+     *
+     *      _super.prototype.destroy.call(this);
+     * }
      * @method destroy
      * @return {void}
      * @public
      */
     public destroy():void
     {
+        for (var key in this) {
+            if (this.hasOwnProperty(key)) {
+                this[key] = null;
+            }
+        }
     }
 
 }

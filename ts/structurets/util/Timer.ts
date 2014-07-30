@@ -234,10 +234,9 @@ class Timer extends EventDispatcher
      */
     public destroy():void
     {
-        super.destroy();
-
         this.stop();
-        this._timer = null;
+
+        super.destroy();
     }
 
 }

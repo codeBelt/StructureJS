@@ -395,9 +395,6 @@ class DisplayObjectContainer extends EventDispatcher
     public destroy():void
     {
         super.destroy();
-
-        this.children = [];
-        this.numChildren = 0;
     }
 
 }

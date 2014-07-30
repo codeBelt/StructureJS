@@ -123,8 +123,6 @@ class TransitionFactory extends BaseObject
     public destroy():void
     {
         super.destroy();
-
-        this._transitions = null;
     }
 
 }

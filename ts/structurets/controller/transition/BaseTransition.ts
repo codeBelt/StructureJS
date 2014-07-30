@@ -136,10 +136,9 @@ class BaseTransition extends EventDispatcher implements ITransition
      */
     public destroy():void
     {
-        super.destroy();
-
         this.complete();
-        this.transition = null;
+
+        super.destroy();
     }
 
 }

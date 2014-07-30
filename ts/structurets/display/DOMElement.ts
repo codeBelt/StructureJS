@@ -39,117 +39,118 @@ import ComponentFactory = require("../util/ComponentFactory");
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example
- // Example of using DOMElement with out extending it.
- var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
- this.addChild(aLink);
-
+ * // Example of using DOMElement with out extending it.
+ * var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
+ * this.addChild(aLink);
+ *
  * @example
- // Example of a view passing in a jQuery object.
- var view = new CustomView($('.selector');
- this.addChild(view);
-
- // Example of a view extending DOMElement when passing in a jQuery object.
- var Extend = require('structurejs/util/Extend');
- var DOMElement = require('structurejs/display/DOMElement');
-
- var ClassName = (function () {
-
-            var _super = Extend(ClassName, DOMElement);
-
-            function ClassName($element) {
-                _super.call(this, $element);
-            }
-
-            ClassName.prototype.createChildren = function () {
-                _super.prototype.createChildren.call(this);
-
-                // Create and add your child objects to this parent class.
-            }
-
-            ClassName.prototype.layoutChildren = function () {
-                // Layout or update the child objects in this parent class.
-
-                return this;
-            }
-
-            ClassName.prototype.enable = function () {
-                if (this.isEnabled === true) return this;
-
-                // Enable the child objects and add any event listeners.
-
-                return _super.prototype.enable.call(this);
-            }
-
-            ClassName.prototype.disable = function () {
-                if (this.isEnabled === false) return this;
-
-                // Disable the child objects and remove any event listeners.
-
-                return _super.prototype.disable.call(this);
-            }
-
-            ClassName.prototype.destroy = function () {
-                _super.prototype.destroy.call(this);
-
-                // Destroy the child objects and references in this parent class to prevent memory leaks.
-            }
-
-            return ClassName;
-        })();
+ * // Example of a view passing in a jQuery object.
+ * var view = new CustomView($('.selector'));
+ * this.addChild(view);
+ *
+ * // Example of a view extending DOMElement when passing in a jQuery object.
+ * var Extend = require('structurejs/util/Extend');
+ * var DOMElement = require('structurejs/display/DOMElement');
+ *
+ * var ClassName = (function () {
+ *
+ *      var _super = Extend(ClassName, DOMElement);
+ *
+ *      function ClassName($element) {
+ *          _super.call(this, $element);
+ *      }
+ *
+ *      ClassName.prototype.createChildren = function () {
+ *          _super.prototype.createChildren.call(this);
+ *
+ *          // Create and add your child objects to this parent class.
+ *      };
+ *
+ *      ClassName.prototype.layoutChildren = function () {
+ *          // Layout or update the child objects in this parent class.
+ *
+ *          return this;
+ *      };
+ *
+ *      ClassName.prototype.enable = function () {
+ *          if (this.isEnabled === true) return this;
+ *
+ *          // Enable the child objects and add any event listeners.
+ *
+ *          return _super.prototype.enable.call(this);
+ *      };
+ *
+ *      ClassName.prototype.disable = function () {
+ *          if (this.isEnabled === false) return this;
+ *
+ *          // Disable the child objects and remove any event listeners.
+ *
+ *          return _super.prototype.disable.call(this);
+ *      };
+ *
+ *      ClassName.prototype.destroy = function () {
+ *          // Destroy the child objects and references in this parent class to prevent memory leaks.
+ *
+ *          _super.prototype.destroy.call(this);
+ *      };
+ *
+ *      return ClassName;
+ * })();
+ *
  * @example
- // Example of a view extending DOMElement with template passed into createChildren.
- var view:CustomView = new CustomView();
- this.addChild(view);
-
- // Example of a view extending DOMElement when passing in a jQuery object.
- var Extend = require('structurejs/util/Extend');
- var DOMElement = require('structurejs/display/DOMElement');
- var HomeTemplate = require('hbs!templates/home/homeTemplate');
-
- var ClassName = (function () {
-
-            var _super = Extend(ClassName, DOMElement);
-
-            function ClassName() {
-                _super.call(this);
-            }
-
-            ClassName.prototype.createChildren = function () {
-                _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
-
-                // Create and add your child objects to this parent class.
-            }
-
-            ClassName.prototype.layoutChildren = function () {
-                // Layout or update the child objects in this parent class.
-
-                return this;
-            }
-
-            ClassName.prototype.enable = function () {
-                if (this.isEnabled === true) return this;
-
-                // Enable the child objects and add any event listeners.
-
-                return _super.prototype.enable.call(this);
-            }
-
-            ClassName.prototype.disable = function () {
-                if (this.isEnabled === false) return this;
-
-                // Disable the child objects and remove any event listeners.
-
-                return _super.prototype.disable.call(this);
-            }
-
-            ClassName.prototype.destroy = function () {
-                _super.prototype.destroy.call(this);
-
-                // Destroy the child objects and references in this parent class to prevent memory leaks.
-            }
-
-            return ClassName;
-        })();
+ * // Example of a view extending DOMElement with template passed into createChildren.
+ * var view = new CustomView();
+ * this.addChild(view);
+ *
+ * // Example of a view extending DOMElement when passing in a jQuery object.
+ * var Extend = require('structurejs/util/Extend');
+ * var DOMElement = require('structurejs/display/DOMElement');
+ * var HomeTemplate = require('hbs!templates/home/homeTemplate');
+ *
+ * var ClassName = (function () {
+ *
+ *      var _super = Extend(ClassName, DOMElement);
+ *
+ *      function ClassName() {
+ *          _super.call(this);
+ *      }
+ *
+ *      ClassName.prototype.createChildren = function () {
+ *          _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
+ *
+ *          // Create and add your child objects to this parent class.
+ *      };
+ *
+ *      ClassName.prototype.layoutChildren = function () {
+ *          // Layout or update the child objects in this parent class.
+ *
+ *          return this;
+ *      };
+ *
+ *      ClassName.prototype.enable = function () {
+ *          if (this.isEnabled === true) return this;
+ *
+ *          // Enable the child objects and add any event listeners.
+ *
+ *          return _super.prototype.enable.call(this);
+ *      };
+ *
+ *      ClassName.prototype.disable = function () {
+ *          if (this.isEnabled === false) return this;
+ *
+ *          // Disable the child objects and remove any event listeners.
+ *
+ *          return _super.prototype.disable.call(this);
+ *      };
+ *
+ *      ClassName.prototype.destroy = function () {
+ *          // Destroy the child objects and references in this parent class to prevent memory leaks.
+ *
+ *          _super.prototype.destroy.call(this);
+ *      };
+ *
+ *      return ClassName;
+ * })();
  **/
 class DOMElement extends DisplayObjectContainer
 {
@@ -650,7 +651,7 @@ class DOMElement extends DisplayObjectContainer
      */
     public destroy():void
     {
-        super.destroy();
+        // TODO: this destroy method should probably call the the removeChild method.
 
         // If the addChild method is never called before the destroyed the $element will be null and cause an TypeError.
         if (this.$element != null)
@@ -659,8 +660,7 @@ class DOMElement extends DisplayObjectContainer
             this.$element.remove();
         }
 
-        this.$element = null;
-        this.element = null;
+        super.destroy();
     }
 
 

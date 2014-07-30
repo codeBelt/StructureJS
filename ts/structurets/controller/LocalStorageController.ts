@@ -253,8 +253,6 @@ class LocalStorageController extends EventDispatcher
     public destroy():void
     {
         super.destroy();
-
-        this._localStorage = null;
     }
 
     /**

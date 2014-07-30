@@ -295,9 +295,6 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         Collection.prototype.destroy = function () {
             _super.prototype.destroy.call(this);
-
-            this.items = null;
-            this.length = null;
         };
         return Collection;
     })();

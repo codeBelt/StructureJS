@@ -199,24 +199,21 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function () {
-            _super.prototype.destroy.call(this);
-
             this.disable();
 
-            this.parent = null;
-            this._listeners = null;
+            _super.prototype.destroy.call(this);
         };
 
         /**
          * The enable method is responsible for enabling event listeners and/or children of the containing objects.
          * @example
-        ClassName.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+         ClassName.prototype.enable = function () {
+        if (this.isEnabled === true) return this;
 
-            this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-            this._childInstance.enable();
+        this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+        this._childInstance.enable();
 
-            return _super.prototype.enable.call(this);
+        return _super.prototype.enable.call(this);
         }
          * @method enable
          * @public
@@ -233,13 +230,13 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * The disable method is responsible for disabling event listeners and/or children of the containing objects.
          * @example
-        ClassName.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+         ClassName.prototype.disable = function () {
+        if (this.isEnabled === false) return this;
 
-            this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-            this._childInstance.disable();
+        this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+        this._childInstance.disable();
 
-            return _super.prototype.disable.call(this);
+        return _super.prototype.disable.call(this);
         }
          * @method disable
          * @public

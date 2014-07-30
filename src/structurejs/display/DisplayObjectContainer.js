@@ -344,9 +344,6 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         DisplayObjectContainer.prototype.destroy = function () {
             _super.prototype.destroy.call(this);
-
-            this.children = [];
-            this.numChildren = 0;
         };
         return DisplayObjectContainer;
     })();

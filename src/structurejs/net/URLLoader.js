@@ -98,11 +98,9 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         URLLoader.prototype.destroy = function () {
-            _super.prototype.destroy.call(this);
-
             this.abort();
-            this.data = null;
-            this._xhr = null;
+
+            _super.prototype.destroy.call(this);
         };
 
         /**

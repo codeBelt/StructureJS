@@ -214,8 +214,6 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         LocalStorageController.prototype.destroy = function () {
             _super.prototype.destroy.call(this);
-
-            this._localStorage = null;
         };
 
         /**

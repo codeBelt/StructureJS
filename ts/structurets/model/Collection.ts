@@ -347,9 +347,6 @@ class Collection extends EventDispatcher implements ICollection
     public destroy():void
     {
         super.destroy();
-
-        this.items = null;
-        this.length = null;
     }
 
 }

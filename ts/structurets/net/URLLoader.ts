@@ -127,11 +127,9 @@ class URLLoader extends EventDispatcher
 
     public destroy():void
     {
-        super.destroy();
-
         this.abort();
-        this.data = null;
-        this._xhr = null;
+
+        super.destroy();
     }
 
     /**
