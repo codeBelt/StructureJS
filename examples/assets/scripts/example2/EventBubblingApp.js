@@ -7,6 +7,8 @@ define(function (require, exports, module) { // jshint ignore:line
     var BaseEvent = require('structurejs/event/BaseEvent');
     var EventBroker = require('structurejs/event/EventBroker');
     var GrandparentView = require('example2/view/GrandparentView');
+    var Router = require('../../../../ts/structurets/controller/Router');
+    var RouterManager = require('../../../../ts/structurets/controller/RouterManager');
 
     /**
      * YUIDoc_comment
@@ -25,7 +27,25 @@ define(function (require, exports, module) { // jshint ignore:line
             this._grandpaView = null;
             this._clearButton = null;
             this._$stageMessage = null;
+
+            this._router = new RouterManager();
+            this._router.createRoute('home', 'home');
+            this._router.start();
+
+            console.log(" this._router",  this._router);
+
+            Router.add('home', this.onHome, this);
         }
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method onHome
+         * @priavte
+         */
+        EventBubblingApp.prototype.onHome = function() {
+            console.log("home", arguments);
+        };
 
         /**
          * @overridden EventBubblingApp.createChildren
