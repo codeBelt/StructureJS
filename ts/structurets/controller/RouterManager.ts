@@ -94,8 +94,8 @@ class RouterManager {
      */
     public createRoute(name, path) {
         if (!this.map.hasOwnProperty(name)) {
-            this.map[name] = new Route(path, name);
-            this.routes.push(this.map[name]);
+//            this.map[name] = new Route(path, name);
+//            this.routes.push(this.map[name]);
 //            this.map[name].subscribe('all', this.publish);
         }
 

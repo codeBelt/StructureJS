@@ -1,8 +1,10 @@
+import Route = require("Route");
+
 class Router
 {
     private static WINDOW:Window = window;
     private static _isEnabled:boolean = false;
-
+    private static _routes:Array<Route> = [];
     constructor()
     {
         Router.enable();
@@ -14,8 +16,13 @@ class Router
      * @method add
      * @public static
      */
-    public static add(route:string, callback:Function, scope:any):void {
+    public static add(path:string, callback:Function, scope:any):void {
         Router.enable();
+
+        var route:Route = new Route(path, callback, scope);
+
+        Router._routes.push(route);
+
         console.log("home", route);
         console.log("about/{name}", Router.getHash());
         //http://collectiveidea.com/blog/archives/2012/01/25/standalone-javascript-routing/
@@ -71,6 +78,57 @@ class Router
      */
     private static onHashChange(event):void {
         console.log("onhashchange", arguments);
+    }
+
+    /**
+     * Find matching routes to the current path
+     *
+     * @method _matchRoutes
+     * @private
+     * @chainable
+     */
+    public matchRoutes() {
+        var hash = Router.getHash();
+        var routeLength:number = Router._routes.length;
+
+//        // If hash has not changed, do nothing
+//        if (hash === this.currentPath) {
+//            return;
+//        }
+//
+//        var exitRoutes = [];
+//        var enterRoutes = [];
+//
+//        var i = 0;
+//        var routes = this.routes;
+//        var length = routes.length;
+//        var route;
+//
+//        for (; i < length; i++) {
+//            route = routes[i];
+//            console.log("route.match(hash)", route.match(hash), hash);
+//            if (route.match(hash)) {
+//                enterRoutes.push(route);
+//            } else if (route.isActive()) {
+//                exitRoutes.push(route);
+//            }
+//        }
+//
+//        if (enterRoutes.length) {
+//            this.currentPath = hash;
+//
+//            // Exit active routes that are no longer active
+//            if (exitRoutes.length) {
+//                for (i = 0; i < exitRoutes.length; i++) {
+//                    exitRoutes[i].exit();
+//                }
+//            }
+//
+//            // enter matching routes
+//            for (i = 0; i < enterRoutes.length; i++) {
+//                enterRoutes[i].enter(enterRoutes[i].getParameters(hash));
+//            }
+//        }
     }
 
 }

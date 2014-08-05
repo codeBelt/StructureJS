@@ -34,7 +34,26 @@ define(function (require, exports, module) { // jshint ignore:line
 
             console.log(" this._router",  this._router);
 
-            Router.add('home', this.onHome, this);
+            Router.add('/home/', this.onHome, this);
+            Router.add('/home/:id:/', this.onHome, this);
+            Router.add('/contact/:dd:/:ee:/', this.onHome, this);
+
+           /* var optionalForwardSlash = new RegExp('(\/)?');
+            var findForwardSlashes = new RegExp('\/', 'g');
+            var selectFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
+            var findRequiredBrackets = new RegExp('\{([^}]+)\}', 'g'); // Finds the brackets { }
+            var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons :
+
+            var str = '/blog/:id:/';
+            str = str.replace(selectFirstOrLastForwardSlash, '');// Remove first and last forward slash.
+            console.log(str);
+            str = str.replace(findForwardSlashes, '\\/');// Escape the forward slashes ( / ) so it will look like "\/" so that it will be used a literal forward slash.
+            console.log(str);
+            str = str.replace(findOptionalColons,'(\\w*)');
+            str = optionalForwardSlash.source + str + optionalForwardSlash.source;
+            console.log(str);
+            var s = '/blog/';
+            console.log(s.match(str));*/
         }
 
         /**
