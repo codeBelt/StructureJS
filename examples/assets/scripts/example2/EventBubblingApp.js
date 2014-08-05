@@ -38,22 +38,95 @@ define(function (require, exports, module) { // jshint ignore:line
             Router.add('/home/:id:/', this.onHome, this);
             Router.add('/contact/:dd:/:ee:/', this.onHome, this);
 
-           /* var optionalForwardSlash = new RegExp('(\/)?');
+            // Regex Helpers
+//var optionalForwardSlash = new RegExp('(\/)?');
             var findForwardSlashes = new RegExp('\/', 'g');
             var selectFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
-            var findRequiredBrackets = new RegExp('\{([^}]+)\}', 'g'); // Finds the brackets { }
+            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
             var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons :
 
-            var str = '/blog/:id:/';
-            str = str.replace(selectFirstOrLastForwardSlash, '');// Remove first and last forward slash.
-            console.log(str);
-            str = str.replace(findForwardSlashes, '\\/');// Escape the forward slashes ( / ) so it will look like "\/" so that it will be used a literal forward slash.
-            console.log(str);
-            str = str.replace(findOptionalColons,'(\\w*)');
-            str = optionalForwardSlash.source + str + optionalForwardSlash.source;
-            console.log(str);
-            var s = '/blog/';
-            console.log(s.match(str));*/
+//https://github.com/codeBelt/StructureTS/blob/master/src/com/millermedeiros/crossroads/PatternLexer.ts
+
+// Example Paths
+            var path1 = '/home/';
+            var path2 = '/home/:id:/';
+            var path3 = '/home/:id:/:id:/';
+            var path4 = '/home/:id:/another/:asdf:/';
+            var path5 = '/blog/{page}';
+            var path6 = '/blog/{page}/cool/{page}/{page}/';
+            var path7 = '/blog/{page}/another/:asdf:/';
+
+            var obj1 = {
+                route: '/home/',
+                passRoute: '/home/',
+                failRoute: ''
+            };
+
+            var obj2 = {
+                route: '/home/:id:/',
+                passRoute: '/home/123/',
+                failRoute: '/home/123/123'
+            };
+
+            var obj3 = {
+                route: '/home/:id:/:id:/',
+                passRoute: '/home/123/323/',
+                passRoute2: '/home/123/',
+                failRoute: '/home/123/123/123'
+            };
+
+            var obj4 = {
+                route: '/home/:id:/another/:asdf:/',
+                passRoute: '/home/123/another/',
+                passRoute2: '/home/123/another/4356/',
+                failRoute: '/home/123/'
+            };
+
+            var obj5 = {
+                route: '/blog/{page}/',
+                passRoute: '/blog/another/',
+                failRoute: '/blog/'
+            };
+
+            var obj6 = {
+                route: '/blog/{page}/cool/{page}/{page}/',
+                passRoute: '/blog/one/cool/two/three/',
+                failRoute: '/blog/one/cool/'
+            };
+
+            var obj7 = {
+                route: '/blog/{page}/another/:asdf:/',
+                passRoute: '/blog/123/another/',
+                passRoute2: '/blog/123/another/4356/',
+                failRoute: '/blog/123/'
+            };
+
+            var route = obj5.route;
+            var testRoute = obj5.passRoute;
+
+            console.log("--------------------------------------------------------------");
+            console.log("Original: " + route);
+
+// Remove first and last forward slash.
+            route = route.replace(selectFirstOrLastForwardSlash, '');
+            console.log("Remove first and last forward slash: " + route);
+
+// Escape the forward slashes ( / ) so it will look like "\/"
+            route = route.replace(findForwardSlashes, '\\/');
+            console.log("Escape the forward slashes: " +  route);
+
+// Make any :word: optional
+            route = route.replace(findOptionalColons,'(\\w*)');
+            console.log("Add optional regex", route);
+
+// Make any {word} optional
+            route = route.replace(findRequiredBrackets,'(\\w+)');
+            console.log("Add requried regex", route);
+
+            var routeRegex = new RegExp('^/?' + route + '/?$', 'i');
+
+            console.log("Match: " + testRoute.match(routeRegex));
+            console.log("--------------------------------------------------------------");
         }
 
         /**
