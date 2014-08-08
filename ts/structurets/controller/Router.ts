@@ -1,10 +1,13 @@
 import Route = require("Route");
+import RouteEvent = require("../event/RouteEvent");
 
 class Router
 {
     private static WINDOW:Window = window;
     private static _isEnabled:boolean = false;
     private static _routes:Array<Route> = [];
+    private static _hashChangeEvent:any = null;
+
     constructor()
     {
         Router.enable();
@@ -22,10 +25,25 @@ class Router
         var route:Route = new Route(path, callback, scope);
 
         Router._routes.push(route);
+    }
 
-        console.log("home", route);
-        console.log("about/{name}", Router.getHash());
-        //http://collectiveidea.com/blog/archives/2012/01/25/standalone-javascript-routing/
+    /**
+     * YUIDoc_comment
+     *
+     * @method remove
+     * @public static
+     */
+    public static remove(path:string, callback:Function, scope:any):void {
+        var route:Route;
+
+        for (var i = Router._routes.length - 1; i >= 0; i--)
+        {
+            route = Router._routes[i];
+            if (route.path === path && route.callback === callback && route.callbackScope === scope)
+            {
+                Router._routes.splice(i, 1);
+            }
+        }
     }
 
     /**
@@ -47,7 +65,6 @@ class Router
     public static enable() {
         if (Router._isEnabled === true) return;
 
-        console.log("enable");
         if (Router.WINDOW.addEventListener) {
             Router.WINDOW.addEventListener('hashchange', Router.onHashChange, false);
         } else {
@@ -70,6 +87,27 @@ class Router
     }
 
     /**
+     * @method navigateTo
+     * @param {String} path
+     * @param {Boolean} [silent]
+     * @chainable
+     */
+    public static navigateTo(path, silent:boolean = false) {
+//        if (silent === true) {
+//            this.currentPath = path;
+//        }
+
+        if (silent === true) {
+            Router.disable();
+            setTimeout(function() {
+                window.location.hash = path;
+                Router.enable();
+            }, 1);
+        }
+    }
+
+
+    /**
      * YUIDoc_comment
      *
      * @method onHashChange
@@ -77,59 +115,37 @@ class Router
      * @private static
      */
     private static onHashChange(event):void {
-        console.log("onhashchange", arguments);
-    }
-
-    /**
-     * Find matching routes to the current path
-     *
-     * @method _matchRoutes
-     * @private
-     * @chainable
-     */
-    public matchRoutes() {
         var hash = Router.getHash();
         var routeLength:number = Router._routes.length;
+        var route:Route;
+        var match:any;
 
-//        // If hash has not changed, do nothing
-//        if (hash === this.currentPath) {
-//            return;
+        // Enforce starting slash
+//        if (_route[0] !== '/') {
+//            this.navigateTo('/' + _route);
+//        } else {
+//            this._matchRoutes();
 //        }
-//
-//        var exitRoutes = [];
-//        var enterRoutes = [];
-//
-//        var i = 0;
-//        var routes = this.routes;
-//        var length = routes.length;
-//        var route;
-//
-//        for (; i < length; i++) {
-//            route = routes[i];
-//            console.log("route.match(hash)", route.match(hash), hash);
-//            if (route.match(hash)) {
-//                enterRoutes.push(route);
-//            } else if (route.isActive()) {
-//                exitRoutes.push(route);
-//            }
-//        }
-//
-//        if (enterRoutes.length) {
-//            this.currentPath = hash;
-//
-//            // Exit active routes that are no longer active
-//            if (exitRoutes.length) {
-//                for (i = 0; i < exitRoutes.length; i++) {
-//                    exitRoutes[i].exit();
-//                }
-//            }
-//
-//            // enter matching routes
-//            for (i = 0; i < enterRoutes.length; i++) {
-//                enterRoutes[i].enter(enterRoutes[i].getParameters(hash));
-//            }
-//        }
+
+        for (var i = 0; i < routeLength; i++) {
+            route = Router._routes[i];
+            match = route.match(hash);
+
+            if (match !== null) {
+                var routerEvent = new RouteEvent();
+                routerEvent.route = match.shift();
+                routerEvent.data = match.slice(0, match.length);
+                routerEvent.newURL = event.newURL;
+                routerEvent.oldURL = event.oldURL;
+
+                var params:any[] = match.slice(0, match.length);
+                params.push(routerEvent);
+
+                route.callback.apply(route.callbackScope, params);
+            }
+        }
     }
 
 }
+
 export = Router;

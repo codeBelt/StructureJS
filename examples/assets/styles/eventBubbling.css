@@ -16,6 +16,10 @@ h1 {
     margin: 10px;
 }
 
+a {
+    color: #ffffff;
+}
+
 .eventBubblingApp {
     margin: auto;
     width:350px;
