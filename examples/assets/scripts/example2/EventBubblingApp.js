@@ -27,16 +27,25 @@ define(function (require, exports, module) { // jshint ignore:line
             this._clearButton = null;
             this._$stageMessage = null;
 
-            Router.add('/home/', this.onHome, this);
-            Router.add('/about/:id:/', this.onHome, this);
-//            Router.add('/home/:id:/:id:/', this.onHome, this);
-            Router.add('/home/:id:/another/:asdf:/', this.onHome, this);
-            Router.add('/blog/{page}/', this.onHome, this);
-            Router.add('/blog/{page}/cool/{page}/{page}/', this.onHome, this);
-            Router.add('/contact/{page}/another/:asdf:/', this.onHome, this);
+            Router.useDeepLinking = true;
+            Router.allowManualDeepLinking = true;
 
-            Router.enable();
+            Router.add('/', this.onHome, this);
+            Router.add('/about/:id:/', this.about, this);
+            Router.add('/about/:id:/:id:/', this.about, this);
+            Router.add('/about/:id:/another/:asdf:/', this.about, this);
+            Router.add('/blog/{page}/', this.blog, this);
+            Router.add('/blog/{page}/cool/{page}/{page}/', this.blog, this);
+            Router.add('/contact/{page}/another/:asdf:/', this.contact, this);
+
+            Router.start();
             //Router.add('*', this.asdf, this);
+
+            $('.js-route').on('click', function(event){
+                event.preventDefault();
+                var $target = $(event.target);
+                Router.navigateTo($target.attr('href'));
+            }.bind(this));
         }
 
         /**
@@ -46,7 +55,37 @@ define(function (require, exports, module) { // jshint ignore:line
          * @priavte
          */
         EventBubblingApp.prototype.onHome = function(param) {
-            console.log("param", arguments);
+            console.log("onHome", arguments);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method onHome
+         * @priavte
+         */
+        EventBubblingApp.prototype.about = function(param) {
+            console.log("about", arguments);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method onHome
+         * @priavte
+         */
+        EventBubblingApp.prototype.blog = function(param) {
+            console.log("blog", arguments);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method onHome
+         * @priavte
+         */
+        EventBubblingApp.prototype.contact = function(param) {
+            console.log("contact", arguments);
         };
 
 

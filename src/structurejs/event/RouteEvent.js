@@ -71,13 +71,21 @@ define(function (require, exports, module) { // jshint ignore:line
             */
             this.newURL = null;
             /**
-            * YUIDoc_comment
-            *
-            * @property oldURL
-            * @type {string}
-            * @public
-            */
+             * YUIDoc_comment
+             *
+             * @property oldURL
+             * @type {string}
+             * @public
+             */
             this.oldURL = null;
+            /**
+             * YUIDoc_comment
+             *
+             * @property path
+             * @type {string}
+             * @public
+             */
+            this.path = null;
         }
         /**
         * @overridden BaseEvent.clone

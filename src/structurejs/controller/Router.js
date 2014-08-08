@@ -30,14 +30,14 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var Router = (function () {
         function Router() {
-//            Router.enable();
+            Router.enable();
         }
         /**
-        * YUIDoc_comment
-        *
-        * @method add
-        * @public static
-        */
+         * YUIDoc_comment
+         *
+         * @method add
+         * @public static
+         */
         Router.add = function (path, callback, scope) {
             Router.enable();
 
@@ -47,11 +47,11 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * YUIDoc_comment
-        *
-        * @method remove
-        * @public static
-        */
+         * YUIDoc_comment
+         *
+         * @method remove
+         * @public static
+         */
         Router.remove = function (path, callback, scope) {
             var route;
 
@@ -64,14 +64,14 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * Gets the hash url minus the # or #! symbol(s).
-        * @example
-        * //
-        *
-        * @method getHash
-        * @public static
-        * @return {string}
-        */
+         * Gets the hash url minus the # or #! symbol(s).
+         * @example
+         * //
+         *
+         * @method getHash
+         * @public static
+         * @return {string}
+         */
         Router.getHash = function () {
             var hash = Router.WINDOW.location.hash;
             var strIndex = (hash.substr(0, 2) === '#!') ? 2 : 1;
@@ -89,9 +89,12 @@ define(function (require, exports, module) { // jshint ignore:line
                 Router.WINDOW.attachEvent('onhashchange', Router.onHashChange);
             }
 
-            setTimeout(Router.onHashChange);
-
             Router._isEnabled = true;
+        };
+
+
+        Router.start = function () {
+            setTimeout(Router.onHashChange);
         };
 
         Router.disable = function () {
@@ -108,38 +111,75 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * @method navigateTo
-        * @param {String} path
-        * @param {Boolean} [silent]
-        * @chainable
-        */
+         * @method navigateTo
+         * @param {String} path
+         * @param {Boolean} [silent]
+         * @chainable
+         */
         Router.navigateTo = function (path, silent) {
             //        if (silent === true) {
             //            this.currentPath = path;
             //        }
             if (typeof silent === "undefined") { silent = false; }
-            if (silent === true) {
-                Router.disable();
-                setTimeout(function () {
-                    window.location.hash = path;
-                    Router.enable();
-                }, 1);
+
+            if (Router._isEnabled === false) return;
+
+            if (path.charAt(0) === '#') {
+                var strIndex = (path.substr(0, 2) === '#!') ? 2 : 1;
+                path = path.substring(strIndex);
+            }
+
+            // Enforce starting slash
+            if (path.charAt(0) !== '/' && Router.forceSlash === true) {
+                path = '/' + path;
+            }
+
+            if (Router.useDeepLinking === true)
+            {
+                if (silent === true) {
+                    Router.disable();
+                    setTimeout(function () {
+                        window.location.hash = path;
+                        Router.enable();
+                    }, 1);
+                } else {
+                    setTimeout(function () {
+                        window.location.hash = path;
+                    }, 1);
+                }
+            }
+            else
+            {
+                Router.changeRoute(path);
             }
         };
 
         /**
-        * YUIDoc_comment
-        *
-        * @method onHashChange
-        * @param event {HashChangeEvent}
-        * @private static
-        */
+         * YUIDoc_comment
+         *
+         * @method onHashChange
+         * @param event {HashChangeEvent}
+         * @private static
+         */
         Router.onHashChange = function (event) {
+            if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) return;
+
             var hash = Router.getHash();
+
+            Router.changeRoute(hash);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method changeRoute
+         * @private static
+         */
+        Router.changeRoute = function (hash) {
             var routeLength = Router._routes.length;
             var route;
             var match;
-            
+
             for (var i = 0; i < routeLength; i++) {
                 route = Router._routes[i];
                 match = route.match(hash);
@@ -148,6 +188,7 @@ define(function (require, exports, module) { // jshint ignore:line
                     var routerEvent = new RouteEvent();
                     routerEvent.route = match.shift();
                     routerEvent.data = match.slice(0, match.length);
+                    routerEvent.path = route.path;
 
                     if (event != null) {
                         routerEvent.newURL = event.newURL;
@@ -165,6 +206,10 @@ define(function (require, exports, module) { // jshint ignore:line
         Router._isEnabled = false;
         Router._routes = [];
         Router._hashChangeEvent = null;
+        Router.forceSlash = true;
+        Router.useDeepLinking = true;
+        Router.allowManualDeepLinking = true;
+        Router.currentPath = null;
         return Router;
     })();
 
