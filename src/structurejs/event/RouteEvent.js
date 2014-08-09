@@ -55,20 +55,20 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof data === "undefined") { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
             /**
-            * YUIDoc_comment
-            *
-            * @property route
-            * @type {string}
-            * @public
-            */
+             * YUIDoc_comment
+             *
+             * @property route
+             * @type {string}
+             * @public
+             */
             this.route = null;
             /**
-            * YUIDoc_comment
-            *
-            * @property newURL
-            * @type {string}
-            * @public
-            */
+             * YUIDoc_comment
+             *
+             * @property newURL
+             * @type {string}
+             * @public
+             */
             this.newURL = null;
             /**
              * YUIDoc_comment
@@ -88,8 +88,8 @@ define(function (require, exports, module) { // jshint ignore:line
             this.path = null;
         }
         /**
-        * @overridden BaseEvent.clone
-        */
+         * @overridden BaseEvent.clone
+         */
         RouteEvent.prototype.clone = function () {
             var event = new RouteEvent(this.type, this.bubble, this.cancelable, this.data);
             return event;

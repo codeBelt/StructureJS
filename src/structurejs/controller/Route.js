@@ -32,37 +32,37 @@ define(function (require, exports, module) { // jshint ignore:line
             this._regexParam = /\{([^\(}]+)(\((.[^\)]*)\))?\}/g;
             this._regexOptionalParam = /:([^:\(]+)(\((.[^\)]*)\))?:/g;
             /**
-            * @property path
-            * @type String
-            */
+             * @property path
+             * @type String
+             */
             this.path = '';
             /**
-            * @property regex
-            * @type RegExp
-            */
+             * @property regex
+             * @type RegExp
+             */
             this.regex = null;
             /**
-            * @property _isActive
-            * @type Boolean
-            * @default `false`
-            * @private
-            */
+             * @property _isActive
+             * @type Boolean
+             * @default `false`
+             * @private
+             */
             this._isActive = false;
             /**
-            * YUIDoc_comment
-            *
-            * @property callback
-            * @type {Function}
-            * @public
-            */
+             * YUIDoc_comment
+             *
+             * @property callback
+             * @type {Function}
+             * @public
+             */
             this.callback = null;
             /**
-            * YUIDoc_comment
-            *
-            * @property callbackScope
-            * @type {any}
-            * @public
-            */
+             * YUIDoc_comment
+             *
+             * @property callbackScope
+             * @type {any}
+             * @public
+             */
             this.callbackScope = null;
             this.path = path;
             this.regex = this.pathToRegexp(path);
@@ -70,13 +70,13 @@ define(function (require, exports, module) { // jshint ignore:line
             this.callbackScope = scope;
         }
         /**
-        * Convert path to regexp
-        *
-        * @type Function
-        * @param {String} path
-        * @returns {RegExp}
-        * @private
-        */
+         * Convert path to regexp
+         *
+         * @type Function
+         * @param {String} path
+         * @returns {RegExp}
+         * @private
+         */
         Route.prototype.pathToRegexp = function (path) {
             var findForwardSlashes = new RegExp('\/', 'g');
             var selectFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
@@ -102,22 +102,22 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * Determine if route is active
-        *
-        * @method isActive
-        * @returns {Boolean}
-        */
+         * Determine if route is active
+         *
+         * @method isActive
+         * @returns {Boolean}
+         */
         Route.prototype.isActive = function () {
             return this._isActive === true;
         };
 
         /**
-        * Determine if route matches `path`
-        *
-        * @method match
-        * @param {String} path
-        * @returns {Boolean}
-        */
+         * Determine if route matches `path`
+         *
+         * @method match
+         * @param {String} path
+         * @returns {Boolean}
+         */
         Route.prototype.match = function (path) {
             return path.match(this.regex);
         };

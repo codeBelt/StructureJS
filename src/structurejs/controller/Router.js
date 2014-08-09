@@ -30,7 +30,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var Router = (function () {
         function Router() {
-            Router.enable();
         }
         /**
          * YUIDoc_comment
@@ -92,11 +91,6 @@ define(function (require, exports, module) { // jshint ignore:line
             Router._isEnabled = true;
         };
 
-
-        Router.start = function () {
-            setTimeout(Router.onHashChange);
-        };
-
         Router.disable = function () {
             if (Router._isEnabled === false)
                 return;
@@ -110,6 +104,10 @@ define(function (require, exports, module) { // jshint ignore:line
             Router._isEnabled = false;
         };
 
+        Router.start = function () {
+            setTimeout(Router.onHashChange);
+        };
+
         /**
          * @method navigateTo
          * @param {String} path
@@ -117,12 +115,9 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         Router.navigateTo = function (path, silent) {
-            //        if (silent === true) {
-            //            this.currentPath = path;
-            //        }
             if (typeof silent === "undefined") { silent = false; }
-
-            if (Router._isEnabled === false) return;
+            if (Router._isEnabled === false)
+                return;
 
             if (path.charAt(0) === '#') {
                 var strIndex = (path.substr(0, 2) === '#!') ? 2 : 1;
@@ -134,8 +129,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 path = '/' + path;
             }
 
-            if (Router.useDeepLinking === true)
-            {
+            if (Router.useDeepLinking === true) {
                 if (silent === true) {
                     Router.disable();
                     setTimeout(function () {
@@ -147,9 +141,7 @@ define(function (require, exports, module) { // jshint ignore:line
                         window.location.hash = path;
                     }, 1);
                 }
-            }
-            else
-            {
+            } else {
                 Router.changeRoute(path);
             }
         };
@@ -162,19 +154,16 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private static
          */
         Router.onHashChange = function (event) {
-            if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) return;
+            if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false)
+                return;
+
+            Router._hashChangeEvent = event;
 
             var hash = Router.getHash();
 
             Router.changeRoute(hash);
         };
 
-        /**
-         * YUIDoc_comment
-         *
-         * @method changeRoute
-         * @private static
-         */
         Router.changeRoute = function (hash) {
             var routeLength = Router._routes.length;
             var route;
@@ -190,9 +179,11 @@ define(function (require, exports, module) { // jshint ignore:line
                     routerEvent.data = match.slice(0, match.length);
                     routerEvent.path = route.path;
 
-                    if (event != null) {
-                        routerEvent.newURL = event.newURL;
-                        routerEvent.oldURL = event.oldURL;
+                    if (Router._hashChangeEvent != null) {
+                        routerEvent.newURL = Router._hashChangeEvent.newURL;
+                        routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+
+                        Router._hashChangeEvent = null;
                     }
 
                     var params = match.slice(0, match.length);
@@ -209,7 +200,6 @@ define(function (require, exports, module) { // jshint ignore:line
         Router.forceSlash = true;
         Router.useDeepLinking = true;
         Router.allowManualDeepLinking = true;
-        Router.currentPath = null;
         return Router;
     })();
 

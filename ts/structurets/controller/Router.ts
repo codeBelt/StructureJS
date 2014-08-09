@@ -7,10 +7,12 @@ class Router
     private static _isEnabled:boolean = false;
     private static _routes:Array<Route> = [];
     private static _hashChangeEvent:any = null;
+    private static forceSlash:boolean = true;
+    private static useDeepLinking:boolean = true;
+    private static allowManualDeepLinking:boolean = true;
 
     constructor()
     {
-        Router.enable();
     }
 
     /**
@@ -86,6 +88,9 @@ class Router
         Router._isEnabled = false;
     }
 
+    public static start() {
+        setTimeout(Router.onHashChange);
+    }
     /**
      * @method navigateTo
      * @param {String} path
@@ -93,16 +98,35 @@ class Router
      * @chainable
      */
     public static navigateTo(path, silent:boolean = false) {
-//        if (silent === true) {
-//            this.currentPath = path;
-//        }
+        if (Router._isEnabled === false) return;
 
-        if (silent === true) {
-            Router.disable();
-            setTimeout(function() {
-                window.location.hash = path;
-                Router.enable();
-            }, 1);
+        if (path.charAt(0) === '#') {
+            var strIndex = (path.substr(0, 2) === '#!') ? 2 : 1;
+            path = path.substring(strIndex);
+        }
+
+        // Enforce starting slash
+        if (path.charAt(0) !== '/' && Router.forceSlash === true) {
+            path = '/' + path;
+        }
+
+        if (Router.useDeepLinking === true)
+        {
+            if (silent === true) {
+                Router.disable();
+                setTimeout(function () {
+                    window.location.hash = path;
+                    Router.enable();
+                }, 1);
+            } else {
+                setTimeout(function () {
+                    window.location.hash = path;
+                }, 1);
+            }
+        }
+        else
+        {
+            Router.changeRoute(path);
         }
     }
 
@@ -115,17 +139,19 @@ class Router
      * @private static
      */
     private static onHashChange(event):void {
-        var hash = Router.getHash();
-        var routeLength:number = Router._routes.length;
-        var route:Route;
-        var match:any;
+        if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) return;
 
-        // Enforce starting slash
-//        if (_route[0] !== '/') {
-//            this.navigateTo('/' + _route);
-//        } else {
-//            this._matchRoutes();
-//        }
+        Router._hashChangeEvent = event;
+
+        var hash = Router.getHash();
+
+        Router.changeRoute(hash);
+    }
+
+    private static changeRoute(hash:string) {
+        var routeLength = Router._routes.length;
+        var route;
+        var match;
 
         for (var i = 0; i < routeLength; i++) {
             route = Router._routes[i];
@@ -135,10 +161,16 @@ class Router
                 var routerEvent = new RouteEvent();
                 routerEvent.route = match.shift();
                 routerEvent.data = match.slice(0, match.length);
-                routerEvent.newURL = event.newURL;
-                routerEvent.oldURL = event.oldURL;
+                routerEvent.path = route.path;
 
-                var params:any[] = match.slice(0, match.length);
+                if (Router._hashChangeEvent != null) {
+                    routerEvent.newURL = Router._hashChangeEvent.newURL;
+                    routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+
+                    Router._hashChangeEvent = null;
+                }
+
+                var params = match.slice(0, match.length);
                 params.push(routerEvent);
 
                 route.callback.apply(route.callbackScope, params);

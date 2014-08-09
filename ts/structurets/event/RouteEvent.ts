@@ -78,6 +78,15 @@ class RouteEvent extends BaseEvent
      */
     public oldURL:string = null;
 
+    /**
+     * YUIDoc_comment
+     *
+     * @property path
+     * @type {string}
+     * @public
+     */
+    public path:string = null;
+
     constructor(type:string = RouteEvent.CHANGE, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
         super(type, bubbles, cancelable, data);
