@@ -105,7 +105,7 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         Router.start = function () {
-            setTimeout(Router.onHashChange);
+            setTimeout(Router.onHashChange, 1);
         };
 
         /**
@@ -134,7 +134,7 @@ define(function (require, exports, module) { // jshint ignore:line
                     Router.disable();
                     setTimeout(function () {
                         window.location.hash = path;
-                        Router.enable();
+                        setTimeout(Router.enable, 1);
                     }, 1);
                 } else {
                     setTimeout(function () {

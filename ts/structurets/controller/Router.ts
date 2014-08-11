@@ -89,7 +89,7 @@ class Router
     }
 
     public static start() {
-        setTimeout(Router.onHashChange);
+        setTimeout(Router.onHashChange, 1);
     }
     /**
      * @method navigateTo
@@ -116,7 +116,7 @@ class Router
                 Router.disable();
                 setTimeout(function () {
                     window.location.hash = path;
-                    Router.enable();
+                    setTimeout(Router.enable, 1);
                 }, 1);
             } else {
                 setTimeout(function () {
