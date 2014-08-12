@@ -87,6 +87,15 @@ class RouteEvent extends BaseEvent
      */
     public path:string = null;
 
+    /**
+     * YUIDoc_comment
+     *
+     * @property query
+     * @type {any}
+     * @public
+     */
+    public query:any = null;
+
     constructor(type:string = RouteEvent.CHANGE, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
         super(type, bubbles, cancelable, data);

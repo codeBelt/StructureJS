@@ -27,6 +27,7 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Route = require('structurejs/controller/Route');
     var RouteEvent = require('structurejs/event/RouteEvent');
+    var StringUtil = require('structurejs/util/StringUtil');
 
     var Router = (function () {
         function Router() {
@@ -165,9 +166,14 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         Router.changeRoute = function (hash) {
-            var routeLength = Router._routes.length;
             var route;
             var match;
+            var params;
+            var routeLength = Router._routes.length;
+
+            var queryString = hash.split('?');
+            hash = queryString.shift();
+            queryString = queryString.join('?');
 
             for (var i = 0; i < routeLength; i++) {
                 route = Router._routes[i];
@@ -178,6 +184,7 @@ define(function (require, exports, module) { // jshint ignore:line
                     routerEvent.route = match.shift();
                     routerEvent.data = match.slice(0, match.length);
                     routerEvent.path = route.path;
+                    routerEvent.query = (queryString !== '') ? StringUtil.queryStringToObject(queryString) : null;
 
                     if (Router._hashChangeEvent != null) {
                         routerEvent.newURL = Router._hashChangeEvent.newURL;
@@ -186,7 +193,7 @@ define(function (require, exports, module) { // jshint ignore:line
                         Router._hashChangeEvent = null;
                     }
 
-                    var params = match.slice(0, match.length);
+                    params = match.slice(0, match.length);
                     params.push(routerEvent);
 
                     route.callback.apply(route.callbackScope, params);

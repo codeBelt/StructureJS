@@ -103,7 +103,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method queryStringToObject
          * @param queryString {string}
-         * @returns {Object}
+         * @returns {any}
          * @public
          * @static
          */

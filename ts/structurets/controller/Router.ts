@@ -1,5 +1,6 @@
 import Route = require("Route");
 import RouteEvent = require("../event/RouteEvent");
+import StringUtil = require("../util/StringUtil");
 
 class Router
 {
@@ -100,25 +101,30 @@ class Router
     public static navigateTo(path, silent:boolean = false) {
         if (Router._isEnabled === false) return;
 
-        if (path.charAt(0) === '#') {
+        if (path.charAt(0) === '#')
+        {
             var strIndex = (path.substr(0, 2) === '#!') ? 2 : 1;
             path = path.substring(strIndex);
         }
 
         // Enforce starting slash
-        if (path.charAt(0) !== '/' && Router.forceSlash === true) {
+        if (path.charAt(0) !== '/' && Router.forceSlash === true)
+        {
             path = '/' + path;
         }
 
         if (Router.useDeepLinking === true)
         {
-            if (silent === true) {
+            if (silent === true)
+            {
                 Router.disable();
                 setTimeout(function () {
                     window.location.hash = path;
                     setTimeout(Router.enable, 1);
                 }, 1);
-            } else {
+            }
+            else
+            {
                 setTimeout(function () {
                     window.location.hash = path;
                 }, 1);
@@ -138,7 +144,8 @@ class Router
      * @param event {HashChangeEvent}
      * @private static
      */
-    private static onHashChange(event):void {
+    private static onHashChange(event):void
+    {
         if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) return;
 
         Router._hashChangeEvent = event;
@@ -148,29 +155,39 @@ class Router
         Router.changeRoute(hash);
     }
 
-    private static changeRoute(hash:string) {
+    private static changeRoute(hash:string)
+    {
+        var route:Route;
+        var match:any;
+        var params:any[];
         var routeLength = Router._routes.length;
-        var route;
-        var match;
 
-        for (var i = 0; i < routeLength; i++) {
+        var queryString:any = hash.split('?');
+        hash = queryString.shift();
+        queryString = queryString.join('?');
+
+        for (var i = 0; i < routeLength; i++)
+        {
             route = Router._routes[i];
             match = route.match(hash);
 
-            if (match !== null) {
+            if (match !== null)
+            {
                 var routerEvent = new RouteEvent();
                 routerEvent.route = match.shift();
                 routerEvent.data = match.slice(0, match.length);
                 routerEvent.path = route.path;
+                routerEvent.query = (queryString !== '') ? StringUtil.queryStringToObject(queryString) : null;
 
-                if (Router._hashChangeEvent != null) {
+                if (Router._hashChangeEvent != null)
+                {
                     routerEvent.newURL = Router._hashChangeEvent.newURL;
                     routerEvent.oldURL = Router._hashChangeEvent.oldURL;
 
                     Router._hashChangeEvent = null;
                 }
 
-                var params = match.slice(0, match.length);
+                params = match.slice(0, match.length);
                 params.push(routerEvent);
 
                 route.callback.apply(route.callbackScope, params);

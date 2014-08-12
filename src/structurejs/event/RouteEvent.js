@@ -86,6 +86,14 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.path = null;
+            /**
+             * YUIDoc_comment
+             *
+             * @property query
+             * @type {any}
+             * @public
+             */
+            this.query = null;
         }
         /**
          * @overridden BaseEvent.clone

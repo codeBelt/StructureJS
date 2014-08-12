@@ -139,16 +139,16 @@ class StringUtil
      * @public
      * @static
      */
-    public static queryStringToObject(queryString:string):Object
+    public static queryStringToObject(queryString:string):any
     {
-        var params = {};
-        var temp = null;
+        var params:any = {};
+        var temp:any = null;
 
         // Split into key/value pairs
-        var queries = queryString.substring(1).split("&");
+        var queries:any = queryString.substring(1).split("&");
 
         // Convert the array of strings into an object
-        var len = queries.length;
+        var len:number = queries.length;
         for (var i = 0; i < len; i++)
         {
             temp = queries[i].split('=');
