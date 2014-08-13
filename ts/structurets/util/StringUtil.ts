@@ -239,6 +239,16 @@ class StringUtil
         return str;
     }
 
+    // Update the appropriate href query string parameter //TODO:test
+    public static paramReplace(queryString, name, value) {
+        // Find the param with regex
+        // Grab the first character in the returned string (should be ? or &)
+        // Replace our href string with our new value, passing on the name and delimiter
+        var re = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var delimiter = re.exec(queryString)[0].charAt(0);
+        return queryString.replace(re, delimiter + name + "=" + value);
+    }
+
 }
 
 export = StringUtil;

@@ -93,12 +93,12 @@ class CarouselComponent extends EventDispatcher
         this._currentIndex = index;
         this.transition();
 
-        if (this._currentIndex == 0)
+        if (this._currentIndex === 0)
         {
             this.dispatchEvent(new CarouselEvent(CarouselEvent.BEGIN));
             //console.log('CarouselEvent.BEGIN');
         }
-        if (this._currentIndex == this._maxIndex)
+        if (this._currentIndex === this._maxIndex)
         {
             this.dispatchEvent(new CarouselEvent(CarouselEvent.END));
             //console.log('CarouselEvent.END');
@@ -119,7 +119,7 @@ class CarouselComponent extends EventDispatcher
         if (this.loop)
         {
             var slideWidth:number = this._widthOfItem * this._itemsVisible;
-            if (this._direction == CarouselComponent.DIRECTION_RIGHT)
+            if (this._direction === CarouselComponent.DIRECTION_RIGHT)
             {
                 (<HTMLScriptElement>this._container.element).style.left = -slideWidth + 'px';
                 for (var i:number = 0; i < this._itemsVisible; i++)
@@ -167,9 +167,9 @@ class CarouselComponent extends EventDispatcher
     {
         var totalMoves = Math.floor(this._numberOfItems / this._itemsVisible);
 
-        if (this.crazy == false)
+        if (this.crazy === false)
         {
-            if (this._currentIndex == totalMoves && this.loop == false || this._isMoving && this.loop)
+            if (this._currentIndex === totalMoves && this.loop === false || this._isMoving && this.loop)
             {
                 return;
             }
@@ -194,9 +194,9 @@ class CarouselComponent extends EventDispatcher
      */
     private movePrevious():void
     {
-        if (this.crazy == false)
+        if (this.crazy === false)
         {
-            if (this._currentIndex == 0 && this.loop == false || this._isMoving && this.loop)
+            if (this._currentIndex === 0 && this.loop === false || this._isMoving && this.loop)
             {
                 return;
             }
@@ -238,7 +238,7 @@ class CarouselComponent extends EventDispatcher
 //
         this._isMoving = false;
 
-        if (this.loop && this._direction == CarouselComponent.DIRECTION_LEFT)
+        if (this.loop && this._direction === CarouselComponent.DIRECTION_LEFT)
         {
             (<HTMLScriptElement>this._container.element).style.left = '0';
             for (var i:number = 0; i < this._itemsVisible; i++)

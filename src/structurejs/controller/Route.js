@@ -26,11 +26,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var Route = (function () {
         function Route(path, callback, scope) {
-            // Regexps
-            this._regexSlashes = /(^\/+|\/+$)/g;
-            this._regexOptionalSlash = /(:|})\/:/g;
-            this._regexParam = /\{([^\(}]+)(\((.[^\)]*)\))?\}/g;
-            this._regexOptionalParam = /:([^:\(]+)(\((.[^\)]*)\))?:/g;
             /**
              * @property path
              * @type String

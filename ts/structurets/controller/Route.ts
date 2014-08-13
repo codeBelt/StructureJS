@@ -1,11 +1,5 @@
 class Route
 {
-    // Regexps
-    private _regexSlashes:RegExp = /(^\/+|\/+$)/g;
-    private _regexOptionalSlash:RegExp = /(:|})\/:/g;
-    private _regexParam:RegExp = /\{([^\(}]+)(\((.[^\)]*)\))?\}/g;
-    private _regexOptionalParam:RegExp = /:([^:\(]+)(\((.[^\)]*)\))?:/g;
-
     /**
      * @property path
      * @type String
