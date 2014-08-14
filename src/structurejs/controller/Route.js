@@ -77,17 +77,17 @@ define(function (require, exports, module) { // jshint ignore:line
             // Convert the wild card * be a regex .* to select all.
             path = path.replace('*', '.*');
 
+            // Matches and query strings.
+            path = path.replace('?', '.*');
+
             // Escape the forward slashes ( / ) so it will look like "\/"
-            path = path.replace(findForwardSlashes, '\\/');
+            //path = path.replace(findForwardSlashes, '\\/');
 
             // Make any :alphanumeric: optional
-            path = path.replace(findOptionalColons, '([^/]*)');
+            path = path.replace(findOptionalColons, '?([^/]*)');
 
             // Make any {alphanumeric} required
             path = path.replace(findRequiredBrackets, '([^/]+)');
-
-            // Matches and query strings.
-            path = path.replace('?', '.*');
 
             return new RegExp('^/?' + path + '/?$', 'i');
         };
