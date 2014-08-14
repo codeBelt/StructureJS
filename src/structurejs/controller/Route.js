@@ -37,13 +37,6 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.regex = null;
             /**
-             * @property _isActive
-             * @type Boolean
-             * @default `false`
-             * @private
-             */
-            this._isActive = false;
-            /**
              * YUIDoc_comment
              *
              * @property callback
@@ -81,29 +74,22 @@ define(function (require, exports, module) { // jshint ignore:line
             // Remove first and last forward slash.
             path = path.replace(selectFirstOrLastForwardSlash, '');
 
+            // Convert the wild card * be a regex .* to select all.
+            path = path.replace('*', '.*');
+
             // Escape the forward slashes ( / ) so it will look like "\/"
             path = path.replace(findForwardSlashes, '\\/');
 
             // Make any :alphanumeric: optional
             path = path.replace(findOptionalColons, '([^/]*)');
 
-            // Make any {alphanumeric} optional
+            // Make any {alphanumeric} required
             path = path.replace(findRequiredBrackets, '([^/]+)');
 
-            // Convert the wild card * be a regex .* to trigger on all route changes.
-            path = path.replace('*', '.*');
+            // Matches and query strings.
+            path = path.replace('?', '.*');
 
             return new RegExp('^/?' + path + '/?$', 'i');
-        };
-
-        /**
-         * Determine if route is active
-         *
-         * @method isActive
-         * @returns {Boolean}
-         */
-        Route.prototype.isActive = function () {
-            return this._isActive === true;
         };
 
         /**

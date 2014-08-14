@@ -1,3 +1,10 @@
+/**
+ * YUIDoc_comment
+ *
+ * @class Route
+ * @constructor
+ * @author Robert S. (www.codeBelt.com)
+ **/
 class Route
 {
     /**
@@ -11,14 +18,6 @@ class Route
      * @type RegExp
      */
     public regex:RegExp = null;
-
-    /**
-     * @property _isActive
-     * @type Boolean
-     * @default `false`
-     * @private
-     */
-    private _isActive = false;
 
     /**
      * YUIDoc_comment
@@ -63,29 +62,22 @@ class Route
         // Remove first and last forward slash.
         path = path.replace(selectFirstOrLastForwardSlash, '');
 
+        // Convert the wild card * be a regex .* to select all.
+        path = path.replace('*', '.*');
+
         // Escape the forward slashes ( / ) so it will look like "\/"
         path = path.replace(findForwardSlashes, '\\/');
 
         // Make any :alphanumeric: optional
-        path = path.replace(findOptionalColons,'([^/]*)');
+        path = path.replace(findOptionalColons, '([^/]*)');
 
-        // Make any {alphanumeric} optional
-        path = path.replace(findRequiredBrackets,'([^/]+)');
+        // Make any {alphanumeric} required
+        path = path.replace(findRequiredBrackets, '([^/]+)');
 
-        // Convert the wild card * be a regex .* to trigger on all route changes.
-        path = path.replace('*','.*');
+        // Matches and query strings.
+        path = path.replace('?', '.*');
 
         return new RegExp('^/?' + path + '/?$', 'i');
-    }
-
-    /**
-     * Determine if route is active
-     *
-     * @method isActive
-     * @returns {Boolean}
-     */
-    public isActive() {
-        return this._isActive === true;
     }
 
     /**

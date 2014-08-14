@@ -2,11 +2,19 @@ import Route = require("Route");
 import RouteEvent = require("../event/RouteEvent");
 import StringUtil = require("../util/StringUtil");
 
+/**
+ * YUIDoc_comment
+ *
+ * @class Router
+ * @constructor
+ * @author Robert S. (www.codeBelt.com)
+ **/
 class Router
 {
     private static WINDOW:Window = window;
     private static _isEnabled:boolean = false;
     private static _routes:Array<Route> = [];
+    private static _defaultRoute:Route = null;
     private static _hashChangeEvent:any = null;
     private static forceSlash:boolean = true;
     private static useDeepLinking:boolean = true;
@@ -50,6 +58,28 @@ class Router
     }
 
     /**
+     * Allows you to have a default method called if no routes are found.
+     *
+     * @method addDefault
+     * @param callback {Function}
+     * @param scope {any}
+     * @public static
+     */
+    public static addDefault(callback:Function, scope:any):void {
+        Router._defaultRoute = new Route('', callback, scope);
+    }
+
+    /**
+     * Remove the default method.
+     *
+     * @method removeDefault
+     * @public static
+     */
+    public static removeDefault():void {
+        Router._defaultRoute = null;
+    }
+
+    /**
      * Gets the hash url minus the # or #! symbol(s).
      * @example
      * //
@@ -62,10 +92,16 @@ class Router
         var hash:string = Router.WINDOW.location.hash;
         var strIndex:number = (hash.substr(0, 2) === '#!') ? 2 : 1;
 
-        return hash.substring(strIndex); // Return everything after # or #!
+        return hash.substring(strIndex); // Return everything after # or #! TODO: make sure I want to do this.
     }
 
-    public static enable() {
+    /**
+     * This method allows the Router class to listen for the Window object HashChangeEvent.
+     *
+     * @method enable
+     * @private static
+     */
+    public static enable():void {
         if (Router._isEnabled === true) return;
 
         if (Router.WINDOW.addEventListener) {
@@ -77,7 +113,13 @@ class Router
         Router._isEnabled = true;
     }
 
-    public static disable() {
+    /**
+     * This method prevents the Router class from listening for the Window object HashChangeEvent.
+     *
+     * @method disable
+     * @private static
+     */
+    public static disable():void {
         if (Router._isEnabled === false) return;
 
         if (Router.WINDOW.removeEventListener) {
@@ -89,20 +131,31 @@ class Router
         Router._isEnabled = false;
     }
 
-    public static start() {
+    /**
+     * This method should be called if you would like to check the hash url on page load
+     * and trigger any routes.
+     *
+     * @method onHashChange
+     * @private static
+     */
+    public static start():void {
         setTimeout(Router.onHashChange, 1);
     }
+
     /**
+     * Within your code you can call this method to change the
+     *
      * @method navigateTo
-     * @param {String} path
-     * @param {Boolean} [silent]
-     * @chainable
+     * @param path {String}
+     * @param [silent=false] {Boolean}
+     * @private static
      */
-    public static navigateTo(path, silent:boolean = false) {
+    public static navigateTo(path, silent:boolean = false):void {
         if (Router._isEnabled === false) return;
 
         if (path.charAt(0) === '#')
         {
+            //TODO: make sure we keep the ! character right? I think I want to do that. Need to test.
             var strIndex = (path.substr(0, 2) === '#!') ? 2 : 1;
             path = path.substring(strIndex);
         }
@@ -136,9 +189,9 @@ class Router
         }
     }
 
-
     /**
-     * YUIDoc_comment
+     * This method will be called if the Window object dispatches a HashChangeEvent.
+     * This method will not be called if the Router is disabled.
      *
      * @method onHashChange
      * @param event {HashChangeEvent}
@@ -155,17 +208,29 @@ class Router
         Router.changeRoute(hash);
     }
 
-    private static changeRoute(hash:string)
+    /**
+     * The method is responsible for check if one of the routes matches the string value passed in.
+     *
+     * @method changeRoute
+     * @param hash {string}
+     * @private static
+     */
+    private static changeRoute(hash:string):void
     {
         var route:Route;
         var match:any;
         var params:any[];
         var routeLength = Router._routes.length;
+        var routerEvent:RouteEvent = null;
 
+        // Splits the hash and query string into an array where the question mark (?) is found.
         var queryString:any = hash.split('?');
+        // Sets the hash without the query string. Basically everything before the question mark (?) as the hash.
         hash = queryString.shift();
+        // Since the query string could contain other question marks (?) we put them back in.
         queryString = queryString.join('?');
 
+        // Loop through all routes and see if there is a match.
         for (var i = 0; i < routeLength; i++)
         {
             route = Router._routes[i];
@@ -173,7 +238,7 @@ class Router
 
             if (match !== null)
             {
-                var routerEvent = new RouteEvent();
+                routerEvent = new RouteEvent();
                 routerEvent.route = match.shift();
                 routerEvent.data = match.slice(0, match.length);
                 routerEvent.path = route.path;
@@ -193,7 +258,17 @@ class Router
                 route.callback.apply(route.callbackScope, params);
             }
         }
+
+        // Basically if there are no route's matched and there is a default route. Then call that default route.
+        if (routerEvent === null && Router._defaultRoute !== null)
+        {
+            //routerEvent = new RouteEvent(); //TODO: maybe send hash data.
+
+            Router._defaultRoute.callback.apply(Router._defaultRoute.callbackScope, routerEvent);
+        }
     }
+
+    //TODO: add destroy method.
 
 }
 

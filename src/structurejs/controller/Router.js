@@ -64,6 +64,28 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
+         * Allows you to have a default method called if no routes are found.
+         *
+         * @method addDefault
+         * @param callback {Function}
+         * @param scope {any}
+         * @public static
+         */
+        Router.addDefault = function (callback, scope) {
+            Router._defaultRoute = new Route('', callback, scope);
+        };
+
+        /**
+         * Remove the default method.
+         *
+         * @method removeDefault
+         * @public static
+         */
+        Router.removeDefault = function () {
+            Router._defaultRoute = null;
+        };
+
+        /**
          * Gets the hash url minus the # or #! symbol(s).
          * @example
          * //
@@ -79,6 +101,12 @@ define(function (require, exports, module) { // jshint ignore:line
             return hash.substring(strIndex);
         };
 
+        /**
+         * This method allows the Router class to listen for the Window object HashChangeEvent.
+         *
+         * @method enable
+         * @private static
+         */
         Router.enable = function () {
             if (Router._isEnabled === true)
                 return;
@@ -92,6 +120,12 @@ define(function (require, exports, module) { // jshint ignore:line
             Router._isEnabled = true;
         };
 
+        /**
+         * This method prevents the Router class from listening for the Window object HashChangeEvent.
+         *
+         * @method disable
+         * @private static
+         */
         Router.disable = function () {
             if (Router._isEnabled === false)
                 return;
@@ -105,15 +139,24 @@ define(function (require, exports, module) { // jshint ignore:line
             Router._isEnabled = false;
         };
 
+        /**
+         * This method should be called if you would like to check the hash url on page load
+         * and trigger any routes.
+         *
+         * @method onHashChange
+         * @private static
+         */
         Router.start = function () {
             setTimeout(Router.onHashChange, 1);
         };
 
         /**
+         * Within your code you can call this method to change the
+         *
          * @method navigateTo
-         * @param {String} path
-         * @param {Boolean} [silent]
-         * @chainable
+         * @param path {String}
+         * @param [silent=false] {Boolean}
+         * @private static
          */
         Router.navigateTo = function (path, silent) {
             if (typeof silent === "undefined") { silent = false; }
@@ -121,6 +164,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 return;
 
             if (path.charAt(0) === '#') {
+                //TODO: make sure we keep the ! character right? I think I want to do that. Need to test.
                 var strIndex = (path.substr(0, 2) === '#!') ? 2 : 1;
                 path = path.substring(strIndex);
             }
@@ -148,7 +192,8 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * YUIDoc_comment
+         * This method will be called if the Window object dispatches a HashChangeEvent.
+         * This method will not be called if the Router is disabled.
          *
          * @method onHashChange
          * @param event {HashChangeEvent}
@@ -165,14 +210,27 @@ define(function (require, exports, module) { // jshint ignore:line
             Router.changeRoute(hash);
         };
 
+        /**
+         * The method is responsible for check if one of the routes matches the string value passed in.
+         *
+         * @method changeRoute
+         * @param hash {string}
+         * @private static
+         */
         Router.changeRoute = function (hash) {
             var route;
             var match;
             var params;
             var routeLength = Router._routes.length;
+            var routerEvent = null;
 
+            // Splits the hash and query string into an array where the question mark (?) is found.
             var queryString = hash.split('?');
+
+            // Sets the hash without the query string. Basically everything before the question mark (?) as the hash.
             hash = queryString.shift();
+
+            // Since the query string could contain other question marks (?) we put them back in.
             queryString = queryString.join('?');
 
             for (var i = 0; i < routeLength; i++) {
@@ -180,7 +238,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 match = route.match(hash);
 
                 if (match !== null) {
-                    var routerEvent = new RouteEvent();
+                    routerEvent = new RouteEvent();
                     routerEvent.route = match.shift();
                     routerEvent.data = match.slice(0, match.length);
                     routerEvent.path = route.path;
@@ -199,10 +257,18 @@ define(function (require, exports, module) { // jshint ignore:line
                     route.callback.apply(route.callbackScope, params);
                 }
             }
+
+            // Basically if there are no route's matched and there is a default route. Then call that default route.
+            if (routerEvent === null && Router._defaultRoute !== null) {
+                //routerEvent = new RouteEvent(); //TODO: maybe send hash data.
+
+                Router._defaultRoute.callback.apply(Router._defaultRoute.callbackScope, routerEvent);
+            }
         };
         Router.WINDOW = window;
         Router._isEnabled = false;
         Router._routes = [];
+        Router._defaultRoute = null;
         Router._hashChangeEvent = null;
         Router.forceSlash = true;
         Router.useDeepLinking = true;

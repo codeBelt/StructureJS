@@ -37,6 +37,7 @@ define(function (require, exports, module) { // jshint ignore:line
             Router.add('/blog/{page}/', this.blog, this);
             Router.add('/blog/{page}/cool/{page}/{page}/', this.blog, this);
             Router.add('/contact/{page}/another/:asdf:/', this.contact, this);
+            Router.addDefault(this.default, this);
 
             Router.start();
             //Router.add('*', this.asdf, this);
@@ -48,6 +49,15 @@ define(function (require, exports, module) { // jshint ignore:line
             }.bind(this));
         }
 
+        /**
+         * YUIDoc_comment
+         *
+         * @method default
+         * @private
+         */
+        EventBubblingApp.prototype.default = function() {
+            console.log("default", arguments);
+        };
         /**
          * YUIDoc_comment
          *
