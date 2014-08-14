@@ -54,13 +54,17 @@ class Route
      * @private
      */
     private pathToRegexp(path):RegExp {
-        var findForwardSlashes = new RegExp('\/', 'g');// Finds all forward slashes
-        var selectFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
-        var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+        var findForwardSlashes:RegExp = new RegExp('\/', 'g');// Finds all forward slashes
+        var findForwardSlashesReplacer:string = '\\/';
+        var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
+        var findFirstOrLastForwardSlashReplacer:string = '';
         var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons :
+        var findOptionalColonsReplacer = '?([^/]*)';
+        var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+        var findRequiredBracketsReplacer = '([^/]+)';
 
         // Remove first and last forward slash.
-        path = path.replace(selectFirstOrLastForwardSlash, '');
+        path = path.replace(findFirstOrLastForwardSlash, findFirstOrLastForwardSlashReplacer);
 
         // Convert the wild card * be a regex .* to select all.
         path = path.replace('*', '.*');
@@ -69,13 +73,13 @@ class Route
         path = path.replace('?', '.*');
 
         // Escape the forward slashes ( / ) so it will look like "\/"
-        //path = path.replace(findForwardSlashes, '\\/');
+        //path = path.replace(findForwardSlashes, findForwardSlashesReplacer);
 
         // Make any :alphanumeric: optional
-        path = path.replace(findOptionalColons, '?([^/]*)');
+        path = path.replace(findOptionalColons, findOptionalColonsReplacer);
 
         // Make any {alphanumeric} required
-        path = path.replace(findRequiredBrackets, '([^/]+)');
+        path = path.replace(findRequiredBrackets, findRequiredBracketsReplacer);
 
         return new RegExp('^/?' + path + '/?$', 'i');
     }
