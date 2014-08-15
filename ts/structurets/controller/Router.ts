@@ -248,8 +248,6 @@ class Router
                 {
                     routerEvent.newURL = Router._hashChangeEvent.newURL;
                     routerEvent.oldURL = Router._hashChangeEvent.oldURL;
-
-                    Router._hashChangeEvent = null;
                 }
 
                 params = match.slice(0, match.length);
@@ -260,12 +258,20 @@ class Router
         }
 
         // Basically if there are no route's matched and there is a default route. Then call that default route.
-        if (routerEvent === null && Router._defaultRoute !== null)
-        {
-            //routerEvent = new RouteEvent(); //TODO: maybe send hash data.
+        if (routerEvent === null && Router._defaultRoute !== null) {
+            routerEvent = new RouteEvent();
+            routerEvent.route = hash;
+            routerEvent.query = (queryString !== '') ? StringUtil.queryStringToObject(queryString) : null;
 
-            Router._defaultRoute.callback.apply(Router._defaultRoute.callbackScope, routerEvent);
+            if (Router._hashChangeEvent != null) {
+                routerEvent.newURL = Router._hashChangeEvent.newURL;
+                routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+            }
+
+            Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
         }
+
+        Router._hashChangeEvent = null;
     }
 
     //TODO: add destroy method.

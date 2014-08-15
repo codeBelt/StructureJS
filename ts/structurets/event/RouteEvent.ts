@@ -107,6 +107,11 @@ class RouteEvent extends BaseEvent
     public clone():RouteEvent
     {
         var event:RouteEvent = new RouteEvent(this.type, this.bubble, this.cancelable, this.data);
+        event.route = this.route;
+        event.newURL = this.newURL;
+        event.oldURL = this.oldURL;
+        event.path = this.path;
+        event.query = this.query;
         return event;
     }
 
