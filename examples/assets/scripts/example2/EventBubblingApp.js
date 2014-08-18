@@ -30,13 +30,16 @@ define(function (require, exports, module) { // jshint ignore:line
             Router.useDeepLinking = true;
             Router.allowManualDeepLinking = true;
 
+            Router.add('', this.onHome, this);
             Router.add('/', this.onHome, this);
             Router.add('/about/:id:/', this.about, this);
             Router.add('/about/:id:/:id:/', this.about, this);
-            Router.add('/about/:id:/another/:asdf:/', this.about, this);
+            Router.add('/about/:id:/another/:asdf:/?', this.about, this);
             Router.add('/blog/{page}/', this.blog, this);
             Router.add('/blog/{page}/cool/{page}/{page}/', this.blog, this);
             Router.add('/contact/{page}/another/:asdf:/', this.contact, this);
+            Router.add('/test/?', this.contact, this);
+            Router.add('?', this.query, this);
             Router.addDefault(this.default, this);
 
             Router.start();
@@ -96,6 +99,16 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         EventBubblingApp.prototype.contact = function(param) {
             console.log("contact", arguments);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method query
+         * @priavte
+         */
+        EventBubblingApp.prototype.query = function(param) {
+            console.log("query", arguments);
         };
 
 

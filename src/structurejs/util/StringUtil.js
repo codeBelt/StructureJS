@@ -111,8 +111,10 @@ define(function (require, exports, module) { // jshint ignore:line
             var params = {};
             var temp = null;
 
+            queryString = queryString.substring( queryString.indexOf('?') + 1 );
+
             // Split into key/value pairs
-            var queries = queryString.substring(1).split("&");
+            var queries = queryString.split("&");
 
             // Convert the array of strings into an object
             var len = queries.length;

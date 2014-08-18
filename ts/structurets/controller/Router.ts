@@ -223,13 +223,6 @@ class Router
         var routeLength = Router._routes.length;
         var routerEvent:RouteEvent = null;
 
-        // Splits the hash and query string into an array where the question mark (?) is found.
-        var queryString:any = hash.split('?');
-        // Sets the hash without the query string. Basically everything before the question mark (?) as the hash.
-        hash = queryString.shift();
-        // Since the query string could contain other question marks (?) we put them back in.
-        queryString = queryString.join('?');
-
         // Loop through all routes and see if there is a match.
         for (var i = 0; i < routeLength; i++)
         {
@@ -242,7 +235,7 @@ class Router
                 routerEvent.route = match.shift();
                 routerEvent.data = match.slice(0, match.length);
                 routerEvent.path = route.path;
-                routerEvent.query = (queryString !== '') ? StringUtil.queryStringToObject(queryString) : null;
+                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
 
                 if (Router._hashChangeEvent != null)
                 {
@@ -258,12 +251,14 @@ class Router
         }
 
         // Basically if there are no route's matched and there is a default route. Then call that default route.
-        if (routerEvent === null && Router._defaultRoute !== null) {
+        if (routerEvent === null && Router._defaultRoute !== null)
+        {
             routerEvent = new RouteEvent();
             routerEvent.route = hash;
-            routerEvent.query = (queryString !== '') ? StringUtil.queryStringToObject(queryString) : null;
+            routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
 
-            if (Router._hashChangeEvent != null) {
+            if (Router._hashChangeEvent != null)
+            {
                 routerEvent.newURL = Router._hashChangeEvent.newURL;
                 routerEvent.oldURL = Router._hashChangeEvent.oldURL;
             }

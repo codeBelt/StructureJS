@@ -224,15 +224,6 @@ define(function (require, exports, module) { // jshint ignore:line
             var routeLength = Router._routes.length;
             var routerEvent = null;
 
-            // Splits the hash and query string into an array where the question mark (?) is found.
-            var queryString = hash.split('?');
-
-            // Sets the hash without the query string. Basically everything before the question mark (?) as the hash.
-            hash = queryString.shift();
-
-            // Since the query string could contain other question marks (?) we put them back in.
-            queryString = queryString.join('?');
-
             for (var i = 0; i < routeLength; i++) {
                 route = Router._routes[i];
                 match = route.match(hash);
@@ -242,7 +233,7 @@ define(function (require, exports, module) { // jshint ignore:line
                     routerEvent.route = match.shift();
                     routerEvent.data = match.slice(0, match.length);
                     routerEvent.path = route.path;
-                    routerEvent.query = (queryString !== '') ? StringUtil.queryStringToObject(queryString) : null;
+                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
 
                     if (Router._hashChangeEvent != null) {
                         routerEvent.newURL = Router._hashChangeEvent.newURL;
@@ -260,7 +251,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (routerEvent === null && Router._defaultRoute !== null) {
                 routerEvent = new RouteEvent();
                 routerEvent.route = hash;
-                routerEvent.query = (queryString !== '') ? StringUtil.queryStringToObject(queryString) : null;
+                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
 
                 if (Router._hashChangeEvent != null) {
                     routerEvent.newURL = Router._hashChangeEvent.newURL;

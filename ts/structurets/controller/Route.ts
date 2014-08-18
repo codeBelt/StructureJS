@@ -54,32 +54,24 @@ class Route
      * @private
      */
     private pathToRegexp(path):RegExp {
-        var findForwardSlashes:RegExp = new RegExp('\/', 'g');// Finds all forward slashes
-        var findForwardSlashesReplacer:string = '\\/';
         var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
-        var findFirstOrLastForwardSlashReplacer:string = '';
         var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons :
-        var findOptionalColonsReplacer = '?([^/]*)';
         var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
-        var findRequiredBracketsReplacer = '([^/]+)';
 
         // Remove first and last forward slash.
-        path = path.replace(findFirstOrLastForwardSlash, findFirstOrLastForwardSlashReplacer);
+        path = path.replace(findFirstOrLastForwardSlash, '');
 
         // Convert the wild card * be a regex .* to select all.
-        path = path.replace('*', '.*');
+        path = path.replace('*', '(.*)');
 
         // Matches and query strings.
-        path = path.replace('?', '.*');
-
-        // Escape the forward slashes ( / ) so it will look like "\/"
-        //path = path.replace(findForwardSlashes, findForwardSlashesReplacer);
+        path = path.replace('?', '(\\?.*)');
 
         // Make any :alphanumeric: optional
-        path = path.replace(findOptionalColons, findOptionalColonsReplacer);
+        path = path.replace(findOptionalColons, '?([^/]*)');
 
         // Make any {alphanumeric} required
-        path = path.replace(findRequiredBrackets, findRequiredBracketsReplacer);
+        path = path.replace(findRequiredBrackets, '([^/]+)');
 
         return new RegExp('^/?' + path + '/?$', 'i');
     }
@@ -91,7 +83,7 @@ class Route
      * @param {String} path
      * @returns {Boolean}
      */
-    public match(path) {
+    public match(path):any[] {
         return path.match(this.regex);
     }
 

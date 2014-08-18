@@ -75,10 +75,10 @@ define(function (require, exports, module) { // jshint ignore:line
             path = path.replace(selectFirstOrLastForwardSlash, '');
 
             // Convert the wild card * be a regex .* to select all.
-            path = path.replace('*', '.*');
+            path = path.replace('*', '(.*)');
 
             // Matches and query strings.
-            path = path.replace('?', '.*');
+            path = path.replace('?', '(\\?.*)');
 
             // Escape the forward slashes ( / ) so it will look like "\/"
             //path = path.replace(findForwardSlashes, '\\/');
@@ -90,6 +90,7 @@ define(function (require, exports, module) { // jshint ignore:line
             path = path.replace(findRequiredBrackets, '([^/]+)');
 
             return new RegExp('^/?' + path + '/?$', 'i');
+
         };
 
         /**

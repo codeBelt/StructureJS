@@ -144,8 +144,11 @@ class StringUtil
         var params:any = {};
         var temp:any = null;
 
+        queryString = queryString.substring( queryString.indexOf('?') + 1 );
+
         // Split into key/value pairs
-        var queries:any = queryString.substring(1).split("&");
+        var queries = queryString.split("&");
+
 
         // Convert the array of strings into an object
         var len:number = queries.length;
