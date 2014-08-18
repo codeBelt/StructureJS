@@ -66,22 +66,18 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private
          */
         Route.prototype.pathToRegexp = function (path) {
-            var findForwardSlashes = new RegExp('\/', 'g');
-            var selectFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
-            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g');
+            var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
             var findOptionalColons = new RegExp(':([^:]*):', 'g');
+            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g');
 
             // Remove first and last forward slash.
-            path = path.replace(selectFirstOrLastForwardSlash, '');
+            path = path.replace(findFirstOrLastForwardSlash, '');
 
             // Convert the wild card * be a regex .* to select all.
             path = path.replace('*', '(.*)');
 
             // Matches and query strings.
             path = path.replace('?', '(\\?.*)');
-
-            // Escape the forward slashes ( / ) so it will look like "\/"
-            //path = path.replace(findForwardSlashes, '\\/');
 
             // Make any :alphanumeric: optional
             path = path.replace(findOptionalColons, '?([^/]*)');
@@ -90,7 +86,6 @@ define(function (require, exports, module) { // jshint ignore:line
             path = path.replace(findRequiredBrackets, '([^/]+)');
 
             return new RegExp('^/?' + path + '/?$', 'i');
-
         };
 
         /**

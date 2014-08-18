@@ -55,7 +55,7 @@ class Route
      */
     private pathToRegexp(path):RegExp {
         var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
-        var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons :
+        var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
         var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
 
         // Remove first and last forward slash.
