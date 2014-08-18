@@ -23,8 +23,6 @@
  */
 
 import ICollection = require('../interface/ICollection')
-import IValueObject = require('../interface/IValueObject')
-import ValueObject = require('../model/ValueObject')
 import EventDispatcher = require('../event/EventDispatcher')
 import BaseEvent = require('../event/BaseEvent')
 
@@ -47,7 +45,7 @@ class Collection extends EventDispatcher implements ICollection
      * @type {array}
      * @readOnly
      */
-    public items:IValueObject[] = [];
+    public items:any[] = [];
 
     /**
      * YUIDoc_comment
@@ -67,20 +65,14 @@ class Collection extends EventDispatcher implements ICollection
 
     /**
      * Add an item to the current collection
-     * Requires that the item must be an instance of {{#crossLink "IValueObject"}}{{/crossLink}} or extends the {{#crossLink "ValueObject"}}{{/crossLink}} class.
      *
      * @method addItem
-     * @param item {IValueObject} The item or {{#crossLink "ValueObject"}}{{/crossLink}} to add.
+     * @param item {Object} The item to add.
      * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
      * @public
      */
-    public addItem(item:IValueObject, silent:boolean = false):void
+    public addItem(item:any, silent:boolean = false):void
     {
-        if ((item instanceof ValueObject) == false)
-        {
-            throw new TypeError('[' + this.getQualifiedClassName() + '] Item must be of the IValueObject type');
-        }
-
         if (this.hasItem(item) == false)
         {
             this.items.push(item);
@@ -98,18 +90,13 @@ class Collection extends EventDispatcher implements ICollection
      * If the collection doesn't have the item, it throws an error
      *
      * @method removeItem
-     * @param item {IValueObject} Item to remove
+     * @param item {Object} Item to remove
      * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
      * @public
      */
 
-    public removeItem(item:IValueObject, silent:boolean = false):void
+    public removeItem(item:any, silent:boolean = false):void
     {
-        if ((item instanceof ValueObject) == false)
-        {
-            throw new TypeError('[' + this.getQualifiedClassName() + '] Item must be of the IValueObject type');
-        }
-
         if (this.hasItem(item) == false)
         {
             throw new Error('[' + this.getQualifiedClassName() + '] Collection does not have item ' + item);
@@ -128,11 +115,11 @@ class Collection extends EventDispatcher implements ICollection
      * Removes an array of items from the collection
      *
      * @method removeItems
-     * @param items {IValueObject[]} List of items to add to the current collection
+     * @param items {Object[]} List of items to add to the current collection
      * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
      * @public
      */
-    public removeItems(items:IValueObject[], silent:boolean = false):void
+    public removeItems(items:any[], silent:boolean = false):void
     {
         var len:number = items.length;
         for (var i = 0; i < len; i++)
@@ -150,11 +137,11 @@ class Collection extends EventDispatcher implements ICollection
      * Checks if a collection has an item.
      *
      * @method hasItem
-     * @param item {IValueObject} Item to check
+     * @param item {Object} Item to check
      * @return {boolean}
      * @public
      */
-    public hasItem(item:IValueObject):boolean
+    public hasItem(item:any):boolean
     {
         return this.getIndexOfItem(item) > -1;
     }
@@ -163,11 +150,11 @@ class Collection extends EventDispatcher implements ICollection
      * Returns the array index position of the value object.
      *
      * @method getIndexOfItem
-     * @param item {IValueObject} IValueObject get the index of.
+     * @param item {Object} get the index of.
      * @return {boolean}
      * @public
      */
-    public getIndexOfItem(item:IValueObject):number
+    public getIndexOfItem(item:any):number
     {
         return this.items.indexOf(item);
     }
@@ -176,10 +163,10 @@ class Collection extends EventDispatcher implements ICollection
      * Adds an array of items to the collection
      *
      * @method addItems
-     * @param items {IValueObject[]} List of items to add to the current collection.
+     * @param items {Array} List of items to add to the current collection.
      * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
      */
-    public addItems(items:IValueObject[], silent:boolean = false):void
+    public addItems(items:any[], silent:boolean = false):void
     {
         var len:number = items.length;
         for (var i = 0; i < len; i++)
@@ -199,11 +186,11 @@ class Collection extends EventDispatcher implements ICollection
      *
      * @method getItemByIndex
      * @param index {init} The index integer of the item to get
-     * @return {IValueObject} item to find
+     * @return {Object} item to find
      * @public
      *
      */
-    public getItemByIndex(index:number):IValueObject
+    public getItemByIndex(index:number):any
     {
         if (index < 0)
         {
@@ -233,10 +220,10 @@ class Collection extends EventDispatcher implements ICollection
      this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
      * @method find
      * @param arg {Object|Array}
-     * @return {array} Returns a list of found IValueObject's.
+     * @return {array} Returns a list of found object's.
      * @public
      */
-    public find(arg:any):IValueObject[]
+    public find(arg:any):any[]
     {
         // If properties is not an array then make it an array object.
         arg = (arg instanceof Array) ? arg : [arg];
@@ -270,7 +257,7 @@ class Collection extends EventDispatcher implements ICollection
      *
      * @method findPropertyValue
      * @param arg {String|Number|Boolean>}
-     * @return {array} Returns a list of found IValueObject's.
+     * @return {array} Returns a list of found object's.
      * @private
      */
     private findPropertyValue(arg:any):any[]
@@ -284,14 +271,14 @@ class Collection extends EventDispatcher implements ICollection
         // Loop through each value object in the collection.
         for (var i = 0; i < itemsLength; i++)
         {
-            var valueObject = this.items[i];
+            var obj = this.items[i];
             // Loop through each properties on the value object.
-            for (var key in valueObject)
+            for (var key in obj)
             {
                 // Check if the key value is a property.
-                if (valueObject.hasOwnProperty(key))
+                if (obj.hasOwnProperty(key))
                 {
-                    var propertyValue = valueObject[key];
+                    var propertyValue = obj[key];
                     // Loop through each of the string value's to find a match in the value object.
                     for (var j = 0; j < itemsToFindLength; j++)
                     {
@@ -300,7 +287,7 @@ class Collection extends EventDispatcher implements ICollection
                         if (propertyValue === value)
                         {
                             // Add found value object to the foundItems array.
-                            foundItems.push(valueObject);
+                            foundItems.push(obj);
                             break;
                         }
                     }

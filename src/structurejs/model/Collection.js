@@ -44,19 +44,14 @@ define(function (require, exports, module) { // jshint ignore:line
         }
         /**
          * Add an item to the current collection
-         * Requires that the item must be an instance of {{#crossLink "IValueObject"}}{{/crossLink}} or extends the {{#crossLink "ValueObject"}}{{/crossLink}} class.
          *
          * @method addItem
-         * @param item {IValueObject} The item or {{#crossLink "ValueObject"}}{{/crossLink}} to add.
+         * @param item {Object} The item to add.
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
          */
         Collection.prototype.addItem = function (item, silent) {
             if (typeof silent === "undefined") { silent = false; }
-            if ((item instanceof ValueObject) == false) {
-                throw new TypeError('[' + this.getQualifiedClassName() + '] Item must be of the IValueObject type');
-            }
-
             if (this.hasItem(item) == false) {
                 this.items.push(item);
                 this.length = this.items.length;
@@ -72,16 +67,12 @@ define(function (require, exports, module) { // jshint ignore:line
          * If the collection doesn't have the item, it throws an error
          *
          * @method removeItem
-         * @param item {IValueObject} Item to remove
+         * @param item {Object} Item to remove
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
          */
         Collection.prototype.removeItem = function (item, silent) {
             if (typeof silent === "undefined") { silent = false; }
-            if ((item instanceof ValueObject) == false) {
-                throw new TypeError('[' + this.getQualifiedClassName() + '] Item must be of the IValueObject type');
-            }
-
             if (this.hasItem(item) == false) {
                 throw new Error('[' + this.getQualifiedClassName() + '] Collection does not have item ' + item);
             }
@@ -98,7 +89,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * Removes an array of items from the collection
          *
          * @method removeItems
-         * @param items {IValueObject[]} List of items to add to the current collection
+         * @param items {Object[]} List of items to add to the current collection
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
          */
@@ -118,7 +109,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * Checks if a collection has an item.
          *
          * @method hasItem
-         * @param item {IValueObject} Item to check
+         * @param item {Object} Item to check
          * @return {boolean}
          * @public
          */
@@ -130,7 +121,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * Returns the array index position of the value object.
          *
          * @method getIndexOfItem
-         * @param item {IValueObject} IValueObject get the index of.
+         * @param item {Object} get the index of.
          * @return {boolean}
          * @public
          */
@@ -142,7 +133,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * Adds an array of items to the collection
          *
          * @method addItems
-         * @param items {IValueObject[]} List of items to add to the current collection.
+         * @param items {Array} List of items to add to the current collection.
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          */
         Collection.prototype.addItems = function (items, silent) {
@@ -163,7 +154,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method getItemByIndex
          * @param index {init} The index integer of the item to get
-         * @return {IValueObject} item to find
+         * @return {Object} item to find
          * @public
          *
          */
@@ -194,7 +185,7 @@ define(function (require, exports, module) { // jshint ignore:line
          this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          * @method find
          * @param arg {Object|Array}
-         * @return {array} Returns a list of found IValueObject's.
+         * @return {array} Returns a list of found object's.
          * @public
          */
         Collection.prototype.find = function (arg) {
@@ -226,7 +217,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method findPropertyValue
          * @param arg {String|Number|Boolean>}
-         * @return {array} Returns a list of found IValueObject's.
+         * @return {array} Returns a list of found object's.
          * @private
          */
         Collection.prototype.findPropertyValue = function (arg) {
@@ -238,12 +229,12 @@ define(function (require, exports, module) { // jshint ignore:line
             var itemsToFindLength = arg.length;
 
             for (var i = 0; i < itemsLength; i++) {
-                var valueObject = this.items[i];
+                var obj = this.items[i];
 
-                for (var key in valueObject) {
+                for (var key in obj) {
                     // Check if the key value is a property.
-                    if (valueObject.hasOwnProperty(key)) {
-                        var propertyValue = valueObject[key];
+                    if (obj.hasOwnProperty(key)) {
+                        var propertyValue = obj[key];
 
                         for (var j = 0; j < itemsToFindLength; j++) {
                             var value = arg[j];
@@ -251,7 +242,7 @@ define(function (require, exports, module) { // jshint ignore:line
                             // If the value object property equals the string value then keep a reference to that value object.
                             if (propertyValue === value) {
                                 // Add found value object to the foundItems array.
-                                foundItems.push(valueObject);
+                                foundItems.push(obj);
                                 break;
                             }
                         }
