@@ -229,6 +229,7 @@ class Router
             route = Router._routes[i];
             match = route.match(hash);
 
+            // If there is a match.
             if (match !== null)
             {
                 routerEvent = new RouteEvent();
@@ -250,7 +251,7 @@ class Router
             }
         }
 
-        // Basically if there are no route's matched and there is a default route. Then call that default route.
+        // If there are no route's matched and there is a default route. Then call that default route.
         if (routerEvent === null && Router._defaultRoute !== null)
         {
             routerEvent = new RouteEvent();
@@ -269,7 +270,19 @@ class Router
         Router._hashChangeEvent = null;
     }
 
-    //TODO: add destroy method.
+
+    /**
+     * This method will null out all references in the Router class.
+     *
+     * @method destroy
+     * @public
+     */
+    public destroy():void {
+        Router.WINDOW = null;
+        Router._routes = null;
+        Router._defaultRoute = null;
+        Router._hashChangeEvent = null;
+    }
 
 }
 

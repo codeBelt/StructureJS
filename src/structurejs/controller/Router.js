@@ -228,6 +228,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 route = Router._routes[i];
                 match = route.match(hash);
 
+                // If there is a match.
                 if (match !== null) {
                     routerEvent = new RouteEvent();
                     routerEvent.route = match.shift();
@@ -247,7 +248,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 }
             }
 
-            // Basically if there are no route's matched and there is a default route. Then call that default route.
+            // If there are no route's matched and there is a default route. Then call that default route.
             if (routerEvent === null && Router._defaultRoute !== null) {
                 routerEvent = new RouteEvent();
                 routerEvent.route = hash;
@@ -261,6 +262,19 @@ define(function (require, exports, module) { // jshint ignore:line
                 Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
             }
 
+            Router._hashChangeEvent = null;
+        };
+
+        /**
+         * This method will null out all references in the Router class.
+         *
+         * @method destroy
+         * @public
+         */
+        Router.prototype.destroy = function () {
+            Router.WINDOW = null;
+            Router._routes = null;
+            Router._defaultRoute = null;
             Router._hashChangeEvent = null;
         };
         Router.WINDOW = window;

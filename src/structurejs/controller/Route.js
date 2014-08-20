@@ -69,6 +69,8 @@ define(function (require, exports, module) { // jshint ignore:line
             var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
             var findOptionalColons = new RegExp(':([^:]*):', 'g');
             var findRequiredBrackets = new RegExp('{([^}]+)}', 'g');
+            var optionalFirstCharSlash = '^/?';
+            var optionalLastCharSlash = '/?$';
 
             // Remove first and last forward slash.
             path = path.replace(findFirstOrLastForwardSlash, '');
@@ -85,7 +87,7 @@ define(function (require, exports, module) { // jshint ignore:line
             // Make any {alphanumeric} required
             path = path.replace(findRequiredBrackets, '([^/]+)');
 
-            return new RegExp('^/?' + path + '/?$', 'i');
+            return new RegExp(optionalFirstCharSlash + path + optionalLastCharSlash, 'i');
         };
 
         /**

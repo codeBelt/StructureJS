@@ -57,6 +57,8 @@ class Route
         var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
         var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
         var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+        var optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
+        var optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
 
         // Remove first and last forward slash.
         path = path.replace(findFirstOrLastForwardSlash, '');
@@ -73,7 +75,7 @@ class Route
         // Make any {alphanumeric} required
         path = path.replace(findRequiredBrackets, '([^/]+)');
 
-        return new RegExp('^/?' + path + '/?$', 'i');
+        return new RegExp(optionalFirstCharSlash + path + optionalLastCharSlash, 'i');
     }
 
     /**
