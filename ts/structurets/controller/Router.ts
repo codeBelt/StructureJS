@@ -8,6 +8,12 @@ import StringUtil = require("../util/StringUtil");
  * @class Router
  * @constructor
  * @author Robert S. (www.codeBelt.com)
+ * @example
+ * Router.add('/home/', this.onHomeHandler, this);
+ * //The above will trigger if the url is: www.site.com#/home/
+ * //The first and last forward slashes are option so even this will trigger the route: www.site.com#home
+ *
+ * Router.start();
  **/
 class Router
 {
