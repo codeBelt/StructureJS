@@ -69,11 +69,11 @@ class Route
         // Matches and query strings.
         path = path.replace('?', '(\\?.*)');
 
-        // Make any :alphanumeric: optional
-        path = path.replace(findOptionalColons, '?([^/]*)');
+        // Make any :alphanumeric: optional but not query string
+        path = path.replace(findOptionalColons, '?([^/?]*)');
 
-        // Make any {alphanumeric} required
-        path = path.replace(findRequiredBrackets, '([^/]+)');
+        // Make any {alphanumeric} required but not query string
+        path = path.replace(findRequiredBrackets, '([^/?]+)');
 
         return new RegExp(optionalFirstCharSlash + path + optionalLastCharSlash, 'i');
     }

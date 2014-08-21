@@ -221,10 +221,10 @@ define(function (require, exports, module) { // jshint ignore:line
             var route;
             var match;
             var params;
-            var routeLength = Router._routes.length;
             var routerEvent = null;
 
-            for (var i = 0; i < routeLength; i++) {
+            // Note: we need to check the length every loop in case one was removed.
+            for (var i = 0; i < Router._routes.length; i++) {
                 route = Router._routes[i];
                 match = route.match(hash);
 

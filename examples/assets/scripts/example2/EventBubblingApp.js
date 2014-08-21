@@ -30,20 +30,51 @@ define(function (require, exports, module) { // jshint ignore:line
             Router.useDeepLinking = true;
             Router.allowManualDeepLinking = true;
 
-            Router.add('', this.onHome, this);
-            Router.add('/', this.onHome, this);
-            Router.add('/about/:id:/', this.about, this);
-            Router.add('/about/:id:/:id:/', this.about, this);
-            Router.add('/about/:id:/another/:asdf:/?', this.about, this);
-            Router.add('/blog/{page}/', this.blog, this);
-            Router.add('/blog/{page}/cool/{page}/{page}/', this.blog, this);
-            Router.add('/contact/{page}/another/:asdf:/', this.contact, this);
-            Router.add('/test/?', this.contact, this);
-            Router.add('?', this.query, this);
+            Router.add('', function () {
+                console.log("''", arguments);
+            }, this);
+            Router.add('/', function () {
+                console.log("/", arguments);
+            }, this);
+            Router.add(':optional:', function () {
+                console.log(":optional:", arguments);
+            }, this);
+            Router.add('/home/', function () {
+                console.log("/home/", arguments);
+            }, this);
+            Router.add('/home/:optional:', function () {
+                console.log("/home/:optional:", arguments);
+            }, this);
+            Router.add('/home/:optional:/:optional:/', function () {
+                console.log("/home/:optional:/:optional:/", arguments);
+            }, this);
+            Router.add('/{required}/', function () {
+                console.log("/{required}/", arguments);
+            }, this);
+            Router.add('/{required}/another/', function () {
+                console.log("/{required}/another/", arguments);
+            }, this);
+            Router.add('/contact/{page}/another/:asdf:/', function () {
+                console.log("/contact/{page}/another/:asdf:/", arguments);
+            }, this);
+            Router.add('*', function () {
+                console.log("*", arguments);
+            }, this);
+            Router.add('/home/*', function () {
+                console.log("/home/*", arguments);
+            }, this);
+            Router.add('?', function () {
+                console.log("?", arguments);
+            }, this);
+            Router.add('/home/?', function () {
+                console.log("/home/?", arguments);
+            }, this);
+            Router.add('/:any:/?', function () {
+                console.log("/:any:/?", arguments);
+            }, this);
             Router.addDefault(this.default, this);
 
             Router.start();
-            //Router.add('*', this.asdf, this);
 
             $('.js-route').on('click', function(event){
                 event.preventDefault();
