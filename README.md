@@ -38,7 +38,22 @@ A workflow and several core class to help structure and build JavaScript applica
 * ___Extend___
 	* The Extend class is a utiliy class that will allow you easily to extend other classes.
 	
+* ___Router___
+    * The Router class is a hash routing class.
+	
 	
 * ___eventListener jQuery Plugin___
 	* There are two methods to the plugin ```addEventListener``` and ```removeEventListener```. These two methods allow you to pass in the scope of the class so you do not need to bind your function call(s) and assign them to a property on the class. 
 	* To learn more about the eventListener jQuery plugin check out [https://github.com/codeBelt/jquery-eventListener](https://github.com/codeBelt/jquery-eventListener)
+	
+###Router
+___Methods:___
+
+* **Router.add( routePattern, callback, callbackScope );**
+
+	
+```
+Router.add('/home/', this.onHomeHandler, this);
+//The above will trigger if the url is: www.site.com#/home/
+//The first and last forward slashes are option so even this will trigger the route: www.site.com#home
+```
