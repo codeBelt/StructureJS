@@ -95,7 +95,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method match
          * @param {String} path
-         * @returns {Boolean}
+         * @returns {any[]}
          */
         Route.prototype.match = function (path) {
             return path.match(this.regex);

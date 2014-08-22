@@ -83,7 +83,7 @@ class Route
      *
      * @method match
      * @param {String} path
-     * @returns {Boolean}
+     * @returns {any[]}
      */
     public match(path):any[] {
         return path.match(this.regex);

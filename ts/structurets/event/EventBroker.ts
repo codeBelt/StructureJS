@@ -48,7 +48,7 @@ class EventBroker
 
     constructor()
     {
-        throw new Error('[EventBroker] Do instantiation the EventBroker class because it is a static class.');
+        throw new Error('[EventBroker] Do not instantiation the EventBroker class because it is a static class.');
     }
 
     /**
