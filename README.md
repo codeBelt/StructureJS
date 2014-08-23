@@ -1,21 +1,21 @@
-##StructureJS
+#StructureJS
 
 A workflow and several core class to help structure and build JavaScript applications.
 
-#####WebStorm & Sublime Text Templates/Snippets:
+####WebStorm & Sublime Text Templates/Snippets:
 [WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
 
-#####Example:
+####Examples:
 [Examples](http://codebelt.github.io/StructureJS/src/)
 
-#####Documentation:
+####Documentation:
 [Docs](http://codebelt.github.io/StructureJS/docs/)
 
-#####Video:
+####Video:
 [StructureJS Overview](http://www.codebelt.com/javascript/StructureJS_web.mp4)
 
 
-####Core Classes
+###Core Classes
 * ___DOMElement___
 	* All your view classes will extend the DOMElement class and all your views will have the following lifecycle: createChilderen, layoutChildren, enable, disable and distroy. The DOMElement has several convenient methods (addChild, addChildAt, removeChild, getChild, etc.) to provide a structured base for your view classes. Within your views you will be able to listen and dispatch class based events. This is because DOMElement extends the EventDispacter class and your views will support event bubbling, stopPropagation and stopImmediatePropagation.		
 	
@@ -46,10 +46,44 @@ A workflow and several core class to help structure and build JavaScript applica
 	* There are two methods to the plugin ```addEventListener``` and ```removeEventListener```. These two methods allow you to pass in the scope of the class so you do not need to bind your function call(s) and assign them to a property on the class. 
 	* To learn more about the eventListener jQuery plugin check out [https://github.com/codeBelt/jquery-eventListener](https://github.com/codeBelt/jquery-eventListener)
 	
-###Router
-___Methods:___
 
-**Router.add( routePattern, callback, callbackScope );**
+##Router
+---------
+#####_Properties:_
+
+####Router.useDeepLinking [boolean = true]
+
+The ```Router.useDeepLinking``` property tells the Router class weather it should change the hash url or not. By **default** this property is set to ```true```. If you set the property to ```false``` and using the ```Router.navigateTo``` method the hash url will not change. This can be useful if you are making an application or game and you don't want the user to know how to jump to other sections directly. See the ```Router.allowManualDeepLinking``` to fully change the Router class from relying on the hash url to an interanl state controller.
+
+```
+Router.useDeepLinking = false;
+```
+
+####Router.allowManualDeepLinking [boolean = true]
+
+The ```Router.allowManualDeepLinking``` property tells the Router class weather it should check for route matches if the hash url changes in the browser. This proptery only works if the ```Router.useDeepLinking``` is set to ```false```. This is useful if want to use your added routes but don't want any external forces trigger your routes.
+
+Typically what I do for games is during development/testing I allow the hash url to change the states so testers can jump to sections or levels easly but then when it is ready for production I set the proptery to ```false``` so users cannot jump around if they figure out the url schema.
+
+```
+Router.useDeepLinking = false;
+Router.allowManualDeepLinking = false;
+```
+
+####Router.forceSlash [boolean = true]
+
+The ```Router.forceSlash``` property tells the Router class if the ```Router.navigateTo``` method is called to make sure the hash url has a forward slash after the **#** character like this **#/**. By **default** this property is set to ``true``.
+
+```
+// By default it will change the url from #contact/bob/ to #/contact/bob/ when using the navigateTo method.
+
+// To turn off forcing the forward slash
+Router.forceSlash = false; 
+``` 
+    
+#####_Methods:_
+
+####Router.add( routePattern, callback, callbackScope );
 
 * **routePatter** The string pattern you want to have match, which can be any of the following combinations. When a match is found the callback will be executed and an ```RouteEvent``` sent as a parameter.
       
@@ -112,7 +146,7 @@ ___Methods:___
  * **callbackScope** The the scope of th callback function that should be executed.      
       	
 
-**Router.remove( routePattern, callback, callbackScope );**
+####Router.remove( routePattern, callback, callbackScope );
 
 * **routePatter** Must be the same string pattern you pasted into the ```Router.add``` method.
 * **callback** Must be the same function you pasted into the ```Router.add``` method.
@@ -124,7 +158,7 @@ Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
 Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);
 ```
 
-**Router.start();**
+####Router.start();
 
 The ```Router.start``` method is ment to trigger or check the hash url on page load. Either you can call this method after you add all your routers or after all data is loaded. It is recommend you only call this once per page or application instantiation. 
 
@@ -137,7 +171,7 @@ Router.add('/{category}/blog/', this.method2, this);
 Router.start();
 ```
 
-**Router.addDefault( callback, callbackScope );**
+####Router.addDefault( callback, callbackScope );
 
 The ```Router.addDefault``` method is ment to trigger a callback function if there are no route matches are found.
 
@@ -145,7 +179,7 @@ The ```Router.addDefault``` method is ment to trigger a callback function if the
 Router.addDefault(this.noRoutesFoundHandler, this);
 ```
 
-**Router.navigateTo( route, silent );**
+####Router.navigateTo( route, silent );
 
 The ```Router.navigateTo``` method allows you to change the hash url and to trigger a route that matches the string value. The second parameter is **silent** and is ```false``` by default. This allows you to update the hash url without causing a route callback to be executed. 
 
@@ -157,7 +191,7 @@ Router.navigateTo('/games/matching/2/');
 Router.navigateTo('/games/matching/2/', true);
 ```
 
-**Router.removeDefault();**
+####Router.removeDefault();
 
 The ```Router.removeDefault``` method will remove the default callback that was added by the ```Router.addDefault``` method.
 
@@ -165,7 +199,15 @@ The ```Router.removeDefault``` method will remove the default callback that was 
 Router.removeDefault();
 ```
 
-**Router.enable();**
+####Router.getHash();
+
+The ```Router.getHash``` method will return the current hash url minus the # or #! symbol(s).
+
+```
+var str = Router.getHash();
+```
+
+####Router.enable();
 
 The ```Router.enable``` method will allow the Router class to listen for the hashchange event. By defualt the Router class is enalbed.
 
@@ -173,7 +215,7 @@ The ```Router.enable``` method will allow the Router class to listen for the has
 Router.enable();
 ```
 
-**Router.disable();**
+####Router.disable();
 
 The ```Router.disable``` method will stop the Router class from listening for the hashchange event.
 
@@ -181,9 +223,9 @@ The ```Router.disable``` method will stop the Router class from listening for th
 Router.disable();
 ```
 
-**Router.destroy();**
+####Router.destroy();
 
-The ```Router.destroy``` method will null out all references in the Router class.
+The ```Router.destroy``` method will null out all references to other objects in the Router class to prevent memory leaks.
 
 ```
 Router.destroy();
