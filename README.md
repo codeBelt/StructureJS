@@ -49,11 +49,142 @@ A workflow and several core class to help structure and build JavaScript applica
 ###Router
 ___Methods:___
 
-* **Router.add( routePattern, callback, callbackScope );**
+**Router.add( routePattern, callback, callbackScope );**
 
-	
+* **routePatter** The string pattern you want to have match, which can be any of the following combinations. When a match is found the callback will be executed and an ```RouteEvent``` sent as a parameter.
+      
+   	* **:optional:** The two colons means a part of the hash url is optional for the match. The text between can be anything you want it to be.
+   	
+		```
+		Router.add('/contact/:name:/', this.method, this);
+		
+		// www.site.com/#/contact/
+   		// www.site.com/#/contact/heather/
+   		// www.site.com/#/contact/john/
+		```
+  	 		
+   	* **{required}** The two curly brackets means a part of the hash url is required for the match. The text between can be anything you want it to be.
+   	
+		```
+		Router.add('/product/{productName}/', this.method, this);
+		
+   		// www.site.com/#/product/shoes/
+   		// www.site.com/#/product/jackets/
+		```
+  	 		
+   	* **\*** The asterix character means it will match all or part of part the hash url.
+   	
+		```
+		Router.add('*', this.method, this);
+		
+   		// www.site.com/#/anything/
+   		// www.site.com/#/matches/any/hash/url/
+   		// www.site.com/#/really/it/matches/any/and/all/hash/urls/
+		```
+   	* **?** The question mark character means it will match a query string for the hash url.
+   	
+		```
+		Router.add('?', this.method, this);
+		
+   		// www.site.com/#/?one=1&two=2&three=3
+   		// www.site.com/#?one=1&two=2&three=3
+		```
+   	* **''** The empty string means it will match when there are no hash url.
+   	
+		```
+		Router.add('', this.method, this);
+		Router.add('/', this.method, this);
+		
+   		// www.site.com/
+   		// www.site.com/#/
+		```
+		
+   	* Other possible combinations
+   	
+		```
+		Router.add('/games/{gameName}/:level:/', this.method1, this);
+		Router.add('/{category}/blog/', this.method2, this);
+		Router.add('/home/?', this.method3, this);
+		Router.add('/about/*', this.method4, this);
+		```
+		
+ * **callback** The function that should be executed when a request matches the Route pattern. 
+ * **callbackScope** The the scope of th callback function that should be executed.      
+      	
+
+**Router.remove( routePattern, callback, callbackScope );**
+
+* **routePatter** Must be the same string pattern you pasted into the ```Router.add``` method.
+* **callback** Must be the same function you pasted into the ```Router.add``` method.
+* **callbackScope** Must be the same scope off the callback pattern you pasted into the ```Router.add``` method.
+
 ```
-Router.add('/home/', this.onHomeHandler, this);
-//The above will trigger if the url is: www.site.com#/home/
-//The first and last forward slashes are option so even this will trigger the route: www.site.com#home
+Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+
+Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);
+```
+
+**Router.start();**
+
+The ```Router.start``` method is ment to trigger or check the hash url on page load. Either you can call this method after you add all your routers or after all data is loaded. It is recommend you only call this once per page or application instantiation. 
+
+```
+// Example of adding routes and calling the start method.
+
+Router.add('/games/{gameName}/:level:/', this.method1, this);
+Router.add('/{category}/blog/', this.method2, this);
+
+Router.start();
+```
+
+**Router.addDefault( callback, callbackScope );**
+
+The ```Router.addDefault``` method is ment to trigger a callback function if there are no route matches are found.
+
+```
+Router.addDefault(this.noRoutesFoundHandler, this);
+```
+
+**Router.navigateTo( route, silent );**
+
+The ```Router.navigateTo``` method allows you to change the hash url and to trigger a route that matches the string value. The second parameter is **silent** and is ```false``` by default. This allows you to update the hash url without causing a route callback to be executed. 
+
+```
+// This will update the hash url and triiger the mathcing route.
+Router.navigateTo('/games/matching/2/');
+
+// This will update the hash url but will not triiger the mathcing route.
+Router.navigateTo('/games/matching/2/', true);
+```
+
+**Router.removeDefault();**
+
+The ```Router.removeDefault``` method will remove the default callback that was added by the ```Router.addDefault``` method.
+
+```
+Router.removeDefault();
+```
+
+**Router.enable();**
+
+The ```Router.enable``` method will allow the Router class to listen for the hashchange event. By defualt the Router class is enalbed.
+
+```
+Router.enable();
+```
+
+**Router.disable();**
+
+The ```Router.disable``` method will stop the Router class from listening for the hashchange event.
+
+```
+Router.disable();
+```
+
+**Router.destroy();**
+
+The ```Router.destroy``` method will null out all references in the Router class.
+
+```
+Router.destroy();
 ```
