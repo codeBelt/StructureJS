@@ -52,7 +52,7 @@ class RouteEvent extends BaseEvent
     public static CHANGE:string = 'RouteEvent.change';
 
     /**
-     * YUIDoc_comment
+     * Route object that matches the string request.
      *
      * @property route
      * @type {string}
@@ -81,11 +81,20 @@ class RouteEvent extends BaseEvent
     /**
      * YUIDoc_comment
      *
-     * @property path
+     * @property routePattern
      * @type {string}
      * @public
      */
-    public path:string = null;
+    public routePattern:string = null;
+
+    /**
+     * Array containing all the parameters captured by Route pattern.
+     *
+     * @property params
+     * @type {string}
+     * @public
+     */
+    public params:string[] = null;
 
     /**
      * YUIDoc_comment
@@ -110,7 +119,7 @@ class RouteEvent extends BaseEvent
         event.route = this.route;
         event.newURL = this.newURL;
         event.oldURL = this.oldURL;
-        event.path = this.path;
+        event.routePattern = this.routePattern;
         event.query = this.query;
         return event;
     }

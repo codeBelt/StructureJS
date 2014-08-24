@@ -29,70 +29,166 @@ define(function (require, exports, module) { // jshint ignore:line
     var RouteEvent = require('structurejs/event/RouteEvent');
     var StringUtil = require('structurejs/util/StringUtil');
 
+    /**
+     * The Router class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
+     *
+     * @class Router
+     * @author Robert S. (www.codeBelt.com)
+     **/
     var Router = (function () {
         function Router() {
+            throw new Error('[Router] Do not instantiation the Router class because it is a static class.');
         }
         /**
-         * YUIDoc_comment
+         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing one or more parameters depending on the route pattern you define. The last parameter or sometimes it maybe the only parameter sent will be the {{#crossLink "RouteEvent"}}{{/crossLink}}.
          *
          * @method add
-         * @public static
+         * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern.
+         * @param callbackScope {any} The the scope of the callback function that should be executed.
+         * @public
+         * @static
+         * @example
+         *     // Example of adding a route listener and the function callback below.
+         *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+         *
+         *     // Notice the three parameters. This is because we have two patterns above.
+         *     // The `{}` means it is required and `::` means it is optional for a route match.
+         *     // The third parameter is the routeEvent and that is always last parameter.
+         *     ClassName.prototype.onRouteHandler = function (gameName, level, routeEvent) {
+        *
+        *     }
+         *
+         * Route Pattern Options:
+         * ----------------------
+         * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
+         *
+         *     Router.add('/contact/:name:/', this.method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/contact/
+         *     // www.site.com/#/contact/heather/
+         *     // www.site.com/#/contact/john/
+         *
+         *
+         * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
+         *
+         *     Router.add('/product/{productName}/', this.method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/product/shoes/
+         *     // www.site.com/#/product/jackets/
+         *
+         *
+         * **\*** The asterix character means it will match all or part of part the hash url.
+         *
+         *     Router.add('*', this.method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/anything/
+         *     // www.site.com/#/matches/any/hash/url/
+         *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
+         *
+         *
+         * **?** The question mark character means it will match a query string for the hash url.
+         *
+         *     Router.add('?', this.method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/?one=1&two=2&three=3
+         *     // www.site.com/#?one=1&two=2&three=3
+         *
+         *
+         * **''** The empty string means it will match when there are no hash url.
+         *
+         *     Router.add('', this.method, this);
+         *     Router.add('/', this.method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/
+         *     // www.site.com/#/
+         *
+         *
+         * Other possible combinations but not limited too:
+         *
+         *     Router.add('/games/{gameName}/:level:/', this.method1, this);
+         *     Router.add('/{category}/blog/', this.method2, this);
+         *     Router.add('/home/?', this.method3, this);
+         *     Router.add('/about/*', this.method4, this);
+         *
          */
-        Router.add = function (path, callback, scope) {
+        Router.add = function (routePattern, callback, callbackScope) {
             Router.enable();
 
-            var route = new Route(path, callback, scope);
+            var route = new Route(routePattern, callback, callbackScope);
 
             Router._routes.push(route);
         };
 
         /**
-         * YUIDoc_comment
+         * The **Router.remove** method will remove one of the added routes.
          *
          * @method remove
-         * @public static
+         * @param routePattern {string} Must be the same string pattern you pasted into the {{#crossLink "Router/add:method"}}{{/crossLink}} method.
+         * @param callback {Function} Must be the same function you pasted into the {{#crossLink "Router/add:method"}}{{/crossLink}} method.
+         * @param callbackScope {any} Must be the same scope off the callback pattern you pasted into the {{#crossLink "Router/add:method"}}{{/crossLink}} method.
+         * @public
+         * @static
+         * @example
+         *     // Example of adding a route listener.
+         *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+         *
+         *     // Example of removing the same added route listener above.
+         *     Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);
          */
-        Router.remove = function (path, callback, scope) {
+        Router.remove = function (routePattern, callback, callbackScope) {
             var route;
 
             for (var i = Router._routes.length - 1; i >= 0; i--) {
                 route = Router._routes[i];
-                if (route.path === path && route.callback === callback && route.callbackScope === scope) {
+                if (route.routePattern === routePattern && route.callback === callback && route.callbackScope === callbackScope) {
                     Router._routes.splice(i, 1);
                 }
             }
         };
 
         /**
-         * Allows you to have a default method called if no routes are found.
+         * The **Router.addDefault** method is meant to trigger a callback function if there are no route matches are found.
          *
          * @method addDefault
          * @param callback {Function}
-         * @param scope {any}
-         * @public static
+         * @param callbackScope {any}
+         * @public
+         * @static
+         * @example
+         *     Router.addDefault(this.noRoutesFoundHandler, this);
          */
-        Router.addDefault = function (callback, scope) {
-            Router._defaultRoute = new Route('', callback, scope);
+        Router.addDefault = function (callback, callbackScope) {
+            Router._defaultRoute = new Route('', callback, callbackScope);
         };
 
         /**
-         * Remove the default method.
+         * The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.
          *
          * @method removeDefault
-         * @public static
+         * @public
+         * @static
+         * @example
+         *     Router.removeDefault();
          */
         Router.removeDefault = function () {
             Router._defaultRoute = null;
         };
 
         /**
-         * Gets the hash url minus the # or #! symbol(s).
-         * @example
-         * //
+         * Gets the current hash url minus the # or #! symbol(s).
          *
          * @method getHash
-         * @public static
-         * @return {string}
+         * @public
+         * @static
+         * @return {string} Returns current hash url minus the # or #! symbol(s).
+         * @example
+         *     var str = Router.getHash();
          */
         Router.getHash = function () {
             var hash = Router.WINDOW.location.hash;
@@ -102,13 +198,16 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * This method allows the Router class to listen for the Window object HashChangeEvent.
+         * The **Router.enable** method will allow the Router class to listen for the hashchange event. By default the Router class is enabled.
          *
          * @method enable
-         * @private static
+         * @public
+         * @static
+         * @example
+         *     Router.enable();
          */
         Router.enable = function () {
-            if (Router._isEnabled === true)
+            if (Router.isEnabled === true)
                 return;
 
             if (Router.WINDOW.addEventListener) {
@@ -117,17 +216,20 @@ define(function (require, exports, module) { // jshint ignore:line
                 Router.WINDOW.attachEvent('onhashchange', Router.onHashChange);
             }
 
-            Router._isEnabled = true;
+            Router.isEnabled = true;
         };
 
         /**
-         * This method prevents the Router class from listening for the Window object HashChangeEvent.
+         * The **Router.disable** method will stop the Router class from listening for the hashchange event.
          *
          * @method disable
-         * @private static
+         * @public
+         * @static
+         * @example
+         *     Router.disable();
          */
         Router.disable = function () {
-            if (Router._isEnabled === false)
+            if (Router.isEnabled === false)
                 return;
 
             if (Router.WINDOW.removeEventListener) {
@@ -136,59 +238,109 @@ define(function (require, exports, module) { // jshint ignore:line
                 Router.WINDOW.detachEvent('onhashchange', Router.onHashChange);
             }
 
-            Router._isEnabled = false;
+            Router.isEnabled = false;
         };
 
         /**
-         * This method should be called if you would like to check the hash url on page load
-         * and trigger any routes.
+         * The **Router.start** method is meant to trigger or check the hash url on page load.
+         * Either you can call this method after you add all your routers or after all data is loaded.
+         * It is recommend you only call this once per page or application instantiation.
          *
-         * @method onHashChange
-         * @private static
+         * @method start
+         * @public
+         * @static
+         * @example
+         *     // Example of adding routes and calling the start method.
+         *
+         *     Router.add('/games/{gameName}/:level:/', this.method1, this);
+         *     Router.add('/{category}/blog/', this.method2, this);
+         *
+         *     Router.start();
          */
         Router.start = function () {
             setTimeout(Router.onHashChange, 1);
         };
 
         /**
-         * Within your code you can call this method to change the
+         * The **Router.navigateTo** method allows you to change the hash url and to trigger a route
+         * that matches the string value. The second parameter is **silent** and is **false** by
+         * default. This allows you to update the hash url without causing a route callback to be
+         * executed.
          *
          * @method navigateTo
-         * @param path {String}
+         * @param route {String}
          * @param [silent=false] {Boolean}
-         * @private static
+         * @public
+         * @static
+         * @example
+         *     // This will update the hash url and trigger the matching route.
+         *     Router.navigateTo('/games/asteroids/2/');
+         *
+         *     // This will update the hash url but will not trigger the matching route.
+         *     Router.navigateTo('/games/asteroids/2/', true);
          */
-        Router.navigateTo = function (path, silent) {
+        Router.navigateTo = function (route, silent) {
             if (typeof silent === "undefined") { silent = false; }
-            if (Router._isEnabled === false)
+            if (Router.isEnabled === false)
                 return;
 
-            if (path.charAt(0) === '#') {
+            if (route.charAt(0) === '#') {
                 //TODO: make sure we keep the ! character right? I think I want to do that. Need to test.
-                var strIndex = (path.substr(0, 2) === '#!') ? 2 : 1;
-                path = path.substring(strIndex);
+                var strIndex = (route.substr(0, 2) === '#!') ? 2 : 1;
+                route = route.substring(strIndex);
             }
 
             // Enforce starting slash
-            if (path.charAt(0) !== '/' && Router.forceSlash === true) {
-                path = '/' + path;
+            if (route.charAt(0) !== '/' && Router.forceSlash === true) {
+                route = '/' + route;
             }
 
             if (Router.useDeepLinking === true) {
                 if (silent === true) {
                     Router.disable();
                     setTimeout(function () {
-                        window.location.hash = path;
+                        window.location.hash = route;
                         setTimeout(Router.enable, 1);
                     }, 1);
                 } else {
                     setTimeout(function () {
-                        window.location.hash = path;
+                        window.location.hash = route;
                     }, 1);
                 }
             } else {
-                Router.changeRoute(path);
+                Router.changeRoute(route);
             }
+        };
+
+        /**
+         * The **Router.clear** will remove all route's and the default route from the Router class.
+         *
+         * @method clear
+         * @public
+         * @static
+         * @example
+         *     Router.clear();
+         */
+        Router.prototype.clear = function () {
+            Router._routes = [];
+            Router._defaultRoute = null;
+            Router._hashChangeEvent = null;
+        };
+
+        /**
+         * The **Router.destroy** method will null out all references to other objects in the Router class to prevent memory leaks.
+         *
+         * @method destroy
+         * @public
+         * @static
+         * @example
+         *     Router.destroy();
+         */
+        Router.prototype.destroy = function () {
+            Router.WINDOW = null;
+            Router._routes = null;
+            Router._defaultRoute = null;
+            Router._hashChangeEvent = null;
         };
 
         /**
@@ -197,7 +349,8 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method onHashChange
          * @param event {HashChangeEvent}
-         * @private static
+         * @private
+         * @static
          */
         Router.onHashChange = function (event) {
             if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false)
@@ -215,7 +368,8 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method changeRoute
          * @param hash {string}
-         * @private static
+         * @private
+         * @static
          */
         Router.changeRoute = function (hash) {
             var route;
@@ -223,7 +377,6 @@ define(function (require, exports, module) { // jshint ignore:line
             var params;
             var routerEvent = null;
 
-            // Note: we need to check the length every loop in case one was removed.
             for (var i = 0; i < Router._routes.length; i++) {
                 route = Router._routes[i];
                 match = route.match(hash);
@@ -232,8 +385,8 @@ define(function (require, exports, module) { // jshint ignore:line
                 if (match !== null) {
                     routerEvent = new RouteEvent();
                     routerEvent.route = match.shift();
-                    routerEvent.data = match.slice(0, match.length);
-                    routerEvent.path = route.path;
+                    routerEvent.params = match.slice(0, match.length);
+                    routerEvent.routePattern = route.routePattern;
                     routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
 
                     if (Router._hashChangeEvent != null) {
@@ -264,26 +417,108 @@ define(function (require, exports, module) { // jshint ignore:line
 
             Router._hashChangeEvent = null;
         };
-
         /**
-         * This method will null out all references in the Router class.
+         * A reference to the browser Window Object.
          *
-         * @method destroy
-         * @public
+         * @property WINDOW
+         * @type {Window}
+         * @private
+         * @static
+         * @final
+         * @readOnly
          */
-        Router.prototype.destroy = function () {
-            Router.WINDOW = null;
-            Router._routes = null;
-            Router._defaultRoute = null;
-            Router._hashChangeEvent = null;
-        };
         Router.WINDOW = window;
-        Router._isEnabled = false;
+        /**
+         * Determines if the Router class is enabled or disabled.
+         *
+         * @property isEnabled
+         * @type {boolean}
+         * @readOnly
+         * @public
+         * @static
+         * @example
+         *     // Read only.
+         *     console.log(Router.isEnabled);
+         */
+        Router.isEnabled = false;
+        /**
+         * A list of the added Route objects.
+         *
+         * @property _routes
+         * @type {Array<Route>}
+         * @private
+         * @static
+         */
         Router._routes = [];
+        /**
+         * A reference to default route object.
+         *
+         * @property _defaultRoute
+         * @type {Route}
+         * @private
+         * @static
+         */
         Router._defaultRoute = null;
+        /**
+         * A reference to the hash change event that was sent from the Window Object.
+         *
+         * @property _hashChangeEvent
+         * @type {any}
+         * @private
+         * @static
+         */
         Router._hashChangeEvent = null;
+        /**
+         * The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.
+         * By **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**
+         * method the hash url will not change. This can be useful if you are making an application or game and you don't want the user
+         * to know how to jump to other sections directly. See the **Router.{{#crossLink "Router/allowManualDeepLinking:property"}}{{/crossLink}}** to fully change the Router class
+         * from relying on the hash url to an internal state controller.
+         *
+         * @property forceSlash
+         * @type {boolean}
+         * @default true
+         * @public
+         * @static
+         * @example
+         *     Router.useDeepLinking = false;
+         */
         Router.forceSlash = true;
+        /**
+         * The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the
+         * hash url changes in the browser. This property only works if the **Router.{{#crossLink "Router/useDeepLinking:property"}}{{/crossLink}}** is set to **false**.
+         * This is useful if want to use your added routes but don't want any external forces trigger your routes.
+         *
+         * Typically what I do for games is during development/testing I allow the hash url to change the states so testers can jump
+         * to sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump
+         * around if they figure out the url schema.
+         *
+         * @property useDeepLinking
+         * @type {boolean}
+         * @default true
+         * @public
+         * @static
+         * @example
+         *     Router.useDeepLinking = false;
+         *     Router.allowManualDeepLinking = false;
+         */
         Router.useDeepLinking = true;
+        /**
+         * The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink "Router/navigateTo:method"}}{{/crossLink}}** method is called to
+         * make sure the hash url has a forward slash after the **#** character like this **#/**.
+         *
+         * @property allowManualDeepLinking
+         * @type {boolean}
+         * @default true
+         * @public
+         * @static
+         * @example
+         *     // To turn off forcing the forward slash
+         *     Router.forceSlash = false;
+         *
+         *     // By default it will change the url from #contact/bob/ to #/contact/bob/
+         *     // when using the navigateTo method.
+         */
         Router.allowManualDeepLinking = true;
         return Router;
     })();
