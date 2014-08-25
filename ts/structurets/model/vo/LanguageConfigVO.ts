@@ -41,7 +41,7 @@ class LanguageConfigVO extends ValueObject
  * @author Robert S. (www.codeBelt.com)
      * @module StructureJS
      * @version 0.1.0
-     **/
+     */
     constructor(data:any = null)
     {
         super();

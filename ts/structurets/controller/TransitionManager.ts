@@ -38,7 +38,7 @@ import TweenEvent = require('../event/TweenEvent')
  * @extends BaseController
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class TransitionManager extends EventDispatcher
 {
     public static READY:string = 'ready';

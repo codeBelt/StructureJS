@@ -34,7 +34,7 @@ import Canvas = require('Canvas')
  * @submodule view
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class CanvasElement extends DisplayObjectContainer
 {
     public stage:Canvas = null;

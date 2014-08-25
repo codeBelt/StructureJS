@@ -33,7 +33,7 @@ import DOMElement = require("../display/DOMElement");
  * @extends EventDispatcher
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class CarouselComponent extends EventDispatcher
 {
     public static DIRECTION_LEFT:string = 'directionLeft';

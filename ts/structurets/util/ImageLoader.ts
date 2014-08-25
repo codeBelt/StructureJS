@@ -34,7 +34,7 @@ import LoaderEvent = require('../event/LoaderEvent')
  * @submodule util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class ImageLoader extends EventDispatcher implements IDataStore
 {
     private _image:HTMLImageElement = null;

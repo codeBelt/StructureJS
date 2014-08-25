@@ -32,7 +32,7 @@ import IEventDispatcher = require('IEventDispatcher')
  * @module StructureJS
  * @submodule interface
  * @interface
- **/
+ */
 interface IDataStore extends IEventDispatcher
 {
 

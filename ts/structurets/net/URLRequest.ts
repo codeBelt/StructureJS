@@ -37,7 +37,7 @@ import URLContentType = require('URLContentType')
  * @submodule net
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class URLRequest extends BaseObject
 {
     /**

@@ -34,7 +34,7 @@ class StatusVO extends ValueObject
      * @module StructureJS
      * @constructor
  * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     constructor(data:any = null)
     {
         super();

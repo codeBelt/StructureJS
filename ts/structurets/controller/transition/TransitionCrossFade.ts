@@ -39,7 +39,7 @@ class TransitionCrossFade extends BaseTransition
      * @constructor
  * @author Robert S. (www.codeBelt.com)
      * @version 0.1.0
-     **/
+     */
     constructor()
     {
         super();

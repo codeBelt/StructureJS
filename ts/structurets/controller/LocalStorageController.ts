@@ -34,7 +34,7 @@ import ValueObject = require('../model/ValueObject')
  * @submodule controller
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class LocalStorageController extends EventDispatcher
 {
     /**

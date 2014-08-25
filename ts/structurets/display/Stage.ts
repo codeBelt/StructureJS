@@ -94,7 +94,7 @@ import DOMElement = require("display/DOMElement");
  * @submodule view
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class Stage extends DOMElement
 {
     constructor()

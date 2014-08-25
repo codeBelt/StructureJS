@@ -31,7 +31,7 @@ import IDisplayObject = require('IDisplayObject')
  * @module StructureJS
  * @submodule interface
  * @interface
- **/
+ */
 interface IDOMElement extends IDisplayObject
 {
 

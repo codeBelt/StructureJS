@@ -33,7 +33,7 @@ import BaseEvent = require('BaseEvent')
  * @module StructureJS
  * @submodule event
  * @static
- **/
+ */
 class EventBroker
 {
     /**

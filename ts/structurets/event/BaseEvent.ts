@@ -73,7 +73,7 @@ import BaseObject = require("../BaseObject");
  * @submodule event
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class BaseEvent extends BaseObject
 {
     /**

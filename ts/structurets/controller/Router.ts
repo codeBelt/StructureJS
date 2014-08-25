@@ -7,7 +7,7 @@ import StringUtil = require("../util/StringUtil");
  *
  * @class Router
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class Router
 {
     /**
@@ -132,19 +132,24 @@ class Router
      * @method add
      * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
      * @param callback {Function} The function that should be executed when a request matches the routePattern.
-     * @param callbackScope {any} The the scope of the callback function that should be executed.
+     * @param callbackScope {any} The scope of the callback function that should be executed.
      * @public
      * @static
      * @example
      *     // Example of adding a route listener and the function callback below.
      *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
      *
+     *     // The above route listener would match the below url:
+     *     // www.site.com/#/games/asteroids/2/
+     *
      *     // Notice the three parameters. This is because we have two patterns above.
      *     // The `{}` means it is required and `::` means it is optional for a route match.
      *     // The third parameter is the routeEvent and that is always last parameter.
      *     ClassName.prototype.onRouteHandler = function (gameName, level, routeEvent) {
-         *
-         *     }
+     *         // gameName value would be 'asteroids'.
+     *         // level value would be 2.
+     *         // routeEvent value would be a RouteEvent object.
+     *     }
      *
      * Route Pattern Options:
      * ----------------------
@@ -177,7 +182,7 @@ class Router
      *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
      *
      *
-     * **?** The question mark character means it will match a query string for the hash url.
+     * **?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an
      *
      *     Router.add('?', this.method, this);
      *
@@ -338,7 +343,6 @@ class Router
      * @static
      * @example
      *     // Example of adding routes and calling the start method.
-     *
      *     Router.add('/games/{gameName}/:level:/', this.method1, this);
      *     Router.add('/{category}/blog/', this.method2, this);
      *
@@ -371,7 +375,6 @@ class Router
 
         if (route.charAt(0) === '#')
         {
-            //TODO: make sure we keep the ! character right? I think I want to do that. Need to test.
             var strIndex = (route.substr(0, 2) === '#!') ? 2 : 1;
             route = route.substring(strIndex);
         }
@@ -421,7 +424,7 @@ class Router
     }
 
     /**
-     * The **Router.destroy** method will null out all references to other objects in the Router class to prevent memory leaks.
+     * The **Router.destroy** method will null out all references to other objects in the Router class.
      *
      * @method destroy
      * @public

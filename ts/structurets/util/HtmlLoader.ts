@@ -38,7 +38,7 @@ import URLLoaderDataFormat = require('../net/URLLoaderDataFormat')
  * @submodule util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class HtmlLoader extends EventDispatcher implements IDataStore
 {
     private _urlLoader:URLLoader = null;

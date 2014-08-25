@@ -143,7 +143,7 @@ Router.forceSlash = false;
 		```
 		
  * **callback** The function that should be executed when a request matches the Route pattern. 
- * **callbackScope** The the scope of th callback function that should be executed.      
+ * **callbackScope** The the scope of the callback function that should be executed.      
       	
 
 ####Router.remove( routePattern, callback, callbackScope );
@@ -173,7 +173,7 @@ Router.start();
 
 ####Router.addDefault( callback, callbackScope );
 
-The ```Router.addDefault``` method is ment to trigger a callback function if there are no route matches are found.
+The ```Router.addDefault``` method is meant to trigger a callback function if there are no route matches are found.
 
 ```
 Router.addDefault(this.noRoutesFoundHandler, this);
@@ -184,10 +184,10 @@ Router.addDefault(this.noRoutesFoundHandler, this);
 The ```Router.navigateTo``` method allows you to change the hash url and to trigger a route that matches the string value. The second parameter is **silent** and is ```false``` by default. This allows you to update the hash url without causing a route callback to be executed. 
 
 ```
-// This will update the hash url and triiger the mathcing route.
+// This will update the hash url and trigger the mathcing route.
 Router.navigateTo('/games/matching/2/');
 
-// This will update the hash url but will not triiger the mathcing route.
+// This will update the hash url but will not trigger the matching route.
 Router.navigateTo('/games/matching/2/', true);
 ```
 
@@ -209,7 +209,7 @@ var str = Router.getHash();
 
 ####Router.enable();
 
-The ```Router.enable``` method will allow the Router class to listen for the hashchange event. By defualt the Router class is enalbed.
+The ```Router.enable``` method will allow the Router class to listen for the hashchange event. By default the Router class is enabled.
 
 ```
 Router.enable();
@@ -230,3 +230,7 @@ The ```Router.destroy``` method will null out all references to other objects in
 ```
 Router.destroy();
 ```
+
+##RouteEvent
+---------
+#####_Properties:_

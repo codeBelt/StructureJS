@@ -35,7 +35,7 @@ import Util = require('../util/Util')
  * @submodule model
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class ValueObject extends BaseObject implements IValueObject
 {
     constructor()

@@ -29,7 +29,7 @@
  * @module StructureJS
  * @submodule interface
  * @interface
- **/
+ */
 interface IValueObject
 {
     /**

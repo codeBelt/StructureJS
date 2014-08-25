@@ -38,7 +38,7 @@ import LanguageConfigVO = require('vo/LanguageConfigVO')
  * @submodule model
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class LanguageModel extends EventDispatcher
 {
     private _request:BaseRequest = null;

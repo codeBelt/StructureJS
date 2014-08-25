@@ -9,7 +9,7 @@ import NetworkMonitorEvent = require('../event/NetworkMonitorEvent')
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @static
- **/
+ */
 class NetworkMonitor
 {
     /**

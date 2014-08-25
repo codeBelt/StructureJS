@@ -34,7 +34,7 @@ import MathUtil = require('../util/MathUtil')
  * @submodule view
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class Bitmap extends CanvasElement
 {
     private _image:HTMLImageElement = null;

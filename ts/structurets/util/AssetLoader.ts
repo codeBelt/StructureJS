@@ -34,7 +34,7 @@ import LoaderEvent = require('../event/LoaderEvent')
  * @submodule util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class AssetLoader extends EventDispatcher
 {
     private static _instance:AssetLoader;

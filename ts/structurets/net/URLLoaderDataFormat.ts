@@ -30,7 +30,7 @@
  * @submodule net
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class URLLoaderDataFormat
 {
     public static XML:string = "xml";

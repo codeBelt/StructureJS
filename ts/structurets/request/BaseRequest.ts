@@ -37,7 +37,7 @@ import LoaderEvent = require('../event/LoaderEvent')
  * @submodule net
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class BaseRequest extends EventDispatcher implements IDataStore
 {
     /**

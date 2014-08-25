@@ -33,7 +33,7 @@ import EventDispatcher = require('../event/EventDispatcher')
  * @submodule controller
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class ApplicationCacheController
 {
     /**

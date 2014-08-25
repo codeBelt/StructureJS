@@ -35,7 +35,7 @@ import BaseEvent = require('../event/BaseEvent')
  * @submodule model
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class Collection extends EventDispatcher implements ICollection
 {
     /**

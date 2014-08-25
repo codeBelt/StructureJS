@@ -34,7 +34,7 @@ import TimerEvent = require('../event/TimerEvent')
  * @submodule util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class Timer extends EventDispatcher
 {
     /**

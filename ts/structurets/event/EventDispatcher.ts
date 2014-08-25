@@ -35,7 +35,7 @@ import BaseEvent = require("BaseEvent");
  * @submodule event
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class EventDispatcher extends BaseObject
 {
     /**

@@ -35,7 +35,7 @@ import DOMElement = require('../display/DOMElement')
  * @extends EventDispatcher
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class TabComponent extends EventDispatcher
 {
     /**

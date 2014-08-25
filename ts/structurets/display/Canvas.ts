@@ -33,7 +33,7 @@ import CanvasElement = require('CanvasElement')
  * @submodule view
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class Canvas extends CanvasElement
 {
     public element:any = null;

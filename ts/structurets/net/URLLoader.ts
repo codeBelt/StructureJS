@@ -36,7 +36,7 @@ import URLLoaderDataFormat = require('URLLoaderDataFormat')
  * @submodule net
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class URLLoader extends EventDispatcher
 {
     /**

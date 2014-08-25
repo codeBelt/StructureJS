@@ -33,7 +33,7 @@ import BaseEvent = require('../event/BaseEvent')
  * @module StructureJS
  * @submodule interface
  * @interface
- **/
+ */
 interface IEventDispatcher extends ICore
 {
     /**

@@ -30,7 +30,7 @@
  * @submodule net
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class URLContentType
 {
 //http://www.freeformatter.com/mime-types-list.html

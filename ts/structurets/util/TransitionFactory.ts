@@ -43,7 +43,7 @@ import TransitionFadeOutAndIn = require('../controller/transition/TransitionFade
  * @submodule util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class TransitionFactory extends BaseObject
 {
     /**

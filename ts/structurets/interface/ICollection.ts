@@ -32,7 +32,7 @@ import IValueObject = require('IValueObject')
  * @module StructureJS
  * @submodule interface
  * @interface
- **/
+ */
 interface ICollection
 {
     /**
