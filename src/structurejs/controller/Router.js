@@ -401,6 +401,11 @@ define(function (require, exports, module) { // jshint ignore:line
                     params.push(routerEvent);
 
                     route.callback.apply(route.callbackScope, params);
+
+                    // Only trigger the first route and break and stop checking.
+                    if (Router.allowMultipleMatches === false) {
+                        break;
+                    }
                 }
             }
 
@@ -523,6 +528,19 @@ define(function (require, exports, module) { // jshint ignore:line
          *     // when using the navigateTo method.
          */
         Router.allowManualDeepLinking = true;
+        /**
+         * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
+         *
+         * @property allowMultipleMatches
+         * @type {boolean}
+         * @default true
+         * @public
+         * @static
+         * @example
+         *     // Only allow the first route matched to be triggered.
+         *     Router.allowMultipleMatches = false;
+         */
+        Router.allowMultipleMatches = true;
         return Router;
     })();
 

@@ -196,9 +196,6 @@ define(function (require, exports, module) { // jshint ignore:line
         return Route;
     })();
 
-    return Route;
-    })();
-
     module.exports = Route;
 
 });

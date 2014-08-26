@@ -29,6 +29,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
             Router.useDeepLinking = true;
             Router.allowManualDeepLinking = true;
+            Router.allowMultipleMatches = true;
 
             Router.add('', function () {
                 console.log("''", arguments);
