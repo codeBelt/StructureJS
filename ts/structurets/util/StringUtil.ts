@@ -135,7 +135,7 @@ class StringUtil
      *
      * @method queryStringToObject
      * @param queryString {string}
-     * @returns {Object}
+     * @returns {Object|Null}
      * @public
      * @static
      */
@@ -146,9 +146,12 @@ class StringUtil
 
         queryString = queryString.substring( queryString.indexOf('?') + 1 );
 
+        if (queryString === '') {
+            return null;
+        }
+
         // Split into key/value pairs
         var queries = queryString.split("&");
-
 
         // Convert the array of strings into an object
         var len:number = queries.length;
