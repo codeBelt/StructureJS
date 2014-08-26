@@ -49,6 +49,10 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -57,7 +61,19 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -69,6 +85,16 @@
             
                 <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
+                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
+            
+                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
+            
+                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
+            
+                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
+            
+                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
+            
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
@@ -77,11 +103,15 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
                 <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
@@ -106,7 +136,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l4"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:4</code></a>
+            Defined in: <a href="../files/src_structurejs_util_StringUtil.js.html#l4"><code>src\structurejs\util\StringUtil.js:4</code></a>
         </div>
     
 
@@ -194,6 +224,15 @@
             
                 <li class="index-item method public">
                     <a href="#method_createUUID">createUUID</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_format">format</a>
 
                     
                         <span class="flag static">static</span>
@@ -318,7 +357,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l4"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:4</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l4"><code>src\structurejs\util\StringUtil.js:4</code></a>
         
         </p>
 
@@ -403,7 +442,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l69"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:69</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l68"><code>src\structurejs\util\StringUtil.js:68</code></a>
         
         </p>
 
@@ -507,7 +546,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l84"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:84</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l83"><code>src\structurejs\util\StringUtil.js:83</code></a>
         
         </p>
 
@@ -540,6 +579,151 @@
             </div>
         
 
+        
+    </div>
+</div>
+
+        
+            <a name="method_format" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>format</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>str</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>...rest</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l179"><code>src\structurejs\util\StringUtil.js:179</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Replaces each format item in a specified string with the text equivalent of a corresponding object&#39;s value.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">str</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">...rest</code>
+                            <span class="type">Array</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">String</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.format(&#39;Robert is {0}. Very {0} and {1}!&#39;, &#39;cool&#39;, &#39;smart&#39;);
+ // &#39;Robert is cool. Very cool and smart!&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -598,7 +782,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l19"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:19</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l18"><code>src\structurejs\util\StringUtil.js:18</code></a>
         
         </p>
 
@@ -712,7 +896,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l32"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:32</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l31"><code>src\structurejs\util\StringUtil.js:31</code></a>
         
         </p>
 
@@ -826,7 +1010,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l49"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:49</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l48"><code>src\structurejs\util\StringUtil.js:48</code></a>
         
         </p>
 
@@ -907,7 +1091,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Object</span>
+            <span class="type">Any</span>
         </span>
     
 
@@ -940,7 +1124,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l102"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:102</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l101"><code>src\structurejs\util\StringUtil.js:101</code></a>
         
         </p>
 
@@ -989,7 +1173,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Object</span>:
+                            <span class="type">Any</span>:
                         
                     
                 </div>
@@ -1054,7 +1238,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l128"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:128</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l129"><code>src\structurejs\util\StringUtil.js:129</code></a>
         
         </p>
 
@@ -1179,7 +1363,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l144"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:144</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l145"><code>src\structurejs\util\StringUtil.js:145</code></a>
         
         </p>
 
@@ -1310,7 +1494,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_util_StringUtil.js.html#l161"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;util&#x2F;StringUtil.js:161</code></a>
+        <a href="../files/src_structurejs_util_StringUtil.js.html#l162"><code>src\structurejs\util\StringUtil.js:162</code></a>
         
         </p>
 

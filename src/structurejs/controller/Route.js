@@ -110,7 +110,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var Route = (function () {
         function Route(routePattern, callback, scope) {
             /**
-             * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''.
+             * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
              *
              * @property routePattern
              * @type String
@@ -127,7 +127,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.regex = null;
             /**
-             * The function that should be executed when a request matches the routePattern.
+             * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
              *
              * @property callback
              * @type {Function}
@@ -135,7 +135,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.callback = null;
             /**
-             * The scope of the callback function that should be executed.
+             * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
              *
              * @property callbackScope
              * @type {any}
@@ -181,10 +181,10 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * Determine if route matches routePattern that was passed into the constructor.
+         * Determine if a route matches a routePattern.
          *
          * @method match
-         * @param route {String} The route or path to match against the routePattern.
+         * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
          * @returns {Array}
          * @example
          *     var route = new Route('/games/{gameName}/:level:/', this.method, this);

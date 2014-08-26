@@ -49,6 +49,10 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -57,7 +61,19 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -69,6 +85,16 @@
             
                 <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
+                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
+            
+                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
+            
+                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
+            
+                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
+            
+                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
+            
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
@@ -77,11 +103,15 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
                 <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
@@ -106,7 +136,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:8</code></a>
+            Defined in: <a href="../files/src_structurejs_BaseObject.js.html#l6"><code>src\structurejs\BaseObject.js:6</code></a>
         </div>
     
 
@@ -123,7 +153,7 @@
 
 
 <div class="box intro">
-    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all  classes.</p>
+    <p>The <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a> class is an abstract class that provides common properties and functionality for all StructureJS classes.</p>
 
 </div>
 
@@ -252,7 +282,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l18"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:18</code></a>
+        <a href="../files/src_structurejs_BaseObject.js.html#l18"><code>src\structurejs\BaseObject.js:18</code></a>
         
         </p>
 
@@ -263,7 +293,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>The cid or client id is a unique identifier automatically assigned to most  objects upon instantiation.</p>
+            <p>The cid or client id is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
 
         </div>
 
@@ -326,7 +356,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l8"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:8</code></a>
+        <a href="../files/src_structurejs_BaseObject.js.html#l6"><code>src\structurejs\BaseObject.js:6</code></a>
         
         </p>
 
@@ -399,7 +429,7 @@
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l44"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:44</code></a>
+        <a href="../files/src_structurejs_BaseObject.js.html#l43"><code>src\structurejs\BaseObject.js:43</code></a>
         
         </p>
 
@@ -415,13 +445,10 @@
             <p>The purpose of the destroy method is to make an object ready for garbage collection. This
 should be thought of as a one way function. Once destroy is called no further methods should be
 called on the object or properties accessed. It is the responsibility of those who implement this
-function to stop all running Timers, all running Sounds, remove any event
-listeners and take any other steps necessary to make an object eligible for garbage collection.
-It is critical that all subclasses call the super for this function in their overridden methods.</p>
-<p>Note: super.destroy(); should be called first before you clean up any other objects/items in the current classs.
-The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destroy</a> method also calls the
-<a href="../classes/EventDispatcher.html#method_disable" class="crosslink">disable</a> method on all classes that extend
-<a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a>.</p>
+function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
+object eligible for garbage collection.</p>
+<p>By default the destroy method will null out all properties of the class automatically. You should call destroy
+on other objects before calling the super.</p>
 
         </div>
 
@@ -446,12 +473,10 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>   ClassName.prototype.destroy() {
-       _super.prototype.destroy.call(this);
-
-       this._childInstance.destroy();
-       this._childInstance = null;
-   }</code></pre>
+                    <p>ClassName.prototype.destroy = function() {
+     this._childInstance.destroy();</p>
+<pre class="code prettyprint"><code> _super.prototype.destroy.call(this);</code></pre>
+<p>}</p>
 
                 </div>
             </div>
@@ -501,7 +526,7 @@ The <a href="../classes/BaseObject.html#method_destroy" class="crosslink">destro
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_BaseObject.js.html#l31"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;BaseObject.js:31</code></a>
+        <a href="../files/src_structurejs_BaseObject.js.html#l30"><code>src\structurejs\BaseObject.js:30</code></a>
         
         </p>
 

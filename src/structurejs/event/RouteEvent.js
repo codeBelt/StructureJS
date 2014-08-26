@@ -55,7 +55,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof data === "undefined") { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
             /**
-             * YUIDoc_comment
+             * Route object that matches the string request.
              *
              * @property route
              * @type {string}
@@ -81,11 +81,19 @@ define(function (require, exports, module) { // jshint ignore:line
             /**
              * YUIDoc_comment
              *
-             * @property path
+             * @property routePattern
              * @type {string}
              * @public
              */
-            this.path = null;
+            this.routePattern = null;
+            /**
+             * Array containing all the parameters captured by Route pattern.
+             *
+             * @property params
+             * @type {string}
+             * @public
+             */
+            this.params = null;
             /**
              * YUIDoc_comment
              *
@@ -100,6 +108,11 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         RouteEvent.prototype.clone = function () {
             var event = new RouteEvent(this.type, this.bubble, this.cancelable, this.data);
+            event.route = this.route;
+            event.newURL = this.newURL;
+            event.oldURL = this.oldURL;
+            event.routePattern = this.routePattern;
+            event.query = this.query;
             return event;
         };
         RouteEvent.CHANGE = 'RouteEvent.change';

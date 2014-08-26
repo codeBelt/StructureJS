@@ -85,7 +85,7 @@ class Router
 
     /**
      * The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the
-     * hash url changes in the browser. This property only works if the **Router.{{#crossLink "Router/useDeepLinking:property"}}{{/crossLink}}** is set to **false**.
+     * hash url changes in the browser. This property only works if the **Router. {{#crossLink "Router/useDeepLinking:property"}}{{/crossLink}}** is set to **false**.
      * This is useful if want to use your added routes but don't want any external forces trigger your routes.
      *
      * Typically what I do for games is during development/testing I allow the hash url to change the states so testers can jump
@@ -145,7 +145,7 @@ class Router
      *
      * @method add
      * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-     * @param callback {Function} The function that should be executed when a request matches the routePattern.
+     * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}} object.
      * @param callbackScope {any} The scope of the callback function that should be executed.
      * @public
      * @static
@@ -156,13 +156,9 @@ class Router
      *     // The above route listener would match the below url:
      *     // www.site.com/#/games/asteroids/2/
      *
-     *     // Notice the three parameters. This is because we have two patterns above.
-     *     // The `{}` means it is required and `::` means it is optional for a route match.
-     *     // The third parameter is the routeEvent and that is always last parameter.
-     *     ClassName.prototype.onRouteHandler = function (gameName, level, routeEvent) {
-     *         // gameName value would be 'asteroids'.
-     *         // level value would be 2.
-     *         // routeEvent value would be a RouteEvent object.
+     *     // The Call back receives a RouteEvent object.
+     *     ClassName.prototype.onRouteHandler = function (routeEvent) {
+     *         console.log(routeEvent.params);
      *     }
      *
      * Route Pattern Options:
@@ -485,7 +481,6 @@ class Router
     {
         var route:Route;
         var match:any;
-        var params:any[];
         var routerEvent:RouteEvent = null;
 
         // Note: we need to check the length every loop in case one was removed.
@@ -509,10 +504,7 @@ class Router
                     routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                 }
 
-                params = match.slice(0, match.length);
-                params.push(routerEvent);
-
-                route.callback.apply(route.callbackScope, params);
+                route.callback.call(route.callbackScope, routerEvent);
 
                 // Only trigger the first route and stop checking.
                 if (Router.allowMultipleMatches === false)

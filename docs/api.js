@@ -3,32 +3,52 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "BaseEvent",
         "BaseObject",
+        "Collection",
+        "ComponentFactory",
         "DOMElement",
         "DisplayObjectContainer",
         "EventBroker",
         "EventDispatcher",
+        "LoaderEvent",
+        "LocalStorageController",
+        "LocalStorageEvent",
         "MobileUtil",
+        "Route",
+        "RouteEvent",
+        "Router",
         "Stage",
         "StringUtil",
         "TemplateFactory",
         "Timer",
         "TimerEvent",
+        "URLContentType",
+        "URLLoader",
+        "URLLoaderDataFormat",
+        "URLRequest",
+        "URLRequestMethod",
         "Util",
         "ValueObject"
     ],
     "modules": [
         "StructureJS",
+        "controller",
         "core",
         "event",
         "model",
+        "net",
         "util",
         "view"
     ],
     "allModules": [
         {
+            "displayName": "controller",
+            "name": "controller",
+            "description": "The LocalStorageController..."
+        },
+        {
             "displayName": "core",
             "name": "core",
-            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all  classes."
+            "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes."
         },
         {
             "displayName": "event",
@@ -38,7 +58,12 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "model",
             "name": "model",
-            "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems."
+            "description": "YUIDoc_comment"
+        },
+        {
+            "displayName": "net",
+            "name": "net",
+            "description": "The URLContentType..."
         },
         {
             "displayName": "StructureJS",

@@ -49,6 +49,10 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -57,7 +61,19 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -69,6 +85,16 @@
             
                 <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
+                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
+            
+                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
+            
+                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
+            
+                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
+            
+                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
+            
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
@@ -77,11 +103,15 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
                 <li><a class="module" href="../modules/core.html">core</a></li>
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
                 <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
@@ -106,7 +136,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_assets_scripts_structurejs_event_EventBroker.js.html#l6"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventBroker.js:6</code></a>
+            Defined in: <a href="../files/src_structurejs_event_EventBroker.js.html#l7"><code>src\structurejs\event\EventBroker.js:7</code></a>
         </div>
     
 
@@ -288,7 +318,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_EventBroker.js.html#l22"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventBroker.js:22</code></a>
+        <a href="../files/src_structurejs_event_EventBroker.js.html#l21"><code>src\structurejs\event\EventBroker.js:21</code></a>
         
         </p>
 
@@ -336,7 +366,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                         
 
                         <div class="param-description">
-                            <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event)</p>
+                            <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void</p>
 
                         </div>
 
@@ -387,10 +417,9 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>   EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-
-   ClassName.prototype.handlerMethod(event) {
-       console.log(event.target + &quot; sent the event.&quot;);
+                    <pre class="code prettyprint"><code>    EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+    ClassName.prototype.handlerMethod = function (event) {
+   console.log(event.target + &quot; sent the event.&quot;);
    }</code></pre>
 
                 </div>
@@ -449,7 +478,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_EventBroker.js.html#l63"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventBroker.js:63</code></a>
+        <a href="../files/src_structurejs_event_EventBroker.js.html#l60"><code>src\structurejs\event\EventBroker.js:60</code></a>
         
         </p>
 
@@ -499,7 +528,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>    var event = new BaseEvent(BaseEvent.CHANGE);
+                    <pre class="code prettyprint"><code>    var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
     EventBroker.dispatchEvent(event);
 
     // Here is a common inline event being dispatched
@@ -573,7 +602,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_assets_scripts_structurejs_event_EventBroker.js.html#l43"><code>src&#x2F;assets&#x2F;scripts&#x2F;structurejs&#x2F;event&#x2F;EventBroker.js:43</code></a>
+        <a href="../files/src_structurejs_event_EventBroker.js.html#l41"><code>src\structurejs\event\EventBroker.js:41</code></a>
         
         </p>
 
@@ -656,10 +685,9 @@ To keep things consistent this parameter is required.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>   EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-
-   ClassName.prototype.handlerMethod(event:BaseEvent) {
-       console.log(event.target + &quot; sent the event.&quot;);
+                    <pre class="code prettyprint"><code>    EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+    ClassName.prototype.handlerMethod = function (event) {
+   console.log(event.target + &quot; sent the event.&quot;);
    }</code></pre>
 
                 </div>

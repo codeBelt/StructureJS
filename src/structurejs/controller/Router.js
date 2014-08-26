@@ -44,7 +44,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method add
          * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-         * @param callback {Function} The function that should be executed when a request matches the routePattern.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}} object.
          * @param callbackScope {any} The scope of the callback function that should be executed.
          * @public
          * @static
@@ -55,13 +55,9 @@ define(function (require, exports, module) { // jshint ignore:line
          *     // The above route listener would match the below url:
          *     // www.site.com/#/games/asteroids/2/
          *
-         *     // Notice the three parameters. This is because we have two patterns above.
-         *     // The `{}` means it is required and `::` means it is optional for a route match.
-         *     // The third parameter is the routeEvent and that is always last parameter.
-         *     ClassName.prototype.onRouteHandler = function (gameName, level, routeEvent) {
-        *         // gameName value would be 'asteroids'.
-        *         // level value would be 2.
-        *         // routeEvent value would be a RouteEvent object.
+         *     // The Call back receives a RouteEvent object.
+         *     ClassName.prototype.onRouteHandler = function (routeEvent) {
+        *         console.log(routeEvent.params);
         *     }
          *
          * Route Pattern Options:
@@ -377,7 +373,6 @@ define(function (require, exports, module) { // jshint ignore:line
         Router.changeRoute = function (hash) {
             var route;
             var match;
-            var params;
             var routerEvent = null;
 
             for (var i = 0; i < Router._routes.length; i++) {
@@ -397,12 +392,9 @@ define(function (require, exports, module) { // jshint ignore:line
                         routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                     }
 
-                    params = match.slice(0, match.length);
-                    params.push(routerEvent);
+                    route.callback.call(route.callbackScope, routerEvent);
 
-                    route.callback.apply(route.callbackScope, params);
-
-                    // Only trigger the first route and break and stop checking.
+                    // Only trigger the first route and stop checking.
                     if (Router.allowMultipleMatches === false) {
                         break;
                     }
