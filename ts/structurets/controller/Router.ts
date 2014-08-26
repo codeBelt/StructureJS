@@ -3,7 +3,7 @@ import RouteEvent = require("../event/RouteEvent");
 import StringUtil = require("../util/StringUtil");
 
 /**
- * The Router class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
+ * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
  *
  * @class Router
  * @author Robert S. (www.codeBelt.com)
@@ -514,7 +514,7 @@ class Router
 
                 route.callback.apply(route.callbackScope, params);
 
-                // Only trigger the first route and break and stop checking.
+                // Only trigger the first route and stop checking.
                 if (Router.allowMultipleMatches === false)
                 {
                     break;

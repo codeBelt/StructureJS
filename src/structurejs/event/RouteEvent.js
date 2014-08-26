@@ -44,7 +44,7 @@ define(function (require, exports, module) { // jshint ignore:line
     * @constructor
     * @author Robert S. (www.codeBelt.com)
     **/
-    var RouteEvent = (function (_super) {
+    var RouteEvent = (function () {
 
         var _super = Extend(RouteEvent, BaseEvent);
 
