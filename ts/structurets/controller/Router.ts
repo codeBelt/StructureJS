@@ -497,6 +497,8 @@ class Router
                 routerEvent.params = match.slice(0, match.length);
                 routerEvent.routePattern = route.routePattern;
                 routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                routerEvent.target = Router;
+                routerEvent.currentTarget = Router;
 
                 if (Router._hashChangeEvent != null)
                 {
@@ -520,6 +522,8 @@ class Router
             routerEvent = new RouteEvent();
             routerEvent.route = hash;
             routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+            routerEvent.target = Router;
+            routerEvent.currentTarget = Router;
 
             if (Router._hashChangeEvent != null)
             {
