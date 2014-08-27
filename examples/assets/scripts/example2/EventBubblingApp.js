@@ -31,47 +31,47 @@ define(function (require, exports, module) { // jshint ignore:line
             Router.allowManualDeepLinking = true;
             Router.allowMultipleMatches = true;
 
-            Router.add('', function () {
-                console.log("''", arguments);
+            Router.add('', function (routeEvent) {
+                console.log("''", routeEvent);
             }, this);
-            Router.add('/', function () {
-                console.log("/", arguments);
+            Router.add('/', function (routeEvent) {
+                console.log("/", routeEvent);
             }, this);
-            Router.add(':optional:', function () {
-                console.log(":optional:", arguments);
+            Router.add(':optional:', function (routeEvent) {
+                console.log(":optional:", routeEvent);
             }, this);
-            Router.add('/home/', function () {
-                console.log("/home/", arguments);
+            Router.add('/home/', function (routeEvent) {
+                console.log("/home/", routeEvent);
             }, this);
-            Router.add('/home/:optional:', function () {
-                console.log("/home/:optional:", arguments);
+            Router.add('/home/:optional:', function (routeEvent) {
+                console.log("/home/:optional:", routeEvent);
             }, this);
-            Router.add('/home/:optional:/:optional:/', function () {
-                console.log("/home/:optional:/:optional:/", arguments);
+            Router.add('/home/:optional:/:optional:/', function (routeEvent) {
+                console.log("/home/:optional:/:optional:/", routeEvent);
             }, this);
-            Router.add('/{required}/', function () {
-                console.log("/{required}/", arguments);
+            Router.add('/{required}/', function (routeEvent) {
+                console.log("/{required}/", routeEvent);
             }, this);
-            Router.add('/{required}/another/', function () {
-                console.log("/{required}/another/", arguments);
+            Router.add('/{required}/another/', function (routeEvent) {
+                console.log("/{required}/another/", routeEvent);
             }, this);
-            Router.add('/contact/{page}/another/:asdf:/', function () {
-                console.log("/contact/{page}/another/:asdf:/", arguments);
+            Router.add('/contact/{page}/another/:asdf:/', function (routeEvent) {
+                console.log("/contact/{page}/another/:asdf:/", routeEvent);
             }, this);
-            Router.add('*', function () {
-                console.log("*", arguments);
+            Router.add('*', function (routeEvent) {
+                console.log("*", routeEvent);
             }, this);
-            Router.add('/home/*', function () {
-                console.log("/home/*", arguments);
+            Router.add('/home/*', function (routeEvent) {
+                console.log("/home/*", routeEvent);
             }, this);
-            Router.add('?', function () {
-                console.log("?", arguments);
+            Router.add('?', function (routeEvent) {
+                console.log("?", routeEvent);
             }, this);
-            Router.add('/home/?', function () {
-                console.log("/home/?", arguments);
+            Router.add('/home/?', function (routeEvent) {
+                console.log("/home/?", routeEvent);
             }, this);
-            Router.add('/:any:/?', function () {
-                console.log("/:any:/?", arguments);
+            Router.add('/:any:/?', function (routeEvent) {
+                console.log("/:any:/?", routeEvent);
             }, this);
             Router.addDefault(this.default, this);
 
@@ -90,8 +90,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method default
          * @private
          */
-        EventBubblingApp.prototype.default = function() {
-            console.log("default", arguments);
+        EventBubblingApp.prototype.default = function(routeEvent) {
+            console.log("default", routeEvent);
         };
         /**
          * YUIDoc_comment
@@ -99,18 +99,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method onHome
          * @priavte
          */
-        EventBubblingApp.prototype.onHome = function(param) {
-            console.log("onHome", arguments);
-        };
-
-        /**
-         * YUIDoc_comment
-         *
-         * @method onHome
-         * @priavte
-         */
-        EventBubblingApp.prototype.about = function(param) {
-            console.log("about", arguments);
+        EventBubblingApp.prototype.onHome = function(routeEvent) {
+            console.log("onHome", routeEvent);
         };
 
         /**
@@ -119,8 +109,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method onHome
          * @priavte
          */
-        EventBubblingApp.prototype.blog = function(param) {
-            console.log("blog", arguments);
+        EventBubblingApp.prototype.about = function(routeEvent) {
+            console.log("about", routeEvent);
         };
 
         /**
@@ -129,8 +119,18 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method onHome
          * @priavte
          */
-        EventBubblingApp.prototype.contact = function(param) {
-            console.log("contact", arguments);
+        EventBubblingApp.prototype.blog = function(routeEvent) {
+            console.log("blog", routeEvent);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method onHome
+         * @priavte
+         */
+        EventBubblingApp.prototype.contact = function(routeEvent) {
+            console.log("contact", routeEvent);
         };
 
         /**
@@ -139,8 +139,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method query
          * @priavte
          */
-        EventBubblingApp.prototype.query = function(param) {
-            console.log("query", arguments);
+        EventBubblingApp.prototype.query = function(routeEvent) {
+            console.log("query", routeEvent);
         };
 
 

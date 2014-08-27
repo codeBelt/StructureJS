@@ -350,7 +350,7 @@ class BaseEvent extends BaseObject
     public currentTarget:any = null;
 
     /**
-     * Use to pass any type of data with the event.
+     * Used to pass any type of data with the event.
      *
      * @property data
      * @type {any}

@@ -25,7 +25,7 @@
 import BaseEvent = require('BaseEvent')
 
 /**
- * The RouteEvent...
+ * The RouteEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
  *
  * @class RouteEvent
  * @extends BaseEvent
@@ -43,7 +43,7 @@ import BaseEvent = require('BaseEvent')
 class RouteEvent extends BaseEvent
 {
     /**
-     * YUIDoc_comment
+     * The RouteEvent.CHANGE constant defines the value of the type property of an change route event object.
      *
      * @event CHANGE
      * @type {string}
@@ -52,7 +52,7 @@ class RouteEvent extends BaseEvent
     public static CHANGE:string = 'RouteEvent.change';
 
     /**
-     * Route object that matches the string request.
+     * The route that was matched against {{#crossLink "RouteEvent/routePattern:property"}}{{/crossLink}} property.
      *
      * @property route
      * @type {string}
@@ -61,7 +61,7 @@ class RouteEvent extends BaseEvent
     public route:string = null;
 
     /**
-     * YUIDoc_comment
+     * The new URL to which the window is navigating.
      *
      * @property newURL
      * @type {string}
@@ -70,7 +70,7 @@ class RouteEvent extends BaseEvent
     public newURL:string = null;
 
     /**
-     * YUIDoc_comment
+     * The previous URL from which the window was navigated.
      *
      * @property oldURL
      * @type {string}
@@ -79,7 +79,7 @@ class RouteEvent extends BaseEvent
     public oldURL:string = null;
 
     /**
-     * YUIDoc_comment
+     * The route pattern that matched the {{#crossLink "RouteEvent/route:property"}}{{/crossLink}} property.
      *
      * @property routePattern
      * @type {string}
@@ -88,16 +88,17 @@ class RouteEvent extends BaseEvent
     public routePattern:string = null;
 
     /**
-     * Array containing all the parameters captured by Route pattern.
+     * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
+     * being called with the {{#crossLink "RouteEvent/routePattern:property"}}{{/crossLink}} property.
      *
      * @property params
      * @type {string}
      * @public
      */
-    public params:string[] = null;
+    public params:string[] = [];
 
     /**
-     * YUIDoc_comment
+     * A query object the represents the query string in the hash url.
      *
      * @property query
      * @type {any}

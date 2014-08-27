@@ -91,7 +91,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.currentTarget = null;
             /**
-             * Use to pass any type of data with the event.
+             * Used to pass any type of data with the event.
              *
              * @property data
              * @type {any}
