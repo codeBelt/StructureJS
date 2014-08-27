@@ -15,10 +15,13 @@
     "license": "MIT",
     "homepage": "https://github.com/codeBelt/StructureJS",
     "ignore": [
-        "**/.*",
         "node_modules",
         "examples",
         "friendly-theme",
-        "ts"
+        "ts",
+        "LICENSE",
+        "Gruntfile.js",
+        "package.json",
+        ".gitignore"
     ]
 }
