@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MobileUtil - StructureJS</title>
+    <title>src\BaseObject.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,154 +128,89 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>MobileUtil Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src\BaseObject.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        </div>
-    
+    var Util = require(&#x27;structurejs/util/Util&#x27;);
 
-    
-        
-            Module: <a href="../modules/util.html">util</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * The {{#crossLink &quot;BaseObject&quot;}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
+     *
+     * @class BaseObject
+     * @module StructureJS
+     * @submodule core
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     **/
+    var BaseObject = (function () {
 
-    
+        function BaseObject() {
+            /**
+             * The cid or client id is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+             *
+             * @property cid
+             * @type {int}
+             * @default null
+             * @writeOnce
+             * @public
+             */
+            this.cid = null;
+            this.cid = Util.uniqueId();
+        }
+        /**
+         * Returns the fully qualified class name of an object.
+         *
+         * @example
+         instance.getQualifiedClassName();
+         * @method getQualifiedClassName
+         * @returns {string} Returns the class name.
+         * @public
+         */
+        BaseObject.prototype.getQualifiedClassName = function () {
+            return Util.getClassName(this);
+        };
+
+        /**
+         * The purpose of the destroy method is to make an object ready for garbage collection. This
+         * should be thought of as a one way function. Once destroy is called no further methods should be
+         * called on the object or properties accessed. It is the responsibility of those who implement this
+         * function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
+         * object eligible for garbage collection.
+         *
+         * By default the destroy method will null out all properties of the class automatically. You should call destroy
+         * on other objects before calling the super.
+         *
+         * @example
+         * ClassName.prototype.destroy = function() {
+         *      this._childInstance.destroy();
+         *
+         *      _super.prototype.destroy.call(this);
+         * }
+         * @method destroy
+         * @return {void}
+         * @public
+         */
+        BaseObject.prototype.destroy = function () {
+            for (var key in this) {
+                if (this.hasOwnProperty(key)) {
+                    this[key] = null;
+                }
+            }
+        };
+        return BaseObject;
+    })();
+
+    module.exports = BaseObject;
+
+});
+
+
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The MobileUtil...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_MobileUtil" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>MobileUtil</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>

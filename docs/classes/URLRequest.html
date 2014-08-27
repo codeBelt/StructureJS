@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TimerEvent - StructureJS</title>
+    <title>URLRequest - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,25 +128,25 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>TimerEvent Class</h1>
+                <h1>URLRequest Class</h1>
 <div class="box meta">
     
 
     
         <div class="extends">
-            Extends <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>
+            Extends <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_event_TimerEvent.js.html#l7"><code>src\event\TimerEvent.js:7</code></a>
+            Defined in: <a href="../files/src_net_URLRequest.js.html#l11"><code>src\net\URLRequest.js:11</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/event.html">event</a><br>
+            Module: <a href="../modules/net.html">net</a><br>
             Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
         
     
@@ -157,7 +157,8 @@
 
 
 <div class="box intro">
-    <p>The TimerEvent...</p>
+    <p>The URLRequest class captures all of the information in a single HTTP request.
+URLRequest objects are passed to the load() methods of the <a href="../classes/URLLoader.html" class="crosslink">URLLoader</a> classes.</p>
 
 </div>
 
@@ -198,56 +199,32 @@
 
         <ul class="index-list properties extends">
             
-                <li class="index-item property inherited">
-                    <a href="#property_bubble">bubble</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
-                    <a href="#property_cancelable">cancelable</a>
-
-                    
-                </li>
-            
                 <li class="index-item property public inherited">
                     <a href="#property_cid">cid</a>
 
                     
                 </li>
             
-                <li class="index-item property inherited">
-                    <a href="#property_currentTarget">currentTarget</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
+                <li class="index-item property public">
                     <a href="#property_data">data</a>
 
                     
                 </li>
             
-                <li class="index-item property inherited">
-                    <a href="#property_isImmediatePropagationStopped">isImmediatePropagationStopped</a>
+                <li class="index-item property public">
+                    <a href="#property_method">method</a>
 
                     
                 </li>
             
-                <li class="index-item property inherited">
-                    <a href="#property_isPropagationStopped">isPropagationStopped</a>
+                <li class="index-item property public">
+                    <a href="#property_method">method</a>
 
                     
                 </li>
             
-                <li class="index-item property inherited">
-                    <a href="#property_target">target</a>
-
-                    
-                </li>
-            
-                <li class="index-item property inherited">
-                    <a href="#property_type">type</a>
+                <li class="index-item property public">
+                    <a href="#property_url">url</a>
 
                     
                 </li>
@@ -267,7 +244,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_TimerEvent">TimerEvent</a>
+                    <a href="#method_URLRequest">URLRequest</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -278,13 +255,6 @@
 
             
                 <li class="index-item method public inherited">
-                    <a href="#method_clone">clone</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public inherited">
                     <a href="#method_destroy">destroy</a>
 
                     
@@ -293,20 +263,6 @@
             
                 <li class="index-item method public inherited">
                     <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public inherited">
-                    <a href="#method_stopImmediatePropagation">stopImmediatePropagation</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public inherited">
-                    <a href="#method_stopPropagation">stopPropagation</a>
 
                     
                     
@@ -325,104 +281,6 @@
 
     <div class="properties-detail">
         <h2>Properties</h2>
-
-        
-            <a name="property_bubble" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>bubble</code>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_bubble" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l101"><code>src\event\BaseEvent.js:101</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Indicates whether an event is a bubbling event.</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_cancelable" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>cancelable</code>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_cancelable" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l109"><code>src\event\BaseEvent.js:109</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Indicates whether the behavior associated with the event can be prevented.</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
 
         
             <a name="property_cid" class="anchor-link"></a>
@@ -476,111 +334,15 @@
 </div>
 
         
-            <a name="property_currentTarget" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>currentTarget</code>
-    <span class="type">Any</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_currentTarget" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l84"><code>src\event\BaseEvent.js:84</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>The currentTarget property always points to the <a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a> that the event is currently processing (i.e. bubbling at).</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="property_data" class="anchor-link"></a>
-<div class="property item inherited">
+<div class="property item public">
     <h3 class="name"><code>data</code>
     <span class="type">Any</span>
 
     
 
     
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_data" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l93"><code>src\event\BaseEvent.js:93</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Used to pass any type of data with the event.</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_isImmediatePropagationStopped" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>isImmediatePropagationStopped</code>
-    <span class="type">Boolean</span>
-
-    
-
+        <span class="flag public">public</span>
     
 
     
@@ -592,12 +354,15 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_isImmediatePropagationStopped" class="type">BaseEvent</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_event_BaseEvent.js.html#l125"><code>src\event\BaseEvent.js:125</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l56"><code>src\net\URLRequest.js:56</code></a>
         
         </p>
 
@@ -608,11 +373,10 @@
 
     <div class="extended-detail">
         <div class="description">
-            
+            <p>An object containing data to be transmitted with the URL request.</p>
+
         </div>
 
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -622,111 +386,16 @@
 </div>
 
         
-            <a name="property_isPropagationStopped" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>isPropagationStopped</code>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_isPropagationStopped" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l117"><code>src\event\BaseEvent.js:117</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_target" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>target</code>
-    <span class="type">Any</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_target" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l75"><code>src\event\BaseEvent.js:75</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>A reference to the object that originally dispatched the event.</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_type" class="anchor-link"></a>
-<div class="property item inherited">
-    <h3 class="name"><code>type</code>
+            <a name="property_method" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>method</code>
     <span class="type">String</span>
 
     
 
     
+        <span class="flag public">public</span>
+    
 
     
 
@@ -737,12 +406,15 @@
     <div class="meta">
         
             
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#property_type" class="type">BaseEvent</a>:
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_event_BaseEvent.js.html#l66"><code>src\event\BaseEvent.js:66</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l38"><code>src\net\URLRequest.js:38</code></a>
         
         </p>
 
@@ -753,12 +425,118 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>The type of event.</p>
+            <p>Controls the HTTP form submission method (<a href="../classes/URLRequestMethod.html" class="crosslink">URLRequestMethod</a>).</p>
 
         </div>
 
         
-            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+            <p class="default"><strong>Default:</strong> <span class="default-value">URLRequestMethod.GET</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_method" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>method</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_net_URLRequest.js.html#l47"><code>src\net\URLRequest.js:47</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The MIME content type of the content in the the data property (<a href="../classes/URLContentType.html" class="crosslink">URLContentType</a>).</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">application/x-www-form-urlencoded</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_url" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>url</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_net_URLRequest.js.html#l30"><code>src\net\URLRequest.js:30</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The URL to be requested.</p>
+
+        </div>
+
         
 
         
@@ -781,9 +559,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_TimerEvent" class="anchor-link"></a>
+        <a name="method_URLRequest" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>TimerEvent</code>
+    <h3 class="name"><code>URLRequest</code>
 
     
         <div class="args">
@@ -791,25 +569,7 @@
             
                 <li class="arg">
                     
-                        <code>type</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[bubbles=false]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[cancelable=false]</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[data=null]</code>
+                        <code>url</code>
                     
                 </li>
             
@@ -844,7 +604,7 @@
             
         
         
-        <a href="../files/src_event_TimerEvent.js.html#l7"><code>src\event\TimerEvent.js:7</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l11"><code>src\net\URLRequest.js:11</code></a>
         
         </p>
 
@@ -868,67 +628,14 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">type</code>
-                            <span class="type">String</span>
+                            <code class="param-name">url</code>
+                            <span class="type">Object</span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The type of event. The type is case-sensitive.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[bubbles=false]</code>
-                            <span class="type">Boolean</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
-Note: With event-bubbling you can let one Event subsequently call on every ancestor (<a href="../classes/EventDispatcher.html#property_parent" class="crosslink">parent</a>)
-(containers of containers of etc.) of the <a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a> that originally dispatched the Event, all the way up to the surface (<a href="../classes/Stage.html" class="crosslink">Stage</a>). Any classes that do not have a parent cannot bubble.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[cancelable=false]</code>
-                            <span class="type">Boolean</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[data=null]</code>
-                            <span class="type">Any</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>Use to pass any type of data with the event.</p>
+                            <p>[string=null] The URL to be requested. You can set the URL later by using the url property.</p>
 
                         </div>
 
@@ -951,89 +658,6 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
 
     <div class="methods-detail">
         <h2>Methods</h2>
-
-        
-            <a name="method_clone" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>clone</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#method_clone" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l139"><code>src\event\BaseEvent.js:139</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Duplicates an instance of an BaseEvent subclass.</p>
-<p>Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
-You do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch
-an event—that is, when you call dispatchEvent(event) from a handler that is handling event.</p>
-<p>The new BaseEvent object includes all the properties of the original.</p>
-<p>When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
-to duplicate the properties of your custom class. If you do not set all the properties that you add in your event
-subclass, those properties will not have the correct values when listeners handle the redispatched event.</p>
-
-        </div>
-
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
 
         
             <a name="method_destroy" class="anchor-link"></a>
@@ -1212,131 +836,6 @@ on other objects before calling the super.</p>
 
                 </div>
             </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_stopImmediatePropagation" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>stopImmediatePropagation</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#method_stopImmediatePropagation" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l173"><code>src\event\BaseEvent.js:173</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
-This method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()
-method doesn&#39;t take effect until all the event listeners in the current node finish processing.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_stopPropagation" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>stopPropagation</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseEvent.html#method_stopPropagation" class="type">BaseEvent</a>:
-            
-        
-        
-        <a href="../files/src_event_BaseEvent.js.html#l160"><code>src\event\BaseEvent.js:160</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
-This method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()
-method prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
-This method can be called in any phase of</p>
-
-        </div>
-
-        
-
-        
-
         
     </div>
 </div>

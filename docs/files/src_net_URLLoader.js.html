@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MobileUtil - StructureJS</title>
+    <title>src\net\URLLoader.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,154 +128,134 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>MobileUtil Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src\net\URLLoader.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        </div>
-    
+    // Imports
+    var jQuery = require(&#x27;jquery&#x27;);
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var EventDispatcher = require(&#x27;structurejs/event/EventDispatcher&#x27;);
+    var LoaderEvent = require(&#x27;structurejs/event/LoaderEvent&#x27;);
+    var URLLoaderDataFormat = require(&#x27;structurejs/net/URLLoaderDataFormat&#x27;);
 
-    
-        
-            Module: <a href="../modules/util.html">util</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * The URLLoader...
+     *
+     * @class URLLoader
+     * @module StructureJS
+     * @submodule net
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     **/
+    var URLLoader = (function () {
 
-    
+        var _super = Extend(URLLoader, EventDispatcher);
+
+        function URLLoader(request) {
+            if (typeof request === &quot;undefined&quot;) { request = null; }
+            _super.call(this);
+            /**
+             *
+             * @property dataFormat
+             * @type {string}
+             * @default URLLoaderDataFormat.TEXT
+             */
+            this.dataFormat = URLLoaderDataFormat.TEXT;
+            /**
+             *
+             * @property data
+             * @type {any}
+             * @default null
+             */
+            this.data = null;
+            /**
+             *
+             * @property ready
+             * @type {boolean}
+             * @default false
+             */
+            this.ready = false;
+            /**
+             *
+             * @property _xhr
+             * @type {JQueryXHR}
+             * @default null
+             * @private
+             */
+            this._xhr = null;
+
+            if (request) {
+                this.load(request);
+            }
+        }
+        URLLoader.prototype.load = function (request) {
+            this.ready = false;
+            var self = this;
+
+            this._xhr = jQuery.ajax({
+                type: request.method,
+                url: request.url,
+                data: request.data,
+                contentType: request.contentType,
+                dataType: self.dataFormat,
+                beforeSend: self.onBeforeSend.bind(this),
+                success: self.onLoadSuccess.bind(this),
+                error: self.onLoadError.bind(this),
+                complete: self.onComplete.bind(this)
+            });
+        };
+
+        URLLoader.prototype.onLoadSuccess = function () {
+            //console.log(&quot;onLoadSuccess&quot;, arguments);
+        };
+
+        URLLoader.prototype.onBeforeSend = function () {
+            //console.log(&quot;onBeforeSend&quot;, arguments);
+        };
+
+        URLLoader.prototype.onLoadError = function () {
+            //console.log(&quot;[URLLoader] - onLoadError&quot;, arguments);
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
+        };
+
+        URLLoader.prototype.onComplete = function (data) {
+            this.ready = true;
+
+            //console.log(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;]&#x27;, &#x27;onComplete&#x27;, data);
+            this.data = data.responseText;
+            this.ready = true;
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
+        };
+
+        URLLoader.prototype.destroy = function () {
+            this.abort();
+
+            _super.prototype.destroy.call(this);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @public
+         */
+        URLLoader.prototype.abort = function () {
+            if (this._xhr != null) {
+                this._xhr.abort();
+            }
+        };
+        return URLLoader;
+    })();
+
+    module.exports = URLLoader;
+
+});
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The MobileUtil...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_MobileUtil" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>MobileUtil</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>

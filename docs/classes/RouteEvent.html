@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TimerEvent - StructureJS</title>
+    <title>RouteEvent - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,7 +128,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>TimerEvent Class</h1>
+                <h1>RouteEvent Class</h1>
 <div class="box meta">
     
 
@@ -140,7 +140,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_event_TimerEvent.js.html#l7"><code>src\event\TimerEvent.js:7</code></a>
+            Defined in: <a href="../files/src_event_RouteEvent.js.html#l31"><code>src\event\RouteEvent.js:31</code></a>
         </div>
     
 
@@ -157,7 +157,7 @@
 
 
 <div class="box intro">
-    <p>The TimerEvent...</p>
+    <p>The RouteEvent is used in the <a href="../classes/Router.html" class="crosslink">Router</a> class and gets passed to the callback in the <a href="../classes/Route.html" class="crosslink">Route</a> class.</p>
 
 </div>
 
@@ -240,6 +240,42 @@
                     
                 </li>
             
+                <li class="index-item property public">
+                    <a href="#property_newURL">newURL</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_oldURL">oldURL</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_params">params</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_query">query</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_route">route</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_routePattern">routePattern</a>
+
+                    
+                </li>
+            
                 <li class="index-item property inherited">
                     <a href="#property_target">target</a>
 
@@ -267,7 +303,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_TimerEvent">TimerEvent</a>
+                    <a href="#method_RouteEvent">RouteEvent</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -317,6 +353,23 @@
 
 
 
+        <div class="index-section events">
+            <h3>Events</h3>
+
+            <ul class="index-list events extends">
+                
+                    <li class="index-item event">
+                        <a href="#event_CHANGE">CHANGE</a>
+
+                        
+                            <span class="flag static">static</span>
+                        
+                        
+                    </li>
+                
+            </ul>
+        </div>
+    
 </div>
 
 
@@ -670,6 +723,319 @@
 </div>
 
         
+            <a name="property_newURL" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>newURL</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouteEvent.js.html#l65"><code>src\event\RouteEvent.js:65</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The new URL to which the window is navigating.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_oldURL" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>oldURL</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouteEvent.js.html#l73"><code>src\event\RouteEvent.js:73</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The previous URL from which the window was navigated.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_params" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>params</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouteEvent.js.html#l89"><code>src\event\RouteEvent.js:89</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>An array containing the parameters captured from the Route.<a href="../classes/Route.html#method_match" class="crosslink">match</a>
+being called with the <a href="../classes/RouteEvent.html#property_routePattern" class="crosslink">routePattern</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_query" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>query</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouteEvent.js.html#l98"><code>src\event\RouteEvent.js:98</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A query object the represents the query string in the hash url.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_route" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>route</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouteEvent.js.html#l57"><code>src\event\RouteEvent.js:57</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The route that was matched against <a href="../classes/RouteEvent.html#property_routePattern" class="crosslink">routePattern</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_routePattern" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>routePattern</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouteEvent.js.html#l81"><code>src\event\RouteEvent.js:81</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The route pattern that matched the <a href="../classes/RouteEvent.html#property_route" class="crosslink">route</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_target" class="anchor-link"></a>
 <div class="property item inherited">
     <h3 class="name"><code>target</code>
@@ -781,9 +1147,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_TimerEvent" class="anchor-link"></a>
+        <a name="method_RouteEvent" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>TimerEvent</code>
+    <h3 class="name"><code>RouteEvent</code>
 
     
         <div class="args">
@@ -844,7 +1210,7 @@
             
         
         
-        <a href="../files/src_event_TimerEvent.js.html#l7"><code>src\event\TimerEvent.js:7</code></a>
+        <a href="../files/src_event_RouteEvent.js.html#l31"><code>src\event\RouteEvent.js:31</code></a>
         
         </p>
 
@@ -1350,6 +1716,69 @@ This method can be called in any phase of</p>
     </div>
 
 
+
+    <div class="events-detail">
+        <h2>Events</h2>
+
+        
+            <a name="event_CHANGE" class="anchor-link"></a>
+<div class="events item">
+    <h3 class="name"><code>CHANGE</code></h3>
+    
+    <span class="type">String</span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouteEvent.js.html#l119"><code>src\event\RouteEvent.js:119</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The RouteEvent.CHANGE constant defines the value of the type property of an change route event object.</p>
+
+        </div>
+
+        
+
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no events that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
 
 
 </div>

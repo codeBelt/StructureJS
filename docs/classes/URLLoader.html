@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MobileUtil - StructureJS</title>
+    <title>URLLoader - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,7 +128,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>MobileUtil Class</h1>
+                <h1>URLLoader Class</h1>
 <div class="box meta">
     
 
@@ -136,13 +136,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
+            Defined in: <a href="../files/src_net_URLLoader.js.html#l11"><code>src\net\URLLoader.js:11</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/util.html">util</a><br>
+            Module: <a href="../modules/net.html">net</a><br>
             Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
         
     
@@ -153,7 +153,7 @@
 
 
 <div class="box intro">
-    <p>The MobileUtil...</p>
+    <p>The URLLoader...</p>
 
 </div>
 
@@ -189,10 +189,69 @@
 
 
 
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties">
+            
+                <li class="index-item property private">
+                    <a href="#property__xhr">_xhr</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_data">data</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_dataFormat">dataFormat</a>
+
+                    
+                </li>
+            
+                <li class="index-item property">
+                    <a href="#property_ready">ready</a>
+
+                    
+                </li>
+            
+        </ul>
+    </div>
 
 
 
 
+
+
+    <div class="index-section methods">
+        <h3>Methods</h3>
+
+        <ul class="index-list methods">
+
+            
+                <li class="index-item method constructor">
+                    <a href="#method_URLLoader">URLLoader</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
+            
+
+            
+                <li class="index-item method public">
+                    <a href="#method_abort">abort</a>
+
+                    
+                    
+                </li>
+            
+        </ul>
+    </div>
 
 
 
@@ -202,15 +261,232 @@
 <div class="class-detail">
 
 
+    <div class="properties-detail">
+        <h2>Properties</h2>
+
+        
+            <a name="property__xhr" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_xhr</code>
+    <span class="type">JQueryXHR</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_net_URLLoader.js.html#l48"><code>src\net\URLLoader.js:48</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_data" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>data</code>
+    <span class="type">Any</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_net_URLLoader.js.html#l34"><code>src\net\URLLoader.js:34</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_dataFormat" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>dataFormat</code>
+    <span class="type">String</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_net_URLLoader.js.html#l27"><code>src\net\URLLoader.js:27</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">URLLoaderDataFormat.TEXT</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_ready" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>ready</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_net_URLLoader.js.html#l41"><code>src\net\URLLoader.js:41</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
 
 
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_MobileUtil" class="anchor-link"></a>
+        <a name="method_URLLoader" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>MobileUtil</code>
+    <h3 class="name"><code>URLLoader</code>
 
     
         <span class="paren">()</span>
@@ -243,7 +519,7 @@
             
         
         
-        <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
+        <a href="../files/src_net_URLLoader.js.html#l11"><code>src\net\URLLoader.js:11</code></a>
         
         </p>
 
@@ -270,6 +546,80 @@
     </div>
 
 
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
+
+        
+            <a name="method_abort" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>abort</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_net_URLLoader.js.html#l106"><code>src\net\URLLoader.js:106</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
 
 
 

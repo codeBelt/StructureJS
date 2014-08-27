@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>StringUtil - StructureJS</title>
+    <title>LocalStorageController - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,7 +128,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>StringUtil Class</h1>
+                <h1>LocalStorageController Class</h1>
 <div class="box meta">
     
 
@@ -136,13 +136,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util_StringUtil.js.html#l4"><code>src\util\StringUtil.js:4</code></a>
+            Defined in: <a href="../files/src_controller_LocalStorageController.js.html#l10"><code>src\controller\LocalStorageController.js:10</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/util.html">util</a><br>
+            Module: <a href="../modules/controller.html">controller</a><br>
             Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
         
     
@@ -153,7 +153,7 @@
 
 
 <div class="box intro">
-    <p>The StringUtil...</p>
+    <p>The LocalStorageController...</p>
 
 </div>
 
@@ -189,6 +189,26 @@
 
 
 
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties">
+            
+                <li class="index-item property private">
+                    <a href="#property__localStorage">_localStorage</a>
+
+                    
+                </li>
+            
+                <li class="index-item property private">
+                    <a href="#property__namespace">_namespace</a>
+
+                    
+                </li>
+            
+        </ul>
+    </div>
+
 
 
 
@@ -201,104 +221,89 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_StringUtil">StringUtil</a>
+                    <a href="#method_LocalStorageController">LocalStorageController</a>
 
                     <span class="flag constructor">constructor</span>
 
                     
-                        <span class="flag static">static</span>
-                    
                     
                 </li>
             
 
             
-                <li class="index-item method public">
-                    <a href="#method_camelCaseToHyphen">camelCaseToHyphen</a>
+                <li class="index-item method">
+                    <a href="#method_addItem">addItem</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_createUUID">createUUID</a>
+                <li class="index-item method">
+                    <a href="#method_clear">clear</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_format">format</a>
+                <li class="index-item method">
+                    <a href="#method_getAllItems">getAllItems</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_getExtension">getExtension</a>
+                <li class="index-item method">
+                    <a href="#method_getItem">getItem</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_hyphenToCamelCase">hyphenToCamelCase</a>
+                <li class="index-item method">
+                    <a href="#method_getItemsWithNamespace">getItemsWithNamespace</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_hyphenToPascalCase">hyphenToPascalCase</a>
+                <li class="index-item method">
+                    <a href="#method_getLength">getLength</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_queryStringToObject">queryStringToObject</a>
+                <li class="index-item method">
+                    <a href="#method_getNamespace">getNamespace</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_removeAllWhitespace">removeAllWhitespace</a>
+                <li class="index-item method">
+                    <a href="#method_getSize">getSize</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_removeLeadingTrailingWhitespace">removeLeadingTrailingWhitespace</a>
+                <li class="index-item method private">
+                    <a href="#method_onLocalStorageEvent">onLocalStorageEvent</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_truncate">truncate</a>
+                <li class="index-item method">
+                    <a href="#method_removeItem">removeItem</a>
 
                     
-                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_setNamespace">setNamespace</a>
+
                     
                     
                 </li>
@@ -314,30 +319,19 @@
 <div class="class-detail">
 
 
+    <div class="properties-detail">
+        <h2>Properties</h2>
 
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_StringUtil" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>StringUtil</code>
-
-    
-        <span class="paren">()</span>
-    
+        
+            <a name="property__localStorage" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_localStorage</code>
+    <span class="type">Storage</span>
 
     
 
     
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
+        <span class="flag private">private</span>
     
 
     
@@ -357,7 +351,133 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l4"><code>src\util\StringUtil.js:4</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l35"><code>src\controller\LocalStorageController.js:35</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to window.localStorage for faster access.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__namespace" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_namespace</code>
+    <span class="type">String</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_LocalStorageController.js.html#l25"><code>src\controller\LocalStorageController.js:25</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Current user namespace. The namespace is optional.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">defaultNamespace</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <a name="method_LocalStorageController" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>LocalStorageController</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_LocalStorageController.js.html#l10"><code>src\controller\LocalStorageController.js:10</code></a>
         
         </p>
 
@@ -389,9 +509,9 @@
         <h2>Methods</h2>
 
         
-            <a name="method_camelCaseToHyphen" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>camelCaseToHyphen</code>
+            <a name="method_addItem" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>addItem</code>
 
     
         <div class="args">
@@ -399,7 +519,19 @@
             
                 <li class="arg">
                     
-                        <code>str</code>
+                        <code>key</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>useNamespace</code>
                     
                 </li>
             
@@ -408,21 +540,13 @@
     
 
     
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
 
-    
-
-    
-        <span class="flag public">public</span>
     
 
     
 
     
-        <span class="flag static">static</span>
+
     
 
     
@@ -442,7 +566,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l68"><code>src\util\StringUtil.js:68</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l69"><code>src\controller\LocalStorageController.js:69</code></a>
         
         </p>
 
@@ -455,7 +579,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Add a key/value pair to localStorage.</p>
 
         </div>
 
@@ -467,8 +591,38 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">str</code>
+                            <code class="param-name">key</code>
                             <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">data</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">useNamespace</code>
+                            <span class="type">Boolean</span>
                         
 
                         
@@ -485,17 +639,66 @@
         
 
         
-            <div class="returns">
-                <h4>Returns:</h4>
 
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_clear" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>clear</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_LocalStorageController.js.html#l203"><code>src\controller\LocalStorageController.js:203</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes all key/value pairs from the Local Storage area.</p>
+
+        </div>
+
+        
+
         
 
         
@@ -503,9 +706,9 @@
 </div>
 
         
-            <a name="method_createUUID" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>createUUID</code>
+            <a name="method_getAllItems" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getAllItems</code>
 
     
         <span class="paren">()</span>
@@ -513,20 +716,16 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type">Array.<Object></span>
         </span>
     
 
     
 
     
-        <span class="flag public">public</span>
-    
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -546,7 +745,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l83"><code>src\util\StringUtil.js:83</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l145"><code>src\controller\LocalStorageController.js:145</code></a>
         
         </p>
 
@@ -559,7 +758,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Returns all items in local storage as an Object with key and value properties.</p>
 
         </div>
 
@@ -572,7 +771,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type">Array.<Object></span>:
                         
                     
                 </div>
@@ -584,9 +783,9 @@
 </div>
 
         
-            <a name="method_format" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>format</code>
+            <a name="method_getItem" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getItem</code>
 
     
         <div class="args">
@@ -594,494 +793,13 @@
             
                 <li class="arg">
                     
-                        <code>str</code>
+                        <code>key</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>...rest</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l179"><code>src\util\StringUtil.js:179</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Replaces each format item in a specified string with the text equivalent of a corresponding object&#39;s value.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">...rest</code>
-                            <span class="type">Array</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code> StringUtil.format(&#39;Robert is {0}. Very {0} and {1}!&#39;, &#39;cool&#39;, &#39;smart&#39;);
- // &#39;Robert is cool. Very cool and smart!&#39;</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_getExtension" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>getExtension</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>filename</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l18"><code>src\util\StringUtil.js:18</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">filename</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_hyphenToCamelCase" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>hyphenToCamelCase</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l31"><code>src\util\StringUtil.js:31</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_hyphenToPascalCase" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>hyphenToPascalCase</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l48"><code>src\util\StringUtil.js:48</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_queryStringToObject" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>queryStringToObject</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>queryString</code>
+                        <code class="optional">[useNamespace=false]</code>
                     
                 </li>
             
@@ -1098,13 +816,9 @@
     
 
     
-        <span class="flag public">public</span>
-    
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -1124,7 +838,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l101"><code>src\util\StringUtil.js:101</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l92"><code>src\controller\LocalStorageController.js:92</code></a>
         
         </p>
 
@@ -1137,7 +851,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Retrieves the current value associated with the Local Storage key.</p>
 
         </div>
 
@@ -1149,8 +863,24 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">queryString</code>
+                            <code class="param-name">key</code>
                             <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[useNamespace=false]</code>
+                            <span class="type">String</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
@@ -1185,9 +915,9 @@
 </div>
 
         
-            <a name="method_removeAllWhitespace" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>removeAllWhitespace</code>
+            <a name="method_getItemsWithNamespace" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getItemsWithNamespace</code>
 
     
         <div class="args">
@@ -1195,7 +925,7 @@
             
                 <li class="arg">
                     
-                        <code>str</code>
+                        <code>namespace</code>
                     
                 </li>
             
@@ -1205,20 +935,16 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type">Array.<Object></span>
         </span>
     
 
     
 
     
-        <span class="flag public">public</span>
-    
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -1238,7 +964,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l129"><code>src\util\StringUtil.js:129</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l119"><code>src\controller\LocalStorageController.js:119</code></a>
         
         </p>
 
@@ -1251,7 +977,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Remove all whitespace from the string passed in.</p>
+            <p>Returns all items in local storage as an Object with key and value properties that has a certain namespace.</p>
 
         </div>
 
@@ -1263,14 +989,15 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">str</code>
+                            <code class="param-name">namespace</code>
                             <span class="type">String</span>
                         
 
                         
 
                         <div class="param-description">
-                             
+                            <p>The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.</p>
+
                         </div>
 
                         
@@ -1278,6 +1005,160 @@
                 
                 </ul>
             </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Array.<Object></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_getLength" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getLength</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Number</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_LocalStorageController.js.html#l183"><code>src\controller\LocalStorageController.js:183</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Returns the number of items storage in local storage.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Number</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_getNamespace" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getNamespace</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_LocalStorageController.js.html#l59"><code>src\controller\LocalStorageController.js:59</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Get storage namespace</p>
+
+        </div>
+
         
 
         
@@ -1295,55 +1176,30 @@
         
 
         
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>    var str = &quot;   a b    c d e f g &quot;;
-    StringUtil.removeAllWhitespace(str);
-    // &quot;abcdefg&quot;</code></pre>
-
-                </div>
-            </div>
-        
     </div>
 </div>
 
         
-            <a name="method_removeLeadingTrailingWhitespace" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>removeLeadingTrailingWhitespace</code>
+            <a name="method_getSize" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getSize</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type">Number</span>
         </span>
     
 
     
 
     
-        <span class="flag public">public</span>
-    
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -1363,7 +1219,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l145"><code>src\util\StringUtil.js:145</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l193"><code>src\controller\LocalStorageController.js:193</code></a>
         
         </p>
 
@@ -1376,7 +1232,192 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Remove leading and trailing whitespace.</p>
+            <p>Returns the size of the Local Storage.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Number</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_onLocalStorageEvent" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>onLocalStorageEvent</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_LocalStorageController.js.html#l219"><code>src\controller\LocalStorageController.js:219</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">StorageEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event for Web Storage.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeItem" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>removeItem</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>key</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[useNamespace=false]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_LocalStorageController.js.html#l167"><code>src\controller\LocalStorageController.js:167</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Deletes a key/value pair from the Local Storage collection.</p>
 
         </div>
 
@@ -1388,8 +1429,24 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">str</code>
+                            <code class="param-name">key</code>
                             <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[useNamespace=false]</code>
+                            <span class="type">String</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
@@ -1406,38 +1463,15 @@
         
 
         
-            <div class="returns">
-                <h4>Returns:</h4>
 
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code> var str = &quot;   a b    c d e f g &quot;;
- StringUtil.removeLeadingTrailingWhitespace(str);
- // &quot;a b    c d e f g&quot;</code></pre>
-
-                </div>
-            </div>
         
     </div>
 </div>
 
         
-            <a name="method_truncate" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>truncate</code>
+            <a name="method_setNamespace" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>setNamespace</code>
 
     
         <div class="args">
@@ -1445,13 +1479,7 @@
             
                 <li class="arg">
                     
-                        <code>text</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>length</code>
+                        <code>namespace</code>
                     
                 </li>
             
@@ -1468,13 +1496,9 @@
     
 
     
-        <span class="flag public">public</span>
-    
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -1494,7 +1518,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l162"><code>src\util\StringUtil.js:162</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l48"><code>src\controller\LocalStorageController.js:48</code></a>
         
         </p>
 
@@ -1507,7 +1531,8 @@
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Set storage namespace</p>
+
         </div>
 
         
@@ -1518,23 +1543,8 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">text</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">length</code>
-                            <span class="type">Int</span>
+                            <code class="param-name">namespace</code>
+                            <span class="type">Object</span>
                         
 
                         

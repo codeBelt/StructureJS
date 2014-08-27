@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MobileUtil - StructureJS</title>
+    <title>src\plugin\jquery.eventListener.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,154 +128,134 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>MobileUtil Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src\plugin\jquery.eventListener.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function(require) {
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        </div>
-    
+    var $ = require(&#x27;jquery&#x27;);
 
-    
-        
-            Module: <a href="../modules/util.html">util</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * A bind polyfill for browsers that don&#x27;t support the bind method.
+     */
+    if (!Function.prototype.bind) {
+        Function.prototype.bind = function (oThis) {
+            if (typeof this !== &quot;function&quot;) {
+                throw new TypeError(&quot;Function.prototype.bind - what is trying to be bound is not callable&quot;);
+            }
 
-    
+            var aArgs = Array.prototype.slice.call(arguments, 1), fToBind = this, fNOP = function () {
+            }, fBound = function () {
+                return fToBind.apply(this instanceof fNOP &amp;&amp; oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+            };
+
+            fNOP.prototype = this.prototype;
+            fBound.prototype = new fNOP();
+
+            return fBound;
+        };
+    }
+
+    /**
+     * Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.
+     *
+     * @param str
+     * @returns {String}
+     */
+    var hashCode = function (str) {
+        str = String(str);
+
+        // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
+        var character;
+        var hash = null;
+        var strLength = str.length;
+
+        if (strLength == 0)
+            return hash;
+
+        for (var i = 0; i &lt; strLength; i++) {
+            character = str.charCodeAt(i);
+            hash = ((hash &lt;&lt; 5) - hash) + character;
+            hash = hash &amp; hash; // Convert to 32bit integer
+        }
+
+        return String(Math.abs(hash));
+    };
+
+    /**
+     * The jQuery addEventListener plugin
+     */
+    $.fn.addEventListener = function (type, selector, data, callback, scope) {
+        var _callback;
+        var _scope;
+        var _handler;
+        switch (arguments.length) {
+            case 3:
+                _callback = selector;
+                _scope = data;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                this.on(type, _handler);
+                break;
+            case 4:
+                _callback = data;
+                _scope = callback;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                this.on(type, selector, _handler);
+                break;
+            case 5:
+                _callback = callback;
+                _scope = scope;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                this.on(type, selector, data, _handler);
+                break;
+            default:
+                throw new Error(&#x27;jQuery addEventListener plugin requires at least 3 arguments.&#x27;);
+        }
+        return this;
+    };
+
+    /**
+     * The jQuery removeEventListener plugin
+     */
+    $.fn.removeEventListener = function (type, selector, callback, scope) {
+        var _callback;
+        var _scope;
+        var _handler;
+
+        switch (arguments.length) {
+            case 3:
+                _callback = selector;
+                _scope = callback;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)];
+                this.off(type, _handler);
+                _scope._handlerMap[hashCode(_callback)] = null;
+                break;
+            case 4:
+                _callback = callback;
+                _scope = scope;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)];
+                this.off(type, selector, _handler);
+                _scope._handlerMap[hashCode(_callback)] = null;
+                break;
+            default:
+                throw new Error(&#x27;jQuery removeEventListener plugin requires at least 3 arguments.&#x27;);
+        }
+        return this;
+    };
+
+    return $;
+
+});
+
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The MobileUtil...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_MobileUtil" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>MobileUtil</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>

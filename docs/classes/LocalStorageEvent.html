@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TimerEvent - StructureJS</title>
+    <title>LocalStorageEvent - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,7 +128,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>TimerEvent Class</h1>
+                <h1>LocalStorageEvent Class</h1>
 <div class="box meta">
     
 
@@ -140,7 +140,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_event_TimerEvent.js.html#l7"><code>src\event\TimerEvent.js:7</code></a>
+            Defined in: <a href="../files/src_event_LocalStorageEvent.js.html#l8"><code>src\event\LocalStorageEvent.js:8</code></a>
         </div>
     
 
@@ -157,7 +157,8 @@
 
 
 <div class="box intro">
-    <p>The TimerEvent...</p>
+    <p>The LocalStorageEvent ....
+Note: the event only dispatches in other browser windows and does not show up in the window where you made a change to the local storage.</p>
 
 </div>
 
@@ -197,6 +198,12 @@
         <h3>Properties</h3>
 
         <ul class="index-list properties extends">
+            
+                <li class="index-item property private">
+                    <a href="#property__nativeEvent">_nativeEvent</a>
+
+                    
+                </li>
             
                 <li class="index-item property inherited">
                     <a href="#property_bubble">bubble</a>
@@ -267,7 +274,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_TimerEvent">TimerEvent</a>
+                    <a href="#method_LocalStorageEvent">LocalStorageEvent</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -325,6 +332,58 @@
 
     <div class="properties-detail">
         <h2>Properties</h2>
+
+        
+            <a name="property__nativeEvent" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_nativeEvent</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_LocalStorageEvent.js.html#l31"><code>src\event\LocalStorageEvent.js:31</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="property_bubble" class="anchor-link"></a>
@@ -781,9 +840,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_TimerEvent" class="anchor-link"></a>
+        <a name="method_LocalStorageEvent" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>TimerEvent</code>
+    <h3 class="name"><code>LocalStorageEvent</code>
 
     
         <div class="args">
@@ -809,7 +868,7 @@
             
                 <li class="arg">
                     
-                        <code class="optional">[data=null]</code>
+                        <code>nativeEvent</code>
                     
                 </li>
             
@@ -844,7 +903,7 @@
             
         
         
-        <a href="../files/src_event_TimerEvent.js.html#l7"><code>src\event\TimerEvent.js:7</code></a>
+        <a href="../files/src_event_LocalStorageEvent.js.html#l8"><code>src\event\LocalStorageEvent.js:8</code></a>
         
         </p>
 
@@ -920,15 +979,14 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
                 
                     <li class="param">
                         
-                            <code class="param-name optional">[data=null]</code>
-                            <span class="type">Any</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                            <code class="param-name">nativeEvent</code>
+                            <span class="type">StorageEvent</span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>Use to pass any type of data with the event.</p>
+                            <p>The native browser event for localStorage.</p>
 
                         </div>
 

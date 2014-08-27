@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Timer - StructureJS</title>
+    <title>Collection - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,7 +128,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>Timer Class</h1>
+                <h1>Collection Class</h1>
 <div class="box meta">
     
 
@@ -140,13 +140,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util_Timer.js.html#l8"><code>src\util\Timer.js:8</code></a>
+            Defined in: <a href="../files/src_model_Collection.js.html#l10"><code>src\model\Collection.js:10</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/util.html">util</a><br>
+            Module: <a href="../modules/model.html">model</a><br>
             Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
         
     
@@ -157,7 +157,7 @@
 
 
 <div class="box intro">
-    <p>Constructs a new Timer object with the specified delay and repeatCount states.</p>
+    <p>YUIDoc_comment</p>
 
 </div>
 
@@ -204,26 +204,8 @@
                     
                 </li>
             
-                <li class="index-item property private">
-                    <a href="#property__timer">_timer</a>
-
-                    
-                </li>
-            
                 <li class="index-item property public inherited">
                     <a href="#property_cid">cid</a>
-
-                    
-                </li>
-            
-                <li class="index-item property private">
-                    <a href="#property_currentCount">currentCount</a>
-
-                    
-                </li>
-            
-                <li class="index-item property private">
-                    <a href="#property_delay">delay</a>
 
                     
                 </li>
@@ -234,20 +216,20 @@
                     
                 </li>
             
+                <li class="index-item property">
+                    <a href="#property_items">items</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_length">length</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_parent">parent</a>
-
-                    
-                </li>
-            
-                <li class="index-item property private">
-                    <a href="#property_repeatCount">repeatCount</a>
-
-                    
-                </li>
-            
-                <li class="index-item property">
-                    <a href="#property_running">running</a>
 
                     
                 </li>
@@ -267,7 +249,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_Timer">Timer</a>
+                    <a href="#method_Collection">Collection</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -284,8 +266,29 @@
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_decrementCounter">decrementCounter</a>
+                <li class="index-item method public">
+                    <a href="#method_addItem">addItem</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_addItems">addItems</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_clear">clear</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_copy">copy</a>
 
                     
                     
@@ -319,15 +322,15 @@
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_getCurrentCount">getCurrentCount</a>
+                <li class="index-item method public">
+                    <a href="#method_find">find</a>
 
                     
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_getDelay">getDelay</a>
+                <li class="index-item method private">
+                    <a href="#method_findPropertyValue">findPropertyValue</a>
 
                     
                     
@@ -340,6 +343,20 @@
                     
                 </li>
             
+                <li class="index-item method public">
+                    <a href="#method_getIndexOfItem">getIndexOfItem</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_getItemByIndex">getItemByIndex</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public inherited">
                     <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
 
@@ -347,8 +364,8 @@
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_getRepeatCount">getRepeatCount</a>
+                <li class="index-item method public">
+                    <a href="#method_hasItem">hasItem</a>
 
                     
                     
@@ -361,36 +378,15 @@
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_reset">reset</a>
+                <li class="index-item method public">
+                    <a href="#method_removeItem">removeItem</a>
 
                     
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_setDelay">setDelay</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_setRepeatCount">setRepeatCount</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_start">start</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_stop">stop</a>
+                <li class="index-item method public">
+                    <a href="#method_removeItems">removeItems</a>
 
                     
                     
@@ -460,58 +456,6 @@
 </div>
 
         
-            <a name="property__timer" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>_timer</code>
-    <span class="type">Function</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l25"><code>src\util\Timer.js:25</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>A reference to the setInterval object.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="property_cid" class="anchor-link"></a>
 <div class="property item public inherited">
     <h3 class="name"><code>cid</code>
@@ -554,111 +498,6 @@
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_currentCount" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>currentCount</code>
-    <span class="type">Int</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l33"><code>src\util\Timer.js:33</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_delay" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>delay</code>
-    <span class="type">Number</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l41"><code>src\util\Timer.js:41</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
-<strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.</p>
-
-        </div>
-
         
 
         
@@ -719,6 +558,110 @@
 </div>
 
         
+            <a name="property_items" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>items</code>
+    <span class="type">Array</span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l26"><code>src\model\Collection.js:26</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_length" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>length</code>
+    <span class="type">Init</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l34"><code>src\model\Collection.js:34</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>YUIDoc_comment</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_parent" class="anchor-link"></a>
 <div class="property item public inherited">
     <h3 class="name"><code>parent</code>
@@ -770,108 +713,6 @@ list hierarchy.</p>
 </div>
 
         
-            <a name="property_repeatCount" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>repeatCount</code>
-    <span class="type">Int</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l50"><code>src\util\Timer.js:50</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_running" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>running</code>
-    <span class="type">Boolean</span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l58"><code>src\util\Timer.js:58</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>The timer&#39;s current state; true if the timer is running, otherwise false.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
 
         <div class="no-visible-items-message">
             <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
@@ -885,9 +726,9 @@ list hierarchy.</p>
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_Timer" class="anchor-link"></a>
+        <a name="method_Collection" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>Timer</code>
+    <h3 class="name"><code>Collection</code>
 
     
         <span class="paren">()</span>
@@ -920,7 +761,7 @@ list hierarchy.</p>
             
         
         
-        <a href="../files/src_util_Timer.js.html#l8"><code>src\util\Timer.js:8</code></a>
+        <a href="../files/src_model_Collection.js.html#l10"><code>src\model\Collection.js:10</code></a>
         
         </p>
 
@@ -1127,12 +968,28 @@ list hierarchy.</p>
 </div>
 
         
-            <a name="method_decrementCounter" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>decrementCounter</code>
+            <a name="method_addItem" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>addItem</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>item</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[silent=false]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -1140,7 +997,7 @@ list hierarchy.</p>
     
 
     
-        <span class="flag private">private</span>
+        <span class="flag public">public</span>
     
 
     
@@ -1164,7 +1021,7 @@ list hierarchy.</p>
             
         
         
-        <a href="../files/src_util_Timer.js.html#l175"><code>src\util\Timer.js:175</code></a>
+        <a href="../files/src_model_Collection.js.html#l45"><code>src\model\Collection.js:45</code></a>
         
         </p>
 
@@ -1177,7 +1034,328 @@ list hierarchy.</p>
     <div class="extended-detail">
 
         <div class="description">
+            <p>Add an item to the current collection</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">item</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The item to add.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[silent=false]</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_addItems" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>addItems</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
             
+                <li class="arg">
+                    
+                        <code>items</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[silent=false]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l132"><code>src\model\Collection.js:132</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Adds an array of items to the collection</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">items</code>
+                            <span class="type">Array</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>List of items to add to the current collection.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[silent=false]</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_clear" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>clear</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[silent=false]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l267"><code>src\model\Collection.js:267</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>YUIDoc_comment</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[silent=false]</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_copy" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>copy</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l255"><code>src\model\Collection.js:255</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>YUIDoc_comment</p>
+
         </div>
 
         
@@ -1548,22 +1726,34 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 </div>
 
         
-            <a name="method_getCurrentCount" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>getCurrentCount</code>
+            <a name="method_find" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>find</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>arg</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Array</span>
         </span>
     
 
     
 
+    
+        <span class="flag public">public</span>
     
 
     
@@ -1587,7 +1777,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_util_Timer.js.html#l71"><code>src\util\Timer.js:71</code></a>
+        <a href="../files/src_model_Collection.js.html#l174"><code>src\model\Collection.js:174</code></a>
         
         </p>
 
@@ -1600,10 +1790,34 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     <div class="extended-detail">
 
         <div class="description">
-            <p>Returns the total number of times the timer has fired since it started at zero.</p>
+            <p>Examines each element in a collection, returning an array of all elements that have the given properties.
+When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.</p>
 
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">arg</code>
+                            <span class="type">Object | Array</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         
@@ -1613,9 +1827,9 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Array</span>:
                         
-                        <p>The total number of times the timer has fired since it started at zero.</p>
+                        <p>Returns a list of found object&#39;s.</p>
 
                     
                 </div>
@@ -1623,26 +1837,54 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    // Finds all value object that has &#39;Robert&#39; in it.
+    this._collection.find(&quot;Robert&quot;);
+    // Finds any value object that has &#39;Robert&#39; or &#39;Heater&#39; or 23 in it.
+    this._collection.find([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
+
+    // Finds all value objects that same key and value you are searching for.
+    this._collection.find({ name: &#39;apple&#39;, organic: false, type: &#39;fruit&#39; });
+    this._collection.find([{ type: &#39;vegetable&#39; }, { name: &#39;apple&#39;, &#39;organic: false, type&#39;: &#39;fruit&#39; }]);</code></pre>
+
+                </div>
+            </div>
+        
     </div>
 </div>
 
         
-            <a name="method_getDelay" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>getDelay</code>
+            <a name="method_findPropertyValue" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>findPropertyValue</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>arg</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Array</span>
         </span>
     
 
     
 
+    
+        <span class="flag private">private</span>
     
 
     
@@ -1666,7 +1908,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_util_Timer.js.html#l81"><code>src\util\Timer.js:81</code></a>
+        <a href="../files/src_model_Collection.js.html#l215"><code>src\model\Collection.js:215</code></a>
         
         </p>
 
@@ -1679,10 +1921,33 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     <div class="extended-detail">
 
         <div class="description">
-            <p>Returns the delay time in milliseconds.</p>
+            <p>Loops through all properties of an object and check to see if the value matches the argument passed in.</p>
 
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">arg</code>
+                            <span class="type">String | Number | Boolean></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         
@@ -1692,9 +1957,9 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Array</span>:
                         
-                        <p>Returns the delay time in milliseconds.</p>
+                        <p>Returns a list of found object&#39;s.</p>
 
                     
                 </div>
@@ -1773,6 +2038,235 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                             <span class="type">Array</span>:
                         
                         <p>Returns an array dictionary of the different event listener(s) on the object.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_getIndexOfItem" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>getIndexOfItem</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>item</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l120"><code>src\model\Collection.js:120</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Returns the array index position of the value object.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">item</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>get the index of.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_getItemByIndex" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>getItemByIndex</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>index</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l151"><code>src\model\Collection.js:151</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Finds an object by an index value.
+If the index is out of bounds, the collection will clamp it.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">index</code>
+                            <span class="type">Init</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The index integer of the item to get</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Object</span>:
+                        
+                        <p>item to find</p>
 
                     
                 </div>
@@ -1871,22 +2365,34 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 </div>
 
         
-            <a name="method_getRepeatCount" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>getRepeatCount</code>
+            <a name="method_hasItem" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>hasItem</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>item</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type">Boolean</span>
         </span>
     
 
     
 
+    
+        <span class="flag public">public</span>
     
 
     
@@ -1910,7 +2416,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_util_Timer.js.html#l105"><code>src\util\Timer.js:105</code></a>
+        <a href="../files/src_model_Collection.js.html#l108"><code>src\model\Collection.js:108</code></a>
         
         </p>
 
@@ -1923,10 +2429,34 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     <div class="extended-detail">
 
         <div class="description">
-            <p>Returns the total number of times the timer is set to run.</p>
+            <p>Checks if a collection has an item.</p>
 
         </div>
 
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">item</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Item to check</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
         
 
         
@@ -1936,10 +2466,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type">Boolean</span>:
                         
-                        <p>Returns the total number of times the timer is set to run.</p>
-
                     
                 </div>
             </div>
@@ -2102,70 +2630,9 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 </div>
 
         
-            <a name="method_reset" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>reset</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l130"><code>src\util\Timer.js:130</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_setDelay" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>setDelay</code>
+            <a name="method_removeItem" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>removeItem</code>
 
     
         <div class="args">
@@ -2173,7 +2640,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
                 <li class="arg">
                     
-                        <code>value</code>
+                        <code>item</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[silent=false]</code>
                     
                 </li>
             
@@ -2186,6 +2659,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     
 
     
+        <span class="flag public">public</span>
+    
 
     
 
@@ -2208,7 +2683,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_util_Timer.js.html#l91"><code>src\util\Timer.js:91</code></a>
+        <a href="../files/src_model_Collection.js.html#l65"><code>src\model\Collection.js:65</code></a>
         
         </p>
 
@@ -2221,7 +2696,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     <div class="extended-detail">
 
         <div class="description">
-            <p>Sets the delay, in milliseconds, between timer events.</p>
+            <p>Removes an item from the collection, maintaining its current sort
+If the collection doesn&#39;t have the item, it throws an error</p>
 
         </div>
 
@@ -2233,14 +2709,32 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 
                     <li class="param">
                         
-                            <code class="param-name">value</code>
-                            <span class="type">Number</span>
+                            <code class="param-name">item</code>
+                            <span class="type">Object</span>
                         
 
                         
 
                         <div class="param-description">
-                             
+                            <p>Item to remove</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[silent=false]</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
+
                         </div>
 
                         
@@ -2257,9 +2751,9 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 </div>
 
         
-            <a name="method_setRepeatCount" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>setRepeatCount</code>
+            <a name="method_removeItems" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>removeItems</code>
 
     
         <div class="args">
@@ -2267,7 +2761,13 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
                 <li class="arg">
                     
-                        <code>value</code>
+                        <code>items</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[silent=false]</code>
                     
                 </li>
             
@@ -2280,6 +2780,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     
 
     
+        <span class="flag public">public</span>
+    
 
     
 
@@ -2302,7 +2804,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_util_Timer.js.html#l115"><code>src\util\Timer.js:115</code></a>
+        <a href="../files/src_model_Collection.js.html#l88"><code>src\model\Collection.js:88</code></a>
         
         </p>
 
@@ -2315,7 +2817,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     <div class="extended-detail">
 
         <div class="description">
-            <p>Set the total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.</p>
+            <p>Removes an array of items from the collection</p>
 
         </div>
 
@@ -2327,14 +2829,32 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 
                     <li class="param">
                         
-                            <code class="param-name">value</code>
-                            <span class="type">Number</span>
+                            <code class="param-name">items</code>
+                            <span class="type">Object</span>
                         
 
                         
 
                         <div class="param-description">
-                             
+                            <p>List of items to add to the current collection</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[silent=false]</code>
+                            <span class="type">Boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
+
                         </div>
 
                         
@@ -2342,128 +2862,6 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 
                 </ul>
             </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_start" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>start</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l143"><code>src\util\Timer.js:143</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Starts the timer, if it is not already running.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_stop" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>stop</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Timer.js.html#l163"><code>src\util\Timer.js:163</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Stops the timer.</p>
-
-        </div>
-
         
 
         

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MobileUtil - StructureJS</title>
+    <title>src\net\URLRequest.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,154 +128,84 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>MobileUtil Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src\net\URLRequest.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        </div>
-    
+    // Imports
+    var jQuery = require(&#x27;jquery&#x27;);
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var EventDispatcher = require(&#x27;structurejs/event/EventDispatcher&#x27;);
+    var URLRequestMethod = require(&#x27;structurejs/net/URLRequestMethod&#x27;);
+    var URLContentType = require(&#x27;structurejs/net/URLContentType&#x27;);
 
-    
-        
-            Module: <a href="../modules/util.html">util</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * The URLRequest class captures all of the information in a single HTTP request.
+     * URLRequest objects are passed to the load() methods of the {{#crossLink &quot;URLLoader&quot;}}{{/crossLink}} classes.
+     *
+     * @class URLRequest
+     * @extends BaseObject
+     * @param url [string=null] The URL to be requested. You can set the URL later by using the url property.
+     * @module StructureJS
+     * @submodule net
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     **/
+    var URLRequest = (function () {
 
-    
+        var _super = Extend(URLRequest, EventDispatcher);
+
+        function URLRequest(url) {
+            if (typeof url === &quot;undefined&quot;) { url = null; }
+            _super.call(this);
+            /**
+             * The URL to be requested.
+             *
+             * @property url
+             * @type {string}
+             * @public
+             */
+            this.url = null;
+            /**
+             * Controls the HTTP form submission method ({{#crossLink &quot;URLRequestMethod&quot;}}{{/crossLink}}).
+             *
+             * @property method
+             * @type {string}
+             * @default URLRequestMethod.GET
+             * @public
+             */
+            this.method = URLRequestMethod.GET;
+            /**
+             * The MIME content type of the content in the the data property ({{#crossLink &quot;URLContentType&quot;}}{{/crossLink}}).
+             *
+             * @property method
+             * @type {string}
+             * @default application/x-www-form-urlencoded
+             * @public
+             */
+            this.contentType = URLContentType.DEFAULT;
+            /**
+             * An object containing data to be transmitted with the URL request.
+             *
+             * @property data
+             * @type {any}
+             * @public
+             */
+            this.data = null;
+            this.url = url;
+        }
+        return URLRequest;
+    })();
+
+    module.exports = URLRequest;
+
+});
+
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The MobileUtil...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_MobileUtil" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>MobileUtil</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_MobileUtil.js.html#l6"><code>src\util\MobileUtil.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>
