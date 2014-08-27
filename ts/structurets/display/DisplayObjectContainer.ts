@@ -33,7 +33,7 @@ import EventDispatcher = require("../event/EventDispatcher");
  * @submodule view
  * @constructor
  * @author Robert S. (www.codeBelt.com)
- **/
+ */
 class DisplayObjectContainer extends EventDispatcher
 {
     /**
@@ -145,8 +145,7 @@ class DisplayObjectContainer extends EventDispatcher
      */
     public createChildren():any
     {
-        // Meant to be overridden because the extended class should call the createChildren method.
-        return this;
+        throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
     }
 
     /**
@@ -167,7 +166,7 @@ class DisplayObjectContainer extends EventDispatcher
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent)
         {
-            child.parent.removeChild(child);
+            child.parent.removeChild(child, false);
         }
 
         this.children.push(child);
@@ -195,13 +194,66 @@ class DisplayObjectContainer extends EventDispatcher
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent)
         {
-            child.parent.removeChild(child);
+            child.parent.removeChild(child, false);
         }
 
         this.children.splice(index, 0, child);
         this.numChildren = this.children.length;
 
         child.parent = this;
+
+        return this;
+    }
+
+    /**
+     * Removes the specified child object instance from the child list of the parent object instance.
+     * The parent property of the removed child is set to null , and the object is garbage collected if no other references
+     * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
+     *
+     * @method removeChild
+     * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
+     * @returns {DisplayObjectContainer} Returns an instance of itself.
+     * @public
+     * @chainable
+     */
+    public removeChild(child:DisplayObjectContainer, destroy:boolean):any
+    {
+        var index = this.getChildIndex(child);
+        if (index !== -1)
+        {
+            // Removes the child object from the parent.
+            this.children.splice(index, 1);
+        }
+
+        if (destroy === true) {
+            child.destroy();
+        } else {
+            child.disable();
+        }
+
+        child.parent = null;
+
+        this.numChildren = this.children.length;
+
+        return this;
+    }
+
+    /**
+     * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
+     * The parent property of the removed children is set to null , and the objects are garbage collected if
+     * no other references to the children exist.
+     *
+     * @method removeChildren
+     * @returns {DisplayObjectContainer} Returns an instance of itself.
+     * @public
+     * @chainable
+     */
+    public removeChildren(destroy:boolean):any
+    {
+        while (this.children.length > 0)
+        {
+            this.removeChild(<DisplayObjectContainer>this.children.pop(), destroy);
+        }
 
         return this;
     }
@@ -218,8 +270,7 @@ class DisplayObjectContainer extends EventDispatcher
      */
     public swapChildren(child1:DisplayObjectContainer, child2:DisplayObjectContainer):any
     {
-        // Meant to be overridden because the extended class should call the addChildAt method.
-        return this;
+        throw new Error('[' + this.getQualifiedClassName() + '] Error: The swapChildren method is meant to be overridden.');
     }
 
     /**
@@ -271,54 +322,6 @@ class DisplayObjectContainer extends EventDispatcher
     public contains(child:DisplayObjectContainer):boolean
     {
         return this.children.indexOf(child) >= 0;
-    }
-
-    /**
-     * Removes the specified child object instance from the child list of the parent object instance.
-     * The parent property of the removed child is set to null , and the object is garbage collected if no other references
-     * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
-     *
-     * @method removeChild
-     * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
-     * @returns {DisplayObjectContainer} Returns an instance of itself.
-     * @public
-     * @chainable
-     */
-    public removeChild(child:DisplayObjectContainer):any
-    {
-        var index = this.getChildIndex(child);
-        if (index !== -1)
-        {
-            this.children.splice(index, 1);
-        }
-        child.disable();
-        child.parent = null;
-
-        this.numChildren = this.children.length;
-
-        return this;
-    }
-
-    /**
-     * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
-     * The parent property of the removed children is set to null , and the objects are garbage collected if
-     * no other references to the children exist.
-     *
-     * @method removeChildren
-     * @returns {DisplayObjectContainer} Returns an instance of itself.
-     * @public
-     * @chainable
-     */
-    public removeChildren():any
-    {
-        while (this.children.length > 0)
-        {
-            this.removeChild(<DisplayObjectContainer>this.children.pop());
-        }
-
-        this.numChildren = this.children.length;
-
-        return this;
     }
 
     /**
@@ -385,7 +388,6 @@ class DisplayObjectContainer extends EventDispatcher
      */
     public layoutChildren():any
     {
-
         return this;
     }
 

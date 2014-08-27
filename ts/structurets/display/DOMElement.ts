@@ -151,7 +151,7 @@ import ComponentFactory = require("../util/ComponentFactory");
  *
  *      return ClassName;
  * })();
- **/
+ */
 class DOMElement extends DisplayObjectContainer
 {
     'use strict';
@@ -560,12 +560,12 @@ class DOMElement extends DisplayObjectContainer
      * @public
      * @chainable
      */
-    public removeChild(child:DOMElement):any
+    public removeChild(child:DOMElement, destroy:boolean = true):any
     {
         child.$element.unbind();
         child.$element.remove();
 
-        super.removeChild(child);
+        super.removeChild(child, destroy);
 
         return this;
     }
@@ -578,9 +578,9 @@ class DOMElement extends DisplayObjectContainer
      * @public
      * @chainable
      */
-    public removeChildAt(index:number):any
+    public removeChildAt(index:number, destroy:boolean = true):any
     {
-        this.removeChild(this.getChildAt(index));
+        this.removeChild(this.getChildAt(index), destroy);
 
         return this;
     }
@@ -596,9 +596,9 @@ class DOMElement extends DisplayObjectContainer
      * @public
      * @chainable
      */
-    public removeChildren():any
+    public removeChildren(destroy:boolean = true):any
     {
-        super.removeChildren();
+        super.removeChildren(destroy);
 
         this.$element.empty();
 
@@ -651,8 +651,6 @@ class DOMElement extends DisplayObjectContainer
      */
     public destroy():void
     {
-        // TODO: this destroy method should probably call the the removeChild method.
-
         // If the addChild method is never called before the destroyed the $element will be null and cause an TypeError.
         if (this.$element != null)
         {
