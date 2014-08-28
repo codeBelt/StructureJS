@@ -136,13 +136,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_controller_Route.js.html#l27"><code>src&#x2F;controller&#x2F;Route.js:27</code></a>
+            Defined in: <a href="../files/src_model_Route.js.html#l27"><code>src&#x2F;model&#x2F;Route.js:27</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/StructureJS.html">StructureJS</a>
+            Module: <a href="../modules/model.html">model</a><br>
+            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
         
     
 
@@ -152,7 +153,7 @@
 
 
 <div class="box intro">
-    <p>YUIDoc_comment</p>
+    <p>The <strong>Route</strong> class is a model that keeps track of a specific route for the <a href="../classes/Router.html" class="crosslink">Router</a> class.</p>
 
 </div>
 
@@ -299,7 +300,7 @@
             
         
         
-        <a href="../files/src_controller_Route.js.html#l129"><code>src&#x2F;controller&#x2F;Route.js:129</code></a>
+        <a href="../files/src_model_Route.js.html#l122"><code>src&#x2F;model&#x2F;Route.js:122</code></a>
         
         </p>
 
@@ -351,7 +352,7 @@
             
         
         
-        <a href="../files/src_controller_Route.js.html#l137"><code>src&#x2F;controller&#x2F;Route.js:137</code></a>
+        <a href="../files/src_model_Route.js.html#l130"><code>src&#x2F;model&#x2F;Route.js:130</code></a>
         
         </p>
 
@@ -403,7 +404,7 @@
             
         
         
-        <a href="../files/src_controller_Route.js.html#l120"><code>src&#x2F;controller&#x2F;Route.js:120</code></a>
+        <a href="../files/src_model_Route.js.html#l113"><code>src&#x2F;model&#x2F;Route.js:113</code></a>
         
         </p>
 
@@ -455,7 +456,7 @@
             
         
         
-        <a href="../files/src_controller_Route.js.html#l112"><code>src&#x2F;controller&#x2F;Route.js:112</code></a>
+        <a href="../files/src_model_Route.js.html#l105"><code>src&#x2F;model&#x2F;Route.js:105</code></a>
         
         </p>
 
@@ -549,7 +550,7 @@
             
         
         
-        <a href="../files/src_controller_Route.js.html#l27"><code>src&#x2F;controller&#x2F;Route.js:27</code></a>
+        <a href="../files/src_model_Route.js.html#l27"><code>src&#x2F;model&#x2F;Route.js:27</code></a>
         
         </p>
 
@@ -631,58 +632,49 @@
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// Example of adding a route listener and the function callback below.
-Router.add(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);
+var route = new Route(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);
 
-// The above route listener would match the below url:
-// www.site.com/#/games/asteroids/2/
-
-// Notice the three parameters. This is because we have two patterns above.
-// The <code>{}</code> means it is required and <code>::</code> means it is optional for a route match.
-// The third parameter is the routeEvent and that is always last parameter.
-ClassName.prototype.onRouteHandler = function (gameName, level, routeEvent) {
-    // gameName value would be &#39;asteroids&#39;.
-    // level value would be 2.
-    // routeEvent value would be a RouteEvent object.
-}</code></pre>
+// The above route would match the string below:
+route.match(&#39;/games/asteroids/2/&#39;);</code></pre>
 <h2 id="route-pattern-options-">Route Pattern Options:</h2>
 <p><strong>:optional:</strong> The two colons <strong>::</strong> means a part of the hash url is optional for the match. The text between can be anything you want it to be.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;/contact/:name:/&#39;, this.method, this);
+<pre class="code prettyprint"><code>var route = new Route(&#39;/contact/:name:/&#39;, this.method, this);
 
 // Will match one of the following:
-// www.site.com/#/contact/
-// www.site.com/#/contact/heather/
-// www.site.com/#/contact/john/</code></pre>
+route.match(&#39;/contact/&#39;);
+route.match(&#39;/contact/heather/&#39;);
+route.match(&#39;/contact/john/&#39;);</code></pre>
 <p><strong>{required}</strong> The two curly brackets <strong>{}</strong> means a part of the hash url is required for the match. The text between can be anything you want it to be.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;/product/{productName}/&#39;, this.method, this);
+<pre class="code prettyprint"><code>var route = new Route(&#39;/product/{productName}/&#39;, this.method, this);
 
 // Will match one of the following:
-// www.site.com/#/product/shoes/
-// www.site.com/#/product/jackets/</code></pre>
+route.match(&#39;/product/shoes/&#39;);
+route.match(&#39;/product/jackets/&#39;);</code></pre>
 <p><strong>*</strong> The asterix character means it will match all or part of part the hash url.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;*&#39;, this.method, this);
+<pre class="code prettyprint"><code>var route = new Route(&#39;*&#39;, this.method, this);
 
 // Will match one of the following:
-// www.site.com/#/anything/
-// www.site.com/#/matches/any/hash/url/
-// www.site.com/#/really/it/matches/any/and/all/hash/urls/</code></pre>
+route.match(&#39;/anything/&#39;);
+route.match(&#39;/matches/any/hash/url/&#39;);
+route.match(&#39;/really/it/matches/any/and/all/hash/urls/&#39;);</code></pre>
 <p><strong>?</strong> The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will <strong>NOT</strong> be passed as a parameter to the callback function. It will be converted to an</p>
-<pre class="code prettyprint"><code>Router.add(&#39;?&#39;, this.method, this);
+<pre class="code prettyprint"><code>var route = new Route(&#39;?&#39;, this.method, this);
 
 // Will match one of the following:
-// www.site.com/#/?one=1&amp;two=2&amp;three=3
-// www.site.com/#?one=1&amp;two=2&amp;three=3</code></pre>
+route.match(&#39;/?one=1&amp;two=2&amp;three=3&#39;);
+route.match(&#39;?one=1&amp;two=2&amp;three=3&#39;);</code></pre>
 <p><strong>&#39;&#39;</strong> The empty string means it will match when there are no hash url.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;&#39;, this.method, this);
-Router.add(&#39;/&#39;, this.method, this);
+<pre class="code prettyprint"><code>var route = new Route(&#39;&#39;, this.method, this);
+var route = new Route(&#39;/&#39;, this.method, this);
 
 // Will match one of the following:
-// www.site.com/
-// www.site.com/#/</code></pre>
+route.match(&#39;&#39;);
+route.match(&#39;/&#39;);</code></pre>
 <p>Other possible combinations but not limited too:</p>
-<pre class="code prettyprint"><code>Router.add(&#39;/games/{gameName}/:level:/&#39;, this.method1, this);
-Router.add(&#39;/{category}/blog/&#39;, this.method2, this);
-Router.add(&#39;/home/?&#39;, this.method3, this);
-Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
+<pre class="code prettyprint"><code>var route = new Route(&#39;/games/{gameName}/:level:/&#39;, this.method1, this);
+var route = new Route(&#39;/{category}/blog/&#39;, this.method2, this);
+var route = new Route(&#39;/home/?&#39;, this.method3, this);
+var route = new Route(&#39;/about/*&#39;, this.method4, this);</code></pre>
 
                 </div>
             </div>
@@ -747,7 +739,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Route.js.html#l183"><code>src&#x2F;controller&#x2F;Route.js:183</code></a>
+        <a href="../files/src_model_Route.js.html#l176"><code>src&#x2F;model&#x2F;Route.js:176</code></a>
         
         </p>
 
@@ -810,7 +802,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>var route = new Route(&#39;/games/{gameName}/:level:/&#39;, this.method, this);
-console.log( route.match(/games/asteroids/2/) );</code></pre>
+console.log( route.match(&#39;/games/asteroids/2/&#39;) );</code></pre>
 
                 </div>
             </div>
@@ -870,7 +862,7 @@ console.log( route.match(/games/asteroids/2/) );</code></pre>
             
         
         
-        <a href="../files/src_controller_Route.js.html#l150"><code>src&#x2F;controller&#x2F;Route.js:150</code></a>
+        <a href="../files/src_model_Route.js.html#l143"><code>src&#x2F;model&#x2F;Route.js:143</code></a>
         
         </p>
 

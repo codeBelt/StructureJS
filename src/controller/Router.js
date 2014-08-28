@@ -25,7 +25,7 @@ define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     // Imports
-    var Route = require('structurejs/controller/Route');
+    var Route = require('structurejs/model/Route');
     var RouteEvent = require('structurejs/event/RouteEvent');
     var StringUtil = require('structurejs/util/StringUtil');
 

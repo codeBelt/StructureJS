@@ -1,17 +1,20 @@
 /**
- * The **Route** class is mainly used in the {{#crossLink "Router"}}{{/crossLink}} class.
- * It is used to keep track of route patterns for the {{#crossLink "Router"}}{{/crossLink}} class to trigger.
+ * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
  *
  * @class Route
+ * @module StructureJS
+ * @submodule model
  * @constructor
- * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
+ * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''
  * @param callback {Function} The function that should be executed when a request matches the routePattern.
  * @param callbackScope {any} The scope of the callback function that should be executed.
  * @author Robert S. (www.codeBelt.com)
  * @example
  *     // Example of adding a route listener and the function callback below.
  *     var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);
- *     console.log(route.match('/games/asteroids/2/'));
+ *
+ *     // The above route would match the string below:
+ *     route.match('/games/asteroids/2/');
  *
  * Route Pattern Options:
  * ----------------------
@@ -20,9 +23,9 @@
  *     var route = new Route('/contact/:name:/', this.method, this);
  *
  *     // Will match one of the following:
- *     // www.site.com/#/contact/
- *     // www.site.com/#/contact/heather/
- *     // www.site.com/#/contact/john/
+ *     route.match('/contact/');
+ *     route.match('/contact/heather/');
+ *     route.match('/contact/john/');
  *
  *
  * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
@@ -30,8 +33,8 @@
  *     var route = new Route('/product/{productName}/', this.method, this);
  *
  *     // Will match one of the following:
- *     // www.site.com/#/product/shoes/
- *     // www.site.com/#/product/jackets/
+ *     route.match('/product/shoes/');
+ *     route.match('/product/jackets/');
  *
  *
  * **\*** The asterix character means it will match all or part of part the hash url.
@@ -39,9 +42,9 @@
  *     var route = new Route('*', this.method, this);
  *
  *     // Will match one of the following:
- *     // www.site.com/#/anything/
- *     // www.site.com/#/matches/any/hash/url/
- *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
+ *     route.match('/anything/');
+ *     route.match('/matches/any/hash/url/');
+ *     route.match('/really/it/matches/any/and/all/hash/urls/');
  *
  *
  * **?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an
@@ -49,8 +52,8 @@
  *     var route = new Route('?', this.method, this);
  *
  *     // Will match one of the following:
- *     // www.site.com/#/?one=1&two=2&three=3
- *     // www.site.com/#?one=1&two=2&three=3
+ *     route.match('/?one=1&two=2&three=3');
+ *     route.match('?one=1&two=2&three=3');
  *
  *
  * **''** The empty string means it will match when there are no hash url.
@@ -59,8 +62,8 @@
  *     var route = new Route('/', this.method, this);
  *
  *     // Will match one of the following:
- *     // www.site.com/
- *     // www.site.com/#/
+ *     route.match('');
+ *     route.match('/');
  *
  *
  * Other possible combinations but not limited too:
@@ -159,7 +162,7 @@ class Route
      * @returns {Array}
      * @example
      *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
-     *     console.log( route.match(/games/asteroids/2/) );
+     *     console.log( route.match('/games/asteroids/2/') );
      */
     public match(route):any[] {
         return route.match(this.regex);

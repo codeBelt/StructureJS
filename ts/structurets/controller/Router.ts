@@ -1,4 +1,4 @@
-import Route = require("Route");
+import Route = require("../model/Route");
 import RouteEvent = require("../event/RouteEvent");
 import StringUtil = require("../util/StringUtil");
 

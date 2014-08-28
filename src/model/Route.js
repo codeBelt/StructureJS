@@ -25,9 +25,11 @@ define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     /**
-     * YUIDoc_comment
+     * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
      *
      * @class Route
+     * @module StructureJS
+     * @submodule model
      * @constructor
      * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''
      * @param callback {Function} The function that should be executed when a request matches the routePattern.
@@ -35,76 +37,67 @@ define(function (require, exports, module) { // jshint ignore:line
      * @author Robert S. (www.codeBelt.com)
      * @example
      *     // Example of adding a route listener and the function callback below.
-     *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+     *     var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);
      *
-     *     // The above route listener would match the below url:
-     *     // www.site.com/#/games/asteroids/2/
-     *
-     *     // Notice the three parameters. This is because we have two patterns above.
-     *     // The `{}` means it is required and `::` means it is optional for a route match.
-     *     // The third parameter is the routeEvent and that is always last parameter.
-     *     ClassName.prototype.onRouteHandler = function (gameName, level, routeEvent) {
-    *         // gameName value would be 'asteroids'.
-    *         // level value would be 2.
-    *         // routeEvent value would be a RouteEvent object.
-    *     }
+     *     // The above route would match the string below:
+     *     route.match('/games/asteroids/2/');
      *
      * Route Pattern Options:
      * ----------------------
      * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
      *
-     *     Router.add('/contact/:name:/', this.method, this);
+     *     var route = new Route('/contact/:name:/', this.method, this);
      *
      *     // Will match one of the following:
-     *     // www.site.com/#/contact/
-     *     // www.site.com/#/contact/heather/
-     *     // www.site.com/#/contact/john/
+     *     route.match('/contact/');
+     *     route.match('/contact/heather/');
+     *     route.match('/contact/john/');
      *
      *
      * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
      *
-     *     Router.add('/product/{productName}/', this.method, this);
+     *     var route = new Route('/product/{productName}/', this.method, this);
      *
      *     // Will match one of the following:
-     *     // www.site.com/#/product/shoes/
-     *     // www.site.com/#/product/jackets/
+     *     route.match('/product/shoes/');
+     *     route.match('/product/jackets/');
      *
      *
      * **\*** The asterix character means it will match all or part of part the hash url.
      *
-     *     Router.add('*', this.method, this);
+     *     var route = new Route('*', this.method, this);
      *
      *     // Will match one of the following:
-     *     // www.site.com/#/anything/
-     *     // www.site.com/#/matches/any/hash/url/
-     *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
+     *     route.match('/anything/');
+     *     route.match('/matches/any/hash/url/');
+     *     route.match('/really/it/matches/any/and/all/hash/urls/');
      *
      *
      * **?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an
      *
-     *     Router.add('?', this.method, this);
+     *     var route = new Route('?', this.method, this);
      *
      *     // Will match one of the following:
-     *     // www.site.com/#/?one=1&two=2&three=3
-     *     // www.site.com/#?one=1&two=2&three=3
+     *     route.match('/?one=1&two=2&three=3');
+     *     route.match('?one=1&two=2&three=3');
      *
      *
      * **''** The empty string means it will match when there are no hash url.
      *
-     *     Router.add('', this.method, this);
-     *     Router.add('/', this.method, this);
+     *     var route = new Route('', this.method, this);
+     *     var route = new Route('/', this.method, this);
      *
      *     // Will match one of the following:
-     *     // www.site.com/
-     *     // www.site.com/#/
+     *     route.match('');
+     *     route.match('/');
      *
      *
      * Other possible combinations but not limited too:
      *
-     *     Router.add('/games/{gameName}/:level:/', this.method1, this);
-     *     Router.add('/{category}/blog/', this.method2, this);
-     *     Router.add('/home/?', this.method3, this);
-     *     Router.add('/about/*', this.method4, this);
+     *     var route = new Route('/games/{gameName}/:level:/', this.method1, this);
+     *     var route = new Route('/{category}/blog/', this.method2, this);
+     *     var route = new Route('/home/?', this.method3, this);
+     *     var route = new Route('/about/*', this.method4, this);
      *
      */
     var Route = (function () {
@@ -156,11 +149,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private
          */
         Route.prototype.routePatternToRegexp = function (routePattern) {
-            var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
-            var findOptionalColons = new RegExp(':([^:]*):', 'g');
-            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g');
-            var optionalFirstCharSlash = '^/?';
-            var optionalLastCharSlash = '/?$';
+            var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
+            var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
+            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+            var optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
+            var optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
 
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
@@ -188,7 +181,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @returns {Array}
          * @example
          *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
-         *     console.log( route.match(/games/asteroids/2/) );
+         *     console.log( route.match('/games/asteroids/2/') );
          */
         Route.prototype.match = function (route) {
             return route.match(this.regex);
