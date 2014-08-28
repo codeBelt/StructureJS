@@ -529,9 +529,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n// Example of using DOMElement with out extending it.\nvar aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\nthis.addChild(aLink);",
-                "\n// Example of a view passing in a jQuery object.\nvar view = new CustomView($('.selector'));\nthis.addChild(view);\n\n// Example of a view extending DOMElement when passing in a jQuery object.\nvar Extend = require('structurejs/util/Extend');\nvar DOMElement = require('structurejs/display/DOMElement');\n\nvar ClassName = (function () {\n\n     var _super = Extend(ClassName, DOMElement);\n\n     function ClassName($element) {\n         _super.call(this, $element);\n     }\n\n     ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this);\n\n         // Create and add your child objects to this parent class.\n     };\n\n     ClassName.prototype.layoutChildren = function () {\n         // Layout or update the child objects in this parent class.\n\n         return this;\n     };\n\n     ClassName.prototype.enable = function () {\n         if (this.isEnabled === true) return this;\n\n         // Enable the child objects and add any event listeners.\n\n         return _super.prototype.enable.call(this);\n     };\n\n     ClassName.prototype.disable = function () {\n         if (this.isEnabled === false) return this;\n\n         // Disable the child objects and remove any event listeners.\n\n         return _super.prototype.disable.call(this);\n     };\n\n     ClassName.prototype.destroy = function () {\n         // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n         _super.prototype.destroy.call(this);\n     };\n\n     return ClassName;\n})();",
-                "\n// Example of a view extending DOMElement with template passed into createChildren.\nvar view = new CustomView();\nthis.addChild(view);\n\n// Example of a view extending DOMElement when passing in a jQuery object.\nvar Extend = require('structurejs/util/Extend');\nvar DOMElement = require('structurejs/display/DOMElement');\nvar HomeTemplate = require('hbs!templates/home/homeTemplate');\n\nvar ClassName = (function () {\n\n     var _super = Extend(ClassName, DOMElement);\n\n     function ClassName() {\n         _super.call(this);\n     }\n\n     ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});\n\n         // Create and add your child objects to this parent class.\n     };\n\n     ClassName.prototype.layoutChildren = function () {\n         // Layout or update the child objects in this parent class.\n\n         return this;\n     };\n\n     ClassName.prototype.enable = function () {\n         if (this.isEnabled === true) return this;\n\n         // Enable the child objects and add any event listeners.\n\n         return _super.prototype.enable.call(this);\n     };\n\n     ClassName.prototype.disable = function () {\n         if (this.isEnabled === false) return this;\n\n         // Disable the child objects and remove any event listeners.\n\n         return _super.prototype.disable.call(this);\n     };\n\n     ClassName.prototype.destroy = function () {\n         // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n         _super.prototype.destroy.call(this);\n     };\n\n     return ClassName;\n})();"
+                "\n    // Example of using DOMElement with out extending it.\n    var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example of a view passing in a jQuery object.\n    var view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example of a view extending DOMElement when passing in a jQuery object.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName($element) {\n             _super.call(this, $element);\n         }\n\n         ClassName.prototype.createChildren = function () {\n             _super.prototype.createChildren.call(this);\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layoutChildren = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) return this;\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) return this;\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();\n\n    // Example of a view extending DOMElement with template passed into createChildren.\n    var view = new CustomView();\n    this.addChild(view);\n\n    // Example of a view extending DOMElement with template passed into createChildren.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n    var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName() {\n             _super.call(this);\n         }\n\n         ClassName.prototype.createChildren = function () {\n             _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layoutChildren = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) return this;\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) return this;\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();"
             ]
         },
         "DisplayObjectContainer": {
@@ -1838,21 +1836,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 144,
-            "description": "Whether or not the display object is visible. Display objects that are not visible are disabled.\nFor example, if visible=false for an InteractiveObject instance, it cannot be clicked.",
-            "itemtype": "property",
-            "name": "_isVisible",
-            "type": "{boolean}",
-            "default": "true",
-            "access": "private",
-            "tagname": "",
-            "class": "DOMElement",
-            "module": "StructureJS",
-            "submodule": "view"
-        },
-        {
-            "file": "src/display/DOMElement.js",
-            "line": 154,
+            "line": 142,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "checkCount",
@@ -1865,7 +1849,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 162,
+            "line": 150,
             "description": "A cached of the DOM Element.",
             "itemtype": "property",
             "name": "element",
@@ -1877,7 +1861,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 170,
+            "line": 158,
             "description": "A cached jQuery object for the view's element.",
             "itemtype": "property",
             "name": "$element",
@@ -1889,7 +1873,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 178,
+            "line": 166,
             "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try add the view to the DOM because it should already exists.",
             "itemtype": "property",
             "name": "_isReference",
@@ -1902,7 +1886,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 187,
+            "line": 175,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_type",
@@ -1914,7 +1898,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 195,
+            "line": 183,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_params",
@@ -1926,11 +1910,8 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 213,
-            "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.",
-            "example": [
-                "\n        // EXAMPLE 1: By default your view class will be a div element:\n        ClassName.prototype.createChildren = function () {\n       _super.prototype.createChildren.call(this);\n\n       this._childInstance = new DOMElement();\n       this.addChild(this._childInstance);\n       }\n\n        // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:\n        ClassName.prototype.createChildren = function () {\n       _super.prototype.createChildren.call(this, 'ul');\n       }\n\n        // Then you could nest other elements inside this base view/element.\n        ClassName.prototype.createChildren = function () {\n       _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n       var li = new DOMElement('li', {text: 'Robert is cool'});\n       this.addChild(li);\n       }\n\n        // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below inline Handlebar template in your html file.\n        <script id=\"todoTemplate\" type=\"text/template\">\n        <div id=\"htmlTemplatel\" class=\"js-todo\">\n        <div id=\"input-wrapper\">\n        <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n        <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n        </div>\n        </div>\n        </script>\n\n        // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\". There is a second optional argument where you can pass data for the Handlebar template to use.\n        ClassName.prototype.createChildren = function () {\n       _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });\n\n       }\n\n        // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.\n        var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n        ClassName.prototype.createChildren = function () {\n       _super.prototype.createChildren.call(this, HomeTemplate, {data: \"some data\"});\n\n       }"
-            ],
+            "line": 201,
+            "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called only once when the child view is added to another view. If the child view is removed\nand added to another view the createChildren method will not be called again.",
             "itemtype": "method",
             "name": "createChildren",
             "params": [
@@ -1950,17 +1931,17 @@
             "access": "public",
             "tagname": "",
             "chainable": 1,
+            "example": [
+                "\n    // EXAMPLE 1: By default your view class will be a div element:\n    ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this);\n\n         this._childInstance = new DOMElement();\n         this.addChild(this._childInstance);\n    }\n\n    // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:\n    ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this, 'ul');\n    }\n\n    // Then you could nest other elements inside this base view/element.\n    ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n         var li = new DOMElement('li', {text: 'Robert is cool'});\n         this.addChild(li);\n    }\n\n    // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below\n    // inline Handlebar template in your html file.\n    <script id=\"todoTemplate\" type=\"text/template\">\n         <div id=\"htmlTemplatel\" class=\"js-todo\">\n             <div id=\"input-wrapper\">\n                 <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                 <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n             </div>\n         </div>\n    </script>\n\n    // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\".\n    // There is a second optional argument where you can pass data for the Handlebar template to use.\n    ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });\n\n    }\n\n    // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into createChildren.\n    var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n    ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this, HomeTemplate, {data: \"some data\"});\n\n    }"
+            ],
             "class": "DOMElement",
             "module": "StructureJS",
             "submodule": "view"
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 293,
+            "line": 285,
             "overridden": "DisplayObjectContainer.addChild",
-            "example": [
-                "\n        container.addChild(domElementInstance);"
-            ],
             "itemtype": "method",
             "name": "addChild",
             "params": [
@@ -1975,13 +1956,16 @@
                 "type": "DOMElement"
             },
             "chainable": 1,
+            "example": [
+                "\n    container.addChild(domElementInstance);"
+            ],
             "class": "DOMElement",
             "module": "StructureJS",
             "submodule": "view"
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 332,
+            "line": 324,
             "description": "Adds the cid to the DOM element so we can know what what Class object the element belongs too.",
             "itemtype": "method",
             "name": "addClientSideId",
@@ -2000,7 +1984,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 344,
+            "line": 336,
             "description": "Gets called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layoutChildren:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.",
             "itemtype": "method",
             "name": "onDomAdded",
@@ -2012,7 +1996,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 364,
+            "line": 356,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2020,7 +2004,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 401,
+            "line": 393,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2028,7 +2012,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 414,
+            "line": 406,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2036,7 +2020,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 421,
+            "line": 413,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -2059,7 +2043,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 457,
+            "line": 449,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -2083,7 +2067,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 494,
+            "line": 486,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -2108,7 +2092,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 515,
+            "line": 508,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -2128,7 +2112,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 529,
+            "line": 523,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -2146,7 +2130,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 548,
+            "line": 543,
             "description": "Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)\nto 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though\nthey are invisible.",
             "itemtype": "method",
             "name": "alpha",
@@ -2167,26 +2151,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 563,
-            "itemtype": "method",
-            "name": "visible",
-            "params": [
-                {
-                    "name": "value",
-                    "description": ""
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Any"
-            },
-            "class": "DOMElement",
-            "module": "StructureJS",
-            "submodule": "view"
-        },
-        {
-            "file": "src/display/DOMElement.js",
-            "line": 582,
+            "line": 558,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2194,7 +2159,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 596,
+            "line": 571,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "createComponents",
@@ -4925,63 +4890,59 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:213"
+            "line": " src/display/DOMElement.js:201"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:293"
+            "line": " src/display/DOMElement.js:285"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:293"
+            "line": " src/display/DOMElement.js:285"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:364"
+            "line": " src/display/DOMElement.js:356"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:401"
+            "line": " src/display/DOMElement.js:393"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:414"
+            "line": " src/display/DOMElement.js:406"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:421"
+            "line": " src/display/DOMElement.js:413"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:457"
+            "line": " src/display/DOMElement.js:449"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:494"
+            "line": " src/display/DOMElement.js:486"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/display/DOMElement.js:494"
+            "line": " src/display/DOMElement.js:486"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:529"
+            "line": " src/display/DOMElement.js:523"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/display/DOMElement.js:529"
+            "line": " src/display/DOMElement.js:523"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:548"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:563"
+            "line": " src/display/DOMElement.js:543"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:582"
+            "line": " src/display/DOMElement.js:558"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -5185,19 +5146,19 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:364"
+            "line": " src/display/DOMElement.js:356"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:401"
+            "line": " src/display/DOMElement.js:393"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:414"
+            "line": " src/display/DOMElement.js:406"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:582"
+            "line": " src/display/DOMElement.js:558"
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",

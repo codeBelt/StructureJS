@@ -39,132 +39,120 @@ import ComponentFactory = require("../util/ComponentFactory");
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example
- * // Example of using DOMElement with out extending it.
- * var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
- * this.addChild(aLink);
+ *     // Example of using DOMElement with out extending it.
+ *     var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
+ *     this.addChild(aLink);
  *
- * @example
- * // Example of a view passing in a jQuery object.
- * var view = new CustomView($('.selector'));
- * this.addChild(view);
+ *     // Example of a view passing in a jQuery object.
+ *     var view = new CustomView($('.selector'));
+ *     this.addChild(view);
  *
- * // Example of a view extending DOMElement when passing in a jQuery object.
- * var Extend = require('structurejs/util/Extend');
- * var DOMElement = require('structurejs/display/DOMElement');
+ *     // Example of a view extending DOMElement when passing in a jQuery object.
+ *     var Extend = require('structurejs/util/Extend');
+ *     var DOMElement = require('structurejs/display/DOMElement');
  *
- * var ClassName = (function () {
+ *     var ClassName = (function () {
  *
- *      var _super = Extend(ClassName, DOMElement);
+ *          var _super = Extend(ClassName, DOMElement);
  *
- *      function ClassName($element) {
- *          _super.call(this, $element);
- *      }
+ *          function ClassName($element) {
+ *              _super.call(this, $element);
+ *          }
  *
- *      ClassName.prototype.createChildren = function () {
- *          _super.prototype.createChildren.call(this);
+ *          ClassName.prototype.createChildren = function () {
+ *              _super.prototype.createChildren.call(this);
  *
- *          // Create and add your child objects to this parent class.
- *      };
+ *              // Create and add your child objects to this parent class.
+ *          };
  *
- *      ClassName.prototype.layoutChildren = function () {
- *          // Layout or update the child objects in this parent class.
+ *          ClassName.prototype.layoutChildren = function () {
+ *              // Layout or update the child objects in this parent class.
  *
- *          return this;
- *      };
+ *              return this;
+ *          };
  *
- *      ClassName.prototype.enable = function () {
- *          if (this.isEnabled === true) return this;
+ *          ClassName.prototype.enable = function () {
+ *              if (this.isEnabled === true) return this;
  *
- *          // Enable the child objects and add any event listeners.
+ *              // Enable the child objects and add any event listeners.
  *
- *          return _super.prototype.enable.call(this);
- *      };
+ *              return _super.prototype.enable.call(this);
+ *          };
  *
- *      ClassName.prototype.disable = function () {
- *          if (this.isEnabled === false) return this;
+ *          ClassName.prototype.disable = function () {
+ *              if (this.isEnabled === false) return this;
  *
- *          // Disable the child objects and remove any event listeners.
+ *              // Disable the child objects and remove any event listeners.
  *
- *          return _super.prototype.disable.call(this);
- *      };
+ *              return _super.prototype.disable.call(this);
+ *          };
  *
- *      ClassName.prototype.destroy = function () {
- *          // Destroy the child objects and references in this parent class to prevent memory leaks.
+ *          ClassName.prototype.destroy = function () {
+ *              // Destroy the child objects and references in this parent class to prevent memory leaks.
  *
- *          _super.prototype.destroy.call(this);
- *      };
+ *              _super.prototype.destroy.call(this);
+ *          };
  *
- *      return ClassName;
- * })();
+ *          return ClassName;
+ *     })();
  *
- * @example
- * // Example of a view extending DOMElement with template passed into createChildren.
- * var view = new CustomView();
- * this.addChild(view);
+ *     // Example of a view extending DOMElement with template passed into createChildren.
+ *     var view = new CustomView();
+ *     this.addChild(view);
  *
- * // Example of a view extending DOMElement when passing in a jQuery object.
- * var Extend = require('structurejs/util/Extend');
- * var DOMElement = require('structurejs/display/DOMElement');
- * var HomeTemplate = require('hbs!templates/home/homeTemplate');
+ *     // Example of a view extending DOMElement with template passed into createChildren.
+ *     var Extend = require('structurejs/util/Extend');
+ *     var DOMElement = require('structurejs/display/DOMElement');
+ *     var HomeTemplate = require('hbs!templates/home/homeTemplate');
  *
- * var ClassName = (function () {
+ *     var ClassName = (function () {
  *
- *      var _super = Extend(ClassName, DOMElement);
+ *          var _super = Extend(ClassName, DOMElement);
  *
- *      function ClassName() {
- *          _super.call(this);
- *      }
+ *          function ClassName() {
+ *              _super.call(this);
+ *          }
  *
- *      ClassName.prototype.createChildren = function () {
- *          _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
+ *          ClassName.prototype.createChildren = function () {
+ *              _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
  *
- *          // Create and add your child objects to this parent class.
- *      };
+ *              // Create and add your child objects to this parent class.
+ *          };
  *
- *      ClassName.prototype.layoutChildren = function () {
- *          // Layout or update the child objects in this parent class.
+ *          ClassName.prototype.layoutChildren = function () {
+ *              // Layout or update the child objects in this parent class.
  *
- *          return this;
- *      };
+ *              return this;
+ *          };
  *
- *      ClassName.prototype.enable = function () {
- *          if (this.isEnabled === true) return this;
+ *          ClassName.prototype.enable = function () {
+ *              if (this.isEnabled === true) return this;
  *
- *          // Enable the child objects and add any event listeners.
+ *              // Enable the child objects and add any event listeners.
  *
- *          return _super.prototype.enable.call(this);
- *      };
+ *              return _super.prototype.enable.call(this);
+ *          };
  *
- *      ClassName.prototype.disable = function () {
- *          if (this.isEnabled === false) return this;
+ *          ClassName.prototype.disable = function () {
+ *              if (this.isEnabled === false) return this;
  *
- *          // Disable the child objects and remove any event listeners.
+ *              // Disable the child objects and remove any event listeners.
  *
- *          return _super.prototype.disable.call(this);
- *      };
+ *              return _super.prototype.disable.call(this);
+ *          };
  *
- *      ClassName.prototype.destroy = function () {
- *          // Destroy the child objects and references in this parent class to prevent memory leaks.
+ *          ClassName.prototype.destroy = function () {
+ *              // Destroy the child objects and references in this parent class to prevent memory leaks.
  *
- *          _super.prototype.destroy.call(this);
- *      };
+ *              _super.prototype.destroy.call(this);
+ *          };
  *
- *      return ClassName;
- * })();
+ *          return ClassName;
+ *     })();
  */
 class DOMElement extends DisplayObjectContainer
 {
     'use strict';
-    /**
-     * Whether or not the display object is visible. Display objects that are not visible are disabled.
-     * For example, if visible=false for an InteractiveObject instance, it cannot be clicked.
-     *
-     * @property _isVisible
-     * @type {boolean}
-     * @default true
-     * @private
-     */
-    private _isVisible:boolean = true;
 
     /**
      * YUIDoc_comment
@@ -245,58 +233,62 @@ class DOMElement extends DisplayObjectContainer
      * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
      * their overridden methods.
      *
-     * This method gets called only once when the child view is added to another view. If the child view is removed and added to another view the createChildren method will not be called again.
-     * @example
-     // EXAMPLE 1: By default your view class will be a div element:
-     ClassName.prototype.createChildren = function () {
-                _super.prototype.createChildren.call(this);
-
-                this._childInstance = new DOMElement();
-                this.addChild(this._childInstance);
-            }
-
-     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
-     ClassName.prototype.createChildren = function () {
-                _super.prototype.createChildren.call(this, 'ul');
-            }
-
-     // Then you could nest other elements inside this base view/element.
-     ClassName.prototype.createChildren = function () {
-                _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
-
-                var li = new DOMElement('li', {text: 'Robert is cool'});
-                this.addChild(li);
-            }
-
-     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below inline Handlebar template in your html file.
-     <script id="todoTemplate" type="text/template">
-     <div id="htmlTemplatel" class="js-todo">
-     <div id="input-wrapper">
-     <input type="text" class="list-input" placeholder="{{ data.text }}">
-     <input type="button" class="list-item-submit" value="Add">
-     </div>
-     </div>
-     </script>
-
-     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate". There is a second optional argument where you can pass data for the Handlebar template to use.
-     ClassName.prototype.createChildren = function () {
-                _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });
-
-            }
-
-     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar pluign within RequireJS. You can pass the template into createChildren.
-     var HomeTemplate = require('hbs!templates/HomeTemplate');
-
-     ClassName.prototype.createChildren = function () {
-                _super.prototype.createChildren.call(this, HomeTemplate, {data: "some data"});
-
-            }
+     * This method gets called only once when the child view is added to another view. If the child view is removed
+     * and added to another view the createChildren method will not be called again.
+     *
      * @method createChildren
      * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
      * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
      * @returns {DOMElement} Returns an instance of itself.
      * @public
      * @chainable
+     * @example
+     *     // EXAMPLE 1: By default your view class will be a div element:
+     *     ClassName.prototype.createChildren = function () {
+     *          _super.prototype.createChildren.call(this);
+     *
+     *          this._childInstance = new DOMElement();
+     *          this.addChild(this._childInstance);
+     *     }
+     *
+     *     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
+     *     ClassName.prototype.createChildren = function () {
+     *          _super.prototype.createChildren.call(this, 'ul');
+     *     }
+     *
+     *     // Then you could nest other elements inside this base view/element.
+     *     ClassName.prototype.createChildren = function () {
+     *          _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
+     *
+     *          var li = new DOMElement('li', {text: 'Robert is cool'});
+     *          this.addChild(li);
+     *     }
+     *
+     *     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below
+     *     // inline Handlebar template in your html file.
+     *     <script id="todoTemplate" type="text/template">
+     *          <div id="htmlTemplatel" class="js-todo">
+     *              <div id="input-wrapper">
+     *                  <input type="text" class="list-input" placeholder="{{ data.text }}">
+     *                  <input type="button" class="list-item-submit" value="Add">
+     *              </div>
+     *          </div>
+     *     </script>
+     *
+     *     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate".
+     *     // There is a second optional argument where you can pass data for the Handlebar template to use.
+     *     ClassName.prototype.createChildren = function () {
+     *          _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });
+     *
+     *     }
+     *
+     *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into createChildren.
+     *     var HomeTemplate = require('hbs!templates/HomeTemplate');
+     *
+     *     ClassName.prototype.createChildren = function () {
+     *          _super.prototype.createChildren.call(this, HomeTemplate, {data: "some data"});
+     *
+     *     }
      */
     public createChildren(type:string = 'div', params:any = null):any
     {
@@ -324,12 +316,12 @@ class DOMElement extends DisplayObjectContainer
 
     /**
      * @overridden DisplayObjectContainer.addChild
-     * @example
-     container.addChild(domElementInstance);
      * @method addChild
      * @param child {DOMElement} The DOMElement instance to add as a child of this object instance.
      * @returns {DOMElement} Returns an instance of itself.
      * @chainable
+     * @example
+     *     container.addChild(domElementInstance);
      */
     public addChild(child:DOMElement):any
     {
@@ -622,31 +614,6 @@ class DOMElement extends DisplayObjectContainer
     }
 
     /**
-     *
-     * @method visible
-     * @param value
-     * @returns {any}
-     */
-    public visible(value:boolean):any
-    {
-        if (value == false)
-        {
-            this._isVisible = false;
-            this.$element.hide();
-        }
-        else if (value == true)
-        {
-            this._isVisible = true;
-            this.$element.show();
-        }
-        else if (value == undefined)
-        {
-            return this._isVisible;
-        }
-        return this;
-    }
-
-    /**
      * @overridden DisplayObjectContainer.destroy
      */
     public destroy():void
@@ -660,7 +627,6 @@ class DOMElement extends DisplayObjectContainer
 
         super.destroy();
     }
-
 
     /**
      * YUIDoc_comment
