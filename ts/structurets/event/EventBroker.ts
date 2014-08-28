@@ -27,12 +27,13 @@ import BaseEvent = require('BaseEvent')
 
 /**
  * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
- * Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.
+ * Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.
  *
  * @class EventBroker
  * @module StructureJS
  * @submodule event
  * @static
+ * @author Robert S. (www.codeBelt.com)
  */
 class EventBroker
 {
@@ -53,18 +54,23 @@ class EventBroker
 
     /**
      * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
-     * @example
-     EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     ClassName.prototype.handlerMethod = function (event) {
-               console.log(event.target + " sent the event.");
-           }
+     *
      * @method addEventListener
      * @param type {String} The type of event.
-     * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
-     * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+     * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink "BaseEvent"}}{{/crossLink}} object or custom event that extends the {{#crossLink "BaseEvent"}}{{/crossLink}} class.
+     * @param scope {any} The scope of the callback function.
      * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
      * @static
      * @public
+     * @example
+     *     EventBroker.addEventListener('change', this.handlerMethod, this);
+     *     // Example of using a constant event type.
+     *     EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *
+     *     // The event passed to the method will always be a BaseEvent object.
+     *     ClassName.prototype.handlerMethod = function (event) {
+     *          console.log(event.target + " sent the event.");
+     *     }
      */
     public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):void
     {
@@ -73,18 +79,17 @@ class EventBroker
 
     /**
      * Removes a specified listener from the EventBroker object.
-     * @example
-     EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     ClassName.prototype.handlerMethod = function (event) {
-               console.log(event.target + " sent the event.");
-           }
+     *
      * @method removeEventListener
      * @param type {String} The type of event.
-     * @param callback {Function} The listener object to remove.
-     * @param scope {any} The scope of the listener object to be removed.
-     * To keep things consistent this parameter is required.
+     * @param callback {Function} The callback function to be removed.
+     * @param scope {any} The scope of the callback function to be removed.
      * @static
      * @public
+     * @example
+     *     EventBroker.removeEventListener('change', this.handlerMethod, this);
+     *
+     *     EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      */
     public static removeEventListener(type:string, callback:Function, scope:any):void
     {
@@ -92,24 +97,28 @@ class EventBroker
     }
 
     /**
-     * <p>Dispatches an event within the EventBroker object.</p>
-     * @example
-     var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
-     EventBroker.dispatchEvent(event);
-
-     // Here is a common inline event being dispatched
-     EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+     * Dispatches an event within the EventBroker object.
+     *
      * @method dispatchEvent
-     * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-     * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
+     * @param event {string|BaseEvent} The Event object or event type string you want to dispatch.
+     * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink "BaseEvent"}}{{/crossLink}}.
      * @static
      * @public
+     * @example
+     *      EventBroker.dispatchEvent('change');
+     *
+     *      // Example with sending data with the event.
+     *      EventBroker.dispatchEvent('change', {some: 'data'});
+     *
+     *      // Example of sending a BaseEvent or custom event object.
+     *      var event = new BaseEvent(BaseEvent.CHANGE);
+     *      EventBroker.dispatchEvent(event);
      */
     public static dispatchEvent(type:any, data:any = null):void
     {
-        var event = type;
+        var event:any = type;
 
-        if (typeof event == 'string') {
+        if (typeof event === 'string') {
             event = new BaseEvent(type, false, false, data);
         }
 

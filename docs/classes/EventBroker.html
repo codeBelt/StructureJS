@@ -136,7 +136,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_event_EventBroker.js.html#l7"><code>src\event\EventBroker.js:7</code></a>
+            Defined in: <a href="../files/src_event_EventBroker.js.html#l7"><code>src&#x2F;event&#x2F;EventBroker.js:7</code></a>
         </div>
     
 
@@ -154,7 +154,7 @@
 
 <div class="box intro">
     <p>EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
-Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type.</p>
+Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.</p>
 
 </div>
 
@@ -189,6 +189,22 @@ Loosely coupled event handling, the subscriber does not have to know the publish
 
 
 
+
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties">
+            
+                <li class="index-item property private">
+                    <a href="#property__eventDispatcher">_eventDispatcher</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+        </ul>
+    </div>
 
 
 
@@ -240,6 +256,71 @@ Loosely coupled event handling, the subscriber does not have to know the publish
 
 <div class="class-detail">
 
+
+    <div class="properties-detail">
+        <h2>Properties</h2>
+
+        
+            <a name="property__eventDispatcher" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_eventDispatcher</code>
+    <span class="type"><a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_EventBroker.js.html#l95"><code>src&#x2F;event&#x2F;EventBroker.js:95</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the EventDispatcher object.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
 
 
 
@@ -318,7 +399,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l21"><code>src\event\EventBroker.js:21</code></a>
+        <a href="../files/src_event_EventBroker.js.html#l21"><code>src&#x2F;event&#x2F;EventBroker.js:21</code></a>
         
         </p>
 
@@ -366,7 +447,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                         
 
                         <div class="param-description">
-                            <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void</p>
+                            <p>The listener function that processes the event. The callback function will receive a <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a> object or custom event that extends the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a> class.</p>
 
                         </div>
 
@@ -382,7 +463,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                         
 
                         <div class="param-description">
-                            <p>Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#39;t generally maintained.</p>
+                            <p>The scope of the callback function.</p>
 
                         </div>
 
@@ -417,10 +498,14 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>    EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-    ClassName.prototype.handlerMethod = function (event) {
-   console.log(event.target + &quot; sent the event.&quot;);
-   }</code></pre>
+                    <pre class="code prettyprint"><code>EventBroker.addEventListener(&#39;change&#39;, this.handlerMethod, this);
+// Example of using a constant event type.
+EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+// The event passed to the method will always be a BaseEvent object.
+ClassName.prototype.handlerMethod = function (event) {
+     console.log(event.target + &quot; sent the event.&quot;);
+}</code></pre>
 
                 </div>
             </div>
@@ -440,6 +525,12 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                 <li class="arg">
                     
                         <code>event</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[data=null]</code>
                     
                 </li>
             
@@ -478,7 +569,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l60"><code>src\event\EventBroker.js:60</code></a>
+        <a href="../files/src_event_EventBroker.js.html#l64"><code>src&#x2F;event&#x2F;EventBroker.js:64</code></a>
         
         </p>
 
@@ -492,6 +583,7 @@ Loosely coupled event handling, the subscriber does not have to know the publish
 
         <div class="description">
             <p>Dispatches an event within the EventBroker object.</p>
+
         </div>
 
         
@@ -503,14 +595,30 @@ Loosely coupled event handling, the subscriber does not have to know the publish
                     <li class="param">
                         
                             <code class="param-name">event</code>
-                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+                            <span class="type">String | <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
+                            <p>The Event object or event type string you want to dispatch.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[data=null]</code>
+                            <span class="type">Any</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The optional data you want to send with the event. Do not use this parameter if you are passing in a <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
 
                         </div>
 
@@ -528,11 +636,14 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>    var event:BaseEvent = new BaseEvent(BaseEvent.CHANGE);
-    EventBroker.dispatchEvent(event);
+                    <pre class="code prettyprint"><code> EventBroker.dispatchEvent(&#39;change&#39;);
 
-    // Here is a common inline event being dispatched
-    EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+ // Example with sending data with the event.
+ EventBroker.dispatchEvent(&#39;change&#39;, {some: &#39;data&#39;});
+
+ // Example of sending a BaseEvent or custom event object.
+ var event = new BaseEvent(BaseEvent.CHANGE);
+ EventBroker.dispatchEvent(event);</code></pre>
 
                 </div>
             </div>
@@ -602,7 +713,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l41"><code>src\event\EventBroker.js:41</code></a>
+        <a href="../files/src_event_EventBroker.js.html#l46"><code>src&#x2F;event&#x2F;EventBroker.js:46</code></a>
         
         </p>
 
@@ -650,7 +761,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                         
 
                         <div class="param-description">
-                            <p>The listener object to remove.</p>
+                            <p>The callback function to be removed.</p>
 
                         </div>
 
@@ -666,8 +777,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                         
 
                         <div class="param-description">
-                            <p>The scope of the listener object to be removed.
-To keep things consistent this parameter is required.</p>
+                            <p>The scope of the callback function to be removed.</p>
 
                         </div>
 
@@ -685,10 +795,9 @@ To keep things consistent this parameter is required.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>    EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-    ClassName.prototype.handlerMethod = function (event) {
-   console.log(event.target + &quot; sent the event.&quot;);
-   }</code></pre>
+                    <pre class="code prettyprint"><code>EventBroker.removeEventListener(&#39;change&#39;, this.handlerMethod, this);
+
+EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
 
                 </div>
             </div>

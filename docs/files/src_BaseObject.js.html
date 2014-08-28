@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\BaseObject.js - StructureJS</title>
+    <title>src/BaseObject.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -128,7 +128,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src\BaseObject.js</h1>
+                <h1 class="file-heading">File: src/BaseObject.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -145,17 +145,18 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule core
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var BaseObject = (function () {
 
         function BaseObject() {
             /**
-             * The cid or client id is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+             * The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
              *
              * @property cid
              * @type {int}
              * @default null
              * @writeOnce
+             * @readOnly
              * @public
              */
             this.cid = null;
@@ -164,11 +165,11 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Returns the fully qualified class name of an object.
          *
-         * @example
-         instance.getQualifiedClassName();
          * @method getQualifiedClassName
          * @returns {string} Returns the class name.
          * @public
+         * @example
+         *     instance.getQualifiedClassName();
          */
         BaseObject.prototype.getQualifiedClassName = function () {
             return Util.getClassName(this);
@@ -184,15 +185,15 @@ define(function (require, exports, module) { // jshint ignore:line
          * By default the destroy method will null out all properties of the class automatically. You should call destroy
          * on other objects before calling the super.
          *
-         * @example
-         * ClassName.prototype.destroy = function() {
-         *      this._childInstance.destroy();
-         *
-         *      _super.prototype.destroy.call(this);
-         * }
          * @method destroy
          * @return {void}
          * @public
+         * @example
+         *     ClassName.prototype.destroy = function() {
+         *          this._childInstance.destroy();
+         *
+         *          _super.prototype.destroy.call(this);
+         *     }
          */
         BaseObject.prototype.destroy = function () {
             for (var key in this) {

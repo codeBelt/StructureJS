@@ -25,44 +25,14 @@
 import BaseObject = require("../BaseObject");
 
 /**
- * <p>The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>
+ * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
  *
- * <p>The properties of the {{#crossLink "BaseEvent"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.
+ * The properties of the {{#crossLink "BaseEvent"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.
+ *
  * For many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more
- * detailed information.</p>
+ * detailed information.
  * @class BaseEvent
  * @extends BaseObject
- * @example
- // Example: how to create a custom event by extending BaseEvent.
- var Extend = require('structurejs/util/Extend');
- var BaseEvent = require('structurejs/event/BaseEvent');
-
- var CountryEvent = (function () {
-
-            var _super = Extend(CountryEvent, BaseEvent);
-
-            CountryEvent.CHANGE_COUNTRY = "CountryEvent.changeCountry";
-
-            function CountryEvent(type, bubbles, cancelable, data) {
-                _super.call(this, type, bubbles, cancelable, data);
-
-                this.countryName = null;
-            }
-
-            CountryEvent.prototype.clone = function () {
-                return new CountryEvent(this.type, this.bubble, this.cancelable, this.data);
-            };
-
-            return CountryEvent;
-        })();
-
- * @example
- // Example: how to use the custom event.
- var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
- this.dispatchEvent(event);
-
- // Here is a common inline event being dispatched
- this.dispatchEvent(new CountryEvent(CountryEvent.CHANGE_COUNTRY));
  * @param type {string} The type of event. The type is case-sensitive.
  * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
  * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink "EventDispatcher/parent:property"}}{{/crossLink}})
@@ -73,6 +43,37 @@ import BaseObject = require("../BaseObject");
  * @submodule event
  * @constructor
  * @author Robert S. (www.codeBelt.com)
+ * @example
+ *     // Example: how to create a custom event by extending BaseEvent.
+ *     var Extend = require('structurejs/util/Extend');
+ *     var BaseEvent = require('structurejs/event/BaseEvent');
+ *
+ *     var CountryEvent = (function () {
+ *
+ *          var _super = Extend(CountryEvent, BaseEvent);
+ *
+ *          CountryEvent.CHANGE_COUNTRY = "CountryEvent.changeCountry";
+ *
+ *          function CountryEvent(type, bubbles, cancelable, data) {
+ *              _super.call(this, type, bubbles, cancelable, data);
+ *
+ *              this.countryName = null;
+ *          }
+ *
+ *          CountryEvent.prototype.clone = function () {
+ *              var event = new CountryEvent(this.type, this.bubble, this.cancelable, this.data);
+ *              event.countryName = this.countryName;
+ *
+ *              return event;
+ *           };
+ *
+ *           return CountryEvent;
+ *      })();
+ *
+ *     // Example: how to use the custom event.
+ *     var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
+ *     event.countryName = 'Canada';
+ *     this.dispatchEvent(event);
  */
 class BaseEvent extends BaseObject
 {
@@ -81,6 +82,7 @@ class BaseEvent extends BaseObject
      *
      * @event ACTIVATE
      * @type {string}
+     * @public
      * @static
      */
     public static ACTIVATE:string = 'BaseEvent.activate';
@@ -90,6 +92,7 @@ class BaseEvent extends BaseObject
      *
      * @event ADDED
      * @type {string}
+     * @public
      * @static
      */
     public static ADDED:string = 'BaseEvent.added';
@@ -99,6 +102,7 @@ class BaseEvent extends BaseObject
      *
      * @event ADDED_TO_STAGE
      * @type {string}
+     * @public
      * @static
      */
     public static ADDED_TO_STAGE:string = 'BaseEvent.addedToStage';
@@ -108,6 +112,7 @@ class BaseEvent extends BaseObject
      *
      * @event CANCEL
      * @type {string}
+     * @public
      * @static
      */
     public static CANCEL:string = 'BaseEvent.cancel';
@@ -117,6 +122,7 @@ class BaseEvent extends BaseObject
      *
      * @event CHANGE
      * @type {string}
+     * @public
      * @static
      */
     public static CHANGE:string = 'BaseEvent.change';
@@ -126,6 +132,7 @@ class BaseEvent extends BaseObject
      *
      * @event CLEAR
      * @type {string}
+     * @public
      * @static
      */
     public static CLEAR:string = 'BaseEvent.clear';
@@ -135,6 +142,7 @@ class BaseEvent extends BaseObject
      *
      * @event CLOSE
      * @type {string}
+     * @public
      * @static
      */
     public static CLOSE:string = 'BaseEvent.close';
@@ -144,6 +152,7 @@ class BaseEvent extends BaseObject
      *
      * @event CLOSING
      * @type {string}
+     * @public
      * @static
      */
     public static CLOSING:string = 'BaseEvent.closing';
@@ -153,6 +162,7 @@ class BaseEvent extends BaseObject
      *
      * @event COMPLETE
      * @type {string}
+     * @public
      * @static
      */
     public static COMPLETE:string = 'BaseEvent.complete';
@@ -162,6 +172,7 @@ class BaseEvent extends BaseObject
      *
      * @event CONNECT
      * @type {string}
+     * @public
      * @static
      */
     public static CONNECT:string = 'BaseEvent.connect';
@@ -171,6 +182,7 @@ class BaseEvent extends BaseObject
      *
      * @event COPY
      * @type {string}
+     * @public
      * @static
      */
     public static COPY:string = 'BaseEvent.copy';
@@ -180,6 +192,7 @@ class BaseEvent extends BaseObject
      *
      * @event CUT
      * @type {string}
+     * @public
      * @static
      */
     public static CUT:string = 'BaseEvent.cut';
@@ -189,6 +202,7 @@ class BaseEvent extends BaseObject
      *
      * @event DEACTIVATE
      * @type {string}
+     * @public
      * @static
      */
     public static DEACTIVATE:string = 'BaseEvent.deactivate';
@@ -198,6 +212,7 @@ class BaseEvent extends BaseObject
      *
      * @event DISPLAYING
      * @type {string}
+     * @public
      * @static
      */
     public static DISPLAYING:string = 'BaseEvent.displaying';
@@ -207,6 +222,7 @@ class BaseEvent extends BaseObject
      *
      * @event ENTER_FRAME
      * @type {string}
+     * @public
      * @static
      */
     public static ENTER_FRAME:string = 'BaseEvent.enterFrame';
@@ -216,6 +232,7 @@ class BaseEvent extends BaseObject
      *
      * @event EXIT_FRAME
      * @type {string}
+     * @public
      * @static
      */
     public static EXIT_FRAME:string = 'BaseEvent.exitFrame';
@@ -225,6 +242,7 @@ class BaseEvent extends BaseObject
      *
      * @event EXITING
      * @type {string}
+     * @public
      * @static
      */
     public static EXITING:string = 'BaseEvent.exiting';
@@ -234,6 +252,7 @@ class BaseEvent extends BaseObject
      *
      * @event FULLSCREEN
      * @type {string}
+     * @public
      * @static
      */
     public static FULLSCREEN:string = 'BaseEvent.fullScreen';
@@ -243,6 +262,7 @@ class BaseEvent extends BaseObject
      *
      * @event INIT
      * @type {string}
+     * @public
      * @static
      */
     public static INIT:string = 'BaseEvent.init';
@@ -252,6 +272,7 @@ class BaseEvent extends BaseObject
      *
      * @event NETWORK_CHANGE
      * @type {string}
+     * @public
      * @static
      */
     public static NETWORK_CHANGE:string = 'BaseEvent.networkChange';
@@ -261,6 +282,7 @@ class BaseEvent extends BaseObject
      *
      * @event OPEN
      * @type {string}
+     * @public
      * @static
      */
     public static OPEN:string = 'BaseEvent.open';
@@ -270,6 +292,7 @@ class BaseEvent extends BaseObject
      *
      * @event PASTE
      * @type {string}
+     * @public
      * @static
      */
     public static PASTE:string = 'BaseEvent.paste';
@@ -279,6 +302,7 @@ class BaseEvent extends BaseObject
      *
      * @event PREPARING
      * @type {string}
+     * @public
      * @static
      */
     public static PREPARING:string = 'BaseEvent.preparing';
@@ -288,6 +312,7 @@ class BaseEvent extends BaseObject
      *
      * @event REMOVED
      * @type {string}
+     * @public
      * @static
      */
     public static REMOVED:string = 'BaseEvent.removed';
@@ -297,6 +322,7 @@ class BaseEvent extends BaseObject
      *
      * @event RENDER
      * @type {string}
+     * @public
      * @static
      */
     public static RENDER:string = 'BaseEvent.render';
@@ -306,6 +332,7 @@ class BaseEvent extends BaseObject
      *
      * @event RESIZE
      * @type {string}
+     * @public
      * @static
      */
     public static RESIZE:string = 'BaseEvent.resize';
@@ -315,6 +342,7 @@ class BaseEvent extends BaseObject
      *
      * @event SELECTED
      * @type {string}
+     * @public
      * @static
      */
     public static SELECTED:string = 'BaseEvent.selected';
@@ -325,6 +353,7 @@ class BaseEvent extends BaseObject
      * @property type
      * @type {string}
      * @default null
+     * @public
      * @readOnly
      */
     public type:string = null;
@@ -335,6 +364,7 @@ class BaseEvent extends BaseObject
      * @property target
      * @type {any}
      * @default null
+     * @public
      * @readOnly
      */
     public target:any = null;
@@ -345,6 +375,7 @@ class BaseEvent extends BaseObject
      * @property currentTarget
      * @type {any}
      * @default null
+     * @public
      * @readOnly
      */
     public currentTarget:any = null;
@@ -354,6 +385,7 @@ class BaseEvent extends BaseObject
      *
      * @property data
      * @type {any}
+     * @public
      * @default null
      */
     public data:any = null;
@@ -363,6 +395,7 @@ class BaseEvent extends BaseObject
      *
      * @property bubble
      * @type {boolean}
+     * @public
      * @default false
      */
     public bubble:boolean = false;
@@ -372,24 +405,29 @@ class BaseEvent extends BaseObject
      *
      * @property cancelable
      * @type {boolean}
+     * @public
      * @default false
      */
     public cancelable:boolean = false;
 
     /**
+     * Indicates if the {{#crossLink "BaseEvent/stopPropagation:method"}}{{/crossLink}} was called on the event object.
      *
      * @property isPropagationStopped
      * @type {boolean}
      * @default false
+     * @public
      * @readOnly
      */
     public isPropagationStopped:boolean = false;
 
     /**
+     * Indicates if the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} was called on the event object.
      *
      * @property isImmediatePropagationStopped
      * @type {boolean}
      * @default false
+     * @public
      * @readOnly
      */
     public isImmediatePropagationStopped:boolean = false;
@@ -408,18 +446,17 @@ class BaseEvent extends BaseObject
      * Duplicates an instance of an BaseEvent subclass.
      *
      * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
-     * You do not normally call clone(); the EventDispatcher class calls it automatically when you redispatch
-     * an event—that is, when you call dispatchEvent(event) from a handler that is handling event.
      *
      * The new BaseEvent object includes all the properties of the original.
      *
      * When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
-     * to duplicate the properties of your custom class. If you do not set all the properties that you add in your event
-     * subclass, those properties will not have the correct values when listeners handle the redispatched event.
+     * to duplicate the properties of your custom class.
      *
      * @method clone
      * @returns {BaseEvent}
      * @public
+     * @example
+     *     var cloneOfEvent = event.clone();
      */
     public clone():BaseEvent
     {
@@ -428,12 +465,14 @@ class BaseEvent extends BaseObject
 
     /**
      * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
-     * This method does not affect any event listeners in the current node (currentTarget). In contrast, the stopImmediatePropagation()
-     * method prevents processing of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
-     * This method can be called in any phase of
+     * This method does not affect any event listeners in the current node (currentTarget). In contrast,
+     * the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} method prevents processing
+     * of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
      *
      * @method stopPropagation
      * @public
+     * @example
+     *     event.stopPropagation();
      */
     public stopPropagation():void
     {
@@ -442,11 +481,14 @@ class BaseEvent extends BaseObject
 
     /**
      * Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
-     * This method takes effect immediately, and it affects event listeners in the current node. In contrast, the stopPropagation()
-     * method doesn't take effect until all the event listeners in the current node finish processing.
+     * This method takes effect immediately, and it affects event listeners in the current node. In contrast,
+     * the {{#crossLink "BaseEvent/stopPropagation:method"}}{{/crossLink}} method doesn't take effect until
+     * all the event listeners in the current node finish processing.
      *
      * @method stopImmediatePropagation
      * @public
+     * @example
+     *     event.stopImmediatePropagation();
      */
     public stopImmediatePropagation():void
     {

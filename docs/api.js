@@ -53,7 +53,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "event",
             "name": "event",
-            "description": "<p>The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.</p>\n\n<p>The properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.</p>"
+            "description": "The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.\n\nThe properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\n\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information."
         },
         {
             "displayName": "model",

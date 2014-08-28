@@ -11,17 +11,18 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule core
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var BaseObject = (function () {
 
         function BaseObject() {
             /**
-             * The cid or client id is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+             * The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
              *
              * @property cid
              * @type {int}
              * @default null
              * @writeOnce
+             * @readOnly
              * @public
              */
             this.cid = null;
@@ -30,11 +31,11 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Returns the fully qualified class name of an object.
          *
-         * @example
-         instance.getQualifiedClassName();
          * @method getQualifiedClassName
          * @returns {string} Returns the class name.
          * @public
+         * @example
+         *     instance.getQualifiedClassName();
          */
         BaseObject.prototype.getQualifiedClassName = function () {
             return Util.getClassName(this);
@@ -50,15 +51,15 @@ define(function (require, exports, module) { // jshint ignore:line
          * By default the destroy method will null out all properties of the class automatically. You should call destroy
          * on other objects before calling the super.
          *
-         * @example
-         * ClassName.prototype.destroy = function() {
-         *      this._childInstance.destroy();
-         *
-         *      _super.prototype.destroy.call(this);
-         * }
          * @method destroy
          * @return {void}
          * @public
+         * @example
+         *     ClassName.prototype.destroy = function() {
+         *          this._childInstance.destroy();
+         *
+         *          _super.prototype.destroy.call(this);
+         *     }
          */
         BaseObject.prototype.destroy = function () {
             for (var key in this) {
