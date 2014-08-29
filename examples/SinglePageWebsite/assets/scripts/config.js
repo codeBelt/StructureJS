@@ -1,0 +1,47 @@
+/**
+* Application configuration declaration.
+*/
+require.config({
+
+    baseUrl: 'assets/scripts/',
+
+    paths: {
+        //main libraries
+        jquery: '../vendor/jquery/jquery-1.9.1',
+        lodash: '../vendor/lodash/lodash.compat',
+        handlebars: '../vendor/handlebars/handlebars-v1.3.0',
+        structurejs: '../../../../src/',
+
+        //shortcut paths
+        templates: '../templates',
+        data: '../data',
+
+        //require plugins
+        text: '../vendor/require/text',
+        tpl: '../vendor/require/tpl',
+        json: '../vendor/require/json',
+        hbs: '../vendor/require-handlebars-plugin/hbs'
+    },
+
+    shim: {
+        jquery: {
+            exports: '$'
+        },
+        lodash: {
+            exports: '_'
+        },
+        handlebars: {
+            exports: 'Handlebars'
+        }
+    },
+
+    urlArgs: 'v=' + Date.now(),
+    hbs: {
+        helpers: true,
+        i18n: false,
+        templateExtension: 'hbs',
+        partialsUrl: ''
+    },
+    deps: [
+    ]
+});
