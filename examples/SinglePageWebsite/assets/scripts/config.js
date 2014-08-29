@@ -39,7 +39,7 @@ require.config({
     hbs: {
         helpers: true,
         i18n: false,
-        templateExtension: 'hbs',
+        templateExtension: 'html',
         partialsUrl: ''
     },
     deps: [
