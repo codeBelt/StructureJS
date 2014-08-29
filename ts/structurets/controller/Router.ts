@@ -483,7 +483,7 @@ class Router
         var match:any;
         var routerEvent:RouteEvent = null;
 
-        // Note: we need to check the length every loop in case one was removed.
+        // Loop through all the route's. Note: we need to check the length every loop in case one was removed.
         for (var i = 0; i < Router._routes.length; i++)
         {
             route = Router._routes[i];
@@ -500,12 +500,23 @@ class Router
                 routerEvent.target = Router;
                 routerEvent.currentTarget = Router;
 
+                // Remove any empty strings in the array due to the :optional: route pattern.
+                for (var j = routerEvent.params.length - 1; j >= 0; j--)
+                {
+                    if (routerEvent.params[j] === '')
+                    {
+                        routerEvent.params.splice(j, 1);
+                    }
+                }
+
+                // If there was a hash change event then set the info we want to send.
                 if (Router._hashChangeEvent != null)
                 {
                     routerEvent.newURL = Router._hashChangeEvent.newURL;
                     routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                 }
 
+                // Execute the callback function and pass the route event.
                 route.callback.call(route.callbackScope, routerEvent);
 
                 // Only trigger the first route and stop checking.

@@ -389,11 +389,19 @@ define(function (require, exports, module) { // jshint ignore:line
                     routerEvent.target = Router;
                     routerEvent.currentTarget = Router;
 
+                    for (var j = routerEvent.params.length - 1; j >= 0; j--) {
+                        if (routerEvent.params[j] === '') {
+                            routerEvent.params.splice(j, 1);
+                        }
+                    }
+
+                    // If there was a hash change event then set the info we want to send.
                     if (Router._hashChangeEvent != null) {
                         routerEvent.newURL = Router._hashChangeEvent.newURL;
                         routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                     }
 
+                    // Execute the callback function and pass the route event.
                     route.callback.call(route.callbackScope, routerEvent);
 
                     // Only trigger the first route and stop checking.
