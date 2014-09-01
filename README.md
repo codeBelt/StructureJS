@@ -6,7 +6,7 @@ A workflow and several core class to help structure and build JavaScript applica
 [WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
 
 ####Examples:
-[Examples](http://codebelt.github.io/StructureJS/src/)
+[SinglePageWebsite with the Router class](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/)
 
 ####Documentation:
 [Docs](http://codebelt.github.io/StructureJS/docs/)
