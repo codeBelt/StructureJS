@@ -84,15 +84,10 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden Stage.destroy
          */
         EventBubblingApp.prototype.destroy = function () {
-            _super.prototype.destroy();
-
             this._grandpaView.destroy();
-            this._grandpaView = null;
-
             this._clearButton.destroy();
-            this._clearButton = null;
 
-            this._$stageMessage = null;
+            _super.prototype.destroy.call(this);
         };
 
         EventBubblingApp.prototype.onClearClick = function (event) {

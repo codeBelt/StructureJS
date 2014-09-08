@@ -27,33 +27,21 @@ import EventDispatcher = require('../event/EventDispatcher')
 import LoaderEvent = require('../event/LoaderEvent')
 
 /**
- * The AssetLoader...
+ * The Loader...
  *
- * @class AssetLoader
+ * @class Loader
  * @module StructureJS
  * @submodule util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class AssetLoader extends EventDispatcher
+class Loader extends EventDispatcher
 {
-    private static _instance:AssetLoader;
     public _dataStores:IDataStore[] = [];
 
     constructor()
     {
         super();
-
-        this.addEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
-    }
-
-    public static getInstance():AssetLoader
-    {
-        if (this._instance == null)
-        {
-            this._instance = new AssetLoader();
-        }
-        return this._instance;
     }
 
     public addFile(dataStore:IDataStore, key:string):any
@@ -67,17 +55,9 @@ class AssetLoader extends EventDispatcher
         return this._dataStores[key];
     }
 
-    public getImage(key:string):HTMLImageElement
+    public getData(key:string):HTMLImageElement
     {
         return this._dataStores[key].data;
-    }
-
-    public getHtmlTemplate(key:string, templateId:string):string
-    {
-        //TODO: check if you need to change this to user the TemplateFactory
-        console.log(this.getQualifiedClassName(), 'TODO: check if you need to change this to user the TemplateFactory')
-        var rawHtml:string = jQuery(this._dataStores[key].data).filter("#" + templateId).html();
-        return rawHtml;
     }
 
     public load():any
@@ -85,8 +65,12 @@ class AssetLoader extends EventDispatcher
         for (var key in this._dataStores)
         {
             var dataStore:IDataStore = this._dataStores[key];
-            dataStore.addEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
-            dataStore.load();
+
+            // Don't re-load data store's if they are completed.
+            if (dataStore.complete === false) {
+                dataStore.addEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+                dataStore.load();
+            }
         }
 
         return this;
@@ -96,16 +80,19 @@ class AssetLoader extends EventDispatcher
     {
         event.target.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
 
+        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, event.target));
+
         for (var key in this._dataStores)
         {
             var dataStore:IDataStore = this._dataStores[key];
-            if (dataStore.complete == false)
+            if (dataStore.complete === false)
             {
+                // If any data store items are not complete then exit and don't let the LoaderEvent.LOAD_COMPLETE event to dispatch.
                 return;
             }
         }
 
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE));
+        this.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE, false, false, this._dataStores));
     }
 }
-export = AssetLoader;
+export = Loader;
