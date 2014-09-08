@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Loader - StructureJS</title>
+    <title>src/util/BulkLoader.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -49,11 +49,13 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
-                <li><a class="type" href="../classes/DataStore.html">DataStore</a></li>
+                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -64,8 +66,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
@@ -140,154 +140,108 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>Loader Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src/util/BulkLoader.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the &quot;Software&quot;), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+ * OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_util_Loader.js.html#l32"><code>src&#x2F;util&#x2F;Loader.js:32</code></a>
-        </div>
-    
+    // Imports
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var EventDispatcher = require(&#x27;structurejs/event/EventDispatcher&#x27;);
+    var LoaderEvent = require(&#x27;structurejs/event/LoaderEvent&#x27;);
 
-    
-        
-            Module: <a href="../modules/util.html">util</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * The BulkLoader...
+     *
+     * @class BulkLoader
+     * @module StructureJS
+     * @submodule util
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     */
+    var BulkLoader = (function () {
 
-    
+        var _super = Extend(BulkLoader, EventDispatcher);
+
+        function BulkLoader() {
+            _super.call(this);
+            this._dataStores = [];
+        }
+        BulkLoader.prototype.addFile = function (dataStore, key) {
+            this._dataStores[key] = dataStore;
+            return this;
+        };
+
+        BulkLoader.prototype.getFile = function (key) {
+            return this._dataStores[key];
+        };
+
+        BulkLoader.prototype.getData = function (key) {
+            return this._dataStores[key].data;
+        };
+
+        BulkLoader.prototype.load = function () {
+            for (var key in this._dataStores) {
+                var dataStore = this._dataStores[key];
+
+                // Don&#x27;t re-load data store&#x27;s if they are completed.
+                if (dataStore.complete === false) {
+                    dataStore.addEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+                    dataStore.load();
+                }
+            }
+
+            return this;
+        };
+
+        BulkLoader.prototype.onLoadComplete = function (event) {
+            event.target.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, event.target));
+
+            for (var key in this._dataStores) {
+                var dataStore = this._dataStores[key];
+                if (dataStore.complete === false) {
+                    // If any data store items are not complete then exit and don&#x27;t let the LoaderEvent.LOAD_COMPLETE event to dispatch.
+                    return;
+                }
+            }
+
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE, false, false, this._dataStores));
+        };
+        return BulkLoader;
+    })();
+
+    module.exports = BulkLoader;
+
+});
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The Loader...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_Loader" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>Loader</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_Loader.js.html#l32"><code>src&#x2F;util&#x2F;Loader.js:32</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>

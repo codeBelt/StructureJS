@@ -49,11 +49,13 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
-                <li><a class="type" href="../classes/DataStore.html">DataStore</a></li>
+                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -64,8 +66,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
@@ -146,7 +146,7 @@
 
     
         <div class="extends">
-            Extends <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a>
+            Extends <a href="../classes/ObjectManager.html" class="crosslink">ObjectManager</a>
         </div>
     
 
@@ -223,6 +223,12 @@ The EventDispatcher provides methods for managing prioritized queues of event li
                     
                 </li>
             
+                <li class="index-item property protected inherited">
+                    <a href="#property_isEnabled">isEnabled</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public">
                     <a href="#property_parent">parent</a>
 
@@ -268,8 +274,22 @@ The EventDispatcher provides methods for managing prioritized queues of event li
                     
                 </li>
             
+                <li class="index-item method public inherited">
+                    <a href="#method_disable">disable</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_dispatchEvent">dispatchEvent</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_enable">enable</a>
 
                     
                     
@@ -405,6 +425,57 @@ The EventDispatcher provides methods for managing prioritized queues of event li
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isEnabled" class="anchor-link"></a>
+<div class="property item protected inherited">
+    <h3 class="name"><code>isEnabled</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#property_isEnabled" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l23"><code>src&#x2F;ObjectManager.js:23</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -821,6 +892,84 @@ on other objects before calling the super.</p>
 </div>
 
         
+            <a name="method_disable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>disable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_disable" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l57"><code>src&#x2F;ObjectManager.js:57</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.disable = function() {
+     if (this.isEnabled === false) return this;
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     return _super.prototype.disable.call(this);
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_dispatchEvent" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>dispatchEvent</code>
@@ -925,6 +1074,84 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     // Here is a common inline event being dispatched
     instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_enable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>enable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_enable" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l33"><code>src&#x2F;ObjectManager.js:33</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+     if (this.isEnabled === true) return this;
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     return _super.prototype.enable.call(this);
+}</code></pre>
 
                 </div>
             </div>

@@ -49,11 +49,13 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
-                <li><a class="type" href="../classes/DataStore.html">DataStore</a></li>
+                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -64,8 +66,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
@@ -176,20 +176,20 @@ define(function (require, exports, module) { // jshint ignore:line
     var LoaderEvent = require(&#x27;structurejs/event/LoaderEvent&#x27;);
 
     /**
-     * The DataStore...
+     * The DataStoreAbstract...
      *
-     * @class DataStore
+     * @class DataStoreAbstract
      * @module StructureJS
      * @submodule model
      * @constructor
      * @param path {string}
      * @author Robert S. (www.codeBelt.com)
      */
-    var DataStore = (function () {
+    var DataStoreAbstract = (function () {
 
-        var _super = Extend(DataStore, EventDispatcher);
+        var _super = Extend(DataStoreAbstract, EventDispatcher);
 
-        function DataStore(path) {
+        function DataStoreAbstract(path) {
             _super.call(this);
             /**
              * YUIDoc_comment
@@ -224,7 +224,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method load
          * @protected
          */
-        DataStore.prototype.load = function () {
+        DataStoreAbstract.prototype.load = function () {
         };
 
         /**
@@ -233,7 +233,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method _onLoaderComplete
          * @protected
          */
-        DataStore.prototype._onLoaderComplete = function () {
+        DataStoreAbstract.prototype._onLoaderComplete = function () {
             var rest = [];
             for (var _i = 0; _i &lt; (arguments.length - 0); _i++) {
                 rest[_i] = arguments[_i + 0];
@@ -242,10 +242,10 @@ define(function (require, exports, module) { // jshint ignore:line
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this));
         };
 
-        return DataStore;
+        return DataStoreAbstract;
     })();
 
-    module.exports = DataStore;
+    module.exports = DataStoreAbstract;
 
 });
     </pre>

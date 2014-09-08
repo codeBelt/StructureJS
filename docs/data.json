@@ -118,7 +118,7 @@
             "name": "src/model/datastore/DataStoreAbstract.js",
             "modules": {},
             "classes": {
-                "DataStore": 1
+                "DataStoreAbstract": 1
             },
             "fors": {},
             "namespaces": {}
@@ -211,6 +211,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/util/BulkLoader.js": {
+            "name": "src/util/BulkLoader.js",
+            "modules": {},
+            "classes": {
+                "BulkLoader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/util/ComponentFactory.js": {
             "name": "src/util/ComponentFactory.js",
             "modules": {},
@@ -224,15 +233,6 @@
             "name": "src/util/Extend.js",
             "modules": {},
             "classes": {},
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/util/Loader.js": {
-            "name": "src/util/Loader.js",
-            "modules": {},
-            "classes": {
-                "Loader": 1
-            },
             "fors": {},
             "namespaces": {}
         },
@@ -335,7 +335,7 @@
                 "LocalStorageEvent": 1,
                 "RouteEvent": 1,
                 "TimerEvent": 1,
-                "DataStore": 1,
+                "DataStoreAbstract": 1,
                 "JsonDataStore": 1,
                 "Collection": 1,
                 "Route": 1,
@@ -345,8 +345,8 @@
                 "URLLoaderDataFormat": 1,
                 "URLRequest": 1,
                 "URLRequestMethod": 1,
+                "BulkLoader": 1,
                 "ComponentFactory": 1,
-                "Loader": 1,
                 "MobileUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
@@ -416,7 +416,7 @@
             "name": "model",
             "submodules": {},
             "classes": {
-                "DataStore": 1,
+                "DataStoreAbstract": 1,
                 "JsonDataStore": 1,
                 "Collection": 1,
                 "Route": 1,
@@ -427,7 +427,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The DataStore...",
+            "description": "The DataStoreAbstract...",
             "file": "src/model/ValueObject.js",
             "line": 8
         },
@@ -454,7 +454,7 @@
             "name": "util",
             "submodules": {},
             "classes": {
-                "Loader": 1,
+                "BulkLoader": 1,
                 "MobileUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
@@ -467,7 +467,7 @@
             "namespaces": {},
             "module": "StructureTS",
             "namespace": "",
-            "description": "The Loader...",
+            "description": "The BulkLoader...",
             "file": "src/util/ValidationUtil.js",
             "line": 8
         },
@@ -683,7 +683,7 @@
             "line": 8,
             "description": "The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class.\nThe EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.",
             "submodule": "event",
-            "extends": "BaseObject",
+            "extends": "ObjectManager",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
@@ -869,9 +869,9 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
-        "DataStore": {
-            "name": "DataStore",
-            "shortname": "DataStore",
+        "DataStoreAbstract": {
+            "name": "DataStoreAbstract",
+            "shortname": "DataStoreAbstract",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -881,7 +881,7 @@
             "namespace": "",
             "file": "src/model/datastore/DataStoreAbstract.js",
             "line": 32,
-            "description": "The DataStore...",
+            "description": "The DataStoreAbstract...",
             "submodule": "model",
             "is_constructor": 1,
             "params": [
@@ -1094,6 +1094,23 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "BulkLoader": {
+            "name": "BulkLoader",
+            "shortname": "BulkLoader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/util/BulkLoader.js",
+            "line": 32,
+            "description": "The BulkLoader...",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "ComponentFactory": {
             "name": "ComponentFactory",
             "shortname": "ComponentFactory",
@@ -1107,23 +1124,6 @@
             "file": "src/util/ComponentFactory.js",
             "line": 4,
             "description": "A helper class to create multiple instances of the same Component Class.",
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
-        "Loader": {
-            "name": "Loader",
-            "shortname": "Loader",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/util/Loader.js",
-            "line": 32,
-            "description": "The Loader...",
-            "submodule": "util",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
@@ -3709,7 +3709,7 @@
             "type": "{any}",
             "access": "public",
             "tagname": "",
-            "class": "DataStore",
+            "class": "DataStoreAbstract",
             "module": "StructureJS",
             "submodule": "model"
         },
@@ -3722,7 +3722,7 @@
             "type": "{string}",
             "access": "public",
             "tagname": "",
-            "class": "DataStore",
+            "class": "DataStoreAbstract",
             "module": "StructureJS",
             "submodule": "model"
         },
@@ -3735,7 +3735,7 @@
             "type": "{boolean}",
             "access": "public",
             "tagname": "",
-            "class": "DataStore",
+            "class": "DataStoreAbstract",
             "module": "StructureJS",
             "submodule": "model"
         },
@@ -3747,7 +3747,7 @@
             "name": "load",
             "access": "protected",
             "tagname": "",
-            "class": "DataStore",
+            "class": "DataStoreAbstract",
             "module": "StructureJS",
             "submodule": "model"
         },
@@ -3759,7 +3759,7 @@
             "name": "_onLoaderComplete",
             "access": "protected",
             "tagname": "",
-            "class": "DataStore",
+            "class": "DataStoreAbstract",
             "module": "StructureJS",
             "submodule": "model"
         },
@@ -4493,7 +4493,7 @@
             "file": "src/plugin/jquery.eventListener.js",
             "line": 6,
             "description": "A bind polyfill for browsers that don't support the bind method.",
-            "class": "ComponentFactory",
+            "class": "BulkLoader",
             "module": "StructureJS"
         },
         {
@@ -4510,21 +4510,21 @@
                 "description": "",
                 "type": "String"
             },
-            "class": "ComponentFactory",
+            "class": "BulkLoader",
             "module": "StructureJS"
         },
         {
             "file": "src/plugin/jquery.eventListener.js",
             "line": 53,
             "description": "The jQuery addEventListener plugin",
-            "class": "ComponentFactory",
+            "class": "BulkLoader",
             "module": "StructureJS"
         },
         {
             "file": "src/plugin/jquery.eventListener.js",
             "line": 88,
             "description": "The jQuery removeEventListener plugin",
-            "class": "ComponentFactory",
+            "class": "BulkLoader",
             "module": "StructureJS"
         },
         {
@@ -4564,7 +4564,7 @@
             "file": "src/util/Extend.js",
             "line": 4,
             "description": "Snippet from TypeScript compiler.",
-            "class": "Loader",
+            "class": "MobileUtil",
             "module": "StructureJS"
         },
         {

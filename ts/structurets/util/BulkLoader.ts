@@ -27,15 +27,15 @@ import EventDispatcher = require('../event/EventDispatcher')
 import LoaderEvent = require('../event/LoaderEvent')
 
 /**
- * The Loader...
+ * The BulkLoader...
  *
- * @class Loader
+ * @class BulkLoader
  * @module StructureJS
  * @submodule util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class Loader extends EventDispatcher
+class BulkLoader extends EventDispatcher
 {
     public _dataStores:IDataStore[] = [];
 
@@ -95,4 +95,4 @@ class Loader extends EventDispatcher
         this.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE, false, false, this._dataStores));
     }
 }
-export = Loader;
+export = BulkLoader;

@@ -49,11 +49,13 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
-                <li><a class="type" href="../classes/DataStore.html">DataStore</a></li>
+                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -64,8 +66,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
@@ -148,7 +148,7 @@ define(function (require, exports, module) { // jshint ignore:line
     &#x27;use strict&#x27;;
 
     var Extend = require(&#x27;structurejs/util/Extend&#x27;);
-    var BaseObject = require(&#x27;structurejs/BaseObject&#x27;);
+    var ObjectManager = require(&#x27;structurejs/ObjectManager&#x27;);
     var BaseEvent = require(&#x27;structurejs/event/BaseEvent&#x27;);
 
     /**
@@ -156,7 +156,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
      *
      * @class EventDispatcher
-     * @extends BaseObject
+     * @extends ObjectManager
      * @module StructureJS
      * @submodule event
      * @constructor
@@ -164,7 +164,7 @@ define(function (require, exports, module) { // jshint ignore:line
      **/
     var EventDispatcher = (function () {
 
-        var _super = Extend(EventDispatcher, BaseObject);
+        var _super = Extend(EventDispatcher, ObjectManager);
 
         function EventDispatcher() {
             _super.call(this);

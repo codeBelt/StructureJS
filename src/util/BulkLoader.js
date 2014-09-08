@@ -30,36 +30,36 @@ define(function (require, exports, module) { // jshint ignore:line
     var LoaderEvent = require('structurejs/event/LoaderEvent');
 
     /**
-    * The Loader...
-    *
-    * @class Loader
-    * @module StructureJS
-    * @submodule util
-    * @constructor
-    * @author Robert S. (www.codeBelt.com)
-    */
-    var Loader = (function () {
+     * The BulkLoader...
+     *
+     * @class BulkLoader
+     * @module StructureJS
+     * @submodule util
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     */
+    var BulkLoader = (function () {
 
-        var _super = Extend(Loader, EventDispatcher);
+        var _super = Extend(BulkLoader, EventDispatcher);
 
-        function Loader() {
+        function BulkLoader() {
             _super.call(this);
             this._dataStores = [];
         }
-        Loader.prototype.addFile = function (dataStore, key) {
+        BulkLoader.prototype.addFile = function (dataStore, key) {
             this._dataStores[key] = dataStore;
             return this;
         };
 
-        Loader.prototype.getFile = function (key) {
+        BulkLoader.prototype.getFile = function (key) {
             return this._dataStores[key];
         };
 
-        Loader.prototype.getData = function (key) {
+        BulkLoader.prototype.getData = function (key) {
             return this._dataStores[key].data;
         };
 
-        Loader.prototype.load = function () {
+        BulkLoader.prototype.load = function () {
             for (var key in this._dataStores) {
                 var dataStore = this._dataStores[key];
 
@@ -73,7 +73,7 @@ define(function (require, exports, module) { // jshint ignore:line
             return this;
         };
 
-        Loader.prototype.onLoadComplete = function (event) {
+        BulkLoader.prototype.onLoadComplete = function (event) {
             event.target.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
 
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, event.target));
@@ -88,9 +88,9 @@ define(function (require, exports, module) { // jshint ignore:line
 
             this.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE, false, false, this._dataStores));
         };
-        return Loader;
+        return BulkLoader;
     })();
 
-    module.exports = Loader;
+    module.exports = BulkLoader;
 
 });
