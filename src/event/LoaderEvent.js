@@ -25,6 +25,9 @@ define(function (require, exports, module) { // jshint ignore:line
         var _super = Extend(LoaderEvent, BaseEvent);
 
         function LoaderEvent(type, bubbles, cancelable, data) {
+            if (typeof bubbles === "undefined") { bubbles = false; }
+            if (typeof cancelable === "undefined") { cancelable = false; }
+            if (typeof data === "undefined") { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
         /**
@@ -33,10 +36,29 @@ define(function (require, exports, module) { // jshint ignore:line
         LoaderEvent.prototype.clone = function () {
             return new LoaderEvent(this.type, this.bubble, this.cancelable, this.data);
         };
+        /**
+         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+         *
+         * @event COMPLETE
+         * @type {string}
+         * @static
+         */
         LoaderEvent.COMPLETE = "LoaderEvent.complete";
-
+        /**
+         * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+         *
+         * @event LOAD_COMPLETE
+         * @type {string}
+         * @static
+         */
         LoaderEvent.LOAD_COMPLETE = "LoaderEvent.loadComplete";
-
+        /**
+         * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+         *
+         * @event ERROR
+         * @type {string}
+         * @static
+         */
         LoaderEvent.ERROR = "LoaderEvent.error";
         return LoaderEvent;
     })();

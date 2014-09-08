@@ -35,11 +35,13 @@ import URLLoaderDataFormat = require('URLLoaderDataFormat')
  * @module StructureJS
  * @submodule net
  * @constructor
+ * @param [request=null] {URLRequest}
  * @author Robert S. (www.codeBelt.com)
  */
 class URLLoader extends EventDispatcher
 {
     /**
+     * YUIDoc_comment
      *
      * @property dataFormat
      * @type {string}
@@ -48,6 +50,7 @@ class URLLoader extends EventDispatcher
     public dataFormat:string = URLLoaderDataFormat.TEXT;
 
     /**
+     * YUIDoc_comment
      *
      * @property data
      * @type {any}
@@ -56,6 +59,7 @@ class URLLoader extends EventDispatcher
     public data:any = null;
 
     /**
+     * YUIDoc_comment
      *
      * @property ready
      * @type {boolean}
@@ -64,6 +68,7 @@ class URLLoader extends EventDispatcher
     public ready:boolean = false;
 
     /**
+     * YUIDoc_comment
      *
      * @property _xhr
      * @type {JQueryXHR}
@@ -82,6 +87,13 @@ class URLLoader extends EventDispatcher
         }
     }
 
+    /**
+     * YUIDoc_comment
+     *
+     * @method load
+     * @param request {URLRequest}
+     * @public
+     */
     public load(request:URLRequest):void
     {
         this.ready = false;
@@ -89,6 +101,7 @@ class URLLoader extends EventDispatcher
 
         this._xhr = jQuery.ajax({
             type: request.method,
+            jsonp: 'callback',
             url: request.url,
             data: request.data,
             contentType: request.contentType,
@@ -100,31 +113,10 @@ class URLLoader extends EventDispatcher
         });
     }
 
-    public onLoadSuccess():void
-    {
-        //console.log("onLoadSuccess", arguments);
-    }
 
-    public onBeforeSend():void
-    {
-        //console.log("onBeforeSend", arguments);
-    }
-
-    public onLoadError():void
-    {
-        //console.log("[URLLoader] - onLoadError", arguments);
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
-    }
-
-    public onComplete(data):void
-    {
-        this.ready = true;
-        //console.log('[' + this.getQualifiedClassName() + ']', 'onComplete', data);
-        this.data = data.responseText;
-        this.ready = true;
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
-    }
-
+    /**
+     * @overridden EventDispatcher.destroy
+     */
     public destroy():void
     {
         this.abort();
@@ -138,10 +130,59 @@ class URLLoader extends EventDispatcher
      * @method abort
      * @public
      */
-    private abort():void {
+    public abort():void {
         if (this._xhr != null) {
             this._xhr.abort();
         }
+    }
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method abort
+     * @private
+     */
+    private onLoadSuccess():void
+    {
+        //console.log("onLoadSuccess", arguments);
+    }
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method abort
+     * @private
+     */
+    private onBeforeSend():void
+    {
+        //console.log("onBeforeSend", arguments);
+    }
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method abort
+     * @private
+     */
+    private onLoadError():void
+    {
+        //console.log("[URLLoader] - onLoadError", arguments);
+        this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
+    }
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method abort
+     * @private
+     */
+    private onComplete(data):void
+    {
+        this.ready = true;
+        //console.log('[' + this.getQualifiedClassName() + ']', 'onComplete', data);
+        this.data = data.responseText;
+        this.ready = true;
+        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
     }
 
 }

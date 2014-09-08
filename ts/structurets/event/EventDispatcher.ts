@@ -22,7 +22,7 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import BaseObject = require("../BaseObject");
+import ObjectManager = require("../ObjectManager");
 import BaseEvent = require("BaseEvent");
 
 /**
@@ -30,19 +30,19 @@ import BaseEvent = require("BaseEvent");
  * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
  *
  * @class EventDispatcher
- * @extends BaseObject
+ * @extends ObjectManager
  * @module StructureJS
  * @submodule event
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class EventDispatcher extends BaseObject
+class EventDispatcher extends ObjectManager
 {
     /**
      * Holds a reference to added listeners.
      *
      * @property _listeners
-     * @type {array}
+     * @type {Array}
      * @private
      */
     private _listeners:any[] = null;
@@ -57,16 +57,6 @@ class EventDispatcher extends BaseObject
      * @public
      */
     public parent:any = null;
-
-    /**
-     * The isEnabled property is used to keep track of the enabled state of the object.
-     *
-     * @property isEnabled
-     * @type {boolean}
-     * @default false
-     * @protected
-     */
-    public isEnabled:boolean = false;
 
     constructor()
     {
@@ -238,55 +228,9 @@ class EventDispatcher extends BaseObject
      */
     public destroy():void
     {
-        this.disable();
+        super.disable();
 
         super.destroy();
-    }
-
-    /**
-     * The enable method is responsible for enabling event listeners and/or children of the containing objects.
-     * @example
-     ClassName.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
-
-            this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-            this._childInstance.enable();
-
-            return _super.prototype.enable.call(this);
-        }
-     * @method enable
-     * @public
-     * @chainable
-     */
-    public enable():any
-    {
-        if (this.isEnabled === true) return this;
-
-        this.isEnabled = true;
-        return this;
-    }
-
-    /**
-     * The disable method is responsible for disabling event listeners and/or children of the containing objects.
-     * @example
-     ClassName.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
-
-            this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-            this._childInstance.disable();
-
-            return _super.prototype.disable.call(this);
-        }
-     * @method disable
-     * @public
-     * @chainable
-     */
-    public disable():any
-    {
-        if (this.isEnabled === false) return this;
-
-        this.isEnabled = false;
-        return this;
     }
 
     /**

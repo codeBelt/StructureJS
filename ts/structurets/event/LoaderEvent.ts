@@ -42,7 +42,7 @@ import BaseEvent = require('BaseEvent')
 class LoaderEvent extends BaseEvent
 {
     /**
-     * YUIDoc_comment
+     * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
      *
      * @event COMPLETE
      * @type {string}
@@ -51,7 +51,7 @@ class LoaderEvent extends BaseEvent
     public static COMPLETE:string = "LoaderEvent.complete";
 
     /**
-     * YUIDoc_comment
+     * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
      *
      * @event LOAD_COMPLETE
      * @type {string}
@@ -60,7 +60,7 @@ class LoaderEvent extends BaseEvent
     public static LOAD_COMPLETE:string = "LoaderEvent.loadComplete";
 
     /**
-     * YUIDoc_comment
+     * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
      *
      * @event ERROR
      * @type {string}

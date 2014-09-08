@@ -25,6 +25,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof request === "undefined") { request = null; }
             _super.call(this);
             /**
+             * YUIDoc_comment
              *
              * @property dataFormat
              * @type {string}
@@ -32,6 +33,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.dataFormat = URLLoaderDataFormat.TEXT;
             /**
+             * YUIDoc_comment
              *
              * @property data
              * @type {any}
@@ -39,6 +41,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.data = null;
             /**
+             * YUIDoc_comment
              *
              * @property ready
              * @type {boolean}
@@ -46,6 +49,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.ready = false;
             /**
+             * YUIDoc_comment
              *
              * @property _xhr
              * @type {JQueryXHR}
@@ -58,16 +62,24 @@ define(function (require, exports, module) { // jshint ignore:line
                 this.load(request);
             }
         }
+        /**
+         * YUIDoc_comment
+         *
+         * @method load
+         * @param request {URLRequest}
+         * @public
+         */
         URLLoader.prototype.load = function (request) {
             this.ready = false;
             var self = this;
 
             this._xhr = jQuery.ajax({
-                type: request.method,
                 url: request.url,
+                type: request.method,
                 data: request.data,
                 contentType: request.contentType,
                 dataType: self.dataFormat,
+                jsonp: 'callback',
                 beforeSend: self.onBeforeSend.bind(this),
                 success: self.onLoadSuccess.bind(this),
                 error: self.onLoadError.bind(this),
@@ -75,28 +87,9 @@ define(function (require, exports, module) { // jshint ignore:line
             });
         };
 
-        URLLoader.prototype.onLoadSuccess = function () {
-            //console.log("onLoadSuccess", arguments);
-        };
-
-        URLLoader.prototype.onBeforeSend = function () {
-            //console.log("onBeforeSend", arguments);
-        };
-
-        URLLoader.prototype.onLoadError = function () {
-            //console.log("[URLLoader] - onLoadError", arguments);
-            this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
-        };
-
-        URLLoader.prototype.onComplete = function (data) {
-            this.ready = true;
-
-            //console.log('[' + this.getQualifiedClassName() + ']', 'onComplete', data);
-            this.data = data.responseText;
-            this.ready = true;
-            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
-        };
-
+        /**
+         * @overridden EventDispatcher.destroy
+         */
         URLLoader.prototype.destroy = function () {
             this.abort();
 
@@ -113,6 +106,48 @@ define(function (require, exports, module) { // jshint ignore:line
             if (this._xhr != null) {
                 this._xhr.abort();
             }
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onLoadSuccess = function (data) {
+            this.data = data;
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onBeforeSend = function () {
+            //console.log("onBeforeSend", arguments);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onLoadError = function () {
+            console.log("[URLLoader] - onLoadError", arguments);
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onComplete = function () {
+            this.ready = true;
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));
         };
         return URLLoader;
     })();

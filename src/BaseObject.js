@@ -56,10 +56,10 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          * @example
          *     ClassName.prototype.destroy = function() {
-         *          this._childInstance.destroy();
-         *
-         *          _super.prototype.destroy.call(this);
-         *     }
+        *          this._childInstance.destroy();
+        *
+        *          _super.prototype.destroy.call(this);
+        *     }
          */
         BaseObject.prototype.destroy = function () {
             for (var key in this) {

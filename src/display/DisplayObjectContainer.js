@@ -115,8 +115,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         DisplayObjectContainer.prototype.createChildren = function () {
-            // Meant to be overridden because the extended class should call the createChildren method.
-            return this;
+            throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
         };
 
         /**
@@ -135,7 +134,7 @@ define(function (require, exports, module) { // jshint ignore:line
         DisplayObjectContainer.prototype.addChild = function (child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child);
+                child.parent.removeChild(child, false);
             }
 
             this.children.push(child);
@@ -161,13 +160,62 @@ define(function (require, exports, module) { // jshint ignore:line
         DisplayObjectContainer.prototype.addChildAt = function (child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child);
+                child.parent.removeChild(child, false);
             }
 
             this.children.splice(index, 0, child);
             this.numChildren = this.children.length;
 
             child.parent = this;
+
+            return this;
+        };
+
+        /**
+         * Removes the specified child object instance from the child list of the parent object instance.
+         * The parent property of the removed child is set to null , and the object is garbage collected if no other references
+         * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
+         *
+         * @method removeChild
+         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
+         * @returns {DisplayObjectContainer} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObjectContainer.prototype.removeChild = function (child, destroy) {
+            var index = this.getChildIndex(child);
+            if (index !== -1) {
+                // Removes the child object from the parent.
+                this.children.splice(index, 1);
+            }
+
+            if (destroy === true) {
+                child.destroy();
+            } else {
+                child.disable();
+            }
+
+            child.parent = null;
+
+            this.numChildren = this.children.length;
+
+            return this;
+        };
+
+        /**
+         * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
+         * The parent property of the removed children is set to null , and the objects are garbage collected if
+         * no other references to the children exist.
+         *
+         * @method removeChildren
+         * @returns {DisplayObjectContainer} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObjectContainer.prototype.removeChildren = function (destroy) {
+            while (this.children.length > 0) {
+                this.removeChild(this.children.pop(), destroy);
+            }
 
             return this;
         };
@@ -183,8 +231,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         DisplayObjectContainer.prototype.swapChildren = function (child1, child2) {
-            // Meant to be overridden because the extended class should call the addChildAt method.
-            return this;
+            throw new Error('[' + this.getQualifiedClassName() + '] Error: The swapChildren method is meant to be overridden.');
         };
 
         /**
@@ -232,50 +279,6 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         DisplayObjectContainer.prototype.contains = function (child) {
             return this.children.indexOf(child) >= 0;
-        };
-
-        /**
-         * Removes the specified child object instance from the child list of the parent object instance.
-         * The parent property of the removed child is set to null , and the object is garbage collected if no other references
-         * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
-         *
-         * @method removeChild
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        DisplayObjectContainer.prototype.removeChild = function (child) {
-            var index = this.getChildIndex(child);
-            if (index !== -1) {
-                this.children.splice(index, 1);
-            }
-            child.disable();
-            child.parent = null;
-
-            this.numChildren = this.children.length;
-
-            return this;
-        };
-
-        /**
-         * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
-         * The parent property of the removed children is set to null , and the objects are garbage collected if
-         * no other references to the children exist.
-         *
-         * @method removeChildren
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        DisplayObjectContainer.prototype.removeChildren = function () {
-            while (this.children.length > 0) {
-                this.removeChild(this.children.pop());
-            }
-
-            this.numChildren = this.children.length;
-
-            return this;
         };
 
         /**
@@ -336,6 +339,16 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         DisplayObjectContainer.prototype.layoutChildren = function () {
+            return this;
+        };
+
+        /**
+         * @overridden EventDispatcher.destroy
+         */
+        DisplayObjectContainer.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+        };
+        return DisplayObjectContainer;ainer.prototype.layoutChildren = function () {
             return this;
         };
 

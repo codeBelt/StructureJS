@@ -554,8 +554,12 @@ class DOMElement extends DisplayObjectContainer
      */
     public removeChild(child:DOMElement, destroy:boolean = true):any
     {
-        child.$element.unbind();
-        child.$element.remove();
+        // If destroy was called before removeChild so id doesn't error.
+        if (child.$element != null)
+        {
+            child.$element.unbind();
+            child.$element.remove();
+        }
 
         super.removeChild(child, destroy);
 

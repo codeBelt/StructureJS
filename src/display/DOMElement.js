@@ -216,24 +216,24 @@ define(function (require, exports, module) { // jshint ignore:line
          * @example
          *     // EXAMPLE 1: By default your view class will be a div element:
          *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this);
-         *
-         *          this._childInstance = new DOMElement();
-         *          this.addChild(this._childInstance);
-         *     }
+        *          _super.prototype.createChildren.call(this);
+        *
+        *          this._childInstance = new DOMElement();
+        *          this.addChild(this._childInstance);
+        *     }
          *
          *     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
          *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, 'ul');
-         *     }
+        *          _super.prototype.createChildren.call(this, 'ul');
+        *     }
          *
          *     // Then you could nest other elements inside this base view/element.
          *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
-         *
-         *          var li = new DOMElement('li', {text: 'Robert is cool'});
-         *          this.addChild(li);
-         *     }
+        *          _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
+        *
+        *          var li = new DOMElement('li', {text: 'Robert is cool'});
+        *          this.addChild(li);
+        *     }
          *
          *     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below
          *     // inline Handlebar template in your html file.
@@ -249,17 +249,17 @@ define(function (require, exports, module) { // jshint ignore:line
          *     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate".
          *     // There is a second optional argument where you can pass data for the Handlebar template to use.
          *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });
-         *
-         *     }
+        *          _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });
+        *
+        *     }
          *
          *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into createChildren.
          *     var HomeTemplate = require('hbs!templates/HomeTemplate');
          *
          *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, HomeTemplate, {data: "some data"});
-         *
-         *     }
+        *          _super.prototype.createChildren.call(this, HomeTemplate, {data: "some data"});
+        *
+        *     }
          */
         DOMElement.prototype.createChildren = function (type, params) {
             if (typeof type === "undefined") { type = 'div'; }
@@ -497,8 +497,11 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         DOMElement.prototype.removeChild = function (child, destroy) {
             if (typeof destroy === "undefined") { destroy = true; }
-            child.$element.unbind();
-            child.$element.remove();
+            // If destroy was called before removeChild so id doesn't error.
+            if (child.$element != null) {
+                child.$element.unbind();
+                child.$element.remove();
+            }
 
             _super.prototype.removeChild.call(this, child, destroy);
 

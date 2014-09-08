@@ -2,7 +2,7 @@ define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     var Extend = require('structurejs/util/Extend');
-    var BaseObject = require('structurejs/BaseObject');
+    var ObjectManager = require('structurejs/ObjectManager');
     var BaseEvent = require('structurejs/event/BaseEvent');
 
     /**
@@ -10,7 +10,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
      *
      * @class EventDispatcher
-     * @extends BaseObject
+     * @extends ObjectManager
      * @module StructureJS
      * @submodule event
      * @constructor
@@ -18,7 +18,7 @@ define(function (require, exports, module) { // jshint ignore:line
      **/
     var EventDispatcher = (function () {
 
-        var _super = Extend(EventDispatcher, BaseObject);
+        var _super = Extend(EventDispatcher, ObjectManager);
 
         function EventDispatcher() {
             _super.call(this);
@@ -26,7 +26,7 @@ define(function (require, exports, module) { // jshint ignore:line
              * Holds a reference to added listeners.
              *
              * @property _listeners
-             * @type {array}
+             * @type {Array}
              * @private
              */
             this._listeners = null;
@@ -40,15 +40,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @public
              */
             this.parent = null;
-            /**
-             * The isEnabled property is used to keep track of the enabled state of the object.
-             *
-             * @property isEnabled
-             * @type {boolean}
-             * @default false
-             * @protected
-             */
-            this.isEnabled = false;
 
             this._listeners = [];
         }
@@ -199,55 +190,9 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function () {
-            this.disable();
+            _super.prototype.disable.call(this);
 
             _super.prototype.destroy.call(this);
-        };
-
-        /**
-         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
-         * @example
-         ClassName.prototype.enable = function () {
-        if (this.isEnabled === true) return this;
-
-        this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-        this._childInstance.enable();
-
-        return _super.prototype.enable.call(this);
-        }
-         * @method enable
-         * @public
-         * @chainable
-         */
-        EventDispatcher.prototype.enable = function () {
-            if (this.isEnabled === true)
-                return this;
-
-            this.isEnabled = true;
-            return this;
-        };
-
-        /**
-         * The disable method is responsible for disabling event listeners and/or children of the containing objects.
-         * @example
-         ClassName.prototype.disable = function () {
-        if (this.isEnabled === false) return this;
-
-        this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-        this._childInstance.disable();
-
-        return _super.prototype.disable.call(this);
-        }
-         * @method disable
-         * @public
-         * @chainable
-         */
-        EventDispatcher.prototype.disable = function () {
-            if (this.isEnabled === false)
-                return this;
-
-            this.isEnabled = false;
-            return this;
         };
 
         /**
