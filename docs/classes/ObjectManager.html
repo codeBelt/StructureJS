@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>EventDispatcher - StructureJS</title>
+    <title>ObjectManager - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -140,7 +140,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>EventDispatcher Class</h1>
+                <h1>ObjectManager Class</h1>
 <div class="box meta">
     
 
@@ -152,13 +152,13 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_event_EventDispatcher.js.html#l8"><code>src&#x2F;event&#x2F;EventDispatcher.js:8</code></a>
+            Defined in: <a href="../files/src_ObjectManager.js.html#l7"><code>src&#x2F;ObjectManager.js:7</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/event.html">event</a><br>
+            Module: <a href="../modules/core.html">core</a><br>
             Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
         
     
@@ -169,8 +169,7 @@
 
 
 <div class="box intro">
-    <p>The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the <a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a> class.
-The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.</p>
+    <p>The <a href="../classes/ObjectManager.html" class="crosslink">ObjectManager</a> class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.</p>
 
 </div>
 
@@ -211,20 +210,14 @@ The EventDispatcher provides methods for managing prioritized queues of event li
 
         <ul class="index-list properties extends">
             
-                <li class="index-item property private">
-                    <a href="#property__listeners">_listeners</a>
-
-                    
-                </li>
-            
                 <li class="index-item property public inherited">
                     <a href="#property_cid">cid</a>
 
                     
                 </li>
             
-                <li class="index-item property public">
-                    <a href="#property_parent">parent</a>
+                <li class="index-item property protected">
+                    <a href="#property_isEnabled">isEnabled</a>
 
                     
                 </li>
@@ -244,7 +237,7 @@ The EventDispatcher provides methods for managing prioritized queues of event li
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_EventDispatcher">EventDispatcher</a>
+                    <a href="#method_ObjectManager">ObjectManager</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -254,13 +247,6 @@ The EventDispatcher provides methods for managing prioritized queues of event li
             
 
             
-                <li class="index-item method public">
-                    <a href="#method_addEventListener">addEventListener</a>
-
-                    
-                    
-                </li>
-            
                 <li class="index-item method public inherited">
                     <a href="#method_destroy">destroy</a>
 
@@ -269,14 +255,14 @@ The EventDispatcher provides methods for managing prioritized queues of event li
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_dispatchEvent">dispatchEvent</a>
+                    <a href="#method_disable">disable</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_getEventListeners">getEventListeners</a>
+                    <a href="#method_enable">enable</a>
 
                     
                     
@@ -284,13 +270,6 @@ The EventDispatcher provides methods for managing prioritized queues of event li
             
                 <li class="index-item method public inherited">
                     <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_removeEventListener">removeEventListener</a>
 
                     
                     
@@ -309,58 +288,6 @@ The EventDispatcher provides methods for managing prioritized queues of event li
 
     <div class="properties-detail">
         <h2>Properties</h2>
-
-        
-            <a name="property__listeners" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>_listeners</code>
-    <span class="type">Array</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_event_EventDispatcher.js.html#l25"><code>src&#x2F;event&#x2F;EventDispatcher.js:25</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>Holds a reference to added listeners.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
 
         
             <a name="property_cid" class="anchor-link"></a>
@@ -414,15 +341,15 @@ The EventDispatcher provides methods for managing prioritized queues of event li
 </div>
 
         
-            <a name="property_parent" class="anchor-link"></a>
-<div class="property item public">
-    <h3 class="name"><code>parent</code>
-    <span class="type">Any</span>
+            <a name="property_isEnabled" class="anchor-link"></a>
+<div class="property item protected">
+    <h3 class="name"><code>isEnabled</code>
+    <span class="type">Boolean</span>
 
     
 
     
-        <span class="flag public">public</span>
+        <span class="flag protected">protected</span>
     
 
     
@@ -442,7 +369,7 @@ The EventDispatcher provides methods for managing prioritized queues of event li
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l33"><code>src&#x2F;event&#x2F;EventDispatcher.js:33</code></a>
+        <a href="../files/src_ObjectManager.js.html#l23"><code>src&#x2F;ObjectManager.js:23</code></a>
         
         </p>
 
@@ -453,12 +380,12 @@ The EventDispatcher provides methods for managing prioritized queues of event li
 
     <div class="extended-detail">
         <div class="description">
-            <p>Indicates the object that contains child object. Use the parent property
-to specify a relative path to display objects that are above the current display object in the display
-list hierarchy.</p>
+            <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
 
         </div>
 
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -481,9 +408,9 @@ list hierarchy.</p>
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_EventDispatcher" class="anchor-link"></a>
+        <a name="method_ObjectManager" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>EventDispatcher</code>
+    <h3 class="name"><code>ObjectManager</code>
 
     
         <span class="paren">()</span>
@@ -516,7 +443,7 @@ list hierarchy.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l8"><code>src&#x2F;event&#x2F;EventDispatcher.js:8</code></a>
+        <a href="../files/src_ObjectManager.js.html#l7"><code>src&#x2F;ObjectManager.js:7</code></a>
         
         </p>
 
@@ -546,184 +473,6 @@ list hierarchy.</p>
 
     <div class="methods-detail">
         <h2>Methods</h2>
-
-        
-            <a name="method_addEventListener" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>addEventListener</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>type</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>callback</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>scope</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[priority=0]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_event_EventDispatcher.js.html#l46"><code>src&#x2F;event&#x2F;EventDispatcher.js:46</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">type</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The type of event.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">callback</code>
-                            <span class="type">Function</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">scope</code>
-                            <span class="type">Any</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#39;t generally maintained.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[priority=0]</code>
-                            <span class="type">Int</span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>    instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-    ClassName.prototype.handlerMethod = function (event) {
-   console.log(event.target + &quot; sent the event.&quot;);
-   }</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
 
         
             <a name="method_destroy" class="anchor-link"></a>
@@ -821,22 +570,12 @@ on other objects before calling the super.</p>
 </div>
 
         
-            <a name="method_dispatchEvent" class="anchor-link"></a>
+            <a name="method_disable" class="anchor-link"></a>
 <div class="method item public">
-    <h3 class="name"><code>dispatchEvent</code>
+    <h3 class="name"><code>disable</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -870,7 +609,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l120"><code>src&#x2F;event&#x2F;EventDispatcher.js:120</code></a>
+        <a href="../files/src_ObjectManager.js.html#l57"><code>src&#x2F;ObjectManager.js:57</code></a>
         
         </p>
 
@@ -883,34 +622,10 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
+
         </div>
 
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
         
 
         
@@ -920,11 +635,14 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>    var event = new BaseEvent(BaseEvent.CHANGE);
-    instance.dispatchEvent(event);
+                    <pre class="code prettyprint"><code>ClassName.prototype.disable = function() {
+     if (this.isEnabled === false) return this;
 
-    // Here is a common inline event being dispatched
-    instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     return _super.prototype.disable.call(this);
+}</code></pre>
 
                 </div>
             </div>
@@ -933,18 +651,14 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 </div>
 
         
-            <a name="method_getEventListeners" class="anchor-link"></a>
+            <a name="method_enable" class="anchor-link"></a>
 <div class="method item public">
-    <h3 class="name"><code>getEventListeners</code>
+    <h3 class="name"><code>enable</code>
 
     
         <span class="paren">()</span>
     
 
-    
-        <span class="returns-inline">
-            <span class="type">Array</span>
-        </span>
     
 
     
@@ -957,6 +671,8 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -974,7 +690,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l198"><code>src&#x2F;event&#x2F;EventDispatcher.js:198</code></a>
+        <a href="../files/src_ObjectManager.js.html#l33"><code>src&#x2F;ObjectManager.js:33</code></a>
         
         </p>
 
@@ -987,28 +703,30 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
     <div class="extended-detail">
 
         <div class="description">
-            <p>Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.</p>
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
 
         </div>
 
         
 
         
-            <div class="returns">
-                <h4>Returns:</h4>
 
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Array</span>:
-                        
-                        <p>Returns an array dictionary of the different event listener(s) on the object.</p>
+        
+            <div class="example">
+                <h4>Example:</h4>
 
-                    
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+     if (this.isEnabled === true) return this;
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     return _super.prototype.enable.call(this);
+}</code></pre>
+
                 </div>
             </div>
-        
-
         
     </div>
 </div>
@@ -1093,161 +811,6 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_removeEventListener" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>removeEventListener</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>type</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>callback</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>scope</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_event_EventDispatcher.js.html#l88"><code>src&#x2F;event&#x2F;EventDispatcher.js:88</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Removes a specified listener from the EventDispatcher object.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">type</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The type of event.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">callback</code>
-                            <span class="type">Function</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The listener object to remove.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">scope</code>
-                            <span class="type">Any</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The scope of the listener object to be removed.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>    instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-    ClassName.prototype.handlerMethod = function (event) {
-   console.log(event.target + &quot; sent the event.&quot;);
-   }</code></pre>
 
                 </div>
             </div>

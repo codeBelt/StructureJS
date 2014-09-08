@@ -53,6 +53,8 @@
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
+                <li><a class="type" href="../classes/DataStore.html">DataStore</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -61,6 +63,10 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
+            
+                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+            
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
@@ -68,6 +74,8 @@
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -97,6 +105,8 @@
             
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
                 <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
             
             </ul>
@@ -114,6 +124,8 @@
                 <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/StructureTS.html">StructureTS</a></li>
             
                 <li><a class="module" href="../modules/util.html">util</a></li>
             
@@ -159,6 +171,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (typeof request === &quot;undefined&quot;) { request = null; }
             _super.call(this);
             /**
+             * YUIDoc_comment
              *
              * @property dataFormat
              * @type {string}
@@ -166,6 +179,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.dataFormat = URLLoaderDataFormat.TEXT;
             /**
+             * YUIDoc_comment
              *
              * @property data
              * @type {any}
@@ -173,6 +187,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.data = null;
             /**
+             * YUIDoc_comment
              *
              * @property ready
              * @type {boolean}
@@ -180,6 +195,7 @@ define(function (require, exports, module) { // jshint ignore:line
              */
             this.ready = false;
             /**
+             * YUIDoc_comment
              *
              * @property _xhr
              * @type {JQueryXHR}
@@ -192,16 +208,24 @@ define(function (require, exports, module) { // jshint ignore:line
                 this.load(request);
             }
         }
+        /**
+         * YUIDoc_comment
+         *
+         * @method load
+         * @param request {URLRequest}
+         * @public
+         */
         URLLoader.prototype.load = function (request) {
             this.ready = false;
             var self = this;
 
             this._xhr = jQuery.ajax({
-                type: request.method,
                 url: request.url,
+                type: request.method,
                 data: request.data,
                 contentType: request.contentType,
                 dataType: self.dataFormat,
+                jsonp: &#x27;callback&#x27;,
                 beforeSend: self.onBeforeSend.bind(this),
                 success: self.onLoadSuccess.bind(this),
                 error: self.onLoadError.bind(this),
@@ -209,28 +233,9 @@ define(function (require, exports, module) { // jshint ignore:line
             });
         };
 
-        URLLoader.prototype.onLoadSuccess = function () {
-            //console.log(&quot;onLoadSuccess&quot;, arguments);
-        };
-
-        URLLoader.prototype.onBeforeSend = function () {
-            //console.log(&quot;onBeforeSend&quot;, arguments);
-        };
-
-        URLLoader.prototype.onLoadError = function () {
-            //console.log(&quot;[URLLoader] - onLoadError&quot;, arguments);
-            this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
-        };
-
-        URLLoader.prototype.onComplete = function (data) {
-            this.ready = true;
-
-            //console.log(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;]&#x27;, &#x27;onComplete&#x27;, data);
-            this.data = data.responseText;
-            this.ready = true;
-            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
-        };
-
+        /**
+         * @overridden EventDispatcher.destroy
+         */
         URLLoader.prototype.destroy = function () {
             this.abort();
 
@@ -247,6 +252,48 @@ define(function (require, exports, module) { // jshint ignore:line
             if (this._xhr != null) {
                 this._xhr.abort();
             }
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onLoadSuccess = function (data) {
+            this.data = data;
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onBeforeSend = function () {
+            //console.log(&quot;onBeforeSend&quot;, arguments);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onLoadError = function () {
+            console.log(&quot;[URLLoader] - onLoadError&quot;, arguments);
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method abort
+         * @private
+         */
+        URLLoader.prototype.onComplete = function () {
+            this.ready = true;
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));
         };
         return URLLoader;
     })();

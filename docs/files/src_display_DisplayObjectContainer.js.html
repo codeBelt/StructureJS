@@ -53,6 +53,8 @@
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
+                <li><a class="type" href="../classes/DataStore.html">DataStore</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -61,6 +63,10 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
+            
+                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+            
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
@@ -68,6 +74,8 @@
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -97,6 +105,8 @@
             
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
                 <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
             
             </ul>
@@ -114,6 +124,8 @@
                 <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/StructureTS.html">StructureTS</a></li>
             
                 <li><a class="module" href="../modules/util.html">util</a></li>
             
@@ -249,8 +261,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         DisplayObjectContainer.prototype.createChildren = function () {
-            // Meant to be overridden because the extended class should call the createChildren method.
-            return this;
+            throw new Error(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;] Error: The createChildren method is meant to be overridden.&#x27;);
         };
 
         /**
@@ -269,7 +280,7 @@ define(function (require, exports, module) { // jshint ignore:line
         DisplayObjectContainer.prototype.addChild = function (child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child);
+                child.parent.removeChild(child, false);
             }
 
             this.children.push(child);
@@ -295,13 +306,62 @@ define(function (require, exports, module) { // jshint ignore:line
         DisplayObjectContainer.prototype.addChildAt = function (child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child);
+                child.parent.removeChild(child, false);
             }
 
             this.children.splice(index, 0, child);
             this.numChildren = this.children.length;
 
             child.parent = this;
+
+            return this;
+        };
+
+        /**
+         * Removes the specified child object instance from the child list of the parent object instance.
+         * The parent property of the removed child is set to null , and the object is garbage collected if no other references
+         * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
+         *
+         * @method removeChild
+         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
+         * @returns {DisplayObjectContainer} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObjectContainer.prototype.removeChild = function (child, destroy) {
+            var index = this.getChildIndex(child);
+            if (index !== -1) {
+                // Removes the child object from the parent.
+                this.children.splice(index, 1);
+            }
+
+            if (destroy === true) {
+                child.destroy();
+            } else {
+                child.disable();
+            }
+
+            child.parent = null;
+
+            this.numChildren = this.children.length;
+
+            return this;
+        };
+
+        /**
+         * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
+         * The parent property of the removed children is set to null , and the objects are garbage collected if
+         * no other references to the children exist.
+         *
+         * @method removeChildren
+         * @returns {DisplayObjectContainer} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObjectContainer.prototype.removeChildren = function (destroy) {
+            while (this.children.length &gt; 0) {
+                this.removeChild(this.children.pop(), destroy);
+            }
 
             return this;
         };
@@ -317,8 +377,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         DisplayObjectContainer.prototype.swapChildren = function (child1, child2) {
-            // Meant to be overridden because the extended class should call the addChildAt method.
-            return this;
+            throw new Error(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;] Error: The swapChildren method is meant to be overridden.&#x27;);
         };
 
         /**
@@ -366,50 +425,6 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         DisplayObjectContainer.prototype.contains = function (child) {
             return this.children.indexOf(child) &gt;= 0;
-        };
-
-        /**
-         * Removes the specified child object instance from the child list of the parent object instance.
-         * The parent property of the removed child is set to null , and the object is garbage collected if no other references
-         * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
-         *
-         * @method removeChild
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        DisplayObjectContainer.prototype.removeChild = function (child) {
-            var index = this.getChildIndex(child);
-            if (index !== -1) {
-                this.children.splice(index, 1);
-            }
-            child.disable();
-            child.parent = null;
-
-            this.numChildren = this.children.length;
-
-            return this;
-        };
-
-        /**
-         * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
-         * The parent property of the removed children is set to null , and the objects are garbage collected if
-         * no other references to the children exist.
-         *
-         * @method removeChildren
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        DisplayObjectContainer.prototype.removeChildren = function () {
-            while (this.children.length &gt; 0) {
-                this.removeChild(this.children.pop());
-            }
-
-            this.numChildren = this.children.length;
-
-            return this;
         };
 
         /**
@@ -470,6 +485,16 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         DisplayObjectContainer.prototype.layoutChildren = function () {
+            return this;
+        };
+
+        /**
+         * @overridden EventDispatcher.destroy
+         */
+        DisplayObjectContainer.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+        };
+        return DisplayObjectContainer;ainer.prototype.layoutChildren = function () {
             return this;
         };
 

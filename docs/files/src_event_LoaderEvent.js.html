@@ -53,6 +53,8 @@
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
+                <li><a class="type" href="../classes/DataStore.html">DataStore</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -61,6 +63,10 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
+            
+                <li><a class="type" href="../classes/Loader.html">Loader</a></li>
+            
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
@@ -68,6 +74,8 @@
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -97,6 +105,8 @@
             
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
                 <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
             
             </ul>
@@ -114,6 +124,8 @@
                 <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/StructureTS.html">StructureTS</a></li>
             
                 <li><a class="module" href="../modules/util.html">util</a></li>
             
@@ -159,6 +171,9 @@ define(function (require, exports, module) { // jshint ignore:line
         var _super = Extend(LoaderEvent, BaseEvent);
 
         function LoaderEvent(type, bubbles, cancelable, data) {
+            if (typeof bubbles === &quot;undefined&quot;) { bubbles = false; }
+            if (typeof cancelable === &quot;undefined&quot;) { cancelable = false; }
+            if (typeof data === &quot;undefined&quot;) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
         /**
@@ -167,10 +182,29 @@ define(function (require, exports, module) { // jshint ignore:line
         LoaderEvent.prototype.clone = function () {
             return new LoaderEvent(this.type, this.bubble, this.cancelable, this.data);
         };
+        /**
+         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+         *
+         * @event COMPLETE
+         * @type {string}
+         * @static
+         */
         LoaderEvent.COMPLETE = &quot;LoaderEvent.complete&quot;;
-
+        /**
+         * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+         *
+         * @event LOAD_COMPLETE
+         * @type {string}
+         * @static
+         */
         LoaderEvent.LOAD_COMPLETE = &quot;LoaderEvent.loadComplete&quot;;
-
+        /**
+         * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+         *
+         * @event ERROR
+         * @type {string}
+         * @static
+         */
         LoaderEvent.ERROR = &quot;LoaderEvent.error&quot;;
         return LoaderEvent;
     })();

@@ -6,13 +6,17 @@ YUI.add("yuidoc-meta", function(Y) {
         "Collection",
         "ComponentFactory",
         "DOMElement",
+        "DataStore",
         "DisplayObjectContainer",
         "EventBroker",
         "EventDispatcher",
+        "JsonDataStore",
+        "Loader",
         "LoaderEvent",
         "LocalStorageController",
         "LocalStorageEvent",
         "MobileUtil",
+        "ObjectManager",
         "Route",
         "RouteEvent",
         "Router",
@@ -27,10 +31,12 @@ YUI.add("yuidoc-meta", function(Y) {
         "URLRequest",
         "URLRequestMethod",
         "Util",
+        "ValidationUtil",
         "ValueObject"
     ],
     "modules": [
         "StructureJS",
+        "StructureTS",
         "controller",
         "core",
         "event",
@@ -58,7 +64,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "model",
             "name": "model",
-            "description": "YUIDoc_comment"
+            "description": "The DataStore..."
         },
         {
             "displayName": "net",
@@ -70,9 +76,13 @@ YUI.add("yuidoc-meta", function(Y) {
             "name": "StructureJS"
         },
         {
+            "displayName": "StructureTS",
+            "name": "StructureTS"
+        },
+        {
             "displayName": "util",
             "name": "util",
-            "description": "The MobileUtil..."
+            "description": "The Loader..."
         },
         {
             "displayName": "view",

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>URLContentType - StructureJS</title>
+    <title>src/ObjectManager.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -140,154 +140,99 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>URLContentType Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src/ObjectManager.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_net_URLContentType.js.html#l6"><code>src&#x2F;net&#x2F;URLContentType.js:6</code></a>
-        </div>
-    
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var BaseObject = require(&#x27;structurejs/BaseObject&#x27;);
 
-    
-        
-            Module: <a href="../modules/net.html">net</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * The {{#crossLink &quot;ObjectManager&quot;}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
+     *
+     * @class ObjectManager
+     * @module StructureJS
+     * @extends BaseObject
+     * @submodule core
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     */
+    var ObjectManager = (function () {
 
-    
+        var _super = Extend(ObjectManager, BaseObject);
+
+        function ObjectManager() {
+            _super.call(this);
+            /**
+             * The isEnabled property is used to keep track of the enabled state of the object.
+             *
+             * @property isEnabled
+             * @type {boolean}
+             * @default false
+             * @protected
+             */
+            this.isEnabled = false;
+        }
+        /**
+         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
+         *
+         * @method enable
+         * @public
+         * @chainable
+         * @example
+         *     ClassName.prototype.enable = function() {
+        *          if (this.isEnabled === true) return this;
+        *
+        *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+        *          this._childInstance.enable();
+        *
+        *          return _super.prototype.enable.call(this);
+        *     }
+         */
+        ObjectManager.prototype.enable = function () {
+            if (this.isEnabled === true)
+                return this;
+
+            this.isEnabled = true;
+            return this;
+        };
+
+        /**
+         * The disable method is responsible for disabling event listeners and/or children of the containing objects.
+         *
+         * @method disable
+         * @public
+         * @chainable
+         * @example
+         *     ClassName.prototype.disable = function() {
+        *          if (this.isEnabled === false) return this;
+        *
+        *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+        *          this._childInstance.disable();
+        *
+        *          return _super.prototype.disable.call(this);
+        *     }
+         */
+        ObjectManager.prototype.disable = function () {
+            if (this.isEnabled === false)
+                return this;
+
+            this.isEnabled = false;
+            return this;
+        };
+        return ObjectManager;
+    })();
+
+    module.exports = ObjectManager;
+
+});
+
+
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The URLContentType...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_URLContentType" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>URLContentType</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_net_URLContentType.js.html#l6"><code>src&#x2F;net&#x2F;URLContentType.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>

@@ -114,6 +114,24 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/model/datastore/DataStoreAbstract.js": {
+            "name": "src/model/datastore/DataStoreAbstract.js",
+            "modules": {},
+            "classes": {
+                "DataStore": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/model/datastore/JsonDataStore.js": {
+            "name": "src/model/datastore/JsonDataStore.js",
+            "modules": {},
+            "classes": {
+                "JsonDataStore": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/model/Collection.js": {
             "name": "src/model/Collection.js",
             "modules": {},
@@ -209,6 +227,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/util/Loader.js": {
+            "name": "src/util/Loader.js",
+            "modules": {},
+            "classes": {
+                "Loader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/util/MobileUtil.js": {
             "name": "src/util/MobileUtil.js",
             "modules": {},
@@ -254,11 +281,29 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/util/ValidationUtil.js": {
+            "name": "src/util/ValidationUtil.js",
+            "modules": {},
+            "classes": {
+                "ValidationUtil": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/BaseObject.js": {
             "name": "src/BaseObject.js",
             "modules": {},
             "classes": {
                 "BaseObject": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/ObjectManager.js": {
+            "name": "src/ObjectManager.js",
+            "modules": {},
+            "classes": {
+                "ObjectManager": 1
             },
             "fors": {},
             "namespaces": {}
@@ -268,15 +313,16 @@
         "StructureJS": {
             "name": "StructureJS",
             "submodules": {
+                "undefined": 1,
                 "controller": 1,
                 "view": 1,
                 "event": 1,
                 "model": 1,
                 "net": 1,
-                "util": 1,
                 "core": 1
             },
             "classes": {
+                "BaseObject": 1,
                 "LocalStorageController": 1,
                 "Router": 1,
                 "DOMElement": 1,
@@ -289,6 +335,8 @@
                 "LocalStorageEvent": 1,
                 "RouteEvent": 1,
                 "TimerEvent": 1,
+                "DataStore": 1,
+                "JsonDataStore": 1,
                 "Collection": 1,
                 "Route": 1,
                 "ValueObject": 1,
@@ -298,17 +346,18 @@
                 "URLRequest": 1,
                 "URLRequestMethod": 1,
                 "ComponentFactory": 1,
+                "Loader": 1,
                 "MobileUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
                 "Timer": 1,
                 "Util": 1,
-                "BaseObject": 1
+                "ObjectManager": 1
             },
             "fors": {},
             "namespaces": {},
-            "file": "src/BaseObject.js",
-            "line": 6
+            "file": "src/ObjectManager.js",
+            "line": 7
         },
         "controller": {
             "name": "controller",
@@ -367,6 +416,8 @@
             "name": "model",
             "submodules": {},
             "classes": {
+                "DataStore": 1,
+                "JsonDataStore": 1,
                 "Collection": 1,
                 "Route": 1,
                 "ValueObject": 1
@@ -376,7 +427,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "YUIDoc_comment",
+            "description": "The DataStore...",
             "file": "src/model/ValueObject.js",
             "line": 8
         },
@@ -403,26 +454,42 @@
             "name": "util",
             "submodules": {},
             "classes": {
+                "Loader": 1,
                 "MobileUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
                 "Timer": 1,
-                "Util": 1
+                "Util": 1,
+                "ValidationUtil": 1
             },
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "StructureJS",
+            "module": "StructureTS",
             "namespace": "",
-            "description": "The MobileUtil...",
-            "file": "src/util/Util.js",
-            "line": 4
+            "description": "The Loader...",
+            "file": "src/util/ValidationUtil.js",
+            "line": 8
+        },
+        "StructureTS": {
+            "name": "StructureTS",
+            "submodules": {
+                "util": 1
+            },
+            "classes": {
+                "ValidationUtil": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "file": "src/util/ValidationUtil.js",
+            "line": 8
         },
         "core": {
             "name": "core",
             "submodules": {},
             "classes": {
-                "BaseObject": 1
+                "BaseObject": 1,
+                "ObjectManager": 1
             },
             "fors": {},
             "is_submodule": 1,
@@ -430,8 +497,8 @@
             "module": "StructureJS",
             "namespace": "",
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.",
-            "file": "src/BaseObject.js",
-            "line": 6
+            "file": "src/ObjectManager.js",
+            "line": 7
         }
     },
     "classes": {
@@ -802,6 +869,59 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "DataStore": {
+            "name": "DataStore",
+            "shortname": "DataStore",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/model/datastore/DataStoreAbstract.js",
+            "line": 32,
+            "description": "The DataStore...",
+            "submodule": "model",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "path",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "author": "Robert S. (www.codeBelt.com)"
+        },
+        "JsonDataStore": {
+            "name": "JsonDataStore",
+            "shortname": "JsonDataStore",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/model/datastore/JsonDataStore.js",
+            "line": 37,
+            "description": "The JsonDataStore...",
+            "submodule": "model",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "path",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "jsonp",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "Collection": {
             "name": "Collection",
             "shortname": "Collection",
@@ -990,6 +1110,23 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "Loader": {
+            "name": "Loader",
+            "shortname": "Loader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/util/Loader.js",
+            "line": 32,
+            "description": "The Loader...",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "MobileUtil": {
             "name": "MobileUtil",
             "shortname": "MobileUtil",
@@ -1077,6 +1214,23 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "ValidationUtil": {
+            "name": "ValidationUtil",
+            "shortname": "ValidationUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureTS",
+            "namespace": "",
+            "file": "src/util/ValidationUtil.js",
+            "line": 8,
+            "description": "A ValidationUtility class that has several static methods to assist in development.",
+            "submodule": "util",
+            "is_constructor": 1,
+            "version": "0.1.0"
+        },
         "BaseObject": {
             "name": "BaseObject",
             "shortname": "BaseObject",
@@ -1091,6 +1245,24 @@
             "line": 6,
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.",
             "submodule": "core",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
+        "ObjectManager": {
+            "name": "ObjectManager",
+            "shortname": "ObjectManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/ObjectManager.js",
+            "line": 7,
+            "description": "The {{#crossLink \"ObjectManager\"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.",
+            "submodule": "core",
+            "extends": "BaseObject",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         }
@@ -2000,7 +2172,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 508,
+            "line": 511,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -2020,7 +2192,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 523,
+            "line": 526,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -2038,7 +2210,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 543,
+            "line": 546,
             "description": "Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)\nto 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though\nthey are invisible.",
             "itemtype": "method",
             "name": "alpha",
@@ -2059,7 +2231,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 558,
+            "line": 561,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2067,7 +2239,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 571,
+            "line": 574,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "createComponents",
@@ -2223,7 +2395,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 122,
+            "line": 121,
             "description": "Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other\nchildren in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)\n\nIf you add a child object that already has a different parent, the object is removed from the child\nlist of the other parent object.",
             "itemtype": "method",
             "name": "addChild",
@@ -2247,7 +2419,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 149,
+            "line": 148,
             "description": "Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.\nThe child is added at the index position specified. An index of 0 represents the back\n(bottom) of the display list for this DisplayObjectContainerContainer object.",
             "itemtype": "method",
             "name": "addChildAt",
@@ -2276,7 +2448,48 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 175,
+            "line": 174,
+            "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
+            "itemtype": "method",
+            "name": "removeChild",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "The DisplayObjectContainer instance to remove.",
+                    "type": "DisplayObjectContainer"
+                }
+            ],
+            "return": {
+                "description": "Returns an instance of itself.",
+                "type": "DisplayObjectContainer"
+            },
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "class": "DisplayObjectContainer",
+            "module": "StructureJS",
+            "submodule": "view"
+        },
+        {
+            "file": "src/display/DisplayObjectContainer.js",
+            "line": 205,
+            "description": "Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if\nno other references to the children exist.",
+            "itemtype": "method",
+            "name": "removeChildren",
+            "return": {
+                "description": "Returns an instance of itself.",
+                "type": "DisplayObjectContainer"
+            },
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "class": "DisplayObjectContainer",
+            "module": "StructureJS",
+            "submodule": "view"
+        },
+        {
+            "file": "src/display/DisplayObjectContainer.js",
+            "line": 223,
             "description": "Swaps two DisplayObjectContainer's with each other.",
             "itemtype": "method",
             "name": "swapChildren",
@@ -2305,7 +2518,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 190,
+            "line": 237,
             "description": "Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.",
             "itemtype": "method",
             "name": "swapChildren",
@@ -2334,7 +2547,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 213,
+            "line": 260,
             "description": "Returns the index position of a child DisplayObjectContainer instance.",
             "itemtype": "method",
             "name": "getChildIndex",
@@ -2357,7 +2570,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 225,
+            "line": 272,
             "description": "Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.",
             "itemtype": "method",
             "name": "contains",
@@ -2380,48 +2593,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 237,
-            "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
-            "itemtype": "method",
-            "name": "removeChild",
-            "params": [
-                {
-                    "name": "child",
-                    "description": "The DisplayObjectContainer instance to remove.",
-                    "type": "DisplayObjectContainer"
-                }
-            ],
-            "return": {
-                "description": "Returns an instance of itself.",
-                "type": "DisplayObjectContainer"
-            },
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
-            "class": "DisplayObjectContainer",
-            "module": "StructureJS",
-            "submodule": "view"
-        },
-        {
-            "file": "src/display/DisplayObjectContainer.js",
-            "line": 261,
-            "description": "Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if\nno other references to the children exist.",
-            "itemtype": "method",
-            "name": "removeChildren",
-            "return": {
-                "description": "Returns an instance of itself.",
-                "type": "DisplayObjectContainer"
-            },
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
-            "class": "DisplayObjectContainer",
-            "module": "StructureJS",
-            "submodule": "view"
-        },
-        {
-            "file": "src/display/DisplayObjectContainer.js",
-            "line": 281,
+            "line": 284,
             "description": "Returns the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "getChildAt",
@@ -2442,7 +2614,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 292,
+            "line": 295,
             "description": "Gets a DisplayObjectContainer by its cid.",
             "itemtype": "method",
             "name": "getChildByCid",
@@ -2466,7 +2638,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 309,
+            "line": 312,
             "description": "The setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
             "params": [
                 {
@@ -2493,7 +2665,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 330,
+            "line": 333,
             "description": "The layoutComponent method provides a common function to handle updating child objects.",
             "itemtype": "method",
             "name": "layoutChildren",
@@ -2510,7 +2682,15 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 342,
+            "line": 345,
+            "overridden": "EventDispatcher.destroy",
+            "class": "DisplayObjectContainer",
+            "module": "StructureJS",
+            "submodule": "view"
+        },
+        {
+            "file": "src/display/DisplayObjectContainer.js",
+            "line": 355,
             "overridden": "EventDispatcher.destroy",
             "class": "DisplayObjectContainer",
             "module": "StructureJS",
@@ -3208,7 +3388,7 @@
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
             "name": "_listeners",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "private",
             "tagname": "",
             "class": "EventDispatcher",
@@ -3230,21 +3410,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 43,
-            "description": "The isEnabled property is used to keep track of the enabled state of the object.",
-            "itemtype": "property",
-            "name": "isEnabled",
-            "type": "{boolean}",
-            "default": "false",
-            "access": "protected",
-            "tagname": "",
-            "class": "EventDispatcher",
-            "module": "StructureJS",
-            "submodule": "event"
-        },
-        {
-            "file": "src/event/EventDispatcher.js",
-            "line": 55,
+            "line": 46,
             "description": "Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.",
             "example": [
                 "\n        instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function (event) {\n       console.log(event.target + \" sent the event.\");\n       }"
@@ -3284,7 +3450,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 97,
+            "line": 88,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "example": [
                 "\n        instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function (event) {\n       console.log(event.target + \" sent the event.\");\n       }"
@@ -3318,7 +3484,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 129,
+            "line": 120,
             "description": "<p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>",
             "example": [
                 "\n        var event = new BaseEvent(BaseEvent.CHANGE);\n        instance.dispatchEvent(event);\n\n        // Here is a common inline event being dispatched\n        instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
@@ -3341,7 +3507,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 198,
+            "line": 189,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -3349,39 +3515,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 207,
-            "description": "The enable method is responsible for enabling event listeners and/or children of the containing objects.",
-            "example": [
-                "\n        ClassName.prototype.enable = function () {\n       if (this.isEnabled === true) return this;\n\n       this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n       this._childInstance.enable();\n\n       return _super.prototype.enable.call(this);\n       }"
-            ],
-            "itemtype": "method",
-            "name": "enable",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
-            "class": "EventDispatcher",
-            "module": "StructureJS",
-            "submodule": "event"
-        },
-        {
-            "file": "src/event/EventDispatcher.js",
-            "line": 230,
-            "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
-            "example": [
-                "\n        ClassName.prototype.disable = function () {\n       if (this.isEnabled === false) return this;\n\n       this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n       this._childInstance.disable();\n\n       return _super.prototype.disable.call(this);\n       }"
-            ],
-            "itemtype": "method",
-            "name": "disable",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
-            "class": "EventDispatcher",
-            "module": "StructureJS",
-            "submodule": "event"
-        },
-        {
-            "file": "src/event/EventDispatcher.js",
-            "line": 253,
+            "line": 198,
             "description": "Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -3397,8 +3531,44 @@
         },
         {
             "file": "src/event/LoaderEvent.js",
-            "line": 30,
+            "line": 33,
             "overridden": "BaseEvent.clone",
+            "class": "LoaderEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/LoaderEvent.js",
+            "line": 39,
+            "description": "The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.",
+            "itemtype": "event",
+            "name": "COMPLETE",
+            "type": "{string}",
+            "static": 1,
+            "class": "LoaderEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/LoaderEvent.js",
+            "line": 47,
+            "description": "The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.",
+            "itemtype": "event",
+            "name": "LOAD_COMPLETE",
+            "type": "{string}",
+            "static": 1,
+            "class": "LoaderEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/LoaderEvent.js",
+            "line": 55,
+            "description": "The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.",
+            "itemtype": "event",
+            "name": "ERROR",
+            "type": "{string}",
+            "static": 1,
             "class": "LoaderEvent",
             "module": "StructureJS",
             "submodule": "event"
@@ -3529,6 +3699,116 @@
             "class": "TimerEvent",
             "module": "StructureJS",
             "submodule": "event"
+        },
+        {
+            "file": "src/model/datastore/DataStoreAbstract.js",
+            "line": 48,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "data",
+            "type": "{any}",
+            "access": "public",
+            "tagname": "",
+            "class": "DataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/DataStoreAbstract.js",
+            "line": 56,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "src",
+            "type": "{string}",
+            "access": "public",
+            "tagname": "",
+            "class": "DataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/DataStoreAbstract.js",
+            "line": 64,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "complete",
+            "type": "{boolean}",
+            "access": "public",
+            "tagname": "",
+            "class": "DataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/DataStoreAbstract.js",
+            "line": 75,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "load",
+            "access": "protected",
+            "tagname": "",
+            "class": "DataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/DataStoreAbstract.js",
+            "line": 84,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "_onLoaderComplete",
+            "access": "protected",
+            "tagname": "",
+            "class": "DataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/JsonDataStore.js",
+            "line": 55,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "_urlLoader",
+            "type": "{URLLoader}",
+            "access": "private",
+            "tagname": "",
+            "class": "JsonDataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/JsonDataStore.js",
+            "line": 63,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "_isJsonP",
+            "type": "{boolean}",
+            "default": "false",
+            "access": "private",
+            "tagname": "",
+            "class": "JsonDataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/JsonDataStore.js",
+            "line": 75,
+            "itemtype": "method",
+            "name": "load",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "class": "JsonDataStore",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/datastore/JsonDataStore.js",
+            "line": 98,
+            "overridden": "DataStoreAbstract._onLoaderComplete",
+            "class": "JsonDataStore",
+            "module": "StructureJS",
+            "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
@@ -4021,6 +4301,7 @@
         {
             "file": "src/net/URLLoader.js",
             "line": 27,
+            "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "dataFormat",
             "type": "{string}",
@@ -4031,7 +4312,8 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 34,
+            "line": 35,
+            "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "data",
             "type": "{any}",
@@ -4042,7 +4324,8 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 41,
+            "line": 43,
+            "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "ready",
             "type": "{boolean}",
@@ -4053,7 +4336,8 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 48,
+            "line": 51,
+            "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "_xhr",
             "type": "{JQueryXHR}",
@@ -4066,11 +4350,86 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 106,
+            "line": 65,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "load",
+            "params": [
+                {
+                    "name": "request",
+                    "description": "",
+                    "type": "URLRequest"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "class": "URLLoader",
+            "module": "StructureJS",
+            "submodule": "net"
+        },
+        {
+            "file": "src/net/URLLoader.js",
+            "line": 90,
+            "overridden": "EventDispatcher.destroy",
+            "class": "URLLoader",
+            "module": "StructureJS",
+            "submodule": "net"
+        },
+        {
+            "file": "src/net/URLLoader.js",
+            "line": 99,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
             "access": "public",
+            "tagname": "",
+            "class": "URLLoader",
+            "module": "StructureJS",
+            "submodule": "net"
+        },
+        {
+            "file": "src/net/URLLoader.js",
+            "line": 111,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "abort",
+            "access": "private",
+            "tagname": "",
+            "class": "URLLoader",
+            "module": "StructureJS",
+            "submodule": "net"
+        },
+        {
+            "file": "src/net/URLLoader.js",
+            "line": 121,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "abort",
+            "access": "private",
+            "tagname": "",
+            "class": "URLLoader",
+            "module": "StructureJS",
+            "submodule": "net"
+        },
+        {
+            "file": "src/net/URLLoader.js",
+            "line": 131,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "abort",
+            "access": "private",
+            "tagname": "",
+            "class": "URLLoader",
+            "module": "StructureJS",
+            "submodule": "net"
+        },
+        {
+            "file": "src/net/URLLoader.js",
+            "line": 142,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "abort",
+            "access": "private",
             "tagname": "",
             "class": "URLLoader",
             "module": "StructureJS",
@@ -4205,7 +4564,7 @@
             "file": "src/util/Extend.js",
             "line": 4,
             "description": "Snippet from TypeScript compiler.",
-            "class": "MobileUtil",
+            "class": "Loader",
             "module": "StructureJS"
         },
         {
@@ -4809,6 +5168,179 @@
             "submodule": "util"
         },
         {
+            "file": "src/util/ValidationUtil.js",
+            "line": 21,
+            "description": "Determines if the String passed has a length.",
+            "itemtype": "method",
+            "name": "isEmpty",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "ValidationUtil",
+            "module": "StructureTS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/ValidationUtil.js",
+            "line": 34,
+            "description": "Determines if the two values passed in are the same.",
+            "itemtype": "method",
+            "name": "isMatch",
+            "params": [
+                {
+                    "name": "value1",
+                    "description": "",
+                    "type": "Any"
+                },
+                {
+                    "name": "value2",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "ValidationUtil",
+            "module": "StructureTS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/ValidationUtil.js",
+            "line": 48,
+            "description": "Determines if the String passed in is a valid email address.",
+            "itemtype": "method",
+            "name": "isValidEmailAddress",
+            "params": [
+                {
+                    "name": "email",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "ValidationUtil",
+            "module": "StructureTS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/ValidationUtil.js",
+            "line": 62,
+            "description": "Determines if the String passed in is a phone number.",
+            "itemtype": "method",
+            "name": "isValidPhoneNumber",
+            "params": [
+                {
+                    "name": "phoneNumber",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "ValidationUtil",
+            "module": "StructureTS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/ValidationUtil.js",
+            "line": 76,
+            "description": "Determines if the String passed in is a zip code.",
+            "itemtype": "method",
+            "name": "isZipCode",
+            "params": [
+                {
+                    "name": "zipCode",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "ValidationUtil",
+            "module": "StructureTS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/ValidationUtil.js",
+            "line": 90,
+            "description": "Determines if the String passed in is a postal code.",
+            "itemtype": "method",
+            "name": "isPostalCode",
+            "params": [
+                {
+                    "name": "postalCode",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "ValidationUtil",
+            "module": "StructureTS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/ValidationUtil.js",
+            "line": 104,
+            "description": "Determines if the String passed in is a Social Security Number.",
+            "itemtype": "method",
+            "name": "isSocialSecurityNumber",
+            "params": [
+                {
+                    "name": "ssn",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "ValidationUtil",
+            "module": "StructureTS",
+            "submodule": "util"
+        },
+        {
             "file": "src/BaseObject.js",
             "line": 18,
             "description": "The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.",
@@ -4859,6 +5391,52 @@
                 "\n    ClassName.prototype.destroy = function() {\n         this._childInstance.destroy();\n\n         _super.prototype.destroy.call(this);\n    }"
             ],
             "class": "BaseObject",
+            "module": "StructureJS",
+            "submodule": "core"
+        },
+        {
+            "file": "src/ObjectManager.js",
+            "line": 23,
+            "description": "The isEnabled property is used to keep track of the enabled state of the object.",
+            "itemtype": "property",
+            "name": "isEnabled",
+            "type": "{boolean}",
+            "default": "false",
+            "access": "protected",
+            "tagname": "",
+            "class": "ObjectManager",
+            "module": "StructureJS",
+            "submodule": "core"
+        },
+        {
+            "file": "src/ObjectManager.js",
+            "line": 33,
+            "description": "The enable method is responsible for enabling event listeners and/or children of the containing objects.",
+            "itemtype": "method",
+            "name": "enable",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "example": [
+                "\n    ClassName.prototype.enable = function() {\n         if (this.isEnabled === true) return this;\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         return _super.prototype.enable.call(this);\n    }"
+            ],
+            "class": "ObjectManager",
+            "module": "StructureJS",
+            "submodule": "core"
+        },
+        {
+            "file": "src/ObjectManager.js",
+            "line": 57,
+            "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
+            "itemtype": "method",
+            "name": "disable",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "example": [
+                "\n    ClassName.prototype.disable = function() {\n         if (this.isEnabled === false) return this;\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         return _super.prototype.disable.call(this);\n    }"
+            ],
+            "class": "ObjectManager",
             "module": "StructureJS",
             "submodule": "core"
         }
@@ -4930,19 +5508,19 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:523"
+            "line": " src/display/DOMElement.js:526"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/display/DOMElement.js:523"
+            "line": " src/display/DOMElement.js:526"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:543"
+            "line": " src/display/DOMElement.js:546"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:558"
+            "line": " src/display/DOMElement.js:561"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4950,27 +5528,23 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:122"
+            "line": " src/display/DisplayObjectContainer.js:121"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:149"
+            "line": " src/display/DisplayObjectContainer.js:148"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:175"
+            "line": " src/display/DisplayObjectContainer.js:174"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:190"
+            "line": " src/display/DisplayObjectContainer.js:205"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:213"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:225"
+            "line": " src/display/DisplayObjectContainer.js:223"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -4978,31 +5552,39 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:261"
+            "line": " src/display/DisplayObjectContainer.js:260"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:281"
+            "line": " src/display/DisplayObjectContainer.js:272"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:292"
+            "line": " src/display/DisplayObjectContainer.js:284"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/display/DisplayObjectContainer.js:295"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/display/DisplayObjectContainer.js:292"
+            "line": " src/display/DisplayObjectContainer.js:295"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:309"
+            "line": " src/display/DisplayObjectContainer.js:312"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:330"
+            "line": " src/display/DisplayObjectContainer.js:333"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DisplayObjectContainer.js:342"
+            "line": " src/display/DisplayObjectContainer.js:345"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/display/DisplayObjectContainer.js:355"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -5010,15 +5592,15 @@
         },
         {
             "message": "unknown tag: hide",
-            "line": " src/event/EventDispatcher.js:97"
+            "line": " src/event/EventDispatcher.js:88"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/EventDispatcher.js:198"
+            "line": " src/event/EventDispatcher.js:189"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/LoaderEvent.js:30"
+            "line": " src/event/LoaderEvent.js:33"
         },
         {
             "message": "unknown tag: overridden",
@@ -5031,6 +5613,10 @@
         {
             "message": "unknown tag: overridden",
             "line": " src/event/TimerEvent.js:30"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/model/datastore/JsonDataStore.js:98"
         },
         {
             "message": "unknown tag: overridden",
@@ -5059,6 +5645,10 @@
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/model/ValueObject.js:90"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/net/URLLoader.js:90"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -5145,6 +5735,38 @@
             "line": " src/util/Util.js:159"
         },
         {
+            "message": "unknown tag: version",
+            "line": " src/util/ValidationUtil.js:8"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:21"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:34"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:48"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:62"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:76"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:90"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:104"
+        },
+        {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/BaseObject.js:31"
         },
@@ -5166,23 +5788,27 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:558"
+            "line": " src/display/DOMElement.js:561"
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
-            "line": " src/display/DisplayObjectContainer.js:309"
+            "line": " src/display/DisplayObjectContainer.js:312"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DisplayObjectContainer.js:342"
+            "line": " src/display/DisplayObjectContainer.js:345"
         },
         {
             "message": "Missing item type",
-            "line": " src/event/EventDispatcher.js:198"
+            "line": " src/display/DisplayObjectContainer.js:355"
         },
         {
             "message": "Missing item type",
-            "line": " src/event/LoaderEvent.js:30"
+            "line": " src/event/EventDispatcher.js:189"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/event/LoaderEvent.js:33"
         },
         {
             "message": "Missing item type",
@@ -5198,7 +5824,15 @@
         },
         {
             "message": "Missing item type",
+            "line": " src/model/datastore/JsonDataStore.js:98"
+        },
+        {
+            "message": "Missing item type",
             "line": " src/model/Collection.js:284"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/net/URLLoader.js:90"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",

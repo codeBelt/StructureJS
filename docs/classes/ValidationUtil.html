@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>StringUtil - StructureJS</title>
+    <title>ValidationUtil - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -140,7 +140,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>StringUtil Class</h1>
+                <h1>ValidationUtil Class</h1>
 <div class="box meta">
     
 
@@ -148,14 +148,14 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util_StringUtil.js.html#l4"><code>src&#x2F;util&#x2F;StringUtil.js:4</code></a>
+            Defined in: <a href="../files/src_util_ValidationUtil.js.html#l8"><code>src&#x2F;util&#x2F;ValidationUtil.js:8</code></a>
         </div>
     
 
     
         
             Module: <a href="../modules/util.html">util</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
+            Parent Module: <a href="../modules/StructureTS.html">StructureTS</a>
         
     
 
@@ -165,7 +165,7 @@
 
 
 <div class="box intro">
-    <p>The StringUtil...</p>
+    <p>A ValidationUtility class that has several static methods to assist in development.</p>
 
 </div>
 
@@ -213,20 +213,18 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_StringUtil">StringUtil</a>
+                    <a href="#method_ValidationUtil">ValidationUtil</a>
 
                     <span class="flag constructor">constructor</span>
 
                     
-                        <span class="flag static">static</span>
-                    
                     
                 </li>
             
 
             
                 <li class="index-item method public">
-                    <a href="#method_camelCaseToHyphen">camelCaseToHyphen</a>
+                    <a href="#method_isEmpty">isEmpty</a>
 
                     
                         <span class="flag static">static</span>
@@ -235,7 +233,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_createUUID">createUUID</a>
+                    <a href="#method_isMatch">isMatch</a>
 
                     
                         <span class="flag static">static</span>
@@ -244,7 +242,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_format">format</a>
+                    <a href="#method_isPostalCode">isPostalCode</a>
 
                     
                         <span class="flag static">static</span>
@@ -253,7 +251,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_getExtension">getExtension</a>
+                    <a href="#method_isSocialSecurityNumber">isSocialSecurityNumber</a>
 
                     
                         <span class="flag static">static</span>
@@ -262,7 +260,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_hyphenToCamelCase">hyphenToCamelCase</a>
+                    <a href="#method_isValidEmailAddress">isValidEmailAddress</a>
 
                     
                         <span class="flag static">static</span>
@@ -271,7 +269,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_hyphenToPascalCase">hyphenToPascalCase</a>
+                    <a href="#method_isValidPhoneNumber">isValidPhoneNumber</a>
 
                     
                         <span class="flag static">static</span>
@@ -280,34 +278,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_queryStringToObject">queryStringToObject</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_removeAllWhitespace">removeAllWhitespace</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_removeLeadingTrailingWhitespace">removeLeadingTrailingWhitespace</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_truncate">truncate</a>
+                    <a href="#method_isZipCode">isZipCode</a>
 
                     
                         <span class="flag static">static</span>
@@ -332,9 +303,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_StringUtil" class="anchor-link"></a>
+        <a name="method_ValidationUtil" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>StringUtil</code>
+    <h3 class="name"><code>ValidationUtil</code>
 
     
         <span class="paren">()</span>
@@ -348,8 +319,6 @@
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -369,7 +338,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l4"><code>src&#x2F;util&#x2F;StringUtil.js:4</code></a>
+        <a href="../files/src_util_ValidationUtil.js.html#l8"><code>src&#x2F;util&#x2F;ValidationUtil.js:8</code></a>
         
         </p>
 
@@ -401,1055 +370,9 @@
         <h2>Methods</h2>
 
         
-            <a name="method_camelCaseToHyphen" class="anchor-link"></a>
+            <a name="method_isEmpty" class="anchor-link"></a>
 <div class="method item public">
-    <h3 class="name"><code>camelCaseToHyphen</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l68"><code>src&#x2F;util&#x2F;StringUtil.js:68</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_createUUID" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>createUUID</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l83"><code>src&#x2F;util&#x2F;StringUtil.js:83</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_format" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>format</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>...rest</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l179"><code>src&#x2F;util&#x2F;StringUtil.js:179</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Replaces each format item in a specified string with the text equivalent of a corresponding object&#39;s value.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">...rest</code>
-                            <span class="type">Array</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code> StringUtil.format(&#39;Robert is {0}. Very {0} and {1}!&#39;, &#39;cool&#39;, &#39;smart&#39;);
- // &#39;Robert is cool. Very cool and smart!&#39;</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_getExtension" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>getExtension</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>filename</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l18"><code>src&#x2F;util&#x2F;StringUtil.js:18</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">filename</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_hyphenToCamelCase" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>hyphenToCamelCase</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l31"><code>src&#x2F;util&#x2F;StringUtil.js:31</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_hyphenToPascalCase" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>hyphenToPascalCase</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l48"><code>src&#x2F;util&#x2F;StringUtil.js:48</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_queryStringToObject" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>queryStringToObject</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>queryString</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Any</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l101"><code>src&#x2F;util&#x2F;StringUtil.js:101</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">queryString</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Any</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_removeAllWhitespace" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>removeAllWhitespace</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l129"><code>src&#x2F;util&#x2F;StringUtil.js:129</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Remove all whitespace from the string passed in.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>    var str = &quot;   a b    c d e f g &quot;;
-    StringUtil.removeAllWhitespace(str);
-    // &quot;abcdefg&quot;</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_removeLeadingTrailingWhitespace" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>removeLeadingTrailingWhitespace</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>str</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">String</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_StringUtil.js.html#l145"><code>src&#x2F;util&#x2F;StringUtil.js:145</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Remove leading and trailing whitespace.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">str</code>
-                            <span class="type">String</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">String</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code> var str = &quot;   a b    c d e f g &quot;;
- StringUtil.removeLeadingTrailingWhitespace(str);
- // &quot;a b    c d e f g&quot;</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_truncate" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>truncate</code>
+    <h3 class="name"><code>isEmpty</code>
 
     
         <div class="args">
@@ -1461,19 +384,13 @@
                     
                 </li>
             
-                <li class="arg">
-                    
-                        <code>length</code>
-                    
-                </li>
-            
             </ul><span class="paren">)</span>
         </div>
     
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type">Boolean</span>
         </span>
     
 
@@ -1506,7 +423,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l162"><code>src&#x2F;util&#x2F;StringUtil.js:162</code></a>
+        <a href="../files/src_util_ValidationUtil.js.html#l21"><code>src&#x2F;util&#x2F;ValidationUtil.js:21</code></a>
         
         </p>
 
@@ -1519,7 +436,8 @@
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Determines if the String passed has a length.</p>
+
         </div>
 
         
@@ -1543,10 +461,130 @@
                         
                     </li>
                 
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isMatch" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>isMatch</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>value1</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value2</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_ValidationUtil.js.html#l34"><code>src&#x2F;util&#x2F;ValidationUtil.js:34</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determines if the two values passed in are the same.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
                     <li class="param">
                         
-                            <code class="param-name">length</code>
-                            <span class="type">Int</span>
+                            <code class="param-name">value1</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">value2</code>
+                            <span class="type">Any</span>
                         
 
                         
@@ -1569,7 +607,577 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isPostalCode" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>isPostalCode</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>postalCode</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_ValidationUtil.js.html#l90"><code>src&#x2F;util&#x2F;ValidationUtil.js:90</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determines if the String passed in is a postal code.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">postalCode</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isSocialSecurityNumber" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>isSocialSecurityNumber</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>ssn</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_ValidationUtil.js.html#l104"><code>src&#x2F;util&#x2F;ValidationUtil.js:104</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determines if the String passed in is a Social Security Number.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">ssn</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isValidEmailAddress" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>isValidEmailAddress</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>email</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_ValidationUtil.js.html#l48"><code>src&#x2F;util&#x2F;ValidationUtil.js:48</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determines if the String passed in is a valid email address.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">email</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isValidPhoneNumber" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>isValidPhoneNumber</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>phoneNumber</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_ValidationUtil.js.html#l62"><code>src&#x2F;util&#x2F;ValidationUtil.js:62</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determines if the String passed in is a phone number.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">phoneNumber</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_isZipCode" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>isZipCode</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>zipCode</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_ValidationUtil.js.html#l76"><code>src&#x2F;util&#x2F;ValidationUtil.js:76</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determines if the String passed in is a zip code.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">zipCode</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
                         
                     
                 </div>

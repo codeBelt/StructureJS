@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>URLContentType - StructureJS</title>
+    <title>src/util/ValidationUtil.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -140,154 +140,134 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>URLContentType Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src/util/ValidationUtil.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_net_URLContentType.js.html#l6"><code>src&#x2F;net&#x2F;URLContentType.js:6</code></a>
-        </div>
-    
+    // Imports
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var DOMElement = require(&#x27;structurejs/display/DOMElement&#x27;);
 
-    
-        
-            Module: <a href="../modules/net.html">net</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * A ValidationUtility class that has several static methods to assist in development.
+     *
+     * @class ValidationUtil
+     * @module StructureTS
+     * @submodule util
+     * @constructor
+     * @version 0.1.0
+     **/
+    var ValidationUtil = (function () {
+        function ValidationUtil() {
+            //http://msdn.microsoft.com/en-us/library/ff650303.aspx
+        }
+        /**
+         * Determines if the String passed has a length.
+         *
+         * @method isEmpty
+         * @param text {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        ValidationUtil.isEmpty = function (text) {
+            return text.length &lt; 1;
+        };
 
-    
+        /**
+         * Determines if the two values passed in are the same.
+         *
+         * @method isMatch
+         * @param value1 {any}
+         * @param value2 {any}
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        ValidationUtil.isMatch = function (value1, value2) {
+            return value1 === value2;
+        };
+
+        /**
+         * Determines if the String passed in is a valid email address.
+         *
+         * @method isValidEmailAddress
+         * @param email {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        ValidationUtil.isValidEmailAddress = function (email) {
+            var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+            return expression.test(email);
+        };
+
+        /**
+         * Determines if the String passed in is a phone number.
+         *
+         * @method isValidPhoneNumber
+         * @param phoneNumber {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        ValidationUtil.isValidPhoneNumber = function (phoneNumber) {
+            var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+            return expression.test(phoneNumber);
+        };
+
+        /**
+         * Determines if the String passed in is a zip code.
+         *
+         * @method isZipCode
+         * @param zipCode {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        ValidationUtil.isZipCode = function (zipCode) {
+            var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
+            return expression.test(zipCode);
+        };
+
+        /**
+         * Determines if the String passed in is a postal code.
+         *
+         * @method isPostalCode
+         * @param postalCode {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        ValidationUtil.isPostalCode = function (postalCode) {
+            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
+            return expression.test(postalCode);
+        };
+
+        /**
+         * Determines if the String passed in is a Social Security Number.
+         *
+         * @method isSocialSecurityNumber
+         * @param ssn {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        ValidationUtil.isSocialSecurityNumber = function (ssn) {
+            var expression = /^\d{3}-?\d{2}-?\d{4}$/;
+            return expression.test(ssn);
+        };
+        return ValidationUtil;
+    })();
+
+    module.exports = ValidationUtil;
+
+});
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The URLContentType...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_URLContentType" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>URLContentType</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_net_URLContentType.js.html#l6"><code>src&#x2F;net&#x2F;URLContentType.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>

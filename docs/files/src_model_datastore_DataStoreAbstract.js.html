@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>URLContentType - StructureJS</title>
+    <title>src/model/datastore/DataStoreAbstract.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -140,154 +140,116 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>URLContentType Class</h1>
-<div class="box meta">
-    
+                <h1 class="file-heading">File: src/model/datastore/DataStoreAbstract.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*
+ * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the &quot;Software&quot;), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+ * OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/src_net_URLContentType.js.html#l6"><code>src&#x2F;net&#x2F;URLContentType.js:6</code></a>
-        </div>
-    
+    // Imports
+    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    var EventDispatcher = require(&#x27;structurejs/event/EventDispatcher&#x27;);
+    var LoaderEvent = require(&#x27;structurejs/event/LoaderEvent&#x27;);
 
-    
-        
-            Module: <a href="../modules/net.html">net</a><br>
-            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
-        
-    
+    /**
+     * The DataStore...
+     *
+     * @class DataStore
+     * @module StructureJS
+     * @submodule model
+     * @constructor
+     * @param path {string}
+     * @author Robert S. (www.codeBelt.com)
+     */
+    var DataStore = (function () {
 
-    
+        var _super = Extend(DataStore, EventDispatcher);
+
+        function DataStore(path) {
+            _super.call(this);
+            /**
+             * YUIDoc_comment
+             *
+             * @property data
+             * @type {any}
+             * @public
+             */
+            this.data = null;
+            /**
+             * YUIDoc_comment
+             *
+             * @property src
+             * @type {string}
+             * @public
+             */
+            this.src = null;
+            /**
+             * YUIDoc_comment
+             *
+             * @property complete
+             * @type {boolean}
+             * @public
+             */
+            this.complete = false;
+
+            this.src = path;
+        }
+        /**
+         * YUIDoc_comment
+         *
+         * @method load
+         * @protected
+         */
+        DataStore.prototype.load = function () {
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method _onLoaderComplete
+         * @protected
+         */
+        DataStore.prototype._onLoaderComplete = function () {
+            var rest = [];
+            for (var _i = 0; _i &lt; (arguments.length - 0); _i++) {
+                rest[_i] = arguments[_i + 0];
+            }
+            this.complete = true;
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this));
+        };
+
+        return DataStore;
+    })();
+
+    module.exports = DataStore;
+
+});
+    </pre>
 </div>
-
-
-
-<div class="box intro">
-    <p>The URLContentType...</p>
-
-</div>
-
-<!-- Class member index -->
-
-<a name="index" class="anchor-link"></a>
-<div class="index">
-<h2>Index</h2>
-
-    <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-<div class="class-detail">
-
-
-
-
-
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_URLContentType" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>URLContentType</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_net_URLContentType.js.html#l6"><code>src&#x2F;net&#x2F;URLContentType.js:6</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
-
-
-
-
-
-
-</div>
-
 
             </div>
         </div>
