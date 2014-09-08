@@ -6,6 +6,8 @@ A workflow and several core class to help structure and build JavaScript applica
 [WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
 
 ####Examples:
+[Event Bubbling Example](http://codebelt.github.io/StructureJS/examples/EventBubbling/)
+
 [SinglePageWebsite with the Router class](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/)
 
 ####Documentation:
