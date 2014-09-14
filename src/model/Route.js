@@ -149,11 +149,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private
          */
         Route.prototype.routePatternToRegexp = function (routePattern) {
-            var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
-            var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
-            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
-            var optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
-            var optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
+            var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
+            var findOptionalColons = new RegExp(':([^:]*):', 'g');
+            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g');
+            var optionalFirstCharSlash = '^/?';
+            var optionalLastCharSlash = '/?$';
 
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
@@ -165,7 +165,7 @@ define(function (require, exports, module) { // jshint ignore:line
             routePattern = routePattern.replace('?', '(\\?.*)');
 
             // Make any :alphanumeric: optional but not query string
-            routePattern = routePattern.replace(findOptionalColons, '?([^/?]*)');
+            routePattern = routePattern.replace(findOptionalColons, '([^/?]*)');
 
             // Make any {alphanumeric} required but not query string
             routePattern = routePattern.replace(findRequiredBrackets, '([^/?]+)');

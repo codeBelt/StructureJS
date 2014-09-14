@@ -455,7 +455,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l465"><code>src&#x2F;controller&#x2F;Router.js:465</code></a>
+        <a href="../files/src_controller_Router.js.html#l454"><code>src&#x2F;controller&#x2F;Router.js:454</code></a>
         
         </p>
 
@@ -509,7 +509,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l474"><code>src&#x2F;controller&#x2F;Router.js:474</code></a>
+        <a href="../files/src_controller_Router.js.html#l464"><code>src&#x2F;controller&#x2F;Router.js:464</code></a>
         
         </p>
 
@@ -563,7 +563,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l456"><code>src&#x2F;controller&#x2F;Router.js:456</code></a>
+        <a href="../files/src_controller_Router.js.html#l444"><code>src&#x2F;controller&#x2F;Router.js:444</code></a>
         
         </p>
 
@@ -617,7 +617,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l518"><code>src&#x2F;controller&#x2F;Router.js:518</code></a>
+        <a href="../files/src_controller_Router.js.html#l505"><code>src&#x2F;controller&#x2F;Router.js:505</code></a>
         
         </p>
 
@@ -628,8 +628,10 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>The <strong>Router.forceSlash</strong> property tells the Router class if the <strong>Router.<a href="../classes/Router.html#method_navigateTo" class="crosslink">navigateTo</a></strong> method is called to
-make sure the hash url has a forward slash after the <strong>#</strong> character like this <strong>#/</strong>.</p>
+            <p>The <strong>Router.allowManualDeepLinking</strong> property tells the Router class weather it should check for route matches if the
+hash url changes in the browser. This property only works if the <strong>Router. <a href="../classes/Router.html#property_useDeepLinking" class="crosslink">useDeepLinking</a></strong> is set to <strong>false</strong>.
+This is useful when used with the <strong>Router.<a href="../classes/Router.html#method_navigateTo" class="crosslink">navigateTo</a></strong> method to use your routes as states rather than using the hash url to control the application.</p>
+<p>What this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to <strong>false</strong> so users cannot jump around if they figure out the url schema.</p>
 
         </div>
 
@@ -642,11 +644,8 @@ make sure the hash url has a forward slash after the <strong>#</strong> characte
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>// To turn off forcing the forward slash
-Router.forceSlash = false;
-
-// By default it will change the url from #contact/bob/ to #/contact/bob/
-// when using the navigateTo method.</code></pre>
+                    <pre class="code prettyprint"><code>Router.useDeepLinking = false;
+Router.allowManualDeepLinking = false;</code></pre>
 
                 </div>
             </div>
@@ -687,7 +686,7 @@ Router.forceSlash = false;
             
         
         
-        <a href="../files/src_controller_Router.js.html#l535"><code>src&#x2F;controller&#x2F;Router.js:535</code></a>
+        <a href="../files/src_controller_Router.js.html#l541"><code>src&#x2F;controller&#x2F;Router.js:541</code></a>
         
         </p>
 
@@ -753,7 +752,7 @@ Router.allowMultipleMatches = false;</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l483"><code>src&#x2F;controller&#x2F;Router.js:483</code></a>
+        <a href="../files/src_controller_Router.js.html#l523"><code>src&#x2F;controller&#x2F;Router.js:523</code></a>
         
         </p>
 
@@ -764,11 +763,8 @@ Router.allowMultipleMatches = false;</code></pre>
 
     <div class="extended-detail">
         <div class="description">
-            <p>The <strong>Router.useDeepLinking</strong> property tells the Router class weather it should change the hash url or not.
-By <strong>default</strong> this property is set to <strong>true</strong>. If you set the property to <strong>false</strong> and using the <strong>Router.navigateTo</strong>
-method the hash url will not change. This can be useful if you are making an application or game and you don&#39;t want the user
-to know how to jump to other sections directly. See the <strong>Router.<a href="../classes/Router.html#property_allowManualDeepLinking" class="crosslink">allowManualDeepLinking</a></strong> to fully change the Router class
-from relying on the hash url to an internal state controller.</p>
+            <p>The <strong>Router.forceSlash</strong> property tells the Router class if the <strong>Router.<a href="../classes/Router.html#method_navigateTo" class="crosslink">navigateTo</a></strong> method is called to
+make sure the hash url has a forward slash after the <strong>#</strong> character like this <strong>#/</strong>.</p>
 
         </div>
 
@@ -781,7 +777,11 @@ from relying on the hash url to an internal state controller.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>Router.useDeepLinking = false;</code></pre>
+                    <pre class="code prettyprint"><code>// To turn off forcing the forward slash
+Router.forceSlash = false;
+
+// By default it will change the url from #contact/bob/ to #/contact/bob/
+// when using the navigateTo method.</code></pre>
 
                 </div>
             </div>
@@ -822,7 +822,7 @@ from relying on the hash url to an internal state controller.</p>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l443"><code>src&#x2F;controller&#x2F;Router.js:443</code></a>
+        <a href="../files/src_controller_Router.js.html#l474"><code>src&#x2F;controller&#x2F;Router.js:474</code></a>
         
         </p>
 
@@ -886,7 +886,7 @@ console.log(Router.isEnabled);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l499"><code>src&#x2F;controller&#x2F;Router.js:499</code></a>
+        <a href="../files/src_controller_Router.js.html#l488"><code>src&#x2F;controller&#x2F;Router.js:488</code></a>
         
         </p>
 
@@ -897,12 +897,11 @@ console.log(Router.isEnabled);</code></pre>
 
     <div class="extended-detail">
         <div class="description">
-            <p>The <strong>Router.allowManualDeepLinking</strong> property tells the Router class weather it should check for route matches if the
-hash url changes in the browser. This property only works if the <strong>Router.<a href="../classes/Router.html#property_useDeepLinking" class="crosslink">useDeepLinking</a></strong> is set to <strong>false</strong>.
-This is useful if want to use your added routes but don&#39;t want any external forces trigger your routes.</p>
-<p>Typically what I do for games is during development/testing I allow the hash url to change the states so testers can jump
-to sections or levels easily but then when it is ready for production I set the property to <strong>false</strong> so users cannot jump
-around if they figure out the url schema.</p>
+            <p>The <strong>Router.useDeepLinking</strong> property tells the Router class weather it should change the hash url or not.
+By <strong>default</strong> this property is set to <strong>true</strong>. If you set the property to <strong>false</strong> and using the <strong>Router.navigateTo</strong>
+method the hash url will not change. This can be useful if you are making an application or game and you don&#39;t want the user
+to know how to jump to other sections directly. See the <strong>Router.<a href="../classes/Router.html#property_allowManualDeepLinking" class="crosslink">allowManualDeepLinking</a></strong> to fully change the Router class
+from relying on the hash url to an internal state controller.</p>
 
         </div>
 
@@ -915,8 +914,7 @@ around if they figure out the url schema.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>Router.useDeepLinking = false;
-Router.allowManualDeepLinking = false;</code></pre>
+                    <pre class="code prettyprint"><code>Router.useDeepLinking = true;</code></pre>
 
                 </div>
             </div>
@@ -1074,7 +1072,7 @@ Router.allowManualDeepLinking = false;</code></pre>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The <strong>Router.add</strong> method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing one or more parameters depending on the route pattern you define. The last parameter or sometimes it maybe the only parameter sent will be the <a href="../classes/RouteEvent.html" class="crosslink">RouteEvent</a>.</p>
+            <p>The <strong>Router.add</strong> method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a <a href="../classes/RouteEvent.html" class="crosslink">RouteEvent</a>.</p>
 
         </div>
 
@@ -1174,7 +1172,7 @@ ClassName.prototype.onRouteHandler = function (routeEvent) {
 // www.site.com/#/anything/
 // www.site.com/#/matches/any/hash/url/
 // www.site.com/#/really/it/matches/any/and/all/hash/urls/</code></pre>
-<p><strong>?</strong> The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will <strong>NOT</strong> be passed as a parameter to the callback function. It will be converted to an</p>
+<p><strong>?</strong> The question mark character means it will match a query string for the hash url.</p>
 <pre class="code prettyprint"><code>Router.add(&#39;?&#39;, this.method, this);
 
 // Will match one of the following:

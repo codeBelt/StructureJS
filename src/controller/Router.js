@@ -40,7 +40,7 @@ define(function (require, exports, module) { // jshint ignore:line
             throw new Error('[Router] Do not instantiation the Router class because it is a static class.');
         }
         /**
-         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing one or more parameters depending on the route pattern you define. The last parameter or sometimes it maybe the only parameter sent will be the {{#crossLink "RouteEvent"}}{{/crossLink}}.
+         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouteEvent"}}{{/crossLink}}.
          *
          * @method add
          * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
@@ -91,7 +91,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
          *
          *
-         * **?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an
+         * **?** The question mark character means it will match a query string for the hash url.
          *
          *     Router.add('?', this.method, this);
          *
@@ -440,6 +440,37 @@ define(function (require, exports, module) { // jshint ignore:line
          * @readOnly
          */
         Router.WINDOW = window;
+
+        /**
+         * A list of the added Route objects.
+         *
+         * @property _routes
+         * @type {Array<Route>}
+         * @private
+         * @static
+         */
+        Router._routes = [];
+
+        /**
+         * A reference to default route object.
+         *
+         * @property _defaultRoute
+         * @type {Route}
+         * @private
+         * @static
+         */
+        Router._defaultRoute = null;
+
+        /**
+         * A reference to the hash change event that was sent from the Window Object.
+         *
+         * @property _hashChangeEvent
+         * @type {any}
+         * @private
+         * @static
+         */
+        Router._hashChangeEvent = null;
+
         /**
          * Determines if the Router class is enabled or disabled.
          *
@@ -453,33 +484,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *     console.log(Router.isEnabled);
          */
         Router.isEnabled = false;
-        /**
-         * A list of the added Route objects.
-         *
-         * @property _routes
-         * @type {Array<Route>}
-         * @private
-         * @static
-         */
-        Router._routes = [];
-        /**
-         * A reference to default route object.
-         *
-         * @property _defaultRoute
-         * @type {Route}
-         * @private
-         * @static
-         */
-        Router._defaultRoute = null;
-        /**
-         * A reference to the hash change event that was sent from the Window Object.
-         *
-         * @property _hashChangeEvent
-         * @type {any}
-         * @private
-         * @static
-         */
-        Router._hashChangeEvent = null;
+
         /**
          * The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.
          * By **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**
@@ -487,25 +492,24 @@ define(function (require, exports, module) { // jshint ignore:line
          * to know how to jump to other sections directly. See the **Router.{{#crossLink "Router/allowManualDeepLinking:property"}}{{/crossLink}}** to fully change the Router class
          * from relying on the hash url to an internal state controller.
          *
-         * @property forceSlash
+         * @property useDeepLinking
          * @type {boolean}
          * @default true
          * @public
          * @static
          * @example
-         *     Router.useDeepLinking = false;
+         *     Router.useDeepLinking = true;
          */
-        Router.forceSlash = true;
+        Router.useDeepLinking = true;
+
         /**
          * The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the
-         * hash url changes in the browser. This property only works if the **Router.{{#crossLink "Router/useDeepLinking:property"}}{{/crossLink}}** is set to **false**.
-         * This is useful if want to use your added routes but don't want any external forces trigger your routes.
+         * hash url changes in the browser. This property only works if the **Router. {{#crossLink "Router/useDeepLinking:property"}}{{/crossLink}}** is set to **false**.
+         * This is useful when used with the **Router.{{#crossLink "Router/navigateTo:method"}}{{/crossLink}}** method to use your routes as states rather than using the hash url to control the application.
          *
-         * Typically what I do for games is during development/testing I allow the hash url to change the states so testers can jump
-         * to sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump
-         * around if they figure out the url schema.
+         * What this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to **false** so users cannot jump around if they figure out the url schema.
          *
-         * @property useDeepLinking
+         * @property allowManualDeepLinking
          * @type {boolean}
          * @default true
          * @public
@@ -514,12 +518,13 @@ define(function (require, exports, module) { // jshint ignore:line
          *     Router.useDeepLinking = false;
          *     Router.allowManualDeepLinking = false;
          */
-        Router.useDeepLinking = true;
+        Router.allowManualDeepLinking = true;
+
         /**
          * The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink "Router/navigateTo:method"}}{{/crossLink}}** method is called to
          * make sure the hash url has a forward slash after the **#** character like this **#/**.
          *
-         * @property allowManualDeepLinking
+         * @property forceSlash
          * @type {boolean}
          * @default true
          * @public
@@ -531,7 +536,8 @@ define(function (require, exports, module) { // jshint ignore:line
          *     // By default it will change the url from #contact/bob/ to #/contact/bob/
          *     // when using the navigateTo method.
          */
-        Router.allowManualDeepLinking = true;
+        Router.forceSlash = true;
+
         /**
          * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
          *

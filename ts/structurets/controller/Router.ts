@@ -64,7 +64,7 @@ class Router
      *     // Read only.
      *     console.log(Router.isEnabled);
      */
-    private static isEnabled:boolean = false;
+    public static isEnabled:boolean = false;
 
     /**
      * The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.
@@ -73,15 +73,15 @@ class Router
      * to know how to jump to other sections directly. See the **Router.{{#crossLink "Router/allowManualDeepLinking:property"}}{{/crossLink}}** to fully change the Router class
      * from relying on the hash url to an internal state controller.
      *
-     * @property forceSlash
+     * @property useDeepLinking
      * @type {boolean}
      * @default true
      * @public
      * @static
      * @example
-     *     Router.useDeepLinking = false;
+     *     Router.useDeepLinking = true;
      */
-    public static forceSlash:boolean = true;
+    public static useDeepLinking:boolean = true;
 
     /**
      * The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the
@@ -92,7 +92,7 @@ class Router
      * to sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump
      * around if they figure out the url schema.
      *
-     * @property useDeepLinking
+     * @property allowManualDeepLinking
      * @type {boolean}
      * @default true
      * @public
@@ -101,13 +101,13 @@ class Router
      *     Router.useDeepLinking = false;
      *     Router.allowManualDeepLinking = false;
      */
-    public static useDeepLinking:boolean = true;
+    public static allowManualDeepLinking:boolean = true;
 
     /**
      * The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink "Router/navigateTo:method"}}{{/crossLink}}** method is called to
      * make sure the hash url has a forward slash after the **#** character like this **#/**.
      *
-     * @property allowManualDeepLinking
+     * @property forceSlash
      * @type {boolean}
      * @default true
      * @public
@@ -119,7 +119,7 @@ class Router
      *     // By default it will change the url from #contact/bob/ to #/contact/bob/
      *     // when using the navigateTo method.
      */
-    public static allowManualDeepLinking:boolean = true;
+    public static forceSlash:boolean = true;
 
     /**
      * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
@@ -141,11 +141,11 @@ class Router
     }
 
     /**
-     * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing one or more parameters depending on the route pattern you define. The last parameter or sometimes it maybe the only parameter sent will be the {{#crossLink "RouteEvent"}}{{/crossLink}}.
+     * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouteEvent"}}{{/crossLink}}.
      *
      * @method add
      * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-     * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}} object.
+     * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}}{{/crossLink}} object.
      * @param callbackScope {any} The scope of the callback function that should be executed.
      * @public
      * @static
@@ -192,7 +192,7 @@ class Router
      *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
      *
      *
-     * **?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an
+     * **?** The question mark character means it will match a query string for the hash url.
      *
      *     Router.add('?', this.method, this);
      *

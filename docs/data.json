@@ -1511,7 +1511,7 @@
         {
             "file": "src/controller/Router.js",
             "line": 42,
-            "description": "The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing one or more parameters depending on the route pattern you define. The last parameter or sometimes it maybe the only parameter sent will be the {{#crossLink \"RouteEvent\"}}{{/crossLink}}.",
+            "description": "The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink \"RouteEvent\"}}{{/crossLink}}.",
             "itemtype": "method",
             "name": "add",
             "params": [
@@ -1535,7 +1535,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    // Example of adding a route listener and the function callback below.\n    Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route listener would match the below url:\n    // www.site.com/#/games/asteroids/2/\n\n    // The Call back receives a RouteEvent object.\n    ClassName.prototype.onRouteHandler = function (routeEvent) {\n        console.log(routeEvent.params);\n    }\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    Router.add('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/contact/\n    // www.site.com/#/contact/heather/\n    // www.site.com/#/contact/john/\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    Router.add('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/product/shoes/\n    // www.site.com/#/product/jackets/\n\n\n**\\*** The asterix character means it will match all or part of part the hash url.\n\n    Router.add('*', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/anything/\n    // www.site.com/#/matches/any/hash/url/\n    // www.site.com/#/really/it/matches/any/and/all/hash/urls/\n\n\n**?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an\n\n    Router.add('?', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/?one=1&two=2&three=3\n    // www.site.com/#?one=1&two=2&three=3\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    Router.add('', this.method, this);\n    Router.add('/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/\n    // www.site.com/#/\n\n\nOther possible combinations but not limited too:\n\n    Router.add('/games/{gameName}/:level:/', this.method1, this);\n    Router.add('/{category}/blog/', this.method2, this);\n    Router.add('/home/?', this.method3, this);\n    Router.add('/about/*', this.method4, this);\n"
+                "\n    // Example of adding a route listener and the function callback below.\n    Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route listener would match the below url:\n    // www.site.com/#/games/asteroids/2/\n\n    // The Call back receives a RouteEvent object.\n    ClassName.prototype.onRouteHandler = function (routeEvent) {\n        console.log(routeEvent.params);\n    }\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    Router.add('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/contact/\n    // www.site.com/#/contact/heather/\n    // www.site.com/#/contact/john/\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    Router.add('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/product/shoes/\n    // www.site.com/#/product/jackets/\n\n\n**\\*** The asterix character means it will match all or part of part the hash url.\n\n    Router.add('*', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/anything/\n    // www.site.com/#/matches/any/hash/url/\n    // www.site.com/#/really/it/matches/any/and/all/hash/urls/\n\n\n**?** The question mark character means it will match a query string for the hash url.\n\n    Router.add('?', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/?one=1&two=2&three=3\n    // www.site.com/#?one=1&two=2&three=3\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    Router.add('', this.method, this);\n    Router.add('/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/\n    // www.site.com/#/\n\n\nOther possible combinations but not limited too:\n\n    Router.add('/games/{gameName}/:level:/', this.method1, this);\n    Router.add('/{category}/blog/', this.method2, this);\n    Router.add('/home/?', this.method3, this);\n    Router.add('/about/*', this.method4, this);\n"
             ],
             "class": "Router",
             "module": "StructureJS"
@@ -1792,7 +1792,46 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 443,
+            "line": 444,
+            "description": "A list of the added Route objects.",
+            "itemtype": "property",
+            "name": "_routes",
+            "type": "{Array<Route>}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/controller/Router.js",
+            "line": 454,
+            "description": "A reference to default route object.",
+            "itemtype": "property",
+            "name": "_defaultRoute",
+            "type": "{Route}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/controller/Router.js",
+            "line": 464,
+            "description": "A reference to the hash change event that was sent from the Window Object.",
+            "itemtype": "property",
+            "name": "_hashChangeEvent",
+            "type": "{any}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/controller/Router.js",
+            "line": 474,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -1809,66 +1848,27 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 456,
-            "description": "A list of the added Route objects.",
-            "itemtype": "property",
-            "name": "_routes",
-            "type": "{Array<Route>}",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "class": "Router",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/controller/Router.js",
-            "line": 465,
-            "description": "A reference to default route object.",
-            "itemtype": "property",
-            "name": "_defaultRoute",
-            "type": "{Route}",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "class": "Router",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/controller/Router.js",
-            "line": 474,
-            "description": "A reference to the hash change event that was sent from the Window Object.",
-            "itemtype": "property",
-            "name": "_hashChangeEvent",
-            "type": "{any}",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "class": "Router",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/controller/Router.js",
-            "line": 483,
+            "line": 488,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
-            "name": "forceSlash",
+            "name": "useDeepLinking",
             "type": "{boolean}",
             "default": "true",
             "access": "public",
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    Router.useDeepLinking = false;"
+                "\n    Router.useDeepLinking = true;"
             ],
             "class": "Router",
             "module": "StructureJS"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 499,
-            "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router.{{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful if want to use your added routes but don't want any external forces trigger your routes.\n\nTypically what I do for games is during development/testing I allow the hash url to change the states so testers can jump\nto sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump\naround if they figure out the url schema.",
+            "line": 505,
+            "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful when used with the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method to use your routes as states rather than using the hash url to control the application.\n\nWhat this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to **false** so users cannot jump around if they figure out the url schema.",
             "itemtype": "property",
-            "name": "useDeepLinking",
+            "name": "allowManualDeepLinking",
             "type": "{boolean}",
             "default": "true",
             "access": "public",
@@ -1882,10 +1882,10 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 518,
+            "line": 523,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
-            "name": "allowManualDeepLinking",
+            "name": "forceSlash",
             "type": "{boolean}",
             "default": "true",
             "access": "public",
@@ -1899,7 +1899,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 535,
+            "line": 541,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
