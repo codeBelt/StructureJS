@@ -61,7 +61,7 @@ define(function (require, exports, module) { // jshint ignore:line
         DeviceButton.prototype.enable = function () {
             if (this.isEnabled === true) return this;
 
-            this.$element.addEventListener('click', this.onClick, this);
+            this.$element.addEventListener('click', this._onClick, this);
             this.$element.css('cursor','pointer');
 
             return _super.prototype.enable.call(this);
@@ -73,7 +73,7 @@ define(function (require, exports, module) { // jshint ignore:line
         DeviceButton.prototype.disable = function () {
             if (this.isEnabled === false) return this;
 
-            this.$element.removeEventListener('click', this.onClick, this);
+            this.$element.removeEventListener('click', this._onClick, this);
             this.$element.css('cursor','default');
 
             return _super.prototype.disable.call(this);
@@ -105,11 +105,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * On click of the button it will animate itself and dispatch an event so the SimonApp
          * can respond to the CHANGE event. Probably should of create and dispatched a custom event.
          *
-         * @method onClick
+         * @method _onClick
          * @param event {jQueryEventObject}
          * @private
          */
-        DeviceButton.prototype.onClick = function (event) {
+        DeviceButton.prototype._onClick = function (event) {
             event.preventDefault();
 
             this.animate();

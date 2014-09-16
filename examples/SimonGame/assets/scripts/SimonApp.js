@@ -89,9 +89,9 @@ define(function (require, exports, module) { // jshint ignore:line
         SimonApp.prototype.enable = function () {
             if (this.isEnabled === true) return this;
 
-            this.addEventListener(BaseEvent.CHANGE, this.onColorButtonClick, this);
+            this.addEventListener(BaseEvent.CHANGE, this._onColorButt_onClick, this);
 
-            this._centerDisplay.$element.addEventListener('click', this.onClick, this);
+            this._centerDisplay.$element.addEventListener('click', this._onClick, this);
 
             return _super.prototype.enable.call(this);
         };
@@ -102,9 +102,9 @@ define(function (require, exports, module) { // jshint ignore:line
         SimonApp.prototype.disable = function () {
             if (this.isEnabled === false) return this;
 
-            this.removeEventListener(BaseEvent.CHANGE, this.onColorButtonClick, this);
+            this.removeEventListener(BaseEvent.CHANGE, this._onColorButt_onClick, this);
 
-            this._centerDisplay.$element.removeEventListener('click', this.onClick, this);
+            this._centerDisplay.$element.removeEventListener('click', this._onClick, this);
 
             return _super.prototype.disable.call(this);
         };
@@ -128,11 +128,11 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Each time the timer ticks this method is called and animates one of the colored buttons.
          *
-         * @method onTimer
+         * @method _onTimer
          * @param event {TimerEvent}
          * @private
          */
-        SimonApp.prototype.onTimer = function(event) {
+        SimonApp.prototype._onTimer = function(event) {
             var timer = event.target;
             var sequenceSteps = this._memoryOrder.length - 1;
             var currentIndex = sequenceSteps - timer.getCurrentCount();
@@ -145,11 +145,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * When the memory sequence completes this method will enable the color buttons and
          * will update the white button text by calling the layoutChildren method.
          *
-         * @method onTimerComplete
+         * @method _onTimerComplete
          * @param event {TimerEvent}
          * @private
          */
-        SimonApp.prototype.onTimerComplete = function(event) {
+        SimonApp.prototype._onTimerComplete = function(event) {
             this._timer.destroy();
 
             this._deviceView.enable();
@@ -161,11 +161,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * track of the buttons clicked and then will determine if the user click the colored buttons
          * in the correct sequence.
          *
-         * @method onColorButtonClick
+         * @method _onColorButt_onClick
          * @param event {BaseEvent}
          * @private
          */
-        SimonApp.prototype.onColorButtonClick = function(event) {
+        SimonApp.prototype._onColorButt_onClick = function(event) {
             var gameVO = event.data;
             this._userSequence.push(gameVO.buttonIndex);
 
@@ -186,11 +186,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * When the white center button is clicked this will set the memory sequence and start a timer
          * which will play the sequence for the user to remember.
          *
-         * @method onClick
+         * @method _onClick
          * @param event {jQueryEventObject}
          * @private
          */
-        SimonApp.prototype.onClick = function(event) {
+        SimonApp.prototype._onClick = function(event) {
             event.preventDefault();
 
             this._centerDisplay.$element.text('');
@@ -199,8 +199,8 @@ define(function (require, exports, module) { // jshint ignore:line
             this._userSequence = [];
 
             this._timer =  new Timer(1500, this._memoryOrder.length);
-            this._timer.addEventListener(TimerEvent.TIMER, this.onTimer, this);
-            this._timer.addEventListener(TimerEvent.TIMER_COMPLETE, this.onTimerComplete, this);
+            this._timer.addEventListener(TimerEvent.TIMER, this._onTimer, this);
+            this._timer.addEventListener(TimerEvent.TIMER_COMPLETE, this._onTimerComplete, this);
             this._timer.start();
         };
 

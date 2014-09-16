@@ -57,7 +57,7 @@ define(function (require, exports, module) { // jshint ignore:line
         ParentView.prototype.enable = function () {
             if (this.isEnabled === true) return this;
 
-            this.addEventListener(BaseEvent.CHANGE, this.onBubbled, this);
+            this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
             this._childView.enable();
 
@@ -70,7 +70,7 @@ define(function (require, exports, module) { // jshint ignore:line
         ParentView.prototype.disable = function () {
             if (this.isEnabled === false) return this;
 
-            this.removeEventListener(BaseEvent.CHANGE, this.onBubbled, this);
+            this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
             this._childView.disable();
 
@@ -87,7 +87,7 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.prototype.destroy.call(this);
         };
 
-        ParentView.prototype.onBubbled = function (event) {
+        ParentView.prototype._onBubbled = function (event) {
             var checkbox = this._panelContainer.$element.find('[type=checkbox]').first().prop('checked');
 
             if (checkbox == true) {

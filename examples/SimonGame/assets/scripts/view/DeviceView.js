@@ -151,7 +151,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method animateButton
          * @param buttonIndex {int}
-         * @private
+         * @public
          */
         DeviceView.prototype.animateButton = function (buttonIndex) {
             var deviceButton = this._buttonList[buttonIndex];

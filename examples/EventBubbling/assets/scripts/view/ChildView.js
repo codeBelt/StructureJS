@@ -55,9 +55,9 @@ define(function (require, exports, module) { // jshint ignore:line
         ChildView.prototype.enable = function () {
             if (this.isEnabled === true) return;
 
-            this.addEventListener(BaseEvent.CHANGE, this.onBubbled, this);
+            this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
-            this._dispatchButton.$element.addEventListener('click', this.onButtonClick, this);
+            this._dispatchButton.$element.addEventListener('click', this._onButtonClick, this);
 
             return _super.prototype.enable.call(this);
         };
@@ -68,9 +68,9 @@ define(function (require, exports, module) { // jshint ignore:line
         ChildView.prototype.disable = function () {
             if (this.isEnabled === false) return;
 
-            this.removeEventListener(BaseEvent.CHANGE, this.onBubbled, this);
+            this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
-            this._dispatchButton.$element.removeEventListener('click', this.onButtonClick, this);
+            this._dispatchButton.$element.removeEventListener('click', this._onButtonClick, this);
 
             return _super.prototype.disable.call(this);
         };
@@ -85,14 +85,14 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.prototype.destroy.call(this);
         };
 
-        ChildView.prototype.onButtonClick = function (event) {
+        ChildView.prototype._onButtonClick = function (event) {
             event.preventDefault();
 
             this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
             EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
         };
 
-        ChildView.prototype.onBubbled = function (event) {
+        ChildView.prototype._onBubbled = function (event) {
             var checkbox = this._panelContainer.$element.find('[type=checkbox]').first().prop('checked');
 
             if (checkbox == true) {

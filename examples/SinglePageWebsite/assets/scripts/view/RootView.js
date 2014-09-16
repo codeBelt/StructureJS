@@ -66,7 +66,7 @@ define(function (require, exports, module) { // jshint ignore:line
             Router.add('contact', this.contactRouterHandler, this);
             Router.add('services', this.servicesRouterHandler, this);
             Router.add('menu', this.menuRouterHandler, this);
-            Router.add(':all:', this.allRouterHandler, this);
+            Router.add(':all:', this._allRouterHandler, this);
             Router.start();
         };
 
@@ -166,11 +166,11 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * YUIDoc_comment
          *
-         * @method allRouterHandler
+         * @method _allRouterHandler
          * @param routerEvent {RouteEvent}
          * @private
          */
-        RootView.prototype.allRouterHandler = function(routerEvent) {
+        RootView.prototype._allRouterHandler = function(routerEvent) {
             this._headerView.updateNavigation(routerEvent.params[0]);
         };
 

@@ -4,6 +4,7 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Extend = require('structurejs/util/Extend');
     var DOMElement = require('structurejs/display/DOMElement');
+    var Router = require('structurejs/controller/Router');
     var FooterTemplate = require('hbs!templates/footer/FooterTemplate');
 
     /**
@@ -19,6 +20,15 @@ define(function (require, exports, module) { // jshint ignore:line
 
         function FooterView() {
             _super.call(this);
+
+            /**
+             * YUIDoc_comment
+             *
+             * @property _$footerLinks
+             * @type {jQuery}
+             * @private
+             */
+            this._$footerLinks = null;
         }
 
         /**
@@ -27,7 +37,7 @@ define(function (require, exports, module) { // jshint ignore:line
         FooterView.prototype.createChildren = function () {
             _super.prototype.createChildren.call(this, FooterTemplate);
 
-            // Create and add your child objects to this parent class.
+            this._$footerLinks = this.$element.find('.js-href');
         };
 
         /**
@@ -45,7 +55,7 @@ define(function (require, exports, module) { // jshint ignore:line
         FooterView.prototype.enable = function () {
             if (this.isEnabled === true) return this;
 
-            // Enable the child objects and add any event listeners.
+            this._$footerLinks.addEventListener('click', this._onClick, this);
 
             return _super.prototype.enable.call(this);
         };
@@ -56,7 +66,7 @@ define(function (require, exports, module) { // jshint ignore:line
         FooterView.prototype.disable = function () {
             if (this.isEnabled === false) return this;
 
-            // Disable the child objects and remove any event listeners.
+            this._$footerLinks.removeEventListener('click', this._onClick, this);
 
             return _super.prototype.disable.call(this);
         };
@@ -69,6 +79,25 @@ define(function (require, exports, module) { // jshint ignore:line
             // This super method will also null out all properties automatically to prevent memory leaks.
 
             _super.prototype.destroy.call(this);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method _onClick
+         * @param event {jQueryEventObject}
+         * @private
+         */
+        FooterView.prototype._onClick = function(event) {
+            event.preventDefault();
+
+            // This changes the application to not use the browser hash change event.
+            Router.useDeepLinking = false;
+            //Router.allowManualDeepLinking = false;
+
+            var $target = $(event.target);
+
+            Router.navigateTo($target.attr('href'));
         };
 
         return FooterView;
