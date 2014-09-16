@@ -17,15 +17,22 @@ define(function (require, exports, module) { // jshint ignore:line
 
         var _super = Extend(ContactView, DOMElement);
 
-        function ContactView() {
+        function ContactView(routerEvent) {
             _super.call(this);
+
+            /**
+             * @property _routeEvent
+             * @type {RouteEvent}
+             * @private
+             */
+            this._routeEvent = routerEvent;
         }
 
         /**
          * @overridden DOMElement.createChildren
          */
         ContactView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, ContactTemplate);
+            _super.prototype.createChildren.call(this, ContactTemplate, this._routeEvent.query);
 
             // Create and add your child objects to this parent class.
         };

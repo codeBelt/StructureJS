@@ -62,11 +62,11 @@ define(function (require, exports, module) { // jshint ignore:line
             this.addChild(this._footerView);
 
             Router.add('', this.homeRouterHandler, this);
-            Router.add('about', this.aboutRouterHandler, this);
-            Router.add('contact', this.contactRouterHandler, this);
-            Router.add('services', this.servicesRouterHandler, this);
-            Router.add('menu', this.menuRouterHandler, this);
-            Router.add(':all:', this._allRouterHandler, this);
+            Router.add('/menu/', this.menuRouterHandler, this);
+            Router.add('/about/', this.aboutRouterHandler, this);
+            Router.add('/services/', this.servicesRouterHandler, this);
+            Router.add('/contact/?', this.contactRouterHandler, this);
+            Router.add('*', this._allRouterHandler, this);
             Router.start();
         };
 
@@ -119,6 +119,8 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         RootView.prototype.homeRouterHandler = function (routerEvent) {
+            console.log("routerEvent", routerEvent);
+
             if (!(this._currentView instanceof HomeView)) {
                 var view = new HomeView();
                 this.changeView(view);
@@ -126,6 +128,8 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         RootView.prototype.aboutRouterHandler = function (routerEvent) {
+            console.log("routerEvent", routerEvent);
+
             if (!(this._currentView instanceof AboutView)) {
                 var view = new AboutView();
                 this.changeView(view);
@@ -133,13 +137,17 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         RootView.prototype.contactRouterHandler = function (routerEvent) {
+            console.log("routerEvent", routerEvent);
+
             if (!(this._currentView instanceof ContactView)) {
-                var view = new ContactView();
+                var view = new ContactView(routerEvent);
                 this.changeView(view);
             }
         };
 
         RootView.prototype.servicesRouterHandler = function (routerEvent) {
+            console.log("routerEvent", routerEvent);
+
             if (!(this._currentView instanceof ServicesView)) {
                 var view = new ServicesView();
                 this.changeView(view);
@@ -147,6 +155,8 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         RootView.prototype.menuRouterHandler = function (routerEvent) {
+            console.log("routerEvent", routerEvent);
+
             if (!(this._currentView instanceof MenuView)) {
                 var view = new MenuView();
                 this.changeView(view);
