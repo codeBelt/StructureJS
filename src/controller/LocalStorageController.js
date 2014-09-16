@@ -73,6 +73,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @param key {string}
          * @param data {Object}
          * @param useNamespace {boolean}
+         * @return {boolean}
          */
         LocalStorageController.prototype.addItem = function (key, data, useNamespace) {
             if (typeof useNamespace === "undefined") { useNamespace = false; }
@@ -86,7 +87,12 @@ define(function (require, exports, module) { // jshint ignore:line
 
             data = JSON.stringify(data);
 
-            this._localStorage.setItem(key, data);
+            try  {
+                this._localStorage.setItem(key, data);
+                return true;
+            } catch (error) {
+                return false;
+            }
         };
 
         /**
@@ -170,6 +176,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method removeItem
          * @param key {string}
          * @param [useNamespace=false] {string}
+         * @return {boolean}
          */
         LocalStorageController.prototype.removeItem = function (key, useNamespace) {
             if (typeof useNamespace === "undefined") { useNamespace = false; }
@@ -177,7 +184,12 @@ define(function (require, exports, module) { // jshint ignore:line
                 key = this.getNamespace() + key;
             }
 
-            this._localStorage.removeItem(key);
+            try  {
+                this._localStorage.removeItem(key);
+                return true;
+            } catch (error) {
+                return false;
+            }
         };
 
         /**

@@ -96,8 +96,9 @@ class LocalStorageController extends EventDispatcher
      * @param key {string}
      * @param data {Object}
      * @param useNamespace {boolean}
+     * @return {boolean}
      */
-    public addItem(key:string, data:any, useNamespace:boolean = false):void
+    public addItem(key:string, data:any, useNamespace:boolean = false):boolean
     {
         if (useNamespace)
         {
@@ -111,7 +112,15 @@ class LocalStorageController extends EventDispatcher
 
         data = JSON.stringify(data);
 
-        this._localStorage.setItem(key, data);
+        try
+        {
+            this._localStorage.setItem(key, data);
+            return true;
+        }
+        catch (error)
+        {
+            return false;
+        }
     }
 
     /**
@@ -204,15 +213,24 @@ class LocalStorageController extends EventDispatcher
      * @method removeItem
      * @param key {string}
      * @param [useNamespace=false] {string}
+     * @return {boolean}
      */
-    public removeItem(key:string, useNamespace:boolean = false):void
+    public removeItem(key:string, useNamespace:boolean = false):boolean
     {
         if (useNamespace)
         {
             key = this.getNamespace() + key;
         }
 
-        this._localStorage.removeItem(key);
+        try
+        {
+            this._localStorage.removeItem(key);
+            return true;
+        }
+        catch (error)
+        {
+            return false;
+        }
     }
 
     /**
