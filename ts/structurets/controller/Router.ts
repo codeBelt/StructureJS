@@ -481,7 +481,7 @@ class Router
     {
         var route:Route;
         var match:any;
-        var routerEvent:RouteEvent = null;
+        var routeEvent:RouteEvent = null;
 
         // Loop through all the route's. Note: we need to check the length every loop in case one was removed.
         for (var i = 0; i < Router._routes.length; i++)
@@ -492,32 +492,36 @@ class Router
             // If there is a match.
             if (match !== null)
             {
-                routerEvent = new RouteEvent();
-                routerEvent.route = match.shift();
-                routerEvent.params = match.slice(0, match.length);
-                routerEvent.routePattern = route.routePattern;
-                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-                routerEvent.target = Router;
-                routerEvent.currentTarget = Router;
+                routeEvent = new RouteEvent();
+                routeEvent.route = match.shift();
+                routeEvent.params = match.slice(0, match.length);
+                routeEvent.routePattern = route.routePattern;
+                routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                routeEvent.target = Router;
+                routeEvent.currentTarget = Router;
 
                 // Remove any empty strings in the array due to the :optional: route pattern.
-                for (var j = routerEvent.params.length - 1; j >= 0; j--)
+                for (var j = routeEvent.params.length - 1; j >= 0; j--)
                 {
-                    if (routerEvent.params[j] === '')
+                    if (routeEvent.params[j] === '')
                     {
-                        routerEvent.params.splice(j, 1);
+                        routeEvent.params.splice(j, 1);
                     }
                 }
 
                 // If there was a hash change event then set the info we want to send.
                 if (Router._hashChangeEvent != null)
                 {
-                    routerEvent.newURL = Router._hashChangeEvent.newURL;
-                    routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    routeEvent.newURL = Router._hashChangeEvent.newURL;
+                    routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                }
+                else
+                {
+                    routeEvent.newURL = window.location.href;
                 }
 
                 // Execute the callback function and pass the route event.
-                route.callback.call(route.callbackScope, routerEvent);
+                route.callback.call(route.callbackScope, routeEvent);
 
                 // Only trigger the first route and stop checking.
                 if (Router.allowMultipleMatches === false)
@@ -528,21 +532,25 @@ class Router
         }
 
         // If there are no route's matched and there is a default route. Then call that default route.
-        if (routerEvent === null && Router._defaultRoute !== null)
+        if (routeEvent === null && Router._defaultRoute !== null)
         {
-            routerEvent = new RouteEvent();
-            routerEvent.route = hash;
-            routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-            routerEvent.target = Router;
-            routerEvent.currentTarget = Router;
+            routeEvent = new RouteEvent();
+            routeEvent.route = hash;
+            routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+            routeEvent.target = Router;
+            routeEvent.currentTarget = Router;
 
             if (Router._hashChangeEvent != null)
             {
-                routerEvent.newURL = Router._hashChangeEvent.newURL;
-                routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+                routeEvent.newURL = Router._hashChangeEvent.newURL;
+                routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+            }
+            else
+            {
+                routeEvent.newURL = window.location.href;
             }
 
-            Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
+            Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routeEvent);
         }
 
         Router._hashChangeEvent = null;

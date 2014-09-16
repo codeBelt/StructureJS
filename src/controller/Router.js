@@ -44,7 +44,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method add
          * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}} object.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}}{{/crossLink}} object.
          * @param callbackScope {any} The scope of the callback function that should be executed.
          * @public
          * @static
@@ -373,7 +373,7 @@ define(function (require, exports, module) { // jshint ignore:line
         Router.changeRoute = function (hash) {
             var route;
             var match;
-            var routerEvent = null;
+            var routeEvent = null;
 
             for (var i = 0; i < Router._routes.length; i++) {
                 route = Router._routes[i];
@@ -381,28 +381,30 @@ define(function (require, exports, module) { // jshint ignore:line
 
                 // If there is a match.
                 if (match !== null) {
-                    routerEvent = new RouteEvent();
-                    routerEvent.route = match.shift();
-                    routerEvent.params = match.slice(0, match.length);
-                    routerEvent.routePattern = route.routePattern;
-                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-                    routerEvent.target = Router;
-                    routerEvent.currentTarget = Router;
+                    routeEvent = new RouteEvent();
+                    routeEvent.route = match.shift();
+                    routeEvent.params = match.slice(0, match.length);
+                    routeEvent.routePattern = route.routePattern;
+                    routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routeEvent.target = Router;
+                    routeEvent.currentTarget = Router;
 
-                    for (var j = routerEvent.params.length - 1; j >= 0; j--) {
-                        if (routerEvent.params[j] === '') {
-                            routerEvent.params.splice(j, 1);
+                    for (var j = routeEvent.params.length - 1; j >= 0; j--) {
+                        if (routeEvent.params[j] === '') {
+                            routeEvent.params.splice(j, 1);
                         }
                     }
 
                     // If there was a hash change event then set the info we want to send.
                     if (Router._hashChangeEvent != null) {
-                        routerEvent.newURL = Router._hashChangeEvent.newURL;
-                        routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+                        routeEvent.newURL = Router._hashChangeEvent.newURL;
+                        routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    } else {
+                        routeEvent.newURL = window.location.href;
                     }
 
                     // Execute the callback function and pass the route event.
-                    route.callback.call(route.callbackScope, routerEvent);
+                    route.callback.call(route.callbackScope, routeEvent);
 
                     // Only trigger the first route and stop checking.
                     if (Router.allowMultipleMatches === false) {
@@ -412,19 +414,21 @@ define(function (require, exports, module) { // jshint ignore:line
             }
 
             // If there are no route's matched and there is a default route. Then call that default route.
-            if (routerEvent === null && Router._defaultRoute !== null) {
-                routerEvent = new RouteEvent();
-                routerEvent.route = hash;
-                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-                routerEvent.target = Router;
-                routerEvent.currentTarget = Router;
+            if (routeEvent === null && Router._defaultRoute !== null) {
+                routeEvent = new RouteEvent();
+                routeEvent.route = hash;
+                routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                routeEvent.target = Router;
+                routeEvent.currentTarget = Router;
 
                 if (Router._hashChangeEvent != null) {
-                    routerEvent.newURL = Router._hashChangeEvent.newURL;
-                    routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    routeEvent.newURL = Router._hashChangeEvent.newURL;
+                    routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                } else {
+                    routeEvent.newURL = window.location.href;
                 }
 
-                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
+                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routeEvent);
             }
 
             Router._hashChangeEvent = null;
