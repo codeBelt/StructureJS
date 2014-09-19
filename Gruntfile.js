@@ -301,6 +301,40 @@ module.exports = function(grunt) {
             }
         },
 
+        // Verifies that script files conform to our standards.
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
+            all: {
+                src: [
+                    'src/**/*.js'
+                ]
+            }
+        },
+
+        // Verifies that application files conform to the specification files
+        karma: {
+            options: {
+                singleRun: true,
+                configFile: 'karma.conf.js',
+                basePath: 'scripts/',
+                coverageReporter: {
+                    type: 'html',
+                    // path is relative to basePath
+                    // adjust to the best location for your project
+                    // and backend
+                    dir: 'build-reports/'
+                }
+            },
+            unit: {
+                reporters: ['progress']
+//            },
+//            coverage: {
+//                reporters: ['progress', 'coverage']
+            }
+        },
+
         /**
          * Watches files and will run task(s) when files are changed. It will also reload/refresh the browser.
          */
