@@ -73,7 +73,7 @@ class Collection extends EventDispatcher implements ICollection
      */
     public addItem(item:any, silent:boolean = false):void
     {
-        if (this.hasItem(item) == false)
+        if (this.hasItem(item) === false)
         {
             this.items.push(item);
             this.length = this.items.length;

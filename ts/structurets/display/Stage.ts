@@ -55,7 +55,7 @@ import DOMElement = require("display/DOMElement");
                 }
 
                 MainClass.prototype.enable = function () {
-                    if (this.isEnabled === true) return this;
+                    if (this.isEnabled === true) { return this; }
 
                     // Enable the child objects and add any event listeners.
 
@@ -63,7 +63,7 @@ import DOMElement = require("display/DOMElement");
                 }
 
                 MainClass.prototype.disable = function () {
-                    if (this.isEnabled === false) return this;
+                    if (this.isEnabled === false) { return this; }
 
                     // Disable the child objects and remove any event listeners.
 
@@ -115,7 +115,7 @@ class Stage extends DOMElement
         this.$element = jQuery(type);
         this.$element.attr('data-cid', this.cid);
 
-        if (this.isCreated == false)
+        if (this.isCreated === false)
         {
             this.createChildren();
             this.isCreated = true;

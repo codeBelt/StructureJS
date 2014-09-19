@@ -22,7 +22,7 @@
  * OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import DOMElement = require("../display/DOMElement");
+import DOMElement = require('../display/DOMElement');
 
 /**
  * A helper class to create multiple instances of the same Component Class.

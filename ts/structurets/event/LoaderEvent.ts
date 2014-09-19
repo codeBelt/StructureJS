@@ -48,7 +48,7 @@ class LoaderEvent extends BaseEvent
      * @type {string}
      * @static
      */
-    public static COMPLETE:string = "LoaderEvent.complete";
+    public static COMPLETE:string = 'LoaderEvent.complete';
 
     /**
      * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
@@ -57,7 +57,7 @@ class LoaderEvent extends BaseEvent
      * @type {string}
      * @static
      */
-    public static LOAD_COMPLETE:string = "LoaderEvent.loadComplete";
+    public static LOAD_COMPLETE:string = 'LoaderEvent.loadComplete';
 
     /**
      * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
@@ -66,7 +66,7 @@ class LoaderEvent extends BaseEvent
      * @type {string}
      * @static
      */
-    public static ERROR:string = "LoaderEvent.error";
+    public static ERROR:string = 'LoaderEvent.error';
 
     constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {

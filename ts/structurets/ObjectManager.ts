@@ -59,7 +59,7 @@ class ObjectManager extends BaseObject
      * @chainable
      * @example
      *     ClassName.prototype.enable = function() {
-     *          if (this.isEnabled === true) return this;
+     *          if (this.isEnabled === true) { return this; }
      *
      *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      *          this._childInstance.enable();
@@ -69,7 +69,7 @@ class ObjectManager extends BaseObject
      */
     public enable():any
     {
-        if (this.isEnabled === true) return this;
+        if (this.isEnabled === true) { return this; }
 
         this.isEnabled = true;
         return this;
@@ -83,7 +83,7 @@ class ObjectManager extends BaseObject
      * @chainable
      * @example
      *     ClassName.prototype.disable = function() {
-     *          if (this.isEnabled === false) return this;
+     *          if (this.isEnabled === false) { return this; }
      *
      *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      *          this._childInstance.disable();
@@ -93,7 +93,7 @@ class ObjectManager extends BaseObject
      */
     public disable():any
     {
-        if (this.isEnabled === false) return this;
+        if (this.isEnabled === false) { return this; }
 
         this.isEnabled = false;
         return this;

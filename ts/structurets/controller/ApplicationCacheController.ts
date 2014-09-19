@@ -117,22 +117,22 @@ class ApplicationCacheController
     {
         switch (ApplicationCacheController._appCache.status)
         {
-            case ApplicationCacheController._appCache.UNCACHED:    // UNCACHED == 0
+            case ApplicationCacheController._appCache.UNCACHED:    // UNCACHED === 0
                 return 'UNCACHED';
                 break;
-            case ApplicationCacheController._appCache.IDLE:        // IDLE == 1
+            case ApplicationCacheController._appCache.IDLE:        // IDLE === 1
                 return 'IDLE';
                 break;
-            case ApplicationCacheController._appCache.CHECKING:    // CHECKING == 2
+            case ApplicationCacheController._appCache.CHECKING:    // CHECKING === 2
                 return 'CHECKING';
                 break;
-            case ApplicationCacheController._appCache.DOWNLOADING: // DOWNLOADING == 3
+            case ApplicationCacheController._appCache.DOWNLOADING: // DOWNLOADING === 3
                 return 'DOWNLOADING';
                 break;
-            case ApplicationCacheController._appCache.UPDATEREADY: // UPDATEREADY == 4
+            case ApplicationCacheController._appCache.UPDATEREADY: // UPDATEREADY === 4
                 return 'UPDATEREADY';
                 break;
-            case ApplicationCacheController._appCache.OBSOLETE:    // OBSOLETE == 5
+            case ApplicationCacheController._appCache.OBSOLETE:    // OBSOLETE === 5
                 return 'OBSOLETE';
                 break;
             default:

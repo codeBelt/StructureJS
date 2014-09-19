@@ -37,7 +37,7 @@
  *     route.match('/product/jackets/');
  *
  *
- * **\*** The asterix character means it will match all or part of part the hash url.
+ * **\*** The asterisk character means it will match all or part of part the hash url.
  *
  *     var route = new Route('*', this.method, this);
  *

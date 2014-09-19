@@ -160,7 +160,7 @@ class Util
 
 
         // Handle the 3 simple types, and null or undefined
-        if (null == obj || "object" != typeof obj)
+        if (null == obj || 'object' != typeof obj)
         {
             return obj;
         }
@@ -214,7 +214,7 @@ class Util
     {
         strNum = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
-        return (strNum == "1" || strNum == "true");
+        return (strNum == '1' || strNum == 'true');
     }
 
     /**

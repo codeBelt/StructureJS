@@ -100,8 +100,8 @@ class NumberUtil
         var m:number = Math.floor((sec % 3600 ) / 60);
         var h:number = Math.floor(sec / (60 * 60));
 
-        var hourStr:string = (h == 0) ? "" : NumberUtil.doubleDigitFormat(h) + ":";
-        var minuteStr:string = NumberUtil.doubleDigitFormat(m) + ":";
+        var hourStr:string = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+        var minuteStr:string = NumberUtil.doubleDigitFormat(m) + ':';
         var secondsStr:string = NumberUtil.doubleDigitFormat(s);
 
         return hourStr + minuteStr + secondsStr;
@@ -118,7 +118,7 @@ class NumberUtil
     {
         if (num < 10)
         {
-            return ("0" + num);
+            return ('0' + num);
         }
         return String(num);
     }
@@ -127,7 +127,7 @@ class NumberUtil
     public static unformatUnit(value:string):number
     {
         // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
-        var withoutSpecialCharacters:string = value.replace(/[^\d.,-]/g, "");
+        var withoutSpecialCharacters:string = value.replace(/[^\d.,-]/g, '');
 
         // Gets the index where the decimal placement is located.
         var decimalIndex:number = withoutSpecialCharacters.length - 3;
@@ -135,21 +135,21 @@ class NumberUtil
         if (decimalSeparator === '.')
         {
             // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
-            withoutSpecialCharacters = value.replace(/[^\d.-]/g, "");
+            withoutSpecialCharacters = value.replace(/[^\d.-]/g, '');
         }
         else
         {
             // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
-            withoutSpecialCharacters = value.replace(/[^\d,-]/g, "");
+            withoutSpecialCharacters = value.replace(/[^\d,-]/g, '');
             decimalIndex = withoutSpecialCharacters.length - 3;
             //Replaces the comma (,) to a period (.).
-            withoutSpecialCharacters = withoutSpecialCharacters.replace(",", ".");
+            withoutSpecialCharacters = withoutSpecialCharacters.replace(',', '.');
         }
         return parseFloat(withoutSpecialCharacters);
     }
 
     //        public static formatUnit(number:number, decimalPlacement:number = 2, decimalSeparator:string = '.', thousandsSeparator:string = ','):number
-    public static formatUnit(value:number, decimalPlacement:number = 2, decimalSeparator:string = '.', thousandsSeparator:string = ',', currencySymbol:string = "", currencySymbolPlacement:number = 0):string
+    public static formatUnit(value:number, decimalPlacement:number = 2, decimalSeparator:string = '.', thousandsSeparator:string = ',', currencySymbol:string = '', currencySymbolPlacement:number = 0):string
     {
         var str:string = String(Number(value).toFixed(decimalPlacement));
         var result:string = '';

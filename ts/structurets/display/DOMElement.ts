@@ -72,7 +72,7 @@ import ComponentFactory = require("../util/ComponentFactory");
  *          };
  *
  *          ClassName.prototype.enable = function () {
- *              if (this.isEnabled === true) return this;
+ *              if (this.isEnabled === true) { return this; }
  *
  *              // Enable the child objects and add any event listeners.
  *
@@ -80,7 +80,7 @@ import ComponentFactory = require("../util/ComponentFactory");
  *          };
  *
  *          ClassName.prototype.disable = function () {
- *              if (this.isEnabled === false) return this;
+ *              if (this.isEnabled === false) { return this; }
  *
  *              // Disable the child objects and remove any event listeners.
  *
@@ -126,7 +126,7 @@ import ComponentFactory = require("../util/ComponentFactory");
  *          };
  *
  *          ClassName.prototype.enable = function () {
- *              if (this.isEnabled === true) return this;
+ *              if (this.isEnabled === true) { return this; }
  *
  *              // Enable the child objects and add any event listeners.
  *
@@ -134,7 +134,7 @@ import ComponentFactory = require("../util/ComponentFactory");
  *          };
  *
  *          ClassName.prototype.disable = function () {
- *              if (this.isEnabled === false) return this;
+ *              if (this.isEnabled === false) { return this; }
  *
  *              // Disable the child objects and remove any event listeners.
  *
@@ -333,7 +333,7 @@ class DOMElement extends DisplayObjectContainer
         }
 
         // If an empty jQuery object is passed into the constructor then don't run the code below.
-        if (child._isReference === true && child.$element.length == 0)
+        if (child._isReference === true && child.$element.length === 0)
         {
             return this;
         }
@@ -381,7 +381,7 @@ class DOMElement extends DisplayObjectContainer
     private onAddedToDom(child:DOMElement)
     {
         child.checkCount++;
-        if (child.$element.width() == 0 && child.checkCount < 5)
+        if (child.$element.width() === 0 && child.checkCount < 5)
         {
             setTimeout(() =>
             {
@@ -404,7 +404,7 @@ class DOMElement extends DisplayObjectContainer
         var length = children.length;
 
         // If an empty jQuery object is passed into the constructor then don't run the code below.
-        if (child._isReference === true && child.$element.length == 0)
+        if (child._isReference === true && child.$element.length === 0)
         {
             return this;
         }
@@ -474,7 +474,7 @@ class DOMElement extends DisplayObjectContainer
     {
         // Get the first match from the selector passed in.
         var jQueryElement:JQuery = this.$element.find(selector).first();
-        if (jQueryElement.length == 0)
+        if (jQueryElement.length === 0)
         {
             throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
         }

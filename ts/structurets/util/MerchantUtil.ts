@@ -40,7 +40,7 @@ class MerchantUtil
     /**
      * Determines if credit card is valid using the Luhn formula.
      * @example
-     MerchantUtil.isCreditCard("4556106734384949");
+     MerchantUtil.isCreditCard('4556106734384949');
      * @method isCreditCard
      * @param cardNumber {string} The credit card number.
      * @returns {boolean} <code>true</code> if String is a valid credit card number; otherwise <code>false</code>.
@@ -80,8 +80,8 @@ class MerchantUtil
      * Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.
      *
      * @example
-     * MerchantUtil.encodeCreditCardNumber("4556106734384949"); // ************4949
-     * MerchantUtil.encodeCreditCardNumber("4556106734384949", 5, "x");  // xxxxxxxxxxx84949
+     * MerchantUtil.encodeCreditCardNumber('4556106734384949'); // ************4949
+     * MerchantUtil.encodeCreditCardNumber('4556106734384949', 5, 'x');  // xxxxxxxxxxx84949
      *
      * @method encodeCreditCardNumber
      * @param strNumber {string} The credit card number as string.
@@ -91,9 +91,9 @@ class MerchantUtil
      * @public
      * @static
      */
-    public static encodeCreditCardNumber(strNumber:string, digitsShown:number = 4, encodeChar:string = "*"):string
+    public static encodeCreditCardNumber(strNumber:string, digitsShown:number = 4, encodeChar:string = '*'):string
     {
-        var encoded:string = "";
+        var encoded:string = '';
         for (var i:number = 0; i < strNumber.length - digitsShown; i++)
         {
             encoded += encodeChar;

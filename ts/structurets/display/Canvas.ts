@@ -55,7 +55,7 @@ class Canvas extends CanvasElement
         this.width = this.element.width;
         this.height = this.element.height;
 
-        if (this.isCreated == false)
+        if (this.isCreated === false)
         {
             this.createChildren();
             this.isCreated = true;

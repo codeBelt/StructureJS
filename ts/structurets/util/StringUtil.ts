@@ -49,7 +49,7 @@ class StringUtil
      */
     public static getExtension(filename:string):string
     {
-        return filename.slice(filename.lastIndexOf(".") + 1, filename.length);
+        return filename.slice(filename.lastIndexOf('.') + 1, filename.length);
     }
 
     /**
@@ -151,7 +151,7 @@ class StringUtil
         }
 
         // Split into key/value pairs
-        var queries = queryString.split("&");
+        var queries = queryString.split('&');
 
         // Convert the array of strings into an object
         var len:number = queries.length;
@@ -167,9 +167,9 @@ class StringUtil
     /**
      * Remove all whitespace from the string passed in.
      * @example
-     var str = "   a b    c d e f g ";
+     var str = '   a b    c d e f g ';
      StringUtil.removeAllWhitespace(str);
-     // "abcdefg"
+     // 'abcdefg'
      * @method removeAllWhitespace
      * @param str {string}
      * @returns {string}
@@ -184,9 +184,9 @@ class StringUtil
     /**
      * Remove leading and trailing whitespace.
      * @example
-     *      var str = "   a b    c d e f g ";
+     *      var str = '   a b    c d e f g ';
      *      StringUtil.removeLeadingTrailingWhitespace(str);
-     *      // "a b    c d e f g"
+     *      // 'a b    c d e f g'
      *
      * @method removeLeadingTrailingWhitespace
      * @param str {string}
@@ -216,7 +216,7 @@ class StringUtil
         }
         else
         {
-            return text.substr(0, length) + "...";
+            return text.substr(0, length) + '...';
         }
     }
 
@@ -238,7 +238,7 @@ class StringUtil
         var length = rest.length;
         for (var i:number = 0; i < length; i++)
         {
-            var reg = new RegExp("\\{" + i + "\\}", "gm");
+            var reg = new RegExp('\\{' + i + '\\}', 'gm');
             str = str.replace(reg, rest[i]);
         }
 
@@ -250,9 +250,9 @@ class StringUtil
         // Find the param with regex
         // Grab the first character in the returned string (should be ? or &)
         // Replace our href string with our new value, passing on the name and delimiter
-        var re = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var re = new RegExp('[\\?&]' + name + '=([^&#]*)');
         var delimiter = re.exec(queryString)[0].charAt(0);
-        return queryString.replace(re, delimiter + name + "=" + value);
+        return queryString.replace(re, delimiter + name + '=' + value);
     }
 
 }

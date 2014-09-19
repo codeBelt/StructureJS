@@ -53,7 +53,7 @@ class TemplateFactory
 
     private static create(templatePath:any, data:Object = null):string
     {
-        //Checks the first character to see if it is a "." or "#".
+        //Checks the first character to see if it is a '.' or '#'.
         var regex = /^([.#])(.+)/;
         var template:string = null;
         var isFunctionTemplate = typeof templatePath === 'function';

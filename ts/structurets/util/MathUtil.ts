@@ -335,7 +335,7 @@ class MathUtil
     {
         var d:string = '';
         var r:number = (5 / 9) * (fahrenheit - 32);
-        var s:string[] = r.toString().split(".");
+        var s:string[] = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);
@@ -345,11 +345,11 @@ class MathUtil
             var i:number = decimals;
             while (i > 0)
             {
-                d += "0";
+                d += '0';
                 i--;
             }
         }
-        var c:string = s[0] + "." + d;
+        var c:string = s[0] + '.' + d;
         return Number(c);
     }
 
@@ -365,7 +365,7 @@ class MathUtil
     {
         var d:string = '';
         var r:number = (celsius / (5 / 9)) + 32;
-        var s:string[] = r.toString().split(".");
+        var s:string[] = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);
@@ -375,11 +375,11 @@ class MathUtil
             var i:number = decimals;
             while (i > 0)
             {
-                d += "0";
+                d += '0';
                 i--;
             }
         }
-        var f:string = s[0] + "." + d;
+        var f:string = s[0] + '.' + d;
         return Number(f);
     }
 

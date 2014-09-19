@@ -165,7 +165,7 @@ class EventDispatcher extends ObjectManager
     {
         var event = type;
 
-        if (typeof event == 'string') {
+        if (typeof event === 'string') {
             event = new BaseEvent(type, false, true, data);
         }
 
