@@ -81,7 +81,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *     // www.site.com/#/product/jackets/
          *
          *
-         * **\*** The asterix character means it will match all or part of part the hash url.
+         * **\*** The asterisk character means it will match all or part of part the hash url.
          *
          *     Router.add('*', this.method, this);
          *
