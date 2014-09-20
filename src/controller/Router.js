@@ -30,11 +30,12 @@ define(function (require, exports, module) { // jshint ignore:line
     var StringUtil = require('structurejs/util/StringUtil');
 
     /**
-     * The Router class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
+     * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
      *
      * @class Router
+     * @static
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var Router = (function () {
         function Router() {
             throw new Error('[Router] Do not instantiation the Router class because it is a static class.');

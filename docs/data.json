@@ -211,6 +211,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/util/BrowserUtil.js": {
+            "name": "src/util/BrowserUtil.js",
+            "modules": {},
+            "classes": {
+                "BrowserUtil": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/util/BulkLoader.js": {
             "name": "src/util/BulkLoader.js",
             "modules": {},
@@ -229,10 +238,37 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/util/DateUtil.js": {
+            "name": "src/util/DateUtil.js",
+            "modules": {},
+            "classes": {
+                "DateUtil": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/util/Extend.js": {
             "name": "src/util/Extend.js",
             "modules": {},
             "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/util/MathUtil.js": {
+            "name": "src/util/MathUtil.js",
+            "modules": {},
+            "classes": {
+                "MathUtil": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/util/MerchantUtil.js": {
+            "name": "src/util/MerchantUtil.js",
+            "modules": {},
+            "classes": {
+                "MerchantUtil": 1
+            },
             "fors": {},
             "namespaces": {}
         },
@@ -241,6 +277,15 @@
             "modules": {},
             "classes": {
                 "MobileUtil": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/util/NumberUtil.js": {
+            "name": "src/util/NumberUtil.js",
+            "modules": {},
+            "classes": {
+                "NumberUtil": 1
             },
             "fors": {},
             "namespaces": {}
@@ -345,9 +390,14 @@
                 "URLLoaderDataFormat": 1,
                 "URLRequest": 1,
                 "URLRequestMethod": 1,
+                "BrowserUtil": 1,
                 "BulkLoader": 1,
                 "ComponentFactory": 1,
+                "DateUtil": 1,
+                "MathUtil": 1,
+                "MerchantUtil": 1,
                 "MobileUtil": 1,
+                "NumberUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
                 "Timer": 1,
@@ -454,8 +504,13 @@
             "name": "util",
             "submodules": {},
             "classes": {
+                "BrowserUtil": 1,
                 "BulkLoader": 1,
+                "DateUtil": 1,
+                "MathUtil": 1,
+                "MerchantUtil": 1,
                 "MobileUtil": 1,
+                "NumberUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
                 "Timer": 1,
@@ -467,7 +522,7 @@
             "namespaces": {},
             "module": "StructureTS",
             "namespace": "",
-            "description": "The BulkLoader...",
+            "description": "The BrowserUtil...",
             "file": "src/util/ValidationUtil.js",
             "line": 8
         },
@@ -515,6 +570,7 @@
             "line": 10,
             "description": "The LocalStorageController...",
             "submodule": "controller",
+            "extends": "EventDispatcher",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
@@ -530,7 +586,8 @@
             "namespace": "",
             "file": "src/controller/Router.js",
             "line": 32,
-            "description": "The Router class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink \"Router/add:method\"}}{{/crossLink}} method for more details and examples.",
+            "description": "The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink \"Router/add:method\"}}{{/crossLink}} method for more details and examples.",
+            "static": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "DOMElement": {
@@ -561,7 +618,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example of using DOMElement with out extending it.\n    var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example of a view passing in a jQuery object.\n    var view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example of a view extending DOMElement when passing in a jQuery object.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName($element) {\n             _super.call(this, $element);\n         }\n\n         ClassName.prototype.createChildren = function () {\n             _super.prototype.createChildren.call(this);\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layoutChildren = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) return this;\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) return this;\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();\n\n    // Example of a view extending DOMElement with template passed into createChildren.\n    var view = new CustomView();\n    this.addChild(view);\n\n    // Example of a view extending DOMElement with template passed into createChildren.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n    var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName() {\n             _super.call(this);\n         }\n\n         ClassName.prototype.createChildren = function () {\n             _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layoutChildren = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) return this;\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) return this;\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();"
+                "\n    // Example of using DOMElement with out extending it.\n    var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example of a view passing in a jQuery object.\n    var view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example of a view extending DOMElement when passing in a jQuery object.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName($element) {\n             _super.call(this, $element);\n         }\n\n         ClassName.prototype.createChildren = function () {\n             _super.prototype.createChildren.call(this);\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layoutChildren = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();\n\n    // Example of a view extending DOMElement with template passed into createChildren.\n    var view = new CustomView();\n    this.addChild(view);\n\n    // Example of a view extending DOMElement with template passed into createChildren.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n    var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName() {\n             _super.call(this);\n         }\n\n         ClassName.prototype.createChildren = function () {\n             _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layoutChildren = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();"
             ]
         },
         "DisplayObjectContainer": {
@@ -596,7 +653,7 @@
             "line": 8,
             "description": "The {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main or root class.",
             "example": [
-                "\n    // This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n    define(function (require, exports, module) {\n           'use strict';\n\n           var Extend = require('structurejs/util/Extend');\n           var Stage = require('replace/path/Stage');\n\n           var MainClass = (function () {\n\n           var _super = Extend(MainClass, Stage);\n\n               function MainClass() {\n                   _super.call(this);\n               }\n\n               MainClass.prototype.createChildren = function () {\n                   _super.prototype.createChildren.call(this);\n\n                   // Create and add your child objects to this parent class.\n               }\n\n               MainClass.prototype.layoutChildren = function () {\n                   // Layout or update the child objects in this parent class.\n\n                   return this;\n               }\n\n               MainClass.prototype.enable = function () {\n                   if (this.isEnabled === true) return this;\n\n                   // Enable the child objects and add any event listeners.\n\n                   return _super.prototype.enable.call(this);\n               }\n\n               MainClass.prototype.disable = function () {\n                   if (this.isEnabled === false) return this;\n\n                   // Disable the child objects and remove any event listeners.\n\n                   return _super.prototype.disable.call(this);\n               }\n\n               MainClass.prototype.destroy = function () {\n                   _super.prototype.destroy.call(this);\n\n                   // Destroy the child objects and references in this parent class to prevent memory leaks.\n               }\n\n               return MainClass;\n           })();\n\n           module.exports = MainClass;\n       });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiation your main or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');"
+                "\n    // This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n    define(function (require, exports, module) {\n        'use strict';\n\n        var Extend = require('structurejs/util/Extend');\n        var Stage = require('replace/path/Stage');\n\n        var MainClass = (function () {\n\n        var _super = Extend(MainClass, Stage);\n\n            function MainClass() {\n                _super.call(this);\n            }\n\n            MainClass.prototype.createChildren = function () {\n                _super.prototype.createChildren.call(this);\n\n                // Create and add your child objects to this parent class.\n            }\n\n            MainClass.prototype.layoutChildren = function () {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            MainClass.prototype.enable = function () {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return _super.prototype.enable.call(this);\n            }\n\n            MainClass.prototype.disable = function () {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return _super.prototype.disable.call(this);\n            }\n\n            MainClass.prototype.destroy = function () {\n                // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n                _super.prototype.destroy.call(this);\n            }\n\n            return MainClass;\n        })();\n\n        module.exports = MainClass;\n    });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiation your main or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');"
             ],
             "submodule": "view",
             "extends": "DOMElement",
@@ -991,6 +1048,7 @@
             "line": 8,
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.",
             "submodule": "model",
+            "extends": "BaseObject",
             "params": [
                 {
                     "name": "data",
@@ -1033,7 +1091,17 @@
             "line": 11,
             "description": "The URLLoader...",
             "submodule": "net",
+            "extends": "EventDispatcher",
             "is_constructor": 1,
+            "params": [
+                {
+                    "name": "request",
+                    "description": "",
+                    "type": "URLRequest",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
             "author": "Robert S. (www.codeBelt.com)"
         },
         "URLLoaderDataFormat": {
@@ -1094,6 +1162,23 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "BrowserUtil": {
+            "name": "BrowserUtil",
+            "shortname": "BrowserUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/util/BrowserUtil.js",
+            "line": 27,
+            "description": "The BrowserUtil...",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "BulkLoader": {
             "name": "BulkLoader",
             "shortname": "BulkLoader",
@@ -1127,6 +1212,58 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "DateUtil": {
+            "name": "DateUtil",
+            "shortname": "DateUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/util/DateUtil.js",
+            "line": 27,
+            "description": "The DateUtil...",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
+        "MathUtil": {
+            "name": "MathUtil",
+            "shortname": "MathUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/util/MathUtil.js",
+            "line": 27,
+            "description": "The MathUtil...",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)",
+            "static": 1
+        },
+        "MerchantUtil": {
+            "name": "MerchantUtil",
+            "shortname": "MerchantUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/util/MerchantUtil.js",
+            "line": 27,
+            "description": "A MerchantUtility class that has several static methods to assist in development.",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "MobileUtil": {
             "name": "MobileUtil",
             "shortname": "MobileUtil",
@@ -1140,6 +1277,23 @@
             "file": "src/util/MobileUtil.js",
             "line": 6,
             "description": "The MobileUtil...",
+            "submodule": "util",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
+        "NumberUtil": {
+            "name": "NumberUtil",
+            "shortname": "NumberUtil",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/util/NumberUtil.js",
+            "line": 27,
+            "description": "The NumberUtil...",
             "submodule": "util",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
@@ -1270,7 +1424,7 @@
     "classitems": [
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 25,
+            "line": 26,
             "description": "Current user namespace. The namespace is optional.",
             "itemtype": "property",
             "name": "_namespace",
@@ -1285,7 +1439,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 35,
+            "line": 36,
             "description": "A reference to window.localStorage for faster access.",
             "itemtype": "property",
             "name": "_localStorage",
@@ -1298,7 +1452,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 48,
+            "line": 49,
             "description": "Set storage namespace",
             "itemtype": "method",
             "name": "setNamespace",
@@ -1318,7 +1472,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 59,
+            "line": 60,
             "description": "Get storage namespace",
             "itemtype": "method",
             "name": "getNamespace",
@@ -1332,7 +1486,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 69,
+            "line": 70,
             "description": "Add a key/value pair to localStorage.",
             "itemtype": "method",
             "name": "addItem",
@@ -1353,13 +1507,17 @@
                     "type": "Boolean"
                 }
             ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 92,
+            "line": 99,
             "description": "Retrieves the current value associated with the Local Storage key.",
             "itemtype": "method",
             "name": "getItem",
@@ -1387,7 +1545,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 119,
+            "line": 126,
             "description": "Returns all items in local storage as an Object with key and value properties that has a certain namespace.",
             "itemtype": "method",
             "name": "getItemsWithNamespace",
@@ -1408,7 +1566,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 145,
+            "line": 152,
             "description": "Returns all items in local storage as an Object with key and value properties.",
             "itemtype": "method",
             "name": "getAllItems",
@@ -1422,7 +1580,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 167,
+            "line": 174,
             "description": "Deletes a key/value pair from the Local Storage collection.",
             "itemtype": "method",
             "name": "removeItem",
@@ -1440,13 +1598,17 @@
                     "optdefault": "false"
                 }
             ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 183,
+            "line": 196,
             "description": "Returns the number of items storage in local storage.",
             "itemtype": "method",
             "name": "getLength",
@@ -1460,7 +1622,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 193,
+            "line": 206,
             "description": "Returns the size of the Local Storage.",
             "itemtype": "method",
             "name": "getSize",
@@ -1474,7 +1636,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 203,
+            "line": 216,
             "description": "Removes all key/value pairs from the Local Storage area.",
             "itemtype": "method",
             "name": "clear",
@@ -1484,7 +1646,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 212,
+            "line": 226,
             "overridden": "BaseController.destroy",
             "class": "LocalStorageController",
             "module": "StructureJS",
@@ -1492,7 +1654,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 219,
+            "line": 233,
             "itemtype": "method",
             "name": "onLocalStorageEvent",
             "params": [
@@ -1510,7 +1672,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 42,
+            "line": 43,
             "description": "The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink \"RouteEvent\"}}{{/crossLink}}.",
             "itemtype": "method",
             "name": "add",
@@ -1522,7 +1684,7 @@
                 },
                 {
                     "name": "callback",
-                    "description": "The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink \"RouteEvent\"}} object.",
+                    "description": "The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink \"RouteEvent\"}}{{/crossLink}} object.",
                     "type": "Function"
                 },
                 {
@@ -1542,7 +1704,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 129,
+            "line": 130,
             "description": "The **Router.remove** method will remove one of the added routes.",
             "itemtype": "method",
             "name": "remove",
@@ -1574,7 +1736,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 156,
+            "line": 157,
             "description": "The **Router.addDefault** method is meant to trigger a callback function if there are no route matches are found.",
             "itemtype": "method",
             "name": "addDefault",
@@ -1601,7 +1763,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 171,
+            "line": 172,
             "description": "The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.",
             "itemtype": "method",
             "name": "removeDefault",
@@ -1616,7 +1778,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 184,
+            "line": 185,
             "description": "Gets the current hash url minus the # or #! symbol(s).",
             "itemtype": "method",
             "name": "getHash",
@@ -1635,7 +1797,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 201,
+            "line": 202,
             "description": "The **Router.enable** method will allow the Router class to listen for the hashchange event. By default the Router class is enabled.",
             "itemtype": "method",
             "name": "enable",
@@ -1650,7 +1812,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 223,
+            "line": 224,
             "description": "The **Router.disable** method will stop the Router class from listening for the hashchange event.",
             "itemtype": "method",
             "name": "disable",
@@ -1665,7 +1827,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 245,
+            "line": 246,
             "description": "The **Router.start** method is meant to trigger or check the hash url on page load.\nEither you can call this method after you add all your routers or after all data is loaded.\nIt is recommend you only call this once per page or application instantiation.",
             "itemtype": "method",
             "name": "start",
@@ -1680,7 +1842,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 264,
+            "line": 265,
             "description": "The **Router.navigateTo** method allows you to change the hash url and to trigger a route\nthat matches the string value. The second parameter is **silent** and is **false** by\ndefault. This allows you to update the hash url without causing a route callback to be\nexecuted.",
             "itemtype": "method",
             "name": "navigateTo",
@@ -1709,7 +1871,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 314,
+            "line": 315,
             "description": "The **Router.clear** will remove all route's and the default route from the Router class.",
             "itemtype": "method",
             "name": "clear",
@@ -1724,7 +1886,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 329,
+            "line": 330,
             "description": "The **Router.destroy** method will null out all references to other objects in the Router class.",
             "itemtype": "method",
             "name": "destroy",
@@ -1739,7 +1901,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 345,
+            "line": 346,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "onHashChange",
@@ -1758,7 +1920,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 365,
+            "line": 366,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "changeRoute",
@@ -1777,7 +1939,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 432,
+            "line": 437,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "WINDOW",
@@ -1792,7 +1954,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 444,
+            "line": 449,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -1805,7 +1967,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 454,
+            "line": 459,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -1818,7 +1980,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 464,
+            "line": 469,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -1831,7 +1993,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 474,
+            "line": 479,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -1848,7 +2010,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 488,
+            "line": 493,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -1865,7 +2027,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 505,
+            "line": 510,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful when used with the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method to use your routes as states rather than using the hash url to control the application.\n\nWhat this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to **false** so users cannot jump around if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -1882,7 +2044,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 523,
+            "line": 528,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -1899,7 +2061,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 541,
+            "line": 546,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2683,14 +2845,6 @@
         {
             "file": "src/display/DisplayObjectContainer.js",
             "line": 345,
-            "overridden": "EventDispatcher.destroy",
-            "class": "DisplayObjectContainer",
-            "module": "StructureJS",
-            "submodule": "view"
-        },
-        {
-            "file": "src/display/DisplayObjectContainer.js",
-            "line": 355,
             "overridden": "EventDispatcher.destroy",
             "class": "DisplayObjectContainer",
             "module": "StructureJS",
@@ -4200,7 +4354,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 25,
+            "line": 26,
             "description": "Provide a way to update the value object.",
             "itemtype": "method",
             "name": "update",
@@ -4219,7 +4373,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 42,
+            "line": 43,
             "description": "...",
             "itemtype": "method",
             "name": "toJSON",
@@ -4235,7 +4389,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 54,
+            "line": 55,
             "description": "...",
             "itemtype": "method",
             "name": "toJSONString",
@@ -4251,7 +4405,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 65,
+            "line": 66,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -4270,7 +4424,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 79,
+            "line": 80,
             "itemtype": "method",
             "name": "Object",
             "return": {
@@ -4285,7 +4439,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 90,
+            "line": 91,
             "itemtype": "method",
             "name": "copy",
             "return": {
@@ -4300,7 +4454,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 27,
+            "line": 29,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "dataFormat",
@@ -4312,7 +4466,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 35,
+            "line": 37,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "data",
@@ -4324,10 +4478,10 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 43,
+            "line": 45,
             "description": "YUIDoc_comment",
             "itemtype": "property",
-            "name": "ready",
+            "name": "complete",
             "type": "{boolean}",
             "default": "false",
             "class": "URLLoader",
@@ -4336,7 +4490,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 51,
+            "line": 53,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "_xhr",
@@ -4350,7 +4504,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 65,
+            "line": 67,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "load",
@@ -4369,7 +4523,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 90,
+            "line": 92,
             "overridden": "EventDispatcher.destroy",
             "class": "URLLoader",
             "module": "StructureJS",
@@ -4377,7 +4531,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 99,
+            "line": 101,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4389,7 +4543,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 111,
+            "line": 113,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4401,7 +4555,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 121,
+            "line": 123,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4413,7 +4567,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 131,
+            "line": 133,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4425,7 +4579,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 142,
+            "line": 144,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4493,7 +4647,7 @@
             "file": "src/plugin/jquery.eventListener.js",
             "line": 6,
             "description": "A bind polyfill for browsers that don't support the bind method.",
-            "class": "BulkLoader",
+            "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
@@ -4510,22 +4664,131 @@
                 "description": "",
                 "type": "String"
             },
-            "class": "BulkLoader",
+            "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/plugin/jquery.eventListener.js",
             "line": 53,
             "description": "The jQuery addEventListener plugin",
-            "class": "BulkLoader",
+            "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/plugin/jquery.eventListener.js",
             "line": 88,
             "description": "The jQuery removeEventListener plugin",
-            "class": "BulkLoader",
+            "class": "BrowserUtil",
             "module": "StructureJS"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 39,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "browserName",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 51,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "browserVersion",
+            "params": [
+                {
+                    "name": "[majorVersion=true0",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number|string"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 71,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "getBrowser",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "Array.<string>"
+            },
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 89,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "hasBrowserHistory",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 101,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "hasLocalStorage",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 117,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "hasSessionStorage",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
         },
         {
             "file": "src/util/ComponentFactory.js",
@@ -4561,11 +4824,718 @@
             "module": "StructureJS"
         },
         {
+            "file": "src/util/DateUtil.js",
+            "line": 39,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "getDaySuffix",
+            "params": [
+                {
+                    "name": "today",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "DateUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
             "file": "src/util/Extend.js",
             "line": 4,
             "description": "Snippet from TypeScript compiler.",
-            "class": "MobileUtil",
+            "class": "MathUtil",
             "module": "StructureJS"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 40,
+            "description": "Returns a number constrained between min and max.",
+            "itemtype": "method",
+            "name": "constrain",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "min",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "max",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 61,
+            "description": "Returns a random number between min and max.",
+            "itemtype": "method",
+            "name": "randomRange",
+            "params": [
+                {
+                    "name": "min",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "max",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "wholeNumber",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 80,
+            "description": "Returns the percentage of a number in a given range.\nExample: num = 15 range 10 to 20 // outputs 0.5",
+            "itemtype": "method",
+            "name": "rangeToPercent",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "min",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "max",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "constrainMin",
+                    "description": "Returns 0 if num < min.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "constrainMax",
+                    "description": "Returns 1 if num > max.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 104,
+            "description": "Returns the number that corresponds to the percentage in a given range.\nExample: percent = 0.5 range 10 to 20 // outputs 15",
+            "itemtype": "method",
+            "name": "percentToRange",
+            "params": [
+                {
+                    "name": "percent",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "min",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "max",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 118,
+            "description": "Re-maps a number from one range to another. The output is the same as inputing the result of rangeToPercent() numbero percentToRange().\nExample: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5",
+            "itemtype": "method",
+            "name": "map",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "min1",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "max1",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "min2",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "max2",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 149,
+            "description": "Converts radians to degrees.",
+            "itemtype": "method",
+            "name": "radiansToDegrees",
+            "params": [
+                {
+                    "name": "radians",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 160,
+            "description": "Converts degrees to radians.",
+            "itemtype": "method",
+            "name": "degreesToRadians",
+            "params": [
+                {
+                    "name": "degrees",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 171,
+            "description": "Returns 1 if the value is >= 0. Returns -1 if the value is < 0.",
+            "itemtype": "method",
+            "name": "sign",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 185,
+            "description": "Check if number is positive (zero is positive).",
+            "itemtype": "method",
+            "name": "isPositive",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "The number.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 196,
+            "description": "Check if number is negative.",
+            "itemtype": "method",
+            "name": "isNegative",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "The",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 207,
+            "description": "Check if number is odd (convert to Integer if necessary).",
+            "itemtype": "method",
+            "name": "isOdd",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "The number.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 220,
+            "description": "Check if number is even (convert to Integer if necessary).",
+            "itemtype": "method",
+            "name": "isEven",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "The number.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 233,
+            "description": "Check if number is Prime (divisible only by itself and one).",
+            "itemtype": "method",
+            "name": "isPrime",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "The number.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 254,
+            "description": "Calculate the factorial of the integer.",
+            "itemtype": "method",
+            "name": "factorial",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "The number.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 274,
+            "description": "Return an array of divisors of the integer.",
+            "itemtype": "method",
+            "name": "getDivisors",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "The number.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array.<number>"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 294,
+            "description": "Convert Fahrenheit to Celsius.",
+            "itemtype": "method",
+            "name": "toCelsius",
+            "params": [
+                {
+                    "name": "fahrenheit",
+                    "description": "The fahrenheit value.",
+                    "type": "Number"
+                },
+                {
+                    "name": "decimals",
+                    "description": "The number of decimals.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 320,
+            "description": "Convert Celsius to Fahrenheit.",
+            "itemtype": "method",
+            "name": "toFahrenheit",
+            "params": [
+                {
+                    "name": "celsius",
+                    "description": "The celsius value.",
+                    "type": "Number"
+                },
+                {
+                    "name": "decimals",
+                    "description": "The number of decimals.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "MathUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MerchantUtil.js",
+            "line": 39,
+            "description": "Determines if credit card is valid using the Luhn formula.",
+            "example": [
+                "\n       MerchantUtil.isCreditCard(\"4556106734384949\");"
+            ],
+            "itemtype": "method",
+            "name": "isCreditCard",
+            "params": [
+                {
+                    "name": "cardNumber",
+                    "description": "The credit card number.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "<code>true</code> if String is a valid credit card number; otherwise <code>false</code>.",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "MerchantUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MerchantUtil.js",
+            "line": 72,
+            "description": "Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.",
+            "example": [
+                "\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\"); // ************4949\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\", 5, \"x\");  // xxxxxxxxxxx84949"
+            ],
+            "itemtype": "method",
+            "name": "encodeCreditCardNumber",
+            "params": [
+                {
+                    "name": "strNumber",
+                    "description": "The credit card number as string.",
+                    "type": "String"
+                },
+                {
+                    "name": "digitsShown",
+                    "description": "Display this many digits at the end of the card number for security purposes.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "4"
+                },
+                {
+                    "name": "encodeChar",
+                    "description": "Optional encoding character to use instead of default '*'.",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "*"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "MerchantUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MerchantUtil.js",
+            "line": 98,
+            "description": "Returns a credit card provider name from the credit card number passed in.",
+            "itemtype": "method",
+            "name": "getCreditCardProvider",
+            "params": [
+                {
+                    "name": "cardNumber",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "MerchantUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/MerchantUtil.js",
+            "line": 125,
+            "description": "Validate a credit card's expiration date.",
+            "example": [
+                "\nvar isValidDate:boolean = MerchantUtil.isValidExDate( 11, 2010 );"
+            ],
+            "itemtype": "method",
+            "name": "isValidExpirationDate",
+            "params": [
+                {
+                    "name": "month",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "year",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "MerchantUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 39,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "bytesToMegabytes",
+            "params": [
+                {
+                    "name": "bytes",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 50,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "centimeterToInch",
+            "params": [
+                {
+                    "name": "cm",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 61,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "inchToCentimeter",
+            "params": [
+                {
+                    "name": "inch",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 72,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "feetToMeter",
+            "params": [
+                {
+                    "name": "feet",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 83,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "convertToHHMMSS",
+            "params": [
+                {
+                    "name": "seconds",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 104,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "doubleDigitFormat",
+            "params": [
+                {
+                    "name": "num",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
@@ -4695,7 +5665,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Any"
+                "type": "Object|Null"
             },
             "access": "public",
             "tagname": "",
@@ -4706,10 +5676,10 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 129,
+            "line": 133,
             "description": "Remove all whitespace from the string passed in.",
             "example": [
-                "\n        var str = \"   a b    c d e f g \";\n        StringUtil.removeAllWhitespace(str);\n        // \"abcdefg\""
+                "\n        var str = '   a b    c d e f g ';\n        StringUtil.removeAllWhitespace(str);\n        // 'abcdefg'"
             ],
             "itemtype": "method",
             "name": "removeAllWhitespace",
@@ -4733,10 +5703,10 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 145,
+            "line": 149,
             "description": "Remove leading and trailing whitespace.",
             "example": [
-                "\n     var str = \"   a b    c d e f g \";\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // \"a b    c d e f g\""
+                "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // 'a b    c d e f g'"
             ],
             "itemtype": "method",
             "name": "removeLeadingTrailingWhitespace",
@@ -4760,7 +5730,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 162,
+            "line": 166,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -4788,7 +5758,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 179,
+            "line": 183,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
             "example": [
                 "\n     StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');\n     // 'Robert is cool. Very cool and smart!'"
@@ -5418,7 +6388,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n    ClassName.prototype.enable = function() {\n         if (this.isEnabled === true) return this;\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         return _super.prototype.enable.call(this);\n    }"
+                "\n    ClassName.prototype.enable = function() {\n         if (this.isEnabled === true) { return this; }\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         return _super.prototype.enable.call(this);\n    }"
             ],
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -5426,7 +6396,7 @@
         },
         {
             "file": "src/ObjectManager.js",
-            "line": 57,
+            "line": 58,
             "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
             "itemtype": "method",
             "name": "disable",
@@ -5434,7 +6404,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n    ClassName.prototype.disable = function() {\n         if (this.isEnabled === false) return this;\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         return _super.prototype.disable.call(this);\n    }"
+                "\n    ClassName.prototype.disable = function() {\n         if (this.isEnabled === false) { return this; }\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         return _super.prototype.disable.call(this);\n    }"
             ],
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -5444,27 +6414,27 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:48"
+            "line": " src/controller/LocalStorageController.js:49"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:59"
+            "line": " src/controller/LocalStorageController.js:60"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:92"
+            "line": " src/controller/LocalStorageController.js:99"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:183"
+            "line": " src/controller/LocalStorageController.js:196"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:193"
+            "line": " src/controller/LocalStorageController.js:206"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/controller/LocalStorageController.js:212"
+            "line": " src/controller/LocalStorageController.js:226"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -5583,10 +6553,6 @@
             "line": " src/display/DisplayObjectContainer.js:345"
         },
         {
-            "message": "unknown tag: overridden",
-            "line": " src/display/DisplayObjectContainer.js:355"
-        },
-        {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/event/BaseEvent.js:150"
         },
@@ -5632,27 +6598,83 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:42"
+            "line": " src/model/ValueObject.js:43"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:54"
+            "line": " src/model/ValueObject.js:55"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:79"
+            "line": " src/model/ValueObject.js:80"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:90"
+            "line": " src/model/ValueObject.js:91"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/net/URLLoader.js:90"
+            "line": " src/net/URLLoader.js:92"
         },
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/plugin/jquery.eventListener.js:27"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/BrowserUtil.js:89"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/BrowserUtil.js:101"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/BrowserUtil.js:117"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/DateUtil.js:39"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/MerchantUtil.js:39"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/MerchantUtil.js:72"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/MerchantUtil.js:98"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/MerchantUtil.js:125"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:39"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:50"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:61"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:72"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:83"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:104"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -5680,19 +6702,19 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:129"
+            "line": " src/util/StringUtil.js:133"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:145"
+            "line": " src/util/StringUtil.js:149"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:162"
+            "line": " src/util/StringUtil.js:166"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:179"
+            "line": " src/util/StringUtil.js:183"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -5772,7 +6794,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/controller/LocalStorageController.js:212"
+            "line": " src/controller/LocalStorageController.js:226"
         },
         {
             "message": "Missing item type",
@@ -5797,10 +6819,6 @@
         {
             "message": "Missing item type",
             "line": " src/display/DisplayObjectContainer.js:345"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/display/DisplayObjectContainer.js:355"
         },
         {
             "message": "Missing item type",
@@ -5832,7 +6850,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/net/URLLoader.js:90"
+            "line": " src/net/URLLoader.js:92"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",

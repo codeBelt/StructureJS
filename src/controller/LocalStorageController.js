@@ -11,11 +11,12 @@ define(function (require, exports, module) { // jshint ignore:line
      * The LocalStorageController...
      *
      * @class LocalStorageController
+     * @extends EventDispatcher
      * @module StructureJS
      * @submodule controller
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var LocalStorageController = (function () {
 
         var _super = Extend(LocalStorageController, EventDispatcher);
@@ -220,6 +221,7 @@ define(function (require, exports, module) { // jshint ignore:line
         LocalStorageController.prototype.clear = function () {
             this._localStorage.clear();
         };
+
 
         /**
          * @overridden BaseController.destroy

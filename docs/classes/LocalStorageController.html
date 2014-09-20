@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -145,6 +155,10 @@
     
 
     
+        <div class="extends">
+            Extends <a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a>
+        </div>
+    
 
     
         <div class="foundat">
@@ -204,7 +218,13 @@
     <div class="index-section properties">
         <h3>Properties</h3>
 
-        <ul class="index-list properties">
+        <ul class="index-list properties extends">
+            
+                <li class="index-item property private inherited">
+                    <a href="#property__listeners">_listeners</a>
+
+                    
+                </li>
             
                 <li class="index-item property private">
                     <a href="#property__localStorage">_localStorage</a>
@@ -214,6 +234,24 @@
             
                 <li class="index-item property private">
                     <a href="#property__namespace">_namespace</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_cid">cid</a>
+
+                    
+                </li>
+            
+                <li class="index-item property protected inherited">
+                    <a href="#property_isEnabled">isEnabled</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_parent">parent</a>
 
                     
                 </li>
@@ -229,7 +267,7 @@
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods">
+        <ul class="index-list methods extends">
 
             
                 <li class="index-item method constructor">
@@ -242,6 +280,13 @@
                 </li>
             
 
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_addEventListener">addEventListener</a>
+
+                    
+                    
+                </li>
             
                 <li class="index-item method">
                     <a href="#method_addItem">addItem</a>
@@ -257,8 +302,43 @@
                     
                 </li>
             
+                <li class="index-item method public inherited">
+                    <a href="#method_destroy">destroy</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_disable">disable</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_dispatchEvent">dispatchEvent</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_enable">enable</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method">
                     <a href="#method_getAllItems">getAllItems</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getEventListeners">getEventListeners</a>
 
                     
                     
@@ -292,6 +372,13 @@
                     
                 </li>
             
+                <li class="index-item method public inherited">
+                    <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method">
                     <a href="#method_getSize">getSize</a>
 
@@ -301,6 +388,13 @@
             
                 <li class="index-item method private">
                     <a href="#method_onLocalStorageEvent">onLocalStorageEvent</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_removeEventListener">removeEventListener</a>
 
                     
                     
@@ -335,6 +429,55 @@
         <h2>Properties</h2>
 
         
+            <a name="property__listeners" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_listeners</code>
+    <span class="type">Array</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property__listeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l25"><code>src&#x2F;event&#x2F;EventDispatcher.js:25</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Holds a reference to added listeners.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property__localStorage" class="anchor-link"></a>
 <div class="property item private">
     <h3 class="name"><code>_localStorage</code>
@@ -363,7 +506,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l35"><code>src&#x2F;controller&#x2F;LocalStorageController.js:35</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l36"><code>src&#x2F;controller&#x2F;LocalStorageController.js:36</code></a>
         
         </p>
 
@@ -415,7 +558,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l25"><code>src&#x2F;controller&#x2F;LocalStorageController.js:25</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l26"><code>src&#x2F;controller&#x2F;LocalStorageController.js:26</code></a>
         
         </p>
 
@@ -432,6 +575,159 @@
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">defaultNamespace</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_cid" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>cid</code>
+    <span class="type">Int</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#property_cid" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/src_BaseObject.js.html#l18"><code>src&#x2F;BaseObject.js:18</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isEnabled" class="anchor-link"></a>
+<div class="property item protected inherited">
+    <h3 class="name"><code>isEnabled</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#property_isEnabled" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l23"><code>src&#x2F;ObjectManager.js:23</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_parent" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>parent</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property_parent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l33"><code>src&#x2F;event&#x2F;EventDispatcher.js:33</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the object that contains child object. Use the parent property
+to specify a relative path to display objects that are above the current display object in the display
+list hierarchy.</p>
+
+        </div>
+
         
 
         
@@ -521,6 +817,181 @@
         <h2>Methods</h2>
 
         
+            <a name="method_addEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>addEventListener</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[priority=0]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_addEventListener" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l46"><code>src&#x2F;event&#x2F;EventDispatcher.js:46</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#39;t generally maintained.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[priority=0]</code>
+                            <span class="type">Int</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+    ClassName.prototype.handlerMethod = function (event) {
+   console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_addItem" class="anchor-link"></a>
 <div class="method item">
     <h3 class="name"><code>addItem</code>
@@ -552,6 +1023,10 @@
     
 
     
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
 
     
 
@@ -578,7 +1053,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l69"><code>src&#x2F;controller&#x2F;LocalStorageController.js:69</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l70"><code>src&#x2F;controller&#x2F;LocalStorageController.js:70</code></a>
         
         </p>
 
@@ -651,6 +1126,18 @@
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
 
         
     </div>
@@ -692,7 +1179,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l203"><code>src&#x2F;controller&#x2F;LocalStorageController.js:203</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l216"><code>src&#x2F;controller&#x2F;LocalStorageController.js:216</code></a>
         
         </p>
 
@@ -713,6 +1200,366 @@
 
         
 
+        
+    </div>
+</div>
+
+        
+            <a name="method_destroy" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>destroy</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#method_destroy" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/src_BaseObject.js.html#l44"><code>src&#x2F;BaseObject.js:44</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The purpose of the destroy method is to make an object ready for garbage collection. This
+should be thought of as a one way function. Once destroy is called no further methods should be
+called on the object or properties accessed. It is the responsibility of those who implement this
+function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
+object eligible for garbage collection.</p>
+<p>By default the destroy method will null out all properties of the class automatically. You should call destroy
+on other objects before calling the super.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Void</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+     this._childInstance.destroy();
+
+     _super.prototype.destroy.call(this);
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_disable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>disable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_disable" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l58"><code>src&#x2F;ObjectManager.js:58</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.disable = function() {
+     if (this.isEnabled === false) { return this; }
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     return _super.prototype.disable.call(this);
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_dispatchEvent" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>dispatchEvent</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_dispatchEvent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l120"><code>src&#x2F;event&#x2F;EventDispatcher.js:120</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
+extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    var event = new BaseEvent(BaseEvent.CHANGE);
+    instance.dispatchEvent(event);
+
+    // Here is a common inline event being dispatched
+    instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_enable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>enable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_enable" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l33"><code>src&#x2F;ObjectManager.js:33</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+     if (this.isEnabled === true) { return this; }
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     return _super.prototype.enable.call(this);
+}</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -757,7 +1604,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l145"><code>src&#x2F;controller&#x2F;LocalStorageController.js:145</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l152"><code>src&#x2F;controller&#x2F;LocalStorageController.js:152</code></a>
         
         </p>
 
@@ -785,6 +1632,84 @@
                         
                             <span class="type">Array.<Object></span>:
                         
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_getEventListeners" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getEventListeners</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_getEventListeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l198"><code>src&#x2F;event&#x2F;EventDispatcher.js:198</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Array</span>:
+                        
+                        <p>Returns an array dictionary of the different event listener(s) on the object.</p>
+
                     
                 </div>
             </div>
@@ -850,7 +1775,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l92"><code>src&#x2F;controller&#x2F;LocalStorageController.js:92</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l99"><code>src&#x2F;controller&#x2F;LocalStorageController.js:99</code></a>
         
         </p>
 
@@ -976,7 +1901,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l119"><code>src&#x2F;controller&#x2F;LocalStorageController.js:119</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l126"><code>src&#x2F;controller&#x2F;LocalStorageController.js:126</code></a>
         
         </p>
 
@@ -1077,7 +2002,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l183"><code>src&#x2F;controller&#x2F;LocalStorageController.js:183</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l196"><code>src&#x2F;controller&#x2F;LocalStorageController.js:196</code></a>
         
         </p>
 
@@ -1154,7 +2079,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l59"><code>src&#x2F;controller&#x2F;LocalStorageController.js:59</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l60"><code>src&#x2F;controller&#x2F;LocalStorageController.js:60</code></a>
         
         </p>
 
@@ -1187,6 +2112,93 @@
             </div>
         
 
+        
+    </div>
+</div>
+
+        
+            <a name="method_getQualifiedClassName" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getQualifiedClassName</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/src_BaseObject.js.html#l31"><code>src&#x2F;BaseObject.js:31</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Returns the fully qualified class name of an object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">String</span>:
+                        
+                        <p>Returns the class name.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1231,7 +2243,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l193"><code>src&#x2F;controller&#x2F;LocalStorageController.js:193</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l206"><code>src&#x2F;controller&#x2F;LocalStorageController.js:206</code></a>
         
         </p>
 
@@ -1316,7 +2328,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l219"><code>src&#x2F;controller&#x2F;LocalStorageController.js:219</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l233"><code>src&#x2F;controller&#x2F;LocalStorageController.js:233</code></a>
         
         </p>
 
@@ -1365,6 +2377,158 @@
 </div>
 
         
+            <a name="method_removeEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>removeEventListener</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_removeEventListener" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l88"><code>src&#x2F;event&#x2F;EventDispatcher.js:88</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes a specified listener from the EventDispatcher object.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener object to remove.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The scope of the listener object to be removed.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+    ClassName.prototype.handlerMethod = function (event) {
+   console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_removeItem" class="anchor-link"></a>
 <div class="method item">
     <h3 class="name"><code>removeItem</code>
@@ -1389,6 +2553,10 @@
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
     
 
     
@@ -1416,7 +2584,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l167"><code>src&#x2F;controller&#x2F;LocalStorageController.js:167</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l174"><code>src&#x2F;controller&#x2F;LocalStorageController.js:174</code></a>
         
         </p>
 
@@ -1475,6 +2643,18 @@
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
 
         
     </div>
@@ -1530,7 +2710,7 @@
             
         
         
-        <a href="../files/src_controller_LocalStorageController.js.html#l48"><code>src&#x2F;controller&#x2F;LocalStorageController.js:48</code></a>
+        <a href="../files/src_controller_LocalStorageController.js.html#l49"><code>src&#x2F;controller&#x2F;LocalStorageController.js:49</code></a>
         
         </p>
 

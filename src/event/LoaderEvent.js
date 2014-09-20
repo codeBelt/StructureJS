@@ -19,7 +19,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule event
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var LoaderEvent = (function () {
 
         var _super = Extend(LoaderEvent, BaseEvent);

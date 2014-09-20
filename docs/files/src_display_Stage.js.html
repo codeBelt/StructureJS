@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -154,60 +164,60 @@ define(function (require, exports, module) { // jshint ignore:line
     /**
      * The {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class should be extended by your main or root class.
      * @example
-     // This example illustrates how to setup your main or root class when extending the {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class.
-     define(function (require, exports, module) {
-            &#x27;use strict&#x27;;
-
-            var Extend = require(&#x27;structurejs/util/Extend&#x27;);
-            var Stage = require(&#x27;replace/path/Stage&#x27;);
-
-            var MainClass = (function () {
-
-            var _super = Extend(MainClass, Stage);
-
-                function MainClass() {
-                    _super.call(this);
-                }
-
-                MainClass.prototype.createChildren = function () {
-                    _super.prototype.createChildren.call(this);
-
-                    // Create and add your child objects to this parent class.
-                }
-
-                MainClass.prototype.layoutChildren = function () {
-                    // Layout or update the child objects in this parent class.
-
-                    return this;
-                }
-
-                MainClass.prototype.enable = function () {
-                    if (this.isEnabled === true) return this;
-
-                    // Enable the child objects and add any event listeners.
-
-                    return _super.prototype.enable.call(this);
-                }
-
-                MainClass.prototype.disable = function () {
-                    if (this.isEnabled === false) return this;
-
-                    // Disable the child objects and remove any event listeners.
-
-                    return _super.prototype.disable.call(this);
-                }
-
-                MainClass.prototype.destroy = function () {
-                    _super.prototype.destroy.call(this);
-
-                    // Destroy the child objects and references in this parent class to prevent memory leaks.
-                }
-
-                return MainClass;
-            })();
-
-            module.exports = MainClass;
-        });
+     *     // This example illustrates how to setup your main or root class when extending the {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class.
+     *     define(function (require, exports, module) {
+    *         &#x27;use strict&#x27;;
+    *
+    *         var Extend = require(&#x27;structurejs/util/Extend&#x27;);
+    *         var Stage = require(&#x27;replace/path/Stage&#x27;);
+    *
+    *         var MainClass = (function () {
+    *
+    *         var _super = Extend(MainClass, Stage);
+    *
+    *             function MainClass() {
+    *                 _super.call(this);
+    *             }
+    *
+    *             MainClass.prototype.createChildren = function () {
+    *                 _super.prototype.createChildren.call(this);
+    *
+    *                 // Create and add your child objects to this parent class.
+    *             }
+    *
+    *             MainClass.prototype.layoutChildren = function () {
+    *                 // Layout or update the child objects in this parent class.
+    *
+    *                 return this;
+    *             }
+    *
+    *             MainClass.prototype.enable = function () {
+    *                 if (this.isEnabled === true) { return this };
+    *
+    *                 // Enable the child objects and add any event listeners.
+    *
+    *                 return _super.prototype.enable.call(this);
+    *             }
+    *
+    *             MainClass.prototype.disable = function () {
+    *                 if (this.isEnabled === false) { return this };
+    *
+    *                 // Disable the child objects and remove any event listeners.
+    *
+    *                 return _super.prototype.disable.call(this);
+    *             }
+    *
+    *             MainClass.prototype.destroy = function () {
+    *                 // Destroy the child objects and references in this parent class to prevent memory leaks.
+    *
+    *                 _super.prototype.destroy.call(this);
+    *             }
+    *
+    *             return MainClass;
+    *         })();
+    *
+    *         module.exports = MainClass;
+    *     });
      *
      * &lt;b&gt;Instantiation Example&lt;/b&gt;&lt;br&gt;
      * This example illustrates how to instantiation your main or root class.
@@ -221,7 +231,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule view
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var Stage = (function () {
 
         var _super = Extend(Stage, DOMElement);
@@ -242,7 +252,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this.$element = jQuery(type);
             this.$element.attr(&#x27;data-cid&#x27;, this.cid);
 
-            if (this.isCreated == false) {
+            if (this.isCreated === false) {
                 this.createChildren();
                 this.isCreated = true;
                 this.layoutChildren();

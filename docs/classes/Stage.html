@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -1582,58 +1592,58 @@ list hierarchy.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// This example illustrates how to setup your main or root class when extending the <a href="../classes/Stage.html" class="crosslink">Stage</a> class.
 define(function (require, exports, module) {
-       &#39;use strict&#39;;
+    &#39;use strict&#39;;
 
-       var Extend = require(&#39;structurejs/util/Extend&#39;);
-       var Stage = require(&#39;replace/path/Stage&#39;);
+    var Extend = require(&#39;structurejs/util/Extend&#39;);
+    var Stage = require(&#39;replace/path/Stage&#39;);
 
-       var MainClass = (function () {
+    var MainClass = (function () {
 
-       var _super = Extend(MainClass, Stage);
+    var _super = Extend(MainClass, Stage);
 
-           function MainClass() {
-               _super.call(this);
-           }
+        function MainClass() {
+            _super.call(this);
+        }
 
-           MainClass.prototype.createChildren = function () {
-               _super.prototype.createChildren.call(this);
+        MainClass.prototype.createChildren = function () {
+            _super.prototype.createChildren.call(this);
 
-               // Create and add your child objects to this parent class.
-           }
+            // Create and add your child objects to this parent class.
+        }
 
-           MainClass.prototype.layoutChildren = function () {
-               // Layout or update the child objects in this parent class.
+        MainClass.prototype.layoutChildren = function () {
+            // Layout or update the child objects in this parent class.
 
-               return this;
-           }
+            return this;
+        }
 
-           MainClass.prototype.enable = function () {
-               if (this.isEnabled === true) return this;
+        MainClass.prototype.enable = function () {
+            if (this.isEnabled === true) { return this };
 
-               // Enable the child objects and add any event listeners.
+            // Enable the child objects and add any event listeners.
 
-               return _super.prototype.enable.call(this);
-           }
+            return _super.prototype.enable.call(this);
+        }
 
-           MainClass.prototype.disable = function () {
-               if (this.isEnabled === false) return this;
+        MainClass.prototype.disable = function () {
+            if (this.isEnabled === false) { return this };
 
-               // Disable the child objects and remove any event listeners.
+            // Disable the child objects and remove any event listeners.
 
-               return _super.prototype.disable.call(this);
-           }
+            return _super.prototype.disable.call(this);
+        }
 
-           MainClass.prototype.destroy = function () {
-               _super.prototype.destroy.call(this);
+        MainClass.prototype.destroy = function () {
+            // Destroy the child objects and references in this parent class to prevent memory leaks.
 
-               // Destroy the child objects and references in this parent class to prevent memory leaks.
-           }
+            _super.prototype.destroy.call(this);
+        }
 
-           return MainClass;
-       })();
+        return MainClass;
+    })();
 
-       module.exports = MainClass;
-   });</code></pre>
+    module.exports = MainClass;
+});</code></pre>
 <p><b>Instantiation Example</b><br>
 This example illustrates how to instantiation your main or root class.</p>
 <pre class="code prettyprint"><code> var app = new MainClass();
@@ -2917,7 +2927,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l57"><code>src&#x2F;ObjectManager.js:57</code></a>
+        <a href="../files/src_ObjectManager.js.html#l58"><code>src&#x2F;ObjectManager.js:58</code></a>
         
         </p>
 
@@ -2944,7 +2954,7 @@ on other objects before calling the super.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>ClassName.prototype.disable = function() {
-     if (this.isEnabled === false) return this;
+     if (this.isEnabled === false) { return this; }
 
      this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.disable();
@@ -3131,7 +3141,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
-     if (this.isEnabled === true) return this;
+     if (this.isEnabled === true) { return this; }
 
      this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.enable();

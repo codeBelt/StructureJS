@@ -11,7 +11,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule net
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var URLLoaderDataFormat = (function () {
 
         function URLLoaderDataFormat() {

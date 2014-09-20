@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -164,7 +174,7 @@
 
 
 <div class="box intro">
-    <p>The Router class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.<a href="../classes/Router.html#method_add" class="crosslink">add</a> method for more details and examples.</p>
+    <p>The <strong>Router</strong> class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.<a href="../classes/Router.html#method_add" class="crosslink">add</a> method for more details and examples.</p>
 
 </div>
 
@@ -455,7 +465,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l454"><code>src&#x2F;controller&#x2F;Router.js:454</code></a>
+        <a href="../files/src_controller_Router.js.html#l459"><code>src&#x2F;controller&#x2F;Router.js:459</code></a>
         
         </p>
 
@@ -509,7 +519,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l464"><code>src&#x2F;controller&#x2F;Router.js:464</code></a>
+        <a href="../files/src_controller_Router.js.html#l469"><code>src&#x2F;controller&#x2F;Router.js:469</code></a>
         
         </p>
 
@@ -563,7 +573,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l444"><code>src&#x2F;controller&#x2F;Router.js:444</code></a>
+        <a href="../files/src_controller_Router.js.html#l449"><code>src&#x2F;controller&#x2F;Router.js:449</code></a>
         
         </p>
 
@@ -617,7 +627,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l505"><code>src&#x2F;controller&#x2F;Router.js:505</code></a>
+        <a href="../files/src_controller_Router.js.html#l510"><code>src&#x2F;controller&#x2F;Router.js:510</code></a>
         
         </p>
 
@@ -686,7 +696,7 @@ Router.allowManualDeepLinking = false;</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l541"><code>src&#x2F;controller&#x2F;Router.js:541</code></a>
+        <a href="../files/src_controller_Router.js.html#l546"><code>src&#x2F;controller&#x2F;Router.js:546</code></a>
         
         </p>
 
@@ -752,7 +762,7 @@ Router.allowMultipleMatches = false;</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l523"><code>src&#x2F;controller&#x2F;Router.js:523</code></a>
+        <a href="../files/src_controller_Router.js.html#l528"><code>src&#x2F;controller&#x2F;Router.js:528</code></a>
         
         </p>
 
@@ -822,7 +832,7 @@ Router.forceSlash = false;
             
         
         
-        <a href="../files/src_controller_Router.js.html#l474"><code>src&#x2F;controller&#x2F;Router.js:474</code></a>
+        <a href="../files/src_controller_Router.js.html#l479"><code>src&#x2F;controller&#x2F;Router.js:479</code></a>
         
         </p>
 
@@ -886,7 +896,7 @@ console.log(Router.isEnabled);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l488"><code>src&#x2F;controller&#x2F;Router.js:488</code></a>
+        <a href="../files/src_controller_Router.js.html#l493"><code>src&#x2F;controller&#x2F;Router.js:493</code></a>
         
         </p>
 
@@ -957,7 +967,7 @@ from relying on the hash url to an internal state controller.</p>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l432"><code>src&#x2F;controller&#x2F;Router.js:432</code></a>
+        <a href="../files/src_controller_Router.js.html#l437"><code>src&#x2F;controller&#x2F;Router.js:437</code></a>
         
         </p>
 
@@ -1059,7 +1069,7 @@ from relying on the hash url to an internal state controller.</p>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l42"><code>src&#x2F;controller&#x2F;Router.js:42</code></a>
+        <a href="../files/src_controller_Router.js.html#l43"><code>src&#x2F;controller&#x2F;Router.js:43</code></a>
         
         </p>
 
@@ -1107,7 +1117,7 @@ from relying on the hash url to an internal state controller.</p>
                         
 
                         <div class="param-description">
-                            <p>The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}} object.</p>
+                            <p>The function that should be executed when a request matches the routePattern. It will receive a <a href="../classes/RouteEvent.html" class="crosslink">RouteEvent</a> object.</p>
 
                         </div>
 
@@ -1253,7 +1263,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l156"><code>src&#x2F;controller&#x2F;Router.js:156</code></a>
+        <a href="../files/src_controller_Router.js.html#l157"><code>src&#x2F;controller&#x2F;Router.js:157</code></a>
         
         </p>
 
@@ -1375,7 +1385,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l365"><code>src&#x2F;controller&#x2F;Router.js:365</code></a>
+        <a href="../files/src_controller_Router.js.html#l366"><code>src&#x2F;controller&#x2F;Router.js:366</code></a>
         
         </p>
 
@@ -1463,7 +1473,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l314"><code>src&#x2F;controller&#x2F;Router.js:314</code></a>
+        <a href="../files/src_controller_Router.js.html#l315"><code>src&#x2F;controller&#x2F;Router.js:315</code></a>
         
         </p>
 
@@ -1537,7 +1547,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l329"><code>src&#x2F;controller&#x2F;Router.js:329</code></a>
+        <a href="../files/src_controller_Router.js.html#l330"><code>src&#x2F;controller&#x2F;Router.js:330</code></a>
         
         </p>
 
@@ -1611,7 +1621,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l223"><code>src&#x2F;controller&#x2F;Router.js:223</code></a>
+        <a href="../files/src_controller_Router.js.html#l224"><code>src&#x2F;controller&#x2F;Router.js:224</code></a>
         
         </p>
 
@@ -1685,7 +1695,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l201"><code>src&#x2F;controller&#x2F;Router.js:201</code></a>
+        <a href="../files/src_controller_Router.js.html#l202"><code>src&#x2F;controller&#x2F;Router.js:202</code></a>
         
         </p>
 
@@ -1763,7 +1773,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l184"><code>src&#x2F;controller&#x2F;Router.js:184</code></a>
+        <a href="../files/src_controller_Router.js.html#l185"><code>src&#x2F;controller&#x2F;Router.js:185</code></a>
         
         </p>
 
@@ -1867,7 +1877,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l264"><code>src&#x2F;controller&#x2F;Router.js:264</code></a>
+        <a href="../files/src_controller_Router.js.html#l265"><code>src&#x2F;controller&#x2F;Router.js:265</code></a>
         
         </p>
 
@@ -1997,7 +2007,7 @@ Router.navigateTo(&#39;/games/asteroids/2/&#39;, true);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l345"><code>src&#x2F;controller&#x2F;Router.js:345</code></a>
+        <a href="../files/src_controller_Router.js.html#l346"><code>src&#x2F;controller&#x2F;Router.js:346</code></a>
         
         </p>
 
@@ -2108,7 +2118,7 @@ This method will not be called if the Router is disabled.</p>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l129"><code>src&#x2F;controller&#x2F;Router.js:129</code></a>
+        <a href="../files/src_controller_Router.js.html#l130"><code>src&#x2F;controller&#x2F;Router.js:130</code></a>
         
         </p>
 
@@ -2242,7 +2252,7 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);<
             
         
         
-        <a href="../files/src_controller_Router.js.html#l171"><code>src&#x2F;controller&#x2F;Router.js:171</code></a>
+        <a href="../files/src_controller_Router.js.html#l172"><code>src&#x2F;controller&#x2F;Router.js:172</code></a>
         
         </p>
 
@@ -2316,7 +2326,7 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);<
             
         
         
-        <a href="../files/src_controller_Router.js.html#l245"><code>src&#x2F;controller&#x2F;Router.js:245</code></a>
+        <a href="../files/src_controller_Router.js.html#l246"><code>src&#x2F;controller&#x2F;Router.js:246</code></a>
         
         </p>
 

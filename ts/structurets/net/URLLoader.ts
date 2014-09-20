@@ -61,11 +61,11 @@ class URLLoader extends EventDispatcher
     /**
      * YUIDoc_comment
      *
-     * @property ready
+     * @property complete
      * @type {boolean}
      * @default false
      */
-    public ready:boolean = false;
+    public complete:boolean = false;
 
     /**
      * YUIDoc_comment
@@ -96,16 +96,16 @@ class URLLoader extends EventDispatcher
      */
     public load(request:URLRequest):void
     {
-        this.ready = false;
+        this.complete = false;
         var self:URLLoader = this;
 
         this._xhr = jQuery.ajax({
-            type: request.method,
-            jsonp: 'callback',
             url: request.url,
+            type: request.method,
             data: request.data,
             contentType: request.contentType,
             dataType: self.dataFormat,
+            jsonp: 'callback',
             beforeSend: self.onBeforeSend.bind(this),
             success: self.onLoadSuccess.bind(this),
             error: self.onLoadError.bind(this),
@@ -142,9 +142,9 @@ class URLLoader extends EventDispatcher
      * @method abort
      * @private
      */
-    private onLoadSuccess():void
+    private onLoadSuccess(data):void
     {
-        //console.log("onLoadSuccess", arguments);
+        this.data = data;
     }
 
     /**
@@ -166,7 +166,7 @@ class URLLoader extends EventDispatcher
      */
     private onLoadError():void
     {
-        //console.log("[URLLoader] - onLoadError", arguments);
+        console.log("[URLLoader] - onLoadError", arguments);
         this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
     }
 
@@ -178,11 +178,8 @@ class URLLoader extends EventDispatcher
      */
     private onComplete(data):void
     {
-        this.ready = true;
-        //console.log('[' + this.getQualifiedClassName() + ']', 'onComplete', data);
-        this.data = data.responseText;
-        this.ready = true;
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, true, this.data));
+        this.complete = true;
+        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));
     }
 
 }

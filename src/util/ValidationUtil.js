@@ -13,7 +13,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule util
      * @constructor
      * @version 0.1.0
-     **/
+     */
     var ValidationUtil = (function () {
         function ValidationUtil() {
             //http://msdn.microsoft.com/en-us/library/ff650303.aspx

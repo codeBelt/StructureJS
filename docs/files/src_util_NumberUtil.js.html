@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/util/NumberUtil.js - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.1.0</span>
+                
+                
+                    <p class="description">Code and documentation for the StructureJS library.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
+            
+                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
+            
+                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
+            
+                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
+            
+                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/net.html">net</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/StructureTS.html">StructureTS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: src/util/NumberUtil.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*
+* Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
+*
+* Permission is hereby granted, free of charge, to any person
+* obtaining a copy of this software and associated documentation
+* files (the &quot;Software&quot;), to deal in the Software without restriction,
+* including without limitation the rights to use, copy, modify, merge,
+* publish, distribute, sublicense, and/or sell copies of the Software,
+* and to permit persons to whom the Software is furnished to do so,
+* subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be
+* included in all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+* NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+* OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+define(function (require, exports, module) { // jshint ignore:line
+    &#x27;use strict&#x27;;
+
+    /**
+    * The NumberUtil...
+    *
+    * @class NumberUtil
+    * @module StructureJS
+    * @submodule util
+    * @constructor
+    * @author Robert S. (www.codeBelt.com)
+    */
+    var NumberUtil = (function () {
+        function NumberUtil() {
+        }
+        /**
+        * YUIDoc_comment
+        *
+        * @method bytesToMegabytes
+        * @param bytes {number}
+        * @returns {number}
+        */
+        NumberUtil.bytesToMegabytes = function (bytes) {
+            return bytes / 1048576;
+        };
+
+        /**
+        * YUIDoc_comment
+        *
+        * @method centimeterToInch
+        * @param cm {number}
+        * @returns {number}
+        */
+        NumberUtil.centimeterToInch = function (cm) {
+            return cm * 0.39370;
+        };
+
+        /**
+        * YUIDoc_comment
+        *
+        * @method inchToCentimeter
+        * @param inch {number}
+        * @returns {number}
+        */
+        NumberUtil.inchToCentimeter = function (inch) {
+            return inch * 2.54;
+        };
+
+        /**
+        * YUIDoc_comment
+        *
+        * @method feetToMeter
+        * @param feet {number}
+        * @returns {number}
+        */
+        NumberUtil.feetToMeter = function (feet) {
+            return feet / 3.2808;
+        };
+
+        /**
+        * YUIDoc_comment
+        *
+        * @method convertToHHMMSS
+        * @param seconds {number}
+        * @returns {string}
+        */
+        NumberUtil.convertToHHMMSS = function (seconds) {
+            var sec = isNaN(seconds) ? 0 : seconds;
+
+            var s = sec % 60;
+            var m = Math.floor((sec % 3600) / 60);
+            var h = Math.floor(sec / (60 * 60));
+
+            var hourStr = (h == 0) ? &quot;&quot; : NumberUtil.doubleDigitFormat(h) + &quot;:&quot;;
+            var minuteStr = NumberUtil.doubleDigitFormat(m) + &quot;:&quot;;
+            var secondsStr = NumberUtil.doubleDigitFormat(s);
+
+            return hourStr + minuteStr + secondsStr;
+        };
+
+        /**
+        * YUIDoc_comment
+        *
+        * @method doubleDigitFormat
+        * @param num {number}
+        * @returns {string}
+        */
+        NumberUtil.doubleDigitFormat = function (num) {
+            if (num &lt; 10) {
+                return (&quot;0&quot; + num);
+            }
+            return String(num);
+        };
+
+        NumberUtil.unformatUnit = function (value) {
+            // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
+            var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, &quot;&quot;);
+
+            // Gets the index where the decimal placement is located.
+            var decimalIndex = withoutSpecialCharacters.length - 3;
+            var decimalSeparator = withoutSpecialCharacters.charAt(decimalIndex);
+            if (decimalSeparator === &#x27;.&#x27;) {
+                // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
+                withoutSpecialCharacters = value.replace(/[^\d.-]/g, &quot;&quot;);
+            } else {
+                // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
+                withoutSpecialCharacters = value.replace(/[^\d,-]/g, &quot;&quot;);
+                decimalIndex = withoutSpecialCharacters.length - 3;
+
+                //Replaces the comma (,) to a period (.).
+                withoutSpecialCharacters = withoutSpecialCharacters.replace(&quot;,&quot;, &quot;.&quot;);
+            }
+            return parseFloat(withoutSpecialCharacters);
+        };
+
+        //        public static formatUnit(number:number, decimalPlacement:number = 2, decimalSeparator:string = &#x27;.&#x27;, thousandsSeparator:string = &#x27;,&#x27;):number
+        NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
+            if (typeof decimalPlacement === &quot;undefined&quot;) { decimalPlacement = 2; }
+            if (typeof decimalSeparator === &quot;undefined&quot;) { decimalSeparator = &#x27;.&#x27;; }
+            if (typeof thousandsSeparator === &quot;undefined&quot;) { thousandsSeparator = &#x27;,&#x27;; }
+            if (typeof currencySymbol === &quot;undefined&quot;) { currencySymbol = &quot;&quot;; }
+            if (typeof currencySymbolPlacement === &quot;undefined&quot;) { currencySymbolPlacement = 0; }
+            var str = String(Number(value).toFixed(decimalPlacement));
+            var result = &#x27;&#x27;;
+            if (decimalPlacement != 0) {
+                result = str.slice(-1 - decimalPlacement);
+                str = str.slice(0, str.length - 1 - decimalPlacement);
+            }
+            while (str.length &gt; 3) {
+                result = thousandsSeparator + str.slice(-3) + result;
+                str = str.slice(0, str.length - 3);
+            }
+            if (str.length &gt; 0) {
+                if (currencySymbolPlacement === 0) {
+                    result = currencySymbol + str + result;
+                } else if (currencySymbolPlacement === 1) {
+                    result = str + result + currencySymbol;
+                } else {
+                    result = str + result;
+                }
+            }
+            return result;
+        };
+        return NumberUtil;
+    })();
+
+    
+    return NumberUtil;
+});
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

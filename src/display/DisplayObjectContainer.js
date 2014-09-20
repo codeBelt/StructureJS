@@ -13,7 +13,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule view
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var DisplayObjectContainer = (function () {
 
         var _super = Extend(DisplayObjectContainer, EventDispatcher);
@@ -339,16 +339,6 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          */
         DisplayObjectContainer.prototype.layoutChildren = function () {
-            return this;
-        };
-
-        /**
-         * @overridden EventDispatcher.destroy
-         */
-        DisplayObjectContainer.prototype.destroy = function () {
-            _super.prototype.destroy.call(this);
-        };
-        return DisplayObjectContainer;ainer.prototype.layoutChildren = function () {
             return this;
         };
 

@@ -9,7 +9,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule util
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var Util = (function () {
 
         function Util() {
@@ -107,7 +107,7 @@ define(function (require, exports, module) { // jshint ignore:line
             //http://oranlooney.com/functional-javascript/
             //http://oranlooney.com/deep-copy-javascript/
             // Handle the 3 simple types, and null or undefined
-            if (null == obj || "object" != typeof obj) {
+            if (null == obj || 'object' != typeof obj) {
                 return obj;
             }
 
@@ -153,7 +153,7 @@ define(function (require, exports, module) { // jshint ignore:line
         Util.toBoolean = function (strNum) {
             strNum = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
-            return (strNum == "1" || strNum == "true");
+            return (strNum == '1' || strNum == 'true');
         };
 
         /**

@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -179,49 +189,49 @@ define(function (require, exports, module) { // jshint ignore:line
      *     var DOMElement = require(&#x27;structurejs/display/DOMElement&#x27;);
      *
      *     var ClassName = (function () {
-     *
-     *          var _super = Extend(ClassName, DOMElement);
-     *
-     *          function ClassName($element) {
-     *              _super.call(this, $element);
-     *          }
-     *
-     *          ClassName.prototype.createChildren = function () {
-     *              _super.prototype.createChildren.call(this);
-     *
-     *              // Create and add your child objects to this parent class.
-     *          };
-     *
-     *          ClassName.prototype.layoutChildren = function () {
-     *              // Layout or update the child objects in this parent class.
-     *
-     *              return this;
-     *          };
-     *
-     *          ClassName.prototype.enable = function () {
-     *              if (this.isEnabled === true) return this;
-     *
-     *              // Enable the child objects and add any event listeners.
-     *
-     *              return _super.prototype.enable.call(this);
-     *          };
-     *
-     *          ClassName.prototype.disable = function () {
-     *              if (this.isEnabled === false) return this;
-     *
-     *              // Disable the child objects and remove any event listeners.
-     *
-     *              return _super.prototype.disable.call(this);
-     *          };
-     *
-     *          ClassName.prototype.destroy = function () {
-     *              // Destroy the child objects and references in this parent class to prevent memory leaks.
-     *
-     *              _super.prototype.destroy.call(this);
-     *          };
-     *
-     *          return ClassName;
-     *     })();
+    *
+    *          var _super = Extend(ClassName, DOMElement);
+    *
+    *          function ClassName($element) {
+    *              _super.call(this, $element);
+    *          }
+    *
+    *          ClassName.prototype.createChildren = function () {
+    *              _super.prototype.createChildren.call(this);
+    *
+    *              // Create and add your child objects to this parent class.
+    *          };
+    *
+    *          ClassName.prototype.layoutChildren = function () {
+    *              // Layout or update the child objects in this parent class.
+    *
+    *              return this;
+    *          };
+    *
+    *          ClassName.prototype.enable = function () {
+    *              if (this.isEnabled === true) { return this; }
+    *
+    *              // Enable the child objects and add any event listeners.
+    *
+    *              return _super.prototype.enable.call(this);
+    *          };
+    *
+    *          ClassName.prototype.disable = function () {
+    *              if (this.isEnabled === false) { return this; }
+    *
+    *              // Disable the child objects and remove any event listeners.
+    *
+    *              return _super.prototype.disable.call(this);
+    *          };
+    *
+    *          ClassName.prototype.destroy = function () {
+    *              // Destroy the child objects and references in this parent class to prevent memory leaks.
+    *
+    *              _super.prototype.destroy.call(this);
+    *          };
+    *
+    *          return ClassName;
+    *     })();
      *
      *     // Example of a view extending DOMElement with template passed into createChildren.
      *     var view = new CustomView();
@@ -233,49 +243,49 @@ define(function (require, exports, module) { // jshint ignore:line
      *     var HomeTemplate = require(&#x27;hbs!templates/home/homeTemplate&#x27;);
      *
      *     var ClassName = (function () {
-     *
-     *          var _super = Extend(ClassName, DOMElement);
-     *
-     *          function ClassName() {
-     *              _super.call(this);
-     *          }
-     *
-     *          ClassName.prototype.createChildren = function () {
-     *              _super.prototype.createChildren.call(this, HomeTemplate, {data: &#x27;some data&#x27;});
-     *
-     *              // Create and add your child objects to this parent class.
-     *          };
-     *
-     *          ClassName.prototype.layoutChildren = function () {
-     *              // Layout or update the child objects in this parent class.
-     *
-     *              return this;
-     *          };
-     *
-     *          ClassName.prototype.enable = function () {
-     *              if (this.isEnabled === true) return this;
-     *
-     *              // Enable the child objects and add any event listeners.
-     *
-     *              return _super.prototype.enable.call(this);
-     *          };
-     *
-     *          ClassName.prototype.disable = function () {
-     *              if (this.isEnabled === false) return this;
-     *
-     *              // Disable the child objects and remove any event listeners.
-     *
-     *              return _super.prototype.disable.call(this);
-     *          };
-     *
-     *          ClassName.prototype.destroy = function () {
-     *              // Destroy the child objects and references in this parent class to prevent memory leaks.
-     *
-     *              _super.prototype.destroy.call(this);
-     *          };
-     *
-     *          return ClassName;
-     *     })();
+    *
+    *          var _super = Extend(ClassName, DOMElement);
+    *
+    *          function ClassName() {
+    *              _super.call(this);
+    *          }
+    *
+    *          ClassName.prototype.createChildren = function () {
+    *              _super.prototype.createChildren.call(this, HomeTemplate, {data: &#x27;some data&#x27;});
+    *
+    *              // Create and add your child objects to this parent class.
+    *          };
+    *
+    *          ClassName.prototype.layoutChildren = function () {
+    *              // Layout or update the child objects in this parent class.
+    *
+    *              return this;
+    *          };
+    *
+    *          ClassName.prototype.enable = function () {
+    *              if (this.isEnabled === true) { return this; }
+    *
+    *              // Enable the child objects and add any event listeners.
+    *
+    *              return _super.prototype.enable.call(this);
+    *          };
+    *
+    *          ClassName.prototype.disable = function () {
+    *              if (this.isEnabled === false) { return this; }
+    *
+    *              // Disable the child objects and remove any event listeners.
+    *
+    *              return _super.prototype.disable.call(this);
+    *          };
+    *
+    *          ClassName.prototype.destroy = function () {
+    *              // Destroy the child objects and references in this parent class to prevent memory leaks.
+    *
+    *              _super.prototype.destroy.call(this);
+    *          };
+    *
+    *          return ClassName;
+    *     })();
      */
     var DOMElement = (function () {
 
@@ -445,7 +455,7 @@ define(function (require, exports, module) { // jshint ignore:line
             }
 
             // If an empty jQuery object is passed into the constructor then don&#x27;t run the code below.
-            if (child._isReference === true &amp;&amp; child.$element.length == 0) {
+            if (child._isReference === true &amp;&amp; child.$element.length === 0) {
                 return this;
             }
 
@@ -489,7 +499,7 @@ define(function (require, exports, module) { // jshint ignore:line
         DOMElement.prototype.onAddedToDom = function (child) {
             var _this = this;
             child.checkCount++;
-            if (child.$element.width() == 0 &amp;&amp; child.checkCount &lt; 5) {
+            if (child.$element.width() === 0 &amp;&amp; child.checkCount &lt; 5) {
                 setTimeout(function () {
                     _this.onAddedToDom(child);
                 }, 100);
@@ -507,7 +517,7 @@ define(function (require, exports, module) { // jshint ignore:line
             var length = children.length;
 
             // If an empty jQuery object is passed into the constructor then don&#x27;t run the code below.
-            if (child._isReference === true &amp;&amp; child.$element.length == 0) {
+            if (child._isReference === true &amp;&amp; child.$element.length === 0) {
                 return this;
             }
 
@@ -567,7 +577,7 @@ define(function (require, exports, module) { // jshint ignore:line
         DOMElement.prototype.getChild = function (selector) {
             // Get the first match from the selector passed in.
             var jQueryElement = this.$element.find(selector).first();
-            if (jQueryElement.length == 0) {
+            if (jQueryElement.length === 0) {
                 throw new TypeError(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;] getChild(&#x27; + selector + &#x27;) Cannot find DOM $element&#x27;);
             }
 

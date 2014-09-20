@@ -14,7 +14,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule util
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var TemplateFactory = (function () {
 
         function TemplateFactory() {
@@ -26,7 +26,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
         TemplateFactory.create = function (templatePath, data) {
             if (typeof data === "undefined") { data = null; }
-            //Checks the first character to see if it is a "." or "#".
+            //Checks the first character to see if it is a '.' or '#'.
             var regex = /^([.#])(.+)/;
             var template = null;
             var isFunctionTemplate = typeof templatePath === 'function';

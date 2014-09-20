@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -176,11 +186,12 @@ define(function (require, exports, module) { // jshint ignore:line
     var StringUtil = require(&#x27;structurejs/util/StringUtil&#x27;);
 
     /**
-     * The Router class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink &quot;Router/add:method&quot;}}{{/crossLink}} method for more details and examples.
+     * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink &quot;Router/add:method&quot;}}{{/crossLink}} method for more details and examples.
      *
      * @class Router
+     * @static
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var Router = (function () {
         function Router() {
             throw new Error(&#x27;[Router] Do not instantiation the Router class because it is a static class.&#x27;);
@@ -190,7 +201,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method add
          * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, &#x27;&#x27;. See the examples below for more details.
-         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink &quot;RouteEvent&quot;}} object.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink &quot;RouteEvent&quot;}}{{/crossLink}} object.
          * @param callbackScope {any} The scope of the callback function that should be executed.
          * @public
          * @static
@@ -519,7 +530,7 @@ define(function (require, exports, module) { // jshint ignore:line
         Router.changeRoute = function (hash) {
             var route;
             var match;
-            var routerEvent = null;
+            var routeEvent = null;
 
             for (var i = 0; i &lt; Router._routes.length; i++) {
                 route = Router._routes[i];
@@ -527,28 +538,30 @@ define(function (require, exports, module) { // jshint ignore:line
 
                 // If there is a match.
                 if (match !== null) {
-                    routerEvent = new RouteEvent();
-                    routerEvent.route = match.shift();
-                    routerEvent.params = match.slice(0, match.length);
-                    routerEvent.routePattern = route.routePattern;
-                    routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
-                    routerEvent.target = Router;
-                    routerEvent.currentTarget = Router;
+                    routeEvent = new RouteEvent();
+                    routeEvent.route = match.shift();
+                    routeEvent.params = match.slice(0, match.length);
+                    routeEvent.routePattern = route.routePattern;
+                    routeEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routeEvent.target = Router;
+                    routeEvent.currentTarget = Router;
 
-                    for (var j = routerEvent.params.length - 1; j &gt;= 0; j--) {
-                        if (routerEvent.params[j] === &#x27;&#x27;) {
-                            routerEvent.params.splice(j, 1);
+                    for (var j = routeEvent.params.length - 1; j &gt;= 0; j--) {
+                        if (routeEvent.params[j] === &#x27;&#x27;) {
+                            routeEvent.params.splice(j, 1);
                         }
                     }
 
                     // If there was a hash change event then set the info we want to send.
                     if (Router._hashChangeEvent != null) {
-                        routerEvent.newURL = Router._hashChangeEvent.newURL;
-                        routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+                        routeEvent.newURL = Router._hashChangeEvent.newURL;
+                        routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    } else {
+                        routeEvent.newURL = window.location.href;
                     }
 
                     // Execute the callback function and pass the route event.
-                    route.callback.call(route.callbackScope, routerEvent);
+                    route.callback.call(route.callbackScope, routeEvent);
 
                     // Only trigger the first route and stop checking.
                     if (Router.allowMultipleMatches === false) {
@@ -558,19 +571,21 @@ define(function (require, exports, module) { // jshint ignore:line
             }
 
             // If there are no route&#x27;s matched and there is a default route. Then call that default route.
-            if (routerEvent === null &amp;&amp; Router._defaultRoute !== null) {
-                routerEvent = new RouteEvent();
-                routerEvent.route = hash;
-                routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
-                routerEvent.target = Router;
-                routerEvent.currentTarget = Router;
+            if (routeEvent === null &amp;&amp; Router._defaultRoute !== null) {
+                routeEvent = new RouteEvent();
+                routeEvent.route = hash;
+                routeEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
+                routeEvent.target = Router;
+                routeEvent.currentTarget = Router;
 
                 if (Router._hashChangeEvent != null) {
-                    routerEvent.newURL = Router._hashChangeEvent.newURL;
-                    routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    routeEvent.newURL = Router._hashChangeEvent.newURL;
+                    routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                } else {
+                    routeEvent.newURL = window.location.href;
                 }
 
-                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
+                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routeEvent);
             }
 
             Router._hashChangeEvent = null;

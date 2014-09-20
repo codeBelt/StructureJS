@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -156,7 +166,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @static
-     **/
+     */
     var StringUtil = (function () {
 
         function StringUtil() {
@@ -171,7 +181,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @static
          */
         StringUtil.getExtension = function (filename) {
-            return filename.slice(filename.lastIndexOf(&quot;.&quot;) + 1, filename.length);
+            return filename.slice(filename.lastIndexOf(&#x27;.&#x27;) + 1, filename.length);
         };
 
         /**
@@ -249,7 +259,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method queryStringToObject
          * @param queryString {string}
-         * @returns {any}
+         * @returns {Object|Null}
          * @public
          * @static
          */
@@ -257,10 +267,14 @@ define(function (require, exports, module) { // jshint ignore:line
             var params = {};
             var temp = null;
 
-            queryString = queryString.substring( queryString.indexOf(&#x27;?&#x27;) + 1 );
+            queryString = queryString.substring(queryString.indexOf(&#x27;?&#x27;) + 1);
+
+            if (queryString === &#x27;&#x27;) {
+                return null;
+            }
 
             // Split into key/value pairs
-            var queries = queryString.split(&quot;&amp;&quot;);
+            var queries = queryString.split(&#x27;&amp;&#x27;);
 
             // Convert the array of strings into an object
             var len = queries.length;
@@ -275,9 +289,9 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Remove all whitespace from the string passed in.
          * @example
-         var str = &quot;   a b    c d e f g &quot;;
+         var str = &#x27;   a b    c d e f g &#x27;;
          StringUtil.removeAllWhitespace(str);
-         // &quot;abcdefg&quot;
+         // &#x27;abcdefg&#x27;
          * @method removeAllWhitespace
          * @param str {string}
          * @returns {string}
@@ -291,9 +305,9 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Remove leading and trailing whitespace.
          * @example
-         *      var str = &quot;   a b    c d e f g &quot;;
+         *      var str = &#x27;   a b    c d e f g &#x27;;
          *      StringUtil.removeLeadingTrailingWhitespace(str);
-         *      // &quot;a b    c d e f g&quot;
+         *      // &#x27;a b    c d e f g&#x27;
          *
          * @method removeLeadingTrailingWhitespace
          * @param str {string}
@@ -318,7 +332,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (text.length &lt;= length) {
                 return text;
             } else {
-                return text.substr(0, length) + &quot;...&quot;;
+                return text.substr(0, length) + &#x27;...&#x27;;
             }
         };
 
@@ -342,11 +356,21 @@ define(function (require, exports, module) { // jshint ignore:line
             }
             var length = rest.length;
             for (var i = 0; i &lt; length; i++) {
-                var reg = new RegExp(&quot;\\{&quot; + i + &quot;\\}&quot;, &quot;gm&quot;);
+                var reg = new RegExp(&#x27;\\{&#x27; + i + &#x27;\\}&#x27;, &#x27;gm&#x27;);
                 str = str.replace(reg, rest[i]);
             }
 
             return str;
+        };
+
+        // Update the appropriate href query string parameter
+        StringUtil.paramReplace = function (queryString, name, value) {
+            // Find the param with regex
+            // Grab the first character in the returned string (should be ? or &amp;)
+            // Replace our href string with our new value, passing on the name and delimiter
+            var re = new RegExp(&#x27;[\\?&amp;]&#x27; + name + &#x27;=([^&amp;#]*)&#x27;);
+            var delimiter = re.exec(queryString)[0].charAt(0);
+            return queryString.replace(re, delimiter + name + &#x27;=&#x27; + value);
         };
         return StringUtil;
     })();

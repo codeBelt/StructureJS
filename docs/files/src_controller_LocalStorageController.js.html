@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -157,11 +167,12 @@ define(function (require, exports, module) { // jshint ignore:line
      * The LocalStorageController...
      *
      * @class LocalStorageController
+     * @extends EventDispatcher
      * @module StructureJS
      * @submodule controller
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var LocalStorageController = (function () {
 
         var _super = Extend(LocalStorageController, EventDispatcher);
@@ -219,6 +230,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @param key {string}
          * @param data {Object}
          * @param useNamespace {boolean}
+         * @return {boolean}
          */
         LocalStorageController.prototype.addItem = function (key, data, useNamespace) {
             if (typeof useNamespace === &quot;undefined&quot;) { useNamespace = false; }
@@ -232,7 +244,12 @@ define(function (require, exports, module) { // jshint ignore:line
 
             data = JSON.stringify(data);
 
-            this._localStorage.setItem(key, data);
+            try  {
+                this._localStorage.setItem(key, data);
+                return true;
+            } catch (error) {
+                return false;
+            }
         };
 
         /**
@@ -316,6 +333,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method removeItem
          * @param key {string}
          * @param [useNamespace=false] {string}
+         * @return {boolean}
          */
         LocalStorageController.prototype.removeItem = function (key, useNamespace) {
             if (typeof useNamespace === &quot;undefined&quot;) { useNamespace = false; }
@@ -323,7 +341,12 @@ define(function (require, exports, module) { // jshint ignore:line
                 key = this.getNamespace() + key;
             }
 
-            this._localStorage.removeItem(key);
+            try  {
+                this._localStorage.removeItem(key);
+                return true;
+            } catch (error) {
+                return false;
+            }
         };
 
         /**
@@ -354,6 +377,7 @@ define(function (require, exports, module) { // jshint ignore:line
         LocalStorageController.prototype.clear = function () {
             this._localStorage.clear();
         };
+
 
         /**
          * @overridden BaseController.destroy

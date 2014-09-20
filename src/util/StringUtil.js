@@ -10,7 +10,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @static
-     **/
+     */
     var StringUtil = (function () {
 
         function StringUtil() {
@@ -25,7 +25,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @static
          */
         StringUtil.getExtension = function (filename) {
-            return filename.slice(filename.lastIndexOf(".") + 1, filename.length);
+            return filename.slice(filename.lastIndexOf('.') + 1, filename.length);
         };
 
         /**
@@ -103,7 +103,7 @@ define(function (require, exports, module) { // jshint ignore:line
          *
          * @method queryStringToObject
          * @param queryString {string}
-         * @returns {any}
+         * @returns {Object|Null}
          * @public
          * @static
          */
@@ -111,10 +111,14 @@ define(function (require, exports, module) { // jshint ignore:line
             var params = {};
             var temp = null;
 
-            queryString = queryString.substring( queryString.indexOf('?') + 1 );
+            queryString = queryString.substring(queryString.indexOf('?') + 1);
+
+            if (queryString === '') {
+                return null;
+            }
 
             // Split into key/value pairs
-            var queries = queryString.split("&");
+            var queries = queryString.split('&');
 
             // Convert the array of strings into an object
             var len = queries.length;
@@ -129,9 +133,9 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Remove all whitespace from the string passed in.
          * @example
-         var str = "   a b    c d e f g ";
+         var str = '   a b    c d e f g ';
          StringUtil.removeAllWhitespace(str);
-         // "abcdefg"
+         // 'abcdefg'
          * @method removeAllWhitespace
          * @param str {string}
          * @returns {string}
@@ -145,9 +149,9 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * Remove leading and trailing whitespace.
          * @example
-         *      var str = "   a b    c d e f g ";
+         *      var str = '   a b    c d e f g ';
          *      StringUtil.removeLeadingTrailingWhitespace(str);
-         *      // "a b    c d e f g"
+         *      // 'a b    c d e f g'
          *
          * @method removeLeadingTrailingWhitespace
          * @param str {string}
@@ -172,7 +176,7 @@ define(function (require, exports, module) { // jshint ignore:line
             if (text.length <= length) {
                 return text;
             } else {
-                return text.substr(0, length) + "...";
+                return text.substr(0, length) + '...';
             }
         };
 
@@ -196,11 +200,21 @@ define(function (require, exports, module) { // jshint ignore:line
             }
             var length = rest.length;
             for (var i = 0; i < length; i++) {
-                var reg = new RegExp("\\{" + i + "\\}", "gm");
+                var reg = new RegExp('\\{' + i + '\\}', 'gm');
                 str = str.replace(reg, rest[i]);
             }
 
             return str;
+        };
+
+        // Update the appropriate href query string parameter
+        StringUtil.paramReplace = function (queryString, name, value) {
+            // Find the param with regex
+            // Grab the first character in the returned string (should be ? or &)
+            // Replace our href string with our new value, passing on the name and delimiter
+            var re = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var delimiter = re.exec(queryString)[0].charAt(0);
+            return queryString.replace(re, delimiter + name + '=' + value);
         };
         return StringUtil;
     })();

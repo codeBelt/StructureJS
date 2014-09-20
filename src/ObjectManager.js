@@ -38,7 +38,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          * @example
          *     ClassName.prototype.enable = function() {
-        *          if (this.isEnabled === true) return this;
+        *          if (this.isEnabled === true) { return this; }
         *
         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
         *          this._childInstance.enable();
@@ -47,8 +47,9 @@ define(function (require, exports, module) { // jshint ignore:line
         *     }
          */
         ObjectManager.prototype.enable = function () {
-            if (this.isEnabled === true)
+            if (this.isEnabled === true) {
                 return this;
+            }
 
             this.isEnabled = true;
             return this;
@@ -62,7 +63,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @chainable
          * @example
          *     ClassName.prototype.disable = function() {
-        *          if (this.isEnabled === false) return this;
+        *          if (this.isEnabled === false) { return this; }
         *
         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
         *          this._childInstance.disable();
@@ -71,8 +72,9 @@ define(function (require, exports, module) { // jshint ignore:line
         *     }
          */
         ObjectManager.prototype.disable = function () {
-            if (this.isEnabled === false)
+            if (this.isEnabled === false) {
                 return this;
+            }
 
             this.isEnabled = false;
             return this;

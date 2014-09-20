@@ -14,7 +14,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule util
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var Timer = (function () {
 
         var _super = Extend(Timer, EventDispatcher);

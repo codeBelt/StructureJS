@@ -15,7 +15,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule event
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var EventDispatcher = (function () {
 
         var _super = Extend(EventDispatcher, ObjectManager);

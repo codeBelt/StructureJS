@@ -10,8 +10,8 @@ define(function (require, exports, module) { // jshint ignore:line
      * @module StructureJS
      * @submodule net
      * @constructor
- * @author Robert S. (www.codeBelt.com)
-     **/
+     * @author Robert S. (www.codeBelt.com)
+     */
     var URLRequestMethod = (function () {
 
         function URLRequestMethod() {

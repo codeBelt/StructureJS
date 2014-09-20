@@ -3,11 +3,13 @@ YUI.add("yuidoc-meta", function(Y) {
     "classes": [
         "BaseEvent",
         "BaseObject",
+        "BrowserUtil",
         "BulkLoader",
         "Collection",
         "ComponentFactory",
         "DOMElement",
         "DataStoreAbstract",
+        "DateUtil",
         "DisplayObjectContainer",
         "EventBroker",
         "EventDispatcher",
@@ -15,7 +17,10 @@ YUI.add("yuidoc-meta", function(Y) {
         "LoaderEvent",
         "LocalStorageController",
         "LocalStorageEvent",
+        "MathUtil",
+        "MerchantUtil",
         "MobileUtil",
+        "NumberUtil",
         "ObjectManager",
         "Route",
         "RouteEvent",
@@ -82,7 +87,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "util",
             "name": "util",
-            "description": "The BulkLoader..."
+            "description": "The BrowserUtil..."
         },
         {
             "displayName": "view",

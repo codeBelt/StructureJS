@@ -16,7 +16,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @submodule model
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var Collection = (function () {
 
         var _super = Extend(Collection, EventDispatcher);
@@ -52,7 +52,7 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         Collection.prototype.addItem = function (item, silent) {
             if (typeof silent === "undefined") { silent = false; }
-            if (this.hasItem(item) == false) {
+            if (this.hasItem(item) === false) {
                 this.items.push(item);
                 this.length = this.items.length;
             }

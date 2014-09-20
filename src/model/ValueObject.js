@@ -9,12 +9,13 @@ define(function (require, exports, module) { // jshint ignore:line
      * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
      *
      * @class ValueObject
+     * @extends BaseObject
      * @param [data] {any} Provide a way to update the value object upon initialization.
      * @module StructureJS
      * @submodule model
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var ValueObject = (function () {
 
         var _super = Extend(ValueObject, BaseObject);

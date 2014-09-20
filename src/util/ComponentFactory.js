@@ -7,7 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @class ComponentFactory
      * @constructor
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var ComponentFactory = (function () {
 
         function ComponentFactory() {

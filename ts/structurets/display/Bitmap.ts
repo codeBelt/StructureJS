@@ -39,7 +39,7 @@ class Bitmap extends CanvasElement
 {
     private _image:HTMLImageElement = null;
 
-    public ready:boolean = false;
+    public complete:boolean = false;
 
     constructor(image:HTMLImageElement)
     {

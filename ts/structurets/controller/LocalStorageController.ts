@@ -30,6 +30,7 @@ import ValueObject = require('../model/ValueObject')
  * The LocalStorageController...
  *
  * @class LocalStorageController
+ * @extends EventDispatcher
  * @module StructureJS
  * @submodule controller
  * @constructor

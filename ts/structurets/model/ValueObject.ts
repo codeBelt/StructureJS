@@ -30,6 +30,7 @@ import Util = require('../util/Util')
  * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
  *
  * @class ValueObject
+ * @extends BaseObject
  * @param [data] {any} Provide a way to update the value object upon initialization.
  * @module StructureJS
  * @submodule model

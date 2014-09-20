@@ -12,11 +12,13 @@ define(function (require, exports, module) { // jshint ignore:line
      * The URLLoader...
      *
      * @class URLLoader
+     * @extends EventDispatcher
      * @module StructureJS
      * @submodule net
      * @constructor
+     * @param [request=null] {URLRequest}
      * @author Robert S. (www.codeBelt.com)
-     **/
+     */
     var URLLoader = (function () {
 
         var _super = Extend(URLLoader, EventDispatcher);
@@ -43,11 +45,11 @@ define(function (require, exports, module) { // jshint ignore:line
             /**
              * YUIDoc_comment
              *
-             * @property ready
+             * @property complete
              * @type {boolean}
              * @default false
              */
-            this.ready = false;
+            this.complete = false;
             /**
              * YUIDoc_comment
              *
@@ -70,7 +72,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          */
         URLLoader.prototype.load = function (request) {
-            this.ready = false;
+            this.complete = false;
             var self = this;
 
             this._xhr = jQuery.ajax({
@@ -146,7 +148,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private
          */
         URLLoader.prototype.onComplete = function () {
-            this.ready = true;
+            this.complete = true;
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));
         };
         return URLLoader;

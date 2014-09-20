@@ -49,6 +49,8 @@
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
@@ -56,6 +58,8 @@
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
             
                 <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
@@ -73,7 +77,13 @@
             
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
             
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
                 <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
             
@@ -2002,7 +2012,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l57"><code>src&#x2F;ObjectManager.js:57</code></a>
+        <a href="../files/src_ObjectManager.js.html#l58"><code>src&#x2F;ObjectManager.js:58</code></a>
         
         </p>
 
@@ -2029,7 +2039,7 @@ on other objects before calling the super.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>ClassName.prototype.disable = function() {
-     if (this.isEnabled === false) return this;
+     if (this.isEnabled === false) { return this; }
 
      this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.disable();
@@ -2216,7 +2226,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
-     if (this.isEnabled === true) return this;
+     if (this.isEnabled === true) { return this; }
 
      this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.enable();
