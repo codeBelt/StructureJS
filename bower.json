@@ -23,7 +23,9 @@
         "test",
         "LICENSE",
         "Gruntfile.js",
+        "karma.conf.js",
         "package.json",
+        ".jshintrc",
         ".gitignore"
     ]
 }
