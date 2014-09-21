@@ -1,78 +1,67 @@
 // Karma configuration
-module.exports = function(config) {
-    'use strict';
+// Generated on Sun Oct 27 2013 01:56:27 GMT+0200 (CEST)
+
+module.exports = function (config) {
 
     config.set({
-        // list of files to load in the browser
-        // NOTE: every time a vendor script is added to the project, 
-        // include a reference to that script here
-        files: [
-            'vendor/nerdery-function-bind/index.js',
-            'vendor/jquery/jquery.min.js', 
-            'scripts/shim.js',
-            'scripts/views/*.js', 
-            'scripts/*.js'
-        ],
 
-        // list of files to exclude
-        exclude: [
+            // base path, that will be used to resolve files and exclude
+            basePath: '.',
 
-        ],
 
-        // web server port
-        port: 9876,
+            // frameworks to use
+            frameworks: ['requirejs', 'jasmine'],
 
-        // If browser does not capture in given timeout [ms], kill it
-        captureTimeout: 60000,
 
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
+            // list of files / patterns to load in the browser
+            files: [
+                'src/config.js',
+                {pattern: 'src/**/*.js', included: false},
+                {pattern: 'test/**/*Spec.js', included: false},
+                'test/_karma.js'
+            ],
 
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: false,
 
-        // level of logging
-        // possible values:
-        // config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_WARN,
+            // test results reporter to use
+            // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+            reporters: ['dots'],
 
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-            'scripts/**/!(*.spec).js': 'coverage',
-        },
 
-        // Start these browsers, currently available:
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['PhantomJS'],
+            // web server port
+            port: 9876,
 
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine'],
 
-        // test results reporter to use
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress', 'coverage'],
+            // enable / disable colors in the output (reporters and logs)
+            colors: true,
 
-        ///////////////////////////////////////////////////////////////////////////
-        // Note: the following settings are only used when running karma
-        // directly as `karma start`.
-        //
-        // When running as `grunt test` these are overridden in the Gruntfile.js.
-        // base path that will be used to resolve all patterns (eg. files, exclude)
-        ///////////////////////////////////////////////////////////////////////////
-        
-        // Continuous Integration mode
-        // if true, it capture browsers, run tests and exit
-        singleRun: false,
 
-        // base path, that will be used to resolve files and exclude
-        basePath: 'src/assets/',
+            // level of logging
+            // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+            logLevel: config.LOG_WARN,
 
-        // path is relative to basePath
-        coverageReporter: {
-            type: 'html',
-            dir: '../../build-reports/'
+
+            // enable / disable watching file and executing tests whenever any file changes
+            autoWatch: true,
+
+
+            // Start these browsers, currently available:
+            // - Chrome
+            // - ChromeCanary
+            // - Firefox
+            // - Opera (has to be installed with `npm install karma-opera-launcher`)
+            // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
+            // - PhantomJS
+            // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
+            browsers: ['PhantomJS'/*, 'Chrome'*/],
+
+
+            // If browser does not capture in given timeout [ms], kill it
+            captureTimeout: 60000,
+
+
+            // Continuous Integration mode
+            // if true, it capture browsers, run tests and exit
+            singleRun: false
         }
-    });
+    );
 };

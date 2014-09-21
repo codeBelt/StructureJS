@@ -313,25 +313,16 @@ module.exports = function(grunt) {
             }
         },
 
-        // Verifies that application files conform to the specification files
         karma: {
             options: {
-                singleRun: true,
                 configFile: 'karma.conf.js',
-                basePath: 'scripts/',
-                coverageReporter: {
-                    type: 'html',
-                    // path is relative to basePath
-                    // adjust to the best location for your project
-                    // and backend
-                    dir: 'build-reports/'
-                }
+                autoWatch: false
+            },
+            ci: {
+                singleRun: true
             },
             unit: {
-                reporters: ['progress']
-//            },
-//            coverage: {
-//                reporters: ['progress', 'coverage']
+                background: true
             }
         },
 
@@ -403,6 +394,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('docs', [
         'yuidoc'
+    ]);
+
+    grunt.registerTask('test', [
+        'karma:ci'
     ]);
 
 };

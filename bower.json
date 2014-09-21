@@ -19,6 +19,8 @@
         "examples",
         "friendly-theme",
         "ts",
+        "src/config.js",
+        "test",
         "LICENSE",
         "Gruntfile.js",
         "package.json",
