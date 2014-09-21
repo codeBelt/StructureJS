@@ -41,7 +41,6 @@ YUI.add("yuidoc-meta", function(Y) {
     ],
     "modules": [
         "StructureJS",
-        "StructureTS",
         "controller",
         "core",
         "event",
@@ -79,10 +78,6 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "StructureJS",
             "name": "StructureJS"
-        },
-        {
-            "displayName": "StructureTS",
-            "name": "StructureTS"
         },
         {
             "displayName": "util",

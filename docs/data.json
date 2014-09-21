@@ -358,16 +358,15 @@
         "StructureJS": {
             "name": "StructureJS",
             "submodules": {
-                "undefined": 1,
                 "controller": 1,
                 "view": 1,
                 "event": 1,
                 "model": 1,
                 "net": 1,
+                "util": 1,
                 "core": 1
             },
             "classes": {
-                "BaseObject": 1,
                 "LocalStorageController": 1,
                 "Router": 1,
                 "DOMElement": 1,
@@ -402,6 +401,8 @@
                 "TemplateFactory": 1,
                 "Timer": 1,
                 "Util": 1,
+                "ValidationUtil": 1,
+                "BaseObject": 1,
                 "ObjectManager": 1
             },
             "fors": {},
@@ -520,24 +521,11 @@
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
-            "module": "StructureTS",
+            "module": "StructureJS",
             "namespace": "",
             "description": "The BrowserUtil...",
             "file": "src/util/ValidationUtil.js",
-            "line": 8
-        },
-        "StructureTS": {
-            "name": "StructureTS",
-            "submodules": {
-                "util": 1
-            },
-            "classes": {
-                "ValidationUtil": 1
-            },
-            "fors": {},
-            "namespaces": {},
-            "file": "src/util/ValidationUtil.js",
-            "line": 8
+            "line": 4
         },
         "core": {
             "name": "core",
@@ -1376,14 +1364,14 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "StructureTS",
+            "module": "StructureJS",
             "namespace": "",
             "file": "src/util/ValidationUtil.js",
-            "line": 8,
+            "line": 4,
             "description": "A ValidationUtility class that has several static methods to assist in development.",
             "submodule": "util",
             "is_constructor": 1,
-            "version": "0.1.0"
+            "author": "Robert S. (www.codeBelt.com)"
         },
         "BaseObject": {
             "name": "BaseObject",
@@ -6139,7 +6127,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 21,
+            "line": 17,
             "description": "Determines if the String passed has a length.",
             "itemtype": "method",
             "name": "isEmpty",
@@ -6158,12 +6146,12 @@
             "tagname": "",
             "static": 1,
             "class": "ValidationUtil",
-            "module": "StructureTS",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 34,
+            "line": 30,
             "description": "Determines if the two values passed in are the same.",
             "itemtype": "method",
             "name": "isMatch",
@@ -6187,12 +6175,12 @@
             "tagname": "",
             "static": 1,
             "class": "ValidationUtil",
-            "module": "StructureTS",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 48,
+            "line": 44,
             "description": "Determines if the String passed in is a valid email address.",
             "itemtype": "method",
             "name": "isValidEmailAddress",
@@ -6211,12 +6199,12 @@
             "tagname": "",
             "static": 1,
             "class": "ValidationUtil",
-            "module": "StructureTS",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 62,
+            "line": 58,
             "description": "Determines if the String passed in is a phone number.",
             "itemtype": "method",
             "name": "isValidPhoneNumber",
@@ -6235,12 +6223,12 @@
             "tagname": "",
             "static": 1,
             "class": "ValidationUtil",
-            "module": "StructureTS",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 76,
+            "line": 72,
             "description": "Determines if the String passed in is a zip code.",
             "itemtype": "method",
             "name": "isZipCode",
@@ -6259,12 +6247,12 @@
             "tagname": "",
             "static": 1,
             "class": "ValidationUtil",
-            "module": "StructureTS",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 90,
+            "line": 86,
             "description": "Determines if the String passed in is a postal code.",
             "itemtype": "method",
             "name": "isPostalCode",
@@ -6283,12 +6271,12 @@
             "tagname": "",
             "static": 1,
             "class": "ValidationUtil",
-            "module": "StructureTS",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 104,
+            "line": 100,
             "description": "Determines if the String passed in is a Social Security Number.",
             "itemtype": "method",
             "name": "isSocialSecurityNumber",
@@ -6307,7 +6295,7 @@
             "tagname": "",
             "static": 1,
             "class": "ValidationUtil",
-            "module": "StructureTS",
+            "module": "StructureJS",
             "submodule": "util"
         },
         {
@@ -6757,36 +6745,32 @@
             "line": " src/util/Util.js:159"
         },
         {
-            "message": "unknown tag: version",
-            "line": " src/util/ValidationUtil.js:8"
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/ValidationUtil.js:17"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:21"
+            "line": " src/util/ValidationUtil.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:34"
+            "line": " src/util/ValidationUtil.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:48"
+            "line": " src/util/ValidationUtil.js:58"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:62"
+            "line": " src/util/ValidationUtil.js:72"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:76"
+            "line": " src/util/ValidationUtil.js:86"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:90"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:104"
+            "line": " src/util/ValidationUtil.js:100"
         },
         {
             "message": "replacing incorrect tag: returns with return",

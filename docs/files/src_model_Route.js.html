@@ -135,8 +135,6 @@
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
-                <li><a class="module" href="../modules/StructureTS.html">StructureTS</a></li>
-            
                 <li><a class="module" href="../modules/util.html">util</a></li>
             
                 <li><a class="module" href="../modules/view.html">view</a></li>
@@ -321,7 +319,7 @@ define(function (require, exports, module) { // jshint ignore:line
             routePattern = routePattern.replace(&#x27;?&#x27;, &#x27;(\\?.*)&#x27;);
 
             // Make any :alphanumeric: optional but not query string
-            routePattern = routePattern.replace(findOptionalColons, &#x27;([^/?]*)&#x27;);
+            routePattern = routePattern.replace(findOptionalColons, &#x27;?([^/?]*)&#x27;);
 
             // Make any {alphanumeric} required but not query string
             routePattern = routePattern.replace(findRequiredBrackets, &#x27;([^/?]+)&#x27;);

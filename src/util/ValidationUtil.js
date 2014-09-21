@@ -5,10 +5,10 @@ define(function (require, exports, module) { // jshint ignore:line
      * A ValidationUtility class that has several static methods to assist in development.
      *
      * @class ValidationUtil
-     * @module StructureTS
+     * @module StructureJS
      * @submodule util
      * @constructor
-     * @version 0.1.0
+     * @author Robert S. (www.codeBelt.com)
      */
     var ValidationUtil = (function () {
         function ValidationUtil() {
