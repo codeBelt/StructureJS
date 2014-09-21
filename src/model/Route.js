@@ -165,7 +165,7 @@ define(function (require, exports, module) { // jshint ignore:line
             routePattern = routePattern.replace('?', '(\\?.*)');
 
             // Make any :alphanumeric: optional but not query string
-            routePattern = routePattern.replace(findOptionalColons, '([^/?]*)');
+            routePattern = routePattern.replace(findOptionalColons, '?([^/?]*)');
 
             // Make any {alphanumeric} required but not query string
             routePattern = routePattern.replace(findRequiredBrackets, '([^/?]+)');
