@@ -1,10 +1,6 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
-    // Imports
-    var Extend = require('structurejs/util/Extend');
-    var DOMElement = require('structurejs/display/DOMElement');
-
     /**
      * A ValidationUtility class that has several static methods to assist in development.
      *
