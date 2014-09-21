@@ -59,7 +59,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         DeviceButton.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true) { return this; }
 
             this.$element.addEventListener('click', this._onClick, this);
             this.$element.css('cursor','pointer');
@@ -71,7 +71,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         DeviceButton.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false) { return this; }
 
             this.$element.removeEventListener('click', this._onClick, this);
             this.$element.css('cursor','default');

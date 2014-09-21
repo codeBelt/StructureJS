@@ -50,7 +50,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         HeaderView.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true) { return this; }
 
             // Enable the child objects and add any event listeners.
 
@@ -61,7 +61,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         HeaderView.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false) { return this; }
 
             // Disable the child objects and remove any event listeners.
 

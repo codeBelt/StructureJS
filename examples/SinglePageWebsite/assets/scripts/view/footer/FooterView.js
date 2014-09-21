@@ -53,7 +53,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         FooterView.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true) { return this; }
 
             this._$footerLinks.addEventListener('click', this._onClick, this);
 
@@ -64,7 +64,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         FooterView.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false) { return this; }
 
             this._$footerLinks.removeEventListener('click', this._onClick, this);
 

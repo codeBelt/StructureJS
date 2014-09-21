@@ -53,7 +53,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         WebsiteApp.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true) { return this; }
 
             this._rootView.enable();
 
@@ -64,7 +64,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         WebsiteApp.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false) { return this; }
 
             this._rootView.disable();
 

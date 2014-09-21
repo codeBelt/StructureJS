@@ -87,7 +87,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         SimonApp.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true) { return this; }
 
             this.addEventListener(BaseEvent.CHANGE, this._onColorButt_onClick, this);
 
@@ -100,7 +100,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         SimonApp.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false) { return this; }
 
             this.removeEventListener(BaseEvent.CHANGE, this._onColorButt_onClick, this);
 

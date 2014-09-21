@@ -54,7 +54,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         GrandparentView.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true) { return this; }
 
             this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
@@ -67,7 +67,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         GrandparentView.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false) { return this; }
 
             this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 

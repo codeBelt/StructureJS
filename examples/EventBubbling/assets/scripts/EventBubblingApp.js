@@ -55,7 +55,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden Stage.enable
          */
         EventBubblingApp.prototype.enable = function () {
-            if (this.isEnabled === true) return this;
+            if (this.isEnabled === true) { return this; }
 
             this.addEventListener(BaseEvent.CHANGE, this.onBubbled, this);
             //EventBroker.addEventListener(BaseEvent.CHANGE, this.onBubbled, this);
@@ -70,7 +70,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @overridden Stage.disable
          */
         EventBubblingApp.prototype.disable = function () {
-            if (this.isEnabled === false) return this;
+            if (this.isEnabled === false) { return this; }
 
             this.removeEventListener(BaseEvent.CHANGE, this.onBubbled, this);
 
