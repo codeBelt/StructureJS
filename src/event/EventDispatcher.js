@@ -1,9 +1,35 @@
-define(function (require, exports, module) { // jshint ignore:line
-    'use strict';
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    // Imports
+    var Extend;
+    var ObjectManager;
+    var BaseEvent;
 
-    var Extend = require('structurejs/util/Extend');
-    var ObjectManager = require('structurejs/ObjectManager');
-    var BaseEvent = require('structurejs/event/BaseEvent');
+    if (typeof define === 'function' && define.amd) {
+        Extend = '../util/Extend';
+        ObjectManager = '../ObjectManager';
+        BaseEvent = '../ObjectManager';
+
+        define([Extend, ObjectManager, BaseEvent], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        Extend = require('../util/Extend');
+        ObjectManager = require('../ObjectManager');
+        BaseEvent = require('../ObjectManager');
+
+        module.exports = factory(Extend, ObjectManager, BaseEvent);
+    } else {
+        Extend = root.structurejs.Extend;
+        ObjectManager = root.structurejs.ObjectManager;
+        BaseEvent = root.structurejs.BaseEvent;
+
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.EventDispatcher = factory(Extend, ObjectManager, BaseEvent);
+    }
+}(this, function(Extend, ObjectManager, BaseEvent) {
+    'use strict';
 
     /**
      * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
@@ -208,6 +234,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return EventDispatcher;
     })();
 
-    module.exports = EventDispatcher;
-
-});
+    return EventDispatcher;
+}));
