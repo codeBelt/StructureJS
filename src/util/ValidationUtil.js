@@ -93,7 +93,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * @static
          */
         ValidationUtil.isPostalCode = function (postalCode) {
-            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
+            var expression = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
             return expression.test(postalCode);
         };
 

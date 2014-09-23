@@ -122,7 +122,7 @@ class ValidationUtil
      */
     public static isPostalCode(postalCode:string):boolean
     {
-        var expression:RegExp = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
+        var expression:RegExp = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
         return expression.test(postalCode);
     }
 
