@@ -1,27 +1,17 @@
-/*
-* Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
-*
-* Permission is hereby granted, free of charge, to any person
-* obtaining a copy of this software and associated documentation
-* files (the "Software"), to deal in the Software without restriction,
-* including without limitation the rights to use, copy, modify, merge,
-* publish, distribute, sublicense, and/or sell copies of the Software,
-* and to permit persons to whom the Software is furnished to do so,
-* subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be
-* included in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-* NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
-* OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory();
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.DateUtil = factory();
+    }
+}(this, function() {
     'use strict';
 
     /**
@@ -49,16 +39,49 @@ define(function (require, exports, module) { // jshint ignore:line
             var day = today % 100;
             return ((Math.floor(day / 10) == 1) ? "th" : ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"][day % 10]);
         };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @property LONG_DAY_LABELS
+         * @type {array}
+         * @public
+         * @static
+         * @final
+         */
         DateUtil.LONG_DAY_LABELS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
+        /**
+         * YUIDoc_comment
+         *
+         * @property SHORT_DAY_LABELS
+         * @type {array}
+         * @public
+         * @static
+         * @final
+         */
         DateUtil.SHORT_DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
+        /**
+         * YUIDoc_comment
+         *
+         * @property LONG_MONTH_LABELS
+         * @type {array}
+         * @public
+         * @static
+         * @final
+         */
         DateUtil.LONG_MONTH_LABELS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
+        /**
+         * YUIDoc_comment
+         *
+         * @property SHORT_MONTH_LABELS
+         * @type {array}
+         * @public
+         * @static
+         * @final
+         */
         DateUtil.SHORT_MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         return DateUtil;
     })();
 
-    
     return DateUtil;
-});
+}));
