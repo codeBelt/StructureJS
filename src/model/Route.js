@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.ValidationUtil = factory();
+        root.structurejs.Route = factory();
     }
 }(this, function() {
     'use strict';

@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.BaseEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.structurejs.LoaderEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
     'use strict';

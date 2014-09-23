@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.BulkLoader = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent);
+        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent);
     }
 }(this, function(Extend, EventDispatcher, LoaderEvent) {
     'use strict';

@@ -1,9 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../display/DOMElement', 'jquery'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../display/DOMElement'), require('jquery'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.Stage = factory(root.structurejs.Extend, root.structurejs.DOMElement, root.jQuery);
+    }
+}(this, function(Extend, DOMElement, jQuery) {
     'use strict';
-
-    var jQuery = require('jquery');
-    var Extend = require('structurejs/util/Extend');
-    var DOMElement = require('structurejs/display/DOMElement');
 
     /**
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
@@ -113,6 +122,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return Stage;
     })();
 
-    module.exports = Stage;
-
-});
+    return Stage;
+}));
