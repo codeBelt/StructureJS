@@ -2,31 +2,14 @@
  * UMD (Universal Module Definition) wrapper.
  */
 (function(root, factory) {
-    // Imports
-    var Extend;
-    var ObjectManager;
-    var BaseEvent;
-
     if (typeof define === 'function' && define.amd) {
-        Extend = '../util/Extend';
-        ObjectManager = '../ObjectManager';
-        BaseEvent = '../ObjectManager';
-
-        define([Extend, ObjectManager, BaseEvent], factory);
+        define(['../util/Extend', '../ObjectManager', '../event/BaseEvent'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        Extend = require('../util/Extend');
-        ObjectManager = require('../ObjectManager');
-        BaseEvent = require('../ObjectManager');
-
-        module.exports = factory(Extend, ObjectManager, BaseEvent);
+        module.exports = factory(require('../util/Extend'), require('../ObjectManager'), require('../event/BaseEvent'));
     } else {
-        Extend = root.structurejs.Extend;
-        ObjectManager = root.structurejs.ObjectManager;
-        BaseEvent = root.structurejs.BaseEvent;
-
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.EventDispatcher = factory(Extend, ObjectManager, BaseEvent);
+        root.structurejs.EventDispatcher = factory(root.structurejs.Extend, root.structurejs.ObjectManager, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, ObjectManager, BaseEvent) {
     'use strict';

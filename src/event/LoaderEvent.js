@@ -1,8 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../event/BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../event/BaseEvent'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.BaseEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+    }
+}(this, function(Extend, BaseEvent) {
     'use strict';
-
-    var Extend = require('structurejs/util/Extend');
-    var BaseEvent = require('structurejs/event/BaseEvent');
 
     /**
      * The LoaderEvent...
@@ -63,6 +73,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return LoaderEvent;
     })();
 
-    module.exports = LoaderEvent;
-
-});
+    return LoaderEvent;
+}));
