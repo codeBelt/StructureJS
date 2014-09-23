@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.BulkLoader = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.URLRequestMethod, root.structurejs.URLContentType, jQuery);
+        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.URLRequestMethod, root.structurejs.URLContentType, jQuery);
     }
 }(this, function(Extend, EventDispatcher, URLRequestMethod, URLContentType, jQuery) {
     'use strict';

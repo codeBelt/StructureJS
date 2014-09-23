@@ -1,4 +1,17 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../event/EventDispatcher', '../event/LoaderEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/LoaderEvent'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.BulkLoader = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent);
+    }
+}(this, function(Extend, EventDispatcher, LoaderEvent) {
     'use strict';
 
     // Imports
@@ -290,6 +303,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return Collection;
     })();
 
-    module.exports = Collection;
-
-});
+    return Collection;
+}));

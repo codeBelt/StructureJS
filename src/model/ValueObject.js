@@ -1,9 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../BaseObject', '../util/Util'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../util/Util'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.ValueObject = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.Util);
+    }
+}(this, function(Extend, BaseObject, Util) {
     'use strict';
-
-    var Extend = require('structurejs/util/Extend');
-    var Util = require('structurejs/util/Util');
-    var BaseObject = require('structurejs/BaseObject');
 
     /**
      * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
@@ -109,6 +118,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return ValueObject;
     })();
 
-    module.exports = ValueObject;
-
-});
+    return ValueObject;
+}));
