@@ -1,7 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory();
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.URLLoaderDataFormat = factory();
+    }
+}(this, function() {
     'use strict';
-
-    // Imports
 
     /**
      * The URLLoaderDataFormat...
@@ -25,6 +36,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return URLLoaderDataFormat;
     })();
 
-    module.exports = URLLoaderDataFormat;
-
-});
+    return URLLoaderDataFormat;
+}));

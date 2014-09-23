@@ -1,12 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../event/EventDispatcher', '../event/LoaderEvent', '../net/URLLoaderDataFormat', 'jquery'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/LoaderEvent'), require('../net/URLLoaderDataFormat'), require('jquery'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.BulkLoader = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent, root.structurejs.URLLoaderDataFormat, jQuery);
+    }
+}(this, function(Extend, EventDispatcher, LoaderEvent, URLLoaderDataFormat, jQuery) {
     'use strict';
-
-    // Imports
-    var jQuery = require('jquery');
-    var Extend = require('structurejs/util/Extend');
-    var EventDispatcher = require('structurejs/event/EventDispatcher');
-    var LoaderEvent = require('structurejs/event/LoaderEvent');
-    var URLLoaderDataFormat = require('structurejs/net/URLLoaderDataFormat');
 
     /**
      * The URLLoader...
@@ -154,6 +160,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return URLLoader;
     })();
 
-    module.exports = URLLoader;
-
-});
+    return URLLoader;
+}));
