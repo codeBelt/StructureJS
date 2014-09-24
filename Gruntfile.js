@@ -272,6 +272,16 @@ module.exports = function(grunt) {
                 },
                 src: '<%= EXAMPLES_PATH %>' + 'UMD/commonjs/assets/scripts/index.js',
                 dest: '<%= EXAMPLES_PATH %>' + 'UMD/commonjs/assets/compile/build.js'
+            },
+            todomvc: {
+                options: {
+                    debug: false
+                },
+                src: [
+                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/main.js',
+                        '<%= EXAMPLES_PATH %>' + 'assets/templates/**/*.hbs'
+                ],
+                dest: '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/compile/build.js'
             }
         },
 
@@ -365,9 +375,10 @@ module.exports = function(grunt) {
                     livereload: true
                 },
                 files: [
-                    '<%= EXAMPLES_PATH %>' + 'UMD/commonjs/assets/scripts/**/*.js',
+                    '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/**/*.js',
+                    '<%= EXAMPLES_PATH %>' + '!TodoMVC/assets/scripts/compile',
                 ],
-                tasks: ['browserify']
+                tasks: ['browserify:todomvc']
             }
         }
 
@@ -422,6 +433,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('commonjs', [
         'browserify', 'watch:browserify'
+    ]);
+
+    grunt.registerTask('example:todomvc', [
+        'browserify:todomvc', 'watch:browserify'
     ]);
 
 };
