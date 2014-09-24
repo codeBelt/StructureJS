@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher', '../net/URLRequestMethod', '../net/URLContentType', 'jquery'], factory);
+        define(['../util/Extend', '../event/EventDispatcher', '../net/URLRequestMethod', '../net/URLContentType'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../net/URLRequestMethod'), require('../net/URLContentType'), require('jquery'));
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../net/URLRequestMethod'), require('../net/URLContentType'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.URLRequestMethod, root.structurejs.URLContentType, jQuery);
+        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.URLRequestMethod, root.structurejs.URLContentType);
     }
-}(this, function(Extend, EventDispatcher, URLRequestMethod, URLContentType, jQuery) {
+}(this, function(Extend, EventDispatcher, URLRequestMethod, URLContentType) {
     'use strict';
 
     /**
