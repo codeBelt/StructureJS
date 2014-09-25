@@ -1,5 +1,7 @@
 # Created by .gitignore support plugin (hsz.mobi)
 
+.idea
+
 ### Node template
 # Logs
 logs
@@ -29,3 +31,5 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+ts/**/*.js
