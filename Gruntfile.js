@@ -279,7 +279,7 @@ module.exports = function(grunt) {
                 },
                 src: [
                         '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/main.js',
-                        '<%= EXAMPLES_PATH %>' + 'assets/templates/**/*.hbs'
+                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/templates/**/*.hbs'
                 ],
                 dest: '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/compile/build.js'
             }

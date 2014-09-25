@@ -31,6 +31,7 @@
         "grunt-typescript": "0.3.8",
         "grunt-open": "0.2.2",
         "grunt-browserify": "latest",
+        "grunt-contrib-handlebars": "0.8.0",
 
         "grunt-karma": "0.9.0",
         "karma": "~0.12.0"
