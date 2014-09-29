@@ -1,4 +1,4 @@
-import BaseEvent = require('BaseEvent')
+///<reference path='BaseEvent.ts'/>
 
 /**
  * YUIDoc_comment
@@ -16,47 +16,48 @@ import BaseEvent = require('BaseEvent')
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class TweenEvent extends BaseEvent
+module StructureTS
 {
-    /**
-     * YUIDoc_comment
-     *
-     * @event COMPLETE
-     * @type {string}
-     * @static
-     */
-    public static START:string = "TweenEvent.start";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event COMPLETE
-     * @type {string}
-     * @static
-     */
-    public static UPDATE:string = "TweenEvent.update";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event COMPLETE
-     * @type {string}
-     * @static
-     */
-    public static COMPLETE:string = "TweenEvent.complete";
-
-    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, tweenObject:any = null)
+    export class TweenEvent extends BaseEvent
     {
-        super(type, bubbles, cancelable, tweenObject);
-    }
+        /**
+         * YUIDoc_comment
+         *
+         * @event COMPLETE
+         * @type {string}
+         * @static
+         */
+        public static START:string = "TweenEvent.start";
 
-    /**
-     * @overridden BaseEvent.clone
-     */
-    public clone():TweenEvent
-    {
-        return new TweenEvent(this.type, this.bubble, this.cancelable, this.data);
-    }
+        /**
+         * YUIDoc_comment
+         *
+         * @event COMPLETE
+         * @type {string}
+         * @static
+         */
+        public static UPDATE:string = "TweenEvent.update";
 
+        /**
+         * YUIDoc_comment
+         *
+         * @event COMPLETE
+         * @type {string}
+         * @static
+         */
+        public static COMPLETE:string = "TweenEvent.complete";
+
+        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, tweenObject:any = null)
+        {
+            super(type, bubbles, cancelable, tweenObject);
+        }
+
+        /**
+         * @overridden BaseEvent.clone
+         */
+        public clone():TweenEvent
+        {
+            return new TweenEvent(this.type, this.bubble, this.cancelable, this.data);
+        }
+    }
 }
-export = TweenEvent;

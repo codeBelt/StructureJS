@@ -1,30 +1,6 @@
-/*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge,
- * publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
- * OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
-import IDataStore = require('../interface/IDataStore')
-import EventDispatcher = require('../event/EventDispatcher')
-import LoaderEvent = require('../event/LoaderEvent')
+///<reference path='../interface/IDataStore.ts'/>
+///<reference path='../event/EventDispatcher.ts'/>
+///<reference path='../event/LoaderEvent.ts'/>
 
 /**
  * The ImageLoader...
@@ -35,43 +11,45 @@ import LoaderEvent = require('../event/LoaderEvent')
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class ImageLoader extends EventDispatcher implements IDataStore
+module StructureTS
 {
-    private _image:HTMLImageElement = null;
-
-    public data:any;
-    public src:string;
-    public complete:boolean = false;
-
-    constructor(path:string)
+    export class ImageLoader extends EventDispatcher implements IDataStore
     {
-        super();
+        private _image:HTMLImageElement = null;
 
-        this.src = path;
+        public data:any;
+        public src:string;
+        public complete:boolean = false;
 
-        var self = this;
-        this._image = new Image();
-        this._image.onload = function ()
+        constructor(path:string)
         {
-            self.onImageLoad();
-        }
-    }
+            super();
 
-    public load():void
-    {
-        if (this.complete)
-        {
-            return;
+            this.src = path;
+
+            var self = this;
+            this._image = new Image();
+            this._image.onload = function ()
+            {
+                self.onImageLoad();
+            }
         }
 
-        this._image.src = this.src;
-    }
+        public load():void
+        {
+            if (this.complete)
+            {
+                return;
+            }
 
-    private onImageLoad():void
-    {
-        this.complete = true;
-        this.data = this._image;
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE));
+            this._image.src = this.src;
+        }
+
+        private onImageLoad():void
+        {
+            this.complete = true;
+            this.data = this._image;
+            this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE));
+        }
     }
 }
-export = ImageLoader;

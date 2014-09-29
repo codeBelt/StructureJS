@@ -1,28 +1,4 @@
-/*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge,
- * publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
- * OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
-import EventDispatcher = require('../event/EventDispatcher')
+///<reference path='../event/EventDispatcher.ts'/>
 
 /**
  * The UndoManager...
@@ -33,150 +9,151 @@ import EventDispatcher = require('../event/EventDispatcher')
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class UndoManager extends EventDispatcher
+module StructureTS
 {
-
-    constructor()
+    export class UndoManager extends EventDispatcher
     {
-        super();
+
+        constructor()
+        {
+            super();
 //https://github.com/danielwanja/UndoManager/blob/master/src/managed/UndoManager.as
-        //https://code.google.com/p/moonshineproject/source/browse/trunk/ide/src/com/moonshineproject/text/UndoManager.as?r=816
+            //https://code.google.com/p/moonshineproject/source/browse/trunk/ide/src/com/moonshineproject/text/UndoManager.as?r=816
+        }
+
+        /**
+         * Indicates whether there is currently an operation that can be redone.
+         *
+         * @method canRedo
+         * @public
+         */
+        public canRedo():boolean
+        {
+            return true;
+        }
+
+        /**
+         * Indicates whether there is currently an operation that can be undone.
+         *
+         * @method canUndo
+         * @public
+         */
+        public canUndo():boolean
+        {
+            return true;
+        }
+
+        /**
+         * Clears both the undo and the redo histories.
+         *
+         * @method clearAll
+         * @public
+         */
+        public clearAll():void
+        {
+
+        }
+
+        /**
+         * Clears the redo stack.
+         *
+         * @method clearRedo
+         * @public
+         */
+        public clearRedo():void
+        {
+
+        }
+
+        /**
+         * Returns the next operation to be redone.
+         *
+         * @method peekRedo
+         * @public
+         */
+        public peekRedo()
+        {
+
+        }
+
+        /**
+         * Returns the next operation to be undone.
+         *
+         * @method peekUndo
+         * @public
+         */
+        public peekUndo()
+        {
+
+        }
+
+        /**
+         * Removes the next operation to be redone from the redo stack, and returns it.
+         *
+         * @method popRedo
+         * @public
+         */
+        public popRedo()
+        {
+
+        }
+
+        /**
+         * Removes the next operation to be undone from the undo stack, and returns it.
+         *
+         * @method popUndo
+         * @public
+         */
+        public popUndo()
+        {
+
+        }
+
+        /**
+         * Adds a redoable operation to the redo stack.
+         *
+         * @method adsf
+         * @public
+         */
+        public pushRedo(operation):void
+        {
+
+        }
+
+        /**
+         * Adds an undoable operation to the undo stack.
+         *
+         * @method pushUndo
+         * @public
+         */
+        public pushUndo(operation):void
+        {
+
+        }
+
+        /**
+         * Removes the next IOperation object from the redo stack and calls the performRedo() function of that object.
+         *
+         * @method redo
+         * @public
+         */
+        public redo():void
+        {
+
+        }
+
+        /**
+         * Removes the next IOperation object from the undo stack and calls the performUndo() function of that object.
+         *
+         * @method undo
+         * @public
+         */
+        public undo():void
+        {
+
+        }
     }
-
-    /**
-     * Indicates whether there is currently an operation that can be redone.
-     *
-     * @method canRedo
-     * @public
-     */
-    public canRedo():boolean
-    {
-        return true;
-    }
-
-    /**
-     * Indicates whether there is currently an operation that can be undone.
-     *
-     * @method canUndo
-     * @public
-     */
-    public canUndo():boolean
-    {
-        return true;
-    }
-
-    /**
-     * Clears both the undo and the redo histories.
-     *
-     * @method clearAll
-     * @public
-     */
-    public clearAll():void
-    {
-
-    }
-
-    /**
-     * Clears the redo stack.
-     *
-     * @method clearRedo
-     * @public
-     */
-    public clearRedo():void
-    {
-
-    }
-
-    /**
-     * Returns the next operation to be redone.
-     *
-     * @method peekRedo
-     * @public
-     */
-    public peekRedo()
-    {
-
-    }
-
-    /**
-     * Returns the next operation to be undone.
-     *
-     * @method peekUndo
-     * @public
-     */
-    public peekUndo()
-    {
-
-    }
-
-    /**
-     * Removes the next operation to be redone from the redo stack, and returns it.
-     *
-     * @method popRedo
-     * @public
-     */
-    public popRedo()
-    {
-
-    }
-
-    /**
-     * Removes the next operation to be undone from the undo stack, and returns it.
-     *
-     * @method popUndo
-     * @public
-     */
-    public popUndo()
-    {
-
-    }
-
-    /**
-     * Adds a redoable operation to the redo stack.
-     *
-     * @method adsf
-     * @public
-     */
-    public pushRedo(operation):void
-    {
-
-    }
-
-    /**
-     * Adds an undoable operation to the undo stack.
-     *
-     * @method pushUndo
-     * @public
-     */
-    public pushUndo(operation):void
-    {
-
-    }
-
-    /**
-     * Removes the next IOperation object from the redo stack and calls the performRedo() function of that object.
-     *
-     * @method redo
-     * @public
-     */
-    public redo():void
-    {
-
-    }
-
-    /**
-     * Removes the next IOperation object from the undo stack and calls the performUndo() function of that object.
-     *
-     * @method undo
-     * @public
-     */
-    public undo():void
-    {
-
-    }
-
 }
-export = UndoManager;
 
 ///**
 // * UndoManager.js

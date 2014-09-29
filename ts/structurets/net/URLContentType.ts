@@ -1,26 +1,3 @@
-/*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge,
- * publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
- * OR OTHER DEALINGS IN THE SOFTWARE.
- */
 
 /**
  * The URLContentType...
@@ -31,46 +8,48 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class URLContentType
+module StructureTS
 {
+    export class URLContentType
+    {
 //http://www.freeformatter.com/mime-types-list.html
 
-    constructor()
-    {
+        constructor()
+        {
+        }
+
+        public static DEFAULT:string = "application/x-www-form-urlencoded";
+
+        /*
+         * Audio
+         */
+        public static ATOM:string = "application/atom+xml";
+        public static JSON:string = "application/json";
+        public static PDF:string = "application/pdf";
+        public static RDF:string = "application/rdf+xml";
+        public static RSS:string = "application/rss+xml";
+        public static SOAP:string = "application/soap+xml";
+        public static FONT_WOFF:string = "application/font-woff";
+        public static XML:string = "application/xml";
+        public static XHTML:string = "application/xhtml+xml";
+        public static ZIP:string = "application/zip";
+        public static GZIP:string = "application/gzip";
+
+        /*
+         * Audio
+         */
+        public static BASIC:string = "audio/basic";
+        public static L24:string = "audio/L24";
+        public static MP4:string = "audio/mp4";
+        public static MP3:string = "audio/mpeg";
+        public static MPEG:string = "audio/mpeg";
+        public static OGG:string = "audio/ogg";
+        public static VORBIS:string = "audio/vorbis";
+        public static REAL_AUDIO:string = "audio/vnd.rn-realaudio";
+        public static WAV:string = "audio/vnd.wave";
+        public static WEBM:string = "audio/webm";
     }
-
-    public static DEFAULT:string = "application/x-www-form-urlencoded";
-
-    /*
-     * Audio
-     */
-    public static ATOM:string = "application/atom+xml";
-    public static JSON:string = "application/json";
-    public static PDF:string = "application/pdf";
-    public static RDF:string = "application/rdf+xml";
-    public static RSS:string = "application/rss+xml";
-    public static SOAP:string = "application/soap+xml";
-    public static FONT_WOFF:string = "application/font-woff";
-    public static XML:string = "application/xml";
-    public static XHTML:string = "application/xhtml+xml";
-    public static ZIP:string = "application/zip";
-    public static GZIP:string = "application/gzip";
-
-    /*
-     * Audio
-     */
-    public static BASIC:string = "audio/basic";
-    public static L24:string = "audio/L24";
-    public static MP4:string = "audio/mp4";
-    public static MP3:string = "audio/mpeg";
-    public static MPEG:string = "audio/mpeg";
-    public static OGG:string = "audio/ogg";
-    public static VORBIS:string = "audio/vorbis";
-    public static REAL_AUDIO:string = "audio/vnd.rn-realaudio";
-    public static WAV:string = "audio/vnd.wave";
-    public static WEBM:string = "audio/webm";
 }
-export = URLContentType;
 /*Type message [edit]
  message/http: Defined in RFC 2616
  message/imdn+xml: IMDN Instant Message Disposition Notification; Defined in RFC 5438

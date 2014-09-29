@@ -1,28 +1,4 @@
-/*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge,
- * publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
- * OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
-import BaseEvent = require('BaseEvent')
+///<reference path='BaseEvent.ts'/>
 /**
  * The LoaderEvent...
  *
@@ -39,47 +15,48 @@ import BaseEvent = require('BaseEvent')
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class LoaderEvent extends BaseEvent
+module StructureTS
 {
-    /**
-     * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
-     *
-     * @event COMPLETE
-     * @type {string}
-     * @static
-     */
-    public static COMPLETE:string = 'LoaderEvent.complete';
-
-    /**
-     * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
-     *
-     * @event LOAD_COMPLETE
-     * @type {string}
-     * @static
-     */
-    public static LOAD_COMPLETE:string = 'LoaderEvent.loadComplete';
-
-    /**
-     * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
-     *
-     * @event ERROR
-     * @type {string}
-     * @static
-     */
-    public static ERROR:string = 'LoaderEvent.error';
-
-    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
+    export class LoaderEvent extends BaseEvent
     {
-        super(type, bubbles, cancelable, data);
-    }
+        /**
+         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+         *
+         * @event COMPLETE
+         * @type {string}
+         * @static
+         */
+        public static COMPLETE:string = 'LoaderEvent.complete';
 
-    /**
-     * @overridden BaseEvent.clone
-     */
-    public clone():LoaderEvent
-    {
-        return new LoaderEvent(this.type, this.bubble, this.cancelable, this.data);
-    }
+        /**
+         * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+         *
+         * @event LOAD_COMPLETE
+         * @type {string}
+         * @static
+         */
+        public static LOAD_COMPLETE:string = 'LoaderEvent.loadComplete';
 
+        /**
+         * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+         *
+         * @event ERROR
+         * @type {string}
+         * @static
+         */
+        public static ERROR:string = 'LoaderEvent.error';
+
+        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
+        {
+            super(type, bubbles, cancelable, data);
+        }
+
+        /**
+         * @overridden BaseEvent.clone
+         */
+        public clone():LoaderEvent
+        {
+            return new LoaderEvent(this.type, this.bubble, this.cancelable, this.data);
+        }
+    }
 }
-export = LoaderEvent;

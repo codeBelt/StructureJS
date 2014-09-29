@@ -1,4 +1,4 @@
-import BaseEvent = require('BaseEvent')
+///<reference path='BaseEvent.ts'/>
 
 /**
  * YUIDoc_comment
@@ -16,92 +16,93 @@ import BaseEvent = require('BaseEvent')
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class CarouselEvent extends BaseEvent
+module StructureTS
 {
-    /**
-     * YUIDoc_comment
-     *
-     * @event START
-     * @type {string}
-     * @static
-     */
-    public static START:string = "CarouselEvent.start";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event BEGIN
-     * @type {string}
-     * @static
-     */
-    public static BEGIN:string = "CarouselEvent.begin";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event END
-     * @type {string}
-     * @static
-     */
-    public static END:string = "CarouselEvent.end";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event NEXT
-     * @type {string}
-     * @static
-     */
-    public static NEXT:string = "CarouselEvent.next";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event PREVIOUS
-     * @type {string}
-     * @static
-     */
-    public static PREVIOUS:string = "CarouselEvent.previous";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event CHANGE
-     * @type {string}
-     * @static
-     */
-    public static CHANGE:string = "CarouselEvent.change";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event PROGRESS
-     * @type {string}
-     * @static
-     */
-    public static PROGRESS:string = "CarouselEvent.progress";
-
-    /**
-     * YUIDoc_comment
-     *
-     * @event COMPLETE
-     * @type {string}
-     * @static
-     */
-    public static COMPLETE:string = "CarouselEvent.complete";
-
-    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
+    export class CarouselEvent extends BaseEvent
     {
-        super(type, bubbles, cancelable, data);
-    }
+        /**
+         * YUIDoc_comment
+         *
+         * @event START
+         * @type {string}
+         * @static
+         */
+        public static START:string = "CarouselEvent.start";
 
-    /**
-     * @overridden BaseEvent.clone
-     */
-    public clone():CarouselEvent
-    {
-        return new CarouselEvent(this.type, this.bubble, this.cancelable, this.data);
-    }
+        /**
+         * YUIDoc_comment
+         *
+         * @event BEGIN
+         * @type {string}
+         * @static
+         */
+        public static BEGIN:string = "CarouselEvent.begin";
 
+        /**
+         * YUIDoc_comment
+         *
+         * @event END
+         * @type {string}
+         * @static
+         */
+        public static END:string = "CarouselEvent.end";
+
+        /**
+         * YUIDoc_comment
+         *
+         * @event NEXT
+         * @type {string}
+         * @static
+         */
+        public static NEXT:string = "CarouselEvent.next";
+
+        /**
+         * YUIDoc_comment
+         *
+         * @event PREVIOUS
+         * @type {string}
+         * @static
+         */
+        public static PREVIOUS:string = "CarouselEvent.previous";
+
+        /**
+         * YUIDoc_comment
+         *
+         * @event CHANGE
+         * @type {string}
+         * @static
+         */
+        public static CHANGE:string = "CarouselEvent.change";
+
+        /**
+         * YUIDoc_comment
+         *
+         * @event PROGRESS
+         * @type {string}
+         * @static
+         */
+        public static PROGRESS:string = "CarouselEvent.progress";
+
+        /**
+         * YUIDoc_comment
+         *
+         * @event COMPLETE
+         * @type {string}
+         * @static
+         */
+        public static COMPLETE:string = "CarouselEvent.complete";
+
+        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
+        {
+            super(type, bubbles, cancelable, data);
+        }
+
+        /**
+         * @overridden BaseEvent.clone
+         */
+        public clone():CarouselEvent
+        {
+            return new CarouselEvent(this.type, this.bubble, this.cancelable, this.data);
+        }
+    }
 }
-export = CarouselEvent;
