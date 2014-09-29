@@ -1,0 +1,1 @@
+var JSON_DATA = JSON_DATA || {};

@@ -25,12 +25,12 @@ module.exports = function(grunt) {
          * @example <%= banner.join("\\n") %>
          */
         banner: [
-                 '/*',
-                 '* Project: <%= pkg.name %>',
-                 '* Version: <%= pkg.appVersion %> (<%= grunt.template.today("yyyy-mm-dd") %>)',
-                 '* Development By: <%= pkg.developedBy %>',
-                 '* Copyright(c): <%= grunt.template.today("yyyy") %>',
-                 '*/'
+            '/*',
+            '* Project: <%= pkg.name %>',
+            '* Version: <%= pkg.appVersion %> (<%= grunt.template.today("yyyy-mm-dd") %>)',
+            '* Development By: <%= pkg.developedBy %>',
+            '* Copyright(c): <%= grunt.template.today("yyyy") %>',
+            '*/'
         ],
 
         /**
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
          * Cleans or deletes our production folder before we create a new production build.
          */
         clean: {
-            js: ["ts/**/*.js"]
+            dist: ['<%= PRODUCTION_PATH %>']
         },
 
         /**
@@ -91,14 +91,10 @@ module.exports = function(grunt) {
         copy: {
             web:  {
                 files: [
-                    // Copy favicon.ico file from development to production
-                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', src: 'favicon.ico', dest: '<%= PRODUCTION_PATH %>' },
                     // Copy the media folder from development to production
                     { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', src: ['assets/media/**'], dest: '<%= PRODUCTION_PATH %>' },
                     // Copy the index.html file from development to production
-                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', dest: '<%= PRODUCTION_PATH %>', src: ['index.html'], filter: 'isFile', dot: true },
-                    // Copy require.js file from development to production
-                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>' + 'assets/vendor/require/', src: 'require.js', dest: '<%= PRODUCTION_PATH %>' + 'assets/scripts/' }
+                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', dest: '<%= PRODUCTION_PATH %>', src: ['index.html'], filter: 'isFile', dot: true }
                 ]
             }
         },
@@ -123,6 +119,66 @@ module.exports = function(grunt) {
         },
 
         /**
+         * Turns any JSON files into JavaScript files.
+         */
+        json: {
+            web: {
+                options: {
+                    namespace: 'JSON_DATA',
+                    includePath: false,
+                    processName: function(filename) {
+                        return filename.toLowerCase();
+                    }
+                },
+                src: ['<%= DEVELOPMENT_PATH %>' + 'assets/data/**/*.json'],
+                dest:  '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/compiled/json.js'
+            }
+        },
+
+        /**
+         * Compiles the Handlebars templates into Javascript.
+         * http://handlebarsjs.com/
+         */
+        handlebars: {
+            compile: {
+                options: {
+                    namespace: 'JST',
+                    // Registers all files that start with '_' as a partial.
+                    partialRegex: /^_/,
+                    // Shortens the file path for the templates.
+                    processName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
+                    },
+                    // Shortens the file path for the partials.
+                    processPartialName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
+                    }
+                },
+                files: {
+                    '<%= DEVELOPMENT_PATH %>assets/scripts/compiled/templates.tmpl.js': ['<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs']
+                }
+            }
+        },
+
+        /**
+         * Compiles the TypeScript files into one JavaScript file.
+         */
+        typescript: {
+            main: {
+                src: ['<%= DEVELOPMENT_PATH %>' + 'assets/scripts/EventBubblingApp.ts'],
+                dest: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/compiled/app.js',
+                options: {
+                    target: 'es3', //or es5
+                    basePath: '',
+                    sourceMap: true,
+                    declaration: false,
+                    nolib: false,
+                    comments: false
+                }
+            }
+        },
+
+        /**
          * The useminPrepare part of the usemin plugin looks at the html file and checks for a build:js or build:css code block.
          * It will take those files found in the code block(s) and concat them together and then runs uglify for js and/or cssmin for css files.
          * useminPrepare requires grunt-contrib-uglify, grunt-contrib-concat, and grunt-contrib-cssmin plugins to be installed. Which is listed in the package.json file.
@@ -139,44 +195,6 @@ module.exports = function(grunt) {
             html: ['<%= PRODUCTION_PATH %>' + 'index.html'],
             options: {
                 dirs: ['<%= PRODUCTION_PATH %>']
-            }
-        },
-
-        /**
-         * The RequireJS plugin that will use uglify2 to build and minify our JavaScript,
-         * templates and any other data we include in the require files.
-         */
-        requirejs: {
-            compile: {
-                options: {
-                    baseUrl: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/',                         // Path of source scripts, relative to this build file
-                    mainConfigFile: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/config.js',         // Path of shared configuration file, relative to this build file
-                    name: 'AppBootstrap',                                                           // Name of input script (.js extension inferred)
-                    out: '<%= PRODUCTION_PATH %>' + 'assets/scripts/app.min.js',                    // Path of built script output
-
-                    fileExclusionRegExp: /.svn/,                                                    // Ignore all files matching this pattern
-                    useStrict: true,
-                    preserveLicenseComments: false,
-                    pragmas: {
-                        debugExclude: true
-                    },
-
-                    optimize: 'uglify2',                                                            // Use 'none' If you do not want to uglify.
-                    uglify2: {
-                        output: {
-                            beautify: false,
-                            comments: false
-                        },
-                        compress: {
-                            sequences: false,
-                            global_defs: {
-                                DEBUG: false
-                            }
-                        },
-                        warnings: false,
-                        mangle: true
-                    }
-                }
             }
         },
 
@@ -236,30 +254,11 @@ module.exports = function(grunt) {
                 version: '<%= pkg.appVersion %>',
                 url: '<%= pkg.homepage %>',
                 options: {
-                    paths: '<%= DEVELOPMENT_PATH %>',
+                    paths: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/',
                     outdir: '<%= BASE_PATH %>docs',
-                    themedir: 'friendly-theme',
-                    extension: '.js',                                   // Default '.js' <comma-separated list of file extensions>
+                    themedir: '',
+                    extension: '.ts',                                   // Default '.js' <comma-separated list of file extensions>
                     exclude: ''
-                }
-            }
-        },
-
-        /**
-         * Compiles the TypeScript files into one JavaScript file.
-         */
-        typescript: {
-            main: {
-                src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
-                outdir: '<%= BASE_PATH %>js',
-                options: {
-                    target: 'es3', //or es5
-                    module: 'AMD',
-                    basePath: '',
-                    sourcemap: false,
-                    declaration: false,
-                    nolib: false,
-                    comments: true
                 }
             }
         },
@@ -298,31 +297,6 @@ module.exports = function(grunt) {
             web: {
                 // Gets the port from the connect configuration
                 path: 'http://localhost:<%= express.web.options.port%>'
-            }
-        },
-
-        // Verifies that script files conform to our standards.
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc'
-            },
-            all: {
-                src: [
-                    'src/**/*.js'
-                ]
-            }
-        },
-
-        karma: {
-            options: {
-                configFile: 'karma.conf.js',
-                autoWatch: false
-            },
-            ci: {
-                singleRun: true
-            },
-            unit: {
-                background: true
             }
         },
 
@@ -373,17 +347,22 @@ module.exports = function(grunt) {
 
     grunt.registerTask('src', [
         'env:src',
-        'preprocess:src'
+        'preprocess:src',
+        'json',
+        'handlebars',
+        'typescript'
     ]);
 
     grunt.registerTask('web', [
         'env:web',
         'preprocess',
+        'json',
+        'handlebars',
+        'typescript',
         'clean',
         'copy',
-        'useminPrepare', 'concat', 'cssmin',
+        'useminPrepare', 'concat', 'uglify', 'cssmin',
         'usemin',
-        'requirejs',
         'usebanner',
         'htmlmin',
         'manifest',
@@ -392,12 +371,8 @@ module.exports = function(grunt) {
         'express-keepalive'
     ]);
 
-    grunt.registerTask('docs', [
+    grunt.registerTask('doc', [
         'yuidoc'
-    ]);
-
-    grunt.registerTask('test', [
-        'karma:ci'
     ]);
 
 };
