@@ -1,5 +1,4 @@
 ///<reference path='ICore.ts'/>
-///<reference path='IEventDispatcher.ts'/>
 
 /**
  * YUIDoc_comment

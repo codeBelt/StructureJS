@@ -1,6 +1,6 @@
-///<reference path='../../interface/IDataStore')
-///<reference path='../../event/LoaderEvent')
-///<reference path='../../event/EventDispatcher')
+///<reference path='../../interface/IDataStore.ts'/>
+///<reference path='../../event/LoaderEvent.ts'/>
+///<reference path='../../event/EventDispatcher.ts'/>
 
 /**
  * The DataStoreAbstract...
