@@ -1,4 +1,4 @@
-///<reference path='../model/Route.ts'/>
+///<reference path='Route.ts'/>
 
 /**
  * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
