@@ -5,7 +5,7 @@
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('jquery'));
+        factory(require('jquery'));
     } else {
         /*jshint sub:true */
         factory(root.jQuery);
