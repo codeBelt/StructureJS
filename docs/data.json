@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.1.0",
+        "version": "0.5.0",
         "url": ""
     },
     "files": {

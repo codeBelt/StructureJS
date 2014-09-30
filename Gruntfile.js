@@ -83,7 +83,7 @@ module.exports = function(grunt) {
          * Cleans or deletes our production folder before we create a new production build.
          */
         clean: {
-            dist: ['<%= PRODUCTION_PATH %>']
+            js: ["ts/**/*.js"]
         },
 
         /**
