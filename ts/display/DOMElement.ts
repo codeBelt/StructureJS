@@ -617,9 +617,9 @@ module StructureTS
          * @method createComponents
          * @public
          */
-        public createComponents(componentList:DOMElement[]):void
+        public createComponents(componentList:any[]):void
         {
-            var length = componentList.length;
+            var length:number = componentList.length;
             var obj:any;
             for (var i = 0; i < length; i++)
             {
