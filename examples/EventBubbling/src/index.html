@@ -31,18 +31,37 @@
     </div>
 </script>
 
-<!-- build:js assets/scripts/app.min.js -->
+<!-- build:js assets/scripts/main.js -->
+<script src="assets/vendor/jquery/dist/jquery.js"></script>
+<script src="assets/vendor/handlebars/handlebars.js"></script>
 
+<script src="../../../src/plugin/jquery.eventListener.js"></script>q
+<script src="../../../src/util/Extend.js"></script>q
+<script src="../../../src/util/Util.js"></script>
+<script src="../../../src/util/StringUtil.js"></script>
+<script src="../../../src/BaseObject.js"></script>
+<script src="../../../src/ObjectManager.js"></script>
+<script src="../../../src/event/BaseEvent.js"></script>
+<script src="../../../src/event/EventDispatcher.js"></script>
+<script src="../../../src/event/EventBroker.js"></script>
+<script src="../../../src/display/DisplayObjectContainer.js"></script>
+<script src="../../../src/util/TemplateFactory.js"></script>
+<script src="../../../src/display/DOMElement.js"></script>
+<script src="../../../src/display/Stage.js"></script>
+
+<script src="./assets/scripts/view/ChildView.js"></script>
+<script src="assets/scripts/view/ParentView.js"></script>
+<script src="assets/scripts/view/GrandparentView.js"></script>
+<script src="assets/scripts/EventBubblingApp.js"></script>
 <!-- endbuild -->
 
 <script type="text/javascript">
-    window.onload = function(event) {
-        // Get class from namespace.
-        var ClogCulpritsApp = LiquidPlumr.ClogCulpritsApp;
+    $(document).ready(function () {
+        var app = new EventBubblingApp();
+        app.appendTo('.js-eventBubblingApp');
 
-        var app = new ClogCulpritsApp(assetUrl, currentPromotion, shareUrl, facebookAppId);
-        app.appendTo('#gameWrapper');
-    }
+        window.app = app;
+    });
 </script>
 
 </body>
