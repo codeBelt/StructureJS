@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.EventDispatcher = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+        root.structurejs.EventBroker = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
     }
 }(this, function(EventDispatcher, BaseEvent) {
     'use strict';

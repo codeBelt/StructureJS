@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.BulkLoader = factory(root.structurejs.StringUtil, root.Handlebars, root.jQuery);
+        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.Handlebars, root.jQuery);
     }
 }(this, function(StringUtil, Handlebars, jQuery) {
     'use strict';

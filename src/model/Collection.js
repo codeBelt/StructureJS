@@ -3,22 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher', '../event/LoaderEvent'], factory);
+        define(['../util/Extend', '../event/EventDispatcher', '../event/BaseEvent'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/LoaderEvent'));
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent);
+        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
     }
-}(this, function(Extend, EventDispatcher, LoaderEvent) {
+}(this, function(Extend, EventDispatcher, BaseEvent) {
     'use strict';
-
-    // Imports
-    var Extend = require('structurejs/util/Extend');
-    var EventDispatcher = require('structurejs/event/EventDispatcher');
-    var BaseEvent = require('structurejs/event/BaseEvent');
-    var ValueObject = require('structurejs/model/ValueObject');
 
     /**
      * YUIDoc_comment

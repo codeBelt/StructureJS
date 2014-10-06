@@ -9,20 +9,10 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.JsonDataStore = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent, root.structurejs.URLLoader, root.structurejs.URLRequest, root.structurejs.URLRequestMethod, root.structurejs.URLContentType, root.structurejs.URLLoaderDataFormat);
+        root.structurejs.JsonDataStore = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent, root.structurejs.JsonDataStore, root.structurejs.URLRequest, root.structurejs.URLRequestMethod, root.structurejs.URLContentType, root.structurejs.URLLoaderDataFormat);
     }
 }(this, function(Extend, DataStoreAbstract, LoaderEvent, URLLoader, URLRequest, URLRequestMethod, URLContentType, URLLoaderDataFormat) {
     'use strict';
-
-    // Imports
-    var Extend = require('structurejs/util/Extend');
-    var DataStoreAbstract = require('structurejs/model/datastore/DataStoreAbstract');
-    var LoaderEvent = require('structurejs/event/LoaderEvent');
-    var URLLoader = require('structurejs/net/URLLoader');
-    var URLRequest = require('structurejs/net/URLRequest');
-    var URLRequestMethod = require('structurejs/net/URLRequestMethod');
-    var URLContentType = require('structurejs/net/URLContentType');
-    var URLLoaderDataFormat = require('structurejs/net/URLLoaderDataFormat');
 
     /**
      * The JsonDataStore...
