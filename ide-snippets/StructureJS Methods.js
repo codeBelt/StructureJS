@@ -1,5 +1,5 @@
 /**
- * YUIDoc_comment
+ * TODO_YUIDoc_comment
  *
  * @method $name$
  * @$accessType$

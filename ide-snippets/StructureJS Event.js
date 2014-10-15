@@ -6,7 +6,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var BaseEvent = require('structurejs/event/BaseEvent');
 
     /**
-     * YUIDoc_comment
+     * TODO_YUIDoc_comment
      *
      * @class ${NAME}
      * @extends BaseEvent

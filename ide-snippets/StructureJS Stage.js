@@ -6,7 +6,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var Stage = require('structurejs/display/Stage');
 
     /**
-     * YUIDoc_comment
+     * TODO_YUIDoc_comment
      *
      * @class ${NAME}
      * @extends Stage

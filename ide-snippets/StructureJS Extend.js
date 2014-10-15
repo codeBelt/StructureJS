@@ -6,7 +6,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var ${Extends} = require('${path}/${Extends}');
 
     /**
-     * YUIDoc_comment
+     * TODO_YUIDoc_comment
      *
      * @class ${NAME}
      * @extends ${Extends}
