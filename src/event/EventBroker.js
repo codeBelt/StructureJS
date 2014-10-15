@@ -1,8 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../event/EventDispatcher', '../event/BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../event/EventDispatcher'), require('../event/BaseEvent'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.EventBroker = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+    }
+}(this, function(EventDispatcher, BaseEvent) {
     'use strict';
-
-    var EventDispatcher = require('structurejs/event/EventDispatcher');
-    var BaseEvent = require('structurejs/event/BaseEvent');
 
     /**
      * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
@@ -104,6 +114,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return EventBroker;
     })();
 
-    module.exports = EventBroker;
-
-});
+    return EventBroker;
+}));

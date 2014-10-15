@@ -1,11 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../BaseObject', '../event/EventDispatcher', '../event/LocalStorageEvent', '../model/ValueObject'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/LocalStorageEvent'), require('../model/ValueObject'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.LocalStorageController = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LocalStorageEvent, root.structurejs.ValueObject);
+    }
+}(this, function(Extend, EventDispatcher, LocalStorageEvent, ValueObject) {
     'use strict';
-
-    // Imports
-    var Extend = require('structurejs/util/Extend');
-    var EventDispatcher = require('structurejs/event/EventDispatcher');
-    var LocalStorageEvent = require('structurejs/event/LocalStorageEvent');
-    var ValueObject = require('structurejs/model/ValueObject');
 
     /**
      * The LocalStorageController...
@@ -243,6 +250,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return LocalStorageController;
     })();
 
-    module.exports = LocalStorageController;
-
-});
+    return LocalStorageController;
+}));

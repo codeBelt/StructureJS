@@ -1,7 +1,17 @@
-define(function(require) {
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        factory(require('jquery'));
+    } else {
+        /*jshint sub:true */
+        factory(root.jQuery);
+    }
+}(this, function($) {
     'use strict';
-
-    var $ = require('jquery');
 
     /**
      * A bind polyfill for browsers that don't support the bind method.
@@ -117,5 +127,4 @@ define(function(require) {
     };
 
     return $;
-
-});
+}));

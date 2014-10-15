@@ -1,38 +1,18 @@
-/*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge,
- * publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
- * OR OTHER DEALINGS IN THE SOFTWARE.
+/**
+ * UMD (Universal Module Definition) wrapper.
  */
-define(function (require, exports, module) { // jshint ignore:line
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../../util/Extend', '../../event/EventDispatcher', '../../event/LoaderEvent', '../../net/URLLoader', '../../net/URLRequest', '../../net/URLRequestMethod', '../../net/URLContentType', '../../net/URLLoaderDataFormat'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../../event/EventDispatcher'), require('../../event/LoaderEvent'), require('../../net/URLLoader'), require('../../net/URLRequest'), require('../../net/URLRequestMethod'), require('../../net/URLContentType'), require('../../net/URLLoaderDataFormat'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.JsonDataStore = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent, root.structurejs.JsonDataStore, root.structurejs.URLRequest, root.structurejs.URLRequestMethod, root.structurejs.URLContentType, root.structurejs.URLLoaderDataFormat);
+    }
+}(this, function(Extend, DataStoreAbstract, LoaderEvent, URLLoader, URLRequest, URLRequestMethod, URLContentType, URLLoaderDataFormat) {
     'use strict';
-
-    // Imports
-    var Extend = require('structurejs/util/Extend');
-    var DataStoreAbstract = require('structurejs/model/datastore/DataStoreAbstract');
-    var LoaderEvent = require('structurejs/event/LoaderEvent');
-    var URLLoader = require('structurejs/net/URLLoader');
-    var URLRequest = require('structurejs/net/URLRequest');
-    var URLRequestMethod = require('structurejs/net/URLRequestMethod');
-    var URLContentType = require('structurejs/net/URLContentType');
-    var URLLoaderDataFormat = require('structurejs/net/URLLoaderDataFormat');
 
     /**
      * The JsonDataStore...
@@ -108,6 +88,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return JsonDataStore;
     })();
 
-    module.exports = JsonDataStore;
-
-});
+    return JsonDataStore;
+}));

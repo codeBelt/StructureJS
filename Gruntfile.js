@@ -17,6 +17,7 @@ module.exports = function(grunt) {
          */
         BASE_PATH: '',
         DEVELOPMENT_PATH: 'src/',
+        EXAMPLES_PATH: 'examples/',
         PRODUCTION_PATH: 'web/',
 
         /**
@@ -264,6 +265,26 @@ module.exports = function(grunt) {
             }
         },
 
+        browserify: {
+            main: {
+                options: {
+                    debug: false
+                },
+                src: '<%= EXAMPLES_PATH %>' + 'UMD/commonjs/assets/scripts/index.js',
+                dest: '<%= EXAMPLES_PATH %>' + 'UMD/commonjs/assets/compile/build.js'
+            },
+            todomvc: {
+                options: {
+                    debug: false
+                },
+                src: [
+                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/main.js',
+                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/templates/**/*.hbs'
+                ],
+                dest: '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/compile/build.js'
+            }
+        },
+
         /**
          * Creates a node.js Express Server to test our code in a server like environment.
          * Note: We are using the watch task to keep the server running.
@@ -348,6 +369,16 @@ module.exports = function(grunt) {
                     '<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs'
                 ],
                 tasks: ['src']
+            },
+            browserify: {
+                options: {
+                    livereload: true
+                },
+                files: [
+                    '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/**/*.js',
+                    '<%= EXAMPLES_PATH %>' + '!TodoMVC/assets/scripts/compile',
+                ],
+                tasks: ['browserify:todomvc']
             }
         }
 
@@ -398,6 +429,14 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', [
         'karma:ci'
+    ]);
+
+    grunt.registerTask('commonjs', [
+        'browserify', 'watch:browserify'
+    ]);
+
+    grunt.registerTask('example:todomvc', [
+        'browserify:todomvc', 'watch:browserify'
     ]);
 
 };

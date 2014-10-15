@@ -1,8 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../BaseObject'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../BaseObject'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.BaseEvent = factory(root.structurejs.Extend, root.structurejs.BaseObject);
+    }
+}(this, function(Extend, BaseObject) {
     'use strict';
-
-    var Extend = require('structurejs/util/Extend');
-    var BaseObject = require('structurejs/BaseObject');
 
     /**
      * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
@@ -443,6 +453,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return BaseEvent;
     })();
 
-    module.exports = BaseEvent;
-
-});
+    return BaseEvent;
+}));

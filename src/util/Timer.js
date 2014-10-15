@@ -1,9 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../event/EventDispatcher', '../event/TimerEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/TimerEvent'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.Timer = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.TimerEvent);
+    }
+}(this, function(Extend, EventDispatcher, TimerEvent) {
     'use strict';
-
-    var Extend = require('structurejs/util/Extend');
-    var EventDispatcher = require('structurejs/event/EventDispatcher');
-    var TimerEvent = require('structurejs/event/TimerEvent');
 
     /**
      * Constructs a new Timer object with the specified delay and repeatCount states.
@@ -202,6 +211,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return Timer;
     })();
 
-    module.exports = Timer;
-
-});
+    return Timer;
+}));

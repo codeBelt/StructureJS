@@ -1,11 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../event/EventDispatcher', '../event/BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+    }
+}(this, function(Extend, EventDispatcher, BaseEvent) {
     'use strict';
-
-    // Imports
-    var Extend = require('structurejs/util/Extend');
-    var EventDispatcher = require('structurejs/event/EventDispatcher');
-    var BaseEvent = require('structurejs/event/BaseEvent');
-    var ValueObject = require('structurejs/model/ValueObject');
 
     /**
      * YUIDoc_comment
@@ -290,6 +297,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return Collection;
     })();
 
-    module.exports = Collection;
-
-});
+    return Collection;
+}));

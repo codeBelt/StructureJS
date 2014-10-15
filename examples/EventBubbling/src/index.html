@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <!-- build:css assets/styles/screen.css -->
+    <link rel="stylesheet" media="screen, projection" href="assets/styles/reset.css" />
+    <link rel="stylesheet" media="screen, projection" href="assets/styles/eventBubbling.css" />
+    <!-- endbuild -->
+</head>
+<body>
+<h1>Event Bubbling/Canceling Example</h1>
+<div class="eventBubblingApp js-eventBubblingApp">
+    <div class="splitPair">
+        <span class="message message_stage js-message">Stage has received the event</span>
+        <button id="js-clearButton" type="button">Clear</button>
+    </div>
+</div>
+
+<script id="containerTemplate" type="text/template">
+    <div class="container">
+        <div class="container-hd">
+            <p>{{title}}</p>
+        </div>
+        <div class="container-bd js-panelContent">
+            <div class="splitPair">
+                <span class="message js-message">Event bubbled by.</span>
+                <input type="checkbox" class="splitPair-input"/>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- build:js assets/scripts/main.js -->
+<script src="assets/vendor/jquery/dist/jquery.js"></script>
+<script src="assets/vendor/handlebars/handlebars.js"></script>
+
+<script src="../../../src/plugin/jquery.eventListener.js"></script>q
+<script src="../../../src/util/Extend.js"></script>q
+<script src="../../../src/util/Util.js"></script>
+<script src="../../../src/util/StringUtil.js"></script>
+<script src="../../../src/BaseObject.js"></script>
+<script src="../../../src/ObjectManager.js"></script>
+<script src="../../../src/event/BaseEvent.js"></script>
+<script src="../../../src/event/EventDispatcher.js"></script>
+<script src="../../../src/event/EventBroker.js"></script>
+<script src="../../../src/display/DisplayObjectContainer.js"></script>
+<script src="../../../src/util/TemplateFactory.js"></script>
+<script src="../../../src/display/DOMElement.js"></script>
+<script src="../../../src/display/Stage.js"></script>
+
+<script src="./assets/scripts/view/ChildView.js"></script>
+<script src="assets/scripts/view/ParentView.js"></script>
+<script src="assets/scripts/view/GrandparentView.js"></script>
+<script src="assets/scripts/EventBubblingApp.js"></script>
+<!-- endbuild -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var app = new EventBubblingApp();
+        app.appendTo('.js-eventBubblingApp');
+
+        window.app = app;
+    });
+</script>
+
+</body>
+</html>

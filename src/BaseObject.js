@@ -1,7 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['./util/Util'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('./util/Util'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.BaseObject = factory(root.structurejs.Util);
+    }
+}(this, function(Util) {
     'use strict';
-
-    var Util = require('structurejs/util/Util');
 
     /**
      * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -56,10 +67,10 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          * @example
          *     ClassName.prototype.destroy = function() {
-        *          this._childInstance.destroy();
-        *
-        *          _super.prototype.destroy.call(this);
-        *     }
+         *          this._childInstance.destroy();
+         *
+         *          _super.prototype.destroy.call(this);
+         *     }
          */
         BaseObject.prototype.destroy = function () {
             for (var key in this) {
@@ -71,7 +82,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return BaseObject;
     })();
 
-    module.exports = BaseObject;
-
-});
-
+    return BaseObject;
+}));

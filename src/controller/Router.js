@@ -1,33 +1,18 @@
-/*
- * Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without restriction,
- * including without limitation the rights to use, copy, modify, merge,
- * publish, distribute, sublicense, and/or sell copies of the Software,
- * and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
- * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
- * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
- * OR OTHER DEALINGS IN THE SOFTWARE.
+/**
+ * UMD (Universal Module Definition) wrapper.
  */
-define(function (require, exports, module) { // jshint ignore:line
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../model/Route', '../event/RouteEvent', '../util/StringUtil'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../model/Route'), require('../event/RouteEvent'), require('../util/StringUtil'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouteEvent, root.structurejs.StringUtil);
+    }
+}(this, function(Route, RouteEvent, StringUtil) {
     'use strict';
-
-    // Imports
-    var Route = require('structurejs/model/Route');
-    var RouteEvent = require('structurejs/event/RouteEvent');
-    var StringUtil = require('structurejs/util/StringUtil');
 
     /**
      * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
@@ -559,6 +544,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return Router;
     })();
 
-    module.exports = Router;
-
-});
+    return Router;
+}));

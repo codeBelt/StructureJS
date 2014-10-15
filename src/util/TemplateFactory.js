@@ -1,10 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/StringUtil', 'handlebars', 'jquery'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/StringUtil'), require('handlebars'), require('jquery'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.Handlebars, root.jQuery);
+    }
+}(this, function(StringUtil, Handlebars, jQuery) {
     'use strict';
-
-    var jQuery = require('jquery');
-    var Handlebars = require('handlebars');
-    var StringUtil = require('structurejs/util/StringUtil');
-    var DOMElement = require('structurejs/display/DOMElement');
 
     /**
      * YUIDoc_comment
@@ -72,6 +80,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return TemplateFactory;
     })();
 
-    module.exports = TemplateFactory;
-
-});
+    return TemplateFactory;
+}));

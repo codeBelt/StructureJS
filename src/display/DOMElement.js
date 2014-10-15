@@ -1,12 +1,18 @@
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['../util/Extend', '../display/DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', '../plugin/jquery.eventListener'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) { //Node
+        module.exports = factory(require('../util/Extend'), require('../display/DisplayObjectContainer'), require('../event/BaseEvent'), require('../util/TemplateFactory'), require('../util/ComponentFactory'), require('../plugin/jquery.eventListener'));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.DOMElement = factory(root.structurejs.Extend, root.structurejs.DisplayObjectContainer, root.structurejs.BaseEvent, root.structurejs.TemplateFactory, root.structurejs.ComponentFactory, root.jQuery);
+    }
+}(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery) {
     'use strict';
-
-    var jQuery = require('structurejs/plugin/jquery.eventListener');
-    var Extend = require('structurejs/util/Extend');
-    var DisplayObjectContainer = require('structurejs/display/DisplayObjectContainer');
-    var BaseEvent = require('structurejs/event/BaseEvent');
-    var TemplateFactory = require('structurejs/util/TemplateFactory');
-    var ComponentFactory = require('structurejs/util/ComponentFactory');
 
     /**
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
@@ -588,6 +594,5 @@ define(function (require, exports, module) { // jshint ignore:line
         return DOMElement;
     })();
 
-    module.exports = DOMElement;
-
-});
+    return DOMElement;
+}));
