@@ -1,7 +1,7 @@
 var Extend = require('../../../../../src/util/Extend');
 var Collection = require('../../../../../src/model/Collection');
 var LocalStorageController = require('../../../../../src/controller/LocalStorageController');
-var ListItemVO = require('../model/vo/ListItemVO');
+var ListItemVO = require('vo/ListItemVO');
 
 /**
  * YUIDoc_comment
