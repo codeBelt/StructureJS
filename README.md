@@ -3,7 +3,7 @@
 A workflow and several core class to help structure and build JavaScript applications.
 
 ####WebStorm & Sublime Text Templates/Snippets:
-[WebStorm & Sublime Text Templates/Snippets](https://gist.github.com/codeBelt/9166803)
+[WebStorm & Sublime Text Templates/Snippets](https://github.com/codeBelt/StructureJS/tree/master/ide-snippets)
 
 ####Examples:
 [Event Bubbling Example](http://codebelt.github.io/StructureJS/examples/EventBubbling/)
