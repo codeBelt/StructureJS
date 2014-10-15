@@ -81,8 +81,6 @@
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
             
-                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
-            
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
@@ -152,15 +150,21 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;../util/Extend&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/LoaderEvent&#x27;, &#x27;../net/URLLoaderDataFormat&#x27;, &#x27;jquery&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/LoaderEvent&#x27;), require(&#x27;../net/URLLoaderDataFormat&#x27;), require(&#x27;jquery&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.URLLoader = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LoaderEvent, root.structurejs.URLLoaderDataFormat, root.jQuery);
+    }
+}(this, function(Extend, EventDispatcher, LoaderEvent, URLLoaderDataFormat, jQuery) {
     &#x27;use strict&#x27;;
-
-    // Imports
-    var jQuery = require(&#x27;jquery&#x27;);
-    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
-    var EventDispatcher = require(&#x27;structurejs/event/EventDispatcher&#x27;);
-    var LoaderEvent = require(&#x27;structurejs/event/LoaderEvent&#x27;);
-    var URLLoaderDataFormat = require(&#x27;structurejs/net/URLLoaderDataFormat&#x27;);
 
     /**
      * The URLLoader...
@@ -308,9 +312,8 @@ define(function (require, exports, module) { // jshint ignore:line
         return URLLoader;
     })();
 
-    module.exports = URLLoader;
-
-});
+    return URLLoader;
+}));
     </pre>
 </div>
 

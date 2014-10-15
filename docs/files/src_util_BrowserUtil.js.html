@@ -81,8 +81,6 @@
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
             
-                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
-            
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
@@ -152,30 +150,20 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/*
-* Copyright (c) 2013 Robert S. https://github.com/codeBelt/StructureJS
-*
-* Permission is hereby granted, free of charge, to any person
-* obtaining a copy of this software and associated documentation
-* files (the &quot;Software&quot;), to deal in the Software without restriction,
-* including without limitation the rights to use, copy, modify, merge,
-* publish, distribute, sublicense, and/or sell copies of the Software,
-* and to permit persons to whom the Software is furnished to do so,
-* subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be
-* included in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
-* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-* OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-* NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-* HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
-* OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+        module.exports = factory();
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.BrowserUtil = factory();
+    }
+}(this, function() {
     &#x27;use strict&#x27;;
 
     /**
@@ -191,26 +179,26 @@ define(function (require, exports, module) { // jshint ignore:line
         function BrowserUtil() {
         }
         /**
-        * YUIDoc_comment
-        *
-        * @method browserName
-        * @return {string}
-        * @public
-        * @static
-        */
+         * Returns the name of the browser.
+         *
+         * @method browserName
+         * @return {string}
+         * @public
+         * @static
+         */
         BrowserUtil.browserName = function () {
             return BrowserUtil.getBrowser()[0];
         };
 
         /**
-        * YUIDoc_comment
-        *
-        * @method browserVersion
-        * @param [majorVersion=true0 {boolean}
-        * @return {number|string}
-        * @public
-        * @static
-        */
+         * Returns the version of the browser.
+         *
+         * @method browserVersion
+         * @param [majorVersion=true0 {boolean}
+         * @return {number|string}
+         * @public
+         * @static
+         */
         BrowserUtil.browserVersion = function (majorVersion) {
             if (typeof majorVersion === &quot;undefined&quot;) { majorVersion = true; }
             var version = BrowserUtil.getBrowser()[1];
@@ -223,13 +211,13 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * YUIDoc_comment
-        *
-        * @method getBrowser
-        * @private
-        * @return {Array.&lt;string&gt;}
-        * @static
-        */
+         * YUIDoc_comment
+         *
+         * @method getBrowser
+         * @private
+         * @return {Array.&lt;string&gt;}
+         * @static
+         */
         BrowserUtil.getBrowser = function () {
             var N = navigator.appName, ua = navigator.userAgent, tem;
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
@@ -241,25 +229,97 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * YUIDoc_comment
-        *
-        * @method hasBrowserHistory
-        * @returns {boolean}
-        * @public
-        * @static
-        */
+         * YUIDoc_comment
+         *
+         * @method isAndroid
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        BrowserUtil.isAndroid = function () {
+            return !!navigator.userAgent.match(/Android/i);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isBlackBerry
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        BrowserUtil.isBlackBerry = function () {
+            return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
+        };
+
+        /**
+         * isIOS
+         *
+         * @method isIOS
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        BrowserUtil.isIOS = function () {
+            return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isOperaMini
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        BrowserUtil.isOperaMini = function () {
+            return !!navigator.userAgent.match(/Opera Mini/i);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isIEMobile
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        BrowserUtil.isIEMobile = function () {
+            return !!navigator.userAgent.match(/IEMobile/i);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isMobile
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        BrowserUtil.isMobile = function () {
+            return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method hasBrowserHistory
+         * @returns {boolean}
+         * @public
+         * @static
+         */
         BrowserUtil.hasBrowserHistory = function () {
             return !!(window.history &amp;&amp; history.pushState);
         };
 
         /**
-        * YUIDoc_comment
-        *
-        * @method hasLocalStorage
-        * @returns {boolean}
-        * @public
-        * @static
-        */
+         * YUIDoc_comment
+         *
+         * @method hasLocalStorage
+         * @returns {boolean}
+         * @public
+         * @static
+         */
         BrowserUtil.hasLocalStorage = function () {
             try  {
                 return (&#x27;localStorage&#x27; in window) &amp;&amp; window.localStorage !== null;
@@ -269,13 +329,13 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-        * YUIDoc_comment
-        *
-        * @method hasSessionStorage
-        * @returns {boolean}
-        * @public
-        * @static
-        */
+         * YUIDoc_comment
+         *
+         * @method hasSessionStorage
+         * @returns {boolean}
+         * @public
+         * @static
+         */
         BrowserUtil.hasSessionStorage = function () {
             try  {
                 return (&#x27;sessionStorage&#x27; in window) &amp;&amp; window.sessionStorage !== null;
@@ -286,10 +346,8 @@ define(function (require, exports, module) { // jshint ignore:line
         return BrowserUtil;
     })();
 
-    
     return BrowserUtil;
-});
-
+}));
     </pre>
 </div>
 

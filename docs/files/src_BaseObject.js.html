@@ -81,8 +81,6 @@
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
             
-                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
-            
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
@@ -152,10 +150,21 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;./util/Util&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+        module.exports = factory(require(&#x27;./util/Util&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.BaseObject = factory(root.structurejs.Util);
+    }
+}(this, function(Util) {
     &#x27;use strict&#x27;;
-
-    var Util = require(&#x27;structurejs/util/Util&#x27;);
 
     /**
      * The {{#crossLink &quot;BaseObject&quot;}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -210,10 +219,10 @@ define(function (require, exports, module) { // jshint ignore:line
          * @public
          * @example
          *     ClassName.prototype.destroy = function() {
-        *          this._childInstance.destroy();
-        *
-        *          _super.prototype.destroy.call(this);
-        *     }
+         *          this._childInstance.destroy();
+         *
+         *          _super.prototype.destroy.call(this);
+         *     }
          */
         BaseObject.prototype.destroy = function () {
             for (var key in this) {
@@ -225,11 +234,8 @@ define(function (require, exports, module) { // jshint ignore:line
         return BaseObject;
     })();
 
-    module.exports = BaseObject;
-
-});
-
-
+    return BaseObject;
+}));
     </pre>
 </div>
 

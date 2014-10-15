@@ -19,7 +19,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "LocalStorageEvent",
         "MathUtil",
         "MerchantUtil",
-        "MobileUtil",
         "NumberUtil",
         "ObjectManager",
         "Route",

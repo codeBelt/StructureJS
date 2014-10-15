@@ -272,15 +272,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/util/MobileUtil.js": {
-            "name": "src/util/MobileUtil.js",
-            "modules": {},
-            "classes": {
-                "MobileUtil": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "src/util/NumberUtil.js": {
             "name": "src/util/NumberUtil.js",
             "modules": {},
@@ -395,7 +386,6 @@
                 "DateUtil": 1,
                 "MathUtil": 1,
                 "MerchantUtil": 1,
-                "MobileUtil": 1,
                 "NumberUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
@@ -408,7 +398,7 @@
             "fors": {},
             "namespaces": {},
             "file": "src/ObjectManager.js",
-            "line": 7
+            "line": 17
         },
         "controller": {
             "name": "controller",
@@ -423,7 +413,7 @@
             "namespace": "",
             "description": "The LocalStorageController...",
             "file": "src/controller/LocalStorageController.js",
-            "line": 10
+            "line": 17
         },
         "view": {
             "name": "view",
@@ -440,7 +430,7 @@
             "namespace": "",
             "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
             "file": "src/display/Stage.js",
-            "line": 8
+            "line": 17
         },
         "event": {
             "name": "event",
@@ -461,7 +451,7 @@
             "namespace": "",
             "description": "The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.\n\nThe properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\n\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.",
             "file": "src/event/TimerEvent.js",
-            "line": 7
+            "line": 17
         },
         "model": {
             "name": "model",
@@ -480,7 +470,7 @@
             "namespace": "",
             "description": "The DataStoreAbstract...",
             "file": "src/model/ValueObject.js",
-            "line": 8
+            "line": 17
         },
         "net": {
             "name": "net",
@@ -499,7 +489,7 @@
             "namespace": "",
             "description": "The URLContentType...",
             "file": "src/net/URLRequestMethod.js",
-            "line": 6
+            "line": 17
         },
         "util": {
             "name": "util",
@@ -510,7 +500,6 @@
                 "DateUtil": 1,
                 "MathUtil": 1,
                 "MerchantUtil": 1,
-                "MobileUtil": 1,
                 "NumberUtil": 1,
                 "StringUtil": 1,
                 "TemplateFactory": 1,
@@ -525,7 +514,7 @@
             "namespace": "",
             "description": "The BrowserUtil...",
             "file": "src/util/ValidationUtil.js",
-            "line": 4
+            "line": 17
         },
         "core": {
             "name": "core",
@@ -541,7 +530,7 @@
             "namespace": "",
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.",
             "file": "src/ObjectManager.js",
-            "line": 7
+            "line": 17
         }
     },
     "classes": {
@@ -555,7 +544,7 @@
             "extension_for": [],
             "module": "StructureJS",
             "file": "src/controller/LocalStorageController.js",
-            "line": 10,
+            "line": 17,
             "description": "The LocalStorageController...",
             "submodule": "controller",
             "extends": "EventDispatcher",
@@ -573,7 +562,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/controller/Router.js",
-            "line": 32,
+            "line": 17,
             "description": "The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink \"Router/add:method\"}}{{/crossLink}} method for more details and examples.",
             "static": 1,
             "author": "Robert S. (www.codeBelt.com)"
@@ -589,7 +578,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/display/DOMElement.js",
-            "line": 11,
+            "line": 17,
             "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
             "submodule": "view",
             "params": [
@@ -620,7 +609,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 7,
+            "line": 17,
             "description": "The {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.",
             "submodule": "view",
             "extends": "EventDispatcher",
@@ -638,7 +627,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/display/Stage.js",
-            "line": 8,
+            "line": 17,
             "description": "The {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main or root class.",
             "example": [
                 "\n    // This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n    define(function (require, exports, module) {\n        'use strict';\n\n        var Extend = require('structurejs/util/Extend');\n        var Stage = require('replace/path/Stage');\n\n        var MainClass = (function () {\n\n        var _super = Extend(MainClass, Stage);\n\n            function MainClass() {\n                _super.call(this);\n            }\n\n            MainClass.prototype.createChildren = function () {\n                _super.prototype.createChildren.call(this);\n\n                // Create and add your child objects to this parent class.\n            }\n\n            MainClass.prototype.layoutChildren = function () {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            MainClass.prototype.enable = function () {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return _super.prototype.enable.call(this);\n            }\n\n            MainClass.prototype.disable = function () {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return _super.prototype.disable.call(this);\n            }\n\n            MainClass.prototype.destroy = function () {\n                // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n                _super.prototype.destroy.call(this);\n            }\n\n            return MainClass;\n        })();\n\n        module.exports = MainClass;\n    });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiation your main or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');"
@@ -659,7 +648,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/event/BaseEvent.js",
-            "line": 7,
+            "line": 17,
             "description": "The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.\n\nThe properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\n\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.",
             "submodule": "event",
             "extends": "BaseObject",
@@ -708,7 +697,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/event/EventBroker.js",
-            "line": 7,
+            "line": 17,
             "description": "EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.\nLoosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.",
             "submodule": "event",
             "static": 1,
@@ -725,7 +714,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/event/EventDispatcher.js",
-            "line": 8,
+            "line": 17,
             "description": "The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class.\nThe EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.",
             "submodule": "event",
             "extends": "ObjectManager",
@@ -743,7 +732,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/event/LoaderEvent.js",
-            "line": 7,
+            "line": 17,
             "description": "The LoaderEvent...",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -789,7 +778,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/event/LocalStorageEvent.js",
-            "line": 8,
+            "line": 17,
             "description": "The LocalStorageEvent ....\nNote: the event only dispatches in other browser windows and does not show up in the window where you made a change to the local storage.",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -833,7 +822,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/event/RouteEvent.js",
-            "line": 31,
+            "line": 17,
             "description": "The RouteEvent is used in the {{#crossLink \"Router\"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink \"Route\"}}{{/crossLink}} class.",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -879,7 +868,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/event/TimerEvent.js",
-            "line": 7,
+            "line": 17,
             "description": "The TimerEvent...",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -925,7 +914,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 32,
+            "line": 17,
             "description": "The DataStoreAbstract...",
             "submodule": "model",
             "is_constructor": 1,
@@ -949,7 +938,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/model/datastore/JsonDataStore.js",
-            "line": 37,
+            "line": 17,
             "description": "The JsonDataStore...",
             "submodule": "model",
             "is_constructor": 1,
@@ -978,7 +967,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/model/Collection.js",
-            "line": 10,
+            "line": 17,
             "description": "YUIDoc_comment",
             "submodule": "model",
             "extends": "EventDispatcher",
@@ -996,7 +985,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/model/Route.js",
-            "line": 27,
+            "line": 17,
             "description": "The **Route** class is a model that keeps track of a specific route for the {{#crossLink \"Router\"}}{{/crossLink}} class.",
             "submodule": "model",
             "is_constructor": 1,
@@ -1033,7 +1022,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/model/ValueObject.js",
-            "line": 8,
+            "line": 17,
             "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.",
             "submodule": "model",
             "extends": "BaseObject",
@@ -1059,7 +1048,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/net/URLContentType.js",
-            "line": 6,
+            "line": 17,
             "description": "The URLContentType...",
             "submodule": "net",
             "is_constructor": 1,
@@ -1076,7 +1065,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/net/URLLoader.js",
-            "line": 11,
+            "line": 17,
             "description": "The URLLoader...",
             "submodule": "net",
             "extends": "EventDispatcher",
@@ -1103,7 +1092,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/net/URLLoaderDataFormat.js",
-            "line": 6,
+            "line": 17,
             "description": "The URLLoaderDataFormat...",
             "submodule": "net",
             "is_constructor": 1,
@@ -1120,10 +1109,10 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/net/URLRequest.js",
-            "line": 11,
+            "line": 17,
             "description": "The URLRequest class captures all of the information in a single HTTP request.\nURLRequest objects are passed to the load() methods of the {{#crossLink \"URLLoader\"}}{{/crossLink}} classes.",
             "submodule": "net",
-            "extends": "BaseObject",
+            "extends": "EventDispatcher",
             "params": [
                 {
                     "name": "url",
@@ -1144,7 +1133,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/net/URLRequestMethod.js",
-            "line": 6,
+            "line": 17,
             "description": "The URLRequestMethod...",
             "submodule": "net",
             "is_constructor": 1,
@@ -1161,7 +1150,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/BrowserUtil.js",
-            "line": 27,
+            "line": 17,
             "description": "The BrowserUtil...",
             "submodule": "util",
             "is_constructor": 1,
@@ -1178,7 +1167,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/BulkLoader.js",
-            "line": 32,
+            "line": 17,
             "description": "The BulkLoader...",
             "submodule": "util",
             "is_constructor": 1,
@@ -1195,7 +1184,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/ComponentFactory.js",
-            "line": 4,
+            "line": 17,
             "description": "A helper class to create multiple instances of the same Component Class.",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
@@ -1211,7 +1200,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/DateUtil.js",
-            "line": 27,
+            "line": 17,
             "description": "The DateUtil...",
             "submodule": "util",
             "is_constructor": 1,
@@ -1228,7 +1217,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/MathUtil.js",
-            "line": 27,
+            "line": 17,
             "description": "The MathUtil...",
             "submodule": "util",
             "is_constructor": 1,
@@ -1246,25 +1235,8 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/MerchantUtil.js",
-            "line": 27,
+            "line": 17,
             "description": "A MerchantUtility class that has several static methods to assist in development.",
-            "submodule": "util",
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
-        "MobileUtil": {
-            "name": "MobileUtil",
-            "shortname": "MobileUtil",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/util/MobileUtil.js",
-            "line": 6,
-            "description": "The MobileUtil...",
             "submodule": "util",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
@@ -1280,7 +1252,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/NumberUtil.js",
-            "line": 27,
+            "line": 17,
             "description": "The NumberUtil...",
             "submodule": "util",
             "is_constructor": 1,
@@ -1297,7 +1269,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/StringUtil.js",
-            "line": 4,
+            "line": 17,
             "description": "The StringUtil...",
             "submodule": "util",
             "is_constructor": 1,
@@ -1315,7 +1287,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/TemplateFactory.js",
-            "line": 9,
+            "line": 17,
             "description": "YUIDoc_comment",
             "submodule": "util",
             "is_constructor": 1,
@@ -1332,7 +1304,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/Timer.js",
-            "line": 8,
+            "line": 17,
             "description": "Constructs a new Timer object with the specified delay and repeatCount states.",
             "submodule": "util",
             "extends": "EventDispatcher",
@@ -1350,7 +1322,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/Util.js",
-            "line": 4,
+            "line": 17,
             "description": "A Utility class that has several static methods to assist in development.",
             "submodule": "util",
             "is_constructor": 1,
@@ -1367,7 +1339,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/util/ValidationUtil.js",
-            "line": 4,
+            "line": 17,
             "description": "A ValidationUtility class that has several static methods to assist in development.",
             "submodule": "util",
             "is_constructor": 1,
@@ -1384,7 +1356,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/BaseObject.js",
-            "line": 6,
+            "line": 17,
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.",
             "submodule": "core",
             "is_constructor": 1,
@@ -1401,7 +1373,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "src/ObjectManager.js",
-            "line": 7,
+            "line": 17,
             "description": "The {{#crossLink \"ObjectManager\"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.",
             "submodule": "core",
             "extends": "BaseObject",
@@ -1412,7 +1384,13 @@
     "classitems": [
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 26,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "LocalStorageController"
+        },
+        {
+            "file": "src/controller/LocalStorageController.js",
+            "line": 33,
             "description": "Current user namespace. The namespace is optional.",
             "itemtype": "property",
             "name": "_namespace",
@@ -1427,7 +1405,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 36,
+            "line": 43,
             "description": "A reference to window.localStorage for faster access.",
             "itemtype": "property",
             "name": "_localStorage",
@@ -1440,7 +1418,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 49,
+            "line": 56,
             "description": "Set storage namespace",
             "itemtype": "method",
             "name": "setNamespace",
@@ -1460,7 +1438,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 60,
+            "line": 67,
             "description": "Get storage namespace",
             "itemtype": "method",
             "name": "getNamespace",
@@ -1474,7 +1452,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 70,
+            "line": 77,
             "description": "Add a key/value pair to localStorage.",
             "itemtype": "method",
             "name": "addItem",
@@ -1505,7 +1483,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 99,
+            "line": 106,
             "description": "Retrieves the current value associated with the Local Storage key.",
             "itemtype": "method",
             "name": "getItem",
@@ -1533,7 +1511,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 126,
+            "line": 133,
             "description": "Returns all items in local storage as an Object with key and value properties that has a certain namespace.",
             "itemtype": "method",
             "name": "getItemsWithNamespace",
@@ -1554,7 +1532,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 152,
+            "line": 159,
             "description": "Returns all items in local storage as an Object with key and value properties.",
             "itemtype": "method",
             "name": "getAllItems",
@@ -1568,7 +1546,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 174,
+            "line": 181,
             "description": "Deletes a key/value pair from the Local Storage collection.",
             "itemtype": "method",
             "name": "removeItem",
@@ -1596,7 +1574,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 196,
+            "line": 203,
             "description": "Returns the number of items storage in local storage.",
             "itemtype": "method",
             "name": "getLength",
@@ -1610,7 +1588,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 206,
+            "line": 213,
             "description": "Returns the size of the Local Storage.",
             "itemtype": "method",
             "name": "getSize",
@@ -1624,7 +1602,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 216,
+            "line": 223,
             "description": "Removes all key/value pairs from the Local Storage area.",
             "itemtype": "method",
             "name": "clear",
@@ -1634,7 +1612,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 226,
+            "line": 233,
             "overridden": "BaseController.destroy",
             "class": "LocalStorageController",
             "module": "StructureJS",
@@ -1642,7 +1620,7 @@
         },
         {
             "file": "src/controller/LocalStorageController.js",
-            "line": 233,
+            "line": 240,
             "itemtype": "method",
             "name": "onLocalStorageEvent",
             "params": [
@@ -1660,7 +1638,14 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 43,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "Router",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/controller/Router.js",
+            "line": 28,
             "description": "The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink \"RouteEvent\"}}{{/crossLink}}.",
             "itemtype": "method",
             "name": "add",
@@ -1692,7 +1677,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 130,
+            "line": 115,
             "description": "The **Router.remove** method will remove one of the added routes.",
             "itemtype": "method",
             "name": "remove",
@@ -1724,7 +1709,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 157,
+            "line": 142,
             "description": "The **Router.addDefault** method is meant to trigger a callback function if there are no route matches are found.",
             "itemtype": "method",
             "name": "addDefault",
@@ -1751,7 +1736,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 172,
+            "line": 157,
             "description": "The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.",
             "itemtype": "method",
             "name": "removeDefault",
@@ -1766,7 +1751,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 185,
+            "line": 170,
             "description": "Gets the current hash url minus the # or #! symbol(s).",
             "itemtype": "method",
             "name": "getHash",
@@ -1785,7 +1770,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 202,
+            "line": 187,
             "description": "The **Router.enable** method will allow the Router class to listen for the hashchange event. By default the Router class is enabled.",
             "itemtype": "method",
             "name": "enable",
@@ -1800,7 +1785,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 224,
+            "line": 209,
             "description": "The **Router.disable** method will stop the Router class from listening for the hashchange event.",
             "itemtype": "method",
             "name": "disable",
@@ -1815,7 +1800,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 246,
+            "line": 231,
             "description": "The **Router.start** method is meant to trigger or check the hash url on page load.\nEither you can call this method after you add all your routers or after all data is loaded.\nIt is recommend you only call this once per page or application instantiation.",
             "itemtype": "method",
             "name": "start",
@@ -1830,7 +1815,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 265,
+            "line": 250,
             "description": "The **Router.navigateTo** method allows you to change the hash url and to trigger a route\nthat matches the string value. The second parameter is **silent** and is **false** by\ndefault. This allows you to update the hash url without causing a route callback to be\nexecuted.",
             "itemtype": "method",
             "name": "navigateTo",
@@ -1859,7 +1844,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 315,
+            "line": 300,
             "description": "The **Router.clear** will remove all route's and the default route from the Router class.",
             "itemtype": "method",
             "name": "clear",
@@ -1874,7 +1859,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 330,
+            "line": 315,
             "description": "The **Router.destroy** method will null out all references to other objects in the Router class.",
             "itemtype": "method",
             "name": "destroy",
@@ -1889,7 +1874,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 346,
+            "line": 331,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "onHashChange",
@@ -1908,7 +1893,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 366,
+            "line": 351,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "changeRoute",
@@ -1927,7 +1912,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 437,
+            "line": 422,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "WINDOW",
@@ -1942,7 +1927,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 449,
+            "line": 434,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -1955,7 +1940,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 459,
+            "line": 444,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -1968,7 +1953,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 469,
+            "line": 454,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -1981,7 +1966,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 479,
+            "line": 464,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -1998,7 +1983,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 493,
+            "line": 478,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2015,7 +2000,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 510,
+            "line": 495,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful when used with the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method to use your routes as states rather than using the hash url to control the application.\n\nWhat this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to **false** so users cannot jump around if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2032,7 +2017,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 528,
+            "line": 513,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2049,7 +2034,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 546,
+            "line": 531,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2066,7 +2051,14 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 142,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "DOMElement",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/display/DOMElement.js",
+            "line": 148,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "checkCount",
@@ -2079,7 +2071,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 150,
+            "line": 156,
             "description": "A cached of the DOM Element.",
             "itemtype": "property",
             "name": "element",
@@ -2091,7 +2083,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 158,
+            "line": 164,
             "description": "A cached jQuery object for the view's element.",
             "itemtype": "property",
             "name": "$element",
@@ -2103,7 +2095,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 166,
+            "line": 172,
             "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try add the view to the DOM because it should already exists.",
             "itemtype": "property",
             "name": "_isReference",
@@ -2116,7 +2108,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 175,
+            "line": 181,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_type",
@@ -2128,7 +2120,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 183,
+            "line": 189,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_params",
@@ -2140,7 +2132,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 201,
+            "line": 207,
             "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called only once when the child view is added to another view. If the child view is removed\nand added to another view the createChildren method will not be called again.",
             "itemtype": "method",
             "name": "createChildren",
@@ -2170,7 +2162,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 285,
+            "line": 291,
             "overridden": "DisplayObjectContainer.addChild",
             "itemtype": "method",
             "name": "addChild",
@@ -2195,7 +2187,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 324,
+            "line": 330,
             "description": "Adds the cid to the DOM element so we can know what what Class object the element belongs too.",
             "itemtype": "method",
             "name": "addClientSideId",
@@ -2214,7 +2206,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 336,
+            "line": 342,
             "description": "Gets called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layoutChildren:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.",
             "itemtype": "method",
             "name": "onDomAdded",
@@ -2226,7 +2218,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 356,
+            "line": 362,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2234,7 +2226,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 393,
+            "line": 399,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2242,7 +2234,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 406,
+            "line": 412,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2250,7 +2242,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 413,
+            "line": 419,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -2273,7 +2265,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 449,
+            "line": 455,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -2297,7 +2289,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 486,
+            "line": 492,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -2322,7 +2314,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 511,
+            "line": 517,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -2342,7 +2334,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 526,
+            "line": 532,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -2360,7 +2352,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 546,
+            "line": 552,
             "description": "Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)\nto 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though\nthey are invisible.",
             "itemtype": "method",
             "name": "alpha",
@@ -2381,7 +2373,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 561,
+            "line": 567,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2389,7 +2381,7 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 574,
+            "line": 580,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "createComponents",
@@ -2401,7 +2393,14 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 23,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "DisplayObjectContainer",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/display/DisplayObjectContainer.js",
+            "line": 33,
             "description": "The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.",
             "itemtype": "property",
             "name": "isCreated",
@@ -2415,7 +2414,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 32,
+            "line": 42,
             "description": "Returns the number of children of this object.",
             "itemtype": "property",
             "name": "numChildren",
@@ -2430,7 +2429,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 42,
+            "line": 52,
             "description": "A reference to the child DisplayObjectContainer instances to this parent object instance.",
             "itemtype": "property",
             "name": "children",
@@ -2444,7 +2443,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 51,
+            "line": 61,
             "description": "A property providing access to the x position.",
             "itemtype": "property",
             "name": "x",
@@ -2458,7 +2457,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 60,
+            "line": 70,
             "description": "A property providing access to the y position.",
             "itemtype": "property",
             "name": "y",
@@ -2472,7 +2471,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 69,
+            "line": 79,
             "description": "A property providing access to the width.",
             "itemtype": "property",
             "name": "width",
@@ -2486,7 +2485,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 78,
+            "line": 88,
             "description": "A property providing access to the height.",
             "itemtype": "property",
             "name": "height",
@@ -2500,7 +2499,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 87,
+            "line": 97,
             "description": "A property providing access to the unscaledWidth.",
             "itemtype": "property",
             "name": "unscaledWidth",
@@ -2514,7 +2513,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 96,
+            "line": 106,
             "description": "A property providing access to the unscaledHeight.",
             "itemtype": "property",
             "name": "unscaledHeight",
@@ -2528,7 +2527,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 106,
+            "line": 116,
             "description": "The createChildren function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.",
             "itemtype": "method",
             "name": "createChildren",
@@ -2545,7 +2544,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 121,
+            "line": 131,
             "description": "Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other\nchildren in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)\n\nIf you add a child object that already has a different parent, the object is removed from the child\nlist of the other parent object.",
             "itemtype": "method",
             "name": "addChild",
@@ -2569,7 +2568,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 148,
+            "line": 158,
             "description": "Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.\nThe child is added at the index position specified. An index of 0 represents the back\n(bottom) of the display list for this DisplayObjectContainerContainer object.",
             "itemtype": "method",
             "name": "addChildAt",
@@ -2598,7 +2597,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 174,
+            "line": 184,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -2622,7 +2621,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 205,
+            "line": 215,
             "description": "Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if\nno other references to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -2639,7 +2638,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 223,
+            "line": 233,
             "description": "Swaps two DisplayObjectContainer's with each other.",
             "itemtype": "method",
             "name": "swapChildren",
@@ -2668,7 +2667,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 237,
+            "line": 247,
             "description": "Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.",
             "itemtype": "method",
             "name": "swapChildren",
@@ -2697,7 +2696,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 260,
+            "line": 270,
             "description": "Returns the index position of a child DisplayObjectContainer instance.",
             "itemtype": "method",
             "name": "getChildIndex",
@@ -2720,7 +2719,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 272,
+            "line": 282,
             "description": "Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.",
             "itemtype": "method",
             "name": "contains",
@@ -2743,7 +2742,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 284,
+            "line": 294,
             "description": "Returns the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "getChildAt",
@@ -2764,7 +2763,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 295,
+            "line": 305,
             "description": "Gets a DisplayObjectContainer by its cid.",
             "itemtype": "method",
             "name": "getChildByCid",
@@ -2788,7 +2787,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 312,
+            "line": 322,
             "description": "The setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
             "params": [
                 {
@@ -2815,7 +2814,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 333,
+            "line": 343,
             "description": "The layoutComponent method provides a common function to handle updating child objects.",
             "itemtype": "method",
             "name": "layoutChildren",
@@ -2832,7 +2831,7 @@
         },
         {
             "file": "src/display/DisplayObjectContainer.js",
-            "line": 345,
+            "line": 355,
             "overridden": "EventDispatcher.destroy",
             "class": "DisplayObjectContainer",
             "module": "StructureJS",
@@ -2840,7 +2839,14 @@
         },
         {
             "file": "src/display/Stage.js",
-            "line": 86,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "Stage",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/display/Stage.js",
+            "line": 95,
             "description": "The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.",
             "itemtype": "method",
             "name": "appendTo",
@@ -2865,7 +2871,14 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 67,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "BaseEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/BaseEvent.js",
+            "line": 77,
             "description": "The type of event.",
             "itemtype": "property",
             "name": "type",
@@ -2880,7 +2893,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 77,
+            "line": 87,
             "description": "A reference to the object that originally dispatched the event.",
             "itemtype": "property",
             "name": "target",
@@ -2895,7 +2908,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 87,
+            "line": 97,
             "description": "The currentTarget property always points to the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).",
             "itemtype": "property",
             "name": "currentTarget",
@@ -2910,7 +2923,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 97,
+            "line": 107,
             "description": "Used to pass any type of data with the event.",
             "itemtype": "property",
             "name": "data",
@@ -2924,7 +2937,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 106,
+            "line": 116,
             "description": "Indicates whether an event is a bubbling event.",
             "itemtype": "property",
             "name": "bubble",
@@ -2938,7 +2951,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 115,
+            "line": 125,
             "description": "Indicates whether the behavior associated with the event can be prevented.",
             "itemtype": "property",
             "name": "cancelable",
@@ -2952,7 +2965,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 124,
+            "line": 134,
             "description": "Indicates if the {{#crossLink \"BaseEvent/stopPropagation:method\"}}{{/crossLink}} was called on the event object.",
             "itemtype": "property",
             "name": "isPropagationStopped",
@@ -2967,7 +2980,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 134,
+            "line": 144,
             "description": "Indicates if the {{#crossLink \"BaseEvent/stopImmediatePropagation:method\"}}{{/crossLink}} was called on the event object.",
             "itemtype": "property",
             "name": "isImmediatePropagationStopped",
@@ -2982,7 +2995,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 150,
+            "line": 160,
             "description": "Duplicates an instance of an BaseEvent subclass.\n\nReturns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.\n\nThe new BaseEvent object includes all the properties of the original.\n\nWhen creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it\nto duplicate the properties of your custom class.",
             "itemtype": "method",
             "name": "clone",
@@ -3001,7 +3014,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 170,
+            "line": 180,
             "description": "Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.\nThis method does not affect any event listeners in the current node (currentTarget). In contrast,\nthe {{#crossLink \"BaseEvent/stopImmediatePropagation:method\"}}{{/crossLink}} method prevents processing\nof event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.",
             "itemtype": "method",
             "name": "stopPropagation",
@@ -3016,7 +3029,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 185,
+            "line": 195,
             "description": "Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.\nThis method takes effect immediately, and it affects event listeners in the current node. In contrast,\nthe {{#crossLink \"BaseEvent/stopPropagation:method\"}}{{/crossLink}} method doesn't take effect until\nall the event listeners in the current node finish processing.",
             "itemtype": "method",
             "name": "stopImmediatePropagation",
@@ -3031,7 +3044,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 200,
+            "line": 210,
             "description": "The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.",
             "itemtype": "event",
             "name": "ACTIVATE",
@@ -3045,7 +3058,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 209,
+            "line": 219,
             "description": "The BaseEvent.ADDED constant defines the value of the type property of an added event object.",
             "itemtype": "event",
             "name": "ADDED",
@@ -3059,7 +3072,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 218,
+            "line": 228,
             "description": "The BaseEvent.ADDED_TO_STAGE constant defines the value of the type property of an addedToStage event object.",
             "itemtype": "event",
             "name": "ADDED_TO_STAGE",
@@ -3073,7 +3086,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 227,
+            "line": 237,
             "description": "The BaseEvent.CANCEL constant defines the value of the type property of a cancel event object.",
             "itemtype": "event",
             "name": "CANCEL",
@@ -3087,7 +3100,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 236,
+            "line": 246,
             "description": "The BaseEvent.CHANGE constant defines the value of the type property of a change event object.",
             "itemtype": "event",
             "name": "CHANGE",
@@ -3101,7 +3114,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 245,
+            "line": 255,
             "description": "The BaseEvent.CLEAR constant defines the value of the type property of a clear event object.",
             "itemtype": "event",
             "name": "CLEAR",
@@ -3115,7 +3128,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 254,
+            "line": 264,
             "description": "The BaseEvent.CLOSE constant defines the value of the type property of a close event object.",
             "itemtype": "event",
             "name": "CLOSE",
@@ -3129,7 +3142,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 263,
+            "line": 273,
             "description": "The BaseEvent.CLOSING constant defines the value of the type property of a closing event object.",
             "itemtype": "event",
             "name": "CLOSING",
@@ -3143,7 +3156,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 272,
+            "line": 282,
             "description": "The BaseEvent.COMPLETE constant defines the value of the type property of a complete event object.",
             "itemtype": "event",
             "name": "COMPLETE",
@@ -3157,7 +3170,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 281,
+            "line": 291,
             "description": "The BaseEvent.CONNECT constant defines the value of the type property of a connect event object.",
             "itemtype": "event",
             "name": "CONNECT",
@@ -3171,7 +3184,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 290,
+            "line": 300,
             "description": "Defines the value of the type property of a copy event object.",
             "itemtype": "event",
             "name": "COPY",
@@ -3185,7 +3198,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 299,
+            "line": 309,
             "description": "Defines the value of the type property of a cut event object.",
             "itemtype": "event",
             "name": "CUT",
@@ -3199,7 +3212,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 308,
+            "line": 318,
             "description": "The BaseEvent.DEACTIVATE constant defines the value of the type property of a deactivate event object.",
             "itemtype": "event",
             "name": "DEACTIVATE",
@@ -3213,7 +3226,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 317,
+            "line": 327,
             "description": "The BaseEvent.DISPLAYING constant defines the value of the type property of a displaying event object.",
             "itemtype": "event",
             "name": "DISPLAYING",
@@ -3227,7 +3240,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 326,
+            "line": 336,
             "description": "The BaseEvent.ENTER_FRAME constant defines the value of the type property of an enterFrame event object.",
             "itemtype": "event",
             "name": "ENTER_FRAME",
@@ -3241,7 +3254,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 335,
+            "line": 345,
             "description": "The BaseEvent.EXIT_FRAME constant defines the value of the type property of an exitFrame event object.",
             "itemtype": "event",
             "name": "EXIT_FRAME",
@@ -3255,7 +3268,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 344,
+            "line": 354,
             "description": "The BaseEvent.EXITING constant defines the value of the type property of an exiting event object.",
             "itemtype": "event",
             "name": "EXITING",
@@ -3269,7 +3282,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 353,
+            "line": 363,
             "description": "The BaseEvent.FULL_SCREEN constant defines the value of the type property of a fullScreen event object.",
             "itemtype": "event",
             "name": "FULLSCREEN",
@@ -3283,7 +3296,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 362,
+            "line": 372,
             "description": "The BaseEvent.INIT constant defines the value of the type property of an init event object.",
             "itemtype": "event",
             "name": "INIT",
@@ -3297,7 +3310,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 371,
+            "line": 381,
             "description": "The BaseEvent.NETWORK_CHANGE constant defines the value of the type property of a networkChange event object.",
             "itemtype": "event",
             "name": "NETWORK_CHANGE",
@@ -3311,7 +3324,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 380,
+            "line": 390,
             "description": "The BaseEvent.OPEN constant defines the value of the type property of an open event object.",
             "itemtype": "event",
             "name": "OPEN",
@@ -3325,7 +3338,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 389,
+            "line": 399,
             "description": "The BaseEvent.PASTE constant defines the value of the type property of a paste event object.",
             "itemtype": "event",
             "name": "PASTE",
@@ -3339,7 +3352,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 398,
+            "line": 408,
             "description": "The BaseEvent.PREPARING constant defines the value of the type property of a preparing event object.",
             "itemtype": "event",
             "name": "PREPARING",
@@ -3353,7 +3366,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 407,
+            "line": 417,
             "description": "The BaseEvent.REMOVED constant defines the value of the type property of a removed event object.",
             "itemtype": "event",
             "name": "REMOVED",
@@ -3367,7 +3380,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 416,
+            "line": 426,
             "description": "The BaseEvent.RENDER constant defines the value of the type property of a render event object.",
             "itemtype": "event",
             "name": "RENDER",
@@ -3381,7 +3394,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 425,
+            "line": 435,
             "description": "The BaseEvent.RESIZE constant defines the value of the type property of a resize event object.",
             "itemtype": "event",
             "name": "RESIZE",
@@ -3395,7 +3408,7 @@
         },
         {
             "file": "src/event/BaseEvent.js",
-            "line": 434,
+            "line": 444,
             "description": "The BaseEvent.SELECTED constant defines the value of the type property of a selected event object.",
             "itemtype": "event",
             "name": "SELECTED",
@@ -3409,7 +3422,14 @@
         },
         {
             "file": "src/event/EventBroker.js",
-            "line": 21,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "EventBroker",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/EventBroker.js",
+            "line": 31,
             "description": "Registers an event listener object with an EventBroker object so that the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
@@ -3449,7 +3469,7 @@
         },
         {
             "file": "src/event/EventBroker.js",
-            "line": 46,
+            "line": 56,
             "description": "Removes a specified listener from the EventBroker object.",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -3482,7 +3502,7 @@
         },
         {
             "file": "src/event/EventBroker.js",
-            "line": 64,
+            "line": 74,
             "description": "Dispatches an event within the EventBroker object.",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -3512,7 +3532,7 @@
         },
         {
             "file": "src/event/EventBroker.js",
-            "line": 95,
+            "line": 105,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -3526,7 +3546,14 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 25,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "EventDispatcher",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 34,
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
             "name": "_listeners",
@@ -3539,7 +3566,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 33,
+            "line": 42,
             "description": "Indicates the object that contains child object. Use the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy.",
             "itemtype": "property",
             "name": "parent",
@@ -3552,7 +3579,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 46,
+            "line": 55,
             "description": "Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.",
             "example": [
                 "\n        instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function (event) {\n       console.log(event.target + \" sent the event.\");\n       }"
@@ -3592,7 +3619,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 88,
+            "line": 97,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "example": [
                 "\n        instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function (event) {\n       console.log(event.target + \" sent the event.\");\n       }"
@@ -3626,7 +3653,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 120,
+            "line": 129,
             "description": "<p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>",
             "example": [
                 "\n        var event = new BaseEvent(BaseEvent.CHANGE);\n        instance.dispatchEvent(event);\n\n        // Here is a common inline event being dispatched\n        instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
@@ -3649,7 +3676,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 189,
+            "line": 198,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -3657,7 +3684,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 198,
+            "line": 207,
             "description": "Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -3673,7 +3700,14 @@
         },
         {
             "file": "src/event/LoaderEvent.js",
-            "line": 33,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "LoaderEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/LoaderEvent.js",
+            "line": 43,
             "overridden": "BaseEvent.clone",
             "class": "LoaderEvent",
             "module": "StructureJS",
@@ -3681,7 +3715,7 @@
         },
         {
             "file": "src/event/LoaderEvent.js",
-            "line": 39,
+            "line": 49,
             "description": "The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "COMPLETE",
@@ -3693,7 +3727,7 @@
         },
         {
             "file": "src/event/LoaderEvent.js",
-            "line": 47,
+            "line": 57,
             "description": "The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "LOAD_COMPLETE",
@@ -3705,7 +3739,7 @@
         },
         {
             "file": "src/event/LoaderEvent.js",
-            "line": 55,
+            "line": 65,
             "description": "The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "ERROR",
@@ -3717,7 +3751,14 @@
         },
         {
             "file": "src/event/LocalStorageEvent.js",
-            "line": 31,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "LocalStorageEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/LocalStorageEvent.js",
+            "line": 40,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "_nativeEvent",
@@ -3730,7 +3771,7 @@
         },
         {
             "file": "src/event/LocalStorageEvent.js",
-            "line": 49,
+            "line": 58,
             "overridden": "BaseEvent.clone",
             "class": "LocalStorageEvent",
             "module": "StructureJS",
@@ -3738,7 +3779,14 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 57,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "RouteEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/RouteEvent.js",
+            "line": 43,
             "description": "The route that was matched against {{#crossLink \"RouteEvent/routePattern:property\"}}{{/crossLink}} property.",
             "itemtype": "property",
             "name": "route",
@@ -3751,7 +3799,7 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 65,
+            "line": 51,
             "description": "The new URL to which the window is navigating.",
             "itemtype": "property",
             "name": "newURL",
@@ -3764,7 +3812,7 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 73,
+            "line": 59,
             "description": "The previous URL from which the window was navigated.",
             "itemtype": "property",
             "name": "oldURL",
@@ -3777,7 +3825,7 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 81,
+            "line": 67,
             "description": "The route pattern that matched the {{#crossLink \"RouteEvent/route:property\"}}{{/crossLink}} property.",
             "itemtype": "property",
             "name": "routePattern",
@@ -3790,7 +3838,7 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 89,
+            "line": 75,
             "description": "An array containing the parameters captured from the Route.{{#crossLink \"Route/match:method\"}}{{/crossLink}}\nbeing called with the {{#crossLink \"RouteEvent/routePattern:property\"}}{{/crossLink}} property.",
             "itemtype": "property",
             "name": "params",
@@ -3803,7 +3851,7 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 98,
+            "line": 84,
             "description": "A query object the represents the query string in the hash url.",
             "itemtype": "property",
             "name": "query",
@@ -3816,7 +3864,7 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 107,
+            "line": 93,
             "overridden": "BaseEvent.clone",
             "class": "RouteEvent",
             "module": "StructureJS",
@@ -3824,7 +3872,7 @@
         },
         {
             "file": "src/event/RouteEvent.js",
-            "line": 119,
+            "line": 105,
             "description": "The RouteEvent.CHANGE constant defines the value of the type property of an change route event object.",
             "itemtype": "event",
             "name": "CHANGE",
@@ -3836,7 +3884,14 @@
         },
         {
             "file": "src/event/TimerEvent.js",
-            "line": 30,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "TimerEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/TimerEvent.js",
+            "line": 40,
             "overridden": "BaseEvent.clone",
             "class": "TimerEvent",
             "module": "StructureJS",
@@ -3844,7 +3899,14 @@
         },
         {
             "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 48,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "DataStoreAbstract",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/model/datastore/DataStoreAbstract.js",
+            "line": 33,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "data",
@@ -3857,7 +3919,7 @@
         },
         {
             "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 56,
+            "line": 41,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "src",
@@ -3870,7 +3932,7 @@
         },
         {
             "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 64,
+            "line": 49,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "complete",
@@ -3883,7 +3945,7 @@
         },
         {
             "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 75,
+            "line": 60,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "load",
@@ -3895,7 +3957,7 @@
         },
         {
             "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 84,
+            "line": 69,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "_onLoaderComplete",
@@ -3907,7 +3969,14 @@
         },
         {
             "file": "src/model/datastore/JsonDataStore.js",
-            "line": 55,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "JsonDataStore",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/model/datastore/JsonDataStore.js",
+            "line": 35,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "_urlLoader",
@@ -3920,7 +3989,7 @@
         },
         {
             "file": "src/model/datastore/JsonDataStore.js",
-            "line": 63,
+            "line": 43,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "_isJsonP",
@@ -3934,7 +4003,7 @@
         },
         {
             "file": "src/model/datastore/JsonDataStore.js",
-            "line": 75,
+            "line": 55,
             "itemtype": "method",
             "name": "load",
             "access": "public",
@@ -3946,7 +4015,7 @@
         },
         {
             "file": "src/model/datastore/JsonDataStore.js",
-            "line": 98,
+            "line": 78,
             "overridden": "DataStoreAbstract._onLoaderComplete",
             "class": "JsonDataStore",
             "module": "StructureJS",
@@ -3954,7 +4023,14 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 26,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "Collection",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 33,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "items",
@@ -3966,7 +4042,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 34,
+            "line": 41,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "length",
@@ -3981,7 +4057,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 45,
+            "line": 52,
             "description": "Add an item to the current collection",
             "itemtype": "method",
             "name": "addItem",
@@ -4007,7 +4083,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 65,
+            "line": 72,
             "description": "Removes an item from the collection, maintaining its current sort\nIf the collection doesn't have the item, it throws an error",
             "itemtype": "method",
             "name": "removeItem",
@@ -4033,7 +4109,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 88,
+            "line": 95,
             "description": "Removes an array of items from the collection",
             "itemtype": "method",
             "name": "removeItems",
@@ -4059,7 +4135,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 108,
+            "line": 115,
             "description": "Checks if a collection has an item.",
             "itemtype": "method",
             "name": "hasItem",
@@ -4082,7 +4158,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 120,
+            "line": 127,
             "description": "Returns the array index position of the value object.",
             "itemtype": "method",
             "name": "getIndexOfItem",
@@ -4105,7 +4181,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 132,
+            "line": 139,
             "description": "Adds an array of items to the collection",
             "itemtype": "method",
             "name": "addItems",
@@ -4129,7 +4205,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 151,
+            "line": 158,
             "description": "Finds an object by an index value.\nIf the index is out of bounds, the collection will clamp it.",
             "itemtype": "method",
             "name": "getItemByIndex",
@@ -4152,7 +4228,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 174,
+            "line": 181,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
             "example": [
                 "\n        // Finds all value object that has 'Robert' in it.\n        this._collection.find(\"Robert\");\n        // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n        this._collection.find([\"Robert\", \"Heather\", 32]);\n\n        // Finds all value objects that same key and value you are searching for.\n        this._collection.find({ name: 'apple', organic: false, type: 'fruit' });\n        this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
@@ -4178,7 +4254,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 215,
+            "line": 222,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
             "name": "findPropertyValue",
@@ -4201,7 +4277,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 255,
+            "line": 262,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "copy",
@@ -4213,7 +4289,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 267,
+            "line": 274,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "clear",
@@ -4234,7 +4310,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 284,
+            "line": 291,
             "overridden": "BaseObject.destroy",
             "class": "Collection",
             "module": "StructureJS",
@@ -4242,7 +4318,14 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 105,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "Route",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/model/Route.js",
+            "line": 95,
             "description": "The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, \"\". See below for examples.",
             "itemtype": "property",
             "name": "routePattern",
@@ -4255,7 +4338,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 113,
+            "line": 103,
             "description": "The regex representation for the routePattern that was passed into the constructor.",
             "itemtype": "property",
             "name": "regex",
@@ -4269,7 +4352,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 122,
+            "line": 112,
             "description": "The function that should be executed when a request matches the routePattern. The {{#crossLink \"Router\"}}{{/crossLink}} class will be using this property.",
             "itemtype": "property",
             "name": "callback",
@@ -4282,7 +4365,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 130,
+            "line": 120,
             "description": "The scope of the callback function that should be executed. The {{#crossLink \"Router\"}}{{/crossLink}} class will be using this property.",
             "itemtype": "property",
             "name": "callbackScope",
@@ -4295,7 +4378,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 143,
+            "line": 133,
             "description": "Converts the routePattern that was passed into the constructor to a regexp object.",
             "itemtype": "method",
             "name": "routePatternToRegexp",
@@ -4318,7 +4401,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 176,
+            "line": 166,
             "description": "Determine if a route matches a routePattern.",
             "itemtype": "method",
             "name": "match",
@@ -4342,7 +4425,14 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 26,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ValueObject",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/model/ValueObject.js",
+            "line": 35,
             "description": "Provide a way to update the value object.",
             "itemtype": "method",
             "name": "update",
@@ -4361,7 +4451,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 43,
+            "line": 52,
             "description": "...",
             "itemtype": "method",
             "name": "toJSON",
@@ -4377,7 +4467,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 55,
+            "line": 64,
             "description": "...",
             "itemtype": "method",
             "name": "toJSONString",
@@ -4393,7 +4483,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 66,
+            "line": 75,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -4412,7 +4502,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 80,
+            "line": 89,
             "itemtype": "method",
             "name": "Object",
             "return": {
@@ -4427,7 +4517,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 91,
+            "line": 100,
             "itemtype": "method",
             "name": "copy",
             "return": {
@@ -4441,8 +4531,22 @@
             "submodule": "model"
         },
         {
+            "file": "src/net/URLContentType.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "URLContentType",
+            "module": "StructureJS"
+        },
+        {
             "file": "src/net/URLLoader.js",
-            "line": 29,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "URLLoader",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/URLLoader.js",
+            "line": 35,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "dataFormat",
@@ -4454,7 +4558,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 37,
+            "line": 43,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "data",
@@ -4466,7 +4570,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 45,
+            "line": 51,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "complete",
@@ -4478,7 +4582,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 53,
+            "line": 59,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "_xhr",
@@ -4492,7 +4596,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 67,
+            "line": 73,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "load",
@@ -4511,7 +4615,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 92,
+            "line": 98,
             "overridden": "EventDispatcher.destroy",
             "class": "URLLoader",
             "module": "StructureJS",
@@ -4519,7 +4623,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 101,
+            "line": 107,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4531,7 +4635,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 113,
+            "line": 119,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4543,7 +4647,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 123,
+            "line": 129,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4555,7 +4659,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 133,
+            "line": 139,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4567,7 +4671,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 144,
+            "line": 150,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4576,10 +4680,24 @@
             "class": "URLLoader",
             "module": "StructureJS",
             "submodule": "net"
+        },
+        {
+            "file": "src/net/URLLoaderDataFormat.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "URLLoaderDataFormat",
+            "module": "StructureJS"
         },
         {
             "file": "src/net/URLRequest.js",
-            "line": 30,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "URLRequest",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/URLRequest.js",
+            "line": 36,
             "description": "The URL to be requested.",
             "itemtype": "property",
             "name": "url",
@@ -4592,7 +4710,7 @@
         },
         {
             "file": "src/net/URLRequest.js",
-            "line": 38,
+            "line": 44,
             "description": "Controls the HTTP form submission method ({{#crossLink \"URLRequestMethod\"}}{{/crossLink}}).",
             "itemtype": "property",
             "name": "method",
@@ -4606,7 +4724,7 @@
         },
         {
             "file": "src/net/URLRequest.js",
-            "line": 47,
+            "line": 53,
             "description": "The MIME content type of the content in the the data property ({{#crossLink \"URLContentType\"}}{{/crossLink}}).",
             "itemtype": "property",
             "name": "method",
@@ -4620,7 +4738,7 @@
         },
         {
             "file": "src/net/URLRequest.js",
-            "line": 56,
+            "line": 62,
             "description": "An object containing data to be transmitted with the URL request.",
             "itemtype": "property",
             "name": "data",
@@ -4632,15 +4750,29 @@
             "submodule": "net"
         },
         {
+            "file": "src/net/URLRequestMethod.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "URLRequestMethod",
+            "module": "StructureJS"
+        },
+        {
             "file": "src/plugin/jquery.eventListener.js",
-            "line": 6,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "BrowserUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/plugin/jquery.eventListener.js",
+            "line": 16,
             "description": "A bind polyfill for browsers that don't support the bind method.",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/plugin/jquery.eventListener.js",
-            "line": 27,
+            "line": 37,
             "description": "Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
             "params": [
                 {
@@ -4657,22 +4789,29 @@
         },
         {
             "file": "src/plugin/jquery.eventListener.js",
-            "line": 53,
+            "line": 63,
             "description": "The jQuery addEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/plugin/jquery.eventListener.js",
-            "line": 88,
+            "line": 98,
             "description": "The jQuery removeEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 39,
-            "description": "YUIDoc_comment",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "BrowserUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 29,
+            "description": "Returns the name of the browser.",
             "itemtype": "method",
             "name": "browserName",
             "return": {
@@ -4688,8 +4827,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 51,
-            "description": "YUIDoc_comment",
+            "line": 41,
+            "description": "Returns the version of the browser.",
             "itemtype": "method",
             "name": "browserVersion",
             "params": [
@@ -4712,7 +4851,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 71,
+            "line": 61,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getBrowser",
@@ -4729,7 +4868,109 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 89,
+            "line": 79,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "isAndroid",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 91,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "isBlackBerry",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 103,
+            "description": "isIOS",
+            "itemtype": "method",
+            "name": "isIOS",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 115,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "isOperaMini",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 127,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "isIEMobile",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 139,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "isMobile",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 151,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hasBrowserHistory",
@@ -4746,7 +4987,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 101,
+            "line": 163,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hasLocalStorage",
@@ -4763,7 +5004,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 117,
+            "line": 179,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hasSessionStorage",
@@ -4779,8 +5020,22 @@
             "submodule": "util"
         },
         {
+            "file": "src/util/BulkLoader.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "BulkLoader",
+            "module": "StructureJS"
+        },
+        {
             "file": "src/util/ComponentFactory.js",
-            "line": 16,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ComponentFactory",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/ComponentFactory.js",
+            "line": 29,
             "description": "Takes in one or more jQuery objects and creates a component for each one.",
             "itemtype": "method",
             "name": "create",
@@ -4813,7 +5068,14 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 39,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "DateUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/DateUtil.js",
+            "line": 29,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getDaySuffix",
@@ -4836,15 +5098,89 @@
             "submodule": "util"
         },
         {
+            "file": "src/util/DateUtil.js",
+            "line": 43,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "LONG_DAY_LABELS",
+            "type": "{array}",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "final": 1,
+            "class": "DateUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/DateUtil.js",
+            "line": 53,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "SHORT_DAY_LABELS",
+            "type": "{array}",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "final": 1,
+            "class": "DateUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/DateUtil.js",
+            "line": 63,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "LONG_MONTH_LABELS",
+            "type": "{array}",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "final": 1,
+            "class": "DateUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/DateUtil.js",
+            "line": 73,
+            "description": "YUIDoc_comment",
+            "itemtype": "property",
+            "name": "SHORT_MONTH_LABELS",
+            "type": "{array}",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "final": 1,
+            "class": "DateUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
             "file": "src/util/Extend.js",
-            "line": 4,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "MathUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/Extend.js",
+            "line": 17,
             "description": "Snippet from TypeScript compiler.",
             "class": "MathUtil",
             "module": "StructureJS"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 40,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "MathUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/MathUtil.js",
+            "line": 30,
             "description": "Returns a number constrained between min and max.",
             "itemtype": "method",
             "name": "constrain",
@@ -4875,7 +5211,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 61,
+            "line": 51,
             "description": "Returns a random number between min and max.",
             "itemtype": "method",
             "name": "randomRange",
@@ -4908,7 +5244,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 80,
+            "line": 70,
             "description": "Returns the percentage of a number in a given range.\nExample: num = 15 range 10 to 20 // outputs 0.5",
             "itemtype": "method",
             "name": "rangeToPercent",
@@ -4949,7 +5285,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 104,
+            "line": 94,
             "description": "Returns the number that corresponds to the percentage in a given range.\nExample: percent = 0.5 range 10 to 20 // outputs 15",
             "itemtype": "method",
             "name": "percentToRange",
@@ -4980,7 +5316,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 118,
+            "line": 108,
             "description": "Re-maps a number from one range to another. The output is the same as inputing the result of rangeToPercent() numbero percentToRange().\nExample: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5",
             "itemtype": "method",
             "name": "map",
@@ -5021,7 +5357,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 149,
+            "line": 139,
             "description": "Converts radians to degrees.",
             "itemtype": "method",
             "name": "radiansToDegrees",
@@ -5042,7 +5378,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 160,
+            "line": 150,
             "description": "Converts degrees to radians.",
             "itemtype": "method",
             "name": "degreesToRadians",
@@ -5063,7 +5399,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 171,
+            "line": 161,
             "description": "Returns 1 if the value is >= 0. Returns -1 if the value is < 0.",
             "itemtype": "method",
             "name": "sign",
@@ -5084,7 +5420,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 185,
+            "line": 175,
             "description": "Check if number is positive (zero is positive).",
             "itemtype": "method",
             "name": "isPositive",
@@ -5105,7 +5441,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 196,
+            "line": 186,
             "description": "Check if number is negative.",
             "itemtype": "method",
             "name": "isNegative",
@@ -5126,7 +5462,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 207,
+            "line": 197,
             "description": "Check if number is odd (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isOdd",
@@ -5147,7 +5483,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 220,
+            "line": 210,
             "description": "Check if number is even (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isEven",
@@ -5168,7 +5504,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 233,
+            "line": 223,
             "description": "Check if number is Prime (divisible only by itself and one).",
             "itemtype": "method",
             "name": "isPrime",
@@ -5189,7 +5525,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 254,
+            "line": 244,
             "description": "Calculate the factorial of the integer.",
             "itemtype": "method",
             "name": "factorial",
@@ -5210,7 +5546,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 274,
+            "line": 264,
             "description": "Return an array of divisors of the integer.",
             "itemtype": "method",
             "name": "getDivisors",
@@ -5231,7 +5567,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 294,
+            "line": 284,
             "description": "Convert Fahrenheit to Celsius.",
             "itemtype": "method",
             "name": "toCelsius",
@@ -5257,7 +5593,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 320,
+            "line": 310,
             "description": "Convert Celsius to Fahrenheit.",
             "itemtype": "method",
             "name": "toFahrenheit",
@@ -5283,7 +5619,14 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 39,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "MerchantUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/MerchantUtil.js",
+            "line": 29,
             "description": "Determines if credit card is valid using the Luhn formula.",
             "example": [
                 "\n       MerchantUtil.isCreditCard(\"4556106734384949\");"
@@ -5310,7 +5653,7 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 72,
+            "line": 62,
             "description": "Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.",
             "example": [
                 "\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\"); // ************4949\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\", 5, \"x\");  // xxxxxxxxxxx84949"
@@ -5351,7 +5694,7 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 98,
+            "line": 88,
             "description": "Returns a credit card provider name from the credit card number passed in.",
             "itemtype": "method",
             "name": "getCreditCardProvider",
@@ -5372,7 +5715,7 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 125,
+            "line": 115,
             "description": "Validate a credit card's expiration date.",
             "example": [
                 "\nvar isValidDate:boolean = MerchantUtil.isValidExDate( 11, 2010 );"
@@ -5401,7 +5744,14 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 39,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "NumberUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 29,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "bytesToMegabytes",
@@ -5422,7 +5772,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 50,
+            "line": 40,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "centimeterToInch",
@@ -5443,7 +5793,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 61,
+            "line": 51,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "inchToCentimeter",
@@ -5464,7 +5814,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 72,
+            "line": 62,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "feetToMeter",
@@ -5485,7 +5835,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 83,
+            "line": 73,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "convertToHHMMSS",
@@ -5506,7 +5856,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 104,
+            "line": 94,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "doubleDigitFormat",
@@ -5527,7 +5877,14 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 18,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "StringUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/StringUtil.js",
+            "line": 31,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getExtension",
@@ -5551,7 +5908,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 31,
+            "line": 44,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToCamelCase",
@@ -5575,7 +5932,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 48,
+            "line": 61,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToPascalCase",
@@ -5599,7 +5956,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 68,
+            "line": 81,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "camelCaseToHyphen",
@@ -5623,7 +5980,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 83,
+            "line": 96,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "createUUID",
@@ -5640,7 +5997,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 101,
+            "line": 114,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "queryStringToObject",
@@ -5664,7 +6021,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 133,
+            "line": 146,
             "description": "Remove all whitespace from the string passed in.",
             "example": [
                 "\n        var str = '   a b    c d e f g ';\n        StringUtil.removeAllWhitespace(str);\n        // 'abcdefg'"
@@ -5691,7 +6048,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 149,
+            "line": 162,
             "description": "Remove leading and trailing whitespace.",
             "example": [
                 "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // 'a b    c d e f g'"
@@ -5718,7 +6075,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 166,
+            "line": 179,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -5746,7 +6103,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 183,
+            "line": 196,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
             "example": [
                 "\n     StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');\n     // 'Robert is cool. Very cool and smart!'"
@@ -5777,8 +6134,22 @@
             "submodule": "util"
         },
         {
+            "file": "src/util/TemplateFactory.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "TemplateFactory",
+            "module": "StructureJS"
+        },
+        {
             "file": "src/util/Timer.js",
-            "line": 25,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "Timer",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/Timer.js",
+            "line": 34,
             "description": "A reference to the setInterval object.",
             "itemtype": "property",
             "name": "_timer",
@@ -5791,7 +6162,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 33,
+            "line": 42,
             "description": "The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.",
             "itemtype": "property",
             "name": "currentCount",
@@ -5804,7 +6175,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 41,
+            "line": 50,
             "description": "The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.\n<strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.",
             "itemtype": "property",
             "name": "delay",
@@ -5817,7 +6188,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 50,
+            "line": 59,
             "description": "The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.",
             "itemtype": "property",
             "name": "repeatCount",
@@ -5830,7 +6201,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 58,
+            "line": 67,
             "description": "The timer's current state; true if the timer is running, otherwise false.",
             "itemtype": "property",
             "name": "running",
@@ -5842,7 +6213,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 71,
+            "line": 80,
             "description": "Returns the total number of times the timer has fired since it started at zero.",
             "itemtype": "method",
             "name": "getCurrentCount",
@@ -5856,7 +6227,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 81,
+            "line": 90,
             "description": "Returns the delay time in milliseconds.",
             "itemtype": "method",
             "name": "getDelay",
@@ -5870,7 +6241,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 91,
+            "line": 100,
             "description": "Sets the delay, in milliseconds, between timer events.",
             "itemtype": "method",
             "name": "setDelay",
@@ -5887,7 +6258,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 105,
+            "line": 114,
             "description": "Returns the total number of times the timer is set to run.",
             "itemtype": "method",
             "name": "getRepeatCount",
@@ -5901,7 +6272,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 115,
+            "line": 124,
             "description": "Set the total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.",
             "itemtype": "method",
             "name": "setRepeatCount",
@@ -5918,7 +6289,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 130,
+            "line": 139,
             "description": "Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.",
             "itemtype": "method",
             "name": "reset",
@@ -5928,7 +6299,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 143,
+            "line": 152,
             "description": "Starts the timer, if it is not already running.",
             "itemtype": "method",
             "name": "start",
@@ -5938,7 +6309,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 163,
+            "line": 172,
             "description": "Stops the timer.",
             "itemtype": "method",
             "name": "stop",
@@ -5948,7 +6319,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 175,
+            "line": 184,
             "itemtype": "method",
             "name": "decrementCounter",
             "access": "private",
@@ -5959,7 +6330,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 194,
+            "line": 203,
             "overridden": "EventDispatcher.destroy",
             "class": "Timer",
             "module": "StructureJS",
@@ -5967,7 +6338,14 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 17,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "Util",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/Util.js",
+            "line": 30,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
             "example": [
                 "\n        var property:number = Util.uniqueId();\n        // 1\n\n        var property:string = Util.uniqueId('yomama_');\n        // yomama_1"
@@ -5995,7 +6373,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 42,
+            "line": 55,
             "itemtype": "method",
             "name": "deletePropertyFromObject",
             "params": [
@@ -6023,7 +6401,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 79,
+            "line": 92,
             "itemtype": "method",
             "name": "renamePropertyOnObject",
             "params": [
@@ -6056,7 +6434,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 98,
+            "line": 111,
             "itemtype": "method",
             "name": "clone",
             "params": [
@@ -6079,7 +6457,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 144,
+            "line": 157,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "toBoolean",
@@ -6103,7 +6481,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 159,
+            "line": 172,
             "description": "Returns the name of the class object passed in.",
             "itemtype": "method",
             "name": "getClassName",
@@ -6127,7 +6505,14 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 17,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ValidationUtil",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/util/ValidationUtil.js",
+            "line": 30,
             "description": "Determines if the String passed has a length.",
             "itemtype": "method",
             "name": "isEmpty",
@@ -6151,7 +6536,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 30,
+            "line": 43,
             "description": "Determines if the two values passed in are the same.",
             "itemtype": "method",
             "name": "isMatch",
@@ -6180,7 +6565,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 44,
+            "line": 57,
             "description": "Determines if the String passed in is a valid email address.",
             "itemtype": "method",
             "name": "isValidEmailAddress",
@@ -6204,7 +6589,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 58,
+            "line": 71,
             "description": "Determines if the String passed in is a phone number.",
             "itemtype": "method",
             "name": "isValidPhoneNumber",
@@ -6228,7 +6613,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 72,
+            "line": 85,
             "description": "Determines if the String passed in is a zip code.",
             "itemtype": "method",
             "name": "isZipCode",
@@ -6252,7 +6637,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 86,
+            "line": 99,
             "description": "Determines if the String passed in is a postal code.",
             "itemtype": "method",
             "name": "isPostalCode",
@@ -6276,7 +6661,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 100,
+            "line": 113,
             "description": "Determines if the String passed in is a Social Security Number.",
             "itemtype": "method",
             "name": "isSocialSecurityNumber",
@@ -6300,7 +6685,14 @@
         },
         {
             "file": "src/BaseObject.js",
-            "line": 18,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "BaseObject",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/BaseObject.js",
+            "line": 29,
             "description": "The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.",
             "itemtype": "property",
             "name": "cid",
@@ -6316,7 +6708,7 @@
         },
         {
             "file": "src/BaseObject.js",
-            "line": 31,
+            "line": 42,
             "description": "Returns the fully qualified class name of an object.",
             "itemtype": "method",
             "name": "getQualifiedClassName",
@@ -6335,7 +6727,7 @@
         },
         {
             "file": "src/BaseObject.js",
-            "line": 44,
+            "line": 55,
             "description": "The purpose of the destroy method is to make an object ready for garbage collection. This\nshould be thought of as a one way function. Once destroy is called no further methods should be\ncalled on the object or properties accessed. It is the responsibility of those who implement this\nfunction to stop all running Timers, all running Sounds, and take any other steps necessary to make an\nobject eligible for garbage collection.\n\nBy default the destroy method will null out all properties of the class automatically. You should call destroy\non other objects before calling the super.",
             "itemtype": "method",
             "name": "destroy",
@@ -6354,7 +6746,14 @@
         },
         {
             "file": "src/ObjectManager.js",
-            "line": 23,
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ObjectManager",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/ObjectManager.js",
+            "line": 33,
             "description": "The isEnabled property is used to keep track of the enabled state of the object.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -6368,7 +6767,7 @@
         },
         {
             "file": "src/ObjectManager.js",
-            "line": 33,
+            "line": 43,
             "description": "The enable method is responsible for enabling event listeners and/or children of the containing objects.",
             "itemtype": "method",
             "name": "enable",
@@ -6384,7 +6783,7 @@
         },
         {
             "file": "src/ObjectManager.js",
-            "line": 58,
+            "line": 68,
             "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
             "itemtype": "method",
             "name": "disable",
@@ -6402,271 +6801,291 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:49"
+            "line": " src/controller/LocalStorageController.js:56"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:60"
+            "line": " src/controller/LocalStorageController.js:67"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:99"
+            "line": " src/controller/LocalStorageController.js:106"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:196"
+            "line": " src/controller/LocalStorageController.js:203"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/controller/LocalStorageController.js:206"
+            "line": " src/controller/LocalStorageController.js:213"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/controller/LocalStorageController.js:226"
+            "line": " src/controller/LocalStorageController.js:233"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:201"
+            "line": " src/display/DOMElement.js:207"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:285"
+            "line": " src/display/DOMElement.js:291"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:285"
+            "line": " src/display/DOMElement.js:291"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:356"
+            "line": " src/display/DOMElement.js:362"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:393"
+            "line": " src/display/DOMElement.js:399"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:406"
+            "line": " src/display/DOMElement.js:412"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:413"
+            "line": " src/display/DOMElement.js:419"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:449"
+            "line": " src/display/DOMElement.js:455"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:486"
+            "line": " src/display/DOMElement.js:492"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/display/DOMElement.js:486"
+            "line": " src/display/DOMElement.js:492"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:526"
+            "line": " src/display/DOMElement.js:532"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/display/DOMElement.js:526"
+            "line": " src/display/DOMElement.js:532"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:546"
+            "line": " src/display/DOMElement.js:552"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:561"
+            "line": " src/display/DOMElement.js:567"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:106"
+            "line": " src/display/DisplayObjectContainer.js:116"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:121"
+            "line": " src/display/DisplayObjectContainer.js:131"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:148"
+            "line": " src/display/DisplayObjectContainer.js:158"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:174"
+            "line": " src/display/DisplayObjectContainer.js:184"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:205"
+            "line": " src/display/DisplayObjectContainer.js:215"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:223"
+            "line": " src/display/DisplayObjectContainer.js:233"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:237"
+            "line": " src/display/DisplayObjectContainer.js:247"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:260"
+            "line": " src/display/DisplayObjectContainer.js:270"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:272"
+            "line": " src/display/DisplayObjectContainer.js:282"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:284"
+            "line": " src/display/DisplayObjectContainer.js:294"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:295"
+            "line": " src/display/DisplayObjectContainer.js:305"
         },
         {
             "message": "unknown tag: override",
-            "line": " src/display/DisplayObjectContainer.js:295"
+            "line": " src/display/DisplayObjectContainer.js:305"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:312"
+            "line": " src/display/DisplayObjectContainer.js:322"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DisplayObjectContainer.js:333"
+            "line": " src/display/DisplayObjectContainer.js:343"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/display/DisplayObjectContainer.js:345"
+            "line": " src/display/DisplayObjectContainer.js:355"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/event/BaseEvent.js:150"
+            "line": " src/event/BaseEvent.js:160"
         },
         {
             "message": "unknown tag: hide",
-            "line": " src/event/EventDispatcher.js:88"
+            "line": " src/event/EventDispatcher.js:97"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/EventDispatcher.js:189"
+            "line": " src/event/EventDispatcher.js:198"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/LoaderEvent.js:33"
+            "line": " src/event/LoaderEvent.js:43"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/LocalStorageEvent.js:49"
+            "line": " src/event/LocalStorageEvent.js:58"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/RouteEvent.js:107"
+            "line": " src/event/RouteEvent.js:93"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/TimerEvent.js:30"
+            "line": " src/event/TimerEvent.js:40"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/model/datastore/JsonDataStore.js:98"
+            "line": " src/model/datastore/JsonDataStore.js:78"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/model/Collection.js:284"
+            "line": " src/model/Collection.js:291"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Route.js:143"
+            "line": " src/model/Route.js:133"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Route.js:176"
+            "line": " src/model/Route.js:166"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:43"
+            "line": " src/model/ValueObject.js:52"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:55"
+            "line": " src/model/ValueObject.js:64"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:80"
+            "line": " src/model/ValueObject.js:89"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:91"
+            "line": " src/model/ValueObject.js:100"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/net/URLLoader.js:92"
+            "line": " src/net/URLLoader.js:98"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/plugin/jquery.eventListener.js:27"
+            "line": " src/plugin/jquery.eventListener.js:37"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:89"
+            "line": " src/util/BrowserUtil.js:79"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:101"
+            "line": " src/util/BrowserUtil.js:91"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:117"
+            "line": " src/util/BrowserUtil.js:103"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/DateUtil.js:39"
+            "line": " src/util/BrowserUtil.js:115"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:39"
+            "line": " src/util/BrowserUtil.js:127"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:72"
+            "line": " src/util/BrowserUtil.js:139"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:98"
+            "line": " src/util/BrowserUtil.js:151"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:125"
+            "line": " src/util/BrowserUtil.js:163"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:39"
+            "line": " src/util/BrowserUtil.js:179"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:50"
+            "line": " src/util/DateUtil.js:29"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:61"
+            "line": " src/util/MerchantUtil.js:29"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:72"
+            "line": " src/util/MerchantUtil.js:62"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:83"
+            "line": " src/util/MerchantUtil.js:88"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:104"
+            "line": " src/util/MerchantUtil.js:115"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:18"
+            "line": " src/util/NumberUtil.js:29"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:40"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:51"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:62"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:73"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:94"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -6674,79 +7093,79 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:48"
+            "line": " src/util/StringUtil.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:68"
+            "line": " src/util/StringUtil.js:61"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:83"
+            "line": " src/util/StringUtil.js:81"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:101"
+            "line": " src/util/StringUtil.js:96"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:133"
+            "line": " src/util/StringUtil.js:114"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:149"
+            "line": " src/util/StringUtil.js:146"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:166"
+            "line": " src/util/StringUtil.js:162"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:183"
+            "line": " src/util/StringUtil.js:179"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Timer.js:71"
+            "line": " src/util/StringUtil.js:196"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Timer.js:81"
+            "line": " src/util/Timer.js:80"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Timer.js:105"
+            "line": " src/util/Timer.js:90"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/Timer.js:114"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/util/Timer.js:194"
+            "line": " src/util/Timer.js:203"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:17"
+            "line": " src/util/Util.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:42"
+            "line": " src/util/Util.js:55"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:79"
+            "line": " src/util/Util.js:92"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:98"
+            "line": " src/util/Util.js:111"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:144"
+            "line": " src/util/Util.js:157"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:159"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:17"
+            "line": " src/util/Util.js:172"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -6754,111 +7173,267 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:44"
+            "line": " src/util/ValidationUtil.js:43"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:58"
+            "line": " src/util/ValidationUtil.js:57"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:72"
+            "line": " src/util/ValidationUtil.js:71"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:86"
+            "line": " src/util/ValidationUtil.js:85"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:100"
+            "line": " src/util/ValidationUtil.js:99"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/BaseObject.js:31"
+            "line": " src/util/ValidationUtil.js:113"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/BaseObject.js:42"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/controller/LocalStorageController.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/controller/LocalStorageController.js:226"
+            "line": " src/controller/LocalStorageController.js:233"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/controller/Router.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/display/DOMElement.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:356"
+            "line": " src/display/DOMElement.js:362"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:393"
+            "line": " src/display/DOMElement.js:399"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:406"
+            "line": " src/display/DOMElement.js:412"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:561"
+            "line": " src/display/DOMElement.js:567"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/display/DisplayObjectContainer.js:1"
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObjectContainer would\nlike that component to lay itself out. It is expected that calling setSize will automatically\ncall {{#crossLink \"DisplayObjectContainer/layoutChildren:method\"}}{{/crossLink}}.",
-            "line": " src/display/DisplayObjectContainer.js:312"
+            "line": " src/display/DisplayObjectContainer.js:322"
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DisplayObjectContainer.js:345"
+            "line": " src/display/DisplayObjectContainer.js:355"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/display/Stage.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/BaseEvent.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/EventBroker.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/EventDispatcher.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/event/EventDispatcher.js:189"
+            "line": " src/event/EventDispatcher.js:198"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/LoaderEvent.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/event/LoaderEvent.js:33"
+            "line": " src/event/LoaderEvent.js:43"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/LocalStorageEvent.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/event/LocalStorageEvent.js:49"
+            "line": " src/event/LocalStorageEvent.js:58"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/RouteEvent.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/event/RouteEvent.js:107"
+            "line": " src/event/RouteEvent.js:93"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/TimerEvent.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/event/TimerEvent.js:30"
+            "line": " src/event/TimerEvent.js:40"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/model/datastore/DataStoreAbstract.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/model/datastore/JsonDataStore.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/model/datastore/JsonDataStore.js:98"
+            "line": " src/model/datastore/JsonDataStore.js:78"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/model/Collection.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/model/Collection.js:284"
+            "line": " src/model/Collection.js:291"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/model/Route.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/model/ValueObject.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/net/URLContentType.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/net/URLLoader.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/net/URLLoader.js:92"
+            "line": " src/net/URLLoader.js:98"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/net/URLLoaderDataFormat.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/net/URLRequest.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/net/URLRequestMethod.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/plugin/jquery.eventListener.js:1"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",
-            "line": " src/plugin/jquery.eventListener.js:6"
+            "line": " src/plugin/jquery.eventListener.js:16"
         },
         {
             "message": "Missing item type\nGenerates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
-            "line": " src/plugin/jquery.eventListener.js:27"
+            "line": " src/plugin/jquery.eventListener.js:37"
         },
         {
             "message": "Missing item type\nThe jQuery addEventListener plugin",
-            "line": " src/plugin/jquery.eventListener.js:53"
+            "line": " src/plugin/jquery.eventListener.js:63"
         },
         {
             "message": "Missing item type\nThe jQuery removeEventListener plugin",
-            "line": " src/plugin/jquery.eventListener.js:88"
+            "line": " src/plugin/jquery.eventListener.js:98"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/BrowserUtil.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/BulkLoader.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/ComponentFactory.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/DateUtil.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/Extend.js:1"
         },
         {
             "message": "Missing item type\nSnippet from TypeScript compiler.",
-            "line": " src/util/Extend.js:4"
+            "line": " src/util/Extend.js:17"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/MathUtil.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/MerchantUtil.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/NumberUtil.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/StringUtil.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/TemplateFactory.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/Timer.js:1"
         },
         {
             "message": "Missing item type",
-            "line": " src/util/Timer.js:194"
+            "line": " src/util/Timer.js:203"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/Util.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/util/ValidationUtil.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/BaseObject.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/ObjectManager.js:1"
         }
     ]
 }

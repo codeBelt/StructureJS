@@ -81,8 +81,6 @@
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
             
-                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
-            
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
@@ -154,13 +152,13 @@
 
     
         <div class="extends">
-            Extends <a href="../classes/BaseObject.html" class="crosslink">BaseObject</a>
+            Extends <a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_net_URLRequest.js.html#l11"><code>src&#x2F;net&#x2F;URLRequest.js:11</code></a>
+            Defined in: <a href="../files/src_net_URLRequest.js.html#l17"><code>src&#x2F;net&#x2F;URLRequest.js:17</code></a>
         </div>
     
 
@@ -219,6 +217,12 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
 
         <ul class="index-list properties extends">
             
+                <li class="index-item property private inherited">
+                    <a href="#property__listeners">_listeners</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_cid">cid</a>
 
@@ -231,6 +235,12 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
                     
                 </li>
             
+                <li class="index-item property protected inherited">
+                    <a href="#property_isEnabled">isEnabled</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public">
                     <a href="#property_method">method</a>
 
@@ -239,6 +249,12 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
                 <li class="index-item property public">
                     <a href="#property_method">method</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_parent">parent</a>
 
                     
                 </li>
@@ -275,6 +291,13 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
 
             
                 <li class="index-item method public inherited">
+                    <a href="#method_addEventListener">addEventListener</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
                     <a href="#method_destroy">destroy</a>
 
                     
@@ -282,7 +305,42 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
                 </li>
             
                 <li class="index-item method public inherited">
+                    <a href="#method_disable">disable</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_dispatchEvent">dispatchEvent</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_enable">enable</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getEventListeners">getEventListeners</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
                     <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_removeEventListener">removeEventListener</a>
 
                     
                     
@@ -301,6 +359,55 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
 
     <div class="properties-detail">
         <h2>Properties</h2>
+
+        
+            <a name="property__listeners" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_listeners</code>
+    <span class="type">Array</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property__listeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l34"><code>src&#x2F;event&#x2F;EventDispatcher.js:34</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Holds a reference to added listeners.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="property_cid" class="anchor-link"></a>
@@ -328,7 +435,7 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
         
         
-        <a href="../files/src_BaseObject.js.html#l18"><code>src&#x2F;BaseObject.js:18</code></a>
+        <a href="../files/src_BaseObject.js.html#l29"><code>src&#x2F;BaseObject.js:29</code></a>
         
         </p>
 
@@ -382,7 +489,7 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
         
         
-        <a href="../files/src_net_URLRequest.js.html#l56"><code>src&#x2F;net&#x2F;URLRequest.js:56</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l62"><code>src&#x2F;net&#x2F;URLRequest.js:62</code></a>
         
         </p>
 
@@ -397,6 +504,57 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
 
         </div>
 
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isEnabled" class="anchor-link"></a>
+<div class="property item protected inherited">
+    <h3 class="name"><code>isEnabled</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#property_isEnabled" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l33"><code>src&#x2F;ObjectManager.js:33</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -434,7 +592,7 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
         
         
-        <a href="../files/src_net_URLRequest.js.html#l38"><code>src&#x2F;net&#x2F;URLRequest.js:38</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l44"><code>src&#x2F;net&#x2F;URLRequest.js:44</code></a>
         
         </p>
 
@@ -488,7 +646,7 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
         
         
-        <a href="../files/src_net_URLRequest.js.html#l47"><code>src&#x2F;net&#x2F;URLRequest.js:47</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l53"><code>src&#x2F;net&#x2F;URLRequest.js:53</code></a>
         
         </p>
 
@@ -505,6 +663,57 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">application/x-www-form-urlencoded</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_parent" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>parent</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property_parent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l42"><code>src&#x2F;event&#x2F;EventDispatcher.js:42</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the object that contains child object. Use the parent property
+to specify a relative path to display objects that are above the current display object in the display
+list hierarchy.</p>
+
+        </div>
+
         
 
         
@@ -542,7 +751,7 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
         
         
-        <a href="../files/src_net_URLRequest.js.html#l30"><code>src&#x2F;net&#x2F;URLRequest.js:30</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l36"><code>src&#x2F;net&#x2F;URLRequest.js:36</code></a>
         
         </p>
 
@@ -624,7 +833,7 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
         
         
-        <a href="../files/src_net_URLRequest.js.html#l11"><code>src&#x2F;net&#x2F;URLRequest.js:11</code></a>
+        <a href="../files/src_net_URLRequest.js.html#l17"><code>src&#x2F;net&#x2F;URLRequest.js:17</code></a>
         
         </p>
 
@@ -680,6 +889,181 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
         <h2>Methods</h2>
 
         
+            <a name="method_addEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>addEventListener</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[priority=0]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_addEventListener" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l55"><code>src&#x2F;event&#x2F;EventDispatcher.js:55</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#39;t generally maintained.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[priority=0]</code>
+                            <span class="type">Int</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+    ClassName.prototype.handlerMethod = function (event) {
+   console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_destroy" class="anchor-link"></a>
 <div class="method item public inherited">
     <h3 class="name"><code>destroy</code>
@@ -718,7 +1102,7 @@ URLRequest objects are passed to the load() methods of the <a href="../classes/U
             
         
         
-        <a href="../files/src_BaseObject.js.html#l44"><code>src&#x2F;BaseObject.js:44</code></a>
+        <a href="../files/src_BaseObject.js.html#l55"><code>src&#x2F;BaseObject.js:55</code></a>
         
         </p>
 
@@ -775,6 +1159,349 @@ on other objects before calling the super.</p>
 </div>
 
         
+            <a name="method_disable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>disable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_disable" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l68"><code>src&#x2F;ObjectManager.js:68</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.disable = function() {
+     if (this.isEnabled === false) { return this; }
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     return _super.prototype.disable.call(this);
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_dispatchEvent" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>dispatchEvent</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_dispatchEvent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l129"><code>src&#x2F;event&#x2F;EventDispatcher.js:129</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
+extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    var event = new BaseEvent(BaseEvent.CHANGE);
+    instance.dispatchEvent(event);
+
+    // Here is a common inline event being dispatched
+    instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_enable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>enable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_enable" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/src_ObjectManager.js.html#l43"><code>src&#x2F;ObjectManager.js:43</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+     if (this.isEnabled === true) { return this; }
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     return _super.prototype.enable.call(this);
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_getEventListeners" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getEventListeners</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Array</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_getEventListeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l207"><code>src&#x2F;event&#x2F;EventDispatcher.js:207</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Array</span>:
+                        
+                        <p>Returns an array dictionary of the different event listener(s) on the object.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method_getQualifiedClassName" class="anchor-link"></a>
 <div class="method item public inherited">
     <h3 class="name"><code>getQualifiedClassName</code>
@@ -813,7 +1540,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_BaseObject.js.html#l31"><code>src&#x2F;BaseObject.js:31</code></a>
+        <a href="../files/src_BaseObject.js.html#l42"><code>src&#x2F;BaseObject.js:42</code></a>
         
         </p>
 
@@ -854,6 +1581,158 @@ on other objects before calling the super.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>removeEventListener</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_removeEventListener" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l97"><code>src&#x2F;event&#x2F;EventDispatcher.js:97</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes a specified listener from the EventDispatcher object.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type">String</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type">Function</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener object to remove.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The scope of the listener object to be removed.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+    ClassName.prototype.handlerMethod = function (event) {
+   console.log(event.target + &quot; sent the event.&quot;);
+   }</code></pre>
 
                 </div>
             </div>

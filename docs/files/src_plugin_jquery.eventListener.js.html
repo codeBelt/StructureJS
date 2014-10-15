@@ -81,8 +81,6 @@
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
             
-                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
-            
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
@@ -152,10 +150,20 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define(function(require) {
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;jquery&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+        factory(require(&#x27;jquery&#x27;));
+    } else {
+        /*jshint sub:true */
+        factory(root.jQuery);
+    }
+}(this, function($) {
     &#x27;use strict&#x27;;
-
-    var $ = require(&#x27;jquery&#x27;);
 
     /**
      * A bind polyfill for browsers that don&#x27;t support the bind method.
@@ -271,8 +279,7 @@ define(function(require) {
     };
 
     return $;
-
-});
+}));
 
     </pre>
 </div>

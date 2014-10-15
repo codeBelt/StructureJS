@@ -81,8 +81,6 @@
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
             
-                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
-            
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
@@ -152,12 +150,21 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;../util/Extend&#x27;, &#x27;../display/DOMElement&#x27;, &#x27;jquery&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../display/DOMElement&#x27;), require(&#x27;jquery&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.Stage = factory(root.structurejs.Extend, root.structurejs.DOMElement, root.jQuery);
+    }
+}(this, function(Extend, DOMElement, jQuery) {
     &#x27;use strict&#x27;;
-
-    var jQuery = require(&#x27;jquery&#x27;);
-    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
-    var DOMElement = require(&#x27;structurejs/display/DOMElement&#x27;);
 
     /**
      * The {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class should be extended by your main or root class.
@@ -267,10 +274,8 @@ define(function (require, exports, module) { // jshint ignore:line
         return Stage;
     })();
 
-    module.exports = Stage;
-
-});
-
+    return Stage;
+}));
     </pre>
 </div>
 

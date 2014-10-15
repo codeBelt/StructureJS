@@ -81,8 +81,6 @@
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
             
-                <li><a class="type" href="../classes/MobileUtil.html">MobileUtil</a></li>
-            
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
@@ -152,22 +150,28 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-define(function (require, exports, module) { // jshint ignore:line
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;../util/Extend&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../net/URLRequestMethod&#x27;, &#x27;../net/URLContentType&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../net/URLRequestMethod&#x27;), require(&#x27;../net/URLContentType&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.URLRequestMethod, root.structurejs.URLContentType);
+    }
+}(this, function(Extend, EventDispatcher, URLRequestMethod, URLContentType) {
     &#x27;use strict&#x27;;
-
-    // Imports
-    var jQuery = require(&#x27;jquery&#x27;);
-    var Extend = require(&#x27;structurejs/util/Extend&#x27;);
-    var EventDispatcher = require(&#x27;structurejs/event/EventDispatcher&#x27;);
-    var URLRequestMethod = require(&#x27;structurejs/net/URLRequestMethod&#x27;);
-    var URLContentType = require(&#x27;structurejs/net/URLContentType&#x27;);
 
     /**
      * The URLRequest class captures all of the information in a single HTTP request.
      * URLRequest objects are passed to the load() methods of the {{#crossLink &quot;URLLoader&quot;}}{{/crossLink}} classes.
      *
      * @class URLRequest
-     * @extends BaseObject
+     * @extends EventDispatcher
      * @param url [string=null] The URL to be requested. You can set the URL later by using the url property.
      * @module StructureJS
      * @submodule net
@@ -220,10 +224,8 @@ define(function (require, exports, module) { // jshint ignore:line
         return URLRequest;
     })();
 
-    module.exports = URLRequest;
-
-});
-
+    return URLRequest;
+}));
     </pre>
 </div>
 
