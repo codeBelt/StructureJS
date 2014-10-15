@@ -17,7 +17,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * Returns the name of the browser.
          *
          * @method browserName
          * @return {string}
@@ -30,7 +30,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * Returns the version of the browser.
          *
          * @method browserVersion
          * @param [majorVersion=true0 {boolean}
@@ -68,6 +68,84 @@ module StructureTS
             M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
 
             return M;
+        }
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isAndroid
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        public static isAndroid():boolean
+        {
+            return !!navigator.userAgent.match(/Android/i);
+        }
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isBlackBerry
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        public static isBlackBerry():boolean
+        {
+            return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
+        }
+
+        /**
+         * isIOS
+         *
+         * @method isIOS
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        public static isIOS():boolean
+        {
+            return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        }
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isOperaMini
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        public static isOperaMini():boolean
+        {
+            return !!navigator.userAgent.match(/Opera Mini/i);
+        }
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isIEMobile
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        public static isIEMobile():boolean
+        {
+            return !!navigator.userAgent.match(/IEMobile/i);
+        }
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method isMobile
+         * @returns {boolean}
+         * @public
+         * @static
+         */
+        public static isMobile():boolean
+        {
+            return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
         }
 
         /**
