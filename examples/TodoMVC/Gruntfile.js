@@ -137,8 +137,8 @@ module.exports = function(grunt) {
                 },
                 files: {
                     src: [
-                        '<%= PRODUCTION_PATH %>' + 'assets/scripts/app.min.js',
-                        '<%= PRODUCTION_PATH %>' + 'assets/styles/**.css'
+                            '<%= PRODUCTION_PATH %>' + 'assets/scripts/app.min.js',
+                            '<%= PRODUCTION_PATH %>' + 'assets/styles/**.css'
                     ]
                 }
             }
@@ -178,7 +178,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    '<%= DEVELOPMENT_PATH %>assets/scripts/compiled/templates.tmpl.js': ['<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs']
+                    '<%= DEVELOPMENT_PATH %>assets/scripts/templates.tmpl.js': ['<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs']
                 }
             }
         },
@@ -186,13 +186,12 @@ module.exports = function(grunt) {
         browserify: {
             todomvc: {
                 options: {
-                    debug: false
+                    debug: true
                 },
                 src: [
-                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/main.js',
-                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/templates/**/*.hbs'
+                        '<%= EXAMPLES_PATH %>' + 'src/assets/scripts/App.js'
                 ],
-                dest: '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/compile/build.js'
+                dest: '<%= EXAMPLES_PATH %>' + 'build.js'
             }
         },
 
@@ -347,7 +346,7 @@ module.exports = function(grunt) {
                     livereload: true
                 },
                 files: [
-                    '<%= DEVELOPMENT_PATH %>' + 'assets/styles/**/*.css',
+                        '<%= DEVELOPMENT_PATH %>' + 'assets/styles/**/*.css',
                 ]
             },
             src: {
@@ -355,10 +354,10 @@ module.exports = function(grunt) {
                     livereload: true
                 },
                 files: [
-                    '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/**/*.ts',
-                    '<%= DEVELOPMENT_PATH %>' + 'config.html',
-                    '<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs',
-                    '<%= DEVELOPMENT_PATH %>' + 'assets/data/**/*.json'
+                        '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/**/*.ts',
+                        '<%= DEVELOPMENT_PATH %>' + 'config.html',
+                        '<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs',
+                        '<%= DEVELOPMENT_PATH %>' + 'assets/data/**/*.json'
                 ],
                 tasks: ['src']
             }
@@ -375,7 +374,8 @@ module.exports = function(grunt) {
      * grunt build  (Will build the production code but will not start a local server.)
      */
     grunt.registerTask('default', [
-        'server'
+        'handlebars',
+        'browserify'
     ]);
 
     grunt.registerTask('server', [

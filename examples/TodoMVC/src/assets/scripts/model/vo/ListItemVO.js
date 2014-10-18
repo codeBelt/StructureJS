@@ -1,5 +1,5 @@
-var Extend = require('../../../../../../src/util/Extend');
-var ValueObject = require('../../../../../../src/model/ValueObject');
+var Extend = require('../../../vendor/structurejs/src/util/Extend');
+var ValueObject = require('../../../vendor/structurejs/src/model/ValueObject');
 
 /**
  * YUIDoc_comment

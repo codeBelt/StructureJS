@@ -1,8 +1,7 @@
-var Extend = require('../../../../../src/util/Extend');
-var DOMElement = require('../../../../../src/display/DOMElement');
-var BaseEvent = require('../../../../../src/event/BaseEvent');
+var Extend = require('../../vendor/structurejs/src/util/Extend');
+var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
+var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
 var Key = require('../constant/Key');
-var ListItemTemplate = require('../templates/ListItemTemplate');
 
 /**
  * YUIDoc_comment
@@ -55,7 +54,7 @@ var ListItemComponent = (function () {
      * @overridden DOMElement.createChildren
      */
     ListItemComponent.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, ListItemTemplate, this.vo);
+        _super.prototype.createChildren.call(this, 'templates/ListItemTemplate', this.vo);
 
         this._$itemInput = this.$element.find('.js-itemText');
         this._$itemLabel = this.$element.find('.js-editTodo');

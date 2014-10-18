@@ -1,7 +1,7 @@
-var Extend = require('../../../../../src/util/Extend');
-var Collection = require('../../../../../src/model/Collection');
-var LocalStorageController = require('../../../../../src/controller/LocalStorageController');
-var ListItemVO = require('vo/ListItemVO');
+var Extend = require('../../vendor/structurejs/src/util/Extend');
+var Collection = require('../../vendor/structurejs/src/model/Collection');
+var LocalStorageController = require('../../vendor/structurejs/src/controller/LocalStorageController');
+var ListItemVO = require('./vo/ListItemVO');
 
 /**
  * YUIDoc_comment
