@@ -54,7 +54,7 @@ var ListItemComponent = (function () {
      * @overridden DOMElement.createChildren
      */
     ListItemComponent.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, 'templates/ListItemTemplate', this.vo);
+        _super.prototype.createChildren.call(this, '#listItemTemplate', this.vo);
 
         this._$itemInput = this.$element.find('.js-itemText');
         this._$itemLabel = this.$element.find('.js-editTodo');

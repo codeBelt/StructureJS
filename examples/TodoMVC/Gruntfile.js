@@ -1,276 +1,154 @@
+/*jshint node:true, laxbreak:true */
+'use strict';
+
 module.exports = function(grunt) {
 
-    // Load Grunt tasks declared in the package.json file.
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    // -- Plugins --------------------------------------------------------------
 
-    // Project configuration.
+    // Intelligently autoloads `grunt-*` plugins from the package dependencies.
+    require('load-grunt-tasks')(grunt);
+
+    // Adds better support for defining options.
+    require('nopt-grunt')(grunt);
+
+    // Uncomment the next line to have grunt report the time it takes for tasks
+    // to run so targets for optimization may be identified.
+    // require('time-grunt')(grunt);
+
+    // -- Options --------------------------------------------------------------
+
+    grunt.initOptions({
+        prod: {
+            info: 'Whether this is a production build.',
+            type: Boolean
+        },
+        stage: {
+            info: 'Whether this is a staging build.',
+            type: Boolean
+        },
+        maps: {
+            info: 'Whether to generate source maps for compressed files.',
+            type: Boolean
+        }
+    });
+
+    // All builds are considered to be development builds, unless they're not.
+    grunt.option('dev', !grunt.option('prod') && !grunt.option('stage'));
+
+    // -- Configuration --------------------------------------------------------
+
     grunt.initConfig({
 
-        /**
-         * This will load in our package.json file so we can have access
-         * to the project name and version number.
-         */
-        pkg: grunt.file.readJSON('package.json'),
+        // -- Metadata ---------------------------------------------------------
 
-        /**
-         * Constants for the Gruntfile so we can easily change the path for our environments.
-         */
-        BASE_PATH: '',
-        DEVELOPMENT_PATH: 'src/',
-        PRODUCTION_PATH: 'web/',
-        TEMP_PATH: '.tmp/',
+        // This will load the `package.json` file so we can have access to the
+        // project metadata such as name and version number.
+        pkg: require('./package.json'),
 
-        /**
-         * A code block that will be added to our minified code files.
-         * Gets the name and version and other info from the above loaded 'package.json' file.
-         * @example <%= banner %>
-         */
+        // This will load the `build-env.js` file so we can have access to the
+        // project environment configuration and constants.
+        env: require('./build-env'),
+
+        // A comment block that will be prefixed to all our minified code files.
+        // Gets the name and version from the above loaded `package.json` file.
+        // How to use: '<%= banner %>'
         banner: [
-            '/*',
-            '* Project: <%= pkg.name %>',
-            '* Version: <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)',
-            '* Development By: <%= pkg.developedBy %>',
-            '* Copyright(c): <%= grunt.template.today("yyyy") %>',
-            '*/'
+            '/*!',
+            ' * <%= pkg.name %> v<%= pkg.version %>' + (grunt.option('dev') ? ' (dev)' : ''),
+            ' * <%= pkg.description %>',
+            ' *',
+            ' * Build Date: <%= grunt.template.today("yyyy-mm-dd") %>',
+            ' */\n'
         ].join('\n'),
 
-        /**
-         * The different constant names that will be use to build our html files.
-         * @example <!-- @if NODE_ENV == 'DEVELOPMENT' -->
-         */
-        env: {
-            src: {
-                NODE_ENV : 'DEVELOPMENT'
-            },
-            web : {
-                NODE_ENV : 'PRODUCTION'
-            }
-        },
+        // -- Utility Tasks ----------------------------------------------------
 
-        /**
-         * Allows us to pass in variables to files that have place holders so we can similar files with different data.
-         * This plugin works with the 'env' plugin above.
-         * @example <!-- @echo appVersion --> or <!-- @echo filePath -->
-         */
-        preprocess : {
-            // Task to create the index.html file that will be used during development.
-            // Passes the app version and creates the /index.html
-            src : {
-                src : '<%= DEVELOPMENT_PATH %>' + 'config.html',
-                dest : '<%= DEVELOPMENT_PATH %>' + 'index.html',
-                options : {
-                    context : {
-                        appVersion : '<%= pkg.version %>',
-                        filePath: ''
-                    }
-                }
-            },
-            // Task to create the index.html file that will be used in production.
-            // Passes the app version and creates the /index.html
-            web : {
-                src : '<%= DEVELOPMENT_PATH %>' + 'config.html',
-                dest : '<%= PRODUCTION_PATH %>' + 'index.html',
-                options : {
-                    context : {
-                        appVersion : '<%= pkg.version %>',
-                        filePath: ''
-                    }
-                }
-            },
-            js : {
-                src : '<%= DEVELOPMENT_PATH %>' + 'config.json',
-                dest : '<%= DEVELOPMENT_PATH %>' + 'assets/data/toJavaScript/config.json',
-                options : {
-                    context : {
-                        appVersion : '<%= pkg.version %>'
-                    }
-                }
-            }
-        },
-
-        /**
-         * Automatically increases the version number in the package.json whenever a production build is made.
-         */
-        bumpup: {
-            options: {
-                updateProps: {
-                    pkg: 'package.json'
-                }
-            },
-            file: 'package.json'
-        },
-
-        /**
-         * Cleans or deletes our production folder before we create a new production build.
-         */
+        // Automatically removes generated files and directories. Useful for
+        // rebuilding the project with fresh copies of everything.
         clean: {
-            web: ['<%= PRODUCTION_PATH %>'],
-            temp: ['.tmp']
+            options: {
+                force: '<%= env.UNSAFE_MODE %>'
+            },
+            dest: ['<%= env.DIR_DEST %>'],
+            docs: ['<%= env.DIR_DOCS %>'],
+            tmp: ['<%= env.DIR_TMP %>'],
+            installed: [
+                'tools/node-*',
+                '<%= env.DIR_BOWER %>',
+                '<%= env.DIR_NPM %>'
+            ]
         },
 
-        /**
-         * Copies certain files over from the development folder to the production folder so we don't have to do it manually.
-         */
+        // Copies any files that should be moved to the destination directory
+        // that are not already handled by another task.
         copy: {
-            web:  {
-                files: [
-                    // Copy favicon.ico file from development to production
-                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', src: 'favicon.ico', dest: '<%= PRODUCTION_PATH %>' },
-                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', src: 'assets/data/json/**', dest: '<%= PRODUCTION_PATH %>' },
-                    // Copy the media folder from development to production
-                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', src: ['assets/media/**'], dest: '<%= PRODUCTION_PATH %>' },
-                    // Copy the index.html file from development to production
-                    { expand: true, cwd: '<%= DEVELOPMENT_PATH %>', dest: '<%= PRODUCTION_PATH %>', src: ['index.html'], filter: 'isFile', dot: true }
-                ]
-            }
-        },
-
-        /**
-         * Prepends the banner above to the minified files.
-         */
-        usebanner: {
-            dist: {
-                options: {
-                    position: 'top',
-                    banner: '<%= banner %>',
-                    linebreak: true
-                },
-                files: {
+            media: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= env.DIR_SRC %>',
+                    src: ['assets/media/**', 'assets/vendor/todomvc-common/bg.png'],
+                    dest: '<%= env.DIR_DEST %>'
+                }]
+            },
+            server: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= env.DIR_SRC %>',
                     src: [
-                            '<%= PRODUCTION_PATH %>' + 'assets/scripts/app.min.js',
-                            '<%= PRODUCTION_PATH %>' + 'assets/styles/**.css'
-                    ]
-                }
-            }
-        },
-
-        /**
-         * Turns any JSON files into JavaScript files.
-         */
-        json: {
-            web: {
-                options: {
-                    namespace: 'JSON_DATA',
-                    includePath: false
-                },
-                src: ['<%= DEVELOPMENT_PATH %>' + 'assets/data/toJavaScript/**/*.json'],
-                dest:  '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/compiled/json.js'
-            }
-        },
-
-        /**
-         * Compiles the Handlebars templates into Javascript.
-         * http://handlebarsjs.com/
-         */
-        handlebars: {
-            compile: {
-                options: {
-                    namespace: 'JST',
-                    // Registers all files that start with '_' as a partial.
-                    partialRegex: /^_/,
-                    // Shortens the file path for the templates.
-                    processName: function(filename) {
-                        return filename.slice(filename.indexOf("template"), filename.length);
-                    },
-                    // Shortens the file path for the partials.
-                    processPartialName: function(filePath) {
-                        return filePath.slice(filePath.indexOf("template"), filePath.length);
-                    }
-                },
-                files: {
-                    '<%= DEVELOPMENT_PATH %>assets/scripts/templates.tmpl.js': ['<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs']
-                }
-            }
-        },
-
-        browserify: {
-            todomvc: {
-                options: {
-                    debug: true
-                },
-                src: [
-                        '<%= EXAMPLES_PATH %>' + 'src/assets/scripts/App.js'
-                ],
-                dest: '<%= EXAMPLES_PATH %>' + 'build.js'
-            }
-        },
-
-        /**
-         * The useminPrepare part of the usemin plugin looks at the html file and checks for a build:js or build:css code block.
-         * It will take those files found in the code block(s) and concat them together and then runs uglify for js and/or cssmin for css files.
-         * useminPrepare requires grunt-contrib-uglify, grunt-contrib-concat, and grunt-contrib-cssmin plugins to be installed. Which is listed in the package.json file.
-         *
-         * The usemin part will remove the code block(s) and replace that area with the single file path in the html file.
-         */
-        useminPrepare: {
-            html: ['<%= DEVELOPMENT_PATH %>' + 'index.html'],
-            options: {
-                flow: {
-                    steps: {
-                        'js': ['concat', 'uglifyjs'],
-                        'css': ['concat', 'cssmin']
-                    },
-                    post: {}
-                },
-                dest: '<%= PRODUCTION_PATH %>'// Moves the single concatenated files to production.
-            }
-        },
-        usemin: {
-            html: ['<%= PRODUCTION_PATH %>' + 'index.html'],
-            options: {
-                dirs: ['<%= PRODUCTION_PATH %>']
-            }
-        },
-
-        /**
-         * Removes all comments from the production index.html file. I can also remove all whitespace if desired.
-         */
-        htmlmin: {
-            dist: {
-                options: {
-                    removeComments: true,
-                    collapseWhitespace: false
-                },
-                files: {
-                    '<%= PRODUCTION_PATH %>index.html': '<%= PRODUCTION_PATH %>' + 'index.html'
-                }
-            }
-        },
-
-        /**
-         * Creates a Cache Manifest file.
-         */
-        manifest: {
-            generate: {
-                options: {
-                    basePath: '<%= PRODUCTION_PATH %>',
-                    exclude: [
-                        'assets/media/images/moblie-icons/icon-144x144.png',
-                        'assets/media/images/moblie-icons/icon-100x100.png',
-                        'assets/media/images/moblie-icons/icon-29x29.png',
-                        'assets/media/images/moblie-icons/icon-50x50.png',
-                        'assets/media/images/moblie-icons/icon-58x58.png',
-                        'assets/media/images/moblie-icons/icon-72x72.png'
+                        '**/*.{php,rb,py,jsp,asp,aspx,cshtml,txt}',
+                        '!assets/vendor/**'
                     ],
-                    preferOnline: false,
-                    verbose: true,
-                    timestamp: true,
-                    master: []
-                },
-                src: [
-                    'assets/data/**/*.json',
-                    'assets/media/images/**/*.jpg',
-                    'assets/media/images/**/*.png',
-                    'assets/scripts/**/*.js',
-                    'assets/styles/**/*.css'
-                ],
-                dest: '<%= PRODUCTION_PATH %>' + 'offline.appcache'
+                    dest: '<%= env.DIR_DEST %>'
+                }]
+            },
+            markup: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= env.DIR_SRC %>',
+                    dest: '<%= env.DIR_DEST %>',
+                    src: ['**/*.html', '!assets/vendor/**']
+                }]
+            },
+            styles: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= env.DIR_SRC %>',
+                    dest: '<%= env.DIR_DEST %>',
+                    src: [
+                        'assets/{styles,vendor}/**/*.css',
+                        '!assets/vendor/structurejs/**/*.css'
+                    ]
+                }]
             }
         },
 
-        /**
-         * YUIDoc plugin that will generate documentation from our YUI comments.
-         */
+        // Searches for bower comment blocks (`<!-- bower:* -->`) and injects
+        // script and style tag references to bower modules into markup.
+        bowerInstall: {
+            all: {
+                ignorePath: '<%= env.DIR_SRC %>/',
+                src: ['<%= env.DIR_SRC %>/**/*.html']
+            }
+        },
+
+        // Searches for build comment blocks (`<!-- build:* -->`) and generates
+        // the appropriate `concat`, `cssmin`, and `uglify` grunt configuration.
+        useminPrepare: {
+            options: {
+                root: '<%= env.DIR_SRC %>',
+                staging: '<%= env.DIR_TMP %>',
+                dest: '<%= env.DIR_DEST %>'
+            },
+            html: ['<%= env.DIR_SRC %>/**/*.html']
+        },
+
+        // Replaces script and style tag references with a reference to a single
+        // optimized output file.
+        usemin: {
+            html: ['<%= env.DIR_DEST %>/**/*.html']
+        },
+
+        // YUIDoc plugin that will generate our JavaScript documentation.
         yuidoc: {
             compile: {
                 name: '<%= pkg.name %>',
@@ -278,147 +156,151 @@ module.exports = function(grunt) {
                 version: '<%= pkg.version %>',
                 url: '<%= pkg.homepage %>',
                 options: {
-                    paths: '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/',
-                    outdir: '<%= BASE_PATH %>docs',
-                    themedir: '',
-                    extension: '.ts',                                   // Default '.js' <comma-separated list of file extensions>
-                    exclude: ''
+                    paths: '<%= env.DIR_SRC %>',
+                    outdir: '<%= env.DIR_DOCS %>'
                 }
             }
         },
 
-        imagemin: {
-            web: {
+        // -- Lint Tasks -------------------------------------------------------
+
+        // Verifies that style files conform to our standards.
+        csslint: {
+            options: {
+                csslintrc: '.csslintrc'
+            },
+            all: {
+                src: [
+                    '<%= env.DIR_DEST %>/assets/styles/**/*.css'
+                ]
+            }
+        },
+
+        // Verifies that script files conform to our standards.
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc'
+            },
+            all: {
+                src: [
+                    'Gruntfile.js',
+                    '<%= env.DIR_SRC %>/assets/scripts/**/*.js'
+                ]
+            }
+        },
+
+        // -- Style Tasks ------------------------------------------------------
+
+        cssmin: {
+            options: {
+                banner: '<%= banner %>'
+            }
+        },
+
+        // -- Script Tasks -----------------------------------------------------
+
+        browserify: {
+            options: {
+                debug: grunt.option('maps'),
+                transform: [
+                    'debowerify',
+                    'decomponentify',
+                    'deamdify',
+                    'deglobalify'
+                ],
+                shim: {
+                    
+                }
+            },
+            all: {
                 options: {
+                    postBundleCB: function(err, src, next) {
+                        next(err, grunt.config.process('<%= banner %>') + src);
+                    }
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= DEVELOPMENT_PATH %>' + 'assets/media/images/',
-                    src: ['**/*.{png,jpg,gif}'],
-                    dest: '<%= PRODUCTION_PATH %>' + 'assets/media/images/'
+                    cwd: '<%= env.DIR_SRC %>',
+                    dest: '<%= env.DIR_DEST %>',
+                    src: ['assets/scripts/*.js']
                 }]
             }
         },
 
-        /**
-         * Creates a node.js Express Server to test our code in a server like environment.
-         * Note: We are using the watch task to keep the server running.
-         */
-        express: {
-            src: {
-                options: {
-                    port: 8000,
-                    hostname: "0.0.0.0",
-                    bases: ['<%= DEVELOPMENT_PATH %>'],
-                    livereload: true
-                }
-            },
-            web: {
-                options: {
-                    port: 8001,
-                    hostname: "0.0.0.1",
-                    bases: ['<%= PRODUCTION_PATH %>'],
-                    livereload: true
-                }
-            }
-        },
+        // -- Task Helpers -----------------------------------------------------
 
-        /**
-         * Opens the index.html file in the default browser after the node.js Express Server is running.
-         */
-        open: {
-            src: {
-                // Gets the port from the connect configuration
-                path: 'http://localhost:<%= express.src.options.port%>'
-            },
-            web: {
-                // Gets the port from the connect configuration
-                path: 'http://localhost:<%= express.web.options.port%>'
-            }
-        },
-
-        /**
-         * Watches files and will run task(s) when files are changed. It will also reload/refresh the browser.
-         */
+        // Instead of running a server preprocessor, files and directories may
+        // be watched for changes and have associated tasks run automatically
+        // when you save your changes. This is compatible with the LiveReload
+        // api, so you may use their free browser extensions to reload pages
+        // after watch tasks complete. No purchase neccessary:
+        // http://go.livereload.com/extensions
         watch: {
-            css: {
-                options: {
-                    livereload: true
-                },
-                files: [
-                        '<%= DEVELOPMENT_PATH %>' + 'assets/styles/**/*.css',
-                ]
+            options: {
+                event: 'all',
+                livereload: true
             },
-            src: {
-                options: {
-                    livereload: true
-                },
-                files: [
-                        '<%= DEVELOPMENT_PATH %>' + 'assets/scripts/**/*.ts',
-                        '<%= DEVELOPMENT_PATH %>' + 'config.html',
-                        '<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs',
-                        '<%= DEVELOPMENT_PATH %>' + 'assets/data/**/*.json'
-                ],
-                tasks: ['src']
+            grunt: {
+                files: ['Gruntfile.js'],
+                tasks: ['build']
+            },
+            media: {
+                files: ['<%= env.DIR_SRC %>/assets/media/**'],
+                tasks: ['media']
+            },
+            server: {
+                files: ['<%= env.DIR_SRC %>/**/*.{php,rb,py,jsp,asp,aspx,cshtml,txt}'],
+                tasks: ['server']
+            },
+            markup: {
+                files: ['<%= env.DIR_SRC %>/**/*.html'],
+                tasks: ['markup']
+            },
+            styles: {
+                files: ['<%= env.DIR_SRC %>/assets/{styles,vendor}/**/*.css'],
+                tasks: ['styles']
+            },
+            scripts: {
+                files: ['<%= env.DIR_SRC %>/assets/{scripts,vendor}/**/*.js'],
+                tasks: ['scripts']
             }
         }
-
     });
 
-    /**
-     * Grunt tasks:
-     *
-     * grunt        (Will build and run your development code/server)
-     * grunt web    (Will build and run your production code/server)
-     * grunt doc    (Will generate the YUI documentation from the code comments)
-     * grunt build  (Will build the production code but will not start a local server.)
-     */
-    grunt.registerTask('default', [
-        'handlebars',
-        'browserify'
-    ]);
+    // -- Tasks ----------------------------------------------------------------
+    if (grunt.option('dev')) {
+        // Define the default task for development.
+        // Run `grunt`
+        grunt.registerTask('default', ['build']);
+    }
+    else if (grunt.option('stage')) {
+        // Default task for staging.
+        // Run `grunt --stage`
+        grunt.registerTask('default', ['build','lint']);
+    }
+    else if (grunt.option('prod')) {
+        // Default task for production.
+        // Run `grunt --prod`
+        grunt.registerTask('default', ['build', 'docs', 'lint']);
+    }
 
-    grunt.registerTask('server', [
-        'src',
-        'express:src',
-        'open:src',
-        'watch'
-    ]);
+    // Install task. Handles tasks that should happen right after npm and bower
+    // modules are installed or updated. Run with `grunt install`.
+    grunt.registerTask('install', ['bowerInstall']);
 
-    grunt.registerTask('src', [
-        'env:src',
-        'preprocess:src',
-        'preprocess:js',
-        'json',
-        'handlebars',
-        'typescript'
-    ]);
-
-    grunt.registerTask('web', [
-        'build',
-        'open:web',
-        'express:web',
-        'express-keepalive'
-    ]);
-
-    grunt.registerTask('build', [
-        'bumpup',
-        'env:web',
-        'preprocess',
-        'json',
-        'handlebars',
-        'typescript',
-        'clean',
-        'copy',
-        'useminPrepare', 'concat', 'uglify', 'cssmin',
-        'usemin',
-        'usebanner',
-        'htmlmin'
-    ]);
-
-    grunt.registerTask('doc', [
-        'yuidoc'
-    ]);
-
+    // Custom tasks. 
+    // Can be referenced from `watch` tasks
+    // May also be run manually with `grunt [task-name]`
+    grunt.registerTask('build', ['clean:dest', 'media', 'server', 'markup', 'styles', 'scripts', 'clean:tmp']);
+    grunt.registerTask('lint', ['force:on', 'csslint', 'jshint', 'force:reset']);
+    grunt.registerTask('docs', ['clean:docs', 'yuidoc', 'clean:tmp']);
+    grunt.registerTask('media', ['copy:media']);
+    grunt.registerTask('server', ['copy:server']);
+    grunt.registerTask('markup', ['copy:markup']);
+    if (grunt.option('dev')) {
+        grunt.registerTask('styles', ['copy:styles']);
+    } else {
+        grunt.registerTask('styles', ['useminPrepare', 'concat', 'cssmin', 'usemin']);
+    }
+    grunt.registerTask('scripts', ['browserify']);
 };
-

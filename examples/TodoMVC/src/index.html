@@ -61,7 +61,17 @@
         <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
 
-    <script src="assets/scripts/templates.tmpl.js"></script>
+
+    <script id="listItemTemplate" type="text/template">
+        <li>
+            <div class="view">
+                <input class="toggle js-markComplete" type="checkbox">
+                <label class="js-editTodo">{{text}}</label>
+                <button class="destroy js-removeTodo"></button>
+            </div>
+            <input class="edit js-itemText" value="{{text}}">
+        </li>
+    </script>
     <script src="assets/scripts/main.js"></script>
 </body>
 </html>
