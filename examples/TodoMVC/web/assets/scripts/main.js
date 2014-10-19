@@ -18823,6 +18823,7 @@ return jQuery;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],19:[function(require,module,exports){
+var $ = require('jquery');
 var Extend = require('../vendor/structurejs/src/util/Extend');
 var Stage = require('../vendor/structurejs/src/display/Stage');
 var BaseEvent = require('../vendor/structurejs/src/event/BaseEvent');
@@ -19185,7 +19186,8 @@ var App = (function () {
 })();
 
 module.exports = App;
-},{"../vendor/structurejs/src/controller/Router":29,"../vendor/structurejs/src/display/Stage":32,"../vendor/structurejs/src/event/BaseEvent":33,"../vendor/structurejs/src/util/Extend":42,"../vendor/structurejs/src/util/StringUtil":43,"./component/ListItemComponent":20,"./constant/Key":21,"./model/ListItemCollection":23,"./model/vo/ListItemVO":24,"./view/FooterView":25}],20:[function(require,module,exports){
+},{"../vendor/structurejs/src/controller/Router":29,"../vendor/structurejs/src/display/Stage":32,"../vendor/structurejs/src/event/BaseEvent":33,"../vendor/structurejs/src/util/Extend":42,"../vendor/structurejs/src/util/StringUtil":43,"./component/ListItemComponent":20,"./constant/Key":21,"./model/ListItemCollection":23,"./model/vo/ListItemVO":24,"./view/FooterView":25,"jquery":17}],20:[function(require,module,exports){
+var $ = require('jquery');
 var Extend = require('../../vendor/structurejs/src/util/Extend');
 var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
 var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
@@ -19465,7 +19467,7 @@ var ListItemComponent = (function () {
 })();
 
 module.exports = ListItemComponent;
-},{"../../vendor/structurejs/src/display/DOMElement":30,"../../vendor/structurejs/src/event/BaseEvent":33,"../../vendor/structurejs/src/util/Extend":42,"../constant/Key":21}],21:[function(require,module,exports){
+},{"../../vendor/structurejs/src/display/DOMElement":30,"../../vendor/structurejs/src/event/BaseEvent":33,"../../vendor/structurejs/src/util/Extend":42,"../constant/Key":21,"jquery":17}],21:[function(require,module,exports){
 /**
  * YUIDoc_comment
  *

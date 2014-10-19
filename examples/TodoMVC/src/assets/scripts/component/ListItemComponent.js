@@ -1,3 +1,4 @@
+var $ = require('jquery');
 var Extend = require('../../vendor/structurejs/src/util/Extend');
 var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
 var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');

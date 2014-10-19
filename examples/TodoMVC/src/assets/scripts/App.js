@@ -1,3 +1,4 @@
+var $ = require('jquery');
 var Extend = require('../vendor/structurejs/src/util/Extend');
 var Stage = require('../vendor/structurejs/src/display/Stage');
 var BaseEvent = require('../vendor/structurejs/src/event/BaseEvent');
