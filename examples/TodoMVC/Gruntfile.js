@@ -222,7 +222,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: '<%= env.DIR_SRC %>',
                     dest: '<%= env.DIR_DEST %>',
-                    src: ['assets/scripts/*.js']
+                    src: ['assets/scripts/main.js']
                 }]
             }
         },
@@ -276,12 +276,12 @@ module.exports = function(grunt) {
     else if (grunt.option('stage')) {
         // Default task for staging.
         // Run `grunt --stage`
-        grunt.registerTask('default', ['build','lint']);
+        grunt.registerTask('default', ['build']);
     }
     else if (grunt.option('prod')) {
         // Default task for production.
         // Run `grunt --prod`
-        grunt.registerTask('default', ['build', 'docs', 'lint']);
+        grunt.registerTask('default', ['build', 'docs']);
     }
 
     // Install task. Handles tasks that should happen right after npm and bower
