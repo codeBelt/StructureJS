@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher', '../event/BaseEvent'], factory);
+        define(['../util/Extend', '../event/EventDispatcher', '../event/BaseEvent', 'lodash'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'));
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'), require('lodash'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.BaseEvent, _);
     }
-}(this, function(Extend, EventDispatcher, BaseEvent) {
+}(this, function(Extend, EventDispatcher, BaseEvent, _) {
     'use strict';
 
     /**
