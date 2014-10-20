@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 /**
- * TODO_YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @method ${1:methodName}
  * @${2:accessType}

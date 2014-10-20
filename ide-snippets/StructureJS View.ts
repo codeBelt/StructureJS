@@ -5,7 +5,7 @@ module ${Namespace} {
     import ${Extends} = StructureTS.${Extends};
 
     /**
-     * TODO_YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class ${NAME}
      * @extends ${Extends}

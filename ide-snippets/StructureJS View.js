@@ -6,7 +6,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var DOMElement = require('structurejs/display/DOMElement');
  
     /**
-     * TODO_YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class ${NAME}
      * @extends DOMElement

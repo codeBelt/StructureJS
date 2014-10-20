@@ -6,7 +6,7 @@ define(function(require, exports, module) { // jshint ignore:line
     var ValueObject = require('structurejs/model/ValueObject');
 
     /**
-     * TODO_YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class ${NAME}
      * @extends ValueObject

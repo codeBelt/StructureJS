@@ -7,7 +7,7 @@ module ${Namespace} {
     import IValueObject = StructureTS.IValueObject;
 
     /**
-     * TODO_YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class ${NAME}
      * @param [data] {any} Provide a way to update the value object upon initialization.

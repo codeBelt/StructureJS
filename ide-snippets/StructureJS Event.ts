@@ -5,7 +5,7 @@ module ${Namespace} {
     import BaseEvent = StructureTS.BaseEvent;
 
     /**
-     * TODO_YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class ${NAME}
      * @extends BaseEvent
