@@ -1,5 +1,5 @@
-///<reference path='com/codebelt/structurets/model/ValueObject.ts'/>
-///<reference path='com/codebelt/structurets/interface/IValueObject.ts'/>
+///<reference path='replace/path/structurejs/ts/model/ValueObject.ts'/>
+///<reference path='replace/path/structurejs/ts/interface/IValueObject.ts'/>
 
 module ${Namespace} {
 
