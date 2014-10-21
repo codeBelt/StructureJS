@@ -38,7 +38,7 @@ module ${Namespace} {
          * @overridden ${Extends}.enable
          */
         public enable():void {
-            if (this.isEnabled === true) return;
+            if (this.isEnabled === true) { return; }
 
             // Enable the child objects and add any event listeners.
 
@@ -49,7 +49,7 @@ module ${Namespace} {
          * @overridden ${Extends}.disable
          */
         public disable():void {
-            if (this.isEnabled === false) return;
+            if (this.isEnabled === false) { return; }
 
             // Disable the child objects and remove any event listeners.
 
