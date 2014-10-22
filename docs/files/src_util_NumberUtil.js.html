@@ -257,6 +257,24 @@
             return String(num);
         };
 
+        /**
+         * YUIDoc_comment
+         *
+         * @method unformatUnit
+         * @param value {string}
+         * @returns {number}
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.unformatUnit(&#x27;$1,234,567.89&#x27;);
+         *     // 1234567.89
+         *
+         *     NumberUtil.unformatUnit(&#x27;1.234.567,89 €&#x27;);
+         *     // 1234567.89
+         *
+         *     NumberUtil.unformatUnit(&#x27;$-123,456,789.99&#x27;);
+         *     // -123456789.99
+         */
         NumberUtil.unformatUnit = function (value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
             var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, &quot;&quot;);
@@ -278,7 +296,29 @@
             return parseFloat(withoutSpecialCharacters);
         };
 
-        //        public static formatUnit(number:number, decimalPlacement:number = 2, decimalSeparator:string = &#x27;.&#x27;, thousandsSeparator:string = &#x27;,&#x27;):number
+        /**
+         * YUIDoc_comment
+         *
+         * @method formatUnit
+         * @param value {number}
+         * @param [decimalPlacement=2] {number}
+         * @param [decimalSeparator=&#x27;.&#x27;] {string}
+         * @param [thousandsSeparator=&#x27;,&#x27;] {string}
+         * @param [currencySymbol=&#x27;&#x27;] {string}
+         * @param [currencySymbolPlacement=0] {number}
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.formatUnit(1234567.89, 2, &quot;*&quot;, &quot;,&quot;, &quot;$&quot;, 0);
+         *     // &#x27;$1,234,567.89&#x27;
+         *
+         *     NumberUtil.formatUnit(12341234.56, 2, &quot;*&quot;, &quot;,&quot;, &quot; €&quot;, 1);
+         *     // &#x27;12,341,234.56 €&#x27;
+         *
+         *     NumberUtil.formatUnit(-1900.24, 1);
+         *     // &#x27;-1,900.2&#x27;
+         */
         NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
             if (typeof decimalPlacement === &quot;undefined&quot;) { decimalPlacement = 2; }
             if (typeof decimalSeparator === &quot;undefined&quot;) { decimalSeparator = &#x27;.&#x27;; }

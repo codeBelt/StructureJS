@@ -105,6 +105,24 @@
             return String(num);
         };
 
+        /**
+         * YUIDoc_comment
+         *
+         * @method unformatUnit
+         * @param value {string}
+         * @returns {number}
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.unformatUnit('$1,234,567.89');
+         *     // 1234567.89
+         *
+         *     NumberUtil.unformatUnit('1.234.567,89 €');
+         *     // 1234567.89
+         *
+         *     NumberUtil.unformatUnit('$-123,456,789.99');
+         *     // -123456789.99
+         */
         NumberUtil.unformatUnit = function (value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
             var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, "");
@@ -126,7 +144,29 @@
             return parseFloat(withoutSpecialCharacters);
         };
 
-        //        public static formatUnit(number:number, decimalPlacement:number = 2, decimalSeparator:string = '.', thousandsSeparator:string = ','):number
+        /**
+         * YUIDoc_comment
+         *
+         * @method formatUnit
+         * @param value {number}
+         * @param [decimalPlacement=2] {number}
+         * @param [decimalSeparator='.'] {string}
+         * @param [thousandsSeparator=','] {string}
+         * @param [currencySymbol=''] {string}
+         * @param [currencySymbolPlacement=0] {number}
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.formatUnit(1234567.89, 2, "*", ",", "$", 0);
+         *     // '$1,234,567.89'
+         *
+         *     NumberUtil.formatUnit(12341234.56, 2, "*", ",", " €", 1);
+         *     // '12,341,234.56 €'
+         *
+         *     NumberUtil.formatUnit(-1900.24, 1);
+         *     // '-1,900.2'
+         */
         NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
             if (typeof decimalPlacement === "undefined") { decimalPlacement = 2; }
             if (typeof decimalSeparator === "undefined") { decimalSeparator = '.'; }

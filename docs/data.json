@@ -5876,6 +5876,95 @@
             "submodule": "util"
         },
         {
+            "file": "src/util/NumberUtil.js",
+            "line": 108,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "unformatUnit",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n    NumberUtil.unformatUnit('$1,234,567.89');\n    // 1234567.89\n\n    NumberUtil.unformatUnit('1.234.567,89 €');\n    // 1234567.89\n\n    NumberUtil.unformatUnit('$-123,456,789.99');\n    // -123456789.99"
+            ],
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 147,
+            "description": "YUIDoc_comment",
+            "itemtype": "method",
+            "name": "formatUnit",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "decimalPlacement",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "2"
+                },
+                {
+                    "name": "decimalSeparator",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'.'"
+                },
+                {
+                    "name": "thousandsSeparator",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "','"
+                },
+                {
+                    "name": "currencySymbol",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "''"
+                },
+                {
+                    "name": "currencySymbolPlacement",
+                    "description": "",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n    NumberUtil.formatUnit(1234567.89, 2, \"*\", \",\", \"$\", 0);\n    // '$1,234,567.89'\n\n    NumberUtil.formatUnit(12341234.56, 2, \"*\", \",\", \" €\", 1);\n    // '12,341,234.56 €'\n\n    NumberUtil.formatUnit(-1900.24, 1);\n    // '-1,900.2'"
+            ],
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
             "file": "src/util/StringUtil.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -7086,6 +7175,14 @@
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/util/NumberUtil.js:94"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:108"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/NumberUtil.js:147"
         },
         {
             "message": "replacing incorrect tag: returns with return",
