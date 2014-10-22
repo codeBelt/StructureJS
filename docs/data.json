@@ -1153,7 +1153,6 @@
             "line": 17,
             "description": "The BrowserUtil...",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "BulkLoader": {
@@ -1203,7 +1202,6 @@
             "line": 17,
             "description": "The DateUtil...",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "MathUtil": {
@@ -1220,7 +1218,6 @@
             "line": 17,
             "description": "The MathUtil...",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
         },
@@ -1238,7 +1235,6 @@
             "line": 17,
             "description": "A MerchantUtility class that has several static methods to assist in development.",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "NumberUtil": {
@@ -1253,9 +1249,8 @@
             "namespace": "",
             "file": "src/util/NumberUtil.js",
             "line": 17,
-            "description": "The NumberUtil...",
+            "description": "The NumberUtil class has many helper methods to work with number data.",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "StringUtil": {
@@ -1272,7 +1267,6 @@
             "line": 17,
             "description": "The StringUtil...",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
         },
@@ -1325,7 +1319,6 @@
             "line": 17,
             "description": "A Utility class that has several static methods to assist in development.",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "ValidationUtil": {
@@ -1342,7 +1335,6 @@
             "line": 17,
             "description": "A ValidationUtility class that has several static methods to assist in development.",
             "submodule": "util",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "BaseObject": {
@@ -4810,7 +4802,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 29,
+            "line": 28,
             "description": "Returns the name of the browser.",
             "itemtype": "method",
             "name": "browserName",
@@ -4827,7 +4819,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 41,
+            "line": 40,
             "description": "Returns the version of the browser.",
             "itemtype": "method",
             "name": "browserVersion",
@@ -4851,7 +4843,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 61,
+            "line": 60,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getBrowser",
@@ -4868,7 +4860,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 79,
+            "line": 78,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "isAndroid",
@@ -4885,7 +4877,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 91,
+            "line": 90,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "isBlackBerry",
@@ -4902,7 +4894,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 103,
+            "line": 102,
             "description": "isIOS",
             "itemtype": "method",
             "name": "isIOS",
@@ -4919,7 +4911,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 115,
+            "line": 114,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "isOperaMini",
@@ -4936,7 +4928,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 127,
+            "line": 126,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "isIEMobile",
@@ -4953,7 +4945,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 139,
+            "line": 138,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "isMobile",
@@ -4970,7 +4962,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 151,
+            "line": 150,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hasBrowserHistory",
@@ -4987,7 +4979,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 163,
+            "line": 162,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hasLocalStorage",
@@ -5004,7 +4996,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 179,
+            "line": 178,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hasSessionStorage",
@@ -5075,7 +5067,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 29,
+            "line": 28,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getDaySuffix",
@@ -5099,7 +5091,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 43,
+            "line": 42,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "LONG_DAY_LABELS",
@@ -5114,7 +5106,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 53,
+            "line": 52,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_DAY_LABELS",
@@ -5129,7 +5121,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 63,
+            "line": 62,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "LONG_MONTH_LABELS",
@@ -5144,7 +5136,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 73,
+            "line": 72,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_MONTH_LABELS",
@@ -5180,7 +5172,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 30,
+            "line": 29,
             "description": "Returns a number constrained between min and max.",
             "itemtype": "method",
             "name": "constrain",
@@ -5211,7 +5203,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 51,
+            "line": 50,
             "description": "Returns a random number between min and max.",
             "itemtype": "method",
             "name": "randomRange",
@@ -5244,7 +5236,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 70,
+            "line": 69,
             "description": "Returns the percentage of a number in a given range.\nExample: num = 15 range 10 to 20 // outputs 0.5",
             "itemtype": "method",
             "name": "rangeToPercent",
@@ -5285,7 +5277,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 94,
+            "line": 93,
             "description": "Returns the number that corresponds to the percentage in a given range.\nExample: percent = 0.5 range 10 to 20 // outputs 15",
             "itemtype": "method",
             "name": "percentToRange",
@@ -5316,7 +5308,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 108,
+            "line": 107,
             "description": "Re-maps a number from one range to another. The output is the same as inputing the result of rangeToPercent() numbero percentToRange().\nExample: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5",
             "itemtype": "method",
             "name": "map",
@@ -5357,7 +5349,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 139,
+            "line": 138,
             "description": "Converts radians to degrees.",
             "itemtype": "method",
             "name": "radiansToDegrees",
@@ -5378,7 +5370,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 150,
+            "line": 149,
             "description": "Converts degrees to radians.",
             "itemtype": "method",
             "name": "degreesToRadians",
@@ -5399,7 +5391,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 161,
+            "line": 160,
             "description": "Returns 1 if the value is >= 0. Returns -1 if the value is < 0.",
             "itemtype": "method",
             "name": "sign",
@@ -5420,7 +5412,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 175,
+            "line": 174,
             "description": "Check if number is positive (zero is positive).",
             "itemtype": "method",
             "name": "isPositive",
@@ -5441,7 +5433,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 186,
+            "line": 185,
             "description": "Check if number is negative.",
             "itemtype": "method",
             "name": "isNegative",
@@ -5462,7 +5454,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 197,
+            "line": 196,
             "description": "Check if number is odd (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isOdd",
@@ -5483,7 +5475,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 210,
+            "line": 209,
             "description": "Check if number is even (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isEven",
@@ -5504,7 +5496,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 223,
+            "line": 222,
             "description": "Check if number is Prime (divisible only by itself and one).",
             "itemtype": "method",
             "name": "isPrime",
@@ -5525,7 +5517,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 244,
+            "line": 243,
             "description": "Calculate the factorial of the integer.",
             "itemtype": "method",
             "name": "factorial",
@@ -5546,7 +5538,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 264,
+            "line": 263,
             "description": "Return an array of divisors of the integer.",
             "itemtype": "method",
             "name": "getDivisors",
@@ -5567,7 +5559,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 284,
+            "line": 283,
             "description": "Convert Fahrenheit to Celsius.",
             "itemtype": "method",
             "name": "toCelsius",
@@ -5593,7 +5585,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 310,
+            "line": 309,
             "description": "Convert Celsius to Fahrenheit.",
             "itemtype": "method",
             "name": "toFahrenheit",
@@ -5626,7 +5618,7 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 29,
+            "line": 28,
             "description": "Determines if credit card is valid using the Luhn formula.",
             "example": [
                 "\n       MerchantUtil.isCreditCard(\"4556106734384949\");"
@@ -5653,7 +5645,7 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 62,
+            "line": 61,
             "description": "Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.",
             "example": [
                 "\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\"); // ************4949\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\", 5, \"x\");  // xxxxxxxxxxx84949"
@@ -5694,7 +5686,7 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 88,
+            "line": 87,
             "description": "Returns a credit card provider name from the credit card number passed in.",
             "itemtype": "method",
             "name": "getCreditCardProvider",
@@ -5715,7 +5707,7 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 115,
+            "line": 114,
             "description": "Validate a credit card's expiration date.",
             "example": [
                 "\nvar isValidDate:boolean = MerchantUtil.isValidExDate( 11, 2010 );"
@@ -5751,8 +5743,8 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 29,
-            "description": "YUIDoc_comment",
+            "line": 28,
+            "description": "Converts bytes into megabytes.",
             "itemtype": "method",
             "name": "bytesToMegabytes",
             "params": [
@@ -5766,14 +5758,17 @@
                 "description": "",
                 "type": "Number"
             },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
             "class": "NumberUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 40,
-            "description": "YUIDoc_comment",
+            "line": 41,
+            "description": "Converts centimeters into inches.",
             "itemtype": "method",
             "name": "centimeterToInch",
             "params": [
@@ -5783,18 +5778,24 @@
                     "type": "Number"
                 }
             ],
+            "access": "public",
+            "tagname": "",
+            "static": 1,
             "return": {
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n    NumberUtil.centimeterToInch(1);\n    // 0.3937"
+            ],
             "class": "NumberUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 51,
-            "description": "YUIDoc_comment",
+            "line": 57,
+            "description": "Converts inches into centimeters.",
             "itemtype": "method",
             "name": "inchToCentimeter",
             "params": [
@@ -5804,18 +5805,24 @@
                     "type": "Number"
                 }
             ],
+            "access": "public",
+            "tagname": "",
+            "static": 1,
             "return": {
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n    NumberUtil.inchToCentimeter(1);\n    // 2.54"
+            ],
             "class": "NumberUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 62,
-            "description": "YUIDoc_comment",
+            "line": 73,
+            "description": "Converts feet into meters.",
             "itemtype": "method",
             "name": "feetToMeter",
             "params": [
@@ -5825,6 +5832,9 @@
                     "type": "Number"
                 }
             ],
+            "access": "public",
+            "tagname": "",
+            "static": 1,
             "return": {
                 "description": "",
                 "type": "Number"
@@ -5835,8 +5845,8 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 73,
-            "description": "YUIDoc_comment",
+            "line": 86,
+            "description": "Converts seconds into hour, minutes, seconds.",
             "itemtype": "method",
             "name": "convertToHHMMSS",
             "params": [
@@ -5850,14 +5860,20 @@
                 "description": "",
                 "type": "String"
             },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n    NumberUtil.convertToHHMMSS(33333);\n    // '09:15:33'"
+            ],
             "class": "NumberUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 94,
-            "description": "YUIDoc_comment",
+            "line": 112,
+            "description": "Formats a number from 0-9 to display with 2 digits.",
             "itemtype": "method",
             "name": "doubleDigitFormat",
             "params": [
@@ -5871,25 +5887,31 @@
                 "description": "",
                 "type": "String"
             },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n    NumberUtil.doubleDigitFormat(0);\n    // '00'\n\n    NumberUtil.doubleDigitFormat(5);\n    // '05'\n\n    NumberUtil.doubleDigitFormat(9);\n    // '09'"
+            ],
             "class": "NumberUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 108,
-            "description": "YUIDoc_comment",
+            "line": 137,
+            "description": "Formats a currency string as a number.",
             "itemtype": "method",
             "name": "unformatUnit",
             "params": [
                 {
                     "name": "value",
-                    "description": "",
+                    "description": "The string currency that you want converted into a number.",
                     "type": "String"
                 }
             ],
             "return": {
-                "description": "",
+                "description": "Returns the number value of the currency string.",
                 "type": "Number"
             },
             "access": "public",
@@ -5904,54 +5926,54 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 147,
-            "description": "YUIDoc_comment",
+            "line": 176,
+            "description": "Formats a number as a currency string.",
             "itemtype": "method",
             "name": "formatUnit",
             "params": [
                 {
                     "name": "value",
-                    "description": "",
+                    "description": "The number value you want formatted.",
                     "type": "Number"
                 },
                 {
                     "name": "decimalPlacement",
-                    "description": "",
+                    "description": "How many decimal placements you want to show.",
                     "type": "Number",
                     "optional": true,
                     "optdefault": "2"
                 },
                 {
                     "name": "decimalSeparator",
-                    "description": "",
+                    "description": "The character you want to use as the thousands separator.",
                     "type": "String",
                     "optional": true,
                     "optdefault": "'.'"
                 },
                 {
                     "name": "thousandsSeparator",
-                    "description": "",
+                    "description": "The character you want to use as the thousands separator.",
                     "type": "String",
                     "optional": true,
                     "optdefault": "','"
                 },
                 {
                     "name": "currencySymbol",
-                    "description": "",
+                    "description": "The symbol you would like to add.",
                     "type": "String",
                     "optional": true,
                     "optdefault": "''"
                 },
                 {
                     "name": "currencySymbolPlacement",
-                    "description": "",
+                    "description": "The placement of the symbol. Use 0 to place in front or 1 to place at the end.",
                     "type": "Number",
                     "optional": true,
                     "optdefault": "0"
                 }
             ],
             "return": {
-                "description": "",
+                "description": "Returns the formatted currency.",
                 "type": "String"
             },
             "access": "public",
@@ -5973,7 +5995,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 31,
+            "line": 30,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "getExtension",
@@ -5997,7 +6019,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 44,
+            "line": 43,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToCamelCase",
@@ -6021,7 +6043,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 61,
+            "line": 60,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "hyphenToPascalCase",
@@ -6045,7 +6067,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 81,
+            "line": 80,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "camelCaseToHyphen",
@@ -6069,7 +6091,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 96,
+            "line": 95,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "createUUID",
@@ -6086,7 +6108,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 114,
+            "line": 113,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "queryStringToObject",
@@ -6110,7 +6132,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 146,
+            "line": 145,
             "description": "Remove all whitespace from the string passed in.",
             "example": [
                 "\n        var str = '   a b    c d e f g ';\n        StringUtil.removeAllWhitespace(str);\n        // 'abcdefg'"
@@ -6137,7 +6159,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 162,
+            "line": 161,
             "description": "Remove leading and trailing whitespace.",
             "example": [
                 "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // 'a b    c d e f g'"
@@ -6164,7 +6186,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 179,
+            "line": 178,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -6192,7 +6214,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 196,
+            "line": 195,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
             "example": [
                 "\n     StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');\n     // 'Robert is cool. Very cool and smart!'"
@@ -6434,7 +6456,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 30,
+            "line": 29,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
             "example": [
                 "\n        var property:number = Util.uniqueId();\n        // 1\n\n        var property:string = Util.uniqueId('yomama_');\n        // yomama_1"
@@ -6462,7 +6484,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 55,
+            "line": 54,
             "itemtype": "method",
             "name": "deletePropertyFromObject",
             "params": [
@@ -6490,7 +6512,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 92,
+            "line": 91,
             "itemtype": "method",
             "name": "renamePropertyOnObject",
             "params": [
@@ -6523,7 +6545,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 111,
+            "line": 110,
             "itemtype": "method",
             "name": "clone",
             "params": [
@@ -6546,7 +6568,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 157,
+            "line": 156,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "toBoolean",
@@ -6570,7 +6592,7 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 172,
+            "line": 171,
             "description": "Returns the name of the class object passed in.",
             "itemtype": "method",
             "name": "getClassName",
@@ -6601,7 +6623,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 30,
+            "line": 29,
             "description": "Determines if the String passed has a length.",
             "itemtype": "method",
             "name": "isEmpty",
@@ -6625,7 +6647,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 43,
+            "line": 42,
             "description": "Determines if the two values passed in are the same.",
             "itemtype": "method",
             "name": "isMatch",
@@ -6654,7 +6676,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 57,
+            "line": 56,
             "description": "Determines if the String passed in is a valid email address.",
             "itemtype": "method",
             "name": "isValidEmailAddress",
@@ -6678,7 +6700,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 71,
+            "line": 70,
             "description": "Determines if the String passed in is a phone number.",
             "itemtype": "method",
             "name": "isValidPhoneNumber",
@@ -6702,7 +6724,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 85,
+            "line": 84,
             "description": "Determines if the String passed in is a zip code.",
             "itemtype": "method",
             "name": "isZipCode",
@@ -6726,7 +6748,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 99,
+            "line": 98,
             "description": "Determines if the String passed in is a postal code.",
             "itemtype": "method",
             "name": "isPostalCode",
@@ -6750,7 +6772,7 @@
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 113,
+            "line": 112,
             "description": "Determines if the String passed in is a Social Security Number.",
             "itemtype": "method",
             "name": "isSocialSecurityNumber",
@@ -7098,75 +7120,71 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:79"
+            "line": " src/util/BrowserUtil.js:78"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:91"
+            "line": " src/util/BrowserUtil.js:90"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:103"
+            "line": " src/util/BrowserUtil.js:102"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:115"
+            "line": " src/util/BrowserUtil.js:114"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:127"
+            "line": " src/util/BrowserUtil.js:126"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:139"
+            "line": " src/util/BrowserUtil.js:138"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:151"
+            "line": " src/util/BrowserUtil.js:150"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:163"
+            "line": " src/util/BrowserUtil.js:162"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:179"
+            "line": " src/util/BrowserUtil.js:178"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/DateUtil.js:29"
+            "line": " src/util/DateUtil.js:28"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:29"
+            "line": " src/util/MerchantUtil.js:28"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:62"
+            "line": " src/util/MerchantUtil.js:61"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:88"
+            "line": " src/util/MerchantUtil.js:87"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:115"
+            "line": " src/util/MerchantUtil.js:114"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:29"
+            "line": " src/util/NumberUtil.js:28"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:40"
+            "line": " src/util/NumberUtil.js:41"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:51"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:62"
+            "line": " src/util/NumberUtil.js:57"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -7174,55 +7192,59 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:94"
+            "line": " src/util/NumberUtil.js:86"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:108"
+            "line": " src/util/NumberUtil.js:112"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:147"
+            "line": " src/util/NumberUtil.js:137"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:31"
+            "line": " src/util/NumberUtil.js:176"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:44"
+            "line": " src/util/StringUtil.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:61"
+            "line": " src/util/StringUtil.js:43"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:81"
+            "line": " src/util/StringUtil.js:60"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:96"
+            "line": " src/util/StringUtil.js:80"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:114"
+            "line": " src/util/StringUtil.js:95"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:146"
+            "line": " src/util/StringUtil.js:113"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:162"
+            "line": " src/util/StringUtil.js:145"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:179"
+            "line": " src/util/StringUtil.js:161"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:196"
+            "line": " src/util/StringUtil.js:178"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/StringUtil.js:195"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -7242,55 +7264,55 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:30"
+            "line": " src/util/Util.js:29"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:55"
+            "line": " src/util/Util.js:54"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:92"
+            "line": " src/util/Util.js:91"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:111"
+            "line": " src/util/Util.js:110"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:157"
+            "line": " src/util/Util.js:156"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:172"
+            "line": " src/util/Util.js:171"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:30"
+            "line": " src/util/ValidationUtil.js:29"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:43"
+            "line": " src/util/ValidationUtil.js:42"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:57"
+            "line": " src/util/ValidationUtil.js:56"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:71"
+            "line": " src/util/ValidationUtil.js:70"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:85"
+            "line": " src/util/ValidationUtil.js:84"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:99"
+            "line": " src/util/ValidationUtil.js:98"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:113"
+            "line": " src/util/ValidationUtil.js:112"
         },
         {
             "message": "replacing incorrect tag: returns with return",

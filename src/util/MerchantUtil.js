@@ -20,7 +20,6 @@
     * @class MerchantUtil
     * @module StructureJS
     * @submodule util
-    * @constructor
     * @author Robert S. (www.codeBelt.com)
     */
     var MerchantUtil = (function () {
