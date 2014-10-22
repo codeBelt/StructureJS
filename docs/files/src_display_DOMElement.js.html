@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.5.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -155,9 +155,9 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../display/DisplayObjectContainer&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/TemplateFactory&#x27;, &#x27;../util/ComponentFactory&#x27;, &#x27;../plugin/jquery.eventListener&#x27;], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;../display/DisplayObjectContainer&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/TemplateFactory&#x27;, &#x27;../util/ComponentFactory&#x27;, require(&#x27;jquery&#x27;), &#x27;../pplugin/jquery.eventListener&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../display/DisplayObjectContainer&#x27;), require(&#x27;../event/BaseEvent&#x27;), require(&#x27;../util/TemplateFactory&#x27;), require(&#x27;../util/ComponentFactory&#x27;), require(&#x27;../plugin/jquery.eventListener&#x27;));
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../display/DisplayObjectContainer&#x27;), require(&#x27;../event/BaseEvent&#x27;), require(&#x27;../util/TemplateFactory&#x27;), require(&#x27;../util/ComponentFactory&#x27;), require(&#x27;jquery&#x27;), require(&#x27;../plugin/jquery.eventListener&#x27;));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
