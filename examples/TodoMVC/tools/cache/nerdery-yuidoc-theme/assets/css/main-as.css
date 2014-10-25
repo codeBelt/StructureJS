@@ -1,0 +1,25 @@
+/* ---------------------------------------------------------------------
+ Index
+------------------------------------------------------------------------ */
+.index h3{
+    background-color: #627c9d;
+    color: #ffffff;
+    padding: 3px 3px 3px 15px;
+}
+
+.index-section {
+    margin: 10px 10px 0px 0px;
+}
+
+.index-list {
+    border: 1px solid  #aaaaaa;
+}
+
+.index-list  li {
+    padding: 3px 3px 3px 15px;
+    border-bottom: 1px solid  #aaaaaa;
+}
+
+.index-list li:nth-child(2n) {
+    background-color: #f2f2f2;
+}

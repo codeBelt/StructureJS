@@ -1,0 +1,24 @@
+{
+  "name": "nerdery-external-links",
+  "version": "2.0.0",
+  "description": "Launches links with a rel=\"external\" in a new window.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://git.nerderylabs.com/BRAVO.JS.nerdery-external-links"
+  },
+  "main": "nerdery-external-links.js",
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-browserify": "1.2.11",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-jshint": "0.7.2",
+    "grunt-contrib-watch": "0.5.3",
+    "grunt-simple-mocha": "0.4.0",
+    "load-grunt-tasks": "0.2.0",
+    "time-grunt": "0.2.1"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}

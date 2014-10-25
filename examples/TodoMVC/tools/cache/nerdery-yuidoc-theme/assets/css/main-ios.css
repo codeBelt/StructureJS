@@ -1,0 +1,33 @@
+/* ---------------------------------------------------------------------
+ Index
+------------------------------------------------------------------------ */
+.index h3{
+    padding: 3px 3px 6px 0px;
+}
+
+.index-section {
+    margin: 15px 10px 0px 0px;
+}
+
+.index-list  {
+    font-family: Menlo, Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+    font-size: 11px;
+    width: 100%;
+    max-width: 1200px;
+    -moz-column-count: 3;
+    -ms-column-count: 3;
+    -o-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+    /*
+    -webkit-column-width: 300px;
+    -o-column-width: 300px;
+    column-width: 300px;
+    -ms-column-width: 300px;
+    -moz-column-width: 300px;
+    */
+}
+
+.index-list li{
+    margin-top: 5px;
+} 

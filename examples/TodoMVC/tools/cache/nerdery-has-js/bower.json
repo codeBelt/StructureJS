@@ -1,0 +1,14 @@
+{
+  "name": "nerdery-has-js",
+  "version": "2.0.0",
+  "private": true,
+  "main": "nerdery-has-js.js",
+  "ignore": [
+    ".*",
+    "*.json",
+    "Gruntfile.js",
+    "lib",
+    "node_modules",
+    "test"
+  ]
+}

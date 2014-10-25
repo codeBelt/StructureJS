@@ -1,0 +1,14 @@
+{
+  "name": "nerdery-request-animation-frame",
+  "version": "2.0.0",
+  "private": true,
+  "main": "nerdery-request-animation-frame.js",
+  "ignore": [
+    ".*",
+    "*.json",
+    "Gruntfile.js",
+    "lib",
+    "node_modules",
+    "test"
+  ]
+}
