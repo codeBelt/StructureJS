@@ -9,12 +9,11 @@ require.config({
         //main libraries
         jquery: '../vendor/jquery/jquery-1.9.1',
         lodash: '../vendor/lodash/lodash.compat',
-        handlebars: '../vendor/handlebars/handlebars-v1.3.0',
-        structurejs: '../../../../src/',
+        handlebars: '../vendor/handlebars/handlebars',
+        structurejs: '../../../../src',
 
         //shortcut paths
         templates: '../templates',
-        data: '../data',
 
         //require plugins
         text: '../vendor/require/text',

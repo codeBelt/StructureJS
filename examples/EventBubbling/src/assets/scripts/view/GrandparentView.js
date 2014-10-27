@@ -26,7 +26,7 @@ var GrandparentView = (function () {
      * @overridden DOMElement.createChildren
      */
     GrandparentView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
+        _super.prototype.createChildren.call(this, 'templates/ContainerTemplate', { title: this.getQualifiedClassName() });
 
         this._panelContainer = this.getChild('.js-panelContent');
 

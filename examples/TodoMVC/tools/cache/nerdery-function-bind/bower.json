@@ -1,0 +1,14 @@
+{
+  "name": "nerdery-function-bind",
+  "version": "2.0.0",
+  "private": true,
+  "main": "nerdery-function-bind.js",
+  "ignore": [
+    ".*",
+    "*.json",
+    "Gruntfile.js",
+    "lib",
+    "node_modules",
+    "test"
+  ]
+}

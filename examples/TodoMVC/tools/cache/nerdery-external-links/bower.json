@@ -1,0 +1,14 @@
+{
+  "name": "nerdery-external-links",
+  "version": "2.0.0",
+  "private": true,
+  "main": "nerdery-external-links.js",
+  "ignore": [
+    ".*",
+    "*.json",
+    "Gruntfile.js",
+    "lib",
+    "node_modules",
+    "test"
+  ]
+}

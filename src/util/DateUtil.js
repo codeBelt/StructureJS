@@ -20,7 +20,6 @@
     * @class DateUtil
     * @module StructureJS
     * @submodule util
-    * @constructor
     * @author Robert S. (www.codeBelt.com)
     */
     var DateUtil = (function () {

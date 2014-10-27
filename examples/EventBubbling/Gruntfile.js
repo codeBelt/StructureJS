@@ -169,16 +169,16 @@ module.exports = function(grunt) {
                     // Registers all files that start with '_' as a partial.
                     partialRegex: /^_/,
                     // Shortens the file path for the templates.
-                    processName: function(filename) {
-                        return filename.slice(filename.indexOf("template"), filename.length);
+                    processName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
                     },
                     // Shortens the file path for the partials.
-                    processPartialName: function(filePath) {
-                        return filePath.slice(filePath.indexOf("template"), filePath.length);
+                    processPartialName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
                     }
                 },
                 files: {
-                    '<%= DEVELOPMENT_PATH %>assets/scripts/compiled/templates.tmpl.js': ['<%= DEVELOPMENT_PATH %>' + 'assets/templates/**/*.hbs']
+                    '<%= DEVELOPMENT_PATH %>assets/scripts/compiled/templates.tmpl.js': ['<%= DEVELOPMENT_PATH %>assets/templates/**/*.hbs']
                 }
             }
         },

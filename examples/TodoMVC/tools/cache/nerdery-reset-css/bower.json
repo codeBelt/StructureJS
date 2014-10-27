@@ -1,0 +1,11 @@
+{
+  "name": "nerdery-reset-css",
+  "version": "1.0.0",
+  "private": true,
+  "main": "nerdery-reset.css",
+  "ignore": [
+    ".*",
+    "*.json",
+    "node_modules"
+  ]
+}

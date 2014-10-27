@@ -122,6 +122,15 @@ module.exports = function(grunt) {
             }
         },
 
+        concat: {
+            options: {
+            },
+            templates: {
+                src: ['<%= env.DIR_SRC %>/assets/scripts/compiled/templates.tmpl.js', '<%= env.DIR_DEST %>/assets/scripts/main.js'],
+                dest: '<%= env.DIR_DEST %>/assets/scripts/main.js'
+            }
+        },
+
         // Searches for bower comment blocks (`<!-- bower:* -->`) and injects
         // script and style tag references to bower modules into markup.
         bowerInstall: {
@@ -227,6 +236,31 @@ module.exports = function(grunt) {
             }
         },
 
+        /**
+         * Compiles the Handlebars templates into Javascript.
+         * http://handlebarsjs.com/
+         */
+        handlebars: {
+            compile: {
+                options: {
+                    namespace: 'JST',
+                    // Registers all files that start with '_' as a partial.
+                    partialRegex: /^_/,
+                    // Shortens the file path for the templates.
+                    processName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
+                    },
+                    // Shortens the file path for the partials.
+                    processPartialName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
+                    }
+                },
+                files: {
+                    '<%= env.DIR_SRC %>/assets/scripts/compiled/templates.tmpl.js': ['<%= env.DIR_SRC %>/assets/templates/**/*.hbs']
+                }
+            }
+        },
+
         // -- Task Helpers -----------------------------------------------------
 
         // Instead of running a server preprocessor, files and directories may
@@ -302,5 +336,5 @@ module.exports = function(grunt) {
     } else {
         grunt.registerTask('styles', ['useminPrepare', 'concat', 'cssmin', 'usemin']);
     }
-    grunt.registerTask('scripts', ['browserify']);
+    grunt.registerTask('scripts', ['handlebars, browserify']);
 };

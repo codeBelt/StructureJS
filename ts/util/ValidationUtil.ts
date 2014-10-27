@@ -5,7 +5,6 @@
  * @class ValidationUtil
  * @module StructureJS
  * @submodule util
- * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
 module StructureTS

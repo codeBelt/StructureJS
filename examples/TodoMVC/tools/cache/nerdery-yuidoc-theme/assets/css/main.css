@@ -1,0 +1,424 @@
+/* ---------------------------------------------------------------------
+Original Author: 
+Contributors: 
+
+Target Browsers: All
+Media Type: Screen, Projection
+Width: All Sizes
+------------------------------------------------------------------------ */
+
+/* ---------------------------------------------------------------------
+RESET CSS (thanks Eric Meyer)
+------------------------------------------------------------------------ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+:focus {
+    outline: 0;
+}
+
+/* Always show a vertical scrollbar, even when there is no scrolling */
+html {
+    overflow-y: scroll;
+}
+
+/* Don't let iOS and WinMobile mobile-optimize text for you */
+/* Turn this rule on for mobile sites or sites using mediaqueries */
+/*
+html {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+*/
+
+/* ---------------------------------------------------------------------
+ HTML5 Block / Inline Block declarations
+------------------------------------------------------------------------ */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+    display: block;
+}
+
+audio, canvas, video {
+    display: inline-block;
+}
+
+/* ---------------------------------------------------------------------
+ Form Reset Styles
+------------------------------------------------------------------------ */
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+}
+
+input[type=search] {
+    -webkit-appearance: none;
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: vertical;
+}
+
+::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/* ---------------------------------------------------------------------
+ Base styles
+------------------------------------------------------------------------ */
+
+body {
+    font: 13px Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    color: #111111;
+}
+
+a:visited {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+a:link {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #0000FF;
+}
+
+h1 {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 25px;
+    padding: 5px 5px 5px 5px;
+    background-color: #f2f2f2;
+}
+
+h3 {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+h4 {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 9px;
+}
+
+p {
+   padding-top: 7px;
+}
+
+li {
+   padding-top: 5px;
+}
+
+/*
+code, kbd, pre, samp {
+    font-family: Menlo, Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+    font-size: 95%;
+}
+*/
+
+pre.code {
+    background: #FCFBFA;
+    border: 1px solid #EFEEED;
+    border-left-width: 5px;
+    overflow-x: auto;
+    padding: 10px;
+    margin-top: 10px;
+    font-family: Menlo, Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+    font-size: 95%;
+}
+
+/* ---------------------------------------------------------------------
+ Table of contents
+------------------------------------------------------------------------ */
+
+.tabview .tabs {
+    display: none;
+}
+
+.apis.classes:before {
+    content:'Classes';
+    font-weight: bold;
+}
+
+.apis.modules:before {
+    content:'Modules';
+    font-weight: bold;
+}
+
+.yui3-u-1-4 {
+    position: fixed;
+    width: 174px;
+    height: 100%;
+    padding: 10px 5px 5px 10px;
+    border-right: 2px solid  #aaaaaa;
+    overflow: auto;
+}
+
+/* ---------------------------------------------------------------------
+ Layout
+------------------------------------------------------------------------ */
+
+
+.yui3-u-3-4 {
+    margin-left: 190px;
+}
+
+.content {
+    margin-right: 25px;
+}
+
+.content > div {
+    margin-left: 25px;
+}
+
+.content > h1 {
+    position: fixed;
+    padding: 15px 10px 5px 25px;
+    width: 100%;
+    border-bottom: 2px solid #aaaaaa;
+    border-left: 1px solid #aaaaaa;
+    background-color: #aaaaaa;
+}
+
+
+.box.meta {
+    padding-top: 70px;
+}
+
+.intro {
+    margin-top: 20px;
+    background: #f0f1f8;
+    border: 1px solid #d4d8eb;
+    border-radius: 3px;
+    padding: 0px 15px 10px 15px;
+}
+
+.intro ol {
+    list-style-type: decimal;
+    padding-left: 40px;
+}
+
+.intro ul{
+    list-style-type: circle;
+    padding-left: 40px;
+}
+
+
+/* ---------------------------------------------------------------------
+ Method/Property blocks
+------------------------------------------------------------------------ */
+ul.commas li:after {
+    content: ',';
+}
+
+ul.commas li:last-child:after {
+    content: '';
+}
+
+.item {
+    margin-left: 15px;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 15px 0px 15px 0px;
+}
+
+.item:last-child {
+    border-bottom: 0px solid #aaaaaa;
+}
+
+.item h3 {
+    display: inline;
+}
+
+.item .args {
+    display: inline;
+}
+
+.inline {
+    display: inline;
+}
+
+.inline > * {
+    display: inline;
+}
+
+
+.item .meta {
+    margin-top: 6px;
+}
+
+.item .description {
+    margin-top: 10px;
+}
+
+.returns-description,
+.params-list {
+    margin-left: 20px;
+}
+
+.param  * {
+    display: inline;
+}
+
+.param > .param-name {
+    font-weight: bold;
+}
+
+.item .meta{
+    color: #555;
+    font-size: 11px;
+}
+
+.type {
+    color: #555;
+}
+
+/* ---------------------------------------------------------------------
+ Flags
+------------------------------------------------------------------------ */
+
+.flag {
+    background: #bababa;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 11px;
+    margin: 0 0.5em;
+    padding: 2px 4px 1px;
+}
+
+.flag.chainable { background: #46ca3b; }
+.flag.protected { background: #9b86fc; }
+.flag.private { background: #fd6b1b; }
+.flag.async { background: #356de4; }
+.flag.required { background: #e60923; }
+
+.flag.deprecated { 
+    color: #333; 
+    border: 1px solid #fd7775;
+    background: #fdac9f;
+}
+
+.index-item.deprecated a {
+    color: #d95743;
+    text-decoration: line-through;
+}
+
+.item.deprecated,
+.item.deprecated  a  {
+    color: #d95743;
+}
+
+.item.deprecated  .name {
+    text-decoration: line-through;
+}
+
+/* ---------------------------------------------------------------------
+ Hidden elements
+------------------------------------------------------------------------ */
+.header {
+    display: none;
+}
+
+
+#api-tabview-filter {
+    display: none;
+}
+
+#api-options {
+    display: none;
+}
+
+#api-list > .off-left {
+    display: none;
+}
+
+a[href="#api-classes"] {
+    font-weight: bold;
+}
+
+a[href="#api-modules"] {
+    font-weight: bold;
+}
+
+/*
+.index h2 {
+    display: none;
+}
+*/
+
+/* ---------------------------------------------------------------------
+ Index
+------------------------------------------------------------------------ */
+.api-class-tabs {
+    position: fixed;
+    top: 25px;
+    right: 50px;
+    z-index: 10;
+}
+
+.api-class-tab {
+    display: inline;
+    font-size: 13px;
+    margin-left: 10px;
+}
