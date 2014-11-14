@@ -1,4 +1,3 @@
-///<reference path='../display/DOMElement.ts'/>
 ///<reference path='../util/StringUtil.ts'/>
 
 /**
@@ -24,12 +23,15 @@ module StructureTS
         {
         }
 
-        public static createTemplate(templatePath:any, data:Object = null):string
-        {
-            return TemplateFactory.create(templatePath, data);
-        }
-
-        private static create(templatePath:any, data:Object = null):string
+        /**
+         * YUIDoc_comment
+         *
+         * @method create
+         * @param templatePath {any}
+         * @param data {any}
+         * @returns {*}
+         */
+        public static create(templatePath:any, data:any = null):string
         {
             //Checks the first character to see if it is a '.' or '#'.
             var regex = /^([.#])(.+)/;

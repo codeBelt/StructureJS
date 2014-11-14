@@ -275,7 +275,7 @@
             params = this._params || params;
 
             if (this.$element == null) {
-                var html = TemplateFactory.createTemplate(type, params);
+                var html = TemplateFactory.create(type, params);
                 if (html) {
                     this.$element = jQuery(html);
                 } else {
@@ -546,21 +546,6 @@
 
             this.$element.empty();
 
-            return this;
-        };
-
-        /**
-         * Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)
-         * to 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though
-         * they are invisible.
-         *
-         * @method alpha
-         * @param number
-         * @returns {DOMElement} Returns an instance of itself.
-         * @chainable
-         */
-        DOMElement.prototype.alpha = function (number) {
-            this.$element.css('opacity', number);
             return this;
         };
 

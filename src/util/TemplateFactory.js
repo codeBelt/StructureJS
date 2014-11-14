@@ -27,11 +27,14 @@
 
         function TemplateFactory() {
         }
-        TemplateFactory.createTemplate = function (templatePath, data) {
-            if (typeof data === "undefined") { data = null; }
-            return TemplateFactory.create(templatePath, data);
-        };
-
+        /**
+         * YUIDoc_comment
+         *
+         * @method create
+         * @param templatePath {any}
+         * @param data {any}
+         * @returns {*}
+         */
         TemplateFactory.create = function (templatePath, data) {
             if (typeof data === "undefined") { data = null; }
             //Checks the first character to see if it is a '.' or '#'.

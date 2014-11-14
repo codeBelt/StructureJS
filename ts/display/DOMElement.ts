@@ -277,7 +277,7 @@ module StructureTS
 
             if (this.$element == null)
             {
-                var html:string = TemplateFactory.createTemplate(type, params);
+                var html:string = TemplateFactory.create(type, params);
                 if (html)
                 {
                     this.$element = jQuery(html);
@@ -577,22 +577,6 @@ module StructureTS
 
             this.$element.empty();
 
-            return this;
-        }
-
-        /**
-         * Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)
-         * to 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though
-         * they are invisible.
-         *
-         * @method alpha
-         * @param number
-         * @returns {DOMElement} Returns an instance of itself.
-         * @chainable
-         */
-        public alpha(number):any
-        {
-            this.$element.css('opacity', number);
             return this;
         }
 

@@ -2,7 +2,7 @@
  * browserify v1.0.0 (dev)
  * Example project for Client.
  *
- * Build Date: 2014-10-25
+ * Build Date: 2014-11-14
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
@@ -2842,6 +2842,988 @@ if (typeof require !== 'undefined' && require.extensions) {
 }
 
 },{"../dist/cjs/handlebars":2,"../dist/cjs/handlebars/compiler/printer":10,"../dist/cjs/handlebars/compiler/visitor":11,"fs":1}],17:[function(require,module,exports){
+var $ = require("./../vendor/jquery/dist/jquery.js");
+var Extend = require('../vendor/structurejs/src/util/Extend');
+var Stage = require('../vendor/structurejs/src/display/Stage');
+var BaseEvent = require('../vendor/structurejs/src/event/BaseEvent');
+var Router = require('../vendor/structurejs/src/controller/Router');
+var StringUtil = require('../vendor/structurejs/src/util/StringUtil');
+var ListItemCollection = require('./model/ListItemCollection');
+var ListItemComponent = require('./component/ListItemComponent');
+var ListItemVO = require('./model/vo/ListItemVO');
+var Key = require('./constant/Key');
+var FooterView = require('./view/FooterView');
+
+/**
+ * YUIDoc_comment
+ *
+ * @class App
+ * @extends Stage
+ * @constructor
+ **/
+var App = (function () {
+
+    var _super = Extend(App, Stage);
+
+    function App() {
+        _super.call(this);
+
+        /**
+         * @property _listItemCollection
+         * @type {ListItemCollection}
+         * @private
+         */
+        this._listItemCollection = null;
+
+        /**
+         * @property _$addTodoInput
+         * @type {HTMLInputElement}
+         * @private
+         */
+        this._$addTodoInput = null;
+
+        /**
+         * @property _$markAllCompleteCheckbox
+         * @type {HTMLInputElement}
+         * @private
+         */
+        this._$markAllCompleteCheckbox = null;
+
+        /**
+         * @property _todoListContainer
+         * @type {DOMElement}
+         * @private
+         */
+        this._todoListContainer = null;
+
+        /**
+         * @property _$mainView
+         * @type {jQuery}
+         * @private
+         */
+        this._$mainView = null;
+
+        /**
+         * @property _footerView
+         * @type {FooterView}
+         * @private
+         */
+        this._footerView = null;
+    }
+
+    /**
+     * @overridden DOMElement.createChildren
+     */
+    App.prototype.createChildren = function () {
+        _super.prototype.createChildren.call(this);
+
+        this._listItemCollection = new ListItemCollection();
+
+        this._$addTodoInput = this.$element.find('.js-addInput');
+        this._$markAllCompleteCheckbox = this.$element.find('.js-markAllComplete');
+        this._$mainView = this.$element.find('.js-mainView');
+
+        // Take note the "getChild" is a method of the DOMElement class. It will return the first html element from the selector name
+        // that is passed in and create a DOMElement view class with that markup so we can use functionality that comes with the DOMElement class.
+        this._todoListContainer = this.getChild('.js-todoList');
+
+        this._footerView = new FooterView(this.$element.find('.js-footerView'));
+        this.addChild(this._footerView);
+    };
+
+    /**
+     * @overridden DOMElement.layoutChildren
+     */
+    App.prototype.layoutChildren = function () {
+
+        this._footerView.updateCounts(this._listItemCollection.getCompletedCount(), this._listItemCollection.getRemainingCount());
+
+        if (this._listItemCollection.length > 0) {
+            // Take note we are working with the FooterView class jQuery view object "$element" directly.
+            // All classes that extend the DOMElement class has a "$element" property which is the main view/markup the class controls.
+            // If you wanted to encapsulate this more you could create a show/hide method in the FooterView class to handle it.
+            this._footerView.$element.show();
+
+            this._$mainView.show();
+        } else {
+            this._$mainView.hide();
+            this._footerView.$element.hide();
+        }
+
+        return this;
+    };
+
+    /**
+     * @overridden DOMElement.enable
+     */
+    App.prototype.enable = function () {
+        if (this.isEnabled === true) { return this; }
+
+        // Class Events
+        this._listItemCollection.addEventListener('loadComplete', this.onLoadedItems, this);//
+        this._footerView.addEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
+        this.addEventListener(BaseEvent.CHANGE, this.onItemChange, this);
+        this.addEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
+
+        // DOM Events
+        this._$addTodoInput.addEventListener('keypress', this.onCreateTodo, this);
+        this._$markAllCompleteCheckbox.addEventListener('change', this.onAllCompleteChange, this);
+
+        // Load and parse the data in the browsers local storage.
+        this._listItemCollection.loadStoredItems();
+
+        return _super.prototype.enable.call(this);
+    };
+
+    /**
+     * @overridden DOMElement.disable
+     */
+    App.prototype.disable = function () {
+        if (this.isEnabled === false) { return this; }
+
+        // Class Events
+        this._listItemCollection.removeEventListener('loadComplete', this.onLoadedItems, this);// Example of plan string event.
+        this._footerView.removeEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
+        this.removeEventListener(BaseEvent.CHANGE, this.onItemChange, this);
+        this.removeEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
+
+        // DOM Events
+        this._$addTodoInput.removeEventListener('keypress', this.onCreateTodo, this);
+        this._$markAllCompleteCheckbox.removeEventListener('change', this.onAllCompleteChange, this);
+
+        return _super.prototype.disable.call(this);
+    };
+
+    /**
+     * @overridden DOMElement.destroy
+     */
+    App.prototype.destroy = function () {
+        this._todoListContainer.destroy();
+        this._listItemCollection.destroy();
+
+        _super.prototype.destroy.call(this);
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onCreateTodo
+     * @private
+     */
+    App.prototype.onCreateTodo = function(event) {
+        var todoText = this._$addTodoInput.val().trim();
+
+        if (event.which === Key.ENTER && todoText != '') {
+            var valueObject = new ListItemVO({text: todoText});
+            valueObject.id = StringUtil.createUUID();
+            var childItem = new ListItemComponent(valueObject);
+
+            this._listItemCollection.addItem(valueObject);
+            this._todoListContainer.addChild(childItem);
+            this._$addTodoInput.val('');
+        }
+
+        this.layoutChildren();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onAllCompleteChange
+     * @private
+     */
+    App.prototype.onAllCompleteChange = function(event) {
+        var $target = $(event.target);
+
+        var listItemComponent;
+        if ($target.prop("checked") == true) {
+            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
+                listItemComponent = this._todoListContainer.getChildAt(i);
+                listItemComponent.setCompleted();
+            }
+        } else {
+            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
+                listItemComponent = this._todoListContainer.getChildAt(i);
+                listItemComponent.setUnCompleted();
+            }
+        }
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onItemRemove
+     * @param event {BaseEvent}
+     * @private
+     */
+    App.prototype.onItemRemove = function(event) {
+        var listItemComponent = event.target;
+        var listItemVO = listItemComponent.vo;
+
+        this._listItemCollection.removeItem(listItemVO);
+        this._todoListContainer.removeChild(listItemComponent);
+
+        this.layoutChildren();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onItemChange
+     * @param event {BaseEvent}
+     * @private
+     */
+    App.prototype.onItemChange = function(event) {
+        this._listItemCollection.save();
+
+        this.layoutChildren();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onLoadedItems
+     * @param event {BaseEvent}
+     * @private
+     */
+    App.prototype.onLoadedItems = function(event) {
+        var items = this._listItemCollection.items;
+        var length = items.length;
+
+        // Create ListItemComponent view items from the stored ListItemVO value objects.
+        for (var i = 0; i < length; i++) {
+            var childItem = new ListItemComponent(items[i]);
+            this._todoListContainer.addChild(childItem);
+        }
+
+        // When the app loads we need to check if all stored items are all completed or not.
+        var isAllCompleted = this._listItemCollection.length == this._listItemCollection.getCompletedCount();
+        this._$markAllCompleteCheckbox.prop('checked', isAllCompleted);
+
+        // Setup the router/deeplink handlers
+        Router.add('/active/', this.onActiveHandler.bind(this));
+        Router.add('/completed/', this.onCompletedHandler.bind(this));
+        Router.add('', this.onDefaultHandler.bind(this));
+        Router.start();
+
+        this.layoutChildren();
+    };
+
+    /**
+     * This method is called when the BaseEvent.CLEAR event is dispatched from the FooterView.
+     *
+     * @method onClearCompleted
+     * @param event {BaseEvent}
+     * @private
+     */
+    App.prototype.onClearCompleted = function(event) {
+        var listItemVO;
+        var listItemComponent;
+
+        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+            listItemComponent = this._todoListContainer.getChildAt(i);
+            listItemVO = listItemComponent.vo;
+
+            if (listItemVO.isComplete == true) {
+                this._todoListContainer.removeChild(listItemComponent);
+                this._listItemCollection.removeItem(listItemVO);
+            }
+        }
+
+        this.layoutChildren();
+    };
+
+    /**
+     * When the deep link "#/active" tag is triggered this method will hide all items and show only items that are not completed.
+     * Also updates the footer nav.
+     *
+     * @method onActiveHandler
+     * @private
+     */
+    App.prototype.onActiveHandler = function() {
+        var listItemComponent;
+
+        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+            listItemComponent = this._todoListContainer.getChildAt(i);
+            listItemComponent.hide();
+
+            if (listItemComponent.vo.isComplete == false) {
+                listItemComponent.show();
+            }
+        }
+
+        this._footerView.updateNav('active');
+
+        this.layoutChildren();
+    };
+
+    /**
+     * When the deep link "#/completed" tag is triggered this method will hide all items and show only items that are completed.
+     * Also updates the footer nav.
+     *
+     * @method onCompletedHandler
+     * @private
+     */
+    App.prototype.onCompletedHandler = function() {
+        var listItemComponent;
+
+        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+            listItemComponent = this._todoListContainer.getChildAt(i);
+            listItemComponent.hide();
+
+            if (listItemComponent.vo.isComplete == true) {
+                listItemComponent.show();
+            }
+        }
+
+        this._footerView.updateNav('completed');
+
+        this.layoutChildren();
+    };
+
+    /**
+     *  When the deep link "#/" tag is triggered this method will show all items.
+     *  Also updates the footer nav.
+     *
+     * @method onDefaultHandler
+     * @private
+     */
+    App.prototype.onDefaultHandler = function() {
+        var listItemComponent;
+
+        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+            listItemComponent = this._todoListContainer.getChildAt(i);
+            listItemComponent.show();
+        }
+
+        this._footerView.updateNav('');
+
+        this.layoutChildren();
+    };
+
+    return App;
+})();
+
+module.exports = App;
+},{"../vendor/structurejs/src/controller/Router":29,"../vendor/structurejs/src/display/Stage":32,"../vendor/structurejs/src/event/BaseEvent":33,"../vendor/structurejs/src/util/Extend":42,"../vendor/structurejs/src/util/StringUtil":43,"./../vendor/jquery/dist/jquery.js":24,"./component/ListItemComponent":18,"./constant/Key":19,"./model/ListItemCollection":21,"./model/vo/ListItemVO":22,"./view/FooterView":23}],18:[function(require,module,exports){
+var $ = require("./../../vendor/jquery/dist/jquery.js");
+var Extend = require('../../vendor/structurejs/src/util/Extend');
+var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
+var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
+var Key = require('../constant/Key');
+
+/**
+ * YUIDoc_comment
+ *
+ * @class ListItemComponent
+ * @extends DOMElement
+ * @constructor
+ **/
+var ListItemComponent = (function () {
+
+    var _super = Extend(ListItemComponent, DOMElement);
+
+    function ListItemComponent(vo) {
+        _super.call(this);
+
+        /**
+         * Holds onto the model for this view.
+         *
+         * @property vo
+         * @type {ListItemVO}
+         * @private
+         */
+        this.vo = vo;
+
+        /**
+         * @property _$itemInput
+         * @type {jQuery}
+         * @private
+         */
+        this._$itemInput = null;
+
+        /**
+         * @property _$itemLabel
+         * @type {jQuery}
+         * @private
+         */
+        this._$itemLabel = null;
+
+        /**
+         * YUIDoc_comment
+         *
+         * @property _$markCompleteCheckbox
+         * @type {jQuery}
+         * @private
+         */
+        this._$markCompleteCheckbox = null;
+    }
+
+    /**
+     * @overridden DOMElement.createChildren
+     */
+    ListItemComponent.prototype.createChildren = function () {
+        _super.prototype.createChildren.call(this, '#listItemTemplate', this.vo);
+
+        this._$itemInput = this.$element.find('.js-itemText');
+        this._$itemLabel = this.$element.find('.js-editTodo');
+        this._$markCompleteCheckbox = this.$element.find('.js-markComplete');
+    };
+
+    /**
+     * @overridden DOMElement.layoutChildren
+     */
+    ListItemComponent.prototype.layoutChildren = function () {
+        this.$element.toggleClass('completed', this.vo.isComplete);
+
+        this._$markCompleteCheckbox.prop('checked', this.vo.isComplete);
+
+        return this;
+    };
+
+    /**
+     * @overridden DOMElement.enable
+     */
+    ListItemComponent.prototype.enable = function () {
+        if (this.isEnabled === true) { return this; }
+
+        this.$element.addEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
+        this.$element.addEventListener('click', '.js-removeTodo', this.onItemRemove, this);
+        this.$element.addEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
+
+        this.$element.addEventListener('keydown', this.onEscapeKey, this);
+        this.$element.addEventListener('keypress', this.onEnterKey, this);
+        this._$itemInput.addEventListener('blur', this.onInputBlur, this);
+
+        return _super.prototype.enable.call(this);
+    };
+
+    /**
+     * @overridden DOMElement.disable
+     */
+    ListItemComponent.prototype.disable = function () {
+        if (this.isEnabled === false) { return this; }
+
+        this.$element.removeEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
+        this.$element.removeEventListener('click', '.js-removeTodo', this.onItemRemove, this);
+        this.$element.removeEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
+
+        this.$element.removeEventListener('keydown', this.onEscapeKey, this);
+        this.$element.removeEventListener('keypress', this.onEnterKey, this);
+        this._$itemInput.removeEventListener('blur', this.onInputBlur, this);
+
+        return _super.prototype.disable.call(this);
+    };
+
+    /**
+     * @overridden DOMElement.destroy
+     */
+    ListItemComponent.prototype.destroy = function () {
+        // Destroy the child objects and references in this parent class to prevent memory leaks.
+
+        _super.prototype.destroy.call(this);
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method setCompleted
+     * @public
+     */
+    ListItemComponent.prototype.setCompleted = function() {
+        this.vo.isComplete = true;
+
+        this.layoutChildren();
+        this.saveItemText();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method setUnCompleted
+     * @public
+     */
+    ListItemComponent.prototype.setUnCompleted = function() {
+        this.vo.isComplete = false;
+
+        this.layoutChildren();
+        this.saveItemText();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method hide
+     * @public
+     */
+    ListItemComponent.prototype.hide = function() {
+        this.$element.hide();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method show
+     * @public
+     */
+    ListItemComponent.prototype.show = function() {
+        this.$element.show();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onItemToggleComplete
+     * @private
+     */
+    ListItemComponent.prototype.onItemToggleComplete = function(event) {
+        var isChecked = $(event.target).prop('checked');
+
+        this.vo.isComplete = isChecked;
+
+        this.layoutChildren();
+        this.saveItemText();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onItemEdit
+     * @private
+     */
+    ListItemComponent.prototype.onItemEdit = function(event) {
+        this.$element.addClass('editing');
+
+        this._$itemInput.focus();
+        this._$itemInput.select();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onEscapeKey
+     * @private
+     */
+    ListItemComponent.prototype.onEscapeKey = function(event) {
+        if (event.which === Key.ESC) {
+            this.resetItemText();
+        }
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onEscapeKey
+     * @private
+     */
+    ListItemComponent.prototype.onInputBlur = function(event) {
+        var todoText = this._$itemInput.val().trim();
+
+        if (todoText != '') {
+            this.vo.text = todoText;
+            this.resetItemText();
+            this.saveItemText();
+        } else {
+            this.resetItemText();
+        }
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method resetItemText
+     * @private
+     */
+    ListItemComponent.prototype.resetItemText = function() {
+        this.$element.removeClass('editing');
+
+        // We need to reset the hidden input back to the original value.
+        this._$itemInput.val(this.vo.text);
+        this._$itemLabel.text(this.vo.text);
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method saveItemText
+     * @private
+     */
+    ListItemComponent.prototype.saveItemText = function() {
+        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.vo));
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onItemRemove
+     * @private
+     */
+    ListItemComponent.prototype.onItemRemove = function(event) {
+        this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED, true));
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method onEnterKey
+     * @private
+     */
+    ListItemComponent.prototype.onEnterKey = function(event) {
+        var todoText = this._$itemInput.val().trim();
+
+        if (event.which === Key.ENTER) {
+            if (todoText != '') {
+                this.vo.text = todoText;
+                this.resetItemText();
+                this.saveItemText();
+            } else {
+                this.resetItemText();
+            }
+        }
+    };
+
+    return ListItemComponent;
+})();
+
+module.exports = ListItemComponent;
+},{"../../vendor/structurejs/src/display/DOMElement":30,"../../vendor/structurejs/src/event/BaseEvent":33,"../../vendor/structurejs/src/util/Extend":42,"../constant/Key":19,"./../../vendor/jquery/dist/jquery.js":24}],19:[function(require,module,exports){
+/**
+ * YUIDoc_comment
+ *
+ * @class Key
+ * @constructor
+ **/
+var Key = (function () {
+
+    function Key() {
+    }
+
+    Key.BACKSPACE = 8;
+    Key.TAB = 9;
+    Key.ENTER = 13;
+    Key.RETURN = 13;
+    Key.ESC = 27;
+    Key.LEFT = 37;
+    Key.UP = 38;
+    Key.RIGHT = 39;
+    Key.DOWN = 40;
+    Key.DELETE = 46;
+    Key.HOME = 36;
+    Key.END = 35;
+    Key.PAGEUP = 33;
+    Key.PAGEDOWN = 34;
+    Key.INSERT = 45;
+
+    return Key;
+})();
+
+module.exports = Key;
+},{}],20:[function(require,module,exports){
+var App = require('./App');
+
+window.app = new App();
+window.app.appendTo('#todoapp');// Need to specify what area our code has control over.
+                                // The App.js class extends Stage which has the appendTo method.
+                                // Note: On typical website you may want to set it as 'body' do you have control over the whole page.
+},{"./App":17}],21:[function(require,module,exports){
+var Extend = require('../../vendor/structurejs/src/util/Extend');
+var Collection = require('../../vendor/structurejs/src/model/Collection');
+var LocalStorageController = require('../../vendor/structurejs/src/controller/LocalStorageController');
+var ListItemVO = require('./vo/ListItemVO');
+
+/**
+ * YUIDoc_comment
+ *
+ * @class ListItemCollection
+ * @extends Collection
+ * @constructor
+ **/
+var ListItemCollection = (function () {
+
+    var _super = Extend(ListItemCollection, Collection);
+
+    function ListItemCollection() {
+        _super.call(this);
+
+        /**
+         * @property _localStorageController
+         * @type {LocalStorageController}
+         * @private
+         */
+        this._localStorageController = new LocalStorageController();
+    }
+
+    /**
+     * @overridden ListItemCollection.addItem
+     */
+    ListItemCollection.prototype.addItem = function (item, silent) {
+        _super.prototype.addItem.call(this, item, silent);
+
+        this.save();
+    };
+
+    /**
+     * @overridden ListItemCollection.removeItem
+     */
+    ListItemCollection.prototype.removeItem = function (item, silent) {
+        _super.prototype.removeItem.call(this, item, silent);
+
+        this.save();
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method loadStoredItems
+     * @public
+     */
+    ListItemCollection.prototype.loadStoredItems = function() {
+        var items = this._localStorageController.getItem('todos');
+
+        if (items != null) {
+            var length = items.length;
+            for (var i = 0; i < length; i++) {
+                this.addItem(new ListItemVO(items[i]));
+            }
+
+            this.dispatchEvent('loadComplete');
+        }
+    };
+
+    /**
+     * YUIDoc_comment
+     *
+     * @method save
+     * @public
+     */
+    ListItemCollection.prototype.save = function() {
+        this._localStorageController.addItem('todos', this.items);
+    };
+
+    /**
+     * Filter down the list of all todo items that are finished.
+     *
+     * @method getCompletedCount
+     * @public
+     */
+    ListItemCollection.prototype.getCompletedCount = function() {
+        return this.find({isComplete: true}).length;
+    };
+
+    /**
+     * Filter down the list to only todo items that are still not finished.
+     *
+     * @method getRemainingCount
+     * @public
+     */
+    ListItemCollection.prototype.getRemainingCount = function() {
+        return this.find({isComplete: false}).length;
+    };
+
+    return ListItemCollection;
+})();
+
+module.exports = ListItemCollection;
+},{"../../vendor/structurejs/src/controller/LocalStorageController":28,"../../vendor/structurejs/src/model/Collection":37,"../../vendor/structurejs/src/util/Extend":42,"./vo/ListItemVO":22}],22:[function(require,module,exports){
+var Extend = require('../../../vendor/structurejs/src/util/Extend');
+var ValueObject = require('../../../vendor/structurejs/src/model/ValueObject');
+
+/**
+ * YUIDoc_comment
+ *
+ * @class ListItemVO
+ * @extends ValueObject
+ * @constructor
+ **/
+var ListItemVO = (function () {
+
+    var _super = Extend(ListItemVO, ValueObject);
+
+    function ListItemVO(data) {
+        _super.call(this);
+
+        /**
+         * @property id
+         * @type {string}
+         * @public
+         */
+        this.id = null;
+
+        /**
+         * @property text
+         * @type {string}
+         * @public
+         */
+        this.text = '';
+
+        /**
+         * @property isComplete
+         * @type {boolean}
+         * @public
+         */
+        this.isComplete = false;
+
+        if (data) {
+            this.update(data);
+        }
+    }
+
+    /**
+     * @overridden ValueObject.update
+     */
+    ListItemVO.prototype.update = function (data) {
+        _super.prototype.update.call(this, data);
+
+        // Override any values after the default super update method has set the values.
+    };
+
+    /**
+     * @overridden ValueObject.copy
+     */
+    ListItemVO.prototype.copy = function () {
+        var data = _super.prototype.copy();
+        return new ListItemVO(data);
+    };
+
+    return ListItemVO;
+})();
+
+module.exports = ListItemVO;
+},{"../../../vendor/structurejs/src/model/ValueObject":39,"../../../vendor/structurejs/src/util/Extend":42}],23:[function(require,module,exports){
+var Extend = require('../../vendor/structurejs/src/util/Extend');
+var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
+var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
+
+/**
+ * This class is responsible for hand the display and interactions for the footer HTML.
+ *
+ * @class FooterView
+ * @extends DOMElement
+ * @constructor
+ **/
+var FooterView = (function () {
+
+    var _super = Extend(FooterView, DOMElement);
+
+    function FooterView($element) {
+        _super.call(this, $element);
+
+        /**
+         * @property _$itemsCompleteText
+         * @type {jQuery}
+         * @private
+         */
+        this._$itemsCompleteText = null;
+
+        /**
+         * @property _$itemsRemainingText
+         * @type {jQuery}
+         * @private
+         */
+        this._$itemsRemainingText = null;
+
+        /**
+         * @property _$clearCompleteButton
+         * @type {jQuery}
+         * @private
+         */
+        this._$clearCompleteButton = null;
+
+        /**
+         * @property _$navLinks
+         * @type {jQuery}
+         * @private
+         */
+        this._$navLinks = null;
+    }
+
+    /**
+     * @overridden DOMElement.createChildren
+     */
+    FooterView.prototype.createChildren = function () {
+        _super.prototype.createChildren.call(this);
+
+        this._$itemsCompleteText = this.$element.find('.js-itemsComplete');
+        this._$itemsRemainingText = this.$element.find('.js-itemsRemaining');
+        this._$clearCompleteButton = this.$element.find('.js-clearCompleteButton');
+        this._$navLinks = this.$element.find('#filters li a');
+    };
+
+    /**
+     * @overridden DOMElement.enable
+     */
+    FooterView.prototype.enable = function () {
+        if (this.isEnabled === true) { return this; }
+
+        this._$clearCompleteButton.addEventListener('click', this.onClear, this);
+
+        return _super.prototype.enable.call(this);
+    };
+
+    /**
+     * @overridden DOMElement.disable
+     */
+    FooterView.prototype.disable = function () {
+        if (this.isEnabled === false) { return this; }
+
+        this._$clearCompleteButton.removeEventListener('click', this.onClear, this);
+
+        return _super.prototype.disable.call(this);
+    };
+
+    /**
+     * @overridden DOMElement.destroy
+     */
+    FooterView.prototype.destroy = function () {
+        // Destroy the child objects and references in this parent class to prevent memory leaks.
+
+        _super.prototype.destroy.call(this);
+    };
+
+    /**
+     * This method will update the footer display count for both completed and remaining items.
+     *
+     * @method updateCounts
+     * @public
+     */
+    FooterView.prototype.updateCounts = function(completedCount, remainingCount) {
+        this._$itemsCompleteText.text(completedCount);
+        this._$itemsRemainingText.text(remainingCount);
+    };
+
+    /**
+     * This will remove the "selected" style class on all nav links and then add the
+     * "selected" style class what ever matches the passed in string value.
+     *
+     * @method updateNav
+     * @public
+     */
+    FooterView.prototype.updateNav = function(hashName) {
+        this._$navLinks.removeClass('selected')
+            .filter('[href="#/' + (hashName || '') + '"]')
+            .addClass('selected');
+    };
+
+    /**
+     * When the user clicks the "clear completed" button this method will be called and will dispatch an event
+     * to tell the parent class that we want to remove all the completed items.
+     *
+     * @method onClear
+     * @param event {jQueryEventObject}
+     * @private
+     */
+    FooterView.prototype.onClear = function(event) {
+        // Take note this is not dispatching a BaseEvent object but just the string value constant. The only time you need to dispatch
+        // an BaseEvent object or a custom event that extends BaseEvent is when you want to use event bubbling or have custom properties
+        // on the event that you want to set.
+        this.dispatchEvent(BaseEvent.CLEAR);
+    };
+
+    return FooterView;
+})();
+
+module.exports = FooterView;
+},{"../../vendor/structurejs/src/display/DOMElement":30,"../../vendor/structurejs/src/event/BaseEvent":33,"../../vendor/structurejs/src/util/Extend":42}],24:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -12033,12 +13015,12 @@ return jQuery;
 
 }));
 
-},{}],18:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 (function (global){
 /**
  * @license
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
- * Build: `lodash modern -o ./dist/lodash.js`
+ * Build: `lodash -o ./dist/lodash.compat.js`
  * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
  * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -12055,6 +13037,9 @@ return jQuery;
 
   /** Used to generate unique IDs */
   var idCounter = 0;
+
+  /** Used internally to indicate various things */
+  var indicatorObject = {};
 
   /** Used to prefix keys to avoid issues with `__proto__` and properties on `Object.prototype` */
   var keyPrefix = +new Date + '';
@@ -12111,9 +13096,15 @@ return jQuery;
 
   /** Used to assign default `context` object properties */
   var contextProps = [
-    'Array', 'Boolean', 'Date', 'Function', 'Math', 'Number', 'Object',
+    'Array', 'Boolean', 'Date', 'Error', 'Function', 'Math', 'Number', 'Object',
     'RegExp', 'String', '_', 'attachEvent', 'clearTimeout', 'isFinite', 'isNaN',
     'parseInt', 'setTimeout'
+  ];
+
+  /** Used to fix the JScript [[DontEnum]] bug */
+  var shadowedProps = [
+    'constructor', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable',
+    'toLocaleString', 'toString', 'valueOf'
   ];
 
   /** Used to make template sourceURLs easier to identify */
@@ -12124,6 +13115,7 @@ return jQuery;
       arrayClass = '[object Array]',
       boolClass = '[object Boolean]',
       dateClass = '[object Date]',
+      errorClass = '[object Error]',
       funcClass = '[object Function]',
       numberClass = '[object Number]',
       objectClass = '[object Object]',
@@ -12151,6 +13143,21 @@ return jQuery;
     'enumerable': false,
     'value': null,
     'writable': false
+  };
+
+  /** Used as the data object for `iteratorTemplate` */
+  var iteratorData = {
+    'args': '',
+    'array': null,
+    'bottom': '',
+    'firstArg': '',
+    'init': '',
+    'keys': null,
+    'loop': '',
+    'shadowedProps': null,
+    'support': null,
+    'top': '',
+    'useHas': false
   };
 
   /** Used to determine if values are of the language type Object */
@@ -12398,6 +13405,19 @@ return jQuery;
   }
 
   /**
+   * Checks if `value` is a DOM node in IE < 9.
+   *
+   * @private
+   * @param {*} value The value to check.
+   * @returns {boolean} Returns `true` if the `value` is a DOM node, else `false`.
+   */
+  function isNode(value) {
+    // IE < 9 presents DOM nodes as `Object` objects except they have `toString`
+    // methods that are `typeof` "string" and still can coerce nodes to strings
+    return typeof value.toString != 'function' && typeof (value + '') == 'string';
+  }
+
+  /**
    * Releases the given array back to the array pool.
    *
    * @private
@@ -12477,6 +13497,7 @@ return jQuery;
     var Array = context.Array,
         Boolean = context.Boolean,
         Date = context.Date,
+        Error = context.Error,
         Function = context.Function,
         Math = context.Math,
         Number = context.Number,
@@ -12494,7 +13515,9 @@ return jQuery;
     var arrayRef = [];
 
     /** Used for native method references */
-    var objectProto = Object.prototype;
+    var errorProto = Error.prototype,
+        objectProto = Object.prototype,
+        stringProto = String.prototype;
 
     /** Used to restore the original `_` reference in `noConflict` */
     var oldDash = context._;
@@ -12517,6 +13540,7 @@ return jQuery;
         getPrototypeOf = isNative(getPrototypeOf = Object.getPrototypeOf) && getPrototypeOf,
         hasOwnProperty = objectProto.hasOwnProperty,
         push = arrayRef.push,
+        propertyIsEnumerable = objectProto.propertyIsEnumerable,
         setTimeout = context.setTimeout,
         splice = arrayRef.splice,
         unshift = arrayRef.unshift;
@@ -12553,6 +13577,25 @@ return jQuery;
     ctorByClass[numberClass] = Number;
     ctorByClass[regexpClass] = RegExp;
     ctorByClass[stringClass] = String;
+
+    /** Used to avoid iterating non-enumerable properties in IE < 9 */
+    var nonEnumProps = {};
+    nonEnumProps[arrayClass] = nonEnumProps[dateClass] = nonEnumProps[numberClass] = { 'constructor': true, 'toLocaleString': true, 'toString': true, 'valueOf': true };
+    nonEnumProps[boolClass] = nonEnumProps[stringClass] = { 'constructor': true, 'toString': true, 'valueOf': true };
+    nonEnumProps[errorClass] = nonEnumProps[funcClass] = nonEnumProps[regexpClass] = { 'constructor': true, 'toString': true };
+    nonEnumProps[objectClass] = { 'constructor': true };
+
+    (function() {
+      var length = shadowedProps.length;
+      while (length--) {
+        var key = shadowedProps[length];
+        for (var className in nonEnumProps) {
+          if (hasOwnProperty.call(nonEnumProps, className) && !hasOwnProperty.call(nonEnumProps[className], key)) {
+            nonEnumProps[className][key] = false;
+          }
+        }
+      }
+    }());
 
     /*--------------------------------------------------------------------------*/
 
@@ -12652,22 +13695,137 @@ return jQuery;
      */
     var support = lodash.support = {};
 
-    /**
-     * Detect if functions can be decompiled by `Function#toString`
-     * (all but PS3 and older Opera mobile browsers & avoided in Windows 8 apps).
-     *
-     * @memberOf _.support
-     * @type boolean
-     */
-    support.funcDecomp = !isNative(context.WinRTError) && reThis.test(runInContext);
+    (function() {
+      var ctor = function() { this.x = 1; },
+          object = { '0': 1, 'length': 1 },
+          props = [];
 
-    /**
-     * Detect if `Function#name` is supported (all but IE).
-     *
-     * @memberOf _.support
-     * @type boolean
-     */
-    support.funcNames = typeof Function.name == 'string';
+      ctor.prototype = { 'valueOf': 1, 'y': 1 };
+      for (var key in new ctor) { props.push(key); }
+      for (key in arguments) { }
+
+      /**
+       * Detect if an `arguments` object's [[Class]] is resolvable (all but Firefox < 4, IE < 9).
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.argsClass = toString.call(arguments) == argsClass;
+
+      /**
+       * Detect if `arguments` objects are `Object` objects (all but Narwhal and Opera < 10.5).
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.argsObject = arguments.constructor == Object && !(arguments instanceof Array);
+
+      /**
+       * Detect if `name` or `message` properties of `Error.prototype` are
+       * enumerable by default. (IE < 9, Safari < 5.1)
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.enumErrorProps = propertyIsEnumerable.call(errorProto, 'message') || propertyIsEnumerable.call(errorProto, 'name');
+
+      /**
+       * Detect if `prototype` properties are enumerable by default.
+       *
+       * Firefox < 3.6, Opera > 9.50 - Opera < 11.60, and Safari < 5.1
+       * (if the prototype or a property on the prototype has been set)
+       * incorrectly sets a function's `prototype` property [[Enumerable]]
+       * value to `true`.
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.enumPrototypes = propertyIsEnumerable.call(ctor, 'prototype');
+
+      /**
+       * Detect if functions can be decompiled by `Function#toString`
+       * (all but PS3 and older Opera mobile browsers & avoided in Windows 8 apps).
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.funcDecomp = !isNative(context.WinRTError) && reThis.test(runInContext);
+
+      /**
+       * Detect if `Function#name` is supported (all but IE).
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.funcNames = typeof Function.name == 'string';
+
+      /**
+       * Detect if `arguments` object indexes are non-enumerable
+       * (Firefox < 4, IE < 9, PhantomJS, Safari < 5.1).
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.nonEnumArgs = key != 0;
+
+      /**
+       * Detect if properties shadowing those on `Object.prototype` are non-enumerable.
+       *
+       * In IE < 9 an objects own properties, shadowing non-enumerable ones, are
+       * made non-enumerable as well (a.k.a the JScript [[DontEnum]] bug).
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.nonEnumShadows = !/valueOf/.test(props);
+
+      /**
+       * Detect if own properties are iterated after inherited properties (all but IE < 9).
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.ownLast = props[0] != 'x';
+
+      /**
+       * Detect if `Array#shift` and `Array#splice` augment array-like objects correctly.
+       *
+       * Firefox < 10, IE compatibility mode, and IE < 9 have buggy Array `shift()`
+       * and `splice()` functions that fail to remove the last element, `value[0]`,
+       * of array-like objects even though the `length` property is set to `0`.
+       * The `shift()` method is buggy in IE 8 compatibility mode, while `splice()`
+       * is buggy regardless of mode in IE < 9 and buggy in compatibility mode in IE 9.
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.spliceObjects = (arrayRef.splice.call(object, 0, 1), !object[0]);
+
+      /**
+       * Detect lack of support for accessing string characters by index.
+       *
+       * IE < 8 can't access characters by index and IE 8 can only access
+       * characters by index on string literals.
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      support.unindexedChars = ('x'[0] + Object('x')[0]) != 'xx';
+
+      /**
+       * Detect if a DOM node's [[Class]] is resolvable (all but IE < 9)
+       * and that the JS engine errors when attempting to coerce an object to
+       * a string without a `toString` function.
+       *
+       * @memberOf _.support
+       * @type boolean
+       */
+      try {
+        support.nodeClass = !(toString.call(document) == objectClass && !({ 'toString': 0 } + ''));
+      } catch(e) {
+        support.nodeClass = true;
+      }
+    }(1));
 
     /**
      * By default, the template delimiters used by Lo-Dash are similar to those in
@@ -12733,6 +13891,106 @@ return jQuery;
     /*--------------------------------------------------------------------------*/
 
     /**
+     * The template used to create iterator functions.
+     *
+     * @private
+     * @param {Object} data The data object used to populate the text.
+     * @returns {string} Returns the interpolated text.
+     */
+    var iteratorTemplate = function(obj) {
+
+      var __p = 'var index, iterable = ' +
+      (obj.firstArg) +
+      ', result = ' +
+      (obj.init) +
+      ';\nif (!iterable) return result;\n' +
+      (obj.top) +
+      ';';
+       if (obj.array) {
+      __p += '\nvar length = iterable.length; index = -1;\nif (' +
+      (obj.array) +
+      ') {  ';
+       if (support.unindexedChars) {
+      __p += '\n  if (isString(iterable)) {\n    iterable = iterable.split(\'\')\n  }  ';
+       }
+      __p += '\n  while (++index < length) {\n    ' +
+      (obj.loop) +
+      ';\n  }\n}\nelse {  ';
+       } else if (support.nonEnumArgs) {
+      __p += '\n  var length = iterable.length; index = -1;\n  if (length && isArguments(iterable)) {\n    while (++index < length) {\n      index += \'\';\n      ' +
+      (obj.loop) +
+      ';\n    }\n  } else {  ';
+       }
+
+       if (support.enumPrototypes) {
+      __p += '\n  var skipProto = typeof iterable == \'function\';\n  ';
+       }
+
+       if (support.enumErrorProps) {
+      __p += '\n  var skipErrorProps = iterable === errorProto || iterable instanceof Error;\n  ';
+       }
+
+          var conditions = [];    if (support.enumPrototypes) { conditions.push('!(skipProto && index == "prototype")'); }    if (support.enumErrorProps)  { conditions.push('!(skipErrorProps && (index == "message" || index == "name"))'); }
+
+       if (obj.useHas && obj.keys) {
+      __p += '\n  var ownIndex = -1,\n      ownProps = objectTypes[typeof iterable] && keys(iterable),\n      length = ownProps ? ownProps.length : 0;\n\n  while (++ownIndex < length) {\n    index = ownProps[ownIndex];\n';
+          if (conditions.length) {
+      __p += '    if (' +
+      (conditions.join(' && ')) +
+      ') {\n  ';
+       }
+      __p +=
+      (obj.loop) +
+      ';    ';
+       if (conditions.length) {
+      __p += '\n    }';
+       }
+      __p += '\n  }  ';
+       } else {
+      __p += '\n  for (index in iterable) {\n';
+          if (obj.useHas) { conditions.push("hasOwnProperty.call(iterable, index)"); }    if (conditions.length) {
+      __p += '    if (' +
+      (conditions.join(' && ')) +
+      ') {\n  ';
+       }
+      __p +=
+      (obj.loop) +
+      ';    ';
+       if (conditions.length) {
+      __p += '\n    }';
+       }
+      __p += '\n  }    ';
+       if (support.nonEnumShadows) {
+      __p += '\n\n  if (iterable !== objectProto) {\n    var ctor = iterable.constructor,\n        isProto = iterable === (ctor && ctor.prototype),\n        className = iterable === stringProto ? stringClass : iterable === errorProto ? errorClass : toString.call(iterable),\n        nonEnum = nonEnumProps[className];\n      ';
+       for (k = 0; k < 7; k++) {
+      __p += '\n    index = \'' +
+      (obj.shadowedProps[k]) +
+      '\';\n    if ((!(isProto && nonEnum[index]) && hasOwnProperty.call(iterable, index))';
+              if (!obj.useHas) {
+      __p += ' || (!nonEnum[index] && iterable[index] !== objectProto[index])';
+       }
+      __p += ') {\n      ' +
+      (obj.loop) +
+      ';\n    }      ';
+       }
+      __p += '\n  }    ';
+       }
+
+       }
+
+       if (obj.array || support.nonEnumArgs) {
+      __p += '\n}';
+       }
+      __p +=
+      (obj.bottom) +
+      ';\nreturn result';
+
+      return __p
+    };
+
+    /*--------------------------------------------------------------------------*/
+
+    /**
      * The base implementation of `_.bind` that creates the bound function and
      * sets its meta data.
      *
@@ -12792,7 +14050,7 @@ return jQuery;
       var isObj = isObject(value);
       if (isObj) {
         var className = toString.call(value);
-        if (!cloneableClasses[className]) {
+        if (!cloneableClasses[className] || (!support.nodeClass && isNode(value))) {
           return value;
         }
         var ctor = ctorByClass[className];
@@ -12850,7 +14108,7 @@ return jQuery;
       stackB.push(result);
 
       // recursively populate clone (susceptible to call stack limits)
-      (isArr ? forEach : forOwn)(value, function(objValue, key) {
+      (isArr ? baseEach : forOwn)(value, function(objValue, key) {
         result[key] = baseClone(objValue, isDeep, callback, stackA, stackB);
       });
 
@@ -13157,12 +14415,12 @@ return jQuery;
           return baseIsEqual(aWrapped ? a.__wrapped__ : a, bWrapped ? b.__wrapped__ : b, callback, isWhere, stackA, stackB);
         }
         // exit for functions and DOM nodes
-        if (className != objectClass) {
+        if (className != objectClass || (!support.nodeClass && (isNode(a) || isNode(b)))) {
           return false;
         }
         // in older versions of Opera, `arguments` objects have `Array` constructors
-        var ctorA = a.constructor,
-            ctorB = b.constructor;
+        var ctorA = !support.argsObject && isArguments(a) ? Object : a.constructor,
+            ctorB = !support.argsObject && isArguments(b) ? Object : b.constructor;
 
         // non `Object` object instances with different constructors are not equal
         if (ctorA != ctorB &&
@@ -13389,16 +14647,16 @@ return jQuery;
         var result = {};
         callback = lodash.createCallback(callback, thisArg, 3);
 
-        var index = -1,
-            length = collection ? collection.length : 0;
+        if (isArray(collection)) {
+          var index = -1,
+              length = collection.length;
 
-        if (typeof length == 'number') {
           while (++index < length) {
             var value = collection[index];
             setter(result, value, callback(value, index, collection), collection);
           }
         } else {
-          forOwn(collection, function(value, key, collection) {
+          baseEach(collection, function(value, key, collection) {
             setter(result, value, callback(value, key, collection), collection);
           });
         }
@@ -13487,6 +14745,54 @@ return jQuery;
     }
 
     /**
+     * Creates compiled iteration functions.
+     *
+     * @private
+     * @param {...Object} [options] The compile options object(s).
+     * @param {string} [options.array] Code to determine if the iterable is an array or array-like.
+     * @param {boolean} [options.useHas] Specify using `hasOwnProperty` checks in the object loop.
+     * @param {Function} [options.keys] A reference to `_.keys` for use in own property iteration.
+     * @param {string} [options.args] A comma separated string of iteration function arguments.
+     * @param {string} [options.top] Code to execute before the iteration branches.
+     * @param {string} [options.loop] Code to execute in the object loop.
+     * @param {string} [options.bottom] Code to execute after the iteration branches.
+     * @returns {Function} Returns the compiled function.
+     */
+    function createIterator() {
+      // data properties
+      iteratorData.shadowedProps = shadowedProps;
+
+      // iterator options
+      iteratorData.array = iteratorData.bottom = iteratorData.loop = iteratorData.top = '';
+      iteratorData.init = 'iterable';
+      iteratorData.useHas = true;
+
+      // merge options into a template data object
+      for (var object, index = 0; object = arguments[index]; index++) {
+        for (var key in object) {
+          iteratorData[key] = object[key];
+        }
+      }
+      var args = iteratorData.args;
+      iteratorData.firstArg = /^[^,]+/.exec(args)[0];
+
+      // create the function factory
+      var factory = Function(
+          'baseCreateCallback, errorClass, errorProto, hasOwnProperty, ' +
+          'indicatorObject, isArguments, isArray, isString, keys, objectProto, ' +
+          'objectTypes, nonEnumProps, stringClass, stringProto, toString',
+        'return function(' + args + ') {\n' + iteratorTemplate(iteratorData) + '\n}'
+      );
+
+      // return the compiled function
+      return factory(
+        baseCreateCallback, errorClass, errorProto, hasOwnProperty,
+        indicatorObject, isArguments, isArray, isString, iteratorData.keys, objectProto,
+        objectTypes, nonEnumProps, stringClass, stringProto, toString
+      );
+    }
+
+    /**
      * Used by `escape` to convert characters to HTML entities.
      *
      * @private
@@ -13549,8 +14855,20 @@ return jQuery;
 
       // avoid non Object objects, `arguments` objects, and DOM elements
       if (!(value && toString.call(value) == objectClass) ||
-          (ctor = value.constructor, isFunction(ctor) && !(ctor instanceof ctor))) {
+          (ctor = value.constructor, isFunction(ctor) && !(ctor instanceof ctor)) ||
+          (!support.argsClass && isArguments(value)) ||
+          (!support.nodeClass && isNode(value))) {
         return false;
+      }
+      // IE < 9 iterates inherited properties before own properties. If the first
+      // iterated property is an object's own property then there are no inherited
+      // enumerable properties.
+      if (support.ownLast) {
+        forIn(value, function(value, key, object) {
+          result = hasOwnProperty.call(object, key);
+          return false;
+        });
+        return result !== false;
       }
       // In most environments an object's own properties are iterated before
       // its inherited properties. If the last iterated property is an object's
@@ -13594,6 +14912,13 @@ return jQuery;
       return value && typeof value == 'object' && typeof value.length == 'number' &&
         toString.call(value) == argsClass || false;
     }
+    // fallback for browsers that can't detect `arguments` objects by [[Class]]
+    if (!support.argsClass) {
+      isArguments = function(value) {
+        return value && typeof value == 'object' && typeof value.length == 'number' &&
+          hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee') || false;
+      };
+    }
 
     /**
      * Checks if `value` is an array.
@@ -13626,17 +14951,12 @@ return jQuery;
      * @param {Object} object The object to inspect.
      * @returns {Array} Returns an array of property names.
      */
-    var shimKeys = function(object) {
-      var index, iterable = object, result = [];
-      if (!iterable) return result;
-      if (!(objectTypes[typeof object])) return result;
-        for (index in iterable) {
-          if (hasOwnProperty.call(iterable, index)) {
-            result.push(index);
-          }
-        }
-      return result
-    };
+    var shimKeys = createIterator({
+      'args': 'object',
+      'init': '[]',
+      'top': 'if (!(objectTypes[typeof object])) return result',
+      'loop': 'result.push(index)'
+    });
 
     /**
      * Creates an array composed of the own enumerable property names of an object.
@@ -13655,7 +14975,41 @@ return jQuery;
       if (!isObject(object)) {
         return [];
       }
+      if ((support.enumPrototypes && typeof object == 'function') ||
+          (support.nonEnumArgs && object.length && isArguments(object))) {
+        return shimKeys(object);
+      }
       return nativeKeys(object);
+    };
+
+    /** Reusable iterator options shared by `each`, `forIn`, and `forOwn` */
+    var eachIteratorOptions = {
+      'args': 'collection, callback, thisArg',
+      'top': "callback = callback && typeof thisArg == 'undefined' ? callback : baseCreateCallback(callback, thisArg, 3)",
+      'array': "typeof length == 'number'",
+      'keys': keys,
+      'loop': 'if (callback(iterable[index], index, collection) === false) return result'
+    };
+
+    /** Reusable iterator options for `assign` and `defaults` */
+    var defaultsIteratorOptions = {
+      'args': 'object, source, guard',
+      'top':
+        'var args = arguments,\n' +
+        '    argsIndex = 0,\n' +
+        "    argsLength = typeof guard == 'number' ? 2 : args.length;\n" +
+        'while (++argsIndex < argsLength) {\n' +
+        '  iterable = args[argsIndex];\n' +
+        '  if (iterable && objectTypes[typeof iterable]) {',
+      'keys': keys,
+      'loop': "if (typeof result[index] == 'undefined') result[index] = iterable[index]",
+      'bottom': '  }\n}'
+    };
+
+    /** Reusable iterator options for `forIn` and `forOwn` */
+    var forOwnIteratorOptions = {
+      'top': 'if (!objectTypes[typeof iterable]) return result;\n' + eachIteratorOptions.top,
+      'array': false
     };
 
     /**
@@ -13680,6 +15034,22 @@ return jQuery;
     /** Used to match HTML entities and HTML characters */
     var reEscapedHtml = RegExp('(' + keys(htmlUnescapes).join('|') + ')', 'g'),
         reUnescapedHtml = RegExp('[' + keys(htmlEscapes).join('') + ']', 'g');
+
+    /**
+     * A function compiled to iterate `arguments` objects, arrays, objects, and
+     * strings consistenly across environments, executing the callback for each
+     * element in the collection. The callback is bound to `thisArg` and invoked
+     * with three arguments; (value, index|key, collection). Callbacks may exit
+     * iteration early by explicitly returning `false`.
+     *
+     * @private
+     * @type Function
+     * @param {Array|Object|string} collection The collection to iterate over.
+     * @param {Function} [callback=identity] The function called per iteration.
+     * @param {*} [thisArg] The `this` binding of `callback`.
+     * @returns {Array|Object|string} Returns `collection`.
+     */
+    var baseEach = createIterator(eachIteratorOptions);
 
     /*--------------------------------------------------------------------------*/
 
@@ -13713,32 +15083,18 @@ return jQuery;
      * defaults(object, { 'name': 'fred', 'employer': 'slate' });
      * // => { 'name': 'barney', 'employer': 'slate' }
      */
-    var assign = function(object, source, guard) {
-      var index, iterable = object, result = iterable;
-      if (!iterable) return result;
-      var args = arguments,
-          argsIndex = 0,
-          argsLength = typeof guard == 'number' ? 2 : args.length;
-      if (argsLength > 3 && typeof args[argsLength - 2] == 'function') {
-        var callback = baseCreateCallback(args[--argsLength - 1], args[argsLength--], 2);
-      } else if (argsLength > 2 && typeof args[argsLength - 1] == 'function') {
-        callback = args[--argsLength];
-      }
-      while (++argsIndex < argsLength) {
-        iterable = args[argsIndex];
-        if (iterable && objectTypes[typeof iterable]) {
-        var ownIndex = -1,
-            ownProps = objectTypes[typeof iterable] && keys(iterable),
-            length = ownProps ? ownProps.length : 0;
-
-        while (++ownIndex < length) {
-          index = ownProps[ownIndex];
-          result[index] = callback ? callback(result[index], iterable[index]) : iterable[index];
-        }
-        }
-      }
-      return result
-    };
+    var assign = createIterator(defaultsIteratorOptions, {
+      'top':
+        defaultsIteratorOptions.top.replace(';',
+          ';\n' +
+          "if (argsLength > 3 && typeof args[argsLength - 2] == 'function') {\n" +
+          '  var callback = baseCreateCallback(args[--argsLength - 1], args[argsLength--], 2);\n' +
+          "} else if (argsLength > 2 && typeof args[argsLength - 1] == 'function') {\n" +
+          '  callback = args[--argsLength];\n' +
+          '}'
+        ),
+      'loop': 'result[index] = callback ? callback(result[index], iterable[index]) : iterable[index]'
+    });
 
     /**
      * Creates a clone of `value`. If `isDeep` is `true` nested objects will also
@@ -13892,27 +15248,7 @@ return jQuery;
      * _.defaults(object, { 'name': 'fred', 'employer': 'slate' });
      * // => { 'name': 'barney', 'employer': 'slate' }
      */
-    var defaults = function(object, source, guard) {
-      var index, iterable = object, result = iterable;
-      if (!iterable) return result;
-      var args = arguments,
-          argsIndex = 0,
-          argsLength = typeof guard == 'number' ? 2 : args.length;
-      while (++argsIndex < argsLength) {
-        iterable = args[argsIndex];
-        if (iterable && objectTypes[typeof iterable]) {
-        var ownIndex = -1,
-            ownProps = objectTypes[typeof iterable] && keys(iterable),
-            length = ownProps ? ownProps.length : 0;
-
-        while (++ownIndex < length) {
-          index = ownProps[ownIndex];
-          if (typeof result[index] == 'undefined') result[index] = iterable[index];
-        }
-        }
-      }
-      return result
-    };
+    var defaults = createIterator(defaultsIteratorOptions);
 
     /**
      * This method is like `_.findIndex` except that it returns the key of the
@@ -14051,16 +15387,9 @@ return jQuery;
      * });
      * // => logs 'x', 'y', and 'move' (property order is not guaranteed across environments)
      */
-    var forIn = function(collection, callback, thisArg) {
-      var index, iterable = collection, result = iterable;
-      if (!iterable) return result;
-      if (!objectTypes[typeof iterable]) return result;
-      callback = callback && typeof thisArg == 'undefined' ? callback : baseCreateCallback(callback, thisArg, 3);
-        for (index in iterable) {
-          if (callback(iterable[index], index, collection) === false) return result;
-        }
-      return result
-    };
+    var forIn = createIterator(eachIteratorOptions, forOwnIteratorOptions, {
+      'useHas': false
+    });
 
     /**
      * This method is like `_.forIn` except that it iterates over elements
@@ -14128,21 +15457,7 @@ return jQuery;
      * });
      * // => logs '0', '1', and 'length' (property order is not guaranteed across environments)
      */
-    var forOwn = function(collection, callback, thisArg) {
-      var index, iterable = collection, result = iterable;
-      if (!iterable) return result;
-      if (!objectTypes[typeof iterable]) return result;
-      callback = callback && typeof thisArg == 'undefined' ? callback : baseCreateCallback(callback, thisArg, 3);
-        var ownIndex = -1,
-            ownProps = objectTypes[typeof iterable] && keys(iterable),
-            length = ownProps ? ownProps.length : 0;
-
-        while (++ownIndex < length) {
-          index = ownProps[ownIndex];
-          if (callback(iterable[index], index, collection) === false) return result;
-        }
-      return result
-    };
+    var forOwn = createIterator(eachIteratorOptions, forOwnIteratorOptions);
 
     /**
      * This method is like `_.forOwn` except that it iterates over elements
@@ -14327,7 +15642,8 @@ return jQuery;
       var className = toString.call(value),
           length = value.length;
 
-      if ((className == arrayClass || className == stringClass || className == argsClass ) ||
+      if ((className == arrayClass || className == stringClass ||
+          (support.argsClass ? className == argsClass : isArguments(value))) ||
           (className == objectClass && typeof length == 'number' && isFunction(value.splice))) {
         return !length;
       }
@@ -14426,6 +15742,12 @@ return jQuery;
      */
     function isFunction(value) {
       return typeof value == 'function';
+    }
+    // fallback for older versions of Chrome and Safari
+    if (isFunction(/x/)) {
+      isFunction = function(value) {
+        return typeof value == 'function' && toString.call(value) == funcClass;
+      };
     }
 
     /**
@@ -14552,7 +15874,7 @@ return jQuery;
      * // => true
      */
     var isPlainObject = !getPrototypeOf ? shimIsPlainObject : function(value) {
-      if (!(value && toString.call(value) == objectClass)) {
+      if (!(value && toString.call(value) == objectClass) || (!support.argsClass && isArguments(value))) {
         return false;
       }
       var valueOf = value.valueOf,
@@ -14577,7 +15899,7 @@ return jQuery;
      * // => true
      */
     function isRegExp(value) {
-      return value && typeof value == 'object' && toString.call(value) == regexpClass || false;
+      return value && objectTypes[typeof value] && toString.call(value) == regexpClass || false;
     }
 
     /**
@@ -14918,7 +16240,7 @@ return jQuery;
       }
       if (callback) {
         callback = lodash.createCallback(callback, thisArg, 4);
-        (isArr ? forEach : forOwn)(object, function(value, index, object) {
+        (isArr ? baseEach : forOwn)(object, function(value, index, object) {
           return callback(accumulator, value, index, object);
         });
       }
@@ -14980,6 +16302,9 @@ return jQuery;
           length = (args[2] && args[2][args[1]] === collection) ? 1 : props.length,
           result = Array(length);
 
+      if (support.unindexedChars && isString(collection)) {
+        collection = collection.split('');
+      }
       while(++index < length) {
         result[index] = collection[props[index]];
       }
@@ -15025,7 +16350,7 @@ return jQuery;
       } else if (typeof length == 'number') {
         result = (isString(collection) ? collection.indexOf(target, fromIndex) : indexOf(collection, target, fromIndex)) > -1;
       } else {
-        forOwn(collection, function(value) {
+        baseEach(collection, function(value) {
           if (++index >= fromIndex) {
             return !(result = value === target);
           }
@@ -15117,17 +16442,17 @@ return jQuery;
       var result = true;
       callback = lodash.createCallback(callback, thisArg, 3);
 
-      var index = -1,
-          length = collection ? collection.length : 0;
+      if (isArray(collection)) {
+        var index = -1,
+            length = collection.length;
 
-      if (typeof length == 'number') {
         while (++index < length) {
           if (!(result = !!callback(collection[index], index, collection))) {
             break;
           }
         }
       } else {
-        forOwn(collection, function(value, index, collection) {
+        baseEach(collection, function(value, index, collection) {
           return (result = !!callback(value, index, collection));
         });
       }
@@ -15178,10 +16503,10 @@ return jQuery;
       var result = [];
       callback = lodash.createCallback(callback, thisArg, 3);
 
-      var index = -1,
-          length = collection ? collection.length : 0;
+      if (isArray(collection)) {
+        var index = -1,
+            length = collection.length;
 
-      if (typeof length == 'number') {
         while (++index < length) {
           var value = collection[index];
           if (callback(value, index, collection)) {
@@ -15189,7 +16514,7 @@ return jQuery;
           }
         }
       } else {
-        forOwn(collection, function(value, index, collection) {
+        baseEach(collection, function(value, index, collection) {
           if (callback(value, index, collection)) {
             result.push(value);
           }
@@ -15244,10 +16569,10 @@ return jQuery;
     function find(collection, callback, thisArg) {
       callback = lodash.createCallback(callback, thisArg, 3);
 
-      var index = -1,
-          length = collection ? collection.length : 0;
+      if (isArray(collection)) {
+        var index = -1,
+            length = collection.length;
 
-      if (typeof length == 'number') {
         while (++index < length) {
           var value = collection[index];
           if (callback(value, index, collection)) {
@@ -15256,7 +16581,7 @@ return jQuery;
         }
       } else {
         var result;
-        forOwn(collection, function(value, index, collection) {
+        baseEach(collection, function(value, index, collection) {
           if (callback(value, index, collection)) {
             result = value;
             return false;
@@ -15325,18 +16650,17 @@ return jQuery;
      * // => logs each number and returns the object (property order is not guaranteed across environments)
      */
     function forEach(collection, callback, thisArg) {
-      var index = -1,
-          length = collection ? collection.length : 0;
+      if (callback && typeof thisArg == 'undefined' && isArray(collection)) {
+        var index = -1,
+            length = collection.length;
 
-      callback = callback && typeof thisArg == 'undefined' ? callback : baseCreateCallback(callback, thisArg, 3);
-      if (typeof length == 'number') {
         while (++index < length) {
           if (callback(collection[index], index, collection) === false) {
             break;
           }
         }
       } else {
-        forOwn(collection, callback);
+        baseEach(collection, callback, thisArg);
       }
       return collection;
     }
@@ -15359,20 +16683,26 @@ return jQuery;
      * // => logs each number from right to left and returns '3,2,1'
      */
     function forEachRight(collection, callback, thisArg) {
-      var length = collection ? collection.length : 0;
+      var iterable = collection,
+          length = collection ? collection.length : 0;
+
       callback = callback && typeof thisArg == 'undefined' ? callback : baseCreateCallback(callback, thisArg, 3);
-      if (typeof length == 'number') {
+      if (isArray(collection)) {
         while (length--) {
           if (callback(collection[length], length, collection) === false) {
             break;
           }
         }
       } else {
-        var props = keys(collection);
-        length = props.length;
-        forOwn(collection, function(value, key, collection) {
+        if (typeof length != 'number') {
+          var props = keys(collection);
+          length = props.length;
+        } else if (support.unindexedChars && isString(collection)) {
+          iterable = collection.split('');
+        }
+        baseEach(collection, function(value, key, collection) {
           key = props ? props[--length] : --length;
-          return callback(collection[key], key, collection);
+          return callback(iterable[key], key, collection);
         });
       }
       return collection;
@@ -15536,17 +16866,16 @@ return jQuery;
      */
     function map(collection, callback, thisArg) {
       var index = -1,
-          length = collection ? collection.length : 0;
+          length = collection ? collection.length : 0,
+          result = Array(typeof length == 'number' ? length : 0);
 
       callback = lodash.createCallback(callback, thisArg, 3);
-      if (typeof length == 'number') {
-        var result = Array(length);
+      if (isArray(collection)) {
         while (++index < length) {
           result[index] = callback(collection[index], index, collection);
         }
       } else {
-        result = [];
-        forOwn(collection, function(value, key, collection) {
+        baseEach(collection, function(value, key, collection) {
           result[++index] = callback(value, key, collection);
         });
       }
@@ -15617,7 +16946,7 @@ return jQuery;
           ? charAtCallback
           : lodash.createCallback(callback, thisArg, 3);
 
-        forEach(collection, function(value, index, collection) {
+        baseEach(collection, function(value, index, collection) {
           var current = callback(value, index, collection);
           if (current > computed) {
             computed = current;
@@ -15692,7 +17021,7 @@ return jQuery;
           ? charAtCallback
           : lodash.createCallback(callback, thisArg, 3);
 
-        forEach(collection, function(value, index, collection) {
+        baseEach(collection, function(value, index, collection) {
           var current = callback(value, index, collection);
           if (current < computed) {
             computed = current;
@@ -15756,14 +17085,13 @@ return jQuery;
      * // => { 'a': 3, 'b': 6, 'c': 9 }
      */
     function reduce(collection, callback, accumulator, thisArg) {
-      if (!collection) return accumulator;
       var noaccum = arguments.length < 3;
       callback = lodash.createCallback(callback, thisArg, 4);
 
-      var index = -1,
-          length = collection.length;
+      if (isArray(collection)) {
+        var index = -1,
+            length = collection.length;
 
-      if (typeof length == 'number') {
         if (noaccum) {
           accumulator = collection[++index];
         }
@@ -15771,7 +17099,7 @@ return jQuery;
           accumulator = callback(accumulator, collection[index], index, collection);
         }
       } else {
-        forOwn(collection, function(value, index, collection) {
+        baseEach(collection, function(value, index, collection) {
           accumulator = noaccum
             ? (noaccum = false, value)
             : callback(accumulator, value, index, collection)
@@ -15877,6 +17205,8 @@ return jQuery;
     function sample(collection, n, guard) {
       if (collection && typeof collection.length != 'number') {
         collection = values(collection);
+      } else if (support.unindexedChars && isString(collection)) {
+        collection = collection.split('');
       }
       if (n == null || guard) {
         return collection ? collection[baseRandom(0, collection.length - 1)] : undefined;
@@ -15984,17 +17314,17 @@ return jQuery;
       var result;
       callback = lodash.createCallback(callback, thisArg, 3);
 
-      var index = -1,
-          length = collection ? collection.length : 0;
+      if (isArray(collection)) {
+        var index = -1,
+            length = collection.length;
 
-      if (typeof length == 'number') {
         while (++index < length) {
           if ((result = callback(collection[index], index, collection))) {
             break;
           }
         }
       } else {
-        forOwn(collection, function(value, index, collection) {
+        baseEach(collection, function(value, index, collection) {
           return !(result = callback(value, index, collection));
         });
       }
@@ -16098,7 +17428,9 @@ return jQuery;
      */
     function toArray(collection) {
       if (collection && typeof collection.length == 'number') {
-        return slice(collection);
+        return (support.unindexedChars && isString(collection))
+          ? collection.split('')
+          : slice(collection);
       }
       return values(collection);
     }
@@ -18754,7 +20086,7 @@ return jQuery;
     lodash.prototype.valueOf = wrapperValueOf;
 
     // add `Array` functions that return unwrapped values
-    forEach(['join', 'pop', 'shift'], function(methodName) {
+    baseEach(['join', 'pop', 'shift'], function(methodName) {
       var func = arrayRef[methodName];
       lodash.prototype[methodName] = function() {
         var chainAll = this.__chain__,
@@ -18767,7 +20099,7 @@ return jQuery;
     });
 
     // add `Array` functions that return the existing wrapped value
-    forEach(['push', 'reverse', 'sort', 'unshift'], function(methodName) {
+    baseEach(['push', 'reverse', 'sort', 'unshift'], function(methodName) {
       var func = arrayRef[methodName];
       lodash.prototype[methodName] = function() {
         func.apply(this.__wrapped__, arguments);
@@ -18776,12 +20108,34 @@ return jQuery;
     });
 
     // add `Array` functions that return new wrapped values
-    forEach(['concat', 'slice', 'splice'], function(methodName) {
+    baseEach(['concat', 'slice', 'splice'], function(methodName) {
       var func = arrayRef[methodName];
       lodash.prototype[methodName] = function() {
         return new lodashWrapper(func.apply(this.__wrapped__, arguments), this.__chain__);
       };
     });
+
+    // avoid array-like object bugs with `Array#shift` and `Array#splice`
+    // in IE < 9, Firefox < 10, Narwhal, and RingoJS
+    if (!support.spliceObjects) {
+      baseEach(['pop', 'shift', 'splice'], function(methodName) {
+        var func = arrayRef[methodName],
+            isSplice = methodName == 'splice';
+
+        lodash.prototype[methodName] = function() {
+          var chainAll = this.__chain__,
+              value = this.__wrapped__,
+              result = func.apply(value, arguments);
+
+          if (value.length === 0) {
+            delete value[0];
+          }
+          return (chainAll || isSplice)
+            ? new lodashWrapper(result, chainAll)
+            : result;
+        };
+      });
+    }
 
     return lodash;
   }
@@ -18822,989 +20176,7 @@ return jQuery;
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],19:[function(require,module,exports){
-var $ = require('jquery');
-var Extend = require('../vendor/structurejs/src/util/Extend');
-var Stage = require('../vendor/structurejs/src/display/Stage');
-var BaseEvent = require('../vendor/structurejs/src/event/BaseEvent');
-var Router = require('../vendor/structurejs/src/controller/Router');
-var StringUtil = require('../vendor/structurejs/src/util/StringUtil');
-var ListItemCollection = require('./model/ListItemCollection');
-var ListItemComponent = require('./component/ListItemComponent');
-var ListItemVO = require('./model/vo/ListItemVO');
-var Key = require('./constant/Key');
-var FooterView = require('./view/FooterView');
-
-/**
- * YUIDoc_comment
- *
- * @class App
- * @extends Stage
- * @constructor
- **/
-var App = (function () {
-
-    var _super = Extend(App, Stage);
-
-    function App() {
-        _super.call(this);
-
-        /**
-         * @property _listItemCollection
-         * @type {ListItemCollection}
-         * @private
-         */
-        this._listItemCollection = null;
-
-        /**
-         * @property _$addTodoInput
-         * @type {HTMLInputElement}
-         * @private
-         */
-        this._$addTodoInput = null;
-
-        /**
-         * @property _$markAllCompleteCheckbox
-         * @type {HTMLInputElement}
-         * @private
-         */
-        this._$markAllCompleteCheckbox = null;
-
-        /**
-         * @property _todoListContainer
-         * @type {DOMElement}
-         * @private
-         */
-        this._todoListContainer = null;
-
-        /**
-         * @property _$mainView
-         * @type {jQuery}
-         * @private
-         */
-        this._$mainView = null;
-
-        /**
-         * @property _footerView
-         * @type {FooterView}
-         * @private
-         */
-        this._footerView = null;
-    }
-
-    /**
-     * @overridden DOMElement.createChildren
-     */
-    App.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
-
-        this._listItemCollection = new ListItemCollection();
-
-        this._$addTodoInput = this.$element.find('.js-addInput');
-        this._$markAllCompleteCheckbox = this.$element.find('.js-markAllComplete');
-        this._$mainView = this.$element.find('.js-mainView');
-
-        // Take note the "getChild" is a method of the DOMElement class. It will return the first html element from the selector name
-        // that is passed in and create a DOMElement view class with that markup so we can use functionality that comes with the DOMElement class.
-        this._todoListContainer = this.getChild('.js-todoList');
-
-        this._footerView = new FooterView(this.$element.find('.js-footerView'));
-        this.addChild(this._footerView);
-    };
-
-    /**
-     * @overridden DOMElement.layoutChildren
-     */
-    App.prototype.layoutChildren = function () {
-
-        this._footerView.updateCounts(this._listItemCollection.getCompletedCount(), this._listItemCollection.getRemainingCount());
-
-        if (this._listItemCollection.length > 0) {
-            // Take note we are working with the FooterView class jQuery view object "$element" directly.
-            // All classes that extend the DOMElement class has a "$element" property which is the main view/markup the class controls.
-            // If you wanted to encapsulate this more you could create a show/hide method in the FooterView class to handle it.
-            this._footerView.$element.show();
-
-            this._$mainView.show();
-        } else {
-            this._$mainView.hide();
-            this._footerView.$element.hide();
-        }
-
-        return this;
-    };
-
-    /**
-     * @overridden DOMElement.enable
-     */
-    App.prototype.enable = function () {
-        if (this.isEnabled === true) { return this; }
-
-        // Class Events
-        this._listItemCollection.addEventListener('loadComplete', this.onLoadedItems, this);//
-        this._footerView.addEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
-        this.addEventListener(BaseEvent.CHANGE, this.onItemChange, this);
-        this.addEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
-
-        // DOM Events
-        this._$addTodoInput.addEventListener('keypress', this.onCreateTodo, this);
-        this._$markAllCompleteCheckbox.addEventListener('change', this.onAllCompleteChange, this);
-
-        // Load and parse the data in the browsers local storage.
-        this._listItemCollection.loadStoredItems();
-
-        return _super.prototype.enable.call(this);
-    };
-
-    /**
-     * @overridden DOMElement.disable
-     */
-    App.prototype.disable = function () {
-        if (this.isEnabled === false) { return this; }
-
-        // Class Events
-        this._listItemCollection.removeEventListener('loadComplete', this.onLoadedItems, this);// Example of plan string event.
-        this._footerView.removeEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
-        this.removeEventListener(BaseEvent.CHANGE, this.onItemChange, this);
-        this.removeEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
-
-        // DOM Events
-        this._$addTodoInput.removeEventListener('keypress', this.onCreateTodo, this);
-        this._$markAllCompleteCheckbox.removeEventListener('change', this.onAllCompleteChange, this);
-
-        return _super.prototype.disable.call(this);
-    };
-
-    /**
-     * @overridden DOMElement.destroy
-     */
-    App.prototype.destroy = function () {
-        this._todoListContainer.destroy();
-        this._listItemCollection.destroy();
-
-        _super.prototype.destroy.call(this);
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onCreateTodo
-     * @private
-     */
-    App.prototype.onCreateTodo = function(event) {
-        var todoText = this._$addTodoInput.val().trim();
-
-        if (event.which === Key.ENTER && todoText != '') {
-            var valueObject = new ListItemVO({text: todoText});
-            valueObject.id = StringUtil.createUUID();
-            var childItem = new ListItemComponent(valueObject);
-
-            this._listItemCollection.addItem(valueObject);
-            this._todoListContainer.addChild(childItem);
-            this._$addTodoInput.val('');
-        }
-
-        this.layoutChildren();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onAllCompleteChange
-     * @private
-     */
-    App.prototype.onAllCompleteChange = function(event) {
-        var $target = $(event.target);
-
-        var listItemComponent;
-        if ($target.prop("checked") == true) {
-            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
-                listItemComponent = this._todoListContainer.getChildAt(i);
-                listItemComponent.setCompleted();
-            }
-        } else {
-            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
-                listItemComponent = this._todoListContainer.getChildAt(i);
-                listItemComponent.setUnCompleted();
-            }
-        }
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onItemRemove
-     * @param event {BaseEvent}
-     * @private
-     */
-    App.prototype.onItemRemove = function(event) {
-        var listItemComponent = event.target;
-        var listItemVO = listItemComponent.vo;
-
-        this._listItemCollection.removeItem(listItemVO);
-        this._todoListContainer.removeChild(listItemComponent);
-
-        this.layoutChildren();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onItemChange
-     * @param event {BaseEvent}
-     * @private
-     */
-    App.prototype.onItemChange = function(event) {
-        this._listItemCollection.save();
-
-        this.layoutChildren();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onLoadedItems
-     * @param event {BaseEvent}
-     * @private
-     */
-    App.prototype.onLoadedItems = function(event) {
-        var items = this._listItemCollection.items;
-        var length = items.length;
-
-        // Create ListItemComponent view items from the stored ListItemVO value objects.
-        for (var i = 0; i < length; i++) {
-            var childItem = new ListItemComponent(items[i]);
-            this._todoListContainer.addChild(childItem);
-        }
-
-        // When the app loads we need to check if all stored items are all completed or not.
-        var isAllCompleted = this._listItemCollection.length == this._listItemCollection.getCompletedCount();
-        this._$markAllCompleteCheckbox.prop('checked', isAllCompleted);
-
-        // Setup the router/deeplink handlers
-        Router.add('/active/', this.onActiveHandler.bind(this));
-        Router.add('/completed/', this.onCompletedHandler.bind(this));
-        Router.add('', this.onDefaultHandler.bind(this));
-        Router.start();
-
-        this.layoutChildren();
-    };
-
-    /**
-     * This method is called when the BaseEvent.CLEAR event is dispatched from the FooterView.
-     *
-     * @method onClearCompleted
-     * @param event {BaseEvent}
-     * @private
-     */
-    App.prototype.onClearCompleted = function(event) {
-        var listItemVO;
-        var listItemComponent;
-
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
-            listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemVO = listItemComponent.vo;
-
-            if (listItemVO.isComplete == true) {
-                this._todoListContainer.removeChild(listItemComponent);
-                this._listItemCollection.removeItem(listItemVO);
-            }
-        }
-
-        this.layoutChildren();
-    };
-
-    /**
-     * When the deep link "#/active" tag is triggered this method will hide all items and show only items that are not completed.
-     * Also updates the footer nav.
-     *
-     * @method onActiveHandler
-     * @private
-     */
-    App.prototype.onActiveHandler = function() {
-        var listItemComponent;
-
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
-            listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemComponent.hide();
-
-            if (listItemComponent.vo.isComplete == false) {
-                listItemComponent.show();
-            }
-        }
-
-        this._footerView.updateNav('active');
-
-        this.layoutChildren();
-    };
-
-    /**
-     * When the deep link "#/completed" tag is triggered this method will hide all items and show only items that are completed.
-     * Also updates the footer nav.
-     *
-     * @method onCompletedHandler
-     * @private
-     */
-    App.prototype.onCompletedHandler = function() {
-        var listItemComponent;
-
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
-            listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemComponent.hide();
-
-            if (listItemComponent.vo.isComplete == true) {
-                listItemComponent.show();
-            }
-        }
-
-        this._footerView.updateNav('completed');
-
-        this.layoutChildren();
-    };
-
-    /**
-     *  When the deep link "#/" tag is triggered this method will show all items.
-     *  Also updates the footer nav.
-     *
-     * @method onDefaultHandler
-     * @private
-     */
-    App.prototype.onDefaultHandler = function() {
-        var listItemComponent;
-
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
-            listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemComponent.show();
-        }
-
-        this._footerView.updateNav('');
-
-        this.layoutChildren();
-    };
-
-    return App;
-})();
-
-module.exports = App;
-},{"../vendor/structurejs/src/controller/Router":29,"../vendor/structurejs/src/display/Stage":32,"../vendor/structurejs/src/event/BaseEvent":33,"../vendor/structurejs/src/util/Extend":42,"../vendor/structurejs/src/util/StringUtil":43,"./component/ListItemComponent":20,"./constant/Key":21,"./model/ListItemCollection":23,"./model/vo/ListItemVO":24,"./view/FooterView":25,"jquery":17}],20:[function(require,module,exports){
-var $ = require('jquery');
-var Extend = require('../../vendor/structurejs/src/util/Extend');
-var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
-var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
-var Key = require('../constant/Key');
-
-/**
- * YUIDoc_comment
- *
- * @class ListItemComponent
- * @extends DOMElement
- * @constructor
- **/
-var ListItemComponent = (function () {
-
-    var _super = Extend(ListItemComponent, DOMElement);
-
-    function ListItemComponent(vo) {
-        _super.call(this);
-
-        /**
-         * Holds onto the model for this view.
-         *
-         * @property vo
-         * @type {ListItemVO}
-         * @private
-         */
-        this.vo = vo;
-
-        /**
-         * @property _$itemInput
-         * @type {jQuery}
-         * @private
-         */
-        this._$itemInput = null;
-
-        /**
-         * @property _$itemLabel
-         * @type {jQuery}
-         * @private
-         */
-        this._$itemLabel = null;
-
-        /**
-         * YUIDoc_comment
-         *
-         * @property _$markCompleteCheckbox
-         * @type {jQuery}
-         * @private
-         */
-        this._$markCompleteCheckbox = null;
-    }
-
-    /**
-     * @overridden DOMElement.createChildren
-     */
-    ListItemComponent.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, '#listItemTemplate', this.vo);
-
-        this._$itemInput = this.$element.find('.js-itemText');
-        this._$itemLabel = this.$element.find('.js-editTodo');
-        this._$markCompleteCheckbox = this.$element.find('.js-markComplete');
-    };
-
-    /**
-     * @overridden DOMElement.layoutChildren
-     */
-    ListItemComponent.prototype.layoutChildren = function () {
-        this.$element.toggleClass('completed', this.vo.isComplete);
-
-        this._$markCompleteCheckbox.prop('checked', this.vo.isComplete);
-
-        return this;
-    };
-
-    /**
-     * @overridden DOMElement.enable
-     */
-    ListItemComponent.prototype.enable = function () {
-        if (this.isEnabled === true) { return this; }
-
-        this.$element.addEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
-        this.$element.addEventListener('click', '.js-removeTodo', this.onItemRemove, this);
-        this.$element.addEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
-
-        this.$element.addEventListener('keydown', this.onEscapeKey, this);
-        this.$element.addEventListener('keypress', this.onEnterKey, this);
-        this._$itemInput.addEventListener('blur', this.onInputBlur, this);
-
-        return _super.prototype.enable.call(this);
-    };
-
-    /**
-     * @overridden DOMElement.disable
-     */
-    ListItemComponent.prototype.disable = function () {
-        if (this.isEnabled === false) { return this; }
-
-        this.$element.removeEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
-        this.$element.removeEventListener('click', '.js-removeTodo', this.onItemRemove, this);
-        this.$element.removeEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
-
-        this.$element.removeEventListener('keydown', this.onEscapeKey, this);
-        this.$element.removeEventListener('keypress', this.onEnterKey, this);
-        this._$itemInput.removeEventListener('blur', this.onInputBlur, this);
-
-        return _super.prototype.disable.call(this);
-    };
-
-    /**
-     * @overridden DOMElement.destroy
-     */
-    ListItemComponent.prototype.destroy = function () {
-        // Destroy the child objects and references in this parent class to prevent memory leaks.
-
-        _super.prototype.destroy.call(this);
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method setCompleted
-     * @public
-     */
-    ListItemComponent.prototype.setCompleted = function() {
-        this.vo.isComplete = true;
-
-        this.layoutChildren();
-        this.saveItemText();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method setUnCompleted
-     * @public
-     */
-    ListItemComponent.prototype.setUnCompleted = function() {
-        this.vo.isComplete = false;
-
-        this.layoutChildren();
-        this.saveItemText();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method hide
-     * @public
-     */
-    ListItemComponent.prototype.hide = function() {
-        this.$element.hide();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method show
-     * @public
-     */
-    ListItemComponent.prototype.show = function() {
-        this.$element.show();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onItemToggleComplete
-     * @private
-     */
-    ListItemComponent.prototype.onItemToggleComplete = function(event) {
-        var isChecked = $(event.target).prop('checked');
-
-        this.vo.isComplete = isChecked;
-
-        this.layoutChildren();
-        this.saveItemText();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onItemEdit
-     * @private
-     */
-    ListItemComponent.prototype.onItemEdit = function(event) {
-        this.$element.addClass('editing');
-
-        this._$itemInput.focus();
-        this._$itemInput.select();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onEscapeKey
-     * @private
-     */
-    ListItemComponent.prototype.onEscapeKey = function(event) {
-        if (event.which === Key.ESC) {
-            this.resetItemText();
-        }
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onEscapeKey
-     * @private
-     */
-    ListItemComponent.prototype.onInputBlur = function(event) {
-        var todoText = this._$itemInput.val().trim();
-
-        if (todoText != '') {
-            this.vo.text = todoText;
-            this.resetItemText();
-            this.saveItemText();
-        } else {
-            this.resetItemText();
-        }
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method resetItemText
-     * @private
-     */
-    ListItemComponent.prototype.resetItemText = function() {
-        this.$element.removeClass('editing');
-
-        // We need to reset the hidden input back to the original value.
-        this._$itemInput.val(this.vo.text);
-        this._$itemLabel.text(this.vo.text);
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method saveItemText
-     * @private
-     */
-    ListItemComponent.prototype.saveItemText = function() {
-        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.vo));
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onItemRemove
-     * @private
-     */
-    ListItemComponent.prototype.onItemRemove = function(event) {
-        this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED, true));
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method onEnterKey
-     * @private
-     */
-    ListItemComponent.prototype.onEnterKey = function(event) {
-        var todoText = this._$itemInput.val().trim();
-
-        if (event.which === Key.ENTER) {
-            if (todoText != '') {
-                this.vo.text = todoText;
-                this.resetItemText();
-                this.saveItemText();
-            } else {
-                this.resetItemText();
-            }
-        }
-    };
-
-    return ListItemComponent;
-})();
-
-module.exports = ListItemComponent;
-},{"../../vendor/structurejs/src/display/DOMElement":30,"../../vendor/structurejs/src/event/BaseEvent":33,"../../vendor/structurejs/src/util/Extend":42,"../constant/Key":21,"jquery":17}],21:[function(require,module,exports){
-/**
- * YUIDoc_comment
- *
- * @class Key
- * @constructor
- **/
-var Key = (function () {
-
-    function Key() {
-    }
-
-    Key.BACKSPACE = 8;
-    Key.TAB = 9;
-    Key.ENTER = 13;
-    Key.RETURN = 13;
-    Key.ESC = 27;
-    Key.LEFT = 37;
-    Key.UP = 38;
-    Key.RIGHT = 39;
-    Key.DOWN = 40;
-    Key.DELETE = 46;
-    Key.HOME = 36;
-    Key.END = 35;
-    Key.PAGEUP = 33;
-    Key.PAGEDOWN = 34;
-    Key.INSERT = 45;
-
-    return Key;
-})();
-
-module.exports = Key;
-},{}],22:[function(require,module,exports){
-var App = require('./App');
-
-window.app = new App();
-window.app.appendTo('#todoapp');// Need to specify what area our code has control over.
-                                // The App.js class extends Stage which has the appendTo method.
-                                // Note: On typical website you may want to set it as 'body' do you have control over the whole page.
-},{"./App":19}],23:[function(require,module,exports){
-var Extend = require('../../vendor/structurejs/src/util/Extend');
-var Collection = require('../../vendor/structurejs/src/model/Collection');
-var LocalStorageController = require('../../vendor/structurejs/src/controller/LocalStorageController');
-var ListItemVO = require('./vo/ListItemVO');
-
-/**
- * YUIDoc_comment
- *
- * @class ListItemCollection
- * @extends Collection
- * @constructor
- **/
-var ListItemCollection = (function () {
-
-    var _super = Extend(ListItemCollection, Collection);
-
-    function ListItemCollection() {
-        _super.call(this);
-
-        /**
-         * @property _localStorageController
-         * @type {LocalStorageController}
-         * @private
-         */
-        this._localStorageController = new LocalStorageController();
-    }
-
-    /**
-     * @overridden ListItemCollection.addItem
-     */
-    ListItemCollection.prototype.addItem = function (item, silent) {
-        _super.prototype.addItem.call(this, item, silent);
-
-        this.save();
-    };
-
-    /**
-     * @overridden ListItemCollection.removeItem
-     */
-    ListItemCollection.prototype.removeItem = function (item, silent) {
-        _super.prototype.removeItem.call(this, item, silent);
-
-        this.save();
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method loadStoredItems
-     * @public
-     */
-    ListItemCollection.prototype.loadStoredItems = function() {
-        var items = this._localStorageController.getItem('todos');
-
-        if (items != null) {
-            var length = items.length;
-            for (var i = 0; i < length; i++) {
-                this.addItem(new ListItemVO(items[i]));
-            }
-
-            this.dispatchEvent('loadComplete');
-        }
-    };
-
-    /**
-     * YUIDoc_comment
-     *
-     * @method save
-     * @public
-     */
-    ListItemCollection.prototype.save = function() {
-        this._localStorageController.addItem('todos', this.items);
-    };
-
-    /**
-     * Filter down the list of all todo items that are finished.
-     *
-     * @method getCompletedCount
-     * @public
-     */
-    ListItemCollection.prototype.getCompletedCount = function() {
-        return this.find({isComplete: true}).length;
-    };
-
-    /**
-     * Filter down the list to only todo items that are still not finished.
-     *
-     * @method getRemainingCount
-     * @public
-     */
-    ListItemCollection.prototype.getRemainingCount = function() {
-        return this.find({isComplete: false}).length;
-    };
-
-    return ListItemCollection;
-})();
-
-module.exports = ListItemCollection;
-},{"../../vendor/structurejs/src/controller/LocalStorageController":28,"../../vendor/structurejs/src/model/Collection":37,"../../vendor/structurejs/src/util/Extend":42,"./vo/ListItemVO":24}],24:[function(require,module,exports){
-var Extend = require('../../../vendor/structurejs/src/util/Extend');
-var ValueObject = require('../../../vendor/structurejs/src/model/ValueObject');
-
-/**
- * YUIDoc_comment
- *
- * @class ListItemVO
- * @extends ValueObject
- * @constructor
- **/
-var ListItemVO = (function () {
-
-    var _super = Extend(ListItemVO, ValueObject);
-
-    function ListItemVO(data) {
-        _super.call(this);
-
-        /**
-         * @property id
-         * @type {string}
-         * @public
-         */
-        this.id = null;
-
-        /**
-         * @property text
-         * @type {string}
-         * @public
-         */
-        this.text = '';
-
-        /**
-         * @property isComplete
-         * @type {boolean}
-         * @public
-         */
-        this.isComplete = false;
-
-        if (data) {
-            this.update(data);
-        }
-    }
-
-    /**
-     * @overridden ValueObject.update
-     */
-    ListItemVO.prototype.update = function (data) {
-        _super.prototype.update.call(this, data);
-
-        // Override any values after the default super update method has set the values.
-    };
-
-    /**
-     * @overridden ValueObject.copy
-     */
-    ListItemVO.prototype.copy = function () {
-        var data = _super.prototype.copy();
-        return new ListItemVO(data);
-    };
-
-    return ListItemVO;
-})();
-
-module.exports = ListItemVO;
-},{"../../../vendor/structurejs/src/model/ValueObject":39,"../../../vendor/structurejs/src/util/Extend":42}],25:[function(require,module,exports){
-var Extend = require('../../vendor/structurejs/src/util/Extend');
-var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
-var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
-
-/**
- * This class is responsible for hand the display and interactions for the footer HTML.
- *
- * @class FooterView
- * @extends DOMElement
- * @constructor
- **/
-var FooterView = (function () {
-
-    var _super = Extend(FooterView, DOMElement);
-
-    function FooterView($element) {
-        _super.call(this, $element);
-
-        /**
-         * @property _$itemsCompleteText
-         * @type {jQuery}
-         * @private
-         */
-        this._$itemsCompleteText = null;
-
-        /**
-         * @property _$itemsRemainingText
-         * @type {jQuery}
-         * @private
-         */
-        this._$itemsRemainingText = null;
-
-        /**
-         * @property _$clearCompleteButton
-         * @type {jQuery}
-         * @private
-         */
-        this._$clearCompleteButton = null;
-
-        /**
-         * @property _$navLinks
-         * @type {jQuery}
-         * @private
-         */
-        this._$navLinks = null;
-    }
-
-    /**
-     * @overridden DOMElement.createChildren
-     */
-    FooterView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
-
-        this._$itemsCompleteText = this.$element.find('.js-itemsComplete');
-        this._$itemsRemainingText = this.$element.find('.js-itemsRemaining');
-        this._$clearCompleteButton = this.$element.find('.js-clearCompleteButton');
-        this._$navLinks = this.$element.find('#filters li a');
-    };
-
-    /**
-     * @overridden DOMElement.enable
-     */
-    FooterView.prototype.enable = function () {
-        if (this.isEnabled === true) { return this; }
-
-        this._$clearCompleteButton.addEventListener('click', this.onClear, this);
-
-        return _super.prototype.enable.call(this);
-    };
-
-    /**
-     * @overridden DOMElement.disable
-     */
-    FooterView.prototype.disable = function () {
-        if (this.isEnabled === false) { return this; }
-
-        this._$clearCompleteButton.removeEventListener('click', this.onClear, this);
-
-        return _super.prototype.disable.call(this);
-    };
-
-    /**
-     * @overridden DOMElement.destroy
-     */
-    FooterView.prototype.destroy = function () {
-        // Destroy the child objects and references in this parent class to prevent memory leaks.
-
-        _super.prototype.destroy.call(this);
-    };
-
-    /**
-     * This method will update the footer display count for both completed and remaining items.
-     *
-     * @method updateCounts
-     * @public
-     */
-    FooterView.prototype.updateCounts = function(completedCount, remainingCount) {
-        this._$itemsCompleteText.text(completedCount);
-        this._$itemsRemainingText.text(remainingCount);
-    };
-
-    /**
-     * This will remove the "selected" style class on all nav links and then add the
-     * "selected" style class what ever matches the passed in string value.
-     *
-     * @method updateNav
-     * @public
-     */
-    FooterView.prototype.updateNav = function(hashName) {
-        this._$navLinks.removeClass('selected')
-            .filter('[href="#/' + (hashName || '') + '"]')
-            .addClass('selected');
-    };
-
-    /**
-     * When the user clicks the "clear completed" button this method will be called and will dispatch an event
-     * to tell the parent class that we want to remove all the completed items.
-     *
-     * @method onClear
-     * @param event {jQueryEventObject}
-     * @private
-     */
-    FooterView.prototype.onClear = function(event) {
-        // Take note this is not dispatching a BaseEvent object but just the string value constant. The only time you need to dispatch
-        // an BaseEvent object or a custom event that extends BaseEvent is when you want to use event bubbling or have custom properties
-        // on the event that you want to set.
-        this.dispatchEvent(BaseEvent.CLEAR);
-    };
-
-    return FooterView;
-})();
-
-module.exports = FooterView;
-},{"../../vendor/structurejs/src/display/DOMElement":30,"../../vendor/structurejs/src/event/BaseEvent":33,"../../vendor/structurejs/src/util/Extend":42}],26:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -20426,7 +20798,7 @@ module.exports = FooterView;
          *     var str = Router.getHash();
          */
         Router.getHash = function () {
-            var hash = Router.WINDOW.location.hash;
+            var hash = Router._window.location.hash;
             var strIndex = (hash.substr(0, 2) === '#!') ? 2 : 1;
 
             return hash.substring(strIndex);
@@ -20445,10 +20817,10 @@ module.exports = FooterView;
             if (Router.isEnabled === true)
                 return;
 
-            if (Router.WINDOW.addEventListener) {
-                Router.WINDOW.addEventListener('hashchange', Router.onHashChange, false);
+            if (Router._window.addEventListener) {
+                Router._window.addEventListener('hashchange', Router.onHashChange, false);
             } else {
-                Router.WINDOW.attachEvent('onhashchange', Router.onHashChange);
+                Router._window.attachEvent('onhashchange', Router.onHashChange);
             }
 
             Router.isEnabled = true;
@@ -20467,10 +20839,10 @@ module.exports = FooterView;
             if (Router.isEnabled === false)
                 return;
 
-            if (Router.WINDOW.removeEventListener) {
-                Router.WINDOW.removeEventListener('hashchange', Router.onHashChange);
+            if (Router._window.removeEventListener) {
+                Router._window.removeEventListener('hashchange', Router.onHashChange);
             } else {
-                Router.WINDOW.detachEvent('onhashchange', Router.onHashChange);
+                Router._window.detachEvent('onhashchange', Router.onHashChange);
             }
 
             Router.isEnabled = false;
@@ -20504,6 +20876,7 @@ module.exports = FooterView;
          * @method navigateTo
          * @param route {String}
          * @param [silent=false] {Boolean}
+         * @param [disableHistory=false] {Boolean}
          * @public
          * @static
          * @example
@@ -20512,9 +20885,13 @@ module.exports = FooterView;
          *
          *     // This will update the hash url but will not trigger the matching route.
          *     Router.navigateTo('/games/asteroids/2/', true);
+         *
+         *     // This will not update the hash url but will trigger the matching route.
+         *     Router.navigateTo('/games/asteroids/2/', true, true);
          */
-        Router.navigateTo = function (route, silent) {
+        Router.navigateTo = function (route, silent, disableHistory) {
             if (typeof silent === "undefined") { silent = false; }
+            if (typeof disableHistory === "undefined") { disableHistory = false; }
             if (Router.isEnabled === false)
                 return;
 
@@ -20526,6 +20903,11 @@ module.exports = FooterView;
             // Enforce starting slash
             if (route.charAt(0) !== '/' && Router.forceSlash === true) {
                 route = '/' + route;
+            }
+
+            if (disableHistory === true) {
+                Router.changeRoute(route);
+                return;
             }
 
             if (Router.useDeepLinking === true) {
@@ -20570,7 +20952,7 @@ module.exports = FooterView;
          *     Router.destroy();
          */
         Router.prototype.destroy = function () {
-            Router.WINDOW = null;
+            Router._window = null;
             Router._routes = null;
             Router._defaultRoute = null;
             Router._hashChangeEvent = null;
@@ -20670,14 +21052,12 @@ module.exports = FooterView;
         /**
          * A reference to the browser Window Object.
          *
-         * @property WINDOW
+         * @property _window
          * @type {Window}
          * @private
          * @static
-         * @final
-         * @readOnly
          */
-        Router.WINDOW = window;
+        Router._window = window;
 
         /**
          * A list of the added Route objects.
@@ -20800,9 +21180,9 @@ module.exports = FooterView;
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../display/DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', require('jquery'), '../pplugin/jquery.eventListener'], factory);
+        define(['../util/Extend', '../display/DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', 'jquery', '../plugin/jquery.eventListener'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../display/DisplayObjectContainer'), require('../event/BaseEvent'), require('../util/TemplateFactory'), require('../util/ComponentFactory'), require('jquery'), require('../plugin/jquery.eventListener'));
+        module.exports = factory(require('../util/Extend'), require('../display/DisplayObjectContainer'), require('../event/BaseEvent'), require('../util/TemplateFactory'), require('../util/ComponentFactory'), require("./../../../jquery/dist/jquery.js"), require('../plugin/jquery.eventListener'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
@@ -21072,7 +21452,7 @@ module.exports = FooterView;
             params = this._params || params;
 
             if (this.$element == null) {
-                var html = TemplateFactory.createTemplate(type, params);
+                var html = TemplateFactory.create(type, params);
                 if (html) {
                     this.$element = jQuery(html);
                 } else {
@@ -21347,21 +21727,6 @@ module.exports = FooterView;
         };
 
         /**
-         * Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)
-         * to 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though
-         * they are invisible.
-         *
-         * @method alpha
-         * @param number
-         * @returns {DOMElement} Returns an instance of itself.
-         * @chainable
-         */
-        DOMElement.prototype.alpha = function (number) {
-            this.$element.css('opacity', number);
-            return this;
-        };
-
-        /**
          * @overridden DisplayObjectContainer.destroy
          */
         DOMElement.prototype.destroy = function () {
@@ -21394,7 +21759,7 @@ module.exports = FooterView;
     return DOMElement;
 }));
 
-},{"../display/DisplayObjectContainer":31,"../event/BaseEvent":33,"../plugin/jquery.eventListener":40,"../util/ComponentFactory":41,"../util/Extend":42,"../util/TemplateFactory":44,"jquery":17}],31:[function(require,module,exports){
+},{"../display/DisplayObjectContainer":31,"../event/BaseEvent":33,"../plugin/jquery.eventListener":40,"../util/ComponentFactory":41,"../util/Extend":42,"../util/TemplateFactory":44,"./../../../jquery/dist/jquery.js":24}],31:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -21768,7 +22133,7 @@ module.exports = FooterView;
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../display/DOMElement', 'jquery'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../display/DOMElement'), require('jquery'));
+        module.exports = factory(require('../util/Extend'), require('../display/DOMElement'), require("./../../../jquery/dist/jquery.js"));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
@@ -21887,7 +22252,7 @@ module.exports = FooterView;
 
     return Stage;
 }));
-},{"../display/DOMElement":30,"../util/Extend":42,"jquery":17}],33:[function(require,module,exports){
+},{"../display/DOMElement":30,"../util/Extend":42,"./../../../jquery/dist/jquery.js":24}],33:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -22763,7 +23128,7 @@ module.exports = FooterView;
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../event/EventDispatcher', '../event/BaseEvent', 'lodash'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'), require('lodash'));
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'), require("./../../../lodash/dist/lodash.compat.js"));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
@@ -23057,7 +23422,7 @@ module.exports = FooterView;
 
     return Collection;
 }));
-},{"../event/BaseEvent":33,"../event/EventDispatcher":34,"../util/Extend":42,"lodash":18}],38:[function(require,module,exports){
+},{"../event/BaseEvent":33,"../event/EventDispatcher":34,"../util/Extend":42,"./../../../lodash/dist/lodash.compat.js":25}],38:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -23372,7 +23737,7 @@ module.exports = FooterView;
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        factory(require('jquery'));
+        factory(require("./../../../jquery/dist/jquery.js"));
     } else {
         /*jshint sub:true */
         factory(root.jQuery);
@@ -23496,7 +23861,7 @@ module.exports = FooterView;
     return $;
 }));
 
-},{"jquery":17}],41:[function(require,module,exports){
+},{"./../../../jquery/dist/jquery.js":24}],41:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -23624,7 +23989,6 @@ module.exports = FooterView;
      * @class StringUtil
      * @module StructureJS
      * @submodule util
-     * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
@@ -23846,7 +24210,7 @@ module.exports = FooterView;
     if (typeof define === 'function' && define.amd) {
         define(['../util/StringUtil', 'handlebars', 'jquery'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/StringUtil'), require('handlebars'), require('jquery'));
+        module.exports = factory(require('../util/StringUtil'), require('handlebars'), require("./../../../jquery/dist/jquery.js"));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
@@ -23868,11 +24232,14 @@ module.exports = FooterView;
 
         function TemplateFactory() {
         }
-        TemplateFactory.createTemplate = function (templatePath, data) {
-            if (typeof data === "undefined") { data = null; }
-            return TemplateFactory.create(templatePath, data);
-        };
-
+        /**
+         * YUIDoc_comment
+         *
+         * @method create
+         * @param templatePath {any}
+         * @param data {any}
+         * @returns {*}
+         */
         TemplateFactory.create = function (templatePath, data) {
             if (typeof data === "undefined") { data = null; }
             //Checks the first character to see if it is a '.' or '#'.
@@ -23923,7 +24290,7 @@ module.exports = FooterView;
 
     return TemplateFactory;
 }));
-},{"../util/StringUtil":43,"handlebars":16,"jquery":17}],45:[function(require,module,exports){
+},{"../util/StringUtil":43,"./../../../jquery/dist/jquery.js":24,"handlebars":16}],45:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -23946,7 +24313,6 @@ module.exports = FooterView;
      * @class Util
      * @module StructureJS
      * @submodule util
-     * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
     var Util = (function () {
@@ -24116,4 +24482,4 @@ module.exports = FooterView;
 
     return Util;
 }));
-},{}]},{},[22]);
+},{}]},{},[20]);
