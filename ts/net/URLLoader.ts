@@ -83,12 +83,10 @@ module StructureTS
                 data: request.data,
                 contentType: request.contentType,
                 dataType: self.dataFormat,
-                jsonp: 'callback',
-                beforeSend: self.onBeforeSend.bind(this),
-                success: self.onLoadSuccess.bind(this),
-                error: self.onLoadError.bind(this),
-                complete: self.onComplete.bind(this)
+                jsonp: 'callback'
             });
+            this._xhr.done(self.onSuccess.bind(this));
+            this._xhr.fail(self.onError.bind(this));
         }
 
 
@@ -119,44 +117,22 @@ module StructureTS
         /**
          * YUIDoc_comment
          *
-         * @method abort
+         * @method onError
          * @private
          */
-        private onLoadSuccess(data):void
+        private onError():void
         {
-            this.data = data;
-        }
-
-        /**
-         * YUIDoc_comment
-         *
-         * @method abort
-         * @private
-         */
-        private onBeforeSend():void
-        {
-            //console.log("onBeforeSend", arguments);
-        }
-
-        /**
-         * YUIDoc_comment
-         *
-         * @method abort
-         * @private
-         */
-        private onLoadError():void
-        {
-            console.log("[URLLoader] - onLoadError", arguments);
+            console.log("[URLLoader] - onError", arguments);
             this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
         }
 
         /**
          * YUIDoc_comment
          *
-         * @method abort
+         * @method onSuccess
          * @private
          */
-        private onComplete(data):void
+        private onSuccess(data):void
         {
             this.complete = true;
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));

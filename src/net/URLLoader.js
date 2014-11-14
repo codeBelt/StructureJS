@@ -87,12 +87,10 @@
                 data: request.data,
                 contentType: request.contentType,
                 dataType: self.dataFormat,
-                jsonp: 'callback',
-                beforeSend: self.onBeforeSend.bind(this),
-                success: self.onLoadSuccess.bind(this),
-                error: self.onLoadError.bind(this),
-                complete: self.onComplete.bind(this)
+                jsonp: 'callback'
             });
+            this._xhr.done(self.onSuccess.bind(this));
+            this._xhr.fail(self.onError.bind(this));
         };
 
         /**
@@ -119,41 +117,21 @@
         /**
          * YUIDoc_comment
          *
-         * @method abort
+         * @method onError
          * @private
          */
-        URLLoader.prototype.onLoadSuccess = function (data) {
-            this.data = data;
-        };
-
-        /**
-         * YUIDoc_comment
-         *
-         * @method abort
-         * @private
-         */
-        URLLoader.prototype.onBeforeSend = function () {
-            //console.log("onBeforeSend", arguments);
-        };
-
-        /**
-         * YUIDoc_comment
-         *
-         * @method abort
-         * @private
-         */
-        URLLoader.prototype.onLoadError = function () {
-            console.log("[URLLoader] - onLoadError", arguments);
+        URLLoader.prototype.onError = function () {
+            console.log("[URLLoader] - onError", arguments);
             this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
         };
 
         /**
          * YUIDoc_comment
          *
-         * @method abort
+         * @method onSuccess
          * @private
          */
-        URLLoader.prototype.onComplete = function () {
+        URLLoader.prototype.onSuccess = function (data) {
             this.complete = true;
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));
         };
