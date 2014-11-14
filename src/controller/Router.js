@@ -178,7 +178,7 @@
          *     var str = Router.getHash();
          */
         Router.getHash = function () {
-            var hash = Router.WINDOW.location.hash;
+            var hash = Router._window.location.hash;
             var strIndex = (hash.substr(0, 2) === '#!') ? 2 : 1;
 
             return hash.substring(strIndex);
@@ -197,10 +197,10 @@
             if (Router.isEnabled === true)
                 return;
 
-            if (Router.WINDOW.addEventListener) {
-                Router.WINDOW.addEventListener('hashchange', Router.onHashChange, false);
+            if (Router._window.addEventListener) {
+                Router._window.addEventListener('hashchange', Router.onHashChange, false);
             } else {
-                Router.WINDOW.attachEvent('onhashchange', Router.onHashChange);
+                Router._window.attachEvent('onhashchange', Router.onHashChange);
             }
 
             Router.isEnabled = true;
@@ -219,10 +219,10 @@
             if (Router.isEnabled === false)
                 return;
 
-            if (Router.WINDOW.removeEventListener) {
-                Router.WINDOW.removeEventListener('hashchange', Router.onHashChange);
+            if (Router._window.removeEventListener) {
+                Router._window.removeEventListener('hashchange', Router.onHashChange);
             } else {
-                Router.WINDOW.detachEvent('onhashchange', Router.onHashChange);
+                Router._window.detachEvent('onhashchange', Router.onHashChange);
             }
 
             Router.isEnabled = false;
@@ -256,6 +256,7 @@
          * @method navigateTo
          * @param route {String}
          * @param [silent=false] {Boolean}
+         * @param [disableHistory=false] {Boolean}
          * @public
          * @static
          * @example
@@ -264,9 +265,13 @@
          *
          *     // This will update the hash url but will not trigger the matching route.
          *     Router.navigateTo('/games/asteroids/2/', true);
+         *
+         *     // This will not update the hash url but will trigger the matching route.
+         *     Router.navigateTo('/games/asteroids/2/', true, true);
          */
-        Router.navigateTo = function (route, silent) {
+        Router.navigateTo = function (route, silent, disableHistory) {
             if (typeof silent === "undefined") { silent = false; }
+            if (typeof disableHistory === "undefined") { disableHistory = false; }
             if (Router.isEnabled === false)
                 return;
 
@@ -278,6 +283,11 @@
             // Enforce starting slash
             if (route.charAt(0) !== '/' && Router.forceSlash === true) {
                 route = '/' + route;
+            }
+
+            if (disableHistory === true) {
+                Router.changeRoute(route);
+                return;
             }
 
             if (Router.useDeepLinking === true) {
@@ -322,7 +332,7 @@
          *     Router.destroy();
          */
         Router.prototype.destroy = function () {
-            Router.WINDOW = null;
+            Router._window = null;
             Router._routes = null;
             Router._defaultRoute = null;
             Router._hashChangeEvent = null;
@@ -422,14 +432,12 @@
         /**
          * A reference to the browser Window Object.
          *
-         * @property WINDOW
+         * @property _window
          * @type {Window}
          * @private
          * @static
-         * @final
-         * @readOnly
          */
-        Router.WINDOW = window;
+        Router._window = window;
 
         /**
          * A list of the added Route objects.

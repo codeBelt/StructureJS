@@ -16,14 +16,12 @@ module StructureTS
         /**
          * A reference to the browser Window Object.
          *
-         * @property WINDOW
+         * @property _window
          * @type {Window}
          * @private
          * @static
-         * @final
-         * @readOnly
          */
-        private static WINDOW:Window = window;
+        private static _window:Window = window;
 
         /**
          * A list of the added Route objects.
@@ -303,7 +301,7 @@ module StructureTS
          */
         public static getHash():string
         {
-            var hash:string = Router.WINDOW.location.hash;
+            var hash:string = Router._window.location.hash;
             var strIndex:number = (hash.substr(0, 2) === '#!') ? 2 : 1;
 
             return hash.substring(strIndex); // Return everything after # or #!
@@ -322,13 +320,13 @@ module StructureTS
         {
             if (Router.isEnabled === true) return;
 
-            if (Router.WINDOW.addEventListener)
+            if (Router._window.addEventListener)
             {
-                Router.WINDOW.addEventListener('hashchange', Router.onHashChange, false);
+                Router._window.addEventListener('hashchange', Router.onHashChange, false);
             }
             else
             {
-                Router.WINDOW.attachEvent('onhashchange', Router.onHashChange);
+                Router._window.attachEvent('onhashchange', Router.onHashChange);
             }
 
             Router.isEnabled = true;
@@ -347,13 +345,13 @@ module StructureTS
         {
             if (Router.isEnabled === false) return;
 
-            if (Router.WINDOW.removeEventListener)
+            if (Router._window.removeEventListener)
             {
-                Router.WINDOW.removeEventListener('hashchange', Router.onHashChange);
+                Router._window.removeEventListener('hashchange', Router.onHashChange);
             }
             else
             {
-                Router.WINDOW.detachEvent('onhashchange', Router.onHashChange);
+                Router._window.detachEvent('onhashchange', Router.onHashChange);
             }
 
             Router.isEnabled = false;
@@ -388,6 +386,7 @@ module StructureTS
          * @method navigateTo
          * @param route {String}
          * @param [silent=false] {Boolean}
+         * @param [disableHistory=false] {Boolean}
          * @public
          * @static
          * @example
@@ -396,8 +395,11 @@ module StructureTS
          *
          *     // This will update the hash url but will not trigger the matching route.
          *     Router.navigateTo('/games/asteroids/2/', true);
+         *
+         *     // This will not update the hash url but will trigger the matching route.
+         *     Router.navigateTo('/games/asteroids/2/', true, true);
          */
-        public static navigateTo(route, silent:boolean = false):void
+        public static navigateTo(route, silent:boolean = false, disableHistory:boolean = false):void
         {
             if (Router.isEnabled === false) return;
 
@@ -411,6 +413,12 @@ module StructureTS
             if (route.charAt(0) !== '/' && Router.forceSlash === true)
             {
                 route = '/' + route;
+            }
+
+            if (disableHistory === true)
+            {
+                Router.changeRoute(route);
+                return;
             }
 
             if (Router.useDeepLinking === true)
@@ -465,7 +473,7 @@ module StructureTS
          */
         public destroy():void
         {
-            Router.WINDOW = null;
+            Router._window = null;
             Router._routes = null;
             Router._defaultRoute = null;
             Router._hashChangeEvent = null;
