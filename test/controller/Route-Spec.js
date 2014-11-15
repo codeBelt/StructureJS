@@ -1,108 +1,67 @@
 define(function (require, exports, module) {
 
-    /*var DOMElement = require('display/DOMElement');
+    var Route = require('model/Route');
 
-    describe("DOMElement", function() {
+    describe("Route", function() {
 
-        var view = new DOMElement();
-        var child = new DOMElement();
+        var route;
 
-        it("isEnabled", function() {
-            expect(child.isEnabled).toEqual(false);
+        it("match()", function() {
+            route = new Route('', function(){}, this);
+            expect(route.match('')).not.toBeNull();
+            expect(route.match('/')).not.toBeNull();
+
+
+            route = new Route('/', function(){}, this);
+            expect(route.match('')).not.toBeNull();
+            expect(route.match('/')).not.toBeNull();
+
+
+            route = new Route('/house/', function(){}, this);
+            expect(route.match('house')).not.toBeNull();
+            expect(route.match('house/another')).toBeNull();
+//            expect(route.match('house/another/?one=1&two=2&three=3')).not.toBeNull();
+//            expect(route.match('house/another?one=1&two=2&three=3')).not.toBeNull();
+
+
+            route = new Route('/games/{gameName}/:level:/', function(){}, this);
+            expect(route.match('games/asteroids')).not.toBeNull();
+            expect(route.match('/games/asteroids/')).not.toBeNull();
+            expect(route.match('/games/asteroids/2')).not.toBeNull();
+            expect(route.match('/games/asteroids/2/')).not.toBeNull();
+
+
+            route = new Route('/product/{productName}/', function(){}, this);
+            expect(route.match('/product/shoes/')).not.toBeNull();
+            expect(route.match('/product/jackets/')).not.toBeNull();
+            expect(route.match('/product/')).toBeNull();
+
+
+            route = new Route('*', function(){}, this);
+            expect(route.match('/anything/')).not.toBeNull();
+            expect(route.match('/matches/any/hash/url/')).not.toBeNull();
+            expect(route.match('/really/it/matches/any/and/all/hash/urls/')).not.toBeNull();
+
+
+            route = new Route('/about/*', function(){}, this);
+//            expect(route.match('about')).not.toBeNull();
+            expect(route.match('/about/')).not.toBeNull();
+            expect(route.match('/about/any/hash/url/')).not.toBeNull();
+            expect(route.match('/about/it/matches/any/and/all/hash/urls/')).not.toBeNull();
+            expect(route.match('')).toBeNull();
+
+
+            route = new Route('?', function(){}, this);
+            expect(route.match('/?one=1&two=2&three=3')).not.toBeNull();
+            expect(route.match('?one=1&two=2&three=3')).not.toBeNull();
+
+
+            route = new Route('/{category}/blog/', function(){}, this);
+            expect(route.match('/product/blog/')).not.toBeNull();
+            expect(route.match('/blog/blog/')).not.toBeNull();
+            expect(route.match('/car/blog/')).not.toBeNull();
+            expect(route.match('/blog/')).toBeNull();
         });
-
-        it("addChild()", function() {
-            view.addChild(child);
-            expect(view.children[0]).toEqual(child);
-        });
-
-        it("isEnabled", function() {
-            expect(child.isEnabled).toEqual(true);
-        });
-
-        it("numChildren", function() {
-            expect(view.numChildren).toEqual(1);
-        });
-
-
-
-        //        $element
-//        _params
-//        _type
-//        checkCount
-//        children
-//        cid
-//        element
-//        height
-//        numChildren
-//        parent
-//        unscaledHeight
-//        unscaledWidth
-//        width
-//        x
-//        y
-
-//        addChild
-//        addChildAt
-//        addEventListener
-//        alpha
-//        contains
-//        createChildren
-//        createComponents
-//        destroy
-//        disable
-//        dispatchEvent
-//        enable
-//        getChild
-//        getChildAt
-//        getChildByCid
-//        getChildIndex
-//        getChildren
-//        getEventListeners
-//        getQualifiedClassName
-//        layoutChildren
-//        removeChild
-//        removeChildAt
-//        removeChildren
-//        removeEventListener
-//        swapChildren
-
-
-        it("isEnabled", function() {
-            expect(child.isEnabled).toEqual(true);
-        });
-
-        it("disable()", function() {
-            child.disable();
-            expect(child.isEnabled).toEqual(false);
-        });
-
-        it("contains()", function() {
-            expect(view.contains(child)).toEqual(true);
-        });
-
-        it("getChildAt()", function() {
-            expect(view.getChildAt(0)).toEqual(child);
-        });
-
-        it("getChild()", function() {
-            expect(view.getChild(child)).toEqual(child);
-        });
-
-        it("getChildIndex()", function() {
-            expect(view.getChildIndex(child)).toEqual(0);
-        });
-
-        it("getChildByCid()", function() {
-            expect(view.getChildByCid(child.cid)).toEqual(child);
-        });
-
-        it("getQualifiedClassName()", function() {
-            expect(view.getQualifiedClassName()).toEqual('DOMElement');
-        });
-
-
-
-    });*/
+    });
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/
