@@ -37,9 +37,9 @@ define(function (require, exports, module) {
         });
 
         it("formatCost()", function() {
-            expect(NumberUtil.formatUnit(1234567.89, 2, "*", ",", "$", 0)).toEqual('$1,234,567.89');
-            expect(NumberUtil.formatUnit(1234.5676, 2, "*", ",",  " $", 1)).toEqual('1,234.57 $');
-            expect(NumberUtil.formatUnit(12341234.56, 2, "*", ",",  " €", 1)).toEqual('12,341,234.56 €');
+            expect(NumberUtil.formatUnit(1234567.89, 2, ".", ",", "$", 0)).toEqual('$1,234,567.89');
+            expect(NumberUtil.formatUnit(1234.5676, 2, ".", " ", " $", 1)).toEqual('1 234.57 $');
+            expect(NumberUtil.formatUnit(12341234.56, 2, "~", ",", " €", 1)).toEqual('12,341,234~56 €');
             expect(NumberUtil.formatUnit(1900, 0)).toEqual('1,900');
             expect(NumberUtil.formatUnit(-1900.24, 1)).toEqual('-1,900.2');
         });

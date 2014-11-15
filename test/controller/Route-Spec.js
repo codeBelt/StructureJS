@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
 
-    var DOMElement = require('display/DOMElement');
+    /*var DOMElement = require('display/DOMElement');
 
     describe("DOMElement", function() {
 
@@ -103,6 +103,6 @@ define(function (require, exports, module) {
 
 
 
-    });
+    });*/
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/

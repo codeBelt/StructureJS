@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
 
-    var Route = require('model/Route');
+   /* var Route = require('model/Route');
 
     describe("Route", function() {
 
@@ -43,7 +43,7 @@ define(function (require, exports, module) {
             expect(route.match('/really/it/matches/any/and/all/hash/urls/')).not.toBeNull();
 
 
-            route = new Route('/about/*', function(){}, this);
+            route = new Route('/about*//*', function(){}, this);
 //            expect(route.match('about')).not.toBeNull();
             expect(route.match('/about/')).not.toBeNull();
             expect(route.match('/about/any/hash/url/')).not.toBeNull();
@@ -61,6 +61,6 @@ define(function (require, exports, module) {
             expect(route.match('/car/blog/')).not.toBeNull();
             expect(route.match('/blog/')).toBeNull();
         });
-    });
+    });*/
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/
