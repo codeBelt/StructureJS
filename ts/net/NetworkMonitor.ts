@@ -3,7 +3,7 @@
 ///<reference path='../event/NetworkMonitorEvent.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class NetworkMonitor
  * @constructor
@@ -25,7 +25,7 @@ module StructureTS
         private static _eventDispatcher:EventDispatcher = new EventDispatcher();
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _initialized
          * @type {boolean}
@@ -41,14 +41,14 @@ module StructureTS
         /**
          * Adds the necessary event listeners to listen for the 'online' and 'offline' events.
          * Also dispatches a {{#crossLink "NetworkMonitorEvent"}}{{/crossLink}} right away with the status of the network connection.
-         * It is recommended you call NetworkMonitor.init(); when your application starts up.
+         * It is recommended you call NetworkMonitor.start(); when your application starts up.
          * @example
-         NetworkMonitor.init();
-         * @method init
+         *      NetworkMonitor.start();
+         * @method start
          * @static
          * @public
          */
-        public static init():void
+        public static start():void
         {
             if (NetworkMonitor._initialized === true)
             {
@@ -77,8 +77,8 @@ module StructureTS
          */
         public static connected():boolean
         {
-            // Calling init as a backup if the developer forgets to call NetworkMonitor.init() at the startup of the application.
-            NetworkMonitor.init();
+            // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
+            NetworkMonitor.start();
             return window.navigator.onLine;
         }
 
@@ -93,13 +93,13 @@ module StructureTS
          */
         public static getStatus():string
         {
-            // Calling init as a backup if the developer forgets to call NetworkMonitor.init() at the startup of the application.
-            NetworkMonitor.init();
+            // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
+            NetworkMonitor.start();
             return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method onNetworkMonitorEvent
          * @param event

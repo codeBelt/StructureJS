@@ -13,17 +13,20 @@ module StructureTS
     {
         constructor()
         {
+            throw new Error('[MerchantUtil] Do not instantiation the MerchantUtil class because it is a static class.');
         }
 
         /**
          * Determines if credit card is valid using the Luhn formula.
-         * @example
-         MerchantUtil.isCreditCard('4556106734384949');
+         *
          * @method isCreditCard
          * @param cardNumber {string} The credit card number.
          * @returns {boolean} <code>true</code> if String is a valid credit card number; otherwise <code>false</code>.
          * @public
          * @static
+         * @example
+         *      MerchantUtil.isCreditCard('4556106734384949');
+         *      // true
          */
         public static isCreditCard(cardNumber:string):boolean
         {
@@ -57,10 +60,6 @@ module StructureTS
         /**
          * Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.
          *
-         * @example
-         * MerchantUtil.encodeCreditCardNumber('4556106734384949'); // ************4949
-         * MerchantUtil.encodeCreditCardNumber('4556106734384949', 5, 'x');  // xxxxxxxxxxx84949
-         *
          * @method encodeCreditCardNumber
          * @param strNumber {string} The credit card number as string.
          * @param [digitsShown=4] {number} Display this many digits at the end of the card number for security purposes.
@@ -68,6 +67,12 @@ module StructureTS
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      MerchantUtil.encodeCreditCardNumber('4556106734384949');
+         *      // ************4949
+         *
+         *      MerchantUtil.encodeCreditCardNumber('4556106734384949', 5, 'x');
+         *      // xxxxxxxxxxx84949
          */
         public static encodeCreditCardNumber(strNumber:string, digitsShown:number = 4, encodeChar:string = '*'):string
         {
@@ -86,6 +91,12 @@ module StructureTS
          * @method getCreditCardProvider
          * @param cardNumber {string}
          * @returns {string}
+         * @example
+         *      MerchantUtil.getCreditCardProvider("4556106734384949");
+         *      // visa
+         *
+         *      MerchantUtil.getCreditCardProvider("5428070016026573");
+         *      // mastercard
          */
         public static getCreditCardProvider(cardNumber:string):string
         {
@@ -123,13 +134,14 @@ module StructureTS
 
         /**
          * Validate a credit card's expiration date.
-         * @example
-         * var isValidDate:boolean = MerchantUtil.isValidExDate( 11, 2010 );
          *
          * @method isValidExpirationDate
          * @param month {number}
          * @param year {number}
          * @returns {boolean}
+         * @example
+         *      MerchantUtil.isValidExDate(11, 2010);
+         *      // false
          */
         public static isValidExpirationDate(month:number, year:number):boolean
         {

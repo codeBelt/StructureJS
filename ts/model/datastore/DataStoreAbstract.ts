@@ -17,7 +17,7 @@ module StructureTS
     export class DataStoreAbstract extends EventDispatcher implements IDataStore
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property data
          * @type {any}
@@ -26,7 +26,7 @@ module StructureTS
         public data:any = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property src
          * @type {string}
@@ -35,7 +35,7 @@ module StructureTS
         public src:string = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property complete
          * @type {boolean}
@@ -51,7 +51,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method load
          * @protected
@@ -61,7 +61,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method _onLoaderComplete
          * @protected

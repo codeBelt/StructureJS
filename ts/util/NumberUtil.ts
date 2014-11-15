@@ -13,6 +13,7 @@ module StructureTS
     {
         constructor()
         {
+            throw new Error('[NumberUtil] Do not instantiation the NumberUtil class because it is a static class.');
         }
 
         /**
@@ -23,6 +24,8 @@ module StructureTS
          * @returns {number}
          * @public
          * @static
+         * @example
+         *
          */
         public static bytesToMegabytes(bytes:number):number
         {
@@ -71,6 +74,8 @@ module StructureTS
          * @public
          * @static
          * @returns {number}
+         * @example
+         *
          */
         public static feetToMeter(feet:number):number
         {
@@ -187,11 +192,11 @@ module StructureTS
          * @public
          * @static
          * @example
-         *     NumberUtil.formatUnit(1234567.89, 2, "*", ",", "$", 0);
+         *     NumberUtil.formatUnit(1234567.89, 2, ".", ",", "$", 0);
          *     // '$1,234,567.89'
          *
          *     NumberUtil.formatUnit(12341234.56, 2, "*", ",", " €", 1);
-         *     // '12,341,234.56 €'
+         *     // '12,341,234*56 €'
          *
          *     NumberUtil.formatUnit(-1900.24, 1);
          *     // '-1,900.2'
@@ -203,6 +208,7 @@ module StructureTS
             if (decimalPlacement != 0)
             {
                 result = str.slice(-1 - decimalPlacement);
+                result = result.replace('.', decimalSeparator);
                 str = str.slice(0, str.length - 1 - decimalPlacement);
             }
             while (str.length > 3)

@@ -1,6 +1,6 @@
 
 /**
- * The DateUtil...
+ * A helper class that deals with dates.
  *
  * @class DateUtil
  * @module StructureJS
@@ -12,7 +12,7 @@ module StructureTS
     export class DateUtil
     {
         /**
-         * YUIDoc_comment
+         * A list of day names.
          *
          * @property LONG_DAY_LABELS
          * @type {array}
@@ -23,7 +23,7 @@ module StructureTS
         public static LONG_DAY_LABELS:any[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property SHORT_DAY_LABELS
          * @type {array}
@@ -34,7 +34,7 @@ module StructureTS
         public static SHORT_DAY_LABELS:any[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
         /**
-         * YUIDoc_comment
+         * A list of month names.
          *
          * @property LONG_MONTH_LABELS
          * @type {array}
@@ -45,7 +45,7 @@ module StructureTS
         public static LONG_MONTH_LABELS:any[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property SHORT_MONTH_LABELS
          * @type {array}
@@ -57,16 +57,29 @@ module StructureTS
 
         constructor()
         {
+            throw new Error('[DateUtil] Do not instantiation the DateUtil class because it is a static class.');
         }
 
         /**
-         * YUIDoc_comment
+         * Returns the suffix of a given day.
          *
          * @method getDaySuffix
          * @param today {number}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      DateUtil.getDaySuffix(1);
+         *      // 'st'
+         *
+         *      DateUtil.getDaySuffix(2);
+         *      // 'nd'
+         *
+         *      DateUtil.getDaySuffix(3);
+         *      // 'rd'
+         *
+         *      DateUtil.getDaySuffix(4);
+         *      // 'th'
          */
         public static getDaySuffix(today:number):string
         {

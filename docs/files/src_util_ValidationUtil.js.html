@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -176,7 +184,7 @@
      */
     var ValidationUtil = (function () {
         function ValidationUtil() {
-            //http://msdn.microsoft.com/en-us/library/ff650303.aspx
+            throw new Error(&#x27;[ValidationUtil] Do not instantiation the ValidationUtil class because it is a static class.&#x27;);
         }
         /**
          * Determines if the String passed has a length.
@@ -186,6 +194,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isEmpty = function (text) {
             return text.length &lt; 1;
@@ -200,6 +210,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isMatch = function (value1, value2) {
             return value1 === value2;
@@ -213,6 +225,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isValidEmailAddress = function (email) {
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
@@ -227,6 +241,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isValidPhoneNumber = function (phoneNumber) {
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
@@ -241,6 +257,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isZipCode = function (zipCode) {
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
@@ -255,9 +273,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isPostalCode = function (postalCode) {
-            var expression = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
+            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
             return expression.test(postalCode);
         };
 
@@ -269,6 +289,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isSocialSecurityNumber = function (ssn) {
             var expression = /^\d{3}-?\d{2}-?\d{4}$/;

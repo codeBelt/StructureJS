@@ -1,6 +1,6 @@
 
 /**
- * The MathUtil...
+ * A helper class to do calculations and conversions.
  *
  * @class MathUtil
  * @module StructureJS
@@ -14,6 +14,7 @@ module StructureTS
     {
         constructor()
         {
+            throw new Error('[MathUtil] Do not instantiation the MathUtil class because it is a static class.');
         }
 
         /**
@@ -24,6 +25,15 @@ module StructureTS
          * @param min {number}
          * @param  max {number}
          * @return  {number}
+         * @example
+         *      MathUtil.constrain(12, 3, 20);
+         *      // 12
+         *
+         *      MathUtil.constrain(22, 3, 20);
+         *      // 20
+         *
+         *      MathUtil.constrain(0, 3, 20);
+         *      // 3
          */
         public static constrain(num:number, min:number = 0, max:number = 1):number
         {
@@ -47,6 +57,8 @@ module StructureTS
          * @param max {number}
          * @param [wholeNumber=true] {number}
          * @return {number}
+         * @example
+         *
          */
         public static randomRange(min:number, max:number, wholeNumber:boolean = true):number
         {
@@ -71,6 +83,9 @@ module StructureTS
          * @param constrainMin {boolean}        Returns 0 if num < min.
          * @param constrainMax {boolean}        Returns 1 if num > max.
          * @return {number}
+         * @example
+         *      MathUtil.rangeToPercent(15, 10, 20);
+         *      // 0.5
          */
         public static rangeToPercent(num:number, min:number, max:number, constrainMin:boolean = false, constrainMax:boolean = false):number
         {
@@ -95,6 +110,9 @@ module StructureTS
          * @param min {number}
          * @param max {number}
          * @return {number}
+         * @example
+         *      MathUtil.percentToRange(0.5, 10, 20);
+         *      // 15
          */
         public static percentToRange(percent:number, min:number, max:number):number
         {
@@ -113,6 +131,9 @@ module StructureTS
          * @param min2 {number}
          * @param max2 {number}
          * @return {number}
+         * @example
+         *      MathUtil.map(10, 0, 100, 0, 50);
+         *      // 5
          */
         public static map(num:number, min1:number, max1:number, min2:number, max2:number, round:boolean = true, constrainMin:boolean = true, constrainMax:boolean = true):number
         {
@@ -141,10 +162,16 @@ module StructureTS
          * @method radiansToDegrees
          * @param radians {number}
          * @return {number}
+         * @example
+         *      MathUtil.radiansToDegrees(1.5707963267948966);
+         *      // 90
+         *
+         *      MathUtil.radiansToDegrees(3.141592653589793);
+         *      // 180
          */
         public static radiansToDegrees(radians:number):number
         {
-            return (radians * 180 / Math.PI);
+            return radians * (180 / Math.PI);
         }
 
 
@@ -154,6 +181,12 @@ module StructureTS
          * @method degreesToRadians
          * @param degrees {number}
          * @return {number}
+         * @example
+         *      MathUtil.degreesToRadians(90);
+         *      // 1.5707963267948966
+         *
+         *      MathUtil.degreesToRadians(180);
+         *      // 3.141592653589793
          */
         public static degreesToRadians(degrees:number):number
         {
@@ -167,6 +200,12 @@ module StructureTS
          * @method sign
          * @param num {number}
          * @return {number}
+         * @example
+         *      MathUtil.sign(23);
+         *      // 1
+         *
+         *      MathUtil.sign(-23);
+         *      // -1
          */
         public static sign(num:number):number
         {
@@ -183,6 +222,12 @@ module StructureTS
          * @method isPositive
          * @param num {number} The number.
          * @return {boolean}
+         * @example
+         *      MathUtil.isPositive(23);
+         *      // true
+         *
+         *      MathUtil.isPositive(-23);
+         *      // false
          */
         public static isPositive(num:number):boolean
         {
@@ -195,6 +240,12 @@ module StructureTS
          * @method isNegative
          * @param num {number} The
          * @return {boolean}
+         * @example
+         *      MathUtil.isNegative(23);
+         *      // false
+         *
+         *      MathUtil.isNegative(-23);
+         *      // true
          */
         public static isNegative(num:number):boolean
         {
@@ -207,6 +258,12 @@ module StructureTS
          * @method isOdd
          * @param num {number} The number.
          * @return {boolean}
+         * @example
+         *      MathUtil.isOdd(2);
+         *      // false
+         *
+         *      MathUtil.isOdd(3);
+         *      // true
          */
         public static isOdd(num:number):boolean
         {
@@ -221,6 +278,12 @@ module StructureTS
          * @method isEven
          * @param num {number} The number.
          * @return {boolean}
+         * @example
+         *      MathUtil.isEven(2);
+         *      // true
+         *
+         *      MathUtil.isEven(3);
+         *      // false
          */
         public static isEven(num:number):boolean
         {
@@ -235,6 +298,12 @@ module StructureTS
          * @method isPrime
          * @param num {number} The number.
          * @return {boolean}
+         * @example
+         *      MathUtil.isPrime(4);
+         *      // false
+         *
+         *      MathUtil.isPrime(5);
+         *      // true
          */
         public static isPrime(num:number):boolean
         {
@@ -260,6 +329,12 @@ module StructureTS
          * @method factorial
          * @param num {number} The number.
          * @return {number}
+         * @example
+         *      MathUtil.factorial(5);
+         *      // 120
+         *
+         *      MathUtil.factorial(9);
+         *      // 362880
          */
         public static factorial(num:number):number
         {
@@ -283,10 +358,13 @@ module StructureTS
          * @method getDivisors
          * @param num {number} The number.
          * @return {Array.<number>}
+         * @example
+         *
          */
         public static getDivisors(num:number):number[]
         {
             var r:number[] = [];
+
             for (var i:number = 1, e:number = num / 2; i <= e; i++)
             {
                 if (num % i == 0)
@@ -294,22 +372,30 @@ module StructureTS
                     r.push(i);
                 }
             }
+
             if (num != 0)
             {
                 r.push(<number>num.valueOf());
             }
+
             return r;
         }
 
         /**
          * Convert Fahrenheit to Celsius.
          *
-         * @method toCelsius
+         * @method fahrenheitToCelsius
          * @param fahrenheit {number} The fahrenheit value.
          * @param decimals {number} The number of decimals.
          * @return {number}
+         * @example
+         *      MathUtil.fahrenheitToCelsius(32);
+         *      // 0
+         *
+         *      MathUtil.fahrenheitToCelsius(212);
+         *      // 100
          */
-        public static toCelsius(fahrenheit:number, decimals:number = 2):number
+        public static fahrenheitToCelsius(fahrenheit:number, decimals:number = 2):number
         {
             var d:string = '';
             var r:number = (5 / 9) * (fahrenheit - 32);
@@ -334,12 +420,18 @@ module StructureTS
         /**
          * Convert Celsius to Fahrenheit.
          *
-         * @method toFahrenheit
+         * @method celsiusToFahrenheit
          * @param celsius {number} The celsius value.
          * @param decimals {number} The number of decimals.
          * @return {number}
+         * @example
+         *      MathUtil.celsiusToFahrenheit(0);
+         *      // 32
+         *
+         *      MathUtil.celsiusToFahrenheit(100);
+         *      // 212
          */
-        public static toFahrenheit(celsius:number, decimals:number = 2):number
+        public static celsiusToFahrenheit(celsius:number, decimals:number = 2):number
         {
             var d:string = '';
             var r:number = (celsius / (5 / 9)) + 32;

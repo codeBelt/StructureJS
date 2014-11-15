@@ -1,7 +1,7 @@
 ///<reference path='../util/StringUtil.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class TemplateFactory
  * @module StructureJS
@@ -13,18 +13,57 @@ module StructureTS
 {
     export class TemplateFactory
     {
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property UNDERSCORE
+         * @type {string}
+         * @public
+         * @final
+         * @static
+         */
         public static UNDERSCORE:string = 'underscore';
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property HANDLEBARS
+         * @type {string}
+         * @public
+         * @final
+         * @static
+         */
         public static HANDLEBARS:string = 'handlebars';
 
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property templateEngine
+         * @type {string}
+         * @default TemplateFactory.HANDLEBARS
+         * @public
+         * @static
+         */
         public static templateEngine:string = TemplateFactory.HANDLEBARS;
+
+        /**
+         * TODO: templateNamespace
+         *
+         * @property templateNamespace
+         * @type {string}
+         * @default 'JST'
+         * @public
+         * @static
+         */
         public static templateNamespace:string = 'JST';
 
         constructor()
         {
+            throw new Error('[TemplateFactory] Do not instantiation the TemplateFactory class because it is a static class.');
         }
 
         /**
-         * YUIDoc_comment
+         * Creates a template.
          *
          * @method create
          * @param templatePath {any}

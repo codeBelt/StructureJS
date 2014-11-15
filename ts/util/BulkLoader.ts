@@ -19,22 +19,50 @@ module StructureTS
             super();
         }
 
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method addFile
+         * @param dataStore {IDataStore}
+         * @param key {string}
+         * @returns {StructureTS.BulkLoader}
+         */
         public addFile(dataStore:IDataStore, key:string):any
         {
             this._dataStores[key] = dataStore;
             return this;
         }
 
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method getFile
+         * @param key {string}
+         * @returns {IDataStore}
+         */
         public getFile(key:string):IDataStore
         {
             return this._dataStores[key];
         }
 
-        public getData(key:string):HTMLImageElement
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method getData
+         * @param key
+         * @returns {any}
+         */
+        public getData(key:string):any
         {
             return this._dataStores[key].data;
         }
 
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method load
+         * @returns {BulkLoader}
+         */
         public load():any
         {
             for (var key in this._dataStores)
@@ -52,6 +80,12 @@ module StructureTS
             return this;
         }
 
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method onLoadComplete
+         * @param event {LoaderEvent}
+         */
         private onLoadComplete(event:LoaderEvent):void
         {
             event.target.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);

@@ -4,7 +4,7 @@
 ///<reference path='../event/BaseEvent.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class Collection
  * @extends EventDispatcher
@@ -18,7 +18,7 @@ module StructureTS
     export class Collection extends EventDispatcher implements ICollection
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property items
          * @type {array}
@@ -27,7 +27,7 @@ module StructureTS
         public items:any[] = [];
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property length
          * @type {init}
@@ -277,7 +277,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method copy
          * @public
@@ -290,7 +290,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method clear
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.

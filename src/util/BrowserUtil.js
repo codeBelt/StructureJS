@@ -15,15 +15,16 @@
     'use strict';
 
     /**
-    * The BrowserUtil...
-    *
-    * @class BrowserUtil
-    * @module StructureJS
-    * @submodule util
-    * @author Robert S. (www.codeBelt.com)
-    */
+     * A helper class to detect OS and browsers.
+     *
+     * @class BrowserUtil
+     * @module StructureJS
+     * @submodule util
+     * @author Robert S. (www.codeBelt.com)
+     */
     var BrowserUtil = (function () {
         function BrowserUtil() {
+            throw new Error('[BrowserUtil] Do not instantiation the BrowserUtil class because it is a static class.');
         }
         /**
          * Returns the name of the browser.
@@ -58,7 +59,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Gets the browser name a user agent.
          *
          * @method getBrowser
          * @private
@@ -66,17 +67,22 @@
          * @static
          */
         BrowserUtil.getBrowser = function () {
-            var N = navigator.appName, ua = navigator.userAgent, tem;
+            var N = navigator.appName;
+            var ua = navigator.userAgent;
+            var tem = ua.match(/version\/([\.\d]+)/i);
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-            if (M && (tem = ua.match(/version\/([\.\d]+)/i)) != null)
+
+            if (M && tem != null) {
                 M[2] = tem[1];
-            M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
+            } else {
+                M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
+            }
 
             return M;
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is Android.
          *
          * @method isAndroid
          * @returns {boolean}
@@ -88,7 +94,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is Android.
          *
          * @method isBlackBerry
          * @returns {boolean}
@@ -100,7 +106,7 @@
         };
 
         /**
-         * isIOS
+         * Determines if the device OS is IOS.
          *
          * @method isIOS
          * @returns {boolean}
@@ -112,7 +118,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is Opera Mini.
          *
          * @method isOperaMini
          * @returns {boolean}
@@ -124,7 +130,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is IE Mobile.
          *
          * @method isIEMobile
          * @returns {boolean}
@@ -136,7 +142,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the it is run on a mobile or desktop device.
          *
          * @method isMobile
          * @returns {boolean}
@@ -148,7 +154,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the browser can you Browser History push states.
          *
          * @method hasBrowserHistory
          * @returns {boolean}
@@ -160,7 +166,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the browser can you Local Storage.
          *
          * @method hasLocalStorage
          * @returns {boolean}
@@ -176,7 +182,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the browser can you Session Storage.
          *
          * @method hasSessionStorage
          * @returns {boolean}

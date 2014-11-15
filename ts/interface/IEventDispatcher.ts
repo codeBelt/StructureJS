@@ -1,7 +1,7 @@
 ///<reference path='ICore.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class IValueObject
  * @extends ICore

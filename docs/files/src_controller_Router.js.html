@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -330,7 +338,7 @@
          *     var str = Router.getHash();
          */
         Router.getHash = function () {
-            var hash = Router.WINDOW.location.hash;
+            var hash = Router._window.location.hash;
             var strIndex = (hash.substr(0, 2) === &#x27;#!&#x27;) ? 2 : 1;
 
             return hash.substring(strIndex);
@@ -349,10 +357,10 @@
             if (Router.isEnabled === true)
                 return;
 
-            if (Router.WINDOW.addEventListener) {
-                Router.WINDOW.addEventListener(&#x27;hashchange&#x27;, Router.onHashChange, false);
+            if (Router._window.addEventListener) {
+                Router._window.addEventListener(&#x27;hashchange&#x27;, Router.onHashChange, false);
             } else {
-                Router.WINDOW.attachEvent(&#x27;onhashchange&#x27;, Router.onHashChange);
+                Router._window.attachEvent(&#x27;onhashchange&#x27;, Router.onHashChange);
             }
 
             Router.isEnabled = true;
@@ -371,10 +379,10 @@
             if (Router.isEnabled === false)
                 return;
 
-            if (Router.WINDOW.removeEventListener) {
-                Router.WINDOW.removeEventListener(&#x27;hashchange&#x27;, Router.onHashChange);
+            if (Router._window.removeEventListener) {
+                Router._window.removeEventListener(&#x27;hashchange&#x27;, Router.onHashChange);
             } else {
-                Router.WINDOW.detachEvent(&#x27;onhashchange&#x27;, Router.onHashChange);
+                Router._window.detachEvent(&#x27;onhashchange&#x27;, Router.onHashChange);
             }
 
             Router.isEnabled = false;
@@ -408,6 +416,7 @@
          * @method navigateTo
          * @param route {String}
          * @param [silent=false] {Boolean}
+         * @param [disableHistory=false] {Boolean}
          * @public
          * @static
          * @example
@@ -416,9 +425,13 @@
          *
          *     // This will update the hash url but will not trigger the matching route.
          *     Router.navigateTo(&#x27;/games/asteroids/2/&#x27;, true);
+         *
+         *     // This will not update the hash url but will trigger the matching route.
+         *     Router.navigateTo(&#x27;/games/asteroids/2/&#x27;, true, true);
          */
-        Router.navigateTo = function (route, silent) {
+        Router.navigateTo = function (route, silent, disableHistory) {
             if (typeof silent === &quot;undefined&quot;) { silent = false; }
+            if (typeof disableHistory === &quot;undefined&quot;) { disableHistory = false; }
             if (Router.isEnabled === false)
                 return;
 
@@ -430,6 +443,11 @@
             // Enforce starting slash
             if (route.charAt(0) !== &#x27;/&#x27; &amp;&amp; Router.forceSlash === true) {
                 route = &#x27;/&#x27; + route;
+            }
+
+            if (disableHistory === true) {
+                Router.changeRoute(route);
+                return;
             }
 
             if (Router.useDeepLinking === true) {
@@ -474,7 +492,7 @@
          *     Router.destroy();
          */
         Router.prototype.destroy = function () {
-            Router.WINDOW = null;
+            Router._window = null;
             Router._routes = null;
             Router._defaultRoute = null;
             Router._hashChangeEvent = null;
@@ -574,14 +592,12 @@
         /**
          * A reference to the browser Window Object.
          *
-         * @property WINDOW
+         * @property _window
          * @type {Window}
          * @private
          * @static
-         * @final
-         * @readOnly
          */
-        Router.WINDOW = window;
+        Router._window = window;
 
         /**
          * A list of the added Route objects.

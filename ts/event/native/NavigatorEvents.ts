@@ -4,7 +4,7 @@ module StructureTS
     export class NavigatorEvents
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event ONLINE
          * @type {string}
@@ -13,7 +13,7 @@ module StructureTS
         public static ONLINE:string = "online";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event OFFLINE
          * @type {string}

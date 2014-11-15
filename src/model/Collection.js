@@ -31,7 +31,7 @@
         function Collection() {
             _super.call(this);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property items
              * @type {array}
@@ -39,7 +39,7 @@
              */
             this.items = [];
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property length
              * @type {init}

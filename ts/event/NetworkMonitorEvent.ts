@@ -21,7 +21,7 @@ module StructureTS
     export class NetworkMonitorEvent extends BaseEvent
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event STATUS
          * @type {string}
@@ -30,7 +30,7 @@ module StructureTS
         public static STATUS:string = "NetworkMonitorEvent.status";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event ONLINE
          * @type {string}
@@ -39,7 +39,7 @@ module StructureTS
         public static ONLINE:string = "NetworkMonitorEvent.online";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event OFFLINE
          * @type {string}
@@ -48,7 +48,7 @@ module StructureTS
         public static OFFLINE:string = "NetworkMonitorEvent.offline";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property status
          * @type {string}
@@ -57,7 +57,7 @@ module StructureTS
         public status:string = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property connected
          * @type {boolean}

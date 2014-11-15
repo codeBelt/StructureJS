@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -235,6 +243,14 @@
                     
                 </li>
             
+                <li class="index-item property private">
+                    <a href="#property__window">_window</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
                 <li class="index-item property public">
                     <a href="#property_allowManualDeepLinking">allowManualDeepLinking</a>
 
@@ -269,14 +285,6 @@
             
                 <li class="index-item property public">
                     <a href="#property_useDeepLinking">useDeepLinking</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                </li>
-            
-                <li class="index-item property private">
-                    <a href="#property_WINDOW">WINDOW</a>
 
                     
                         <span class="flag static">static</span>
@@ -461,7 +469,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l444"><code>src&#x2F;controller&#x2F;Router.js:444</code></a>
+        <a href="../files/src_controller_Router.js.html#l452"><code>src&#x2F;controller&#x2F;Router.js:452</code></a>
         
         </p>
 
@@ -515,7 +523,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l454"><code>src&#x2F;controller&#x2F;Router.js:454</code></a>
+        <a href="../files/src_controller_Router.js.html#l462"><code>src&#x2F;controller&#x2F;Router.js:462</code></a>
         
         </p>
 
@@ -569,7 +577,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l434"><code>src&#x2F;controller&#x2F;Router.js:434</code></a>
+        <a href="../files/src_controller_Router.js.html#l442"><code>src&#x2F;controller&#x2F;Router.js:442</code></a>
         
         </p>
 
@@ -593,10 +601,64 @@
 </div>
 
         
+            <a name="property__window" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_window</code>
+    <span class="type">Window</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_controller_Router.js.html#l432"><code>src&#x2F;controller&#x2F;Router.js:432</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the browser Window Object.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_allowManualDeepLinking" class="anchor-link"></a>
 <div class="property item public">
     <h3 class="name"><code>allowManualDeepLinking</code>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -623,7 +685,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l495"><code>src&#x2F;controller&#x2F;Router.js:495</code></a>
+        <a href="../files/src_controller_Router.js.html#l503"><code>src&#x2F;controller&#x2F;Router.js:503</code></a>
         
         </p>
 
@@ -665,7 +727,7 @@ Router.allowManualDeepLinking = false;</code></pre>
             <a name="property_allowMultipleMatches" class="anchor-link"></a>
 <div class="property item public">
     <h3 class="name"><code>allowMultipleMatches</code>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -692,7 +754,7 @@ Router.allowManualDeepLinking = false;</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l531"><code>src&#x2F;controller&#x2F;Router.js:531</code></a>
+        <a href="../files/src_controller_Router.js.html#l539"><code>src&#x2F;controller&#x2F;Router.js:539</code></a>
         
         </p>
 
@@ -731,7 +793,7 @@ Router.allowMultipleMatches = false;</code></pre>
             <a name="property_forceSlash" class="anchor-link"></a>
 <div class="property item public">
     <h3 class="name"><code>forceSlash</code>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -758,7 +820,7 @@ Router.allowMultipleMatches = false;</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l513"><code>src&#x2F;controller&#x2F;Router.js:513</code></a>
+        <a href="../files/src_controller_Router.js.html#l521"><code>src&#x2F;controller&#x2F;Router.js:521</code></a>
         
         </p>
 
@@ -801,7 +863,7 @@ Router.forceSlash = false;
             <a name="property_isEnabled" class="anchor-link"></a>
 <div class="property item public">
     <h3 class="name"><code>isEnabled</code>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -828,7 +890,7 @@ Router.forceSlash = false;
             
         
         
-        <a href="../files/src_controller_Router.js.html#l464"><code>src&#x2F;controller&#x2F;Router.js:464</code></a>
+        <a href="../files/src_controller_Router.js.html#l472"><code>src&#x2F;controller&#x2F;Router.js:472</code></a>
         
         </p>
 
@@ -865,7 +927,7 @@ console.log(Router.isEnabled);</code></pre>
             <a name="property_useDeepLinking" class="anchor-link"></a>
 <div class="property item public">
     <h3 class="name"><code>useDeepLinking</code>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -892,7 +954,7 @@ console.log(Router.isEnabled);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l478"><code>src&#x2F;controller&#x2F;Router.js:478</code></a>
+        <a href="../files/src_controller_Router.js.html#l486"><code>src&#x2F;controller&#x2F;Router.js:486</code></a>
         
         </p>
 
@@ -924,62 +986,6 @@ from relying on the hash url to an internal state controller.</p>
 
                 </div>
             </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_WINDOW" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>WINDOW</code>
-    <span class="type">Window</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-        <span class="flag final">final</span>
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_controller_Router.js.html#l422"><code>src&#x2F;controller&#x2F;Router.js:422</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>A reference to the browser Window Object.</p>
-
-        </div>
-
-        
-
         
 
         
@@ -1091,7 +1097,7 @@ from relying on the hash url to an internal state controller.</p>
                     <li class="param">
                         
                             <code class="param-name">routePattern</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1107,7 +1113,7 @@ from relying on the hash url to an internal state controller.</p>
                     <li class="param">
                         
                             <code class="param-name">callback</code>
-                            <span class="type">Function</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
                         
@@ -1285,7 +1291,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
                     <li class="param">
                         
                             <code class="param-name">callback</code>
-                            <span class="type">Function</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
                         
@@ -1381,7 +1387,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l351"><code>src&#x2F;controller&#x2F;Router.js:351</code></a>
+        <a href="../files/src_controller_Router.js.html#l361"><code>src&#x2F;controller&#x2F;Router.js:361</code></a>
         
         </p>
 
@@ -1407,7 +1413,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
                     <li class="param">
                         
                             <code class="param-name">hash</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1469,7 +1475,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l300"><code>src&#x2F;controller&#x2F;Router.js:300</code></a>
+        <a href="../files/src_controller_Router.js.html#l310"><code>src&#x2F;controller&#x2F;Router.js:310</code></a>
         
         </p>
 
@@ -1543,7 +1549,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l315"><code>src&#x2F;controller&#x2F;Router.js:315</code></a>
+        <a href="../files/src_controller_Router.js.html#l325"><code>src&#x2F;controller&#x2F;Router.js:325</code></a>
         
         </p>
 
@@ -1736,7 +1742,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1795,7 +1801,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                         <p>Returns current hash url minus the # or #! symbol(s).</p>
 
@@ -1835,6 +1841,12 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
                 <li class="arg">
                     
                         <code class="optional">[silent=false]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[disableHistory=false]</code>
                     
                 </li>
             
@@ -1902,7 +1914,7 @@ executed.</p>
                     <li class="param">
                         
                             <code class="param-name">route</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1917,7 +1929,23 @@ executed.</p>
                     <li class="param">
                         
                             <code class="param-name optional">[silent=false]</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[disableHistory=false]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -1945,7 +1973,10 @@ executed.</p>
 Router.navigateTo(&#39;/games/asteroids/2/&#39;);
 
 // This will update the hash url but will not trigger the matching route.
-Router.navigateTo(&#39;/games/asteroids/2/&#39;, true);</code></pre>
+Router.navigateTo(&#39;/games/asteroids/2/&#39;, true);
+
+// This will not update the hash url but will trigger the matching route.
+Router.navigateTo(&#39;/games/asteroids/2/&#39;, true, true);</code></pre>
 
                 </div>
             </div>
@@ -2003,7 +2034,7 @@ Router.navigateTo(&#39;/games/asteroids/2/&#39;, true);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l331"><code>src&#x2F;controller&#x2F;Router.js:331</code></a>
+        <a href="../files/src_controller_Router.js.html#l341"><code>src&#x2F;controller&#x2F;Router.js:341</code></a>
         
         </p>
 
@@ -2140,7 +2171,7 @@ This method will not be called if the Router is disabled.</p>
                     <li class="param">
                         
                             <code class="param-name">routePattern</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -2156,7 +2187,7 @@ This method will not be called if the Router is disabled.</p>
                     <li class="param">
                         
                             <code class="param-name">callback</code>
-                            <span class="type">Function</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
                         

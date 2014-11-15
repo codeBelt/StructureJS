@@ -15,7 +15,7 @@
     'use strict';
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class TemplateFactory
      * @module StructureJS
@@ -26,9 +26,10 @@
     var TemplateFactory = (function () {
 
         function TemplateFactory() {
+            throw new Error('[TemplateFactory] Do not instantiation the TemplateFactory class because it is a static class.');
         }
         /**
-         * YUIDoc_comment
+         * Creates a template.
          *
          * @method create
          * @param templatePath {any}
@@ -75,10 +76,45 @@
 
             return template;
         };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property UNDERSCORE
+         * @type {string}
+         * @public
+         * @final
+         * @static
+         */
         TemplateFactory.UNDERSCORE = 'underscore';
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property HANDLEBARS
+         * @type {string}
+         * @public
+         * @final
+         * @static
+         */
         TemplateFactory.HANDLEBARS = 'handlebars';
-
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property templateEngine
+         * @type {string}
+         * @default TemplateFactory.HANDLEBARS
+         * @public
+         * @static
+         */
         TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
+        /**
+         * TODO: templateNamespace
+         *
+         * @property templateNamespace
+         * @type {string}
+         * @default 'JST'
+         * @public
+         * @static
+         */
         TemplateFactory.templateNamespace = 'JST';
         return TemplateFactory;
     })();

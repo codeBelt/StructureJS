@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -171,7 +179,7 @@
 
 
 <div class="box intro">
-    <p>The MathUtil...</p>
+    <p>A helper class to do calculations and conversions.</p>
 
 </div>
 
@@ -221,6 +229,13 @@
 
             
                 <li class="index-item method">
+                    <a href="#method_celsiusToFahrenheit">celsiusToFahrenheit</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
                     <a href="#method_constrain">constrain</a>
 
                     
@@ -236,6 +251,13 @@
             
                 <li class="index-item method">
                     <a href="#method_factorial">factorial</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_fahrenheitToCelsius">fahrenheitToCelsius</a>
 
                     
                     
@@ -325,20 +347,6 @@
                     
                 </li>
             
-                <li class="index-item method">
-                    <a href="#method_toCelsius">toCelsius</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_toFahrenheit">toFahrenheit</a>
-
-                    
-                    
-                </li>
-            
         </ul>
     </div>
 
@@ -358,6 +366,152 @@
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method_celsiusToFahrenheit" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>celsiusToFahrenheit</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>celsius</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>decimals</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_MathUtil.js.html#l395"><code>src&#x2F;util&#x2F;MathUtil.js:395</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Convert Celsius to Fahrenheit.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">celsius</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The celsius value.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">decimals</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The number of decimals.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.celsiusToFahrenheit(0);
+ // 32
+
+ MathUtil.celsiusToFahrenheit(100);
+ // 212</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
 
         
             <a name="method_constrain" class="anchor-link"></a>
@@ -392,7 +546,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -421,7 +575,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l29"><code>src&#x2F;util&#x2F;MathUtil.js:29</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l30"><code>src&#x2F;util&#x2F;MathUtil.js:30</code></a>
         
         </p>
 
@@ -447,7 +601,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -462,7 +616,7 @@
                     <li class="param">
                         
                             <code class="param-name">min</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -477,7 +631,7 @@
                     <li class="param">
                         
                             <code class="param-name">max</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -500,13 +654,29 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.constrain(12, 3, 20);
+ // 12
+
+ MathUtil.constrain(22, 3, 20);
+ // 20
+
+ MathUtil.constrain(0, 3, 20);
+ // 3</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -532,7 +702,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -561,7 +731,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l149"><code>src&#x2F;util&#x2F;MathUtil.js:149</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l176"><code>src&#x2F;util&#x2F;MathUtil.js:176</code></a>
         
         </p>
 
@@ -587,7 +757,7 @@
                     <li class="param">
                         
                             <code class="param-name">degrees</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -610,13 +780,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.degreesToRadians(90);
+ // 1.5707963267948966
+
+ MathUtil.degreesToRadians(180);
+ // 3.141592653589793</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -642,7 +825,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -671,7 +854,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l243"><code>src&#x2F;util&#x2F;MathUtil.js:243</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l312"><code>src&#x2F;util&#x2F;MathUtil.js:312</code></a>
         
         </p>
 
@@ -697,7 +880,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -721,13 +904,172 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.factorial(5);
+ // 120
+
+ MathUtil.factorial(9);
+ // 362880</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_fahrenheitToCelsius" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>fahrenheitToCelsius</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fahrenheit</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>decimals</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_MathUtil.js.html#l363"><code>src&#x2F;util&#x2F;MathUtil.js:363</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Convert Fahrenheit to Celsius.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">fahrenheit</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The fahrenheit value.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">decimals</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The number of decimals.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.fahrenheitToCelsius(32);
+ // 0
+
+ MathUtil.fahrenheitToCelsius(212);
+ // 100</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -782,7 +1124,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l263"><code>src&#x2F;util&#x2F;MathUtil.js:263</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l338"><code>src&#x2F;util&#x2F;MathUtil.js:338</code></a>
         
         </p>
 
@@ -808,7 +1150,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -840,6 +1182,14 @@
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    
+                </div>
+            </div>
+        
     </div>
 </div>
 
@@ -864,7 +1214,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -893,7 +1243,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l209"><code>src&#x2F;util&#x2F;MathUtil.js:209</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l266"><code>src&#x2F;util&#x2F;MathUtil.js:266</code></a>
         
         </p>
 
@@ -919,7 +1269,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -943,13 +1293,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.isEven(2);
+ // true
+
+ MathUtil.isEven(3);
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -975,7 +1338,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -1004,7 +1367,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l185"><code>src&#x2F;util&#x2F;MathUtil.js:185</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l230"><code>src&#x2F;util&#x2F;MathUtil.js:230</code></a>
         
         </p>
 
@@ -1030,7 +1393,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1054,13 +1417,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.isNegative(23);
+ // false
+
+ MathUtil.isNegative(-23);
+ // true</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1086,7 +1462,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -1115,7 +1491,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l196"><code>src&#x2F;util&#x2F;MathUtil.js:196</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l247"><code>src&#x2F;util&#x2F;MathUtil.js:247</code></a>
         
         </p>
 
@@ -1141,7 +1517,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1165,13 +1541,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.isOdd(2);
+ // false
+
+ MathUtil.isOdd(3);
+ // true</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1197,7 +1586,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -1226,7 +1615,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l174"><code>src&#x2F;util&#x2F;MathUtil.js:174</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l213"><code>src&#x2F;util&#x2F;MathUtil.js:213</code></a>
         
         </p>
 
@@ -1252,7 +1641,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1276,13 +1665,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.isPositive(23);
+ // true
+
+ MathUtil.isPositive(-23);
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1308,7 +1710,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -1337,7 +1739,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l222"><code>src&#x2F;util&#x2F;MathUtil.js:222</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l285"><code>src&#x2F;util&#x2F;MathUtil.js:285</code></a>
         
         </p>
 
@@ -1363,7 +1765,7 @@
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1387,13 +1789,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.isPrime(4);
+ // false
+
+ MathUtil.isPrime(5);
+ // true</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1443,7 +1858,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -1472,7 +1887,7 @@
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l107"><code>src&#x2F;util&#x2F;MathUtil.js:107</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l125"><code>src&#x2F;util&#x2F;MathUtil.js:125</code></a>
         
         </p>
 
@@ -1499,7 +1914,7 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1514,7 +1929,7 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
                     <li class="param">
                         
                             <code class="param-name">min1</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1529,7 +1944,7 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
                     <li class="param">
                         
                             <code class="param-name">max1</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1544,7 +1959,7 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
                     <li class="param">
                         
                             <code class="param-name">min2</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1559,7 +1974,7 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
                     <li class="param">
                         
                             <code class="param-name">max2</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1582,13 +1997,23 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.map(10, 0, 100, 0, 50);
+ // 5</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1626,7 +2051,7 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -1655,7 +2080,7 @@ Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5</p>
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l93"><code>src&#x2F;util&#x2F;MathUtil.js:93</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l108"><code>src&#x2F;util&#x2F;MathUtil.js:108</code></a>
         
         </p>
 
@@ -1682,7 +2107,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                     <li class="param">
                         
                             <code class="param-name">percent</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1697,7 +2122,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                     <li class="param">
                         
                             <code class="param-name">min</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1712,7 +2137,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                     <li class="param">
                         
                             <code class="param-name">max</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1735,13 +2160,23 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.percentToRange(0.5, 10, 20);
+ // 15</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1767,7 +2202,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -1796,7 +2231,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l138"><code>src&#x2F;util&#x2F;MathUtil.js:138</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l159"><code>src&#x2F;util&#x2F;MathUtil.js:159</code></a>
         
         </p>
 
@@ -1822,7 +2257,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                     <li class="param">
                         
                             <code class="param-name">radians</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1845,13 +2280,26 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.radiansToDegrees(1.5707963267948966);
+ // 90
+
+ MathUtil.radiansToDegrees(3.141592653589793);
+ // 180</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1889,7 +2337,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -1918,7 +2366,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l50"><code>src&#x2F;util&#x2F;MathUtil.js:50</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l60"><code>src&#x2F;util&#x2F;MathUtil.js:60</code></a>
         
         </p>
 
@@ -1944,7 +2392,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                     <li class="param">
                         
                             <code class="param-name">min</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1959,7 +2407,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                     <li class="param">
                         
                             <code class="param-name">max</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1974,7 +2422,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                     <li class="param">
                         
                             <code class="param-name optional">[wholeNumber=true]</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -1998,13 +2446,21 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    
+                </div>
+            </div>
         
     </div>
 </div>
@@ -2054,7 +2510,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -2083,7 +2539,7 @@ Example: percent = 0.5 range 10 to 20 // outputs 15</p>
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l69"><code>src&#x2F;util&#x2F;MathUtil.js:69</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l81"><code>src&#x2F;util&#x2F;MathUtil.js:81</code></a>
         
         </p>
 
@@ -2110,7 +2566,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -2125,7 +2581,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                     <li class="param">
                         
                             <code class="param-name">min</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -2140,7 +2596,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                     <li class="param">
                         
                             <code class="param-name">max</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -2155,7 +2611,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                     <li class="param">
                         
                             <code class="param-name">constrainMin</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                         
 
                         
@@ -2171,7 +2627,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                     <li class="param">
                         
                             <code class="param-name">constrainMax</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                         
 
                         
@@ -2195,13 +2651,23 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.rangeToPercent(15, 10, 20);
+ // 0.5</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -2227,7 +2693,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
 
     
         <span class="returns-inline">
-            <span class="type">Number</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
         </span>
     
 
@@ -2256,7 +2722,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
             
         
         
-        <a href="../files/src_util_MathUtil.js.html#l160"><code>src&#x2F;util&#x2F;MathUtil.js:160</code></a>
+        <a href="../files/src_util_MathUtil.js.html#l193"><code>src&#x2F;util&#x2F;MathUtil.js:193</code></a>
         
         </p>
 
@@ -2282,7 +2748,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                     <li class="param">
                         
                             <code class="param-name">num</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -2305,7 +2771,7 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Number</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
                         
                     
                 </div>
@@ -2313,271 +2779,18 @@ Example: num = 15 range 10 to 20 // outputs 0.5</p>
         
 
         
-    </div>
-</div>
+            <div class="example">
+                <h4>Example:</h4>
 
-        
-            <a name="method_toCelsius" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>toCelsius</code>
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MathUtil.sign(23);
+ // 1
 
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>fahrenheit</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>decimals</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
+ MathUtil.sign(-23);
+ // -1</code></pre>
 
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_MathUtil.js.html#l283"><code>src&#x2F;util&#x2F;MathUtil.js:283</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Convert Fahrenheit to Celsius.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">fahrenheit</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The fahrenheit value.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">decimals</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The number of decimals.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Number</span>:
-                        
-                    
                 </div>
             </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_toFahrenheit" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>toFahrenheit</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>celsius</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>decimals</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Number</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_MathUtil.js.html#l309"><code>src&#x2F;util&#x2F;MathUtil.js:309</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Convert Celsius to Fahrenheit.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">celsius</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The celsius value.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">decimals</code>
-                            <span class="type">Number</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The number of decimals.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Number</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
         
     </div>
 </div>

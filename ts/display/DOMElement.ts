@@ -134,7 +134,7 @@ module StructureTS
         'use strict';
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property checkCount
          * @type {number}
@@ -596,12 +596,27 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * A way to instantiate view classes by found html selectors.
+         *
+         * Example: It will find all children elements of the {{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property with the 'js-shareEmail' selector.
+         * If any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.
          *
          * @method createComponents
+         * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
          * @public
+         * @chainable
+         * @example
+         *      ClassName.prototype.createChildren = function () {
+         *          _super.prototype.createChildren.call(this);
+         *
+         *          this.createComponents([
+         *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
+         *              {selector: '.js-pagination', componentClass: PaginationComponent},
+         *              {selector: '.js-carousel', componentClass: CarouselComponent}
+         *          ]);
+         *      };
          */
-        public createComponents(componentList:any[]):void
+        public createComponents(componentList:any[]):any
         {
             var length:number = componentList.length;
             var obj:any;
@@ -610,6 +625,8 @@ module StructureTS
                 obj = componentList[i];
                 ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
             }
+
+            return this;
         }
     }
 }

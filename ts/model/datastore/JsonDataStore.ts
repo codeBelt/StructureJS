@@ -23,7 +23,7 @@ module StructureTS
     export class JsonDataStore extends DataStoreAbstract
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _urlLoader
          * @type {URLLoader}
@@ -32,7 +32,7 @@ module StructureTS
         private _urlLoader:URLLoader = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _isJsonP
          * @type {boolean}

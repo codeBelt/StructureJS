@@ -12,7 +12,7 @@
 ///<reference path='../controller/transition/TransitionFadeOutAndIn.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class TransitionFactory
  * @module StructureJS
@@ -25,7 +25,7 @@ module StructureTS
     export class TransitionFactory extends BaseObject
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _transitions
          * @type {Object}
@@ -47,7 +47,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @param transitionType {string}
          * @param sectionStage {DisplayObjectContainer}

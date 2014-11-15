@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -167,15 +175,16 @@
     &#x27;use strict&#x27;;
 
     /**
-    * The BrowserUtil...
-    *
-    * @class BrowserUtil
-    * @module StructureJS
-    * @submodule util
-    * @author Robert S. (www.codeBelt.com)
-    */
+     * A helper class to detect OS and browsers.
+     *
+     * @class BrowserUtil
+     * @module StructureJS
+     * @submodule util
+     * @author Robert S. (www.codeBelt.com)
+     */
     var BrowserUtil = (function () {
         function BrowserUtil() {
+            throw new Error(&#x27;[BrowserUtil] Do not instantiation the BrowserUtil class because it is a static class.&#x27;);
         }
         /**
          * Returns the name of the browser.
@@ -210,7 +219,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Gets the browser name a user agent.
          *
          * @method getBrowser
          * @private
@@ -218,17 +227,22 @@
          * @static
          */
         BrowserUtil.getBrowser = function () {
-            var N = navigator.appName, ua = navigator.userAgent, tem;
+            var N = navigator.appName;
+            var ua = navigator.userAgent;
+            var tem = ua.match(/version\/([\.\d]+)/i);
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-            if (M &amp;&amp; (tem = ua.match(/version\/([\.\d]+)/i)) != null)
+
+            if (M &amp;&amp; tem != null) {
                 M[2] = tem[1];
-            M = M ? [M[1], M[2]] : [N, navigator.appVersion, &#x27;-?&#x27;];
+            } else {
+                M = M ? [M[1], M[2]] : [N, navigator.appVersion, &#x27;-?&#x27;];
+            }
 
             return M;
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is Android.
          *
          * @method isAndroid
          * @returns {boolean}
@@ -240,7 +254,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is Android.
          *
          * @method isBlackBerry
          * @returns {boolean}
@@ -252,7 +266,7 @@
         };
 
         /**
-         * isIOS
+         * Determines if the device OS is IOS.
          *
          * @method isIOS
          * @returns {boolean}
@@ -264,7 +278,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is Opera Mini.
          *
          * @method isOperaMini
          * @returns {boolean}
@@ -276,7 +290,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the device OS is IE Mobile.
          *
          * @method isIEMobile
          * @returns {boolean}
@@ -288,7 +302,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the it is run on a mobile or desktop device.
          *
          * @method isMobile
          * @returns {boolean}
@@ -300,7 +314,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the browser can you Browser History push states.
          *
          * @method hasBrowserHistory
          * @returns {boolean}
@@ -312,7 +326,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the browser can you Local Storage.
          *
          * @method hasLocalStorage
          * @returns {boolean}
@@ -328,7 +342,7 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Determines if the browser can you Session Storage.
          *
          * @method hasSessionStorage
          * @returns {boolean}

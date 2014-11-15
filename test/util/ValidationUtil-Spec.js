@@ -66,13 +66,13 @@ define(function (require, exports, module) {
         });
 
         it("isSocialSecurityNumber()", function() {
-            expect(ValidationUtil.isSocialSecurityNumber('078051120')).toBeTruthy();
-            expect(ValidationUtil.isSocialSecurityNumber('078-05-1120')).toBeTruthy();
+            expect(ValidationUtil.isSocialSecurityNumber('178051120')).toBeTruthy();
+            expect(ValidationUtil.isSocialSecurityNumber('178-05-1120')).toBeTruthy();
 
-            expect(ValidationUtil.isSocialSecurityNumber('078 05 1120')).toBeFalsy();
-            expect(ValidationUtil.isSocialSecurityNumber('078-05-11203')).toBeFalsy();
-            expect(ValidationUtil.isSocialSecurityNumber('078 05 11203')).toBeFalsy();
-            expect(ValidationUtil.isSocialSecurityNumber('0780511203')).toBeFalsy();
+            expect(ValidationUtil.isSocialSecurityNumber('178 05 1120')).toBeFalsy();
+            expect(ValidationUtil.isSocialSecurityNumber('178-05-11203')).toBeFalsy();
+            expect(ValidationUtil.isSocialSecurityNumber('178 05 11203')).toBeFalsy();
+            expect(ValidationUtil.isSocialSecurityNumber('1780511203')).toBeFalsy();
             expect(ValidationUtil.isSocialSecurityNumber('346774')).toBeFalsy();
         });
     });

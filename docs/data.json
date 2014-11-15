@@ -2,10 +2,19 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.1",
+        "version": "0.6.3",
         "url": ""
     },
     "files": {
+        "src/controller/ApplicationCacheController.js": {
+            "name": "src/controller/ApplicationCacheController.js",
+            "modules": {},
+            "classes": {
+                "ApplicationCacheController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/controller/LocalStorageController.js": {
             "name": "src/controller/LocalStorageController.js",
             "modules": {},
@@ -51,6 +60,22 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/event/native/NavigatorEvents.js": {
+            "name": "src/event/native/NavigatorEvents.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/event/ApplicationCacheEvent.js": {
+            "name": "src/event/ApplicationCacheEvent.js",
+            "modules": {},
+            "classes": {
+                "ApplicationCacheEvent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/event/BaseEvent.js": {
             "name": "src/event/BaseEvent.js",
             "modules": {},
@@ -92,6 +117,15 @@
             "modules": {},
             "classes": {
                 "LocalStorageEvent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/event/NetworkMonitorEvent.js": {
+            "name": "src/event/NetworkMonitorEvent.js",
+            "modules": {},
+            "classes": {
+                "NetworkMonitorEvent": 1
             },
             "fors": {},
             "namespaces": {}
@@ -155,6 +189,15 @@
             "modules": {},
             "classes": {
                 "ValueObject": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/net/NetworkMonitor.js": {
+            "name": "src/net/NetworkMonitor.js",
+            "modules": {},
+            "classes": {
+                "NetworkMonitor": 1
             },
             "fors": {},
             "namespaces": {}
@@ -358,16 +401,19 @@
                 "core": 1
             },
             "classes": {
+                "ApplicationCacheController": 1,
                 "LocalStorageController": 1,
                 "Router": 1,
                 "DOMElement": 1,
                 "DisplayObjectContainer": 1,
                 "Stage": 1,
+                "ApplicationCacheEvent": 1,
                 "BaseEvent": 1,
                 "EventBroker": 1,
                 "EventDispatcher": 1,
                 "LoaderEvent": 1,
                 "LocalStorageEvent": 1,
+                "NetworkMonitorEvent": 1,
                 "RouteEvent": 1,
                 "TimerEvent": 1,
                 "DataStoreAbstract": 1,
@@ -375,6 +421,7 @@
                 "Collection": 1,
                 "Route": 1,
                 "ValueObject": 1,
+                "NetworkMonitor": 1,
                 "URLContentType": 1,
                 "URLLoader": 1,
                 "URLLoaderDataFormat": 1,
@@ -404,6 +451,7 @@
             "name": "controller",
             "submodules": {},
             "classes": {
+                "ApplicationCacheController": 1,
                 "LocalStorageController": 1
             },
             "fors": {},
@@ -411,7 +459,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The LocalStorageController...",
+            "description": "The ApplicationCacheController...",
             "file": "src/controller/LocalStorageController.js",
             "line": 17
         },
@@ -436,11 +484,13 @@
             "name": "event",
             "submodules": {},
             "classes": {
+                "ApplicationCacheEvent": 1,
                 "BaseEvent": 1,
                 "EventBroker": 1,
                 "EventDispatcher": 1,
                 "LoaderEvent": 1,
                 "LocalStorageEvent": 1,
+                "NetworkMonitorEvent": 1,
                 "RouteEvent": 1,
                 "TimerEvent": 1
             },
@@ -449,7 +499,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.\n\nThe properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\n\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.",
+            "description": "The ApplicationCacheEvent ....",
             "file": "src/event/TimerEvent.js",
             "line": 17
         },
@@ -512,7 +562,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The BrowserUtil...",
+            "description": "A helper class to detect OS and browsers.",
             "file": "src/util/ValidationUtil.js",
             "line": 17
         },
@@ -534,6 +584,22 @@
         }
     },
     "classes": {
+        "ApplicationCacheController": {
+            "name": "ApplicationCacheController",
+            "shortname": "ApplicationCacheController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 17,
+            "description": "The ApplicationCacheController...",
+            "submodule": "controller",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "LocalStorageController": {
             "name": "LocalStorageController",
             "shortname": "LocalStorageController",
@@ -543,6 +609,7 @@
             "plugin_for": [],
             "extension_for": [],
             "module": "StructureJS",
+            "namespace": "",
             "file": "src/controller/LocalStorageController.js",
             "line": 17,
             "description": "The LocalStorageController...",
@@ -634,6 +701,52 @@
             ],
             "submodule": "view",
             "extends": "DOMElement",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
+        "ApplicationCacheEvent": {
+            "name": "ApplicationCacheEvent",
+            "shortname": "ApplicationCacheEvent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 17,
+            "description": "The ApplicationCacheEvent ....",
+            "submodule": "event",
+            "extends": "BaseEvent",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event. The type is case-sensitive.",
+                    "type": "String"
+                },
+                {
+                    "name": "bubbles",
+                    "description": "Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.\nNote: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink \"EventDispatcher/parent:property\"}}{{/crossLink}})\n(containers of containers of etc.) of the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink \"Stage\"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "cancelable",
+                    "description": "Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "data",
+                    "description": "Use to pass any type of data with the event.",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
@@ -806,6 +919,52 @@
                     "name": "nativeEvent",
                     "description": "The native browser event for localStorage.",
                     "type": "StorageEvent"
+                }
+            ],
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
+        "NetworkMonitorEvent": {
+            "name": "NetworkMonitorEvent",
+            "shortname": "NetworkMonitorEvent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 17,
+            "description": "The NetworkMonitorEvent...",
+            "submodule": "event",
+            "extends": "BaseEvent",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event. The type is case-sensitive.",
+                    "type": "String"
+                },
+                {
+                    "name": "bubbles",
+                    "description": "Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.\nNote: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink \"EventDispatcher/parent:property\"}}{{/crossLink}})\n(containers of containers of etc.) of the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink \"Stage\"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "cancelable",
+                    "description": "Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "data",
+                    "description": "Use to pass any type of data with the event.",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
                 }
             ],
             "is_constructor": 1,
@@ -1037,6 +1196,23 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "NetworkMonitor": {
+            "name": "NetworkMonitor",
+            "shortname": "NetworkMonitor",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "src/net/NetworkMonitor.js",
+            "line": 17,
+            "description": "TODO: YUIDoc_comment",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)",
+            "static": 1
+        },
         "URLContentType": {
             "name": "URLContentType",
             "shortname": "URLContentType",
@@ -1151,7 +1327,7 @@
             "namespace": "",
             "file": "src/util/BrowserUtil.js",
             "line": 17,
-            "description": "The BrowserUtil...",
+            "description": "A helper class to detect OS and browsers.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)"
         },
@@ -1200,7 +1376,7 @@
             "namespace": "",
             "file": "src/util/DateUtil.js",
             "line": 17,
-            "description": "The DateUtil...",
+            "description": "A helper class that deals with dates.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)"
         },
@@ -1216,7 +1392,7 @@
             "namespace": "",
             "file": "src/util/MathUtil.js",
             "line": 17,
-            "description": "The MathUtil...",
+            "description": "A helper class to do calculations and conversions.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
@@ -1282,7 +1458,7 @@
             "namespace": "",
             "file": "src/util/TemplateFactory.js",
             "line": 17,
-            "description": "YUIDoc_comment",
+            "description": "TODO: YUIDoc_comment",
             "submodule": "util",
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
@@ -1375,10 +1551,324 @@
     },
     "classitems": [
         {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ApplicationCacheController"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 30,
+            "overridden": "BaseObject.enable",
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 50,
+            "overridden": "BaseObject.disable",
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 99,
+            "description": "The resources listed in the manifest have been fully downloaded, and the application is\nnow cached locally.",
+            "itemtype": "method",
+            "name": "onCached",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 113,
+            "description": "The browser is checking for an update, or is attempting to download\nthe cache manifest for the first time. This is always the first event\nin the sequence.",
+            "itemtype": "method",
+            "name": "onChecking",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 128,
+            "description": "The browser has started to download the cache manifest, either for the\nfirst time or because changes have been detected.",
+            "itemtype": "method",
+            "name": "onDownloading",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 142,
+            "description": "An error occurred at some point - this could be caused by a number of things. This will\nalways be the last event in the sequence.",
+            "itemtype": "method",
+            "name": "onError",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 156,
+            "description": "The cache manifest hadn't changed.",
+            "itemtype": "method",
+            "name": "onNoUpdate",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 169,
+            "description": "The cache manifest file could not be found, indicating that the cache is no longer needed.\nThe application cache is being deleted.",
+            "itemtype": "method",
+            "name": "onObsolete",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 183,
+            "description": "The browser had downloaded and cached an asset. This is fired once for\nevery file that is downloaded (including the current page which is cached implicitly).",
+            "itemtype": "method",
+            "name": "onProgress",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 197,
+            "description": "The resources listed in the manifest have been newly re-downloaded, and the script can\nuse swapCache() to switch to the new cache.",
+            "itemtype": "method",
+            "name": "onUpdateReady",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The native browser event from the DOMApplicationCache.",
+                    "type": "DOMApplicationCacheEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 211,
+            "description": "Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.",
+            "example": [
+                "\n        ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function(event) {\n       console.log(event.target + \" sent the event.\");\n       }"
+            ],
+            "itemtype": "method",
+            "name": "addEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event.",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "Binds the scope to a particular object (scope is basically what \"this\" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.",
+                    "type": "Any"
+                },
+                {
+                    "name": "priority",
+                    "description": "Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.",
+                    "type": "Int",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 230,
+            "description": "Removes a specified listener from the ApplicationCacheController object.",
+            "example": [
+                "\n        ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function(event) {\n       console.log(event.target + \" sent the event.\");\n       }"
+            ],
+            "itemtype": "method",
+            "name": "removeEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event.",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The listener object to remove.",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "The scope of the listener object to be removed. This was added because it was need for the {{#crossLink \"ApplicationCacheController\"}}{{/crossLink}} class.\nTo keep things consistent this parameter is required.",
+                    "type": "Any"
+                }
+            ],
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 248,
+            "description": "<p>Dispatches an event within the ApplicationCacheController object.</p>",
+            "example": [
+                "\n        var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);\n        ApplicationCacheController.dispatchEvent(event);\n\n        // Here is a common inline event being dispatched\n        ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));"
+            ],
+            "itemtype": "method",
+            "name": "dispatchEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must\nextend the {{#crossLink \"ApplicationCacheEvent\"}}{{/crossLink}}.",
+                    "type": "ApplicationCacheEvent"
+                }
+            ],
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 264,
+            "itemtype": "property",
+            "name": "_appCache",
+            "type": "{ApplicationCache}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 272,
+            "itemtype": "property",
+            "name": "_eventDispatcher",
+            "type": "{EventDispatcher}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "src/controller/ApplicationCacheController.js",
+            "line": 280,
+            "description": "The isEnabled property is used to keep track of the enabled state.",
+            "itemtype": "property",
+            "name": "isEnabled",
+            "type": "{boolean}",
+            "default": "false",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "ApplicationCacheController",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
             "file": "src/controller/LocalStorageController.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "LocalStorageController"
+            "class": "LocalStorageController",
+            "module": "StructureJS"
         },
         {
             "file": "src/controller/LocalStorageController.js",
@@ -1823,20 +2313,27 @@
                     "type": "Boolean",
                     "optional": true,
                     "optdefault": "false"
+                },
+                {
+                    "name": "disableHistory",
+                    "description": "",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
                 }
             ],
             "access": "public",
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    // This will update the hash url and trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/');\n\n    // This will update the hash url but will not trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/', true);"
+                "\n    // This will update the hash url and trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/');\n\n    // This will update the hash url but will not trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/', true);\n\n    // This will not update the hash url but will trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/', true, true);"
             ],
             "class": "Router",
             "module": "StructureJS"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 300,
+            "line": 310,
             "description": "The **Router.clear** will remove all route's and the default route from the Router class.",
             "itemtype": "method",
             "name": "clear",
@@ -1851,7 +2348,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 315,
+            "line": 325,
             "description": "The **Router.destroy** method will null out all references to other objects in the Router class.",
             "itemtype": "method",
             "name": "destroy",
@@ -1866,7 +2363,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 331,
+            "line": 341,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "onHashChange",
@@ -1885,7 +2382,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 351,
+            "line": 361,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "changeRoute",
@@ -1904,22 +2401,20 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 422,
+            "line": 432,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
-            "name": "WINDOW",
+            "name": "_window",
             "type": "{Window}",
             "access": "private",
             "tagname": "",
             "static": 1,
-            "final": 1,
-            "readonly": "",
             "class": "Router",
             "module": "StructureJS"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 434,
+            "line": 442,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -1932,7 +2427,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 444,
+            "line": 452,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -1945,7 +2440,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 454,
+            "line": 462,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -1958,7 +2453,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 464,
+            "line": 472,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -1975,7 +2470,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 478,
+            "line": 486,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -1992,7 +2487,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 495,
+            "line": 503,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful when used with the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method to use your routes as states rather than using the hash url to control the application.\n\nWhat this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to **false** so users cannot jump around if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2009,7 +2504,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 513,
+            "line": 521,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2026,7 +2521,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 531,
+            "line": 539,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2051,7 +2546,7 @@
         {
             "file": "src/display/DOMElement.js",
             "line": 148,
-            "description": "YUIDoc_comment",
+            "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "checkCount",
             "type": "{number}",
@@ -2345,27 +2840,6 @@
         {
             "file": "src/display/DOMElement.js",
             "line": 552,
-            "description": "Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)\nto 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though\nthey are invisible.",
-            "itemtype": "method",
-            "name": "alpha",
-            "params": [
-                {
-                    "name": "number",
-                    "description": ""
-                }
-            ],
-            "return": {
-                "description": "Returns an instance of itself.",
-                "type": "DOMElement"
-            },
-            "chainable": 1,
-            "class": "DOMElement",
-            "module": "StructureJS",
-            "submodule": "view"
-        },
-        {
-            "file": "src/display/DOMElement.js",
-            "line": 567,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2373,12 +2847,23 @@
         },
         {
             "file": "src/display/DOMElement.js",
-            "line": 580,
-            "description": "YUIDoc_comment",
+            "line": 565,
+            "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.",
             "itemtype": "method",
             "name": "createComponents",
+            "params": [
+                {
+                    "name": "componentList",
+                    "description": "(Array.<>",
+                    "type": "Selector: string; componentClass: DisplayObjectContainer"
+                }
+            ],
             "access": "public",
             "tagname": "",
+            "chainable": 1,
+            "example": [
+                "\n     ClassName.prototype.createChildren = function () {\n         _super.prototype.createChildren.call(this);\n\n         this.createComponents([\n             {selector: '.js-shareEmail', componentClass: EmailShareComponent},\n             {selector: '.js-pagination', componentClass: PaginationComponent},\n             {selector: '.js-carousel', componentClass: CarouselComponent}\n         ]);\n     };"
+            ],
             "class": "DOMElement",
             "module": "StructureJS",
             "submodule": "view"
@@ -2860,6 +3345,146 @@
             "class": "Stage",
             "module": "StructureJS",
             "submodule": "view"
+        },
+        {
+            "file": "src/event/native/NavigatorEvents.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/native/NavigatorEvents.js",
+            "line": 20,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "event",
+            "name": "ONLINE",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/native/NavigatorEvents.js",
+            "line": 28,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "event",
+            "name": "OFFLINE",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 43,
+            "overridden": "BaseEvent.clone",
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 49,
+            "description": "The browser is checking for an update, or is attempting to download\nthe cache manifest for the first time. This is always the first event\nin the sequence.",
+            "itemtype": "event",
+            "name": "CHECKING",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 59,
+            "description": "The cache manifest hadn't changed.",
+            "itemtype": "event",
+            "name": "NO_UPDATE",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 67,
+            "description": "The browser has started to download the cache manifest, either for the\nfirst time or because changes have been detected.",
+            "itemtype": "event",
+            "name": "DOWNLOADING",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 76,
+            "description": "The browser had downloaded and cached an asset. This is fired once for\nevery file that is downloaded (including the current page which is cached implicitly).",
+            "itemtype": "event",
+            "name": "PROGRESS",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 85,
+            "description": "The resources listed in the manifest have been fully downloaded, and the application is\nnow cached locally.",
+            "itemtype": "event",
+            "name": "CACHED",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 94,
+            "description": "The resources listed in the manifest have been newly re-downloaded, and the script can\nuse swapCache() to switch to the new cache.",
+            "itemtype": "event",
+            "name": "UPDATE_READY",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 103,
+            "description": "The cache manifest file could not be found, indicating that the cache is no longer needed.\nThe application cache is being deleted.",
+            "itemtype": "event",
+            "name": "OBSOLETE",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/ApplicationCacheEvent.js",
+            "line": 112,
+            "description": "An error occurred at some point - this could be caused by a number of things. This will\nalways be the last event in the sequence.",
+            "itemtype": "event",
+            "name": "ERROR",
+            "type": "{string}",
+            "static": 1,
+            "class": "ApplicationCacheEvent",
+            "module": "StructureJS",
+            "submodule": "event"
         },
         {
             "file": "src/event/BaseEvent.js",
@@ -3751,7 +4376,7 @@
         {
             "file": "src/event/LocalStorageEvent.js",
             "line": 40,
-            "description": "YUIDoc_comment",
+            "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_nativeEvent",
             "type": "{any}",
@@ -3766,6 +4391,83 @@
             "line": 58,
             "overridden": "BaseEvent.clone",
             "class": "LocalStorageEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "NetworkMonitorEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 44,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "status",
+            "type": "{string}",
+            "access": "public",
+            "tagname": "",
+            "class": "NetworkMonitorEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 52,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "connected",
+            "type": "{boolean}",
+            "access": "public",
+            "tagname": "",
+            "class": "NetworkMonitorEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 64,
+            "overridden": "BaseEvent.clone",
+            "class": "NetworkMonitorEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 70,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "event",
+            "name": "STATUS",
+            "type": "{string}",
+            "static": 1,
+            "class": "NetworkMonitorEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 78,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "event",
+            "name": "ONLINE",
+            "type": "{string}",
+            "static": 1,
+            "class": "NetworkMonitorEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/NetworkMonitorEvent.js",
+            "line": 86,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "event",
+            "name": "OFFLINE",
+            "type": "{string}",
+            "static": 1,
+            "class": "NetworkMonitorEvent",
             "module": "StructureJS",
             "submodule": "event"
         },
@@ -3885,6 +4587,30 @@
             "file": "src/event/TimerEvent.js",
             "line": 40,
             "overridden": "BaseEvent.clone",
+            "class": "TimerEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/TimerEvent.js",
+            "line": 46,
+            "description": "Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.",
+            "itemtype": "event",
+            "name": "TIMER",
+            "type": "{string}",
+            "static": 1,
+            "class": "TimerEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "src/event/TimerEvent.js",
+            "line": 54,
+            "description": "Dispatched whenever it has completed the number of requests set by Timer.repeatCount.",
+            "itemtype": "event",
+            "name": "TIMER_COMPLETE",
+            "type": "{string}",
+            "static": 1,
             "class": "TimerEvent",
             "module": "StructureJS",
             "submodule": "event"
@@ -4023,7 +4749,7 @@
         {
             "file": "src/model/Collection.js",
             "line": 33,
-            "description": "YUIDoc_comment",
+            "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "items",
             "type": "{array}",
@@ -4035,7 +4761,7 @@
         {
             "file": "src/model/Collection.js",
             "line": 41,
-            "description": "YUIDoc_comment",
+            "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "length",
             "type": "{init}",
@@ -4523,6 +5249,199 @@
             "submodule": "model"
         },
         {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 30,
+            "description": "Adds the necessary event listeners to listen for the 'online' and 'offline' events.\nAlso dispatches a {{#crossLink \"NetworkMonitorEvent\"}}{{/crossLink}} right away with the status of the network connection.\nIt is recommended you call NetworkMonitor.start(); when your application starts up.",
+            "example": [
+                "\n     NetworkMonitor.start();"
+            ],
+            "itemtype": "method",
+            "name": "start",
+            "static": 1,
+            "access": "public",
+            "tagname": "",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 53,
+            "description": "Returns the online status of the browser. The property returns a boolean value, with true for being online and false for being offline.",
+            "example": [
+                "\n     NetworkMonitor.connected();"
+            ],
+            "itemtype": "method",
+            "name": "connected",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "static": 1,
+            "access": "public",
+            "tagname": "",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 68,
+            "description": "Returns if the status type ('online' or 'offline') if computer or device is connected to the internet.",
+            "example": [
+                "\n     NetworkMonitor.getStatus();"
+            ],
+            "itemtype": "method",
+            "name": "getStatus",
+            "return": {
+                "description": "Returns 'online' or 'offline'.",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 83,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "onNetworkMonitorEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 97,
+            "description": "Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.",
+            "example": [
+                "\n     NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this.handlerMethod, this);\n     ClassName.prototype.handlerMethod = function (event) {\n         console.log(event.status, event.connected);\n     }"
+            ],
+            "itemtype": "method",
+            "name": "addEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event.",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "Binds the scope to a particular object (scope is basically what \"this\" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.",
+                    "type": "Any"
+                },
+                {
+                    "name": "priority",
+                    "description": "Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.",
+                    "type": "Int",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "static": 1,
+            "access": "public",
+            "tagname": "",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 117,
+            "description": "Removes a specified listener from the NetworkMonitor object.",
+            "example": [
+                "\n     NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this.handlerMethod, this);\n     private handlerMethod(event:NetworkMonitorEvent):void {\n         console.log(event.status, event.connected);\n     }"
+            ],
+            "itemtype": "method",
+            "name": "removeEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event.",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "The listener object to remove.",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "The scope of the listener object to be removed.\nTo keep things consistent this parameter is required.",
+                    "type": "Any"
+                }
+            ],
+            "static": 1,
+            "access": "public",
+            "tagname": "",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 136,
+            "description": "<p>Dispatches an event within the NetworkMonitorEvent object.</p>",
+            "itemtype": "method",
+            "name": "dispatchEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must\nextend the {{#crossLink \"NetworkMonitorEvent\"}}{{/crossLink}}.",
+                    "type": "NetworkMonitorEvent"
+                }
+            ],
+            "static": 1,
+            "access": "private",
+            "tagname": "",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 147,
+            "description": "A reference to the EventDispatcher object.",
+            "itemtype": "property",
+            "name": "_eventDispatcher",
+            "type": "{EventDispatcher}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "src/net/NetworkMonitor.js",
+            "line": 156,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "_initialized",
+            "type": "{boolean}",
+            "access": "private",
+            "tagname": "",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
             "file": "src/net/URLContentType.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -4607,7 +5526,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 98,
+            "line": 96,
             "overridden": "EventDispatcher.destroy",
             "class": "URLLoader",
             "module": "StructureJS",
@@ -4615,7 +5534,7 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 107,
+            "line": 105,
             "description": "YUIDoc_comment",
             "itemtype": "method",
             "name": "abort",
@@ -4627,10 +5546,10 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 119,
+            "line": 117,
             "description": "YUIDoc_comment",
             "itemtype": "method",
-            "name": "abort",
+            "name": "onError",
             "access": "private",
             "tagname": "",
             "class": "URLLoader",
@@ -4639,34 +5558,10 @@
         },
         {
             "file": "src/net/URLLoader.js",
-            "line": 129,
+            "line": 128,
             "description": "YUIDoc_comment",
             "itemtype": "method",
-            "name": "abort",
-            "access": "private",
-            "tagname": "",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 139,
-            "description": "YUIDoc_comment",
-            "itemtype": "method",
-            "name": "abort",
-            "access": "private",
-            "tagname": "",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 150,
-            "description": "YUIDoc_comment",
-            "itemtype": "method",
-            "name": "abort",
+            "name": "onSuccess",
             "access": "private",
             "tagname": "",
             "class": "URLLoader",
@@ -4802,7 +5697,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 28,
+            "line": 29,
             "description": "Returns the name of the browser.",
             "itemtype": "method",
             "name": "browserName",
@@ -4819,7 +5714,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 40,
+            "line": 41,
             "description": "Returns the version of the browser.",
             "itemtype": "method",
             "name": "browserVersion",
@@ -4843,8 +5738,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 60,
-            "description": "YUIDoc_comment",
+            "line": 61,
+            "description": "Gets the browser name a user agent.",
             "itemtype": "method",
             "name": "getBrowser",
             "access": "private",
@@ -4860,8 +5755,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 78,
-            "description": "YUIDoc_comment",
+            "line": 84,
+            "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isAndroid",
             "return": {
@@ -4877,8 +5772,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 90,
-            "description": "YUIDoc_comment",
+            "line": 96,
+            "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isBlackBerry",
             "return": {
@@ -4894,8 +5789,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 102,
-            "description": "isIOS",
+            "line": 108,
+            "description": "Determines if the device OS is IOS.",
             "itemtype": "method",
             "name": "isIOS",
             "return": {
@@ -4911,8 +5806,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 114,
-            "description": "YUIDoc_comment",
+            "line": 120,
+            "description": "Determines if the device OS is Opera Mini.",
             "itemtype": "method",
             "name": "isOperaMini",
             "return": {
@@ -4928,8 +5823,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 126,
-            "description": "YUIDoc_comment",
+            "line": 132,
+            "description": "Determines if the device OS is IE Mobile.",
             "itemtype": "method",
             "name": "isIEMobile",
             "return": {
@@ -4945,8 +5840,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 138,
-            "description": "YUIDoc_comment",
+            "line": 144,
+            "description": "Determines if the it is run on a mobile or desktop device.",
             "itemtype": "method",
             "name": "isMobile",
             "return": {
@@ -4962,8 +5857,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 150,
-            "description": "YUIDoc_comment",
+            "line": 156,
+            "description": "Determines if the browser can you Browser History push states.",
             "itemtype": "method",
             "name": "hasBrowserHistory",
             "return": {
@@ -4979,8 +5874,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 162,
-            "description": "YUIDoc_comment",
+            "line": 168,
+            "description": "Determines if the browser can you Local Storage.",
             "itemtype": "method",
             "name": "hasLocalStorage",
             "return": {
@@ -4996,8 +5891,8 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 178,
-            "description": "YUIDoc_comment",
+            "line": 184,
+            "description": "Determines if the browser can you Session Storage.",
             "itemtype": "method",
             "name": "hasSessionStorage",
             "return": {
@@ -5017,6 +5912,104 @@
             "description": "UMD (Universal Module Definition) wrapper.",
             "class": "BulkLoader",
             "module": "StructureJS"
+        },
+        {
+            "file": "src/util/BulkLoader.js",
+            "line": 34,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "addFile",
+            "params": [
+                {
+                    "name": "dataStore",
+                    "description": "",
+                    "type": "IDataStore"
+                },
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "BulkLoader"
+            },
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BulkLoader.js",
+            "line": 47,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "getFile",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "IDataStore"
+            },
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BulkLoader.js",
+            "line": 58,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "getData",
+            "params": [
+                {
+                    "name": "key",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Any"
+            },
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BulkLoader.js",
+            "line": 69,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "load",
+            "return": {
+                "description": "",
+                "type": "BulkLoader"
+            },
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BulkLoader.js",
+            "line": 89,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "onLoadComplete",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "LoaderEvent"
+                }
+            ],
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
         },
         {
             "file": "src/util/ComponentFactory.js",
@@ -5040,17 +6033,17 @@
                 {
                     "name": "ComponentClass",
                     "description": "The class that you want instantiated.",
-                    "type": "DOMElement"
+                    "type": "DisplayObjectContainer"
                 },
                 {
                     "name": "scope",
                     "description": "The base DOMElement needs a scope (parent object) to instantiate the component/view.",
-                    "type": "Object"
+                    "type": "Any"
                 }
             ],
             "return": {
                 "description": "Returns a list of instantiated components/views so you can manage them within the Class that created them.",
-                "type": "Array.<DOMElement>"
+                "type": "Array.<DisplayObjectContainer>"
             },
             "access": "public",
             "tagname": "",
@@ -5067,8 +6060,8 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 28,
-            "description": "YUIDoc_comment",
+            "line": 29,
+            "description": "Returns the suffix of a given day.",
             "itemtype": "method",
             "name": "getDaySuffix",
             "params": [
@@ -5085,13 +6078,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     DateUtil.getDaySuffix(1);\n     // 'st'\n\n     DateUtil.getDaySuffix(2);\n     // 'nd'\n\n     DateUtil.getDaySuffix(3);\n     // 'rd'\n\n     DateUtil.getDaySuffix(4);\n     // 'th'"
+            ],
             "class": "DateUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 42,
+            "line": 55,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "LONG_DAY_LABELS",
@@ -5106,7 +6102,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 52,
+            "line": 65,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_DAY_LABELS",
@@ -5121,7 +6117,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 62,
+            "line": 75,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "LONG_MONTH_LABELS",
@@ -5136,7 +6132,7 @@
         },
         {
             "file": "src/util/DateUtil.js",
-            "line": 72,
+            "line": 85,
             "description": "YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_MONTH_LABELS",
@@ -5172,7 +6168,7 @@
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 29,
+            "line": 30,
             "description": "Returns a number constrained between min and max.",
             "itemtype": "method",
             "name": "constrain",
@@ -5197,13 +6193,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.constrain(12, 3, 20);\n     // 12\n\n     MathUtil.constrain(22, 3, 20);\n     // 20\n\n     MathUtil.constrain(0, 3, 20);\n     // 3"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 50,
+            "line": 60,
             "description": "Returns a random number between min and max.",
             "itemtype": "method",
             "name": "randomRange",
@@ -5230,13 +6229,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 69,
+            "line": 81,
             "description": "Returns the percentage of a number in a given range.\nExample: num = 15 range 10 to 20 // outputs 0.5",
             "itemtype": "method",
             "name": "rangeToPercent",
@@ -5271,13 +6273,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.rangeToPercent(15, 10, 20);\n     // 0.5"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 93,
+            "line": 108,
             "description": "Returns the number that corresponds to the percentage in a given range.\nExample: percent = 0.5 range 10 to 20 // outputs 15",
             "itemtype": "method",
             "name": "percentToRange",
@@ -5302,13 +6307,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.percentToRange(0.5, 10, 20);\n     // 15"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 107,
+            "line": 125,
             "description": "Re-maps a number from one range to another. The output is the same as inputing the result of rangeToPercent() numbero percentToRange().\nExample: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5",
             "itemtype": "method",
             "name": "map",
@@ -5343,13 +6351,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.map(10, 0, 100, 0, 50);\n     // 5"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 138,
+            "line": 159,
             "description": "Converts radians to degrees.",
             "itemtype": "method",
             "name": "radiansToDegrees",
@@ -5364,13 +6375,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.radiansToDegrees(1.5707963267948966);\n     // 90\n\n     MathUtil.radiansToDegrees(3.141592653589793);\n     // 180"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 149,
+            "line": 176,
             "description": "Converts degrees to radians.",
             "itemtype": "method",
             "name": "degreesToRadians",
@@ -5385,13 +6399,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.degreesToRadians(90);\n     // 1.5707963267948966\n\n     MathUtil.degreesToRadians(180);\n     // 3.141592653589793"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 160,
+            "line": 193,
             "description": "Returns 1 if the value is >= 0. Returns -1 if the value is < 0.",
             "itemtype": "method",
             "name": "sign",
@@ -5406,13 +6423,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.sign(23);\n     // 1\n\n     MathUtil.sign(-23);\n     // -1"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 174,
+            "line": 213,
             "description": "Check if number is positive (zero is positive).",
             "itemtype": "method",
             "name": "isPositive",
@@ -5427,13 +6447,16 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n     MathUtil.isPositive(23);\n     // true\n\n     MathUtil.isPositive(-23);\n     // false"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 185,
+            "line": 230,
             "description": "Check if number is negative.",
             "itemtype": "method",
             "name": "isNegative",
@@ -5448,13 +6471,16 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n     MathUtil.isNegative(23);\n     // false\n\n     MathUtil.isNegative(-23);\n     // true"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 196,
+            "line": 247,
             "description": "Check if number is odd (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isOdd",
@@ -5469,13 +6495,16 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n     MathUtil.isOdd(2);\n     // false\n\n     MathUtil.isOdd(3);\n     // true"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 209,
+            "line": 266,
             "description": "Check if number is even (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isEven",
@@ -5490,13 +6519,16 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n     MathUtil.isEven(2);\n     // true\n\n     MathUtil.isEven(3);\n     // false"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 222,
+            "line": 285,
             "description": "Check if number is Prime (divisible only by itself and one).",
             "itemtype": "method",
             "name": "isPrime",
@@ -5511,13 +6543,16 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n     MathUtil.isPrime(4);\n     // false\n\n     MathUtil.isPrime(5);\n     // true"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 243,
+            "line": 312,
             "description": "Calculate the factorial of the integer.",
             "itemtype": "method",
             "name": "factorial",
@@ -5532,13 +6567,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.factorial(5);\n     // 120\n\n     MathUtil.factorial(9);\n     // 362880"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 263,
+            "line": 338,
             "description": "Return an array of divisors of the integer.",
             "itemtype": "method",
             "name": "getDivisors",
@@ -5553,16 +6591,19 @@
                 "description": "",
                 "type": "Array.<number>"
             },
+            "example": [
+                "\n"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 283,
+            "line": 363,
             "description": "Convert Fahrenheit to Celsius.",
             "itemtype": "method",
-            "name": "toCelsius",
+            "name": "fahrenheitToCelsius",
             "params": [
                 {
                     "name": "fahrenheit",
@@ -5579,16 +6620,19 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.fahrenheitToCelsius(32);\n     // 0\n\n     MathUtil.fahrenheitToCelsius(212);\n     // 100"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MathUtil.js",
-            "line": 309,
+            "line": 395,
             "description": "Convert Celsius to Fahrenheit.",
             "itemtype": "method",
-            "name": "toFahrenheit",
+            "name": "celsiusToFahrenheit",
             "params": [
                 {
                     "name": "celsius",
@@ -5605,6 +6649,9 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n     MathUtil.celsiusToFahrenheit(0);\n     // 32\n\n     MathUtil.celsiusToFahrenheit(100);\n     // 212"
+            ],
             "class": "MathUtil",
             "module": "StructureJS",
             "submodule": "util"
@@ -5618,11 +6665,8 @@
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 28,
+            "line": 29,
             "description": "Determines if credit card is valid using the Luhn formula.",
-            "example": [
-                "\n       MerchantUtil.isCreditCard(\"4556106734384949\");"
-            ],
             "itemtype": "method",
             "name": "isCreditCard",
             "params": [
@@ -5639,17 +6683,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     MerchantUtil.isCreditCard('4556106734384949');\n     // true"
+            ],
             "class": "MerchantUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 61,
+            "line": 64,
             "description": "Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.",
-            "example": [
-                "\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\"); // ************4949\nMerchantUtil.encodeCreditCardNumber(\"4556106734384949\", 5, \"x\");  // xxxxxxxxxxx84949"
-            ],
             "itemtype": "method",
             "name": "encodeCreditCardNumber",
             "params": [
@@ -5680,13 +6724,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     MerchantUtil.encodeCreditCardNumber('4556106734384949');\n     // ************4949\n\n     MerchantUtil.encodeCreditCardNumber('4556106734384949', 5, 'x');\n     // xxxxxxxxxxx84949"
+            ],
             "class": "MerchantUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 87,
+            "line": 92,
             "description": "Returns a credit card provider name from the credit card number passed in.",
             "itemtype": "method",
             "name": "getCreditCardProvider",
@@ -5701,17 +6748,17 @@
                 "description": "",
                 "type": "String"
             },
+            "example": [
+                "\n     MerchantUtil.getCreditCardProvider(\"4556106734384949\");\n     // visa\n\n     MerchantUtil.getCreditCardProvider(\"5428070016026573\");\n     // mastercard"
+            ],
             "class": "MerchantUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/MerchantUtil.js",
-            "line": 114,
+            "line": 125,
             "description": "Validate a credit card's expiration date.",
-            "example": [
-                "\nvar isValidDate:boolean = MerchantUtil.isValidExDate( 11, 2010 );"
-            ],
             "itemtype": "method",
             "name": "isValidExpirationDate",
             "params": [
@@ -5730,6 +6777,9 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n     MerchantUtil.isValidExDate(11, 2010);\n     // false"
+            ],
             "class": "MerchantUtil",
             "module": "StructureJS",
             "submodule": "util"
@@ -5743,7 +6793,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 28,
+            "line": 29,
             "description": "Converts bytes into megabytes.",
             "itemtype": "method",
             "name": "bytesToMegabytes",
@@ -5761,13 +6811,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "NumberUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 41,
+            "line": 44,
             "description": "Converts centimeters into inches.",
             "itemtype": "method",
             "name": "centimeterToInch",
@@ -5794,7 +6847,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 57,
+            "line": 60,
             "description": "Converts inches into centimeters.",
             "itemtype": "method",
             "name": "inchToCentimeter",
@@ -5821,7 +6874,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 73,
+            "line": 76,
             "description": "Converts feet into meters.",
             "itemtype": "method",
             "name": "feetToMeter",
@@ -5839,13 +6892,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n"
+            ],
             "class": "NumberUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 86,
+            "line": 91,
             "description": "Converts seconds into hour, minutes, seconds.",
             "itemtype": "method",
             "name": "convertToHHMMSS",
@@ -5872,7 +6928,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 112,
+            "line": 117,
             "description": "Formats a number from 0-9 to display with 2 digits.",
             "itemtype": "method",
             "name": "doubleDigitFormat",
@@ -5899,7 +6955,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 137,
+            "line": 142,
             "description": "Formats a currency string as a number.",
             "itemtype": "method",
             "name": "unformatUnit",
@@ -5926,7 +6982,7 @@
         },
         {
             "file": "src/util/NumberUtil.js",
-            "line": 176,
+            "line": 181,
             "description": "Formats a number as a currency string.",
             "itemtype": "method",
             "name": "formatUnit",
@@ -5980,7 +7036,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    NumberUtil.formatUnit(1234567.89, 2, \"*\", \",\", \"$\", 0);\n    // '$1,234,567.89'\n\n    NumberUtil.formatUnit(12341234.56, 2, \"*\", \",\", \" €\", 1);\n    // '12,341,234.56 €'\n\n    NumberUtil.formatUnit(-1900.24, 1);\n    // '-1,900.2'"
+                "\n    NumberUtil.formatUnit(1234567.89, 2, \".\", \",\", \"$\", 0);\n    // '$1,234,567.89'\n\n    NumberUtil.formatUnit(12341234.56, 2, \"*\", \",\", \" €\", 1);\n    // '12,341,234*56 €'\n\n    NumberUtil.formatUnit(-1900.24, 1);\n    // '-1,900.2'"
             ],
             "class": "NumberUtil",
             "module": "StructureJS",
@@ -5995,8 +7051,8 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 30,
-            "description": "YUIDoc_comment",
+            "line": 31,
+            "description": "Gets the extension name off the string being passed in.",
             "itemtype": "method",
             "name": "getExtension",
             "params": [
@@ -6004,6 +7060,11 @@
                     "name": "filename",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "withDot",
+                    "description": "If you want the period to be included in the extension name.",
+                    "type": "Boolean"
                 }
             ],
             "return": {
@@ -6013,14 +7074,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     StringUtil.getExtension('file.exe');\n     // 'exe'\n\n     StringUtil.getExtension('file.exe', true);\n     // '.exe'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 43,
-            "description": "YUIDoc_comment",
+            "line": 53,
+            "description": "Converts a hyphen string to a camel case string.",
             "itemtype": "method",
             "name": "hyphenToCamelCase",
             "params": [
@@ -6037,14 +7101,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     StringUtil.hyphenToCamelCase(\"hyphen-TO-camel-CASE\");\n     // 'hyphenToCamelCase'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 60,
-            "description": "YUIDoc_comment",
+            "line": 73,
+            "description": "Converts a hyphen string to a pascal case string.",
             "itemtype": "method",
             "name": "hyphenToPascalCase",
             "params": [
@@ -6061,14 +7128,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     StringUtil.hyphenToPascalCase(\"hyphen-to-camel-case\");\n     // 'HyphenToCamelCase'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 80,
-            "description": "YUIDoc_comment",
+            "line": 92,
+            "description": "Converts a camel case string to a hyphen case string.",
             "itemtype": "method",
             "name": "camelCaseToHyphen",
             "params": [
@@ -6085,14 +7155,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     StringUtil.camelCaseToHyphen(\"hyphenToCamelCase\");\n     // 'hyphen-to-camel-case'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 95,
-            "description": "YUIDoc_comment",
+            "line": 110,
+            "description": "Creates a universally unique identifier.",
             "itemtype": "method",
             "name": "createUUID",
             "return": {
@@ -6102,14 +7175,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     StringUtil.createUUID();\n     // 'a95d7134-3342-4001-bcea-cc0371b70dec'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 113,
-            "description": "YUIDoc_comment",
+            "line": 131,
+            "description": "Converts a query string to an object.",
             "itemtype": "method",
             "name": "queryStringToObject",
             "params": [
@@ -6117,6 +7193,13 @@
                     "name": "queryString",
                     "description": "",
                     "type": "String"
+                },
+                {
+                    "name": "useParseFloat",
+                    "description": "",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "true"
                 }
             ],
             "return": {
@@ -6126,17 +7209,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');\n     // {name: 'Robert', age: 23, gender: 'male'}\n\n     StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);\n     // {name: 'Robert', age: '23', gender: 'male'}"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 145,
+            "line": 171,
             "description": "Remove all whitespace from the string passed in.",
-            "example": [
-                "\n        var str = '   a b    c d e f g ';\n        StringUtil.removeAllWhitespace(str);\n        // 'abcdefg'"
-            ],
             "itemtype": "method",
             "name": "removeAllWhitespace",
             "params": [
@@ -6153,17 +7236,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeAllWhitespace(str);\n     // 'abcdefg'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 161,
+            "line": 188,
             "description": "Remove leading and trailing whitespace.",
-            "example": [
-                "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // 'a b    c d e f g'"
-            ],
             "itemtype": "method",
             "name": "removeLeadingTrailingWhitespace",
             "params": [
@@ -6180,13 +7263,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // 'a b    c d e f g'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 178,
+            "line": 205,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -6208,17 +7294,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));\n      // 'Robert is cool...'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 195,
+            "line": 225,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
-            "example": [
-                "\n     StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');\n     // 'Robert is cool. Very cool and smart!'"
-            ],
             "itemtype": "method",
             "name": "format",
             "return": {
@@ -6240,6 +7326,40 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');\n     // 'Robert is cool. Very cool and smart!'"
+            ],
+            "class": "StringUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/StringUtil.js",
+            "line": 253,
+            "description": "Updates a value in the query string by its key name.",
+            "itemtype": "method",
+            "name": "paramReplace",
+            "params": [
+                {
+                    "name": "queryString",
+                    "description": ""
+                },
+                {
+                    "name": "name",
+                    "description": ""
+                },
+                {
+                    "name": "value",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String|void"
+            },
+            "example": [
+                "\n     StringUtil.paramReplace('?name=Robert&age=23&gender=male', 'gender', 'female');\n     // '?name=Robert&age=23&gender=female'"
+            ],
             "class": "StringUtil",
             "module": "StructureJS",
             "submodule": "util"
@@ -6250,6 +7370,92 @@
             "description": "UMD (Universal Module Definition) wrapper.",
             "class": "TemplateFactory",
             "module": "StructureJS"
+        },
+        {
+            "file": "src/util/TemplateFactory.js",
+            "line": 31,
+            "description": "Creates a template.",
+            "itemtype": "method",
+            "name": "create",
+            "params": [
+                {
+                    "name": "templatePath",
+                    "description": "",
+                    "type": "Any"
+                },
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "class": "TemplateFactory",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/TemplateFactory.js",
+            "line": 79,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "UNDERSCORE",
+            "type": "{string}",
+            "access": "public",
+            "tagname": "",
+            "final": 1,
+            "static": 1,
+            "class": "TemplateFactory",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/TemplateFactory.js",
+            "line": 89,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "HANDLEBARS",
+            "type": "{string}",
+            "access": "public",
+            "tagname": "",
+            "final": 1,
+            "static": 1,
+            "class": "TemplateFactory",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/TemplateFactory.js",
+            "line": 99,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "templateEngine",
+            "type": "{string}",
+            "default": "TemplateFactory.HANDLEBARS",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "TemplateFactory",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/TemplateFactory.js",
+            "line": 109,
+            "description": "TODO: templateNamespace",
+            "itemtype": "property",
+            "name": "templateNamespace",
+            "type": "{string}",
+            "default": "'JST'",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "TemplateFactory",
+            "module": "StructureJS",
+            "submodule": "util"
         },
         {
             "file": "src/util/Timer.js",
@@ -6456,11 +7662,8 @@
         },
         {
             "file": "src/util/Util.js",
-            "line": 29,
+            "line": 30,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
-            "example": [
-                "\n        var property:number = Util.uniqueId();\n        // 1\n\n        var property:string = Util.uniqueId('yomama_');\n        // yomama_1"
-            ],
             "itemtype": "method",
             "name": "uniqueId",
             "params": [
@@ -6478,13 +7681,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     var property = Util.uniqueId();\n     // 1\n\n     var property = Util.uniqueId('prefixName_');\n     // prefixName_1"
+            ],
             "class": "Util",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/Util.js",
-            "line": 54,
+            "line": 56,
+            "description": "Removes a list of properties from an object.",
             "itemtype": "method",
             "name": "deletePropertyFromObject",
             "params": [
@@ -6506,13 +7713,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }\n\n     Util.deletePropertyFromObject(obj, ['phone', 'gender']);\n\n     // { name: 'Robert' }"
+            ],
             "class": "Util",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/Util.js",
-            "line": 91,
+            "line": 101,
+            "description": "Renames a property name on an object.",
             "itemtype": "method",
             "name": "renamePropertyOnObject",
             "params": [
@@ -6539,13 +7750,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }\n\n     Util.renamePropertyOnObject(obj, 'gender', 'sex');\n\n     // { name: 'Robert', sex: 'male', phone: '555-555-5555' }"
+            ],
             "class": "Util",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/Util.js",
-            "line": 110,
+            "line": 128,
+            "description": "Makes a clone of an object.",
             "itemtype": "method",
             "name": "clone",
             "params": [
@@ -6562,14 +7777,17 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     var cloneOfObject = Util.clone(obj);"
+            ],
             "class": "Util",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/Util.js",
-            "line": 156,
-            "description": "YUIDoc_comment",
+            "line": 178,
+            "description": "Converts a string or number to a boolean.",
             "itemtype": "method",
             "name": "toBoolean",
             "params": [
@@ -6586,13 +7804,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n     Util.toBoolean(\"TRUE\");\n     // true\n\n     Util.toBoolean(0);\n     // false\n\n     Util.toBoolean(undefined);\n     // false"
+            ],
             "class": "Util",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/Util.js",
-            "line": 171,
+            "line": 202,
             "description": "Returns the name of the class object passed in.",
             "itemtype": "method",
             "name": "getClassName",
@@ -6608,6 +7829,23 @@
                 "type": "String"
             },
             "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n     var someClass = new SomeClass();\n\n     Util.getClassName(someClass);\n     // 'SomeClass'"
+            ],
+            "class": "Util",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/Util.js",
+            "line": 222,
+            "description": "Keeps track of the count for the uniqueId method.",
+            "itemtype": "property",
+            "name": "_idCounter",
+            "type": "{init}",
+            "access": "private",
             "tagname": "",
             "static": 1,
             "class": "Util",
@@ -6641,13 +7879,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "ValidationUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 42,
+            "line": 44,
             "description": "Determines if the two values passed in are the same.",
             "itemtype": "method",
             "name": "isMatch",
@@ -6670,13 +7911,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "ValidationUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 56,
+            "line": 60,
             "description": "Determines if the String passed in is a valid email address.",
             "itemtype": "method",
             "name": "isValidEmailAddress",
@@ -6694,13 +7938,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "ValidationUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 70,
+            "line": 76,
             "description": "Determines if the String passed in is a phone number.",
             "itemtype": "method",
             "name": "isValidPhoneNumber",
@@ -6718,13 +7965,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "ValidationUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 84,
+            "line": 92,
             "description": "Determines if the String passed in is a zip code.",
             "itemtype": "method",
             "name": "isZipCode",
@@ -6742,13 +7992,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "ValidationUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 98,
+            "line": 108,
             "description": "Determines if the String passed in is a postal code.",
             "itemtype": "method",
             "name": "isPostalCode",
@@ -6766,13 +8019,16 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "ValidationUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/ValidationUtil.js",
-            "line": 112,
+            "line": 124,
             "description": "Determines if the String passed in is a Social Security Number.",
             "itemtype": "method",
             "name": "isSocialSecurityNumber",
@@ -6790,6 +8046,9 @@
             "access": "public",
             "tagname": "",
             "static": 1,
+            "example": [
+                "\n"
+            ],
             "class": "ValidationUtil",
             "module": "StructureJS",
             "submodule": "util"
@@ -6902,7 +8161,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n    ClassName.prototype.disable = function() {\n         if (this.isEnabled === false) { return this; }\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         return _super.prototype.disable.call(this);\n    }"
+                "\n     ClassName.prototype.disable = function() {\n         if (this.isEnabled === false) { return this; }\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         return _super.prototype.disable.call(this);\n     }"
             ],
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -6910,6 +8169,14 @@
         }
     ],
     "warnings": [
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/controller/ApplicationCacheController.js:30"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/controller/ApplicationCacheController.js:50"
+        },
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/controller/LocalStorageController.js:56"
@@ -6983,12 +8250,8 @@
             "line": " src/display/DOMElement.js:532"
         },
         {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/display/DOMElement.js:552"
-        },
-        {
             "message": "unknown tag: overridden",
-            "line": " src/display/DOMElement.js:567"
+            "line": " src/display/DOMElement.js:552"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -7051,6 +8314,10 @@
             "line": " src/display/DisplayObjectContainer.js:355"
         },
         {
+            "message": "unknown tag: overridden",
+            "line": " src/event/ApplicationCacheEvent.js:43"
+        },
+        {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/event/BaseEvent.js:160"
         },
@@ -7069,6 +8336,10 @@
         {
             "message": "unknown tag: overridden",
             "line": " src/event/LocalStorageEvent.js:58"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " src/event/NetworkMonitorEvent.js:64"
         },
         {
             "message": "unknown tag: overridden",
@@ -7111,8 +8382,16 @@
             "line": " src/model/ValueObject.js:100"
         },
         {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/net/NetworkMonitor.js:53"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/net/NetworkMonitor.js:68"
+        },
+        {
             "message": "unknown tag: overridden",
-            "line": " src/net/URLLoader.js:98"
+            "line": " src/net/URLLoader.js:96"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -7120,131 +8399,155 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:78"
+            "line": " src/util/BrowserUtil.js:84"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:90"
+            "line": " src/util/BrowserUtil.js:96"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:102"
+            "line": " src/util/BrowserUtil.js:108"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:114"
+            "line": " src/util/BrowserUtil.js:120"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:126"
+            "line": " src/util/BrowserUtil.js:132"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:138"
+            "line": " src/util/BrowserUtil.js:144"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:150"
+            "line": " src/util/BrowserUtil.js:156"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:162"
+            "line": " src/util/BrowserUtil.js:168"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:178"
+            "line": " src/util/BrowserUtil.js:184"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/DateUtil.js:28"
+            "line": " src/util/BulkLoader.js:34"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:28"
+            "line": " src/util/BulkLoader.js:47"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:61"
+            "line": " src/util/BulkLoader.js:58"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:87"
+            "line": " src/util/BulkLoader.js:69"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/MerchantUtil.js:114"
+            "line": " src/util/DateUtil.js:29"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:28"
+            "line": " src/util/MerchantUtil.js:29"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:41"
+            "line": " src/util/MerchantUtil.js:64"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:57"
+            "line": " src/util/MerchantUtil.js:92"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:73"
+            "line": " src/util/MerchantUtil.js:125"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:86"
+            "line": " src/util/NumberUtil.js:29"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:112"
+            "line": " src/util/NumberUtil.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:137"
+            "line": " src/util/NumberUtil.js:60"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/NumberUtil.js:176"
+            "line": " src/util/NumberUtil.js:76"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:30"
+            "line": " src/util/NumberUtil.js:91"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:43"
+            "line": " src/util/NumberUtil.js:117"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:60"
+            "line": " src/util/NumberUtil.js:142"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:80"
+            "line": " src/util/NumberUtil.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:95"
+            "line": " src/util/StringUtil.js:31"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:113"
+            "line": " src/util/StringUtil.js:53"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:145"
+            "line": " src/util/StringUtil.js:73"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:161"
+            "line": " src/util/StringUtil.js:92"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:178"
+            "line": " src/util/StringUtil.js:110"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:195"
+            "line": " src/util/StringUtil.js:131"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/StringUtil.js:171"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/StringUtil.js:188"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/StringUtil.js:205"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/StringUtil.js:225"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/StringUtil.js:253"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/TemplateFactory.js:31"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -7264,27 +8567,27 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:29"
+            "line": " src/util/Util.js:30"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:54"
+            "line": " src/util/Util.js:56"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:91"
+            "line": " src/util/Util.js:101"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:110"
+            "line": " src/util/Util.js:128"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:156"
+            "line": " src/util/Util.js:178"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/Util.js:171"
+            "line": " src/util/Util.js:202"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -7292,31 +8595,43 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:42"
+            "line": " src/util/ValidationUtil.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:56"
+            "line": " src/util/ValidationUtil.js:60"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:70"
+            "line": " src/util/ValidationUtil.js:76"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:84"
+            "line": " src/util/ValidationUtil.js:92"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:98"
+            "line": " src/util/ValidationUtil.js:108"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/ValidationUtil.js:112"
+            "line": " src/util/ValidationUtil.js:124"
         },
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/BaseObject.js:42"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/controller/ApplicationCacheController.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/controller/ApplicationCacheController.js:30"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/controller/ApplicationCacheController.js:50"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -7348,7 +8663,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/display/DOMElement.js:567"
+            "line": " src/display/DOMElement.js:552"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -7365,6 +8680,18 @@
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " src/display/Stage.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/native/NavigatorEvents.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/ApplicationCacheEvent.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/event/ApplicationCacheEvent.js:43"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -7397,6 +8724,14 @@
         {
             "message": "Missing item type",
             "line": " src/event/LocalStorageEvent.js:58"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/event/NetworkMonitorEvent.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/event/NetworkMonitorEvent.js:64"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -7444,6 +8779,10 @@
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " src/net/NetworkMonitor.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " src/net/URLContentType.js:1"
         },
         {
@@ -7452,7 +8791,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/net/URLLoader.js:98"
+            "line": " src/net/URLLoader.js:96"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

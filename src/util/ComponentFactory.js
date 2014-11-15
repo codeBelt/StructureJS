@@ -24,16 +24,16 @@
     var ComponentFactory = (function () {
 
         function ComponentFactory() {
+            throw new Error('[ComponentFactory] Do not instantiation the Router class because it is a static class.');
         }
-
         /**
          * Takes in one or more jQuery objects and creates a component for each one.
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {DOMElement} The class that you want instantiated.
-         * @param scope {Object} The base DOMElement needs a scope (parent object) to instantiate the component/view.
-         * @return {Array.<DOMElement>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+         * @param ComponentClass {DisplayObjectContainer} The class that you want instantiated.
+         * @param scope {any} The base DOMElement needs a scope (parent object) to instantiate the component/view.
+         * @return {Array.<DisplayObjectContainer>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
          */

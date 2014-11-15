@@ -19,7 +19,7 @@ module StructureTS
         public transition:TimelineMax = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @class BaseTransition
          * @extends EventDispatcher

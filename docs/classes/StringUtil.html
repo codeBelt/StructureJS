@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -274,6 +282,13 @@
                     
                 </li>
             
+                <li class="index-item method">
+                    <a href="#method_paramReplace">paramReplace</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_queryStringToObject">queryStringToObject</a>
 
@@ -351,7 +366,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -384,7 +399,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l80"><code>src&#x2F;util&#x2F;StringUtil.js:80</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l92"><code>src&#x2F;util&#x2F;StringUtil.js:92</code></a>
         
         </p>
 
@@ -397,7 +412,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Converts a camel case string to a hyphen case string.</p>
 
         </div>
 
@@ -410,7 +425,7 @@
                     <li class="param">
                         
                             <code class="param-name">str</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -433,13 +448,23 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.camelCaseToHyphen(&quot;hyphenToCamelCase&quot;);
+ // &#39;hyphen-to-camel-case&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -455,7 +480,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -488,7 +513,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l95"><code>src&#x2F;util&#x2F;StringUtil.js:95</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l110"><code>src&#x2F;util&#x2F;StringUtil.js:110</code></a>
         
         </p>
 
@@ -501,7 +526,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Creates a universally unique identifier.</p>
 
         </div>
 
@@ -514,13 +539,23 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.createUUID();
+ // &#39;a95d7134-3342-4001-bcea-cc0371b70dec&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -552,7 +587,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -585,7 +620,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l195"><code>src&#x2F;util&#x2F;StringUtil.js:195</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l225"><code>src&#x2F;util&#x2F;StringUtil.js:225</code></a>
         
         </p>
 
@@ -611,7 +646,7 @@
                     <li class="param">
                         
                             <code class="param-name">str</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -626,7 +661,7 @@
                     <li class="param">
                         
                             <code class="param-name">...rest</code>
-                            <span class="type">Array</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
                         
 
                         
@@ -649,7 +684,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
@@ -685,13 +720,19 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>withDot</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -724,7 +765,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l30"><code>src&#x2F;util&#x2F;StringUtil.js:30</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l31"><code>src&#x2F;util&#x2F;StringUtil.js:31</code></a>
         
         </p>
 
@@ -737,7 +778,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Gets the extension name off the string being passed in.</p>
 
         </div>
 
@@ -750,13 +791,29 @@
                     <li class="param">
                         
                             <code class="param-name">filename</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
 
                         <div class="param-description">
                              
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">withDot</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you want the period to be included in the extension name.</p>
+
                         </div>
 
                         
@@ -773,13 +830,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.getExtension(&#39;file.exe&#39;);
+ // &#39;exe&#39;
+
+ StringUtil.getExtension(&#39;file.exe&#39;, true);
+ // &#39;.exe&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -805,7 +875,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -838,7 +908,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l43"><code>src&#x2F;util&#x2F;StringUtil.js:43</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l53"><code>src&#x2F;util&#x2F;StringUtil.js:53</code></a>
         
         </p>
 
@@ -851,7 +921,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Converts a hyphen string to a camel case string.</p>
 
         </div>
 
@@ -864,7 +934,7 @@
                     <li class="param">
                         
                             <code class="param-name">str</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -887,13 +957,23 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.hyphenToCamelCase(&quot;hyphen-TO-camel-CASE&quot;);
+ // &#39;hyphenToCamelCase&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -919,7 +999,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -952,7 +1032,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l60"><code>src&#x2F;util&#x2F;StringUtil.js:60</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l73"><code>src&#x2F;util&#x2F;StringUtil.js:73</code></a>
         
         </p>
 
@@ -965,7 +1045,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Converts a hyphen string to a pascal case string.</p>
 
         </div>
 
@@ -978,7 +1058,7 @@
                     <li class="param">
                         
                             <code class="param-name">str</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1001,13 +1081,185 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.hyphenToPascalCase(&quot;hyphen-to-camel-case&quot;);
+ // &#39;HyphenToCamelCase&#39;</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_paramReplace" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>paramReplace</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>queryString</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_StringUtil.js.html#l253"><code>src&#x2F;util&#x2F;StringUtil.js:253</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Updates a value in the query string by its key name.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">queryString</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">name</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">value</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | Void</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.paramReplace(&#39;?name=Robert&amp;age=23&amp;gender=male&#39;, &#39;gender&#39;, &#39;female&#39;);
+ // &#39;?name=Robert&amp;age=23&amp;gender=female&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1027,13 +1279,19 @@
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[useParseFloat=true]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
 
     
         <span class="returns-inline">
-            <span class="type">Object | Null</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | Null</span>
         </span>
     
 
@@ -1066,7 +1324,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l113"><code>src&#x2F;util&#x2F;StringUtil.js:113</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l131"><code>src&#x2F;util&#x2F;StringUtil.js:131</code></a>
         
         </p>
 
@@ -1079,7 +1337,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>Converts a query string to an object.</p>
 
         </div>
 
@@ -1092,7 +1350,23 @@
                     <li class="param">
                         
                             <code class="param-name">queryString</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[useParseFloat=true]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
@@ -1115,13 +1389,26 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">Object | Null</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | Null</span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.queryStringToObject(&#39;?name=Robert&amp;age=23&amp;gender=male&#39;);
+ // {name: &#39;Robert&#39;, age: 23, gender: &#39;male&#39;}
+
+ StringUtil.queryStringToObject(&#39;?name=Robert&amp;age=23&amp;gender=male&#39;, false);
+ // {name: &#39;Robert&#39;, age: &#39;23&#39;, gender: &#39;male&#39;}</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1147,7 +1434,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1180,7 +1467,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l145"><code>src&#x2F;util&#x2F;StringUtil.js:145</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l171"><code>src&#x2F;util&#x2F;StringUtil.js:171</code></a>
         
         </p>
 
@@ -1206,7 +1493,7 @@
                     <li class="param">
                         
                             <code class="param-name">str</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1229,7 +1516,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
@@ -1241,9 +1528,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>    var str = &#39;   a b    c d e f g &#39;;
-    StringUtil.removeAllWhitespace(str);
-    // &#39;abcdefg&#39;</code></pre>
+                    <pre class="code prettyprint"><code> var str = &#39;   a b    c d e f g &#39;;
+ StringUtil.removeAllWhitespace(str);
+ // &#39;abcdefg&#39;</code></pre>
 
                 </div>
             </div>
@@ -1272,7 +1559,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1305,7 +1592,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l161"><code>src&#x2F;util&#x2F;StringUtil.js:161</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l188"><code>src&#x2F;util&#x2F;StringUtil.js:188</code></a>
         
         </p>
 
@@ -1331,7 +1618,7 @@
                     <li class="param">
                         
                             <code class="param-name">str</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1354,7 +1641,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
@@ -1403,7 +1690,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1436,7 +1723,7 @@
             
         
         
-        <a href="../files/src_util_StringUtil.js.html#l178"><code>src&#x2F;util&#x2F;StringUtil.js:178</code></a>
+        <a href="../files/src_util_StringUtil.js.html#l205"><code>src&#x2F;util&#x2F;StringUtil.js:205</code></a>
         
         </p>
 
@@ -1461,7 +1748,7 @@
                     <li class="param">
                         
                             <code class="param-name">text</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1499,13 +1786,23 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>  StringUtil.truncate(&#39;Robert is cool and he likes bruschetta.&#39;, 14));
+  // &#39;Robert is cool...&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>

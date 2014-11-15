@@ -38,7 +38,7 @@
         function LocalStorageEvent(type, bubbles, cancelable, nativeEvent) {
             _super.call(this, type, bubbles, cancelable, nativeEvent);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property _nativeEvent
              * @type {any}

@@ -15,28 +15,41 @@
     'use strict';
 
     /**
-    * The DateUtil...
-    *
-    * @class DateUtil
-    * @module StructureJS
-    * @submodule util
-    * @author Robert S. (www.codeBelt.com)
-    */
+     * A helper class that deals with dates.
+     *
+     * @class DateUtil
+     * @module StructureJS
+     * @submodule util
+     * @author Robert S. (www.codeBelt.com)
+     */
     var DateUtil = (function () {
         function DateUtil() {
+            throw new Error('[DateUtil] Do not instantiation the DateUtil class because it is a static class.');
         }
         /**
-        * YUIDoc_comment
-        *
-        * @method getDaySuffix
-        * @param today {number}
-        * @returns {string}
-        * @public
-        * @static
-        */
+         * Returns the suffix of a given day.
+         *
+         * @method getDaySuffix
+         * @param today {number}
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      DateUtil.getDaySuffix(1);
+         *      // 'st'
+         *
+         *      DateUtil.getDaySuffix(2);
+         *      // 'nd'
+         *
+         *      DateUtil.getDaySuffix(3);
+         *      // 'rd'
+         *
+         *      DateUtil.getDaySuffix(4);
+         *      // 'th'
+         */
         DateUtil.getDaySuffix = function (today) {
             var day = today % 100;
-            return ((Math.floor(day / 10) == 1) ? "th" : ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"][day % 10]);
+            return ((Math.floor(day / 10) === 1) ? 'th' : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][day % 10]);
         };
 
         /**

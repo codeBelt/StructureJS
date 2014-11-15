@@ -19,7 +19,7 @@ module StructureTS
     export class URLLoader extends EventDispatcher
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property dataFormat
          * @type {string}
@@ -28,7 +28,7 @@ module StructureTS
         public dataFormat:string = URLLoaderDataFormat.TEXT;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property data
          * @type {any}
@@ -37,7 +37,7 @@ module StructureTS
         public data:any = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property complete
          * @type {boolean}
@@ -46,7 +46,7 @@ module StructureTS
         public complete:boolean = false;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _xhr
          * @type {JQueryXHR}
@@ -66,7 +66,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method load
          * @param request {URLRequest}
@@ -101,7 +101,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method abort
          * @public
@@ -115,7 +115,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method onError
          * @private
@@ -127,7 +127,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method onSuccess
          * @private

@@ -7,7 +7,7 @@
 ///<reference path='../event/TweenEvent.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class TransitionManager
  * @extends BaseController

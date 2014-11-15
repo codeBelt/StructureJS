@@ -15,15 +15,16 @@
     'use strict';
 
     /**
-    * The NumberUtil class has many helper methods to work with number data.
-    *
-    * @class NumberUtil
-    * @module StructureJS
-    * @submodule util
-    * @author Robert S. (www.codeBelt.com)
-    */
+     * The NumberUtil class has many helper methods to work with number data.
+     *
+     * @class NumberUtil
+     * @module StructureJS
+     * @submodule util
+     * @author Robert S. (www.codeBelt.com)
+     */
     var NumberUtil = (function () {
         function NumberUtil() {
+            throw new Error('[NumberUtil] Do not instantiation the NumberUtil class because it is a static class.');
         }
         /**
          * Converts bytes into megabytes.
@@ -33,6 +34,8 @@
          * @returns {number}
          * @public
          * @static
+         * @example
+         *
          */
         NumberUtil.bytesToMegabytes = function (bytes) {
             return bytes / 1048576;
@@ -78,6 +81,8 @@
          * @public
          * @static
          * @returns {number}
+         * @example
+         *
          */
         NumberUtil.feetToMeter = function (feet) {
             return feet / 3.2808;
@@ -102,8 +107,8 @@
             var m = Math.floor((sec % 3600) / 60);
             var h = Math.floor(sec / (60 * 60));
 
-            var hourStr = (h == 0) ? "" : NumberUtil.doubleDigitFormat(h) + ":";
-            var minuteStr = NumberUtil.doubleDigitFormat(m) + ":";
+            var hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+            var minuteStr = NumberUtil.doubleDigitFormat(m) + ':';
             var secondsStr = NumberUtil.doubleDigitFormat(s);
 
             return hourStr + minuteStr + secondsStr;
@@ -129,7 +134,7 @@
          */
         NumberUtil.doubleDigitFormat = function (num) {
             if (num < 10) {
-                return ("0" + num);
+                return ('0' + num);
             }
             return String(num);
         };
@@ -154,21 +159,21 @@
          */
         NumberUtil.unformatUnit = function (value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
-            var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, "");
+            var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, '');
 
             // Gets the index where the decimal placement is located.
             var decimalIndex = withoutSpecialCharacters.length - 3;
             var decimalSeparator = withoutSpecialCharacters.charAt(decimalIndex);
             if (decimalSeparator === '.') {
                 // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
-                withoutSpecialCharacters = value.replace(/[^\d.-]/g, "");
+                withoutSpecialCharacters = value.replace(/[^\d.-]/g, '');
             } else {
                 // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
-                withoutSpecialCharacters = value.replace(/[^\d,-]/g, "");
+                withoutSpecialCharacters = value.replace(/[^\d,-]/g, '');
                 decimalIndex = withoutSpecialCharacters.length - 3;
 
                 //Replaces the comma (,) to a period (.).
-                withoutSpecialCharacters = withoutSpecialCharacters.replace(",", ".");
+                withoutSpecialCharacters = withoutSpecialCharacters.replace(',', '.');
             }
             return parseFloat(withoutSpecialCharacters);
         };
@@ -187,11 +192,11 @@
          * @public
          * @static
          * @example
-         *     NumberUtil.formatUnit(1234567.89, 2, "*", ",", "$", 0);
+         *     NumberUtil.formatUnit(1234567.89, 2, ".", ",", "$", 0);
          *     // '$1,234,567.89'
          *
          *     NumberUtil.formatUnit(12341234.56, 2, "*", ",", " €", 1);
-         *     // '12,341,234.56 €'
+         *     // '12,341,234*56 €'
          *
          *     NumberUtil.formatUnit(-1900.24, 1);
          *     // '-1,900.2'
@@ -200,12 +205,13 @@
             if (typeof decimalPlacement === "undefined") { decimalPlacement = 2; }
             if (typeof decimalSeparator === "undefined") { decimalSeparator = '.'; }
             if (typeof thousandsSeparator === "undefined") { thousandsSeparator = ','; }
-            if (typeof currencySymbol === "undefined") { currencySymbol = ""; }
+            if (typeof currencySymbol === "undefined") { currencySymbol = ''; }
             if (typeof currencySymbolPlacement === "undefined") { currencySymbolPlacement = 0; }
             var str = String(Number(value).toFixed(decimalPlacement));
             var result = '';
             if (decimalPlacement != 0) {
                 result = str.slice(-1 - decimalPlacement);
+                result = result.replace('.', decimalSeparator);
                 str = str.slice(0, str.length - 1 - decimalPlacement);
             }
             while (str.length > 3) {

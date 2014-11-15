@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -177,20 +185,22 @@
     var Util = (function () {
 
         function Util() {
+            throw new Error(&#x27;[Util] Do not instantiation the Util class because it is a static class.&#x27;);
         }
         /**
          * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
-         * @example
-         var property:number = Util.uniqueId();
-         // 1
-
-         var property:string = Util.uniqueId(&#x27;yomama_&#x27;);
-         // yomama_1
+         *
          * @method uniqueId
          * @param [prefix] {string} The string value used for the prefix.
          * @returns {init|string} Returns the unique identifier.
          * @public
          * @static
+         * @example
+         *      var property = Util.uniqueId();
+         *      // 1
+         *
+         *      var property = Util.uniqueId(&#x27;prefixName_&#x27;);
+         *      // prefixName_1
          */
         Util.uniqueId = function (prefix) {
             if (typeof prefix === &quot;undefined&quot;) { prefix = null; }
@@ -204,12 +214,20 @@
         };
 
         /**
+         * Removes a list of properties from an object.
+         *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
          * @param list {array} A list of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static
+         * @example
+         *      var obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
+         *
+         *      Util.deletePropertyFromObject(obj, [&#x27;phone&#x27;, &#x27;gender&#x27;]);
+         *
+         *      // { name: &#x27;Robert&#x27; }
          */
         Util.deletePropertyFromObject = function (object, list) {
             for (var key in object) {
@@ -241,6 +259,8 @@
         };
 
         /**
+         * Renames a property name on an object.
+         *
          * @method renamePropertyOnObject
          * @param object {Object} The object you want to rename properties from.
          * @param oldName {string}
@@ -248,6 +268,12 @@
          * @returns {any} Returns the object passed in renamed properties.
          * @public
          * @static
+         * @example
+         *      var obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
+         *
+         *      Util.renamePropertyOnObject(obj, &#x27;gender&#x27;, &#x27;sex&#x27;);
+         *
+         *      // { name: &#x27;Robert&#x27;, sex: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
          */
         Util.renamePropertyOnObject = function (object, oldName, newName) {
             // Check for the old property name to avoid a ReferenceError in strict mode.
@@ -260,11 +286,15 @@
         };
 
         /**
+         * Makes a clone of an object.
+         *
          * @method clone
          * @param obj {Object} The object you to clone.
          * @returns {any} Returns a clone object of the one passed in.
          * @public
          * @static
+         * @example
+         *      var cloneOfObject = Util.clone(obj);
          */
         Util.clone = function (obj) {
             //other scripts: http://davidwalsh.name/javascript-clone
@@ -306,18 +336,27 @@
         };
 
         /**
-         * YUIDoc_comment
+         * Converts a string or number to a boolean.
          *
          * @method toBoolean
          * @param strNum {string|number}
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      Util.toBoolean(&quot;TRUE&quot;);
+         *      // true
+         *
+         *      Util.toBoolean(0);
+         *      // false
+         *
+         *      Util.toBoolean(undefined);
+         *      // false
          */
         Util.toBoolean = function (strNum) {
-            strNum = (typeof strNum === &#x27;string&#x27;) ? strNum.toLowerCase() : strNum;
+            var value = (typeof strNum === &#x27;string&#x27;) ? strNum.toLowerCase() : strNum;
 
-            return (strNum == &#x27;1&#x27; || strNum == &#x27;true&#x27;);
+            return (value == &#x27;1&#x27; || value == &#x27;true&#x27;);
         };
 
         /**
@@ -328,6 +367,11 @@
          * @returns {string} Returns the name of the class object passed in.
          * @public
          * @static
+         * @example
+         *      var someClass = new SomeClass();
+         *
+         *      Util.getClassName(someClass);
+         *      // &#x27;SomeClass&#x27;
          */
         Util.getClassName = function (classObject) {
             var funcNameRegex = /function (.{1,})\(/;
@@ -335,6 +379,14 @@
 
             return (results &amp;&amp; results.length &gt; 1) ? results[1] : &#x27;&#x27;;
         };
+        /**
+         * Keeps track of the count for the uniqueId method.
+         *
+         * @property _idCounter
+         * @type {init}
+         * @private
+         * @static
+         */
         Util._idCounter = 0;
         return Util;
     })();

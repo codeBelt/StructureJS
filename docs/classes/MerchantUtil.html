@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -305,7 +313,7 @@
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -338,7 +346,7 @@
             
         
         
-        <a href="../files/src_util_MerchantUtil.js.html#l61"><code>src&#x2F;util&#x2F;MerchantUtil.js:61</code></a>
+        <a href="../files/src_util_MerchantUtil.js.html#l64"><code>src&#x2F;util&#x2F;MerchantUtil.js:64</code></a>
         
         </p>
 
@@ -364,7 +372,7 @@
                     <li class="param">
                         
                             <code class="param-name">strNumber</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -380,7 +388,7 @@
                     <li class="param">
                         
                             <code class="param-name optional">[digitsShown=4]</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -397,7 +405,7 @@
                     <li class="param">
                         
                             <code class="param-name optional">[encodeChar=*]</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -422,7 +430,7 @@
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
@@ -434,8 +442,11 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <p>MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;); // <strong><strong><em>**</em></strong></strong>4949
-MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quot;);  // xxxxxxxxxxx84949</p>
+                    <pre class="code prettyprint"><code> MerchantUtil.encodeCreditCardNumber(&#39;4556106734384949&#39;);
+ // ************4949
+
+ MerchantUtil.encodeCreditCardNumber(&#39;4556106734384949&#39;, 5, &#39;x&#39;);
+ // xxxxxxxxxxx84949</code></pre>
 
                 </div>
             </div>
@@ -464,7 +475,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -493,7 +504,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
             
         
         
-        <a href="../files/src_util_MerchantUtil.js.html#l87"><code>src&#x2F;util&#x2F;MerchantUtil.js:87</code></a>
+        <a href="../files/src_util_MerchantUtil.js.html#l92"><code>src&#x2F;util&#x2F;MerchantUtil.js:92</code></a>
         
         </p>
 
@@ -519,7 +530,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                     <li class="param">
                         
                             <code class="param-name">cardNumber</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -542,13 +553,26 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> MerchantUtil.getCreditCardProvider(&quot;4556106734384949&quot;);
+ // visa
+
+ MerchantUtil.getCreditCardProvider(&quot;5428070016026573&quot;);
+ // mastercard</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -574,7 +598,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -607,7 +631,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
             
         
         
-        <a href="../files/src_util_MerchantUtil.js.html#l28"><code>src&#x2F;util&#x2F;MerchantUtil.js:28</code></a>
+        <a href="../files/src_util_MerchantUtil.js.html#l29"><code>src&#x2F;util&#x2F;MerchantUtil.js:29</code></a>
         
         </p>
 
@@ -633,7 +657,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                     <li class="param">
                         
                             <code class="param-name">cardNumber</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -657,7 +681,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                         <p><code>true</code> if String is a valid credit card number; otherwise <code>false</code>.</p>
 
@@ -671,7 +695,8 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>   MerchantUtil.isCreditCard(&quot;4556106734384949&quot;);</code></pre>
+                    <pre class="code prettyprint"><code> MerchantUtil.isCreditCard(&#39;4556106734384949&#39;);
+ // true</code></pre>
 
                 </div>
             </div>
@@ -706,7 +731,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -735,7 +760,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
             
         
         
-        <a href="../files/src_util_MerchantUtil.js.html#l114"><code>src&#x2F;util&#x2F;MerchantUtil.js:114</code></a>
+        <a href="../files/src_util_MerchantUtil.js.html#l125"><code>src&#x2F;util&#x2F;MerchantUtil.js:125</code></a>
         
         </p>
 
@@ -761,7 +786,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                     <li class="param">
                         
                             <code class="param-name">month</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -776,7 +801,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                     <li class="param">
                         
                             <code class="param-name">year</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -799,7 +824,7 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
@@ -811,7 +836,8 @@ MerchantUtil.encodeCreditCardNumber(&quot;4556106734384949&quot;, 5, &quot;x&quo
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <p>var isValidDate:boolean = MerchantUtil.isValidExDate( 11, 2010 );</p>
+                    <pre class="code prettyprint"><code> MerchantUtil.isValidExDate(11, 2010);
+ // false</code></pre>
 
                 </div>
             </div>

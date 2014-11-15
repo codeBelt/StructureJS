@@ -6,7 +6,7 @@ module StructureTS
     export class StatusVO extends ValueObject
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property ERROR
          * @type {string}
@@ -15,7 +15,7 @@ module StructureTS
         public static ERROR:string = 'error';
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property SUCCESS
          * @type {string}
@@ -28,7 +28,7 @@ module StructureTS
         public code:number = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @class StatusVO
          * @param [data] {any} Provide a way to update the value object upon initialization.

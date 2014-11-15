@@ -37,13 +37,13 @@ module StructureTS
          * @chainable
          * @example
          *     ClassName.prototype.enable = function() {
-     *          if (this.isEnabled === true) { return this; }
-     *
-     *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     *          this._childInstance.enable();
-     *
-     *          return _super.prototype.enable.call(this);
-     *     }
+         *          if (this.isEnabled === true) { return this; }
+         *     
+         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.enable();
+         *
+         *          return _super.prototype.enable.call(this);
+         *     }
          */
         public enable():any
         {
@@ -63,14 +63,14 @@ module StructureTS
          * @public
          * @chainable
          * @example
-         *     ClassName.prototype.disable = function() {
-     *          if (this.isEnabled === false) { return this; }
-     *
-     *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     *          this._childInstance.disable();
-     *
-     *          return _super.prototype.disable.call(this);
-     *     }
+         *      ClassName.prototype.disable = function() {
+         *          if (this.isEnabled === false) { return this; }
+         *
+         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.disable();
+         *
+         *          return _super.prototype.disable.call(this);
+         *      }
          */
         public disable():any
         {

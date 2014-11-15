@@ -8,7 +8,7 @@ module StructureTS
     export class TransitionNone extends BaseTransition
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @class TransitionNone
          * @extends BaseTransition

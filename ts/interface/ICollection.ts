@@ -1,7 +1,7 @@
 ///<reference path='IValueObject.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ICollection
  * @module StructureJS

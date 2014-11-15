@@ -1,7 +1,7 @@
 ///<reference path='IEventDispatcher.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class IDOMElement
  * @module StructureJS

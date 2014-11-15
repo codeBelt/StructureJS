@@ -14,71 +14,85 @@ module StructureTS
     {
         constructor()
         {
+            throw new Error('[StringUtil] Do not instantiation the StringUtil class because it is a static class.');
         }
 
         /**
-         * YUIDoc_comment
+         * Gets the extension name off the string being passed in.
          *
          * @method getExtension
          * @param filename {string}
+         * @param withDot {boolean} If you want the period to be included in the extension name.
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.getExtension('file.exe');
+         *      // 'exe'
+         *
+         *      StringUtil.getExtension('file.exe', true);
+         *      // '.exe'
          */
-        public static getExtension(filename:string):string
+        public static getExtension(filename:string, withDot:boolean = false):string
         {
-            return filename.slice(filename.lastIndexOf('.') + 1, filename.length);
+            var num:number = (withDot === true) ? 0 : 1;
+            return filename.slice(filename.lastIndexOf('.') + num, filename.length);
         }
 
         /**
-         * YUIDoc_comment
+         * Converts a hyphen string to a camel case string.
          *
          * @method hyphenToCamelCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.hyphenToCamelCase("hyphen-TO-camel-CASE");
+         *      // 'hyphenToCamelCase'
          */
         public static hyphenToCamelCase(str:string):string
         {
-            str = str.toLowerCase();
+            var value:string = str.toLowerCase();
 
-            return str.replace(/-([a-z])/g, function (g)
+            return value.replace(/-([a-z])/g, function (g)
             {
                 return g[1].toUpperCase();
             });
         }
 
         /**
-         * YUIDoc_comment
+         * Converts a hyphen string to a pascal case string.
          *
          * @method hyphenToPascalCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.hyphenToPascalCase("hyphen-to-camel-case");
+         *      // 'HyphenToCamelCase'
          */
         public static hyphenToPascalCase(str:string):string
         {
-            str = str.toLowerCase();
-
-            // This is causing an issue with TS 0.9.5 so committing it out for now.
-            /*            return str.replace(/(\-|^)([a-z])/gi, function (match, delimiter, hyphenated)
-             {
-             return hyphenated.toUpperCase();
-             });*/
-
-            return null;
+            var value:string = str.toLowerCase();
+            return value.replace(/(\-|^)([a-z])/gi, function (match, delimiter, hyphenated)
+            {
+                return hyphenated.toUpperCase();
+            });
         }
 
         /**
-         * YUIDoc_comment
+         * Converts a camel case string to a hyphen case string.
          *
          * @method camelCaseToHyphen
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.camelCaseToHyphen("hyphenToCamelCase");
+         *      // 'hyphen-to-camel-case'
          */
         public static camelCaseToHyphen(str:string):string
         {
@@ -89,12 +103,15 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * Creates a universally unique identifier.
          *
          * @method createUUID
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.createUUID();
+         *      // 'a95d7134-3342-4001-bcea-cc0371b70dec'
          */
         public static createUUID():string
         {
@@ -109,35 +126,42 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * Converts a query string to an object.
          *
          * @method queryStringToObject
          * @param queryString {string}
+         * @param [useParseFloat=true] {boolean}
          * @returns {Object|Null}
          * @public
          * @static
+         * @example
+         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');
+         *      // {name: 'Robert', age: 23, gender: 'male'}
+         *
+         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
+         *      // {name: 'Robert', age: '23', gender: 'male'}
          */
-        public static queryStringToObject(queryString:string):any
+        public static queryStringToObject(queryString:string, useParseFloat:boolean = true):any
         {
             var params:any = {};
             var temp:any = null;
 
-            queryString = queryString.substring(queryString.indexOf('?') + 1);
+            var str:string = queryString.substring(queryString.indexOf('?') + 1);
 
-            if (queryString === '')
+            if (str === '')
             {
                 return null;
             }
 
             // Split into key/value pairs
-            var queries = queryString.split('&');
+            var queries = str.split('&');
 
             // Convert the array of strings into an object
             var len:number = queries.length;
             for (var i = 0; i < len; i++)
             {
                 temp = queries[i].split('=');
-                params[temp[0]] = temp[1];
+                params[temp[0]] = (useParseFloat === true && isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
 
             return params;
@@ -145,15 +169,16 @@ module StructureTS
 
         /**
          * Remove all whitespace from the string passed in.
-         * @example
-         var str = '   a b    c d e f g ';
-         StringUtil.removeAllWhitespace(str);
-         // 'abcdefg'
+         *
          * @method removeAllWhitespace
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      var str = '   a b    c d e f g ';
+         *      StringUtil.removeAllWhitespace(str);
+         *      // 'abcdefg'
          */
         public static removeAllWhitespace(str:string):string
         {
@@ -162,16 +187,16 @@ module StructureTS
 
         /**
          * Remove leading and trailing whitespace.
-         * @example
-         *      var str = '   a b    c d e f g ';
-         *      StringUtil.removeLeadingTrailingWhitespace(str);
-         *      // 'a b    c d e f g'
          *
          * @method removeLeadingTrailingWhitespace
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      var str = '   a b    c d e f g ';
+         *      StringUtil.removeLeadingTrailingWhitespace(str);
+         *      // 'a b    c d e f g'
          */
         public static removeLeadingTrailingWhitespace(str:string):string
         {
@@ -186,6 +211,9 @@ module StructureTS
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
+         *      // 'Robert is cool...'
          */
         public static truncate(text:string, length:number):string
         {
@@ -201,30 +229,42 @@ module StructureTS
 
         /**
          * Replaces each format item in a specified string with the text equivalent of a corresponding object's value.
-         * @example
-         *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
-         *      // 'Robert is cool. Very cool and smart!'
-         *
+
          * @method format
          * @returns {string}
          * @param str {string}
          * @param ...rest {Array}
          * @public
          * @static
+         * @example
+         *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
+         *      // 'Robert is cool. Very cool and smart!'
          */
         public static format(str:string, ...rest:any[]):string
         {
             var length = rest.length;
+            var value:string = str;
             for (var i:number = 0; i < length; i++)
             {
                 var reg = new RegExp('\\{' + i + '\\}', 'gm');
-                str = str.replace(reg, rest[i]);
+                value = value.replace(reg, rest[i]);
             }
 
-            return str;
+            return value;
         }
 
-        // Update the appropriate href query string parameter //TODO:test
+        /**
+         * Updates a value in the query string by its key name.
+         *
+         * @method paramReplace
+         * @param queryString
+         * @param name
+         * @param value
+         * @returns {string|void}
+         * @example
+         *      StringUtil.paramReplace('?name=Robert&age=23&gender=male', 'gender', 'female');
+         *      // '?name=Robert&age=23&gender=female'
+         */
         public static paramReplace(queryString, name, value)
         {
             // Find the param with regex

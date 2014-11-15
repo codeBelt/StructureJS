@@ -2,7 +2,7 @@
  * browserify v1.0.0 (dev)
  * Example project for Client.
  *
- * Build Date: 2014-11-14
+ * Build Date: 2014-11-15
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
@@ -20338,14 +20338,14 @@ return jQuery;
          * @public
          * @chainable
          * @example
-         *     ClassName.prototype.disable = function() {
+         *      ClassName.prototype.disable = function() {
         *          if (this.isEnabled === false) { return this; }
         *
         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
         *          this._childInstance.disable();
         *
         *          return _super.prototype.disable.call(this);
-        *     }
+        *      }
          */
         ObjectManager.prototype.disable = function () {
             if (this.isEnabled === false) {
@@ -21323,7 +21323,7 @@ return jQuery;
             if (typeof params === "undefined") { params = null; }
             _super.call(this);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property checkCount
              * @type {number}
@@ -21740,10 +21740,25 @@ return jQuery;
         };
 
         /**
-         * YUIDoc_comment
+         * A way to instantiate view classes by found html selectors.
+         *
+         * Example: It will find all children elements of the {{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property with the 'js-shareEmail' selector.
+         * If any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.
          *
          * @method createComponents
+         * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
          * @public
+         * @chainable
+         * @example
+         *      ClassName.prototype.createChildren = function () {
+        *          _super.prototype.createChildren.call(this);
+        *
+        *          this.createComponents([
+        *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
+        *              {selector: '.js-pagination', componentClass: PaginationComponent},
+        *              {selector: '.js-carousel', componentClass: CarouselComponent}
+        *          ]);
+        *      };
          */
         DOMElement.prototype.createComponents = function (componentList) {
             var length = componentList.length;
@@ -21752,6 +21767,8 @@ return jQuery;
                 obj = componentList[i];
                 ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
             }
+
+            return this;
         };
         return DOMElement;
     })();
@@ -22973,7 +22990,7 @@ return jQuery;
         function LocalStorageEvent(type, bubbles, cancelable, nativeEvent) {
             _super.call(this, type, bubbles, cancelable, nativeEvent);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property _nativeEvent
              * @type {any}
@@ -23154,7 +23171,7 @@ return jQuery;
         function Collection() {
             _super.call(this);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property items
              * @type {array}
@@ -23162,7 +23179,7 @@ return jQuery;
              */
             this.items = [];
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property length
              * @type {init}
@@ -23888,16 +23905,16 @@ return jQuery;
     var ComponentFactory = (function () {
 
         function ComponentFactory() {
+            throw new Error('[ComponentFactory] Do not instantiation the Router class because it is a static class.');
         }
-
         /**
          * Takes in one or more jQuery objects and creates a component for each one.
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {DOMElement} The class that you want instantiated.
-         * @param scope {Object} The base DOMElement needs a scope (parent object) to instantiate the component/view.
-         * @return {Array.<DOMElement>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+         * @param ComponentClass {DisplayObjectContainer} The class that you want instantiated.
+         * @param scope {any} The base DOMElement needs a scope (parent object) to instantiate the component/view.
+         * @return {Array.<DisplayObjectContainer>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
          */
@@ -23995,65 +24012,80 @@ return jQuery;
     var StringUtil = (function () {
 
         function StringUtil() {
+            throw new Error('[StringUtil] Do not instantiation the StringUtil class because it is a static class.');
         }
         /**
-         * YUIDoc_comment
+         * Gets the extension name off the string being passed in.
          *
          * @method getExtension
          * @param filename {string}
+         * @param withDot {boolean} If you want the period to be included in the extension name.
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.getExtension('file.exe');
+         *      // 'exe'
+         *
+         *      StringUtil.getExtension('file.exe', true);
+         *      // '.exe'
          */
-        StringUtil.getExtension = function (filename) {
-            return filename.slice(filename.lastIndexOf('.') + 1, filename.length);
+        StringUtil.getExtension = function (filename, withDot) {
+            if (typeof withDot === "undefined") { withDot = false; }
+            var num = (withDot === true) ? 0 : 1;
+            return filename.slice(filename.lastIndexOf('.') + num, filename.length);
         };
 
         /**
-         * YUIDoc_comment
+         * Converts a hyphen string to a camel case string.
          *
          * @method hyphenToCamelCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.hyphenToCamelCase("hyphen-TO-camel-CASE");
+         *      // 'hyphenToCamelCase'
          */
         StringUtil.hyphenToCamelCase = function (str) {
-            str = str.toLowerCase();
+            var value = str.toLowerCase();
 
-            return str.replace(/-([a-z])/g, function (g) {
+            return value.replace(/-([a-z])/g, function (g) {
                 return g[1].toUpperCase();
             });
         };
 
         /**
-         * YUIDoc_comment
+         * Converts a hyphen string to a pascal case string.
          *
          * @method hyphenToPascalCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.hyphenToPascalCase("hyphen-to-camel-case");
+         *      // 'HyphenToCamelCase'
          */
         StringUtil.hyphenToPascalCase = function (str) {
-            str = str.toLowerCase();
-
-            // This is causing an issue with TS 0.9.5 so committing it out for now.
-            /*            return str.replace(/(\-|^)([a-z])/gi, function (match, delimiter, hyphenated)
-             {
-             return hyphenated.toUpperCase();
-             });*/
-            return null;
+            var value = str.toLowerCase();
+            return value.replace(/(\-|^)([a-z])/gi, function (match, delimiter, hyphenated) {
+                return hyphenated.toUpperCase();
+            });
         };
 
         /**
-         * YUIDoc_comment
+         * Converts a camel case string to a hyphen case string.
          *
          * @method camelCaseToHyphen
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.camelCaseToHyphen("hyphenToCamelCase");
+         *      // 'hyphen-to-camel-case'
          */
         StringUtil.camelCaseToHyphen = function (str) {
             return str.replace(/([a-z][A-Z])/g, function (g) {
@@ -24062,12 +24094,15 @@ return jQuery;
         };
 
         /**
-         * YUIDoc_comment
+         * Creates a universally unique identifier.
          *
          * @method createUUID
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.createUUID();
+         *      // 'a95d7134-3342-4001-bcea-cc0371b70dec'
          */
         StringUtil.createUUID = function () {
             var uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function (c) {
@@ -24080,32 +24115,40 @@ return jQuery;
         };
 
         /**
-         * YUIDoc_comment
+         * Converts a query string to an object.
          *
          * @method queryStringToObject
          * @param queryString {string}
+         * @param [useParseFloat=true] {boolean}
          * @returns {Object|Null}
          * @public
          * @static
+         * @example
+         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');
+         *      // {name: 'Robert', age: 23, gender: 'male'}
+         *
+         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
+         *      // {name: 'Robert', age: '23', gender: 'male'}
          */
-        StringUtil.queryStringToObject = function (queryString) {
+        StringUtil.queryStringToObject = function (queryString, useParseFloat) {
+            if (typeof useParseFloat === "undefined") { useParseFloat = true; }
             var params = {};
             var temp = null;
 
-            queryString = queryString.substring(queryString.indexOf('?') + 1);
+            var str = queryString.substring(queryString.indexOf('?') + 1);
 
-            if (queryString === '') {
+            if (str === '') {
                 return null;
             }
 
             // Split into key/value pairs
-            var queries = queryString.split('&');
+            var queries = str.split('&');
 
             // Convert the array of strings into an object
             var len = queries.length;
             for (var i = 0; i < len; i++) {
                 temp = queries[i].split('=');
-                params[temp[0]] = temp[1];
+                params[temp[0]] = (useParseFloat === true && isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
 
             return params;
@@ -24113,15 +24156,16 @@ return jQuery;
 
         /**
          * Remove all whitespace from the string passed in.
-         * @example
-         var str = '   a b    c d e f g ';
-         StringUtil.removeAllWhitespace(str);
-         // 'abcdefg'
+         *
          * @method removeAllWhitespace
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      var str = '   a b    c d e f g ';
+         *      StringUtil.removeAllWhitespace(str);
+         *      // 'abcdefg'
          */
         StringUtil.removeAllWhitespace = function (str) {
             return str.replace(/\s+/g, '');
@@ -24129,16 +24173,16 @@ return jQuery;
 
         /**
          * Remove leading and trailing whitespace.
-         * @example
-         *      var str = '   a b    c d e f g ';
-         *      StringUtil.removeLeadingTrailingWhitespace(str);
-         *      // 'a b    c d e f g'
          *
          * @method removeLeadingTrailingWhitespace
          * @param str {string}
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      var str = '   a b    c d e f g ';
+         *      StringUtil.removeLeadingTrailingWhitespace(str);
+         *      // 'a b    c d e f g'
          */
         StringUtil.removeLeadingTrailingWhitespace = function (str) {
             return str.replace(/(^\s+|\s+$)/g, '');
@@ -24152,6 +24196,9 @@ return jQuery;
          * @returns {string}
          * @public
          * @static
+         * @example
+         *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
+         *      // 'Robert is cool...'
          */
         StringUtil.truncate = function (text, length) {
             if (text.length <= length) {
@@ -24163,16 +24210,16 @@ return jQuery;
 
         /**
          * Replaces each format item in a specified string with the text equivalent of a corresponding object's value.
-         * @example
-         *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
-         *      // 'Robert is cool. Very cool and smart!'
-         *
+
          * @method format
          * @returns {string}
          * @param str {string}
          * @param ...rest {Array}
          * @public
          * @static
+         * @example
+         *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
+         *      // 'Robert is cool. Very cool and smart!'
          */
         StringUtil.format = function (str) {
             var rest = [];
@@ -24180,15 +24227,27 @@ return jQuery;
                 rest[_i] = arguments[_i + 1];
             }
             var length = rest.length;
+            var value = str;
             for (var i = 0; i < length; i++) {
                 var reg = new RegExp('\\{' + i + '\\}', 'gm');
-                str = str.replace(reg, rest[i]);
+                value = value.replace(reg, rest[i]);
             }
 
-            return str;
+            return value;
         };
 
-        // Update the appropriate href query string parameter
+        /**
+         * Updates a value in the query string by its key name.
+         *
+         * @method paramReplace
+         * @param queryString
+         * @param name
+         * @param value
+         * @returns {string|void}
+         * @example
+         *      StringUtil.paramReplace('?name=Robert&age=23&gender=male', 'gender', 'female');
+         *      // '?name=Robert&age=23&gender=female'
+         */
         StringUtil.paramReplace = function (queryString, name, value) {
             // Find the param with regex
             // Grab the first character in the returned string (should be ? or &)
@@ -24220,7 +24279,7 @@ return jQuery;
     'use strict';
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class TemplateFactory
      * @module StructureJS
@@ -24231,9 +24290,10 @@ return jQuery;
     var TemplateFactory = (function () {
 
         function TemplateFactory() {
+            throw new Error('[TemplateFactory] Do not instantiation the TemplateFactory class because it is a static class.');
         }
         /**
-         * YUIDoc_comment
+         * Creates a template.
          *
          * @method create
          * @param templatePath {any}
@@ -24280,10 +24340,45 @@ return jQuery;
 
             return template;
         };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property UNDERSCORE
+         * @type {string}
+         * @public
+         * @final
+         * @static
+         */
         TemplateFactory.UNDERSCORE = 'underscore';
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property HANDLEBARS
+         * @type {string}
+         * @public
+         * @final
+         * @static
+         */
         TemplateFactory.HANDLEBARS = 'handlebars';
-
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property templateEngine
+         * @type {string}
+         * @default TemplateFactory.HANDLEBARS
+         * @public
+         * @static
+         */
         TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
+        /**
+         * TODO: templateNamespace
+         *
+         * @property templateNamespace
+         * @type {string}
+         * @default 'JST'
+         * @public
+         * @static
+         */
         TemplateFactory.templateNamespace = 'JST';
         return TemplateFactory;
     })();
@@ -24318,20 +24413,22 @@ return jQuery;
     var Util = (function () {
 
         function Util() {
+            throw new Error('[Util] Do not instantiation the Util class because it is a static class.');
         }
         /**
          * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
-         * @example
-         var property:number = Util.uniqueId();
-         // 1
-
-         var property:string = Util.uniqueId('yomama_');
-         // yomama_1
+         *
          * @method uniqueId
          * @param [prefix] {string} The string value used for the prefix.
          * @returns {init|string} Returns the unique identifier.
          * @public
          * @static
+         * @example
+         *      var property = Util.uniqueId();
+         *      // 1
+         *
+         *      var property = Util.uniqueId('prefixName_');
+         *      // prefixName_1
          */
         Util.uniqueId = function (prefix) {
             if (typeof prefix === "undefined") { prefix = null; }
@@ -24345,12 +24442,20 @@ return jQuery;
         };
 
         /**
+         * Removes a list of properties from an object.
+         *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
          * @param list {array} A list of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static
+         * @example
+         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *
+         *      Util.deletePropertyFromObject(obj, ['phone', 'gender']);
+         *
+         *      // { name: 'Robert' }
          */
         Util.deletePropertyFromObject = function (object, list) {
             for (var key in object) {
@@ -24382,6 +24487,8 @@ return jQuery;
         };
 
         /**
+         * Renames a property name on an object.
+         *
          * @method renamePropertyOnObject
          * @param object {Object} The object you want to rename properties from.
          * @param oldName {string}
@@ -24389,6 +24496,12 @@ return jQuery;
          * @returns {any} Returns the object passed in renamed properties.
          * @public
          * @static
+         * @example
+         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *
+         *      Util.renamePropertyOnObject(obj, 'gender', 'sex');
+         *
+         *      // { name: 'Robert', sex: 'male', phone: '555-555-5555' }
          */
         Util.renamePropertyOnObject = function (object, oldName, newName) {
             // Check for the old property name to avoid a ReferenceError in strict mode.
@@ -24401,11 +24514,15 @@ return jQuery;
         };
 
         /**
+         * Makes a clone of an object.
+         *
          * @method clone
          * @param obj {Object} The object you to clone.
          * @returns {any} Returns a clone object of the one passed in.
          * @public
          * @static
+         * @example
+         *      var cloneOfObject = Util.clone(obj);
          */
         Util.clone = function (obj) {
             //other scripts: http://davidwalsh.name/javascript-clone
@@ -24447,18 +24564,27 @@ return jQuery;
         };
 
         /**
-         * YUIDoc_comment
+         * Converts a string or number to a boolean.
          *
          * @method toBoolean
          * @param strNum {string|number}
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      Util.toBoolean("TRUE");
+         *      // true
+         *
+         *      Util.toBoolean(0);
+         *      // false
+         *
+         *      Util.toBoolean(undefined);
+         *      // false
          */
         Util.toBoolean = function (strNum) {
-            strNum = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
+            var value = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
-            return (strNum == '1' || strNum == 'true');
+            return (value == '1' || value == 'true');
         };
 
         /**
@@ -24469,6 +24595,11 @@ return jQuery;
          * @returns {string} Returns the name of the class object passed in.
          * @public
          * @static
+         * @example
+         *      var someClass = new SomeClass();
+         *
+         *      Util.getClassName(someClass);
+         *      // 'SomeClass'
          */
         Util.getClassName = function (classObject) {
             var funcNameRegex = /function (.{1,})\(/;
@@ -24476,6 +24607,14 @@ return jQuery;
 
             return (results && results.length > 1) ? results[1] : '';
         };
+        /**
+         * Keeps track of the count for the uniqueId method.
+         *
+         * @property _idCounter
+         * @type {init}
+         * @private
+         * @static
+         */
         Util._idCounter = 0;
         return Util;
     })();

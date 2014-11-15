@@ -8,7 +8,7 @@ module StructureTS
     export class TransitionPushLeft extends BaseTransition
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @class TransitionPushLeft
          * @extends BaseTransition

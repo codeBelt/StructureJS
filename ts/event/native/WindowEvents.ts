@@ -4,7 +4,7 @@ module StructureTS
     export class WindowEvents
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property CHANGE
          * @type {string}

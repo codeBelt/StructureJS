@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -167,15 +175,16 @@
     &#x27;use strict&#x27;;
 
     /**
-    * The NumberUtil class has many helper methods to work with number data.
-    *
-    * @class NumberUtil
-    * @module StructureJS
-    * @submodule util
-    * @author Robert S. (www.codeBelt.com)
-    */
+     * The NumberUtil class has many helper methods to work with number data.
+     *
+     * @class NumberUtil
+     * @module StructureJS
+     * @submodule util
+     * @author Robert S. (www.codeBelt.com)
+     */
     var NumberUtil = (function () {
         function NumberUtil() {
+            throw new Error(&#x27;[NumberUtil] Do not instantiation the NumberUtil class because it is a static class.&#x27;);
         }
         /**
          * Converts bytes into megabytes.
@@ -185,6 +194,8 @@
          * @returns {number}
          * @public
          * @static
+         * @example
+         *
          */
         NumberUtil.bytesToMegabytes = function (bytes) {
             return bytes / 1048576;
@@ -230,6 +241,8 @@
          * @public
          * @static
          * @returns {number}
+         * @example
+         *
          */
         NumberUtil.feetToMeter = function (feet) {
             return feet / 3.2808;
@@ -254,8 +267,8 @@
             var m = Math.floor((sec % 3600) / 60);
             var h = Math.floor(sec / (60 * 60));
 
-            var hourStr = (h == 0) ? &quot;&quot; : NumberUtil.doubleDigitFormat(h) + &quot;:&quot;;
-            var minuteStr = NumberUtil.doubleDigitFormat(m) + &quot;:&quot;;
+            var hourStr = (h == 0) ? &#x27;&#x27; : NumberUtil.doubleDigitFormat(h) + &#x27;:&#x27;;
+            var minuteStr = NumberUtil.doubleDigitFormat(m) + &#x27;:&#x27;;
             var secondsStr = NumberUtil.doubleDigitFormat(s);
 
             return hourStr + minuteStr + secondsStr;
@@ -281,7 +294,7 @@
          */
         NumberUtil.doubleDigitFormat = function (num) {
             if (num &lt; 10) {
-                return (&quot;0&quot; + num);
+                return (&#x27;0&#x27; + num);
             }
             return String(num);
         };
@@ -306,21 +319,21 @@
          */
         NumberUtil.unformatUnit = function (value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
-            var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, &quot;&quot;);
+            var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, &#x27;&#x27;);
 
             // Gets the index where the decimal placement is located.
             var decimalIndex = withoutSpecialCharacters.length - 3;
             var decimalSeparator = withoutSpecialCharacters.charAt(decimalIndex);
             if (decimalSeparator === &#x27;.&#x27;) {
                 // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
-                withoutSpecialCharacters = value.replace(/[^\d.-]/g, &quot;&quot;);
+                withoutSpecialCharacters = value.replace(/[^\d.-]/g, &#x27;&#x27;);
             } else {
                 // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
-                withoutSpecialCharacters = value.replace(/[^\d,-]/g, &quot;&quot;);
+                withoutSpecialCharacters = value.replace(/[^\d,-]/g, &#x27;&#x27;);
                 decimalIndex = withoutSpecialCharacters.length - 3;
 
                 //Replaces the comma (,) to a period (.).
-                withoutSpecialCharacters = withoutSpecialCharacters.replace(&quot;,&quot;, &quot;.&quot;);
+                withoutSpecialCharacters = withoutSpecialCharacters.replace(&#x27;,&#x27;, &#x27;.&#x27;);
             }
             return parseFloat(withoutSpecialCharacters);
         };
@@ -339,11 +352,11 @@
          * @public
          * @static
          * @example
-         *     NumberUtil.formatUnit(1234567.89, 2, &quot;*&quot;, &quot;,&quot;, &quot;$&quot;, 0);
+         *     NumberUtil.formatUnit(1234567.89, 2, &quot;.&quot;, &quot;,&quot;, &quot;$&quot;, 0);
          *     // &#x27;$1,234,567.89&#x27;
          *
          *     NumberUtil.formatUnit(12341234.56, 2, &quot;*&quot;, &quot;,&quot;, &quot; €&quot;, 1);
-         *     // &#x27;12,341,234.56 €&#x27;
+         *     // &#x27;12,341,234*56 €&#x27;
          *
          *     NumberUtil.formatUnit(-1900.24, 1);
          *     // &#x27;-1,900.2&#x27;
@@ -352,12 +365,13 @@
             if (typeof decimalPlacement === &quot;undefined&quot;) { decimalPlacement = 2; }
             if (typeof decimalSeparator === &quot;undefined&quot;) { decimalSeparator = &#x27;.&#x27;; }
             if (typeof thousandsSeparator === &quot;undefined&quot;) { thousandsSeparator = &#x27;,&#x27;; }
-            if (typeof currencySymbol === &quot;undefined&quot;) { currencySymbol = &quot;&quot;; }
+            if (typeof currencySymbol === &quot;undefined&quot;) { currencySymbol = &#x27;&#x27;; }
             if (typeof currencySymbolPlacement === &quot;undefined&quot;) { currencySymbolPlacement = 0; }
             var str = String(Number(value).toFixed(decimalPlacement));
             var result = &#x27;&#x27;;
             if (decimalPlacement != 0) {
                 result = str.slice(-1 - decimalPlacement);
+                result = result.replace(&#x27;.&#x27;, decimalSeparator);
                 str = str.slice(0, str.length - 1 - decimalPlacement);
             }
             while (str.length &gt; 3) {

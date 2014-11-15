@@ -22,7 +22,7 @@ module StructureTS
     export class RouterEvent extends BaseEvent
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event CHANGE
          * @type {string}
@@ -31,7 +31,7 @@ module StructureTS
         public static CHANGE:string = 'RouterEvent.change';
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property url
          * @type {string}
@@ -40,7 +40,7 @@ module StructureTS
         public url:string = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property silent
          * @type {boolean}

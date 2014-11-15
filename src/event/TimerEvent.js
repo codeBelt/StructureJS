@@ -43,8 +43,21 @@
         TimerEvent.prototype.clone = function () {
             return new TimerEvent(this.type, this.bubble, this.cancelable, this.data);
         };
+        /**
+         * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
+         *
+         * @event TIMER
+         * @type {string}
+         * @static
+         */
         TimerEvent.TIMER = 'TimerEvent.timer';
-
+        /**
+         * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
+         *
+         * @event TIMER_COMPLETE
+         * @type {string}
+         * @static
+         */
         TimerEvent.TIMER_COMPLETE = 'TimerEvent.timerComplete';
         return TimerEvent;
     })();

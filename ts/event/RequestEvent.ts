@@ -21,7 +21,7 @@ module StructureTS
     export class RequestEvent extends BaseEvent
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event SUCCESS
          * @type {string}
@@ -30,7 +30,7 @@ module StructureTS
         public static SUCCESS:string = "RequestEvent.success";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event ERROR
          * @type {string}

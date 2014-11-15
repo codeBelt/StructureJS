@@ -23,21 +23,23 @@ module StructureTS
 
         constructor()
         {
+            throw new Error('[Util] Do not instantiation the Util class because it is a static class.');
         }
 
         /**
          * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
-         * @example
-         var property:number = Util.uniqueId();
-         // 1
-
-         var property:string = Util.uniqueId('yomama_');
-         // yomama_1
+         *
          * @method uniqueId
          * @param [prefix] {string} The string value used for the prefix.
          * @returns {init|string} Returns the unique identifier.
          * @public
          * @static
+         * @example
+         *      var property = Util.uniqueId();
+         *      // 1
+         *
+         *      var property = Util.uniqueId('prefixName_');
+         *      // prefixName_1
          */
         public static uniqueId(prefix:string = null):any
         {
@@ -54,12 +56,20 @@ module StructureTS
         }
 
         /**
+         * Removes a list of properties from an object.
+         *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
          * @param list {array} A list of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static
+         * @example
+         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *
+         *      Util.deletePropertyFromObject(obj, ['phone', 'gender']);
+         *
+         *      // { name: 'Robert' }
          */
         public static deletePropertyFromObject(object:any, list:any[]):any
         {
@@ -102,6 +112,8 @@ module StructureTS
         }
 
         /**
+         * Renames a property name on an object.
+         *
          * @method renamePropertyOnObject
          * @param object {Object} The object you want to rename properties from.
          * @param oldName {string}
@@ -109,6 +121,12 @@ module StructureTS
          * @returns {any} Returns the object passed in renamed properties.
          * @public
          * @static
+         * @example
+         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *
+         *      Util.renamePropertyOnObject(obj, 'gender', 'sex');
+         *
+         *      // { name: 'Robert', sex: 'male', phone: '555-555-5555' }
          */
         public static renamePropertyOnObject(object:any, oldName:string, newName:string):any
         {
@@ -123,11 +141,15 @@ module StructureTS
         }
 
         /**
+         * Makes a clone of an object.
+         *
          * @method clone
          * @param obj {Object} The object you to clone.
          * @returns {any} Returns a clone object of the one passed in.
          * @public
          * @static
+         * @example
+         *      var cloneOfObject = Util.clone(obj);
          */
         public static clone(obj:any):any
         {
@@ -180,19 +202,28 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * Converts a string or number to a boolean.
          *
          * @method toBoolean
          * @param strNum {string|number}
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      Util.toBoolean("TRUE");
+         *      // true
+         *
+         *      Util.toBoolean(0);
+         *      // false
+         *
+         *      Util.toBoolean(undefined);
+         *      // false
          */
         public static toBoolean(strNum:any):boolean
         {
-            strNum = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
+            var value:any = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
-            return (strNum == '1' || strNum == 'true');
+            return (value == '1' || value == 'true');
         }
 
         /**
@@ -203,11 +234,16 @@ module StructureTS
          * @returns {string} Returns the name of the class object passed in.
          * @public
          * @static
+         * @example
+         *      var someClass = new SomeClass();
+         *
+         *      Util.getClassName(someClass);
+         *      // 'SomeClass'
          */
-        public static getClassName(classObject):string
+        public static getClassName(classObject:any):string
         {
-            var funcNameRegex = /function (.{1,})\(/;
-            var results = (funcNameRegex).exec((<any>classObject).constructor.toString());
+            var funcNameRegex:RegExp = /function (.{1,})\(/;
+            var results:RegExpExecArray = (funcNameRegex).exec((<any>classObject).constructor.toString());
 
             return (results && results.length > 1) ? results[1] : '';
         }

@@ -3,7 +3,7 @@
 ///<reference path='../display/DOMElement.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ITransition
  * @constructor

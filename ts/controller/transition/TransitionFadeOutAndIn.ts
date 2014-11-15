@@ -8,7 +8,7 @@ module StructureTS
     export class TransitionFadeOutAndIn extends BaseTransition
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @class TransitionFadeOutAndIn
          * @extends BaseTransition

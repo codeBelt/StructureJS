@@ -8,7 +8,7 @@ module StructureTS
     export class TransitionCrossFade extends BaseTransition
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @class TransitionCrossFade
          * @extends BaseTransition
@@ -23,6 +23,17 @@ module StructureTS
             super();
         }
 
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method createTransition
+         * @param transitionType
+         * @param viewContainer
+         * @param currentView
+         * @param nextView
+         * @param duration
+         * @returns {TransitionCrossFade}
+         */
         public createTransition(transitionType:string, viewContainer:DisplayObjectContainer, currentView:DOMElement, nextView:DOMElement, duration:number = 0.75):ITransition
         {
             var varsObject = {

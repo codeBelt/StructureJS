@@ -8,7 +8,7 @@ module StructureTS
     export class TransitionPushDown extends BaseTransition
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @class TransitionPushDown
          * @extends BaseTransition

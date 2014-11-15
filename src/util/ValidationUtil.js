@@ -24,7 +24,7 @@
      */
     var ValidationUtil = (function () {
         function ValidationUtil() {
-            //http://msdn.microsoft.com/en-us/library/ff650303.aspx
+            throw new Error('[ValidationUtil] Do not instantiation the ValidationUtil class because it is a static class.');
         }
         /**
          * Determines if the String passed has a length.
@@ -34,6 +34,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isEmpty = function (text) {
             return text.length < 1;
@@ -48,6 +50,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isMatch = function (value1, value2) {
             return value1 === value2;
@@ -61,6 +65,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isValidEmailAddress = function (email) {
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
@@ -75,6 +81,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isValidPhoneNumber = function (phoneNumber) {
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
@@ -89,6 +97,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isZipCode = function (zipCode) {
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
@@ -103,9 +113,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isPostalCode = function (postalCode) {
-            var expression = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
+            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
             return expression.test(postalCode);
         };
 
@@ -117,6 +129,8 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         ValidationUtil.isSocialSecurityNumber = function (ssn) {
             var expression = /^\d{3}-?\d{2}-?\d{4}$/;

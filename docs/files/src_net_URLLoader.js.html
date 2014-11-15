@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -239,12 +247,10 @@
                 data: request.data,
                 contentType: request.contentType,
                 dataType: self.dataFormat,
-                jsonp: &#x27;callback&#x27;,
-                beforeSend: self.onBeforeSend.bind(this),
-                success: self.onLoadSuccess.bind(this),
-                error: self.onLoadError.bind(this),
-                complete: self.onComplete.bind(this)
+                jsonp: &#x27;callback&#x27;
             });
+            this._xhr.done(self.onSuccess.bind(this));
+            this._xhr.fail(self.onError.bind(this));
         };
 
         /**
@@ -271,41 +277,21 @@
         /**
          * YUIDoc_comment
          *
-         * @method abort
+         * @method onError
          * @private
          */
-        URLLoader.prototype.onLoadSuccess = function (data) {
-            this.data = data;
-        };
-
-        /**
-         * YUIDoc_comment
-         *
-         * @method abort
-         * @private
-         */
-        URLLoader.prototype.onBeforeSend = function () {
-            //console.log(&quot;onBeforeSend&quot;, arguments);
-        };
-
-        /**
-         * YUIDoc_comment
-         *
-         * @method abort
-         * @private
-         */
-        URLLoader.prototype.onLoadError = function () {
-            console.log(&quot;[URLLoader] - onLoadError&quot;, arguments);
+        URLLoader.prototype.onError = function () {
+            console.log(&quot;[URLLoader] - onError&quot;, arguments);
             this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
         };
 
         /**
          * YUIDoc_comment
          *
-         * @method abort
+         * @method onSuccess
          * @private
          */
-        URLLoader.prototype.onComplete = function () {
+        URLLoader.prototype.onSuccess = function (data) {
             this.complete = true;
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));
         };

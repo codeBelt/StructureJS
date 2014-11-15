@@ -22,7 +22,7 @@ module StructureTS
     export class LocalStorageEvent extends BaseEvent
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _nativeEvent
          * @type {any}

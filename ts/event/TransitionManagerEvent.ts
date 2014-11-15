@@ -21,7 +21,7 @@ module StructureTS
     export class TransitionManagerEvent extends BaseEvent
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event TRANSITION
          * @type {string}
@@ -30,7 +30,7 @@ module StructureTS
         public static TRANSITION:string = 'TransitionManagerEvent.transition';
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event TRANSITION_START
          * @type {string}
@@ -39,7 +39,7 @@ module StructureTS
         public static TRANSITION_START:string = 'TransitionManagerEvent.transitionStart';
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event TRANSITION_COMPLETE
          * @type {string}

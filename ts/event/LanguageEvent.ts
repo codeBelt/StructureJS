@@ -21,7 +21,7 @@ module StructureTS
     export class LanguageEvent extends BaseEvent
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event CONFIG_LOADED
          * @type {string}
@@ -30,7 +30,7 @@ module StructureTS
         public static CONFIG_LOADED:string = "LanguageEvent.configLoaded";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event LOAD_COMPLETE
          * @type {string}
@@ -39,7 +39,7 @@ module StructureTS
         public static LANGUAGE_LOADED:string = "LanguageEvent.languageLoaded";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event LANGUAGE_CHANGE
          * @type {string}

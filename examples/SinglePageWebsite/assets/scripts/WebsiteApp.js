@@ -4,6 +4,8 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Extend = require('structurejs/util/Extend');
     var Stage = require('structurejs/display/Stage');
+    var NetworkMonitorEvent = require('structurejs/event/NetworkMonitorEvent');
+    var NetworkMonitor = require('structurejs/net/NetworkMonitor');
     var RootView = require('view/RootView');
 
     /**
@@ -57,6 +59,9 @@ define(function (require, exports, module) { // jshint ignore:line
 
             this._rootView.enable();
 
+            NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this._onNetworkChange, this);
+            NetworkMonitor.start();
+
             return _super.prototype.enable.call(this);
         };
 
@@ -68,6 +73,8 @@ define(function (require, exports, module) { // jshint ignore:line
 
             this._rootView.disable();
 
+            NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this._onNetworkChange, this);
+
             return _super.prototype.disable.call(this);
         };
 
@@ -78,6 +85,17 @@ define(function (require, exports, module) { // jshint ignore:line
             this._rootView.destroy();
 
             _super.prototype.destroy.call(this);
+        };
+
+        /**
+         * YUIDoc_comment
+         *
+         * @method _onNetworkChange
+         * @param event {NetworkMonitorEvent}
+         * @private
+         */
+        WebsiteApp.prototype._onNetworkChange = function(event) {
+            console.log("NetworkMonitorEvent.STATUS", event.status);
         };
 
         return WebsiteApp;

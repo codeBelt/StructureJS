@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -155,7 +163,7 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../display/DisplayObjectContainer&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/TemplateFactory&#x27;, &#x27;../util/ComponentFactory&#x27;, require(&#x27;jquery&#x27;), &#x27;../pplugin/jquery.eventListener&#x27;], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;../display/DisplayObjectContainer&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/TemplateFactory&#x27;, &#x27;../util/ComponentFactory&#x27;, &#x27;jquery&#x27;, &#x27;../plugin/jquery.eventListener&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
         module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../display/DisplayObjectContainer&#x27;), require(&#x27;../event/BaseEvent&#x27;), require(&#x27;../util/TemplateFactory&#x27;), require(&#x27;../util/ComponentFactory&#x27;), require(&#x27;jquery&#x27;), require(&#x27;../plugin/jquery.eventListener&#x27;));
     } else {
@@ -298,7 +306,7 @@
             if (typeof params === &quot;undefined&quot;) { params = null; }
             _super.call(this);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property checkCount
              * @type {number}
@@ -427,7 +435,7 @@
             params = this._params || params;
 
             if (this.$element == null) {
-                var html = TemplateFactory.createTemplate(type, params);
+                var html = TemplateFactory.create(type, params);
                 if (html) {
                     this.$element = jQuery(html);
                 } else {
@@ -702,21 +710,6 @@
         };
 
         /**
-         * Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent)
-         * to 1 (fully opaque). The default value is 1. Display objects with alpha set to 0 are active, even though
-         * they are invisible.
-         *
-         * @method alpha
-         * @param number
-         * @returns {DOMElement} Returns an instance of itself.
-         * @chainable
-         */
-        DOMElement.prototype.alpha = function (number) {
-            this.$element.css(&#x27;opacity&#x27;, number);
-            return this;
-        };
-
-        /**
          * @overridden DisplayObjectContainer.destroy
          */
         DOMElement.prototype.destroy = function () {
@@ -730,10 +723,25 @@
         };
 
         /**
-         * YUIDoc_comment
+         * A way to instantiate view classes by found html selectors.
+         *
+         * Example: It will find all children elements of the {{#crossLink &quot;DOMElement/$element:property&quot;}}{{/crossLink}} property with the &#x27;js-shareEmail&#x27; selector.
+         * If any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.
          *
          * @method createComponents
+         * @param componentList (Array.&lt;{ selector: string; componentClass: DisplayObjectContainer }&gt;
          * @public
+         * @chainable
+         * @example
+         *      ClassName.prototype.createChildren = function () {
+        *          _super.prototype.createChildren.call(this);
+        *
+        *          this.createComponents([
+        *              {selector: &#x27;.js-shareEmail&#x27;, componentClass: EmailShareComponent},
+        *              {selector: &#x27;.js-pagination&#x27;, componentClass: PaginationComponent},
+        *              {selector: &#x27;.js-carousel&#x27;, componentClass: CarouselComponent}
+        *          ]);
+        *      };
          */
         DOMElement.prototype.createComponents = function (componentList) {
             var length = componentList.length;
@@ -742,6 +750,8 @@
                 obj = componentList[i];
                 ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
             }
+
+            return this;
         };
         return DOMElement;
     })();

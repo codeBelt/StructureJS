@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -44,6 +44,10 @@
 
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -80,6 +84,10 @@
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
                 <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
             
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
@@ -428,7 +436,7 @@
             <a name="property__listeners" class="anchor-link"></a>
 <div class="property item private inherited">
     <h3 class="name"><code>_listeners</code>
-    <span class="type">Array</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
 
     
 
@@ -528,7 +536,7 @@
             <a name="property_isEnabled" class="anchor-link"></a>
 <div class="property item protected inherited">
     <h3 class="name"><code>isEnabled</code>
-    <span class="type">Boolean</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
@@ -579,7 +587,7 @@
             <a name="property_items" class="anchor-link"></a>
 <div class="property item">
     <h3 class="name"><code>items</code>
-    <span class="type">Array</span>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
 
     
 
@@ -613,7 +621,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>TODO: YUIDoc_comment</p>
 
         </div>
 
@@ -665,7 +673,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>YUIDoc_comment</p>
+            <p>TODO: YUIDoc_comment</p>
 
         </div>
 
@@ -901,7 +909,7 @@ list hierarchy.</p>
                     <li class="param">
                         
                             <code class="param-name">type</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -917,7 +925,7 @@ list hierarchy.</p>
                     <li class="param">
                         
                             <code class="param-name">callback</code>
-                            <span class="type">Function</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
                         
@@ -1065,7 +1073,7 @@ list hierarchy.</p>
                     <li class="param">
                         
                             <code class="param-name">item</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -1081,7 +1089,7 @@ list hierarchy.</p>
                     <li class="param">
                         
                             <code class="param-name optional">[silent=false]</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -1183,7 +1191,7 @@ list hierarchy.</p>
                     <li class="param">
                         
                             <code class="param-name">items</code>
-                            <span class="type">Array</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
                         
 
                         
@@ -1199,7 +1207,7 @@ list hierarchy.</p>
                     <li class="param">
                         
                             <code class="param-name optional">[silent=false]</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -1297,7 +1305,7 @@ list hierarchy.</p>
                     <li class="param">
                         
                             <code class="param-name optional">[silent=false]</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -1542,14 +1550,14 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.disable = function() {
+                    <pre class="code prettyprint"><code> ClassName.prototype.disable = function() {
      if (this.isEnabled === false) { return this; }
 
      this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.disable();
 
      return _super.prototype.disable.call(this);
-}</code></pre>
+ }</code></pre>
 
                 </div>
             </div>
@@ -1765,7 +1773,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
 
     
         <span class="returns-inline">
-            <span class="type">Array</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
         </span>
     
 
@@ -1823,7 +1831,7 @@ When checking properties, this method performs a deep comparison between values 
                     <li class="param">
                         
                             <code class="param-name">arg</code>
-                            <span class="type">Object | Array</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
                         
 
                         
@@ -1846,7 +1854,7 @@ When checking properties, this method performs a deep comparison between values 
                 <div class="returns-description">
                     
                         
-                            <span class="type">Array</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
                         
                         <p>Returns a list of found object&#39;s.</p>
 
@@ -1896,7 +1904,7 @@ When checking properties, this method performs a deep comparison between values 
 
     
         <span class="returns-inline">
-            <span class="type">Array</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
         </span>
     
 
@@ -1953,7 +1961,7 @@ When checking properties, this method performs a deep comparison between values 
                     <li class="param">
                         
                             <code class="param-name">arg</code>
-                            <span class="type">String | Number | Boolean></span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | Boolean></span>
                         
 
                         
@@ -1976,7 +1984,7 @@ When checking properties, this method performs a deep comparison between values 
                 <div class="returns-description">
                     
                         
-                            <span class="type">Array</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
                         
                         <p>Returns a list of found object&#39;s.</p>
 
@@ -2000,7 +2008,7 @@ When checking properties, this method performs a deep comparison between values 
 
     
         <span class="returns-inline">
-            <span class="type">Array</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
         </span>
     
 
@@ -2054,7 +2062,7 @@ When checking properties, this method performs a deep comparison between values 
                 <div class="returns-description">
                     
                         
-                            <span class="type">Array</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
                         
                         <p>Returns an array dictionary of the different event listener(s) on the object.</p>
 
@@ -2088,7 +2096,7 @@ When checking properties, this method performs a deep comparison between values 
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -2145,7 +2153,7 @@ When checking properties, this method performs a deep comparison between values 
                     <li class="param">
                         
                             <code class="param-name">item</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -2169,7 +2177,7 @@ When checking properties, this method performs a deep comparison between values 
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
@@ -2201,7 +2209,7 @@ When checking properties, this method performs a deep comparison between values 
 
     
         <span class="returns-inline">
-            <span class="type">Object</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
         </span>
     
 
@@ -2283,7 +2291,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Object</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
                         
                         <p>item to find</p>
 
@@ -2307,7 +2315,7 @@ If the index is out of bounds, the collection will clamp it.</p>
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -2361,7 +2369,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                         <p>Returns the class name.</p>
 
@@ -2404,7 +2412,7 @@ If the index is out of bounds, the collection will clamp it.</p>
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -2461,7 +2469,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                     <li class="param">
                         
                             <code class="param-name">item</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -2485,7 +2493,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
@@ -2581,7 +2589,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                     <li class="param">
                         
                             <code class="param-name">type</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -2597,7 +2605,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                     <li class="param">
                         
                             <code class="param-name">callback</code>
-                            <span class="type">Function</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
                         
@@ -2729,7 +2737,7 @@ If the collection doesn&#39;t have the item, it throws an error</p>
                     <li class="param">
                         
                             <code class="param-name">item</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -2745,7 +2753,7 @@ If the collection doesn&#39;t have the item, it throws an error</p>
                     <li class="param">
                         
                             <code class="param-name optional">[silent=false]</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -2849,7 +2857,7 @@ If the collection doesn&#39;t have the item, it throws an error</p>
                     <li class="param">
                         
                             <code class="param-name">items</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a></span>
                         
 
                         
@@ -2865,7 +2873,7 @@ If the collection doesn&#39;t have the item, it throws an error</p>
                     <li class="param">
                         
                             <code class="param-name optional">[silent=false]</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 

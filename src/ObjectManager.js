@@ -72,14 +72,14 @@
          * @public
          * @chainable
          * @example
-         *     ClassName.prototype.disable = function() {
+         *      ClassName.prototype.disable = function() {
         *          if (this.isEnabled === false) { return this; }
         *
         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
         *          this._childInstance.disable();
         *
         *          return _super.prototype.disable.call(this);
-        *     }
+        *      }
          */
         ObjectManager.prototype.disable = function () {
             if (this.isEnabled === false) {

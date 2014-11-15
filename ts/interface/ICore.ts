@@ -1,6 +1,6 @@
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ICore
  * @module StructureJS

@@ -1,7 +1,7 @@
 ///<reference path='BaseEvent.ts'/>
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class TweenEvent
  * @extends BaseEvent
@@ -21,7 +21,7 @@ module StructureTS
     export class TweenEvent extends BaseEvent
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event COMPLETE
          * @type {string}
@@ -30,7 +30,7 @@ module StructureTS
         public static START:string = "TweenEvent.start";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event COMPLETE
          * @type {string}
@@ -39,7 +39,7 @@ module StructureTS
         public static UPDATE:string = "TweenEvent.update";
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @event COMPLETE
          * @type {string}

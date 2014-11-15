@@ -19,7 +19,7 @@ module StructureTS
     export class BaseRequest extends EventDispatcher implements IDataStore
     {
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _baseUrl
          * @type {string}
@@ -28,7 +28,7 @@ module StructureTS
         public _baseUrl:string = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _endpoint
          * @type {string}
@@ -37,7 +37,7 @@ module StructureTS
         public _endpoint:string = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _request
          * @type {URLRequest}
@@ -46,7 +46,7 @@ module StructureTS
         public _request:URLRequest = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _loader
          * @type {URLLoader}
@@ -56,7 +56,7 @@ module StructureTS
         public _loader:URLLoader = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property data
          * @type {any}
@@ -65,7 +65,7 @@ module StructureTS
         public data:any = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property complete
          * @type {boolean}
@@ -75,7 +75,7 @@ module StructureTS
         public complete:boolean = false;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property src
          * @type {string}
@@ -92,7 +92,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method getloader
          * @public
@@ -106,7 +106,7 @@ module StructureTS
          Protected Methods
          ------------------------------------------------------------------------ */
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method configureRequest
          * @return {URLRequest}
@@ -120,7 +120,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method load
          * @protected
@@ -144,7 +144,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method parseData
          * @protected
@@ -155,7 +155,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method cleanupListeners
          * @protected
@@ -167,7 +167,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method onDataLoadComplete
          * @param event {LoaderEvent}
@@ -182,7 +182,7 @@ module StructureTS
         }
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method onDataLoadComplete
          * @param event {LoaderEvent}

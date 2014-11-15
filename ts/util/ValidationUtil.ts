@@ -13,7 +13,7 @@ module StructureTS
     {
         constructor()
         {
-            //http://msdn.microsoft.com/en-us/library/ff650303.aspx
+            throw new Error('[ValidationUtil] Do not instantiation the ValidationUtil class because it is a static class.');
         }
 
         /**
@@ -24,6 +24,8 @@ module StructureTS
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         public static isEmpty(text:string):boolean
         {
@@ -39,6 +41,8 @@ module StructureTS
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         public static isMatch(value1:any, value2:any):boolean
         {
@@ -53,6 +57,8 @@ module StructureTS
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         public static isValidEmailAddress(email:string):boolean
         {
@@ -68,6 +74,8 @@ module StructureTS
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         public static isValidPhoneNumber(phoneNumber:string):boolean
         {
@@ -83,6 +91,8 @@ module StructureTS
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         public static isZipCode(zipCode:string):boolean
         {
@@ -98,6 +108,8 @@ module StructureTS
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         public static isPostalCode(postalCode:string):boolean
         {
@@ -113,6 +125,8 @@ module StructureTS
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *
          */
         public static isSocialSecurityNumber(ssn:string):boolean
         {

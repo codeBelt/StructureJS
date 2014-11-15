@@ -83,7 +83,7 @@ module.exports = function(grunt) {
          * Cleans or deletes our production folder before we create a new production build.
          */
         clean: {
-            js: ["ts/**/*.js"]
+            js: ['ts/**/*.js']
         },
 
         /**
@@ -237,6 +237,7 @@ module.exports = function(grunt) {
                 version: '<%= pkg.appVersion %>',
                 url: '<%= pkg.homepage %>',
                 options: {
+                    'linkNatives': 'true',
                     paths: '<%= DEVELOPMENT_PATH %>',
                     outdir: '<%= BASE_PATH %>docs',
                     themedir: 'friendly-theme',
@@ -293,7 +294,7 @@ module.exports = function(grunt) {
             src: {
                 options: {
                     port: 8000,
-                    hostname: "0.0.0.0",
+                    hostname: '0.0.0.0',
                     bases: ['<%= DEVELOPMENT_PATH %>'],
                     livereload: true
                 }
@@ -301,7 +302,7 @@ module.exports = function(grunt) {
             web: {
                 options: {
                     port: 8001,
-                    hostname: "0.0.0.1",
+                    hostname: '0.0.0.1',
                     bases: ['<%= PRODUCTION_PATH %>'],
                     livereload: true
                 }
