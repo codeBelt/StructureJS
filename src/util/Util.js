@@ -196,7 +196,7 @@
         Util.toBoolean = function (strNum) {
             var value = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
-            return (value == '1' || value == 'true');
+            return (value == '1' || value == 'true' || value == 'yes');
         };
 
         /**
