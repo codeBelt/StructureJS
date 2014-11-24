@@ -102,7 +102,7 @@
          */
         Stage.prototype.appendTo = function (type, enabled) {
             if (typeof enabled === "undefined") { enabled = true; }
-            this.$element = jQuery(type);
+            this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr('data-cid', this.cid);
 
             if (this.isCreated === false) {

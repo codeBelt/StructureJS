@@ -84,13 +84,13 @@ module StructureTS
          * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
          *
          * @method appendTo
-         * @param type {string} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+         * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
          * @param [enabled=true] {boolean} Sets the enabled state of the object.
          * @chainable
          */
-        public appendTo(type:string, enabled:boolean = true):any
+        public appendTo(type:any, enabled:boolean = true):any
         {
-            this.$element = jQuery(type);
+            this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr('data-cid', this.cid);
 
             if (this.isCreated === false)
