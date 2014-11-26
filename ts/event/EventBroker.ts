@@ -46,8 +46,8 @@ module StructureTS
          *
          *     // The event passed to the method will always be a BaseEvent object.
          *     ClassName.prototype.handlerMethod = function (event) {
-     *          console.log(event.target + " sent the event.");
-     *     }
+         *          console.log(event.data);
+         *     }
          */
         public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):void
         {
@@ -89,6 +89,7 @@ module StructureTS
          *
          *      // Example of sending a BaseEvent or custom event object.
          *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      event.data = {some: 'data'};
          *      EventBroker.dispatchEvent(event);
          */
         public static dispatchEvent(type:any, data:any = null):void

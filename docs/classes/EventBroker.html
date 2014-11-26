@@ -162,7 +162,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_event_EventBroker.js.html#l17"><code>src&#x2F;event&#x2F;EventBroker.js:17</code></a>
+            Defined in: <a href="../files/src_event_EventBroker.js.html#l17"><code>src\event\EventBroker.js:17</code></a>
         </div>
     
 
@@ -317,7 +317,7 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l105"><code>src&#x2F;event&#x2F;EventBroker.js:105</code></a>
+        <a href="../files/src_event_EventBroker.js.html#l106"><code>src\event\EventBroker.js:106</code></a>
         
         </p>
 
@@ -425,7 +425,7 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l31"><code>src&#x2F;event&#x2F;EventBroker.js:31</code></a>
+        <a href="../files/src_event_EventBroker.js.html#l31"><code>src\event\EventBroker.js:31</code></a>
         
         </p>
 
@@ -530,7 +530,7 @@ EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
 
 // The event passed to the method will always be a BaseEvent object.
 ClassName.prototype.handlerMethod = function (event) {
-     console.log(event.target + &quot; sent the event.&quot;);
+     console.log(event.data);
 }</code></pre>
 
                 </div>
@@ -595,7 +595,7 @@ ClassName.prototype.handlerMethod = function (event) {
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l74"><code>src&#x2F;event&#x2F;EventBroker.js:74</code></a>
+        <a href="../files/src_event_EventBroker.js.html#l74"><code>src\event\EventBroker.js:74</code></a>
         
         </p>
 
@@ -669,6 +669,7 @@ ClassName.prototype.handlerMethod = function (event) {
 
  // Example of sending a BaseEvent or custom event object.
  var event = new BaseEvent(BaseEvent.CHANGE);
+ event.data = {some: &#39;data&#39;};
  EventBroker.dispatchEvent(event);</code></pre>
 
                 </div>
@@ -739,7 +740,7 @@ ClassName.prototype.handlerMethod = function (event) {
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l56"><code>src&#x2F;event&#x2F;EventBroker.js:56</code></a>
+        <a href="../files/src_event_EventBroker.js.html#l56"><code>src\event\EventBroker.js:56</code></a>
         
         </p>
 

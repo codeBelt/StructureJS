@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/net/NetworkMonitor.js - StructureJS</title>
+    <title>src\net\NetworkMonitor.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -154,7 +154,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src/net/NetworkMonitor.js</h1>
+                <h1 class="file-heading">File: src\net\NetworkMonitor.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -204,8 +204,8 @@
                 NetworkMonitor._initialized = true;
             }
 
-            window.addEventListener(StructureTS.NavigatorEvents.ONLINE, NetworkMonitor.onNetworkMonitorEvent, false);
-            window.addEventListener(StructureTS.NavigatorEvents.OFFLINE, NetworkMonitor.onNetworkMonitorEvent, false);
+            window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor.onNetworkMonitorEvent, false);
+            window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor.onNetworkMonitorEvent, false);
 
             NetworkMonitor.onNetworkMonitorEvent(null);
         };
@@ -237,7 +237,7 @@
         NetworkMonitor.getStatus = function () {
             // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
             NetworkMonitor.start();
-            return (this.connected()) ? StructureTS.NavigatorEvents.ONLINE : StructureTS.NavigatorEvents.OFFLINE;
+            return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
         };
 
         /**
@@ -250,7 +250,7 @@
          */
         NetworkMonitor.onNetworkMonitorEvent = function (event) {
             var type = (event) ? event.type : NetworkMonitor.getStatus();
-            var networkMonitorEvent = new StructureTS.NetworkMonitorEvent(StructureTS.NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
+            var networkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
             NetworkMonitor.dispatchEvent(networkMonitorEvent);
         };
 

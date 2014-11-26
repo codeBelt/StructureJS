@@ -45,8 +45,8 @@
          *
          *     // The event passed to the method will always be a BaseEvent object.
          *     ClassName.prototype.handlerMethod = function (event) {
-        *          console.log(event.target + " sent the event.");
-        *     }
+         *          console.log(event.data);
+         *     }
          */
         EventBroker.addEventListener = function (type, callback, scope, priority) {
             if (typeof priority === "undefined") { priority = 0; }
@@ -87,6 +87,7 @@
          *
          *      // Example of sending a BaseEvent or custom event object.
          *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      event.data = {some: 'data'};
          *      EventBroker.dispatchEvent(event);
          */
         EventBroker.dispatchEvent = function (type, data) {

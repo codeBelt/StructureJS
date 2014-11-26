@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/event/EventBroker.js - StructureJS</title>
+    <title>src\event\EventBroker.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -154,7 +154,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src/event/EventBroker.js</h1>
+                <h1 class="file-heading">File: src\event\EventBroker.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -205,8 +205,8 @@
          *
          *     // The event passed to the method will always be a BaseEvent object.
          *     ClassName.prototype.handlerMethod = function (event) {
-        *          console.log(event.target + &quot; sent the event.&quot;);
-        *     }
+         *          console.log(event.data);
+         *     }
          */
         EventBroker.addEventListener = function (type, callback, scope, priority) {
             if (typeof priority === &quot;undefined&quot;) { priority = 0; }
@@ -247,6 +247,7 @@
          *
          *      // Example of sending a BaseEvent or custom event object.
          *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      event.data = {some: &#x27;data&#x27;};
          *      EventBroker.dispatchEvent(event);
          */
         EventBroker.dispatchEvent = function (type, data) {
