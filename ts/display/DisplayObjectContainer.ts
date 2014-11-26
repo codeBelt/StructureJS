@@ -203,6 +203,8 @@ module StructureTS
                 this.children.splice(index, 1);
             }
 
+            this.numChildren = this.children.length;
+
             if (destroy === true)
             {
                 child.destroy();
@@ -213,8 +215,6 @@ module StructureTS
             }
 
             child.parent = null;
-
-            this.numChildren = this.children.length;
 
             return this;
         }
