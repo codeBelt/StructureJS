@@ -148,17 +148,20 @@
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
 
-            // Convert the wild card * be a regex .* to select all.
-            routePattern = routePattern.replace('*', '(.*)');
-
             // Matches and query strings.
-            routePattern = routePattern.replace('?', '(\\?.*)');
+            routePattern = routePattern.replace('?', '^/?\?(.~)');
+
+            // Convert the wild card * be a regex .* to select all.
+            routePattern = routePattern.replace('*', '?(.*)');
 
             // Make any :alphanumeric: optional but not query string
             routePattern = routePattern.replace(findOptionalColons, '?([^/?]*)');
 
             // Make any {alphanumeric} required but not query string
             routePattern = routePattern.replace(findRequiredBrackets, '([^/?]+)');
+
+            // ..... TODO
+            routePattern = routePattern.replace('~', '*');
 
             return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, 'i');
         };
