@@ -143,15 +143,15 @@
             var findOptionalColons = new RegExp(':([^:]*):', 'g');
             var findRequiredBrackets = new RegExp('{([^}]+)}', 'g');
             var optionalFirstCharSlash = '^/?';
-            var optionalLastCharSlash = '/?$';
+            var optionalLastCharSlashOrQuestionMark = '(/?$|\\?.*)';
 
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
 
-            // Matches and query strings.
+            // Matches and query strings. Note I made the * into a ~ character and will replace it below.
             routePattern = routePattern.replace('?', '^/?\?(.~)');
 
-            // Convert the wild card * be a regex .* to select all.
+            // Convert the wild card * be a regex ?(.*) to select all.
             routePattern = routePattern.replace('*', '?(.*)');
 
             // Make any :alphanumeric: optional but not query string
@@ -160,10 +160,10 @@
             // Make any {alphanumeric} required but not query string
             routePattern = routePattern.replace(findRequiredBrackets, '([^/?]+)');
 
-            // ..... TODO
+            // Here is where I change ~ back to the * character.
             routePattern = routePattern.replace('~', '*');
 
-            return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, 'i');
+            return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlashOrQuestionMark, 'i');
         };
 
         /**
