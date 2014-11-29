@@ -377,6 +377,7 @@ module StructureTS
          */
         public destroy():void
         {
+            // TODO: if you call destroy on an object should it remove itself from the parent children array?
             super.destroy();
         }
     }

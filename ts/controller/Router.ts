@@ -110,17 +110,17 @@ module StructureTS
          *
          * @property forceSlash
          * @type {boolean}
-         * @default true
+         * @default false
          * @public
          * @static
          * @example
-         *     // To turn off forcing the forward slash
-         *     Router.forceSlash = false;
+         *     // To turn on forcing the forward slash
+         *     Router.forceSlash = true;
          *
-         *     // By default it will change the url from #contact/bob/ to #/contact/bob/
+         *     // If forceSlash is set to true it will change the url from #contact/bob/ to #/contact/bob/
          *     // when using the navigateTo method.
          */
-        public static forceSlash:boolean = true;
+        public static forceSlash:boolean = false;
 
         /**
          * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
@@ -248,7 +248,7 @@ module StructureTS
         public static remove(routePattern:string, callback:Function, callbackScope:any):void
         {
             var route:Route;
-
+            // Since we are removing (splice) from routes we need to check the length every iteration.
             for (var i = Router._routes.length - 1; i >= 0; i--)
             {
                 route = Router._routes[i];
@@ -531,6 +531,7 @@ module StructureTS
                     routeEvent.currentTarget = Router;
 
                     // Remove any empty strings in the array due to the :optional: route pattern.
+                    // Since we are removing (splice) from params we need to check the length every iteration.
                     for (var j = routeEvent.params.length - 1; j >= 0; j--)
                     {
                         if (routeEvent.params[j] === '')

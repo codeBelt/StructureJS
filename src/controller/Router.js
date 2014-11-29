@@ -131,6 +131,7 @@
         Router.remove = function (routePattern, callback, callbackScope) {
             var route;
 
+            // Since we are removing (splice) from routes we need to check the length every iteration.
             for (var i = Router._routes.length - 1; i >= 0; i--) {
                 route = Router._routes[i];
                 if (route.routePattern === routePattern && route.callback === callback && route.callbackScope === callbackScope) {
@@ -385,6 +386,7 @@
                     routeEvent.target = Router;
                     routeEvent.currentTarget = Router;
 
+                    // Since we are removing (splice) from params we need to check the length every iteration.
                     for (var j = routeEvent.params.length - 1; j >= 0; j--) {
                         if (routeEvent.params[j] === '') {
                             routeEvent.params.splice(j, 1);
@@ -524,17 +526,17 @@
          *
          * @property forceSlash
          * @type {boolean}
-         * @default true
+         * @default false
          * @public
          * @static
          * @example
-         *     // To turn off forcing the forward slash
-         *     Router.forceSlash = false;
+         *     // To turn on forcing the forward slash
+         *     Router.forceSlash = true;
          *
-         *     // By default it will change the url from #contact/bob/ to #/contact/bob/
+         *     // If forceSlash is set to true it will change the url from #contact/bob/ to #/contact/bob/
          *     // when using the navigateTo method.
          */
-        Router.forceSlash = true;
+        Router.forceSlash = false;
 
         /**
          * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
