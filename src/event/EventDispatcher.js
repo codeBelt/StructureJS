@@ -54,11 +54,7 @@
         }
         /**
          * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
-         * @example
-         instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function (event) {
-        console.log(event.target + " sent the event.");
-        }
+         *
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
@@ -66,6 +62,13 @@
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @public
          * @chainable
+         * @example
+         *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+        *          console.log(event.target + " sent the event.");
+        *          console.log(event.type, event.data);
+        *      }
          */
         EventDispatcher.prototype.addEventListener = function (type, callback, scope, priority) {
             if (typeof priority === "undefined") { priority = 0; }
@@ -96,11 +99,7 @@
 
         /**
          * Removes a specified listener from the EventDispatcher object.
-         * @example
-         instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function (event) {
-        console.log(event.target + " sent the event.");
-        }
+         *
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
@@ -108,6 +107,11 @@
          * @hide This was added because it was need for the {{#crossLink "EventBroker"}}{{/crossLink}} class. To keep things consistent this parameter is required.
          * @public
          * @chainable
+         * @example
+         *      this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+        *      }
          */
         EventDispatcher.prototype.removeEventListener = function (type, callback, scope) {
             // Get the list of event listener(s) by the associated type value that is passed in.
@@ -128,24 +132,25 @@
 
         /**
          * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
-         * @example
-         var event = new BaseEvent(BaseEvent.CHANGE);
-         instance.dispatchEvent(event);
-
-         // Here is a common inline event being dispatched
-         instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+         *
          * @method dispatchEvent
          * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
          * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
          * @public
          * @chainable
+         * @example
+         *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      this.dispatchEvent(event);
+         *
+         *      // Here is a common inline event being dispatched
+         *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         EventDispatcher.prototype.dispatchEvent = function (type, data) {
             if (typeof data === "undefined") { data = null; }
             var event = type;
 
-            if (typeof event == 'string') {
-                event = new BaseEvent(type, false, true, data);
+            if (typeof event === 'string') {
+                event = new StructureTS.BaseEvent(type, false, true, data);
             }
 
             // If target is null then set it to the object that dispatched the event.
@@ -196,23 +201,74 @@
         };
 
         /**
+         * Check if an object has a specific event listener already added.
+         *
+         * @method hasEventListener
+         * @method removeEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener method to call.
+         * @param scope {any} The scope of the listener object.
+         * @return {boolean}
+         * @public
+         * @example
+         *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         */
+        EventDispatcher.prototype.hasEventListener = function (type, callback, scope) {
+            if (typeof this._listeners[type] !== 'undefined') {
+                var listener;
+                var numOfCallbacks = this._listeners[type].length;
+                for (var i = 0; i < numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
+                    if (listener.callback === callback && listener.scope === scope) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        };
+
+        /**
+         * Generates a string output of event listeners for a given object.
+         *
+         * @method getEventListeners
+         * @return {string}
+         * @public
+         * @example
+         *      this.getEventListeners();
+         *
+         *      // [ClassName] is listen for 'BaseEvent.change' event.
+         */
+        EventDispatcher.prototype.getEventListeners = function () {
+            var str = '';
+            var numOfCallbacks;
+            var listener;
+
+            for (var type in this._listeners) {
+                numOfCallbacks = this._listeners[type].length;
+                for (var i = 0; i < numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
+
+                    if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
+                        str += '[' + listener.scope.getQualifiedClassName() + ']';
+                    } else {
+                        str += '[Unknown]';
+                    }
+
+                    str += " is listen for '" + type + "' event.\n";
+                }
+            }
+
+            return str;
+        };
+
+        /**
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function () {
             _super.prototype.disable.call(this);
 
             _super.prototype.destroy.call(this);
-        };
-
-        /**
-         * Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.
-         *
-         * @method getEventListeners
-         * @return {array} Returns an array dictionary of the different event listener(s) on the object.
-         * @public
-         */
-        EventDispatcher.prototype.getEventListeners = function () {
-            return this._listeners;
         };
         return EventDispatcher;
     })();

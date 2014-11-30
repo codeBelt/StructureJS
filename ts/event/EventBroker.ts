@@ -106,5 +106,40 @@ module StructureTS
 
             EventBroker._eventDispatcher.dispatchEvent(event);
         }
+
+        /**
+         * Check if EventBroker has a specific event listener already added.
+         *
+         * @method hasEventListener
+         * @method removeEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener method to call.
+         * @param scope {any} The scope of the listener object.
+         * @return {boolean}
+         * @public
+         * @example
+         *      EventBroker.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         */
+        public static hasEventListener(type:string, callback:Function, scope:any):boolean
+        {
+            return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
+        }
+
+        /**
+         * Generates a string output of event listeners for a given object.
+         *
+         * @method getEventListeners
+         * @return {string}
+         * @public
+         * @example
+         *      EventBroker.getEventListeners();
+         *
+         *      // [ClassName] is listen for 'BaseEvent.change' event.
+         */
+        public static getEventListeners():string
+        {
+            return EventBroker._eventDispatcher.getEventListeners();
+        }
+
     }
 }

@@ -45,11 +45,7 @@ module StructureTS
 
         /**
          * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
-         * @example
-         instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function (event) {
-                   console.log(event.target + " sent the event.");
-               }
+         *
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
@@ -57,6 +53,13 @@ module StructureTS
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @public
          * @chainable
+         * @example
+         *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+         *          console.log(event.target + " sent the event.");
+         *          console.log(event.type, event.data);
+         *      }
          */
         public addEventListener(type:string, callback:Function, scope:any, priority:number = 0):EventDispatcher
         {
@@ -91,11 +94,7 @@ module StructureTS
 
         /**
          * Removes a specified listener from the EventDispatcher object.
-         * @example
-         instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function (event) {
-                   console.log(event.target + " sent the event.");
-               }
+         *
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
@@ -103,6 +102,11 @@ module StructureTS
          * @hide This was added because it was need for the {{#crossLink "EventBroker"}}{{/crossLink}} class. To keep things consistent this parameter is required.
          * @public
          * @chainable
+         * @example
+         *      this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+         *      }
          */
         public removeEventListener(type:string, callback:Function, scope:any):EventDispatcher
         {
@@ -127,17 +131,18 @@ module StructureTS
 
         /**
          * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
-         * @example
-         var event = new BaseEvent(BaseEvent.CHANGE);
-         instance.dispatchEvent(event);
-
-         // Here is a common inline event being dispatched
-         instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+         *
          * @method dispatchEvent
          * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
          * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
          * @public
          * @chainable
+         * @example
+         *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      this.dispatchEvent(event);
+         *
+         *      // Here is a common inline event being dispatched
+         *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         public dispatchEvent(type:any, data:any = null):EventDispatcher
         {
@@ -203,6 +208,78 @@ module StructureTS
         }
 
         /**
+         * Check if an object has a specific event listener already added.
+         *
+         * @method hasEventListener
+         * @method removeEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener method to call.
+         * @param scope {any} The scope of the listener object.
+         * @return {boolean}
+         * @public
+         * @example
+         *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         */
+        public hasEventListener(type:string, callback:Function, scope:any):boolean
+        {
+            if(typeof this._listeners[type] !== 'undefined')
+            {
+                var listener:any;
+                var numOfCallbacks:number = this._listeners[type].length;
+                for(var i:number = 0; i < numOfCallbacks; i++)
+                {
+                    listener = this._listeners[type][i];
+                    if(listener.callback === callback && listener.scope === scope)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /**
+         * Generates a string output of event listeners for a given object.
+         *
+         * @method getEventListeners
+         * @return {string}
+         * @public
+         * @example
+         *      this.getEventListeners();
+         *
+         *      // [ClassName] is listen for 'BaseEvent.change' event.
+         */
+        public getEventListeners():string
+        {
+            var str:string = '';
+            var numOfCallbacks:number;
+            var listener:any;
+
+            for(var type in this._listeners)
+            {
+                numOfCallbacks = this._listeners[type].length;
+                for(var i:number = 0; i < numOfCallbacks; i++)
+                {
+                    listener = this._listeners[type][i];
+
+                    if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function'))
+                    {
+                        str += '[' + listener.scope.getQualifiedClassName() + ']';
+                    }
+                    else
+                    {
+                        str += '[Unknown]';
+                    }
+
+                    str += " is listen for '" + type + "' event.\n";
+                }
+            }
+
+            return str;
+        }
+
+        /**
          * @overridden BaseObject.destroy
          */
         public destroy():void
@@ -212,16 +289,5 @@ module StructureTS
             super.destroy();
         }
 
-        /**
-         * Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.
-         *
-         * @method getEventListeners
-         * @return {array} Returns an array dictionary of the different event listener(s) on the object.
-         * @public
-         */
-        public getEventListeners():any[]
-        {
-            return this._listeners;
-        }
     }
 }

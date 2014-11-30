@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <!-- build:css assets/styles/screen.css -->
+    <link rel="stylesheet" media="screen, projection" href="assets/styles/reset.css" />
+    <link rel="stylesheet" media="screen, projection" href="assets/styles/eventBubbling.css" />
+    <style>
+        a {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 8px;
+        }
+    </style>
+    <!-- endbuild -->
+</head>
+<body>
+<h1>Router Example</h1>
+<div class="eventBubblingApp js-main">
+
+    <a href="#">#</a>
+    <a href="#/">#/</a>
+
+    <a href="#house">#house</a>
+    <a href="#house/another">#house/another</a>
+    <a href="#house?one=1&two=2&three=3">#house?one=1&two=2&three=3</a>
+    <a href="#house/?one=1&two=2&three=3">#house/?one=1&two=2&three=3</a>
+
+    <a href="#games/asteroids">#games/asteroids</a>
+    <a href="#/games/asteroids/">#/games/asteroids/</a>
+    <a href="#/games/asteroids/2">#/games/asteroids/2</a>
+    <a href="#/games/asteroids/2/">#/games/asteroids/2/</a>
+
+    <a href="#/product/shoes/">#/product/shoes/</a>
+    <a href="#/product/jackets/">#/product/jackets/</a>
+    <a href="#/product/">#/product/</a>
+
+    <a href="#/anything/">#/anything/</a>
+    <a href="#/matches/any/hash/url/">#/matches/any/hash/url/</a>
+    <a href="#/really/it/matches/any/and/all/hash/urls/">#/really/it/matches/any/and/all/hash/urls/</a>
+
+    <a href="#about">#about</a>
+    <a href="#/about/">#/about/</a>
+    <a href="#/about/any/hash/url/">#/about/any/hash/url/</a>
+    <a href="#/about/it/matches/any/and/all/hash/urls/">#/about/it/matches/any/and/all/hash/urls/</a>
+
+    <a href="#/?one=1&two=2&three=3">#/?one=1&two=2&three=3</a>
+    <a href="#?one=1&two=2&three=3">#?one=1&two=2&three=3</a>
+
+    <a href="#/product/blog/">#/product/blog/"</a>
+    <a href="#/blog/blog/">#/blog/blog/</a>
+    <a href="#/car/blog/">#/car/blog/</a>
+    <a href="#/blog/">#/blog/</a>
+
+</div>
+<!-- build:js assets/scripts/main.js -->
+<script src="assets/vendor/jquery/dist/jquery.js"></script>
+<script src="assets/vendor/handlebars/handlebars.js"></script>
+
+<script src="../../../src/plugin/jquery.eventListener.js"></script>
+<script src="../../../src/util/Extend.js"></script>
+<script src="../../../src/util/Util.js"></script>
+<script src="../../../src/util/StringUtil.js"></script>
+<script src="../../../src/BaseObject.js"></script>
+<script src="../../../src/ObjectManager.js"></script>
+<script src="../../../src/event/BaseEvent.js"></script>
+<script src="../../../src/event/EventDispatcher.js"></script>
+<script src="../../../src/event/EventBroker.js"></script>
+<script src="../../../src/display/DisplayObjectContainer.js"></script>
+<script src="../../../src/util/TemplateFactory.js"></script>
+<script src="../../../src/display/DOMElement.js"></script>
+<script src="../../../src/display/Stage.js"></script>
+<script src="../../../src/event/RouteEvent.js"></script>
+<script src="../../../src/model/Route.js"></script>
+<script src="../../../src/controller/Router.js"></script>
+
+<script src="assets/scripts/Main.js"></script>
+<!-- endbuild -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var app = new Main();
+        app.appendTo('.js-main');
+
+        window.app = app;
+    });
+</script>
+
+</body>
+</html>
