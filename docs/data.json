@@ -2191,7 +2191,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 142,
+            "line": 143,
             "description": "The **Router.addDefault** method is meant to trigger a callback function if there are no route matches are found.",
             "itemtype": "method",
             "name": "addDefault",
@@ -2218,7 +2218,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 157,
+            "line": 158,
             "description": "The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.",
             "itemtype": "method",
             "name": "removeDefault",
@@ -2233,7 +2233,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 170,
+            "line": 171,
             "description": "Gets the current hash url minus the # or #! symbol(s).",
             "itemtype": "method",
             "name": "getHash",
@@ -2252,7 +2252,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 187,
+            "line": 188,
             "description": "The **Router.enable** method will allow the Router class to listen for the hashchange event. By default the Router class is enabled.",
             "itemtype": "method",
             "name": "enable",
@@ -2267,7 +2267,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 209,
+            "line": 210,
             "description": "The **Router.disable** method will stop the Router class from listening for the hashchange event.",
             "itemtype": "method",
             "name": "disable",
@@ -2282,7 +2282,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 231,
+            "line": 232,
             "description": "The **Router.start** method is meant to trigger or check the hash url on page load.\nEither you can call this method after you add all your routers or after all data is loaded.\nIt is recommend you only call this once per page or application instantiation.",
             "itemtype": "method",
             "name": "start",
@@ -2297,7 +2297,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 250,
+            "line": 251,
             "description": "The **Router.navigateTo** method allows you to change the hash url and to trigger a route\nthat matches the string value. The second parameter is **silent** and is **false** by\ndefault. This allows you to update the hash url without causing a route callback to be\nexecuted.",
             "itemtype": "method",
             "name": "navigateTo",
@@ -2333,7 +2333,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 310,
+            "line": 311,
             "description": "The **Router.clear** will remove all route's and the default route from the Router class.",
             "itemtype": "method",
             "name": "clear",
@@ -2348,7 +2348,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 325,
+            "line": 326,
             "description": "The **Router.destroy** method will null out all references to other objects in the Router class.",
             "itemtype": "method",
             "name": "destroy",
@@ -2363,7 +2363,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 341,
+            "line": 342,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "onHashChange",
@@ -2382,7 +2382,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 361,
+            "line": 362,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "changeRoute",
@@ -2401,7 +2401,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 432,
+            "line": 434,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2414,7 +2414,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 442,
+            "line": 444,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2427,7 +2427,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 452,
+            "line": 454,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2440,7 +2440,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 462,
+            "line": 464,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2453,7 +2453,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 472,
+            "line": 474,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2470,7 +2470,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 486,
+            "line": 488,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2487,7 +2487,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 503,
+            "line": 505,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful when used with the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method to use your routes as states rather than using the hash url to control the application.\n\nWhat this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to **false** so users cannot jump around if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2504,24 +2504,24 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 521,
+            "line": 523,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
             "type": "{boolean}",
-            "default": "true",
+            "default": "false",
             "access": "public",
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    // To turn off forcing the forward slash\n    Router.forceSlash = false;\n\n    // By default it will change the url from #contact/bob/ to #/contact/bob/\n    // when using the navigateTo method."
+                "\n    // To turn on forcing the forward slash\n    Router.forceSlash = true;\n\n    // If forceSlash is set to true it will change the url from #contact/bob/ to #/contact/bob/\n    // when using the navigateTo method."
             ],
             "class": "Router",
             "module": "StructureJS"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 539,
+            "line": 541,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -5213,7 +5213,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 169,
+            "line": 166,
             "description": "Determine if a route matches a routePattern.",
             "itemtype": "method",
             "name": "match",
@@ -8457,7 +8457,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Route.js:169"
+            "line": " src/model/Route.js:166"
         },
         {
             "message": "replacing incorrect tag: returns with return",

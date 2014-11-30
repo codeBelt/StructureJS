@@ -303,16 +303,16 @@
             var findOptionalColons = new RegExp(&#x27;:([^:]*):&#x27;, &#x27;g&#x27;);
             var findRequiredBrackets = new RegExp(&#x27;{([^}]+)}&#x27;, &#x27;g&#x27;);
             var optionalFirstCharSlash = &#x27;^/?&#x27;;
-            var optionalLastCharSlashOrQuestionMark = &#x27;(/?$|\\?.*)&#x27;;
+            var optionalLastCharSlash = &#x27;/?$&#x27;;
 
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, &#x27;&#x27;);
 
-            // Matches and query strings. Note I made the * into a ~ character and will replace it below.
-            routePattern = routePattern.replace(&#x27;?&#x27;, &#x27;^/?\?(.~)&#x27;);
+            // Convert the wild card * be a regex .* to select all.
+            routePattern = routePattern.replace(&#x27;*&#x27;, &#x27;(.*)&#x27;);
 
-            // Convert the wild card * be a regex ?(.*) to select all.
-            routePattern = routePattern.replace(&#x27;*&#x27;, &#x27;?(.*)&#x27;);
+            // Matches and query strings.
+            routePattern = routePattern.replace(&#x27;?&#x27;, &#x27;(\\?.*)&#x27;);
 
             // Make any :alphanumeric: optional but not query string
             routePattern = routePattern.replace(findOptionalColons, &#x27;?([^/?]*)&#x27;);
@@ -320,10 +320,7 @@
             // Make any {alphanumeric} required but not query string
             routePattern = routePattern.replace(findRequiredBrackets, &#x27;([^/?]+)&#x27;);
 
-            // Here is where I change ~ back to the * character.
-            routePattern = routePattern.replace(&#x27;~&#x27;, &#x27;*&#x27;);
-
-            return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlashOrQuestionMark, &#x27;i&#x27;);
+            return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, &#x27;i&#x27;);
         };
 
         /**
