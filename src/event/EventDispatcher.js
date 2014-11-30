@@ -204,7 +204,6 @@
          * Check if an object has a specific event listener already added.
          *
          * @method hasEventListener
-         * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener method to call.
          * @param scope {any} The scope of the listener object.

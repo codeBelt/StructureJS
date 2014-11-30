@@ -4152,7 +4152,7 @@
             "line": 107,
             "description": "Check if EventBroker has a specific event listener already added.",
             "itemtype": "method",
-            "name": "removeEventListener",
+            "name": "hasEventListener",
             "params": [
                 {
                     "name": "type",
@@ -4174,6 +4174,7 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "static": 1,
             "access": "public",
             "tagname": "",
             "example": [
@@ -4193,6 +4194,7 @@
                 "description": "",
                 "type": "String"
             },
+            "static": 1,
             "access": "public",
             "tagname": "",
             "example": [
@@ -4204,7 +4206,7 @@
         },
         {
             "file": "src/event/EventBroker.js",
-            "line": 138,
+            "line": 139,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -4351,7 +4353,7 @@
             "line": 203,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
-            "name": "removeEventListener",
+            "name": "hasEventListener",
             "params": [
                 {
                     "name": "type",
@@ -4384,7 +4386,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 231,
+            "line": 230,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -4403,7 +4405,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 265,
+            "line": 264,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -8421,7 +8423,7 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/EventDispatcher.js:265"
+            "line": " src/event/EventDispatcher.js:264"
         },
         {
             "message": "unknown tag: overridden",
@@ -8801,7 +8803,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/event/EventDispatcher.js:265"
+            "line": " src/event/EventDispatcher.js:264"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
