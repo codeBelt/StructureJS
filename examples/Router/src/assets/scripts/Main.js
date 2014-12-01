@@ -37,7 +37,7 @@ var Main = (function () {
 
         Router.add('/about/*', function(event) { console.log(event.routePattern, event); }, this);
 
-        Router.add('?', function(event) { console.log(event.routePattern, event); }, this);
+        //Router.add('?', function(event) { console.log(event.routePattern, event); }, this);
 
         Router.add('/{category}/blog/', function(event) { console.log(event.routePattern, event); }, this);
 

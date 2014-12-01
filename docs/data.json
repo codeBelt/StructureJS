@@ -1151,7 +1151,7 @@
             "params": [
                 {
                     "name": "routePattern",
-                    "description": "The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''",
+                    "description": "The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ''",
                     "type": "String"
                 },
                 {
@@ -1167,7 +1167,7 @@
             ],
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example of adding a route listener and the function callback below.\n    var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route would match the string below:\n    route.match('/games/asteroids/2/');\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/contact/');\n    route.match('/contact/heather/');\n    route.match('/contact/john/');\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/product/shoes/');\n    route.match('/product/jackets/');\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    var route = new Route('*', this.method, this);\n\n    // Will match one of the following:\n    route.match('/anything/');\n    route.match('/matches/any/hash/url/');\n    route.match('/really/it/matches/any/and/all/hash/urls/');\n\n\n**?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an\n\n    var route = new Route('?', this.method, this);\n\n    // Will match one of the following:\n    route.match('/?one=1&two=2&three=3');\n    route.match('?one=1&two=2&three=3');\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    var route = new Route('', this.method, this);\n    var route = new Route('/', this.method, this);\n\n    // Will match one of the following:\n    route.match('');\n    route.match('/');\n\n\nOther possible combinations but not limited too:\n\n    var route = new Route('/games/{gameName}/:level:/', this.method1, this);\n    var route = new Route('/{category}/blog/', this.method2, this);\n    var route = new Route('/home/?', this.method3, this);\n    var route = new Route('/about/*', this.method4, this);\n"
+                "\n    // Example of adding a route listener and the function callback below.\n    var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route would match the string below:\n    route.match('/games/asteroids/2/');\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/contact/');\n    route.match('/contact/heather/');\n    route.match('/contact/john/');\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/product/shoes/');\n    route.match('/product/jackets/');\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    var route = new Route('*', this.method, this);\n\n    // Will match one of the following:\n    route.match('/anything/');\n    route.match('/matches/any/hash/url/');\n    route.match('/really/it/matches/any/and/all/hash/urls/');\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    var route = new Route('', this.method, this);\n    var route = new Route('/', this.method, this);\n\n    // Will match one of the following:\n    route.match('');\n    route.match('/');\n\n\nOther possible combinations but not limited too:\n\n    var route = new Route('/games/{gameName}/:level:/', this.method1, this);\n    var route = new Route('/{category}/blog/', this.method2, this);\n    var route = new Route('/about/*', this.method4, this);\n"
             ]
         },
         "ValueObject": {
@@ -5139,7 +5139,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 95,
+            "line": 85,
             "description": "The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, \"\". See below for examples.",
             "itemtype": "property",
             "name": "routePattern",
@@ -5152,7 +5152,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 103,
+            "line": 93,
             "description": "The regex representation for the routePattern that was passed into the constructor.",
             "itemtype": "property",
             "name": "regex",
@@ -5166,7 +5166,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 112,
+            "line": 102,
             "description": "The function that should be executed when a request matches the routePattern. The {{#crossLink \"Router\"}}{{/crossLink}} class will be using this property.",
             "itemtype": "property",
             "name": "callback",
@@ -5179,7 +5179,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 120,
+            "line": 110,
             "description": "The scope of the callback function that should be executed. The {{#crossLink \"Router\"}}{{/crossLink}} class will be using this property.",
             "itemtype": "property",
             "name": "callbackScope",
@@ -5192,7 +5192,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 133,
+            "line": 123,
             "description": "Converts the routePattern that was passed into the constructor to a regexp object.",
             "itemtype": "method",
             "name": "routePatternToRegexp",
@@ -5215,7 +5215,7 @@
         },
         {
             "file": "src/model/Route.js",
-            "line": 166,
+            "line": 153,
             "description": "Determine if a route matches a routePattern.",
             "itemtype": "method",
             "name": "match",
@@ -8455,11 +8455,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Route.js:133"
+            "line": " src/model/Route.js:123"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Route.js:166"
+            "line": " src/model/Route.js:153"
         },
         {
             "message": "replacing incorrect tag: returns with return",

@@ -14,6 +14,8 @@ define(function (require, exports, module) {
             route = new Route('/', function(){}, this);
             expect(route.match('')).not.toBeNull();
             expect(route.match('/')).not.toBeNull();
+            expect(route.match('/?one=1&two=2&three=3')).not.toBeNull();
+            expect(route.match('?one=1&two=2&three=3')).not.toBeNull();
         });
 
         it("house", function() {
@@ -21,7 +23,7 @@ define(function (require, exports, module) {
             expect(route.match('house')).not.toBeNull();
             expect(route.match('house/another')).toBeNull();
             expect(route.match('house?one=1&two=2&three=3')).not.toBeNull();
-            //expect(route.match('house/?one=1&two=2&three=3')).not.toBeNull();
+            expect(route.match('house/?one=1&two=2&three=3')).not.toBeNull();
             expect(route.match('')).toBeNull();
         });
 
@@ -59,12 +61,12 @@ define(function (require, exports, module) {
             expect(route.match('')).toBeNull();
         });
 
-        it("?", function() {
-            route = new Route('?', function(){}, this);
-            expect(route.match('/?one=1&two=2&three=3')).not.toBeNull();
-            expect(route.match('?one=1&two=2&three=3')).not.toBeNull();
-            expect(route.match('')).toBeNull();
-        });
+        //it("?", function() {
+        //    route = new Route('?', function(){}, this);
+        //    expect(route.match('/?one=1&two=2&three=3')).not.toBeNull();
+        //    expect(route.match('?one=1&two=2&three=3')).not.toBeNull();
+        //    expect(route.match('')).toBeNull();
+        //});
 
         it("{}", function() {
             route = new Route('/{category}/blog/', function(){}, this);

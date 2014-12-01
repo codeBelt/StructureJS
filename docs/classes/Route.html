@@ -326,7 +326,7 @@
             
         
         
-        <a href="../files/src_model_Route.js.html#l112"><code>src&#x2F;model&#x2F;Route.js:112</code></a>
+        <a href="../files/src_model_Route.js.html#l102"><code>src&#x2F;model&#x2F;Route.js:102</code></a>
         
         </p>
 
@@ -378,7 +378,7 @@
             
         
         
-        <a href="../files/src_model_Route.js.html#l120"><code>src&#x2F;model&#x2F;Route.js:120</code></a>
+        <a href="../files/src_model_Route.js.html#l110"><code>src&#x2F;model&#x2F;Route.js:110</code></a>
         
         </p>
 
@@ -430,7 +430,7 @@
             
         
         
-        <a href="../files/src_model_Route.js.html#l103"><code>src&#x2F;model&#x2F;Route.js:103</code></a>
+        <a href="../files/src_model_Route.js.html#l93"><code>src&#x2F;model&#x2F;Route.js:93</code></a>
         
         </p>
 
@@ -482,7 +482,7 @@
             
         
         
-        <a href="../files/src_model_Route.js.html#l95"><code>src&#x2F;model&#x2F;Route.js:95</code></a>
+        <a href="../files/src_model_Route.js.html#l85"><code>src&#x2F;model&#x2F;Route.js:85</code></a>
         
         </p>
 
@@ -607,7 +607,7 @@
                         
 
                         <div class="param-description">
-                            <p>The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, &#39;&#39;</p>
+                            <p>The string pattern you want to have match, which can be any of the following combinations {}, ::, *, &#39;&#39;</p>
 
                         </div>
 
@@ -683,12 +683,6 @@ route.match(&#39;/product/jackets/&#39;);</code></pre>
 route.match(&#39;/anything/&#39;);
 route.match(&#39;/matches/any/hash/url/&#39;);
 route.match(&#39;/really/it/matches/any/and/all/hash/urls/&#39;);</code></pre>
-<p><strong>?</strong> The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will <strong>NOT</strong> be passed as a parameter to the callback function. It will be converted to an</p>
-<pre class="code prettyprint"><code>var route = new Route(&#39;?&#39;, this.method, this);
-
-// Will match one of the following:
-route.match(&#39;/?one=1&amp;two=2&amp;three=3&#39;);
-route.match(&#39;?one=1&amp;two=2&amp;three=3&#39;);</code></pre>
 <p><strong>&#39;&#39;</strong> The empty string means it will match when there are no hash url.</p>
 <pre class="code prettyprint"><code>var route = new Route(&#39;&#39;, this.method, this);
 var route = new Route(&#39;/&#39;, this.method, this);
@@ -699,7 +693,6 @@ route.match(&#39;/&#39;);</code></pre>
 <p>Other possible combinations but not limited too:</p>
 <pre class="code prettyprint"><code>var route = new Route(&#39;/games/{gameName}/:level:/&#39;, this.method1, this);
 var route = new Route(&#39;/{category}/blog/&#39;, this.method2, this);
-var route = new Route(&#39;/home/?&#39;, this.method3, this);
 var route = new Route(&#39;/about/*&#39;, this.method4, this);</code></pre>
 
                 </div>
@@ -765,7 +758,7 @@ var route = new Route(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_model_Route.js.html#l166"><code>src&#x2F;model&#x2F;Route.js:166</code></a>
+        <a href="../files/src_model_Route.js.html#l153"><code>src&#x2F;model&#x2F;Route.js:153</code></a>
         
         </p>
 
@@ -888,7 +881,7 @@ console.log( route.match(&#39;/games/asteroids/2/&#39;) );</code></pre>
             
         
         
-        <a href="../files/src_model_Route.js.html#l133"><code>src&#x2F;model&#x2F;Route.js:133</code></a>
+        <a href="../files/src_model_Route.js.html#l123"><code>src&#x2F;model&#x2F;Route.js:123</code></a>
         
         </p>
 

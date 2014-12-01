@@ -21,7 +21,7 @@
      * @module StructureJS
      * @submodule model
      * @constructor
-     * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''
+     * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ''
      * @param callback {Function} The function that should be executed when a request matches the routePattern.
      * @param callbackScope {any} The scope of the callback function that should be executed.
      * @author Robert S. (www.codeBelt.com)
@@ -63,15 +63,6 @@
      *     route.match('/really/it/matches/any/and/all/hash/urls/');
      *
      *
-     * **?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an
-     *
-     *     var route = new Route('?', this.method, this);
-     *
-     *     // Will match one of the following:
-     *     route.match('/?one=1&two=2&three=3');
-     *     route.match('?one=1&two=2&three=3');
-     *
-     *
      * **''** The empty string means it will match when there are no hash url.
      *
      *     var route = new Route('', this.method, this);
@@ -86,7 +77,6 @@
      *
      *     var route = new Route('/games/{gameName}/:level:/', this.method1, this);
      *     var route = new Route('/{category}/blog/', this.method2, this);
-     *     var route = new Route('/home/?', this.method3, this);
      *     var route = new Route('/about/*', this.method4, this);
      *
      */
@@ -148,17 +138,14 @@
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
 
-            // Convert the wild card * be a regex .* to select all.
-            routePattern = routePattern.replace('*', '(.*)');
+            // Convert the wild card * be a regex ?(.*) to select all.
+            routePattern = routePattern.replace('*', '?(.*)');
 
-            // Matches and query strings.
-            routePattern = routePattern.replace('?', '(\\?.*)');
+            // Make any :alphanumeric: optional
+            routePattern = routePattern.replace(findOptionalColons, '?([^/]*)');
 
-            // Make any :alphanumeric: optional but not query string
-            routePattern = routePattern.replace(findOptionalColons, '?([^/?]*)');
-
-            // Make any {alphanumeric} required but not query string
-            routePattern = routePattern.replace(findRequiredBrackets, '([^/?]+)');
+            // Make any {alphanumeric} required
+            routePattern = routePattern.replace(findRequiredBrackets, '([^/]+)');
 
             return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, 'i');
         };
@@ -174,7 +161,10 @@
          *     console.log( route.match('/games/asteroids/2/') );
          */
         Route.prototype.match = function (route) {
-            return route.match(this.regex);
+            // Remove the query string before matching against the route pattern.
+            var routeWithoutQueryString = route.replace(/\?.*/, '');
+
+            return routeWithoutQueryString.match(this.regex);
         };
         return Route;
     })();
