@@ -452,7 +452,8 @@
             "submodules": {},
             "classes": {
                 "ApplicationCacheController": 1,
-                "LocalStorageController": 1
+                "LocalStorageController": 1,
+                "Router": 1
             },
             "fors": {},
             "is_submodule": 1,
@@ -460,7 +461,7 @@
             "module": "StructureJS",
             "namespace": "",
             "description": "The ApplicationCacheController...",
-            "file": "src/controller/LocalStorageController.js",
+            "file": "src/controller/Router.js",
             "line": 17
         },
         "view": {
@@ -597,7 +598,6 @@
             "line": 17,
             "description": "The ApplicationCacheController...",
             "submodule": "controller",
-            "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
         "LocalStorageController": {
@@ -631,6 +631,7 @@
             "file": "src/controller/Router.js",
             "line": 17,
             "description": "The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink \"Router/add:method\"}}{{/crossLink}} method for more details and examples.",
+            "submodule": "controller",
             "static": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
@@ -1558,7 +1559,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 30,
+            "line": 29,
             "overridden": "BaseObject.enable",
             "class": "ApplicationCacheController",
             "module": "StructureJS",
@@ -1566,7 +1567,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 50,
+            "line": 49,
             "overridden": "BaseObject.disable",
             "class": "ApplicationCacheController",
             "module": "StructureJS",
@@ -1574,7 +1575,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 99,
+            "line": 98,
             "description": "The resources listed in the manifest have been fully downloaded, and the application is\nnow cached locally.",
             "itemtype": "method",
             "name": "onCached",
@@ -1594,7 +1595,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 113,
+            "line": 112,
             "description": "The browser is checking for an update, or is attempting to download\nthe cache manifest for the first time. This is always the first event\nin the sequence.",
             "itemtype": "method",
             "name": "onChecking",
@@ -1614,7 +1615,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 128,
+            "line": 127,
             "description": "The browser has started to download the cache manifest, either for the\nfirst time or because changes have been detected.",
             "itemtype": "method",
             "name": "onDownloading",
@@ -1634,7 +1635,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 142,
+            "line": 141,
             "description": "An error occurred at some point - this could be caused by a number of things. This will\nalways be the last event in the sequence.",
             "itemtype": "method",
             "name": "onError",
@@ -1654,7 +1655,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 156,
+            "line": 155,
             "description": "The cache manifest hadn't changed.",
             "itemtype": "method",
             "name": "onNoUpdate",
@@ -1674,7 +1675,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 169,
+            "line": 168,
             "description": "The cache manifest file could not be found, indicating that the cache is no longer needed.\nThe application cache is being deleted.",
             "itemtype": "method",
             "name": "onObsolete",
@@ -1694,7 +1695,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 183,
+            "line": 182,
             "description": "The browser had downloaded and cached an asset. This is fired once for\nevery file that is downloaded (including the current page which is cached implicitly).",
             "itemtype": "method",
             "name": "onProgress",
@@ -1714,7 +1715,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 197,
+            "line": 196,
             "description": "The resources listed in the manifest have been newly re-downloaded, and the script can\nuse swapCache() to switch to the new cache.",
             "itemtype": "method",
             "name": "onUpdateReady",
@@ -1734,7 +1735,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 211,
+            "line": 210,
             "description": "Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.",
             "example": [
                 "\n        ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function(event) {\n       console.log(event.target + \" sent the event.\");\n       }"
@@ -1772,7 +1773,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 230,
+            "line": 229,
             "description": "Removes a specified listener from the ApplicationCacheController object.",
             "example": [
                 "\n        ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);\n        ClassName.prototype.handlerMethod = function(event) {\n       console.log(event.target + \" sent the event.\");\n       }"
@@ -1803,7 +1804,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 248,
+            "line": 247,
             "description": "<p>Dispatches an event within the ApplicationCacheController object.</p>",
             "example": [
                 "\n        var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);\n        ApplicationCacheController.dispatchEvent(event);\n\n        // Here is a common inline event being dispatched\n        ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));"
@@ -1824,7 +1825,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 264,
+            "line": 263,
             "itemtype": "property",
             "name": "_appCache",
             "type": "{ApplicationCache}",
@@ -1837,7 +1838,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 272,
+            "line": 271,
             "itemtype": "property",
             "name": "_eventDispatcher",
             "type": "{EventDispatcher}",
@@ -1850,7 +1851,7 @@
         },
         {
             "file": "src/controller/ApplicationCacheController.js",
-            "line": 280,
+            "line": 279,
             "description": "The isEnabled property is used to keep track of the enabled state.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2127,7 +2128,7 @@
         },
         {
             "file": "src/controller/Router.js",
-            "line": 28,
+            "line": 30,
             "description": "The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink \"RouteEvent\"}}{{/crossLink}}.",
             "itemtype": "method",
             "name": "add",
@@ -2155,11 +2156,12 @@
                 "\n    // Example of adding a route listener and the function callback below.\n    Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route listener would match the below url:\n    // www.site.com/#/games/asteroids/2/\n\n    // The Call back receives a RouteEvent object.\n    ClassName.prototype.onRouteHandler = function (routeEvent) {\n        console.log(routeEvent.params);\n    }\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    Router.add('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/contact/\n    // www.site.com/#/contact/heather/\n    // www.site.com/#/contact/john/\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    Router.add('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/product/shoes/\n    // www.site.com/#/product/jackets/\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    Router.add('*', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/anything/\n    // www.site.com/#/matches/any/hash/url/\n    // www.site.com/#/really/it/matches/any/and/all/hash/urls/\n\n\n**?** The question mark character means it will match a query string for the hash url.\n\n    Router.add('?', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/?one=1&two=2&three=3\n    // www.site.com/#?one=1&two=2&three=3\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    Router.add('', this.method, this);\n    Router.add('/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/\n    // www.site.com/#/\n\n\nOther possible combinations but not limited too:\n\n    Router.add('/games/{gameName}/:level:/', this.method1, this);\n    Router.add('/{category}/blog/', this.method2, this);\n    Router.add('/home/?', this.method3, this);\n    Router.add('/about/*', this.method4, this);\n"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 115,
+            "line": 117,
             "description": "The **Router.remove** method will remove one of the added routes.",
             "itemtype": "method",
             "name": "remove",
@@ -2187,11 +2189,12 @@
                 "\n    // Example of adding a route listener.\n    Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // Example of removing the same added route listener above.\n    Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 143,
+            "line": 145,
             "description": "The **Router.addDefault** method is meant to trigger a callback function if there are no route matches are found.",
             "itemtype": "method",
             "name": "addDefault",
@@ -2214,11 +2217,12 @@
                 "\n    Router.addDefault(this.noRoutesFoundHandler, this);"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 158,
+            "line": 160,
             "description": "The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.",
             "itemtype": "method",
             "name": "removeDefault",
@@ -2229,11 +2233,12 @@
                 "\n    Router.removeDefault();"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 171,
+            "line": 173,
             "description": "Gets the current hash url minus the # or #! symbol(s).",
             "itemtype": "method",
             "name": "getHash",
@@ -2248,11 +2253,12 @@
                 "\n    var str = Router.getHash();"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 188,
+            "line": 190,
             "description": "The **Router.enable** method will allow the Router class to listen for the hashchange event. By default the Router class is enabled.",
             "itemtype": "method",
             "name": "enable",
@@ -2263,11 +2269,12 @@
                 "\n    Router.enable();"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 210,
+            "line": 212,
             "description": "The **Router.disable** method will stop the Router class from listening for the hashchange event.",
             "itemtype": "method",
             "name": "disable",
@@ -2278,11 +2285,12 @@
                 "\n    Router.disable();"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 232,
+            "line": 234,
             "description": "The **Router.start** method is meant to trigger or check the hash url on page load.\nEither you can call this method after you add all your routers or after all data is loaded.\nIt is recommend you only call this once per page or application instantiation.",
             "itemtype": "method",
             "name": "start",
@@ -2293,11 +2301,12 @@
                 "\n    // Example of adding routes and calling the start method.\n    Router.add('/games/{gameName}/:level:/', this.method1, this);\n    Router.add('/{category}/blog/', this.method2, this);\n\n    Router.start();"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 251,
+            "line": 253,
             "description": "The **Router.navigateTo** method allows you to change the hash url and to trigger a route\nthat matches the string value. The second parameter is **silent** and is **false** by\ndefault. This allows you to update the hash url without causing a route callback to be\nexecuted.",
             "itemtype": "method",
             "name": "navigateTo",
@@ -2329,11 +2338,12 @@
                 "\n    // This will update the hash url and trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/');\n\n    // This will update the hash url but will not trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/', true);\n\n    // This will not update the hash url but will trigger the matching route.\n    Router.navigateTo('/games/asteroids/2/', true, true);"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 311,
+            "line": 313,
             "description": "The **Router.clear** will remove all route's and the default route from the Router class.",
             "itemtype": "method",
             "name": "clear",
@@ -2344,11 +2354,12 @@
                 "\n    Router.clear();"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 326,
+            "line": 328,
             "description": "The **Router.destroy** method will null out all references to other objects in the Router class.",
             "itemtype": "method",
             "name": "destroy",
@@ -2359,11 +2370,12 @@
                 "\n    Router.destroy();"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 342,
+            "line": 344,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "onHashChange",
@@ -2378,11 +2390,12 @@
             "tagname": "",
             "static": 1,
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 362,
+            "line": 364,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "changeRoute",
@@ -2397,11 +2410,12 @@
             "tagname": "",
             "static": 1,
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 434,
+            "line": 436,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2410,11 +2424,12 @@
             "tagname": "",
             "static": 1,
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 444,
+            "line": 446,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2423,11 +2438,12 @@
             "tagname": "",
             "static": 1,
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 454,
+            "line": 456,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2436,11 +2452,12 @@
             "tagname": "",
             "static": 1,
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 464,
+            "line": 466,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2449,11 +2466,12 @@
             "tagname": "",
             "static": 1,
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 474,
+            "line": 476,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2466,11 +2484,12 @@
                 "\n    // Read only.\n    console.log(Router.isEnabled);"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 488,
+            "line": 490,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2483,11 +2502,12 @@
                 "\n    Router.useDeepLinking = true;"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 505,
+            "line": 507,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful when used with the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method to use your routes as states rather than using the hash url to control the application.\n\nWhat this allows you to do is have testers jump to sections or levels easily changing the hash url manually but then when it is ready for production I set the property to **false** so users cannot jump around if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2500,11 +2520,12 @@
                 "\n    Router.useDeepLinking = false;\n    Router.allowManualDeepLinking = false;"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 523,
+            "line": 525,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2517,11 +2538,12 @@
                 "\n    // To turn on forcing the forward slash\n    Router.forceSlash = true;\n\n    // If forceSlash is set to true it will change the url from #contact/bob/ to #/contact/bob/\n    // when using the navigateTo method."
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/controller/Router.js",
-            "line": 541,
+            "line": 543,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2534,7 +2556,8 @@
                 "\n    // Only allow the first route matched to be triggered.\n    Router.allowMultipleMatches = false;"
             ],
             "class": "Router",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "controller"
         },
         {
             "file": "src/display/DOMElement.js",
@@ -8274,11 +8297,11 @@
     "warnings": [
         {
             "message": "unknown tag: overridden",
-            "line": " src/controller/ApplicationCacheController.js:30"
+            "line": " src/controller/ApplicationCacheController.js:29"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/controller/ApplicationCacheController.js:50"
+            "line": " src/controller/ApplicationCacheController.js:49"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8730,11 +8753,11 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/controller/ApplicationCacheController.js:30"
+            "line": " src/controller/ApplicationCacheController.js:29"
         },
         {
             "message": "Missing item type",
-            "line": " src/controller/ApplicationCacheController.js:50"
+            "line": " src/controller/ApplicationCacheController.js:49"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
