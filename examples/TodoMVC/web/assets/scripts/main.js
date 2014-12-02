@@ -2,7 +2,7 @@
  * browserify v1.0.0 (dev)
  * Example project for Client.
  *
- * Build Date: 2014-11-15
+ * Build Date: 2014-12-01
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
@@ -2855,7 +2855,7 @@ var Key = require('./constant/Key');
 var FooterView = require('./view/FooterView');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class App
  * @extends Stage
@@ -2960,14 +2960,14 @@ var App = (function () {
         if (this.isEnabled === true) { return this; }
 
         // Class Events
-        this._listItemCollection.addEventListener('loadComplete', this.onLoadedItems, this);//
-        this._footerView.addEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
-        this.addEventListener(BaseEvent.CHANGE, this.onItemChange, this);
-        this.addEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
+        this._listItemCollection.addEventListener('loadComplete', this._onLoadedItems, this);//
+        this._footerView.addEventListener(BaseEvent.CLEAR, this._onClearCompleted, this);
+        this.addEventListener(BaseEvent.CHANGE, this._onItemChange, this);
+        this.addEventListener(BaseEvent.REMOVED, this._onItemRemove, this);
 
         // DOM Events
-        this._$addTodoInput.addEventListener('keypress', this.onCreateTodo, this);
-        this._$markAllCompleteCheckbox.addEventListener('change', this.onAllCompleteChange, this);
+        this._$addTodoInput.addEventListener('keypress', this._onCreateTodo, this);
+        this._$markAllCompleteCheckbox.addEventListener('change', this._onAllCompleteChange, this);
 
         // Load and parse the data in the browsers local storage.
         this._listItemCollection.loadStoredItems();
@@ -2982,14 +2982,14 @@ var App = (function () {
         if (this.isEnabled === false) { return this; }
 
         // Class Events
-        this._listItemCollection.removeEventListener('loadComplete', this.onLoadedItems, this);// Example of plan string event.
-        this._footerView.removeEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
-        this.removeEventListener(BaseEvent.CHANGE, this.onItemChange, this);
-        this.removeEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
+        this._listItemCollection.removeEventListener('loadComplete', this._onLoadedItems, this);// Example of plan string event.
+        this._footerView.removeEventListener(BaseEvent.CLEAR, this._onClearCompleted, this);
+        this.removeEventListener(BaseEvent.CHANGE, this._onItemChange, this);
+        this.removeEventListener(BaseEvent.REMOVED, this._onItemRemove, this);
 
         // DOM Events
-        this._$addTodoInput.removeEventListener('keypress', this.onCreateTodo, this);
-        this._$markAllCompleteCheckbox.removeEventListener('change', this.onAllCompleteChange, this);
+        this._$addTodoInput.removeEventListener('keypress', this._onCreateTodo, this);
+        this._$markAllCompleteCheckbox.removeEventListener('change', this._onAllCompleteChange, this);
 
         return _super.prototype.disable.call(this);
     };
@@ -3005,12 +3005,12 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onCreateTodo
+     * @method _onCreateTodo
      * @private
      */
-    App.prototype.onCreateTodo = function(event) {
+    App.prototype._onCreateTodo = function(event) {
         var todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
@@ -3027,16 +3027,16 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onAllCompleteChange
+     * @method _onAllCompleteChange
      * @private
      */
-    App.prototype.onAllCompleteChange = function(event) {
+    App.prototype._onAllCompleteChange = function(event) {
         var $target = $(event.target);
 
         var listItemComponent;
-        if ($target.prop("checked") == true) {
+        if ($target.prop("checked") === true) {
             for (var i = 0; i < this._todoListContainer.numChildren; i++) {
                 listItemComponent = this._todoListContainer.getChildAt(i);
                 listItemComponent.setCompleted();
@@ -3050,13 +3050,13 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemRemove
+     * @method _onItemRemove
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onItemRemove = function(event) {
+    App.prototype._onItemRemove = function(event) {
         var listItemComponent = event.target;
         var listItemVO = listItemComponent.vo;
 
@@ -3067,26 +3067,26 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemChange
+     * @method _onItemChange
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onItemChange = function(event) {
+    App.prototype._onItemChange = function(event) {
         this._listItemCollection.save();
 
         this.layoutChildren();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onLoadedItems
+     * @method _onLoadedItems
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onLoadedItems = function(event) {
+    App.prototype._onLoadedItems = function(event) {
         var items = this._listItemCollection.items;
         var length = items.length;
 
@@ -3097,13 +3097,13 @@ var App = (function () {
         }
 
         // When the app loads we need to check if all stored items are all completed or not.
-        var isAllCompleted = this._listItemCollection.length == this._listItemCollection.getCompletedCount();
+        var isAllCompleted = this._listItemCollection.length === this._listItemCollection.getCompletedCount();
         this._$markAllCompleteCheckbox.prop('checked', isAllCompleted);
 
         // Setup the router/deeplink handlers
-        Router.add('/active/', this.onActiveHandler.bind(this));
-        Router.add('/completed/', this.onCompletedHandler.bind(this));
-        Router.add('', this.onDefaultHandler.bind(this));
+        Router.add('/active/', this._onActiveHandler.bind(this));
+        Router.add('/completed/', this._onCompletedHandler.bind(this));
+        Router.add('', this._onDefaultHandler.bind(this));
         Router.start();
 
         this.layoutChildren();
@@ -3112,11 +3112,11 @@ var App = (function () {
     /**
      * This method is called when the BaseEvent.CLEAR event is dispatched from the FooterView.
      *
-     * @method onClearCompleted
+     * @method _onClearCompleted
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onClearCompleted = function(event) {
+    App.prototype._onClearCompleted = function(event) {
         var listItemVO;
         var listItemComponent;
 
@@ -3124,7 +3124,7 @@ var App = (function () {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemVO = listItemComponent.vo;
 
-            if (listItemVO.isComplete == true) {
+            if (listItemVO.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);
                 this._listItemCollection.removeItem(listItemVO);
             }
@@ -3137,17 +3137,17 @@ var App = (function () {
      * When the deep link "#/active" tag is triggered this method will hide all items and show only items that are not completed.
      * Also updates the footer nav.
      *
-     * @method onActiveHandler
+     * @method _onActiveHandler
      * @private
      */
-    App.prototype.onActiveHandler = function() {
+    App.prototype._onActiveHandler = function() {
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
-            if (listItemComponent.vo.isComplete == false) {
+            if (listItemComponent.isComplete() === false) {
                 listItemComponent.show();
             }
         }
@@ -3161,17 +3161,17 @@ var App = (function () {
      * When the deep link "#/completed" tag is triggered this method will hide all items and show only items that are completed.
      * Also updates the footer nav.
      *
-     * @method onCompletedHandler
+     * @method _onCompletedHandler
      * @private
      */
-    App.prototype.onCompletedHandler = function() {
+    App.prototype._onCompletedHandler = function() {
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
-            if (listItemComponent.vo.isComplete == true) {
+            if (listItemComponent.isComplete() === true) {
                 listItemComponent.show();
             }
         }
@@ -3185,10 +3185,10 @@ var App = (function () {
      *  When the deep link "#/" tag is triggered this method will show all items.
      *  Also updates the footer nav.
      *
-     * @method onDefaultHandler
+     * @method _onDefaultHandler
      * @private
      */
-    App.prototype.onDefaultHandler = function() {
+    App.prototype._onDefaultHandler = function() {
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
@@ -3213,7 +3213,7 @@ var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
 var Key = require('../constant/Key');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ListItemComponent
  * @extends DOMElement
@@ -3231,7 +3231,7 @@ var ListItemComponent = (function () {
          *
          * @property vo
          * @type {ListItemVO}
-         * @private
+         * @public
          */
         this.vo = vo;
 
@@ -3250,7 +3250,7 @@ var ListItemComponent = (function () {
         this._$itemLabel = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _$markCompleteCheckbox
          * @type {jQuery}
@@ -3287,13 +3287,13 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.enable = function () {
         if (this.isEnabled === true) { return this; }
 
-        this.$element.addEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
-        this.$element.addEventListener('click', '.js-removeTodo', this.onItemRemove, this);
-        this.$element.addEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
+        this.$element.addEventListener('click', '.js-markComplete', this._onItemToggleComplete, this);
+        this.$element.addEventListener('click', '.js-removeTodo', this._onItemRemove, this);
+        this.$element.addEventListener('dblclick', '.js-editTodo', this._onItemEdit, this);
 
-        this.$element.addEventListener('keydown', this.onEscapeKey, this);
-        this.$element.addEventListener('keypress', this.onEnterKey, this);
-        this._$itemInput.addEventListener('blur', this.onInputBlur, this);
+        this.$element.addEventListener('keydown', this._onEscapeKey, this);
+        this.$element.addEventListener('keypress', this._onEnterKey, this);
+        this._$itemInput.addEventListener('blur', this._onInputBlur, this);
 
         return _super.prototype.enable.call(this);
     };
@@ -3304,13 +3304,13 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.disable = function () {
         if (this.isEnabled === false) { return this; }
 
-        this.$element.removeEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
-        this.$element.removeEventListener('click', '.js-removeTodo', this.onItemRemove, this);
-        this.$element.removeEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
+        this.$element.removeEventListener('click', '.js-markComplete', this._onItemToggleComplete, this);
+        this.$element.removeEventListener('click', '.js-removeTodo', this._onItemRemove, this);
+        this.$element.removeEventListener('dblclick', '.js-editTodo', this._onItemEdit, this);
 
-        this.$element.removeEventListener('keydown', this.onEscapeKey, this);
-        this.$element.removeEventListener('keypress', this.onEnterKey, this);
-        this._$itemInput.removeEventListener('blur', this.onInputBlur, this);
+        this.$element.removeEventListener('keydown', this._onEscapeKey, this);
+        this.$element.removeEventListener('keypress', this._onEnterKey, this);
+        this._$itemInput.removeEventListener('blur', this._onInputBlur, this);
 
         return _super.prototype.disable.call(this);
     };
@@ -3325,7 +3325,7 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method setCompleted
      * @public
@@ -3334,11 +3334,11 @@ var ListItemComponent = (function () {
         this.vo.isComplete = true;
 
         this.layoutChildren();
-        this.saveItemText();
+        this._saveItemText();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method setUnCompleted
      * @public
@@ -3347,11 +3347,21 @@ var ListItemComponent = (function () {
         this.vo.isComplete = false;
 
         this.layoutChildren();
-        this.saveItemText();
+        this._saveItemText();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
+     *
+     * @method isComplete
+     * @public
+     */
+    ListItemComponent.prototype.isComplete = function() {
+        return this.vo.isComplete;
+    };
+
+    /**
+     * TODO: YUIDoc_comment
      *
      * @method hide
      * @public
@@ -3361,7 +3371,7 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method show
      * @public
@@ -3371,27 +3381,27 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemToggleComplete
+     * @method _onItemToggleComplete
      * @private
      */
-    ListItemComponent.prototype.onItemToggleComplete = function(event) {
+    ListItemComponent.prototype._onItemToggleComplete = function(event) {
         var isChecked = $(event.target).prop('checked');
 
         this.vo.isComplete = isChecked;
 
         this.layoutChildren();
-        this.saveItemText();
+        this._saveItemText();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemEdit
+     * @method _onItemEdit
      * @private
      */
-    ListItemComponent.prototype.onItemEdit = function(event) {
+    ListItemComponent.prototype._onItemEdit = function(event) {
         this.$element.addClass('editing');
 
         this._$itemInput.focus();
@@ -3399,42 +3409,42 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onEscapeKey
+     * @method _onEscapeKey
      * @private
      */
-    ListItemComponent.prototype.onEscapeKey = function(event) {
+    ListItemComponent.prototype._onEscapeKey = function(event) {
         if (event.which === Key.ESC) {
-            this.resetItemText();
+            this._resetItemText();
         }
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onEscapeKey
+     * @method _onEscapeKey
      * @private
      */
-    ListItemComponent.prototype.onInputBlur = function(event) {
+    ListItemComponent.prototype._onInputBlur = function(event) {
         var todoText = this._$itemInput.val().trim();
 
         if (todoText != '') {
             this.vo.text = todoText;
-            this.resetItemText();
-            this.saveItemText();
+            this._resetItemText();
+            this._saveItemText();
         } else {
-            this.resetItemText();
+            this._resetItemText();
         }
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method resetItemText
+     * @method _resetItemText
      * @private
      */
-    ListItemComponent.prototype.resetItemText = function() {
+    ListItemComponent.prototype._resetItemText = function() {
         this.$element.removeClass('editing');
 
         // We need to reset the hidden input back to the original value.
@@ -3443,41 +3453,41 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method saveItemText
+     * @method _saveItemText
      * @private
      */
-    ListItemComponent.prototype.saveItemText = function() {
+    ListItemComponent.prototype._saveItemText = function() {
         this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.vo));
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemRemove
+     * @method _onItemRemove
      * @private
      */
-    ListItemComponent.prototype.onItemRemove = function(event) {
+    ListItemComponent.prototype._onItemRemove = function(event) {
         this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED, true));
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onEnterKey
+     * @method _onEnterKey
      * @private
      */
-    ListItemComponent.prototype.onEnterKey = function(event) {
+    ListItemComponent.prototype._onEnterKey = function(event) {
         var todoText = this._$itemInput.val().trim();
 
         if (event.which === Key.ENTER) {
             if (todoText != '') {
                 this.vo.text = todoText;
-                this.resetItemText();
-                this.saveItemText();
+                this._resetItemText();
+                this._saveItemText();
             } else {
-                this.resetItemText();
+                this._resetItemText();
             }
         }
     };
@@ -3488,7 +3498,7 @@ var ListItemComponent = (function () {
 module.exports = ListItemComponent;
 },{"../../vendor/structurejs/src/display/DOMElement":30,"../../vendor/structurejs/src/event/BaseEvent":33,"../../vendor/structurejs/src/util/Extend":42,"../constant/Key":19,"./../../vendor/jquery/dist/jquery.js":24}],19:[function(require,module,exports){
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class Key
  * @constructor
@@ -3532,7 +3542,7 @@ var LocalStorageController = require('../../vendor/structurejs/src/controller/Lo
 var ListItemVO = require('./vo/ListItemVO');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ListItemCollection
  * @extends Collection
@@ -3572,7 +3582,7 @@ var ListItemCollection = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method loadStoredItems
      * @public
@@ -3591,7 +3601,7 @@ var ListItemCollection = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method save
      * @public
@@ -3629,7 +3639,7 @@ var Extend = require('../../../vendor/structurejs/src/util/Extend');
 var ValueObject = require('../../../vendor/structurejs/src/model/ValueObject');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ListItemVO
  * @extends ValueObject
@@ -3755,7 +3765,7 @@ var FooterView = (function () {
     FooterView.prototype.enable = function () {
         if (this.isEnabled === true) { return this; }
 
-        this._$clearCompleteButton.addEventListener('click', this.onClear, this);
+        this._$clearCompleteButton.addEventListener('click', this._onClear, this);
 
         return _super.prototype.enable.call(this);
     };
@@ -3766,7 +3776,7 @@ var FooterView = (function () {
     FooterView.prototype.disable = function () {
         if (this.isEnabled === false) { return this; }
 
-        this._$clearCompleteButton.removeEventListener('click', this.onClear, this);
+        this._$clearCompleteButton.removeEventListener('click', this._onClear, this);
 
         return _super.prototype.disable.call(this);
     };
@@ -3808,11 +3818,11 @@ var FooterView = (function () {
      * When the user clicks the "clear completed" button this method will be called and will dispatch an event
      * to tell the parent class that we want to remove all the completed items.
      *
-     * @method onClear
+     * @method _onClear
      * @param event {jQueryEventObject}
      * @private
      */
-    FooterView.prototype.onClear = function(event) {
+    FooterView.prototype._onClear = function(event) {
         // Take note this is not dispatching a BaseEvent object but just the string value constant. The only time you need to dispatch
         // an BaseEvent object or a custom event that extends BaseEvent is when you want to use event bubbling or have custom properties
         // on the event that you want to set.
@@ -23155,7 +23165,7 @@ return jQuery;
     'use strict';
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class Collection
      * @extends EventDispatcher
@@ -23400,7 +23410,7 @@ return jQuery;
         };
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method copy
          * @public
@@ -23412,7 +23422,7 @@ return jQuery;
         };
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method clear
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.

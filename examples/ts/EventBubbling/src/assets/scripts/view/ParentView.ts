@@ -9,7 +9,7 @@ module codeBelt
     import BaseEvent = StructureTS.BaseEvent;
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class ParentView
      * @extends DOMElement

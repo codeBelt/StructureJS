@@ -6,7 +6,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var ValueObject = require('structurejs/model/ValueObject');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class GameVO
      * @extends ValueObject
@@ -20,7 +20,7 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this);
 
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property buttonIndex
              * @type {int}

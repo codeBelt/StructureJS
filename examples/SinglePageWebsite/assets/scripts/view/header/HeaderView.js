@@ -7,7 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var HeaderTemplate = require('hbs!templates/header/HeaderTemplate');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class HeaderView
      * @extends DOMElement
@@ -79,7 +79,7 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method updateNavigation
          * @public
@@ -90,14 +90,16 @@ define(function (require, exports, module) { // jshint ignore:line
             // Make all nav item not active.
             this._$navLinks.removeClass('active');
 
-            if ($navItem.length != 0) {
+            if ($navItem.length !== 0) {
                 // Make the found nav item active that matches the route.
-                $navItem.parent()
-                        .addClass('active');
+                $navItem
+                    .parent()
+                    .addClass('active');
             } else {
                 // If there was no match then make the first nav item active.
-                this._$navLinks.first()
-                               .addClass('active');
+                this._$navLinks
+                    .first()
+                    .addClass('active');
             }
         };
 

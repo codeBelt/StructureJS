@@ -7,10 +7,11 @@ define(function (require, exports, module) { // jshint ignore:line
     var ContactTemplate = require('hbs!templates/contact/ContactTemplate');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class ContactView
      * @extends DOMElement
+     * @param routerEvent {RouterEvent}
      * @constructor
      **/
     var ContactView = (function () {

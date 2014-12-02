@@ -4,7 +4,7 @@ var Stage = window.structurejs.Stage;
 var Router = window.structurejs.Router;
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class Main
  * @extends Stage

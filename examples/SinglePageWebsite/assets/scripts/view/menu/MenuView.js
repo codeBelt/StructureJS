@@ -7,7 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var MenuTemplate = require('hbs!templates/menu/MenuTemplate');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class MenuView
      * @extends DOMElement

@@ -14,7 +14,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var HeaderView = require('view/header/HeaderView');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class RootView
      * @extends DOMElement
@@ -61,11 +61,11 @@ define(function (require, exports, module) { // jshint ignore:line
             this._footerView = new FooterView();
             this.addChild(this._footerView);
 
-            Router.add('', this.homeRouterHandler, this);
-            Router.add('/menu/', this.menuRouterHandler, this);
-            Router.add('/about/', this.aboutRouterHandler, this);
-            Router.add('/services/', this.servicesRouterHandler, this);
-            Router.add('/contact/?', this.contactRouterHandler, this);
+            Router.add('/', this._homeRouterHandler, this);
+            Router.add('/menu/', this._menuRouterHandler, this);
+            Router.add('/about/', this._aboutRouterHandler, this);
+            Router.add('/services/', this._servicesRouterHandler, this);
+            Router.add('contact', this._contactRouterHandler, this);
             Router.add('*', this._allRouterHandler, this);
             Router.start();
         };
@@ -118,46 +118,46 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.prototype.destroy.call(this);
         };
 
-        RootView.prototype.homeRouterHandler = function (routerEvent) {
-            console.log("routerEvent", routerEvent);
+        RootView.prototype._homeRouterHandler = function (routerEvent) {
+            console.log("_homeRouterHandler", routerEvent);
 
-            if (!(this._currentView instanceof HomeView)) {
+            if ((this._currentView instanceof HomeView) === false) {
                 var view = new HomeView();
                 this.changeView(view);
             }
         };
 
-        RootView.prototype.aboutRouterHandler = function (routerEvent) {
-            console.log("routerEvent", routerEvent);
+        RootView.prototype._aboutRouterHandler = function (routerEvent) {
+            console.log("_aboutRouterHandler", routerEvent);
 
-            if (!(this._currentView instanceof AboutView)) {
+            if ((this._currentView instanceof AboutView) === false) {
                 var view = new AboutView();
                 this.changeView(view);
             }
         };
 
-        RootView.prototype.contactRouterHandler = function (routerEvent) {
-            console.log("routerEvent", routerEvent);
+        RootView.prototype._contactRouterHandler = function (routerEvent) {
+            console.log("_contactRouterHandler", routerEvent);
 
-            if (!(this._currentView instanceof ContactView)) {
+            if ((this._currentView instanceof ContactView) === false) {
                 var view = new ContactView(routerEvent);
                 this.changeView(view);
             }
         };
 
-        RootView.prototype.servicesRouterHandler = function (routerEvent) {
-            console.log("routerEvent", routerEvent);
+        RootView.prototype._servicesRouterHandler = function (routerEvent) {
+            console.log("_servicesRouterHandler", routerEvent);
 
-            if (!(this._currentView instanceof ServicesView)) {
+            if ((this._currentView instanceof ServicesView) === false) {
                 var view = new ServicesView();
                 this.changeView(view);
             }
         };
 
-        RootView.prototype.menuRouterHandler = function (routerEvent) {
-            console.log("routerEvent", routerEvent);
+        RootView.prototype._menuRouterHandler = function (routerEvent) {
+            console.log("_menuRouterHandler", routerEvent);
 
-            if (!(this._currentView instanceof MenuView)) {
+            if ((this._currentView instanceof MenuView) === false) {
                 var view = new MenuView();
                 this.changeView(view);
             }
@@ -172,16 +172,16 @@ define(function (require, exports, module) { // jshint ignore:line
             this.addChildAt(this._currentView, 1);
         };
 
-
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method _allRouterHandler
          * @param routerEvent {RouteEvent}
          * @private
          */
         RootView.prototype._allRouterHandler = function(routerEvent) {
-            this._headerView.updateNavigation(routerEvent.params[0]);
+            var pageId = routerEvent.params[0];
+            this._headerView.updateNavigation(pageId);
         };
 
 

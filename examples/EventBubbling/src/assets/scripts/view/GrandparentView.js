@@ -4,7 +4,7 @@ var DOMElement = window.structurejs.DOMElement;
 var BaseEvent = window.structurejs.BaseEvent;
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class GrandparentView
  * @extends DOMElement
@@ -17,8 +17,25 @@ var GrandparentView = (function () {
     function GrandparentView() {
         _super.call(this);
 
+        /**
+         * @property _panelContainer
+         * @type {DOMElement}
+         * @private
+         */
         this._panelContainer = null;
+
+        /**
+         * @property _parentView
+         * @type {ParentView}
+         * @private
+         */
         this._parentView = null;
+
+        /**
+         * @property _grandparentMessage
+         * @type {DOMElement}
+         * @private
+         */
         this._grandparentMessage = null;
     }
 

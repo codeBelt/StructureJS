@@ -2,7 +2,7 @@ var Extend = require('../../../vendor/structurejs/src/util/Extend');
 var ValueObject = require('../../../vendor/structurejs/src/model/ValueObject');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ListItemVO
  * @extends ValueObject

@@ -4,7 +4,7 @@ var DOMElement = window.structurejs.DOMElement;
 var BaseEvent = window.structurejs.BaseEvent;
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ParentView
  * @extends DOMElement

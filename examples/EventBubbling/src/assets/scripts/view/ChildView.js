@@ -5,7 +5,7 @@ var BaseEvent = window.structurejs.BaseEvent;
 var EventBroker = window.structurejs.EventBroker;
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ChildView
  * @extends DOMElement

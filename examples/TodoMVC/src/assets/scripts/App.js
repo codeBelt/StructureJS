@@ -11,7 +11,7 @@ var Key = require('./constant/Key');
 var FooterView = require('./view/FooterView');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class App
  * @extends Stage
@@ -116,14 +116,14 @@ var App = (function () {
         if (this.isEnabled === true) { return this; }
 
         // Class Events
-        this._listItemCollection.addEventListener('loadComplete', this.onLoadedItems, this);//
-        this._footerView.addEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
-        this.addEventListener(BaseEvent.CHANGE, this.onItemChange, this);
-        this.addEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
+        this._listItemCollection.addEventListener('loadComplete', this._onLoadedItems, this);//
+        this._footerView.addEventListener(BaseEvent.CLEAR, this._onClearCompleted, this);
+        this.addEventListener(BaseEvent.CHANGE, this._onItemChange, this);
+        this.addEventListener(BaseEvent.REMOVED, this._onItemRemove, this);
 
         // DOM Events
-        this._$addTodoInput.addEventListener('keypress', this.onCreateTodo, this);
-        this._$markAllCompleteCheckbox.addEventListener('change', this.onAllCompleteChange, this);
+        this._$addTodoInput.addEventListener('keypress', this._onCreateTodo, this);
+        this._$markAllCompleteCheckbox.addEventListener('change', this._onAllCompleteChange, this);
 
         // Load and parse the data in the browsers local storage.
         this._listItemCollection.loadStoredItems();
@@ -138,14 +138,14 @@ var App = (function () {
         if (this.isEnabled === false) { return this; }
 
         // Class Events
-        this._listItemCollection.removeEventListener('loadComplete', this.onLoadedItems, this);// Example of plan string event.
-        this._footerView.removeEventListener(BaseEvent.CLEAR, this.onClearCompleted, this);
-        this.removeEventListener(BaseEvent.CHANGE, this.onItemChange, this);
-        this.removeEventListener(BaseEvent.REMOVED, this.onItemRemove, this);
+        this._listItemCollection.removeEventListener('loadComplete', this._onLoadedItems, this);// Example of plan string event.
+        this._footerView.removeEventListener(BaseEvent.CLEAR, this._onClearCompleted, this);
+        this.removeEventListener(BaseEvent.CHANGE, this._onItemChange, this);
+        this.removeEventListener(BaseEvent.REMOVED, this._onItemRemove, this);
 
         // DOM Events
-        this._$addTodoInput.removeEventListener('keypress', this.onCreateTodo, this);
-        this._$markAllCompleteCheckbox.removeEventListener('change', this.onAllCompleteChange, this);
+        this._$addTodoInput.removeEventListener('keypress', this._onCreateTodo, this);
+        this._$markAllCompleteCheckbox.removeEventListener('change', this._onAllCompleteChange, this);
 
         return _super.prototype.disable.call(this);
     };
@@ -161,12 +161,12 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onCreateTodo
+     * @method _onCreateTodo
      * @private
      */
-    App.prototype.onCreateTodo = function(event) {
+    App.prototype._onCreateTodo = function(event) {
         var todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
@@ -183,16 +183,16 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onAllCompleteChange
+     * @method _onAllCompleteChange
      * @private
      */
-    App.prototype.onAllCompleteChange = function(event) {
+    App.prototype._onAllCompleteChange = function(event) {
         var $target = $(event.target);
 
         var listItemComponent;
-        if ($target.prop("checked") == true) {
+        if ($target.prop("checked") === true) {
             for (var i = 0; i < this._todoListContainer.numChildren; i++) {
                 listItemComponent = this._todoListContainer.getChildAt(i);
                 listItemComponent.setCompleted();
@@ -206,13 +206,13 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemRemove
+     * @method _onItemRemove
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onItemRemove = function(event) {
+    App.prototype._onItemRemove = function(event) {
         var listItemComponent = event.target;
         var listItemVO = listItemComponent.vo;
 
@@ -223,26 +223,26 @@ var App = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemChange
+     * @method _onItemChange
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onItemChange = function(event) {
+    App.prototype._onItemChange = function(event) {
         this._listItemCollection.save();
 
         this.layoutChildren();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onLoadedItems
+     * @method _onLoadedItems
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onLoadedItems = function(event) {
+    App.prototype._onLoadedItems = function(event) {
         var items = this._listItemCollection.items;
         var length = items.length;
 
@@ -253,13 +253,13 @@ var App = (function () {
         }
 
         // When the app loads we need to check if all stored items are all completed or not.
-        var isAllCompleted = this._listItemCollection.length == this._listItemCollection.getCompletedCount();
+        var isAllCompleted = this._listItemCollection.length === this._listItemCollection.getCompletedCount();
         this._$markAllCompleteCheckbox.prop('checked', isAllCompleted);
 
         // Setup the router/deeplink handlers
-        Router.add('/active/', this.onActiveHandler.bind(this));
-        Router.add('/completed/', this.onCompletedHandler.bind(this));
-        Router.add('', this.onDefaultHandler.bind(this));
+        Router.add('/active/', this._onActiveHandler.bind(this));
+        Router.add('/completed/', this._onCompletedHandler.bind(this));
+        Router.add('', this._onDefaultHandler.bind(this));
         Router.start();
 
         this.layoutChildren();
@@ -268,11 +268,11 @@ var App = (function () {
     /**
      * This method is called when the BaseEvent.CLEAR event is dispatched from the FooterView.
      *
-     * @method onClearCompleted
+     * @method _onClearCompleted
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype.onClearCompleted = function(event) {
+    App.prototype._onClearCompleted = function(event) {
         var listItemVO;
         var listItemComponent;
 
@@ -280,7 +280,7 @@ var App = (function () {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemVO = listItemComponent.vo;
 
-            if (listItemVO.isComplete == true) {
+            if (listItemVO.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);
                 this._listItemCollection.removeItem(listItemVO);
             }
@@ -293,17 +293,17 @@ var App = (function () {
      * When the deep link "#/active" tag is triggered this method will hide all items and show only items that are not completed.
      * Also updates the footer nav.
      *
-     * @method onActiveHandler
+     * @method _onActiveHandler
      * @private
      */
-    App.prototype.onActiveHandler = function() {
+    App.prototype._onActiveHandler = function() {
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
-            if (listItemComponent.vo.isComplete == false) {
+            if (listItemComponent.isComplete() === false) {
                 listItemComponent.show();
             }
         }
@@ -317,17 +317,17 @@ var App = (function () {
      * When the deep link "#/completed" tag is triggered this method will hide all items and show only items that are completed.
      * Also updates the footer nav.
      *
-     * @method onCompletedHandler
+     * @method _onCompletedHandler
      * @private
      */
-    App.prototype.onCompletedHandler = function() {
+    App.prototype._onCompletedHandler = function() {
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
-            if (listItemComponent.vo.isComplete == true) {
+            if (listItemComponent.isComplete() === true) {
                 listItemComponent.show();
             }
         }
@@ -341,10 +341,10 @@ var App = (function () {
      *  When the deep link "#/" tag is triggered this method will show all items.
      *  Also updates the footer nav.
      *
-     * @method onDefaultHandler
+     * @method _onDefaultHandler
      * @private
      */
-    App.prototype.onDefaultHandler = function() {
+    App.prototype._onDefaultHandler = function() {
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {

@@ -63,7 +63,7 @@ var FooterView = (function () {
     FooterView.prototype.enable = function () {
         if (this.isEnabled === true) { return this; }
 
-        this._$clearCompleteButton.addEventListener('click', this.onClear, this);
+        this._$clearCompleteButton.addEventListener('click', this._onClear, this);
 
         return _super.prototype.enable.call(this);
     };
@@ -74,7 +74,7 @@ var FooterView = (function () {
     FooterView.prototype.disable = function () {
         if (this.isEnabled === false) { return this; }
 
-        this._$clearCompleteButton.removeEventListener('click', this.onClear, this);
+        this._$clearCompleteButton.removeEventListener('click', this._onClear, this);
 
         return _super.prototype.disable.call(this);
     };
@@ -116,11 +116,11 @@ var FooterView = (function () {
      * When the user clicks the "clear completed" button this method will be called and will dispatch an event
      * to tell the parent class that we want to remove all the completed items.
      *
-     * @method onClear
+     * @method _onClear
      * @param event {jQueryEventObject}
      * @private
      */
-    FooterView.prototype.onClear = function(event) {
+    FooterView.prototype._onClear = function(event) {
         // Take note this is not dispatching a BaseEvent object but just the string value constant. The only time you need to dispatch
         // an BaseEvent object or a custom event that extends BaseEvent is when you want to use event bubbling or have custom properties
         // on the event that you want to set.

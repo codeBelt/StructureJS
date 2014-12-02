@@ -4,7 +4,7 @@ var LocalStorageController = require('../../vendor/structurejs/src/controller/Lo
 var ListItemVO = require('./vo/ListItemVO');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ListItemCollection
  * @extends Collection
@@ -44,7 +44,7 @@ var ListItemCollection = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method loadStoredItems
      * @public
@@ -63,7 +63,7 @@ var ListItemCollection = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method save
      * @public

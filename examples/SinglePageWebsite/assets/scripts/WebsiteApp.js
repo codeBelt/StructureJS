@@ -9,7 +9,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var RootView = require('view/RootView');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class WebsiteApp
      * @extends Stage
@@ -57,8 +57,6 @@ define(function (require, exports, module) { // jshint ignore:line
         WebsiteApp.prototype.enable = function () {
             if (this.isEnabled === true) { return this; }
 
-            this._rootView.enable();
-
             NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this._onNetworkChange, this);
             NetworkMonitor.start();
 
@@ -70,8 +68,6 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         WebsiteApp.prototype.disable = function () {
             if (this.isEnabled === false) { return this; }
-
-            this._rootView.disable();
 
             NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this._onNetworkChange, this);
 
@@ -88,7 +84,7 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method _onNetworkChange
          * @param event {NetworkMonitorEvent}

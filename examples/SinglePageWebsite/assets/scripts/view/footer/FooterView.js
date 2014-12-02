@@ -8,7 +8,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var FooterTemplate = require('hbs!templates/footer/FooterTemplate');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class FooterView
      * @extends DOMElement
@@ -22,7 +22,7 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this);
 
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property _$footerLinks
              * @type {jQuery}
@@ -82,7 +82,7 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method _onClick
          * @param event {jQueryEventObject}

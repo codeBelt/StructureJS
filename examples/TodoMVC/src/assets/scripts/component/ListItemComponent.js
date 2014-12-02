@@ -5,7 +5,7 @@ var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
 var Key = require('../constant/Key');
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class ListItemComponent
  * @extends DOMElement
@@ -23,7 +23,7 @@ var ListItemComponent = (function () {
          *
          * @property vo
          * @type {ListItemVO}
-         * @private
+         * @public
          */
         this.vo = vo;
 
@@ -42,7 +42,7 @@ var ListItemComponent = (function () {
         this._$itemLabel = null;
 
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property _$markCompleteCheckbox
          * @type {jQuery}
@@ -79,13 +79,13 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.enable = function () {
         if (this.isEnabled === true) { return this; }
 
-        this.$element.addEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
-        this.$element.addEventListener('click', '.js-removeTodo', this.onItemRemove, this);
-        this.$element.addEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
+        this.$element.addEventListener('click', '.js-markComplete', this._onItemToggleComplete, this);
+        this.$element.addEventListener('click', '.js-removeTodo', this._onItemRemove, this);
+        this.$element.addEventListener('dblclick', '.js-editTodo', this._onItemEdit, this);
 
-        this.$element.addEventListener('keydown', this.onEscapeKey, this);
-        this.$element.addEventListener('keypress', this.onEnterKey, this);
-        this._$itemInput.addEventListener('blur', this.onInputBlur, this);
+        this.$element.addEventListener('keydown', this._onEscapeKey, this);
+        this.$element.addEventListener('keypress', this._onEnterKey, this);
+        this._$itemInput.addEventListener('blur', this._onInputBlur, this);
 
         return _super.prototype.enable.call(this);
     };
@@ -96,13 +96,13 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.disable = function () {
         if (this.isEnabled === false) { return this; }
 
-        this.$element.removeEventListener('click', '.js-markComplete', this.onItemToggleComplete, this);
-        this.$element.removeEventListener('click', '.js-removeTodo', this.onItemRemove, this);
-        this.$element.removeEventListener('dblclick', '.js-editTodo', this.onItemEdit, this);
+        this.$element.removeEventListener('click', '.js-markComplete', this._onItemToggleComplete, this);
+        this.$element.removeEventListener('click', '.js-removeTodo', this._onItemRemove, this);
+        this.$element.removeEventListener('dblclick', '.js-editTodo', this._onItemEdit, this);
 
-        this.$element.removeEventListener('keydown', this.onEscapeKey, this);
-        this.$element.removeEventListener('keypress', this.onEnterKey, this);
-        this._$itemInput.removeEventListener('blur', this.onInputBlur, this);
+        this.$element.removeEventListener('keydown', this._onEscapeKey, this);
+        this.$element.removeEventListener('keypress', this._onEnterKey, this);
+        this._$itemInput.removeEventListener('blur', this._onInputBlur, this);
 
         return _super.prototype.disable.call(this);
     };
@@ -117,7 +117,7 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method setCompleted
      * @public
@@ -126,11 +126,11 @@ var ListItemComponent = (function () {
         this.vo.isComplete = true;
 
         this.layoutChildren();
-        this.saveItemText();
+        this._saveItemText();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method setUnCompleted
      * @public
@@ -139,11 +139,21 @@ var ListItemComponent = (function () {
         this.vo.isComplete = false;
 
         this.layoutChildren();
-        this.saveItemText();
+        this._saveItemText();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
+     *
+     * @method isComplete
+     * @public
+     */
+    ListItemComponent.prototype.isComplete = function() {
+        return this.vo.isComplete;
+    };
+
+    /**
+     * TODO: YUIDoc_comment
      *
      * @method hide
      * @public
@@ -153,7 +163,7 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @method show
      * @public
@@ -163,27 +173,27 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemToggleComplete
+     * @method _onItemToggleComplete
      * @private
      */
-    ListItemComponent.prototype.onItemToggleComplete = function(event) {
+    ListItemComponent.prototype._onItemToggleComplete = function(event) {
         var isChecked = $(event.target).prop('checked');
 
         this.vo.isComplete = isChecked;
 
         this.layoutChildren();
-        this.saveItemText();
+        this._saveItemText();
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemEdit
+     * @method _onItemEdit
      * @private
      */
-    ListItemComponent.prototype.onItemEdit = function(event) {
+    ListItemComponent.prototype._onItemEdit = function(event) {
         this.$element.addClass('editing');
 
         this._$itemInput.focus();
@@ -191,42 +201,42 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onEscapeKey
+     * @method _onEscapeKey
      * @private
      */
-    ListItemComponent.prototype.onEscapeKey = function(event) {
+    ListItemComponent.prototype._onEscapeKey = function(event) {
         if (event.which === Key.ESC) {
-            this.resetItemText();
+            this._resetItemText();
         }
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onEscapeKey
+     * @method _onEscapeKey
      * @private
      */
-    ListItemComponent.prototype.onInputBlur = function(event) {
+    ListItemComponent.prototype._onInputBlur = function(event) {
         var todoText = this._$itemInput.val().trim();
 
         if (todoText != '') {
             this.vo.text = todoText;
-            this.resetItemText();
-            this.saveItemText();
+            this._resetItemText();
+            this._saveItemText();
         } else {
-            this.resetItemText();
+            this._resetItemText();
         }
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method resetItemText
+     * @method _resetItemText
      * @private
      */
-    ListItemComponent.prototype.resetItemText = function() {
+    ListItemComponent.prototype._resetItemText = function() {
         this.$element.removeClass('editing');
 
         // We need to reset the hidden input back to the original value.
@@ -235,41 +245,41 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method saveItemText
+     * @method _saveItemText
      * @private
      */
-    ListItemComponent.prototype.saveItemText = function() {
+    ListItemComponent.prototype._saveItemText = function() {
         this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.vo));
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onItemRemove
+     * @method _onItemRemove
      * @private
      */
-    ListItemComponent.prototype.onItemRemove = function(event) {
+    ListItemComponent.prototype._onItemRemove = function(event) {
         this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED, true));
     };
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
-     * @method onEnterKey
+     * @method _onEnterKey
      * @private
      */
-    ListItemComponent.prototype.onEnterKey = function(event) {
+    ListItemComponent.prototype._onEnterKey = function(event) {
         var todoText = this._$itemInput.val().trim();
 
         if (event.which === Key.ENTER) {
             if (todoText != '') {
                 this.vo.text = todoText;
-                this.resetItemText();
-                this.saveItemText();
+                this._resetItemText();
+                this._saveItemText();
             } else {
-                this.resetItemText();
+                this._resetItemText();
             }
         }
     };

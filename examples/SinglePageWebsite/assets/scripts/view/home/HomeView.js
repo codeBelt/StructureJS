@@ -7,7 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var HomeTemplates = require('hbs!templates/home/HomeTemplate');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class HomeView
      * @extends DOMElement

@@ -8,7 +8,7 @@ var Router = window.structurejs.Router;
 //var GrandparentView = window.GrandparentView;
 
 /**
- * YUIDoc_comment
+ * TODO: YUIDoc_comment
  *
  * @class EventBubblingApp
  * @extends Stage

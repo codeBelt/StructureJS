@@ -7,7 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var AboutTemplate = require('hbs!templates/about/AboutTemplate');
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class AboutView
      * @extends DOMElement
