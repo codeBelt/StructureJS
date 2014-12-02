@@ -28,7 +28,7 @@ module StructureTS
         /**
          * Indicates the object that contains child object. Use the parent property
          * to specify a relative path to display objects that are above the current display object in the display
-         * list hierarchy.
+         * list hierarchy. Helps facilitates event bubbling.
          *
          * @property parent
          * @type {any}
@@ -133,15 +133,22 @@ module StructureTS
          * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
          *
          * @method dispatchEvent
-         * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-         * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
+         * @param event {string|BaseEvent} The Event object or event type string you want to dispatch. You can create custom events, the only requirement is all events must extend {{#crossLink "BaseEvent"}}{{/crossLink}}.
+         * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink "BaseEvent"}}{{/crossLink}}.
          * @public
          * @chainable
          * @example
-         *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      this.dispatchEvent('change');
+         *
+         *      // Example with sending data with the event:
+         *      this.dispatchEvent('change', {some: 'data'});
+         *
+         *      // Example with an event object
+         *      // (event type, bubbling set to true, cancelable set to true and passing data) :
+         *      var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
          *      this.dispatchEvent(event);
          *
-         *      // Here is a common inline event being dispatched
+         *      // Here is a common inline event object being dispatched:
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         public dispatchEvent(type:any, data:any = null):EventDispatcher

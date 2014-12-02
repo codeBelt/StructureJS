@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.3",
+        "version": "0.6.4",
         "url": ""
     },
     "files": {
@@ -4241,7 +4241,7 @@
         {
             "file": "src/event/EventDispatcher.js",
             "line": 42,
-            "description": "Indicates the object that contains child object. Use the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy.",
+            "description": "Indicates the object that contains child object. Use the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy. Helps facilitates event bubbling.",
             "itemtype": "property",
             "name": "parent",
             "type": "{any}",
@@ -4334,15 +4334,22 @@
             "params": [
                 {
                     "name": "event",
-                    "description": "The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must\nextend the {{#crossLink \"BaseEvent\"}}{{/crossLink}}.",
-                    "type": "BaseEvent"
+                    "description": "The Event object or event type string you want to dispatch. You can create custom events, the only requirement is all events must extend {{#crossLink \"BaseEvent\"}}{{/crossLink}}.",
+                    "type": "String|BaseEvent"
+                },
+                {
+                    "name": "data",
+                    "description": "The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink \"BaseEvent\"}}{{/crossLink}}.",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
                 }
             ],
             "access": "public",
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     var event = new BaseEvent(BaseEvent.CHANGE);\n     this.dispatchEvent(event);\n\n     // Here is a common inline event being dispatched\n     this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
+                "\n     this.dispatchEvent('change');\n\n     // Example with sending data with the event:\n     this.dispatchEvent('change', {some: 'data'});\n\n     // Example with an event object\n     // (event type, bubbling set to true, cancelable set to true and passing data) :\n     var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});\n     this.dispatchEvent(event);\n\n     // Here is a common inline event object being dispatched:\n     this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4350,7 +4357,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 203,
+            "line": 210,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -4386,7 +4393,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 230,
+            "line": 237,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -4405,7 +4412,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 264,
+            "line": 271,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -8423,7 +8430,7 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/EventDispatcher.js:264"
+            "line": " src/event/EventDispatcher.js:271"
         },
         {
             "message": "unknown tag: overridden",
@@ -8803,7 +8810,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/event/EventDispatcher.js:264"
+            "line": " src/event/EventDispatcher.js:271"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

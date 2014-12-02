@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.4</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -202,7 +202,7 @@
             /**
              * Indicates the object that contains child object. Use the parent property
              * to specify a relative path to display objects that are above the current display object in the display
-             * list hierarchy.
+             * list hierarchy. Helps facilitates event bubbling.
              *
              * @property parent
              * @type {any}
@@ -294,15 +294,22 @@
          * &lt;p&gt;Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.&lt;/p&gt;
          *
          * @method dispatchEvent
-         * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-         * extend the {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}}.
+         * @param event {string|BaseEvent} The Event object or event type string you want to dispatch. You can create custom events, the only requirement is all events must extend {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}}.
+         * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}}.
          * @public
          * @chainable
          * @example
-         *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      this.dispatchEvent(&#x27;change&#x27;);
+         *
+         *      // Example with sending data with the event:
+         *      this.dispatchEvent(&#x27;change&#x27;, {some: &#x27;data&#x27;});
+         *
+         *      // Example with an event object
+         *      // (event type, bubbling set to true, cancelable set to true and passing data) :
+         *      var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#x27;data&#x27;});
          *      this.dispatchEvent(event);
          *
-         *      // Here is a common inline event being dispatched
+         *      // Here is a common inline event object being dispatched:
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         EventDispatcher.prototype.dispatchEvent = function (type, data) {

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.4</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -892,7 +892,7 @@
         <div class="description">
             <p>Indicates the object that contains child object. Use the parent property
 to specify a relative path to display objects that are above the current display object in the display
-list hierarchy.</p>
+list hierarchy. Helps facilitates event bubbling.</p>
 
         </div>
 
@@ -2081,6 +2081,12 @@ on other objects before calling the super.</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[data=null]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -2138,14 +2144,30 @@ on other objects before calling the super.</p>
                     <li class="param">
                         
                             <code class="param-name">event</code>
-                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
+                            <p>The Event object or event type string you want to dispatch. You can create custom events, the only requirement is all events must extend <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[data=null]</code>
+                            <span class="type">Any</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The optional data you want to send with the event. Do not use this parameter if you are passing in a <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
 
                         </div>
 
@@ -2163,10 +2185,17 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> var event = new BaseEvent(BaseEvent.CHANGE);
+                    <pre class="code prettyprint"><code> this.dispatchEvent(&#39;change&#39;);
+
+ // Example with sending data with the event:
+ this.dispatchEvent(&#39;change&#39;, {some: &#39;data&#39;});
+
+ // Example with an event object
+ // (event type, bubbling set to true, cancelable set to true and passing data) :
+ var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
  this.dispatchEvent(event);
 
- // Here is a common inline event being dispatched
+ // Here is a common inline event object being dispatched:
  this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
 
                 </div>
@@ -2632,7 +2661,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l230"><code>src&#x2F;event&#x2F;EventDispatcher.js:230</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l237"><code>src&#x2F;event&#x2F;EventDispatcher.js:237</code></a>
         
         </p>
 
@@ -2828,7 +2857,7 @@ extend the <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.<
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l203"><code>src&#x2F;event&#x2F;EventDispatcher.js:203</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l210"><code>src&#x2F;event&#x2F;EventDispatcher.js:210</code></a>
         
         </p>
 
