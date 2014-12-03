@@ -157,7 +157,7 @@
             var event = type;
 
             if (typeof event === 'string') {
-                event = new StructureTS.BaseEvent(type, false, true, data);
+                event = new BaseEvent(type, false, true, data);
             }
 
             // If target is null then set it to the object that dispatched the event.
