@@ -43,7 +43,12 @@
 
             for (var i = 0; i < length; i++) {
                 var component = new ComponentClass($elements.eq(i));
-                scope.addChild(component);
+
+                // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
+                if (typeof component.getQualifiedClassName === 'function') {
+                    scope.addChild(component);
+                }
+
                 list.push(component);
             }
 

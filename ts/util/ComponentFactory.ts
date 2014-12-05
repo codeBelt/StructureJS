@@ -22,13 +22,13 @@ module StructureTS
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {DisplayObjectContainer} The class that you want instantiated.
+         * @param ComponentClass {any} The class that you want instantiated.
          * @param scope {any} The base DOMElement needs a scope (parent object) to instantiate the component/view.
-         * @return {Array.<DisplayObjectContainer>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+         * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
          */
-        public static create = function ($elements:JQuery, ComponentClass:DisplayObjectContainer, scope:any):DisplayObjectContainer[]
+        public static create = function ($elements:JQuery, ComponentClass:any, scope:any):any[]
         {
             var list:DisplayObjectContainer[] = [];
             var length:number = $elements.length;
@@ -36,7 +36,12 @@ module StructureTS
             for (var i = 0; i < length; i++)
             {
                 var component = new (<any>ComponentClass)($elements.eq(i));
-                scope.addChild(component);
+
+                // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
+                if (typeof component.getQualifiedClassName === 'function') {
+                    scope.addChild(component);
+                }
+
                 list.push(component);
             }
 
