@@ -438,7 +438,12 @@ module StructureTS
          */
         public clone():BaseEvent
         {
-            return new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+            var event = new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+            event.target = this.target;
+            event.currentTarget = this.currentTarget;
+            event.isPropagationStopped = this.isPropagationStopped;
+            event.isImmediatePropagationStopped = this.isImmediatePropagationStopped;
+            return event;
         }
 
         /**
