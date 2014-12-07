@@ -32,12 +32,13 @@
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
          * @param ComponentClass {any} The class that you want instantiated.
-         * @param scope {any} The base DOMElement needs a scope (parent object) to instantiate the component/view.
+         * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink "DisplayObjectContainer/addChild:method"}}{{/crossLink}} method.
          * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
          */
         ComponentFactory.create = function ($elements, ComponentClass, scope) {
+            if (typeof scope === "undefined") { scope = null; }
             var list = [];
             var length = $elements.length;
 
@@ -45,7 +46,7 @@
                 var component = new ComponentClass($elements.eq(i));
 
                 // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
-                if (typeof component.getQualifiedClassName === 'function') {
+                if (scope !== null && typeof component.getQualifiedClassName === 'function') {
                     scope.addChild(component);
                 }
 
