@@ -3,6 +3,8 @@ var Extend = window.structurejs.Extend;
 var DOMElement = window.structurejs.DOMElement;
 var BaseEvent = window.structurejs.BaseEvent;
 
+var ChildView = window.ChildView;
+
 /**
  * TODO: YUIDoc_comment
  *
@@ -14,33 +16,34 @@ var ParentView = (function () {
 
     var _super = Extend(ParentView, DOMElement);
 
-    function ParentView() {
-        _super.call(this);
+    function ParentView($element) {
+        _super.call(this, $element);
 
-        this._panelContainer = null;
         this._childView = null;
-        this._parentMessage = null;
+        this._$parentMessage = null;
+        this._$checkbox = null;
     }
 
     /**
      * @overridden DOMElement.createChildren
      */
     ParentView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
+        _super.prototype.createChildren.call(this);
 
-        this._panelContainer = this.getChild('.js-panelContent');
+        this._childView = new ChildView(this.$element.find('.js-childContent'));
+        this.addChild(this._childView);
 
-        this._childView = new ChildView();
-        this._panelContainer.addChild(this._childView);
+        this._$parentMessage = this.$element.find('.js-parentMessage');
 
-        this._parentMessage = this.getChild('.js-message');
+        this._$checkbox = this.$element.find('[type=checkbox]').first();
     };
 
     /**
      * @overridden DOMElement.layoutChildren
      */
     ParentView.prototype.layoutChildren = function () {
-        this._parentMessage.$element.css('opacity', 0);
+        this._$parentMessage.text('');
+        this._$checkbox.prop('checked', false);
         this._childView.layoutChildren();
 
         return this;
@@ -77,19 +80,22 @@ var ParentView = (function () {
      */
     ParentView.prototype.destroy = function () {
         this._childView.destroy();
-        this._panelContainer.destroy();
 
         _super.prototype.destroy.call(this);
     };
 
-    ParentView.prototype._onBubbled = function (event) {
-        var checkbox = this._panelContainer.$element.find('[type=checkbox]').first().prop('checked');
+    ParentView.prototype._onBubbled = function (baseEvent) {
+        var checkbox = this.$element.find('[type=checkbox]').first().prop('checked');
 
-        if (checkbox == true) {
-            event.stopPropagation();
+        if (checkbox === true) {
+            baseEvent.stopPropagation();
         }
 
-        this._parentMessage.$element.css('opacity', 1);
+        var text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
+        text += '<strong>' + baseEvent.currentTarget.getQualifiedClassName() + '</strong> last touched the event.<br/ >';
+        text += '<strong>' + baseEvent.target.getQualifiedClassName() + '</strong> sent the event.';
+
+        this._$parentMessage.html(text);
     };
 
     return ParentView;

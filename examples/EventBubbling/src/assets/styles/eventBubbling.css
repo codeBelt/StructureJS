@@ -20,6 +20,10 @@ a {
     color: #ffffff;
 }
 
+strong {
+    font-weight: bold;;
+}
+
 .eventBubblingApp {
     margin: auto;
     width:350px;

@@ -3,6 +3,8 @@ var Extend = window.structurejs.Extend;
 var DOMElement = window.structurejs.DOMElement;
 var BaseEvent = window.structurejs.BaseEvent;
 
+var ParentView = window.ParentView;
+
 /**
  * TODO: YUIDoc_comment
  *
@@ -14,50 +16,34 @@ var GrandparentView = (function () {
 
     var _super = Extend(GrandparentView, DOMElement);
 
-    function GrandparentView() {
-        _super.call(this);
+    function GrandparentView($element) {
+        _super.call(this, $element);
 
-        /**
-         * @property _panelContainer
-         * @type {DOMElement}
-         * @private
-         */
-        this._panelContainer = null;
-
-        /**
-         * @property _parentView
-         * @type {ParentView}
-         * @private
-         */
         this._parentView = null;
-
-        /**
-         * @property _grandparentMessage
-         * @type {DOMElement}
-         * @private
-         */
-        this._grandparentMessage = null;
+        this._$grandparentMessage = null;
+        this._$checkbox = null;
     }
 
     /**
      * @overridden DOMElement.createChildren
      */
     GrandparentView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, 'templates/ContainerTemplate', { title: this.getQualifiedClassName() });
+        _super.prototype.createChildren.call(this);
 
-        this._panelContainer = this.getChild('.js-panelContent');
+        this._parentView = new ParentView(this.$element.find('.js-parentContent'));
+        this.addChild(this._parentView);
 
-        this._parentView = new ParentView();
-        this._panelContainer.addChild(this._parentView);
+        this._$grandparentMessage = this.$element.find('.js-grandparentMessage');
 
-        this._grandparentMessage = this.getChild('.js-message');
+        this._$checkbox = this.$element.find('[type=checkbox]').first();
     };
 
     /**
      * @overridden DOMElement.layoutChildren
      */
     GrandparentView.prototype.layoutChildren = function () {
-        this._grandparentMessage.$element.css('opacity', 0);
+        this._$grandparentMessage.text('');
+        this._$checkbox.prop('checked', false);
         this._parentView.layoutChildren();
 
         return this;
@@ -94,19 +80,22 @@ var GrandparentView = (function () {
      */
     GrandparentView.prototype.destroy = function () {
         this._parentView.destroy();
-        this._panelContainer.destroy();
 
         _super.prototype.destroy.call(this);
     };
 
-    GrandparentView.prototype._onBubbled = function (event) {
-        var checkbox = this._panelContainer.$element.find('[type=checkbox]').first().prop('checked');
+    GrandparentView.prototype._onBubbled = function (baseEvent) {
+        var checkbox = this.$element.find('[type=checkbox]').first().prop('checked');
 
-        if (checkbox == true) {
-            event.stopPropagation();
+        if (checkbox === true) {
+            baseEvent.stopPropagation();
         }
 
-        this._grandparentMessage.$element.css('opacity', 1);
+        var text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
+        text += '<strong>' + baseEvent.currentTarget.getQualifiedClassName() + '</strong> last touched the event.<br/ >';
+        text += '<strong>' + baseEvent.target.getQualifiedClassName() + '</strong> sent the event.';
+
+        this._$grandparentMessage.html(text);
     };
 
     return GrandparentView;

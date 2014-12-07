@@ -15,33 +15,33 @@ var ChildView = (function () {
 
     var _super = Extend(ChildView, DOMElement);
 
-    function ChildView() {
-        _super.call(this);
+    function ChildView($element) {
+        _super.call(this, $element);
 
-        this._panelContainer = null;
-        this._dispatchButton = null;
-        this._sonMessage = null;
+        this._$dispatchButton = null;
+        this._$sonMessage = null;
+        this._$checkbox = null;
     }
 
     /**
      * @overridden DOMElement.createChildren
      */
     ChildView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
+        _super.prototype.createChildren.call(this);
 
-        this._panelContainer = this.getChild('.js-panelContent');
+        this._$dispatchButton = this.$element.find('.js-dispatchButton');
 
-        this._dispatchButton = new DOMElement('button', { 'class': 'button_dispatch', text: 'Dispatch Event' });
-        this._panelContainer.addChild(this._dispatchButton);
+        this._$sonMessage = this.$element.find('.js-childMessage');
 
-        this._sonMessage = this.getChild('.js-message');
+        this._$checkbox = this.$element.find('[type=checkbox]').first();
     };
 
     /**
      * @overridden DOMElement.layoutChildren
      */
     ChildView.prototype.layoutChildren = function () {
-        this._sonMessage.$element.css('opacity', 0);
+        this._$sonMessage.text('');
+        this._$checkbox.prop('checked', false);
 
         return this;
     };
@@ -54,7 +54,7 @@ var ChildView = (function () {
 
         this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
-        this._dispatchButton.$element.addEventListener('click', this._onButtonClick, this);
+        this._$dispatchButton.addEventListener('click', this._onButtonClick, this);
 
         return _super.prototype.enable.call(this);
     };
@@ -67,7 +67,7 @@ var ChildView = (function () {
 
         this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
-        this._dispatchButton.$element.removeEventListener('click', this._onButtonClick, this);
+        this._$dispatchButton.removeEventListener('click', this._onButtonClick, this);
 
         return _super.prototype.disable.call(this);
     };
@@ -76,8 +76,6 @@ var ChildView = (function () {
      * @overridden DOMElement.destroy
      */
     ChildView.prototype.destroy = function () {
-        this._dispatchButton.destroy();
-        this._panelContainer.destroy();
 
         _super.prototype.destroy.call(this);
     };
@@ -89,14 +87,16 @@ var ChildView = (function () {
         EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
     };
 
-    ChildView.prototype._onBubbled = function (event) {
-        var checkbox = this._panelContainer.$element.find('[type=checkbox]').first().prop('checked');
-
-        if (checkbox == true) {
-            event.stopPropagation();
+    ChildView.prototype._onBubbled = function (baseEvent) {
+        if (this._$checkbox.prop('checked') === true) {
+            baseEvent.stopPropagation();
         }
 
-        this._sonMessage.$element.css('opacity', 1);
+        var text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
+        text += '<strong>' + baseEvent.currentTarget.getQualifiedClassName() + '</strong> last touched the event.<br/ >';
+        text += '<strong>' + baseEvent.target.getQualifiedClassName() + '</strong> sent the event.';
+
+        this._$sonMessage.html(text);
     };
 
     return ChildView;
