@@ -31,9 +31,9 @@
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {DisplayObjectContainer} The class that you want instantiated.
+         * @param ComponentClass {any} The class that you want instantiated.
          * @param scope {any} The base DOMElement needs a scope (parent object) to instantiate the component/view.
-         * @return {Array.<DisplayObjectContainer>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+         * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
          */
