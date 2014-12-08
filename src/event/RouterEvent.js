@@ -9,15 +9,15 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.RouteEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.structurejs.RouterEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
     'use strict';
 
     /**
-     * The RouteEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
+     * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
      *
-     * @class RouteEvent
+     * @class RouterEvent
      * @extends BaseEvent
      * @param type {string} The type of event. The type is case-sensitive.
      * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
@@ -27,21 +27,23 @@
      * @param [data=null] {any} Use to pass any type of data with the event.
      * @module StructureJS
      * @submodule event
+     * @uses Extend
+     * @uses BaseEvent
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var RouteEvent = (function () {
+    var RouterEvent = (function () {
 
-        var _super = Extend(RouteEvent, BaseEvent);
+        var _super = Extend(RouterEvent, BaseEvent);
 
-        function RouteEvent(type, bubbles, cancelable, data) {
-            if (typeof type === "undefined") { type = RouteEvent.CHANGE; }
+        function RouterEvent(type, bubbles, cancelable, data) {
+            if (typeof type === "undefined") { type = RouterEvent.CHANGE; }
             if (typeof bubbles === "undefined") { bubbles = false; }
             if (typeof cancelable === "undefined") { cancelable = false; }
             if (typeof data === "undefined") { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
             /**
-             * The route that was matched against {{#crossLink "RouteEvent/routePattern:property"}}{{/crossLink}} property.
+             * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
              *
              * @property route
              * @type {string}
@@ -65,7 +67,7 @@
              */
             this.oldURL = null;
             /**
-             * The route pattern that matched the {{#crossLink "RouteEvent/route:property"}}{{/crossLink}} property.
+             * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
              *
              * @property routePattern
              * @type {string}
@@ -74,7 +76,7 @@
             this.routePattern = null;
             /**
              * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
-             * being called with the {{#crossLink "RouteEvent/routePattern:property"}}{{/crossLink}} property.
+             * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
              *
              * @property params
              * @type {string}
@@ -93,8 +95,8 @@
         /**
          * @overridden BaseEvent.clone
          */
-        RouteEvent.prototype.clone = function () {
-            var event = new RouteEvent(this.type, this.bubble, this.cancelable, this.data);
+        RouterEvent.prototype.clone = function () {
+            var event = new RouterEvent(this.type, this.bubble, this.cancelable, this.data);
             event.route = this.route;
             event.newURL = this.newURL;
             event.oldURL = this.oldURL;
@@ -103,15 +105,15 @@
             return event;
         };
         /**
-         * The RouteEvent.CHANGE constant defines the value of the type property of an change route event object.
+         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
          *
          * @event CHANGE
          * @type {string}
          * @static
          */
-        RouteEvent.CHANGE = 'RouteEvent.change';
-        return RouteEvent;
+        RouterEvent.CHANGE = 'RouterEvent.change';
+        return RouterEvent;
     })();
 
-    return RouteEvent;
+    return RouterEvent;
 }));

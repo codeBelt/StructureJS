@@ -19,6 +19,9 @@
      *
      * @class NetworkMonitor
      * @constructor
+     * @uses EventDispatcher
+     * @uses NavigatorEvents
+     * @uses NetworkMonitorEvent
      * @author Robert S. (www.codeBelt.com)
      * @static
      */

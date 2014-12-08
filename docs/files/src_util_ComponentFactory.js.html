@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -180,6 +182,7 @@
      * @class ComponentFactory
      * @constructor
      * @author Robert S. (www.codeBelt.com)
+     * @static
      */
     var ComponentFactory = (function () {
 
@@ -191,19 +194,25 @@
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {DisplayObjectContainer} The class that you want instantiated.
-         * @param scope {any} The base DOMElement needs a scope (parent object) to instantiate the component/view.
-         * @return {Array.&lt;DisplayObjectContainer&gt;} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+         * @param ComponentClass {any} The class that you want instantiated.
+         * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink &quot;DisplayObjectContainer/addChild:method&quot;}}{{/crossLink}} method.
+         * @return {Array.&lt;any&gt;} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
          */
         ComponentFactory.create = function ($elements, ComponentClass, scope) {
+            if (typeof scope === &quot;undefined&quot;) { scope = null; }
             var list = [];
             var length = $elements.length;
 
             for (var i = 0; i &lt; length; i++) {
                 var component = new ComponentClass($elements.eq(i));
-                scope.addChild(component);
+
+                // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
+                if (scope !== null &amp;&amp; typeof component.getQualifiedClassName === &#x27;function&#x27;) {
+                    scope.addChild(component);
+                }
+
                 list.push(component);
             }
 

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -163,15 +165,15 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../net/URLRequestMethod&#x27;, &#x27;../net/URLContentType&#x27;], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;../BaseObject&#x27;, &#x27;../net/URLRequestMethod&#x27;, &#x27;../net/URLContentType&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../net/URLRequestMethod&#x27;), require(&#x27;../net/URLContentType&#x27;));
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../BaseObject&#x27;), require(&#x27;../net/URLRequestMethod&#x27;), require(&#x27;../net/URLContentType&#x27;));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.URLRequestMethod, root.structurejs.URLContentType);
+        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.URLRequestMethod, root.structurejs.URLContentType);
     }
-}(this, function(Extend, EventDispatcher, URLRequestMethod, URLContentType) {
+}(this, function(Extend, BaseObject, URLRequestMethod, URLContentType) {
     &#x27;use strict&#x27;;
 
     /**
@@ -179,16 +181,20 @@
      * URLRequest objects are passed to the load() methods of the {{#crossLink &quot;URLLoader&quot;}}{{/crossLink}} classes.
      *
      * @class URLRequest
-     * @extends EventDispatcher
+     * @extends BaseObject
      * @param url [string=null] The URL to be requested. You can set the URL later by using the url property.
      * @module StructureJS
      * @submodule net
+     * @uses Extend
+     * @uses BaseObject
+     * @uses URLRequestMethod
+     * @uses URLContentType
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
     var URLRequest = (function () {
 
-        var _super = Extend(URLRequest, EventDispatcher);
+        var _super = Extend(URLRequest, BaseObject);
 
         function URLRequest(url) {
             if (typeof url === &quot;undefined&quot;) { url = null; }

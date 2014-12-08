@@ -7,6 +7,8 @@
  * @class EventBroker
  * @module StructureJS
  * @submodule event
+ * @uses EventDispatcher
+ * @uses BaseEvent
  * @static
  * @author Robert S. (www.codeBelt.com)
  */

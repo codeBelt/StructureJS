@@ -6,6 +6,7 @@
  * @module StructureJS
  * @submodule util
  * @author Robert S. (www.codeBelt.com)
+ * @static
  */
 module StructureTS
 {

@@ -21,6 +21,9 @@
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule util
+     * @uses Extend
+     * @uses EventDispatcher
+     * @uses TimerEvent
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */

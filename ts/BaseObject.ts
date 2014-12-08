@@ -13,6 +13,7 @@
  * @class BaseObject
  * @module StructureJS
  * @submodule core
+ * @uses Util
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
@@ -66,10 +67,10 @@ module StructureTS
          * @public
          * @example
          *     ClassName.prototype.destroy = function() {
-     *          this._childInstance.destroy();
-     *
-     *          _super.prototype.destroy.call(this);
-     *     }
+         *          this._childInstance.destroy();
+         *
+         *          _super.prototype.destroy.call(this);
+         *     }
          */
         public destroy():void
         {

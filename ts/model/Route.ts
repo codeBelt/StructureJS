@@ -5,10 +5,10 @@
  * @class Route
  * @module StructureJS
  * @submodule model
- * @constructor
  * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ''
  * @param callback {Function} The function that should be executed when a request matches the routePattern.
  * @param callbackScope {any} The scope of the callback function that should be executed.
+ * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example
  *     // Example of adding a route listener and the function callback below.

@@ -7,6 +7,8 @@
  * @class ApplicationCacheController
  * @module StructureJS
  * @submodule controller
+ * @uses ApplicationCacheEvent
+ * @uses EventDispatcher
  * @author Robert S. (www.codeBelt.com)
  */
 module StructureTS

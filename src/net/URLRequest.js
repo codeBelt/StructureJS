@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher', '../net/URLRequestMethod', '../net/URLContentType'], factory);
+        define(['../util/Extend', '../BaseObject', '../net/URLRequestMethod', '../net/URLContentType'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../net/URLRequestMethod'), require('../net/URLContentType'));
+        module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../net/URLRequestMethod'), require('../net/URLContentType'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.URLRequestMethod, root.structurejs.URLContentType);
+        root.structurejs.URLRequest = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.URLRequestMethod, root.structurejs.URLContentType);
     }
-}(this, function(Extend, EventDispatcher, URLRequestMethod, URLContentType) {
+}(this, function(Extend, BaseObject, URLRequestMethod, URLContentType) {
     'use strict';
 
     /**
@@ -19,16 +19,20 @@
      * URLRequest objects are passed to the load() methods of the {{#crossLink "URLLoader"}}{{/crossLink}} classes.
      *
      * @class URLRequest
-     * @extends EventDispatcher
+     * @extends BaseObject
      * @param url [string=null] The URL to be requested. You can set the URL later by using the url property.
      * @module StructureJS
      * @submodule net
+     * @uses Extend
+     * @uses BaseObject
+     * @uses URLRequestMethod
+     * @uses URLContentType
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
     var URLRequest = (function () {
 
-        var _super = Extend(URLRequest, EventDispatcher);
+        var _super = Extend(URLRequest, BaseObject);
 
         function URLRequest(url) {
             if (typeof url === "undefined") { url = null; }

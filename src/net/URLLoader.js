@@ -21,8 +21,13 @@
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule net
-     * @constructor
      * @param [request=null] {URLRequest}
+     * @uses Extend
+     * @uses EventDispatcher
+     * @uses LoaderEvent
+     * @uses URLLoaderDataFormat
+     * @uses jQuery
+     * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
     var URLLoader = (function () {

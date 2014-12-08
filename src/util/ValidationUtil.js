@@ -21,6 +21,7 @@
      * @module StructureJS
      * @submodule util
      * @author Robert S. (www.codeBelt.com)
+     * @static
      */
     var ValidationUtil = (function () {
         function ValidationUtil() {

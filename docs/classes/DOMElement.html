@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -156,6 +158,25 @@
             <div class="content container">
                 <h1>DOMElement Class</h1>
 <div class="box meta">
+    
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                
+                    <li><a href="Extend.html">Extend</a></li>
+                
+                    <li><a href="DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+                
+                    <li><a href="BaseEvent.html">BaseEvent</a></li>
+                
+                    <li><a href="TemplateFactory.html">TemplateFactory</a></li>
+                
+                    <li><a href="ComponentFactory.html">ComponentFactory</a></li>
+                
+                    <li><a href="jQuery.html">jQuery</a></li>
+                
+            </ul>
+        </div>
     
 
     
@@ -254,6 +275,18 @@
                     
                 </li>
             
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_bubble">bubble</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_cancelable">cancelable</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public">
                     <a href="#property_checkCount">checkCount</a>
 
@@ -268,6 +301,18 @@
             
                 <li class="index-item property public inherited">
                     <a href="#property_cid">cid</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_currentTarget">currentTarget</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_data">data</a>
 
                     
                 </li>
@@ -296,6 +341,18 @@
                     
                 </li>
             
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_isImmediatePropagationStopped">isImmediatePropagationStopped</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_isPropagationStopped">isPropagationStopped</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_numChildren">numChildren</a>
 
@@ -304,6 +361,18 @@
             
                 <li class="index-item property public inherited">
                     <a href="#property_parent">parent</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_target">target</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_type">type</a>
 
                     
                 </li>
@@ -391,8 +460,22 @@
                     
                 </li>
             
+                <li class="index-item method public inherited inherited">
+                    <a href="#method_clone">clone</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public inherited">
                     <a href="#method_contains">contains</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method inherited">
+                    <a href="#method_create">create</a>
 
                     
                     
@@ -539,6 +622,20 @@
                 </li>
             
                 <li class="index-item method public inherited inherited">
+                    <a href="#method_stopImmediatePropagation">stopImmediatePropagation</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited inherited">
+                    <a href="#method_stopPropagation">stopPropagation</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited inherited">
                     <a href="#method_swapChildren">swapChildren</a>
 
                     
@@ -586,7 +683,7 @@
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l164"><code>src&#x2F;display&#x2F;DOMElement.js:164</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l170"><code>src&#x2F;display&#x2F;DOMElement.js:170</code></a>
         
         </p>
 
@@ -640,7 +737,7 @@
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l172"><code>src&#x2F;display&#x2F;DOMElement.js:172</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l178"><code>src&#x2F;display&#x2F;DOMElement.js:178</code></a>
         
         </p>
 
@@ -690,7 +787,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l34"><code>src&#x2F;event&#x2F;EventDispatcher.js:34</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l37"><code>src&#x2F;event&#x2F;EventDispatcher.js:37</code></a>
         
         </p>
 
@@ -740,7 +837,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l189"><code>src&#x2F;display&#x2F;DOMElement.js:189</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l195"><code>src&#x2F;display&#x2F;DOMElement.js:195</code></a>
         
         </p>
 
@@ -792,7 +889,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l181"><code>src&#x2F;display&#x2F;DOMElement.js:181</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l187"><code>src&#x2F;display&#x2F;DOMElement.js:187</code></a>
         
         </p>
 
@@ -809,6 +906,114 @@ this class will not try add the view to the DOM because it should already exists
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_bubble" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>bubble</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_bubble" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l118"><code>src&#x2F;event&#x2F;BaseEvent.js:118</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates whether an event is a bubbling event.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_cancelable" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>cancelable</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_cancelable" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l127"><code>src&#x2F;event&#x2F;BaseEvent.js:127</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates whether the behavior associated with the event can be prevented.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
         
 
         
@@ -846,7 +1051,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l148"><code>src&#x2F;display&#x2F;DOMElement.js:148</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l154"><code>src&#x2F;display&#x2F;DOMElement.js:154</code></a>
         
         </p>
 
@@ -895,7 +1100,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l52"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:52</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l54"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:54</code></a>
         
         </p>
 
@@ -944,7 +1149,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_BaseObject.js.html#l29"><code>src&#x2F;BaseObject.js:29</code></a>
+        <a href="../files/src_BaseObject.js.html#l30"><code>src&#x2F;BaseObject.js:30</code></a>
         
         </p>
 
@@ -956,6 +1161,114 @@ this class will not try add the view to the DOM because it should already exists
     <div class="extended-detail">
         <div class="description">
             <p>The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_currentTarget" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>currentTarget</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_currentTarget" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l99"><code>src&#x2F;event&#x2F;BaseEvent.js:99</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The currentTarget property always points to the <a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a> that the event is currently processing (i.e. bubbling at).</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_data" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>data</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_data" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l109"><code>src&#x2F;event&#x2F;BaseEvent.js:109</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Used to pass any type of data with the event.</p>
 
         </div>
 
@@ -996,7 +1309,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l156"><code>src&#x2F;display&#x2F;DOMElement.js:156</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l162"><code>src&#x2F;display&#x2F;DOMElement.js:162</code></a>
         
         </p>
 
@@ -1047,7 +1360,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l88"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:88</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l90"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:90</code></a>
         
         </p>
 
@@ -1098,7 +1411,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l33"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:33</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l35"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:35</code></a>
         
         </p>
 
@@ -1149,7 +1462,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l33"><code>src&#x2F;ObjectManager.js:33</code></a>
+        <a href="../files/src_ObjectManager.js.html#l35"><code>src&#x2F;ObjectManager.js:35</code></a>
         
         </p>
 
@@ -1161,6 +1474,114 @@ this class will not try add the view to the DOM because it should already exists
     <div class="extended-detail">
         <div class="description">
             <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isImmediatePropagationStopped" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>isImmediatePropagationStopped</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_isImmediatePropagationStopped" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l146"><code>src&#x2F;event&#x2F;BaseEvent.js:146</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates if the <a href="../classes/BaseEvent.html#method_stopImmediatePropagation" class="crosslink">stopImmediatePropagation</a> was called on the event object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isPropagationStopped" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>isPropagationStopped</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_isPropagationStopped" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l136"><code>src&#x2F;event&#x2F;BaseEvent.js:136</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates if the <a href="../classes/BaseEvent.html#method_stopPropagation" class="crosslink">stopPropagation</a> was called on the event object.</p>
 
         </div>
 
@@ -1200,7 +1621,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l42"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:42</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l44"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:44</code></a>
         
         </p>
 
@@ -1251,7 +1672,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l42"><code>src&#x2F;event&#x2F;EventDispatcher.js:42</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l45"><code>src&#x2F;event&#x2F;EventDispatcher.js:45</code></a>
         
         </p>
 
@@ -1268,6 +1689,114 @@ list hierarchy. Helps facilitates event bubbling.</p>
 
         </div>
 
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_target" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>target</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_target" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l89"><code>src&#x2F;event&#x2F;BaseEvent.js:89</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the object that originally dispatched the event.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_type" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>type</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#property_type" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l79"><code>src&#x2F;event&#x2F;BaseEvent.js:79</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The type of event.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
         
 
         
@@ -1302,7 +1831,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l106"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:106</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l108"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:108</code></a>
         
         </p>
 
@@ -1353,7 +1882,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l97"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:97</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l99"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:99</code></a>
         
         </p>
 
@@ -1404,7 +1933,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l79"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:79</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l81"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:81</code></a>
         
         </p>
 
@@ -1455,7 +1984,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l61"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:61</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l63"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:63</code></a>
         
         </p>
 
@@ -1506,7 +2035,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l70"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:70</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l72"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:72</code></a>
         
         </p>
 
@@ -1837,7 +2366,7 @@ var ClassName = (function () {
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l291"><code>src&#x2F;display&#x2F;DOMElement.js:291</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l297"><code>src&#x2F;display&#x2F;DOMElement.js:297</code></a>
         
         </p>
 
@@ -1965,7 +2494,7 @@ var ClassName = (function () {
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l158"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:158</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l160"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:160</code></a>
         
         </p>
 
@@ -2094,7 +2623,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l330"><code>src&#x2F;display&#x2F;DOMElement.js:330</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l336"><code>src&#x2F;display&#x2F;DOMElement.js:336</code></a>
         
         </p>
 
@@ -2208,7 +2737,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l55"><code>src&#x2F;event&#x2F;EventDispatcher.js:55</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l58"><code>src&#x2F;event&#x2F;EventDispatcher.js:58</code></a>
         
         </p>
 
@@ -2321,6 +2850,98 @@ The child is added at the index position specified. An index of 0 represents the
 </div>
 
         
+            <a name="method_clone" class="anchor-link"></a>
+<div class="method item public inherited inherited">
+    <h3 class="name"><code>clone</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#method_clone" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l162"><code>src&#x2F;event&#x2F;BaseEvent.js:162</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Duplicates an instance of an BaseEvent subclass.</p>
+<p>Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.</p>
+<p>The new BaseEvent object includes all the properties of the original.</p>
+<p>When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
+to duplicate the properties of your custom class.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var cloneOfEvent = event.clone();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_contains" class="anchor-link"></a>
 <div class="method item public inherited">
     <h3 class="name"><code>contains</code>
@@ -2369,7 +2990,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l282"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:282</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l284"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:284</code></a>
         
         </p>
 
@@ -2423,6 +3044,134 @@ The child is added at the index position specified. An index of 0 represents the
                         
                         <p>true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.</p>
 
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_create" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>create</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>templatePath</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/TemplateFactory.html#method_create" class="type">TemplateFactory</a>:
+            
+        
+        
+        <a href="../files/src_util_TemplateFactory.js.html#l35"><code>src&#x2F;util&#x2F;TemplateFactory.js:35</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Creates a template.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">templatePath</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">data</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"></span>:
+                        
                     
                 </div>
             </div>
@@ -2492,7 +3241,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l207"><code>src&#x2F;display&#x2F;DOMElement.js:207</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l213"><code>src&#x2F;display&#x2F;DOMElement.js:213</code></a>
         
         </p>
 
@@ -2680,7 +3429,7 @@ ClassName.prototype.createChildren = function () {
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l565"><code>src&#x2F;display&#x2F;DOMElement.js:565</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l571"><code>src&#x2F;display&#x2F;DOMElement.js:571</code></a>
         
         </p>
 
@@ -2787,7 +3536,7 @@ If any selectors are found the EmailShareComponent class will be instantiate and
             
         
         
-        <a href="../files/src_BaseObject.js.html#l55"><code>src&#x2F;BaseObject.js:55</code></a>
+        <a href="../files/src_BaseObject.js.html#l56"><code>src&#x2F;BaseObject.js:56</code></a>
         
         </p>
 
@@ -2880,7 +3629,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l68"><code>src&#x2F;ObjectManager.js:68</code></a>
+        <a href="../files/src_ObjectManager.js.html#l70"><code>src&#x2F;ObjectManager.js:70</code></a>
         
         </p>
 
@@ -2974,7 +3723,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l133"><code>src&#x2F;event&#x2F;EventDispatcher.js:133</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l136"><code>src&#x2F;event&#x2F;EventDispatcher.js:136</code></a>
         
         </p>
 
@@ -3096,7 +3845,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l43"><code>src&#x2F;ObjectManager.js:43</code></a>
+        <a href="../files/src_ObjectManager.js.html#l45"><code>src&#x2F;ObjectManager.js:45</code></a>
         
         </p>
 
@@ -3189,7 +3938,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l419"><code>src&#x2F;display&#x2F;DOMElement.js:419</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l425"><code>src&#x2F;display&#x2F;DOMElement.js:425</code></a>
         
         </p>
 
@@ -3297,7 +4046,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l294"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:294</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l296"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:296</code></a>
         
         </p>
 
@@ -3409,7 +4158,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l305"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:305</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l307"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:307</code></a>
         
         </p>
 
@@ -3518,7 +4267,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l270"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:270</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l272"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:272</code></a>
         
         </p>
 
@@ -3633,7 +4382,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l455"><code>src&#x2F;display&#x2F;DOMElement.js:455</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l461"><code>src&#x2F;display&#x2F;DOMElement.js:461</code></a>
         
         </p>
 
@@ -3737,7 +4486,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l237"><code>src&#x2F;event&#x2F;EventDispatcher.js:237</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l240"><code>src&#x2F;event&#x2F;EventDispatcher.js:240</code></a>
         
         </p>
 
@@ -3824,7 +4573,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_BaseObject.js.html#l42"><code>src&#x2F;BaseObject.js:42</code></a>
+        <a href="../files/src_BaseObject.js.html#l43"><code>src&#x2F;BaseObject.js:43</code></a>
         
         </p>
 
@@ -3933,7 +4682,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l210"><code>src&#x2F;event&#x2F;EventDispatcher.js:210</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l213"><code>src&#x2F;event&#x2F;EventDispatcher.js:213</code></a>
         
         </p>
 
@@ -4076,7 +4825,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l343"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:343</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l345"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:345</code></a>
         
         </p>
 
@@ -4153,7 +4902,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l342"><code>src&#x2F;display&#x2F;DOMElement.js:342</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l348"><code>src&#x2F;display&#x2F;DOMElement.js:348</code></a>
         
         </p>
 
@@ -4233,7 +4982,7 @@ The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l492"><code>src&#x2F;display&#x2F;DOMElement.js:492</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l498"><code>src&#x2F;display&#x2F;DOMElement.js:498</code></a>
         
         </p>
 
@@ -4348,7 +5097,7 @@ to the child exist. The index positions of any objects above the child in the pa
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l517"><code>src&#x2F;display&#x2F;DOMElement.js:517</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l523"><code>src&#x2F;display&#x2F;DOMElement.js:523</code></a>
         
         </p>
 
@@ -4441,7 +5190,7 @@ to the child exist. The index positions of any objects above the child in the pa
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l532"><code>src&#x2F;display&#x2F;DOMElement.js:532</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l538"><code>src&#x2F;display&#x2F;DOMElement.js:538</code></a>
         
         </p>
 
@@ -4541,7 +5290,7 @@ references to the children exist.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l100"><code>src&#x2F;event&#x2F;EventDispatcher.js:100</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l103"><code>src&#x2F;event&#x2F;EventDispatcher.js:103</code></a>
         
         </p>
 
@@ -4635,6 +5384,156 @@ references to the children exist.</p>
 </div>
 
         
+            <a name="method_stopImmediatePropagation" class="anchor-link"></a>
+<div class="method item public inherited inherited">
+    <h3 class="name"><code>stopImmediatePropagation</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#method_stopImmediatePropagation" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l202"><code>src&#x2F;event&#x2F;BaseEvent.js:202</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
+This method takes effect immediately, and it affects event listeners in the current node. In contrast,
+the <a href="../classes/BaseEvent.html#method_stopPropagation" class="crosslink">stopPropagation</a> method doesn&#39;t take effect until
+all the event listeners in the current node finish processing.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>event.stopImmediatePropagation();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopPropagation" class="anchor-link"></a>
+<div class="method item public inherited inherited">
+    <h3 class="name"><code>stopPropagation</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/BaseEvent.html#method_stopPropagation" class="type">
+                BaseEvent
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l187"><code>src&#x2F;event&#x2F;BaseEvent.js:187</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
+This method does not affect any event listeners in the current node (currentTarget). In contrast,
+the <a href="../classes/BaseEvent.html#method_stopImmediatePropagation" class="crosslink">stopImmediatePropagation</a> method prevents processing
+of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>event.stopPropagation();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_swapChildren" class="anchor-link"></a>
 <div class="method item public inherited inherited">
     <h3 class="name"><code>swapChildren</code>
@@ -4694,7 +5593,7 @@ references to the children exist.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l233"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:233</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l235"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:235</code></a>
         
         </p>
 

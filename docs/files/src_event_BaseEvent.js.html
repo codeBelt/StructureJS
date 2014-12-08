@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -191,6 +193,8 @@
      * @param [data=null] {any} Use to pass any type of data with the event.
      * @module StructureJS
      * @submodule event
+     * @uses Extend
+     * @uses BaseObject
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
@@ -334,7 +338,12 @@
          *     var cloneOfEvent = event.clone();
          */
         BaseEvent.prototype.clone = function () {
-            return new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+            var event = new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+            event.target = this.target;
+            event.currentTarget = this.currentTarget;
+            event.isPropagationStopped = this.isPropagationStopped;
+            event.isImmediatePropagationStopped = this.isImmediatePropagationStopped;
+            return event;
         };
 
         /**

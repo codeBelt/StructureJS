@@ -20,6 +20,7 @@
      * @class ComponentFactory
      * @constructor
      * @author Robert S. (www.codeBelt.com)
+     * @static
      */
     var ComponentFactory = (function () {
 

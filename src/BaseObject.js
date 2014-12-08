@@ -20,6 +20,7 @@
      * @class BaseObject
      * @module StructureJS
      * @submodule core
+     * @uses Util
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */

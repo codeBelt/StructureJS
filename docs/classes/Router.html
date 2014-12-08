@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -156,6 +158,19 @@
             <div class="content container">
                 <h1>Router Class</h1>
 <div class="box meta">
+    
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                
+                    <li><a href="Route.html">Route</a></li>
+                
+                    <li><a href="RouterEvent.html">RouterEvent</a></li>
+                
+                    <li><a href="StringUtil.html">StringUtil</a></li>
+                
+            </ul>
+        </div>
     
 
     
@@ -268,6 +283,18 @@
                     
                 </li>
             
+                <li class="index-item property public inherited">
+                    <a href="#property_callback">callback</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_callbackScope">callbackScope</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public">
                     <a href="#property_forceSlash">forceSlash</a>
 
@@ -281,6 +308,48 @@
 
                     
                         <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_newURL">newURL</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_oldURL">oldURL</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_params">params</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_query">query</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_regex">regex</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_route">route</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited inherited">
+                    <a href="#property_routePattern">routePattern</a>
+
                     
                 </li>
             
@@ -380,6 +449,13 @@
                     
                 </li>
             
+                <li class="index-item method inherited">
+                    <a href="#method_match">match</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_navigateTo">navigateTo</a>
 
@@ -398,6 +474,13 @@
                     
                 </li>
             
+                <li class="index-item method inherited">
+                    <a href="#method_paramReplace">paramReplace</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_remove">remove</a>
 
@@ -412,6 +495,13 @@
 
                     
                         <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private inherited">
+                    <a href="#method_routePatternToRegexp">routePatternToRegexp</a>
+
                     
                     
                 </li>
@@ -470,7 +560,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l456"><code>src&#x2F;controller&#x2F;Router.js:456</code></a>
+        <a href="../files/src_controller_Router.js.html#l459"><code>src&#x2F;controller&#x2F;Router.js:459</code></a>
         
         </p>
 
@@ -524,7 +614,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l466"><code>src&#x2F;controller&#x2F;Router.js:466</code></a>
+        <a href="../files/src_controller_Router.js.html#l469"><code>src&#x2F;controller&#x2F;Router.js:469</code></a>
         
         </p>
 
@@ -578,7 +668,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l446"><code>src&#x2F;controller&#x2F;Router.js:446</code></a>
+        <a href="../files/src_controller_Router.js.html#l449"><code>src&#x2F;controller&#x2F;Router.js:449</code></a>
         
         </p>
 
@@ -632,7 +722,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l436"><code>src&#x2F;controller&#x2F;Router.js:436</code></a>
+        <a href="../files/src_controller_Router.js.html#l439"><code>src&#x2F;controller&#x2F;Router.js:439</code></a>
         
         </p>
 
@@ -686,7 +776,7 @@
             
         
         
-        <a href="../files/src_controller_Router.js.html#l507"><code>src&#x2F;controller&#x2F;Router.js:507</code></a>
+        <a href="../files/src_controller_Router.js.html#l510"><code>src&#x2F;controller&#x2F;Router.js:510</code></a>
         
         </p>
 
@@ -755,7 +845,7 @@ Router.allowManualDeepLinking = false;</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l543"><code>src&#x2F;controller&#x2F;Router.js:543</code></a>
+        <a href="../files/src_controller_Router.js.html#l546"><code>src&#x2F;controller&#x2F;Router.js:546</code></a>
         
         </p>
 
@@ -784,6 +874,104 @@ Router.allowMultipleMatches = false;</code></pre>
 
                 </div>
             </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_callback" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>callback</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Route.html#property_callback" class="type">Route</a>:
+            
+        
+        
+        <a href="../files/src_model_Route.js.html#l102"><code>src&#x2F;model&#x2F;Route.js:102</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The function that should be executed when a request matches the routePattern. The <a href="../classes/Router.html" class="crosslink">Router</a> class will be using this property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_callbackScope" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>callbackScope</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Route.html#property_callbackScope" class="type">Route</a>:
+            
+        
+        
+        <a href="../files/src_model_Route.js.html#l110"><code>src&#x2F;model&#x2F;Route.js:110</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The scope of the callback function that should be executed. The <a href="../classes/Router.html" class="crosslink">Router</a> class will be using this property.</p>
+
+        </div>
+
+        
+
         
 
         
@@ -821,7 +1009,7 @@ Router.allowMultipleMatches = false;</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l525"><code>src&#x2F;controller&#x2F;Router.js:525</code></a>
+        <a href="../files/src_controller_Router.js.html#l528"><code>src&#x2F;controller&#x2F;Router.js:528</code></a>
         
         </p>
 
@@ -891,7 +1079,7 @@ Router.forceSlash = true;
             
         
         
-        <a href="../files/src_controller_Router.js.html#l476"><code>src&#x2F;controller&#x2F;Router.js:476</code></a>
+        <a href="../files/src_controller_Router.js.html#l479"><code>src&#x2F;controller&#x2F;Router.js:479</code></a>
         
         </p>
 
@@ -918,6 +1106,353 @@ console.log(Router.isEnabled);</code></pre>
 
                 </div>
             </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_newURL" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>newURL</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/RouterEvent.html#property_newURL" class="type">RouterEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l53"><code>src&#x2F;event&#x2F;RouterEvent.js:53</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The new URL to which the window is navigating.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_oldURL" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>oldURL</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/RouterEvent.html#property_oldURL" class="type">RouterEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l61"><code>src&#x2F;event&#x2F;RouterEvent.js:61</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The previous URL from which the window was navigated.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_params" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>params</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/RouterEvent.html#property_params" class="type">RouterEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l77"><code>src&#x2F;event&#x2F;RouterEvent.js:77</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>An array containing the parameters captured from the Route.<a href="../classes/Route.html#method_match" class="crosslink">match</a>
+being called with the <a href="../classes/RouterEvent.html#property_routePattern" class="crosslink">routePattern</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_query" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>query</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/RouterEvent.html#property_query" class="type">RouterEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l86"><code>src&#x2F;event&#x2F;RouterEvent.js:86</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A query object the represents the query string in the hash url.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_regex" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>regex</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp" class="crosslink external" target="_blank">RegExp</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Route.html#property_regex" class="type">Route</a>:
+            
+        
+        
+        <a href="../files/src_model_Route.js.html#l93"><code>src&#x2F;model&#x2F;Route.js:93</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The regex representation for the routePattern that was passed into the constructor.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_route" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>route</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/RouterEvent.html#property_route" class="type">RouterEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l45"><code>src&#x2F;event&#x2F;RouterEvent.js:45</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The route that was matched against <a href="../classes/RouterEvent.html#property_routePattern" class="crosslink">routePattern</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_routePattern" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>routePattern</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/Route.html#property_routePattern" class="type">
+                Route
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l69"><code>src&#x2F;event&#x2F;RouterEvent.js:69</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The route pattern that matched the <a href="../classes/RouterEvent.html#property_route" class="crosslink">route</a> property.</p>
+
+        </div>
+
+        
+
         
 
         
@@ -955,7 +1490,7 @@ console.log(Router.isEnabled);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l490"><code>src&#x2F;controller&#x2F;Router.js:490</code></a>
+        <a href="../files/src_controller_Router.js.html#l493"><code>src&#x2F;controller&#x2F;Router.js:493</code></a>
         
         </p>
 
@@ -1072,7 +1607,7 @@ from relying on the hash url to an internal state controller.</p>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l30"><code>src&#x2F;controller&#x2F;Router.js:30</code></a>
+        <a href="../files/src_controller_Router.js.html#l33"><code>src&#x2F;controller&#x2F;Router.js:33</code></a>
         
         </p>
 
@@ -1085,7 +1620,7 @@ from relying on the hash url to an internal state controller.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The <strong>Router.add</strong> method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a <a href="../classes/RouteEvent.html" class="crosslink">RouteEvent</a>.</p>
+            <p>The <strong>Router.add</strong> method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a <a href="../classes/RouterEvent.html" class="crosslink">RouterEvent</a>.</p>
 
         </div>
 
@@ -1120,7 +1655,7 @@ from relying on the hash url to an internal state controller.</p>
                         
 
                         <div class="param-description">
-                            <p>The function that should be executed when a request matches the routePattern. It will receive a <a href="../classes/RouteEvent.html" class="crosslink">RouteEvent</a> object.</p>
+                            <p>The function that should be executed when a request matches the routePattern. It will receive a <a href="../classes/RouterEvent.html" class="crosslink">RouterEvent</a> object.</p>
 
                         </div>
 
@@ -1160,9 +1695,9 @@ Router.add(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);
 // The above route listener would match the below url:
 // www.site.com/#/games/asteroids/2/
 
-// The Call back receives a RouteEvent object.
-ClassName.prototype.onRouteHandler = function (routeEvent) {
-    console.log(routeEvent.params);
+// The Call back receives a RouterEvent object.
+ClassName.prototype.onRouteHandler = function (routerEvent) {
+    console.log(routerEvent.params);
 }</code></pre>
 <h2 id="route-pattern-options-">Route Pattern Options:</h2>
 <p><strong>:optional:</strong> The two colons <strong>::</strong> means a part of the hash url is optional for the match. The text between can be anything you want it to be.</p>
@@ -1266,7 +1801,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l145"><code>src&#x2F;controller&#x2F;Router.js:145</code></a>
+        <a href="../files/src_controller_Router.js.html#l148"><code>src&#x2F;controller&#x2F;Router.js:148</code></a>
         
         </p>
 
@@ -1388,7 +1923,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l364"><code>src&#x2F;controller&#x2F;Router.js:364</code></a>
+        <a href="../files/src_controller_Router.js.html#l367"><code>src&#x2F;controller&#x2F;Router.js:367</code></a>
         
         </p>
 
@@ -1476,7 +2011,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l313"><code>src&#x2F;controller&#x2F;Router.js:313</code></a>
+        <a href="../files/src_controller_Router.js.html#l316"><code>src&#x2F;controller&#x2F;Router.js:316</code></a>
         
         </p>
 
@@ -1550,7 +2085,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l328"><code>src&#x2F;controller&#x2F;Router.js:328</code></a>
+        <a href="../files/src_controller_Router.js.html#l331"><code>src&#x2F;controller&#x2F;Router.js:331</code></a>
         
         </p>
 
@@ -1624,7 +2159,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l212"><code>src&#x2F;controller&#x2F;Router.js:212</code></a>
+        <a href="../files/src_controller_Router.js.html#l215"><code>src&#x2F;controller&#x2F;Router.js:215</code></a>
         
         </p>
 
@@ -1698,7 +2233,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l190"><code>src&#x2F;controller&#x2F;Router.js:190</code></a>
+        <a href="../files/src_controller_Router.js.html#l193"><code>src&#x2F;controller&#x2F;Router.js:193</code></a>
         
         </p>
 
@@ -1776,7 +2311,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l173"><code>src&#x2F;controller&#x2F;Router.js:173</code></a>
+        <a href="../files/src_controller_Router.js.html#l176"><code>src&#x2F;controller&#x2F;Router.js:176</code></a>
         
         </p>
 
@@ -1817,6 +2352,124 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>var str = Router.getHash();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_match" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>match</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>route</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Route.html#method_match" class="type">Route</a>:
+            
+        
+        
+        <a href="../files/src_model_Route.js.html#l153"><code>src&#x2F;model&#x2F;Route.js:153</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determine if a route matches a routePattern.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">route</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The route or path to match against the routePattern that was passed into the constructor.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var route = new Route(&#39;/games/{gameName}/:level:/&#39;, this.method, this);
+console.log( route.match(&#39;/games/asteroids/2/&#39;) );</code></pre>
 
                 </div>
             </div>
@@ -1886,7 +2539,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l253"><code>src&#x2F;controller&#x2F;Router.js:253</code></a>
+        <a href="../files/src_controller_Router.js.html#l256"><code>src&#x2F;controller&#x2F;Router.js:256</code></a>
         
         </p>
 
@@ -2035,7 +2688,7 @@ Router.navigateTo(&#39;/games/asteroids/2/&#39;, true, true);</code></pre>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l344"><code>src&#x2F;controller&#x2F;Router.js:344</code></a>
+        <a href="../files/src_controller_Router.js.html#l347"><code>src&#x2F;controller&#x2F;Router.js:347</code></a>
         
         </p>
 
@@ -2080,6 +2733,165 @@ This method will not be called if the Router is disabled.</p>
 
         
 
+        
+    </div>
+</div>
+
+        
+            <a name="method_paramReplace" class="anchor-link"></a>
+<div class="method item inherited">
+    <h3 class="name"><code>paramReplace</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>queryString</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | Void</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/StringUtil.html#method_paramReplace" class="type">StringUtil</a>:
+            
+        
+        
+        <a href="../files/src_util_StringUtil.js.html#l253"><code>src&#x2F;util&#x2F;StringUtil.js:253</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Updates a value in the query string by its key name.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">queryString</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">name</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">value</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | Void</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> StringUtil.paramReplace(&#39;?name=Robert&amp;age=23&amp;gender=male&#39;, &#39;gender&#39;, &#39;female&#39;);
+ // &#39;?name=Robert&amp;age=23&amp;gender=female&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -2146,7 +2958,7 @@ This method will not be called if the Router is disabled.</p>
             
         
         
-        <a href="../files/src_controller_Router.js.html#l117"><code>src&#x2F;controller&#x2F;Router.js:117</code></a>
+        <a href="../files/src_controller_Router.js.html#l120"><code>src&#x2F;controller&#x2F;Router.js:120</code></a>
         
         </p>
 
@@ -2280,7 +3092,7 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);<
             
         
         
-        <a href="../files/src_controller_Router.js.html#l160"><code>src&#x2F;controller&#x2F;Router.js:160</code></a>
+        <a href="../files/src_controller_Router.js.html#l163"><code>src&#x2F;controller&#x2F;Router.js:163</code></a>
         
         </p>
 
@@ -2310,6 +3122,115 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);<
 
                 </div>
             </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_routePatternToRegexp" class="anchor-link"></a>
+<div class="method item private inherited">
+    <h3 class="name"><code>routePatternToRegexp</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>routePattern</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp" class="crosslink external" target="_blank">RegExp</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Route.html#method_routePatternToRegexp" class="type">Route</a>:
+            
+        
+        
+        <a href="../files/src_model_Route.js.html#l123"><code>src&#x2F;model&#x2F;Route.js:123</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Converts the routePattern that was passed into the constructor to a regexp object.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">routePattern</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/RegExp" class="crosslink external" target="_blank">RegExp</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
         
     </div>
 </div>
@@ -2354,7 +3275,7 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);<
             
         
         
-        <a href="../files/src_controller_Router.js.html#l234"><code>src&#x2F;controller&#x2F;Router.js:234</code></a>
+        <a href="../files/src_controller_Router.js.html#l237"><code>src&#x2F;controller&#x2F;Router.js:237</code></a>
         
         </p>
 

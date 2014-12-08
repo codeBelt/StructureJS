@@ -7,7 +7,11 @@
  * @module StructureJS
  * @submodule util
  * @constructor
+ * @uses StringUtil
+ * @uses Handlebars
+ * @uses jQuery
  * @author Robert S. (www.codeBelt.com)
+ * @static
  */
 module StructureTS
 {

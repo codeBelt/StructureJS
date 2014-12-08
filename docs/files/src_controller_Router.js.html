@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -163,15 +165,15 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../model/Route&#x27;, &#x27;../event/RouteEvent&#x27;, &#x27;../util/StringUtil&#x27;], factory);
+        define([&#x27;../model/Route&#x27;, &#x27;../event/RouterEvent&#x27;, &#x27;../util/StringUtil&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../model/Route&#x27;), require(&#x27;../event/RouteEvent&#x27;), require(&#x27;../util/StringUtil&#x27;));
+        module.exports = factory(require(&#x27;../model/Route&#x27;), require(&#x27;../event/RouterEvent&#x27;), require(&#x27;../util/StringUtil&#x27;));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouteEvent, root.structurejs.StringUtil);
+        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouterEvent, root.structurejs.StringUtil);
     }
-}(this, function(Route, RouteEvent, StringUtil) {
+}(this, function(Route, RouterEvent, StringUtil) {
     &#x27;use strict&#x27;;
 
     /**
@@ -180,6 +182,9 @@
      * @class Router
      * @module StructureJS
      * @submodule controller
+     * @uses Route
+     * @uses RouterEvent
+     * @uses StringUtil
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
@@ -188,11 +193,11 @@
             throw new Error(&#x27;[Router] Do not instantiation the Router class because it is a static class.&#x27;);
         }
         /**
-         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink &quot;RouteEvent&quot;}}{{/crossLink}}.
+         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink &quot;RouterEvent&quot;}}{{/crossLink}}.
          *
          * @method add
          * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, &#x27;&#x27;. See the examples below for more details.
-         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink &quot;RouteEvent&quot;}}{{/crossLink}} object.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink &quot;RouterEvent&quot;}}{{/crossLink}} object.
          * @param callbackScope {any} The scope of the callback function that should be executed.
          * @public
          * @static
@@ -203,9 +208,9 @@
          *     // The above route listener would match the below url:
          *     // www.site.com/#/games/asteroids/2/
          *
-         *     // The Call back receives a RouteEvent object.
-         *     ClassName.prototype.onRouteHandler = function (routeEvent) {
-        *         console.log(routeEvent.params);
+         *     // The Call back receives a RouterEvent object.
+         *     ClassName.prototype.onRouteHandler = function (routerEvent) {
+        *         console.log(routerEvent.params);
         *     }
          *
          * Route Pattern Options:
@@ -532,7 +537,7 @@
         Router.changeRoute = function (hash) {
             var route;
             var match;
-            var routeEvent = null;
+            var routerEvent = null;
 
             for (var i = 0; i &lt; Router._routes.length; i++) {
                 route = Router._routes[i];
@@ -540,31 +545,31 @@
 
                 // If there is a match.
                 if (match !== null) {
-                    routeEvent = new RouteEvent();
-                    routeEvent.route = match.shift();
-                    routeEvent.params = match.slice(0, match.length);
-                    routeEvent.routePattern = route.routePattern;
-                    routeEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
-                    routeEvent.target = Router;
-                    routeEvent.currentTarget = Router;
+                    routerEvent = new RouterEvent();
+                    routerEvent.route = match.shift();
+                    routerEvent.params = match.slice(0, match.length);
+                    routerEvent.routePattern = route.routePattern;
+                    routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routerEvent.target = Router;
+                    routerEvent.currentTarget = Router;
 
                     // Since we are removing (splice) from params we need to check the length every iteration.
-                    for (var j = routeEvent.params.length - 1; j &gt;= 0; j--) {
-                        if (routeEvent.params[j] === &#x27;&#x27;) {
-                            routeEvent.params.splice(j, 1);
+                    for (var j = routerEvent.params.length - 1; j &gt;= 0; j--) {
+                        if (routerEvent.params[j] === &#x27;&#x27;) {
+                            routerEvent.params.splice(j, 1);
                         }
                     }
 
                     // If there was a hash change event then set the info we want to send.
                     if (Router._hashChangeEvent != null) {
-                        routeEvent.newURL = Router._hashChangeEvent.newURL;
-                        routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                        routerEvent.newURL = Router._hashChangeEvent.newURL;
+                        routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                     } else {
-                        routeEvent.newURL = window.location.href;
+                        routerEvent.newURL = window.location.href;
                     }
 
                     // Execute the callback function and pass the route event.
-                    route.callback.call(route.callbackScope, routeEvent);
+                    route.callback.call(route.callbackScope, routerEvent);
 
                     // Only trigger the first route and stop checking.
                     if (Router.allowMultipleMatches === false) {
@@ -574,21 +579,21 @@
             }
 
             // If there are no route&#x27;s matched and there is a default route. Then call that default route.
-            if (routeEvent === null &amp;&amp; Router._defaultRoute !== null) {
-                routeEvent = new RouteEvent();
-                routeEvent.route = hash;
-                routeEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
-                routeEvent.target = Router;
-                routeEvent.currentTarget = Router;
+            if (routerEvent === null &amp;&amp; Router._defaultRoute !== null) {
+                routerEvent = new RouterEvent();
+                routerEvent.route = hash;
+                routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
+                routerEvent.target = Router;
+                routerEvent.currentTarget = Router;
 
                 if (Router._hashChangeEvent != null) {
-                    routeEvent.newURL = Router._hashChangeEvent.newURL;
-                    routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    routerEvent.newURL = Router._hashChangeEvent.newURL;
+                    routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                 } else {
-                    routeEvent.newURL = window.location.href;
+                    routerEvent.newURL = window.location.href;
                 }
 
-                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routeEvent);
+                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
             }
 
             Router._hashChangeEvent = null;

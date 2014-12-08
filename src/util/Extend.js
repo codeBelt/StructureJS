@@ -15,7 +15,26 @@
     'use strict';
 
     /**
-     * Snippet from TypeScript compiler.
+     * A helper method to extend classes.
+     *
+     * @class Extend
+     * @module StructureJS
+     * @submodule util
+     * @param inheritorClass
+     * @param baseClass
+     * @returns {*}
+     * @constructor
+     * @example
+     *     var AnotherClass = (function () {
+     *
+     *         var _super = Extend(AnotherClass, BaseClass);
+     *
+     *         function AnotherClass() {
+     *             _super.call(this);
+     *         }
+     *
+     *         return AnotherClass;
+     *     })();
      */
     var Extend = function (inheritorClass, baseClass)
     {

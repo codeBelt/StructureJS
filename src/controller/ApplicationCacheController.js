@@ -20,6 +20,9 @@
      * @class ApplicationCacheController
      * @module StructureJS
      * @submodule controller
+     * @uses ApplicationCacheEvent
+     * @uses EventDispatcher
+     * @static
      * @author Robert S. (www.codeBelt.com)
      */
     var ApplicationCacheController = (function () {

@@ -11,6 +11,10 @@
  * @param url [string=null] The URL to be requested. You can set the URL later by using the url property.
  * @module StructureJS
  * @submodule net
+ * @uses Extend
+ * @uses BaseObject
+ * @uses URLRequestMethod
+ * @uses URLContentType
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */

@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../model/Route', '../event/RouteEvent', '../util/StringUtil'], factory);
+        define(['../model/Route', '../event/RouterEvent', '../util/StringUtil'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../model/Route'), require('../event/RouteEvent'), require('../util/StringUtil'));
+        module.exports = factory(require('../model/Route'), require('../event/RouterEvent'), require('../util/StringUtil'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouteEvent, root.structurejs.StringUtil);
+        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouterEvent, root.structurejs.StringUtil);
     }
-}(this, function(Route, RouteEvent, StringUtil) {
+}(this, function(Route, RouterEvent, StringUtil) {
     'use strict';
 
     /**
@@ -20,6 +20,9 @@
      * @class Router
      * @module StructureJS
      * @submodule controller
+     * @uses Route
+     * @uses RouterEvent
+     * @uses StringUtil
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
@@ -28,11 +31,11 @@
             throw new Error('[Router] Do not instantiation the Router class because it is a static class.');
         }
         /**
-         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouteEvent"}}{{/crossLink}}.
+         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouterEvent"}}{{/crossLink}}.
          *
          * @method add
          * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}}{{/crossLink}} object.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouterEvent"}}{{/crossLink}} object.
          * @param callbackScope {any} The scope of the callback function that should be executed.
          * @public
          * @static
@@ -43,9 +46,9 @@
          *     // The above route listener would match the below url:
          *     // www.site.com/#/games/asteroids/2/
          *
-         *     // The Call back receives a RouteEvent object.
-         *     ClassName.prototype.onRouteHandler = function (routeEvent) {
-        *         console.log(routeEvent.params);
+         *     // The Call back receives a RouterEvent object.
+         *     ClassName.prototype.onRouteHandler = function (routerEvent) {
+        *         console.log(routerEvent.params);
         *     }
          *
          * Route Pattern Options:
@@ -372,7 +375,7 @@
         Router.changeRoute = function (hash) {
             var route;
             var match;
-            var routeEvent = null;
+            var routerEvent = null;
 
             for (var i = 0; i < Router._routes.length; i++) {
                 route = Router._routes[i];
@@ -380,31 +383,31 @@
 
                 // If there is a match.
                 if (match !== null) {
-                    routeEvent = new RouteEvent();
-                    routeEvent.route = match.shift();
-                    routeEvent.params = match.slice(0, match.length);
-                    routeEvent.routePattern = route.routePattern;
-                    routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-                    routeEvent.target = Router;
-                    routeEvent.currentTarget = Router;
+                    routerEvent = new RouterEvent();
+                    routerEvent.route = match.shift();
+                    routerEvent.params = match.slice(0, match.length);
+                    routerEvent.routePattern = route.routePattern;
+                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routerEvent.target = Router;
+                    routerEvent.currentTarget = Router;
 
                     // Since we are removing (splice) from params we need to check the length every iteration.
-                    for (var j = routeEvent.params.length - 1; j >= 0; j--) {
-                        if (routeEvent.params[j] === '') {
-                            routeEvent.params.splice(j, 1);
+                    for (var j = routerEvent.params.length - 1; j >= 0; j--) {
+                        if (routerEvent.params[j] === '') {
+                            routerEvent.params.splice(j, 1);
                         }
                     }
 
                     // If there was a hash change event then set the info we want to send.
                     if (Router._hashChangeEvent != null) {
-                        routeEvent.newURL = Router._hashChangeEvent.newURL;
-                        routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                        routerEvent.newURL = Router._hashChangeEvent.newURL;
+                        routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                     } else {
-                        routeEvent.newURL = window.location.href;
+                        routerEvent.newURL = window.location.href;
                     }
 
                     // Execute the callback function and pass the route event.
-                    route.callback.call(route.callbackScope, routeEvent);
+                    route.callback.call(route.callbackScope, routerEvent);
 
                     // Only trigger the first route and stop checking.
                     if (Router.allowMultipleMatches === false) {
@@ -414,21 +417,21 @@
             }
 
             // If there are no route's matched and there is a default route. Then call that default route.
-            if (routeEvent === null && Router._defaultRoute !== null) {
-                routeEvent = new RouteEvent();
-                routeEvent.route = hash;
-                routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-                routeEvent.target = Router;
-                routeEvent.currentTarget = Router;
+            if (routerEvent === null && Router._defaultRoute !== null) {
+                routerEvent = new RouterEvent();
+                routerEvent.route = hash;
+                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                routerEvent.target = Router;
+                routerEvent.currentTarget = Router;
 
                 if (Router._hashChangeEvent != null) {
-                    routeEvent.newURL = Router._hashChangeEvent.newURL;
-                    routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    routerEvent.newURL = Router._hashChangeEvent.newURL;
+                    routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                 } else {
-                    routeEvent.newURL = window.location.href;
+                    routerEvent.newURL = window.location.href;
                 }
 
-                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routeEvent);
+                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
             }
 
             Router._hashChangeEvent = null;

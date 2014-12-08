@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -156,6 +158,19 @@
             <div class="content container">
                 <h1>NetworkMonitor Class</h1>
 <div class="box meta">
+    
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                
+                    <li><a href="EventDispatcher.html">EventDispatcher</a></li>
+                
+                    <li><a href="NavigatorEvents.html">NavigatorEvents</a></li>
+                
+                    <li><a href="NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+                
+            </ul>
+        </div>
     
 
     
@@ -233,6 +248,30 @@
                     
                 </li>
             
+                <li class="index-item property private inherited">
+                    <a href="#property__listeners">_listeners</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_connected">connected</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_parent">parent</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_status">status</a>
+
+                    
+                </li>
+            
         </ul>
     </div>
 
@@ -260,7 +299,7 @@
             
 
             
-                <li class="index-item method public">
+                <li class="index-item method public inherited">
                     <a href="#method_addEventListener">addEventListener</a>
 
                     
@@ -278,11 +317,18 @@
                     
                 </li>
             
-                <li class="index-item method private">
+                <li class="index-item method private inherited">
                     <a href="#method_dispatchEvent">dispatchEvent</a>
 
                     
                         <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getEventListeners">getEventListeners</a>
+
                     
                     
                 </li>
@@ -296,6 +342,13 @@
                     
                 </li>
             
+                <li class="index-item method public inherited">
+                    <a href="#method_hasEventListener">hasEventListener</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method private">
                     <a href="#method_onNetworkMonitorEvent">onNetworkMonitorEvent</a>
 
@@ -305,7 +358,7 @@
                     
                 </li>
             
-                <li class="index-item method public">
+                <li class="index-item method public inherited">
                     <a href="#method_removeEventListener">removeEventListener</a>
 
                     
@@ -368,7 +421,7 @@
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l147"><code>src&#x2F;net&#x2F;NetworkMonitor.js:147</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l150"><code>src&#x2F;net&#x2F;NetworkMonitor.js:150</code></a>
         
         </p>
 
@@ -420,7 +473,205 @@
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l156"><code>src&#x2F;net&#x2F;NetworkMonitor.js:156</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l159"><code>src&#x2F;net&#x2F;NetworkMonitor.js:159</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__listeners" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_listeners</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property__listeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l37"><code>src&#x2F;event&#x2F;EventDispatcher.js:37</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Holds a reference to added listeners.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_connected" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>connected</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/NetworkMonitorEvent.html#property_connected" class="type">NetworkMonitorEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_NetworkMonitorEvent.js.html#l54"><code>src&#x2F;event&#x2F;NetworkMonitorEvent.js:54</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_parent" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>parent</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property_parent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l45"><code>src&#x2F;event&#x2F;EventDispatcher.js:45</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the object that contains child object. Use the parent property
+to specify a relative path to display objects that are above the current display object in the display
+list hierarchy. Helps facilitates event bubbling.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_status" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>status</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/NetworkMonitorEvent.html#property_status" class="type">NetworkMonitorEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_NetworkMonitorEvent.js.html#l46"><code>src&#x2F;event&#x2F;NetworkMonitorEvent.js:46</code></a>
         
         </p>
 
@@ -527,7 +778,7 @@
 
         
             <a name="method_addEventListener" class="anchor-link"></a>
-<div class="method item public">
+<div class="method item public inherited">
     <h3 class="name"><code>addEventListener</code>
 
     
@@ -584,16 +835,16 @@
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/EventDispatcher.html#method_addEventListener" class="type">
+                EventDispatcher
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l97"><code>src&#x2F;net&#x2F;NetworkMonitor.js:97</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l100"><code>src&#x2F;net&#x2F;NetworkMonitor.js:100</code></a>
         
         </p>
 
@@ -747,7 +998,7 @@
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l53"><code>src&#x2F;net&#x2F;NetworkMonitor.js:53</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l56"><code>src&#x2F;net&#x2F;NetworkMonitor.js:56</code></a>
         
         </p>
 
@@ -795,7 +1046,7 @@
 
         
             <a name="method_dispatchEvent" class="anchor-link"></a>
-<div class="method item private">
+<div class="method item private inherited">
     <h3 class="name"><code>dispatchEvent</code>
 
     
@@ -834,16 +1085,16 @@
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/EventDispatcher.html#method_dispatchEvent" class="type">
+                EventDispatcher
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l136"><code>src&#x2F;net&#x2F;NetworkMonitor.js:136</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l139"><code>src&#x2F;net&#x2F;NetworkMonitor.js:139</code></a>
         
         </p>
 
@@ -893,6 +1144,93 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
 </div>
 
         
+            <a name="method_getEventListeners" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getEventListeners</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_getEventListeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l240"><code>src&#x2F;event&#x2F;EventDispatcher.js:240</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Generates a string output of event listeners for a given object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.getEventListeners();
+
+ // [ClassName] is listen for &#39;BaseEvent.change&#39; event.</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_getStatus" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>getStatus</code>
@@ -936,7 +1274,7 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l68"><code>src&#x2F;net&#x2F;NetworkMonitor.js:68</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l71"><code>src&#x2F;net&#x2F;NetworkMonitor.js:71</code></a>
         
         </p>
 
@@ -977,6 +1315,169 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code> NetworkMonitor.getStatus();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_hasEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>hasEventListener</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_hasEventListener" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l213"><code>src&#x2F;event&#x2F;EventDispatcher.js:213</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Check if an object has a specific event listener already added.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener method to call.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The scope of the listener object.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
 
                 </div>
             </div>
@@ -1034,7 +1535,7 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l83"><code>src&#x2F;net&#x2F;NetworkMonitor.js:83</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l86"><code>src&#x2F;net&#x2F;NetworkMonitor.js:86</code></a>
         
         </p>
 
@@ -1084,7 +1585,7 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
 
         
             <a name="method_removeEventListener" class="anchor-link"></a>
-<div class="method item public">
+<div class="method item public inherited">
     <h3 class="name"><code>removeEventListener</code>
 
     
@@ -1135,16 +1636,16 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/EventDispatcher.html#method_removeEventListener" class="type">
+                EventDispatcher
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l117"><code>src&#x2F;net&#x2F;NetworkMonitor.js:117</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l120"><code>src&#x2F;net&#x2F;NetworkMonitor.js:120</code></a>
         
         </p>
 
@@ -1278,7 +1779,7 @@ To keep things consistent this parameter is required.</p>
             
         
         
-        <a href="../files/src_net_NetworkMonitor.js.html#l30"><code>src&#x2F;net&#x2F;NetworkMonitor.js:30</code></a>
+        <a href="../files/src_net_NetworkMonitor.js.html#l33"><code>src&#x2F;net&#x2F;NetworkMonitor.js:33</code></a>
         
         </p>
 

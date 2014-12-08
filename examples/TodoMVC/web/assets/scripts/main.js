@@ -2,7 +2,7 @@
  * browserify v1.0.0 (dev)
  * Example project for Client.
  *
- * Build Date: 2014-12-01
+ * Build Date: 2014-12-07
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
@@ -20209,6 +20209,7 @@ return jQuery;
      * @class BaseObject
      * @module StructureJS
      * @submodule core
+     * @uses Util
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -20297,6 +20298,8 @@ return jQuery;
      * @module StructureJS
      * @extends BaseObject
      * @submodule core
+     * @uses Extend
+     * @uses BaseObject
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -20396,6 +20399,10 @@ return jQuery;
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule controller
+     * @uses Extend
+     * @uses EventDispatcher
+     * @uses LocalStorageEvent
+     * @uses ValueObject
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -20633,21 +20640,26 @@ return jQuery;
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../model/Route', '../event/RouteEvent', '../util/StringUtil'], factory);
+        define(['../model/Route', '../event/RouterEvent', '../util/StringUtil'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../model/Route'), require('../event/RouteEvent'), require('../util/StringUtil'));
+        module.exports = factory(require('../model/Route'), require('../event/RouterEvent'), require('../util/StringUtil'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouteEvent, root.structurejs.StringUtil);
+        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouterEvent, root.structurejs.StringUtil);
     }
-}(this, function(Route, RouteEvent, StringUtil) {
+}(this, function(Route, RouterEvent, StringUtil) {
     'use strict';
 
     /**
      * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
      *
      * @class Router
+     * @module StructureJS
+     * @submodule controller
+     * @uses Route
+     * @uses RouterEvent
+     * @uses StringUtil
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
@@ -20656,11 +20668,11 @@ return jQuery;
             throw new Error('[Router] Do not instantiation the Router class because it is a static class.');
         }
         /**
-         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouteEvent"}}{{/crossLink}}.
+         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouterEvent"}}{{/crossLink}}.
          *
          * @method add
          * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouteEvent"}}{{/crossLink}} object.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouterEvent"}}{{/crossLink}} object.
          * @param callbackScope {any} The scope of the callback function that should be executed.
          * @public
          * @static
@@ -20671,9 +20683,9 @@ return jQuery;
          *     // The above route listener would match the below url:
          *     // www.site.com/#/games/asteroids/2/
          *
-         *     // The Call back receives a RouteEvent object.
-         *     ClassName.prototype.onRouteHandler = function (routeEvent) {
-        *         console.log(routeEvent.params);
+         *     // The Call back receives a RouterEvent object.
+         *     ClassName.prototype.onRouteHandler = function (routerEvent) {
+        *         console.log(routerEvent.params);
         *     }
          *
          * Route Pattern Options:
@@ -20761,6 +20773,7 @@ return jQuery;
         Router.remove = function (routePattern, callback, callbackScope) {
             var route;
 
+            // Since we are removing (splice) from routes we need to check the length every iteration.
             for (var i = Router._routes.length - 1; i >= 0; i--) {
                 route = Router._routes[i];
                 if (route.routePattern === routePattern && route.callback === callback && route.callbackScope === callbackScope) {
@@ -20999,7 +21012,7 @@ return jQuery;
         Router.changeRoute = function (hash) {
             var route;
             var match;
-            var routeEvent = null;
+            var routerEvent = null;
 
             for (var i = 0; i < Router._routes.length; i++) {
                 route = Router._routes[i];
@@ -21007,30 +21020,31 @@ return jQuery;
 
                 // If there is a match.
                 if (match !== null) {
-                    routeEvent = new RouteEvent();
-                    routeEvent.route = match.shift();
-                    routeEvent.params = match.slice(0, match.length);
-                    routeEvent.routePattern = route.routePattern;
-                    routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-                    routeEvent.target = Router;
-                    routeEvent.currentTarget = Router;
+                    routerEvent = new RouterEvent();
+                    routerEvent.route = match.shift();
+                    routerEvent.params = match.slice(0, match.length);
+                    routerEvent.routePattern = route.routePattern;
+                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routerEvent.target = Router;
+                    routerEvent.currentTarget = Router;
 
-                    for (var j = routeEvent.params.length - 1; j >= 0; j--) {
-                        if (routeEvent.params[j] === '') {
-                            routeEvent.params.splice(j, 1);
+                    // Since we are removing (splice) from params we need to check the length every iteration.
+                    for (var j = routerEvent.params.length - 1; j >= 0; j--) {
+                        if (routerEvent.params[j] === '') {
+                            routerEvent.params.splice(j, 1);
                         }
                     }
 
                     // If there was a hash change event then set the info we want to send.
                     if (Router._hashChangeEvent != null) {
-                        routeEvent.newURL = Router._hashChangeEvent.newURL;
-                        routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                        routerEvent.newURL = Router._hashChangeEvent.newURL;
+                        routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                     } else {
-                        routeEvent.newURL = window.location.href;
+                        routerEvent.newURL = window.location.href;
                     }
 
                     // Execute the callback function and pass the route event.
-                    route.callback.call(route.callbackScope, routeEvent);
+                    route.callback.call(route.callbackScope, routerEvent);
 
                     // Only trigger the first route and stop checking.
                     if (Router.allowMultipleMatches === false) {
@@ -21040,21 +21054,21 @@ return jQuery;
             }
 
             // If there are no route's matched and there is a default route. Then call that default route.
-            if (routeEvent === null && Router._defaultRoute !== null) {
-                routeEvent = new RouteEvent();
-                routeEvent.route = hash;
-                routeEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
-                routeEvent.target = Router;
-                routeEvent.currentTarget = Router;
+            if (routerEvent === null && Router._defaultRoute !== null) {
+                routerEvent = new RouterEvent();
+                routerEvent.route = hash;
+                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                routerEvent.target = Router;
+                routerEvent.currentTarget = Router;
 
                 if (Router._hashChangeEvent != null) {
-                    routeEvent.newURL = Router._hashChangeEvent.newURL;
-                    routeEvent.oldURL = Router._hashChangeEvent.oldURL;
+                    routerEvent.newURL = Router._hashChangeEvent.newURL;
+                    routerEvent.oldURL = Router._hashChangeEvent.oldURL;
                 } else {
-                    routeEvent.newURL = window.location.href;
+                    routerEvent.newURL = window.location.href;
                 }
 
-                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routeEvent);
+                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
             }
 
             Router._hashChangeEvent = null;
@@ -21154,17 +21168,17 @@ return jQuery;
          *
          * @property forceSlash
          * @type {boolean}
-         * @default true
+         * @default false
          * @public
          * @static
          * @example
-         *     // To turn off forcing the forward slash
-         *     Router.forceSlash = false;
+         *     // To turn on forcing the forward slash
+         *     Router.forceSlash = true;
          *
-         *     // By default it will change the url from #contact/bob/ to #/contact/bob/
+         *     // If forceSlash is set to true it will change the url from #contact/bob/ to #/contact/bob/
          *     // when using the navigateTo method.
          */
-        Router.forceSlash = true;
+        Router.forceSlash = false;
 
         /**
          * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
@@ -21184,7 +21198,7 @@ return jQuery;
 
     return Router;
 }));
-},{"../event/RouteEvent":36,"../model/Route":38,"../util/StringUtil":43}],30:[function(require,module,exports){
+},{"../event/RouterEvent":36,"../model/Route":38,"../util/StringUtil":43}],30:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -21210,6 +21224,12 @@ return jQuery;
      * @extends DisplayObjectContainer
      * @module StructureJS
      * @submodule view
+     * @uses Extend
+     * @uses DisplayObjectContainer
+     * @uses BaseEvent
+     * @uses TemplateFactory
+     * @uses ComponentFactory
+     * @uses jQuery
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
@@ -21810,6 +21830,8 @@ return jQuery;
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule view
+     * @uses Extend
+     * @uses EventDispatcher
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -21988,6 +22010,8 @@ return jQuery;
                 this.children.splice(index, 1);
             }
 
+            this.numChildren = this.children.length;
+
             if (destroy === true) {
                 child.destroy();
             } else {
@@ -21995,8 +22019,6 @@ return jQuery;
             }
 
             child.parent = null;
-
-            this.numChildren = this.children.length;
 
             return this;
         };
@@ -22171,6 +22193,16 @@ return jQuery;
 
     /**
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
+     *
+     * @class Stage
+     * @extends DOMElement
+     * @module StructureJS
+     * @submodule view
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     * @uses Extend
+     * @uses DOMElement
+     * @uses jQuery
      * @example
      *     // This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
      *     define(function (require, exports, module) {
@@ -22233,12 +22265,6 @@ return jQuery;
      *      var app = new MainClass();
      *      app.appendTo('body');
      *
-     * @class Stage
-     * @extends DOMElement
-     * @module StructureJS
-     * @submodule view
-     * @constructor
-     * @author Robert S. (www.codeBelt.com)
      */
     var Stage = (function () {
 
@@ -22257,7 +22283,7 @@ return jQuery;
          */
         Stage.prototype.appendTo = function (type, enabled) {
             if (typeof enabled === "undefined") { enabled = true; }
-            this.$element = jQuery(type);
+            this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr('data-cid', this.cid);
 
             if (this.isCreated === false) {
@@ -22313,6 +22339,8 @@ return jQuery;
      * @param [data=null] {any} Use to pass any type of data with the event.
      * @module StructureJS
      * @submodule event
+     * @uses Extend
+     * @uses BaseObject
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
@@ -22456,7 +22484,12 @@ return jQuery;
          *     var cloneOfEvent = event.clone();
          */
         BaseEvent.prototype.clone = function () {
-            return new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+            var event = new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+            event.target = this.target;
+            event.currentTarget = this.currentTarget;
+            event.isPropagationStopped = this.isPropagationStopped;
+            event.isImmediatePropagationStopped = this.isImmediatePropagationStopped;
+            return event;
         };
 
         /**
@@ -22762,6 +22795,9 @@ return jQuery;
      * @extends ObjectManager
      * @module StructureJS
      * @submodule event
+     * @uses Extend
+     * @uses ObjectManager
+     * @uses BaseEvent
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -22782,7 +22818,7 @@ return jQuery;
             /**
              * Indicates the object that contains child object. Use the parent property
              * to specify a relative path to display objects that are above the current display object in the display
-             * list hierarchy.
+             * list hierarchy. Helps facilitates event bubbling.
              *
              * @property parent
              * @type {any}
@@ -22794,11 +22830,7 @@ return jQuery;
         }
         /**
          * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
-         * @example
-         instance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function (event) {
-        console.log(event.target + " sent the event.");
-        }
+         *
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
@@ -22806,6 +22838,13 @@ return jQuery;
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @public
          * @chainable
+         * @example
+         *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+        *          console.log(event.target + " sent the event.");
+        *          console.log(event.type, event.data);
+        *      }
          */
         EventDispatcher.prototype.addEventListener = function (type, callback, scope, priority) {
             if (typeof priority === "undefined") { priority = 0; }
@@ -22836,11 +22875,7 @@ return jQuery;
 
         /**
          * Removes a specified listener from the EventDispatcher object.
-         * @example
-         instance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function (event) {
-        console.log(event.target + " sent the event.");
-        }
+         *
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
@@ -22848,6 +22883,11 @@ return jQuery;
          * @hide This was added because it was need for the {{#crossLink "EventBroker"}}{{/crossLink}} class. To keep things consistent this parameter is required.
          * @public
          * @chainable
+         * @example
+         *      this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+        *      }
          */
         EventDispatcher.prototype.removeEventListener = function (type, callback, scope) {
             // Get the list of event listener(s) by the associated type value that is passed in.
@@ -22868,23 +22908,31 @@ return jQuery;
 
         /**
          * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
-         * @example
-         var event = new BaseEvent(BaseEvent.CHANGE);
-         instance.dispatchEvent(event);
-
-         // Here is a common inline event being dispatched
-         instance.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+         *
          * @method dispatchEvent
-         * @param event {BaseEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-         * extend the {{#crossLink "BaseEvent"}}{{/crossLink}}.
+         * @param event {string|BaseEvent} The Event object or event type string you want to dispatch. You can create custom events, the only requirement is all events must extend {{#crossLink "BaseEvent"}}{{/crossLink}}.
+         * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink "BaseEvent"}}{{/crossLink}}.
          * @public
          * @chainable
+         * @example
+         *      this.dispatchEvent('change');
+         *
+         *      // Example with sending data with the event:
+         *      this.dispatchEvent('change', {some: 'data'});
+         *
+         *      // Example with an event object
+         *      // (event type, bubbling set to true, cancelable set to true and passing data) :
+         *      var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
+         *      this.dispatchEvent(event);
+         *
+         *      // Here is a common inline event object being dispatched:
+         *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         EventDispatcher.prototype.dispatchEvent = function (type, data) {
             if (typeof data === "undefined") { data = null; }
             var event = type;
 
-            if (typeof event == 'string') {
+            if (typeof event === 'string') {
                 event = new BaseEvent(type, false, true, data);
             }
 
@@ -22936,23 +22984,73 @@ return jQuery;
         };
 
         /**
+         * Check if an object has a specific event listener already added.
+         *
+         * @method hasEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener method to call.
+         * @param scope {any} The scope of the listener object.
+         * @return {boolean}
+         * @public
+         * @example
+         *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         */
+        EventDispatcher.prototype.hasEventListener = function (type, callback, scope) {
+            if (typeof this._listeners[type] !== 'undefined') {
+                var listener;
+                var numOfCallbacks = this._listeners[type].length;
+                for (var i = 0; i < numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
+                    if (listener.callback === callback && listener.scope === scope) {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        };
+
+        /**
+         * Generates a string output of event listeners for a given object.
+         *
+         * @method getEventListeners
+         * @return {string}
+         * @public
+         * @example
+         *      this.getEventListeners();
+         *
+         *      // [ClassName] is listen for 'BaseEvent.change' event.
+         */
+        EventDispatcher.prototype.getEventListeners = function () {
+            var str = '';
+            var numOfCallbacks;
+            var listener;
+
+            for (var type in this._listeners) {
+                numOfCallbacks = this._listeners[type].length;
+                for (var i = 0; i < numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
+
+                    if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
+                        str += '[' + listener.scope.getQualifiedClassName() + ']';
+                    } else {
+                        str += '[Unknown]';
+                    }
+
+                    str += " is listen for '" + type + "' event.\n";
+                }
+            }
+
+            return str;
+        };
+
+        /**
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function () {
             _super.prototype.disable.call(this);
 
             _super.prototype.destroy.call(this);
-        };
-
-        /**
-         * Meant for debugging purposes; returns an array dictionary of the different event listener(s) on the object.
-         *
-         * @method getEventListeners
-         * @return {array} Returns an array dictionary of the different event listener(s) on the object.
-         * @public
-         */
-        EventDispatcher.prototype.getEventListeners = function () {
-            return this._listeners;
         };
         return EventDispatcher;
     })();
@@ -22990,6 +23088,8 @@ return jQuery;
      * @param nativeEvent {StorageEvent} The native browser event for localStorage.
      * @module StructureJS
      * @submodule event
+     * @uses Extend
+     * @uses BaseEvent
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -23041,15 +23141,15 @@ return jQuery;
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.RouteEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.structurejs.RouterEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
     'use strict';
 
     /**
-     * The RouteEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
+     * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
      *
-     * @class RouteEvent
+     * @class RouterEvent
      * @extends BaseEvent
      * @param type {string} The type of event. The type is case-sensitive.
      * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
@@ -23059,21 +23159,23 @@ return jQuery;
      * @param [data=null] {any} Use to pass any type of data with the event.
      * @module StructureJS
      * @submodule event
+     * @uses Extend
+     * @uses BaseEvent
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var RouteEvent = (function () {
+    var RouterEvent = (function () {
 
-        var _super = Extend(RouteEvent, BaseEvent);
+        var _super = Extend(RouterEvent, BaseEvent);
 
-        function RouteEvent(type, bubbles, cancelable, data) {
-            if (typeof type === "undefined") { type = RouteEvent.CHANGE; }
+        function RouterEvent(type, bubbles, cancelable, data) {
+            if (typeof type === "undefined") { type = RouterEvent.CHANGE; }
             if (typeof bubbles === "undefined") { bubbles = false; }
             if (typeof cancelable === "undefined") { cancelable = false; }
             if (typeof data === "undefined") { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
             /**
-             * The route that was matched against {{#crossLink "RouteEvent/routePattern:property"}}{{/crossLink}} property.
+             * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
              *
              * @property route
              * @type {string}
@@ -23097,7 +23199,7 @@ return jQuery;
              */
             this.oldURL = null;
             /**
-             * The route pattern that matched the {{#crossLink "RouteEvent/route:property"}}{{/crossLink}} property.
+             * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
              *
              * @property routePattern
              * @type {string}
@@ -23106,7 +23208,7 @@ return jQuery;
             this.routePattern = null;
             /**
              * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
-             * being called with the {{#crossLink "RouteEvent/routePattern:property"}}{{/crossLink}} property.
+             * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
              *
              * @property params
              * @type {string}
@@ -23125,8 +23227,8 @@ return jQuery;
         /**
          * @overridden BaseEvent.clone
          */
-        RouteEvent.prototype.clone = function () {
-            var event = new RouteEvent(this.type, this.bubble, this.cancelable, this.data);
+        RouterEvent.prototype.clone = function () {
+            var event = new RouterEvent(this.type, this.bubble, this.cancelable, this.data);
             event.route = this.route;
             event.newURL = this.newURL;
             event.oldURL = this.oldURL;
@@ -23135,17 +23237,17 @@ return jQuery;
             return event;
         };
         /**
-         * The RouteEvent.CHANGE constant defines the value of the type property of an change route event object.
+         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
          *
          * @event CHANGE
          * @type {string}
          * @static
          */
-        RouteEvent.CHANGE = 'RouteEvent.change';
-        return RouteEvent;
+        RouterEvent.CHANGE = 'RouterEvent.change';
+        return RouterEvent;
     })();
 
-    return RouteEvent;
+    return RouterEvent;
 }));
 },{"../event/BaseEvent":33,"../util/Extend":42}],37:[function(require,module,exports){
 /**
@@ -23165,12 +23267,16 @@ return jQuery;
     'use strict';
 
     /**
-     * TODO: YUIDoc_comment
+     * YUIDoc_comment
      *
      * @class Collection
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule model
+     * @uses Extend
+     * @uses EventDispatcher
+     * @uses BaseEvent
+     * @uses Lodash
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -23410,7 +23516,7 @@ return jQuery;
         };
 
         /**
-         * TODO: YUIDoc_comment
+         * YUIDoc_comment
          *
          * @method copy
          * @public
@@ -23422,7 +23528,7 @@ return jQuery;
         };
 
         /**
-         * TODO: YUIDoc_comment
+         * YUIDoc_comment
          *
          * @method clear
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
@@ -23472,10 +23578,10 @@ return jQuery;
      * @class Route
      * @module StructureJS
      * @submodule model
-     * @constructor
-     * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''
+     * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ''
      * @param callback {Function} The function that should be executed when a request matches the routePattern.
      * @param callbackScope {any} The scope of the callback function that should be executed.
+     * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
      *     // Example of adding a route listener and the function callback below.
@@ -23515,15 +23621,6 @@ return jQuery;
      *     route.match('/really/it/matches/any/and/all/hash/urls/');
      *
      *
-     * **?** The question mark character means it will match a query string for the hash url. One thing to point out is when a query string is matched it will **NOT** be passed as a parameter to the callback function. It will be converted to an
-     *
-     *     var route = new Route('?', this.method, this);
-     *
-     *     // Will match one of the following:
-     *     route.match('/?one=1&two=2&three=3');
-     *     route.match('?one=1&two=2&three=3');
-     *
-     *
      * **''** The empty string means it will match when there are no hash url.
      *
      *     var route = new Route('', this.method, this);
@@ -23538,7 +23635,6 @@ return jQuery;
      *
      *     var route = new Route('/games/{gameName}/:level:/', this.method1, this);
      *     var route = new Route('/{category}/blog/', this.method2, this);
-     *     var route = new Route('/home/?', this.method3, this);
      *     var route = new Route('/about/*', this.method4, this);
      *
      */
@@ -23600,17 +23696,14 @@ return jQuery;
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
 
-            // Convert the wild card * be a regex .* to select all.
-            routePattern = routePattern.replace('*', '(.*)');
+            // Convert the wild card * be a regex ?(.*) to select all.
+            routePattern = routePattern.replace('*', '?(.*)');
 
-            // Matches and query strings.
-            routePattern = routePattern.replace('?', '(\\?.*)');
+            // Make any :alphanumeric: optional
+            routePattern = routePattern.replace(findOptionalColons, '?([^/]*)');
 
-            // Make any :alphanumeric: optional but not query string
-            routePattern = routePattern.replace(findOptionalColons, '?([^/?]*)');
-
-            // Make any {alphanumeric} required but not query string
-            routePattern = routePattern.replace(findRequiredBrackets, '([^/?]+)');
+            // Make any {alphanumeric} required
+            routePattern = routePattern.replace(findRequiredBrackets, '([^/]+)');
 
             return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, 'i');
         };
@@ -23626,7 +23719,10 @@ return jQuery;
          *     console.log( route.match('/games/asteroids/2/') );
          */
         Route.prototype.match = function (route) {
-            return route.match(this.regex);
+            // Remove the query string before matching against the route pattern.
+            var routeWithoutQueryString = route.replace(/\?.*/, '');
+
+            return routeWithoutQueryString.match(this.regex);
         };
         return Route;
     })();
@@ -23658,6 +23754,9 @@ return jQuery;
      * @param [data] {any} Provide a way to update the value object upon initialization.
      * @module StructureJS
      * @submodule model
+     * @uses Extend
+     * @uses BaseObject
+     * @uses Util
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -23911,6 +24010,7 @@ return jQuery;
      * @class ComponentFactory
      * @constructor
      * @author Robert S. (www.codeBelt.com)
+     * @static
      */
     var ComponentFactory = (function () {
 
@@ -23922,19 +24022,25 @@ return jQuery;
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {DisplayObjectContainer} The class that you want instantiated.
-         * @param scope {any} The base DOMElement needs a scope (parent object) to instantiate the component/view.
-         * @return {Array.<DisplayObjectContainer>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+         * @param ComponentClass {any} The class that you want instantiated.
+         * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink "DisplayObjectContainer/addChild:method"}}{{/crossLink}} method.
+         * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
          */
         ComponentFactory.create = function ($elements, ComponentClass, scope) {
+            if (typeof scope === "undefined") { scope = null; }
             var list = [];
             var length = $elements.length;
 
             for (var i = 0; i < length; i++) {
                 var component = new ComponentClass($elements.eq(i));
-                scope.addChild(component);
+
+                // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
+                if (scope !== null && typeof component.getQualifiedClassName === 'function') {
+                    scope.addChild(component);
+                }
+
                 list.push(component);
             }
 
@@ -23963,7 +24069,26 @@ return jQuery;
     'use strict';
 
     /**
-     * Snippet from TypeScript compiler.
+     * A helper method to extend classes.
+     *
+     * @class Extend
+     * @module StructureJS
+     * @submodule util
+     * @param inheritorClass
+     * @param baseClass
+     * @returns {*}
+     * @constructor
+     * @example
+     *     var AnotherClass = (function () {
+     *
+     *         var _super = Extend(AnotherClass, BaseClass);
+     *
+     *         function AnotherClass() {
+     *             _super.call(this);
+     *         }
+     *
+     *         return AnotherClass;
+     *     })();
      */
     var Extend = function (inheritorClass, baseClass)
     {
@@ -24295,7 +24420,11 @@ return jQuery;
      * @module StructureJS
      * @submodule util
      * @constructor
+     * @uses StringUtil
+     * @uses Handlebars
+     * @uses jQuery
      * @author Robert S. (www.codeBelt.com)
+     * @static
      */
     var TemplateFactory = (function () {
 
@@ -24419,6 +24548,7 @@ return jQuery;
      * @module StructureJS
      * @submodule util
      * @author Robert S. (www.codeBelt.com)
+     * @static
      */
     var Util = (function () {
 
@@ -24594,7 +24724,7 @@ return jQuery;
         Util.toBoolean = function (strNum) {
             var value = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
-            return (value == '1' || value == 'true');
+            return (value == '1' || value == 'true' || value == 'yes');
         };
 
         /**

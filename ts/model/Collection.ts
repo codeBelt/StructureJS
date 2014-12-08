@@ -10,6 +10,10 @@
  * @extends EventDispatcher
  * @module StructureJS
  * @submodule model
+ * @uses Extend
+ * @uses EventDispatcher
+ * @uses BaseEvent
+ * @uses Lodash
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */

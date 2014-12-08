@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -73,6 +73,8 @@
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
                 <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
@@ -95,9 +97,9 @@
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
-                <li><a class="type" href="../classes/RouteEvent.html">RouteEvent</a></li>
-            
                 <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
             
                 <li><a class="type" href="../classes/Stage.html">Stage</a></li>
             
@@ -156,6 +158,17 @@
             <div class="content container">
                 <h1>ApplicationCacheController Class</h1>
 <div class="box meta">
+    
+        <div class="uses">
+            Uses
+            <ul class="inline commas">
+                
+                    <li><a href="ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+                
+                    <li><a href="EventDispatcher.html">EventDispatcher</a></li>
+                
+            </ul>
+        </div>
     
 
     
@@ -236,11 +249,23 @@
                     
                 </li>
             
+                <li class="index-item property private inherited">
+                    <a href="#property__listeners">_listeners</a>
+
+                    
+                </li>
+            
                 <li class="index-item property private">
                     <a href="#property_isEnabled">isEnabled</a>
 
                     
                         <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_parent">parent</a>
+
                     
                 </li>
             
@@ -260,7 +285,7 @@
             
 
             
-                <li class="index-item method">
+                <li class="index-item method inherited">
                     <a href="#method_addEventListener">addEventListener</a>
 
                     
@@ -269,11 +294,25 @@
                     
                 </li>
             
-                <li class="index-item method">
+                <li class="index-item method inherited">
                     <a href="#method_dispatchEvent">dispatchEvent</a>
 
                     
                         <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getEventListeners">getEventListeners</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_hasEventListener">hasEventListener</a>
+
                     
                     
                 </li>
@@ -350,7 +389,7 @@
                     
                 </li>
             
-                <li class="index-item method">
+                <li class="index-item method inherited">
                     <a href="#method_removeEventListener">removeEventListener</a>
 
                     
@@ -404,7 +443,7 @@
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l263"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:263</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l266"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:266</code></a>
         
         </p>
 
@@ -457,7 +496,7 @@
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l271"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:271</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l274"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:274</code></a>
         
         </p>
 
@@ -469,6 +508,55 @@
     <div class="extended-detail">
         <div class="description">
             
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__listeners" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_listeners</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property__listeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l37"><code>src&#x2F;event&#x2F;EventDispatcher.js:37</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Holds a reference to added listeners.</p>
+
         </div>
 
         
@@ -510,7 +598,7 @@
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l279"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:279</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l282"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:282</code></a>
         
         </p>
 
@@ -527,6 +615,57 @@
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_parent" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>parent</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property_parent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l45"><code>src&#x2F;event&#x2F;EventDispatcher.js:45</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the object that contains child object. Use the parent property
+to specify a relative path to display objects that are above the current display object in the display
+list hierarchy. Helps facilitates event bubbling.</p>
+
+        </div>
+
         
 
         
@@ -554,7 +693,7 @@
 
         
             <a name="method_addEventListener" class="anchor-link"></a>
-<div class="method item">
+<div class="method item inherited">
     <h3 class="name"><code>addEventListener</code>
 
     
@@ -609,16 +748,16 @@
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/EventDispatcher.html#method_addEventListener" class="type">
+                EventDispatcher
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l210"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:210</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l213"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:213</code></a>
         
         </p>
 
@@ -730,7 +869,7 @@
 
         
             <a name="method_dispatchEvent" class="anchor-link"></a>
-<div class="method item">
+<div class="method item inherited">
     <h3 class="name"><code>dispatchEvent</code>
 
     
@@ -767,16 +906,16 @@
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/EventDispatcher.html#method_dispatchEvent" class="type">
+                EventDispatcher
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l247"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:247</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l250"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:250</code></a>
         
         </p>
 
@@ -839,6 +978,256 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
 </div>
 
         
+            <a name="method_getEventListeners" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getEventListeners</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_getEventListeners" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l240"><code>src&#x2F;event&#x2F;EventDispatcher.js:240</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Generates a string output of event listeners for a given object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.getEventListeners();
+
+ // [ClassName] is listen for &#39;BaseEvent.change&#39; event.</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_hasEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>hasEventListener</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_hasEventListener" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/src_event_EventDispatcher.js.html#l213"><code>src&#x2F;event&#x2F;EventDispatcher.js:213</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Check if an object has a specific event listener already added.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The type of event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The listener method to call.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The scope of the listener object.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_onCached" class="anchor-link"></a>
 <div class="method item private">
     <h3 class="name"><code>onCached</code>
@@ -888,7 +1277,7 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l98"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:98</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l101"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:101</code></a>
         
         </p>
 
@@ -988,7 +1377,7 @@ now cached locally.</p>
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l112"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:112</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l115"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:115</code></a>
         
         </p>
 
@@ -1089,7 +1478,7 @@ in the sequence.</p>
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l127"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:127</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l130"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:130</code></a>
         
         </p>
 
@@ -1189,7 +1578,7 @@ first time or because changes have been detected.</p>
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l141"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:141</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l144"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:144</code></a>
         
         </p>
 
@@ -1289,7 +1678,7 @@ always be the last event in the sequence.</p>
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l155"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:155</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l158"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:158</code></a>
         
         </p>
 
@@ -1388,7 +1777,7 @@ always be the last event in the sequence.</p>
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l168"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:168</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l171"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:171</code></a>
         
         </p>
 
@@ -1488,7 +1877,7 @@ The application cache is being deleted.</p>
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l182"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:182</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l185"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:185</code></a>
         
         </p>
 
@@ -1588,7 +1977,7 @@ every file that is downloaded (including the current page which is cached implic
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l196"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:196</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l199"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:199</code></a>
         
         </p>
 
@@ -1640,7 +2029,7 @@ use swapCache() to switch to the new cache.</p>
 
         
             <a name="method_removeEventListener" class="anchor-link"></a>
-<div class="method item">
+<div class="method item inherited">
     <h3 class="name"><code>removeEventListener</code>
 
     
@@ -1689,16 +2078,16 @@ use swapCache() to switch to the new cache.</p>
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/EventDispatcher.html#method_removeEventListener" class="type">
+                EventDispatcher
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
-        <a href="../files/src_controller_ApplicationCacheController.js.html#l229"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:229</code></a>
+        <a href="../files/src_controller_ApplicationCacheController.js.html#l232"><code>src&#x2F;controller&#x2F;ApplicationCacheController.js:232</code></a>
         
         </p>
 

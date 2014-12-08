@@ -21,6 +21,8 @@
      * @module StructureJS
      * @extends BaseObject
      * @submodule core
+     * @uses Extend
+     * @uses BaseObject
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */

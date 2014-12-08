@@ -176,7 +176,7 @@ define(function (require, exports, module) { // jshint ignore:line
          * TODO: YUIDoc_comment
          *
          * @method _allRouterHandler
-         * @param routerEvent {RouteEvent}
+         * @param routerEvent {RouterEvent}
          * @private
          */
         RootView.prototype._allRouterHandler = function(routerEvent) {

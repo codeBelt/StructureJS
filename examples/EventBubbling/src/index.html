@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <!-- build:css assets/styles/screen.css -->
-    <link rel="stylesheet" media="screen, projection" href="assets/styles/reset.css" />
-    <link rel="stylesheet" media="screen, projection" href="assets/styles/eventBubbling.css" />
+    <link rel="stylesheet" media="screen, projection" href="assets/styles/reset.css"/>
+    <link rel="stylesheet" media="screen, projection" href="assets/styles/eventBubbling.css"/>
     <!-- endbuild -->
 </head>
 <body>
@@ -43,10 +43,14 @@
                                 <span class="message js-childMessage"></span>
                                 <input type="checkbox" class="splitPair-input">
                             </div>
-                            <button class="button_dispatch js-dispatchButton">Dispatch Event</button></div>
-                    </div></div>
-            </div></div>
-    </div></div>
+                            <button class="button_dispatch js-dispatchButton">Dispatch Event</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- build:js assets/scripts/main.js -->
@@ -66,14 +70,15 @@
 <script src="../../../src/display/DOMElement.js"></script>
 <script src="../../../src/display/Stage.js"></script>
 
-<script src="./assets/scripts/view/ChildView.js"></script>
+<script src="assets/scripts/view/ChildView.js"></script>
 <script src="assets/scripts/view/ParentView.js"></script>
 <script src="assets/scripts/view/GrandparentView.js"></script>
 <script src="assets/scripts/EventBubblingApp.js"></script>
 <!-- endbuild -->
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function ()
+    {
         var app = new EventBubblingApp();
         app.appendTo('.js-eventBubblingApp');
 

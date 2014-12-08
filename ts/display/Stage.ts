@@ -2,6 +2,16 @@
 
 /**
  * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
+ *
+ * @class Stage
+ * @extends DOMElement
+ * @module StructureJS
+ * @submodule view
+ * @constructor
+ * @author Robert S. (www.codeBelt.com)
+ * @uses Extend
+ * @uses DOMElement
+ * @uses jQuery
  * @example
  *     // This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
  *     define(function (require, exports, module) {
@@ -64,12 +74,6 @@
  *      var app = new MainClass();
  *      app.appendTo('body');
  *
- * @class Stage
- * @extends DOMElement
- * @module StructureJS
- * @submodule view
- * @constructor
- * @author Robert S. (www.codeBelt.com)
  */
 module StructureTS
 {

@@ -5,6 +5,9 @@
  * @class BulkLoader
  * @module StructureJS
  * @submodule util
+ * @uses Extend
+ * @uses EventDispatcher
+ * @uses LoaderEvent
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */

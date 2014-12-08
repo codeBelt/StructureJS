@@ -14,6 +14,8 @@
  * @param nativeEvent {StorageEvent} The native browser event for localStorage.
  * @module StructureJS
  * @submodule event
+ * @uses Extend
+ * @uses BaseEvent
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */

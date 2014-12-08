@@ -22,6 +22,9 @@
      * @param [data] {any} Provide a way to update the value object upon initialization.
      * @module StructureJS
      * @submodule model
+     * @uses Extend
+     * @uses BaseObject
+     * @uses Util
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
