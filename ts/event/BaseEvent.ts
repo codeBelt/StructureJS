@@ -17,8 +17,8 @@
  * @param [data=null] {any} Use to pass any type of data with the event.
  * @module StructureJS
  * @submodule event
- * @uses Extend
- * @uses BaseObject
+ * @requires Extend
+ * @requires BaseObject
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example

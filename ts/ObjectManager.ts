@@ -7,8 +7,8 @@
  * @module StructureJS
  * @extends BaseObject
  * @submodule core
- * @uses Extend
- * @uses BaseObject
+ * @requires Extend
+ * @requires BaseObject
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */

@@ -21,8 +21,8 @@
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule view
-     * @uses Extend
-     * @uses EventDispatcher
+     * @requires Extend
+     * @requires EventDispatcher
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */

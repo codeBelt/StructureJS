@@ -7,9 +7,9 @@
  * @module StructureJS
  * @submodule util
  * @constructor
- * @uses StringUtil
- * @uses Handlebars
- * @uses jQuery
+ * @requires StringUtil
+ * @requires Handlebars
+ * @requires jQuery
  * @author Robert S. (www.codeBelt.com)
  * @static
  */

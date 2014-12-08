@@ -8,9 +8,9 @@
  * @class Router
  * @module StructureJS
  * @submodule controller
- * @uses Route
- * @uses RouterEvent
- * @uses StringUtil
+ * @requires Route
+ * @requires RouterEvent
+ * @requires StringUtil
  * @static
  * @author Robert S. (www.codeBelt.com)
  */

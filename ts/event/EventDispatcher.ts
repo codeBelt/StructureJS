@@ -9,9 +9,9 @@
  * @extends ObjectManager
  * @module StructureJS
  * @submodule event
- * @uses Extend
- * @uses ObjectManager
- * @uses BaseEvent
+ * @requires Extend
+ * @requires ObjectManager
+ * @requires BaseEvent
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example

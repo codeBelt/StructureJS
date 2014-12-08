@@ -22,11 +22,11 @@
      * @module StructureJS
      * @submodule net
      * @param [request=null] {URLRequest}
-     * @uses Extend
-     * @uses EventDispatcher
-     * @uses LoaderEvent
-     * @uses URLLoaderDataFormat
-     * @uses jQuery
+     * @requires Extend
+     * @requires EventDispatcher
+     * @requires LoaderEvent
+     * @requires URLLoaderDataFormat
+     * @requires jQuery
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */

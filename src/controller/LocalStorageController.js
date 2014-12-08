@@ -21,10 +21,10 @@
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule controller
-     * @uses Extend
-     * @uses EventDispatcher
-     * @uses LocalStorageEvent
-     * @uses ValueObject
+     * @requires Extend
+     * @requires EventDispatcher
+     * @requires LocalStorageEvent
+     * @requires ValueObject
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */

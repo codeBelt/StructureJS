@@ -23,12 +23,12 @@
      * @extends DisplayObjectContainer
      * @module StructureJS
      * @submodule view
-     * @uses Extend
-     * @uses DisplayObjectContainer
-     * @uses BaseEvent
-     * @uses TemplateFactory
-     * @uses ComponentFactory
-     * @uses jQuery
+     * @requires Extend
+     * @requires DisplayObjectContainer
+     * @requires BaseEvent
+     * @requires TemplateFactory
+     * @requires ComponentFactory
+     * @requires jQuery
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
