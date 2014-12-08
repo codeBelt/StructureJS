@@ -14,6 +14,14 @@
  * @uses BaseEvent
  * @constructor
  * @author Robert S. (www.codeBelt.com)
+ * @example
+ *      // Extending EventDispatcher. See DisplayObjectContainer as an example that extends EventDispatcher.
+ *      var _super = Extend(ClassExtendingEventDispatcher, EventDispatcher);
+ *
+ *      // Another way to use the EventDispatcher.
+ *      var eventDispatcher = new EventDispatcher();
+ *      eventDispatcher.addEventListener('change', this.handlerMethod, this);
+ *      eventDispatcher.dispatchEvent('change');
  */
 module StructureTS
 {

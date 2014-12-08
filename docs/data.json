@@ -914,7 +914,10 @@
                 "BaseEvent"
             ],
             "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
+            "author": "Robert S. (www.codeBelt.com)",
+            "example": [
+                "\n     // Extending EventDispatcher. See DisplayObjectContainer as an example that extends EventDispatcher.\n     var _super = Extend(ClassExtendingEventDispatcher, EventDispatcher);\n\n     // Another way to use the EventDispatcher.\n     var eventDispatcher = new EventDispatcher();\n     eventDispatcher.addEventListener('change', this.handlerMethod, this);\n     eventDispatcher.dispatchEvent('change');"
+            ]
         },
         "LoaderEvent": {
             "name": "LoaderEvent",
@@ -4501,7 +4504,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 37,
+            "line": 45,
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
             "name": "_listeners",
@@ -4514,7 +4517,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 45,
+            "line": 53,
             "description": "Indicates the object that contains child object. Use the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy. Helps facilitates event bubbling.",
             "itemtype": "property",
             "name": "parent",
@@ -4527,7 +4530,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 58,
+            "line": 66,
             "description": "Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
@@ -4567,7 +4570,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 103,
+            "line": 111,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -4601,7 +4604,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 136,
+            "line": 144,
             "description": "<p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -4631,7 +4634,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 213,
+            "line": 221,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -4667,7 +4670,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 240,
+            "line": 248,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -4686,7 +4689,7 @@
         },
         {
             "file": "src/event/EventDispatcher.js",
-            "line": 274,
+            "line": 282,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -8695,11 +8698,11 @@
         },
         {
             "message": "unknown tag: hide",
-            "line": " src/event/EventDispatcher.js:103"
+            "line": " src/event/EventDispatcher.js:111"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/EventDispatcher.js:274"
+            "line": " src/event/EventDispatcher.js:282"
         },
         {
             "message": "unknown tag: overridden",
@@ -9083,7 +9086,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/event/EventDispatcher.js:274"
+            "line": " src/event/EventDispatcher.js:282"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
