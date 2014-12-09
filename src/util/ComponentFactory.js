@@ -15,10 +15,9 @@
     'use strict';
 
     /**
-     * A helper class to create multiple instances of the same Component Class.
+     * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
      * @class ComponentFactory
-     * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
@@ -28,7 +27,7 @@
             throw new Error('[ComponentFactory] Do not instantiation the Router class because it is a static class.');
         }
         /**
-         * Takes in one or more jQuery objects and creates a component for each one.
+         * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
@@ -37,6 +36,8 @@
          * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
+         * @example
+         *      ComponentFactory.create($('.js-list'), SomeClass);
          */
         ComponentFactory.create = function ($elements, ComponentClass, scope) {
             if (typeof scope === "undefined") { scope = null; }

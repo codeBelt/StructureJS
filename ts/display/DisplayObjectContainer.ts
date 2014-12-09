@@ -259,7 +259,7 @@ module StructureTS
         /**
          * Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.
          *
-         * @method swapChildren
+         * @method swapChildrenAt
          * @param index1 {int} The index position of the first child object.
          * @param index2 {int} The index position of the second child object.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
