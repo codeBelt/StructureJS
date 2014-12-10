@@ -47,3 +47,31 @@ A workflow and several core class to help structure and build JavaScript applica
 * ___eventListener jQuery Plugin___
 	* There are two methods to the plugin ```addEventListener``` and ```removeEventListener```. These two methods allow you to pass in the scope of the class so you do not need to bind your function call(s) and assign them to a property on the class. 
 	* To learn more about the eventListener jQuery plugin check out [https://github.com/codeBelt/jquery-eventListener](https://github.com/codeBelt/jquery-eventListener)
+	* 
+	
+##Add StructureJS to Your Project
+
+If you're using the RequireJS all you have to do is:
+
+```
+bower install structurejs
+```
+
+Add the path to the **config.js** file:
+
+```
+require.config({
+    paths: {
+        ...
+        structurejs: '../vendor/structurejs/src',
+        ...
+    },
+    shim: {...}
+});
+```
+
+Example if you wanted to import the **EventBroker** class to use:
+
+```
+var EventBroker = require('structurejs/event/EventBroker');
+```
