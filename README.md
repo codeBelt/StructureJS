@@ -51,7 +51,7 @@ A workflow and several core class to help structure and build JavaScript applica
 	
 ##Add StructureJS to Your Project
 
-If you're using the RequireJS all you have to do is:
+If you are using RequireJS all you have to do is:
 
 ```
 bower install structurejs
