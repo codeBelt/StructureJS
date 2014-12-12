@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\util\ComponentFactory.js - StructureJS</title>
+    <title>src/util/ComponentFactory.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -156,7 +156,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src\util\ComponentFactory.js</h1>
+                <h1 class="file-heading">File: src/util/ComponentFactory.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -177,10 +177,9 @@
     &#x27;use strict&#x27;;
 
     /**
-     * A helper class to create multiple instances of the same Component Class.
+     * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
      * @class ComponentFactory
-     * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
@@ -190,7 +189,7 @@
             throw new Error(&#x27;[ComponentFactory] Do not instantiation the Router class because it is a static class.&#x27;);
         }
         /**
-         * Takes in one or more jQuery objects and creates a component for each one.
+         * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
          *
          * @method create
          * @param $element {jQuery} One or more jQuery referenced DOM elements.
@@ -199,6 +198,8 @@
          * @return {Array.&lt;any&gt;} Returns a list of instantiated components/views so you can manage them within the Class that created them.
          * @public
          * @static
+         * @example
+         *      ComponentFactory.create($(&#x27;.js-list&#x27;), SomeClass);
          */
         ComponentFactory.create = function ($elements, ComponentClass, scope) {
             if (typeof scope === &quot;undefined&quot;) { scope = null; }

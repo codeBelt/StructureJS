@@ -164,7 +164,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util_ComponentFactory.js.html#l17"><code>src\util\ComponentFactory.js:17</code></a>
+            Defined in: <a href="../files/src_util_ComponentFactory.js.html#l17"><code>src&#x2F;util&#x2F;ComponentFactory.js:17</code></a>
         </div>
     
 
@@ -180,7 +180,7 @@
 
 
 <div class="box intro">
-    <p>A helper class to create multiple instances of the same Component Class.</p>
+    <p>A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.</p>
 
 </div>
 
@@ -227,17 +227,6 @@
         <ul class="index-list methods">
 
             
-                <li class="index-item method constructor">
-                    <a href="#method_ComponentFactory">ComponentFactory</a>
-
-                    <span class="flag constructor">constructor</span>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
 
             
                 <li class="index-item method public">
@@ -263,71 +252,6 @@
 
 
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <a name="method_ComponentFactory" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>ComponentFactory</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_util_ComponentFactory.js.html#l17"><code>src\util\ComponentFactory.js:17</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-    </div>
 
 
 
@@ -400,7 +324,7 @@
             
         
         
-        <a href="../files/src_util_ComponentFactory.js.html#l30"><code>src\util\ComponentFactory.js:30</code></a>
+        <a href="../files/src_util_ComponentFactory.js.html#l29"><code>src&#x2F;util&#x2F;ComponentFactory.js:29</code></a>
         
         </p>
 
@@ -413,7 +337,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Takes in one or more jQuery objects and creates a component for each one.</p>
+            <p>Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.</p>
 
         </div>
 
@@ -492,6 +416,15 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> ComponentFactory.create($(&#39;.js-list&#39;), SomeClass);</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
