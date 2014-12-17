@@ -9,10 +9,15 @@ define(function (require, exports, module) {
             expect(StringUtil.getExtension("file.jpg.zip")).toEqual("zip");
         });
 
-        it("hyphenToCamelCase()", function() {
-            expect(StringUtil.hyphenToCamelCase("hyphen-to-camel-case")).toEqual("hyphenToCamelCase");
-            expect(StringUtil.hyphenToCamelCase("hyphen-TO-camel-CASE")).toEqual("hyphenToCamelCase");
-            expect(StringUtil.hyphenToCamelCase("Hyphen-TO-camel-CASE")).toEqual("hyphenToCamelCase");
+        it("toCamelCase()", function() {
+            expect(StringUtil.toCamelCase("hyphen-to-camel-case")).toEqual("hyphenToCamelCase");
+            expect(StringUtil.toCamelCase("hyphen_to_camel_case")).toEqual("hyphenToCamelCase");
+            expect(StringUtil.toCamelCase("hyphen~TO~camel~ CASE")).toEqual("hyphenToCamelCase");
+            expect(StringUtil.toCamelCase("Hyphen.TO.camel-CASE")).toEqual("hyphenToCamelCase");
+            expect(StringUtil.toCamelCase("HyphenTo camel CASE")).toEqual("hyphenToCamelCase");
+            expect(StringUtil.toCamelCase("  H  yphenTo camel CASE")).toEqual("hYphenToCamelCase");
+            expect(StringUtil.toCamelCase("HyphenToCamelCase")).toEqual("hyphenToCamelCase");
+            expect(StringUtil.toCamelCase("Hyphen8ToCamelCase")).toEqual("hyphen8ToCamelCase");
         });
 
         it("hyphenToPascalCase()", function() {
