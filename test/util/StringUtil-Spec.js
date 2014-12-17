@@ -20,9 +20,15 @@ define(function (require, exports, module) {
             expect(StringUtil.toCamelCase("Hyphen8ToCamelCase")).toEqual("hyphen8ToCamelCase");
         });
 
-        it("hyphenToPascalCase()", function() {
-            expect(StringUtil.hyphenToPascalCase("hyphen-to-camel-case")).toEqual("HyphenToCamelCase");
-            expect(StringUtil.hyphenToPascalCase("hyphen-TO-camel-CASE")).toEqual("HyphenToCamelCase");
+        it("toPascalCase()", function() {
+            expect(StringUtil.toPascalCase("hyphen-to-camel-case")).toEqual("HyphenToCamelCase");
+            expect(StringUtil.toPascalCase("hyphen_to_camel_case")).toEqual("HyphenToCamelCase");
+            expect(StringUtil.toPascalCase("hyphen~TO~camel~ CASE")).toEqual("HyphenToCamelCase");
+            expect(StringUtil.toPascalCase("Hyphen.TO.camel-CASE")).toEqual("HyphenToCamelCase");
+            expect(StringUtil.toPascalCase("HyphenTo camel CASE")).toEqual("HyphenToCamelCase");
+            expect(StringUtil.toPascalCase("  H  yphenTo camel CASE")).toEqual("HYphenToCamelCase");
+            expect(StringUtil.toPascalCase("HyphenToCamelCase")).toEqual("hyphenToCamelCase");
+            expect(StringUtil.toPascalCase("Hyphen8ToCamelCase")).toEqual("hyphen8ToCamelCase");
         });
 
         it("camelCaseToHyphen()", function() {

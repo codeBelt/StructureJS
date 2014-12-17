@@ -69,22 +69,28 @@ module StructureTS
         /**
          * Converts a hyphen string to a pascal case string.
          *
-         * @method hyphenToPascalCase
+         * @method toPascalCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.hyphenToPascalCase("hyphen-to-pascal-case");
-         *      // 'HyphenToPascalCase'
+         *      StringUtil.toPascalCase("to-pascal_case");
+         *      // 'toPascalCase'
          */
-        public static hyphenToPascalCase(str:string):string
+        public static toPascalCase(str:string):string
         {
-            var value:string = str.toLowerCase();
-            return value.replace(/(\-|^)([a-z])/gi, function (match, delimiter, hyphenated)
-            {
-                return hyphenated.toUpperCase();
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, " ");
+            // uppercase characters preceded by a space or number
+            str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function(a,b,c) {
+                return b.trim() + c.toUpperCase();
             });
+            // Make first character uppercase.
+            str = str.replace(/^[a-zA-Z]/, function(a,b,c) {
+                return a.toUpperCase();
+            });
+            return str;
         }
 
         /**
