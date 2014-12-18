@@ -40,46 +40,57 @@ module StructureTS
         }
 
         /**
-         * Converts a hyphen string to a camel case string.
+         * Converts a string to a camel case string.
          *
-         * @method hyphenToCamelCase
+         * @method toCamelCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.hyphenToCamelCase("hyphen-TO-camel-CASE");
-         *      // 'hyphenToCamelCase'
+         *      StringUtil.toCamelCase("TO-camel-CASE");
+         *      // 'toCamelCase'
          */
-        public static hyphenToCamelCase(str:string):string
+        public static toCamelCase(str:string):string
         {
-            var value:string = str.toLowerCase();
-
-            return value.replace(/-([a-z])/g, function (g)
-            {
-                return g[1].toUpperCase();
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, ' ');
+            // put a space before an uppercase letter
+            str = str.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+            // Lower case first character and some other stuff
+            str = str.replace(/([^a-zA-Z0-9 ])|^[0-9]+/g, '').trim().toLowerCase();
+            // uppercase characters preceded by a space or number
+            str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function(a,b,c) {
+                return b.trim() + c.toUpperCase();
             });
+            return str;
         }
 
         /**
          * Converts a hyphen string to a pascal case string.
          *
-         * @method hyphenToPascalCase
+         * @method toPascalCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.hyphenToPascalCase("hyphen-to-camel-case");
-         *      // 'HyphenToCamelCase'
+         *      StringUtil.toPascalCase("to-pascal_case");
+         *      // 'toPascalCase'
          */
-        public static hyphenToPascalCase(str:string):string
+        public static toPascalCase(str:string):string
         {
-            var value:string = str.toLowerCase();
-            return value.replace(/(\-|^)([a-z])/gi, function (match, delimiter, hyphenated)
-            {
-                return hyphenated.toUpperCase();
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, " ");
+            // uppercase characters preceded by a space or number
+            str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function(a,b,c) {
+                return b.trim() + c.toUpperCase();
             });
+            // Make first character uppercase.
+            str = str.replace(/^[a-zA-Z]/, function(a,b,c) {
+                return a.toUpperCase();
+            });
+            return str;
         }
 
         /**
@@ -91,7 +102,7 @@ module StructureTS
          * @public
          * @static
          * @example
-         *      StringUtil.camelCaseToHyphen("hyphenToCamelCase");
+         *      StringUtil.camelCaseToHyphen("toCamelCase");
          *      // 'hyphen-to-camel-case'
          */
         public static camelCaseToHyphen(str:string):string
