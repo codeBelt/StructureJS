@@ -27,8 +27,10 @@ define(function (require, exports, module) {
             expect(StringUtil.toPascalCase("Hyphen.TO.camel-CASE")).toEqual("HyphenToCamelCase");
             expect(StringUtil.toPascalCase("HyphenTo camel CASE")).toEqual("HyphenToCamelCase");
             expect(StringUtil.toPascalCase("  H  yphenTo camel CASE")).toEqual("HYphenToCamelCase");
-            expect(StringUtil.toPascalCase("HyphenToCamelCase")).toEqual("hyphenToCamelCase");
-            expect(StringUtil.toPascalCase("Hyphen8ToCamelCase")).toEqual("hyphen8ToCamelCase");
+            expect(StringUtil.toPascalCase("HyphenToCamelCase")).toEqual("HyphenToCamelCase");
+            expect(StringUtil.toPascalCase("Hyphen8ToCamelCase")).toEqual("Hyphen8ToCamelCase");
+            expect(StringUtil.toPascalCase("hyphenToCamelCase")).toEqual("HyphenToCamelCase");
+            expect(StringUtil.toPascalCase("hyphen to camel case")).toEqual("HyphenToCamelCase");
         });
 
         it("camelCaseToHyphen()", function() {

@@ -93,13 +93,15 @@
          */
         StringUtil.toPascalCase = function (str) {
             // Replace special characters with a space
-            str = str.replace(/[^a-zA-Z0-9 ]/g, " ");
-
+            str = str.replace(/[^a-zA-Z0-9 ]/g, ' ');
+            // put a space before an uppercase letter
+            str = str.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+            // Lower case first character and some other stuff
+            str = str.replace(/([^a-zA-Z0-9 ])|^[0-9]+/g, '').trim().toLowerCase();
             // uppercase characters preceded by a space or number
             str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function (a, b, c) {
                 return b.trim() + c.toUpperCase();
             });
-
             // Make first character uppercase.
             str = str.replace(/^[a-zA-Z]/, function (a, b, c) {
                 return a.toUpperCase();
