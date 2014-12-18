@@ -33,8 +33,11 @@ define(function (require, exports, module) {
             expect(StringUtil.toPascalCase("hyphen to camel case")).toEqual("HyphenToCamelCase");
         });
 
-        it("camelCaseToHyphen()", function() {
-            expect(StringUtil.camelCaseToHyphen("hyphenToCamelCase")).toEqual("hyphen-to-camel-case");
+        it("toHyphen()", function() {
+            //expect(StringUtil.toHyphen("hyphenToCamelCase")).toEqual("hyphen-to-camel-case");
+            //expect(StringUtil.toHyphen("HyphenToCamelCase")).toEqual("hyphen-to-camel-case");
+            expect(StringUtil.toHyphen("Hyphen.To~Camel_Case")).toEqual("hyphen-to-camel-case");
+            expect(StringUtil.toHyphen(" hyphen To Camel Case ")).toEqual("hyphen-to-camel-case");
         });
 
         it("createUUID()", function() {

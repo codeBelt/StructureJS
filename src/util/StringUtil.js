@@ -110,21 +110,27 @@
         };
 
         /**
-         * Converts a camel case string to a hyphen case string.
+         * Converts a string to a hyphen case string.
          *
-         * @method camelCaseToHyphen
+         * @method toHyphen
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.camelCaseToHyphen("hyphenToCamelCase");
+         *      StringUtil.toHyphen("hyphenToCamelCase");
          *      // 'hyphen-to-camel-case'
          */
-        StringUtil.camelCaseToHyphen = function (str) {
-            return str.replace(/([a-z][A-Z])/g, function (g) {
-                return g[0] + '-' + g[1].toLowerCase();
-            });
+        StringUtil.toHyphen = function (str) {
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, ' ');
+            // Remove leading and trailing whitespace.
+            str = str.replace(/(^\s+|\s+$)/g, '');
+            // put a space before an uppercase letter
+            str = str.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+            // Replace spacing with hyphen and make all characters lowercase.
+            str = str.replace(/\s+/g, '-').toLowerCase();
+            return str;
         };
 
         /**

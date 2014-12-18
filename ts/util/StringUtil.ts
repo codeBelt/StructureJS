@@ -98,23 +98,28 @@ module StructureTS
         }
 
         /**
-         * Converts a camel case string to a hyphen case string.
+         * Converts a string to a hyphen case string.
          *
-         * @method camelCaseToHyphen
+         * @method toHyphen
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.camelCaseToHyphen("toCamelCase");
+         *      StringUtil.toHyphen("hyphenToCamelCase");
          *      // 'hyphen-to-camel-case'
          */
-        public static camelCaseToHyphen(str:string):string
+        public static toHyphen(str:string):string
         {
-            return str.replace(/([a-z][A-Z])/g, function (g)
-            {
-                return g[0] + '-' + g[1].toLowerCase()
-            });
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, ' ');
+            // Remove leading and trailing whitespace.
+            str = str.replace(/(^\s+|\s+$)/g, '');
+            // put a space before an uppercase letter
+            str = str.replace(/([a-z](?=[A-Z]))/g, '$1 ');
+            // Replace spacing with hyphen and make all characters lowercase.
+            str = str.replace(/\s+/g, '-').toLowerCase();
+            return str;
         }
 
         /**
