@@ -224,7 +224,7 @@ module StructureTS
         {
             var value:any = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
-            return (value == '1' || value == 'true' || value == 'yes');
+            return (value > 0 || value == 'true' || value == 'yes');
         }
 
         /**
