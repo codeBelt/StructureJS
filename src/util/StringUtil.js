@@ -51,6 +51,34 @@
         };
 
         /**
+         * Converts a string to a sentence case string.
+         *
+         * @method toSentence
+         * @param str {string}
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      StringUtil.toSentence("liveDown_by-the.River");
+         *      // 'live down by the river'
+         */
+        StringUtil.toSentence = function (str) {
+            return String(str)
+                // Add a space after any digits.
+                .replace(/(\d)/g, '$1 ')
+                // Add a space before any upper case characters.
+                .replace(/([a-z](?=[A-Z]))/g, '$1 ')
+                // Remove all non-word characters and replace with a single space.
+                .replace(/[^a-zA-Z0-9 ]/g, ' ')
+                // Replace multiple Spaces with a single space.
+                .replace(/\s{2,}/g, ' ')
+                // Trim whitespace around the string.
+                .replace(/^ | $/g, '')
+                // Lower case the entire string.
+                .toLowerCase();
+        };
+
+        /**
          * Converts a string to a camel case string.
          *
          * @method toCamelCase
@@ -59,24 +87,15 @@
          * @public
          * @static
          * @example
-         *      StringUtil.toCamelCase("TO-camel-CASE");
-         *      // 'toCamelCase'
+         *      StringUtil.toCamelCase("liveDown_by-the.River");
+         *      // 'liveDownByTheRiver'
          */
         StringUtil.toCamelCase = function (str) {
-            // Replace special characters with a space
-            str = str.replace(/[^a-zA-Z0-9 ]/g, ' ');
-
-            // put a space before an uppercase letter
-            str = str.replace(/([a-z](?=[A-Z]))/g, '$1 ');
-
-            // Lower case first character and some other stuff
-            str = str.replace(/([^a-zA-Z0-9 ])|^[0-9]+/g, '').trim().toLowerCase();
-
-            // uppercase characters preceded by a space or number
-            str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function (a, b, c) {
-                return b.trim() + c.toUpperCase();
-            });
-            return str;
+            return StringUtil.toSentence(str)
+                // Replace spaces between words with a string upper cased character.
+                .replace(/ (\w)/g, function (_, $1) {
+                    return $1.toUpperCase();
+                });
         };
 
         /**
@@ -88,49 +107,59 @@
          * @public
          * @static
          * @example
-         *      StringUtil.toPascalCase("to-pascal_case");
-         *      // 'ToPascalCase'
+         *      StringUtil.toPascalCase("liveDown_by-the.River");
+         *      // 'LiveDownByTheRiver'
          */
         StringUtil.toPascalCase = function (str) {
-            // Replace special characters with a space
-            str = str.replace(/[^a-zA-Z0-9 ]/g, ' ');
-            // put a space before an uppercase letter
-            str = str.replace(/([a-z](?=[A-Z]))/g, '$1 ');
-            // Lower case first character and some other stuff
-            str = str.replace(/([^a-zA-Z0-9 ])|^[0-9]+/g, '').trim().toLowerCase();
-            // uppercase characters preceded by a space or number
-            str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function (a, b, c) {
-                return b.trim() + c.toUpperCase();
-            });
-            // Make first character uppercase.
-            str = str.replace(/^[a-zA-Z]/, function (a, b, c) {
-                return a.toUpperCase();
-            });
-            return str;
+            return StringUtil.toCamelCase(str)
+                // Make first character uppercase.
+                .replace(/^[a-zA-Z]/, function (a, b, c) {
+                    return a.toUpperCase();
+                });
         };
 
+
         /**
-         * Converts a string to a hyphen case string.
+         * Converts a string to a constant case string.
          *
-         * @method toHyphen
+         * @method toConstantCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.toHyphen("hyphenToCamelCase");
-         *      // 'hyphen-to-camel-case'
+         *      StringUtil.toConstantCase("liveDown_by-the.River");
+         *      // 'LIVE_DOWN_BY_THE_RIVER'
          */
-        StringUtil.toHyphen = function (str) {
-            // Replace special characters with a space
-            str = str.replace(/[^a-zA-Z0-9 ]/g, ' ');
-            // Remove leading and trailing whitespace.
-            str = str.replace(/(^\s+|\s+$)/g, '');
-            // put a space before an uppercase letter
-            str = str.replace(/([a-z](?=[A-Z]))/g, '$1 ');
-            // Replace spacing with hyphen and make all characters lowercase.
-            str = str.replace(/\s+/g, '-').toLowerCase();
-            return str;
+        StringUtil.toConstantCase = function (str) {
+            return StringUtil.toCaseWithSeparator(str, '_')
+                .toUpperCase();
+        };
+
+        /**
+         * Converts a string
+         *
+         * @method toCaseWithSeparator
+         * @param str {string}
+         * @param separator {string} Can be any string you want to use as a separator.
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      StringUtil.toCaseWithSeparator("liveDown_by-the.River", '-');
+         *      // 'live-down-by-the-river'
+         *
+         *      StringUtil.toCaseWithSeparator("liveDown_by-the.River", '_');
+         *      // 'live_down_by_the_river'
+         *
+         *      StringUtil.toCaseWithSeparator("liveDown_by-the.River", '/');
+         *      // 'live/down/by/the/river'
+         */
+        StringUtil.toCaseWithSeparator = function (str, separator) {
+            if (typeof separator === "undefined") { separator = '-'; }
+
+            return StringUtil.toSentence(str)
+                .replace(/\s+/g, separator);
         };
 
         /**
