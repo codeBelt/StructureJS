@@ -76,7 +76,7 @@ module StructureTS
          * @static
          * @example
          *      StringUtil.toPascalCase("to-pascal_case");
-         *      // 'toPascalCase'
+         *      // 'ToPascalCase'
          */
         public static toPascalCase(str:string):string
         {

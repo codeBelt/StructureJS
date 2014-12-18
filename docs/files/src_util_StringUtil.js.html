@@ -213,60 +213,86 @@
         };
 
         /**
-         * Converts a hyphen string to a camel case string.
+         * Converts a string to a camel case string.
          *
-         * @method hyphenToCamelCase
+         * @method toCamelCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.hyphenToCamelCase(&quot;hyphen-TO-camel-CASE&quot;);
-         *      // &#x27;hyphenToCamelCase&#x27;
+         *      StringUtil.toCamelCase(&quot;TO-camel-CASE&quot;);
+         *      // &#x27;toCamelCase&#x27;
          */
-        StringUtil.hyphenToCamelCase = function (str) {
-            var value = str.toLowerCase();
+        StringUtil.toCamelCase = function (str) {
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, &#x27; &#x27;);
 
-            return value.replace(/-([a-z])/g, function (g) {
-                return g[1].toUpperCase();
+            // put a space before an uppercase letter
+            str = str.replace(/([a-z](?=[A-Z]))/g, &#x27;$1 &#x27;);
+
+            // Lower case first character and some other stuff
+            str = str.replace(/([^a-zA-Z0-9 ])|^[0-9]+/g, &#x27;&#x27;).trim().toLowerCase();
+
+            // uppercase characters preceded by a space or number
+            str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function (a, b, c) {
+                return b.trim() + c.toUpperCase();
             });
+            return str;
         };
 
         /**
          * Converts a hyphen string to a pascal case string.
          *
-         * @method hyphenToPascalCase
+         * @method toPascalCase
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.hyphenToPascalCase(&quot;hyphen-to-camel-case&quot;);
-         *      // &#x27;HyphenToCamelCase&#x27;
+         *      StringUtil.toPascalCase(&quot;to-pascal_case&quot;);
+         *      // &#x27;ToPascalCase&#x27;
          */
-        StringUtil.hyphenToPascalCase = function (str) {
-            var value = str.toLowerCase();
-            return value.replace(/(\-|^)([a-z])/gi, function (match, delimiter, hyphenated) {
-                return hyphenated.toUpperCase();
+        StringUtil.toPascalCase = function (str) {
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, &#x27; &#x27;);
+            // put a space before an uppercase letter
+            str = str.replace(/([a-z](?=[A-Z]))/g, &#x27;$1 &#x27;);
+            // Lower case first character and some other stuff
+            str = str.replace(/([^a-zA-Z0-9 ])|^[0-9]+/g, &#x27;&#x27;).trim().toLowerCase();
+            // uppercase characters preceded by a space or number
+            str = str.replace(/([ 0-9]+)([a-zA-Z])/g, function (a, b, c) {
+                return b.trim() + c.toUpperCase();
             });
+            // Make first character uppercase.
+            str = str.replace(/^[a-zA-Z]/, function (a, b, c) {
+                return a.toUpperCase();
+            });
+            return str;
         };
 
         /**
-         * Converts a camel case string to a hyphen case string.
+         * Converts a string to a hyphen case string.
          *
-         * @method camelCaseToHyphen
+         * @method toHyphen
          * @param str {string}
          * @returns {string}
          * @public
          * @static
          * @example
-         *      StringUtil.camelCaseToHyphen(&quot;hyphenToCamelCase&quot;);
+         *      StringUtil.toHyphen(&quot;hyphenToCamelCase&quot;);
          *      // &#x27;hyphen-to-camel-case&#x27;
          */
-        StringUtil.camelCaseToHyphen = function (str) {
-            return str.replace(/([a-z][A-Z])/g, function (g) {
-                return g[0] + &#x27;-&#x27; + g[1].toLowerCase();
-            });
+        StringUtil.toHyphen = function (str) {
+            // Replace special characters with a space
+            str = str.replace(/[^a-zA-Z0-9 ]/g, &#x27; &#x27;);
+            // Remove leading and trailing whitespace.
+            str = str.replace(/(^\s+|\s+$)/g, &#x27;&#x27;);
+            // put a space before an uppercase letter
+            str = str.replace(/([a-z](?=[A-Z]))/g, &#x27;$1 &#x27;);
+            // Replace spacing with hyphen and make all characters lowercase.
+            str = str.replace(/\s+/g, &#x27;-&#x27;).toLowerCase();
+            return str;
         };
 
         /**

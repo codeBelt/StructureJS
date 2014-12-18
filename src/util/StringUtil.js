@@ -89,7 +89,7 @@
          * @static
          * @example
          *      StringUtil.toPascalCase("to-pascal_case");
-         *      // 'toPascalCase'
+         *      // 'ToPascalCase'
          */
         StringUtil.toPascalCase = function (str) {
             // Replace special characters with a space

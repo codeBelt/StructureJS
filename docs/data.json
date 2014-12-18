@@ -7376,9 +7376,9 @@
         {
             "file": "src/util/StringUtil.js",
             "line": 53,
-            "description": "Converts a hyphen string to a camel case string.",
+            "description": "Converts a string to a camel case string.",
             "itemtype": "method",
-            "name": "hyphenToCamelCase",
+            "name": "toCamelCase",
             "params": [
                 {
                     "name": "str",
@@ -7394,7 +7394,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     StringUtil.hyphenToCamelCase(\"hyphen-TO-camel-CASE\");\n     // 'hyphenToCamelCase'"
+                "\n     StringUtil.toCamelCase(\"TO-camel-CASE\");\n     // 'toCamelCase'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -7402,10 +7402,10 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 73,
+            "line": 82,
             "description": "Converts a hyphen string to a pascal case string.",
             "itemtype": "method",
-            "name": "hyphenToPascalCase",
+            "name": "toPascalCase",
             "params": [
                 {
                     "name": "str",
@@ -7421,7 +7421,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     StringUtil.hyphenToPascalCase(\"hyphen-to-camel-case\");\n     // 'HyphenToCamelCase'"
+                "\n     StringUtil.toPascalCase(\"to-pascal_case\");\n     // 'ToPascalCase'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -7429,10 +7429,10 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 92,
-            "description": "Converts a camel case string to a hyphen case string.",
+            "line": 112,
+            "description": "Converts a string to a hyphen case string.",
             "itemtype": "method",
-            "name": "camelCaseToHyphen",
+            "name": "toHyphen",
             "params": [
                 {
                     "name": "str",
@@ -7448,7 +7448,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     StringUtil.camelCaseToHyphen(\"hyphenToCamelCase\");\n     // 'hyphen-to-camel-case'"
+                "\n     StringUtil.toHyphen(\"hyphenToCamelCase\");\n     // 'hyphen-to-camel-case'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -7456,7 +7456,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 110,
+            "line": 136,
             "description": "Creates a universally unique identifier.",
             "itemtype": "method",
             "name": "createUUID",
@@ -7476,7 +7476,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 131,
+            "line": 157,
             "description": "Converts a query string to an object.",
             "itemtype": "method",
             "name": "queryStringToObject",
@@ -7510,7 +7510,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 171,
+            "line": 197,
             "description": "Remove all whitespace from the string passed in.",
             "itemtype": "method",
             "name": "removeAllWhitespace",
@@ -7537,7 +7537,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 188,
+            "line": 214,
             "description": "Remove leading and trailing whitespace.",
             "itemtype": "method",
             "name": "removeLeadingTrailingWhitespace",
@@ -7564,7 +7564,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 205,
+            "line": 231,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -7595,7 +7595,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 225,
+            "line": 251,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
             "itemtype": "method",
             "name": "format",
@@ -7627,7 +7627,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 253,
+            "line": 279,
             "description": "Updates a value in the query string by its key name.",
             "itemtype": "method",
             "name": "paramReplace",
@@ -8807,39 +8807,39 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:73"
+            "line": " src/util/StringUtil.js:82"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:92"
+            "line": " src/util/StringUtil.js:112"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:110"
+            "line": " src/util/StringUtil.js:136"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:131"
+            "line": " src/util/StringUtil.js:157"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:171"
+            "line": " src/util/StringUtil.js:197"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:188"
+            "line": " src/util/StringUtil.js:214"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:205"
+            "line": " src/util/StringUtil.js:231"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:225"
+            "line": " src/util/StringUtil.js:251"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:253"
+            "line": " src/util/StringUtil.js:279"
         },
         {
             "message": "replacing incorrect tag: returns with return",

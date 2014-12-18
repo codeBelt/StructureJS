@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>RouterEvent - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.7</span>
+                
+                
+                    <p class="description">Code and documentation for the StructureJS library.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
+            
+                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
+            
+                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
+            
+                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
+            
+                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/net.html">net</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1>RouterEvent Class</h1>
+<div class="box meta">
+    
+
+    
+        <div class="extends">
+            Extends <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>
+        </div>
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_event_RouterEvent.js.html#l17"><code>src&#x2F;event&#x2F;RouterEvent.js:17</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/event.html">event</a><br>
+            Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>The RouterEvent is used in the <a href="../classes/Router.html" class="crosslink">Router</a> class and gets passed to the callback in the <a href="../classes/Route.html" class="crosslink">Route</a> class.</p>
+
+</div>
+
+<!-- Class member index -->
+
+<a name="index" class="anchor-link"></a>
+<div class="index">
+<h2>Index</h2>
+
+    <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited">
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+
+
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties extends">
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_bubble">bubble</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_cancelable">cancelable</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_cid">cid</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_currentTarget">currentTarget</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_data">data</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_isImmediatePropagationStopped">isImmediatePropagationStopped</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_isPropagationStopped">isPropagationStopped</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_newURL">newURL</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_oldURL">oldURL</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_params">params</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_query">query</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_route">route</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_routePattern">routePattern</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_target">target</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_type">type</a>
+
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div class="index-section methods">
+        <h3>Methods</h3>
+
+        <ul class="index-list methods extends">
+
+            
+                <li class="index-item method constructor">
+                    <a href="#method_RouterEvent">RouterEvent</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
+            
+
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_clone">clone</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_destroy">destroy</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_stopImmediatePropagation">stopImmediatePropagation</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_stopPropagation">stopPropagation</a>
+
+                    
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+
+
+        <div class="index-section events">
+            <h3>Events</h3>
+
+            <ul class="index-list events extends">
+                
+                    <li class="index-item event">
+                        <a href="#event_CHANGE">CHANGE</a>
+
+                        
+                            <span class="flag static">static</span>
+                        
+                        
+                    </li>
+                
+            </ul>
+        </div>
+    
+</div>
+
+
+<div class="class-detail">
+
+
+    <div class="properties-detail">
+        <h2>Properties</h2>
+
+        
+            <a name="property_bubble" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>bubble</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_bubble" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l118"><code>src&#x2F;event&#x2F;BaseEvent.js:118</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates whether an event is a bubbling event.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_cancelable" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>cancelable</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_cancelable" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l127"><code>src&#x2F;event&#x2F;BaseEvent.js:127</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates whether the behavior associated with the event can be prevented.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_cid" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>cid</code>
+    <span class="type">Int</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#property_cid" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/src_BaseObject.js.html#l30"><code>src&#x2F;BaseObject.js:30</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_currentTarget" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>currentTarget</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_currentTarget" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l99"><code>src&#x2F;event&#x2F;BaseEvent.js:99</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The currentTarget property always points to the <a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a> that the event is currently processing (i.e. bubbling at).</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_data" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>data</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_data" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l109"><code>src&#x2F;event&#x2F;BaseEvent.js:109</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Used to pass any type of data with the event.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isImmediatePropagationStopped" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>isImmediatePropagationStopped</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_isImmediatePropagationStopped" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l146"><code>src&#x2F;event&#x2F;BaseEvent.js:146</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates if the <a href="../classes/BaseEvent.html#method_stopImmediatePropagation" class="crosslink">stopImmediatePropagation</a> was called on the event object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isPropagationStopped" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>isPropagationStopped</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_isPropagationStopped" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l136"><code>src&#x2F;event&#x2F;BaseEvent.js:136</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates if the <a href="../classes/BaseEvent.html#method_stopPropagation" class="crosslink">stopPropagation</a> was called on the event object.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_newURL" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>newURL</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l53"><code>src&#x2F;event&#x2F;RouterEvent.js:53</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The new URL to which the window is navigating.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_oldURL" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>oldURL</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l61"><code>src&#x2F;event&#x2F;RouterEvent.js:61</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The previous URL from which the window was navigated.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_params" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>params</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l77"><code>src&#x2F;event&#x2F;RouterEvent.js:77</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>An array containing the parameters captured from the Route.<a href="../classes/Route.html#method_match" class="crosslink">match</a>
+being called with the <a href="../classes/RouterEvent.html#property_routePattern" class="crosslink">routePattern</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_query" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>query</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l86"><code>src&#x2F;event&#x2F;RouterEvent.js:86</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A query object the represents the query string in the hash url.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_route" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>route</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l45"><code>src&#x2F;event&#x2F;RouterEvent.js:45</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The route that was matched against <a href="../classes/RouterEvent.html#property_routePattern" class="crosslink">routePattern</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_routePattern" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>routePattern</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l69"><code>src&#x2F;event&#x2F;RouterEvent.js:69</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The route pattern that matched the <a href="../classes/RouterEvent.html#property_route" class="crosslink">route</a> property.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_target" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>target</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_target" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l89"><code>src&#x2F;event&#x2F;BaseEvent.js:89</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the object that originally dispatched the event.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_type" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>type</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#property_type" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l79"><code>src&#x2F;event&#x2F;BaseEvent.js:79</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The type of event.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <a name="method_RouterEvent" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>RouterEvent</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[bubbles=false]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[cancelable=false]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[data=null]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l17"><code>src&#x2F;event&#x2F;RouterEvent.js:17</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">type</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The type of event. The type is case-sensitive.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[bubbles=false]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
+Note: With event-bubbling you can let one Event subsequently call on every ancestor (<a href="../classes/EventDispatcher.html#property_parent" class="crosslink">parent</a>)
+(containers of containers of etc.) of the <a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a> that originally dispatched the Event, all the way up to the surface (<a href="../classes/Stage.html" class="crosslink">Stage</a>). Any classes that do not have a parent cannot bubble.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[cancelable=false]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[data=null]</code>
+                            <span class="type">Any</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Use to pass any type of data with the event.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+    </div>
+
+
+
+    <div class="methods-detail">
+        <h2>Methods</h2>
+
+        
+            <a name="method_clone" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>clone</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#method_clone" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l162"><code>src&#x2F;event&#x2F;BaseEvent.js:162</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Duplicates an instance of an BaseEvent subclass.</p>
+<p>Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.</p>
+<p>The new BaseEvent object includes all the properties of the original.</p>
+<p>When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
+to duplicate the properties of your custom class.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var cloneOfEvent = event.clone();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_destroy" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>destroy</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#method_destroy" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/src_BaseObject.js.html#l56"><code>src&#x2F;BaseObject.js:56</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The purpose of the destroy method is to make an object ready for garbage collection. This
+should be thought of as a one way function. Once destroy is called no further methods should be
+called on the object or properties accessed. It is the responsibility of those who implement this
+function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
+object eligible for garbage collection.</p>
+<p>By default the destroy method will null out all properties of the class automatically. You should call destroy
+on other objects before calling the super.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Void</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+     this._childInstance.destroy();
+
+     _super.prototype.destroy.call(this);
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_getQualifiedClassName" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getQualifiedClassName</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/src_BaseObject.js.html#l43"><code>src&#x2F;BaseObject.js:43</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Returns the fully qualified class name of an object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        
+                        <p>Returns the class name.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopImmediatePropagation" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>stopImmediatePropagation</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#method_stopImmediatePropagation" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l202"><code>src&#x2F;event&#x2F;BaseEvent.js:202</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
+This method takes effect immediately, and it affects event listeners in the current node. In contrast,
+the <a href="../classes/BaseEvent.html#method_stopPropagation" class="crosslink">stopPropagation</a> method doesn&#39;t take effect until
+all the event listeners in the current node finish processing.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>event.stopImmediatePropagation();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_stopPropagation" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>stopPropagation</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseEvent.html#method_stopPropagation" class="type">BaseEvent</a>:
+            
+        
+        
+        <a href="../files/src_event_BaseEvent.js.html#l187"><code>src&#x2F;event&#x2F;BaseEvent.js:187</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
+This method does not affect any event listeners in the current node (currentTarget). In contrast,
+the <a href="../classes/BaseEvent.html#method_stopImmediatePropagation" class="crosslink">stopImmediatePropagation</a> method prevents processing
+of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>event.stopPropagation();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no methods that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+
+    <div class="events-detail">
+        <h2>Events</h2>
+
+        
+            <a name="event_CHANGE" class="anchor-link"></a>
+<div class="events item">
+    <h3 class="name"><code>CHANGE</code></h3>
+    
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_event_RouterEvent.js.html#l107"><code>src&#x2F;event&#x2F;RouterEvent.js:107</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.</p>
+
+        </div>
+
+        
+
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no events that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

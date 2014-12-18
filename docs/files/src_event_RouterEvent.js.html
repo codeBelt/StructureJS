@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/util/Util.js - StructureJS</title>
+    <title>src/event/RouterEvent.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -156,7 +156,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src/util/Util.js</h1>
+                <h1 class="file-heading">File: src/event/RouterEvent.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -165,236 +165,119 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;../event/BaseEvent&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory();
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/BaseEvent&#x27;));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Util = factory();
+        root.structurejs.RouterEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
     }
-}(this, function() {
+}(this, function(Extend, BaseEvent) {
     &#x27;use strict&#x27;;
 
     /**
-     * A Utility class that has several static methods to assist in development.
+     * The RouterEvent is used in the {{#crossLink &quot;Router&quot;}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink &quot;Route&quot;}}{{/crossLink}} class.
      *
-     * @class Util
+     * @class RouterEvent
+     * @extends BaseEvent
+     * @param type {string} The type of event. The type is case-sensitive.
+     * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
+     * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink &quot;EventDispatcher/parent:property&quot;}}{{/crossLink}})
+     * (containers of containers of etc.) of the {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink &quot;Stage&quot;}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
+     * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
+     * @param [data=null] {any} Use to pass any type of data with the event.
      * @module StructureJS
-     * @submodule util
+     * @submodule event
+     * @requires Extend
+     * @requires BaseEvent
+     * @constructor
      * @author Robert S. (www.codeBelt.com)
-     * @static
      */
-    var Util = (function () {
+    var RouterEvent = (function () {
 
-        function Util() {
-            throw new Error(&#x27;[Util] Do not instantiation the Util class because it is a static class.&#x27;);
+        var _super = Extend(RouterEvent, BaseEvent);
+
+        function RouterEvent(type, bubbles, cancelable, data) {
+            if (typeof type === &quot;undefined&quot;) { type = RouterEvent.CHANGE; }
+            if (typeof bubbles === &quot;undefined&quot;) { bubbles = false; }
+            if (typeof cancelable === &quot;undefined&quot;) { cancelable = false; }
+            if (typeof data === &quot;undefined&quot;) { data = null; }
+            _super.call(this, type, bubbles, cancelable, data);
+            /**
+             * The route that was matched against {{#crossLink &quot;RouterEvent/routePattern:property&quot;}}{{/crossLink}} property.
+             *
+             * @property route
+             * @type {string}
+             * @public
+             */
+            this.route = null;
+            /**
+             * The new URL to which the window is navigating.
+             *
+             * @property newURL
+             * @type {string}
+             * @public
+             */
+            this.newURL = null;
+            /**
+             * The previous URL from which the window was navigated.
+             *
+             * @property oldURL
+             * @type {string}
+             * @public
+             */
+            this.oldURL = null;
+            /**
+             * The route pattern that matched the {{#crossLink &quot;RouterEvent/route:property&quot;}}{{/crossLink}} property.
+             *
+             * @property routePattern
+             * @type {string}
+             * @public
+             */
+            this.routePattern = null;
+            /**
+             * An array containing the parameters captured from the Route.{{#crossLink &quot;Route/match:method&quot;}}{{/crossLink}}
+             * being called with the {{#crossLink &quot;RouterEvent/routePattern:property&quot;}}{{/crossLink}} property.
+             *
+             * @property params
+             * @type {string}
+             * @public
+             */
+            this.params = [];
+            /**
+             * A query object the represents the query string in the hash url.
+             *
+             * @property query
+             * @type {any}
+             * @public
+             */
+            this.query = null;
         }
         /**
-         * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
-         *
-         * @method uniqueId
-         * @param [prefix] {string} The string value used for the prefix.
-         * @returns {init|string} Returns the unique identifier.
-         * @public
-         * @static
-         * @example
-         *      var property = Util.uniqueId();
-         *      // 1
-         *
-         *      var property = Util.uniqueId(&#x27;prefixName_&#x27;);
-         *      // prefixName_1
+         * @overridden BaseEvent.clone
          */
-        Util.uniqueId = function (prefix) {
-            if (typeof prefix === &quot;undefined&quot;) { prefix = null; }
-            var id = ++Util._idCounter;
-
-            if (prefix != null) {
-                return String(prefix + id);
-            } else {
-                return id;
-            }
-        };
-
-        /**
-         * Removes a list of properties from an object.
-         *
-         * @method deletePropertyFromObject
-         * @param object {Object} The object you want to remove properties from.
-         * @param list {array} A list of property names you want to remove from the object.
-         * @returns {any} Returns the object passed in without the removed the properties.
-         * @public
-         * @static
-         * @example
-         *      var obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
-         *
-         *      Util.deletePropertyFromObject(obj, [&#x27;phone&#x27;, &#x27;gender&#x27;]);
-         *
-         *      // { name: &#x27;Robert&#x27; }
-         */
-        Util.deletePropertyFromObject = function (object, list) {
-            for (var key in object) {
-                // If the key is a property and not function.
-                if (object.hasOwnProperty(key)) {
-                    var value = object[key];
-
-                    // If the property is an Array.
-                    if (value instanceof Array) {
-                        // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                        var array = value;
-                        for (var index in array) {
-                            // Recursive function call.
-                            Util.deletePropertyFromObject(array[index], list);
-                        }
-                    } else {
-                        for (var listIndex in list) {
-                            // If the key(property name) equals the property name in the list array.
-                            if (key === list[listIndex]) {
-                                // Delete the property from the object.
-                                delete object[key];
-                            }
-                        }
-                    }
-                }
-            }
-
-            return object;
-        };
-
-        /**
-         * Renames a property name on an object.
-         *
-         * @method renamePropertyOnObject
-         * @param object {Object} The object you want to rename properties from.
-         * @param oldName {string}
-         * @param newName {string}
-         * @returns {any} Returns the object passed in renamed properties.
-         * @public
-         * @static
-         * @example
-         *      var obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
-         *
-         *      Util.renamePropertyOnObject(obj, &#x27;gender&#x27;, &#x27;sex&#x27;);
-         *
-         *      // { name: &#x27;Robert&#x27;, sex: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
-         */
-        Util.renamePropertyOnObject = function (object, oldName, newName) {
-            // Check for the old property name to avoid a ReferenceError in strict mode.
-            if (object.hasOwnProperty(oldName)) {
-                object[newName] = object[oldName];
-                delete object[oldName];
-            }
-
-            return object;
-        };
-
-        /**
-         * Makes a clone of an object.
-         *
-         * @method clone
-         * @param obj {Object} The object you to clone.
-         * @returns {any} Returns a clone object of the one passed in.
-         * @public
-         * @static
-         * @example
-         *      var cloneOfObject = Util.clone(obj);
-         */
-        Util.clone = function (obj) {
-            //other scripts: http://davidwalsh.name/javascript-clone
-            //http://oranlooney.com/functional-javascript/
-            //http://oranlooney.com/deep-copy-javascript/
-            // Handle the 3 simple types, and null or undefined
-            if (null == obj || &#x27;object&#x27; != typeof obj) {
-                return obj;
-            }
-
-            // Handle Date
-            if (obj instanceof Date) {
-                var date = new Date();
-                date.setTime(obj.getTime());
-                return date;
-            }
-
-            // Handle Array
-            if (obj instanceof Array) {
-                var array = [];
-                for (var i = 0, len = obj.length; i &lt; len; i++) {
-                    array[i] = Util.clone(obj[i]);
-                }
-                return array;
-            }
-
-            // Handle Object
-            if (obj instanceof Object) {
-                var copy = {};
-                for (var attr in obj) {
-                    if (obj.hasOwnProperty(attr)) {
-                        copy[attr] = Util.clone(obj[attr]);
-                    }
-                }
-                return copy;
-            }
-
-            throw new Error(&quot;[Util] Unable to copy obj! Its type isn&#x27;t supported.&quot;);
-        };
-
-        /**
-         * Converts a string or number to a boolean.
-         *
-         * @method toBoolean
-         * @param strNum {string|number}
-         * @returns {boolean}
-         * @public
-         * @static
-         * @example
-         *      Util.toBoolean(&quot;TRUE&quot;);
-         *      // true
-         *
-         *      Util.toBoolean(0);
-         *      // false
-         *
-         *      Util.toBoolean(undefined);
-         *      // false
-         */
-        Util.toBoolean = function (strNum) {
-            var value = (typeof strNum === &#x27;string&#x27;) ? strNum.toLowerCase() : strNum;
-
-            return (value &gt; 0 || value == &#x27;true&#x27; || value == &#x27;yes&#x27;);
-        };
-
-        /**
-         * Returns the name of the class object passed in.
-         *
-         * @method getClassName
-         * @param classObject {Object}
-         * @returns {string} Returns the name of the class object passed in.
-         * @public
-         * @static
-         * @example
-         *      var someClass = new SomeClass();
-         *
-         *      Util.getClassName(someClass);
-         *      // &#x27;SomeClass&#x27;
-         */
-        Util.getClassName = function (classObject) {
-            var funcNameRegex = /function (.{1,})\(/;
-            var results = (funcNameRegex).exec(classObject.constructor.toString());
-
-            return (results &amp;&amp; results.length &gt; 1) ? results[1] : &#x27;&#x27;;
+        RouterEvent.prototype.clone = function () {
+            var event = new RouterEvent(this.type, this.bubble, this.cancelable, this.data);
+            event.route = this.route;
+            event.newURL = this.newURL;
+            event.oldURL = this.oldURL;
+            event.routePattern = this.routePattern;
+            event.query = this.query;
+            return event;
         };
         /**
-         * Keeps track of the count for the uniqueId method.
+         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
          *
-         * @property _idCounter
-         * @type {init}
-         * @private
+         * @event CHANGE
+         * @type {string}
          * @static
          */
-        Util._idCounter = 0;
-        return Util;
+        RouterEvent.CHANGE = &#x27;RouterEvent.change&#x27;;
+        return RouterEvent;
     })();
 
-    return Util;
+    return RouterEvent;
 }));
     </pre>
 </div>
