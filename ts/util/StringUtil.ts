@@ -44,7 +44,7 @@ module StructureTS
          *
          * @method toSentence
          * @param str {string}
-         * @param [separator='-'] {string} Can be any string you want to use as a separator.
+         * @param [separator] {string} Can be any string you want to use as a separator.
          * @returns {string}
          * @public
          * @static
@@ -70,12 +70,14 @@ module StructureTS
                 .replace(/([a-z](?=[A-Z]))/g, '$1 ')
                 // Remove all non-word characters and replace with a single space.
                 .replace(/[^a-zA-Z0-9 ]/g, ' ')
-                // Replace multiple Spaces with a single space or with a separator.
-                .replace(/\s{2,}/g, separator)
+                // Replace multiple Spaces with a single space.
+                .replace(/\s{2,}/g, ' ')
                 // Trim whitespace around the string.
                 .replace(/^ | $/g, '')
                 // Lower case the entire string.
-                .toLowerCase();
+                .toLowerCase()
+                // If a separator is passed in then replace the space with it.
+                .replace(/\s+/g, separator);
         }
 
         /**
@@ -266,7 +268,7 @@ module StructureTS
 
         /**
          * Replaces each format item in a specified string with the text equivalent of a corresponding object's value.
-
+         *
          * @method format
          * @returns {string}
          * @param str {string}

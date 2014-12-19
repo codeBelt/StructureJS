@@ -7376,6 +7376,39 @@
         {
             "file": "src/util/StringUtil.js",
             "line": 53,
+            "description": "Converts a string to a sentence case string.",
+            "itemtype": "method",
+            "name": "toSentence",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "separator",
+                    "description": "Can be any string you want to use as a separator.",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n     StringUtil.toSentence(\"liveDown_by-the.River\");\n     // 'live down by the river'\n\n     StringUtil.toSentence(\"liveDown_by-the.River\", '-');\n     // 'live-down-by-the-river'\n\n     StringUtil.toSentence(\"liveDown_by-the.River\", '_');\n     // 'live_down_by_the_river'\n\n     StringUtil.toSentence(\"liveDown_by-the.River\", '/');\n     // 'live/down/by/the/river'"
+            ],
+            "class": "StringUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/StringUtil.js",
+            "line": 95,
             "description": "Converts a string to a camel case string.",
             "itemtype": "method",
             "name": "toCamelCase",
@@ -7394,7 +7427,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     StringUtil.toCamelCase(\"TO-camel-CASE\");\n     // 'toCamelCase'"
+                "\n     StringUtil.toCamelCase(\"liveDown_by-the.River\");\n     // 'liveDownByTheRiver'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -7402,7 +7435,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 82,
+            "line": 115,
             "description": "Converts a hyphen string to a pascal case string.",
             "itemtype": "method",
             "name": "toPascalCase",
@@ -7421,7 +7454,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     StringUtil.toPascalCase(\"to-pascal_case\");\n     // 'ToPascalCase'"
+                "\n     StringUtil.toPascalCase(\"liveDown_by-the.River\");\n     // 'LiveDownByTheRiver'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -7429,10 +7462,10 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 112,
-            "description": "Converts a string to a hyphen case string.",
+            "line": 136,
+            "description": "Converts a string to a constant case string.",
             "itemtype": "method",
-            "name": "toHyphen",
+            "name": "toConstantCase",
             "params": [
                 {
                     "name": "str",
@@ -7448,7 +7481,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     StringUtil.toHyphen(\"hyphenToCamelCase\");\n     // 'hyphen-to-camel-case'"
+                "\n     StringUtil.toConstantCase(\"liveDown_by-the.River\");\n     // 'LIVE_DOWN_BY_THE_RIVER'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -7456,7 +7489,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 136,
+            "line": 153,
             "description": "Creates a universally unique identifier.",
             "itemtype": "method",
             "name": "createUUID",
@@ -7476,7 +7509,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 157,
+            "line": 174,
             "description": "Converts a query string to an object.",
             "itemtype": "method",
             "name": "queryStringToObject",
@@ -7510,7 +7543,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 197,
+            "line": 214,
             "description": "Remove all whitespace from the string passed in.",
             "itemtype": "method",
             "name": "removeAllWhitespace",
@@ -7537,7 +7570,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 214,
+            "line": 231,
             "description": "Remove leading and trailing whitespace.",
             "itemtype": "method",
             "name": "removeLeadingTrailingWhitespace",
@@ -7564,7 +7597,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 231,
+            "line": 248,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -7595,7 +7628,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 251,
+            "line": 268,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
             "itemtype": "method",
             "name": "format",
@@ -7627,7 +7660,7 @@
         },
         {
             "file": "src/util/StringUtil.js",
-            "line": 279,
+            "line": 296,
             "description": "Updates a value in the query string by its key name.",
             "itemtype": "method",
             "name": "paramReplace",
@@ -8807,11 +8840,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:82"
+            "line": " src/util/StringUtil.js:95"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:112"
+            "line": " src/util/StringUtil.js:115"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8819,11 +8852,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:157"
+            "line": " src/util/StringUtil.js:153"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:197"
+            "line": " src/util/StringUtil.js:174"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8835,11 +8868,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:251"
+            "line": " src/util/StringUtil.js:248"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/StringUtil.js:279"
+            "line": " src/util/StringUtil.js:268"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/util/StringUtil.js:296"
         },
         {
             "message": "replacing incorrect tag: returns with return",

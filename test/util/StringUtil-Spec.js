@@ -11,6 +11,11 @@ define(function (require, exports, module) {
 
         it("toSentence()", function() {
             expect(StringUtil.toSentence("liveDown_by/the.River")).toEqual("live down by the river");
+            expect(StringUtil.toSentence("liveDown_by-the.River", '-')).toEqual("live-down-by-the-river");
+            expect(StringUtil.toSentence("hyphenToCamelCase", '/')).toEqual("hyphen/to/camel/case");
+            expect(StringUtil.toSentence("HyphenToCamelCase", '_')).toEqual("hyphen_to_camel_case");
+            expect(StringUtil.toSentence("Hyphen.To~Camel_Case", '~')).toEqual("hyphen~to~camel~case");
+            expect(StringUtil.toSentence(" hyphen To Camel Case ", '.')).toEqual("hyphen.to.camel.case");
         });
 
         it("toConstantCase()", function() {
@@ -41,14 +46,6 @@ define(function (require, exports, module) {
             expect(StringUtil.toPascalCase("Hyphen8ToCamelCase")).toEqual("Hyphen8ToCamelCase");
             expect(StringUtil.toPascalCase("hyphenToCamelCase")).toEqual("HyphenToCamelCase");
             expect(StringUtil.toPascalCase("hyphen to camel case")).toEqual("HyphenToCamelCase");
-        });
-
-        it("toCaseWithSeparator()", function() {
-            expect(StringUtil.toCaseWithSeparator("liveDown_by-the.River", '-')).toEqual("live-down-by-the-river");
-            expect(StringUtil.toCaseWithSeparator("hyphenToCamelCase", '-')).toEqual("hyphen-to-camel-case");
-            expect(StringUtil.toCaseWithSeparator("HyphenToCamelCase", '-')).toEqual("hyphen-to-camel-case");
-            expect(StringUtil.toCaseWithSeparator("Hyphen.To~Camel_Case", '-')).toEqual("hyphen-to-camel-case");
-            expect(StringUtil.toCaseWithSeparator(" hyphen To Camel Case ", '-')).toEqual("hyphen-to-camel-case");
         });
 
         it("createUUID()", function() {

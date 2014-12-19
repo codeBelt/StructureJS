@@ -55,14 +55,26 @@
          *
          * @method toSentence
          * @param str {string}
+         * @param [separator] {string} Can be any string you want to use as a separator.
          * @returns {string}
          * @public
          * @static
          * @example
          *      StringUtil.toSentence("liveDown_by-the.River");
          *      // 'live down by the river'
+         *
+         *      StringUtil.toSentence("liveDown_by-the.River", '-');
+         *      // 'live-down-by-the-river'
+         *
+         *      StringUtil.toSentence("liveDown_by-the.River", '_');
+         *      // 'live_down_by_the_river'
+         *
+         *      StringUtil.toSentence("liveDown_by-the.River", '/');
+         *      // 'live/down/by/the/river'
          */
-        StringUtil.toSentence = function (str) {
+        StringUtil.toSentence = function (str, separator) {
+            if (typeof separator === "undefined") { separator = ' '; }
+
             return String(str)
                 // Add a space after any digits.
                 .replace(/(\d)/g, '$1 ')
@@ -75,7 +87,9 @@
                 // Trim whitespace around the string.
                 .replace(/^ | $/g, '')
                 // Lower case the entire string.
-                .toLowerCase();
+                .toLowerCase()
+                // If a separator is passed in then replace the space with it.
+                .replace(/\s+/g, separator);
         };
 
         /**
@@ -132,34 +146,8 @@
          *      // 'LIVE_DOWN_BY_THE_RIVER'
          */
         StringUtil.toConstantCase = function (str) {
-            return StringUtil.toCaseWithSeparator(str, '_')
+            return StringUtil.toSentence(str, '_')
                 .toUpperCase();
-        };
-
-        /**
-         * Converts a string
-         *
-         * @method toCaseWithSeparator
-         * @param str {string}
-         * @param separator {string} Can be any string you want to use as a separator.
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      StringUtil.toCaseWithSeparator("liveDown_by-the.River", '-');
-         *      // 'live-down-by-the-river'
-         *
-         *      StringUtil.toCaseWithSeparator("liveDown_by-the.River", '_');
-         *      // 'live_down_by_the_river'
-         *
-         *      StringUtil.toCaseWithSeparator("liveDown_by-the.River", '/');
-         *      // 'live/down/by/the/river'
-         */
-        StringUtil.toCaseWithSeparator = function (str, separator) {
-            if (typeof separator === "undefined") { separator = '-'; }
-
-            return StringUtil.toSentence(str)
-                .replace(/\s+/g, separator);
         };
 
         /**
@@ -279,7 +267,7 @@
 
         /**
          * Replaces each format item in a specified string with the text equivalent of a corresponding object's value.
-
+         *
          * @method format
          * @returns {string}
          * @param str {string}
