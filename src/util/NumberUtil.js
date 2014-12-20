@@ -230,6 +230,71 @@
             }
             return result;
         };
+
+        /**
+         * Convert Fahrenheit to Celsius.
+         *
+         * @method fahrenheitToCelsius
+         * @param fahrenheit {number} The fahrenheit value.
+         * @param decimals {number} The number of decimals.
+         * @return {number}
+         * @example
+         *      MathUtil.fahrenheitToCelsius(32);
+         *      // 0
+         *
+         *      MathUtil.fahrenheitToCelsius(212);
+         *      // 100
+         */
+        NumberUtil.fahrenheitToCelsius = function (fahrenheit, decimals) {
+            if (typeof decimals === "undefined") { decimals = 2; }
+            var d = '';
+            var r = (5 / 9) * (fahrenheit - 32);
+            var s = r.toString().split('.');
+            if (s[1] != undefined) {
+                d = s[1].substr(0, decimals);
+            } else {
+                var i = decimals;
+                while (i > 0) {
+                    d += '0';
+                    i--;
+                }
+            }
+            var c = s[0] + '.' + d;
+            return Number(c);
+        };
+
+        /**
+         * Convert Celsius to Fahrenheit.
+         *
+         * @method celsiusToFahrenheit
+         * @param celsius {number} The celsius value.
+         * @param decimals {number} The number of decimals.
+         * @return {number}
+         * @example
+         *      MathUtil.celsiusToFahrenheit(0);
+         *      // 32
+         *
+         *      MathUtil.celsiusToFahrenheit(100);
+         *      // 212
+         */
+        NumberUtil.celsiusToFahrenheit = function (celsius, decimals) {
+            if (typeof decimals === "undefined") { decimals = 2; }
+            var d = '';
+            var r = (celsius / (5 / 9)) + 32;
+            var s = r.toString().split('.');
+            if (s[1] != undefined) {
+                d = s[1].substr(0, decimals);
+            } else {
+                var i = decimals;
+                while (i > 0) {
+                    d += '0';
+                    i--;
+                }
+            }
+            var f = s[0] + '.' + d;
+            return Number(f);
+        };
+
         return NumberUtil;
     })();
 

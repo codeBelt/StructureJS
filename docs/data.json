@@ -6891,64 +6891,6 @@
             "submodule": "util"
         },
         {
-            "file": "src/util/MathUtil.js",
-            "line": 363,
-            "description": "Convert Fahrenheit to Celsius.",
-            "itemtype": "method",
-            "name": "fahrenheitToCelsius",
-            "params": [
-                {
-                    "name": "fahrenheit",
-                    "description": "The fahrenheit value.",
-                    "type": "Number"
-                },
-                {
-                    "name": "decimals",
-                    "description": "The number of decimals.",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Number"
-            },
-            "example": [
-                "\n     MathUtil.fahrenheitToCelsius(32);\n     // 0\n\n     MathUtil.fahrenheitToCelsius(212);\n     // 100"
-            ],
-            "class": "MathUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/util/MathUtil.js",
-            "line": 395,
-            "description": "Convert Celsius to Fahrenheit.",
-            "itemtype": "method",
-            "name": "celsiusToFahrenheit",
-            "params": [
-                {
-                    "name": "celsius",
-                    "description": "The celsius value.",
-                    "type": "Number"
-                },
-                {
-                    "name": "decimals",
-                    "description": "The number of decimals.",
-                    "type": "Number"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Number"
-            },
-            "example": [
-                "\n     MathUtil.celsiusToFahrenheit(0);\n     // 32\n\n     MathUtil.celsiusToFahrenheit(100);\n     // 212"
-            ],
-            "class": "MathUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
             "file": "src/util/MerchantUtil.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -7329,6 +7271,64 @@
             "static": 1,
             "example": [
                 "\n    NumberUtil.formatUnit(1234567.89, 2, \".\", \",\", \"$\", 0);\n    // '$1,234,567.89'\n\n    NumberUtil.formatUnit(12341234.56, 2, \"*\", \",\", \" €\", 1);\n    // '12,341,234*56 €'\n\n    NumberUtil.formatUnit(-1900.24, 1);\n    // '-1,900.2'"
+            ],
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 234,
+            "description": "Convert Fahrenheit to Celsius.",
+            "itemtype": "method",
+            "name": "fahrenheitToCelsius",
+            "params": [
+                {
+                    "name": "fahrenheit",
+                    "description": "The fahrenheit value.",
+                    "type": "Number"
+                },
+                {
+                    "name": "decimals",
+                    "description": "The number of decimals.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "example": [
+                "\n     MathUtil.fahrenheitToCelsius(32);\n     // 0\n\n     MathUtil.fahrenheitToCelsius(212);\n     // 100"
+            ],
+            "class": "NumberUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/NumberUtil.js",
+            "line": 266,
+            "description": "Convert Celsius to Fahrenheit.",
+            "itemtype": "method",
+            "name": "celsiusToFahrenheit",
+            "params": [
+                {
+                    "name": "celsius",
+                    "description": "The celsius value.",
+                    "type": "Number"
+                },
+                {
+                    "name": "decimals",
+                    "description": "The number of decimals.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "example": [
+                "\n     MathUtil.celsiusToFahrenheit(0);\n     // 32\n\n     MathUtil.celsiusToFahrenheit(100);\n     // 212"
             ],
             "class": "NumberUtil",
             "module": "StructureJS",

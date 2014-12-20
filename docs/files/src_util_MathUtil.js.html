@@ -522,69 +522,6 @@
             return r;
         };
 
-        /**
-         * Convert Fahrenheit to Celsius.
-         *
-         * @method fahrenheitToCelsius
-         * @param fahrenheit {number} The fahrenheit value.
-         * @param decimals {number} The number of decimals.
-         * @return {number}
-         * @example
-         *      MathUtil.fahrenheitToCelsius(32);
-         *      // 0
-         *
-         *      MathUtil.fahrenheitToCelsius(212);
-         *      // 100
-         */
-        MathUtil.fahrenheitToCelsius = function (fahrenheit, decimals) {
-            if (typeof decimals === &quot;undefined&quot;) { decimals = 2; }
-            var d = &#x27;&#x27;;
-            var r = (5 / 9) * (fahrenheit - 32);
-            var s = r.toString().split(&#x27;.&#x27;);
-            if (s[1] != undefined) {
-                d = s[1].substr(0, decimals);
-            } else {
-                var i = decimals;
-                while (i &gt; 0) {
-                    d += &#x27;0&#x27;;
-                    i--;
-                }
-            }
-            var c = s[0] + &#x27;.&#x27; + d;
-            return Number(c);
-        };
-
-        /**
-         * Convert Celsius to Fahrenheit.
-         *
-         * @method celsiusToFahrenheit
-         * @param celsius {number} The celsius value.
-         * @param decimals {number} The number of decimals.
-         * @return {number}
-         * @example
-         *      MathUtil.celsiusToFahrenheit(0);
-         *      // 32
-         *
-         *      MathUtil.celsiusToFahrenheit(100);
-         *      // 212
-         */
-        MathUtil.celsiusToFahrenheit = function (celsius, decimals) {
-            if (typeof decimals === &quot;undefined&quot;) { decimals = 2; }
-            var d = &#x27;&#x27;;
-            var r = (celsius / (5 / 9)) + 32;
-            var s = r.toString().split(&#x27;.&#x27;);
-            if (s[1] != undefined) {
-                d = s[1].substr(0, decimals);
-            } else {
-                var i = decimals;
-                while (i &gt; 0) {
-                    d += &#x27;0&#x27;;
-                    i--;
-                }
-            }
-            var f = s[0] + &#x27;.&#x27; + d;
-            return Number(f);
-        };
         return MathUtil;
     })();
 

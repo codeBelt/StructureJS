@@ -71,16 +71,6 @@ define(function (require, exports, module) {
             expect(MathUtil.factorial(9)).toEqual(362880);
         });
 
-        it("MathUtil.fahrenheitToCelsius()", function() {
-            expect(MathUtil.fahrenheitToCelsius(32)).toEqual(0);
-            expect(MathUtil.fahrenheitToCelsius(212)).toEqual(100);
-        });
-
-        it("MathUtil.celsiusToFahrenheit()", function() {
-            expect(MathUtil.celsiusToFahrenheit(0)).toEqual(32);
-            expect(MathUtil.celsiusToFahrenheit(100)).toEqual(212);
-        });
-
     });
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/

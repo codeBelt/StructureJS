@@ -43,6 +43,17 @@ define(function (require, exports, module) {
             expect(NumberUtil.formatUnit(1900, 0)).toEqual('1,900');
             expect(NumberUtil.formatUnit(-1900.24, 1)).toEqual('-1,900.2');
         });
+
+        it("NumberUtil.fahrenheitToCelsius()", function() {
+            expect(NumberUtil.fahrenheitToCelsius(32)).toEqual(0);
+            expect(NumberUtil.fahrenheitToCelsius(212)).toEqual(100);
+        });
+
+        it("NumberUtil.celsiusToFahrenheit()", function() {
+            expect(NumberUtil.celsiusToFahrenheit(0)).toEqual(32);
+            expect(NumberUtil.celsiusToFahrenheit(100)).toEqual(212);
+        });
+
     });
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/
