@@ -92,6 +92,10 @@ module StructureTS
                             Util.deletePropertyFromObject(array[index], list);
                         }
                     }
+                    else if (value instanceof Object)
+                    {
+                        Util.deletePropertyFromObject(value, list);
+                    }
                     else
                     {
                         // Loop through the list of property name.

@@ -84,6 +84,8 @@
                             // Recursive function call.
                             Util.deletePropertyFromObject(array[index], list);
                         }
+                    } else if (value instanceof Object) {
+                        Util.deletePropertyFromObject(value, list);
                     } else {
                         for (var listIndex in list) {
                             // If the key(property name) equals the property name in the list array.
