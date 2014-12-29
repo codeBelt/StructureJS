@@ -106,7 +106,7 @@ module StructureTS
          */
         public copy():IValueObject
         {
-            var copy:Object = new Object();
+            var copy:Object = {};
 
             for (var key in this)
             {

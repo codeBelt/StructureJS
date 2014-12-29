@@ -41,7 +41,6 @@
         NumberUtil.bytesToMegabytes = function (bytes) {
             return bytes / 1048576;
         };
-
         /**
          * Converts centimeters into inches.
          *
@@ -57,7 +56,6 @@
         NumberUtil.centimeterToInch = function (cm) {
             return cm * 0.39370;
         };
-
         /**
          * Converts inches into centimeters.
          *
@@ -73,7 +71,6 @@
         NumberUtil.inchToCentimeter = function (inch) {
             return inch * 2.54;
         };
-
         /**
          * Converts feet into meters.
          *
@@ -88,7 +85,6 @@
         NumberUtil.feetToMeter = function (feet) {
             return feet / 3.2808;
         };
-
         /**
          * Converts seconds into hour, minutes, seconds.
          *
@@ -102,19 +98,15 @@
          *     // '09:15:33'
          */
         NumberUtil.convertToHHMMSS = function (seconds) {
-            var sec = isNaN(seconds) ? 0 : seconds;
-
+            var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
             var h = Math.floor(sec / (60 * 60));
-
             var hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
             var minuteStr = NumberUtil.doubleDigitFormat(m) + ':';
             var secondsStr = NumberUtil.doubleDigitFormat(s);
-
             return hourStr + minuteStr + secondsStr;
         };
-
         /**
          * Formats a number from 0-9 to display with 2 digits.
          *
@@ -139,7 +131,6 @@
             }
             return String(num);
         };
-
         /**
          * Formats a currency string as a number.
          *
@@ -161,24 +152,22 @@
         NumberUtil.unformatUnit = function (value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
             var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, '');
-
             // Gets the index where the decimal placement is located.
             var decimalIndex = withoutSpecialCharacters.length - 3;
             var decimalSeparator = withoutSpecialCharacters.charAt(decimalIndex);
             if (decimalSeparator === '.') {
                 // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d.-]/g, '');
-            } else {
+            }
+            else {
                 // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d,-]/g, '');
                 decimalIndex = withoutSpecialCharacters.length - 3;
-
                 //Replaces the comma (,) to a period (.).
                 withoutSpecialCharacters = withoutSpecialCharacters.replace(',', '.');
             }
             return parseFloat(withoutSpecialCharacters);
         };
-
         /**
          * Formats a number as a currency string.
          *
@@ -203,11 +192,11 @@
          *     // '-1,900.2'
          */
         NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
-            if (typeof decimalPlacement === "undefined") { decimalPlacement = 2; }
-            if (typeof decimalSeparator === "undefined") { decimalSeparator = '.'; }
-            if (typeof thousandsSeparator === "undefined") { thousandsSeparator = ','; }
-            if (typeof currencySymbol === "undefined") { currencySymbol = ''; }
-            if (typeof currencySymbolPlacement === "undefined") { currencySymbolPlacement = 0; }
+            if (decimalPlacement === void 0) { decimalPlacement = 2; }
+            if (decimalSeparator === void 0) { decimalSeparator = '.'; }
+            if (thousandsSeparator === void 0) { thousandsSeparator = ','; }
+            if (currencySymbol === void 0) { currencySymbol = ''; }
+            if (currencySymbolPlacement === void 0) { currencySymbolPlacement = 0; }
             var str = String(Number(value).toFixed(decimalPlacement));
             var result = '';
             if (decimalPlacement != 0) {
@@ -222,15 +211,16 @@
             if (str.length > 0) {
                 if (currencySymbolPlacement === 0) {
                     result = currencySymbol + str + result;
-                } else if (currencySymbolPlacement === 1) {
+                }
+                else if (currencySymbolPlacement === 1) {
                     result = str + result + currencySymbol;
-                } else {
+                }
+                else {
                     result = str + result;
                 }
             }
             return result;
         };
-
         /**
          * Convert Fahrenheit to Celsius.
          *
@@ -246,13 +236,14 @@
          *      // 100
          */
         NumberUtil.fahrenheitToCelsius = function (fahrenheit, decimals) {
-            if (typeof decimals === "undefined") { decimals = 2; }
+            if (decimals === void 0) { decimals = 2; }
             var d = '';
             var r = (5 / 9) * (fahrenheit - 32);
             var s = r.toString().split('.');
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            } else {
+            }
+            else {
                 var i = decimals;
                 while (i > 0) {
                     d += '0';
@@ -262,7 +253,6 @@
             var c = s[0] + '.' + d;
             return Number(c);
         };
-
         /**
          * Convert Celsius to Fahrenheit.
          *
@@ -278,13 +268,14 @@
          *      // 212
          */
         NumberUtil.celsiusToFahrenheit = function (celsius, decimals) {
-            if (typeof decimals === "undefined") { decimals = 2; }
+            if (decimals === void 0) { decimals = 2; }
             var d = '';
             var r = (celsius / (5 / 9)) + 32;
             var s = r.toString().split('.');
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            } else {
+            }
+            else {
                 var i = decimals;
                 while (i > 0) {
                     d += '0';
@@ -294,7 +285,6 @@
             var f = s[0] + '.' + d;
             return Number(f);
         };
-
         return NumberUtil;
     })();
 

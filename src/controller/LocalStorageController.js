@@ -52,9 +52,7 @@
              * @private
              */
             this._localStorage = null;
-
             this._localStorage = window.localStorage;
-
             window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
         }
         /**
@@ -67,7 +65,6 @@
         LocalStorageController.prototype.setNamespace = function (namespace) {
             this._namespace = namespace;
         };
-
         /**
          * Get storage namespace
          *
@@ -77,7 +74,6 @@
         LocalStorageController.prototype.getNamespace = function () {
             return this._namespace;
         };
-
         /**
          * Add a key/value pair to localStorage.
          *
@@ -88,25 +84,22 @@
          * @return {boolean}
          */
         LocalStorageController.prototype.addItem = function (key, data, useNamespace) {
-            if (typeof useNamespace === "undefined") { useNamespace = false; }
+            if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
-
             if (data instanceof ValueObject) {
                 data = data.toJSON();
             }
-
             data = JSON.stringify(data);
-
-            try  {
+            try {
                 this._localStorage.setItem(key, data);
                 return true;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
-
         /**
          * Retrieves the current value associated with the Local Storage key.
          *
@@ -116,24 +109,22 @@
          * @returns {any}
          */
         LocalStorageController.prototype.getItem = function (key, useNamespace) {
-            if (typeof useNamespace === "undefined") { useNamespace = false; }
+            if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
-
             var value = this._localStorage.getItem(key);
             if (value) {
-                try  {
+                try {
                     value = JSON.parse(value);
-                } catch (error) {
+                }
+                catch (error) {
                     // We are assuming the error is because value being parsed is a plain string with spaces.
                     value = value;
                 }
             }
-
             return value;
         };
-
         /**
          * Returns all items in local storage as an Object with key and value properties that has a certain namespace.
          *
@@ -142,7 +133,7 @@
          * @return {Array.<Object>}
          */
         LocalStorageController.prototype.getItemsWithNamespace = function (namespace) {
-            if (typeof namespace === "undefined") { namespace = this._namespace; }
+            if (namespace === void 0) { namespace = this._namespace; }
             var list = [];
             var length = this.getLength();
             for (var i = 0; i < length; i++) {
@@ -153,13 +144,11 @@
                         key: key,
                         value: value
                     };
-
                     list.push(obj);
                 }
             }
             return list;
         };
-
         /**
          * Returns all items in local storage as an Object with key and value properties.
          *
@@ -176,12 +165,10 @@
                     key: key,
                     value: value
                 };
-
                 list.push(obj);
             }
             return list;
         };
-
         /**
          * Deletes a key/value pair from the Local Storage collection.
          *
@@ -191,19 +178,18 @@
          * @return {boolean}
          */
         LocalStorageController.prototype.removeItem = function (key, useNamespace) {
-            if (typeof useNamespace === "undefined") { useNamespace = false; }
+            if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
-
-            try  {
+            try {
                 this._localStorage.removeItem(key);
                 return true;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
-
         /**
          * Returns the number of items storage in local storage.
          *
@@ -213,7 +199,6 @@
         LocalStorageController.prototype.getLength = function () {
             return this._localStorage.length;
         };
-
         /**
          * Returns the size of the Local Storage.
          *
@@ -223,7 +208,6 @@
         LocalStorageController.prototype.getSize = function () {
             return encodeURIComponent(JSON.stringify(this._localStorage)).length;
         };
-
         /**
          * Removes all key/value pairs from the Local Storage area.
          *
@@ -232,15 +216,12 @@
         LocalStorageController.prototype.clear = function () {
             this._localStorage.clear();
         };
-
-
         /**
          * @overridden BaseController.destroy
          */
         LocalStorageController.prototype.destroy = function () {
             _super.prototype.destroy.call(this);
         };
-
         /**
          *
          *

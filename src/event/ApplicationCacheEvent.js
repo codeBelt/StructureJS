@@ -37,9 +37,9 @@
         var _super = Extend(ApplicationCacheEvent, BaseEvent);
 
         function ApplicationCacheEvent(type, bubbles, cancelable, data) {
-            if (typeof bubbles === "undefined") { bubbles = false; }
-            if (typeof cancelable === "undefined") { cancelable = false; }
-            if (typeof data === "undefined") { data = null; }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
         /**

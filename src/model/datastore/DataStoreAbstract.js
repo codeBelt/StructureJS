@@ -31,7 +31,7 @@
         function DataStoreAbstract(path) {
             _super.call(this);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property data
              * @type {any}
@@ -39,7 +39,7 @@
              */
             this.data = null;
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property src
              * @type {string}
@@ -47,40 +47,37 @@
              */
             this.src = null;
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property complete
              * @type {boolean}
              * @public
              */
             this.complete = false;
-
             this.src = path;
         }
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method load
          * @protected
          */
         DataStoreAbstract.prototype.load = function () {
         };
-
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method _onLoaderComplete
          * @protected
          */
         DataStoreAbstract.prototype._onLoaderComplete = function () {
             var rest = [];
-            for (var _i = 0; _i < (arguments.length - 0); _i++) {
-                rest[_i] = arguments[_i + 0];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                rest[_i - 0] = arguments[_i];
             }
             this.complete = true;
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this));
         };
-
         return DataStoreAbstract;
     })();
 

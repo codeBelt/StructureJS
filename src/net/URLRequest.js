@@ -35,7 +35,7 @@
         var _super = Extend(URLRequest, BaseObject);
 
         function URLRequest(url) {
-            if (typeof url === "undefined") { url = null; }
+            if (url === void 0) { url = null; }
             _super.call(this);
             /**
              * The URL to be requested.

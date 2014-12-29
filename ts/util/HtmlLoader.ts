@@ -37,7 +37,7 @@ module StructureTS
 
         public load():void
         {
-            if (this.complete) return;
+            if (this.complete) { return; }
 
             var request:URLRequest = new URLRequest(this.src);
             request.method = URLRequestMethod.GET;

@@ -15,7 +15,7 @@
     'use strict';
 
     /**
-     * YUIDoc_comment
+     * TODO: YUIDoc_comment
      *
      * @class Collection
      * @extends EventDispatcher
@@ -62,17 +62,15 @@
          * @public
          */
         Collection.prototype.addItem = function (item, silent) {
-            if (typeof silent === "undefined") { silent = false; }
+            if (silent === void 0) { silent = false; }
             if (this.hasItem(item) === false) {
                 this.items.push(item);
                 this.length = this.items.length;
             }
-
             if (silent == false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
         };
-
         /**
          * Removes an item from the collection, maintaining its current sort
          * If the collection doesn't have the item, it throws an error
@@ -83,19 +81,16 @@
          * @public
          */
         Collection.prototype.removeItem = function (item, silent) {
-            if (typeof silent === "undefined") { silent = false; }
+            if (silent === void 0) { silent = false; }
             if (this.hasItem(item) == false) {
                 throw new Error('[' + this.getQualifiedClassName() + '] Collection does not have item ' + item);
             }
-
             this.items.splice(this.getIndexOfItem(item), 1);
             this.length = this.items.length;
-
             if (silent == false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED));
             }
         };
-
         /**
          * Removes an array of items from the collection
          *
@@ -105,17 +100,15 @@
          * @public
          */
         Collection.prototype.removeItems = function (items, silent) {
-            if (typeof silent === "undefined") { silent = false; }
+            if (silent === void 0) { silent = false; }
             var len = items.length;
             for (var i = 0; i < len; i++) {
                 this.removeItem(items[i]);
             }
-
             if (silent == false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED));
             }
         };
-
         /**
          * Checks if a collection has an item.
          *
@@ -127,7 +120,6 @@
         Collection.prototype.hasItem = function (item) {
             return this.getIndexOfItem(item) > -1;
         };
-
         /**
          * Returns the array index position of the value object.
          *
@@ -139,7 +131,6 @@
         Collection.prototype.getIndexOfItem = function (item) {
             return this.items.indexOf(item);
         };
-
         /**
          * Adds an array of items to the collection
          *
@@ -148,17 +139,15 @@
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          */
         Collection.prototype.addItems = function (items, silent) {
-            if (typeof silent === "undefined") { silent = false; }
+            if (silent === void 0) { silent = false; }
             var len = items.length;
             for (var i = 0; i < len; i++) {
                 this.addItem(items[i]);
             }
-
             if (silent == false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
         };
-
         /**
          * Finds an object by an index value.
          * If the index is out of bounds, the collection will clamp it.
@@ -173,15 +162,12 @@
             if (index < 0) {
                 index = 0;
             }
-
             if (index >= this.items.length) {
                 index = this.items.length - 1;
             }
-
             // Return the item by the index. It will return null if the array is empty.
             return this.items[index] || null;
         };
-
         /**
          * Examines each element in a collection, returning an array of all elements that have the given properties.
          * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
@@ -202,27 +188,24 @@
         Collection.prototype.find = function (arg) {
             // If properties is not an array then make it an array object.
             arg = (arg instanceof Array) ? arg : [arg];
-
             var foundItems = [];
             var len = arg.length;
             var prop;
             for (var i = 0; i < len; i++) {
                 prop = arg[i];
-
                 // Adds found value object to the foundItems array.
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the item is not an object.
                     foundItems = foundItems.concat(this.findPropertyValue(prop));
-                } else {
+                }
+                else {
                     // If the item is an object.
                     foundItems = foundItems.concat(_.where(this.items, prop));
                 }
             }
-
             // Removes all duplicated objects found in the temp array.
             return _.uniq(foundItems);
         };
-
         /**
          * Loops through all properties of an object and check to see if the value matches the argument passed in.
          *
@@ -234,22 +217,17 @@
         Collection.prototype.findPropertyValue = function (arg) {
             // If properties is not an array then make it an array object.
             arg = (arg instanceof Array) ? arg : [arg];
-
             var foundItems = [];
             var itemsLength = this.items.length;
             var itemsToFindLength = arg.length;
-
             for (var i = 0; i < itemsLength; i++) {
                 var obj = this.items[i];
-
                 for (var key in obj) {
                     // Check if the key value is a property.
                     if (obj.hasOwnProperty(key)) {
                         var propertyValue = obj[key];
-
                         for (var j = 0; j < itemsToFindLength; j++) {
                             var value = arg[j];
-
                             // If the value object property equals the string value then keep a reference to that value object.
                             if (propertyValue === value) {
                                 // Add found value object to the foundItems array.
@@ -262,9 +240,8 @@
             }
             return foundItems;
         };
-
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method copy
          * @public
@@ -274,24 +251,21 @@
             collection.addItems(this.items.slice(0));
             return collection;
         };
-
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method clear
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
          */
         Collection.prototype.clear = function (silent) {
-            if (typeof silent === "undefined") { silent = false; }
+            if (silent === void 0) { silent = false; }
             this.items = [];
             this.length = 0;
-
             if (silent == false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.CLEAR));
             }
         };
-
         /**
          * @overridden BaseObject.destroy
          */

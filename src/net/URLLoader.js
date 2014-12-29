@@ -35,10 +35,10 @@
         var _super = Extend(URLLoader, EventDispatcher);
 
         function URLLoader(request) {
-            if (typeof request === "undefined") { request = null; }
+            if (request === void 0) { request = null; }
             _super.call(this);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property dataFormat
              * @type {string}
@@ -46,7 +46,7 @@
              */
             this.dataFormat = URLLoaderDataFormat.TEXT;
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property data
              * @type {any}
@@ -54,7 +54,7 @@
              */
             this.data = null;
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property complete
              * @type {boolean}
@@ -62,7 +62,7 @@
              */
             this.complete = false;
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property _xhr
              * @type {JQueryXHR}
@@ -70,13 +70,12 @@
              * @private
              */
             this._xhr = null;
-
             if (request) {
                 this.load(request);
             }
         }
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method load
          * @param request {URLRequest}
@@ -85,7 +84,6 @@
         URLLoader.prototype.load = function (request) {
             this.complete = false;
             var self = this;
-
             this._xhr = jQuery.ajax({
                 url: request.url,
                 type: request.method,
@@ -97,18 +95,15 @@
             this._xhr.done(self.onSuccess.bind(this));
             this._xhr.fail(self.onError.bind(this));
         };
-
         /**
          * @overridden EventDispatcher.destroy
          */
         URLLoader.prototype.destroy = function () {
             this.abort();
-
             _super.prototype.destroy.call(this);
         };
-
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method abort
          * @public
@@ -118,9 +113,8 @@
                 this._xhr.abort();
             }
         };
-
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method onError
          * @private
@@ -129,9 +123,8 @@
             console.log("[URLLoader] - onError", arguments);
             this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
         };
-
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @method onSuccess
          * @private

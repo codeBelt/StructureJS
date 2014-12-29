@@ -44,16 +44,15 @@
          *      // prefixName_1
          */
         Util.uniqueId = function (prefix) {
-            if (typeof prefix === "undefined") { prefix = null; }
+            if (prefix === void 0) { prefix = null; }
             var id = ++Util._idCounter;
-
             if (prefix != null) {
                 return String(prefix + id);
-            } else {
+            }
+            else {
                 return id;
             }
         };
-
         /**
          * Removes a list of properties from an object.
          *
@@ -75,7 +74,6 @@
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
                     var value = object[key];
-
                     // If the property is an Array.
                     if (value instanceof Array) {
                         // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
@@ -84,9 +82,11 @@
                             // Recursive function call.
                             Util.deletePropertyFromObject(array[index], list);
                         }
-                    } else if (value instanceof Object) {
+                    }
+                    else if (value instanceof Object) {
                         Util.deletePropertyFromObject(value, list);
-                    } else {
+                    }
+                    else {
                         for (var listIndex in list) {
                             // If the key(property name) equals the property name in the list array.
                             if (key === list[listIndex]) {
@@ -97,10 +97,8 @@
                     }
                 }
             }
-
             return object;
         };
-
         /**
          * Renames a property name on an object.
          *
@@ -124,10 +122,8 @@
                 object[newName] = object[oldName];
                 delete object[oldName];
             }
-
             return object;
         };
-
         /**
          * Makes a clone of an object.
          *
@@ -147,14 +143,12 @@
             if (null == obj || 'object' != typeof obj) {
                 return obj;
             }
-
             // Handle Date
             if (obj instanceof Date) {
                 var date = new Date();
                 date.setTime(obj.getTime());
                 return date;
             }
-
             // Handle Array
             if (obj instanceof Array) {
                 var array = [];
@@ -163,7 +157,6 @@
                 }
                 return array;
             }
-
             // Handle Object
             if (obj instanceof Object) {
                 var copy = {};
@@ -174,10 +167,8 @@
                 }
                 return copy;
             }
-
             throw new Error("[Util] Unable to copy obj! Its type isn't supported.");
         };
-
         /**
          * Converts a string or number to a boolean.
          *
@@ -198,10 +189,8 @@
          */
         Util.toBoolean = function (strNum) {
             var value = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
-
             return (value > 0 || value == 'true' || value == 'yes');
         };
-
         /**
          * Returns the name of the class object passed in.
          *
@@ -219,7 +208,6 @@
         Util.getClassName = function (classObject) {
             var funcNameRegex = /function (.{1,})\(/;
             var results = (funcNameRegex).exec(classObject.constructor.toString());
-
             return (results && results.length > 1) ? results[1] : '';
         };
         /**

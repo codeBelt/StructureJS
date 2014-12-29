@@ -60,7 +60,6 @@
              * @public
              */
             this.parent = null;
-
             this._listeners = [];
         }
         /**
@@ -77,12 +76,12 @@
          *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *
          *      ClassName.prototype.handlerMethod = function (event) {
-        *          console.log(event.target + " sent the event.");
-        *          console.log(event.type, event.data);
-        *      }
+         *          console.log(event.target + " sent the event.");
+         *          console.log(event.type, event.data);
+         *      }
          */
         EventDispatcher.prototype.addEventListener = function (type, callback, scope, priority) {
-            if (typeof priority === "undefined") { priority = 0; }
+            if (priority === void 0) { priority = 0; }
             // Get the list of event listener(s) by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list == null) {
@@ -97,17 +96,15 @@
                 if (listener.callback === callback && listener.scope === scope) {
                     // If same callback and scope is found then remove it. Then add the current one below.
                     list.splice(i, 1);
-                } else if (index === 0 && listener.priority < priority) {
+                }
+                else if (index === 0 && listener.priority < priority) {
                     index = i + 1;
                 }
             }
-
             // Add the event listener to the list array at the index value.
             list.splice(index, 0, { callback: callback, scope: scope, priority: priority });
-
             return this;
         };
-
         /**
          * Removes a specified listener from the EventDispatcher object.
          *
@@ -122,7 +119,7 @@
          *      this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *
          *      ClassName.prototype.handlerMethod = function (event) {
-        *      }
+         *      }
          */
         EventDispatcher.prototype.removeEventListener = function (type, callback, scope) {
             // Get the list of event listener(s) by the associated type value that is passed in.
@@ -137,10 +134,8 @@
                     }
                 }
             }
-
             return this;
         };
-
         /**
          * <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
          *
@@ -164,19 +159,16 @@
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         EventDispatcher.prototype.dispatchEvent = function (type, data) {
-            if (typeof data === "undefined") { data = null; }
+            if (data === void 0) { data = null; }
             var event = type;
-
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, true, data);
             }
-
             // If target is null then set it to the object that dispatched the event.
             if (event.target == null) {
                 event.target = this;
                 event.currentTarget = this;
             }
-
             // Get the list of event listener(s) by the associated type value.
             var list = this._listeners[event.type];
             if (list) {
@@ -187,19 +179,16 @@
                     if (event.cancelable && event.isImmediatePropagationStopped) {
                         break;
                     }
-
                     listener = list[i];
                     listener.callback.call(listener.scope, event);
                 }
             }
-
             //Dispatches up the chain of classes that have a parent.
             if (this.parent && event.bubble) {
                 // If cancelable and isPropagationStopped are true then don't dispatch the event on the parent object.
                 if (event.cancelable && event.isPropagationStopped) {
                     return this;
                 }
-
                 /*
                  // Clone the event because this EventDispatcher class modifies the currentTarget property when bubbling.
                  // We need to set the target to the previous target so we can keep track of the original origin of where
@@ -210,14 +199,11 @@
                  */
                 // Assign the current object that is currently processing the event (i.e. bubbling at) in the display list hierarchy.
                 event.currentTarget = this;
-
                 // Pass the event to the parent (event bubbling).
                 this.parent.dispatchEvent(event);
             }
-
             return this;
         };
-
         /**
          * Check if an object has a specific event listener already added.
          *
@@ -241,10 +227,8 @@
                     }
                 }
             }
-
             return false;
         };
-
         /**
          * Generates a string output of event listeners for a given object.
          *
@@ -260,31 +244,26 @@
             var str = '';
             var numOfCallbacks;
             var listener;
-
             for (var type in this._listeners) {
                 numOfCallbacks = this._listeners[type].length;
                 for (var i = 0; i < numOfCallbacks; i++) {
                     listener = this._listeners[type][i];
-
                     if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
                         str += '[' + listener.scope.getQualifiedClassName() + ']';
-                    } else {
+                    }
+                    else {
                         str += '[Unknown]';
                     }
-
                     str += " is listen for '" + type + "' event.\n";
                 }
             }
-
             return str;
         };
-
         /**
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function () {
             _super.prototype.disable.call(this);
-
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;

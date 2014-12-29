@@ -43,16 +43,14 @@
         NetworkMonitor.start = function () {
             if (NetworkMonitor._initialized === true) {
                 return;
-            } else {
+            }
+            else {
                 NetworkMonitor._initialized = true;
             }
-
             window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor.onNetworkMonitorEvent, false);
             window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor.onNetworkMonitorEvent, false);
-
             NetworkMonitor.onNetworkMonitorEvent(null);
         };
-
         /**
          * Returns the online status of the browser. The property returns a boolean value, with true for being online and false for being offline.
          * @example
@@ -67,7 +65,6 @@
             NetworkMonitor.start();
             return window.navigator.onLine;
         };
-
         /**
          * Returns if the status type ('online' or 'offline') if computer or device is connected to the internet.
          * @example
@@ -82,7 +79,6 @@
             NetworkMonitor.start();
             return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
         };
-
         /**
          * TODO: YUIDoc_comment
          *
@@ -96,14 +92,13 @@
             var networkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
             NetworkMonitor.dispatchEvent(networkMonitorEvent);
         };
-
         /**
          * Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.
          * @example
          *      NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this.handlerMethod, this);
          *      ClassName.prototype.handlerMethod = function (event) {
-        *          console.log(event.status, event.connected);
-        *      }
+         *          console.log(event.status, event.connected);
+         *      }
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
@@ -113,17 +108,16 @@
          * @public
          */
         NetworkMonitor.addEventListener = function (type, callback, scope, priority) {
-            if (typeof priority === "undefined") { priority = 0; }
+            if (priority === void 0) { priority = 0; }
             NetworkMonitor._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
-
         /**
          * Removes a specified listener from the NetworkMonitor object.
          * @example
          *      NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this.handlerMethod, this);
          *      private handlerMethod(event:NetworkMonitorEvent):void {
-        *          console.log(event.status, event.connected);
-        *      }
+         *          console.log(event.status, event.connected);
+         *      }
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
@@ -135,7 +129,6 @@
         NetworkMonitor.removeEventListener = function (type, callback, scope) {
             NetworkMonitor._eventDispatcher.removeEventListener(type, callback, scope);
         };
-
         /**
          * <p>Dispatches an event within the NetworkMonitorEvent object.</p>
          * @method dispatchEvent

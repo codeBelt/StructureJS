@@ -33,9 +33,9 @@
          * @overridden BaseObject.enable
          */
         ApplicationCacheController.enable = function () {
-            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true)
+            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true) {
                 return;
-
+            }
             // Native Browser Event Listener
             ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CACHED, this.onCached.bind(this), false);
             ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CHECKING, this.onChecking.bind(this), false);
@@ -45,17 +45,15 @@
             ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.PROGRESS, this.onProgress.bind(this), false);
             ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.onUpdateReady.bind(this), false);
             ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.ERROR, this.onError.bind(this), false);
-
             ApplicationCacheController.isEnabled = true;
         };
-
         /**
          * @overridden BaseObject.disable
          */
         ApplicationCacheController.disable = function () {
-            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === false)
+            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === false) {
                 return;
-
+            }
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CACHED, ApplicationCacheController.onCached.bind(this), false);
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CHECKING, ApplicationCacheController.onChecking.bind(this), false);
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.DOWNLOADING, ApplicationCacheController.onDownloading.bind(this), false);
@@ -64,14 +62,11 @@
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.PROGRESS, ApplicationCacheController.onProgress.bind(this), false);
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.UPDATE_READY, ApplicationCacheController.onUpdateReady.bind(this), false);
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.ERROR, ApplicationCacheController.onError.bind(this), false);
-
             ApplicationCacheController.isEnabled = true;
         };
-
         ApplicationCacheController.update = function () {
             ApplicationCacheController._appCache.update();
         };
-
         ApplicationCacheController.getStatus = function () {
             switch (ApplicationCacheController._appCache.status) {
                 case ApplicationCacheController._appCache.UNCACHED:
@@ -97,7 +92,6 @@
                     break;
             }
         };
-
         /**
          * The resources listed in the manifest have been fully downloaded, and the application is
          * now cached locally.
@@ -111,7 +105,6 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CACHED, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CACHED, false, false, event));
         };
-
         /**
          * The browser is checking for an update, or is attempting to download
          * the cache manifest for the first time. This is always the first event
@@ -126,7 +119,6 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CHECKING, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CHECKING, false, false, event));
         };
-
         /**
          * The browser has started to download the cache manifest, either for the
          * first time or because changes have been detected.
@@ -140,7 +132,6 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.DOWNLOADING, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.DOWNLOADING, false, false, event));
         };
-
         /**
          * An error occurred at some point - this could be caused by a number of things. This will
          * always be the last event in the sequence.
@@ -154,7 +145,6 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.ERROR, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.ERROR, false, false, event));
         };
-
         /**
          * The cache manifest hadn't changed.
          *
@@ -167,7 +157,6 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.NO_UPDATE, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.NO_UPDATE, false, false, event));
         };
-
         /**
          * The cache manifest file could not be found, indicating that the cache is no longer needed.
          * The application cache is being deleted.
@@ -181,7 +170,6 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.OBSOLETE, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.OBSOLETE, false, false, event));
         };
-
         /**
          * The browser had downloaded and cached an asset. This is fired once for
          * every file that is downloaded (including the current page which is cached implicitly).
@@ -195,7 +183,6 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.PROGRESS, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.PROGRESS, false, false, event));
         };
-
         /**
          * The resources listed in the manifest have been newly re-downloaded, and the script can
          * use swapCache() to switch to the new cache.
@@ -209,14 +196,13 @@
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.UPDATE_READY, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY, false, false, event));
         };
-
         /**
          * Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.
          * @example
          ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
          ClassName.prototype.handlerMethod = function(event) {
-        console.log(event.target + " sent the event.");
-        }
+               console.log(event.target + " sent the event.");
+           }
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
@@ -225,17 +211,16 @@
          * @static
          */
         ApplicationCacheController.addEventListener = function (type, callback, scope, priority) {
-            if (typeof priority === "undefined") { priority = 0; }
+            if (priority === void 0) { priority = 0; }
             ApplicationCacheController._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
-
         /**
          * Removes a specified listener from the ApplicationCacheController object.
          * @example
          ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
          ClassName.prototype.handlerMethod = function(event) {
-        console.log(event.target + " sent the event.");
-        }
+               console.log(event.target + " sent the event.");
+           }
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
@@ -246,7 +231,6 @@
         ApplicationCacheController.removeEventListener = function (type, callback, scope) {
             ApplicationCacheController._eventDispatcher.removeEventListener(type, callback, scope);
         };
-
         /**
          * <p>Dispatches an event within the ApplicationCacheController object.</p>
          * @example

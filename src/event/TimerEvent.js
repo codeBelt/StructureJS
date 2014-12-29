@@ -37,6 +37,9 @@
         var _super = Extend(TimerEvent, BaseEvent);
 
         function TimerEvent(type, bubbles, cancelable, data) {
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
         /**

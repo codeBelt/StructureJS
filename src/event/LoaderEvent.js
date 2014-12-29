@@ -37,9 +37,9 @@
         var _super = Extend(LoaderEvent, BaseEvent);
 
         function LoaderEvent(type, bubbles, cancelable, data) {
-            if (typeof bubbles === "undefined") { bubbles = false; }
-            if (typeof cancelable === "undefined") { cancelable = false; }
-            if (typeof data === "undefined") { data = null; }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
         /**
@@ -55,7 +55,7 @@
          * @type {string}
          * @static
          */
-        LoaderEvent.COMPLETE = "LoaderEvent.complete";
+        LoaderEvent.COMPLETE = 'LoaderEvent.complete';
         /**
          * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
          *
@@ -63,7 +63,7 @@
          * @type {string}
          * @static
          */
-        LoaderEvent.LOAD_COMPLETE = "LoaderEvent.loadComplete";
+        LoaderEvent.LOAD_COMPLETE = 'LoaderEvent.loadComplete';
         /**
          * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
          *
@@ -71,7 +71,7 @@
          * @type {string}
          * @static
          */
-        LoaderEvent.ERROR = "LoaderEvent.error";
+        LoaderEvent.ERROR = 'LoaderEvent.error';
         return LoaderEvent;
     })();
 

@@ -48,10 +48,8 @@
                     this[key] = data[key];
                 }
             }
-
             return this;
         };
-
         /**
          * ...
          *
@@ -63,7 +61,6 @@
             var clone = this.clone();
             return Util.deletePropertyFromObject(clone, ['cid']);
         };
-
         /**
          * ...
          *
@@ -74,7 +71,6 @@
         ValueObject.prototype.toJSONString = function () {
             return JSON.stringify(this.toJSON());
         };
-
         /**
          * Converts the string json data into an Object and calls the {{#crossLink "ValueObject/update:method"}}{{/crossLink}} method with the converted Object.
          *
@@ -85,10 +81,8 @@
         ValueObject.prototype.fromJSON = function (json) {
             var parsedData = JSON.parse(json);
             this.update(parsedData);
-
             return this;
         };
-
         /**
          *
          *
@@ -99,7 +93,6 @@
         ValueObject.prototype.clone = function () {
             return Util.clone(this);
         };
-
         /**
          *
          *
@@ -108,14 +101,12 @@
          * @public
          */
         ValueObject.prototype.copy = function () {
-            var copy = new Object();
-
+            var copy = {};
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {
                     copy[key] = this[key];
                 }
             }
-
             return copy;
         };
         return ValueObject;

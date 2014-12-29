@@ -18,22 +18,18 @@
      */
     if (!Function.prototype.bind) {
         Function.prototype.bind = function (oThis) {
-            if (typeof this !== "function") {
-                throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+            if (typeof this !== 'function') {
+                throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
             }
-
             var aArgs = Array.prototype.slice.call(arguments, 1), fToBind = this, fNOP = function () {
             }, fBound = function () {
                 return fToBind.apply(this instanceof fNOP && oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
             };
-
             fNOP.prototype = this.prototype;
             fBound.prototype = new fNOP();
-
             return fBound;
         };
     }
-
     /**
      * Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.
      *
@@ -42,24 +38,19 @@
      */
     var hashCode = function (str) {
         str = String(str);
-
         // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
         var character;
         var hash = null;
         var strLength = str.length;
-
         if (strLength == 0)
             return hash;
-
         for (var i = 0; i < strLength; i++) {
             character = str.charCodeAt(i);
             hash = ((hash << 5) - hash) + character;
             hash = hash & hash; // Convert to 32bit integer
         }
-
         return String(Math.abs(hash));
     };
-
     /**
      * The jQuery addEventListener plugin
      */
@@ -94,7 +85,6 @@
         }
         return this;
     };
-
     /**
      * The jQuery removeEventListener plugin
      */
@@ -102,7 +92,6 @@
         var _callback;
         var _scope;
         var _handler;
-
         switch (arguments.length) {
             case 3:
                 _callback = selector;

@@ -46,8 +46,8 @@
          *      // 3
          */
         MathUtil.constrain = function (num, min, max) {
-            if (typeof min === "undefined") { min = 0; }
-            if (typeof max === "undefined") { max = 1; }
+            if (min === void 0) { min = 0; }
+            if (max === void 0) { max = 1; }
             if (num < min) {
                 return min;
             }
@@ -56,7 +56,6 @@
             }
             return num;
         };
-
         /**
          * Returns a random number between min and max.
          *
@@ -69,15 +68,13 @@
          *
          */
         MathUtil.randomRange = function (min, max, wholeNumber) {
-            if (typeof wholeNumber === "undefined") { wholeNumber = true; }
+            if (wholeNumber === void 0) { wholeNumber = true; }
             var num = (min + Math.random() * (max - min));
-
             if (wholeNumber) {
                 return Math.round(num);
             }
             return num;
         };
-
         /**
          * Returns the percentage of a number in a given range.
          * Example: num = 15 range 10 to 20 // outputs 0.5
@@ -94,8 +91,8 @@
          *      // 0.5
          */
         MathUtil.rangeToPercent = function (num, min, max, constrainMin, constrainMax) {
-            if (typeof constrainMin === "undefined") { constrainMin = false; }
-            if (typeof constrainMax === "undefined") { constrainMax = false; }
+            if (constrainMin === void 0) { constrainMin = false; }
+            if (constrainMax === void 0) { constrainMax = false; }
             if (constrainMin && num < min) {
                 return 0;
             }
@@ -104,7 +101,6 @@
             }
             return (num - min) / (max - min);
         };
-
         /**
          * Returns the number that corresponds to the percentage in a given range.
          * Example: percent = 0.5 range 10 to 20 // outputs 15
@@ -121,7 +117,6 @@
         MathUtil.percentToRange = function (percent, min, max) {
             return (percent * (max - min)) + min;
         };
-
         /**
          * Re-maps a number from one range to another. The output is the same as inputing the result of rangeToPercent() numbero percentToRange().
          * Example: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5
@@ -138,16 +133,15 @@
          *      // 5
          */
         MathUtil.map = function (num, min1, max1, min2, max2, round, constrainMin, constrainMax) {
-            if (typeof round === "undefined") { round = true; }
-            if (typeof constrainMin === "undefined") { constrainMin = true; }
-            if (typeof constrainMax === "undefined") { constrainMax = true; }
+            if (round === void 0) { round = true; }
+            if (constrainMin === void 0) { constrainMin = true; }
+            if (constrainMax === void 0) { constrainMax = true; }
             if (constrainMin && num < min1) {
                 return min2;
             }
             if (constrainMax && num > max1) {
                 return max2;
             }
-
             var num1 = (num - min1) / (max1 - min1);
             var num2 = (num1 * (max2 - min2)) + min2;
             if (round) {
@@ -155,7 +149,6 @@
             }
             return num2;
         };
-
         /**
          * Converts radians to degrees.
          *
@@ -172,7 +165,6 @@
         MathUtil.radiansToDegrees = function (radians) {
             return radians * (180 / Math.PI);
         };
-
         /**
          * Converts degrees to radians.
          *
@@ -189,7 +181,6 @@
         MathUtil.degreesToRadians = function (degrees) {
             return (degrees * Math.PI / 180);
         };
-
         /**
          * Returns 1 if the value is >= 0. Returns -1 if the value is < 0.
          *
@@ -209,7 +200,6 @@
             }
             return 1;
         };
-
         /**
          * Check if number is positive (zero is positive).
          *
@@ -226,7 +216,6 @@
         MathUtil.isPositive = function (num) {
             return (num >= 0);
         };
-
         /**
          * Check if number is negative.
          *
@@ -243,7 +232,6 @@
         MathUtil.isNegative = function (num) {
             return (num < 0);
         };
-
         /**
          * Check if number is odd (convert to Integer if necessary).
          *
@@ -262,7 +250,6 @@
             var e = 2;
             return Boolean(i % e);
         };
-
         /**
          * Check if number is even (convert to Integer if necessary).
          *
@@ -281,7 +268,6 @@
             var e = 2;
             return (int % e == 0);
         };
-
         /**
          * Check if number is Prime (divisible only by itself and one).
          *
@@ -308,7 +294,6 @@
             }
             return true;
         };
-
         /**
          * Calculate the factorial of the integer.
          *
@@ -334,7 +319,6 @@
             }
             return d;
         };
-
         /**
          * Return an array of divisors of the integer.
          *
@@ -346,20 +330,16 @@
          */
         MathUtil.getDivisors = function (num) {
             var r = [];
-
             for (var i = 1, e = num / 2; i <= e; i++) {
                 if (num % i == 0) {
                     r.push(i);
                 }
             }
-
             if (num != 0) {
                 r.push(num.valueOf());
             }
-
             return r;
         };
-
         return MathUtil;
     })();
 

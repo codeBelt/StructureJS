@@ -30,10 +30,10 @@
         var _super = Extend(JsonDataStore, DataStoreAbstract);
 
         function JsonDataStore(path, jsonp) {
-            if (typeof jsonp === "undefined") { jsonp = false; }
+            if (jsonp === void 0) { jsonp = false; }
             _super.call(this, path);
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property _urlLoader
              * @type {URLLoader}
@@ -41,7 +41,7 @@
              */
             this._urlLoader = null;
             /**
-             * YUIDoc_comment
+             * TODO: YUIDoc_comment
              *
              * @property _isJsonP
              * @type {boolean}
@@ -49,7 +49,6 @@
              * @private
              */
             this._isJsonP = false;
-
             this._isJsonP = jsonp;
         }
         /**
@@ -62,27 +61,21 @@
             var request = new URLRequest(this.src);
             request.method = URLRequestMethod.GET;
             request.contentType = URLContentType.JSON;
-
             if (this._isJsonP === true) {
                 request.data = { format: 'json' };
             }
-
             this._urlLoader = new URLLoader();
             this._urlLoader.addEventListener(LoaderEvent.COMPLETE, this._onLoaderComplete, this);
             this._urlLoader.dataFormat = URLLoaderDataFormat.JSONP;
             this._urlLoader.load(request);
-
             return this;
         };
-
         /**
          * @overridden DataStoreAbstract._onLoaderComplete
          */
         JsonDataStore.prototype._onLoaderComplete = function (event) {
             this.data = this._urlLoader.data;
-
             this._urlLoader.removeEventListener(LoaderEvent.COMPLETE, this._onLoaderComplete, this);
-
             _super.prototype._onLoaderComplete.call(this);
         };
         return JsonDataStore;

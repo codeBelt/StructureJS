@@ -41,35 +41,35 @@
          * @returns {*}
          */
         TemplateFactory.create = function (templatePath, data) {
-            if (typeof data === "undefined") { data = null; }
+            if (data === void 0) { data = null; }
             //Checks the first character to see if it is a '.' or '#'.
             var regex = /^([.#])(.+)/;
             var template = null;
             var isFunctionTemplate = typeof templatePath === 'function';
             var isClassOrIdName = regex.test(templatePath);
-
             if (isFunctionTemplate) {
                 template = templatePath(data);
-            } else if (isClassOrIdName) {
+            }
+            else if (isClassOrIdName) {
                 var htmlString = jQuery(templatePath).html();
                 htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
-
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
                     var templateMethod = _.template(htmlString);
                     template = templateMethod(data);
-                } else {
+                }
+                else {
                     // Handlebars Template
                     var templateMethod = Handlebars.compile(htmlString);
                     template = templateMethod(data);
                 }
-            } else {
+            }
+            else {
                 var templateObj = window[TemplateFactory.templateNamespace];
                 if (!templateObj) {
                     // Returns null because the template namespace is not found.
                     return null;
                 }
-
                 var templateFunction = templateObj[templatePath];
                 if (templateFunction) {
                     // The templatePath gets a function storage in the associative array.
@@ -77,7 +77,6 @@
                     template = templateFunction(data);
                 }
             }
-
             return template;
         };
         /**

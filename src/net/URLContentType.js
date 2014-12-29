@@ -28,7 +28,9 @@
         function URLContentType() {
         }
         URLContentType.DEFAULT = "application/x-www-form-urlencoded";
-
+        /*
+         * Audio
+         */
         URLContentType.ATOM = "application/atom+xml";
         URLContentType.JSON = "application/json";
         URLContentType.PDF = "application/pdf";
@@ -40,7 +42,9 @@
         URLContentType.XHTML = "application/xhtml+xml";
         URLContentType.ZIP = "application/zip";
         URLContentType.GZIP = "application/gzip";
-
+        /*
+         * Audio
+         */
         URLContentType.BASIC = "audio/basic";
         URLContentType.L24 = "audio/L24";
         URLContentType.MP4 = "audio/mp4";

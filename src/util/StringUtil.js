@@ -45,11 +45,10 @@
          *      // '.exe'
          */
         StringUtil.getExtension = function (filename, withDot) {
-            if (typeof withDot === "undefined") { withDot = false; }
+            if (withDot === void 0) { withDot = false; }
             var num = (withDot === true) ? 0 : 1;
             return filename.slice(filename.lastIndexOf('.') + num, filename.length);
         };
-
         /**
          * Converts a string to a sentence case string.
          *
@@ -73,8 +72,7 @@
          *      // 'live/down/by/the/river'
          */
         StringUtil.toSentence = function (str, separator) {
-            if (typeof separator === "undefined") { separator = ' '; }
-
+            if (separator === void 0) { separator = ' '; }
             return String(str)
                 // Add a space after any digits.
                 .replace(/(\d)/g, '$1 ')
@@ -91,7 +89,6 @@
                 // If a separator is passed in then replace the space with it.
                 .replace(/\s+/g, separator);
         };
-
         /**
          * Converts a string to a camel case string.
          *
@@ -111,7 +108,6 @@
                     return $1.toUpperCase();
                 });
         };
-
         /**
          * Converts a hyphen string to a pascal case string.
          *
@@ -131,8 +127,6 @@
                     return a.toUpperCase();
                 });
         };
-
-
         /**
          * Converts a string to a constant case string.
          *
@@ -149,7 +143,6 @@
             return StringUtil.toSentence(str, '_')
                 .toUpperCase();
         };
-
         /**
          * Creates a universally unique identifier.
          *
@@ -167,10 +160,8 @@
                 var v = (c == 'x') ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
             });
-
             return uuid;
         };
-
         /**
          * Converts a query string to an object.
          *
@@ -188,29 +179,23 @@
          *      // {name: 'Robert', age: '23', gender: 'male'}
          */
         StringUtil.queryStringToObject = function (queryString, useParseFloat) {
-            if (typeof useParseFloat === "undefined") { useParseFloat = true; }
+            if (useParseFloat === void 0) { useParseFloat = true; }
             var params = {};
             var temp = null;
-
             var str = queryString.substring(queryString.indexOf('?') + 1);
-
             if (str === '') {
                 return null;
             }
-
             // Split into key/value pairs
             var queries = str.split('&');
-
             // Convert the array of strings into an object
             var len = queries.length;
             for (var i = 0; i < len; i++) {
                 temp = queries[i].split('=');
                 params[temp[0]] = (useParseFloat === true && isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
-
             return params;
         };
-
         /**
          * Remove all whitespace from the string passed in.
          *
@@ -227,7 +212,6 @@
         StringUtil.removeAllWhitespace = function (str) {
             return str.replace(/\s+/g, '');
         };
-
         /**
          * Remove leading and trailing whitespace.
          *
@@ -244,7 +228,6 @@
         StringUtil.removeLeadingTrailingWhitespace = function (str) {
             return str.replace(/(^\s+|\s+$)/g, '');
         };
-
         /**
          *
          * @method truncate
@@ -260,11 +243,11 @@
         StringUtil.truncate = function (text, length) {
             if (text.length <= length) {
                 return text;
-            } else {
+            }
+            else {
                 return text.substr(0, length) + '...';
             }
         };
-
         /**
          * Replaces each format item in a specified string with the text equivalent of a corresponding object's value.
          *
@@ -280,8 +263,8 @@
          */
         StringUtil.format = function (str) {
             var rest = [];
-            for (var _i = 0; _i < (arguments.length - 1); _i++) {
-                rest[_i] = arguments[_i + 1];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                rest[_i - 1] = arguments[_i];
             }
             var length = rest.length;
             var value = str;
@@ -289,10 +272,8 @@
                 var reg = new RegExp('\\{' + i + '\\}', 'gm');
                 value = value.replace(reg, rest[i]);
             }
-
             return value;
         };
-
         /**
          * Updates a value in the query string by its key name.
          *

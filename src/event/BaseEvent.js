@@ -72,9 +72,9 @@
         var _super = Extend(BaseEvent, BaseObject);
 
         function BaseEvent(type, bubbles, cancelable, data) {
-            if (typeof bubbles === "undefined") { bubbles = false; }
-            if (typeof cancelable === "undefined") { cancelable = false; }
-            if (typeof data === "undefined") { data = null; }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
             _super.call(this);
             /**
              * The type of event.
@@ -153,7 +153,6 @@
              * @readOnly
              */
             this.isImmediatePropagationStopped = false;
-
             this.type = type;
             this.bubble = bubbles;
             this.cancelable = cancelable;
@@ -183,7 +182,6 @@
             event.isImmediatePropagationStopped = this.isImmediatePropagationStopped;
             return event;
         };
-
         /**
          * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
          * This method does not affect any event listeners in the current node (currentTarget). In contrast,
@@ -198,7 +196,6 @@
         BaseEvent.prototype.stopPropagation = function () {
             this.isPropagationStopped = true;
         };
-
         /**
          * Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
          * This method takes effect immediately, and it affects event listeners in the current node. In contrast,

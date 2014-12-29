@@ -40,21 +40,17 @@
          *      ComponentFactory.create($('.js-list'), SomeClass);
          */
         ComponentFactory.create = function ($elements, ComponentClass, scope) {
-            if (typeof scope === "undefined") { scope = null; }
+            if (scope === void 0) { scope = null; }
             var list = [];
             var length = $elements.length;
-
             for (var i = 0; i < length; i++) {
                 var component = new ComponentClass($elements.eq(i));
-
                 // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
                 if (scope !== null && typeof component.getQualifiedClassName === 'function') {
                     scope.addChild(component);
                 }
-
                 list.push(component);
             }
-
             return list;
         };
         return ComponentFactory;

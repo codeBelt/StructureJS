@@ -46,7 +46,6 @@
             this._dataStores[key] = dataStore;
             return this;
         };
-
         /**
          * TODO: YUIDoc_comment
          *
@@ -57,7 +56,6 @@
         BulkLoader.prototype.getFile = function (key) {
             return this._dataStores[key];
         };
-
         /**
          * TODO: YUIDoc_comment
          *
@@ -68,7 +66,6 @@
         BulkLoader.prototype.getData = function (key) {
             return this._dataStores[key].data;
         };
-
         /**
          * TODO: YUIDoc_comment
          *
@@ -78,17 +75,14 @@
         BulkLoader.prototype.load = function () {
             for (var key in this._dataStores) {
                 var dataStore = this._dataStores[key];
-
                 // Don't re-load data store's if they are completed.
                 if (dataStore.complete === false) {
                     dataStore.addEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
                     dataStore.load();
                 }
             }
-
             return this;
         };
-
         /**
          * TODO: YUIDoc_comment
          *
@@ -97,9 +91,7 @@
          */
         BulkLoader.prototype.onLoadComplete = function (event) {
             event.target.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
-
             this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, event.target));
-
             for (var key in this._dataStores) {
                 var dataStore = this._dataStores[key];
                 if (dataStore.complete === false) {
@@ -107,7 +99,6 @@
                     return;
                 }
             }
-
             this.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE, false, false, this._dataStores));
         };
         return BulkLoader;

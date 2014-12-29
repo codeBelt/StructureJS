@@ -47,14 +47,12 @@
              * @private
              */
             this._nativeEvent = null;
-
             if (nativeEvent) {
                 this.key = nativeEvent.key;
                 this.oldValue = nativeEvent.oldValue;
                 this.newValue = nativeEvent.newValue;
                 this.url = nativeEvent.url;
             }
-
             this._nativeEvent = nativeEvent;
         }
         /**
@@ -63,6 +61,13 @@
         LocalStorageEvent.prototype.clone = function () {
             return new LocalStorageEvent(this.type, this.bubble, this.cancelable, this._nativeEvent);
         };
+        /**
+         * The storage event is fired on a Document's Window object when a storage area changes.
+         *
+         * @event STORAGE
+         * @type {string}
+         * @static
+         */
         LocalStorageEvent.STORAGE = 'storage';
         return LocalStorageEvent;
     })();

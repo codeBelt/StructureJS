@@ -43,7 +43,6 @@
             if (cardNumber.length < 7 || cardNumber.length > 19 || Number(cardNumber) < 1000000) {
                 return false;
             }
-
             var pre;
             var sum = 0;
             var alt = true;
@@ -51,17 +50,15 @@
             while (--i > -1) {
                 if (alt) {
                     sum += Number(cardNumber.substr(i, 1));
-                } else {
+                }
+                else {
                     pre = Number(cardNumber.substr(i, 1)) * 2;
                     sum += (pre > 8) ? pre -= 9 : pre;
                 }
-
                 alt = !alt;
             }
-
             return sum % 10 == 0;
         };
-
         /**
          * Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.
          *
@@ -80,8 +77,8 @@
          *      // xxxxxxxxxxx84949
          */
         MerchantUtil.encodeCreditCardNumber = function (strNumber, digitsShown, encodeChar) {
-            if (typeof digitsShown === "undefined") { digitsShown = 4; }
-            if (typeof encodeChar === "undefined") { encodeChar = '*'; }
+            if (digitsShown === void 0) { digitsShown = 4; }
+            if (encodeChar === void 0) { encodeChar = '*'; }
             var encoded = '';
             for (var i = 0; i < strNumber.length - digitsShown; i++) {
                 encoded += encodeChar;
@@ -89,7 +86,6 @@
             encoded += strNumber.slice(-digitsShown);
             return encoded;
         };
-
         /**
          * Returns a credit card provider name from the credit card number passed in.
          *
@@ -107,22 +103,25 @@
             if (MerchantUtil.isCreditCard(cardNumber) == false) {
                 return 'invalid';
             }
-
             if (cardNumber.length == 13 || cardNumber.length == 16 && cardNumber.indexOf('4') == 0) {
                 return 'visa';
-            } else if (cardNumber.indexOf('51') == 0 || cardNumber.indexOf('52') == 0 || cardNumber.indexOf('53') == 0 || cardNumber.indexOf('54') == 0 || cardNumber.indexOf('55') == 0 && cardNumber.length == 16) {
+            }
+            else if (cardNumber.indexOf('51') == 0 || cardNumber.indexOf('52') == 0 || cardNumber.indexOf('53') == 0 || cardNumber.indexOf('54') == 0 || cardNumber.indexOf('55') == 0 && cardNumber.length == 16) {
                 return 'mastercard';
-            } else if (cardNumber.length == 16 && cardNumber.indexOf('6011') == 0) {
+            }
+            else if (cardNumber.length == 16 && cardNumber.indexOf('6011') == 0) {
                 return 'discover';
-            } else if (cardNumber.indexOf('34') == 0 || cardNumber.indexOf('37') == 0 && cardNumber.length == 15) {
+            }
+            else if (cardNumber.indexOf('34') == 0 || cardNumber.indexOf('37') == 0 && cardNumber.length == 15) {
                 return 'amex';
-            } else if (cardNumber.indexOf('300') == 0 || cardNumber.indexOf('301') == 0 || cardNumber.indexOf('302') == 0 || cardNumber.indexOf('303') == 0 || cardNumber.indexOf('304') == 0 || cardNumber.indexOf('305') == 0 || cardNumber.indexOf('36') == 0 || cardNumber.indexOf('38') == 0 && cardNumber.length == 14) {
+            }
+            else if (cardNumber.indexOf('300') == 0 || cardNumber.indexOf('301') == 0 || cardNumber.indexOf('302') == 0 || cardNumber.indexOf('303') == 0 || cardNumber.indexOf('304') == 0 || cardNumber.indexOf('305') == 0 || cardNumber.indexOf('36') == 0 || cardNumber.indexOf('38') == 0 && cardNumber.length == 14) {
                 return 'diners';
-            } else {
+            }
+            else {
                 return 'other';
             }
         };
-
         /**
          * Validate a credit card's expiration date.
          *

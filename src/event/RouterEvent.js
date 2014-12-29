@@ -37,10 +37,10 @@
         var _super = Extend(RouterEvent, BaseEvent);
 
         function RouterEvent(type, bubbles, cancelable, data) {
-            if (typeof type === "undefined") { type = RouterEvent.CHANGE; }
-            if (typeof bubbles === "undefined") { bubbles = false; }
-            if (typeof cancelable === "undefined") { cancelable = false; }
-            if (typeof data === "undefined") { data = null; }
+            if (type === void 0) { type = RouterEvent.CHANGE; }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
             /**
              * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.

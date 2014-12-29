@@ -41,7 +41,6 @@
         ValidationUtil.isEmpty = function (text) {
             return text.length < 1;
         };
-
         /**
          * Determines if the two values passed in are the same.
          *
@@ -57,7 +56,6 @@
         ValidationUtil.isMatch = function (value1, value2) {
             return value1 === value2;
         };
-
         /**
          * Determines if the String passed in is a valid email address.
          *
@@ -73,7 +71,6 @@
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
             return expression.test(email);
         };
-
         /**
          * Determines if the String passed in is a phone number.
          *
@@ -89,7 +86,6 @@
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
             return expression.test(phoneNumber);
         };
-
         /**
          * Determines if the String passed in is a zip code.
          *
@@ -105,7 +101,6 @@
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
             return expression.test(zipCode);
         };
-
         /**
          * Determines if the String passed in is a postal code.
          *
@@ -121,7 +116,6 @@
             var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
             return expression.test(postalCode);
         };
-
         /**
          * Determines if the String passed in is a Social Security Number.
          *

@@ -52,9 +52,8 @@
             var day = today % 100;
             return ((Math.floor(day / 10) === 1) ? 'th' : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][day % 10]);
         };
-
         /**
-         * YUIDoc_comment
+         * A list of day names.
          *
          * @property LONG_DAY_LABELS
          * @type {array}
@@ -64,7 +63,7 @@
          */
         DateUtil.LONG_DAY_LABELS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property SHORT_DAY_LABELS
          * @type {array}
@@ -74,7 +73,7 @@
          */
         DateUtil.SHORT_DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         /**
-         * YUIDoc_comment
+         * A list of month names.
          *
          * @property LONG_MONTH_LABELS
          * @type {array}
@@ -84,7 +83,7 @@
          */
         DateUtil.LONG_MONTH_LABELS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         /**
-         * YUIDoc_comment
+         * TODO: YUIDoc_comment
          *
          * @property SHORT_MONTH_LABELS
          * @type {array}

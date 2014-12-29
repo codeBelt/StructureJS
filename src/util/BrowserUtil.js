@@ -38,7 +38,6 @@
         BrowserUtil.browserName = function () {
             return BrowserUtil.getBrowser()[0];
         };
-
         /**
          * Returns the version of the browser.
          *
@@ -49,16 +48,15 @@
          * @static
          */
         BrowserUtil.browserVersion = function (majorVersion) {
-            if (typeof majorVersion === "undefined") { majorVersion = true; }
+            if (majorVersion === void 0) { majorVersion = true; }
             var version = BrowserUtil.getBrowser()[1];
-
             if (majorVersion === true) {
                 return parseInt(version, 10);
-            } else {
+            }
+            else {
                 return version;
             }
         };
-
         /**
          * Gets the browser name a user agent.
          *
@@ -72,16 +70,14 @@
             var ua = navigator.userAgent;
             var tem = ua.match(/version\/([\.\d]+)/i);
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
-
             if (M && tem != null) {
                 M[2] = tem[1];
-            } else {
+            }
+            else {
                 M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
             }
-
             return M;
         };
-
         /**
          * Determines if the device OS is Android.
          *
@@ -93,7 +89,6 @@
         BrowserUtil.isAndroid = function () {
             return !!navigator.userAgent.match(/Android/i);
         };
-
         /**
          * Determines if the device OS is Android.
          *
@@ -105,7 +100,6 @@
         BrowserUtil.isBlackBerry = function () {
             return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
         };
-
         /**
          * Determines if the device OS is IOS.
          *
@@ -117,7 +111,6 @@
         BrowserUtil.isIOS = function () {
             return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
         };
-
         /**
          * Determines if the device OS is Opera Mini.
          *
@@ -129,7 +122,6 @@
         BrowserUtil.isOperaMini = function () {
             return !!navigator.userAgent.match(/Opera Mini/i);
         };
-
         /**
          * Determines if the device OS is IE Mobile.
          *
@@ -141,7 +133,6 @@
         BrowserUtil.isIEMobile = function () {
             return !!navigator.userAgent.match(/IEMobile/i);
         };
-
         /**
          * Determines if the it is run on a mobile or desktop device.
          *
@@ -153,7 +144,6 @@
         BrowserUtil.isMobile = function () {
             return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
         };
-
         /**
          * Determines if the browser can you Browser History push states.
          *
@@ -165,7 +155,6 @@
         BrowserUtil.hasBrowserHistory = function () {
             return !!(window.history && history.pushState);
         };
-
         /**
          * Determines if the browser can you Local Storage.
          *
@@ -175,13 +164,13 @@
          * @static
          */
         BrowserUtil.hasLocalStorage = function () {
-            try  {
+            try {
                 return ('localStorage' in window) && window.localStorage !== null;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
-
         /**
          * Determines if the browser can you Session Storage.
          *
@@ -191,9 +180,10 @@
          * @static
          */
         BrowserUtil.hasSessionStorage = function () {
-            try  {
+            try {
                 return ('sessionStorage' in window) && window.sessionStorage !== null;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };

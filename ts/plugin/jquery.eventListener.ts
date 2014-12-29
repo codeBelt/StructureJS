@@ -57,7 +57,7 @@
         }
 
         return String(Math.abs(hash));
-    }
+    };
 
     /**
      * The jQuery addEventListener plugin
@@ -94,7 +94,7 @@
                 throw new Error('jQuery addEventListener plugin requires at least 3 arguments.')
         }
         return this;
-    }
+    };
 
     /**
      * The jQuery removeEventListener plugin

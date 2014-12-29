@@ -129,7 +129,6 @@
         DisplayObjectContainer.prototype.createChildren = function () {
             throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
         };
-
         /**
          * Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other
          * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
@@ -148,15 +147,11 @@
             if (child.parent) {
                 child.parent.removeChild(child, false);
             }
-
             this.children.push(child);
             this.numChildren = this.children.length;
-
             child.parent = this;
-
             return this;
         };
-
         /**
          * Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.
          * The child is added at the index position specified. An index of 0 represents the back
@@ -174,15 +169,11 @@
             if (child.parent) {
                 child.parent.removeChild(child, false);
             }
-
             this.children.splice(index, 0, child);
             this.numChildren = this.children.length;
-
             child.parent = this;
-
             return this;
         };
-
         /**
          * Removes the specified child object instance from the child list of the parent object instance.
          * The parent property of the removed child is set to null , and the object is garbage collected if no other references
@@ -200,20 +191,16 @@
                 // Removes the child object from the parent.
                 this.children.splice(index, 1);
             }
-
             this.numChildren = this.children.length;
-
             if (destroy === true) {
                 child.destroy();
-            } else {
+            }
+            else {
                 child.disable();
             }
-
             child.parent = null;
-
             return this;
         };
-
         /**
          * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
          * The parent property of the removed children is set to null , and the objects are garbage collected if
@@ -228,10 +215,8 @@
             while (this.children.length > 0) {
                 this.removeChild(this.children.pop(), destroy);
             }
-
             return this;
         };
-
         /**
          * Swaps two DisplayObjectContainer's with each other.
          *
@@ -245,7 +230,6 @@
         DisplayObjectContainer.prototype.swapChildren = function (child1, child2) {
             throw new Error('[' + this.getQualifiedClassName() + '] Error: The swapChildren method is meant to be overridden.');
         };
-
         /**
          * Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.
          *
@@ -260,15 +244,11 @@
             if (index1 < 0 || index1 < 0 || index1 >= this.numChildren || index2 >= this.numChildren) {
                 throw new TypeError('[' + this.getQualifiedClassName() + '] index value(s) cannot be out of bounds. index1 value is ' + index1 + ' index2 value is ' + index2);
             }
-
             var child1 = this.getChildAt(index1);
             var child2 = this.getChildAt(index2);
-
             this.swapChildren(child1, child2);
-
             return this;
         };
-
         /**
          * Returns the index position of a child DisplayObjectContainer instance.
          *
@@ -280,7 +260,6 @@
         DisplayObjectContainer.prototype.getChildIndex = function (child) {
             return this.children.indexOf(child);
         };
-
         /**
          * Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.
          *
@@ -292,7 +271,6 @@
         DisplayObjectContainer.prototype.contains = function (child) {
             return this.children.indexOf(child) >= 0;
         };
-
         /**
          * Returns the child display object instance that exists at the specified index.
          *
@@ -303,7 +281,6 @@
         DisplayObjectContainer.prototype.getChildAt = function (index) {
             return this.children[index];
         };
-
         /**
          * Gets a DisplayObjectContainer by its cid.
          *
@@ -317,10 +294,8 @@
             var children = this.children.filter(function (child) {
                 return child.cid == cid;
             });
-
             return children[0] || null;
         };
-
         /**
          * The setSize method sets the bounds within which the containing DisplayObjectContainer would
          * like that component to lay itself out. It is expected that calling setSize will automatically
@@ -338,10 +313,8 @@
             if (this.isCreated) {
                 this.layoutChildren();
             }
-
             return this;
         };
-
         /**
          * The layoutComponent method provides a common function to handle updating child objects.
          *
@@ -353,11 +326,11 @@
         DisplayObjectContainer.prototype.layoutChildren = function () {
             return this;
         };
-
         /**
          * @overridden EventDispatcher.destroy
          */
         DisplayObjectContainer.prototype.destroy = function () {
+            // TODO: if you call destroy on an object should it remove itself from the parent children array?
             _super.prototype.destroy.call(this);
         };
         return DisplayObjectContainer;

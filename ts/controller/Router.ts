@@ -164,8 +164,8 @@ module StructureTS
          *
          *     // The Call back receives a RouterEvent object.
          *     ClassName.prototype.onRouteHandler = function (routerEvent) {
-     *         console.log(routerEvent.params);
-     *     }
+         *         console.log(routerEvent.params);
+         *     }
          *
          * Route Pattern Options:
          * ----------------------
@@ -323,7 +323,7 @@ module StructureTS
          */
         public static enable():void
         {
-            if (Router.isEnabled === true) return;
+            if (Router.isEnabled === true) { return; }
 
             if (Router._window.addEventListener)
             {
@@ -348,7 +348,7 @@ module StructureTS
          */
         public static disable():void
         {
-            if (Router.isEnabled === false) return;
+            if (Router.isEnabled === false) { return; }
 
             if (Router._window.removeEventListener)
             {
@@ -406,7 +406,7 @@ module StructureTS
          */
         public static navigateTo(route, silent:boolean = false, disableHistory:boolean = false):void
         {
-            if (Router.isEnabled === false) return;
+            if (Router.isEnabled === false) { return; }
 
             if (route.charAt(0) === '#')
             {
@@ -495,7 +495,7 @@ module StructureTS
          */
         private static onHashChange(event):void
         {
-            if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) return;
+            if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) { return; }
 
             Router._hashChangeEvent = event;
 

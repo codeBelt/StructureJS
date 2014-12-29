@@ -9,6 +9,7 @@
  * @submodule controller
  * @requires ApplicationCacheEvent
  * @requires EventDispatcher
+ * @static
  * @author Robert S. (www.codeBelt.com)
  */
 module StructureTS
@@ -54,7 +55,7 @@ module StructureTS
          */
         public static enable():void
         {
-            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true) return;
+            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true) { return; }
 
             // Native Browser Event Listener
             ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CACHED, this.onCached.bind(this), false);
@@ -74,7 +75,7 @@ module StructureTS
          */
         public static disable():void
         {
-            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === false) return;
+            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === false) { return; }
 
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CACHED, ApplicationCacheController.onCached.bind(this), false);
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CHECKING, ApplicationCacheController.onChecking.bind(this), false);

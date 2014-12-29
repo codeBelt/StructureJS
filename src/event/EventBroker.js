@@ -47,14 +47,13 @@
          *
          *     // The event passed to the method will always be a BaseEvent object.
          *     ClassName.prototype.handlerMethod = function (event) {
-        *          console.log(event.data);
-        *     }
+         *          console.log(event.data);
+         *     }
          */
         EventBroker.addEventListener = function (type, callback, scope, priority) {
-            if (typeof priority === "undefined") { priority = 0; }
+            if (priority === void 0) { priority = 0; }
             EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
-
         /**
          * Removes a specified listener from the EventBroker object.
          *
@@ -72,7 +71,6 @@
         EventBroker.removeEventListener = function (type, callback, scope) {
             EventBroker._eventDispatcher.removeEventListener(type, callback, scope);
         };
-
         /**
          * Dispatches an event within the EventBroker object.
          *
@@ -93,19 +91,15 @@
          *      EventBroker.dispatchEvent(event);
          */
         EventBroker.dispatchEvent = function (type, data) {
-            if (typeof data === "undefined") { data = null; }
+            if (data === void 0) { data = null; }
             var event = type;
-
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, false, data);
             }
-
             event.target = EventBroker;
             event.currentTarget = EventBroker;
-
             EventBroker._eventDispatcher.dispatchEvent(event);
         };
-
         /**
          * Check if EventBroker has a specific event listener already added.
          *
@@ -122,7 +116,6 @@
         EventBroker.hasEventListener = function (type, callback, scope) {
             return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
         };
-
         /**
          * Generates a string output of event listeners for a given object.
          *

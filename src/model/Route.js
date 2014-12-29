@@ -129,27 +129,21 @@
          * @private
          */
         Route.prototype.routePatternToRegexp = function (routePattern) {
-            var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g');
-            var findOptionalColons = new RegExp(':([^:]*):', 'g');
-            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g');
-            var optionalFirstCharSlash = '^/?';
-            var optionalLastCharSlash = '/?$';
-
+            var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
+            var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
+            var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+            var optionalFirstCharSlash = '^/?'; // Allows the first character to be if a forward slash to be optional.
+            var optionalLastCharSlash = '/?$'; // Allows the last character to be if a forward slash to be optional.
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
-
             // Convert the wild card * be a regex ?(.*) to select all.
             routePattern = routePattern.replace('*', '?(.*)');
-
             // Make any :alphanumeric: optional
             routePattern = routePattern.replace(findOptionalColons, '?([^/]*)');
-
             // Make any {alphanumeric} required
             routePattern = routePattern.replace(findRequiredBrackets, '([^/]+)');
-
             return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, 'i');
         };
-
         /**
          * Determine if a route matches a routePattern.
          *
@@ -163,7 +157,6 @@
         Route.prototype.match = function (route) {
             // Remove the query string before matching against the route pattern.
             var routeWithoutQueryString = route.replace(/\?.*/, '');
-
             return routeWithoutQueryString.match(this.regex);
         };
         return Route;

@@ -37,11 +37,11 @@
         var _super = Extend(NetworkMonitorEvent, BaseEvent);
 
         function NetworkMonitorEvent(type, bubbles, cancelable, status, connected, data) {
-            if (typeof bubbles === "undefined") { bubbles = false; }
-            if (typeof cancelable === "undefined") { cancelable = false; }
-            if (typeof status === "undefined") { status = null; }
-            if (typeof connected === "undefined") { connected = null; }
-            if (typeof data === "undefined") { data = null; }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (status === void 0) { status = null; }
+            if (connected === void 0) { connected = null; }
+            if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
             /**
              * TODO: YUIDoc_comment
@@ -59,7 +59,6 @@
              * @public
              */
             this.connected = false;
-
             this.status = status;
             this.connected = connected;
         }
