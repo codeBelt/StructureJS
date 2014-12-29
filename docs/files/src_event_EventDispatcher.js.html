@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -222,7 +222,6 @@
              * @public
              */
             this.parent = null;
-
             this._listeners = [];
         }
         /**
@@ -239,12 +238,12 @@
          *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *
          *      ClassName.prototype.handlerMethod = function (event) {
-        *          console.log(event.target + &quot; sent the event.&quot;);
-        *          console.log(event.type, event.data);
-        *      }
+         *          console.log(event.target + &quot; sent the event.&quot;);
+         *          console.log(event.type, event.data);
+         *      }
          */
         EventDispatcher.prototype.addEventListener = function (type, callback, scope, priority) {
-            if (typeof priority === &quot;undefined&quot;) { priority = 0; }
+            if (priority === void 0) { priority = 0; }
             // Get the list of event listener(s) by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list == null) {
@@ -259,17 +258,15 @@
                 if (listener.callback === callback &amp;&amp; listener.scope === scope) {
                     // If same callback and scope is found then remove it. Then add the current one below.
                     list.splice(i, 1);
-                } else if (index === 0 &amp;&amp; listener.priority &lt; priority) {
+                }
+                else if (index === 0 &amp;&amp; listener.priority &lt; priority) {
                     index = i + 1;
                 }
             }
-
             // Add the event listener to the list array at the index value.
             list.splice(index, 0, { callback: callback, scope: scope, priority: priority });
-
             return this;
         };
-
         /**
          * Removes a specified listener from the EventDispatcher object.
          *
@@ -284,7 +281,7 @@
          *      this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *
          *      ClassName.prototype.handlerMethod = function (event) {
-        *      }
+         *      }
          */
         EventDispatcher.prototype.removeEventListener = function (type, callback, scope) {
             // Get the list of event listener(s) by the associated type value that is passed in.
@@ -299,10 +296,8 @@
                     }
                 }
             }
-
             return this;
         };
-
         /**
          * &lt;p&gt;Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.&lt;/p&gt;
          *
@@ -326,19 +321,16 @@
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         EventDispatcher.prototype.dispatchEvent = function (type, data) {
-            if (typeof data === &quot;undefined&quot;) { data = null; }
+            if (data === void 0) { data = null; }
             var event = type;
-
             if (typeof event === &#x27;string&#x27;) {
                 event = new BaseEvent(type, false, true, data);
             }
-
             // If target is null then set it to the object that dispatched the event.
             if (event.target == null) {
                 event.target = this;
                 event.currentTarget = this;
             }
-
             // Get the list of event listener(s) by the associated type value.
             var list = this._listeners[event.type];
             if (list) {
@@ -349,19 +341,16 @@
                     if (event.cancelable &amp;&amp; event.isImmediatePropagationStopped) {
                         break;
                     }
-
                     listener = list[i];
                     listener.callback.call(listener.scope, event);
                 }
             }
-
             //Dispatches up the chain of classes that have a parent.
             if (this.parent &amp;&amp; event.bubble) {
                 // If cancelable and isPropagationStopped are true then don&#x27;t dispatch the event on the parent object.
                 if (event.cancelable &amp;&amp; event.isPropagationStopped) {
                     return this;
                 }
-
                 /*
                  // Clone the event because this EventDispatcher class modifies the currentTarget property when bubbling.
                  // We need to set the target to the previous target so we can keep track of the original origin of where
@@ -372,14 +361,11 @@
                  */
                 // Assign the current object that is currently processing the event (i.e. bubbling at) in the display list hierarchy.
                 event.currentTarget = this;
-
                 // Pass the event to the parent (event bubbling).
                 this.parent.dispatchEvent(event);
             }
-
             return this;
         };
-
         /**
          * Check if an object has a specific event listener already added.
          *
@@ -403,10 +389,8 @@
                     }
                 }
             }
-
             return false;
         };
-
         /**
          * Generates a string output of event listeners for a given object.
          *
@@ -422,31 +406,26 @@
             var str = &#x27;&#x27;;
             var numOfCallbacks;
             var listener;
-
             for (var type in this._listeners) {
                 numOfCallbacks = this._listeners[type].length;
                 for (var i = 0; i &lt; numOfCallbacks; i++) {
                     listener = this._listeners[type][i];
-
                     if (listener.scope &amp;&amp; (typeof listener.scope.getQualifiedClassName === &#x27;function&#x27;)) {
                         str += &#x27;[&#x27; + listener.scope.getQualifiedClassName() + &#x27;]&#x27;;
-                    } else {
+                    }
+                    else {
                         str += &#x27;[Unknown]&#x27;;
                     }
-
                     str += &quot; is listen for &#x27;&quot; + type + &quot;&#x27; event.\n&quot;;
                 }
             }
-
             return str;
         };
-
         /**
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function () {
             _super.prototype.disable.call(this);
-
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;

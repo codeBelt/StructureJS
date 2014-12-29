@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -207,11 +207,10 @@
          *      // &#x27;.exe&#x27;
          */
         StringUtil.getExtension = function (filename, withDot) {
-            if (typeof withDot === &quot;undefined&quot;) { withDot = false; }
+            if (withDot === void 0) { withDot = false; }
             var num = (withDot === true) ? 0 : 1;
             return filename.slice(filename.lastIndexOf(&#x27;.&#x27;) + num, filename.length);
         };
-
         /**
          * Converts a string to a sentence case string.
          *
@@ -235,8 +234,7 @@
          *      // &#x27;live/down/by/the/river&#x27;
          */
         StringUtil.toSentence = function (str, separator) {
-            if (typeof separator === &quot;undefined&quot;) { separator = &#x27; &#x27;; }
-
+            if (separator === void 0) { separator = &#x27; &#x27;; }
             return String(str)
                 // Add a space after any digits.
                 .replace(/(\d)/g, &#x27;$1 &#x27;)
@@ -253,7 +251,6 @@
                 // If a separator is passed in then replace the space with it.
                 .replace(/\s+/g, separator);
         };
-
         /**
          * Converts a string to a camel case string.
          *
@@ -273,7 +270,6 @@
                     return $1.toUpperCase();
                 });
         };
-
         /**
          * Converts a hyphen string to a pascal case string.
          *
@@ -293,8 +289,6 @@
                     return a.toUpperCase();
                 });
         };
-
-
         /**
          * Converts a string to a constant case string.
          *
@@ -311,7 +305,6 @@
             return StringUtil.toSentence(str, &#x27;_&#x27;)
                 .toUpperCase();
         };
-
         /**
          * Creates a universally unique identifier.
          *
@@ -329,10 +322,8 @@
                 var v = (c == &#x27;x&#x27;) ? r : (r &amp; 0x3 | 0x8);
                 return v.toString(16);
             });
-
             return uuid;
         };
-
         /**
          * Converts a query string to an object.
          *
@@ -350,29 +341,23 @@
          *      // {name: &#x27;Robert&#x27;, age: &#x27;23&#x27;, gender: &#x27;male&#x27;}
          */
         StringUtil.queryStringToObject = function (queryString, useParseFloat) {
-            if (typeof useParseFloat === &quot;undefined&quot;) { useParseFloat = true; }
+            if (useParseFloat === void 0) { useParseFloat = true; }
             var params = {};
             var temp = null;
-
             var str = queryString.substring(queryString.indexOf(&#x27;?&#x27;) + 1);
-
             if (str === &#x27;&#x27;) {
                 return null;
             }
-
             // Split into key/value pairs
             var queries = str.split(&#x27;&amp;&#x27;);
-
             // Convert the array of strings into an object
             var len = queries.length;
             for (var i = 0; i &lt; len; i++) {
                 temp = queries[i].split(&#x27;=&#x27;);
                 params[temp[0]] = (useParseFloat === true &amp;&amp; isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
-
             return params;
         };
-
         /**
          * Remove all whitespace from the string passed in.
          *
@@ -389,7 +374,6 @@
         StringUtil.removeAllWhitespace = function (str) {
             return str.replace(/\s+/g, &#x27;&#x27;);
         };
-
         /**
          * Remove leading and trailing whitespace.
          *
@@ -406,7 +390,6 @@
         StringUtil.removeLeadingTrailingWhitespace = function (str) {
             return str.replace(/(^\s+|\s+$)/g, &#x27;&#x27;);
         };
-
         /**
          *
          * @method truncate
@@ -422,11 +405,11 @@
         StringUtil.truncate = function (text, length) {
             if (text.length &lt;= length) {
                 return text;
-            } else {
+            }
+            else {
                 return text.substr(0, length) + &#x27;...&#x27;;
             }
         };
-
         /**
          * Replaces each format item in a specified string with the text equivalent of a corresponding object&#x27;s value.
          *
@@ -442,8 +425,8 @@
          */
         StringUtil.format = function (str) {
             var rest = [];
-            for (var _i = 0; _i &lt; (arguments.length - 1); _i++) {
-                rest[_i] = arguments[_i + 1];
+            for (var _i = 1; _i &lt; arguments.length; _i++) {
+                rest[_i - 1] = arguments[_i];
             }
             var length = rest.length;
             var value = str;
@@ -451,10 +434,8 @@
                 var reg = new RegExp(&#x27;\\{&#x27; + i + &#x27;\\}&#x27;, &#x27;gm&#x27;);
                 value = value.replace(reg, rest[i]);
             }
-
             return value;
         };
-
         /**
          * Updates a value in the query string by its key name.
          *

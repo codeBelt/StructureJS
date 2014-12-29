@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -205,7 +205,6 @@
             if (cardNumber.length &lt; 7 || cardNumber.length &gt; 19 || Number(cardNumber) &lt; 1000000) {
                 return false;
             }
-
             var pre;
             var sum = 0;
             var alt = true;
@@ -213,17 +212,15 @@
             while (--i &gt; -1) {
                 if (alt) {
                     sum += Number(cardNumber.substr(i, 1));
-                } else {
+                }
+                else {
                     pre = Number(cardNumber.substr(i, 1)) * 2;
                     sum += (pre &gt; 8) ? pre -= 9 : pre;
                 }
-
                 alt = !alt;
             }
-
             return sum % 10 == 0;
         };
-
         /**
          * Encode a credit card number as a string and encode all digits except the last &lt;code&gt;digitsShown&lt;/code&gt;.
          *
@@ -242,8 +239,8 @@
          *      // xxxxxxxxxxx84949
          */
         MerchantUtil.encodeCreditCardNumber = function (strNumber, digitsShown, encodeChar) {
-            if (typeof digitsShown === &quot;undefined&quot;) { digitsShown = 4; }
-            if (typeof encodeChar === &quot;undefined&quot;) { encodeChar = &#x27;*&#x27;; }
+            if (digitsShown === void 0) { digitsShown = 4; }
+            if (encodeChar === void 0) { encodeChar = &#x27;*&#x27;; }
             var encoded = &#x27;&#x27;;
             for (var i = 0; i &lt; strNumber.length - digitsShown; i++) {
                 encoded += encodeChar;
@@ -251,7 +248,6 @@
             encoded += strNumber.slice(-digitsShown);
             return encoded;
         };
-
         /**
          * Returns a credit card provider name from the credit card number passed in.
          *
@@ -269,22 +265,25 @@
             if (MerchantUtil.isCreditCard(cardNumber) == false) {
                 return &#x27;invalid&#x27;;
             }
-
             if (cardNumber.length == 13 || cardNumber.length == 16 &amp;&amp; cardNumber.indexOf(&#x27;4&#x27;) == 0) {
                 return &#x27;visa&#x27;;
-            } else if (cardNumber.indexOf(&#x27;51&#x27;) == 0 || cardNumber.indexOf(&#x27;52&#x27;) == 0 || cardNumber.indexOf(&#x27;53&#x27;) == 0 || cardNumber.indexOf(&#x27;54&#x27;) == 0 || cardNumber.indexOf(&#x27;55&#x27;) == 0 &amp;&amp; cardNumber.length == 16) {
+            }
+            else if (cardNumber.indexOf(&#x27;51&#x27;) == 0 || cardNumber.indexOf(&#x27;52&#x27;) == 0 || cardNumber.indexOf(&#x27;53&#x27;) == 0 || cardNumber.indexOf(&#x27;54&#x27;) == 0 || cardNumber.indexOf(&#x27;55&#x27;) == 0 &amp;&amp; cardNumber.length == 16) {
                 return &#x27;mastercard&#x27;;
-            } else if (cardNumber.length == 16 &amp;&amp; cardNumber.indexOf(&#x27;6011&#x27;) == 0) {
+            }
+            else if (cardNumber.length == 16 &amp;&amp; cardNumber.indexOf(&#x27;6011&#x27;) == 0) {
                 return &#x27;discover&#x27;;
-            } else if (cardNumber.indexOf(&#x27;34&#x27;) == 0 || cardNumber.indexOf(&#x27;37&#x27;) == 0 &amp;&amp; cardNumber.length == 15) {
+            }
+            else if (cardNumber.indexOf(&#x27;34&#x27;) == 0 || cardNumber.indexOf(&#x27;37&#x27;) == 0 &amp;&amp; cardNumber.length == 15) {
                 return &#x27;amex&#x27;;
-            } else if (cardNumber.indexOf(&#x27;300&#x27;) == 0 || cardNumber.indexOf(&#x27;301&#x27;) == 0 || cardNumber.indexOf(&#x27;302&#x27;) == 0 || cardNumber.indexOf(&#x27;303&#x27;) == 0 || cardNumber.indexOf(&#x27;304&#x27;) == 0 || cardNumber.indexOf(&#x27;305&#x27;) == 0 || cardNumber.indexOf(&#x27;36&#x27;) == 0 || cardNumber.indexOf(&#x27;38&#x27;) == 0 &amp;&amp; cardNumber.length == 14) {
+            }
+            else if (cardNumber.indexOf(&#x27;300&#x27;) == 0 || cardNumber.indexOf(&#x27;301&#x27;) == 0 || cardNumber.indexOf(&#x27;302&#x27;) == 0 || cardNumber.indexOf(&#x27;303&#x27;) == 0 || cardNumber.indexOf(&#x27;304&#x27;) == 0 || cardNumber.indexOf(&#x27;305&#x27;) == 0 || cardNumber.indexOf(&#x27;36&#x27;) == 0 || cardNumber.indexOf(&#x27;38&#x27;) == 0 &amp;&amp; cardNumber.length == 14) {
                 return &#x27;diners&#x27;;
-            } else {
+            }
+            else {
                 return &#x27;other&#x27;;
             }
         };
-
         /**
          * Validate a credit card&#x27;s expiration date.
          *

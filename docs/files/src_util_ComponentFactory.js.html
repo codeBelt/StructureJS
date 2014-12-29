@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -202,21 +202,17 @@
          *      ComponentFactory.create($(&#x27;.js-list&#x27;), SomeClass);
          */
         ComponentFactory.create = function ($elements, ComponentClass, scope) {
-            if (typeof scope === &quot;undefined&quot;) { scope = null; }
+            if (scope === void 0) { scope = null; }
             var list = [];
             var length = $elements.length;
-
             for (var i = 0; i &lt; length; i++) {
                 var component = new ComponentClass($elements.eq(i));
-
                 // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
                 if (scope !== null &amp;&amp; typeof component.getQualifiedClassName === &#x27;function&#x27;) {
                     scope.addChild(component);
                 }
-
                 list.push(component);
             }
-
             return list;
         };
         return ComponentFactory;

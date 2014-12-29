@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -291,27 +291,21 @@
          * @private
          */
         Route.prototype.routePatternToRegexp = function (routePattern) {
-            var findFirstOrLastForwardSlash = new RegExp(&#x27;^\/|\/$&#x27;, &#x27;g&#x27;);
-            var findOptionalColons = new RegExp(&#x27;:([^:]*):&#x27;, &#x27;g&#x27;);
-            var findRequiredBrackets = new RegExp(&#x27;{([^}]+)}&#x27;, &#x27;g&#x27;);
-            var optionalFirstCharSlash = &#x27;^/?&#x27;;
-            var optionalLastCharSlash = &#x27;/?$&#x27;;
-
+            var findFirstOrLastForwardSlash = new RegExp(&#x27;^\/|\/$&#x27;, &#x27;g&#x27;); // Finds if the first character OR if the last character is a forward slash
+            var findOptionalColons = new RegExp(&#x27;:([^:]*):&#x27;, &#x27;g&#x27;); // Finds the colons : :
+            var findRequiredBrackets = new RegExp(&#x27;{([^}]+)}&#x27;, &#x27;g&#x27;); // Finds the brackets { }
+            var optionalFirstCharSlash = &#x27;^/?&#x27;; // Allows the first character to be if a forward slash to be optional.
+            var optionalLastCharSlash = &#x27;/?$&#x27;; // Allows the last character to be if a forward slash to be optional.
             // Remove first and last forward slash.
             routePattern = routePattern.replace(findFirstOrLastForwardSlash, &#x27;&#x27;);
-
             // Convert the wild card * be a regex ?(.*) to select all.
             routePattern = routePattern.replace(&#x27;*&#x27;, &#x27;?(.*)&#x27;);
-
             // Make any :alphanumeric: optional
             routePattern = routePattern.replace(findOptionalColons, &#x27;?([^/]*)&#x27;);
-
             // Make any {alphanumeric} required
             routePattern = routePattern.replace(findRequiredBrackets, &#x27;([^/]+)&#x27;);
-
             return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, &#x27;i&#x27;);
         };
-
         /**
          * Determine if a route matches a routePattern.
          *
@@ -325,7 +319,6 @@
         Route.prototype.match = function (route) {
             // Remove the query string before matching against the route pattern.
             var routeWithoutQueryString = route.replace(/\?.*/, &#x27;&#x27;);
-
             return routeWithoutQueryString.match(this.regex);
         };
         return Route;

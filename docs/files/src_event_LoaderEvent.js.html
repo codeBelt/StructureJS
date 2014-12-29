@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -199,9 +199,9 @@
         var _super = Extend(LoaderEvent, BaseEvent);
 
         function LoaderEvent(type, bubbles, cancelable, data) {
-            if (typeof bubbles === &quot;undefined&quot;) { bubbles = false; }
-            if (typeof cancelable === &quot;undefined&quot;) { cancelable = false; }
-            if (typeof data === &quot;undefined&quot;) { data = null; }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
         /**
@@ -217,7 +217,7 @@
          * @type {string}
          * @static
          */
-        LoaderEvent.COMPLETE = &quot;LoaderEvent.complete&quot;;
+        LoaderEvent.COMPLETE = &#x27;LoaderEvent.complete&#x27;;
         /**
          * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
          *
@@ -225,7 +225,7 @@
          * @type {string}
          * @static
          */
-        LoaderEvent.LOAD_COMPLETE = &quot;LoaderEvent.loadComplete&quot;;
+        LoaderEvent.LOAD_COMPLETE = &#x27;LoaderEvent.loadComplete&#x27;;
         /**
          * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
          *
@@ -233,7 +233,7 @@
          * @type {string}
          * @static
          */
-        LoaderEvent.ERROR = &quot;LoaderEvent.error&quot;;
+        LoaderEvent.ERROR = &#x27;LoaderEvent.error&#x27;;
         return LoaderEvent;
     })();
 

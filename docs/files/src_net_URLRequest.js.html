@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -197,7 +197,7 @@
         var _super = Extend(URLRequest, BaseObject);
 
         function URLRequest(url) {
-            if (typeof url === &quot;undefined&quot;) { url = null; }
+            if (url === void 0) { url = null; }
             _super.call(this);
             /**
              * The URL to be requested.

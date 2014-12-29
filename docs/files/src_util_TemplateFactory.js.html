@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -203,35 +203,35 @@
          * @returns {*}
          */
         TemplateFactory.create = function (templatePath, data) {
-            if (typeof data === &quot;undefined&quot;) { data = null; }
+            if (data === void 0) { data = null; }
             //Checks the first character to see if it is a &#x27;.&#x27; or &#x27;#&#x27;.
             var regex = /^([.#])(.+)/;
             var template = null;
             var isFunctionTemplate = typeof templatePath === &#x27;function&#x27;;
             var isClassOrIdName = regex.test(templatePath);
-
             if (isFunctionTemplate) {
                 template = templatePath(data);
-            } else if (isClassOrIdName) {
+            }
+            else if (isClassOrIdName) {
                 var htmlString = jQuery(templatePath).html();
                 htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
-
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
                     var templateMethod = _.template(htmlString);
                     template = templateMethod(data);
-                } else {
+                }
+                else {
                     // Handlebars Template
                     var templateMethod = Handlebars.compile(htmlString);
                     template = templateMethod(data);
                 }
-            } else {
+            }
+            else {
                 var templateObj = window[TemplateFactory.templateNamespace];
                 if (!templateObj) {
                     // Returns null because the template namespace is not found.
                     return null;
                 }
-
                 var templateFunction = templateObj[templatePath];
                 if (templateFunction) {
                     // The templatePath gets a function storage in the associative array.
@@ -239,7 +239,6 @@
                     template = templateFunction(data);
                 }
             }
-
             return template;
         };
         /**
