@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.11</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -164,7 +164,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util_Util.js.html#l17"><code>src&#x2F;util&#x2F;Util.js:17</code></a>
+            Defined in: <a href="../files/src_util_Util.js.html#l17"><code>src\util\Util.js:17</code></a>
         </div>
     
 
@@ -248,6 +248,15 @@
             
                 <li class="index-item method public">
                     <a href="#method_clone">clone</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_debounce">debounce</a>
 
                     
                         <span class="flag static">static</span>
@@ -345,7 +354,7 @@
             
         
         
-        <a href="../files/src_util_Util.js.html#l213"><code>src&#x2F;util&#x2F;Util.js:213</code></a>
+        <a href="../files/src_util_Util.js.html#l252"><code>src\util\Util.js:252</code></a>
         
         </p>
 
@@ -439,7 +448,7 @@
             
         
         
-        <a href="../files/src_util_Util.js.html#l127"><code>src&#x2F;util&#x2F;Util.js:127</code></a>
+        <a href="../files/src_util_Util.js.html#l127"><code>src\util\Util.js:127</code></a>
         
         </p>
 
@@ -512,6 +521,181 @@
 </div>
 
         
+            <a name="method_debounce" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>debounce</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>wait</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>immediate</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callbackScope</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_Util.js.html#l213"><code>src\util\Util.js:213</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Creates and returns a new debounced version of the passed function which will postpone its execution until after
+wait milliseconds have elapsed since the last time it was invoked.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callback</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The function that should be executed.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">wait</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Milliseconds to elapsed before invoking the callback.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">immediate</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Pass true for the immediate parameter to cause debounce to trigger the function on the leading instead of the trailing edge of the wait interval. Useful in circumstances like preventing accidental double-clicks on a &quot;submit&quot; button from firing a second time.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">callbackScope</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The scope of the callback function that should be executed.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> Util.debounce(this._onBreakpointChange, 250, false, this);</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_deletePropertyFromObject" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>deletePropertyFromObject</code>
@@ -571,7 +755,7 @@
             
         
         
-        <a href="../files/src_util_Util.js.html#l56"><code>src&#x2F;util&#x2F;Util.js:56</code></a>
+        <a href="../files/src_util_Util.js.html#l56"><code>src\util\Util.js:56</code></a>
         
         </p>
 
@@ -717,7 +901,7 @@
             
         
         
-        <a href="../files/src_util_Util.js.html#l194"><code>src&#x2F;util&#x2F;Util.js:194</code></a>
+        <a href="../files/src_util_Util.js.html#l194"><code>src\util\Util.js:194</code></a>
         
         </p>
 
@@ -857,7 +1041,7 @@
             
         
         
-        <a href="../files/src_util_Util.js.html#l102"><code>src&#x2F;util&#x2F;Util.js:102</code></a>
+        <a href="../files/src_util_Util.js.html#l102"><code>src\util\Util.js:102</code></a>
         
         </p>
 
@@ -1017,7 +1201,7 @@
             
         
         
-        <a href="../files/src_util_Util.js.html#l172"><code>src&#x2F;util&#x2F;Util.js:172</code></a>
+        <a href="../files/src_util_Util.js.html#l172"><code>src\util\Util.js:172</code></a>
         
         </p>
 
@@ -1147,7 +1331,7 @@
             
         
         
-        <a href="../files/src_util_Util.js.html#l31"><code>src&#x2F;util&#x2F;Util.js:31</code></a>
+        <a href="../files/src_util_Util.js.html#l31"><code>src\util\Util.js:31</code></a>
         
         </p>
 

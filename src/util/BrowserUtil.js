@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define([], factory);
+        define(['../util/Extend', '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory();
+        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'), require('../util/Util'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.BrowserUtil = factory();
+        root.structurejs.BrowserUtil = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.BaseEvent, root.structurejs.Util);
     }
-}(this, function() {
+}(this, function(Extend, EventDispatcher, BaseEvent, Util) {
     'use strict';
 
     /**
@@ -24,9 +24,58 @@
      * @static
      */
     var BrowserUtil = (function () {
+
+        var _super = Extend(BrowserUtil, EventDispatcher);
+
         function BrowserUtil() {
-            throw new Error('[BrowserUtil] Do not instantiation the BrowserUtil class because it is a static class.');
+            _super.call(this);
+            /**
+             * The delay in milliseconds for the Util.{{#crossLink "Util/debounce:method"}}{{/crossLink}} method that dispatches
+             * the BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink "BrowserUtil/getBreakpoint:method"}}{{/crossLink}}.
+             *
+             * @property debounceDelay
+             * @type {number}
+             * @default 250
+             * @public
+             */
+            this.debounceDelay = 250;
+            /**
+             * A reference to the browser window object.
+             *
+             * @property _window
+             * @type {Window}
+             * @private
+             */
+            this._window = window;
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property _onBreakpointChangeHandler
+             * @type {any}
+             * @private
+             */
+            this._onBreakpointChangeHandler = null;
+            this.enable();
         }
+        /**
+         * @overridden EventDispatcher.enable
+         */
+        BrowserUtil.prototype.enable = function () {
+            if (this.isEnabled === true)
+                return;
+            this._onBreakpointChangeHandler = Util.debounce(this.onBreakpointChange, this.debounceDelay, false, this);
+            this._window.addEventListener('resize', this._onBreakpointChangeHandler);
+            _super.prototype.enable.call(this);
+        };
+        /**
+         * @overridden EventDispatcher.disable
+         */
+        BrowserUtil.prototype.disable = function () {
+            if (this.isEnabled === false)
+                return;
+            this._window.removeEventListener('resize', this._onBreakpointChangeHandler);
+            _super.prototype.disable.call(this);
+        };
         /**
          * Returns the name of the browser.
          *
@@ -34,22 +83,31 @@
          * @return {string}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.browserName();
+         *      // 'Chrome'
          */
-        BrowserUtil.browserName = function () {
-            return BrowserUtil.getBrowser()[0];
+        BrowserUtil.prototype.browserName = function () {
+            return this.getBrowser()[0];
         };
         /**
          * Returns the version of the browser.
          *
          * @method browserVersion
-         * @param [majorVersion=true0 {boolean}
+         * @param [majorVersion=true] {boolean}
          * @return {number|string}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.browserVersion();
+         *      // 39
+         *
+         *      BrowserUtil.browserVersion(false);
+         *      // '39.0.2171.99'
          */
-        BrowserUtil.browserVersion = function (majorVersion) {
+        BrowserUtil.prototype.browserVersion = function (majorVersion) {
             if (majorVersion === void 0) { majorVersion = true; }
-            var version = BrowserUtil.getBrowser()[1];
+            var version = this.getBrowser()[1];
             if (majorVersion === true) {
                 return parseInt(version, 10);
             }
@@ -64,8 +122,11 @@
          * @private
          * @return {Array.<string>}
          * @static
+         * @example
+         *      BrowserUtil.getBrowser();
+         *      // ["Chrome", "39.0.2171.99"]
          */
-        BrowserUtil.getBrowser = function () {
+        BrowserUtil.prototype.getBrowser = function () {
             var N = navigator.appName;
             var ua = navigator.userAgent;
             var tem = ua.match(/version\/([\.\d]+)/i);
@@ -85,8 +146,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.isAndroid();
+         *      // false
          */
-        BrowserUtil.isAndroid = function () {
+        BrowserUtil.prototype.isAndroid = function () {
             return !!navigator.userAgent.match(/Android/i);
         };
         /**
@@ -96,8 +160,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.isBlackBerry();
+         *      // false
          */
-        BrowserUtil.isBlackBerry = function () {
+        BrowserUtil.prototype.isBlackBerry = function () {
             return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
         };
         /**
@@ -107,8 +174,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.isIOS();
+         *      // false
          */
-        BrowserUtil.isIOS = function () {
+        BrowserUtil.prototype.isIOS = function () {
             return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
         };
         /**
@@ -118,8 +188,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.isOperaMini();
+         *      // false
          */
-        BrowserUtil.isOperaMini = function () {
+        BrowserUtil.prototype.isOperaMini = function () {
             return !!navigator.userAgent.match(/Opera Mini/i);
         };
         /**
@@ -129,8 +202,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.isIEMobile();
+         *      // false
          */
-        BrowserUtil.isIEMobile = function () {
+        BrowserUtil.prototype.isIEMobile = function () {
             return !!navigator.userAgent.match(/IEMobile/i);
         };
         /**
@@ -140,9 +216,12 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.isMobile();
+         *      // false
          */
-        BrowserUtil.isMobile = function () {
-            return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
+        BrowserUtil.prototype.isMobile = function () {
+            return (this.isAndroid() || this.isBlackBerry() || this.isIOS() || this.isOperaMini() || this.isIEMobile());
         };
         /**
          * Determines if the browser can you Browser History push states.
@@ -151,8 +230,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.hasBrowserHistory();
+         *      // true
          */
-        BrowserUtil.hasBrowserHistory = function () {
+        BrowserUtil.prototype.hasBrowserHistory = function () {
             return !!(window.history && history.pushState);
         };
         /**
@@ -162,8 +244,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.hasLocalStorage();
+         *      // true
          */
-        BrowserUtil.hasLocalStorage = function () {
+        BrowserUtil.prototype.hasLocalStorage = function () {
             try {
                 return ('localStorage' in window) && window.localStorage !== null;
             }
@@ -178,8 +263,11 @@
          * @returns {boolean}
          * @public
          * @static
+         * @example
+         *      BrowserUtil.hasSessionStorage();
+         *      // true
          */
-        BrowserUtil.hasSessionStorage = function () {
+        BrowserUtil.prototype.hasSessionStorage = function () {
             try {
                 return ('sessionStorage' in window) && window.sessionStorage !== null;
             }
@@ -187,8 +275,46 @@
                 return false;
             }
         };
+        /**
+         * Get the current breakpoint from the style sheets. You must add a body:after property with a specific content
+         * in each of your style sheets for this functionality to work.
+         *
+         * @method getBreakpoint
+         * @returns {string} The string value of the current style sheet.
+         * @public
+         * @static
+         * @example
+         *      // For each of your different style sheets add something like below:
+         *      // screen_lg.css
+         *      body:after { content: 'screen_lg'; }
+         *      // screen_sm.css
+         *      body:after { content: 'screen_sm'; }
+         *
+         *      BrowserUtil.getBreakpoint();
+         *      // 'screen_lg'
+         *
+         *      // Add a listener to get notified when the browser is resized:
+         *      BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
+         *      ...
+         *      ClassName.prototype._onBreakpointChange = function (baseEvent) {
+         *          console.log(baseEvent.data);
+         *          // 'screen_sm'
+         *      };
+         */
+        BrowserUtil.prototype.getBreakpoint = function () {
+            return this._window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/"/g, '');
+        };
+        /**
+         * Dispatches a breakpoint event.
+         *
+         * @method _onBreakpointChange
+         * @private
+         */
+        BrowserUtil.prototype.onBreakpointChange = function (event) {
+            this.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, this.getBreakpoint()));
+        };
         return BrowserUtil;
     })();
 
-    return BrowserUtil;
+    return new BrowserUtil();
 }));

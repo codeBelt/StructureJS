@@ -211,6 +211,45 @@
             return (results && results.length > 1) ? results[1] : '';
         };
         /**
+         * Creates and returns a new debounced version of the passed function which will postpone its execution until after
+         * wait milliseconds have elapsed since the last time it was invoked.
+         *
+         * @method debounce
+         * @param callback {Function} The function that should be executed.
+         * @param wait {number} Milliseconds to elapsed before invoking the callback.
+         * @param immediate {boolean} Pass true for the immediate parameter to cause debounce to trigger the function on the leading instead of the trailing edge of the wait interval. Useful in circumstances like preventing accidental double-clicks on a "submit" button from firing a second time.
+         * @param callbackScope {any} The scope of the callback function that should be executed.
+         * @public
+         * @static
+         * @example
+         *      Util.debounce(this._onBreakpointChange, 250, false, this);
+         */
+        Util.debounce = function (callback, wait, immediate, callbackScope) {
+            var timeout;
+            var result;
+            var debounced = function () {
+                var args = arguments;
+                function delayed() {
+                    if (immediate == false) {
+                        result = callback.apply(callbackScope, args);
+                    }
+                    timeout = null;
+                }
+                if (timeout) {
+                    clearTimeout(timeout);
+                }
+                else if (immediate === true) {
+                    result = callback.apply(callbackScope, args);
+                }
+                timeout = setTimeout(delayed, wait);
+                return result;
+            };
+            debounced.cancel = function () {
+                clearTimeout(timeout);
+            };
+            return debounced;
+        };
+        /**
          * Keeps track of the count for the uniqueId method.
          *
          * @property _idCounter
