@@ -67,7 +67,7 @@ var Router = require('../bower_components/structurejs/src/controller/Router');
 
 <div class="row" style="margin-top:40px;">
     <div class="col-sm-12">
-        <a href="/" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i>Home</a>
+        <a href="http://codebelt.github.io/StructureJS/" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i>Home</a>
         <a href="structure-your-classes.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
     </div>
 </div>
