@@ -1,0 +1,34 @@
+{% include bootstrap-header.html %}
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>{{ page.title }}</h1>
+        <!--<hr/>-->
+        {{ content }}
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="font-variant:small-caps;font-size: 18px;">Sections</div>
+            <ol class="list-group">
+                <li><a href="add-structurejs.html">Add StructureJS to Your Project</a></li>
+                <li><a href="structure-your-classes.html">How To Structure Your Classes</a></li>
+                <li><a href="single-page-application-with-router.html">Single Page Application with the Router class</a></li>
+                <li><a href="global-event-dispatching-with-eventBroker.html">Global Event Dispatching with this EventBroker class</a></li>
+                <li><a href="localized-event-dispatching-with-eventdispatcher.html">Localized Event Dispatching with EventDispatcher</a></li>
+            </ol>
+            <p></p>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{% include bootstrap-footer.html %}
