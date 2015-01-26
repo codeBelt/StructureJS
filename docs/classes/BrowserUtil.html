@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.10</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.11</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -164,7 +164,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_util_BrowserUtil.js.html#l17"><code>src&#x2F;util&#x2F;BrowserUtil.js:17</code></a>
+            Defined in: <a href="../files/src_util_BrowserUtil.js.html#l17"><code>src\util\BrowserUtil.js:17</code></a>
         </div>
     
 
@@ -217,6 +217,32 @@
 
 
 
+    <div class="index-section properties">
+        <h3>Properties</h3>
+
+        <ul class="index-list properties">
+            
+                <li class="index-item property private">
+                    <a href="#property__onBreakpointChangeHandler">_onBreakpointChangeHandler</a>
+
+                    
+                </li>
+            
+                <li class="index-item property private">
+                    <a href="#property__window">_window</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_debounceDelay">debounceDelay</a>
+
+                    
+                </li>
+            
+        </ul>
+    </div>
+
 
 
 
@@ -230,6 +256,13 @@
             
 
             
+                <li class="index-item method private">
+                    <a href="#method__onBreakpointChange">_onBreakpointChange</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_browserName">browserName</a>
 
@@ -241,6 +274,15 @@
             
                 <li class="index-item method public">
                     <a href="#method_browserVersion">browserVersion</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_getBreakpoint">getBreakpoint</a>
 
                     
                         <span class="flag static">static</span>
@@ -349,6 +391,176 @@
 <div class="class-detail">
 
 
+    <div class="properties-detail">
+        <h2>Properties</h2>
+
+        
+            <a name="property__onBreakpointChangeHandler" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_onBreakpointChangeHandler</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l50"><code>src\util\BrowserUtil.js:50</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__window" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_window</code>
+    <span class="type">Window</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l42"><code>src\util\BrowserUtil.js:42</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the browser window object.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_debounceDelay" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>debounceDelay</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l32"><code>src\util\BrowserUtil.js:32</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The delay in milliseconds for the Util.<a href="../classes/Util.html#method_debounce" class="crosslink">debounce</a> method that dispatches
+the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../classes/BrowserUtil.html#method_getBreakpoint" class="crosslink">getBreakpoint</a>.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">250</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+
+        <div class="no-visible-items-message">
+            <p>There are no properties that match your current filter settings. You can change your filter settings in the index section on this page. <a href="#index" class="index-jump-link">index</a></p>
+        </div>
+
+    </div>
+
 
 
 
@@ -357,6 +569,69 @@
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method__onBreakpointChange" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onBreakpointChange</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l307"><code>src\util\BrowserUtil.js:307</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Dispatches a breakpoint event.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="method_browserName" class="anchor-link"></a>
@@ -402,7 +677,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l30"><code>src&#x2F;util&#x2F;BrowserUtil.js:30</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l79"><code>src\util\BrowserUtil.js:79</code></a>
         
         </p>
 
@@ -436,6 +711,16 @@
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.browserName();
+ // &#39;Chrome&#39;</code></pre>
+
+                </div>
+            </div>
+        
     </div>
 </div>
 
@@ -450,7 +735,7 @@
             
                 <li class="arg">
                     
-                        <code>[majorVersion=true0</code>
+                        <code class="optional">[majorVersion=true]</code>
                     
                 </li>
             
@@ -493,7 +778,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l41"><code>src&#x2F;util&#x2F;BrowserUtil.js:41</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l93"><code>src\util\BrowserUtil.js:93</code></a>
         
         </p>
 
@@ -518,8 +803,9 @@
                 
                     <li class="param">
                         
-                            <code class="param-name">[majorVersion=true0</code>
+                            <code class="param-name optional">[majorVersion=true]</code>
                             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
@@ -549,6 +835,127 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.browserVersion();
+ // 39
+
+ BrowserUtil.browserVersion(false);
+ // &#39;39.0.2171.99&#39;</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_getBreakpoint" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>getBreakpoint</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l278"><code>src\util\BrowserUtil.js:278</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Get the current breakpoint from the style sheets. You must add a body:after property with a specific content
+in each of your style sheets for this functionality to work.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        
+                        <p>The string value of the current style sheet.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> // For each of your different style sheets add something like below:
+ // screen_lg.css
+ body:after { content: &#39;screen_lg&#39;; }
+ // screen_sm.css
+ body:after { content: &#39;screen_sm&#39;; }
+
+ BrowserUtil.getBreakpoint();
+ // &#39;screen_lg&#39;
+
+ // Add a listener to get notified when the browser is resized:
+ BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
+ ...
+ ClassName.prototype._onBreakpointChange = function (baseEvent) {
+     console.log(baseEvent.data);
+     // &#39;screen_sm&#39;
+ };</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -597,7 +1004,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l60"><code>src&#x2F;util&#x2F;BrowserUtil.js:60</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l118"><code>src\util\BrowserUtil.js:118</code></a>
         
         </p>
 
@@ -630,6 +1037,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.getBrowser();
+ // [&quot;Chrome&quot;, &quot;39.0.2171.99&quot;]</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -678,7 +1095,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l147"><code>src&#x2F;util&#x2F;BrowserUtil.js:147</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l226"><code>src\util\BrowserUtil.js:226</code></a>
         
         </p>
 
@@ -711,6 +1128,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.hasBrowserHistory();
+ // true</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -759,7 +1186,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l158"><code>src&#x2F;util&#x2F;BrowserUtil.js:158</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l240"><code>src\util\BrowserUtil.js:240</code></a>
         
         </p>
 
@@ -792,6 +1219,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.hasLocalStorage();
+ // true</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -840,7 +1277,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l174"><code>src&#x2F;util&#x2F;BrowserUtil.js:174</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l259"><code>src\util\BrowserUtil.js:259</code></a>
         
         </p>
 
@@ -873,6 +1310,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.hasSessionStorage();
+ // true</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -921,7 +1368,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l81"><code>src&#x2F;util&#x2F;BrowserUtil.js:81</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l142"><code>src\util\BrowserUtil.js:142</code></a>
         
         </p>
 
@@ -954,6 +1401,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.isAndroid();
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1002,7 +1459,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l92"><code>src&#x2F;util&#x2F;BrowserUtil.js:92</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l156"><code>src\util\BrowserUtil.js:156</code></a>
         
         </p>
 
@@ -1035,6 +1492,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.isBlackBerry();
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1083,7 +1550,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l125"><code>src&#x2F;util&#x2F;BrowserUtil.js:125</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l198"><code>src\util\BrowserUtil.js:198</code></a>
         
         </p>
 
@@ -1116,6 +1583,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.isIEMobile();
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1164,7 +1641,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l103"><code>src&#x2F;util&#x2F;BrowserUtil.js:103</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l170"><code>src\util\BrowserUtil.js:170</code></a>
         
         </p>
 
@@ -1197,6 +1674,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.isIOS();
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1245,7 +1732,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l136"><code>src&#x2F;util&#x2F;BrowserUtil.js:136</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l212"><code>src\util\BrowserUtil.js:212</code></a>
         
         </p>
 
@@ -1278,6 +1765,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.isMobile();
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1326,7 +1823,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l114"><code>src&#x2F;util&#x2F;BrowserUtil.js:114</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l184"><code>src\util\BrowserUtil.js:184</code></a>
         
         </p>
 
@@ -1359,6 +1856,16 @@
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> BrowserUtil.isOperaMini();
+ // false</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
