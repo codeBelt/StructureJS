@@ -1607,7 +1607,7 @@
             "namespace": "",
             "file": "src/util/TemplateFactory.js",
             "line": 17,
-            "description": "A helper class to provide a convent and consistent way to render templates.",
+            "description": "A helper class to provide a convenient and consistent way to render templates.",
             "submodule": "util",
             "requires": [
                 "StringUtil",

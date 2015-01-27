@@ -1,7 +1,7 @@
 ///<reference path='../util/StringUtil.ts'/>
 
 /**
- * A helper class to provide a convent and consistent way to render templates.
+ * A helper class to provide a convenient and consistent way to render templates.
  *
  * @class TemplateFactory
  * @module StructureJS
