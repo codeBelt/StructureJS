@@ -24,7 +24,7 @@
     var ComponentFactory = (function () {
 
         function ComponentFactory() {
-            throw new Error('[ComponentFactory] Do not instantiation the Router class because it is a static class.');
+            throw new Error('[ComponentFactory] Do not instantiation the ComponentFactory class because it is a static class.');
         }
         /**
          * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.

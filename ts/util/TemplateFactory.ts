@@ -1,12 +1,11 @@
 ///<reference path='../util/StringUtil.ts'/>
 
 /**
- * TODO: YUIDoc_comment
+ * A helper class to provide a convent and consistent way to render templates.
  *
  * @class TemplateFactory
  * @module StructureJS
  * @submodule util
- * @constructor
  * @requires StringUtil
  * @requires Handlebars
  * @requires jQuery
@@ -18,7 +17,7 @@ module StructureTS
     export class TemplateFactory
     {
         /**
-         * TODO: YUIDoc_comment
+         * A constant value for using Underscore or Lodash templates.
          *
          * @property UNDERSCORE
          * @type {string}
@@ -29,7 +28,7 @@ module StructureTS
         public static UNDERSCORE:string = 'underscore';
 
         /**
-         * TODO: YUIDoc_comment
+         * A constant value for using Handlebars templates. This is the default template engine.
          *
          * @property HANDLEBARS
          * @type {string}
@@ -40,7 +39,7 @@ module StructureTS
         public static HANDLEBARS:string = 'handlebars';
 
         /**
-         * TODO: YUIDoc_comment
+         * Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS
          *
          * @property templateEngine
          * @type {string}
@@ -51,7 +50,7 @@ module StructureTS
         public static templateEngine:string = TemplateFactory.HANDLEBARS;
 
         /**
-         * TODO: templateNamespace
+         * The global namespace for pre-compiled templates.
          *
          * @property templateNamespace
          * @type {string}
@@ -71,8 +70,12 @@ module StructureTS
          *
          * @method create
          * @param templatePath {any}
-         * @param data {any}
-         * @returns {*}
+         * @param [data=any]
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      TemplateFactory.create('templateName', {some: 'data'});
          */
         public static create(templatePath:any, data:any = null):string
         {

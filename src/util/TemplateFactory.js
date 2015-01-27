@@ -15,12 +15,11 @@
     'use strict';
 
     /**
-     * TODO: YUIDoc_comment
+     * A helper class to provide a convent and consistent way to render templates.
      *
      * @class TemplateFactory
      * @module StructureJS
      * @submodule util
-     * @constructor
      * @requires StringUtil
      * @requires Handlebars
      * @requires jQuery
@@ -37,8 +36,12 @@
          *
          * @method create
          * @param templatePath {any}
-         * @param data {any}
-         * @returns {*}
+         * @param [data=any]
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      TemplateFactory.create('templateName', {some: 'data'});
          */
         TemplateFactory.create = function (templatePath, data) {
             if (data === void 0) { data = null; }
@@ -80,7 +83,7 @@
             return template;
         };
         /**
-         * TODO: YUIDoc_comment
+         * A constant value for using Underscore or Lodash templates.
          *
          * @property UNDERSCORE
          * @type {string}
@@ -90,7 +93,7 @@
          */
         TemplateFactory.UNDERSCORE = 'underscore';
         /**
-         * TODO: YUIDoc_comment
+         * A constant value for using Handlebars templates. This is the default template engine.
          *
          * @property HANDLEBARS
          * @type {string}
@@ -100,7 +103,7 @@
          */
         TemplateFactory.HANDLEBARS = 'handlebars';
         /**
-         * TODO: YUIDoc_comment
+         * Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS
          *
          * @property templateEngine
          * @type {string}
@@ -110,7 +113,7 @@
          */
         TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
         /**
-         * TODO: templateNamespace
+         * The global namespace for pre-compiled templates.
          *
          * @property templateNamespace
          * @type {string}
