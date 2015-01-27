@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\util\TemplateFactory.js - StructureJS</title>
+    <title>src/util/TemplateFactory.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -156,7 +156,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: src\util\TemplateFactory.js</h1>
+                <h1 class="file-heading">File: src/util/TemplateFactory.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -177,12 +177,11 @@
     &#x27;use strict&#x27;;
 
     /**
-     * TODO: YUIDoc_comment
+     * A helper class to provide a convent and consistent way to render templates.
      *
      * @class TemplateFactory
      * @module StructureJS
      * @submodule util
-     * @constructor
      * @requires StringUtil
      * @requires Handlebars
      * @requires jQuery
@@ -199,8 +198,12 @@
          *
          * @method create
          * @param templatePath {any}
-         * @param data {any}
-         * @returns {*}
+         * @param [data=any]
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      TemplateFactory.create(&#x27;templateName&#x27;, {some: &#x27;data&#x27;});
          */
         TemplateFactory.create = function (templatePath, data) {
             if (data === void 0) { data = null; }
@@ -242,7 +245,7 @@
             return template;
         };
         /**
-         * TODO: YUIDoc_comment
+         * A constant value for using Underscore or Lodash templates.
          *
          * @property UNDERSCORE
          * @type {string}
@@ -252,7 +255,7 @@
          */
         TemplateFactory.UNDERSCORE = &#x27;underscore&#x27;;
         /**
-         * TODO: YUIDoc_comment
+         * A constant value for using Handlebars templates. This is the default template engine.
          *
          * @property HANDLEBARS
          * @type {string}
@@ -262,7 +265,7 @@
          */
         TemplateFactory.HANDLEBARS = &#x27;handlebars&#x27;;
         /**
-         * TODO: YUIDoc_comment
+         * Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS
          *
          * @property templateEngine
          * @type {string}
@@ -272,7 +275,7 @@
          */
         TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
         /**
-         * TODO: templateNamespace
+         * The global namespace for pre-compiled templates.
          *
          * @property templateNamespace
          * @type {string}
