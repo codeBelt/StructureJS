@@ -25,7 +25,7 @@
      */
     var DateUtil = (function () {
         function DateUtil() {
-            throw new Error('[DateUtil] Do not instantiation the DateUtil class because it is a static class.');
+            throw new Error('[DateUtil] Do not instantiate the DateUtil class because it is a static class.');
         }
         /**
          * Returns the suffix of a given day.

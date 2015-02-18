@@ -143,7 +143,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[Router] Do not instantiation the Router class because it is a static class.');
+            throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
         }
 
         /**

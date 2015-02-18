@@ -27,7 +27,7 @@
      */
     var ApplicationCacheController = (function () {
         function ApplicationCacheController() {
-            throw new Error('[ApplicationCacheController] Do not instantiation the ApplicationCacheController class because it is a static class.');
+            throw new Error('[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.');
         }
         /**
          * @overridden BaseObject.enable

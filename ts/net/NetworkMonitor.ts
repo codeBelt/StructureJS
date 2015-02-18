@@ -38,7 +38,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[NetworkMonitor] Do not instantiation the NetworkMonitor class because it is a static class.');
+            throw new Error('[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.');
         }
 
         /**

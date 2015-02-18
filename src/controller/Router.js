@@ -28,7 +28,7 @@
      */
     var Router = (function () {
         function Router() {
-            throw new Error('[Router] Do not instantiation the Router class because it is a static class.');
+            throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
         }
         /**
          * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouterEvent"}}{{/crossLink}}.

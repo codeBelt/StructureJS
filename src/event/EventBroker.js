@@ -28,7 +28,7 @@
      */
     var EventBroker = (function () {
         function EventBroker() {
-            throw new Error('[EventBroker] Do not instantiation the EventBroker class because it is a static class.');
+            throw new Error('[EventBroker] Do not instantiate the EventBroker class because it is a static class.');
         }
         /**
          * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.

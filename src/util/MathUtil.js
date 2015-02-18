@@ -25,7 +25,7 @@
      */
     var MathUtil = (function () {
         function MathUtil() {
-            throw new Error('[MathUtil] Do not instantiation the MathUtil class because it is a static class.');
+            throw new Error('[MathUtil] Do not instantiate the MathUtil class because it is a static class.');
         }
         /**
          * Returns a number constrained between min and max.

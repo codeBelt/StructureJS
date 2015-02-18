@@ -24,7 +24,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[Util] Do not instantiation the Util class because it is a static class.');
+            throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
         }
 
         /**

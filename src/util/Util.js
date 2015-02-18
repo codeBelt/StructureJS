@@ -26,7 +26,7 @@
     var Util = (function () {
 
         function Util() {
-            throw new Error('[Util] Do not instantiation the Util class because it is a static class.');
+            throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
         }
         /**
          * Generates a unique ID. If a prefix is passed in, the value will be appended to it.

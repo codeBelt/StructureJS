@@ -89,7 +89,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[TransitionType] Do not instantiation the TransitionType class because it is a static class.');
+            throw new Error('[TransitionType] Do not instantiate the TransitionType class because it is a static class.');
         }
     }
 }
