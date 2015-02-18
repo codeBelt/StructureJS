@@ -25,7 +25,7 @@
      */
     var NumberUtil = (function () {
         function NumberUtil() {
-            throw new Error('[NumberUtil] Do not instantiation the NumberUtil class because it is a static class.');
+            throw new Error('[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.');
         }
         /**
          * Converts bytes into megabytes.

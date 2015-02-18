@@ -58,7 +58,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[DateUtil] Do not instantiation the DateUtil class because it is a static class.');
+            throw new Error('[DateUtil] Do not instantiate the DateUtil class because it is a static class.');
         }
 
         /**

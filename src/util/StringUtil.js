@@ -26,7 +26,7 @@
     var StringUtil = (function () {
 
         function StringUtil() {
-            throw new Error('[StringUtil] Do not instantiation the StringUtil class because it is a static class.');
+            throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
         }
         /**
          * Gets the extension name off the string being passed in.
