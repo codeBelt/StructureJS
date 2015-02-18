@@ -9,9 +9,9 @@ title: StructureJS
 
 
 ##StructureJS Examples:
-[Event Bubbling Example](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/)
+[Event Bubbling Example](./examples/EventBubbling/src/)
 
-[SinglePageWebsite with the Router class](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/)
+[SinglePageWebsite with the Router class](./examples/SinglePageWebsite/)
 
 
 ##Core Classes

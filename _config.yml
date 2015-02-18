@@ -1,4 +1,4 @@
 name: Your New Jekyll Site
 markdown: redcarpet
 highlighter: true
-exclude: [ide-snippets, node_modules, examples]
+exclude: [ide-snippets, node_modules]

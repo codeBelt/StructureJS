@@ -3,7 +3,7 @@ layout: module
 title: Single Page Application with the Router class
 ---
 
-**Router** is a static class that I wrote which you can use to create deep linking or single page applications. Here is an example of a <a href="http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/" target="_blank">single page website</a>. You can download the example files <a href="https://github.com/codeBelt/StructureJS/tree/master/examples/SinglePageWebsite" target="_black">here</a>.
+**Router** is a static class that I wrote which you can use to create deep linking or single page applications. Here is an example of a <a href="./examples/SinglePageWebsite/" target="_blank">single page website</a>. You can download the example files <a href="https://github.com/codeBelt/StructureJS/tree/master/examples/SinglePageWebsite" target="_black">here</a>.
 
 To add a route:
 
@@ -27,7 +27,7 @@ ClassName.prototype.onAboutRoute = function (routeEvent) {
 }
 ```
 
-When a route triggers a **<a href="http://codebelt.github.io/StructureJS/docs/classes/RouteEvent.html" target="_blank">RouteEvent</a>** gets passed to the handler.
+When a route triggers a **<a href="./docs/classes/RouteEvent.html" target="_blank">RouteEvent</a>** gets passed to the handler.
 
 To make routes flexible I have implemented three conventions. The route pattern can contain any of the following combinations: `{}` or `::` or `*`
 
@@ -133,9 +133,9 @@ Router.navigateTo('/games/asteroids/2/', true, true);
 
 **Router.useDeepLinking:**
 
-If you set ```Router.useDeepLinking = false;``` and use the ```Router.navigateTo``` method the hash url will not change. This can be useful if you're making an application but don't want the user to know how to jump to other sections directly. Check out the <a href="http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/" target="_blank">single page website</a> for an example and click on the footer links to see what I am talking about.
+If you set ```Router.useDeepLinking = false;``` and use the ```Router.navigateTo``` method the hash url will not change. This can be useful if you're making an application but don't want the user to know how to jump to other sections directly. Check out the <a href="./examples/SinglePageWebsite/" target="_blank">single page website</a> for an example and click on the footer links to see what I am talking about.
 
-**Checkout the full docs for <a href='http://codebelt.github.io/StructureJS/docs/classes/Router.html' target='_blank'>Router</a>**.
+**Checkout the full docs for <a href='./docs/classes/Router.html' target='_blank'>Router</a>**.
 
 The **Router** class is a module of a JavaScript/TypeScript library called StructureJS. Take a look at it here: <a href='https://github.com/codeBelt/StructureJS' target='_blank'>StructureJS</a>.
 

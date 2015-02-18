@@ -5,7 +5,7 @@ title: Localized Event Dispatching with EventDispatcher
 
 **EventDispatcher** is a publish and subscribe class that your classes can extend to dispatch and receive events. This class is different than the <a href="https://js.nerderylabs.com/blog/global-event-dispatcher-with-eventbroker/" target="_blank">EventBroker</a> class because you are adding event listeners directly on the classes you create and the listener does know who is dispatching the event.
 
-**EventDispatcher** supports event bubbling and event delegation within a class structure. I will talk more about this when I post about the **<a href="http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html" target="_blank">DOMElement</a>** class.
+**EventDispatcher** supports event bubbling and event delegation within a class structure. I will talk more about this when I post about the **<a href="./docs/classes/DOMElement.html" target="_blank">DOMElement</a>** class.
 
 #####How to extend EventDispatcher and dispatch an event:
 
@@ -62,7 +62,7 @@ this._className.hasEventListener('change', this.handlerMethod, this);
 ```
 
 #####Dispatching an event with event bubbling:
-Event bubbling works with the **DOMElement** class which I will talk about later. For now want to show how you would set it up. You will need to create a **<a href='http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html' target='_blank'>BaseEvent</a>** object and then dispatch it.
+Event bubbling works with the **DOMElement** class which I will talk about later. For now want to show how you would set it up. You will need to create a **<a href='./docs/classes/BaseEvent.html' target='_blank'>BaseEvent</a>** object and then dispatch it.
 ```
 // BaseEvent( type,  [bubbles=false],  [cancelable=false],  [data=null] )
 var event = new BaseEvent('change', true, true, {some: 'data'});
@@ -101,7 +101,7 @@ You can create an **EventDispatcher** object and pass it around to other classes
  eventDispatcher.dispatchEvent('change');
 ```
 
-**Checkout the full docs for <a href='http://codebelt.github.io/StructureJS/docs/classes/EventDispatcher.html' target='_blank'>EventDispatcher</a>**.
+**Checkout the full docs for <a href='./docs/classes/EventDispatcher.html' target='_blank'>EventDispatcher</a>**.
 
 The **EventDispatcher** class is a module of a JavaScript/TypeScript library called StructureJS. Take a look at it here: <a href='https://github.com/codeBelt/StructureJS' target='_blank'>StructureJS</a>.
 

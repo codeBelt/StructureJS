@@ -33,7 +33,7 @@ ClassName.prototype.handlerMethod = function (baseEvent) {
      console.log(baseEvent.type, baseEvent.data);
 }
 ```
-Your handler method will always receive a **<a href="http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html" target="_blank">BaseEvent</a>** object.
+Your handler method will always receive a **<a href="./docs/classes/BaseEvent.html" target="_blank">BaseEvent</a>** object.
 
 #####Remove event listener:
 
@@ -55,7 +55,7 @@ EventBroker.hasEventListener('change', this.handlerMethod, this);
  // [ClassName] is listen for 'BaseEvent.change' event.
 ```
 
-**Checkout the full docs for <a href='http://codebelt.github.io/StructureJS/docs/classes/EventBroker.html' target='_blank'>EventBroker</a>**.
+**Checkout the full docs for <a href='./docs/classes/EventBroker.html' target='_blank'>EventBroker</a>**.
 
 The **EventBroker** class is a module of a JavaScript/TypeScript library called StructureJS. Take a look at it here: <a href='https://github.com/codeBelt/StructureJS' target='_blank'>StructureJS</a>.
 
