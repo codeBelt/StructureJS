@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.11",
+        "version": "0.6.12",
         "url": ""
     },
     "files": {
@@ -6002,55 +6002,20 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 32,
-            "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
-            "itemtype": "property",
-            "name": "debounceDelay",
-            "type": "{number}",
-            "default": "250",
+            "line": 31,
+            "description": "Dispatches a breakpoint event.",
+            "itemtype": "method",
+            "name": "enable",
             "access": "public",
             "tagname": "",
+            "static": 1,
             "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 42,
-            "description": "A reference to the browser window object.",
-            "itemtype": "property",
-            "name": "_window",
-            "type": "{Window}",
-            "access": "private",
-            "tagname": "",
-            "class": "BrowserUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/util/BrowserUtil.js",
-            "line": 50,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "_onBreakpointChangeHandler",
-            "type": "{any}",
-            "access": "private",
-            "tagname": "",
-            "class": "BrowserUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/util/BrowserUtil.js",
-            "line": 60,
-            "overridden": "EventDispatcher.enable",
-            "class": "BrowserUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/util/BrowserUtil.js",
-            "line": 70,
+            "line": 46,
             "overridden": "EventDispatcher.disable",
             "class": "BrowserUtil",
             "module": "StructureJS",
@@ -6058,7 +6023,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 79,
+            "line": 56,
             "description": "Returns the name of the browser.",
             "itemtype": "method",
             "name": "browserName",
@@ -6078,7 +6043,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 93,
+            "line": 70,
             "description": "Returns the version of the browser.",
             "itemtype": "method",
             "name": "browserVersion",
@@ -6107,7 +6072,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 118,
+            "line": 95,
             "description": "Gets the browser name a user agent.",
             "itemtype": "method",
             "name": "getBrowser",
@@ -6127,7 +6092,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 142,
+            "line": 119,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isAndroid",
@@ -6147,7 +6112,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 156,
+            "line": 133,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isBlackBerry",
@@ -6167,7 +6132,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 170,
+            "line": 147,
             "description": "Determines if the device OS is IOS.",
             "itemtype": "method",
             "name": "isIOS",
@@ -6187,7 +6152,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 184,
+            "line": 161,
             "description": "Determines if the device OS is Opera Mini.",
             "itemtype": "method",
             "name": "isOperaMini",
@@ -6207,7 +6172,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 198,
+            "line": 175,
             "description": "Determines if the device OS is IE Mobile.",
             "itemtype": "method",
             "name": "isIEMobile",
@@ -6227,7 +6192,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 212,
+            "line": 189,
             "description": "Determines if the it is run on a mobile or desktop device.",
             "itemtype": "method",
             "name": "isMobile",
@@ -6247,7 +6212,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 226,
+            "line": 203,
             "description": "Determines if the browser can you Browser History push states.",
             "itemtype": "method",
             "name": "hasBrowserHistory",
@@ -6267,7 +6232,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 240,
+            "line": 217,
             "description": "Determines if the browser can you Local Storage.",
             "itemtype": "method",
             "name": "hasLocalStorage",
@@ -6287,7 +6252,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 259,
+            "line": 236,
             "description": "Determines if the browser can you Session Storage.",
             "itemtype": "method",
             "name": "hasSessionStorage",
@@ -6307,7 +6272,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 278,
+            "line": 255,
             "description": "Get the current breakpoint from the style sheets. You must add a body:after property with a specific content\nin each of your style sheets for this functionality to work.",
             "itemtype": "method",
             "name": "getBreakpoint",
@@ -6327,12 +6292,123 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 307,
+            "line": 284,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "addEventListener",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 296,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "removeEventListener",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 306,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "dispatchEvent",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 323,
             "description": "Dispatches a breakpoint event.",
             "itemtype": "method",
             "name": "_onBreakpointChange",
             "access": "private",
             "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 333,
+            "description": "A reference to the EventDispatcher object.",
+            "itemtype": "property",
+            "name": "_eventDispatcher",
+            "type": "{EventDispatcher}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 342,
+            "description": "A reference to the browser window object.",
+            "itemtype": "property",
+            "name": "_window",
+            "type": "{Window}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 351,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "_onBreakpointChangeHandler",
+            "type": "{any}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 360,
+            "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
+            "itemtype": "property",
+            "name": "debounceDelay",
+            "type": "{number}",
+            "default": "250",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 371,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "isEnabled",
+            "type": "{boolean}",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
             "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
@@ -8906,51 +8982,47 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/util/BrowserUtil.js:60"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " src/util/BrowserUtil.js:70"
+            "line": " src/util/BrowserUtil.js:46"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:142"
+            "line": " src/util/BrowserUtil.js:119"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:156"
+            "line": " src/util/BrowserUtil.js:133"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:170"
+            "line": " src/util/BrowserUtil.js:147"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:184"
+            "line": " src/util/BrowserUtil.js:161"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:198"
+            "line": " src/util/BrowserUtil.js:175"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:212"
+            "line": " src/util/BrowserUtil.js:189"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:226"
+            "line": " src/util/BrowserUtil.js:203"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:240"
+            "line": " src/util/BrowserUtil.js:217"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:259"
+            "line": " src/util/BrowserUtil.js:236"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:278"
+            "line": " src/util/BrowserUtil.js:255"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9358,11 +9430,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/util/BrowserUtil.js:60"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/util/BrowserUtil.js:70"
+            "line": " src/util/BrowserUtil.js:46"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
