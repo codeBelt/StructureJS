@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.12</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.13</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -206,8 +206,24 @@
          */
         ValueObject.prototype.update = function (data) {
             for (var key in data) {
-                if (this.hasOwnProperty(key)) {
-                    this[key] = data[key];
+                // If this class has a property that matches a property on the data being passed in then set it.
+                // Also don&#x27;t set the cid data value because it is automatically set in the constructor and
+                // we do want it to be overridden when the clone method has been called.
+                if (this.hasOwnProperty(key) &amp;&amp; key !== &#x27;cid&#x27;) {
+                    if (this[key] instanceof ValueObject.constructor) {
+                        // If property is an instance of a ValueObject class and has not been created yet.
+                        // Than instantiate it and pass in the data to the constructor.
+                        this[key] = new this[key](data[key]);
+                    }
+                    else if (this[key] instanceof ValueObject) {
+                        // If property is an instance of a ValueObject class and has already been created.
+                        // Than call the update method and pass in the data.
+                        this[key].update(data[key]);
+                    }
+                    else {
+                        // Else just assign the data to the property.
+                        this[key] = data[key];
+                    }
                 }
             }
             return this;
@@ -220,7 +236,7 @@
          * @public
          */
         ValueObject.prototype.toJSON = function () {
-            var clone = this.clone();
+            var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, [&#x27;cid&#x27;]);
         };
         /**
@@ -253,23 +269,8 @@
          * @public
          */
         ValueObject.prototype.clone = function () {
-            return Util.clone(this);
-        };
-        /**
-         *
-         *
-         * @method copy
-         * @returns {IValueObject}
-         * @public
-         */
-        ValueObject.prototype.copy = function () {
-            var copy = {};
-            for (var key in this) {
-                if (this.hasOwnProperty(key)) {
-                    copy[key] = this[key];
-                }
-            }
-            return copy;
+            var clonedValueObject = new this.constructor(this);
+            return clonedValueObject;
         };
         return ValueObject;
     })();
