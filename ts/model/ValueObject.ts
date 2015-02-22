@@ -36,9 +36,27 @@ module StructureTS
         {
             for (var key in data)
             {
+                // If this class has a property that matches a property on the data being passed in then set it.
                 if (this.hasOwnProperty(key))
                 {
-                    this[key] = data[key];
+                    if(this[key] instanceof ValueObject.constructor)
+                    {
+                        // If property is an instance of a ValueObject class and has not been created yet.
+                        // Than instantiate it and pass in the data to the constructor.
+                        this[key] = new this[key](data[key]);
+                    }
+
+                    else if (this[key] instanceof ValueObject)
+                    {
+                        // If property is an instance of a ValueObject class and has already been created.
+                        // Than call the update method and pass in the data.
+                        this[key].update(data[key]);
+                    }
+                    else
+                    {
+                        // Else just assign the data to the property.
+                        this[key] = data[key];
+                    }
                 }
             }
 
