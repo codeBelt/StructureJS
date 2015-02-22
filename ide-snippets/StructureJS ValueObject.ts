@@ -31,6 +31,7 @@ module ${Namespace} {
         public update(data:any):void {
             super.update(data);
 
+            // Override any values after the default super update method has set the values.
         }
 
         /**
