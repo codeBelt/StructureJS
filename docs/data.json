@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.12",
+        "version": "0.6.13",
         "url": ""
     },
     "files": {
@@ -5474,7 +5474,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 53,
+            "line": 69,
             "description": "...",
             "itemtype": "method",
             "name": "toJSON",
@@ -5490,7 +5490,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 64,
+            "line": 80,
             "description": "...",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5506,7 +5506,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 74,
+            "line": 90,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5525,27 +5525,12 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 86,
+            "line": 102,
             "itemtype": "method",
             "name": "Object",
             "return": {
                 "description": "",
                 "type": "Any"
-            },
-            "access": "public",
-            "tagname": "",
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/ValueObject.js",
-            "line": 96,
-            "itemtype": "method",
-            "name": "copy",
-            "return": {
-                "description": "",
-                "type": "IValueObject"
             },
             "access": "public",
             "tagname": "",
@@ -8950,19 +8935,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:53"
+            "line": " src/model/ValueObject.js:69"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:64"
+            "line": " src/model/ValueObject.js:80"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:86"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:96"
+            "line": " src/model/ValueObject.js:102"
         },
         {
             "message": "replacing incorrect tag: returns with return",
