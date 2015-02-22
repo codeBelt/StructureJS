@@ -35,15 +35,29 @@ define(function (require, exports, module)
                 name: "robert",
                 age: 37,
                 house: {
-                    address: null,
-                    numOfBathrooms: null,
-                    numOfBedRooms: null
+                    address: '12443 Street',
+                    numOfBathrooms: 2,
+                    numOfBedRooms: 4
                 }
             };
+
 
             var vo = new TestVO(data);
 
             console.log("TestVO", vo);
+
+            data = {
+                name: "krista",
+                age: 25,
+                house: {
+                    address: '3 Street',
+                    numOfBathrooms: 1,
+                    numOfBedRooms: 1
+                }
+            };
+
+            vo.update(data);
+
         };
 
         /**
