@@ -37,15 +37,16 @@ module StructureTS
             for (var key in data)
             {
                 // If this class has a property that matches a property on the data being passed in then set it.
-                if (this.hasOwnProperty(key))
+                // Also don't set the cid data value because it is automatically set in the constructor and
+                // we do want it to be overridden when the clone method has been called.
+                if (this.hasOwnProperty(key) && key !== 'cid')
                 {
-                    if(this[key] instanceof ValueObject.constructor)
+                    if (this[key] instanceof ValueObject.constructor)
                     {
                         // If property is an instance of a ValueObject class and has not been created yet.
                         // Than instantiate it and pass in the data to the constructor.
                         this[key] = new this[key](data[key]);
                     }
-
                     else if (this[key] instanceof ValueObject)
                     {
                         // If property is an instance of a ValueObject class and has already been created.
@@ -59,7 +60,6 @@ module StructureTS
                     }
                 }
             }
-
             return this;
         }
 
@@ -72,7 +72,7 @@ module StructureTS
          */
         public toJSON():ValueObject
         {
-            var clone:ValueObject = <ValueObject>this.clone();
+            var clone:any = Util.clone(this);
             return Util.deletePropertyFromObject(clone, ['cid']);
         }
 
@@ -112,29 +112,8 @@ module StructureTS
          */
         public clone():Object
         {
-            return Util.clone(this);
-        }
-
-        /**
-         *
-         *
-         * @method copy
-         * @returns {IValueObject}
-         * @public
-         */
-        public copy():IValueObject
-        {
-            var copy:Object = {};
-
-            for (var key in this)
-            {
-                if (this.hasOwnProperty(key))
-                {
-                    copy[key] = this[key];
-                }
-            }
-
-            return <IValueObject>copy;
+            var clonedValueObject = new (<any>this).constructor(this);
+            return clonedValueObject;
         }
     }
 }

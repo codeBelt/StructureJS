@@ -17,11 +17,6 @@ module StructureTS
         clone():Object;
 
         /**
-         * @method copy
-         */
-        copy():IValueObject;
-
-        /**
          * @method toJSON
          */
         toJSON():any;

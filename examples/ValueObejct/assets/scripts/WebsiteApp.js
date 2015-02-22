@@ -43,8 +43,7 @@ define(function (require, exports, module)
 
 
             var vo = new TestVO(data);
-
-            console.log("TestVO", vo);
+            console.log("Robert", vo);
 
             data = {
                 name: "krista",
@@ -56,8 +55,13 @@ define(function (require, exports, module)
                 }
             };
 
+            vo = vo.clone();
             vo.update(data);
+            vo.age = 100;
 
+            console.log("Krista", vo);
+            console.log("json", vo.toJSON());
+            console.log("json", JSON.stringify(vo.toJSON()));
         };
 
         /**
