@@ -45,7 +45,9 @@
         ValueObject.prototype.update = function (data) {
             for (var key in data) {
                 // If this class has a property that matches a property on the data being passed in then set it.
-                if (this.hasOwnProperty(key)) {
+                // Also don't set the cid data value because it is automatically set in the constructor and
+                // we do want it to be overridden when the clone method has been called.
+                if (this.hasOwnProperty(key) && key !== 'cid') {
                     if (this[key] instanceof ValueObject.constructor) {
                         // If property is an instance of a ValueObject class and has not been created yet.
                         // Than instantiate it and pass in the data to the constructor.
@@ -72,7 +74,7 @@
          * @public
          */
         ValueObject.prototype.toJSON = function () {
-            var clone = this.clone();
+            var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, ['cid']);
         };
         /**
@@ -105,23 +107,8 @@
          * @public
          */
         ValueObject.prototype.clone = function () {
-            return Util.clone(this);
-        };
-        /**
-         *
-         *
-         * @method copy
-         * @returns {IValueObject}
-         * @public
-         */
-        ValueObject.prototype.copy = function () {
-            var copy = {};
-            for (var key in this) {
-                if (this.hasOwnProperty(key)) {
-                    copy[key] = this[key];
-                }
-            }
-            return copy;
+            var clonedValueObject = new this.constructor(this);
+            return clonedValueObject;
         };
         return ValueObject;
     })();
