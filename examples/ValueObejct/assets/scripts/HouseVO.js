@@ -42,15 +42,6 @@ define(function (require, exports, module)
             // Override any values after the default super update method has set the values.
         };
 
-        /**
-         * @overridden ValueObject.copy
-         */
-        HouseVO.prototype.copy = function ()
-        {
-            var data = _super.prototype.copy();
-            return new HouseVO(data);
-        };
-
         return HouseVO;
     })();
 

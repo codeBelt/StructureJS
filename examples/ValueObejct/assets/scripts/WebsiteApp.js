@@ -6,6 +6,7 @@ define(function (require, exports, module)
     var Extend = require('structurejs/util/Extend');
     var Stage = require('structurejs/display/Stage');
     var TestVO = require('./TestVO');
+    var CarVO = require('./CarVO');
 
     /**
      * TODO: YUIDoc_comment
@@ -62,6 +63,14 @@ define(function (require, exports, module)
             console.log("Krista", vo);
             console.log("json", vo.toJSON());
             console.log("json", JSON.stringify(vo.toJSON()));
+
+
+            var data = { make: 'Tesla', model: 'Model S', year: 2014 }
+            var data = '{"make":"Tesla","model":"Model S","year":2014}'
+
+            var car = new CarVO(data);
+
+            console.log("car",  car.fromJSON(data));
         };
 
         /**
