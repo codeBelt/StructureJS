@@ -35,14 +35,6 @@ define(function(require, exports, module) { // jshint ignore:line
             // Override any values after the default super update method has set the values.
         };
 
-        /**
-        * @overridden ValueObject.copy
-        */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.copy = function () {
-            var data =  _super.prototype.copy();
-            return new ${TM_FILENAME/(.*)[.](.*)/$1/g}(data);
-        };
-
         return ${TM_FILENAME/(.*)[.](.*)/$1/g};
     })();
 

@@ -34,13 +34,5 @@ module ${Namespace} {
             // Override any values after the default super update method has set the values.
         }
 
-        /**
-         * @overridden ValueObject.copy
-         */
-        public copy():${NAME} {
-            var data:IValueObject = super.copy();
-            return new ${NAME}(data);
-        }
-
     }
 }
