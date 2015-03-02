@@ -55,13 +55,9 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
-                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
-            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
-            
-                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
@@ -74,10 +70,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
-            
-                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,16 +103,6 @@
             
                 <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
-                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
-            
-                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
-            
-                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
-            
-                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
-            
-                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
-            
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
@@ -138,8 +120,6 @@
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
                 <li><a class="module" href="../modules/model.html">model</a></li>
-            
-                <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
@@ -186,6 +166,8 @@
 
 <div class="box intro">
     <p>Value Object (VO) is a design pattern used to transfer data between software application subsystems.</p>
+<p>Note: If the data doesn&#39;t match the property names you can set the value manually after update super method has been called.
+ Also in the class you inherit ValueObject from you can override the update method to handle the data how you want.</p>
 
 </div>
 
@@ -476,6 +458,63 @@
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var data = {
+     make: &#39;Tesla&#39;,
+     model: &#39;Model S&#39;,
+     year: 2014,
+     feature: {
+         abs: true,
+         airbags: true
+     }
+}
+var carVO = new CarVO(data);
+
+
+// Example how to extend the ValueObject class.
+ var CarVO = (function () {
+     var _super = Extend(CarVO, ValueObject);
+     function CarVO(data) {
+         _super.call(this);
+
+         // You need to have properties so the data will get assigned.
+         // If not the data will not get assigned to the vo.
+         this.make = null;
+         this.model = null;
+         this.year = null;
+         this.allWheel = false; // Set a default value.
+
+         // You can assign another ValueObject to a property which will
+         // automatically created it and pass the data to it.
+         this.feature = FeatureVO;
+
+         if (data) {
+             this.update(data);
+         }
+     }
+
+     // @overridden ValueObject.update
+     CarVO.prototype.update = function (data) {
+         _super.prototype.update.call(this, data);
+
+         // Override any values after the default super update method has set the values.
+
+         // If the data doesn&#39;t match the property names you can set the values
+         // manually after update super method has been called.
+         // Also in the class you inherit ValueObject from you can override the
+         // update method to handle the data how you want.
+         this.allWheel = data.AllWheel;
+     };
+
+     return CarVO;
+ })();</code></pre>
+
+                </div>
+            </div>
+        
     </div>
 </div>
 
@@ -629,7 +668,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l90"><code>src&#x2F;model&#x2F;ValueObject.js:90</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l154"><code>src&#x2F;model&#x2F;ValueObject.js:154</code></a>
         
         </p>
 
@@ -673,6 +712,17 @@ on other objects before calling the super.</p>
 
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> var str = &#39;{&quot;make&quot;:&quot;Tesla&quot;,&quot;model&quot;:&quot;Model S&quot;,&quot;year&quot;:2014}&#39;
+ var carVO = new CarVO();
+ carVO.fromJSON(str);</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -806,7 +856,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l102"><code>src&#x2F;model&#x2F;ValueObject.js:102</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l170"><code>src&#x2F;model&#x2F;ValueObject.js:170</code></a>
         
         </p>
 
@@ -819,7 +869,8 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            
+            <p>Create a clone/copy of the value object.</p>
+
         </div>
 
         
@@ -838,6 +889,15 @@ on other objects before calling the super.</p>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var clone = carVO.clone();</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -884,7 +944,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l69"><code>src&#x2F;model&#x2F;ValueObject.js:69</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l129"><code>src&#x2F;model&#x2F;ValueObject.js:129</code></a>
         
         </p>
 
@@ -897,7 +957,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>...</p>
+            <p>Converts the value object data into a JSON object and deletes the cid property.</p>
 
         </div>
 
@@ -917,6 +977,15 @@ on other objects before calling the super.</p>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var obj = carVO.toJSON();</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -963,7 +1032,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l80"><code>src&#x2F;model&#x2F;ValueObject.js:80</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l142"><code>src&#x2F;model&#x2F;ValueObject.js:142</code></a>
         
         </p>
 
@@ -976,7 +1045,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>...</p>
+            <p>Converts a value object to a JSON string,</p>
 
         </div>
 
@@ -996,6 +1065,15 @@ on other objects before calling the super.</p>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var str = carVO.toJSONString();</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1048,7 +1126,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l38"><code>src&#x2F;model&#x2F;ValueObject.js:38</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l91"><code>src&#x2F;model&#x2F;ValueObject.js:91</code></a>
         
         </p>
 
@@ -1092,6 +1170,20 @@ on other objects before calling the super.</p>
 
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>// Example of updating some of the data:
+carVO.update({ year: 2015, allWheel: true});
+
+// Of course you can also do it the following way:
+carVO.year = 2015;
+carVO.allWheel = false;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
