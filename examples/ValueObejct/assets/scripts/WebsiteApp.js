@@ -5,6 +5,7 @@ define(function (require, exports, module)
     // Imports
     var Extend = require('structurejs/util/Extend');
     var Stage = require('structurejs/display/Stage');
+    var Collection = require('structurejs/model/Collection');
     var TestVO = require('./TestVO');
     var CarVO = require('./CarVO');
 
@@ -32,6 +33,8 @@ define(function (require, exports, module)
         WebsiteApp.prototype.createChildren = function ()
         {
             _super.prototype.createChildren.call(this);
+
+
             var data = {
                 name: "robert",
                 age: 37,
@@ -44,7 +47,7 @@ define(function (require, exports, module)
 
 
             var vo = new TestVO(data);
-            console.log("Robert", vo);
+            //console.log("Robert", vo);
 
             data = {
                 name: "krista",
@@ -60,9 +63,9 @@ define(function (require, exports, module)
             vo.update(data);
             vo.age = 100;
 
-            console.log("Krista", vo);
-            console.log("json", vo.toJSON());
-            console.log("json", JSON.stringify(vo.toJSON()));
+            //console.log("Krista", vo);
+            //console.log("json", vo.toJSON());
+            //console.log("json", JSON.stringify(vo.toJSON()));
 
 
             var data = { make: 'Tesla', model: 'Model S', year: 2014 }
@@ -70,7 +73,47 @@ define(function (require, exports, module)
 
             var car = new CarVO(data);
 
-            console.log("car",  car.fromJSON(data));
+            //console.log("car",  car.fromJSON(data));
+
+
+
+
+            var people = [
+                {
+                    name: "krista",
+                    age: 25,
+                    house: {
+                        address: '3 Street',
+                        numOfBathrooms: 1,
+                        numOfBedRooms: 1
+                    }
+                },
+                {
+                    name: "Robert",
+                    age: 37,
+                    house: {
+                        address: '1 Street',
+                        numOfBathrooms: 2,
+                        numOfBedRooms: 4
+                    }
+                },
+                {
+                    name: "Marc",
+                    age: 34,
+                    house: {
+                        address: '3 Street',
+                        numOfBathrooms: 5,
+                        numOfBedRooms: 11
+                    }
+                }
+            ]
+
+
+            var collection = new Collection(TestVO);
+            //var collection = new Collection();
+            console.log("collection", collection);
+            collection.addItem(people);
+            console.log("collection", collection.toJSON());
         };
 
         /**
