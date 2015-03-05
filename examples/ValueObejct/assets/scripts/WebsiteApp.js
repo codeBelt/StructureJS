@@ -112,8 +112,11 @@ define(function (require, exports, module)
             var collection = new Collection(TestVO);
             //var collection = new Collection();
             console.log("collection", collection);
-            collection.addItem(people);
+            collection.add(people);
             console.log("collection", collection.toJSON());
+            console.log("collection.models", collection.models.length);
+            collection.remove(collection.models);
+            console.log("collection", collection);
         };
 
         /**
