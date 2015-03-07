@@ -56,11 +56,12 @@
             /**
              * A reference to a ValueObject that will be used in the collection.
              *
-             * @property modelType
+             * @property _modelType
              * @type {ValueObject}
              * @private
              */
-            this.modelType = valueObjectType;
+            this._modelType = null;
+            this._modelType = valueObjectType;
         }
         /**
          * Adds model or an array of models to the collection.
@@ -74,34 +75,27 @@
          */
         Collection.prototype.add = function (model, silent) {
             if (silent === void 0) { silent = false; }
-
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
-
             var len = models.length;
-            for (var i = 0; i < len; i++)
-            {
+            for (var i = 0; i < len; i++) {
                 // Only add the model if it does not exist in the the collection.
-                if (this.has(models[i]) === false)
-                {
-                    if (this.modelType !== null)
-                    {
+                if (this.has(models[i]) === false) {
+                    if (this._modelType !== null) {
                         // If the modeType is set then instantiate it and pass the data into the constructor.
-                        this.models.push(new this.modelType(model[i]));
+                        this.models.push(new this._modelType(models[i]));
                     }
-                    else
-                    {
+                    else {
                         // Pass the data object to the array.
-                        this.models.push(model[i]);
+                        this.models.push(models[i]);
                     }
-
                     this.length = this.models.length;
                 }
             }
-
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
+            return this;
         };
         /**
          * Removes a model or an array of models from the collection.
@@ -117,23 +111,19 @@
          */
         Collection.prototype.remove = function (model, silent) {
             if (silent === void 0) { silent = false; }
-
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
-
-            for (var i = models.length - 1; i >= 0; i--)
-            {
+            for (var i = models.length - 1; i >= 0; i--) {
                 // Only remove the model if it exists in the the collection.
-                if (this.has(models[i]) === true)
-                {
+                if (this.has(models[i]) === true) {
                     this.models.splice(this.indexOf(models[i]), 1);
                     this.length = this.models.length;
                 }
             }
-
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED));
             }
+            return this;
         };
         /**
          * Checks if a collection has an model.
@@ -201,12 +191,12 @@
          */
         Collection.prototype.find = function (arg) {
             // If properties is not an array then make it an array object.
-            arg = (arg instanceof Array) ? arg : [arg];
+            var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
-            var len = arg.length;
+            var len = list.length;
             var prop;
             for (var i = 0; i < len; i++) {
-                prop = arg[i];
+                prop = list[i];
                 // Adds found value object to the foundItems array.
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the model is not an object.
@@ -230,10 +220,10 @@
          */
         Collection.prototype._findPropertyValue = function (arg) {
             // If properties is not an array then make it an array object.
-            arg = (arg instanceof Array) ? arg : [arg];
+            var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
             var itemsLength = this.models.length;
-            var itemsToFindLength = arg.length;
+            var itemsToFindLength = list.length;
             for (var i = 0; i < itemsLength; i++) {
                 var obj = this.models[i];
                 for (var key in obj) {
@@ -241,7 +231,7 @@
                     if (obj.hasOwnProperty(key)) {
                         var propertyValue = obj[key];
                         for (var j = 0; j < itemsToFindLength; j++) {
-                            var value = arg[j];
+                            var value = list[j];
                             // If the value object property equals the string value then keep a reference to that value object.
                             if (propertyValue === value) {
                                 // Add found value object to the foundItems array.
@@ -270,6 +260,7 @@
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.CLEAR));
             }
+            return this;
         };
         /**
          * Creates and returns a new collection object that contains a reference to the models in the collection cloned from.
@@ -281,7 +272,7 @@
          *     var clone = collection.clone();
          */
         Collection.prototype.clone = function () {
-            var clonedValueObject = new this.constructor(this.modelType);
+            var clonedValueObject = new this.constructor(this._modelType);
             clonedValueObject.add(this.models.slice(0));
             return clonedValueObject;
         };
@@ -295,14 +286,14 @@
          *     var arrayOfObjects = collection.toJSON();
          */
         Collection.prototype.toJSON = function () {
-            if (this.modelType !== null) {
+            if (this._modelType !== null) {
                 var list = [];
-                var len = this.length;
-                for (var i = 0; i < len; i++) {
+                for (var i = 0; i < this.length; i++) {
                     list[i] = this.models[i].toJSON();
                 }
                 return list;
-            } else {
+            }
+            else {
                 return Util.clone(this.models);
             }
         };

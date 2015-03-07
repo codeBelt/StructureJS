@@ -96,30 +96,12 @@ module StructureTS
         {
             for (var key in data)
             {
-                // If this class has a property that matches a property on the data being passed in then set it.
-                // Also don't set the cid data value because it is automatically set in the constructor and
-                // we do want it to be overridden when the clone method has been called.
-                if (this.hasOwnProperty(key) && key !== 'cid')
+                if (this.hasOwnProperty(key))
                 {
-                    if (this[key] instanceof ValueObject.constructor)
-                    {
-                        // If property is an instance of a ValueObject class and has not been created yet.
-                        // Than instantiate it and pass in the data to the constructor.
-                        this[key] = new this[key](data[key]);
-                    }
-                    else if (this[key] instanceof ValueObject)
-                    {
-                        // If property is an instance of a ValueObject class and has already been created.
-                        // Than call the update method and pass in the data.
-                        this[key].update(data[key]);
-                    }
-                    else
-                    {
-                        // Else just assign the data to the property.
-                        this[key] = data[key];
-                    }
+                    this[key] = data[key];
                 }
             }
+
             return this;
         }
 
@@ -127,12 +109,12 @@ module StructureTS
          * Converts the value object data into a JSON object and deletes the cid property.
          *
          * @method toJSON
-         * @returns {ValueObject}
+         * @returns {any}
          * @public
          * @example
          *     var obj = carVO.toJSON();
          */
-        public toJSON():ValueObject
+        public toJSON():any
         {
             var clone:any = Util.clone(this);
             return Util.deletePropertyFromObject(clone, ['cid']);
@@ -180,7 +162,7 @@ module StructureTS
          * @example
          *     var clone = carVO.clone();
          */
-        public clone():Object
+        public clone():any
         {
             var clonedValueObject = new (<any>this).constructor(this);
             return clonedValueObject;
