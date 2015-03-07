@@ -1,0 +1,306 @@
+# StructureJS Snippets
+# for Atom
+# .js filetype
+#
+# Paste into:
+# Atom > Open Your Snippets
+#
+# Shortcuts
+# DOMElement: view
+# ValueObject: vo
+# Stage: stage
+# Property: prop
+# Method: meth
+# Import: im
+# Extend: ex
+
+".source.js":
+  "View":
+   prefix: "view"
+   body: """
+       /**
+        * @fileOverview
+        * ${1:Class}
+        */
+        define(function(require, exports, module) { // jshint ignore:line
+            'use strict';
+
+            // Imports
+            var Extend = require('structurejs/util/Extend');
+            var DOMElement = require('structurejs/display/DOMElement');
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @class ${1:Class}
+             * @extends DOMElement
+             * @constructor
+             **/
+            var ${1:Class} = (function () {
+
+                var _super = Extend (${1:Class}, DOMElement); // jshint ignore:line
+
+                function ${1:Class} () { // jshint ignore:line
+                    _super.call(this);
+
+         			$2
+                }
+
+                /**
+                 * @overridden DOMElement.createChildren
+                 */
+                ${1:Class}.prototype.createChildren = function () {
+                    _super.prototype.createChildren.call(this);
+
+                    // Create and add your child objects to this parent class.
+                };
+
+                /**
+                 * @overridden DOMElement.layoutChildren
+                 */
+                ${1:Class}.prototype.layoutChildren = function () {
+                    // Layout or update the child objects in this parent class.
+
+                    return this;
+                };
+
+                /**
+                 * @overridden DOMElement.enable
+                 */
+                ${1:Class}.prototype.enable = function () {
+                    if (this.isEnabled === true) { return this; }
+
+                    // Enable the child objects and add any event listeners.
+
+                    return _super.prototype.enable.call(this);
+                };
+
+                /**
+                 * @overridden DOMElement.disable
+                 */
+                ${1:Class}.prototype.disable = function () {
+                    if (this.isEnabled === false) { return this; }
+
+                    // Disable the child objects and remove any event listeners.
+
+                    return _super.prototype.disable.call(this);
+                };
+
+                /**
+                 * @overridden DOMElement.destroy
+                 */
+                ${1:Class}.prototype.destroy = function () {
+                    // Call destroy on any child objects that is need.
+                    // This super method will also null out all properties automatically to prevent memory leaks.
+
+                    _super.prototype.destroy.call(this);
+                };
+
+                return ${1:Class};
+            })();
+
+            module.exports = ${1:Class};
+
+        });
+   """
+  "Value Object":
+   prefix: "vo"
+   body: """
+      /**
+       * @fileOverview
+       * ${1:Class}
+       */
+        define(function(require, exports, module) { // jshint ignore:line
+            'use strict';
+
+            // Imports
+            var Extend = require('structurejs/util/Extend');
+            var ValueObject = require('structurejs/model/ValueObject');
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @class ${1:Class}
+             * @extends ValueObject
+             * @constructor
+             **/
+            var ${1:Class} = (function () {
+
+                var _super = Extend (${1:Class}, ValueObject); // jshint ignore:line
+
+                function ${1:Class} () { // jshint ignore:line
+                    _super.call(this);
+
+                    if (data) {
+                        this.update(data);
+                    }
+                }
+
+                /**
+                * @overridden ValueObject.update
+                */
+                ${1:Class}.prototype.update = function (data) {
+                    _super.prototype.update.call(this, data);
+
+                    // Override any values after the default super update method has set the values.
+                };
+
+                return ${1:Class};
+            })();
+
+            module.exports = ${1:Class};
+
+        });
+   """
+  "Stage":
+   prefix: "stage"
+   body: """
+       /**
+        * @fileOverview
+        * ${1:Class}
+        */
+        define(function(require, exports, module) { // jshint ignore:line
+            'use strict';
+
+            // Imports
+            var Extend = require('structurejs/util/Extend');
+            var Stage = require('structurejs/display/Stage');
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @class ${1:Class}
+             * @extends Stage
+             * @constructor
+             **/
+            var ${1:Class} = (function () {
+
+                var _super = Extend (${1:Class}, Stage); // jshint ignore:line
+
+                function ${1:Class} () { // jshint ignore:line
+                    _super.call(this);
+
+         			$2
+                }
+
+                /**
+                 * @overridden Stage.createChildren
+                 */
+                ${1:Class}.prototype.createChildren = function () {
+                    _super.prototype.createChildren.call(this);
+
+                    // Create and add your child objects to this parent class.
+                };
+
+                /**
+                 * @overridden Stage.layoutChildren
+                 */
+                ${1:Class}.prototype.layoutChildren = function () {
+                    // Layout or update the child objects in this parent class.
+
+                    return this;
+                };
+
+                /**
+                 * @overridden Stage.enable
+                 */
+                ${1:Class}.prototype.enable = function () {
+                    if (this.isEnabled === true) { return this; }
+
+                    // Enable the child objects and add any event listeners.
+
+                    return _super.prototype.enable.call(this);
+                };
+
+                /**
+                 * @overridden Stage.disable
+                 */
+                ${1:Class}.prototype.disable = function () {
+                    if (this.isEnabled === false) { return this; }
+
+                    // Disable the child objects and remove any event listeners.
+
+                    return _super.prototype.disable.call(this);
+                };
+
+                /**
+                 * @overridden Stage.destroy
+                 */
+                ${1:Class}.prototype.destroy = function () {
+                    // Call destroy on any child objects that is need.
+                    // This super method will also null out all properties automatically to prevent memory leaks.
+
+                    _super.prototype.destroy.call(this);
+                };
+
+                return ${1:Class};
+            })();
+
+            module.exports = ${1:Class};
+
+        });
+   """
+  "Property":
+    prefix: "prop"
+    body: """
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property ${1:propertyName}
+         * @type {${2:propertyType}}
+         * @${3:accessType}
+         */
+        this.${1} = ${4:null};
+    """
+  "Method":
+    prefix: "meth"
+    body: """
+        /**
+         * @TODO: YUIDoc_comment
+         *
+         * @method ${1:methodName}
+         * @${2:accessType}
+         */
+        ${3:ClassName}.prototype.${1} = function ($4) {
+            $5
+        };
+    """
+  "Import":
+    prefix: "im"
+    body: "var ${1:ClassName} = require('${2:path}/${1}');"
+  "Extend":
+    prefix: "ex"
+    body: """
+       /**
+        * @fileOverview
+        * ${1:Class}
+        */
+        define(function(require, exports, module) { // jshint ignore:line
+            'use strict';
+
+            // Imports
+            var Extend = require('structurejs/util/Extend');
+            var ${2} = require('path/${2}');
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @class ${1:Class}
+             * @extends ${2}
+             * @constructor
+             **/
+            var ${1:Class} = (function () {
+
+                var _super = Extend (${1:Class}); // jshint ignore:line
+
+                function ${1:Class} () { // jshint ignore:line
+                    _super.call(this);
+                }
+
+                return ${1:Class};
+            })();
+
+            module.exports = ${1:Class};
+
+        });
+    """
