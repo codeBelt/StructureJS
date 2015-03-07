@@ -37,6 +37,7 @@ define(function (require, exports, module)
          */
         HouseVO.prototype.update = function (data)
         {
+            console.log("asdfas");
             _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.

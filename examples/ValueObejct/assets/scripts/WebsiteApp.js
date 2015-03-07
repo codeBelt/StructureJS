@@ -38,15 +38,15 @@ define(function (require, exports, module)
             var data = {
                 name: "robert",
                 age: 37,
-                //house: {
-                //    address: '12443 Street',
-                //    numOfBathrooms: 2,
-                //    numOfBedRooms: 4
-                //},
-                //cars: [
-                //    { make: 'Tesla', model: 'Model S', year: 2014 },
-                //    { make: 'Ford', model: 'Escort', year: 2000 }
-                //]
+                house: {
+                    address: '12443 Street',
+                    numOfBathrooms: 2,
+                    numOfBedRooms: 4
+                },
+                cars: [
+                    { make: 'Tesla', model: 'Model S', year: 2014 },
+                    { make: 'Ford', model: 'Escort', year: 2000 }
+                ]
             };
 
 
@@ -75,7 +75,7 @@ define(function (require, exports, module)
             var data = { make: 'Tesla', model: 'Model S', year: 2014 }
             var data = '{"make":"Tesla","model":"Model S","year":2014}'
 
-            var car = new CarVO(data);
+            //var car = new CarVO(data);
 
             //console.log("car",  car.fromJSON(data));
 
