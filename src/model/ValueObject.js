@@ -104,51 +104,12 @@
          */
         ValueObject.prototype.update = function (data) {
             for (var key in data) {
-                // If this class has a property that matches a property on the data being passed in then set it.
-                // Also don't set the cid data value because it is automatically set in the constructor and
-                // we do want it to be overridden when the clone method has been called.
-                if (this.hasOwnProperty(key) && key !== 'cid')
-                {
-                    if (data[key] instanceof Array)
-                    {
-                        var temp = [];
-                        var len = data[key].length;
-                        for (var i = 0; i < len; i++) {
-                            temp[i] = this._update(this[key], data[key][i]);
-                        }
-                        this[key] = temp;
-                    }
-                    else
-                    {
-                        this[key] = this._update(this[key], data[key]);
-                    }
+                if (this.hasOwnProperty(key)) {
+                    this[key] = data[key];
                 }
             }
             return this;
         };
-
-        ValueObject.prototype._update = function (key, data) {
-            if (key instanceof ValueObject.constructor)
-            {
-                // If property is an instance of a ValueObject class and has not been created yet.
-                // Than instantiate it and pass in the data to the constructor.
-                return key = new key(data);
-            }
-            else if (key instanceof ValueObject)
-            {
-                // If property is an instance of a ValueObject class and has already been created.
-                // Than call the update method and pass in the data.
-                key.update(data);
-            }
-            else
-            {
-                // Else just assign the data to the property.
-                return key = data;
-            }
-
-            return data;
-        };
-
         /**
          * Converts the value object data into a JSON object and deletes the cid property.
          *
