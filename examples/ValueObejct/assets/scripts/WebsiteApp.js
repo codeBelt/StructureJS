@@ -63,21 +63,21 @@ define(function (require, exports, module)
                 }
             };
 
-            //vo = vo.clone();
-            //vo.update(data);
-            //vo.age = 100;
+            vo = vo.clone();
+            vo.update(data);
+            vo.age = 100;
 
-            //console.log("Krista", vo);
-            //console.log("json", vo.toJSON());
-            //console.log("json", JSON.stringify(vo.toJSON()));
+            console.log("Krista", vo);
+            console.log("json", vo.toJSON());
+            console.log("json", JSON.stringify(vo.toJSON()));
 
 
             var data = { make: 'Tesla', model: 'Model S', year: 2014 }
             var data = '{"make":"Tesla","model":"Model S","year":2014}'
 
-            //var car = new CarVO(data);
+            var car = new CarVO(data);
 
-            //console.log("car",  car.fromJSON(data));
+            console.log("car",  car.fromJSON(data));
 
 
 

@@ -114,7 +114,7 @@
          * Converts the value object data into a JSON object and deletes the cid property.
          *
          * @method toJSON
-         * @returns {ValueObject}
+         * @returns {any}
          * @public
          * @example
          *     var obj = carVO.toJSON();
