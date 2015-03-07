@@ -58,7 +58,7 @@
          *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
-         * @param list {array} A list of property names you want to remove from the object.
+         * @param list {Array} A list of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static

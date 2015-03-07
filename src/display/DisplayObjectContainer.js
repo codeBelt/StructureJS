@@ -45,7 +45,7 @@
              * Returns the number of children of this object.
              *
              * @property numChildren
-             * @type {init}
+             * @type {int}
              * @default 0
              * @readOnly
              * @public
@@ -55,7 +55,7 @@
              * A reference to the child DisplayObjectContainer instances to this parent object instance.
              *
              * @property children
-             * @type {array}
+             * @type {Array}
              * @readOnly
              * @public
              */
