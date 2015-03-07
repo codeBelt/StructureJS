@@ -38,16 +38,20 @@ define(function (require, exports, module)
             var data = {
                 name: "robert",
                 age: 37,
-                house: {
-                    address: '12443 Street',
-                    numOfBathrooms: 2,
-                    numOfBedRooms: 4
-                }
+                //house: {
+                //    address: '12443 Street',
+                //    numOfBathrooms: 2,
+                //    numOfBedRooms: 4
+                //},
+                //cars: [
+                //    { make: 'Tesla', model: 'Model S', year: 2014 },
+                //    { make: 'Ford', model: 'Escort', year: 2000 }
+                //]
             };
 
 
             var vo = new TestVO(data);
-            //console.log("Robert", vo);
+            console.log("Robert", vo);
 
             data = {
                 name: "krista",
@@ -59,9 +63,9 @@ define(function (require, exports, module)
                 }
             };
 
-            vo = vo.clone();
-            vo.update(data);
-            vo.age = 100;
+            //vo = vo.clone();
+            //vo.update(data);
+            //vo.age = 100;
 
             //console.log("Krista", vo);
             //console.log("json", vo.toJSON());
@@ -86,7 +90,11 @@ define(function (require, exports, module)
                         address: '3 Street',
                         numOfBathrooms: 1,
                         numOfBedRooms: 1
-                    }
+                    },
+                    cars: [
+                        { make: 'Tesla', model: 'Model S', year: 2014 },
+                        { make: 'Ford', model: 'Escort', year: 2000 }
+                    ]
                 },
                 {
                     name: "Robert",
@@ -98,25 +106,28 @@ define(function (require, exports, module)
                     }
                 },
                 {
-                    name: "Marc",
-                    age: 34,
+                    name: "Mario",
                     house: {
                         address: '3 Street',
                         numOfBathrooms: 5,
                         numOfBedRooms: 11
                     }
+                },
+                {
+                    name: "Joe",
+                    age: 34
                 }
             ]
 
 
-            var collection = new Collection(TestVO);
-            //var collection = new Collection();
-            console.log("collection", collection);
-            collection.add(people);
-            console.log("collection", collection.toJSON());
-            console.log("collection.models", collection.models.length);
-            collection.remove(collection.models);
-            console.log("collection", collection);
+            //var collection = new Collection(TestVO);
+            ////var collection = new Collection();
+            //console.log("collection", collection);
+            //collection.add(people);
+            //console.log("collection", collection.toJSON());
+            //console.log("collection.models", collection.models.length);
+            //collection.remove(collection.models);
+            //console.log("collection", collection);
         };
 
         /**

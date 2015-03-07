@@ -168,7 +168,8 @@ module StructureTS
             {
                 M[2] = tem[1];
             }
-            else {
+            else
+            {
                 M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
             }
 
