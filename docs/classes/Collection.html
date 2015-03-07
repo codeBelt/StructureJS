@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.13</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,13 +55,9 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
-                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
-            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
-            
-                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
@@ -74,10 +70,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
-            
-                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,16 +103,6 @@
             
                 <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
-                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
-            
-                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
-            
-                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
-            
-                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
-            
-                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
-            
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
@@ -138,8 +120,6 @@
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
                 <li><a class="module" href="../modules/model.html">model</a></li>
-            
-                <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
@@ -185,7 +165,7 @@
 
 
 <div class="box intro">
-    <p>TODO: YUIDoc_comment</p>
+    <p>The Collection class provides a way for you to manage your models.</p>
 
 </div>
 
@@ -232,6 +212,12 @@
                     
                 </li>
             
+                <li class="index-item property private">
+                    <a href="#property__modelType">_modelType</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_cid">cid</a>
 
@@ -244,14 +230,14 @@
                     
                 </li>
             
-                <li class="index-item property">
-                    <a href="#property_items">items</a>
+                <li class="index-item property public">
+                    <a href="#property_length">length</a>
 
                     
                 </li>
             
-                <li class="index-item property public">
-                    <a href="#property_length">length</a>
+                <li class="index-item property">
+                    <a href="#property_models">models</a>
 
                     
                 </li>
@@ -287,6 +273,20 @@
             
 
             
+                <li class="index-item method private">
+                    <a href="#method__findPropertyValue">_findPropertyValue</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method_add">add</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public inherited">
                     <a href="#method_addEventListener">addEventListener</a>
 
@@ -295,28 +295,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_addItem">addItem</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
-                    <a href="#method_addItems">addItems</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
                     <a href="#method_clear">clear</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_copy">copy</a>
 
                     
                     
@@ -357,8 +336,15 @@
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_findPropertyValue">findPropertyValue</a>
+                <li class="index-item method public">
+                    <a href="#method_fromJSON">fromJSON</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_get">get</a>
 
                     
                     
@@ -371,22 +357,15 @@
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_getIndexOfItem">getIndexOfItem</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_getItemByIndex">getItemByIndex</a>
-
-                    
-                    
-                </li>
-            
                 <li class="index-item method public inherited">
                     <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_has">has</a>
 
                     
                     
@@ -400,7 +379,21 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_hasItem">hasItem</a>
+                    <a href="#method_indexOf">indexOf</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_Object">Object</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_remove">remove</a>
 
                     
                     
@@ -414,14 +407,14 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_removeItem">removeItem</a>
+                    <a href="#method_toJSON">toJSON</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_removeItems">removeItems</a>
+                    <a href="#method_toJSONString">toJSONString</a>
 
                     
                     
@@ -479,6 +472,58 @@
     <div class="extended-detail">
         <div class="description">
             <p>Holds a reference to added listeners.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__modelType" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_modelType</code>
+    <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l57"><code>src&#x2F;model&#x2F;Collection.js:57</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to a ValueObject that will be used in the collection.</p>
 
         </div>
 
@@ -593,60 +638,10 @@
 </div>
 
         
-            <a name="property_items" class="anchor-link"></a>
-<div class="property item">
-    <h3 class="name"><code>items</code>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_model_Collection.js.html#l37"><code>src&#x2F;model&#x2F;Collection.js:37</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="property_length" class="anchor-link"></a>
 <div class="property item public">
     <h3 class="name"><code>length</code>
-    <span class="type">Init</span>
+    <span class="type">Int</span>
 
     
 
@@ -671,7 +666,7 @@
             
         
         
-        <a href="../files/src_model_Collection.js.html#l45"><code>src&#x2F;model&#x2F;Collection.js:45</code></a>
+        <a href="../files/src_model_Collection.js.html#l47"><code>src&#x2F;model&#x2F;Collection.js:47</code></a>
         
         </p>
 
@@ -682,12 +677,62 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>The count of how many models are in the collection.</p>
 
         </div>
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">0</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_models" class="anchor-link"></a>
+<div class="property item">
+    <h3 class="name"><code>models</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l39"><code>src&#x2F;model&#x2F;Collection.js:39</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The list of models in the collection.</p>
+
+        </div>
+
         
 
         
@@ -766,7 +811,17 @@ list hierarchy. Helps facilitates event bubbling.</p>
     <h3 class="name"><code>Collection</code>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>valueObjectType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -813,6 +868,30 @@ list hierarchy. Helps facilitates event bubbling.</p>
         </div>
 
         
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">valueObjectType</code>
+                            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Pass a class that extends ValueObject and the data added to the collection will be created as that type.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
 
         
 
@@ -826,6 +905,248 @@ list hierarchy. Helps facilitates event bubbling.</p>
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method__findPropertyValue" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_findPropertyValue</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>arg</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l214"><code>src&#x2F;model&#x2F;Collection.js:214</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Loops through all properties of an object and check to see if the value matches the argument passed in.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">arg</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | Boolean></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                        
+                        <p>Returns a list of found object&#39;s.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_add" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>add</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>model</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[silent=false]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l67"><code>src&#x2F;model&#x2F;Collection.js:67</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Adds model or an array of models to the collection.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">model</code>
+                            <span class="type">Any | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Single or an array of models to add to the current collection.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[silent=false]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.add(vo);
+ collection.add(vo, true);</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
 
         
             <a name="method_addEventListener" class="anchor-link"></a>
@@ -1005,244 +1326,6 @@ list hierarchy. Helps facilitates event bubbling.</p>
 </div>
 
         
-            <a name="method_addItem" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>addItem</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>item</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[silent=false]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_model_Collection.js.html#l56"><code>src&#x2F;model&#x2F;Collection.js:56</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Add an item to the current collection</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">item</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The item to add.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[silent=false]</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_addItems" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>addItems</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>items</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[silent=false]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_model_Collection.js.html#l134"><code>src&#x2F;model&#x2F;Collection.js:134</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Adds an array of items to the collection</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">items</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>List of items to add to the current collection.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[silent=false]</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="method_clear" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>clear</code>
@@ -1290,7 +1373,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l254"><code>src&#x2F;model&#x2F;Collection.js:254</code></a>
+        <a href="../files/src_model_Collection.js.html#l248"><code>src&#x2F;model&#x2F;Collection.js:248</code></a>
         
         </p>
 
@@ -1303,7 +1386,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Clears or remove all the models from the collection.</p>
 
         </div>
 
@@ -1337,68 +1420,14 @@ list hierarchy. Helps facilitates event bubbling.</p>
         
 
         
-    </div>
-</div>
+            <div class="example">
+                <h4>Example:</h4>
 
-        
-            <a name="method_copy" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>copy</code>
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.clear();</code></pre>
 
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_model_Collection.js.html#l243"><code>src&#x2F;model&#x2F;Collection.js:243</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
-        
-
-        
-
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1844,7 +1873,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l171"><code>src&#x2F;model&#x2F;Collection.js:171</code></a>
+        <a href="../files/src_model_Collection.js.html#l176"><code>src&#x2F;model&#x2F;Collection.js:176</code></a>
         
         </p>
 
@@ -1908,14 +1937,14 @@ When checking properties, this method performs a deep comparison between values 
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>    // Finds all value object that has &#39;Robert&#39; in it.
-    this._collection.find(&quot;Robert&quot;);
-    // Finds any value object that has &#39;Robert&#39; or &#39;Heater&#39; or 23 in it.
-    this._collection.find([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
+                    <pre class="code prettyprint"><code> // Finds all value object that has &#39;Robert&#39; in it.
+ this._collection.find(&quot;Robert&quot;);
+ // Finds any value object that has &#39;Robert&#39; or &#39;Heater&#39; or 23 in it.
+ this._collection.find([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
 
-    // Finds all value objects that same key and value you are searching for.
-    this._collection.find({ name: &#39;apple&#39;, organic: false, type: &#39;fruit&#39; });
-    this._collection.find([{ type: &#39;vegetable&#39; }, { name: &#39;apple&#39;, &#39;organic: false, type&#39;: &#39;fruit&#39; }]);</code></pre>
+ // Finds all value objects that same key and value you are searching for.
+ this._collection.find({ name: &#39;apple&#39;, organic: false, type: &#39;fruit&#39; });
+ this._collection.find([{ type: &#39;vegetable&#39; }, { name: &#39;apple&#39;, &#39;organic: false, type&#39;: &#39;fruit&#39; }]);</code></pre>
 
                 </div>
             </div>
@@ -1924,9 +1953,9 @@ When checking properties, this method performs a deep comparison between values 
 </div>
 
         
-            <a name="method_findPropertyValue" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>findPropertyValue</code>
+            <a name="method_fromJSON" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>fromJSON</code>
 
     
         <div class="args">
@@ -1934,7 +1963,7 @@ When checking properties, this method performs a deep comparison between values 
             
                 <li class="arg">
                     
-                        <code>arg</code>
+                        <code>json</code>
                     
                 </li>
             
@@ -1943,15 +1972,11 @@ When checking properties, this method performs a deep comparison between values 
     
 
     
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
-        </span>
-    
 
     
 
     
-        <span class="flag private">private</span>
+        <span class="flag public">public</span>
     
 
     
@@ -1975,7 +2000,7 @@ When checking properties, this method performs a deep comparison between values 
             
         
         
-        <a href="../files/src_model_Collection.js.html#l209"><code>src&#x2F;model&#x2F;Collection.js:209</code></a>
+        <a href="../files/src_model_Collection.js.html#l313"><code>src&#x2F;model&#x2F;Collection.js:313</code></a>
         
         </p>
 
@@ -1988,7 +2013,7 @@ When checking properties, this method performs a deep comparison between values 
     <div class="extended-detail">
 
         <div class="description">
-            <p>Loops through all properties of an object and check to see if the value matches the argument passed in.</p>
+            <p>Converts the string json data into an Objects and calls the <a href="../classes/Collection.html#method_add" class="crosslink">add</a> method to add the objects to the collection.</p>
 
         </div>
 
@@ -2000,8 +2025,8 @@ When checking properties, this method performs a deep comparison between values 
                 
                     <li class="param">
                         
-                            <code class="param-name">arg</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | Boolean></span>
+                            <code class="param-name">json</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -2018,21 +2043,141 @@ When checking properties, this method performs a deep comparison between values 
         
 
         
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.fromJSON(str);</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_get" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>get</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>index</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l155"><code>src&#x2F;model&#x2F;Collection.js:155</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Finds an object by an index value.
+If the index is out of bounds, the collection will clamp it.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">index</code>
+                            <span class="type">Int</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The index integer of the model to get</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
             <div class="returns">
                 <h4>Returns:</h4>
 
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
                         
-                        <p>Returns a list of found object&#39;s.</p>
+                        <p>model to find</p>
 
                     
                 </div>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.get(1);</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -2125,235 +2270,6 @@ When checking properties, this method performs a deep comparison between values 
 </div>
 
         
-            <a name="method_getIndexOfItem" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>getIndexOfItem</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>item</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_model_Collection.js.html#l123"><code>src&#x2F;model&#x2F;Collection.js:123</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Returns the array index position of the value object.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">item</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>get the index of.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_getItemByIndex" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>getItemByIndex</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>index</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_model_Collection.js.html#l151"><code>src&#x2F;model&#x2F;Collection.js:151</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Finds an object by an index value.
-If the index is out of bounds, the collection will clamp it.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">index</code>
-                            <span class="type">Init</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The index integer of the item to get</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
-                        
-                        <p>item to find</p>
-
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="method_getQualifiedClassName" class="anchor-link"></a>
 <div class="method item public inherited">
     <h3 class="name"><code>getQualifiedClassName</code>
@@ -2433,6 +2349,128 @@ If the index is out of bounds, the collection will clamp it.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_has" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>has</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>model</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l129"><code>src&#x2F;model&#x2F;Collection.js:129</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Checks if a collection has an model.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">model</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Item to check</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.has(vo);</code></pre>
 
                 </div>
             </div>
@@ -2604,9 +2642,9 @@ If the index is out of bounds, the collection will clamp it.</p>
 </div>
 
         
-            <a name="method_hasItem" class="anchor-link"></a>
+            <a name="method_indexOf" class="anchor-link"></a>
 <div class="method item public">
-    <h3 class="name"><code>hasItem</code>
+    <h3 class="name"><code>indexOf</code>
 
     
         <div class="args">
@@ -2614,7 +2652,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
                 <li class="arg">
                     
-                        <code>item</code>
+                        <code>model</code>
                     
                 </li>
             
@@ -2655,7 +2693,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l112"><code>src&#x2F;model&#x2F;Collection.js:112</code></a>
+        <a href="../files/src_model_Collection.js.html#l142"><code>src&#x2F;model&#x2F;Collection.js:142</code></a>
         
         </p>
 
@@ -2668,7 +2706,7 @@ If the index is out of bounds, the collection will clamp it.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Checks if a collection has an item.</p>
+            <p>Returns the array index position of the value object.</p>
 
         </div>
 
@@ -2680,14 +2718,14 @@ If the index is out of bounds, the collection will clamp it.</p>
                 
                     <li class="param">
                         
-                            <code class="param-name">item</code>
+                            <code class="param-name">model</code>
                             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>Item to check</p>
+                            <p>get the index of.</p>
 
                         </div>
 
@@ -2712,6 +2750,234 @@ If the index is out of bounds, the collection will clamp it.</p>
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.indexOf(vo);</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_Object" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>Object</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Any</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l266"><code>src&#x2F;model&#x2F;Collection.js:266</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Creates and returns a new collection object that contains a reference to the models in the collection cloned from.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Any</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var clone = collection.clone();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_remove" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>remove</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>model</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[silent=false]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_Collection.js.html#l101"><code>src&#x2F;model&#x2F;Collection.js:101</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes a model or an array of models from the collection.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">model</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Model(s) to remove</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[silent=false]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.remove(vo);
+
+ collection.remove(vo, true);</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -2869,30 +3135,18 @@ If the index is out of bounds, the collection will clamp it.</p>
 </div>
 
         
-            <a name="method_removeItem" class="anchor-link"></a>
+            <a name="method_toJSON" class="anchor-link"></a>
 <div class="method item public">
-    <h3 class="name"><code>removeItem</code>
+    <h3 class="name"><code>toJSON</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>item</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[silent=false]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+        </span>
     
 
     
@@ -2922,7 +3176,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l74"><code>src&#x2F;model&#x2F;Collection.js:74</code></a>
+        <a href="../files/src_model_Collection.js.html#l280"><code>src&#x2F;model&#x2F;Collection.js:280</code></a>
         
         </p>
 
@@ -2935,85 +3189,52 @@ If the index is out of bounds, the collection will clamp it.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Removes an item from the collection, maintaining its current sort
-If the collection doesn&#39;t have the item, it throws an error</p>
+            <p>Creates a JSON object of the collection.</p>
 
         </div>
 
         
-            <div class="params">
-                <h4>Parameters:</h4>
 
-                <ul class="params-list">
-                
-                    <li class="param">
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
                         
-                            <code class="param-name">item</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
                         
-
-                        
-
-                        <div class="param-description">
-                            <p>Item to remove</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[silent=false]</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
+                    
+                </div>
             </div>
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
 
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var arrayOfObjects = collection.toJSON();</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
 
         
-            <a name="method_removeItems" class="anchor-link"></a>
+            <a name="method_toJSONString" class="anchor-link"></a>
 <div class="method item public">
-    <h3 class="name"><code>removeItems</code>
+    <h3 class="name"><code>toJSONString</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>items</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[silent=false]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
     
 
     
@@ -3043,7 +3264,7 @@ If the collection doesn&#39;t have the item, it throws an error</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l94"><code>src&#x2F;model&#x2F;Collection.js:94</code></a>
+        <a href="../files/src_model_Collection.js.html#l301"><code>src&#x2F;model&#x2F;Collection.js:301</code></a>
         
         </p>
 
@@ -3056,55 +3277,35 @@ If the collection doesn&#39;t have the item, it throws an error</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Removes an array of items from the collection</p>
+            <p>Creates a JSON string of the collection.</p>
 
         </div>
 
         
-            <div class="params">
-                <h4>Parameters:</h4>
 
-                <ul class="params-list">
-                
-                    <li class="param">
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
                         
-                            <code class="param-name">items</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a></span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
-
-                        
-
-                        <div class="param-description">
-                            <p>List of items to add to the current collection</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name optional">[silent=false]</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                            <span class="flag optional" title="This parameter is optional.">optional</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>If you&#39;d like to prevent the event from being dispatched.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
+                    
+                </div>
             </div>
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
 
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var str = collection.toJSONString();</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
