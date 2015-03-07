@@ -26,6 +26,7 @@
      * @requires BaseEvent
      * @requires Lodash
      * @constructor
+     * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
      */
     var Collection = (function () {
