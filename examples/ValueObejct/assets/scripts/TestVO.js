@@ -26,8 +26,8 @@ define(function (require, exports, module)
 
             this.age = 0;
             this.name = null;
-            this.house = HouseVO;
-            this.cars = CarVO;
+            this.house = null;
+            this.cars = [];
 
             if (data)
             {

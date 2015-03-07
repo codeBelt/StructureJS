@@ -39,7 +39,7 @@
              * The list of models in the collection.
              *
              * @property models
-             * @type {array}
+             * @type {Array}
              * @readOnly
              */
             this.models = [];
@@ -47,7 +47,7 @@
              * The count of how many models are in the collection.
              *
              * @property length
-             * @type {init}
+             * @type {int}
              * @default 0
              * @readOnly
              * @public
@@ -166,7 +166,7 @@
          * If the index is out of bounds, the collection will clamp it.
          *
          * @method get
-         * @param index {init} The index integer of the model to get
+         * @param index {int} The index integer of the model to get
          * @return {Object} model to find
          * @public
          * @example
@@ -187,7 +187,7 @@
          * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
          * @method find
          * @param arg {Object|Array}
-         * @return {array} Returns a list of found object's.
+         * @return {Array} Returns a list of found object's.
          * @public
          * @example
          *      // Finds all value object that has 'Robert' in it.
@@ -225,7 +225,7 @@
          *
          * @method _findPropertyValue
          * @param arg {String|Number|Boolean>}
-         * @return {array} Returns a list of found object's.
+         * @return {Array} Returns a list of found object's.
          * @private
          */
         Collection.prototype._findPropertyValue = function (arg) {

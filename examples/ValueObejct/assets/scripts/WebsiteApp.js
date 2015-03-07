@@ -108,7 +108,7 @@ define(function (require, exports, module)
                 {
                     name: "Mario",
                     house: {
-                        address: '3 Street',
+                        address: '2 Street',
                         numOfBathrooms: 5,
                         numOfBedRooms: 11
                     }
@@ -120,14 +120,20 @@ define(function (require, exports, module)
             ]
 
 
-            //var collection = new Collection(TestVO);
-            ////var collection = new Collection();
-            //console.log("collection", collection);
-            //collection.add(people);
-            //console.log("collection", collection.toJSON());
-            //console.log("collection.models", collection.models.length);
+            var collection = new Collection(TestVO);
+            //var collection = new Collection();
+            console.log("collection", collection);
+            collection.add(people);
+            console.log("collection", collection.toJSON());
+            var item = collection.get(1);
+            console.log("item", item);
+            console.log("collection", collection.has(item));
+            console.log("collection", collection.indexOf(item));
+            console.log("collection.models", collection.models.length);
+
+            console.log("collection", collection.find('krista', '1 Street'));
+
             //collection.remove(collection.models);
-            //console.log("collection", collection);
         };
 
         /**

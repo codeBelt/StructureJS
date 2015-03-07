@@ -25,7 +25,7 @@ module StructureTS
          * TODO: YUIDoc_comment
          *
          * @property items
-         * @type {array}
+         * @type {Array}
          * @readOnly
          */
         public items:any[] = [];
@@ -34,7 +34,7 @@ module StructureTS
          * TODO: YUIDoc_comment
          *
          * @property length
-         * @type {init}
+         * @type {int}
          * @default 0
          * @readOnly
          * @public
@@ -168,7 +168,7 @@ module StructureTS
          * If the index is out of bounds, the collection will clamp it.
          *
          * @method getItemByIndex
-         * @param index {init} The index integer of the item to get
+         * @param index {int} The index integer of the item to get
          * @return {Object} item to find
          * @public
          *
@@ -203,7 +203,7 @@ module StructureTS
          this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          * @method find
          * @param arg {Object|Array}
-         * @return {array} Returns a list of found object's.
+         * @return {Array} Returns a list of found object's.
          * @public
          */
         public find(arg:any):any[]
@@ -240,7 +240,7 @@ module StructureTS
          *
          * @method findPropertyValue
          * @param arg {String|Number|Boolean>}
-         * @return {array} Returns a list of found object's.
+         * @return {Array} Returns a list of found object's.
          * @private
          */
         private findPropertyValue(arg:any):any[]
