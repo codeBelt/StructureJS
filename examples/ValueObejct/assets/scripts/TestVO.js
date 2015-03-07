@@ -6,6 +6,7 @@ define(function (require, exports, module)
     var Extend = require('structurejs/util/Extend');
     var ValueObject = require('structurejs/model/ValueObject');
     var HouseVO = require('./HouseVO');
+    var CarVO = require('./CarVO');
 
     /**
      * TODO: YUIDoc_comment
@@ -26,6 +27,7 @@ define(function (require, exports, module)
             this.age = 0;
             this.name = null;
             this.house = HouseVO;
+            this.cars = CarVO;
 
             if (data)
             {
