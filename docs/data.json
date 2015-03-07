@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.13",
+        "version": "0.6.14",
         "url": ""
     },
     "files": {
@@ -428,7 +428,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "TODO: YUIDoc_comment",
+            "description": "The Collection class provides a way for you to manage your models.",
             "file": "src/model/ValueObject.js",
             "line": 17
         },
@@ -988,7 +988,7 @@
             "namespace": "",
             "file": "src/model/Collection.js",
             "line": 17,
-            "description": "TODO: YUIDoc_comment",
+            "description": "The Collection class provides a way for you to manage your models.",
             "submodule": "model",
             "extends": "EventDispatcher",
             "requires": [
@@ -998,6 +998,13 @@
                 "Lodash"
             ],
             "is_constructor": 1,
+            "params": [
+                {
+                    "name": "valueObjectType",
+                    "description": "Pass a class that extends ValueObject and the data added to the collection will be created as that type.",
+                    "type": "ValueObject"
+                }
+            ],
             "author": "Robert S. (www.codeBelt.com)"
         },
         "Route": {
@@ -2734,7 +2741,7 @@
             "description": "Returns the number of children of this object.",
             "itemtype": "property",
             "name": "numChildren",
-            "type": "{init}",
+            "type": "{int}",
             "default": "0",
             "readonly": "",
             "access": "public",
@@ -2749,7 +2756,7 @@
             "description": "A reference to the child DisplayObjectContainer instances to this parent object instance.",
             "itemtype": "property",
             "name": "children",
-            "type": "{array}",
+            "type": "{Array}",
             "readonly": "",
             "access": "public",
             "tagname": "",
@@ -4527,11 +4534,11 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 37,
-            "description": "TODO: YUIDoc_comment",
+            "line": 39,
+            "description": "The list of models in the collection.",
             "itemtype": "property",
-            "name": "items",
-            "type": "{array}",
+            "name": "models",
+            "type": "{Array}",
             "readonly": "",
             "class": "Collection",
             "module": "StructureJS",
@@ -4539,11 +4546,11 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 45,
-            "description": "TODO: YUIDoc_comment",
+            "line": 47,
+            "description": "The count of how many models are in the collection.",
             "itemtype": "property",
             "name": "length",
-            "type": "{init}",
+            "type": "{int}",
             "default": "0",
             "readonly": "",
             "access": "public",
@@ -4554,15 +4561,55 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 56,
-            "description": "Add an item to the current collection",
+            "line": 57,
+            "description": "A reference to a ValueObject that will be used in the collection.",
+            "itemtype": "property",
+            "name": "_modelType",
+            "type": "{ValueObject}",
+            "access": "private",
+            "tagname": "",
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 67,
+            "description": "Adds model or an array of models to the collection.",
             "itemtype": "method",
-            "name": "addItem",
+            "name": "add",
             "params": [
                 {
-                    "name": "item",
-                    "description": "The item to add.",
-                    "type": "Object"
+                    "name": "model",
+                    "description": "Single or an array of models to add to the current collection.",
+                    "type": "Any|Array"
+                },
+                {
+                    "name": "silent",
+                    "description": "If you'd like to prevent the event from being dispatched.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n     collection.add(vo);\n     collection.add(vo, true);"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 101,
+            "description": "Removes a model or an array of models from the collection.",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "model",
+                    "description": "Model(s) to remove",
+                    "type": "Object|Array"
                 },
                 {
                     "name": "silent",
@@ -4574,71 +4621,22 @@
             ],
             "access": "public",
             "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 74,
-            "description": "Removes an item from the collection, maintaining its current sort\nIf the collection doesn't have the item, it throws an error",
-            "itemtype": "method",
-            "name": "removeItem",
-            "params": [
-                {
-                    "name": "item",
-                    "description": "Item to remove",
-                    "type": "Object"
-                },
-                {
-                    "name": "silent",
-                    "description": "If you'd like to prevent the event from being dispatched.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
+            "example": [
+                "\n     collection.remove(vo);\n\n     collection.remove(vo, true);"
             ],
-            "access": "public",
-            "tagname": "",
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 94,
-            "description": "Removes an array of items from the collection",
+            "line": 129,
+            "description": "Checks if a collection has an model.",
             "itemtype": "method",
-            "name": "removeItems",
+            "name": "has",
             "params": [
                 {
-                    "name": "items",
-                    "description": "List of items to add to the current collection",
-                    "type": "Object[]"
-                },
-                {
-                    "name": "silent",
-                    "description": "If you'd like to prevent the event from being dispatched.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
-            ],
-            "access": "public",
-            "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 112,
-            "description": "Checks if a collection has an item.",
-            "itemtype": "method",
-            "name": "hasItem",
-            "params": [
-                {
-                    "name": "item",
+                    "name": "model",
                     "description": "Item to check",
                     "type": "Object"
                 }
@@ -4649,19 +4647,22 @@
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     collection.has(vo);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 123,
+            "line": 142,
             "description": "Returns the array index position of the value object.",
             "itemtype": "method",
-            "name": "getIndexOfItem",
+            "name": "indexOf",
             "params": [
                 {
-                    "name": "item",
+                    "name": "model",
                     "description": "get the index of.",
                     "type": "Object"
                 }
@@ -4672,29 +4673,8 @@
             },
             "access": "public",
             "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 134,
-            "description": "Adds an array of items to the collection",
-            "itemtype": "method",
-            "name": "addItems",
-            "params": [
-                {
-                    "name": "items",
-                    "description": "List of items to add to the current collection.",
-                    "type": "Array"
-                },
-                {
-                    "name": "silent",
-                    "description": "If you'd like to prevent the event from being dispatched.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
+            "example": [
+                "\n     collection.indexOf(vo);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -4702,34 +4682,34 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 151,
+            "line": 155,
             "description": "Finds an object by an index value.\nIf the index is out of bounds, the collection will clamp it.",
             "itemtype": "method",
-            "name": "getItemByIndex",
+            "name": "get",
             "params": [
                 {
                     "name": "index",
-                    "description": "The index integer of the item to get",
-                    "type": "Init"
+                    "description": "The index integer of the model to get",
+                    "type": "Int"
                 }
             ],
             "return": {
-                "description": "item to find",
+                "description": "model to find",
                 "type": "Object"
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     collection.get(1);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 171,
+            "line": 176,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
-            "example": [
-                "\n        // Finds all value object that has 'Robert' in it.\n        this._collection.find(\"Robert\");\n        // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n        this._collection.find([\"Robert\", \"Heather\", 32]);\n\n        // Finds all value objects that same key and value you are searching for.\n        this._collection.find({ name: 'apple', organic: false, type: 'fruit' });\n        this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
-            ],
             "itemtype": "method",
             "name": "find",
             "params": [
@@ -4745,16 +4725,19 @@
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     // Finds all value object that has 'Robert' in it.\n     this._collection.find(\"Robert\");\n     // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n     this._collection.find([\"Robert\", \"Heather\", 32]);\n\n     // Finds all value objects that same key and value you are searching for.\n     this._collection.find({ name: 'apple', organic: false, type: 'fruit' });\n     this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 209,
+            "line": 214,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
-            "name": "findPropertyValue",
+            "name": "_findPropertyValue",
             "params": [
                 {
                     "name": "arg",
@@ -4774,20 +4757,8 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 243,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "copy",
-            "access": "public",
-            "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 254,
-            "description": "TODO: YUIDoc_comment",
+            "line": 248,
+            "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
             "params": [
@@ -4801,14 +4772,88 @@
             ],
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     collection.clear();"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 269,
-            "overridden": "BaseObject.destroy",
+            "line": 266,
+            "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
+            "itemtype": "method",
+            "name": "Object",
+            "return": {
+                "description": "",
+                "type": "Any"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var clone = collection.clone();"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 280,
+            "description": "Creates a JSON object of the collection.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var arrayOfObjects = collection.toJSON();"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 301,
+            "description": "Creates a JSON string of the collection.",
+            "itemtype": "method",
+            "name": "toJSONString",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var str = collection.toJSONString();"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 313,
+            "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
+            "itemtype": "method",
+            "name": "fromJSON",
+            "params": [
+                {
+                    "name": "json",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n     collection.fromJSON(str);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
@@ -4951,13 +4996,13 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 129,
+            "line": 113,
             "description": "Converts the value object data into a JSON object and deletes the cid property.",
             "itemtype": "method",
             "name": "toJSON",
             "return": {
                 "description": "",
-                "type": "ValueObject"
+                "type": "Any"
             },
             "access": "public",
             "tagname": "",
@@ -4970,7 +5015,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 142,
+            "line": 126,
             "description": "Converts a value object to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -4989,7 +5034,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 154,
+            "line": 138,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5011,7 +5056,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 170,
+            "line": 154,
             "description": "Create a clone/copy of the value object.",
             "itemtype": "method",
             "name": "Object",
@@ -5771,7 +5816,7 @@
             "description": "A list of day names.",
             "itemtype": "property",
             "name": "LONG_DAY_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -5786,7 +5831,7 @@
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_DAY_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -5801,7 +5846,7 @@
             "description": "A list of month names.",
             "itemtype": "property",
             "name": "LONG_MONTH_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -5816,7 +5861,7 @@
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_MONTH_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -8097,8 +8142,16 @@
             "line": " src/event/TimerEvent.js:45"
         },
         {
-            "message": "unknown tag: overridden",
-            "line": " src/model/Collection.js:269"
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/model/Collection.js:266"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/model/Collection.js:280"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/model/Collection.js:301"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8110,15 +8163,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:129"
+            "line": " src/model/ValueObject.js:113"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:142"
+            "line": " src/model/ValueObject.js:126"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:170"
+            "line": " src/model/ValueObject.js:154"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8479,10 +8532,6 @@
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " src/model/Collection.js:1"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/model/Collection.js:269"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

@@ -62,7 +62,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "model",
             "name": "model",
-            "description": "TODO: YUIDoc_comment"
+            "description": "The Collection class provides a way for you to manage your models."
         },
         {
             "displayName": "StructureJS",
