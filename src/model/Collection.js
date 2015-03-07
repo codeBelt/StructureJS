@@ -126,7 +126,7 @@
                 // Only remove the model if it exists in the the collection.
                 if (this.has(models[i]) === true)
                 {
-                    this.models.splice(this.getIndexOf(models[i]), 1);
+                    this.models.splice(this.indexOf(models[i]), 1);
                     this.length = this.models.length;
                 }
             }
@@ -146,33 +146,33 @@
          *      collection.has(vo);
          */
         Collection.prototype.has = function (model) {
-            return this.getIndexOf(model) > -1;
+            return this.indexOf(model) > -1;
         };
         /**
          * Returns the array index position of the value object.
          *
-         * @method getIndexOf
+         * @method indexOf
          * @param model {Object} get the index of.
          * @return {boolean}
          * @public
          * @example
-         *      collection.getIndexOf(vo);
+         *      collection.indexOf(vo);
          */
-        Collection.prototype.getIndexOf = function (model) {
+        Collection.prototype.indexOf = function (model) {
             return this.models.indexOf(model);
         };
         /**
          * Finds an object by an index value.
          * If the index is out of bounds, the collection will clamp it.
          *
-         * @method getModelByIndex
+         * @method get
          * @param index {init} The index integer of the model to get
          * @return {Object} model to find
          * @public
          * @example
-         *      collection.getModelByIndex(1);
+         *      collection.get(1);
          */
-        Collection.prototype.getModelByIndex = function (index) {
+        Collection.prototype.get = function (index) {
             if (index < 0) {
                 index = 0;
             }
