@@ -25,7 +25,7 @@
      */
     var MerchantUtil = (function () {
         function MerchantUtil() {
-            throw new Error('[MerchantUtil] Do not instantiation the MerchantUtil class because it is a static class.');
+            throw new Error('[MerchantUtil] Do not instantiate the MerchantUtil class because it is a static class.');
         }
         /**
          * Determines if credit card is valid using the Luhn formula.

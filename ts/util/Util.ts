@@ -16,7 +16,7 @@ module StructureTS
          * Keeps track of the count for the uniqueId method.
          *
          * @property _idCounter
-         * @type {init}
+         * @type {int}
          * @private
          * @static
          */
@@ -24,7 +24,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[Util] Do not instantiation the Util class because it is a static class.');
+            throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
         }
 
         /**
@@ -61,7 +61,7 @@ module StructureTS
          *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
-         * @param list {array} A list of property names you want to remove from the object.
+         * @param list {Array} A list of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static

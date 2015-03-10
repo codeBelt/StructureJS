@@ -13,8 +13,38 @@
  */
 module StructureTS
 {
-    export class BrowserUtil extends EventDispatcher
+    export class BrowserUtil
     {
+        /**
+         * A reference to the EventDispatcher object.
+         *
+         * @property _eventDispatcher
+         * @type {EventDispatcher}
+         * @private
+         * @static
+         */
+        private static _eventDispatcher:EventDispatcher = new EventDispatcher();
+
+        /**
+         * A reference to the browser window object.
+         *
+         * @property _window
+         * @type {Window}
+         * @private
+         * @static
+         */
+        private static _window:Window = window;
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property _onBreakpointChangeHandler
+         * @type {any}
+         * @private
+         * @static
+         */
+        private static _onBreakpointChangeHandler:any = null;
+
         /**
          * The delay in milliseconds for the Util.{{#crossLink "Util/debounce:method"}}{{/crossLink}} method that dispatches
          * the BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink "BrowserUtil/getBreakpoint:method"}}{{/crossLink}}.
@@ -23,57 +53,52 @@ module StructureTS
          * @type {number}
          * @default 250
          * @public
+         * @static
          */
-        public debounceDelay:number = 250;
-
-        /**
-         * A reference to the browser window object.
-         *
-         * @property _window
-         * @type {Window}
-         * @private
-         */
-        private _window:Window = window;
+        public static debounceDelay:number = 250;
 
         /**
          * TODO: YUIDoc_comment
          *
-         * @property _onBreakpointChangeHandler
-         * @type {any}
-         * @private
+         * @property isEnabled
+         * @type {boolean}
+         * @public
+         * @static
          */
-        private _onBreakpointChangeHandler:any = null;
+        public static isEnabled:boolean = false;
 
         constructor()
         {
-            super();
-
-            this.enable();
+            throw new Error('[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.');
         }
 
         /**
-         * @overridden EventDispatcher.enable
+         * Dispatches a breakpoint event.
+         *
+         * @method enable
+         * @public
+         * @static
          */
-        public enable():void
+        public static enable():void
         {
-            if (this.isEnabled === true) return;
+            if (BrowserUtil.isEnabled === true) { return; }
 
-            this._onBreakpointChangeHandler = Util.debounce(this.onBreakpointChange, this.debounceDelay, false, this);
-            this._window.addEventListener('resize', this._onBreakpointChangeHandler);
+            BrowserUtil._onBreakpointChangeHandler = Util.debounce(BrowserUtil._onBreakpointChange, BrowserUtil.debounceDelay, false, BrowserUtil);
+            BrowserUtil._window.addEventListener('resize', BrowserUtil._onBreakpointChangeHandler);
 
-            super.enable();
+            BrowserUtil.isEnabled = true;
         }
 
         /**
          * @overridden EventDispatcher.disable
          */
-        public disable():void
+        public static disable():void
         {
-            if (this.isEnabled === false) return;
+            if (BrowserUtil.isEnabled === false) { return; }
 
-            this._window.removeEventListener('resize', this._onBreakpointChangeHandler);
+            BrowserUtil._window.removeEventListener('resize', BrowserUtil._onBreakpointChangeHandler);
 
-            super.disable();
+            BrowserUtil.isEnabled = false;
         }
 
         /**
@@ -87,9 +112,9 @@ module StructureTS
          *      BrowserUtil.browserName();
          *      // 'Chrome'
          */
-        public browserName():string
+        public static browserName():string
         {
-            return this.getBrowser()[0];
+            return BrowserUtil.getBrowser()[0];
         }
 
         /**
@@ -107,9 +132,9 @@ module StructureTS
          *      BrowserUtil.browserVersion(false);
          *      // '39.0.2171.99'
          */
-        public browserVersion(majorVersion:boolean = true):any
+        public static browserVersion(majorVersion:boolean = true):any
         {
-            var version:string = this.getBrowser()[1];
+            var version:string = BrowserUtil.getBrowser()[1];
 
             if (majorVersion === true)
             {
@@ -132,7 +157,7 @@ module StructureTS
          *      BrowserUtil.getBrowser();
          *      // ["Chrome", "39.0.2171.99"]
          */
-        private getBrowser():string[]
+        private static getBrowser():string[]
         {
             var N = navigator.appName;
             var ua = navigator.userAgent;
@@ -143,7 +168,8 @@ module StructureTS
             {
                 M[2] = tem[1];
             }
-            else {
+            else
+            {
                 M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
             }
 
@@ -161,7 +187,7 @@ module StructureTS
          *      BrowserUtil.isAndroid();
          *      // false
          */
-        public isAndroid():boolean
+        public static isAndroid():boolean
         {
             return !!navigator.userAgent.match(/Android/i);
         }
@@ -177,7 +203,7 @@ module StructureTS
          *      BrowserUtil.isBlackBerry();
          *      // false
          */
-        public isBlackBerry():boolean
+        public static isBlackBerry():boolean
         {
             return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
         }
@@ -193,7 +219,7 @@ module StructureTS
          *      BrowserUtil.isIOS();
          *      // false
          */
-        public isIOS():boolean
+        public static isIOS():boolean
         {
             return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
         }
@@ -209,7 +235,7 @@ module StructureTS
          *      BrowserUtil.isOperaMini();
          *      // false
          */
-        public isOperaMini():boolean
+        public static isOperaMini():boolean
         {
             return !!navigator.userAgent.match(/Opera Mini/i);
         }
@@ -225,7 +251,7 @@ module StructureTS
          *      BrowserUtil.isIEMobile();
          *      // false
          */
-        public isIEMobile():boolean
+        public static isIEMobile():boolean
         {
             return !!navigator.userAgent.match(/IEMobile/i);
         }
@@ -241,9 +267,9 @@ module StructureTS
          *      BrowserUtil.isMobile();
          *      // false
          */
-        public isMobile():boolean
+        public static isMobile():boolean
         {
-            return (this.isAndroid() || this.isBlackBerry() || this.isIOS() || this.isOperaMini() || this.isIEMobile());
+            return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
         }
 
         /**
@@ -257,7 +283,7 @@ module StructureTS
          *      BrowserUtil.hasBrowserHistory();
          *      // true
          */
-        public hasBrowserHistory():boolean
+        public static hasBrowserHistory():boolean
         {
             return !!(window.history && history.pushState);
         }
@@ -273,7 +299,7 @@ module StructureTS
          *      BrowserUtil.hasLocalStorage();
          *      // true
          */
-        public hasLocalStorage():boolean
+        public static hasLocalStorage():boolean
         {
             try
             {
@@ -296,7 +322,7 @@ module StructureTS
          *      BrowserUtil.hasSessionStorage();
          *      // true
          */
-        public hasSessionStorage():boolean
+        public static hasSessionStorage():boolean
         {
             try
             {
@@ -334,11 +360,58 @@ module StructureTS
          *          // 'screen_sm'
          *      };
          */
-        public getBreakpoint()
+        public static getBreakpoint()
         {
-            return this._window.getComputedStyle(
+            return BrowserUtil._window.getComputedStyle(
                 document.querySelector('body'), ':after'
             ).getPropertyValue('content').replace(/"/g, '');
+        }
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method addEventListener
+         * @public
+         * @static
+         */
+        public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):void
+        {
+            BrowserUtil._eventDispatcher.addEventListener(type, callback, scope, priority);
+            BrowserUtil.enable();
+        }
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method removeEventListener
+         * @public
+         * @static
+         */
+        public static removeEventListener(type:string, callback:Function, scope:any):void
+        {
+            BrowserUtil._eventDispatcher.removeEventListener(type, callback, scope);
+        }
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method dispatchEvent
+         * @public
+         * @static
+         */
+        public static dispatchEvent(type:any, data:any = null):void
+        {
+            var event:any = type;
+
+            if (typeof event === 'string')
+            {
+                event = new BaseEvent(type, false, false, data);
+            }
+
+            event.target = BrowserUtil;
+            event.currentTarget = BrowserUtil;
+
+            BrowserUtil._eventDispatcher.dispatchEvent(event);
         }
 
         /**
@@ -346,10 +419,11 @@ module StructureTS
          *
          * @method _onBreakpointChange
          * @private
+         * @static
          */
-        private onBreakpointChange(event)
+        private static _onBreakpointChange(event)
         {
-            this.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, this.getBreakpoint()));
+            BrowserUtil.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, BrowserUtil.getBreakpoint()));
         }
 
     }

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.11</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,13 +55,9 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
-                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
-            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
-            
-                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
@@ -74,10 +70,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
-            
-                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,16 +103,6 @@
             
                 <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
-                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
-            
-                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
-            
-                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
-            
-                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
-            
-                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
-            
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
@@ -138,8 +120,6 @@
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
                 <li><a class="module" href="../modules/model.html">model</a></li>
-            
-                <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
@@ -188,7 +168,7 @@
     var Util = (function () {
 
         function Util() {
-            throw new Error(&#x27;[Util] Do not instantiation the Util class because it is a static class.&#x27;);
+            throw new Error(&#x27;[Util] Do not instantiate the Util class because it is a static class.&#x27;);
         }
         /**
          * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
@@ -220,7 +200,7 @@
          *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
-         * @param list {array} A list of property names you want to remove from the object.
+         * @param list {Array} A list of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static

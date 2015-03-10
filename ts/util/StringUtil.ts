@@ -14,7 +14,7 @@ module StructureTS
     {
         constructor()
         {
-            throw new Error('[StringUtil] Do not instantiation the StringUtil class because it is a static class.');
+            throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
         }
 
         /**

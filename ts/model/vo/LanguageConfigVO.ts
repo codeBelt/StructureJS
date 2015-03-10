@@ -35,21 +35,12 @@ module StructureTS
          */
         public update(data:any):any
         {
-            this.id = data.id;
-            this.lang = data.lang;
-            this.text = data.text;
-            this.path = data.path;
+            super.update(data);
+
+            // Override any values after the default super update method has set the values.
 
             return this;
         }
 
-        /**
-         * @overridden ValueObject.copy
-         */
-        public copy():LanguageConfigVO
-        {
-            var data:IValueObject = super.copy();
-            return new LanguageConfigVO(data);
-        }
     }
 }

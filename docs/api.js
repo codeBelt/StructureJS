@@ -6,18 +6,14 @@ YUI.add("yuidoc-meta", function(Y) {
         "BaseEvent",
         "BaseObject",
         "BrowserUtil",
-        "BulkLoader",
         "Collection",
         "ComponentFactory",
         "DOMElement",
-        "DataStoreAbstract",
         "DateUtil",
         "DisplayObjectContainer",
         "EventBroker",
         "EventDispatcher",
         "Extend",
-        "JsonDataStore",
-        "LoaderEvent",
         "LocalStorageController",
         "LocalStorageEvent",
         "MathUtil",
@@ -34,11 +30,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "TemplateFactory",
         "Timer",
         "TimerEvent",
-        "URLContentType",
-        "URLLoader",
-        "URLLoaderDataFormat",
-        "URLRequest",
-        "URLRequestMethod",
         "Util",
         "ValidationUtil",
         "ValueObject"
@@ -49,7 +40,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "core",
         "event",
         "model",
-        "net",
         "util",
         "view"
     ],
@@ -72,12 +62,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "model",
             "name": "model",
-            "description": "The DataStoreAbstract..."
-        },
-        {
-            "displayName": "net",
-            "name": "net",
-            "description": "The URLContentType..."
+            "description": "The Collection class provides a way for you to manage your models."
         },
         {
             "displayName": "StructureJS",

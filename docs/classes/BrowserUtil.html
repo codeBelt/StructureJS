@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.11</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,13 +55,9 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
-                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
-            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
-            
-                <li><a class="type" href="../classes/DataStoreAbstract.html">DataStoreAbstract</a></li>
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
@@ -74,10 +70,6 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
-            
-                <li><a class="type" href="../classes/JsonDataStore.html">JsonDataStore</a></li>
-            
-                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,16 +103,6 @@
             
                 <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
             
-                <li><a class="type" href="../classes/URLContentType.html">URLContentType</a></li>
-            
-                <li><a class="type" href="../classes/URLLoader.html">URLLoader</a></li>
-            
-                <li><a class="type" href="../classes/URLLoaderDataFormat.html">URLLoaderDataFormat</a></li>
-            
-                <li><a class="type" href="../classes/URLRequest.html">URLRequest</a></li>
-            
-                <li><a class="type" href="../classes/URLRequestMethod.html">URLRequestMethod</a></li>
-            
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
@@ -138,8 +120,6 @@
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
                 <li><a class="module" href="../modules/model.html">model</a></li>
-            
-                <li><a class="module" href="../modules/net.html">net</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
             
@@ -223,8 +203,18 @@
         <ul class="index-list properties">
             
                 <li class="index-item property private">
+                    <a href="#property__eventDispatcher">_eventDispatcher</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property private">
                     <a href="#property__onBreakpointChangeHandler">_onBreakpointChangeHandler</a>
 
+                    
+                        <span class="flag static">static</span>
                     
                 </li>
             
@@ -232,11 +222,23 @@
                     <a href="#property__window">_window</a>
 
                     
+                        <span class="flag static">static</span>
+                    
                 </li>
             
                 <li class="index-item property public">
                     <a href="#property_debounceDelay">debounceDelay</a>
 
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_isEnabled">isEnabled</a>
+
+                    
+                        <span class="flag static">static</span>
                     
                 </li>
             
@@ -260,6 +262,17 @@
                     <a href="#method__onBreakpointChange">_onBreakpointChange</a>
 
                     
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_addEventListener">addEventListener</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
                     
                 </li>
             
@@ -274,6 +287,24 @@
             
                 <li class="index-item method public">
                     <a href="#method_browserVersion">browserVersion</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_dispatchEvent">dispatchEvent</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_enable">enable</a>
 
                     
                         <span class="flag static">static</span>
@@ -380,6 +411,15 @@
                     
                 </li>
             
+                <li class="index-item method public">
+                    <a href="#method_removeEventListener">removeEventListener</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
         </ul>
     </div>
 
@@ -393,6 +433,60 @@
 
     <div class="properties-detail">
         <h2>Properties</h2>
+
+        
+            <a name="property__eventDispatcher" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_eventDispatcher</code>
+    <span class="type"><a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l333"><code>src&#x2F;util&#x2F;BrowserUtil.js:333</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the EventDispatcher object.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="property__onBreakpointChangeHandler" class="anchor-link"></a>
@@ -409,6 +503,8 @@
     
 
     
+        <span class="flag static">static</span>
+    
 
     </h3>
 
@@ -423,7 +519,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l50"><code>src&#x2F;util&#x2F;BrowserUtil.js:50</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l351"><code>src&#x2F;util&#x2F;BrowserUtil.js:351</code></a>
         
         </p>
 
@@ -461,6 +557,8 @@
     
 
     
+        <span class="flag static">static</span>
+    
 
     </h3>
 
@@ -475,7 +573,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l42"><code>src&#x2F;util&#x2F;BrowserUtil.js:42</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l342"><code>src&#x2F;util&#x2F;BrowserUtil.js:342</code></a>
         
         </p>
 
@@ -513,6 +611,8 @@
     
 
     
+        <span class="flag static">static</span>
+    
 
     </h3>
 
@@ -527,7 +627,7 @@
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l32"><code>src&#x2F;util&#x2F;BrowserUtil.js:32</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l360"><code>src&#x2F;util&#x2F;BrowserUtil.js:360</code></a>
         
         </p>
 
@@ -545,6 +645,60 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">250</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_isEnabled" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>isEnabled</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l371"><code>src&#x2F;util&#x2F;BrowserUtil.js:371</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
         
 
         
@@ -590,6 +744,8 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
     
 
     
+        <span class="flag static">static</span>
+    
 
     
 
@@ -608,7 +764,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l307"><code>src&#x2F;util&#x2F;BrowserUtil.js:307</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l323"><code>src&#x2F;util&#x2F;BrowserUtil.js:323</code></a>
         
         </p>
 
@@ -622,6 +778,71 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
 
         <div class="description">
             <p>Dispatches a breakpoint event.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_addEventListener" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>addEventListener</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l284"><code>src&#x2F;util&#x2F;BrowserUtil.js:284</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
 
         </div>
 
@@ -677,7 +898,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l79"><code>src&#x2F;util&#x2F;BrowserUtil.js:79</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l56"><code>src&#x2F;util&#x2F;BrowserUtil.js:56</code></a>
         
         </p>
 
@@ -778,7 +999,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l93"><code>src&#x2F;util&#x2F;BrowserUtil.js:93</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l70"><code>src&#x2F;util&#x2F;BrowserUtil.js:70</code></a>
         
         </p>
 
@@ -853,6 +1074,136 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
 </div>
 
         
+            <a name="method_dispatchEvent" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>dispatchEvent</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l306"><code>src&#x2F;util&#x2F;BrowserUtil.js:306</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_enable" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>enable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l31"><code>src&#x2F;util&#x2F;BrowserUtil.js:31</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Dispatches a breakpoint event.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method_getBreakpoint" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>getBreakpoint</code>
@@ -896,7 +1247,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l278"><code>src&#x2F;util&#x2F;BrowserUtil.js:278</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l255"><code>src&#x2F;util&#x2F;BrowserUtil.js:255</code></a>
         
         </p>
 
@@ -1004,7 +1355,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l118"><code>src&#x2F;util&#x2F;BrowserUtil.js:118</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l95"><code>src&#x2F;util&#x2F;BrowserUtil.js:95</code></a>
         
         </p>
 
@@ -1095,7 +1446,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l226"><code>src&#x2F;util&#x2F;BrowserUtil.js:226</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l203"><code>src&#x2F;util&#x2F;BrowserUtil.js:203</code></a>
         
         </p>
 
@@ -1186,7 +1537,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l240"><code>src&#x2F;util&#x2F;BrowserUtil.js:240</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l217"><code>src&#x2F;util&#x2F;BrowserUtil.js:217</code></a>
         
         </p>
 
@@ -1277,7 +1628,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l259"><code>src&#x2F;util&#x2F;BrowserUtil.js:259</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l236"><code>src&#x2F;util&#x2F;BrowserUtil.js:236</code></a>
         
         </p>
 
@@ -1368,7 +1719,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l142"><code>src&#x2F;util&#x2F;BrowserUtil.js:142</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l119"><code>src&#x2F;util&#x2F;BrowserUtil.js:119</code></a>
         
         </p>
 
@@ -1459,7 +1810,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l156"><code>src&#x2F;util&#x2F;BrowserUtil.js:156</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l133"><code>src&#x2F;util&#x2F;BrowserUtil.js:133</code></a>
         
         </p>
 
@@ -1550,7 +1901,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l198"><code>src&#x2F;util&#x2F;BrowserUtil.js:198</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l175"><code>src&#x2F;util&#x2F;BrowserUtil.js:175</code></a>
         
         </p>
 
@@ -1641,7 +1992,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l170"><code>src&#x2F;util&#x2F;BrowserUtil.js:170</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l147"><code>src&#x2F;util&#x2F;BrowserUtil.js:147</code></a>
         
         </p>
 
@@ -1732,7 +2083,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l212"><code>src&#x2F;util&#x2F;BrowserUtil.js:212</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l189"><code>src&#x2F;util&#x2F;BrowserUtil.js:189</code></a>
         
         </p>
 
@@ -1823,7 +2174,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/src_util_BrowserUtil.js.html#l184"><code>src&#x2F;util&#x2F;BrowserUtil.js:184</code></a>
+        <a href="../files/src_util_BrowserUtil.js.html#l161"><code>src&#x2F;util&#x2F;BrowserUtil.js:161</code></a>
         
         </p>
 
@@ -1866,6 +2217,71 @@ in each of your style sheets for this functionality to work.</p>
 
                 </div>
             </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeEventListener" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>removeEventListener</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_util_BrowserUtil.js.html#l296"><code>src&#x2F;util&#x2F;BrowserUtil.js:296</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
         
     </div>
 </div>

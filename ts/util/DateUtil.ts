@@ -16,7 +16,7 @@ module StructureTS
          * A list of day names.
          *
          * @property LONG_DAY_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
@@ -27,7 +27,7 @@ module StructureTS
          * TODO: YUIDoc_comment
          *
          * @property SHORT_DAY_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
@@ -38,7 +38,7 @@ module StructureTS
          * A list of month names.
          *
          * @property LONG_MONTH_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
@@ -49,7 +49,7 @@ module StructureTS
          * TODO: YUIDoc_comment
          *
          * @property SHORT_MONTH_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
@@ -58,7 +58,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[DateUtil] Do not instantiation the DateUtil class because it is a static class.');
+            throw new Error('[DateUtil] Do not instantiate the DateUtil class because it is a static class.');
         }
 
         /**

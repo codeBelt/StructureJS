@@ -28,7 +28,7 @@ module StructureTS
 
         constructor()
         {
-            throw new Error('[EventBroker] Do not instantiation the EventBroker class because it is a static class.');
+            throw new Error('[EventBroker] Do not instantiate the EventBroker class because it is a static class.');
         }
 
         /**

@@ -28,7 +28,7 @@
     var NetworkMonitor = (function () {
 
         function NetworkMonitor() {
-            throw new Error('[NetworkMonitor] Do not instantiation the NetworkMonitor class because it is a static class.');
+            throw new Error('[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.');
         }
         /**
          * Adds the necessary event listeners to listen for the 'online' and 'offline' events.

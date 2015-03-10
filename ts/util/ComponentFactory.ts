@@ -14,7 +14,7 @@ module StructureTS
     {
         constructor()
         {
-            throw new Error('[ComponentFactory] Do not instantiation the ComponentFactory class because it is a static class.');
+            throw new Error('[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.');
         }
 
         /**

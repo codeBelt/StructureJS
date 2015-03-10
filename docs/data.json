@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.11",
+        "version": "0.6.14",
         "url": ""
     },
     "files": {
@@ -103,15 +103,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/event/LoaderEvent.js": {
-            "name": "src/event/LoaderEvent.js",
-            "modules": {},
-            "classes": {
-                "LoaderEvent": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "src/event/LocalStorageEvent.js": {
             "name": "src/event/LocalStorageEvent.js",
             "modules": {},
@@ -144,24 +135,6 @@
             "modules": {},
             "classes": {
                 "TimerEvent": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/model/datastore/DataStoreAbstract.js": {
-            "name": "src/model/datastore/DataStoreAbstract.js",
-            "modules": {},
-            "classes": {
-                "DataStoreAbstract": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/model/datastore/JsonDataStore.js": {
-            "name": "src/model/datastore/JsonDataStore.js",
-            "modules": {},
-            "classes": {
-                "JsonDataStore": 1
             },
             "fors": {},
             "namespaces": {}
@@ -202,51 +175,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/net/URLContentType.js": {
-            "name": "src/net/URLContentType.js",
-            "modules": {},
-            "classes": {
-                "URLContentType": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/net/URLLoader.js": {
-            "name": "src/net/URLLoader.js",
-            "modules": {},
-            "classes": {
-                "URLLoader": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/net/URLLoaderDataFormat.js": {
-            "name": "src/net/URLLoaderDataFormat.js",
-            "modules": {},
-            "classes": {
-                "URLLoaderDataFormat": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/net/URLRequest.js": {
-            "name": "src/net/URLRequest.js",
-            "modules": {},
-            "classes": {
-                "URLRequest": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/net/URLRequestMethod.js": {
-            "name": "src/net/URLRequestMethod.js",
-            "modules": {},
-            "classes": {
-                "URLRequestMethod": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
         "src/plugin/jquery.eventListener.js": {
             "name": "src/plugin/jquery.eventListener.js",
             "modules": {},
@@ -259,15 +187,6 @@
             "modules": {},
             "classes": {
                 "BrowserUtil": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "src/util/BulkLoader.js": {
-            "name": "src/util/BulkLoader.js",
-            "modules": {},
-            "classes": {
-                "BulkLoader": 1
             },
             "fors": {},
             "namespaces": {}
@@ -398,7 +317,6 @@
                 "view": 1,
                 "event": 1,
                 "model": 1,
-                "net": 1,
                 "util": 1,
                 "core": 1
             },
@@ -413,24 +331,15 @@
                 "BaseEvent": 1,
                 "EventBroker": 1,
                 "EventDispatcher": 1,
-                "LoaderEvent": 1,
                 "LocalStorageEvent": 1,
                 "NetworkMonitorEvent": 1,
                 "RouterEvent": 1,
                 "TimerEvent": 1,
-                "DataStoreAbstract": 1,
-                "JsonDataStore": 1,
                 "Collection": 1,
                 "Route": 1,
                 "ValueObject": 1,
                 "NetworkMonitor": 1,
-                "URLContentType": 1,
-                "URLLoader": 1,
-                "URLLoaderDataFormat": 1,
-                "URLRequest": 1,
-                "URLRequestMethod": 1,
                 "BrowserUtil": 1,
-                "BulkLoader": 1,
                 "ComponentFactory": 1,
                 "DateUtil": 1,
                 "Extend": 1,
@@ -492,7 +401,6 @@
                 "BaseEvent": 1,
                 "EventBroker": 1,
                 "EventDispatcher": 1,
-                "LoaderEvent": 1,
                 "LocalStorageEvent": 1,
                 "NetworkMonitorEvent": 1,
                 "RouterEvent": 1,
@@ -511,8 +419,6 @@
             "name": "model",
             "submodules": {},
             "classes": {
-                "DataStoreAbstract": 1,
-                "JsonDataStore": 1,
                 "Collection": 1,
                 "Route": 1,
                 "ValueObject": 1
@@ -522,27 +428,8 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The DataStoreAbstract...",
+            "description": "The Collection class provides a way for you to manage your models.",
             "file": "src/model/ValueObject.js",
-            "line": 17
-        },
-        "net": {
-            "name": "net",
-            "submodules": {},
-            "classes": {
-                "URLContentType": 1,
-                "URLLoader": 1,
-                "URLLoaderDataFormat": 1,
-                "URLRequest": 1,
-                "URLRequestMethod": 1
-            },
-            "fors": {},
-            "is_submodule": 1,
-            "namespaces": {},
-            "module": "StructureJS",
-            "namespace": "",
-            "description": "The URLContentType...",
-            "file": "src/net/URLRequestMethod.js",
             "line": 17
         },
         "util": {
@@ -550,7 +437,6 @@
             "submodules": {},
             "classes": {
                 "BrowserUtil": 1,
-                "BulkLoader": 1,
                 "DateUtil": 1,
                 "Extend": 1,
                 "MathUtil": 1,
@@ -892,56 +778,6 @@
                 "\n     // Extending EventDispatcher. See DisplayObjectContainer as an example that extends EventDispatcher.\n     var _super = Extend(ClassExtendingEventDispatcher, EventDispatcher);\n\n     // Another way to use the EventDispatcher.\n     var eventDispatcher = new EventDispatcher();\n     eventDispatcher.addEventListener('change', this.handlerMethod, this);\n     eventDispatcher.dispatchEvent('change');"
             ]
         },
-        "LoaderEvent": {
-            "name": "LoaderEvent",
-            "shortname": "LoaderEvent",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/event/LoaderEvent.js",
-            "line": 17,
-            "description": "The LoaderEvent...",
-            "submodule": "event",
-            "extends": "BaseEvent",
-            "params": [
-                {
-                    "name": "type",
-                    "description": "The type of event. The type is case-sensitive.",
-                    "type": "String"
-                },
-                {
-                    "name": "bubbles",
-                    "description": "Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.\nNote: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink \"EventDispatcher/parent:property\"}}{{/crossLink}})\n(containers of containers of etc.) of the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink \"Stage\"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                },
-                {
-                    "name": "cancelable",
-                    "description": "Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                },
-                {
-                    "name": "data",
-                    "description": "Use to pass any type of data with the event.",
-                    "type": "Any",
-                    "optional": true,
-                    "optdefault": "null"
-                }
-            ],
-            "requires": [
-                "Extend",
-                "BaseEvent"
-            ],
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
         "LocalStorageEvent": {
             "name": "LocalStorageEvent",
             "shortname": "LocalStorageEvent",
@@ -1140,59 +976,6 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
-        "DataStoreAbstract": {
-            "name": "DataStoreAbstract",
-            "shortname": "DataStoreAbstract",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 17,
-            "description": "The DataStoreAbstract...",
-            "submodule": "model",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "path",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "author": "Robert S. (www.codeBelt.com)"
-        },
-        "JsonDataStore": {
-            "name": "JsonDataStore",
-            "shortname": "JsonDataStore",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/model/datastore/JsonDataStore.js",
-            "line": 17,
-            "description": "The JsonDataStore...",
-            "submodule": "model",
-            "is_constructor": 1,
-            "params": [
-                {
-                    "name": "path",
-                    "description": "",
-                    "type": "String"
-                },
-                {
-                    "name": "jsonp",
-                    "description": "",
-                    "type": "Boolean"
-                }
-            ],
-            "author": "Robert S. (www.codeBelt.com)"
-        },
         "Collection": {
             "name": "Collection",
             "shortname": "Collection",
@@ -1205,7 +988,7 @@
             "namespace": "",
             "file": "src/model/Collection.js",
             "line": 17,
-            "description": "TODO: YUIDoc_comment",
+            "description": "The Collection class provides a way for you to manage your models.",
             "submodule": "model",
             "extends": "EventDispatcher",
             "requires": [
@@ -1215,6 +998,13 @@
                 "Lodash"
             ],
             "is_constructor": 1,
+            "params": [
+                {
+                    "name": "valueObjectType",
+                    "description": "Pass a class that extends ValueObject and the data added to the collection will be created as that type.",
+                    "type": "ValueObject"
+                }
+            ],
             "author": "Robert S. (www.codeBelt.com)"
         },
         "Route": {
@@ -1266,7 +1056,7 @@
             "namespace": "",
             "file": "src/model/ValueObject.js",
             "line": 17,
-            "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.",
+            "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.\n\nNote: If the data doesn't match the property names you can set the value manually after update super method has been called.\n Also in the class you inherit ValueObject from you can override the update method to handle the data how you want.",
             "submodule": "model",
             "extends": "BaseObject",
             "params": [
@@ -1283,7 +1073,10 @@
                 "Util"
             ],
             "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
+            "author": "Robert S. (www.codeBelt.com)",
+            "example": [
+                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         year: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign another ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // Override any values after the default super update method has set the values.\n\n             // If the data doesn't match the property names you can set the values\n             // manually after update super method has been called.\n             // Also in the class you inherit ValueObject from you can override the\n             // update method to handle the data how you want.\n             this.allWheel = data.AllWheel;\n         };\n\n         return CarVO;\n     })();"
+            ]
         },
         "NetworkMonitor": {
             "name": "NetworkMonitor",
@@ -1307,121 +1100,6 @@
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
         },
-        "URLContentType": {
-            "name": "URLContentType",
-            "shortname": "URLContentType",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/net/URLContentType.js",
-            "line": 17,
-            "description": "The URLContentType...",
-            "submodule": "net",
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
-        "URLLoader": {
-            "name": "URLLoader",
-            "shortname": "URLLoader",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/net/URLLoader.js",
-            "line": 17,
-            "description": "The URLLoader...",
-            "submodule": "net",
-            "extends": "EventDispatcher",
-            "params": [
-                {
-                    "name": "request",
-                    "description": "",
-                    "type": "URLRequest",
-                    "optional": true,
-                    "optdefault": "null"
-                }
-            ],
-            "requires": [
-                "Extend",
-                "EventDispatcher",
-                "LoaderEvent",
-                "URLLoaderDataFormat",
-                "jQuery"
-            ],
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
-        "URLLoaderDataFormat": {
-            "name": "URLLoaderDataFormat",
-            "shortname": "URLLoaderDataFormat",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/net/URLLoaderDataFormat.js",
-            "line": 17,
-            "description": "The URLLoaderDataFormat...",
-            "submodule": "net",
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
-        "URLRequest": {
-            "name": "URLRequest",
-            "shortname": "URLRequest",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/net/URLRequest.js",
-            "line": 17,
-            "description": "The URLRequest class captures all of the information in a single HTTP request.\nURLRequest objects are passed to the load() methods of the {{#crossLink \"URLLoader\"}}{{/crossLink}} classes.",
-            "submodule": "net",
-            "extends": "BaseObject",
-            "params": [
-                {
-                    "name": "url",
-                    "description": "[string=null] The URL to be requested. You can set the URL later by using the url property."
-                }
-            ],
-            "requires": [
-                "Extend",
-                "BaseObject",
-                "URLRequestMethod",
-                "URLContentType"
-            ],
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
-        "URLRequestMethod": {
-            "name": "URLRequestMethod",
-            "shortname": "URLRequestMethod",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/net/URLRequestMethod.js",
-            "line": 17,
-            "description": "The URLRequestMethod...",
-            "submodule": "net",
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
-        },
         "BrowserUtil": {
             "name": "BrowserUtil",
             "shortname": "BrowserUtil",
@@ -1438,28 +1116,6 @@
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
-        },
-        "BulkLoader": {
-            "name": "BulkLoader",
-            "shortname": "BulkLoader",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "src/util/BulkLoader.js",
-            "line": 17,
-            "description": "The BulkLoader...",
-            "submodule": "util",
-            "requires": [
-                "Extend",
-                "EventDispatcher",
-                "LoaderEvent"
-            ],
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
         },
         "ComponentFactory": {
             "name": "ComponentFactory",
@@ -3085,7 +2741,7 @@
             "description": "Returns the number of children of this object.",
             "itemtype": "property",
             "name": "numChildren",
-            "type": "{init}",
+            "type": "{int}",
             "default": "0",
             "readonly": "",
             "access": "public",
@@ -3100,7 +2756,7 @@
             "description": "A reference to the child DisplayObjectContainer instances to this parent object instance.",
             "itemtype": "property",
             "name": "children",
-            "type": "{array}",
+            "type": "{Array}",
             "readonly": "",
             "access": "public",
             "tagname": "",
@@ -4609,57 +4265,6 @@
             "submodule": "event"
         },
         {
-            "file": "src/event/LoaderEvent.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "LoaderEvent",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/event/LoaderEvent.js",
-            "line": 45,
-            "overridden": "BaseEvent.clone",
-            "class": "LoaderEvent",
-            "module": "StructureJS",
-            "submodule": "event"
-        },
-        {
-            "file": "src/event/LoaderEvent.js",
-            "line": 51,
-            "description": "The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.",
-            "itemtype": "event",
-            "name": "COMPLETE",
-            "type": "{string}",
-            "static": 1,
-            "class": "LoaderEvent",
-            "module": "StructureJS",
-            "submodule": "event"
-        },
-        {
-            "file": "src/event/LoaderEvent.js",
-            "line": 59,
-            "description": "The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.",
-            "itemtype": "event",
-            "name": "LOAD_COMPLETE",
-            "type": "{string}",
-            "static": 1,
-            "class": "LoaderEvent",
-            "module": "StructureJS",
-            "submodule": "event"
-        },
-        {
-            "file": "src/event/LoaderEvent.js",
-            "line": 67,
-            "description": "The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.",
-            "itemtype": "event",
-            "name": "ERROR",
-            "type": "{string}",
-            "static": 1,
-            "class": "LoaderEvent",
-            "module": "StructureJS",
-            "submodule": "event"
-        },
-        {
             "file": "src/event/LocalStorageEvent.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -4921,130 +4526,6 @@
             "submodule": "event"
         },
         {
-            "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "DataStoreAbstract",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 33,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "data",
-            "type": "{any}",
-            "access": "public",
-            "tagname": "",
-            "class": "DataStoreAbstract",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 41,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "src",
-            "type": "{string}",
-            "access": "public",
-            "tagname": "",
-            "class": "DataStoreAbstract",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 49,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "complete",
-            "type": "{boolean}",
-            "access": "public",
-            "tagname": "",
-            "class": "DataStoreAbstract",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 59,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "load",
-            "access": "protected",
-            "tagname": "",
-            "class": "DataStoreAbstract",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/DataStoreAbstract.js",
-            "line": 67,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "_onLoaderComplete",
-            "access": "protected",
-            "tagname": "",
-            "class": "DataStoreAbstract",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/JsonDataStore.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "JsonDataStore",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/model/datastore/JsonDataStore.js",
-            "line": 35,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "_urlLoader",
-            "type": "{URLLoader}",
-            "access": "private",
-            "tagname": "",
-            "class": "JsonDataStore",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/JsonDataStore.js",
-            "line": 43,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "_isJsonP",
-            "type": "{boolean}",
-            "default": "false",
-            "access": "private",
-            "tagname": "",
-            "class": "JsonDataStore",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/JsonDataStore.js",
-            "line": 54,
-            "itemtype": "method",
-            "name": "load",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
-            "class": "JsonDataStore",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/datastore/JsonDataStore.js",
-            "line": 73,
-            "overridden": "DataStoreAbstract._onLoaderComplete",
-            "class": "JsonDataStore",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
             "file": "src/model/Collection.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -5053,11 +4534,11 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 37,
-            "description": "TODO: YUIDoc_comment",
+            "line": 39,
+            "description": "The list of models in the collection.",
             "itemtype": "property",
-            "name": "items",
-            "type": "{array}",
+            "name": "models",
+            "type": "{Array}",
             "readonly": "",
             "class": "Collection",
             "module": "StructureJS",
@@ -5065,11 +4546,11 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 45,
-            "description": "TODO: YUIDoc_comment",
+            "line": 47,
+            "description": "The count of how many models are in the collection.",
             "itemtype": "property",
             "name": "length",
-            "type": "{init}",
+            "type": "{int}",
             "default": "0",
             "readonly": "",
             "access": "public",
@@ -5080,15 +4561,55 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 56,
-            "description": "Add an item to the current collection",
+            "line": 57,
+            "description": "A reference to a ValueObject that will be used in the collection.",
+            "itemtype": "property",
+            "name": "_modelType",
+            "type": "{ValueObject}",
+            "access": "private",
+            "tagname": "",
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 67,
+            "description": "Adds model or an array of models to the collection.",
             "itemtype": "method",
-            "name": "addItem",
+            "name": "add",
             "params": [
                 {
-                    "name": "item",
-                    "description": "The item to add.",
-                    "type": "Object"
+                    "name": "model",
+                    "description": "Single or an array of models to add to the current collection.",
+                    "type": "Any|Array"
+                },
+                {
+                    "name": "silent",
+                    "description": "If you'd like to prevent the event from being dispatched.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "example": [
+                "\n     collection.add(vo);\n     collection.add(vo, true);"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 101,
+            "description": "Removes a model or an array of models from the collection.",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "model",
+                    "description": "Model(s) to remove",
+                    "type": "Object|Array"
                 },
                 {
                     "name": "silent",
@@ -5100,71 +4621,22 @@
             ],
             "access": "public",
             "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 74,
-            "description": "Removes an item from the collection, maintaining its current sort\nIf the collection doesn't have the item, it throws an error",
-            "itemtype": "method",
-            "name": "removeItem",
-            "params": [
-                {
-                    "name": "item",
-                    "description": "Item to remove",
-                    "type": "Object"
-                },
-                {
-                    "name": "silent",
-                    "description": "If you'd like to prevent the event from being dispatched.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
+            "example": [
+                "\n     collection.remove(vo);\n\n     collection.remove(vo, true);"
             ],
-            "access": "public",
-            "tagname": "",
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 94,
-            "description": "Removes an array of items from the collection",
+            "line": 129,
+            "description": "Checks if a collection has an model.",
             "itemtype": "method",
-            "name": "removeItems",
+            "name": "has",
             "params": [
                 {
-                    "name": "items",
-                    "description": "List of items to add to the current collection",
-                    "type": "Object[]"
-                },
-                {
-                    "name": "silent",
-                    "description": "If you'd like to prevent the event from being dispatched.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
-            ],
-            "access": "public",
-            "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 112,
-            "description": "Checks if a collection has an item.",
-            "itemtype": "method",
-            "name": "hasItem",
-            "params": [
-                {
-                    "name": "item",
+                    "name": "model",
                     "description": "Item to check",
                     "type": "Object"
                 }
@@ -5175,19 +4647,22 @@
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     collection.has(vo);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 123,
+            "line": 142,
             "description": "Returns the array index position of the value object.",
             "itemtype": "method",
-            "name": "getIndexOfItem",
+            "name": "indexOf",
             "params": [
                 {
-                    "name": "item",
+                    "name": "model",
                     "description": "get the index of.",
                     "type": "Object"
                 }
@@ -5198,29 +4673,8 @@
             },
             "access": "public",
             "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 134,
-            "description": "Adds an array of items to the collection",
-            "itemtype": "method",
-            "name": "addItems",
-            "params": [
-                {
-                    "name": "items",
-                    "description": "List of items to add to the current collection.",
-                    "type": "Array"
-                },
-                {
-                    "name": "silent",
-                    "description": "If you'd like to prevent the event from being dispatched.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
+            "example": [
+                "\n     collection.indexOf(vo);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5228,34 +4682,34 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 151,
+            "line": 155,
             "description": "Finds an object by an index value.\nIf the index is out of bounds, the collection will clamp it.",
             "itemtype": "method",
-            "name": "getItemByIndex",
+            "name": "get",
             "params": [
                 {
                     "name": "index",
-                    "description": "The index integer of the item to get",
-                    "type": "Init"
+                    "description": "The index integer of the model to get",
+                    "type": "Int"
                 }
             ],
             "return": {
-                "description": "item to find",
+                "description": "model to find",
                 "type": "Object"
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     collection.get(1);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 171,
+            "line": 176,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
-            "example": [
-                "\n        // Finds all value object that has 'Robert' in it.\n        this._collection.find(\"Robert\");\n        // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n        this._collection.find([\"Robert\", \"Heather\", 32]);\n\n        // Finds all value objects that same key and value you are searching for.\n        this._collection.find({ name: 'apple', organic: false, type: 'fruit' });\n        this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
-            ],
             "itemtype": "method",
             "name": "find",
             "params": [
@@ -5271,16 +4725,19 @@
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     // Finds all value object that has 'Robert' in it.\n     this._collection.find(\"Robert\");\n     // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n     this._collection.find([\"Robert\", \"Heather\", 32]);\n\n     // Finds all value objects that same key and value you are searching for.\n     this._collection.find({ name: 'apple', organic: false, type: 'fruit' });\n     this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 209,
+            "line": 214,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
-            "name": "findPropertyValue",
+            "name": "_findPropertyValue",
             "params": [
                 {
                     "name": "arg",
@@ -5300,20 +4757,8 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 243,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "copy",
-            "access": "public",
-            "tagname": "",
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/Collection.js",
-            "line": 254,
-            "description": "TODO: YUIDoc_comment",
+            "line": 248,
+            "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
             "params": [
@@ -5327,14 +4772,88 @@
             ],
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     collection.clear();"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/Collection.js",
-            "line": 269,
-            "overridden": "BaseObject.destroy",
+            "line": 266,
+            "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
+            "itemtype": "method",
+            "name": "Object",
+            "return": {
+                "description": "",
+                "type": "Any"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var clone = collection.clone();"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 280,
+            "description": "Creates a JSON object of the collection.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var arrayOfObjects = collection.toJSON();"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 301,
+            "description": "Creates a JSON string of the collection.",
+            "itemtype": "method",
+            "name": "toJSONString",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var str = collection.toJSONString();"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 313,
+            "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
+            "itemtype": "method",
+            "name": "fromJSON",
+            "params": [
+                {
+                    "name": "json",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n     collection.fromJSON(str);"
+            ],
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
@@ -5455,7 +4974,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 38,
+            "line": 91,
             "description": "Provide a way to update the value object.",
             "itemtype": "method",
             "name": "update",
@@ -5468,30 +4987,36 @@
             ],
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n    // Example of updating some of the data:\n    carVO.update({ year: 2015, allWheel: true});\n\n    // Of course you can also do it the following way:\n    carVO.year = 2015;\n    carVO.allWheel = false;"
+            ],
             "class": "ValueObject",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 53,
-            "description": "...",
+            "line": 113,
+            "description": "Converts the value object data into a JSON object and deletes the cid property.",
             "itemtype": "method",
             "name": "toJSON",
             "return": {
                 "description": "",
-                "type": "ValueObject"
+                "type": "Any"
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n    var obj = carVO.toJSON();"
+            ],
             "class": "ValueObject",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 64,
-            "description": "...",
+            "line": 126,
+            "description": "Converts a value object to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
             "return": {
@@ -5500,13 +5025,16 @@
             },
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n    var str = carVO.toJSONString();"
+            ],
             "class": "ValueObject",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 74,
+            "line": 138,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5519,13 +5047,17 @@
             ],
             "access": "public",
             "tagname": "",
+            "example": [
+                "\n     var str = '{\"make\":\"Tesla\",\"model\":\"Model S\",\"year\":2014}'\n     var carVO = new CarVO();\n     carVO.fromJSON(str);"
+            ],
             "class": "ValueObject",
             "module": "StructureJS",
             "submodule": "model"
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 86,
+            "line": 154,
+            "description": "Create a clone/copy of the value object.",
             "itemtype": "method",
             "name": "Object",
             "return": {
@@ -5534,21 +5066,9 @@
             },
             "access": "public",
             "tagname": "",
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "src/model/ValueObject.js",
-            "line": 96,
-            "itemtype": "method",
-            "name": "copy",
-            "return": {
-                "description": "",
-                "type": "IValueObject"
-            },
-            "access": "public",
-            "tagname": "",
+            "example": [
+                "\n    var clone = carVO.clone();"
+            ],
             "class": "ValueObject",
             "module": "StructureJS",
             "submodule": "model"
@@ -5747,208 +5267,6 @@
             "module": "StructureJS"
         },
         {
-            "file": "src/net/URLContentType.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "URLContentType",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "URLLoader",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 40,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "dataFormat",
-            "type": "{string}",
-            "default": "URLLoaderDataFormat.TEXT",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 48,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "data",
-            "type": "{any}",
-            "default": "null",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 56,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "complete",
-            "type": "{boolean}",
-            "default": "false",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 64,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "_xhr",
-            "type": "{JQueryXHR}",
-            "default": "null",
-            "access": "private",
-            "tagname": "",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 77,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "load",
-            "params": [
-                {
-                    "name": "request",
-                    "description": "",
-                    "type": "URLRequest"
-                }
-            ],
-            "access": "public",
-            "tagname": "",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 98,
-            "overridden": "EventDispatcher.destroy",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 105,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "abort",
-            "access": "public",
-            "tagname": "",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 116,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "onError",
-            "access": "private",
-            "tagname": "",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoader.js",
-            "line": 126,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "onSuccess",
-            "access": "private",
-            "tagname": "",
-            "class": "URLLoader",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLLoaderDataFormat.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "URLLoaderDataFormat",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/net/URLRequest.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "URLRequest",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/net/URLRequest.js",
-            "line": 40,
-            "description": "The URL to be requested.",
-            "itemtype": "property",
-            "name": "url",
-            "type": "{string}",
-            "access": "public",
-            "tagname": "",
-            "class": "URLRequest",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLRequest.js",
-            "line": 48,
-            "description": "Controls the HTTP form submission method ({{#crossLink \"URLRequestMethod\"}}{{/crossLink}}).",
-            "itemtype": "property",
-            "name": "method",
-            "type": "{string}",
-            "default": "URLRequestMethod.GET",
-            "access": "public",
-            "tagname": "",
-            "class": "URLRequest",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLRequest.js",
-            "line": 57,
-            "description": "The MIME content type of the content in the the data property ({{#crossLink \"URLContentType\"}}{{/crossLink}}).",
-            "itemtype": "property",
-            "name": "method",
-            "type": "{string}",
-            "default": "application/x-www-form-urlencoded",
-            "access": "public",
-            "tagname": "",
-            "class": "URLRequest",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLRequest.js",
-            "line": 66,
-            "description": "An object containing data to be transmitted with the URL request.",
-            "itemtype": "property",
-            "name": "data",
-            "type": "{any}",
-            "access": "public",
-            "tagname": "",
-            "class": "URLRequest",
-            "module": "StructureJS",
-            "submodule": "net"
-        },
-        {
-            "file": "src/net/URLRequestMethod.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "URLRequestMethod",
-            "module": "StructureJS"
-        },
-        {
             "file": "src/plugin/jquery.eventListener.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -6002,55 +5320,20 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 32,
-            "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
-            "itemtype": "property",
-            "name": "debounceDelay",
-            "type": "{number}",
-            "default": "250",
+            "line": 31,
+            "description": "Dispatches a breakpoint event.",
+            "itemtype": "method",
+            "name": "enable",
             "access": "public",
             "tagname": "",
+            "static": 1,
             "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 42,
-            "description": "A reference to the browser window object.",
-            "itemtype": "property",
-            "name": "_window",
-            "type": "{Window}",
-            "access": "private",
-            "tagname": "",
-            "class": "BrowserUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/util/BrowserUtil.js",
-            "line": 50,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "property",
-            "name": "_onBreakpointChangeHandler",
-            "type": "{any}",
-            "access": "private",
-            "tagname": "",
-            "class": "BrowserUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/util/BrowserUtil.js",
-            "line": 60,
-            "overridden": "EventDispatcher.enable",
-            "class": "BrowserUtil",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "src/util/BrowserUtil.js",
-            "line": 70,
+            "line": 46,
             "overridden": "EventDispatcher.disable",
             "class": "BrowserUtil",
             "module": "StructureJS",
@@ -6058,7 +5341,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 79,
+            "line": 56,
             "description": "Returns the name of the browser.",
             "itemtype": "method",
             "name": "browserName",
@@ -6078,7 +5361,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 93,
+            "line": 70,
             "description": "Returns the version of the browser.",
             "itemtype": "method",
             "name": "browserVersion",
@@ -6107,7 +5390,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 118,
+            "line": 95,
             "description": "Gets the browser name a user agent.",
             "itemtype": "method",
             "name": "getBrowser",
@@ -6127,7 +5410,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 142,
+            "line": 119,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isAndroid",
@@ -6147,7 +5430,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 156,
+            "line": 133,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isBlackBerry",
@@ -6167,7 +5450,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 170,
+            "line": 147,
             "description": "Determines if the device OS is IOS.",
             "itemtype": "method",
             "name": "isIOS",
@@ -6187,7 +5470,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 184,
+            "line": 161,
             "description": "Determines if the device OS is Opera Mini.",
             "itemtype": "method",
             "name": "isOperaMini",
@@ -6207,7 +5490,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 198,
+            "line": 175,
             "description": "Determines if the device OS is IE Mobile.",
             "itemtype": "method",
             "name": "isIEMobile",
@@ -6227,7 +5510,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 212,
+            "line": 189,
             "description": "Determines if the it is run on a mobile or desktop device.",
             "itemtype": "method",
             "name": "isMobile",
@@ -6247,7 +5530,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 226,
+            "line": 203,
             "description": "Determines if the browser can you Browser History push states.",
             "itemtype": "method",
             "name": "hasBrowserHistory",
@@ -6267,7 +5550,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 240,
+            "line": 217,
             "description": "Determines if the browser can you Local Storage.",
             "itemtype": "method",
             "name": "hasLocalStorage",
@@ -6287,7 +5570,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 259,
+            "line": 236,
             "description": "Determines if the browser can you Session Storage.",
             "itemtype": "method",
             "name": "hasSessionStorage",
@@ -6307,7 +5590,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 278,
+            "line": 255,
             "description": "Get the current breakpoint from the style sheets. You must add a body:after property with a specific content\nin each of your style sheets for this functionality to work.",
             "itemtype": "method",
             "name": "getBreakpoint",
@@ -6327,118 +5610,124 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 307,
-            "description": "Dispatches a breakpoint event.",
+            "line": 284,
+            "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
-            "name": "_onBreakpointChange",
-            "access": "private",
+            "name": "addEventListener",
+            "access": "public",
             "tagname": "",
+            "static": 1,
             "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/util/BulkLoader.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "BulkLoader",
-            "module": "StructureJS"
-        },
-        {
-            "file": "src/util/BulkLoader.js",
-            "line": 37,
+            "file": "src/util/BrowserUtil.js",
+            "line": 296,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
-            "name": "addFile",
-            "params": [
-                {
-                    "name": "dataStore",
-                    "description": "",
-                    "type": "IDataStore"
-                },
-                {
-                    "name": "key",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "BulkLoader"
-            },
-            "class": "BulkLoader",
+            "name": "removeEventListener",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/util/BulkLoader.js",
-            "line": 49,
+            "file": "src/util/BrowserUtil.js",
+            "line": 306,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
-            "name": "getFile",
-            "params": [
-                {
-                    "name": "key",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "IDataStore"
-            },
-            "class": "BulkLoader",
+            "name": "dispatchEvent",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/util/BulkLoader.js",
-            "line": 59,
-            "description": "TODO: YUIDoc_comment",
+            "file": "src/util/BrowserUtil.js",
+            "line": 323,
+            "description": "Dispatches a breakpoint event.",
             "itemtype": "method",
-            "name": "getData",
-            "params": [
-                {
-                    "name": "key",
-                    "description": ""
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Any"
-            },
-            "class": "BulkLoader",
+            "name": "_onBreakpointChange",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/util/BulkLoader.js",
-            "line": 69,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "load",
-            "return": {
-                "description": "",
-                "type": "BulkLoader"
-            },
-            "class": "BulkLoader",
+            "file": "src/util/BrowserUtil.js",
+            "line": 333,
+            "description": "A reference to the EventDispatcher object.",
+            "itemtype": "property",
+            "name": "_eventDispatcher",
+            "type": "{EventDispatcher}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
-            "file": "src/util/BulkLoader.js",
-            "line": 86,
+            "file": "src/util/BrowserUtil.js",
+            "line": 342,
+            "description": "A reference to the browser window object.",
+            "itemtype": "property",
+            "name": "_window",
+            "type": "{Window}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 351,
             "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "onLoadComplete",
-            "params": [
-                {
-                    "name": "event",
-                    "description": "",
-                    "type": "LoaderEvent"
-                }
-            ],
-            "class": "BulkLoader",
+            "itemtype": "property",
+            "name": "_onBreakpointChangeHandler",
+            "type": "{any}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 360,
+            "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
+            "itemtype": "property",
+            "name": "debounceDelay",
+            "type": "{number}",
+            "default": "250",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "src/util/BrowserUtil.js",
+            "line": 371,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "isEnabled",
+            "type": "{boolean}",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
@@ -6527,7 +5816,7 @@
             "description": "A list of day names.",
             "itemtype": "property",
             "name": "LONG_DAY_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -6542,7 +5831,7 @@
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_DAY_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -6557,7 +5846,7 @@
             "description": "A list of month names.",
             "itemtype": "property",
             "name": "LONG_MONTH_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -6572,7 +5861,7 @@
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_MONTH_LABELS",
-            "type": "{array}",
+            "type": "{Array}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -8838,10 +8127,6 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/event/LoaderEvent.js:45"
-        },
-        {
-            "message": "unknown tag: overridden",
             "line": " src/event/LocalStorageEvent.js:58"
         },
         {
@@ -8857,12 +8142,16 @@
             "line": " src/event/TimerEvent.js:45"
         },
         {
-            "message": "unknown tag: overridden",
-            "line": " src/model/datastore/JsonDataStore.js:73"
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/model/Collection.js:266"
         },
         {
-            "message": "unknown tag: overridden",
-            "line": " src/model/Collection.js:269"
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/model/Collection.js:280"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/model/Collection.js:301"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8874,19 +8163,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:53"
+            "line": " src/model/ValueObject.js:113"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:64"
+            "line": " src/model/ValueObject.js:126"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:86"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:96"
+            "line": " src/model/ValueObject.js:154"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8897,76 +8182,52 @@
             "line": " src/net/NetworkMonitor.js:68"
         },
         {
-            "message": "unknown tag: overridden",
-            "line": " src/net/URLLoader.js:98"
-        },
-        {
             "message": "replacing incorrect tag: returns with return",
             "line": " src/plugin/jquery.eventListener.js:33"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/util/BrowserUtil.js:60"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " src/util/BrowserUtil.js:70"
+            "line": " src/util/BrowserUtil.js:46"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:142"
+            "line": " src/util/BrowserUtil.js:119"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:156"
+            "line": " src/util/BrowserUtil.js:133"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:170"
+            "line": " src/util/BrowserUtil.js:147"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:184"
+            "line": " src/util/BrowserUtil.js:161"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:198"
+            "line": " src/util/BrowserUtil.js:175"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:212"
+            "line": " src/util/BrowserUtil.js:189"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:226"
+            "line": " src/util/BrowserUtil.js:203"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:240"
+            "line": " src/util/BrowserUtil.js:217"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:259"
+            "line": " src/util/BrowserUtil.js:236"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BrowserUtil.js:278"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BulkLoader.js:37"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BulkLoader.js:49"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BulkLoader.js:59"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " src/util/BulkLoader.js:69"
+            "line": " src/util/BrowserUtil.js:255"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9238,14 +8499,6 @@
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/event/LoaderEvent.js:1"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/event/LoaderEvent.js:45"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " src/event/LocalStorageEvent.js:1"
         },
         {
@@ -9278,23 +8531,7 @@
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/model/datastore/DataStoreAbstract.js:1"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/model/datastore/JsonDataStore.js:1"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/model/datastore/JsonDataStore.js:73"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " src/model/Collection.js:1"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/model/Collection.js:269"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9307,30 +8544,6 @@
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " src/net/NetworkMonitor.js:1"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/net/URLContentType.js:1"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/net/URLLoader.js:1"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/net/URLLoader.js:98"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/net/URLLoaderDataFormat.js:1"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/net/URLRequest.js:1"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/net/URLRequestMethod.js:1"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9358,15 +8571,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/util/BrowserUtil.js:60"
-        },
-        {
-            "message": "Missing item type",
-            "line": " src/util/BrowserUtil.js:70"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " src/util/BulkLoader.js:1"
+            "line": " src/util/BrowserUtil.js:46"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

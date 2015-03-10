@@ -26,7 +26,7 @@
     var Util = (function () {
 
         function Util() {
-            throw new Error('[Util] Do not instantiation the Util class because it is a static class.');
+            throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
         }
         /**
          * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
@@ -58,7 +58,7 @@
          *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
-         * @param list {array} A list of property names you want to remove from the object.
+         * @param list {Array} A list of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static

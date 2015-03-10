@@ -25,7 +25,7 @@
      */
     var ValidationUtil = (function () {
         function ValidationUtil() {
-            throw new Error('[ValidationUtil] Do not instantiation the ValidationUtil class because it is a static class.');
+            throw new Error('[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.');
         }
         /**
          * Determines if the String passed has a length.

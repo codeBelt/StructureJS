@@ -29,7 +29,7 @@
     var TemplateFactory = (function () {
 
         function TemplateFactory() {
-            throw new Error('[TemplateFactory] Do not instantiation the TemplateFactory class because it is a static class.');
+            throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
         }
         /**
          * Creates a template.

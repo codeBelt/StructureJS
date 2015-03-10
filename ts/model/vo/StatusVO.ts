@@ -52,18 +52,10 @@ module StructureTS
          */
         public update(data:any):void
         {
-            this.status = data.status;
-            this.message = data.message;
-            this.code = data.code;
+            super.update(data);
+
+            // Override any values after the default super update method has set the values.
         }
 
-        /**
-         * @overridden ValueObject.copy
-         */
-        public copy():StatusVO
-        {
-            var data:IValueObject = super.copy();
-            return new StatusVO(data);
-        }
     }
 }
