@@ -6,17 +6,17 @@
 # Atom > Open Your Snippets
 #
 # Shortcuts
-# DOMElement: view
-# ValueObject: vo
-# Stage: stage
-# Property: prop
-# Method: meth
-# Import: im
-# Extend: ex
+# DOMElement: viewClass
+# ValueObject: valueObject
+# Stage: stageClass
+# Property: property
+# Method: method
+# Import: import
+# Extend: extendClass
 
 ".source.js":
   "View":
-   prefix: "view"
+   prefix: "viewClass"
    body: """
        /**
         * @fileOverview
@@ -104,7 +104,7 @@
         });
    """
   "Value Object":
-   prefix: "vo"
+   prefix: "valueObject"
    body: """
       /**
        * @fileOverview
@@ -153,7 +153,7 @@
         });
    """
   "Stage":
-   prefix: "stage"
+   prefix: "stageClass"
    body: """
        /**
         * @fileOverview
@@ -241,7 +241,7 @@
         });
    """
   "Property":
-    prefix: "prop"
+    prefix: "property"
     body: """
         /**
          * TODO: YUIDoc_comment
@@ -253,7 +253,7 @@
         this.${1} = ${4:null};
     """
   "Method":
-    prefix: "meth"
+    prefix: "method"
     body: """
         /**
          * @TODO: YUIDoc_comment
@@ -266,10 +266,10 @@
         };
     """
   "Import":
-    prefix: "im"
+    prefix: "import"
     body: "var ${1:ClassName} = require('${2:path}/${1}');"
   "Extend":
-    prefix: "ex"
+    prefix: "extendClass"
     body: """
        /**
         * @fileOverview
