@@ -55,10 +55,7 @@
      *              this.model = null;
      *              this.year = null;
      *              this.allWheel = false; // Set a default value.
-     *
-     *              // You can assign another ValueObject to a property which will
-     *              // automatically created it and pass the data to it.
-     *              this.feature = FeatureVO;
+     *              this.feature = null;
      *
      *              if (data) {
      *                  this.update(data);
@@ -76,6 +73,8 @@
      *              // Also in the class you inherit ValueObject from you can override the
      *              // update method to handle the data how you want.
      *              this.allWheel = data.AllWheel;
+     *
+     *              this.feature = new Feature(data.feature);
      *          };
      *
      *          return CarVO;

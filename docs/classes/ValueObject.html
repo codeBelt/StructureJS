@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.15</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -486,10 +486,7 @@ var carVO = new CarVO(data);
          this.model = null;
          this.year = null;
          this.allWheel = false; // Set a default value.
-
-         // You can assign another ValueObject to a property which will
-         // automatically created it and pass the data to it.
-         this.feature = FeatureVO;
+         this.feature = null;
 
          if (data) {
              this.update(data);
@@ -507,6 +504,8 @@ var carVO = new CarVO(data);
          // Also in the class you inherit ValueObject from you can override the
          // update method to handle the data how you want.
          this.allWheel = data.AllWheel;
+
+         this.feature = new Feature(data.feature);
      };
 
      return CarVO;
@@ -668,7 +667,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l138"><code>src&#x2F;model&#x2F;ValueObject.js:138</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l137"><code>src&#x2F;model&#x2F;ValueObject.js:137</code></a>
         
         </p>
 
@@ -856,7 +855,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l154"><code>src&#x2F;model&#x2F;ValueObject.js:154</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l153"><code>src&#x2F;model&#x2F;ValueObject.js:153</code></a>
         
         </p>
 
@@ -944,7 +943,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l113"><code>src&#x2F;model&#x2F;ValueObject.js:113</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l112"><code>src&#x2F;model&#x2F;ValueObject.js:112</code></a>
         
         </p>
 
@@ -1032,7 +1031,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l126"><code>src&#x2F;model&#x2F;ValueObject.js:126</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l125"><code>src&#x2F;model&#x2F;ValueObject.js:125</code></a>
         
         </p>
 
@@ -1126,7 +1125,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l91"><code>src&#x2F;model&#x2F;ValueObject.js:91</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l90"><code>src&#x2F;model&#x2F;ValueObject.js:90</code></a>
         
         </p>
 
