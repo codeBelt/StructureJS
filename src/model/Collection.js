@@ -324,6 +324,69 @@
             this.add(parsedData);
             return this;
         };
+
+        /**
+         * Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys
+         *
+         * @method sortOn
+         * @param propertyName {string}
+         * @param [sortAscending=true] {boolean}
+         * @public
+         * @return {Array} Returns the list of models in the collection.
+         * @example
+         *      collection.sortOn('name');
+         *      collection.sortOn('name', false);
+         */
+        Collection.prototype.sortOn = function(propertyName, sortAscending) {
+            if (sortAscending === void 0) { sortAscending = true; }
+
+            if (sortAscending === false) {
+                return this.sort(function (a, b) {
+                    if (a[propertyName] < b[propertyName]) return 1;
+                    if (a[propertyName] > b[propertyName]) return -1;
+                    return 0;
+                });
+            } else {
+                return this.sort(function (a, b) {
+                    if (a[propertyName] > b[propertyName]) return 1;
+                    if (a[propertyName] < b[propertyName]) return -1;
+                    return 0;
+                });
+            }
+        };
+
+        /**
+         * Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code
+         * point value, according to the string conversion of each element.
+         *
+         * @method sort
+         * @param [sortFunction=null] {Function}
+         * @public
+         * @return {Array} Returns the list of models in the collection.
+         * @example
+         *      var func = function(){}
+         *
+         *      collection.sort(func);
+         */
+        Collection.prototype.sort = function(sortFunction) {
+            if (sortFunction === void 0) { sortFunction = null; }
+            this.models.sort(sortFunction);
+            return this.models;
+        };
+
+        /**
+         * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.
+         *
+         * @method reverse
+         * @public
+         * @return {Array} Returns the list of models in the collection.
+         * @example
+         *      collection.reverse();
+         */
+        Collection.prototype.reverse = function() {
+            return this.models.reverse();
+        };
+
         return Collection;
     })();
 
