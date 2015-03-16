@@ -370,9 +370,11 @@
          * @public
          * @return {Array} Returns the list of models in the collection.
          * @example
-         *      var func = function(){}
+         *      var sortByDate = function(a, b){
+         *          return new Date(a.date) - new Date(b.date)
+         *      }
          *
-         *      collection.sort(func);
+         *      collection.sort(sortByDate);
          */
         Collection.prototype.sort = function (sortFunction) {
             if (sortFunction === void 0) { sortFunction = null; }

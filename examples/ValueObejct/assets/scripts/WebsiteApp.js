@@ -86,6 +86,7 @@ define(function (require, exports, module)
                 {
                     name: "krista",
                     age: 25,
+                    date: 'Mon Mar 16 2015 17:56:17 GMT-0500 (CDT)',
                     house: {
                         address: '3 Street',
                         numOfBathrooms: 1,
@@ -99,6 +100,7 @@ define(function (require, exports, module)
                 {
                     name: "Robert",
                     age: 37,
+                    date: 'Thu Mar 16 1978 17:58:13 GMT-0600 (CST)',
                     house: {
                         address: '1 Street',
                         numOfBathrooms: 2,
@@ -107,6 +109,7 @@ define(function (require, exports, module)
                 },
                 {
                     name: "Mario",
+                    date: 'Thu Mar 16 1974 17:58:13 GMT-0600 (CST)',
                     house: {
                         address: '2 Street',
                         numOfBathrooms: 5,
@@ -115,7 +118,8 @@ define(function (require, exports, module)
                 },
                 {
                     name: "Joe",
-                    age: 34
+                    age: 34,
+                    date: ''
                 }
             ]
 
@@ -134,6 +138,10 @@ define(function (require, exports, module)
             console.log("collection", collection.find('krista', '1 Street'));
 
             //collection.remove(collection.models);
+
+            console.log("ads", collection.sort(function(a, b){
+                return new Date(a.date) - new Date(b.date)
+            }));
         };
 
         /**
