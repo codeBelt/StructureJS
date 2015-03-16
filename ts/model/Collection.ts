@@ -305,7 +305,7 @@ module StructureTS
         /**
          * Creates and returns a new collection object that contains a reference to the models in the collection cloned from.
          *
-         * @method Object
+         * @method clone
          * @returns {any}
          * @public
          * @example
