@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.14",
+        "version": "0.6.15",
         "url": ""
     },
     "files": {
@@ -1075,7 +1075,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         year: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign another ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // Override any values after the default super update method has set the values.\n\n             // If the data doesn't match the property names you can set the values\n             // manually after update super method has been called.\n             // Also in the class you inherit ValueObject from you can override the\n             // update method to handle the data how you want.\n             this.allWheel = data.AllWheel;\n         };\n\n         return CarVO;\n     })();"
+                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         year: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n             this.feature = null;\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // Override any values after the default super update method has set the values.\n\n             // If the data doesn't match the property names you can set the values\n             // manually after update super method has been called.\n             // Also in the class you inherit ValueObject from you can override the\n             // update method to handle the data how you want.\n             this.allWheel = data.AllWheel;\n\n             this.feature = new Feature(data.feature);\n         };\n\n         return CarVO;\n     })();"
             ]
         },
         "NetworkMonitor": {
@@ -4859,6 +4859,86 @@
             "submodule": "model"
         },
         {
+            "file": "src/model/Collection.js",
+            "line": 327,
+            "description": "Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys",
+            "itemtype": "method",
+            "name": "sortOn",
+            "params": [
+                {
+                    "name": "propertyName",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "sortAscending",
+                    "description": "",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "true"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "Returns the list of models in the collection.",
+                "type": "Array"
+            },
+            "example": [
+                "\n     collection.sortOn('name');\n     collection.sortOn('name', false);"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 364,
+            "description": "Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code\npoint value, according to the string conversion of each element.",
+            "itemtype": "method",
+            "name": "sort",
+            "params": [
+                {
+                    "name": "sortFunction",
+                    "description": "",
+                    "type": "Function",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "Returns the list of models in the collection.",
+                "type": "Array"
+            },
+            "example": [
+                "\n     var func = function(){}\n\n     collection.sort(func);"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 382,
+            "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
+            "itemtype": "method",
+            "name": "reverse",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "Returns the list of models in the collection.",
+                "type": "Array"
+            },
+            "example": [
+                "\n     collection.reverse();"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
             "file": "src/model/Route.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -4974,7 +5054,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 91,
+            "line": 90,
             "description": "Provide a way to update the value object.",
             "itemtype": "method",
             "name": "update",
@@ -4996,7 +5076,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 113,
+            "line": 112,
             "description": "Converts the value object data into a JSON object and deletes the cid property.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5015,7 +5095,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 126,
+            "line": 125,
             "description": "Converts a value object to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5034,7 +5114,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 138,
+            "line": 137,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5056,7 +5136,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 154,
+            "line": 153,
             "description": "Create a clone/copy of the value object.",
             "itemtype": "method",
             "name": "Object",
@@ -8163,15 +8243,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:113"
+            "line": " src/model/ValueObject.js:112"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:126"
+            "line": " src/model/ValueObject.js:125"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:154"
+            "line": " src/model/ValueObject.js:153"
         },
         {
             "message": "replacing incorrect tag: returns with return",
