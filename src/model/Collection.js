@@ -393,6 +393,23 @@
         Collection.prototype.reverse = function () {
             return this.models.reverse();
         };
+        /**
+         * Returns a new array of models with duplicates removed.
+         *
+         * @method _unique
+         * @param list {Array} The array you want to use to generate the unique array.
+         * @return {Array} Returns a new array list of models in the collection with duplicates removed.
+         * @private
+         */
+        Collection.prototype._unique = function (list) {
+            var unique = list.reduce(function (previousValue, currentValue) {
+                if (previousValue.indexOf(currentValue) === -1) {
+                    previousValue.push(currentValue);
+                }
+                return previousValue;
+            }, []);
+            return unique;
+        };
         return Collection;
     })();
 

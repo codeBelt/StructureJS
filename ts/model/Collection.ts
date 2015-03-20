@@ -419,9 +419,11 @@ module StructureTS
          * @public
          * @return {Array} Returns the list of models in the collection.
          * @example
-         *      var func = function(){}
+         *      var sortByDate = function(a, b){
+         *          return new Date(a.date) - new Date(b.date)
+         *      }
          *
-         *      collection.sort(func);
+         *      collection.sort(sortByDate);
          */
         public sort(sortFunction:any = null):Array<any>
         {
@@ -441,6 +443,28 @@ module StructureTS
         public reverse():Array<any>
         {
             return this.models.reverse();
+        }
+
+        /**
+         * Returns a new array of models with duplicates removed.
+         *
+         * @method _unique
+         * @param list {Array} The array you want to use to generate the unique array.
+         * @return {Array} Returns a new array list of models in the collection with duplicates removed.
+         * @private
+         */
+        private _unique(list):Array<any>
+        {
+            var unique:Array<any> = list.reduce(function(previousValue:any, currentValue:any):Array<any>
+            {
+                if (previousValue.indexOf(currentValue) === -1)
+                {
+                    previousValue.push(currentValue);
+                }
+                return previousValue;
+            }, []);
+
+            return unique;
         }
 
     }
