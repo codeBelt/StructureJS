@@ -4,26 +4,25 @@ define(function (require, exports, module)
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var VehicleVO = require('./VehicleVO');
+    var ValueObject = require('structurejs/model/ValueObject');
 
     /**
      * TODO: YUIDoc_comment
      *
-     * @class CarVO
-     * @extends VehicleVO
+     * @class VehicleVO
+     * @extends ValueObject
      * @constructor
      **/
-    var CarVO = (function ()
+    var VehicleVO = (function ()
     {
-        var _super = Extend(CarVO, VehicleVO);
 
-        function CarVO(data)
+        var _super = Extend(VehicleVO, ValueObject);
+
+        function VehicleVO(data)
         {
             _super.call(this);
 
-            this.model = null;
-            this.year = null;
-            this.allWheel = false; // Set a default value.
+            this.make = null;
 
             if (data)
             {
@@ -32,18 +31,18 @@ define(function (require, exports, module)
         }
 
         /**
-         * @overridden VehicleVO.update
+         * @overridden ValueObject.update
          */
-        CarVO.prototype.update = function (data)
+        VehicleVO.prototype.update = function (data)
         {
             _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.
         };
 
-        return CarVO;
+        return VehicleVO;
     })();
 
-    module.exports = CarVO;
+    module.exports = VehicleVO;
 
 });
