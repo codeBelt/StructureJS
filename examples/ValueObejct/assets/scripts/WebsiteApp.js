@@ -8,6 +8,7 @@ define(function (require, exports, module)
     var Collection = require('structurejs/model/Collection');
     var TestVO = require('./TestVO');
     var CarVO = require('./CarVO');
+    var DotNetAbstractVO = require('./DotNetAbstractVO');
 
     /**
      * TODO: YUIDoc_comment
@@ -33,7 +34,6 @@ define(function (require, exports, module)
         WebsiteApp.prototype.createChildren = function ()
         {
             _super.prototype.createChildren.call(this);
-
 
             var data = {
                 name: "robert",
@@ -63,23 +63,30 @@ define(function (require, exports, module)
                 }
             };
 
-            //vo = vo.clone();
-            //vo.update(data);
-            //vo.age = 100;
+            vo = vo.clone();
+            vo.update(data);
+            vo.age = 100;
 
-            //console.log("Krista", vo);
-            //console.log("json", vo.toJSON());
-            //console.log("json", JSON.stringify(vo.toJSON()));
+            console.log("Krista", vo);
+            console.log("json", vo.toJSON());
+            console.log("json", JSON.stringify(vo.toJSON()));
 
 
             var data = { make: 'Tesla', model: 'Model S', year: 2014 }
-            var data = '{"make":"Tesla","model":"Model S","year":2014}'
+            //var data = '{"make":"Tesla","model":"Model S","year":2014}'
 
             //var car = new CarVO(data);
-
+            //
             //console.log("car",  car.fromJSON(data));
 
+            var dotNet = {
+                Name: "robert",
+                Age: 37,
+                Date: 'Sat Mar 21 2015 12:58:48 GMT-0500 (CDT)'
+            };
 
+            var netVO = new DotNetAbstractVO(dotNet);
+            console.log("netVO", netVO);
 
 
             var people = [

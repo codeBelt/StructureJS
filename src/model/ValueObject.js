@@ -88,46 +88,40 @@
         function ValueObject() {
             _super.call(this);
         }
-        /**
-         * Provide a way to update the value object.
-         *
-         * @method update
-         * @param data {any}
-         * @public
-         * @example
-         *     // Example of updating some of the data:
-         *     carVO.update({ year: 2015, allWheel: true});
-         *
-         *     // Of course you can also do it the following way:
-         *     carVO.year = 2015;
-         *     carVO.allWheel = false;
-         */
+
         ValueObject.prototype.update = function (data) {
-            for (var key in data) {
-                // If this class has a property that matches a property on the data being passed in then set it.
-                // Also don't set the cid data value because it is automatically set in the constructor and
-                // we do want it to be overridden when the clone method has been called.
-                if (this.hasOwnProperty(key) && key !== 'cid')
+            for (var key in data)
+            {
+                this._setData(key, data);
+            }
+
+            return this;
+        };
+
+        ValueObject.prototype._setData = function (key, data) {
+            // If this class has a property that matches a property on the data being passed in then set it.
+            // Also don't set the cid data value because it is automatically set in the constructor and
+            // we do want it to be overridden when the clone method has been called.
+            if (this.hasOwnProperty(key) && key !== 'cid')
+            {
+                if (data[key] instanceof Array)
                 {
-                    if (data[key] instanceof Array)
-                    {
-                        var temp = [];
-                        var len = data[key].length;
-                        for (var i = 0; i < len; i++) {
-                            temp[i] = this._update(this[key], data[key][i]);
-                        }
-                        this[key] = temp;
+                    var temp = [];
+                    var len = data[key].length;
+                    for (var i = 0; i < len; i++) {
+                        temp[i] = this._updateData(this[key], data[key][i]);
                     }
-                    else
-                    {
-                        this[key] = this._update(this[key], data[key]);
-                    }
+                    this[key] = temp;
+                }
+                else
+                {
+                    this[key] = this._updateData(this[key], data[key]);
                 }
             }
             return this;
         };
 
-        ValueObject.prototype._update = function (key, data) {
+        ValueObject.prototype._updateData = function (key, data) {
             if (key instanceof ValueObject.constructor)
             {
                 // If property is an instance of a ValueObject class and has not been created yet.

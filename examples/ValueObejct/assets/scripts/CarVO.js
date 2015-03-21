@@ -22,7 +22,6 @@ define(function (require, exports, module)
         {
             _super.call(this);
 
-            console.log("data", data);
             this.make = null;
             this.model = null;
             this.year = null;
