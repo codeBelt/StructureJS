@@ -92,7 +92,7 @@
         ValueObject.prototype.update = function (data) {
             for (var key in data)
             {
-                this._setData(key, data);
+                this._setData(key, data[key]);
             }
 
             return this;
@@ -104,40 +104,40 @@
             // we do want it to be overridden when the clone method has been called.
             if (this.hasOwnProperty(key) && key !== 'cid')
             {
-                if (data[key] instanceof Array)
+                if (data instanceof Array)
                 {
                     var temp = [];
-                    var len = data[key].length;
+                    var len = data.length;
                     for (var i = 0; i < len; i++) {
-                        temp[i] = this._updateData(this[key], data[key][i]);
+                        temp[i] = this._updateData(this[key], data[i]);
                     }
                     this[key] = temp;
                 }
                 else
                 {
-                    this[key] = this._updateData(this[key], data[key]);
+                    this[key] = this._updateData(this[key], data);
                 }
             }
             return this;
         };
 
-        ValueObject.prototype._updateData = function (key, data) {
-            if (key instanceof ValueObject.constructor)
+        ValueObject.prototype._updateData = function (keyValue, data) {
+            if (keyValue instanceof ValueObject.constructor)
             {
                 // If property is an instance of a ValueObject class and has not been created yet.
                 // Than instantiate it and pass in the data to the constructor.
-                return key = new key(data);
+                return keyValue = new keyValue(data);
             }
-            else if (key instanceof ValueObject)
+            else if (keyValue instanceof ValueObject)
             {
                 // If property is an instance of a ValueObject class and has already been created.
                 // Than call the update method and pass in the data.
-                key.update(data);
+                keyValue.update(data);
             }
             else
             {
                 // Else just assign the data to the property.
-                return key = data;
+                return keyValue = data;
             }
 
             return data;

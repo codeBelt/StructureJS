@@ -53,23 +53,33 @@ define(function (require, exports, module)
             var vo = new TestVO(data);
             console.log("Robert", vo);
 
-            data = {
-                name: "krista",
-                age: 25,
-                house: {
-                    address: '3 Street',
-                    numOfBathrooms: 1,
-                    numOfBedRooms: 1
-                }
+
+
+            var data = {
+                name: "robert",
+                age: 37
             };
 
-            vo = vo.clone();
-            vo.update(data);
-            vo.age = 100;
+            var vo = new TestVO(data);
+            console.log("Robert", vo);
 
-            console.log("Krista", vo);
-            console.log("json", vo.toJSON());
-            console.log("json", JSON.stringify(vo.toJSON()));
+            //data = {
+            //    name: "krista",
+            //    age: 25,
+            //    house: {
+            //        address: '3 Street',
+            //        numOfBathrooms: 1,
+            //        numOfBedRooms: 1
+            //    }
+            //};
+            //
+            //vo = vo.clone();
+            //vo.update(data);
+            //vo.age = 100;
+            //
+            //console.log("Krista", vo);
+            //console.log("json", vo.toJSON());
+            //console.log("json", JSON.stringify(vo.toJSON()));
 
 
             var data = { make: 'Tesla', model: 'Model S', year: 2014 }
@@ -82,7 +92,7 @@ define(function (require, exports, module)
             var dotNet = {
                 Name: "robert",
                 Age: 37,
-                Date: 'Sat Mar 21 2015 12:58:48 GMT-0500 (CDT)'
+                DateOfBirth: 'Sat Mar 21 2015 12:58:48 GMT-0500 (CDT)'
             };
 
             var netVO = new DotNetAbstractVO(dotNet);
