@@ -24,9 +24,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this.age = null;
             this.dateOfBirth = null;
 
-            if (data) {
-                this.update(data);
-            }
+            this.update(data);
         }
 
         /**

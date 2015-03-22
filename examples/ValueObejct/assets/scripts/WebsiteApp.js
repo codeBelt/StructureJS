@@ -43,6 +43,9 @@ define(function (require, exports, module)
                     numOfBathrooms: 2,
                     numOfBedRooms: 4
                 },
+                arrayTest: [
+                    1,2,3,4
+                ],
                 cars: [
                     { make: 'Tesla', model: 'Model S', year: 2014 },
                     { make: 'Ford', model: 'Escort', year: 2000 }
@@ -50,18 +53,20 @@ define(function (require, exports, module)
             };
 
 
-            var vo = new TestVO(data);
+            var vo = new TestVO();
+            vo.update(data)
             console.log("Robert", vo);
-
-
-
-            var data = {
-                name: "robert",
-                age: 37
-            };
-
-            var vo = new TestVO(data);
-            console.log("Robert", vo);
+            //
+            //
+            //
+            //var data = {
+            //    name: "robert",
+            //    age: 37
+            //};
+            //
+            //var vo = new TestVO(data);
+            //console.log("Robert", vo);
+            //console.log("new TestVO()",  new TestVO());
 
             //data = {
             //    name: "krista",
@@ -95,8 +100,8 @@ define(function (require, exports, module)
                 DateOfBirth: 'Sat Mar 21 2015 12:58:48 GMT-0500 (CDT)'
             };
 
-            var netVO = new DotNetAbstractVO(dotNet);
-            console.log("netVO", netVO);
+            //var netVO = new DotNetAbstractVO(dotNet);
+            //console.log("netVO", netVO);
 
 
             var people = [

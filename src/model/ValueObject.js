@@ -90,35 +90,49 @@
         }
 
         ValueObject.prototype.update = function (data) {
-            for (var key in data)
+            if (data === void 0) { data = {}; }
+            var propertyData;
+
+            for (var propertyKey in this)
             {
-                this._setData(key, data[key]);
+                // If this class has a property that matches a property on the data being passed in then set it.
+                // Also don't set the cid data value because it is automatically set in the constructor and
+                // we do want it to be overridden when the clone method has been called.
+                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid')
+                {
+                    // If the data passed in does not have a property that matches a property on the value object then
+                    // use the default value/data that was assigned to the property.
+                    // Else use the data that was passed in.
+                    propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
+
+                    this._setData(propertyKey, propertyData);
+                }
             }
 
             return this;
         };
 
         ValueObject.prototype._setData = function (key, data) {
-            // If this class has a property that matches a property on the data being passed in then set it.
-            // Also don't set the cid data value because it is automatically set in the constructor and
-            // we do want it to be overridden when the clone method has been called.
-            if (this.hasOwnProperty(key) && key !== 'cid')
+            if (data instanceof Array)
             {
-                if (data instanceof Array)
+                var temp = [];
+                var len = data.length;
+
+                if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false)
                 {
-                    var temp = [];
-                    var len = data.length;
-                    for (var i = 0; i < len; i++) {
-                        temp[i] = this._updateData(this[key], data[i]);
+                    var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                    for (var i = 0; i < len; i++)
+                    {
+                        temp[i] = this._updateData(valueObjectOrOther, data[i]);
                     }
-                    this[key] = temp;
                 }
-                else
-                {
-                    this[key] = this._updateData(this[key], data);
-                }
+
+                this[key] = temp;
             }
-            return this;
+            else
+            {
+                this[key] = this._updateData(this[key], data);
+            }
         };
 
         ValueObject.prototype._updateData = function (keyValue, data) {

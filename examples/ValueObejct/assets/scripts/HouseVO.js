@@ -24,12 +24,9 @@ define(function (require, exports, module)
 
             this.address = null;
             this.numOfBathrooms = null;
-            this.numOfBedRooms = null;
+            this.numOfBedRooms = 1;
 
-            if (data)
-            {
-                this.update(data);
-            }
+            this.update(data);
         }
 
         /**
