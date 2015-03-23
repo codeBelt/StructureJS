@@ -30,7 +30,9 @@ define(function (require, exports, module)
             this.house = HouseVO;
             this.cars = [CarVO];
 
-            this.update(data);
+            if (data) {
+                this.update(data);
+            }
         }
 
         /**

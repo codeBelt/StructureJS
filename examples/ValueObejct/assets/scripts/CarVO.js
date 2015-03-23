@@ -27,7 +27,9 @@ define(function (require, exports, module)
             this.year = null;
             this.allWheel = false; // Set a default value.
 
-            this.update(data);
+            if (data) {
+                this.update(data);
+            }
         }
 
         /**

@@ -140,7 +140,7 @@
             {
                 // If property is an instance of a ValueObject class and has not been created yet.
                 // Than instantiate it and pass in the data to the constructor.
-                return keyValue = new keyValue(data);
+                keyValue = new keyValue(data);
             }
             else if (keyValue instanceof ValueObject)
             {
@@ -151,10 +151,10 @@
             else
             {
                 // Else just assign the data to the property.
-                return keyValue = data;
+                keyValue = data;
             }
 
-            return data;
+            return keyValue;
         };
 
         /**

@@ -24,7 +24,9 @@ define(function (require, exports, module) { // jshint ignore:line
             this.age = null;
             this.dateOfBirth = null;
 
-            this.update(data);
+            if (data) {
+                this.update(data);
+            }
         }
 
         /**
@@ -40,7 +42,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 this._setData(camelCaseVersion, data[key]);
             }
 
-            this.dateOfBirth = new Date(data.Date);
+            this.dateOfBirth = new Date(data.DateOfBirth);
 
             return this;
         };

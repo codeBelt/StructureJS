@@ -26,7 +26,9 @@ define(function (require, exports, module)
             this.numOfBathrooms = null;
             this.numOfBedRooms = 1;
 
-            this.update(data);
+            if (data) {
+                this.update(data);
+            }
         }
 
         /**
