@@ -94,33 +94,88 @@ module StructureTS
          */
         public update(data:any):any
         {
-            for (var key in data)
+            var propertyData:any;
+
+            for (var propertyKey in this)
             {
                 // If this class has a property that matches a property on the data being passed in then set it.
                 // Also don't set the cid data value because it is automatically set in the constructor and
                 // we do want it to be overridden when the clone method has been called.
-                if (this.hasOwnProperty(key) && key !== 'cid')
+                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid')
                 {
-                    if (this[key] instanceof ValueObject.constructor)
-                    {
-                        // If property is an instance of a ValueObject class and has not been created yet.
-                        // Than instantiate it and pass in the data to the constructor.
-                        this[key] = new this[key](data[key]);
-                    }
-                    else if (this[key] instanceof ValueObject)
-                    {
-                        // If property is an instance of a ValueObject class and has already been created.
-                        // Than call the update method and pass in the data.
-                        this[key].update(data[key]);
-                    }
-                    else
-                    {
-                        // Else just assign the data to the property.
-                        this[key] = data[key];
-                    }
+                    // If the data passed in does not have a property that matches a property on the value object then
+                    // use the default value/data that was assigned to the property.
+                    // Else use the data that was passed in.
+                    propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
+
+                    this._setData(propertyKey, propertyData);
                 }
             }
+
             return this;
+        }
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _setData
+         * @param key
+         * @param data
+         * @private
+         */
+        private _setData(key:any, data:any):void
+        {
+            if (data instanceof Array)
+            {
+                var temp:Array<any> = [];
+                var len:number = data.length;
+
+                if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false)
+                {
+                    var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                    for (var i:number = 0; i < len; i++)
+                    {
+                        temp[i] = this._updateData(valueObjectOrOther, data[i]);
+                    }
+                }
+
+                this[key] = temp;
+            }
+            else
+            {
+                this[key] = this._updateData(this[key], data);
+            }
+        }
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _updateData
+         * @param keyValue
+         * @param data
+         * @private
+         */
+        private _updateData(keyValue:any, data:any):any
+        {
+            if (keyValue instanceof ValueObject.constructor)
+            {
+                // If property is an instance of a ValueObject class and has not been created yet.
+                // Than instantiate it and pass in the data to the constructor.
+                keyValue = new keyValue(data);
+            }
+            else if (keyValue instanceof ValueObject)
+            {
+                // If property is an instance of a ValueObject class and has already been created.
+                // Than call the update method and pass in the data.
+                keyValue.update(data);
+            }
+            else
+            {
+                // Else just assign the data to the property.
+                keyValue = data;
+            }
+
+            return keyValue;
         }
 
         /**
@@ -166,6 +221,7 @@ module StructureTS
         public fromJSON(json:string):any
         {
             var parsedData:any = JSON.parse(json);
+
             this.update(parsedData);
 
             return this;
@@ -174,15 +230,16 @@ module StructureTS
         /**
          * Create a clone/copy of the value object.
          *
-         * @method Object
-         * @returns {any}
+         * @method clone
+         * @returns {ValueObject}
          * @public
          * @example
          *     var clone = carVO.clone();
          */
-        public clone():Object
+        public clone():ValueObject
         {
-            var clonedValueObject = new (<any>this).constructor(this);
+            var clonedValueObject:ValueObject = new (<any>this).constructor(this);
+
             return clonedValueObject;
         }
     }
