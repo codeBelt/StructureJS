@@ -53,9 +53,9 @@ define(function (require, exports, module)
             };
 
 
-            //var vo = new TestVO();
-            //vo.update(data);
-            //console.log("Robert", vo);
+            var vo = new TestVO();
+            vo.update(data);
+            console.log("Robert", vo);
             //
             //
             //
@@ -69,8 +69,8 @@ define(function (require, exports, module)
             };
 
             var vo = new TestVO(data);
-            //console.log("Robert", vo);
-            //console.log("new TestVO()",  new TestVO({}));
+            console.log("Robert", vo);
+            console.log("new TestVO()",  new TestVO({}));
             //
             data = {
                 name: "krista",
@@ -81,13 +81,13 @@ define(function (require, exports, module)
                 }
             };
 
-            //vo = vo.clone();
-            //vo.update(data);
-            //vo.age = 100;
-            //
-            //console.log("Krista", vo);
-            //console.log("json", vo.toJSON());
-            //console.log("json", JSON.stringify(vo.toJSON()));
+            vo = vo.clone();
+            vo.update(data);
+            vo.age = 100;
+
+            console.log("Krista", vo);
+            console.log("json", vo.toJSON());
+            console.log("json", JSON.stringify(vo.toJSON()));
 
 
             var data = { make: 'Tesla', model: 'Model S', year: 2014 }
@@ -103,8 +103,8 @@ define(function (require, exports, module)
                 DateOfBirth: 'Sat Mar 21 2015 12:58:48 GMT-0500 (CDT)'
             };
 
-            //var netVO = new DotNetAbstractVO(dotNet);
-            //console.log("netVO", netVO);
+            var netVO = new DotNetAbstractVO(dotNet);
+            console.log("DotNetAbstractVO", netVO);
 
 
             var people = [
@@ -124,15 +124,6 @@ define(function (require, exports, module)
                 {
                     name: "Robert",
                     age: 33,
-                    house: {
-                        address: '1 Street',
-                        numOfBathrooms: 2,
-                        numOfBedRooms: 4
-                    }
-                },
-                {
-                    name: "Robert",
-                    age: 37,
                     house: {
                         address: '1 Street',
                         numOfBathrooms: 2,
@@ -180,6 +171,8 @@ define(function (require, exports, module)
                         age: 25
                     }]
             ));
+
+            console.log("find", collection.findBy('Robert'));
         };
 
         /**
