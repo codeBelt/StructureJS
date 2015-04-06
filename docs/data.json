@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.6.15",
+        "version": "0.6.16",
         "url": ""
     },
     "files": {
@@ -994,8 +994,7 @@
             "requires": [
                 "Extend",
                 "EventDispatcher",
-                "BaseEvent",
-                "Lodash"
+                "BaseEvent"
             ],
             "is_constructor": 1,
             "params": [
@@ -1075,7 +1074,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         year: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n             this.feature = null;\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // Override any values after the default super update method has set the values.\n\n             // If the data doesn't match the property names you can set the values\n             // manually after update super method has been called.\n             // Also in the class you inherit ValueObject from you can override the\n             // update method to handle the data how you want.\n             this.allWheel = data.AllWheel;\n\n             this.feature = new Feature(data.feature);\n         };\n\n         return CarVO;\n     })();"
+                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         year: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign another ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // Override any values after the default super update method has set the values.\n\n             // If the data doesn't match the property names you can set the values\n             // manually after update super method has been called.\n             // Also in the class you inherit ValueObject from you can override the\n             // update method to handle the data how you want.\n             this.allWheel = data.AllWheel;\n         };\n\n         return CarVO;\n     })();"
             ]
         },
         "NetworkMonitor": {
@@ -4534,7 +4533,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 39,
+            "line": 38,
             "description": "The list of models in the collection.",
             "itemtype": "property",
             "name": "models",
@@ -4546,7 +4545,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 47,
+            "line": 46,
             "description": "The count of how many models are in the collection.",
             "itemtype": "property",
             "name": "length",
@@ -4561,7 +4560,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 57,
+            "line": 56,
             "description": "A reference to a ValueObject that will be used in the collection.",
             "itemtype": "property",
             "name": "_modelType",
@@ -4574,7 +4573,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 67,
+            "line": 66,
             "description": "Adds model or an array of models to the collection.",
             "itemtype": "method",
             "name": "add",
@@ -4592,6 +4591,9 @@
                     "optdefault": "false"
                 }
             ],
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
             "example": [
                 "\n     collection.add(vo);\n     collection.add(vo, true);"
             ],
@@ -4601,7 +4603,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 101,
+            "line": 102,
             "description": "Removes a model or an array of models from the collection.",
             "itemtype": "method",
             "name": "remove",
@@ -4621,6 +4623,7 @@
             ],
             "access": "public",
             "tagname": "",
+            "chainable": 1,
             "example": [
                 "\n     collection.remove(vo);\n\n     collection.remove(vo, true);"
             ],
@@ -4630,7 +4633,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 129,
+            "line": 131,
             "description": "Checks if a collection has an model.",
             "itemtype": "method",
             "name": "has",
@@ -4656,7 +4659,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 142,
+            "line": 144,
             "description": "Returns the array index position of the value object.",
             "itemtype": "method",
             "name": "indexOf",
@@ -4669,7 +4672,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Boolean"
+                "type": "Int"
             },
             "access": "public",
             "tagname": "",
@@ -4682,7 +4685,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 155,
+            "line": 157,
             "description": "Finds an object by an index value.\nIf the index is out of bounds, the collection will clamp it.",
             "itemtype": "method",
             "name": "get",
@@ -4708,10 +4711,10 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 176,
+            "line": 178,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
             "itemtype": "method",
-            "name": "find",
+            "name": "findBy",
             "params": [
                 {
                     "name": "arg",
@@ -4726,7 +4729,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     // Finds all value object that has 'Robert' in it.\n     this._collection.find(\"Robert\");\n     // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n     this._collection.find([\"Robert\", \"Heather\", 32]);\n\n     // Finds all value objects that same key and value you are searching for.\n     this._collection.find({ name: 'apple', organic: false, type: 'fruit' });\n     this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
+                "\n     // Finds all value object that has 'Robert' in it.\n     this._collection.findBy(\"Robert\");\n     // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n     this._collection.findBy([\"Robert\", \"Heather\", 32]);\n\n     // Finds all value objects that same key and value you are searching for.\n     this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });\n     this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -4734,7 +4737,30 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 214,
+            "line": 216,
+            "description": "Loops through the models array and creates a new array of models that match all the properties on the object passed in.",
+            "itemtype": "method",
+            "name": "_where",
+            "params": [
+                {
+                    "name": "propList",
+                    "description": "",
+                    "type": "Object|Array"
+                }
+            ],
+            "return": {
+                "description": "Returns a list of found object's.",
+                "type": "Array"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 259,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
             "name": "_findPropertyValue",
@@ -4757,7 +4783,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 248,
+            "line": 298,
             "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
@@ -4772,6 +4798,7 @@
             ],
             "access": "public",
             "tagname": "",
+            "chainable": 1,
             "example": [
                 "\n     collection.clear();"
             ],
@@ -4781,13 +4808,13 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 266,
+            "line": 317,
             "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
             "itemtype": "method",
-            "name": "Object",
+            "name": "clone",
             "return": {
                 "description": "",
-                "type": "Any"
+                "type": "Collection"
             },
             "access": "public",
             "tagname": "",
@@ -4800,7 +4827,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 280,
+            "line": 331,
             "description": "Creates a JSON object of the collection.",
             "itemtype": "method",
             "name": "toJSON",
@@ -4819,7 +4846,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 301,
+            "line": 353,
             "description": "Creates a JSON string of the collection.",
             "itemtype": "method",
             "name": "toJSONString",
@@ -4838,7 +4865,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 313,
+            "line": 365,
             "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -4851,6 +4878,7 @@
             ],
             "access": "public",
             "tagname": "",
+            "chainable": 1,
             "example": [
                 "\n     collection.fromJSON(str);"
             ],
@@ -4860,7 +4888,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 327,
+            "line": 380,
             "description": "Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys",
             "itemtype": "method",
             "name": "sortOn",
@@ -4893,7 +4921,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 364,
+            "line": 417,
             "description": "Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code\npoint value, according to the string conversion of each element.",
             "itemtype": "method",
             "name": "sort",
@@ -4913,7 +4941,7 @@
                 "type": "Array"
             },
             "example": [
-                "\n     var func = function(){}\n\n     collection.sort(func);"
+                "\n     var sortByDate = function(a, b){\n         return new Date(a.date) - new Date(b.date)\n     }\n\n     collection.sort(sortByDate);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -4921,7 +4949,7 @@
         },
         {
             "file": "src/model/Collection.js",
-            "line": 382,
+            "line": 437,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -4934,6 +4962,29 @@
             "example": [
                 "\n     collection.reverse();"
             ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/Collection.js",
+            "line": 449,
+            "description": "Returns a new array of models with duplicates removed.",
+            "itemtype": "method",
+            "name": "_unique",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "The array you want to use to generate the unique array.",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "Returns a new array list of models in the collection with duplicates removed.",
+                "type": "Array"
+            },
+            "access": "private",
+            "tagname": "",
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
@@ -5054,7 +5105,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 90,
+            "line": 91,
             "description": "Provide a way to update the value object.",
             "itemtype": "method",
             "name": "update",
@@ -5076,13 +5127,57 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 112,
+            "line": 121,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "_setData",
+            "params": [
+                {
+                    "name": "key",
+                    "description": ""
+                },
+                {
+                    "name": "data",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "ValueObject",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/ValueObject.js",
+            "line": 145,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "_updateData",
+            "params": [
+                {
+                    "name": "keyValue",
+                    "description": ""
+                },
+                {
+                    "name": "data",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "ValueObject",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "src/model/ValueObject.js",
+            "line": 170,
             "description": "Converts the value object data into a JSON object and deletes the cid property.",
             "itemtype": "method",
             "name": "toJSON",
             "return": {
                 "description": "",
-                "type": "Any"
+                "type": "ValueObject"
             },
             "access": "public",
             "tagname": "",
@@ -5095,7 +5190,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 125,
+            "line": 183,
             "description": "Converts a value object to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5114,7 +5209,7 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 137,
+            "line": 195,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5136,13 +5231,13 @@
         },
         {
             "file": "src/model/ValueObject.js",
-            "line": 153,
+            "line": 211,
             "description": "Create a clone/copy of the value object.",
             "itemtype": "method",
-            "name": "Object",
+            "name": "clone",
             "return": {
                 "description": "",
-                "type": "Any"
+                "type": "ValueObject"
             },
             "access": "public",
             "tagname": "",
@@ -8223,15 +8318,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Collection.js:266"
+            "line": " src/model/Collection.js:317"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Collection.js:280"
+            "line": " src/model/Collection.js:331"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/Collection.js:301"
+            "line": " src/model/Collection.js:353"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8243,15 +8338,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:112"
+            "line": " src/model/ValueObject.js:170"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:125"
+            "line": " src/model/ValueObject.js:183"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/model/ValueObject.js:153"
+            "line": " src/model/ValueObject.js:211"
         },
         {
             "message": "replacing incorrect tag: returns with return",

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.15</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.16</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -239,6 +239,27 @@
             
 
             
+                <li class="index-item method private">
+                    <a href="#method__setData">_setData</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__updateData">_updateData</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_clone">clone</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public inherited">
                     <a href="#method_destroy">destroy</a>
 
@@ -255,13 +276,6 @@
             
                 <li class="index-item method public inherited">
                     <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_Object">Object</a>
 
                     
                     
@@ -486,7 +500,10 @@ var carVO = new CarVO(data);
          this.model = null;
          this.year = null;
          this.allWheel = false; // Set a default value.
-         this.feature = null;
+
+         // You can assign another ValueObject to a property which will
+         // automatically created it and pass the data to it.
+         this.feature = FeatureVO;
 
          if (data) {
              this.update(data);
@@ -504,8 +521,6 @@ var carVO = new CarVO(data);
          // Also in the class you inherit ValueObject from you can override the
          // update method to handle the data how you want.
          this.allWheel = data.AllWheel;
-
-         this.feature = new Feature(data.feature);
      };
 
      return CarVO;
@@ -523,6 +538,328 @@ var carVO = new CarVO(data);
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method__setData" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_setData</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>key</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_ValueObject.js.html#l121"><code>src&#x2F;model&#x2F;ValueObject.js:121</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">key</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">data</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__updateData" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_updateData</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>keyValue</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_ValueObject.js.html#l145"><code>src&#x2F;model&#x2F;ValueObject.js:145</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">keyValue</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">data</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_clone" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>clone</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_model_ValueObject.js.html#l211"><code>src&#x2F;model&#x2F;ValueObject.js:211</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Create a clone/copy of the value object.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var clone = carVO.clone();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
 
         
             <a name="method_destroy" class="anchor-link"></a>
@@ -667,7 +1004,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l137"><code>src&#x2F;model&#x2F;ValueObject.js:137</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l195"><code>src&#x2F;model&#x2F;ValueObject.js:195</code></a>
         
         </p>
 
@@ -814,94 +1151,6 @@ on other objects before calling the super.</p>
 </div>
 
         
-            <a name="method_Object" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>Object</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Any</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_model_ValueObject.js.html#l153"><code>src&#x2F;model&#x2F;ValueObject.js:153</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Create a clone/copy of the value object.</p>
-
-        </div>
-
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Any</span>:
-                        
-                    
-                </div>
-            </div>
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>var clone = carVO.clone();</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
             <a name="method_toJSON" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>toJSON</code>
@@ -912,7 +1161,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type">Any</span>
+            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
         </span>
     
 
@@ -943,7 +1192,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l112"><code>src&#x2F;model&#x2F;ValueObject.js:112</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l170"><code>src&#x2F;model&#x2F;ValueObject.js:170</code></a>
         
         </p>
 
@@ -969,7 +1218,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Any</span>:
+                            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>:
                         
                     
                 </div>
@@ -1031,7 +1280,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l125"><code>src&#x2F;model&#x2F;ValueObject.js:125</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l183"><code>src&#x2F;model&#x2F;ValueObject.js:183</code></a>
         
         </p>
 
@@ -1125,7 +1374,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_ValueObject.js.html#l90"><code>src&#x2F;model&#x2F;ValueObject.js:90</code></a>
+        <a href="../files/src_model_ValueObject.js.html#l91"><code>src&#x2F;model&#x2F;ValueObject.js:91</code></a>
         
         </p>
 

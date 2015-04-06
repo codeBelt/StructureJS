@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.15</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.16</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -145,15 +145,15 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../util/Util&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;lodash&#x27;], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;../util/Util&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../util/Util&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/BaseEvent&#x27;), require(&#x27;lodash&#x27;));
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../util/Util&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/BaseEvent&#x27;));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.Util, root.structurejs.EventDispatcher, root.structurejs.BaseEvent, _);
+        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.Util, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
     }
-}(this, function(Extend, Util, EventDispatcher, BaseEvent, _) {
+}(this, function(Extend, Util, EventDispatcher, BaseEvent) {
     &#x27;use strict&#x27;;
 
     /**
@@ -166,7 +166,6 @@
      * @requires Extend
      * @requires EventDispatcher
      * @requires BaseEvent
-     * @requires Lodash
      * @constructor
      * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
@@ -212,6 +211,8 @@
          * @method add
          * @param model {Any|Array} Single or an array of models to add to the current collection.
          * @param [silent=false] {boolean} If you&#x27;d like to prevent the event from being dispatched.
+         * @public
+         * @chainable
          * @example
          *      collection.add(vo);
          *      collection.add(vo, true);
@@ -247,6 +248,7 @@
          * @param model {Object|Array} Model(s) to remove
          * @param [silent=false] {boolean} If you&#x27;d like to prevent the event from being dispatched.
          * @public
+         * @chainable
          * @example
          *      collection.remove(vo);
          *
@@ -286,7 +288,7 @@
          *
          * @method indexOf
          * @param model {Object} get the index of.
-         * @return {boolean}
+         * @return {int}
          * @public
          * @example
          *      collection.indexOf(vo);
@@ -318,21 +320,21 @@
         /**
          * Examines each element in a collection, returning an array of all elements that have the given properties.
          * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
-         * @method find
+         * @method findBy
          * @param arg {Object|Array}
          * @return {Array} Returns a list of found object&#x27;s.
          * @public
          * @example
          *      // Finds all value object that has &#x27;Robert&#x27; in it.
-         *      this._collection.find(&quot;Robert&quot;);
+         *      this._collection.findBy(&quot;Robert&quot;);
          *      // Finds any value object that has &#x27;Robert&#x27; or &#x27;Heater&#x27; or 23 in it.
-         *      this._collection.find([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
+         *      this._collection.findBy([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
          *
          *      // Finds all value objects that same key and value you are searching for.
-         *      this._collection.find({ name: &#x27;apple&#x27;, organic: false, type: &#x27;fruit&#x27; });
-         *      this._collection.find([{ type: &#x27;vegetable&#x27; }, { name: &#x27;apple&#x27;, &#x27;organic: false, type&#x27;: &#x27;fruit&#x27; }]);
+         *      this._collection.findBy({ name: &#x27;apple&#x27;, organic: false, type: &#x27;fruit&#x27; });
+         *      this._collection.findBy([{ type: &#x27;vegetable&#x27; }, { name: &#x27;apple&#x27;, &#x27;organic: false, type&#x27;: &#x27;fruit&#x27; }]);
          */
-        Collection.prototype.find = function (arg) {
+        Collection.prototype.findBy = function (arg) {
             // If properties is not an array then make it an array object.
             var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
@@ -347,11 +349,54 @@
                 }
                 else {
                     // If the model is an object.
-                    foundItems = foundItems.concat(_.where(this.models, prop));
+                    foundItems = foundItems.concat(this._where(prop));
                 }
             }
             // Removes all duplicated objects found in the temp array.
-            return _.uniq(foundItems);
+            return this._unique(foundItems);
+        };
+        /**
+         * Loops through the models array and creates a new array of models that match all the properties on the object passed in.
+         *
+         * @method _where
+         * @param propList {Object|Array}
+         * @return {Array} Returns a list of found object&#x27;s.
+         * @private
+         */
+        Collection.prototype._where = function (propList) {
+            // If properties is not an array then make it an array object.
+            var list = (propList instanceof Array) ? propList : [propList];
+            var foundItems = [];
+            var itemsLength = this.models.length;
+            var itemsToFindLength = list.length;
+            var hasMatchingProperty = false;
+            var doesModelMatch = false;
+            var model;
+            var obj;
+            var key;
+            var j;
+            for (var i = 0; i &lt; itemsToFindLength; i++) {
+                obj = list[i];
+                for (j = 0; j &lt; itemsLength; j++) {
+                    hasMatchingProperty = false;
+                    doesModelMatch = true;
+                    model = this.models[j];
+                    for (key in obj) {
+                        // Check if the key value is a property.
+                        if (obj.hasOwnProperty(key) &amp;&amp; model.hasOwnProperty(key)) {
+                            hasMatchingProperty = true;
+                            if (obj[key] !== model[key]) {
+                                doesModelMatch = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (doesModelMatch === true &amp;&amp; hasMatchingProperty === true) {
+                        foundItems.push(model);
+                    }
+                }
+            }
+            return foundItems;
         };
         /**
          * Loops through all properties of an object and check to see if the value matches the argument passed in.
@@ -367,18 +412,23 @@
             var foundItems = [];
             var itemsLength = this.models.length;
             var itemsToFindLength = list.length;
+            var propertyValue;
+            var value;
+            var model;
+            var key;
+            var j;
             for (var i = 0; i &lt; itemsLength; i++) {
-                var obj = this.models[i];
-                for (var key in obj) {
+                model = this.models[i];
+                for (key in model) {
                     // Check if the key value is a property.
-                    if (obj.hasOwnProperty(key)) {
-                        var propertyValue = obj[key];
-                        for (var j = 0; j &lt; itemsToFindLength; j++) {
-                            var value = list[j];
+                    if (model.hasOwnProperty(key)) {
+                        propertyValue = model[key];
+                        for (j = 0; j &lt; itemsToFindLength; j++) {
+                            value = list[j];
                             // If the value object property equals the string value then keep a reference to that value object.
                             if (propertyValue === value) {
                                 // Add found value object to the foundItems array.
-                                foundItems.push(obj);
+                                foundItems.push(model);
                                 break;
                             }
                         }
@@ -393,6 +443,7 @@
          * @method clear
          * @param [silent=false] {boolean} If you&#x27;d like to prevent the event from being dispatched.
          * @public
+         * @chainable
          * @example
          *      collection.clear();
          */
@@ -408,8 +459,8 @@
         /**
          * Creates and returns a new collection object that contains a reference to the models in the collection cloned from.
          *
-         * @method Object
-         * @returns {any}
+         * @method clone
+         * @returns {Collection}
          * @public
          * @example
          *     var clone = collection.clone();
@@ -431,7 +482,8 @@
         Collection.prototype.toJSON = function () {
             if (this._modelType !== null) {
                 var list = [];
-                for (var i = 0; i &lt; this.length; i++) {
+                var len = this.length;
+                for (var i = 0; i &lt; len; i++) {
                     list[i] = this.models[i].toJSON();
                 }
                 return list;
@@ -458,6 +510,7 @@
          * @method fromJSON
          * @param json {string}
          * @public
+         * @chainable
          * @example
          *      collection.fromJSON(str);
          */
@@ -512,9 +565,11 @@
          * @public
          * @return {Array} Returns the list of models in the collection.
          * @example
-         *      var func = function(){}
+         *      var sortByDate = function(a, b){
+         *          return new Date(a.date) - new Date(b.date)
+         *      }
          *
-         *      collection.sort(func);
+         *      collection.sort(sortByDate);
          */
         Collection.prototype.sort = function (sortFunction) {
             if (sortFunction === void 0) { sortFunction = null; }
@@ -533,11 +588,29 @@
         Collection.prototype.reverse = function () {
             return this.models.reverse();
         };
+        /**
+         * Returns a new array of models with duplicates removed.
+         *
+         * @method _unique
+         * @param list {Array} The array you want to use to generate the unique array.
+         * @return {Array} Returns a new array list of models in the collection with duplicates removed.
+         * @private
+         */
+        Collection.prototype._unique = function (list) {
+            var unique = list.reduce(function (previousValue, currentValue) {
+                if (previousValue.indexOf(currentValue) === -1) {
+                    previousValue.push(currentValue);
+                }
+                return previousValue;
+            }, []);
+            return unique;
+        };
         return Collection;
     })();
 
     return Collection;
 }));
+
     </pre>
 </div>
 
