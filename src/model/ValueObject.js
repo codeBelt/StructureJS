@@ -55,7 +55,10 @@
      *              this.model = null;
      *              this.year = null;
      *              this.allWheel = false; // Set a default value.
-     *              this.feature = null;
+     *
+     *              // You can assign another ValueObject to a property which will
+     *              // automatically created it and pass the data to it.
+     *              this.feature = FeatureVO;
      *
      *              if (data) {
      *                  this.update(data);
@@ -73,8 +76,6 @@
      *              // Also in the class you inherit ValueObject from you can override the
      *              // update method to handle the data how you want.
      *              this.allWheel = data.AllWheel;
-     *
-     *              this.feature = new Feature(data.feature);
      *          };
      *
      *          return CarVO;
@@ -102,18 +103,75 @@
          *     carVO.allWheel = false;
          */
         ValueObject.prototype.update = function (data) {
-            for (var key in data) {
-                if (this.hasOwnProperty(key)) {
-                    this[key] = data[key];
+            var propertyData;
+            for (var propertyKey in this) {
+                // If this class has a property that matches a property on the data being passed in then set it.
+                // Also don't set the cid data value because it is automatically set in the constructor and
+                // we do want it to be overridden when the clone method has been called.
+                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid') {
+                    // If the data passed in does not have a property that matches a property on the value object then
+                    // use the default value/data that was assigned to the property.
+                    // Else use the data that was passed in.
+                    propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
+                    this._setData(propertyKey, propertyData);
                 }
             }
             return this;
         };
         /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _setData
+         * @param key
+         * @param data
+         * @private
+         */
+        ValueObject.prototype._setData = function (key, data) {
+            if (data instanceof Array) {
+                var temp = [];
+                var len = data.length;
+                if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false) {
+                    var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                    for (var i = 0; i < len; i++) {
+                        temp[i] = this._updateData(valueObjectOrOther, data[i]);
+                    }
+                }
+                this[key] = temp;
+            }
+            else {
+                this[key] = this._updateData(this[key], data);
+            }
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _updateData
+         * @param keyValue
+         * @param data
+         * @private
+         */
+        ValueObject.prototype._updateData = function (keyValue, data) {
+            if (keyValue instanceof ValueObject.constructor) {
+                // If property is an instance of a ValueObject class and has not been created yet.
+                // Than instantiate it and pass in the data to the constructor.
+                keyValue = new keyValue(data);
+            }
+            else if (keyValue instanceof ValueObject) {
+                // If property is an instance of a ValueObject class and has already been created.
+                // Than call the update method and pass in the data.
+                keyValue.update(data);
+            }
+            else {
+                // Else just assign the data to the property.
+                keyValue = data;
+            }
+            return keyValue;
+        };
+        /**
          * Converts the value object data into a JSON object and deletes the cid property.
          *
          * @method toJSON
-         * @returns {any}
+         * @returns {ValueObject}
          * @public
          * @example
          *     var obj = carVO.toJSON();
@@ -153,8 +211,8 @@
         /**
          * Create a clone/copy of the value object.
          *
-         * @method Object
-         * @returns {any}
+         * @method clone
+         * @returns {ValueObject}
          * @public
          * @example
          *     var clone = carVO.clone();

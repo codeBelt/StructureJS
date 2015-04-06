@@ -17,8 +17,16 @@ define(function (require, exports, module) { // jshint ignore:line
 
         var _super = Extend(DotNetAbstractVO, ValueObject);
 
-        function DotNetAbstractVO() {
+        function DotNetAbstractVO(data) {
             _super.call(this);
+
+            this.name = null;
+            this.age = null;
+            this.dateOfBirth = null;
+
+            if (data) {
+                this.update(data);
+            }
         }
 
         /**
@@ -26,15 +34,15 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         DotNetAbstractVO.prototype.update = function (data) {
             var camelCaseVersion;
+
             for (var key in data)
             {
                 camelCaseVersion = StringUtil.toCamelCase(key);
 
-                if (this.hasOwnProperty(camelCaseVersion))
-                {
-                    this[camelCaseVersion] = data[key];
-                }
+                this._setData(camelCaseVersion, data[key]);
             }
+
+            this.dateOfBirth = new Date(data.DateOfBirth);
 
             return this;
         };
@@ -68,7 +76,6 @@ define(function (require, exports, module) { // jshint ignore:line
                     if (obj[key] instanceof Object) {
                         newObj[pascalCaseVersion] = this._toPascalCase(obj[key]);
                     } else {
-
                         newObj[pascalCaseVersion] = obj[key];
                     }
                 }

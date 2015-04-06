@@ -1,6 +1,5 @@
 ///<reference path='_declare/jquery.d.ts'/>
 ///<reference path='_declare/handlebars.d.ts'/>
-///<reference path='_declare/lodash.d.ts'/>
 ///<reference path='_declare/greensock.d.ts'/>
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>

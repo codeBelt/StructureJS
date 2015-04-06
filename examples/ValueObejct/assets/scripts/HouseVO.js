@@ -24,10 +24,9 @@ define(function (require, exports, module)
 
             this.address = null;
             this.numOfBathrooms = null;
-            this.numOfBedRooms = null;
+            this.numOfBedRooms = 1;
 
-            if (data)
-            {
+            if (data) {
                 this.update(data);
             }
         }
@@ -37,7 +36,6 @@ define(function (require, exports, module)
          */
         HouseVO.prototype.update = function (data)
         {
-            console.log("asdfas");
             _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.

@@ -26,12 +26,11 @@ define(function (require, exports, module)
 
             this.age = 0;
             this.name = null;
-            this.house = null;
-            this.date = null;
-            this.cars = [];
+            this.arrayTest = [];
+            this.house = HouseVO;
+            this.cars = [CarVO];
 
-            if (data)
-            {
+            if (data) {
                 this.update(data);
             }
         }

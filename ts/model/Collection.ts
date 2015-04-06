@@ -1,4 +1,3 @@
-///<reference path='../interface/ICollection.ts'/>
 ///<reference path='../model/ValueObject.ts'/>
 ///<reference path='../event/EventDispatcher.ts'/>
 ///<reference path='../event/BaseEvent.ts'/>
@@ -13,7 +12,6 @@
  * @requires Extend
  * @requires EventDispatcher
  * @requires BaseEvent
- * @requires Lodash
  * @constructor
  * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
  * @author Robert S. (www.codeBelt.com)
@@ -29,7 +27,7 @@ module StructureTS
          * @type {Array}
          * @readOnly
          */
-        public models:any[] = [];
+        public models:Array<any> = [];
 
         /**
          * The count of how many models are in the collection.
@@ -49,7 +47,7 @@ module StructureTS
          * @type {ValueObject}
          * @private
          */
-        public _modelType:ValueObject = null;
+        private _modelType:ValueObject = null;
 
         constructor(valueObjectType:ValueObject = null)
         {
@@ -64,6 +62,8 @@ module StructureTS
          * @method add
          * @param model {Any|Array} Single or an array of models to add to the current collection.
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
+         * @public
+         * @chainable
          * @example
          *      collection.add(vo);
          *      collection.add(vo, true);
@@ -71,9 +71,9 @@ module StructureTS
         public add(model:any, silent:boolean = false):any
         {
             // If the model passed in is not an array then make it.
-            var models:any[] = (model instanceof Array) ? model : [model];
+            var models:any = (model instanceof Array) ? model : [model];
 
-            var len = models.length;
+            var len:number = models.length;
             for (var i:number = 0; i < len; i++)
             {
                 // Only add the model if it does not exist in the the collection.
@@ -94,7 +94,8 @@ module StructureTS
                 }
             }
 
-            if (silent === false) {
+            if (silent === false)
+            {
                 this.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
 
@@ -108,6 +109,7 @@ module StructureTS
          * @param model {Object|Array} Model(s) to remove
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
+         * @chainable
          * @example
          *      collection.remove(vo);
          *
@@ -116,7 +118,7 @@ module StructureTS
         public remove(model:any, silent:boolean = false):any
         {
             // If the model passed in is not an array then make it.
-            var models:any[] = (model instanceof Array) ? model : [model];
+            var models:any = (model instanceof Array) ? model : [model];
 
             for (var i:number = models.length - 1; i >= 0; i--)
             {
@@ -128,7 +130,8 @@ module StructureTS
                 }
             }
 
-            if (silent === false) {
+            if (silent === false)
+            {
                 this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED));
             }
 
@@ -155,7 +158,7 @@ module StructureTS
          *
          * @method indexOf
          * @param model {Object} get the index of.
-         * @return {boolean}
+         * @return {int}
          * @public
          * @example
          *      collection.indexOf(vo);
@@ -176,7 +179,7 @@ module StructureTS
          * @example
          *      collection.get(1);
          */
-        public get(index:number):any
+        private get(index:number):any
         {
             if (index < 0)
             {
@@ -191,29 +194,28 @@ module StructureTS
             // Return the model by the index. It will return null if the array is empty.
             return this.models[index] || null;
         }
-
         /**
          * Examines each element in a collection, returning an array of all elements that have the given properties.
          * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
-         * @method find
+         * @method findBy
          * @param arg {Object|Array}
          * @return {Array} Returns a list of found object's.
          * @public
          * @example
          *      // Finds all value object that has 'Robert' in it.
-         *      this._collection.find("Robert");
+         *      this._collection.findBy("Robert");
          *      // Finds any value object that has 'Robert' or 'Heater' or 23 in it.
-         *      this._collection.find(["Robert", "Heather", 32]);
+         *      this._collection.findBy(["Robert", "Heather", 32]);
          *
          *      // Finds all value objects that same key and value you are searching for.
-         *      this._collection.find({ name: 'apple', organic: false, type: 'fruit' });
-         *      this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
+         *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
+         *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          */
-        public find(arg:any):any[]
+        private findBy(arg:any):Array<any>
         {
             // If properties is not an array then make it an array object.
-            var list:any[] = (arg instanceof Array) ? arg : [arg];
-            var foundItems:any[] = [];
+            var list:Array<any> = (arg instanceof Array) ? arg : [arg];
+            var foundItems:Array<any> = [];
             var len:number = list.length;
             var prop:any;
 
@@ -229,13 +231,70 @@ module StructureTS
                 else
                 {
                     // If the model is an object.
-                    foundItems = foundItems.concat(_.where(this.models, prop));
+                    foundItems = foundItems.concat(this._where(prop));
                 }
             }
+
             // Removes all duplicated objects found in the temp array.
-            return _.uniq(foundItems);
+            return this._unique(foundItems);
         }
 
+        /**
+         * Loops through the models array and creates a new array of models that match all the properties on the object passed in.
+         *
+         * @method _where
+         * @param propList {Object|Array}
+         * @return {Array} Returns a list of found object's.
+         * @private
+         */
+        private _where(propList:any):Array<any>
+        {
+            // If properties is not an array then make it an array object.
+            var list:Array<any> = (propList instanceof Array) ? propList : [propList];
+            var foundItems:Array<any> = [];
+            var itemsLength:number = this.models.length;
+            var itemsToFindLength:number = list.length;
+            var hasMatchingProperty:boolean = false;
+            var doesModelMatch:boolean = false;
+            var model:any;
+            var obj:any;
+            var key:any;
+            var j:number;
+
+            for (var i:number = 0; i < itemsToFindLength; i++)
+            {
+                obj = list[i];
+
+                for (j = 0; j < itemsLength; j++)
+                {
+                    hasMatchingProperty = false;
+                    doesModelMatch = true;
+                    model = this.models[j];
+
+                    for (key in obj)
+                    {
+                        // Check if the key value is a property.
+                        if (obj.hasOwnProperty(key) && model.hasOwnProperty(key))
+                        {
+                            hasMatchingProperty = true;
+
+                            if (obj[key] !== model[key])
+                            {
+                                doesModelMatch = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (doesModelMatch === true && hasMatchingProperty === true)
+                    {
+                        foundItems.push(model);
+                    }
+                }
+            }
+
+            return foundItems;
+        }
 
         /**
          * Loops through all properties of an object and check to see if the value matches the argument passed in.
@@ -245,31 +304,39 @@ module StructureTS
          * @return {Array} Returns a list of found object's.
          * @private
          */
-        private _findPropertyValue(arg:any):any[]
+        private _findPropertyValue(arg):Array<any>
         {
             // If properties is not an array then make it an array object.
-            var list:any[] = (arg instanceof Array) ? arg : [arg];
-            var foundItems:any[] = [];
+            var list = (arg instanceof Array) ? arg : [arg];
+            var foundItems:Array<any> = [];
             var itemsLength:number = this.models.length;
             var itemsToFindLength:number = list.length;
+            var propertyValue:any;
+            var value:any;
+            var model:any;
+            var key:any;
+            var j:any;
 
-            for (var i = 0; i < itemsLength; i++)
+            for (var i:number = 0; i < itemsLength; i++)
             {
-                var obj = this.models[i];
-                for (var key in obj)
+                model = this.models[i];
+
+                for (key in model)
                 {
                     // Check if the key value is a property.
-                    if (obj.hasOwnProperty(key))
+                    if (model.hasOwnProperty(key))
                     {
-                        var propertyValue = obj[key];
-                        for (var j = 0; j < itemsToFindLength; j++)
+                        propertyValue = model[key];
+
+                        for (j = 0; j < itemsToFindLength; j++)
                         {
-                            var value = list[j];
+                            value = list[j];
+
                             // If the value object property equals the string value then keep a reference to that value object.
                             if (propertyValue === value)
                             {
                                 // Add found value object to the foundItems array.
-                                foundItems.push(obj);
+                                foundItems.push(model);
                                 break;
                             }
                         }
@@ -286,10 +353,11 @@ module StructureTS
          * @method clear
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
+         * @chainable
          * @example
          *      collection.clear();
          */
-        public clear(silent:boolean = false):any
+        private clear(silent:boolean = false):any
         {
             this.models = [];
             this.length = 0;
@@ -306,12 +374,12 @@ module StructureTS
          * Creates and returns a new collection object that contains a reference to the models in the collection cloned from.
          *
          * @method clone
-         * @returns {any}
+         * @returns {Collection}
          * @public
          * @example
          *     var clone = collection.clone();
          */
-        public clone():Collection
+        private clone():Collection
         {
             var clonedValueObject:Collection = new (<any>this).constructor(this._modelType);
             clonedValueObject.add(this.models.slice(0));
@@ -328,13 +396,14 @@ module StructureTS
          * @example
          *     var arrayOfObjects = collection.toJSON();
          */
-        public toJSON():any
+        private toJSON():Array<any>
         {
             if (this._modelType !== null)
             {
-                var list = [];
+                var list:Array<any> = [];
+                var len:number = this.length;
 
-                for (var i = 0; i < this.length; i++)
+                for (var i:number = 0; i < len; i++)
                 {
                     list[i] = this.models[i].toJSON();
                 }
@@ -356,7 +425,7 @@ module StructureTS
          * @example
          *     var str = collection.toJSONString();
          */
-        public toJSONString():string
+        private toJSONString():string
         {
             return JSON.stringify(this.toJSON());
         }
@@ -367,12 +436,14 @@ module StructureTS
          * @method fromJSON
          * @param json {string}
          * @public
+         * @chainable
          * @example
          *      collection.fromJSON(str);
          */
-        public fromJSON(json):any
+        private fromJSON(json):any
         {
             var parsedData:any = JSON.parse(json);
+
             this.add(parsedData);
 
             return this;
@@ -390,21 +461,39 @@ module StructureTS
          *      collection.sortOn('name');
          *      collection.sortOn('name', false);
          */
-        public sortOn(propertyName:string, sortAscending:boolean = true):Array<any>
+        private sortOn(propertyName:string, sortAscending:boolean = true)
         {
             if (sortAscending === false)
             {
-                return this.sort(function (a, b) {
-                    if (a[propertyName] < b[propertyName]) { return 1; }
-                    if (a[propertyName] > b[propertyName]) { return -1; }
+                return this.sort(function (a, b)
+                {
+                    if (a[propertyName] < b[propertyName])
+                    {
+                        return 1;
+                    }
+
+                    if (a[propertyName] > b[propertyName])
+                    {
+                        return -1;
+                    }
+
                     return 0;
                 });
             }
             else
             {
-                return this.sort(function (a, b) {
-                    if (a[propertyName] > b[propertyName]) { return 1; }
-                    if (a[propertyName] < b[propertyName]) { return -1; }
+                return this.sort(function (a, b)
+                {
+                    if (a[propertyName] > b[propertyName])
+                    {
+                        return 1;
+                    }
+
+                    if (a[propertyName] < b[propertyName])
+                    {
+                        return -1;
+                    }
+
                     return 0;
                 });
             }
@@ -425,9 +514,10 @@ module StructureTS
          *
          *      collection.sort(sortByDate);
          */
-        public sort(sortFunction:any = null):Array<any>
+        private sort(sortFunction = null):Array<any>
         {
             this.models.sort(sortFunction);
+
             return this.models;
         }
 
@@ -440,7 +530,7 @@ module StructureTS
          * @example
          *      collection.reverse();
          */
-        public reverse():Array<any>
+        private reverse():Array<any>
         {
             return this.models.reverse();
         }
@@ -455,17 +545,17 @@ module StructureTS
          */
         private _unique(list):Array<any>
         {
-            var unique:Array<any> = list.reduce(function(previousValue:any, currentValue:any):Array<any>
+            var unique:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
             {
                 if (previousValue.indexOf(currentValue) === -1)
                 {
                     previousValue.push(currentValue);
                 }
+
                 return previousValue;
             }, []);
 
             return unique;
         }
-
     }
 }
