@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../util/Util', '../event/EventDispatcher', '../event/BaseEvent', 'lodash'], factory);
+        define(['../util/Extend', '../util/Util', '../event/EventDispatcher', '../event/BaseEvent'], factory);
     } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../util/Util'), require('../event/EventDispatcher'), require('../event/BaseEvent'), require('lodash'));
+        module.exports = factory(require('../util/Extend'), require('../util/Util'), require('../event/EventDispatcher'), require('../event/BaseEvent'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.Util, root.structurejs.EventDispatcher, root.structurejs.BaseEvent, _);
+        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.Util, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
     }
-}(this, function(Extend, Util, EventDispatcher, BaseEvent, _) {
+}(this, function(Extend, Util, EventDispatcher, BaseEvent) {
     'use strict';
 
     /**
@@ -24,8 +24,8 @@
      * @requires Extend
      * @requires EventDispatcher
      * @requires BaseEvent
-     * @requires Lodash
      * @constructor
+     * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
      */
     var Collection = (function () {
@@ -39,7 +39,7 @@
              * The list of models in the collection.
              *
              * @property models
-             * @type {array}
+             * @type {Array}
              * @readOnly
              */
             this.models = [];
@@ -47,7 +47,7 @@
              * The count of how many models are in the collection.
              *
              * @property length
-             * @type {init}
+             * @type {int}
              * @default 0
              * @readOnly
              * @public
@@ -56,11 +56,12 @@
             /**
              * A reference to a ValueObject that will be used in the collection.
              *
-             * @property modelType
+             * @property _modelType
              * @type {ValueObject}
              * @private
              */
-            this.modelType = valueObjectType;
+            this._modelType = null;
+            this._modelType = valueObjectType;
         }
         /**
          * Adds model or an array of models to the collection.
@@ -84,15 +85,15 @@
                 // Only add the model if it does not exist in the the collection.
                 if (this.has(models[i]) === false)
                 {
-                    if (this.modelType !== null)
+                    if (this._modelType !== null)
                     {
                         // If the modeType is set then instantiate it and pass the data into the constructor.
-                        this.models.push(new this.modelType(model[i]));
+                        this.models.push(new this._modelType(models[i]));
                     }
                     else
                     {
                         // Pass the data object to the array.
-                        this.models.push(model[i]);
+                        this.models.push(models[i]);
                     }
 
                     this.length = this.models.length;
@@ -102,6 +103,7 @@
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
+            return this;
         };
         /**
          * Removes a model or an array of models from the collection.
@@ -134,6 +136,7 @@
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED));
             }
+            return this;
         };
         /**
          * Checks if a collection has an model.
@@ -153,7 +156,7 @@
          *
          * @method indexOf
          * @param model {Object} get the index of.
-         * @return {boolean}
+         * @return {int}
          * @public
          * @example
          *      collection.indexOf(vo);
@@ -166,7 +169,7 @@
          * If the index is out of bounds, the collection will clamp it.
          *
          * @method get
-         * @param index {init} The index integer of the model to get
+         * @param index {int} The index integer of the model to get
          * @return {Object} model to find
          * @public
          * @example
@@ -185,28 +188,28 @@
         /**
          * Examines each element in a collection, returning an array of all elements that have the given properties.
          * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
-         * @method find
+         * @method findBy
          * @param arg {Object|Array}
-         * @return {array} Returns a list of found object's.
+         * @return {Array} Returns a list of found object's.
          * @public
          * @example
          *      // Finds all value object that has 'Robert' in it.
-         *      this._collection.find("Robert");
+         *      this._collection.findBy("Robert");
          *      // Finds any value object that has 'Robert' or 'Heater' or 23 in it.
-         *      this._collection.find(["Robert", "Heather", 32]);
+         *      this._collection.findBy(["Robert", "Heather", 32]);
          *
          *      // Finds all value objects that same key and value you are searching for.
-         *      this._collection.find({ name: 'apple', organic: false, type: 'fruit' });
-         *      this._collection.find([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
+         *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
+         *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          */
-        Collection.prototype.find = function (arg) {
+        Collection.prototype.findBy = function (arg) {
             // If properties is not an array then make it an array object.
-            arg = (arg instanceof Array) ? arg : [arg];
+            var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
-            var len = arg.length;
+            var len = list.length;
             var prop;
             for (var i = 0; i < len; i++) {
-                prop = arg[i];
+                prop = list[i];
                 // Adds found value object to the foundItems array.
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the model is not an object.
@@ -214,34 +217,94 @@
                 }
                 else {
                     // If the model is an object.
-                    foundItems = foundItems.concat(_.where(this.models, prop));
+                    foundItems = foundItems.concat(this._where(prop));
                 }
             }
             // Removes all duplicated objects found in the temp array.
-            return _.uniq(foundItems);
+            return this._unique(foundItems);
+        };
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _where
+         * @private
+         */
+        Collection.prototype._where = function(propList) {
+            // If properties is not an array then make it an array object.
+            var list = (propList instanceof Array) ? propList : [propList];
+            var foundItems = [];
+            var itemsLength = this.models.length;
+            var itemsToFindLength = list.length;
+            var hasMatchingProperty;
+            var isModelMatch;
+            var model;
+            var obj;
+            var key;
+            var j;
+            for (var i = 0; i < itemsToFindLength; i++)
+            {
+                obj = list[i];
+
+                for (j = 0; j < itemsLength; j++)
+                {
+                    hasMatchingProperty = false;
+                    isModelMatch = true;
+                    model = this.models[j];
+
+                    for (key in obj)
+                    {
+                        // Check if the key value is a property.
+                        if (obj.hasOwnProperty(key) && model.hasOwnProperty(key))
+                        {
+                            hasMatchingProperty = true;
+
+                            if (obj[key] !== model[key])
+                            {
+                                isModelMatch = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (isModelMatch === true && hasMatchingProperty === true)
+                    {
+                        foundItems.push(model);
+                    }
+                }
+            }
+
+            return foundItems;
         };
         /**
          * Loops through all properties of an object and check to see if the value matches the argument passed in.
          *
          * @method _findPropertyValue
          * @param arg {String|Number|Boolean>}
-         * @return {array} Returns a list of found object's.
+         * @return {Array} Returns a list of found object's.
          * @private
          */
         Collection.prototype._findPropertyValue = function (arg) {
             // If properties is not an array then make it an array object.
-            arg = (arg instanceof Array) ? arg : [arg];
+            var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
             var itemsLength = this.models.length;
-            var itemsToFindLength = arg.length;
+            var itemsToFindLength = list.length;
+            var propertyValue;
+            var value;
+            var obj;
+            var key;
+            var j;
             for (var i = 0; i < itemsLength; i++) {
-                var obj = this.models[i];
-                for (var key in obj) {
+                obj = this.models[i];
+
+                for (key in obj) {
                     // Check if the key value is a property.
                     if (obj.hasOwnProperty(key)) {
-                        var propertyValue = obj[key];
-                        for (var j = 0; j < itemsToFindLength; j++) {
-                            var value = arg[j];
+                        propertyValue = obj[key];
+
+                        for (j = 0; j < itemsToFindLength; j++) {
+                            value = list[j];
                             // If the value object property equals the string value then keep a reference to that value object.
                             if (propertyValue === value) {
                                 // Add found value object to the foundItems array.
@@ -270,18 +333,19 @@
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.CLEAR));
             }
+            return this;
         };
         /**
          * Creates and returns a new collection object that contains a reference to the models in the collection cloned from.
          *
-         * @method Object
+         * @method clone
          * @returns {any}
          * @public
          * @example
          *     var clone = collection.clone();
          */
         Collection.prototype.clone = function () {
-            var clonedValueObject = new this.constructor(this.modelType);
+            var clonedValueObject = new this.constructor(this._modelType);
             clonedValueObject.add(this.models.slice(0));
             return clonedValueObject;
         };
@@ -295,14 +359,15 @@
          *     var arrayOfObjects = collection.toJSON();
          */
         Collection.prototype.toJSON = function () {
-            if (this.modelType !== null) {
+            if (this._modelType !== null) {
                 var list = [];
                 var len = this.length;
                 for (var i = 0; i < len; i++) {
                     list[i] = this.models[i].toJSON();
                 }
                 return list;
-            } else {
+            }
+            else {
                 return Util.clone(this.models);
             }
         };
@@ -331,6 +396,92 @@
             var parsedData = JSON.parse(json);
             this.add(parsedData);
             return this;
+        };
+        /**
+         * Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys
+         *
+         * @method sortOn
+         * @param propertyName {string}
+         * @param [sortAscending=true] {boolean}
+         * @public
+         * @return {Array} Returns the list of models in the collection.
+         * @example
+         *      collection.sortOn('name');
+         *      collection.sortOn('name', false);
+         */
+        Collection.prototype.sortOn = function (propertyName, sortAscending) {
+            if (sortAscending === void 0) { sortAscending = true; }
+            if (sortAscending === false) {
+                return this.sort(function (a, b) {
+                    if (a[propertyName] < b[propertyName]) {
+                        return 1;
+                    }
+                    if (a[propertyName] > b[propertyName]) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+            else {
+                return this.sort(function (a, b) {
+                    if (a[propertyName] > b[propertyName]) {
+                        return 1;
+                    }
+                    if (a[propertyName] < b[propertyName]) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+        };
+        /**
+         * Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code
+         * point value, according to the string conversion of each element.
+         *
+         * @method sort
+         * @param [sortFunction=null] {Function}
+         * @public
+         * @return {Array} Returns the list of models in the collection.
+         * @example
+         *      var sortByDate = function(a, b){
+         *          return new Date(a.date) - new Date(b.date)
+         *      }
+         *
+         *      collection.sort(sortByDate);
+         */
+        Collection.prototype.sort = function (sortFunction) {
+            if (sortFunction === void 0) { sortFunction = null; }
+            this.models.sort(sortFunction);
+            return this.models;
+        };
+        /**
+         * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.
+         *
+         * @method reverse
+         * @public
+         * @return {Array} Returns the list of models in the collection.
+         * @example
+         *      collection.reverse();
+         */
+        Collection.prototype.reverse = function () {
+            return this.models.reverse();
+        };
+        /**
+         * Returns a new array of models with duplicates removed.
+         *
+         * @method _unique
+         * @param list {Array} The array you want to use to generate the unique array.
+         * @return {Array} Returns a new array list of models in the collection with duplicates removed.
+         * @private
+         */
+        Collection.prototype._unique = function (list) {
+            var unique = list.reduce(function (previousValue, currentValue) {
+                if (previousValue.indexOf(currentValue) === -1) {
+                    previousValue.push(currentValue);
+                }
+                return previousValue;
+            }, []);
+            return unique;
         };
         return Collection;
     })();

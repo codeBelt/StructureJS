@@ -13,7 +13,6 @@
  * @requires Extend
  * @requires EventDispatcher
  * @requires BaseEvent
- * @requires Lodash
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */

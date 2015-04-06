@@ -70,7 +70,7 @@ define(function (require, exports, module)
 
             var vo = new TestVO(data);
             //console.log("Robert", vo);
-            console.log("new TestVO()",  new TestVO({}));
+            //console.log("new TestVO()",  new TestVO({}));
             //
             data = {
                 name: "krista",
@@ -81,13 +81,13 @@ define(function (require, exports, module)
                 }
             };
 
-            vo = vo.clone();
+            //vo = vo.clone();
             //vo.update(data);
             //vo.age = 100;
             //
-            console.log("Krista", vo);
-            console.log("json", vo.toJSON());
-            console.log("json", JSON.stringify(vo.toJSON()));
+            //console.log("Krista", vo);
+            //console.log("json", vo.toJSON());
+            //console.log("json", JSON.stringify(vo.toJSON()));
 
 
             var data = { make: 'Tesla', model: 'Model S', year: 2014 }
@@ -123,10 +123,28 @@ define(function (require, exports, module)
                 },
                 {
                     name: "Robert",
+                    age: 33,
+                    house: {
+                        address: '1 Street',
+                        numOfBathrooms: 2,
+                        numOfBedRooms: 4
+                    }
+                },
+                {
+                    name: "Robert",
                     age: 37,
                     house: {
                         address: '1 Street',
                         numOfBathrooms: 2,
+                        numOfBedRooms: 4
+                    }
+                },
+                {
+                    name: "Robert",
+                    age: 37,
+                    house: {
+                        address: '1 Street',
+                        numOfBathrooms: 4,
                         numOfBedRooms: 4
                     }
                 },
@@ -140,19 +158,28 @@ define(function (require, exports, module)
                 },
                 {
                     name: "Joe",
-                    age: 34
+                    age: 25
                 }
-            ]
+            ];
 
 
-            //var collection = new Collection(TestVO);
-            ////var collection = new Collection();
-            //console.log("collection", collection);
-            //collection.add(people);
+            var collection = new Collection(TestVO);
+            //var collection = new Collection();
+            console.log("collection", collection);
+            collection.add(people);
             //console.log("collection", collection.toJSON());
             //console.log("collection.models", collection.models.length);
             //collection.remove(collection.models);
             //console.log("collection", collection);
+            console.log("find", collection.findBy(
+                [{
+                    name:'Robert',
+                    age: 37
+                },
+                    {
+                        age: 25
+                    }]
+            ));
         };
 
         /**
