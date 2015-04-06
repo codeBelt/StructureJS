@@ -77,31 +77,23 @@
          */
         Collection.prototype.add = function (model, silent) {
             if (silent === void 0) { silent = false; }
-
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
-
             var len = models.length;
-            for (var i = 0; i < len; i++)
-            {
+            for (var i = 0; i < len; i++) {
                 // Only add the model if it does not exist in the the collection.
-                if (this.has(models[i]) === false)
-                {
-                    if (this._modelType !== null)
-                    {
+                if (this.has(models[i]) === false) {
+                    if (this._modelType !== null) {
                         // If the modeType is set then instantiate it and pass the data into the constructor.
                         this.models.push(new this._modelType(models[i]));
                     }
-                    else
-                    {
+                    else {
                         // Pass the data object to the array.
                         this.models.push(models[i]);
                     }
-
                     this.length = this.models.length;
                 }
             }
-
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
@@ -122,20 +114,15 @@
          */
         Collection.prototype.remove = function (model, silent) {
             if (silent === void 0) { silent = false; }
-
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
-
-            for (var i = models.length - 1; i >= 0; i--)
-            {
+            for (var i = models.length - 1; i >= 0; i--) {
                 // Only remove the model if it exists in the the collection.
-                if (this.has(models[i]) === true)
-                {
+                if (this.has(models[i]) === true) {
                     this.models.splice(this.indexOf(models[i]), 1);
                     this.length = this.models.length;
                 }
             }
-
             if (silent === false) {
                 this.dispatchEvent(new BaseEvent(BaseEvent.REMOVED));
             }
@@ -226,7 +213,6 @@
             // Removes all duplicated objects found in the temp array.
             return this._unique(foundItems);
         };
-
         /**
          * Loops through the models array and creates a new array of models that match all the properties on the object passed in.
          *
@@ -235,50 +221,39 @@
          * @return {Array} Returns a list of found object's.
          * @private
          */
-        Collection.prototype._where = function(propList) {
+        Collection.prototype._where = function (propList) {
             // If properties is not an array then make it an array object.
             var list = (propList instanceof Array) ? propList : [propList];
             var foundItems = [];
             var itemsLength = this.models.length;
             var itemsToFindLength = list.length;
-            var hasMatchingProperty;
-            var doesModelMatch;
+            var hasMatchingProperty = false;
+            var doesModelMatch = false;
             var model;
             var obj;
             var key;
             var j;
-            for (var i = 0; i < itemsToFindLength; i++)
-            {
+            for (var i = 0; i < itemsToFindLength; i++) {
                 obj = list[i];
-
-                for (j = 0; j < itemsLength; j++)
-                {
+                for (j = 0; j < itemsLength; j++) {
                     hasMatchingProperty = false;
                     doesModelMatch = true;
                     model = this.models[j];
-
-                    for (key in obj)
-                    {
+                    for (key in obj) {
                         // Check if the key value is a property.
-                        if (obj.hasOwnProperty(key) && model.hasOwnProperty(key))
-                        {
+                        if (obj.hasOwnProperty(key) && model.hasOwnProperty(key)) {
                             hasMatchingProperty = true;
-
-                            if (obj[key] !== model[key])
-                            {
+                            if (obj[key] !== model[key]) {
                                 doesModelMatch = false;
                                 break;
                             }
                         }
                     }
-
-                    if (doesModelMatch === true && hasMatchingProperty === true)
-                    {
+                    if (doesModelMatch === true && hasMatchingProperty === true) {
                         foundItems.push(model);
                     }
                 }
             }
-
             return foundItems;
         };
         /**
@@ -302,12 +277,10 @@
             var j;
             for (var i = 0; i < itemsLength; i++) {
                 model = this.models[i];
-
                 for (key in model) {
                     // Check if the key value is a property.
                     if (model.hasOwnProperty(key)) {
                         propertyValue = model[key];
-
                         for (j = 0; j < itemsToFindLength; j++) {
                             value = list[j];
                             // If the value object property equals the string value then keep a reference to that value object.
