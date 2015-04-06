@@ -69,6 +69,8 @@
          * @method add
          * @param model {Any|Array} Single or an array of models to add to the current collection.
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
+         * @public
+         * @chainable
          * @example
          *      collection.add(vo);
          *      collection.add(vo, true);
@@ -112,6 +114,7 @@
          * @param model {Object|Array} Model(s) to remove
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
+         * @chainable
          * @example
          *      collection.remove(vo);
          *
@@ -225,9 +228,11 @@
         };
 
         /**
-         * TODO: YUIDoc_comment
+         * Loops through the models array and creates a new array of models that match all the properties on the object passed in.
          *
          * @method _where
+         * @param propList {Object|Array}
+         * @return {Array} Returns a list of found object's.
          * @private
          */
         Collection.prototype._where = function(propList) {
@@ -237,7 +242,7 @@
             var itemsLength = this.models.length;
             var itemsToFindLength = list.length;
             var hasMatchingProperty;
-            var isModelMatch;
+            var doesModelMatch;
             var model;
             var obj;
             var key;
@@ -249,7 +254,7 @@
                 for (j = 0; j < itemsLength; j++)
                 {
                     hasMatchingProperty = false;
-                    isModelMatch = true;
+                    doesModelMatch = true;
                     model = this.models[j];
 
                     for (key in obj)
@@ -261,13 +266,13 @@
 
                             if (obj[key] !== model[key])
                             {
-                                isModelMatch = false;
+                                doesModelMatch = false;
                                 break;
                             }
                         }
                     }
 
-                    if (isModelMatch === true && hasMatchingProperty === true)
+                    if (doesModelMatch === true && hasMatchingProperty === true)
                     {
                         foundItems.push(model);
                     }
@@ -292,23 +297,23 @@
             var itemsToFindLength = list.length;
             var propertyValue;
             var value;
-            var obj;
+            var model;
             var key;
             var j;
             for (var i = 0; i < itemsLength; i++) {
-                obj = this.models[i];
+                model = this.models[i];
 
-                for (key in obj) {
+                for (key in model) {
                     // Check if the key value is a property.
-                    if (obj.hasOwnProperty(key)) {
-                        propertyValue = obj[key];
+                    if (model.hasOwnProperty(key)) {
+                        propertyValue = model[key];
 
                         for (j = 0; j < itemsToFindLength; j++) {
                             value = list[j];
                             // If the value object property equals the string value then keep a reference to that value object.
                             if (propertyValue === value) {
                                 // Add found value object to the foundItems array.
-                                foundItems.push(obj);
+                                foundItems.push(model);
                                 break;
                             }
                         }
@@ -323,6 +328,7 @@
          * @method clear
          * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
          * @public
+         * @chainable
          * @example
          *      collection.clear();
          */
@@ -339,7 +345,7 @@
          * Creates and returns a new collection object that contains a reference to the models in the collection cloned from.
          *
          * @method clone
-         * @returns {any}
+         * @returns {Collection}
          * @public
          * @example
          *     var clone = collection.clone();
@@ -389,6 +395,7 @@
          * @method fromJSON
          * @param json {string}
          * @public
+         * @chainable
          * @example
          *      collection.fromJSON(str);
          */
