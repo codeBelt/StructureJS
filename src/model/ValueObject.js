@@ -177,8 +177,8 @@
          *     var obj = carVO.toJSON();
          */
         ValueObject.prototype.toJSON = function () {
-            var clone = StructureTS.Util.clone(this);
-            return StructureTS.Util.deletePropertyFromObject(clone, ['cid']);
+            var clone = Util.clone(this);
+            return Util.deletePropertyFromObject(clone, ['cid']);
         };
         /**
          * Converts a value object to a JSON string,
