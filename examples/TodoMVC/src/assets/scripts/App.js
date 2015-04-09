@@ -174,7 +174,7 @@ var App = (function () {
             valueObject.id = StringUtil.createUUID();
             var childItem = new ListItemComponent(valueObject);
 
-            this._listItemCollection.addItem(valueObject);
+            this._listItemCollection.add(valueObject);
             this._todoListContainer.addChild(childItem);
             this._$addTodoInput.val('');
         }
@@ -198,8 +198,8 @@ var App = (function () {
                 listItemComponent.setCompleted();
             }
         } else {
-            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
-                listItemComponent = this._todoListContainer.getChildAt(i);
+            for (var j = 0; j < this._todoListContainer.numChildren; j++) {
+                listItemComponent = this._todoListContainer.getChildAt(j);
                 listItemComponent.setUnCompleted();
             }
         }
@@ -216,7 +216,7 @@ var App = (function () {
         var listItemComponent = event.target;
         var listItemVO = listItemComponent.vo;
 
-        this._listItemCollection.removeItem(listItemVO);
+        this._listItemCollection.remove(listItemVO);
         this._todoListContainer.removeChild(listItemComponent);
 
         this.layoutChildren();
@@ -243,7 +243,7 @@ var App = (function () {
      * @private
      */
     App.prototype._onLoadedItems = function(event) {
-        var items = this._listItemCollection.items;
+        var items = this._listItemCollection.models;
         var length = items.length;
 
         // Create ListItemComponent view items from the stored ListItemVO value objects.
@@ -282,7 +282,7 @@ var App = (function () {
 
             if (listItemVO.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);
-                this._listItemCollection.removeItem(listItemVO);
+                this._listItemCollection.remove(listItemVO);
             }
         }
 
