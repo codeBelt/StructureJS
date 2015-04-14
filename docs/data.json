@@ -7549,7 +7549,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 145,
+            "line": 144,
             "description": "Starts the timer, if it is not already running.",
             "itemtype": "method",
             "name": "start",
@@ -7559,7 +7559,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 161,
+            "line": 160,
             "description": "Stops the timer.",
             "itemtype": "method",
             "name": "stop",
@@ -7569,7 +7569,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 171,
+            "line": 170,
             "itemtype": "method",
             "name": "decrementCounter",
             "access": "private",
@@ -7580,7 +7580,7 @@
         },
         {
             "file": "src/util/Timer.js",
-            "line": 189,
+            "line": 188,
             "overridden": "EventDispatcher.destroy",
             "class": "Timer",
             "module": "StructureJS",
@@ -8526,7 +8526,7 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " src/util/Timer.js:189"
+            "line": " src/util/Timer.js:188"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8786,7 +8786,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " src/util/Timer.js:189"
+            "line": " src/util/Timer.js:188"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

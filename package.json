@@ -1,7 +1,7 @@
 {
   "name": "StructureJS",
   "version": "0.2.0",
-  "appVersion": "0.6.16",
+  "appVersion": "0.6.17",
   "description": "Code and documentation for the StructureJS library.",
   "url": "https://github.com/codeBelt/StructureJS",
   "repository": "https://github.com/codeBelt/StructureJS",
@@ -9,7 +9,6 @@
   "devDependencies": {
     "grunt": "0.4.5",
     "matchdep": "0.3.0",
-
     "grunt-contrib-requirejs": "0.4.1",
     "grunt-contrib-yuidoc": "0.5.2",
     "grunt-contrib-watch": "0.5.3",
@@ -30,14 +29,14 @@
     "grunt-open": "0.2.2",
     "grunt-browserify": "latest",
     "grunt-contrib-handlebars": "0.9.0",
-
     "typescript": "1.4.1",
-
     "grunt-karma": "0.9.0",
     "karma": "0.12.6",
     "karma-requirejs": "0.2.1",
     "karma-jasmine": "0.1.5",
     "karma-phantomjs-launcher": "0.1.4",
-    "karma-coverage": "0.2.1"
+    "karma-coverage": "0.2.1",
+    "lodash": "^3.6.0",
+    "browserify": "^9.0.8"
   }
 }
