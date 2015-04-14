@@ -146,7 +146,6 @@ module StructureTS
         {
             this.stop();
             this._currentCount = this._repeatCount;
-            this.start();
 
             return this;
         }
