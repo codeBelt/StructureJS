@@ -52,8 +52,6 @@ var ChildView = (function () {
     ChildView.prototype.enable = function () {
         if (this.isEnabled === true) return;
 
-        this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
-
         this._$dispatchButton.addEventListener('click', this._onButtonClick, this);
 
         return _super.prototype.enable.call(this);
@@ -64,8 +62,6 @@ var ChildView = (function () {
      */
     ChildView.prototype.disable = function () {
         if (this.isEnabled === false) return;
-
-        this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
         this._$dispatchButton.removeEventListener('click', this._onButtonClick, this);
 
@@ -83,20 +79,12 @@ var ChildView = (function () {
     ChildView.prototype._onButtonClick = function (event) {
         event.preventDefault();
 
-        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
-        EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
-    };
-
-    ChildView.prototype._onBubbled = function (baseEvent) {
-        if (this._$checkbox.prop('checked') === true) {
-            baseEvent.stopPropagation();
-        }
-
-        var text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
-        text += '<strong>' + baseEvent.currentTarget.getQualifiedClassName() + '</strong> last touched the event.<br/ >';
-        text += '<strong>' + baseEvent.target.getQualifiedClassName() + '</strong> sent the event.';
+        var text = '<strong>' + this.getQualifiedClassName() + '</strong> sent the event.';
 
         this._$sonMessage.html(text);
+
+        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true));
+        EventBroker.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
     };
 
     return ChildView;

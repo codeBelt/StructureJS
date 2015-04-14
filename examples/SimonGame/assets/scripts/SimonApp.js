@@ -11,7 +11,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var DeviceView = require('view/DeviceView');
     var GameVO = require('model/GameVO');
-    var RouteVO = require('model/route/RouteVO');
 
     /**
      * Application code for a memory skill game.
@@ -53,87 +52,6 @@ define(function (require, exports, module) { // jshint ignore:line
              * @private
              */
             this._timer = null;
-
-            var data = {
-                Id: 888,
-                RideId: 21,
-                Points: [
-                    {
-                        Lat: -323,
-                        Lon: 233,
-                        Elev: 2
-                    },
-                    {
-                        Lat: -111,
-                        Lon: 44,
-                        Elev: 2
-                    }
-                ],
-                Waypoints: [
-                    {
-                        Id: 2,
-                        LocationPoint: {
-                            Lat: -323,
-                            Lon: 233,
-                            Elev: 2
-                        }
-                    },
-                    {
-                        Id: 4,
-                        LocationPoint: {
-                            Lat: -54,
-                            Lon: 6767,
-                            Elev: 8
-                        }
-                    }
-                ],
-                IsImportedFromFile: false,
-                IsCreatedFromMapTool: true,
-                PointsOfInterest: [
-                    {
-                        Id: 3,
-                        Name: 'robert',
-                        Description: 'string and string',
-                        LocationPoint: {
-                            Lat: -323,
-                            Lon: 233,
-                            Elev: 2
-                        },
-                        Image: {
-                            Id: 2,
-                            Small: 'asdf/asdf/asdf/asdf/asdf',
-                            Large: 'asdf/asdf/asdf/asdf/asdf'
-                        }
-                    },
-                    {
-                        Id: 4,
-                        Name: 'john',
-                        Description: 'string and string',
-                        LocationPoint: {
-                            Lat: -111,
-                            Lon: 44,
-                            Elev: 2
-                        },
-                        Image: {
-                            Id: 7,
-                            Small: 'asdf/asdf/asdf/asdf/asdf',
-                            Large: 'asdf/asdf/asdf/asdf/asdf'
-                        }
-                    }
-                ],
-                Distance: 23,
-                ElevationData: {
-                    ElevationChange: 44,
-                    MaxAltitude: 12,
-                    Grade: 2,
-                    IsPrivate: true
-                }
-            };
-
-            var vo = new RouteVO(data);
-            //console.log("vo", vo);
-            //console.log("toJSON", vo.toJSON());
-            console.log("toPascalCaseJSON", vo.toPascalCaseJSON());
         }
 
         /**
