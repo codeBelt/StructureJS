@@ -5777,7 +5777,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     // For each of your different style sheets add something like below:\n     // screen_lg.css\n     body:after { content: 'screen_lg'; }\n     // screen_sm.css\n     body:after { content: 'screen_sm'; }\n\n     BrowserUtil.getBreakpoint();\n     // 'screen_lg'\n\n     // Add a listener to get notified when the browser is resized:\n     BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);\n     ...\n     ClassName.prototype._onBreakpointChange = function (baseEvent) {\n         console.log(baseEvent.data);\n         // 'screen_sm'\n     };"
+                "\n     // For each of your different style sheets add something like below:\n     // screen_lg.css\n     body:after {\n         content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;\n     }\n     // screen_sm.css\n     body:after {\n         content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;\n     }\n\n     BrowserUtil.getBreakpoint();\n     // 'screen_lg'\n\n     // Add a listener to get notified when the browser is resized:\n     BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);\n     ...\n     ClassName.prototype._onBreakpointChange = function (baseEvent) {\n         console.log(baseEvent.data);\n         // 'screen_sm'\n     };"
             ],
             "class": "BrowserUtil",
             "module": "StructureJS",
@@ -5785,7 +5785,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 284,
+            "line": 288,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "addEventListener",
@@ -5798,7 +5798,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 296,
+            "line": 300,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -5811,7 +5811,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 306,
+            "line": 310,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -5824,7 +5824,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 323,
+            "line": 327,
             "description": "Dispatches a breakpoint event.",
             "itemtype": "method",
             "name": "_onBreakpointChange",
@@ -5837,7 +5837,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 333,
+            "line": 337,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -5851,7 +5851,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 342,
+            "line": 346,
             "description": "A reference to the browser window object.",
             "itemtype": "property",
             "name": "_window",
@@ -5865,7 +5865,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 351,
+            "line": 355,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_onBreakpointChangeHandler",
@@ -5879,7 +5879,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 360,
+            "line": 364,
             "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "debounceDelay",
@@ -5894,7 +5894,7 @@
         },
         {
             "file": "src/util/BrowserUtil.js",
-            "line": 371,
+            "line": 375,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "isEnabled",

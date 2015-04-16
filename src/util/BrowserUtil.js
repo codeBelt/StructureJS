@@ -263,9 +263,13 @@
          * @example
          *      // For each of your different style sheets add something like below:
          *      // screen_lg.css
-         *      body:after { content: 'screen_lg'; }
+         *      body:after {
+         *          content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *      // screen_sm.css
-         *      body:after { content: 'screen_sm'; }
+         *      body:after {
+         *          content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *
          *      BrowserUtil.getBreakpoint();
          *      // 'screen_lg'
