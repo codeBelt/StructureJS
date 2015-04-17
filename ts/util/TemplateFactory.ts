@@ -97,7 +97,7 @@ module StructureTS
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE)
                 {
                     // Underscore Template:
-                    var templateMethod:Function = _.template(htmlString);
+                    var templateMethod:Function = window['_'].template(htmlString);
                     template = templateMethod(data);
                 }
                 else
