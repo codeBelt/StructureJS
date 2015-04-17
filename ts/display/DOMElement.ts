@@ -366,6 +366,7 @@ module StructureTS
         private onAddedToDom(child:DOMElement)
         {
             child.checkCount++;
+
             if (child.$element.width() === 0 && child.checkCount < 5)
             {
                 setTimeout(() =>
@@ -378,6 +379,9 @@ module StructureTS
                 child.layoutChildren();
                 child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
+
+            child.width = child.$element.width();
+            child.height = child.$element.height();
         }
 
         /**
