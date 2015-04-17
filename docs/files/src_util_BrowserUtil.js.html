@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.16</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -405,9 +405,13 @@
          * @example
          *      // For each of your different style sheets add something like below:
          *      // screen_lg.css
-         *      body:after { content: &#x27;screen_lg&#x27;; }
+         *      body:after {
+         *          content: &#x27;screen_lg&#x27;;  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *      // screen_sm.css
-         *      body:after { content: &#x27;screen_sm&#x27;; }
+         *      body:after {
+         *          content: &#x27;screen_sm&#x27;;  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *
          *      BrowserUtil.getBreakpoint();
          *      // &#x27;screen_lg&#x27;
