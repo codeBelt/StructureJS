@@ -122,8 +122,8 @@ module StructureTS
         public removeEventListener(type:string, callback:Function, scope:any):EventDispatcher
         {
             // Get the list of event listener(s) by the associated type value that is passed in.
-            var list = this._listeners[type];
-            if (list)
+            var list:Array<any> = this._listeners[type];
+            if (list !== void 0)
             {
                 var i = list.length;
                 while (--i > -1)
@@ -178,16 +178,17 @@ module StructureTS
                 event.currentTarget = this;
             }
 
+
             // Get the list of event listener(s) by the associated type value.
-            var list = this._listeners[event.type];
-            if (list)
+            var list:Array<any> = this._listeners[event.type];
+            if (list !== void 0)
             {
                 var i:number = list.length;
                 var listener:any;
                 while (--i > -1)
                 {
                     // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
-                    if (event.cancelable && event.isImmediatePropagationStopped)
+                    if (event.cancelable === true && event.isImmediatePropagationStopped === true)
                     {
                         break;
                     }
@@ -198,10 +199,10 @@ module StructureTS
             }
 
             //Dispatches up the chain of classes that have a parent.
-            if (this.parent && event.bubble)
+            if (this.parent != null && event.bubble === true)
             {
                 // If cancelable and isPropagationStopped are true then don't dispatch the event on the parent object.
-                if (event.cancelable && event.isPropagationStopped)
+                if (event.cancelable === true && event.isPropagationStopped === true)
                 {
                     return this;
                 }
@@ -239,7 +240,7 @@ module StructureTS
          */
         public hasEventListener(type:string, callback:Function, scope:any):boolean
         {
-            if(typeof this._listeners[type] !== 'undefined')
+            if(this._listeners[type] !== void 0)
             {
                 var listener:any;
                 var numOfCallbacks:number = this._listeners[type].length;

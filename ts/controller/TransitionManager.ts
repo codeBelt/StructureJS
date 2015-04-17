@@ -91,7 +91,7 @@ module StructureTS
 
         private removeCurrentView():void
         {
-            if (this._currentView == null)
+            if (this._currentView === null)
             {
                 return;
             }
@@ -104,7 +104,7 @@ module StructureTS
         public transitionToNextView(nextView:DOMElement, transitionType:string = TransitionType.NONE, transitionDuration:number = -1):any
         {
             // If the current view is not set then throw an error.
-            if (this._currentView == null)
+            if (this._currentView === null)
             {
                 throw new Error('[' + this.getQualifiedClassName() + '] The current view must be set before attempting to transition to another view. See the setCurrentView method');
             }
