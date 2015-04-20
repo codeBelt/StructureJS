@@ -24,15 +24,6 @@ module StructureTS
     export class LocalStorageEvent extends BaseEvent
     {
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @property _nativeEvent
-         * @type {any}
-         * @private
-         */
-        private _nativeEvent:any = null;
-
-        /**
          * The storage event is fired on a Document's Window object when a storage area changes.
          *
          * @event STORAGE
@@ -40,6 +31,15 @@ module StructureTS
          * @static
          */
         public static STORAGE:string = 'storage';
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property nativeEvent
+         * @type {any}
+         * @public
+         */
+        public nativeEvent:any = null;
 
         /**
          * The named key that was added, removed, or modified
@@ -85,7 +85,7 @@ module StructureTS
                 this.url = nativeEvent.url;
             }
 
-            this._nativeEvent = nativeEvent;
+            this.nativeEvent = nativeEvent;
         }
 
         /**
@@ -93,7 +93,7 @@ module StructureTS
          */
         public clone():LocalStorageEvent
         {
-            return new LocalStorageEvent(this.type, this.bubble, this.cancelable, this._nativeEvent);
+            return new LocalStorageEvent(this.type, this.bubble, this.cancelable, this.nativeEvent);
         }
     }
 }
