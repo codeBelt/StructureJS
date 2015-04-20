@@ -1,0 +1,88 @@
+<snippet>
+	<content><![CDATA[
+define(function(require, exports, module) { // jshint ignore:line
+    'use strict';
+ 
+    // Imports
+    var Extend = require('structurejs/util/Extend');
+    var Stage = require('structurejs/display/Stage');
+ 
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
+     * @extends Stage
+     * @constructor
+     **/
+    var ${TM_FILENAME/(.*)[.](.*)/$1/g} = (function () {
+ 
+        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, Stage);
+ 
+        function ${TM_FILENAME/(.*)[.](.*)/$1/g}() {
+            _super.call(this);
+ 
+ 			$2
+        }
+ 
+        /**
+         * @overridden Stage.createChildren
+         */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.createChildren = function () {
+            _super.prototype.createChildren.call(this);
+ 
+            // Create and add your child objects to this parent class.
+        };
+ 
+        /**
+         * @overridden Stage.layoutChildren
+         */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layoutChildren = function () {
+            // Layout or update the child objects in this parent class.
+ 
+            return this;
+        };
+ 
+        /**
+         * @overridden Stage.enable
+         */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.enable = function () {
+            if (this.isEnabled === true) { return this; }
+ 
+            // Enable the child objects and add any event listeners.
+ 
+            return _super.prototype.enable.call(this);
+        };
+ 
+        /**
+         * @overridden Stage.disable
+         */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.disable = function () {
+            if (this.isEnabled === false) { return this; }
+ 
+            // Disable the child objects and remove any event listeners.
+ 
+            return _super.prototype.disable.call(this);
+        };
+ 
+        /**
+         * @overridden Stage.destroy
+         */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.destroy = function () {
+            // Call destroy on any child objects that is need. 
+            // This super method will also null out all properties automatically to prevent memory leaks.
+            
+            _super.prototype.destroy.call(this);
+        };
+ 
+        return ${TM_FILENAME/(.*)[.](.*)/$1/g};
+    })();
+ 
+    module.exports = ${TM_FILENAME/(.*)[.](.*)/$1/g};
+ 
+});
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>stageClass</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

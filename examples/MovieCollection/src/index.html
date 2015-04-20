@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <!-- META DATA -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+
+    <!-- SEO -->
+    <title>CLIENT.Project</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/media/images/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/media/images/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/media/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/media/images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/media/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/media/images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/media/images/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/media/images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/media/images/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/media/images/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="assets/media/images/favicon-160x160.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/media/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/media/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/media/images/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="assets/media/images/mstile-144x144.png">
+    <meta name="msapplication-TileColor" content="#ff0000">
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" media="screen, projection" href="assets/styles/screen.css" />
+    <link rel="stylesheet" media="screen and (min-width: 500px)" href="assets/styles/screen_medium.css" />
+</head>
+<body>
+    <!-- CONTENT -->
+    <div class="page js-list">
+        <div class="page-hd">
+            <h1 class="hdg hdg_1">Movie Listing</h1>
+        </div>
+        <form class="page-controls">
+            <fieldset>
+                <legend class="isVisuallyHidden">Sort Movies</legend>
+                <ol class="hList hList_spaced">
+                    <li>
+                        <select class="js-list-sort" disabled>
+                            <option value="critic-desc">Critics Score Descending</option>
+                            <option value="critic-asc">Critics Score Ascending</option>
+                            <option value="audience-desc">Audience Score Descending</option>
+                            <option value="audience-asc">Audience Score Ascending</option>
+                            <option value="theater-asc">Most Recent Theater Date</option>
+                            <option value="theater-desc">Oldest Theater Date</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select class="js-list-limit" disabled>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                        </select>
+                    </li>
+                    <li>
+                        <button class="js-list-update" disabled>Update</button>
+                    </li>
+                </ol>
+            </fieldset>
+        </form>
+        <div class="page-bd">
+            <ol class="vList mix-vList_shaded js-list-output"></ol>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/vendor/requirejs/require.js"></script>
+    <script src="assets/scripts/config.js"></script>
+    <script>
+        require(['main']);
+    </script>
+</body>
+</html>
