@@ -12,6 +12,31 @@ module.exports = function(grunt) {
 
 
         /**
+         * Compiles the Handlebars templates into Javascript templates.
+         */
+        handlebars: {
+            compile: {
+                options: {
+                    amd: ['handlebars'],
+                    namespace: 'JST',
+                    // Registers all files that start with '_' as a partial.
+                    partialRegex: /^_/,
+                    // Shortens the file path for the templates.
+                    processName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
+                    },
+                    // Shortens the file path for the partials.
+                    processPartialName: function(filePath) { // input:  src/templates/_header.hbs
+                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
+                    }
+                },
+                files: {
+                    'src/assets/scripts/templates.js': 'src/templates/*.hbs'
+                }
+            }
+        },
+
+        /**
          * Creates a node.js Express Server to test our code in a server like environment.
          * Note: We are using the watch task to keep the server running.
          */
@@ -50,8 +75,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-express');
     grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
 
     // Default task
-    grunt.registerTask('default', ['express', 'open', 'watch']);
+    grunt.registerTask('default', ['handlebars', 'express', 'open', 'watch']);
 
 };

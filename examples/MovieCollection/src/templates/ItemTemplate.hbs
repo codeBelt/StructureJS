@@ -1,0 +1,24 @@
+<li class="media media_spaced">
+    <div class="media-img">
+        <img src="{{imgUrl}}" alt="{{title}}" />
+    </div>
+    <div class="media-bd">
+        <div class="movie">
+            <div class="movie-hd">
+                <h2 class="hdg hdg_2">{{title}}</h2>
+            </div>
+            <div class="movie-meta">
+                <ul class="hList hList_spaced">
+                    <li><span class="ratings mix-ratings_{{removeSpaces criticsRating}}">{{criticsScore}} - {{criticsRating}}</span></li>
+                    <li><span class="ratings mix-ratings_{{removeSpaces audienceRating}}">{{audienceScore}} - {{audienceRating}}</span></li>
+                    <li><span class="text text_label">{{mpaaRating}}</span></li>
+                    <li><span class="text text_label">{{releaseDate}}</span></li>
+                    <li><span class="text text_label">{{runtime}}</span></li>
+                </ul>
+            </div>
+            <div class="movie-bd">
+                <p class="text">{{synopsis}}</p>
+            </div>
+        </div>
+    </div>
+</li>
