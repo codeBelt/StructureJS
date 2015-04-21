@@ -63,10 +63,14 @@ module.exports = function(grunt) {
 
         watch: {
             src: {
-                files: ['*.html', '*.css'],
+                files: ['src/**/*.html', 'src/**/*.css'],
                 options: {
                     livereload: true
                 }
+            },
+            templates: {
+                files: ['src/**/*.hbs'],
+                tasks: ['handlebars']
             }
         }
     });
@@ -78,6 +82,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-handlebars');
 
     // Default task
-    grunt.registerTask('default', ['handlebars', 'express', 'open', 'watch']);
+//    grunt.registerTask('default', ['handlebars', 'express', 'open', 'watch']);
+    grunt.registerTask('default', ['handlebars', 'watch']);
 
 };

@@ -18,6 +18,33 @@ define(function (require, exports, module) { // jshint ignore:line
 
         function PageControlView($element) {
             _super.call(this, $element);
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property _$listSort
+             * @type {jQuery}
+             * @private
+             */
+            this._$listSort = null;
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property _$listLimit
+             * @type {jQuery}
+             * @private
+             */
+            this._$listLimit = null;
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property _$listUpdate
+             * @type {jQuery}
+             * @private
+             */
+            this._$listUpdate = null;
         }
 
         /**
@@ -25,8 +52,11 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         PageControlView.prototype.createChildren = function () {
             _super.prototype.createChildren.call(this);
-            console.log("asdf");
+
             // Create and add your child objects to this parent class.
+            this._$listSort = this.$element.find('.js-listSort');
+            this._$listLimit = this.$element.find('.js-listLimit');
+            this._$listUpdate = this.$element.find('.js-listUpdate');
         };
 
         /**
@@ -45,6 +75,9 @@ define(function (require, exports, module) { // jshint ignore:line
             if (this.isEnabled === true) { return this; }
 
             // Enable the child objects and add any event listeners.
+            this._$listSort.prop('disabled', false);
+            this._$listLimit.prop('disabled', false);
+            this._$listUpdate.prop('disabled', false);
 
             return _super.prototype.enable.call(this);
         };
@@ -56,6 +89,9 @@ define(function (require, exports, module) { // jshint ignore:line
             if (this.isEnabled === false) { return this; }
 
             // Disable the child objects and remove any event listeners.
+            this._$listSort.prop('disabled', true);
+            this._$listLimit.prop('disabled', true);
+            this._$listUpdate.prop('disabled', true);
 
             return _super.prototype.disable.call(this);
         };

@@ -6,9 +6,11 @@ define(function (require, exports, module) { // jshint ignore:line
     var Stage = require('structurejs/display/Stage');
     var Collection = require('structurejs/model/Collection');
     var PageControlView = require('view/PageControlView');
+    var ListView = require('view/ListView');
     var RequestService = require('service/RequestService');
     var MovieVO = require('model/MovieVO');
-    require('handlebars');
+    require('templates');
+    require('utils/HandlebarsHelpers');
 
     /**
      * TODO: YUIDoc_comment
@@ -42,9 +44,13 @@ define(function (require, exports, module) { // jshint ignore:line
 
             this._pageControls = new PageControlView(this.$element.find('.js-pageControls'));
             this.addChild(this._pageControls);
+            this._pageControls.disable();// Disable right away because by default the view is enabled once passed to the addChild method.
+
+            this._listContainer = new ListView(this.$element.find('.js-listOutput'));
+            this.addChild(this._listContainer);
 
             RequestService.get('assets/data/movies.json')
-                .done(this._onMovieRequestComplete.bind());
+                .done(this._onMovieRequestComplete.bind(this));
         };
 
         /**
@@ -61,8 +67,6 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         MovieCollectionApp.prototype.enable = function () {
             if (this.isEnabled === true) { return this; }
-
-            this._pageControls
 
             return _super.prototype.enable.call(this);
         };
@@ -85,11 +89,14 @@ define(function (require, exports, module) { // jshint ignore:line
         * @private
         */
        MovieCollectionApp.prototype._onMovieRequestComplete = function(data) {
-           console.log("_onMovieRequestComplete", data);
 
            var collection = new Collection(MovieVO);
            collection.add(data.movies);
 console.log("collection", collection);
+
+           this._listContainer.updateList(collection.models);
+
+           this._pageControls.enable();
        };
 
         return MovieCollectionApp;

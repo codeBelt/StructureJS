@@ -28,6 +28,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this.mpaaRating = null;
             this.runtime = null;
             this.ratings = RatingsVO;
+            this.synopsis = null;
             this.posters = PosterVO;
             this.abridgedCast = [CastVO];
 
