@@ -4,6 +4,9 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Extend = require('structurejs/util/Extend');
     var ValueObject = require('structurejs/model/ValueObject');
+    var RatingsVO = require('model/RatingsVO');
+    var PosterVO = require('model/PosterVO');
+    var CastVO = require('model/CastVO');
 
     /**
      * TODO: YUIDoc_comment
