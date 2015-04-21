@@ -1,9 +1,12 @@
-define(function(require, exports, module) { // jshint ignore:line
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     // Imports
     var Extend = require('structurejs/util/Extend');
     var Stage = require('structurejs/display/Stage');
+    var PageControlView = require('view/PageControlView');
+    var RequestService = require('service/RequestService');
+    require('handlebars');
 
     /**
      * TODO: YUIDoc_comment
@@ -19,6 +22,14 @@ define(function(require, exports, module) { // jshint ignore:line
         function MovieCollectionApp() {
             _super.call(this);
 
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property _pageControls
+             * @type {PageControlView}
+             * @private
+             */
+            this._pageControls = null;
         }
 
         /**
@@ -26,7 +37,12 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         MovieCollectionApp.prototype.createChildren = function () {
             _super.prototype.createChildren.call(this);
-            // Create and add your child objects to this parent class.
+
+            this._pageControls = new PageControlView(this.$element.find('.js-pageControls'));
+            this.addChild(this._pageControls);
+
+            RequestService.get('assets/data/movies.json')
+                .done(this._onMovieRequestComplete.bind());
         };
 
         /**
@@ -44,7 +60,7 @@ define(function(require, exports, module) { // jshint ignore:line
         MovieCollectionApp.prototype.enable = function () {
             if (this.isEnabled === true) { return this; }
 
-            // Enable the child objects and add any event listeners.
+            this._pageControls
 
             return _super.prototype.enable.call(this);
         };
@@ -60,15 +76,16 @@ define(function(require, exports, module) { // jshint ignore:line
             return _super.prototype.disable.call(this);
         };
 
-        /**
-         * @overridden Stage.destroy
-         */
-        MovieCollectionApp.prototype.destroy = function () {
-            // Call destroy on any child objects that is need.
-            // This super method will also null out all properties automatically to prevent memory leaks.
+       /**
+        * TODO: YUIDoc_comment
+        *
+        * @method _onMovieRequestComplete
+        * @private
+        */
+       MovieCollectionApp.prototype._onMovieRequestComplete = function(data) {
+           console.log("_onMovieRequestComplete", data);
 
-            _super.prototype.destroy.call(this);
-        };
+       };
 
         return MovieCollectionApp;
     })();

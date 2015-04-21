@@ -10,13 +10,11 @@ require(
         'jquery',
         'MovieCollectionApp'
     ],
-    function(
-        $,
-        MovieCollectionApp
-    ) {
+    function ($,
+              MovieCollectionApp) {
         'use strict';
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Initialize
             var app = new MovieCollectionApp();
             app.appendTo('body');

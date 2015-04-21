@@ -7,10 +7,18 @@ Width: >= 500px
 /* ---------------------------------------------------------------------
  Media
 ------------------------------------------------------------------------ */
-.media { overflow: hidden; }
+.media {
+    overflow: hidden;
+}
 
-.media_spaced > .media-img { margin-right: 20px; }
+.media_spaced > .media-img {
+    margin-right: 20px;
+}
 
-.media-img { float: left; }
+.media-img {
+    float: left;
+}
 
-.media-bd { overflow: hidden; }
+.media-bd {
+    overflow: hidden;
+}

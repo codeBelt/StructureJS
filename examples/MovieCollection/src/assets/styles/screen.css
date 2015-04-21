@@ -132,12 +132,16 @@ html, body {
     background-color: #aaaaaa;
 }
 
-select, button { font-size: 16px; }
+select, button {
+    font-size: 16px;
+}
 
 /* ---------------------------------------------------------------------
  Page
 ------------------------------------------------------------------------ */
-.page { height: 100%; }
+.page {
+    height: 100%;
+}
 
 .page-hd {
     padding: 20px 20px;
@@ -159,7 +163,8 @@ select, button { font-size: 16px; }
 /* ---------------------------------------------------------------------
  Media
 ------------------------------------------------------------------------ */
-.media {}
+.media {
+}
 
 /* ---------------------------------------------------------------------
  Headings
@@ -188,16 +193,23 @@ select, button { font-size: 16px; }
     color: #000000;
 }
 
-.text_label { font-size: 21px; }
+.text_label {
+    font-size: 21px;
+}
 
 /* ---------------------------------------------------------------------
  Vertical List
 ------------------------------------------------------------------------ */
-.vList {}
+.vList {
+}
 
-.vList > * { padding: 20px 20px; }
+.vList > * {
+    padding: 20px 20px;
+}
 
-.mix-vList_shaded > *:nth-child(odd) { background-color: #dddddd; }
+.mix-vList_shaded > *:nth-child(odd) {
+    background-color: #dddddd;
+}
 
 .mix-vList_shaded > *,
 .mix-vList_shaded > *:hover {
@@ -206,16 +218,24 @@ select, button { font-size: 16px; }
     transition: background 200ms ease-in-out;
 }
 
-.mix-vList_shaded > *:hover { background-color: #aaddff; }
+.mix-vList_shaded > *:hover {
+    background-color: #aaddff;
+}
 
 /* ---------------------------------------------------------------------
  Horizontal List
 ------------------------------------------------------------------------ */
-.hList { font-size: 0; }
+.hList {
+    font-size: 0;
+}
 
-.hList_spaced { margin-left: -10px; }
+.hList_spaced {
+    margin-left: -10px;
+}
 
-.hList_spaced > * { margin-left: 10px; }
+.hList_spaced > * {
+    margin-left: 10px;
+}
 
 .hList > * {
     display: inline-block;
@@ -235,23 +255,46 @@ select, button { font-size: 16px; }
     color: #ffffff;
 }
 
-.mix-ratings_Rotten { background-color: #964b00; }
-.mix-ratings_Fresh { background-color: #006600; }
-.mix-ratings_CertifiedFresh { background-color: #00aa00; }
-.mix-ratings_Upright { background-color: #ee204d; }
-.mix-ratings_Spilled { background-color: #87410e; }
-.mix-ratings_Unknown { background-color: #000099; }
+.mix-ratings_Rotten {
+    background-color: #964b00;
+}
+
+.mix-ratings_Fresh {
+    background-color: #006600;
+}
+
+.mix-ratings_CertifiedFresh {
+    background-color: #00aa00;
+}
+
+.mix-ratings_Upright {
+    background-color: #ee204d;
+}
+
+.mix-ratings_Spilled {
+    background-color: #87410e;
+}
+
+.mix-ratings_Unknown {
+    background-color: #000099;
+}
 
 /* ---------------------------------------------------------------------
  Movie
 ------------------------------------------------------------------------ */
-.movie {}
+.movie {
+}
 
-.movie-hd { margin-bottom: 15px; }
+.movie-hd {
+    margin-bottom: 15px;
+}
 
-.movie-meta { margin-bottom: 6px; }
+.movie-meta {
+    margin-bottom: 6px;
+}
 
-.movie-bd {}
+.movie-bd {
+}
 
 /* ---------------------------------------------------------------------
  Modal
@@ -276,6 +319,9 @@ select, button { font-size: 16px; }
     box-sizing: border-box;
 }
 
-.modal-inner-hd { margin-bottom: 15px; }
+.modal-inner-hd {
+    margin-bottom: 15px;
+}
 
-.modal-inner-bd {}
+.modal-inner-bd {
+}

@@ -1,78 +1,78 @@
-define(function(require, exports, module) { // jshint ignore:line
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
- 
+
     // Imports
     var Extend = require('structurejs/util/Extend');
     var DOMElement = require('structurejs/display/DOMElement');
- 
+
     /**
      * TODO: YUIDoc_comment
      *
-     * @class ${NAME}
+     * @class PageControlView
      * @extends DOMElement
      * @constructor
      **/
-    var ${NAME} = (function () {
- 
-        var _super = Extend(${NAME}, DOMElement);
- 
-        function ${NAME}() {
-            _super.call(this);
+    var PageControlView = (function () {
+
+        var _super = Extend(PageControlView, DOMElement);
+
+        function PageControlView($element) {
+            _super.call(this, $element);
         }
- 
+
         /**
          * @overridden DOMElement.createChildren
          */
-        ${NAME}.prototype.createChildren = function () {
+        PageControlView.prototype.createChildren = function () {
             _super.prototype.createChildren.call(this);
- 
+            console.log("asdf");
             // Create and add your child objects to this parent class.
         };
- 
+
         /**
          * @overridden DOMElement.layoutChildren
          */
-        ${NAME}.prototype.layoutChildren = function () {
+        PageControlView.prototype.layoutChildren = function () {
             // Layout or update the child objects in this parent class.
- 
+
             return this;
         };
- 
+
         /**
          * @overridden DOMElement.enable
          */
-        ${NAME}.prototype.enable = function () {
+        PageControlView.prototype.enable = function () {
             if (this.isEnabled === true) { return this; }
- 
+
             // Enable the child objects and add any event listeners.
- 
+
             return _super.prototype.enable.call(this);
         };
- 
+
         /**
          * @overridden DOMElement.disable
          */
-        ${NAME}.prototype.disable = function () {
+        PageControlView.prototype.disable = function () {
             if (this.isEnabled === false) { return this; }
- 
+
             // Disable the child objects and remove any event listeners.
- 
+
             return _super.prototype.disable.call(this);
         };
- 
+
         /**
          * @overridden DOMElement.destroy
          */
-        ${NAME}.prototype.destroy = function () {
-            // Call destroy on any child objects that is need. 
+        PageControlView.prototype.destroy = function () {
+            // Call destroy on any child objects that is need.
             // This super method will also null out all properties automatically to prevent memory leaks.
-            
+
             _super.prototype.destroy.call(this);
         };
- 
-        return ${NAME};
+
+        return PageControlView;
     })();
- 
-    module.exports = ${NAME};
- 
+
+    module.exports = PageControlView;
+
 });

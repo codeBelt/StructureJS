@@ -6,17 +6,17 @@ define(function (require, exports, module) { // jshint ignore:line
     (function addXhrProgressEvent($) {
         var originalXhr = $.ajaxSettings.xhr;
         $.ajaxSetup({
-            xhr: function() {
+            xhr: function () {
                 var req = originalXhr();
                 var self = this;
                 if (req) {
                     if (typeof req.addEventListener == "function" && self.progress !== undefined) {
-                        req.addEventListener("progress", function(evt) {
+                        req.addEventListener("progress", function (evt) {
                             self.progress(evt);
                         }, false);
                     }
                     if (typeof req.upload == "object" && self.progressUpload !== undefined) {
-                        req.upload.addEventListener("progress", function(evt) {
+                        req.upload.addEventListener("progress", function (evt) {
                             self.progressUpload(evt);
                         }, false);
                     }
@@ -35,8 +35,6 @@ define(function (require, exports, module) { // jshint ignore:line
     var RequestService = function () {
     };
 
-    var proto = RequestService.prototype;
-
     /**
      *
      * @method get
@@ -46,7 +44,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @public
      */
-    proto.send = function(endPoint, requestType, data) {
+    RequestService.prototype.send = function (endPoint, requestType, data) {
         return this._createAjaxRequest({
             type: requestType,
             url: endPoint,
@@ -64,7 +62,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @public
      */
-    proto.get = function(endPoint, data) {
+    RequestService.prototype.get = function (endPoint, data) {
         return this._createAjaxRequest({
             type: 'GET',
             url: endPoint,
@@ -82,7 +80,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @public
      */
-    proto.post = function(endPoint, data) {
+    RequestService.prototype.post = function (endPoint, data) {
         return this._createAjaxRequest({
             type: 'POST',
             url: endPoint,
@@ -100,7 +98,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @public
      */
-    proto.put = function(endPoint, data) {
+    RequestService.prototype.put = function (endPoint, data) {
         return this._createAjaxRequest({
             type: 'PUT',
             url: endPoint,
@@ -118,7 +116,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @public
      */
-    proto.delete = function(endPoint, data) {
+    RequestService.prototype.delete = function (endPoint, data) {
         return this._createAjaxRequest({
             type: 'DELETE',
             url: endPoint,
@@ -136,27 +134,27 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @public
      */
-    proto.postFormData = function(endPoint, formData) {
+    RequestService.prototype.postFormData = function (endPoint, formData) {
         return this._createAjaxRequest({
             type: 'POST',
             url: endPoint,
             data: formData,
             contentType: false,
             processData: false,
-            xhr: function() {
+            xhr: function () {
                 return new XMLHttpRequest();
             },
-            progress: function(event) {
+            progress: function (event) {
                 if (event.lengthComputable) {
-                    var percent =  parseInt( (event.loaded / event.total * 100), 10);
+                    var percent = parseInt((event.loaded / event.total * 100), 10);
                 }
                 else {
                     //console.log("Length not computable.");
                 }
             },
-            progressUpload: function(event) {
+            progressUpload: function (event) {
                 if (event.lengthComputable) {
-                    var percent =  parseInt( (event.loaded / event.total * 100), 10);
+                    var percent = parseInt((event.loaded / event.total * 100), 10);
                     console.log("percent", percent);
                 }
                 else {
@@ -175,27 +173,27 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @public
      */
-    proto.putFormData = function(endPoint, formData) {
+    RequestService.prototype.putFormData = function (endPoint, formData) {
         return this._createAjaxRequest({
             type: 'PUT',
             url: endPoint,
             data: formData,
             contentType: false,
             processData: false,
-            xhr: function() {
+            xhr: function () {
                 return new XMLHttpRequest();
             },
-            progress: function(event) {
+            progress: function (event) {
                 if (event.lengthComputable) {
-                    var percent =  parseInt( (event.loaded / event.total * 100), 10);
+                    var percent = parseInt((event.loaded / event.total * 100), 10);
                 }
                 else {
                     //console.log("Length not computable.");
                 }
             },
-            progressUpload: function(event) {
+            progressUpload: function (event) {
                 if (event.lengthComputable) {
-                    var percent =  parseInt( (event.loaded / event.total * 100), 10);
+                    var percent = parseInt((event.loaded / event.total * 100), 10);
                     console.log("percent", percent);
                 }
                 else {
@@ -213,21 +211,21 @@ define(function (require, exports, module) { // jshint ignore:line
      * @return {JQueryXHR}
      * @private
      */
-    proto._createAjaxRequest = function(obj) {
+    RequestService.prototype._createAjaxRequest = function (obj) {
         // Assign the url so we can get if the request fails.
-        obj.beforeSend = function(jqXHR, settings) {
+        obj.beforeSend = function (jqXHR, settings) {
             jqXHR.url = settings.url;
         };
 
         var request = $.ajax(obj);
 
         // Global successes:
-        request.done(function(data, textStatus, jqXHR) {
+        request.done(function (data, textStatus, jqXHR) {
             console.log("success", data);
         }.bind(this));
 
         // Global fails:
-        request.fail(function(jqXHR, textStatus, errorThrown){
+        request.fail(function (jqXHR, textStatus, errorThrown) {
             console.log("fail", jqXHR);
         }.bind(this));
 

@@ -1,4 +1,4 @@
-define(function(require, exports, module) { // jshint ignore:line
+define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
     var $ = require('jquery');
@@ -11,7 +11,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @class App
      * @constructor
      */
-    var App = function() {
+    var App = function () {
         this.init();
     };
 
@@ -23,7 +23,7 @@ define(function(require, exports, module) { // jshint ignore:line
      * @method init
      * @private
      */
-    proto.init = function() {
+    proto.init = function () {
         this.listArray = [];
         var $list = $('.js-list');
         var i;
