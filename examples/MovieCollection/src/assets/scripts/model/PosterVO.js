@@ -19,6 +19,11 @@ define(function(require, exports, module) { // jshint ignore:line
         function PosterVO(data) {
             _super.call(this);
 
+            this.thumbnail = null;
+            this.profile = null;
+            this.detailed = null;
+            this.original = null;
+
             if (data) {
                 this.update(data);
             }

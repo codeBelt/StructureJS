@@ -19,6 +19,11 @@ define(function(require, exports, module) { // jshint ignore:line
         function RatingsVO(data) {
             _super.call(this);
 
+            this.criticsRating = null;
+            this.criticsScore = null;
+            this.audienceRating = null;
+            this.audienceScore = null;
+
             if (data) {
                 this.update(data);
             }

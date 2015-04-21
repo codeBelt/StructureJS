@@ -4,8 +4,10 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Extend = require('structurejs/util/Extend');
     var Stage = require('structurejs/display/Stage');
+    var Collection = require('structurejs/model/Collection');
     var PageControlView = require('view/PageControlView');
     var RequestService = require('service/RequestService');
+    var MovieVO = require('model/MovieVO');
     require('handlebars');
 
     /**
@@ -85,6 +87,9 @@ define(function (require, exports, module) { // jshint ignore:line
        MovieCollectionApp.prototype._onMovieRequestComplete = function(data) {
            console.log("_onMovieRequestComplete", data);
 
+           var collection = new Collection(MovieVO);
+           collection.add(data.movies);
+console.log("collection", collection);
        };
 
         return MovieCollectionApp;

@@ -19,6 +19,10 @@ define(function(require, exports, module) { // jshint ignore:line
         function CastVO(data) {
             _super.call(this);
 
+            this.id = null;
+            this.name = null;
+            this.characters = [];
+
             if (data) {
                 this.update(data);
             }
