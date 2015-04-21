@@ -279,6 +279,9 @@
             // Use the data passed into the constructor first else use the arguments from createChildren.
             type = this._type || type;
             params = this._params || params;
+            if (this.isCreated === true) {
+                throw new Error('[' + this.getQualifiedClassName() + '] You cannot call the createChildren method manually. It is only called once automatically during the view lifecycle and should only be called once.');
+            }
             if (this.$element == null) {
                 var html = TemplateFactory.create(type, params);
                 if (html) {
@@ -352,6 +355,8 @@
                 child.layoutChildren();
                 child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
+            child.width = child.$element.width();
+            child.height = child.$element.height();
         };
         /**
          * @overridden DisplayObjectContainer.addChildAt
