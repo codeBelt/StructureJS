@@ -153,12 +153,12 @@ var StructureTS;
             this.target = null;
             this.currentTarget = null;
             this.data = null;
-            this.bubble = false;
+            this.bubbles = false;
             this.cancelable = false;
             this.isPropagationStopped = false;
             this.isImmediatePropagationStopped = false;
             this.type = type;
-            this.bubble = bubbles;
+            this.bubbles = bubbles;
             this.cancelable = cancelable;
             this.data = data;
         }
@@ -303,7 +303,7 @@ var StructureTS;
                 }
             }
 
-            if (this.parent && event.bubble) {
+            if (this.parent && event.bubbles) {
                 if (event.cancelable && event.isPropagationStopped) {
                     return this;
                 }

@@ -112,7 +112,7 @@ module StructureTS
          */
         public clone():ApplicationCacheEvent
         {
-            return new ApplicationCacheEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new ApplicationCacheEvent(this.type, this.bubbles, this.cancelable, this.data);
         }
     }
 }

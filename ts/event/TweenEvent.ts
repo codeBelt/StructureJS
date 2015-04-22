@@ -57,7 +57,7 @@ module StructureTS
          */
         public clone():TweenEvent
         {
-            return new TweenEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new TweenEvent(this.type, this.bubbles, this.cancelable, this.data);
         }
     }
 }

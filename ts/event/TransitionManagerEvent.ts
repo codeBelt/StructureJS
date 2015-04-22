@@ -57,7 +57,7 @@ module StructureTS
          */
         public clone():TransitionManagerEvent
         {
-            return new TransitionManagerEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new TransitionManagerEvent(this.type, this.bubbles, this.cancelable, this.data);
         }
     }
 }

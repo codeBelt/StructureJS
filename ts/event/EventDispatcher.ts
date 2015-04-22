@@ -199,7 +199,7 @@ module StructureTS
             }
 
             //Dispatches up the chain of classes that have a parent.
-            if (this.parent != null && event.bubble === true)
+            if (this.parent != null && event.bubbles === true)
             {
                 // If cancelable and isPropagationStopped are true then don't dispatch the event on the parent object.
                 if (event.cancelable === true && event.isPropagationStopped === true)

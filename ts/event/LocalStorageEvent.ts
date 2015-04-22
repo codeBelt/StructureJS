@@ -93,7 +93,7 @@ module StructureTS
          */
         public clone():LocalStorageEvent
         {
-            return new LocalStorageEvent(this.type, this.bubble, this.cancelable, this.nativeEvent);
+            return new LocalStorageEvent(this.type, this.bubbles, this.cancelable, this.nativeEvent);
         }
     }
 }

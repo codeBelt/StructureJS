@@ -96,7 +96,7 @@ module StructureTS
          */
         public clone():RouterEvent
         {
-            var event:RouterEvent = new RouterEvent(this.type, this.bubble, this.cancelable, this.data);
+            var event:RouterEvent = new RouterEvent(this.type, this.bubbles, this.cancelable, this.data);
             event.route = this.route;
             event.newURL = this.newURL;
             event.oldURL = this.oldURL;

@@ -46,7 +46,7 @@
          * @overridden BaseEvent.clone
          */
         TimerEvent.prototype.clone = function () {
-            return new TimerEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new TimerEvent(this.type, this.bubbles, this.cancelable, this.data);
         };
         /**
          * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.

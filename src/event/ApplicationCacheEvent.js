@@ -46,7 +46,7 @@
          * @overridden BaseEvent.clone
          */
         ApplicationCacheEvent.prototype.clone = function () {
-            return new ApplicationCacheEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new ApplicationCacheEvent(this.type, this.bubbles, this.cancelable, this.data);
         };
         /**
          * The browser is checking for an update, or is attempting to download

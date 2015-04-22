@@ -80,7 +80,7 @@ module StructureTS
          */
         public clone():NetworkMonitorEvent
         {
-            return new NetworkMonitorEvent(this.type, this.bubble, this.cancelable, this.status, this.connected, this.data);
+            return new NetworkMonitorEvent(this.type, this.bubbles, this.cancelable, this.status, this.connected, this.data);
         }
     }
 }

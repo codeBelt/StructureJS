@@ -39,7 +39,7 @@
  *          }
  *
  *          CountryEvent.prototype.clone = function () {
- *              var event = new CountryEvent(this.type, this.bubble, this.cancelable, this.data);
+ *              var event = new CountryEvent(this.type, this.bubbles, this.cancelable, this.data);
  *              event.countryName = this.countryName;
  *
  *              return event;
@@ -373,12 +373,12 @@ module StructureTS
         /**
          * Indicates whether an event is a bubbling event.
          *
-         * @property bubble
+         * @property bubbles
          * @type {boolean}
          * @public
          * @default false
          */
-        public bubble:boolean = false;
+        public bubbles:boolean = false;
 
         /**
          * Indicates whether the behavior associated with the event can be prevented.
@@ -417,7 +417,7 @@ module StructureTS
             super();
 
             this.type = type;
-            this.bubble = bubbles;
+            this.bubbles = bubbles;
             this.cancelable = cancelable;
             this.data = data;
         }
@@ -473,7 +473,7 @@ module StructureTS
          */
         public clone():BaseEvent
         {
-            var clonedValueObject:BaseEvent = new (<any>this).constructor(this.type, this.bubble, this.cancelable, this.data);
+            var clonedValueObject:BaseEvent = new (<any>this).constructor(this.type, this.bubbles, this.cancelable, this.data);
 
             for (var key in this)
             {
@@ -488,7 +488,7 @@ module StructureTS
 
         //public clone():BaseEvent
         //{
-        //    var event = new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+        //    var event = new BaseEvent(this.type, this.bubbles, this.cancelable, this.data);
         //    event.target = this.target;
         //    event.currentTarget = this.currentTarget;
         //    event.isPropagationStopped = this.isPropagationStopped;

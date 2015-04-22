@@ -58,7 +58,7 @@ module StructureTS
          */
         public clone():LoaderEvent
         {
-            return new LoaderEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new LoaderEvent(this.type, this.bubbles, this.cancelable, this.data);
         }
     }
 }

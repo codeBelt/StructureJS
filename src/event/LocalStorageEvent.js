@@ -59,7 +59,7 @@
          * @overridden BaseEvent.clone
          */
         LocalStorageEvent.prototype.clone = function () {
-            return new LocalStorageEvent(this.type, this.bubble, this.cancelable, this._nativeEvent);
+            return new LocalStorageEvent(this.type, this.bubbles, this.cancelable, this._nativeEvent);
         };
         /**
          * The storage event is fired on a Document's Window object when a storage area changes.

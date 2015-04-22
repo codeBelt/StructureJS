@@ -50,7 +50,7 @@ module StructureTS
          */
         public clone():RequestEvent
         {
-            return new RequestEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new RequestEvent(this.type, this.bubbles, this.cancelable, this.data);
         }
     }
 }

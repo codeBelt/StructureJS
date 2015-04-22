@@ -57,7 +57,7 @@ module StructureTS
          */
         public clone():LanguageEvent
         {
-            return new LanguageEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new LanguageEvent(this.type, this.bubbles, this.cancelable, this.data);
         }
     }
 }

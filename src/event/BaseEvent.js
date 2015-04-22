@@ -53,7 +53,7 @@
      *          }
      *
      *          CountryEvent.prototype.clone = function () {
-     *              var event = new CountryEvent(this.type, this.bubble, this.cancelable, this.data);
+     *              var event = new CountryEvent(this.type, this.bubbles, this.cancelable, this.data);
      *              event.countryName = this.countryName;
      *
      *              return event;
@@ -118,12 +118,12 @@
             /**
              * Indicates whether an event is a bubbling event.
              *
-             * @property bubble
+             * @property bubbles
              * @type {boolean}
              * @public
              * @default false
              */
-            this.bubble = false;
+            this.bubbles = false;
             /**
              * Indicates whether the behavior associated with the event can be prevented.
              *
@@ -154,7 +154,7 @@
              */
             this.isImmediatePropagationStopped = false;
             this.type = type;
-            this.bubble = bubbles;
+            this.bubbles = bubbles;
             this.cancelable = cancelable;
             this.data = data;
         }
@@ -175,7 +175,7 @@
          *     var cloneOfEvent = event.clone();
          */
         BaseEvent.prototype.clone = function () {
-            var event = new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
+            var event = new BaseEvent(this.type, this.bubbles, this.cancelable, this.data);
             event.target = this.target;
             event.currentTarget = this.currentTarget;
             event.isPropagationStopped = this.isPropagationStopped;

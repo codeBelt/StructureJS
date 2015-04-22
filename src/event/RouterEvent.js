@@ -96,7 +96,7 @@
          * @overridden BaseEvent.clone
          */
         RouterEvent.prototype.clone = function () {
-            var event = new RouterEvent(this.type, this.bubble, this.cancelable, this.data);
+            var event = new RouterEvent(this.type, this.bubbles, this.cancelable, this.data);
             event.route = this.route;
             event.newURL = this.newURL;
             event.oldURL = this.oldURL;

@@ -50,7 +50,7 @@ module StructureTS
          */
         public clone():TimerEvent
         {
-            return new TimerEvent(this.type, this.bubble, this.cancelable, this.data);
+            return new TimerEvent(this.type, this.bubbles, this.cancelable, this.data);
         }
     }
 }

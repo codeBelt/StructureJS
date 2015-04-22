@@ -184,7 +184,7 @@
                 }
             }
             //Dispatches up the chain of classes that have a parent.
-            if (this.parent && event.bubble) {
+            if (this.parent && event.bubbles) {
                 // If cancelable and isPropagationStopped are true then don't dispatch the event on the parent object.
                 if (event.cancelable && event.isPropagationStopped) {
                     return this;
