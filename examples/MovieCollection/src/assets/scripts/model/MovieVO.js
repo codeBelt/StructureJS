@@ -7,6 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var RatingsVO = require('model/RatingsVO');
     var PosterVO = require('model/PosterVO');
     var CastVO = require('model/CastVO');
+    var ReleaseDateVO = require('model/ReleaseDateVO');
 
     /**
      * TODO: YUIDoc_comment
@@ -30,6 +31,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this.ratings = RatingsVO;
             this.synopsis = null;
             this.posters = PosterVO;
+            this.releaseDates = ReleaseDateVO;
             this.abridgedCast = [CastVO];
 
             if (data) {
