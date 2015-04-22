@@ -47,6 +47,13 @@ this["JST"]["templates/ItemTemplate"] = Handlebars.template({"1":function(depth0
   return buffer;
 },"useData":true});
 
+this["JST"]["templates/ModalTemplate"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<div class=\"modal\">\n    <div class=\"modal-inner\">\n        <div class=\"modal-inner-hd\">\n            <h1 class=\"hdg hdg_2\">"
+    + escapeExpression(((helper = (helper = helpers.error || (depth0 != null ? depth0.error : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"error","hash":{},"data":data}) : helper)))
+    + "</h1>\n        </div>\n        <div class=\"modal-inner-bd\">\n            <p class=\"text\">There was an error loading the movies, please refresh your page and try again later.</p>\n        </div>\n    </div>\n</div>\n";
+},"useData":true});
+
 return this["JST"];
 
 });

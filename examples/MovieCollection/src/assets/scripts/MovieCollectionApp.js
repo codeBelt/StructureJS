@@ -7,6 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var Collection = require('structurejs/model/Collection');
     var PageControlView = require('view/PageControlView');
     var ListView = require('view/ListView');
+    var ModalView = require('view/ModalView');
     var RequestService = require('service/RequestService');
     var MovieVO = require('model/MovieVO');
     require('templates');
@@ -58,6 +59,9 @@ define(function (require, exports, module) { // jshint ignore:line
             this._listContainer = new ListView(this.$element.find('.js-listOutput'));
             this.addChild(this._listContainer);
 
+//            var modal = new ModalView();
+//            this.addChildAt(modal, 0);
+
             RequestService.get('assets/data/movies.json')
                 .done(this._onMovieRequestComplete.bind(this));
         };
@@ -103,6 +107,8 @@ define(function (require, exports, module) { // jshint ignore:line
            this._movieCollection = new Collection(MovieVO);
            this._movieCollection.add(data.movies);
 
+           console.log("this._movieCollection.models", this._movieCollection.models);
+
            this._listContainer.updateList(this._movieCollection.models);
 
            this._pageControls.enable();
@@ -116,6 +122,11 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private
          */
         MovieCollectionApp.prototype._onUpdate = function(event) {
+            var sortType = this._pageControls.sortType;
+            var displayLimit = this._pageControls.displayLimit;
+
+            console.log("sortType", sortType);
+            console.log("displayLimit", displayLimit);
             console.log("event", event);
 
             //this._listContainer.updateList(collection.models);

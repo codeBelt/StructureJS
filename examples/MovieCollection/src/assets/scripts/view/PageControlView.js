@@ -22,20 +22,20 @@ define(function (require, exports, module) { // jshint ignore:line
             /**
              * TODO: YUIDoc_comment
              *
-             * @property _currentSortValue
+             * @property sortType
              * @type {string}
-             * @private
+             * @public
              */
-            this._currentSortValue = null;
+            this.sortType = null;
 
             /**
              * TODO: YUIDoc_comment
              *
-             * @property _currentLimitValue
+             * @property displayLimit
              * @type {int}
-             * @private
+             * @public
              */
-            this._currentLimitValue = null;
+            this.displayLimit = null;
 
             /**
              * TODO: YUIDoc_comment
@@ -83,8 +83,8 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype.layoutChildren = function () {
             // Layout or update the child objects in this parent class.
 
-            this._currentSortValue = this._$listSort.val();
-            this._currentLimitValue = this._$listLimit.val();
+            this.sortType = this._$listSort.val();
+            this.displayLimit = parseInt(this._$listLimit.val());
 
             return this;
         };
@@ -161,8 +161,8 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype._onUpdateClick = function(event) {
             event.preventDefault();
 
-            console.log("_onUpdateClick", this._currentSortValue, this._currentLimitValue);
-            this.dispatchEvent('update');
+            console.log("_onUpdateClick", this.sortType, this.displayLimit);
+            this.dispatchEvent('update', {sortType: this.sortType, displayLimit: this.displayLimit});
         };
 
         return PageControlView;
