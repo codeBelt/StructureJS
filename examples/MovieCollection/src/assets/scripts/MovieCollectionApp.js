@@ -34,6 +34,15 @@ define(function (require, exports, module) { // jshint ignore:line
              * @private
              */
             this._pageControls = null;
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property _movieCollection
+             * @type {Collection}
+             * @private
+             */
+            this._movieCollection = null;
         }
 
         /**
@@ -68,6 +77,8 @@ define(function (require, exports, module) { // jshint ignore:line
         MovieCollectionApp.prototype.enable = function () {
             if (this.isEnabled === true) { return this; }
 
+            this._pageControls.addEventListener('update', this._onUpdate, this);
+
             return _super.prototype.enable.call(this);
         };
 
@@ -77,7 +88,7 @@ define(function (require, exports, module) { // jshint ignore:line
         MovieCollectionApp.prototype.disable = function () {
             if (this.isEnabled === false) { return this; }
 
-            // Disable the child objects and remove any event listeners.
+            this._pageControls.removeEventListener('update', this._onUpdate, this);
 
             return _super.prototype.disable.call(this);
         };
@@ -89,15 +100,26 @@ define(function (require, exports, module) { // jshint ignore:line
         * @private
         */
        MovieCollectionApp.prototype._onMovieRequestComplete = function(data) {
+           this._movieCollection = new Collection(MovieVO);
+           this._movieCollection.add(data.movies);
 
-           var collection = new Collection(MovieVO);
-           collection.add(data.movies);
-console.log("collection", collection);
-
-           this._listContainer.updateList(collection.models);
+           this._listContainer.updateList(this._movieCollection.models);
 
            this._pageControls.enable();
        };
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _onUpdate
+         * @param event {BaseEvent}
+         * @private
+         */
+        MovieCollectionApp.prototype._onUpdate = function(event) {
+            console.log("event", event);
+
+            //this._listContainer.updateList(collection.models);
+        };
 
         return MovieCollectionApp;
     })();

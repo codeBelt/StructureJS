@@ -22,6 +22,24 @@ define(function (require, exports, module) { // jshint ignore:line
             /**
              * TODO: YUIDoc_comment
              *
+             * @property _currentSortValue
+             * @type {string}
+             * @private
+             */
+            this._currentSortValue = null;
+
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property _currentLimitValue
+             * @type {int}
+             * @private
+             */
+            this._currentLimitValue = null;
+
+            /**
+             * TODO: YUIDoc_comment
+             *
              * @property _$listSort
              * @type {jQuery}
              * @private
@@ -65,6 +83,9 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype.layoutChildren = function () {
             // Layout or update the child objects in this parent class.
 
+            this._currentSortValue = this._$listSort.val();
+            this._currentLimitValue = this._$listLimit.val();
+
             return this;
         };
 
@@ -104,7 +125,6 @@ define(function (require, exports, module) { // jshint ignore:line
             return _super.prototype.disable.call(this);
         };
 
-
         /**
          * TODO: YUIDoc_comment
          *
@@ -115,7 +135,7 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype._onSortChange = function(event) {
             event.preventDefault();
 
-            console.log("_onSortChange");
+            this.layoutChildren();
         };
 
         /**
@@ -128,7 +148,7 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype._onLimitChange = function(event) {
             event.preventDefault();
 
-            console.log("_onLimitChange");
+            this.layoutChildren();
         };
 
         /**
@@ -141,7 +161,8 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype._onUpdateClick = function(event) {
             event.preventDefault();
 
-            console.log("_onUpdateClick");
+            console.log("_onUpdateClick", this._currentSortValue, this._currentLimitValue);
+            this.dispatchEvent('update');
         };
 
         return PageControlView;
