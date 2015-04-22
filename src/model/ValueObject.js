@@ -152,13 +152,13 @@
          */
         ValueObject.prototype._updateData = function (keyValue, data) {
             if (keyValue instanceof ValueObject.constructor) {
-                // If property is an instance of a ValueObject class and has not been created yet.
-                // Than instantiate it and pass in the data to the constructor.
+                // If the property is an instance of a ValueObject class and has not been created yet.
+                // Then instantiate it and pass in the data to the constructor.
                 keyValue = new keyValue(data);
             }
             else if (keyValue instanceof ValueObject) {
                 // If property is an instance of a ValueObject class and has already been created.
-                // Than call the update method and pass in the data.
+                // Then call the update method and pass in the data.
                 keyValue.update(data);
             }
             else {
