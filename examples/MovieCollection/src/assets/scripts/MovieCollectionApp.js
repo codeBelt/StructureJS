@@ -28,8 +28,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this);
 
             /**
-             * TODO: YUIDoc_comment
-             *
              * @property _pageControls
              * @type {PageControlView}
              * @private
@@ -37,8 +35,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this._pageControls = null;
 
             /**
-             * TODO: YUIDoc_comment
-             *
              * @property _movieCollection
              * @type {MovieCollection}
              * @private

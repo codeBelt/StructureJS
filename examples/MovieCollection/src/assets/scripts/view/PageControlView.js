@@ -20,8 +20,6 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.call(this, $element);
 
             /**
-             * TODO: YUIDoc_comment
-             *
              * @property sortType
              * @type {string}
              * @public
@@ -29,8 +27,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this.sortType = null;
 
             /**
-             * TODO: YUIDoc_comment
-             *
              * @property displayLimit
              * @type {int}
              * @public
@@ -38,8 +34,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this.displayLimit = null;
 
             /**
-             * TODO: YUIDoc_comment
-             *
              * @property _$listSort
              * @type {jQuery}
              * @private
@@ -47,8 +41,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this._$listSort = null;
 
             /**
-             * TODO: YUIDoc_comment
-             *
              * @property _$listLimit
              * @type {jQuery}
              * @private
@@ -56,8 +48,6 @@ define(function (require, exports, module) { // jshint ignore:line
             this._$listLimit = null;
 
             /**
-             * TODO: YUIDoc_comment
-             *
              * @property _$listUpdate
              * @type {jQuery}
              * @private
