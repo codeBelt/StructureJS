@@ -141,17 +141,17 @@ define(function (require, exports, module) { // jshint ignore:line
 
             var models;
             switch (sortType) {
-                case "critic-desc":
-                case "critic-asc":
+                case 'critic-desc':
+                case 'critic-asc':
                     models = this._movieCollection.sortByCriticsScore(isAscending);
                     break;
-                case "audience-desc":
-                case "audience-asc":
-                    models = this._movieCollection.sortByCriticsScore(isAscending);
+                case 'audience-desc':
+                case 'audience-asc':
+                    models = this._movieCollection.sortByAudienceScore(isAscending);
                     break;
-                case "theater-asc":
-                case "theater-desc":
-                    models = this._movieCollection.sortByCriticsScore(isAscending);
+                case 'theater-asc':
+                case 'theater-desc':
+                    models = this._movieCollection.sortByTheaterReleaseDate(isAscending);
                     break;
                 default:
                     models = this._movieCollection.models;
