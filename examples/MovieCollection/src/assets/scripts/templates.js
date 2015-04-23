@@ -24,9 +24,9 @@ this["JST"]["templates/ItemTemplate"] = Handlebars.template({"1":function(depth0
     + "</span></li>\n                        <li><span class=\"text text_label\">"
     + escapeExpression(((helper = (helper = helpers.mpaaRating || (depth0 != null ? depth0.mpaaRating : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"mpaaRating","hash":{},"data":data}) : helper)))
     + "</span></li>\n                        <li><span class=\"text text_label\">"
-    + escapeExpression(((helper = (helper = helpers.releaseDate || (depth0 != null ? depth0.releaseDate : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"releaseDate","hash":{},"data":data}) : helper)))
+    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.releaseDates : depth0)) != null ? stack1.theater : stack1), depth0))
     + "</span></li>\n                        <li><span class=\"text text_label\">"
-    + escapeExpression(((helper = (helper = helpers.runtime || (depth0 != null ? depth0.runtime : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"runtime","hash":{},"data":data}) : helper)))
+    + escapeExpression(((helpers.convertToHHMMSS || (depth0 && depth0.convertToHHMMSS) || helperMissing).call(depth0, (depth0 != null ? depth0.runtime : depth0), {"name":"convertToHHMMSS","hash":{},"data":data})))
     + "</span></li>\n                    </ul>\n                </div>\n                <div class=\"movie-bd\">\n                    <div class=\"shelf\">\n                        <p class=\"text\">"
     + escapeExpression(((helper = (helper = helpers.synopsis || (depth0 != null ? depth0.synopsis : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"synopsis","hash":{},"data":data}) : helper)))
     + "</p>\n                    </div>\n                    <ul class=\"\">\n";

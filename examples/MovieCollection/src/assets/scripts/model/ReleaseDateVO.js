@@ -34,8 +34,8 @@ define(function (require, exports, module) { // jshint ignore:line
             _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.
-            var formatDate = this.theater.replace(/-/g, ' ');
-            this.theater = new Date(formatDate);
+            //var formatDate = this.theater.replace(/-/g, ' ');
+            //this.theater = new Date(formatDate);
         };
 
         /**

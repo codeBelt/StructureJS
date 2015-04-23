@@ -107,9 +107,7 @@ define(function (require, exports, module) { // jshint ignore:line
            this._movieCollection = new MovieCollection(MovieVO);
            this._movieCollection.add(data.movies);
 
-           var models = this._movieCollection.sortByCriticsScore();
-
-           this._listContainer.updateList(models.slice(0, this._pageControls.displayLimit));
+           this._updateList();
 
            this._pageControls.enable();
        };
@@ -135,8 +133,6 @@ define(function (require, exports, module) { // jshint ignore:line
             var sortType = this._pageControls.sortType;
             var displayLimit = this._pageControls.displayLimit;
 
-            console.log("sortType", sortType);
-
             var isAscending = (sortType.indexOf('-asc') > -1) ? true : false;
 
             var models;
@@ -157,6 +153,7 @@ define(function (require, exports, module) { // jshint ignore:line
                     models = this._movieCollection.models;
             }
 
+            // Slice of the first set of models.
             models = models.slice(0, displayLimit);
 
             this._listContainer.updateList(models);

@@ -1,6 +1,7 @@
 define(function (require, exports, module) { // jshint ignore:line
     'use strict';
 
+    var NumberUtil = require('structurejs/util/NumberUtil');
     var Handlebars = require('handlebars');
 
     /**
@@ -11,6 +12,17 @@ define(function (require, exports, module) { // jshint ignore:line
             return ratings.replace(/\s+/g, '');
         } else {
             return ratings;
+        }
+    });
+
+    /**
+     * convertToHHMMSS
+     */
+    Handlebars.registerHelper('convertToHHMMSS', function(minutes) {
+        if (minutes) {
+            return  NumberUtil.convertToHHMMSS(minutes);
+        } else {
+            return minutes;
         }
     });
 
