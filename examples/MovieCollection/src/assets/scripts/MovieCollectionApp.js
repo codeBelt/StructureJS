@@ -4,12 +4,12 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Extend = require('structurejs/util/Extend');
     var Stage = require('structurejs/display/Stage');
-    var Collection = require('structurejs/model/Collection');
     var PageControlView = require('view/PageControlView');
     var ListView = require('view/ListView');
     var ModalView = require('view/ModalView');
     var RequestService = require('service/RequestService');
     var MovieVO = require('model/MovieVO');
+    var MovieCollection = require('collection/MovieCollection');
     require('templates');
     require('utils/HandlebarsHelpers');
 
@@ -40,7 +40,7 @@ define(function (require, exports, module) { // jshint ignore:line
              * TODO: YUIDoc_comment
              *
              * @property _movieCollection
-             * @type {Collection}
+             * @type {MovieCollection}
              * @private
              */
             this._movieCollection = null;
@@ -104,12 +104,12 @@ define(function (require, exports, module) { // jshint ignore:line
         * @private
         */
        MovieCollectionApp.prototype._onMovieRequestComplete = function(data) {
-           this._movieCollection = new Collection(MovieVO);
+           this._movieCollection = new MovieCollection(MovieVO);
            this._movieCollection.add(data.movies);
 
-           console.log("this._movieCollection.models", this._movieCollection.models);
+           var models = this._movieCollection.sortByCriticsScore();
 
-           this._listContainer.updateList(this._movieCollection.models);
+           this._listContainer.updateList(models.slice(0, this._pageControls.displayLimit));
 
            this._pageControls.enable();
        };
@@ -122,14 +122,22 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private
          */
         MovieCollectionApp.prototype._onUpdate = function(event) {
+            this._updateList();
+        };
+
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _updateList
+         * @private
+         */
+        MovieCollectionApp.prototype._updateList = function() {
             var sortType = this._pageControls.sortType;
             var displayLimit = this._pageControls.displayLimit;
 
-            console.log("sortType", sortType);
-            console.log("displayLimit", displayLimit);
-            console.log("event", event);
+            var models = this._movieCollection.sortByCriticsScore();
 
-            //this._listContainer.updateList(collection.models);
+            this._listContainer.updateList(models.slice(0, displayLimit));
         };
 
         return MovieCollectionApp;
