@@ -135,9 +135,31 @@ define(function (require, exports, module) { // jshint ignore:line
             var sortType = this._pageControls.sortType;
             var displayLimit = this._pageControls.displayLimit;
 
-            var models = this._movieCollection.sortByCriticsScore();
+            console.log("sortType", sortType);
 
-            this._listContainer.updateList(models.slice(0, displayLimit));
+            var isAscending = (sortType.indexOf('-asc') > -1) ? true : false;
+
+            var models;
+            switch (sortType) {
+                case "critic-desc":
+                case "critic-asc":
+                    models = this._movieCollection.sortByCriticsScore(isAscending);
+                    break;
+                case "audience-desc":
+                case "audience-asc":
+                    models = this._movieCollection.sortByCriticsScore(isAscending);
+                    break;
+                case "theater-asc":
+                case "theater-desc":
+                    models = this._movieCollection.sortByCriticsScore(isAscending);
+                    break;
+                default:
+                    models = this._movieCollection.models;
+            }
+
+            models = models.slice(0, displayLimit);
+
+            this._listContainer.updateList(models);
         };
 
         return MovieCollectionApp;
