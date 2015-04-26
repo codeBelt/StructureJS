@@ -2,7 +2,7 @@
 
 module ${Namespace} {
 
-    import ${Extends} = StructureTS.${Extends};
+    import ${Extends} = StructureJS.${Extends};
 
     /**
      * TODO: YUIDoc_comment

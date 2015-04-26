@@ -19,7 +19,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class URLLoader extends EventDispatcher
     {

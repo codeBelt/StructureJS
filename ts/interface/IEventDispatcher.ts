@@ -9,7 +9,7 @@
  * @submodule interface
  * @interface
  */
-module StructureTS
+module StructureJS
 {
     export interface IEventDispatcher extends ICore
     {

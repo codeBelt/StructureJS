@@ -11,7 +11,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class ImageLoader extends EventDispatcher implements IDataStore
     {

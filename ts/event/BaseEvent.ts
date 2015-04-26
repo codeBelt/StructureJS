@@ -53,7 +53,7 @@
  *     event.countryName = 'Canada';
  *     this.dispatchEvent(event);
  */
-module StructureTS
+module StructureJS
 {
     export class BaseEvent extends BaseObject
     {
@@ -462,9 +462,6 @@ module StructureTS
          *
          * The new BaseEvent object includes all the properties of the original.
          *
-         * When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
-         * to duplicate the properties of your custom class.
-         *
          * @method clone
          * @returns {BaseEvent}
          * @public
@@ -485,16 +482,6 @@ module StructureTS
 
             return clonedValueObject;
         }
-
-        //public clone():BaseEvent
-        //{
-        //    var event = new BaseEvent(this.type, this.bubbles, this.cancelable, this.data);
-        //    event.target = this.target;
-        //    event.currentTarget = this.currentTarget;
-        //    event.isPropagationStopped = this.isPropagationStopped;
-        //    event.isImmediatePropagationStopped = this.isImmediatePropagationStopped;
-        //    return event;
-        //}
 
     }
 }

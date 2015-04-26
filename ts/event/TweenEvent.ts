@@ -16,7 +16,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class TweenEvent extends BaseEvent
     {
@@ -52,12 +52,5 @@ module StructureTS
             super(type, bubbles, cancelable, tweenObject);
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():TweenEvent
-        {
-            return new TweenEvent(this.type, this.bubbles, this.cancelable, this.data);
-        }
     }
 }

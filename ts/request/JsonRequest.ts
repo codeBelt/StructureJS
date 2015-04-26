@@ -1,6 +1,6 @@
 ///<reference path='BaseRequest'/>
 
-module StructureTS
+module StructureJS
 {
     export class JsonRequest extends BaseRequest
     {

@@ -11,7 +11,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class BulkLoader extends EventDispatcher
     {
@@ -28,7 +28,7 @@ module StructureTS
          * @method addFile
          * @param dataStore {IDataStore}
          * @param key {string}
-         * @returns {StructureTS.BulkLoader}
+         * @returns {BulkLoader}
          */
         public addFile(dataStore:IDataStore, key:string):any
         {

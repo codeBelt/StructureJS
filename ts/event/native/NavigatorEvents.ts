@@ -1,5 +1,5 @@
 
-module StructureTS
+module StructureJS
 {
     export class NavigatorEvents
     {

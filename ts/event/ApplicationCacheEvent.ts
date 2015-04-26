@@ -18,7 +18,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class ApplicationCacheEvent extends BaseEvent
     {
@@ -107,12 +107,5 @@ module StructureTS
             super(type, bubbles, cancelable, data);
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():ApplicationCacheEvent
-        {
-            return new ApplicationCacheEvent(this.type, this.bubbles, this.cancelable, this.data);
-        }
     }
 }

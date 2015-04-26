@@ -19,7 +19,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class LocalStorageEvent extends BaseEvent
     {
@@ -35,11 +35,11 @@ module StructureTS
         /**
          * TODO: YUIDoc_comment
          *
-         * @property nativeEvent
+         * @property originalEvent
          * @type {any}
          * @public
          */
-        public nativeEvent:any = null;
+        public originalEvent:any = null;
 
         /**
          * The named key that was added, removed, or modified
@@ -85,15 +85,8 @@ module StructureTS
                 this.url = nativeEvent.url;
             }
 
-            this.nativeEvent = nativeEvent;
+            this.originalEvent = nativeEvent;
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():LocalStorageEvent
-        {
-            return new LocalStorageEvent(this.type, this.bubbles, this.cancelable, this.nativeEvent);
-        }
     }
 }

@@ -1,7 +1,7 @@
 ///<reference path='../ValueObject.ts'/>
 ///<reference path='../../interface/IValueObject.ts'/>
 
-module StructureTS
+module StructureJS
 {
     export class LanguageConfigVO extends ValueObject
     {

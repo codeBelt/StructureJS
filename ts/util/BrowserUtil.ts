@@ -11,7 +11,7 @@
  * @author Robert S. (www.codeBelt.com)
  * @static
  */
-module StructureTS
+module StructureJS
 {
     export class BrowserUtil
     {

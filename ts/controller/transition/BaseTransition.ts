@@ -5,7 +5,7 @@
 ///<reference path='../../display/DOMElement.ts'/>
 ///<reference path='../../event/TweenEvent.ts'/>
 
-module StructureTS
+module StructureJS
 {
     export class BaseTransition extends EventDispatcher implements ITransition
     {

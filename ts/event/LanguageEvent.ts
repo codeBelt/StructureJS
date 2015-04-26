@@ -16,7 +16,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class LanguageEvent extends BaseEvent
     {
@@ -52,12 +52,5 @@ module StructureTS
             super(type, bubbles, cancelable, data);
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():LanguageEvent
-        {
-            return new LanguageEvent(this.type, this.bubbles, this.cancelable, this.data);
-        }
     }
 }

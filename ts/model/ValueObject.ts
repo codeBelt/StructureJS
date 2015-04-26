@@ -69,7 +69,7 @@
  *          return CarVO;
  *      })();
  */
-module StructureTS
+module StructureJS
 {
     export class ValueObject extends BaseObject implements IValueObject
     {

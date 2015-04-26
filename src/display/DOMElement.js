@@ -52,13 +52,13 @@
      *              _super.call(this, $element);
      *          }
      *
-     *          ClassName.prototype.createChildren = function () {
-     *              _super.prototype.createChildren.call(this);
+     *          ClassName.prototype.create = function () {
+     *              _super.prototype.create.call(this);
      *
      *              // Create and add your child objects to this parent class.
      *          };
      *
-     *          ClassName.prototype.layoutChildren = function () {
+     *          ClassName.prototype.layout = function () {
      *              // Layout or update the child objects in this parent class.
      *
      *              return this;
@@ -89,11 +89,11 @@
      *          return ClassName;
      *     })();
      *
-     *     // Example of a view extending DOMElement with template passed into createChildren.
+     *     // Example of a view extending DOMElement with template passed into create.
      *     var view = new CustomView();
      *     this.addChild(view);
      *
-     *     // Example of a view extending DOMElement with template passed into createChildren.
+     *     // Example of a view extending DOMElement with template passed into create.
      *     var Extend = require('structurejs/util/Extend');
      *     var DOMElement = require('structurejs/display/DOMElement');
      *     var HomeTemplate = require('hbs!templates/home/homeTemplate');
@@ -106,13 +106,13 @@
      *              _super.call(this);
      *          }
      *
-     *          ClassName.prototype.createChildren = function () {
-     *              _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
+     *          ClassName.prototype.create = function () {
+     *              _super.prototype.create.call(this, HomeTemplate, {data: 'some data'});
      *
      *              // Create and add your child objects to this parent class.
      *          };
      *
-     *          ClassName.prototype.layoutChildren = function () {
+     *          ClassName.prototype.layout = function () {
      *              // Layout or update the child objects in this parent class.
      *
      *              return this;
@@ -211,15 +211,15 @@
             }
         }
         /**
-         * The createChildren function is intended to provide a consistent place for the creation and adding
+         * The create function is intended to provide a consistent place for the creation and adding
          * of children to the view. It will automatically be called the first time that the view is added
          * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
          * their overridden methods.
          *
          * This method gets called only once when the child view is added to another view. If the child view is removed
-         * and added to another view the createChildren method will not be called again.
+         * and added to another view the create method will not be called again.
          *
-         * @method createChildren
+         * @method create
          * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
          * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
          * @returns {DOMElement} Returns an instance of itself.
@@ -227,21 +227,21 @@
          * @chainable
          * @example
          *     // EXAMPLE 1: By default your view class will be a div element:
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this);
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this);
          *
          *          this._childInstance = new DOMElement();
          *          this.addChild(this._childInstance);
          *     }
          *
          *     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, 'ul');
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, 'ul');
          *     }
          *
          *     // Then you could nest other elements inside this base view/element.
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
          *
          *          var li = new DOMElement('li', {text: 'Robert is cool'});
          *          this.addChild(li);
@@ -260,28 +260,25 @@
          *
          *     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate".
          *     // There is a second optional argument where you can pass data for the Handlebar template to use.
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });
          *
          *     }
          *
-         *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into createChildren.
+         *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.
          *     var HomeTemplate = require('hbs!templates/HomeTemplate');
          *
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, HomeTemplate, {data: "some data"});
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
          *
          *     }
          */
-        DOMElement.prototype.createChildren = function (type, params) {
+        DOMElement.prototype.create = function (type, params) {
             if (type === void 0) { type = 'div'; }
             if (params === void 0) { params = null; }
-            // Use the data passed into the constructor first else use the arguments from createChildren.
+            // Use the data passed into the constructor first else use the arguments from create.
             type = this._type || type;
             params = this._params || params;
-            if (this.isCreated === true) {
-                throw new Error('[' + this.getQualifiedClassName() + '] You cannot call the createChildren method manually. It is only called once automatically during the view lifecycle and should only be called once.');
-            }
             if (this.$element == null) {
                 var html = TemplateFactory.create(type, params);
                 if (html) {
@@ -313,7 +310,7 @@
                 return this;
             }
             if (child.isCreated === false) {
-                child.createChildren(); // Render the item before adding to the DOM
+                child.create(); // Render the item before adding to the DOM
                 child.isCreated = true;
             }
             this.addClientSideId(child);
@@ -338,7 +335,7 @@
         };
         /**
          * Gets called when the child object is added to the DOM.
-         * The method will call {{#crossLink "DOMElement/layoutChildren:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.
+         * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.
          *
          * @method onDomAdded
          * @private
@@ -352,11 +349,9 @@
                 }, 100);
             }
             else {
-                child.layoutChildren();
+                child.layout();
                 child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
-            child.width = child.$element.width();
-            child.height = child.$element.height();
         };
         /**
          * @overridden DisplayObjectContainer.addChildAt
@@ -375,7 +370,7 @@
             }
             else {
                 if (child.isCreated === false) {
-                    child.createChildren(); // Render the item before adding to the DOM
+                    child.create(); // Render the item before adding to the DOM
                     child.isCreated = true;
                 }
                 this.addClientSideId(child);
@@ -541,8 +536,8 @@
          * @public
          * @chainable
          * @example
-         *      ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this);
+         *      ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this);
          *
          *          this.createComponents([
          *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},

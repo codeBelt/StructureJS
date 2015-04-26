@@ -18,7 +18,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class RouterEvent extends BaseEvent
     {
@@ -91,18 +91,5 @@ module StructureTS
             super(type, bubbles, cancelable, data);
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():RouterEvent
-        {
-            var event:RouterEvent = new RouterEvent(this.type, this.bubbles, this.cancelable, this.data);
-            event.route = this.route;
-            event.newURL = this.newURL;
-            event.oldURL = this.oldURL;
-            event.routePattern = this.routePattern;
-            event.query = this.query;
-            return event;
-        }
     }
 }

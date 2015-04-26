@@ -18,7 +18,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class NetworkMonitorEvent extends BaseEvent
     {
@@ -75,12 +75,5 @@ module StructureTS
             this.connected = connected;
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():NetworkMonitorEvent
-        {
-            return new NetworkMonitorEvent(this.type, this.bubbles, this.cancelable, this.status, this.connected, this.data);
-        }
     }
 }

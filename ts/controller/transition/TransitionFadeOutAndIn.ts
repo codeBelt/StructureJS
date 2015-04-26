@@ -3,7 +3,7 @@
 ///<reference path='../../display/DisplayObjectContainer.ts'/>
 ///<reference path='../../display/DOMElement.ts'/>
 
-module StructureTS
+module StructureJS
 {
     export class TransitionFadeOutAndIn extends BaseTransition
     {

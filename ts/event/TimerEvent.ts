@@ -18,7 +18,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class TimerEvent extends BaseEvent
     {
@@ -45,12 +45,5 @@ module StructureTS
             super(type, bubbles, cancelable, data);
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():TimerEvent
-        {
-            return new TimerEvent(this.type, this.bubbles, this.cancelable, this.data);
-        }
     }
 }

@@ -65,7 +65,7 @@
  *     var route = new Route('/about/*', this.method4, this);
  *
  */
-module StructureTS
+module StructureJS
 {
     export class Route
     {

@@ -17,7 +17,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class LoaderEvent extends BaseEvent
     {
@@ -53,12 +53,5 @@ module StructureTS
             super(type, bubbles, cancelable, data);
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():LoaderEvent
-        {
-            return new LoaderEvent(this.type, this.bubbles, this.cancelable, this.data);
-        }
     }
 }

@@ -18,7 +18,7 @@
  * @param jsonp {boolean}
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class JsonDataStore extends DataStoreAbstract
     {

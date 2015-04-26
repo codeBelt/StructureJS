@@ -1,31 +1,21 @@
-///<reference path='../event/EventDispatcher.ts'/>
+///<reference path='./DisplayObject.ts'/>
 
 /**
  * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
  *
  * @class DisplayObjectContainer
- * @extends EventDispatcher
+ * @extends DisplayObject
  * @module StructureJS
  * @submodule view
  * @requires Extend
- * @requires EventDispatcher
+ * @requires DisplayObject
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
-    export class DisplayObjectContainer extends EventDispatcher
+    export class DisplayObjectContainer extends DisplayObject
     {
-        /**
-         * The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.
-         *
-         * @property isCreated
-         * @type {boolean}
-         * @default false
-         * @protected
-         */
-        public isCreated:boolean = false;
-
         /**
          * Returns the number of children of this object.
          *
@@ -38,74 +28,23 @@ module StructureTS
         public numChildren:number = 0;
 
         /**
-         * A reference to the child DisplayObjectContainer instances to this parent object instance.
+         * A reference to the child DisplayObject instances to this parent object instance.
          *
          * @property children
          * @type {Array}
          * @readOnly
          * @public
          */
-        public children:DisplayObjectContainer[] = [];
+        public children:DisplayObject[] = [];
 
         /**
-         * A property providing access to the x position.
+         * Determines whether or not the children of the object are mouse enabled.
          *
-         * @property x
-         * @type {number}
-         * @default 0
+         * @property mouseChildren
+         * @type {boolean}
          * @public
          */
-        public x:number = 0;
-
-        /**
-         * A property providing access to the y position.
-         *
-         * @property y
-         * @type {number}
-         * @default 0
-         * @public
-         */
-        public y:number = 0;
-
-        /**
-         * A property providing access to the width.
-         *
-         * @property width
-         * @type {number}
-         * @default 0
-         * @public
-         */
-        public width:number = 0;
-
-        /**
-         * A property providing access to the height.
-         *
-         * @property height
-         * @type {number}
-         * @default 0
-         * @public
-         */
-        public height:number = 0;
-
-        /**
-         * A property providing access to the unscaledWidth.
-         *
-         * @property unscaledWidth
-         * @type {number}
-         * @default 100
-         * @public
-         */
-        public unscaledWidth:number = 100;
-
-        /**
-         * A property providing access to the unscaledHeight.
-         *
-         * @property unscaledHeight
-         * @type {number}
-         * @default 100
-         * @public
-         */
-        public unscaledHeight:number = 100;
+        public mouseChildren:boolean = false;
 
         constructor()
         {
@@ -113,35 +52,19 @@ module StructureTS
         }
 
         /**
-         * The createChildren function is intended to provide a consistent place for the creation and adding
-         * of children to the view. It will automatically be called the first time that the view is added
-         * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
-         * their overridden methods.
-         *
-         * @method createChildren
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        public createChildren():any
-        {
-            throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
-        }
-
-        /**
-         * Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other
+         * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
          * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
          *
          * If you add a child object that already has a different parent, the object is removed from the child
          * list of the other parent object.
          *
          * @method addChild
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to add as a child of this DisplayObjectContainerContainer instance.
+         * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        public addChild(child:DisplayObjectContainer):any
+        public addChild(child:DisplayObject):any
         {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent)
@@ -158,18 +81,18 @@ module StructureTS
         }
 
         /**
-         * Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.
+         * Adds a child DisplayObject instance to this DisplayObjectContainerContainer instance.
          * The child is added at the index position specified. An index of 0 represents the back
          * (bottom) of the display list for this DisplayObjectContainerContainer object.
          *
          * @method addChildAt
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to add as a child of this object instance.
+         * @param child {DisplayObject} The DisplayObject instance to add as a child of this object instance.
          * @param index {int} The index position to which the child is added. If you specify a currently occupied index position, the child object that exists at that position and all higher positions are moved up one position in the child list.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        public addChildAt(child:DisplayObjectContainer, index:number):any
+        public addChildAt(child:DisplayObject, index:number):any
         {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent)
@@ -191,12 +114,12 @@ module StructureTS
          * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
          *
          * @method removeChild
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
+         * @param child {DisplayObject} The DisplayObject instance to remove.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        public removeChild(child:DisplayObjectContainer, destroy:boolean):any
+        public removeChild(child:DisplayObject, destroy:boolean):any
         {
             var index = this.getChildIndex(child);
             if (index !== -1)
@@ -222,7 +145,7 @@ module StructureTS
         }
 
         /**
-         * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
+         * Removes all child DisplayObject instances from the child list of the DisplayObjectContainerContainer instance.
          * The parent property of the removed children is set to null , and the objects are garbage collected if
          * no other references to the children exist.
          *
@@ -235,25 +158,29 @@ module StructureTS
         {
             while (this.children.length > 0)
             {
-                this.removeChild(<DisplayObjectContainer>this.children.pop(), destroy);
+                this.removeChild(this.children.pop(), destroy);
             }
 
             return this;
         }
 
         /**
-         * Swaps two DisplayObjectContainer's with each other.
+         * Swaps two DisplayObject's with each other.
          *
          * @method swapChildren
-         * @param child1 {DisplayObjectContainer} The DisplayObjectContainer instance to be swap.
-         * @param child2 {DisplayObjectContainer} The DisplayObjectContainer instance to be swap.
+         * @param child1 {DisplayObject} The DisplayObject instance to be swap.
+         * @param child2 {DisplayObject} The DisplayObject instance to be swap.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        public swapChildren(child1:DisplayObjectContainer, child2:DisplayObjectContainer):any
+        public swapChildren(child1:DisplayObject, child2:DisplayObject):any
         {
-            throw new Error('[' + this.getQualifiedClassName() + '] Error: The swapChildren method is meant to be overridden.');
+            var child1Index = this.getChildIndex(child1);
+            var child2Index = this.getChildIndex(child2);
+
+            this.addChildAt(child1, child2Index);
+            this.addChildAt(child2, child1Index);
         }
 
         /**
@@ -273,8 +200,8 @@ module StructureTS
                 throw new TypeError('[' + this.getQualifiedClassName() + '] index value(s) cannot be out of bounds. index1 value is ' + index1 + ' index2 value is ' + index2);
             }
 
-            var child1:DisplayObjectContainer = this.getChildAt(index1);
-            var child2:DisplayObjectContainer = this.getChildAt(index2);
+            var child1:DisplayObject = this.getChildAt(index1);
+            var child2:DisplayObject = this.getChildAt(index2);
 
             this.swapChildren(child1, child2);
 
@@ -282,27 +209,27 @@ module StructureTS
         }
 
         /**
-         * Returns the index position of a child DisplayObjectContainer instance.
+         * Returns the index position of a child DisplayObject instance.
          *
          * @method getChildIndex
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to identify.
+         * @param child {DisplayObject} The DisplayObject instance to identify.
          * @returns {int} The index position of the child display object to identify.
          * @public
          */
-        public getChildIndex(child:DisplayObjectContainer):number
+        public getChildIndex(child:DisplayObject):number
         {
             return this.children.indexOf(child);
         }
 
         /**
-         * Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.
+         * Determines whether the specified display object is a child of the DisplayObject instance or the instance itself. The search includes the entire display list including this DisplayObject instance.
          *
          * @method contains
-         * @param child {DisplayObjectContainer} The child object to test.
-         * @returns {boolean}  true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.
+         * @param child {DisplayObject} The child object to test.
+         * @returns {boolean}  true if the child object is a child of the DisplayObject or the container itself; otherwise false.
          * @public
          */
-        public contains(child:DisplayObjectContainer):boolean
+        public contains(child:DisplayObject):boolean
         {
             return this.children.indexOf(child) >= 0;
         }
@@ -312,75 +239,36 @@ module StructureTS
          *
          * @method getChildAt
          * @param index {int} The index position of the child object.
-         * @returns {DisplayObjectContainer} The child display object at the specified index position.
+         * @returns {DisplayObject} The child display object at the specified index position.
          */
-        public getChildAt(index:number):DisplayObjectContainer
+        public getChildAt(index:number):DisplayObject
         {
             return this.children[index];
         }
 
         /**
-         * Gets a DisplayObjectContainer by its cid.
+         * Gets a DisplayObject by its cid.
          *
          * @method getChildByCid
          * @param cid {number}
-         * @returns {DisplayObjectContainer}
+         * @returns {DisplayObject|null}
          * @override
          * @public
          */
-        public getChildByCid(cid:number):DisplayObjectContainer
+        public getChildByCid(cid:number):DisplayObject
         {
-            var children:DisplayObjectContainer[] = <DisplayObjectContainer[]>this.children.filter(function (child)
-            {
-                return child.cid == cid;
-            });
+            var child:DisplayObject = null;
 
-            return children[0] || null;
-        }
-
-        /**
-         * The setSize method sets the bounds within which the containing DisplayObjectContainer would
-         * like that component to lay itself out. It is expected that calling setSize will automatically
-         * call {{#crossLink "DisplayObjectContainer/layoutChildren:method"}}{{/crossLink}}.
-         *
-         * @param unscaledWidth {number} The width within which the component should lay itself out.
-         * @param unscaledHeight {number} The height within which the component should lay itself out.
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        public setSize(unscaledWidth:number, unscaledHeight:number):any
-        {
-            this.unscaledWidth = unscaledWidth;
-            this.unscaledHeight = unscaledHeight;
-            if (this.isCreated)
+            for (var i:number = this.numChildren - 1; i >= 0; i--)
             {
-                this.layoutChildren();
+                if (this.children[i].cid == cid) {
+                    child = this.children[i];
+                    break;
+                }
             }
 
-            return this;
+            return child;
         }
 
-        /**
-         * The layoutComponent method provides a common function to handle updating child objects.
-         *
-         * @method layoutChildren
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        public layoutChildren():any
-        {
-            return this;
-        }
-
-        /**
-         * @overridden EventDispatcher.destroy
-         */
-        public destroy():void
-        {
-            // TODO: if you call destroy on an object should it remove itself from the parent children array?
-            super.destroy();
-        }
     }
 }

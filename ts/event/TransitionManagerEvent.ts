@@ -16,7 +16,7 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+module StructureJS
 {
     export class TransitionManagerEvent extends BaseEvent
     {
@@ -52,12 +52,5 @@ module StructureTS
             super(type, bubbles, cancelable, data);
         }
 
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():TransitionManagerEvent
-        {
-            return new TransitionManagerEvent(this.type, this.bubbles, this.cancelable, this.data);
-        }
     }
 }

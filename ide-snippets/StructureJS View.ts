@@ -2,7 +2,7 @@
 
 module ${Namespace} {
 
-    import ${Extends} = StructureTS.${Extends};
+    import ${Extends} = StructureJS.${Extends};
 
     /**
      * TODO: YUIDoc_comment
@@ -19,19 +19,19 @@ module ${Namespace} {
         }
 
         /**
-         * @overridden ${Extends}.createChildren
+         * @overridden ${Extends}.create
          */
-        public createChildren():void {
-            super.createChildren();
+        public create():void {
+            super.create();
 
-            // Create and add your child objects to this parent class.
+            // Create or setup objects in this parent class.
         }
 
         /**
-         * @overridden ${Extends}.layoutChildren
+         * @overridden ${Extends}.layout
          */
-        public layoutChildren():void {
-            // Layout or update the child objects in this parent class.
+        public layout():void {
+            // Layout or update the objects in this parent class.
         }
 
         /**
@@ -40,7 +40,7 @@ module ${Namespace} {
         public enable():void {
             if (this.isEnabled === true) { return; }
 
-            // Enable the child objects and add any event listeners.
+            // Enable the child objects and/or add any event listeners.
 
             super.enable();
         }
@@ -51,7 +51,7 @@ module ${Namespace} {
         public disable():void {
             if (this.isEnabled === false) { return; }
 
-            // Disable the child objects and remove any event listeners.
+            // Disable the child objects and/or remove any event listeners.
 
             super.disable();
         }
@@ -60,7 +60,8 @@ module ${Namespace} {
          * @overridden ${Extends}.destroy
          */
         public destroy():void {
-            //  Destroy the child objects and references in this parent class to prevent memory leaks.
+            // Call destroy on any child objects that is needed.
+            // This super method will also null out all properties automatically to prevent memory leaks.
 
             super.destroy();
         }
