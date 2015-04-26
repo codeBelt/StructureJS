@@ -266,6 +266,19 @@ module.exports = function(grunt) {
             }
         },
 
+        // Configuration to be run (and then tested).
+        umd_wrapper: {
+            default_options: {
+                options: {
+                    template: 'umd.template',
+                    rootName: 'root.structurejs'
+                },
+                files: {
+                    './Stage.js': './module.js'
+                }
+            }
+        },
+
         browserify: {
             main: {
                 options: {
