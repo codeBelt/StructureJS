@@ -1,3 +1,8 @@
+/*
+ UMD Stuff
+ @export URLLoaderDataFormat
+ */
+
 /**
  * The URLLoaderDataFormat...
  *

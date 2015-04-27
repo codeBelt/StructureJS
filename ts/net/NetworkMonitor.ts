@@ -1,6 +1,14 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../event/native/NavigatorEvents.ts'/>
-///<reference path='../event/NetworkMonitorEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/NetworkMonitorEvent as NetworkMonitorEvent
+ @import ../event/native/NavigatorEvents as NavigatorEvents
+ @export TimerEvent
+ */
+import EventDispatcher = require('../event/EventDispatcher');
+import NetworkMonitorEvent = require('../event/NetworkMonitorEvent');
+import NavigatorEvents = require('../event/native/NavigatorEvents');
 
 /**
  * TODO: YUIDoc_comment

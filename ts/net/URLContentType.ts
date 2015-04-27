@@ -1,3 +1,8 @@
+/*
+ UMD Stuff
+ @export URLContentType
+ */
+
 /**
  * The URLContentType...
  *

@@ -1,6 +1,6 @@
-///<reference path='./IEventDispatcher.ts'/>
-///<reference path='../display/DisplayObjectContainer.ts'/>
-///<reference path='../display/DOMElement.ts'/>
+import DisplayObjectContainer = require('../display/DisplayObjectContainer');
+import DOMElement = require('../display/DOMElement');
+import IEventDispatcher = require('../interface/IEventDispatcher');
 
 /**
  * TODO: YUIDoc_comment

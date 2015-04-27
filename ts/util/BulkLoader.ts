@@ -1,3 +1,15 @@
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/LoaderEvent as LoaderEvent
+ @import ../interface/IDataStore as IDataStore
+ @export BulkLoader
+ */
+import EventDispatcher = require('../event/EventDispatcher');
+import LoaderEvent = require('../event/LoaderEvent');
+import IDataStore = require('../interface/IDataStore');
+
 /**
  * The BulkLoader...
  *

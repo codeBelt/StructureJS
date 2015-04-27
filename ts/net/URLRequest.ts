@@ -1,6 +1,14 @@
-///<reference path='../BaseObject.ts'/>
-///<reference path='URLRequestMethod.ts'/>
-///<reference path='URLContentType.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../BaseObject as BaseObject
+ @import ./URLRequestMethod as URLRequestMethod
+ @import ./URLContentType as URLContentType
+ @export URLRequest
+ */
+import BaseObject = require('../BaseObject');
+import URLRequestMethod = require('./URLRequestMethod');
+import URLContentType = require('./URLContentType');
 
 /**
  * The URLRequest class captures all of the information in a single HTTP request.

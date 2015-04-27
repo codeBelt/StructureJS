@@ -1,10 +1,22 @@
-///<reference path='../interface/IDataStore.ts'/>
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../controller/LocalStorageController.ts'/>
-///<reference path='../event/RequestEvent.ts'/>
-///<reference path='../event/LanguageEvent.ts'/>
-///<reference path='../request/BaseRequest.ts'/>
-///<reference path='vo/LanguageConfigVO.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../model/ValueObject as ValueObject
+ @import ../controller/LocalStorageController as LocalStorageController
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/RequestEvent as RequestEvent
+ @import ../event/LanguageEvent as LanguageEvent
+ @import ../request/BaseRequest as BaseRequest
+ @import ./vo/LanguageConfigVO as LanguageConfigVO
+ @export LoaderEvent
+ */
+import ValueObject = require('../interface/IDataStore');
+import LocalStorageController = require('../controller/LocalStorageController');
+import EventDispatcher = require('../event/EventDispatcher');
+import RequestEvent = require('../event/RequestEvent');
+import LanguageEvent = require('../event/LanguageEvent');
+import BaseRequest = require('../request/BaseRequest');
+import LanguageConfigVO = require('./vo/LanguageConfigVO');
 
 /**
  * The LanguageModel...

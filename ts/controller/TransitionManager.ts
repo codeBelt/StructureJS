@@ -2,6 +2,7 @@
 UMD stuff
 @import ../event/EventDispatcher as EventDispatcher
 @import ../display/DOMElement as DOMElement
+@import ../DisplayObjectContainer/DOMElement as DisplayObjectContainer
 @import ../util/TransitionFactory as TransitionFactory
 @import ../interface/ITransition as ITransition
 @import ../constant/TransitionType as TransitionType
@@ -10,6 +11,7 @@ UMD stuff
 */
 import EventDispatcher = require('../event/EventDispatcher');
 import DOMElement = require('../display/DOMElement');
+import DisplayObjectContainer = require('../display/DisplayObjectContainer');
 import TransitionFactory = require('../util/TransitionFactory');
 import ITransition = require('../interface/ITransition');
 import TransitionType = require('../constant/TransitionType');

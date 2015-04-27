@@ -1,7 +1,16 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../event/LoaderEvent.ts'/>
-///<reference path='URLRequest.ts'/>
-///<reference path='URLLoaderDataFormat.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/LoaderEvent as LoaderEvent
+ @import ./URLRequest as URLRequest
+ @import ./BaseEvent as BaseEvent
+ @export TimerEvent
+ */
+import EventDispatcher = require('../event/EventDispatcher');
+import LoaderEvent = require('../event/LoaderEvent');
+import URLRequest = require('./URLRequest');
+import URLLoaderDataFormat = require('./URLLoaderDataFormat');
 
 /**
  * The URLLoader...

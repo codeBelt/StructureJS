@@ -1,5 +1,10 @@
-///<reference path='../ValueObject.ts'/>
-///<reference path='../../interface/IValueObject.ts'/>
+/*
+ UMD Stuff
+ @import ../../util/Extend as Extend
+ @import ../ValueObject as ValueObject
+ @export LoaderEvent
+ */
+import ValueObject = require('../ValueObject');
 
 class LanguageConfigVO extends ValueObject
 {

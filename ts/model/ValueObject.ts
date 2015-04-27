@@ -2,6 +2,17 @@
 ///<reference path='../BaseObject.ts'/>
 ///<reference path='../util/Util.ts'/>
 
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../BaseObject as BaseObject
+ @import ../util/Util as Util
+ @export ValueObject
+ */
+import IValueObject = require('../interface/IValueObject');
+import BaseObject = require('../BaseObject');
+import Util = require('../util/Util');
+
 /**
  * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
  *

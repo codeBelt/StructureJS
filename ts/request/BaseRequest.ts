@@ -1,9 +1,19 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../interface/IDataStore.ts'/>
-///<reference path='../net/URLRequest.ts'/>
-///<reference path='../net/URLLoader.ts'/>
-///<reference path='../event/RequestEvent.ts'/>
-///<reference path='../event/LoaderEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../net/URLRequest as URLRequest
+ @import ../net/URLLoader as URLLoader
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/RequestEvent as RequestEvent
+ @import ../event/LoaderEvent as LoaderEvent
+ @export BaseRequest
+ */
+import URLRequest = require('../net/URLRequest');
+import URLLoader = require('../net/URLLoader');
+import EventDispatcher = require('../event/EventDispatcher');
+import RequestEvent = require('../event/RequestEvent');
+import LoaderEvent = require('../event/LoaderEvent');
+import IDataStore = require('../interface/IDataStore');
 
 /**
  * The BaseRequest...

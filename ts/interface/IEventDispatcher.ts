@@ -1,4 +1,5 @@
-///<reference path='ICore.ts'/>
+import ICore = require('./ICore');
+import BaseEvent = require('../event/BaseEvent');
 
 /**
  * TODO: YUIDoc_comment

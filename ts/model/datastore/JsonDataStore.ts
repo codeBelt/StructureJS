@@ -1,11 +1,22 @@
-///<reference path='DataStoreAbstract.ts'/>
-///<reference path='../../interface/IDataStore.ts'/>
-///<reference path='../../event/LoaderEvent.ts'/>
-///<reference path='../../net/URLRequest.ts'/>
-///<reference path='../../net/URLLoader.ts'/>
-///<reference path='../../net/URLRequestMethod.ts'/>
-///<reference path='../../net/URLLoaderDataFormat.ts'/>
-///<reference path='../../net/URLContentType.ts'/>
+/*
+ UMD Stuff
+ @import ../../util/Extend as Extend
+ @import ../../net/URLRequest as URLRequest
+ @import ../../net/URLLoader as URLLoader
+ @import ../../net/URLRequestMethod as URLRequestMethod
+ @import ../../net/URLLoaderDataFormat as URLLoaderDataFormat
+ @import ../../net/URLContentType as URLContentType
+ @import ../../event/LoaderEvent as LoaderEvent
+ @export JsonDataStore
+ */
+import DataStoreAbstract = require('./DataStoreAbstract');
+import URLRequest = require('../../net/URLRequest');
+import URLLoader = require('../../net/URLLoader');
+import URLRequestMethod = require('../../net/URLRequestMethod');
+import URLLoaderDataFormat = require('../../net/URLLoaderDataFormat');
+import URLContentType = require('../../net/URLContentType');
+import LoaderEvent = require('../../event/LoaderEvent');
+import IDataStore = require('../../interface/IDataStore');
 
 /**
  * The JsonDataStore...
@@ -18,9 +29,7 @@
  * @param jsonp {boolean}
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
-{
-    export class JsonDataStore extends DataStoreAbstract
+class JsonDataStore extends DataStoreAbstract
     {
         /**
          * TODO: YUIDoc_comment
@@ -84,5 +93,6 @@ module StructureJS
 
             super._onLoaderComplete();
         }
-    }
 }
+
+export = JsonDataStore;

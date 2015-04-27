@@ -1,4 +1,4 @@
-///<reference path='IEventDispatcher.ts'/>
+import IEventDispatcher = require('./IEventDispatcher');
 
 /**
  * TODO: YUIDoc_comment

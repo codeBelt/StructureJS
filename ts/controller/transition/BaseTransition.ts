@@ -8,7 +8,6 @@
  @import ../../event/TweenEvent as TweenEvent
  @export BaseTransition
  */
-import DisplayObjectContainer = require('../util/Extend');
 import BaseObject = require('../../BaseObject');
 import ITransition = require('../../interface/ITransition');
 import EventDispatcher = require('../../event/EventDispatcher');

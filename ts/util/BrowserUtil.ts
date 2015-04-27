@@ -1,6 +1,14 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../event/BaseEvent.ts'/>
-///<reference path='../util/Util.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/BaseEvent as BaseEvent
+ @import ../util/Util as Util
+ @export BrowserUtil
+ */
+import EventDispatcher = require('../event/EventDispatcher');
+import BaseEvent = require('../event/BaseEvent');
+import Util = require('../util/Util');
 
 /**
  * A helper class to detect OS and browsers.

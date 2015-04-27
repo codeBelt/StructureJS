@@ -1,6 +1,16 @@
-///<reference path='../model/ValueObject.ts'/>
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../event/BaseEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../model/ValueObject as ValueObject
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/BaseEvent as BaseEvent
+ @import ../util/Util as Util
+ @export LoaderEvent
+ */
+import ValueObject = require('../model/ValueObject');
+import EventDispatcher = require('../event/EventDispatcher');
+import BaseEvent = require('../event/BaseEvent');
+import Util = require('../util/Util');
 
 /**
  * The Collection class provides a way for you to manage your models.

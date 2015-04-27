@@ -1,6 +1,13 @@
-///<reference path='../../interface/IDataStore.ts'/>
-///<reference path='../../event/LoaderEvent.ts'/>
-///<reference path='../../event/EventDispatcher.ts'/>
+/*
+ UMD Stuff
+ @import ../../util/Extend as Extend
+ @import ../../event/EventDispatcher as EventDispatcher
+ @import ../../event/LoaderEvent as LoaderEvent
+ @export DataStoreAbstract
+ */
+import EventDispatcher = require('../../event/EventDispatcher');
+import LoaderEvent = require('../../event/LoaderEvent');
+import IDataStore = require('../../interface/IDataStore');
 
 /**
  * The DataStoreAbstract...

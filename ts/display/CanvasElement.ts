@@ -9,9 +9,9 @@
  */
 import DisplayObjectContainer = require('./DisplayObjectContainer');
 import DOMElement = require('./DOMElement');
+import DisplayObject = require('./DisplayObject');
 import Sprite = require('./Sprite');
-import Point = require('./DisplayObjectContainer');
-import DisplayObjectContainer = require('../geom/Point');
+import Point = require('../geom/Point');
 
 class CanvasElement extends DOMElement
 {

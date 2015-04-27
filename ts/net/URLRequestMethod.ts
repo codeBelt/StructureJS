@@ -1,3 +1,8 @@
+/*
+ UMD Stuff
+ @export URLRequestMethod
+ */
+
 /**
  * The URLRequestMethod...
  *
