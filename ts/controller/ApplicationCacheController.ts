@@ -255,17 +255,18 @@ class ApplicationCacheController
 
     /**
      * Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.
-     * @example
-     ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
-     ClassName.prototype.handlerMethod = function(event) {
-               console.log(event.target + " sent the event.");
-           }
+     *
      * @method addEventListener
      * @param type {String} The type of event.
      * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
      * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
      * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
      * @static
+     * @example
+     *      ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
+     *      ClassName.prototype.handlerMethod = function(event) {
+     *          console.log(event.target + " sent the event.");
+     *      }
      */
     public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):any
     {
@@ -274,17 +275,18 @@ class ApplicationCacheController
 
     /**
      * Removes a specified listener from the ApplicationCacheController object.
-     * @example
-     ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
-     ClassName.prototype.handlerMethod = function(event) {
-               console.log(event.target + " sent the event.");
-           }
+     *
      * @method removeEventListener
      * @param type {String} The type of event.
      * @param callback {Function} The listener object to remove.
      * @param scope {any} The scope of the listener object to be removed. This was added because it was need for the {{#crossLink "ApplicationCacheController"}}{{/crossLink}} class.
      * To keep things consistent this parameter is required.
      * @static
+     * @example
+     *      ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
+     *      ClassName.prototype.handlerMethod = function(event) {
+     *          console.log(event.target + " sent the event.");
+     *      }
      */
     public static removeEventListener(type:string, callback:Function, scope:any):any
     {
@@ -293,16 +295,17 @@ class ApplicationCacheController
 
     /**
      * <p>Dispatches an event within the ApplicationCacheController object.</p>
-     * @example
-     var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
-     ApplicationCacheController.dispatchEvent(event);
-
-     // Here is a common inline event being dispatched
-     ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
+     *
      * @method dispatchEvent
      * @param event {ApplicationCacheEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
      * extend the {{#crossLink "ApplicationCacheEvent"}}{{/crossLink}}.
      * @static
+     * @example
+     *      var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
+     *      ApplicationCacheController.dispatchEvent(event);
+     *
+     *      // Here is a common inline event being dispatched
+     *      ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
      */
     public static dispatchEvent(event:ApplicationCacheEvent):any
     {

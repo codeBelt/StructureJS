@@ -2,16 +2,13 @@
 /*
  UMD Stuff
  @import ../util/Extend as Extend
- @import ./DisplayObjectContainer as DisplayObjectContainer
  @import ./DOMElement as DOMElement
- @import ./Sprite as Sprite
  @import ../geom/Point as Point
  @export CanvasElement
  */
 import DisplayObjectContainer = require('./DisplayObjectContainer');
 import DOMElement = require('./DOMElement');
 import DisplayObject = require('./DisplayObject');
-import Sprite = require('./Sprite');
 import Point = require('../geom/Point');
 
 class CanvasElement extends DOMElement
@@ -256,7 +253,7 @@ class CanvasElement extends DOMElement
     {
         while (this.children.length > 0)
         {
-            this.removeChild(<Sprite>this.children.pop(), destroy);
+            this.removeChild(this.children.pop(), destroy);
         }
 
         return this;

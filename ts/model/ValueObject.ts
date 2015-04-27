@@ -1,10 +1,10 @@
 'use strict';
 /*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../BaseObject as BaseObject
- @import ../util/Util as Util
- @export ValueObject
+UMD Stuff
+@import ../util/Extend as Extend
+@import ../BaseObject as BaseObject
+@import ../util/Util as Util
+@export ValueObject
  */
 import IValueObject = require('../interface/IValueObject');
 import BaseObject = require('../BaseObject');

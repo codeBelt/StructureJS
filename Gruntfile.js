@@ -274,14 +274,52 @@ module.exports = function(grunt) {
                     rootName: 'root.structurejs'
                 },
                 files: {
-                    'ts/display/DOMElement.js': 'ts/display/DOMElement.js'
+                    'src/controller/ApplicationCacheController.js': 'ts/controller/ApplicationCacheController.js',
+                    'src/controller/LocalStorageController.js': 'ts/controller/LocalStorageController.js',
+                    'src/controller/Router.js': 'ts/controller/Router.js',
+                    'src/display/Bitmap.js': 'ts/display/Bitmap.js',
+                    'src/display/CanvasElement.js': 'ts/display/CanvasElement.js',
+                    'src/display/DisplayObject.js': 'ts/display/DisplayObject.js',
+                    'src/display/DisplayObjectContainer.js': 'ts/display/DisplayObjectContainer.js',
+                    'src/display/DOMElement.js': 'ts/display/DOMElement.js',
+                    'src/display/Sprite.js': 'ts/display/Sprite.js',
+                    'src/display/Stage.js': 'ts/display/Stage.js',
+                    'src/display/TextField.js': 'ts/display/TextField.js',
+                    'src/event/native/NavigatorEvents.js': 'ts/event/native/NavigatorEvents.js',
+                    'src/event/ApplicationCacheEvent.js': 'ts/event/ApplicationCacheEvent.js',
+                    'src/event/BaseEvent.js': 'ts/event/BaseEvent.js',
+                    'src/event/EventBroker.js': 'ts/event/EventBroker.js',
+                    'src/event/EventDispatcher.js': 'ts/event/EventDispatcher.js',
+                    'src/event/LocalStorageEvent.js': 'ts/event/LocalStorageEvent.js',
+                    'src/event/NetworkMonitorEvent.js': 'ts/event/NetworkMonitorEvent.js',
+                    'src/event/RouterEvent.js': 'ts/event/RouterEvent.js',
+                    'src/event/TimerEvent.js': 'ts/event/TimerEvent.js',
+                    'src/geom/Point.js': 'ts/geom/Point.js',
+                    'src/model/Collection.js': 'ts/model/Collection.js',
+                    'src/model/Route.js': 'ts/model/Route.js',
+                    'src/model/ValueObject.js': 'ts/model/ValueObject.js',
+                    'src/net/NetworkMonitor.js': 'ts/net/NetworkMonitor.js',
+                    'src/plugin/jquery.eventListener.js': 'ts/plugin/jquery.eventListener.js',
+                    'src/util/BrowserUtil.js': 'ts/util/BrowserUtil.js',
+                    'src/util/ComponentFactory.js': 'ts/util/ComponentFactory.js',
+                    'src/util/DateUtil.js': 'ts/util/DateUtil.js',
+                    'src/util/MathUtil.js': 'ts/util/MathUtil.js',
+                    'src/util/MerchantUtil.js': 'ts/util/MerchantUtil.js',
+                    'src/util/NumberUtil.js': 'ts/util/NumberUtil.js',
+                    'src/util/StringUtil.js': 'ts/util/StringUtil.js',
+                    'src/util/TemplateFactory.js': 'ts/util/TemplateFactory.js',
+                    'src/util/Timer.js': 'ts/util/Timer.js',
+                    'src/util/Util.js': 'ts/util/Util.js',
+                    'src/util/ValidationUtil.js': 'ts/util/ValidationUtil.js',
+                    'src/BaseObject.js': 'ts/BaseObject.js',
+                    'src/ObjectManager.js': 'ts/ObjectManager.js'
                 }
             }
         },
 
         jsbeautifier : {
             "default": {
-                src : ["ts/**/*.js"]
+                src : ["src/**/*.js"]
             }
         },
 
@@ -414,7 +452,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
         'typescript',
         'umd_wrapper',
-        'jsbeautifier'
+        'jsbeautifier',
+        'clean'
     ]);
 
     grunt.registerTask('server', [

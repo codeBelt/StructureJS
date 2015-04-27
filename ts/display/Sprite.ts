@@ -2,14 +2,11 @@
 /*
  UMD Stuff
  @import ../util/Extend as Extend
- @import ./DisplayObject as DisplayObject
  @import ./DisplayObjectContainer as DisplayObjectContainer
- @import ./CanvasElement as CanvasElement
  @export Sprite
  */
 import DisplayObject = require('./DisplayObject');
 import DisplayObjectContainer = require('./DisplayObjectContainer');
-import CanvasElement = require('./CanvasElement');
 
 class Sprite extends DisplayObjectContainer
 {

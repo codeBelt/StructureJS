@@ -1,7 +1,6 @@
 'use strict';
 /*
  UMD Stuff
- @import ../util/Extend as Extend
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/BaseEvent as BaseEvent
  @import ../util/Util as Util

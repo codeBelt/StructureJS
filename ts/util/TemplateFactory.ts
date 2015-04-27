@@ -1,7 +1,6 @@
 'use strict';
 /*
  UMD Stuff
- @import ../util/Extend as Extend
  @import ../util/StringUtil as StringUtil
  @import jquery as jQuery
  @import Handlebars as Handlebars
