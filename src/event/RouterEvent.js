@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/BaseEvent'));
+        define(['../util/Extend', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
         root.structurejs.RouterEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
+
     'use strict';
 
     /**
@@ -92,18 +93,6 @@
              */
             this.query = null;
         }
-        /**
-         * @overridden BaseEvent.clone
-         */
-        RouterEvent.prototype.clone = function() {
-            var event = new RouterEvent(this.type, this.bubbles, this.cancelable, this.data);
-            event.route = this.route;
-            event.newURL = this.newURL;
-            event.oldURL = this.oldURL;
-            event.routePattern = this.routePattern;
-            event.query = this.query;
-            return event;
-        };
         /**
          * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
          *

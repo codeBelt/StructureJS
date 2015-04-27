@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/BaseEvent'));
+        define(['../util/Extend', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.LocalStorageEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.structurejs.NetworkMonitorEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
+
     'use strict';
 
     /**
@@ -62,12 +63,6 @@
             this.status = status;
             this.connected = connected;
         }
-        /**
-         * @overridden BaseEvent.clone
-         */
-        NetworkMonitorEvent.prototype.clone = function() {
-            return new NetworkMonitorEvent(this.type, this.bubbles, this.cancelable, this.status, this.connected, this.data);
-        };
         /**
          * TODO: YUIDoc_comment
          *

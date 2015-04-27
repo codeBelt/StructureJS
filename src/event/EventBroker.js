@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../event/EventDispatcher', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../event/EventDispatcher'), require('../event/BaseEvent'));
+        define(['./EventDispatcher', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('./EventDispatcher'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
         root.structurejs.EventBroker = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
     }
 }(this, function(EventDispatcher, BaseEvent) {
+
     'use strict';
 
     /**

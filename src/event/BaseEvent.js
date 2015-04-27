@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../BaseObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../util/Extend'), require('../BaseObject'));
     } else {
         /*jshint sub:true */
@@ -12,6 +12,7 @@
         root.structurejs.BaseEvent = factory(root.structurejs.Extend, root.structurejs.BaseObject);
     }
 }(this, function(Extend, BaseObject) {
+
     'use strict';
 
     /**
@@ -159,30 +160,6 @@
             this.data = data;
         }
         /**
-         * Duplicates an instance of an BaseEvent subclass.
-         *
-         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
-         *
-         * The new BaseEvent object includes all the properties of the original.
-         *
-         * When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
-         * to duplicate the properties of your custom class.
-         *
-         * @method clone
-         * @returns {BaseEvent}
-         * @public
-         * @example
-         *     var cloneOfEvent = event.clone();
-         */
-        BaseEvent.prototype.clone = function() {
-            var event = new BaseEvent(this.type, this.bubbles, this.cancelable, this.data);
-            event.target = this.target;
-            event.currentTarget = this.currentTarget;
-            event.isPropagationStopped = this.isPropagationStopped;
-            event.isImmediatePropagationStopped = this.isImmediatePropagationStopped;
-            return event;
-        };
-        /**
          * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
          * This method does not affect any event listeners in the current node (currentTarget). In contrast,
          * the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} method prevents processing
@@ -210,6 +187,28 @@
         BaseEvent.prototype.stopImmediatePropagation = function() {
             this.stopPropagation();
             this.isImmediatePropagationStopped = true;
+        };
+        /**
+         * Duplicates an instance of an BaseEvent subclass.
+         *
+         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
+         *
+         * The new BaseEvent object includes all the properties of the original.
+         *
+         * @method clone
+         * @returns {BaseEvent}
+         * @public
+         * @example
+         *     var cloneOfEvent = event.clone();
+         */
+        BaseEvent.prototype.clone = function() {
+            var clonedValueObject = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
+            for (var key in this) {
+                if (this.hasOwnProperty(key)) {
+                    clonedValueObject[key] = this[key];
+                }
+            }
+            return clonedValueObject;
         };
         /**
          * The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.

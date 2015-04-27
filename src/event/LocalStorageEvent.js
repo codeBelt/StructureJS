@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/BaseEvent'));
+        define(['../util/Extend', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
         root.structurejs.LocalStorageEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
+
     'use strict';
 
     /**
@@ -42,25 +43,19 @@
             /**
              * TODO: YUIDoc_comment
              *
-             * @property _nativeEvent
+             * @property originalEvent
              * @type {any}
-             * @private
+             * @public
              */
-            this._nativeEvent = null;
+            this.originalEvent = null;
             if (nativeEvent) {
                 this.key = nativeEvent.key;
                 this.oldValue = nativeEvent.oldValue;
                 this.newValue = nativeEvent.newValue;
                 this.url = nativeEvent.url;
             }
-            this._nativeEvent = nativeEvent;
+            this.originalEvent = nativeEvent;
         }
-        /**
-         * @overridden BaseEvent.clone
-         */
-        LocalStorageEvent.prototype.clone = function() {
-            return new LocalStorageEvent(this.type, this.bubbles, this.cancelable, this._nativeEvent);
-        };
         /**
          * The storage event is fired on a Document's Window object when a storage area changes.
          *

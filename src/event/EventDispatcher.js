@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../ObjectManager', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../ObjectManager'), require('../event/BaseEvent'));
+        define(['../util/Extend', '../ObjectManager', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('../ObjectManager'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
         root.structurejs.EventDispatcher = factory(root.structurejs.Extend, root.structurejs.ObjectManager, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, ObjectManager, BaseEvent) {
+
     'use strict';
 
     /**
@@ -123,7 +124,7 @@
         EventDispatcher.prototype.removeEventListener = function(type, callback, scope) {
             // Get the list of event listener(s) by the associated type value that is passed in.
             var list = this._listeners[type];
-            if (list) {
+            if (list !== void 0) {
                 var i = list.length;
                 while (--i > -1) {
                     // If the callback and the scope are the same then remove the event listener.
@@ -170,12 +171,12 @@
             }
             // Get the list of event listener(s) by the associated type value.
             var list = this._listeners[event.type];
-            if (list) {
+            if (list !== void 0) {
                 var i = list.length;
                 var listener;
                 while (--i > -1) {
                     // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
-                    if (event.cancelable && event.isImmediatePropagationStopped) {
+                    if (event.cancelable === true && event.isImmediatePropagationStopped === true) {
                         break;
                     }
                     listener = list[i];
@@ -183,19 +184,11 @@
                 }
             }
             //Dispatches up the chain of classes that have a parent.
-            if (this.parent && event.bubbles) {
+            if (this.parent != null && event.bubbles === true) {
                 // If cancelable and isPropagationStopped are true then don't dispatch the event on the parent object.
-                if (event.cancelable && event.isPropagationStopped) {
+                if (event.cancelable === true && event.isPropagationStopped === true) {
                     return this;
                 }
-                /*
-                 // Clone the event because this EventDispatcher class modifies the currentTarget property when bubbling.
-                 // We need to set the target to the previous target so we can keep track of the original origin of where
-                 // the event was dispatched for the first time.
-                 var previousTarget:string = event.target;
-                 event = event.clone();
-                 event.target = previousTarget;
-                 */
                 // Assign the current object that is currently processing the event (i.e. bubbling at) in the display list hierarchy.
                 event.currentTarget = this;
                 // Pass the event to the parent (event bubbling).
@@ -216,7 +209,7 @@
          *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          */
         EventDispatcher.prototype.hasEventListener = function(type, callback, scope) {
-            if (typeof this._listeners[type] !== 'undefined') {
+            if (this._listeners[type] !== void 0) {
                 var listener;
                 var numOfCallbacks = this._listeners[type].length;
                 for (var i = 0; i < numOfCallbacks; i++) {
