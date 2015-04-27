@@ -1,7 +1,15 @@
-///<reference path='BaseTransition.ts'/>
-///<reference path='../../interface/ITransition.ts'/>
-///<reference path='../../display/DisplayObjectContainer.ts'/>
-///<reference path='../../display/DOMElement.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend');
+ @import BaseTransition
+ @import ../../display/DisplayObjectContainer as DisplayObjectContainer
+ @import ../../display/DOMElement as DOMElement
+ @export TransitionPushUp
+ */
+import BaseTransition = require('BaseTransition');
+import ITransition = require('../../interface/ITransition');
+import DisplayObjectContainer = require('../../display/DisplayObjectContainer');
+import DOMElement = require('../../display/DOMElement');
 
 class TransitionPushUp extends BaseTransition
 {

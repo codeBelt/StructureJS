@@ -1,9 +1,20 @@
-///<reference path='../../BaseObject.ts'/>
-///<reference path='../../event/EventDispatcher.ts'/>
-///<reference path='../../interface/ITransition.ts'/>
-///<reference path='../../display/DisplayObjectContainer.ts'/>
-///<reference path='../../display/DOMElement.ts'/>
-///<reference path='../../event/TweenEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend');
+ @import ../../BaseObject as BaseObject
+ @import ../../event/EventDispatcher as EventDispatcher
+ @import ../../display/DisplayObjectContainer as DisplayObjectContainer
+ @import ../../display/DOMElement as DOMElement
+ @import ../../event/TweenEvent as TweenEvent
+ @export BaseTransition
+ */
+import DisplayObjectContainer = require('../util/Extend');
+import BaseObject = require('../../BaseObject');
+import ITransition = require('../../interface/ITransition');
+import EventDispatcher = require('../../event/EventDispatcher');
+import DisplayObjectContainer = require('../../display/DisplayObjectContainer');
+import DOMElement = require('../../display/DOMElement');
+import TweenEvent = require('../../event/TweenEvent');
 
 class BaseTransition extends EventDispatcher implements ITransition
 {

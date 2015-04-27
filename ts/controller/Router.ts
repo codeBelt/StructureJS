@@ -1,6 +1,14 @@
-///<reference path='../model/Route'/>
-///<reference path='../event/RouterEvent'/>
-///<reference path='../util/StringUtil'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../util/StringUtil as StringUtil
+ @import ../event/RouterEvent as RouterEvent
+ @import ../model/Route as Route
+ @export LocalStorageController
+ */
+import StringUtil = require('../util/StringUtil');
+import RouterEvent = require('../event/RouterEvent');
+import Route = require('../model/Route');
 
 /**
  * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.

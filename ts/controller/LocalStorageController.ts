@@ -1,6 +1,14 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../event/LocalStorageEvent.ts'/>
-///<reference path='../model/ValueObject.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/LocalStorageEvent as LocalStorageEvent
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../model/ValueObject as ValueObject
+ @export LocalStorageController
+ */
+import LocalStorageEvent = require('../event/LocalStorageEvent');
+import EventDispatcher = require('../event/EventDispatcher');
+import ValueObject = require('../model/ValueObject');
 
 /**
  * The LocalStorageController...
