@@ -1,3 +1,8 @@
+/*
+ UMD Stuff
+ @export Util
+ */
+
 /**
  * A Utility class that has several static methods to assist in development.
  *

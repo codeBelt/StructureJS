@@ -1,3 +1,8 @@
+/*
+ UMD Stuff
+ @export DataLoader
+ */
+
 /**
  * The DataLoader...
  *

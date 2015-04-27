@@ -1,15 +1,33 @@
-///<reference path='../BaseObject.ts'/>
-///<reference path='../display/DisplayObjectContainer.ts'/>
-///<reference path='../display/DOMElement.ts'/>
-///<reference path='../interface/ITransition.ts'/>
-///<reference path='../constant/TransitionType.ts'/>
-///<reference path='../controller/transition/TransitionNone.ts'/>
-///<reference path='../controller/transition/TransitionPushLeft.ts'/>
-///<reference path='../controller/transition/TransitionPushRight.ts'/>
-///<reference path='../controller/transition/TransitionPushUp.ts'/>
-///<reference path='../controller/transition/TransitionPushDown.ts'/>
-///<reference path='../controller/transition/TransitionCrossFade.ts'/>
-///<reference path='../controller/transition/TransitionFadeOutAndIn.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../BaseObject as BaseObject
+ @import ../display/DisplayObjectContainer as DisplayObjectContainer
+ @import ../display/DOMElement as DOMElement
+ @import ../interface/ITransition as ITransition
+ @import ../constant/TransitionType as TransitionType
+ @import ../controller/transition/TransitionNone as TransitionNone
+ @import ../controller/transition/TransitionPushLeft as TransitionPushLeft
+ @import ../controller/transition/TransitionPushRight as TransitionPushRight
+ @import ../controller/transition/TransitionPushUp as TransitionPushUp
+ @import ../controller/transition/TransitionPushDown as TransitionPushDown
+ @import ../controller/transition/TransitionCrossFade as TransitionCrossFade
+ @import ../controller/transition/TransitionFadeOutAndIn as TransitionFadeOutAndIn
+ @export TransitionFactory
+*/
+
+import BaseObject = require('../BaseObject');
+import DisplayObjectContainer = require('../display/DisplayObjectContainer');
+import DOMElement = require('../display/DOMElement');
+import ITransition = require('../interface/ITransition');
+import TransitionType = require('../constant/TransitionType');
+import TransitionNone = require('../controller/transition/TransitionNone');
+import TransitionPushLeft = require('../controller/transition/TransitionPushLeft');
+import TransitionPushRight = require('../controller/transition/TransitionPushRight');
+import TransitionPushUp = require('../controller/transition/TransitionPushUp');
+import TransitionPushDown = require('../controller/transition/TransitionPushDown');
+import TransitionCrossFade = require('../controller/transition/TransitionCrossFade');
+import TransitionFadeOutAndIn = require('../controller/transition/TransitionFadeOutAndIn');
 
 /**
  * TODO: YUIDoc_comment

@@ -1,5 +1,12 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../event/TimerEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/TimerEvent as TimerEvent
+ @export Timer
+ */
+import EventDispatcher = require('../event/EventDispatcher');
+import TimerEvent = require('../event/TimerEvent');
 
 /**
  * Constructs a new Timer object with the specified delay and repeatCount states.
