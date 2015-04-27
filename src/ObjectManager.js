@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['./util/Extend', './BaseObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('./util/Extend'), require('./BaseObject'));
+        define(['../util/Extend', './BaseObject'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./BaseObject'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
         root.structurejs.ObjectManager = factory(root.structurejs.Extend, root.structurejs.BaseObject);
     }
 }(this, function(Extend, BaseObject) {
+
     'use strict';
 
     /**
