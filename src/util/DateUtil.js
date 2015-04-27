@@ -23,7 +23,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var DateUtil = (function () {
+    var DateUtil = (function() {
         function DateUtil() {
             throw new Error('[DateUtil] Do not instantiate the DateUtil class because it is a static class.');
         }
@@ -48,7 +48,7 @@
          *      DateUtil.getDaySuffix(4);
          *      // 'th'
          */
-        DateUtil.getDaySuffix = function (today) {
+        DateUtil.getDaySuffix = function(today) {
             var day = today % 100;
             return ((Math.floor(day / 10) === 1) ? 'th' : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][day % 10]);
         };

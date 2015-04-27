@@ -25,7 +25,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var NetworkMonitor = (function () {
+    var NetworkMonitor = (function() {
 
         function NetworkMonitor() {
             throw new Error('[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.');
@@ -40,11 +40,10 @@
          * @static
          * @public
          */
-        NetworkMonitor.start = function () {
+        NetworkMonitor.start = function() {
             if (NetworkMonitor._initialized === true) {
                 return;
-            }
-            else {
+            } else {
                 NetworkMonitor._initialized = true;
             }
             window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor.onNetworkMonitorEvent, false);
@@ -60,7 +59,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.connected = function () {
+        NetworkMonitor.connected = function() {
             // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
             NetworkMonitor.start();
             return window.navigator.onLine;
@@ -74,7 +73,7 @@
          * @public
          * @static
          */
-        NetworkMonitor.getStatus = function () {
+        NetworkMonitor.getStatus = function() {
             // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
             NetworkMonitor.start();
             return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
@@ -87,7 +86,7 @@
          * @private
          * @static
          */
-        NetworkMonitor.onNetworkMonitorEvent = function (event) {
+        NetworkMonitor.onNetworkMonitorEvent = function(event) {
             var type = (event) ? event.type : NetworkMonitor.getStatus();
             var networkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
             NetworkMonitor.dispatchEvent(networkMonitorEvent);
@@ -107,7 +106,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.addEventListener = function (type, callback, scope, priority) {
+        NetworkMonitor.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
             NetworkMonitor._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
@@ -126,7 +125,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.removeEventListener = function (type, callback, scope) {
+        NetworkMonitor.removeEventListener = function(type, callback, scope) {
             NetworkMonitor._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -137,7 +136,7 @@
          * @static
          * @private
          */
-        NetworkMonitor.dispatchEvent = function (event) {
+        NetworkMonitor.dispatchEvent = function(event) {
             NetworkMonitor._eventDispatcher.dispatchEvent(event);
         };
         /**

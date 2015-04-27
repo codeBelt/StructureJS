@@ -26,7 +26,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObjectContainer = (function () {
+    var DisplayObjectContainer = (function() {
 
         var _super = Extend(DisplayObjectContainer, EventDispatcher);
 
@@ -126,7 +126,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.createChildren = function () {
+        DisplayObjectContainer.prototype.createChildren = function() {
             throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
         };
         /**
@@ -142,7 +142,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.addChild = function (child) {
+        DisplayObjectContainer.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child, false);
@@ -164,7 +164,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.addChildAt = function (child, index) {
+        DisplayObjectContainer.prototype.addChildAt = function(child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child, false);
@@ -185,7 +185,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChild = function (child, destroy) {
+        DisplayObjectContainer.prototype.removeChild = function(child, destroy) {
             var index = this.getChildIndex(child);
             if (index !== -1) {
                 // Removes the child object from the parent.
@@ -194,8 +194,7 @@
             this.numChildren = this.children.length;
             if (destroy === true) {
                 child.destroy();
-            }
-            else {
+            } else {
                 child.disable();
             }
             child.parent = null;
@@ -211,7 +210,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChildren = function (destroy) {
+        DisplayObjectContainer.prototype.removeChildren = function(destroy) {
             while (this.children.length > 0) {
                 this.removeChild(this.children.pop(), destroy);
             }
@@ -227,7 +226,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.swapChildren = function (child1, child2) {
+        DisplayObjectContainer.prototype.swapChildren = function(child1, child2) {
             throw new Error('[' + this.getQualifiedClassName() + '] Error: The swapChildren method is meant to be overridden.');
         };
         /**
@@ -240,7 +239,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.swapChildrenAt = function (index1, index2) {
+        DisplayObjectContainer.prototype.swapChildrenAt = function(index1, index2) {
             if (index1 < 0 || index1 < 0 || index1 >= this.numChildren || index2 >= this.numChildren) {
                 throw new TypeError('[' + this.getQualifiedClassName() + '] index value(s) cannot be out of bounds. index1 value is ' + index1 + ' index2 value is ' + index2);
             }
@@ -257,7 +256,7 @@
          * @returns {int} The index position of the child display object to identify.
          * @public
          */
-        DisplayObjectContainer.prototype.getChildIndex = function (child) {
+        DisplayObjectContainer.prototype.getChildIndex = function(child) {
             return this.children.indexOf(child);
         };
         /**
@@ -268,7 +267,7 @@
          * @returns {boolean}  true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.
          * @public
          */
-        DisplayObjectContainer.prototype.contains = function (child) {
+        DisplayObjectContainer.prototype.contains = function(child) {
             return this.children.indexOf(child) >= 0;
         };
         /**
@@ -278,7 +277,7 @@
          * @param index {int} The index position of the child object.
          * @returns {DisplayObjectContainer} The child display object at the specified index position.
          */
-        DisplayObjectContainer.prototype.getChildAt = function (index) {
+        DisplayObjectContainer.prototype.getChildAt = function(index) {
             return this.children[index];
         };
         /**
@@ -290,8 +289,8 @@
          * @override
          * @public
          */
-        DisplayObjectContainer.prototype.getChildByCid = function (cid) {
-            var children = this.children.filter(function (child) {
+        DisplayObjectContainer.prototype.getChildByCid = function(cid) {
+            var children = this.children.filter(function(child) {
                 return child.cid == cid;
             });
             return children[0] || null;
@@ -307,7 +306,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.setSize = function (unscaledWidth, unscaledHeight) {
+        DisplayObjectContainer.prototype.setSize = function(unscaledWidth, unscaledHeight) {
             this.unscaledWidth = unscaledWidth;
             this.unscaledHeight = unscaledHeight;
             if (this.isCreated) {
@@ -323,13 +322,13 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.layoutChildren = function () {
+        DisplayObjectContainer.prototype.layoutChildren = function() {
             return this;
         };
         /**
          * @overridden EventDispatcher.destroy
          */
-        DisplayObjectContainer.prototype.destroy = function () {
+        DisplayObjectContainer.prototype.destroy = function() {
             // TODO: if you call destroy on an object should it remove itself from the parent children array?
             _super.prototype.destroy.call(this);
         };

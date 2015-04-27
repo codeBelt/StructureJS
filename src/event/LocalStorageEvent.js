@@ -33,7 +33,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var LocalStorageEvent = (function () {
+    var LocalStorageEvent = (function() {
 
         var _super = Extend(LocalStorageEvent, BaseEvent);
 
@@ -58,7 +58,7 @@
         /**
          * @overridden BaseEvent.clone
          */
-        LocalStorageEvent.prototype.clone = function () {
+        LocalStorageEvent.prototype.clone = function() {
             return new LocalStorageEvent(this.type, this.bubbles, this.cancelable, this._nativeEvent);
         };
         /**

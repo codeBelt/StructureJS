@@ -32,7 +32,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ApplicationCacheEvent = (function () {
+    var ApplicationCacheEvent = (function() {
 
         var _super = Extend(ApplicationCacheEvent, BaseEvent);
 
@@ -45,7 +45,7 @@
         /**
          * @overridden BaseEvent.clone
          */
-        ApplicationCacheEvent.prototype.clone = function () {
+        ApplicationCacheEvent.prototype.clone = function() {
             return new ApplicationCacheEvent(this.type, this.bubbles, this.cancelable, this.data);
         };
         /**

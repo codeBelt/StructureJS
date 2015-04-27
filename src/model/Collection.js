@@ -28,7 +28,7 @@
      * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
      */
-    var Collection = (function () {
+    var Collection = (function() {
 
         var _super = Extend(Collection, EventDispatcher);
 
@@ -75,7 +75,7 @@
          *      collection.add(vo);
          *      collection.add(vo, true);
          */
-        Collection.prototype.add = function (model, silent) {
+        Collection.prototype.add = function(model, silent) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
@@ -86,8 +86,7 @@
                     if (this._modelType !== null) {
                         // If the modeType is set then instantiate it and pass the data into the constructor.
                         this.models.push(new this._modelType(models[i]));
-                    }
-                    else {
+                    } else {
                         // Pass the data object to the array.
                         this.models.push(models[i]);
                     }
@@ -112,7 +111,7 @@
          *
          *      collection.remove(vo, true);
          */
-        Collection.prototype.remove = function (model, silent) {
+        Collection.prototype.remove = function(model, silent) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
@@ -138,7 +137,7 @@
          * @example
          *      collection.has(vo);
          */
-        Collection.prototype.has = function (model) {
+        Collection.prototype.has = function(model) {
             return this.indexOf(model) > -1;
         };
         /**
@@ -151,7 +150,7 @@
          * @example
          *      collection.indexOf(vo);
          */
-        Collection.prototype.indexOf = function (model) {
+        Collection.prototype.indexOf = function(model) {
             return this.models.indexOf(model);
         };
         /**
@@ -165,7 +164,7 @@
          * @example
          *      collection.get(1);
          */
-        Collection.prototype.get = function (index) {
+        Collection.prototype.get = function(index) {
             if (index < 0) {
                 index = 0;
             }
@@ -192,7 +191,7 @@
          *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
          *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          */
-        Collection.prototype.findBy = function (arg) {
+        Collection.prototype.findBy = function(arg) {
             // If properties is not an array then make it an array object.
             var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
@@ -204,8 +203,7 @@
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the model is not an object.
                     foundItems = foundItems.concat(this._findPropertyValue(prop));
-                }
-                else {
+                } else {
                     // If the model is an object.
                     foundItems = foundItems.concat(this._where(prop));
                 }
@@ -221,7 +219,7 @@
          * @return {Array} Returns a list of found object's.
          * @private
          */
-        Collection.prototype._where = function (propList) {
+        Collection.prototype._where = function(propList) {
             // If properties is not an array then make it an array object.
             var list = (propList instanceof Array) ? propList : [propList];
             var foundItems = [];
@@ -264,7 +262,7 @@
          * @return {Array} Returns a list of found object's.
          * @private
          */
-        Collection.prototype._findPropertyValue = function (arg) {
+        Collection.prototype._findPropertyValue = function(arg) {
             // If properties is not an array then make it an array object.
             var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
@@ -305,7 +303,7 @@
          * @example
          *      collection.clear();
          */
-        Collection.prototype.clear = function (silent) {
+        Collection.prototype.clear = function(silent) {
             if (silent === void 0) { silent = false; }
             this.models = [];
             this.length = 0;
@@ -323,7 +321,7 @@
          * @example
          *     var clone = collection.clone();
          */
-        Collection.prototype.clone = function () {
+        Collection.prototype.clone = function() {
             var clonedValueObject = new this.constructor(this._modelType);
             clonedValueObject.add(this.models.slice(0));
             return clonedValueObject;
@@ -337,7 +335,7 @@
          * @example
          *     var arrayOfObjects = collection.toJSON();
          */
-        Collection.prototype.toJSON = function () {
+        Collection.prototype.toJSON = function() {
             if (this._modelType !== null) {
                 var list = [];
                 var len = this.length;
@@ -345,8 +343,7 @@
                     list[i] = this.models[i].toJSON();
                 }
                 return list;
-            }
-            else {
+            } else {
                 return Util.clone(this.models);
             }
         };
@@ -359,7 +356,7 @@
          * @example
          *     var str = collection.toJSONString();
          */
-        Collection.prototype.toJSONString = function () {
+        Collection.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
         };
         /**
@@ -372,7 +369,7 @@
          * @example
          *      collection.fromJSON(str);
          */
-        Collection.prototype.fromJSON = function (json) {
+        Collection.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
             this.add(parsedData);
             return this;
@@ -389,10 +386,10 @@
          *      collection.sortOn('name');
          *      collection.sortOn('name', false);
          */
-        Collection.prototype.sortOn = function (propertyName, sortAscending) {
+        Collection.prototype.sortOn = function(propertyName, sortAscending) {
             if (sortAscending === void 0) { sortAscending = true; }
             if (sortAscending === false) {
-                return this.sort(function (a, b) {
+                return this.sort(function(a, b) {
                     if (a[propertyName] < b[propertyName]) {
                         return 1;
                     }
@@ -401,9 +398,8 @@
                     }
                     return 0;
                 });
-            }
-            else {
-                return this.sort(function (a, b) {
+            } else {
+                return this.sort(function(a, b) {
                     if (a[propertyName] > b[propertyName]) {
                         return 1;
                     }
@@ -429,7 +425,7 @@
          *
          *      collection.sort(sortByDate);
          */
-        Collection.prototype.sort = function (sortFunction) {
+        Collection.prototype.sort = function(sortFunction) {
             if (sortFunction === void 0) { sortFunction = null; }
             this.models.sort(sortFunction);
             return this.models;
@@ -448,7 +444,7 @@
          *
          *      var list = collection.filter(isOldEnough);
          */
-        Collection.prototype.filter = function (filterFunction) {
+        Collection.prototype.filter = function(filterFunction) {
             if (filterFunction === void 0) { filterFunction = null; }
             return this.models.filter(filterFunction);
         };
@@ -461,7 +457,7 @@
          * @example
          *      collection.reverse();
          */
-        Collection.prototype.reverse = function () {
+        Collection.prototype.reverse = function() {
             return this.models.reverse();
         };
         /**
@@ -472,8 +468,8 @@
          * @return {Array} Returns a new array list of models in the collection with duplicates removed.
          * @private
          */
-        Collection.prototype._unique = function (list) {
-            var unique = list.reduce(function (previousValue, currentValue) {
+        Collection.prototype._unique = function(list) {
+            var unique = list.reduce(function(previousValue, currentValue) {
                 if (previousValue.indexOf(currentValue) === -1) {
                     previousValue.push(currentValue);
                 }

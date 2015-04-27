@@ -23,7 +23,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var Util = (function () {
+    var Util = (function() {
 
         function Util() {
             throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
@@ -43,13 +43,12 @@
          *      var property = Util.uniqueId('prefixName_');
          *      // prefixName_1
          */
-        Util.uniqueId = function (prefix) {
+        Util.uniqueId = function(prefix) {
             if (prefix === void 0) { prefix = null; }
             var id = ++Util._idCounter;
             if (prefix != null) {
                 return String(prefix + id);
-            }
-            else {
+            } else {
                 return id;
             }
         };
@@ -69,7 +68,7 @@
          *
          *      // { name: 'Robert' }
          */
-        Util.deletePropertyFromObject = function (object, list) {
+        Util.deletePropertyFromObject = function(object, list) {
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
@@ -82,11 +81,9 @@
                             // Recursive function call.
                             Util.deletePropertyFromObject(array[index], list);
                         }
-                    }
-                    else if (value instanceof Object) {
+                    } else if (value instanceof Object) {
                         Util.deletePropertyFromObject(value, list);
-                    }
-                    else {
+                    } else {
                         for (var listIndex in list) {
                             // If the key(property name) equals the property name in the list array.
                             if (key === list[listIndex]) {
@@ -116,7 +113,7 @@
          *
          *      // { name: 'Robert', sex: 'male', phone: '555-555-5555' }
          */
-        Util.renamePropertyOnObject = function (object, oldName, newName) {
+        Util.renamePropertyOnObject = function(object, oldName, newName) {
             // Check for the old property name to avoid a ReferenceError in strict mode.
             if (object.hasOwnProperty(oldName)) {
                 object[newName] = object[oldName];
@@ -135,7 +132,7 @@
          * @example
          *      var cloneOfObject = Util.clone(obj);
          */
-        Util.clone = function (obj) {
+        Util.clone = function(obj) {
             //other scripts: http://davidwalsh.name/javascript-clone
             //http://oranlooney.com/functional-javascript/
             //http://oranlooney.com/deep-copy-javascript/
@@ -187,7 +184,7 @@
          *      Util.toBoolean(undefined);
          *      // false
          */
-        Util.toBoolean = function (strNum) {
+        Util.toBoolean = function(strNum) {
             var value = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
             return (value > 0 || value == 'true' || value == 'yes');
         };
@@ -205,7 +202,7 @@
          *      Util.getClassName(someClass);
          *      // 'SomeClass'
          */
-        Util.getClassName = function (classObject) {
+        Util.getClassName = function(classObject) {
             var funcNameRegex = /function (.{1,})\(/;
             var results = (funcNameRegex).exec(classObject.constructor.toString());
             return (results && results.length > 1) ? results[1] : '';
@@ -224,11 +221,12 @@
          * @example
          *      Util.debounce(this._onBreakpointChange, 250, false, this);
          */
-        Util.debounce = function (callback, wait, immediate, callbackScope) {
+        Util.debounce = function(callback, wait, immediate, callbackScope) {
             var timeout;
             var result;
-            var debounced = function () {
+            var debounced = function() {
                 var args = arguments;
+
                 function delayed() {
                     if (immediate == false) {
                         result = callback.apply(callbackScope, args);
@@ -237,14 +235,13 @@
                 }
                 if (timeout) {
                     clearTimeout(timeout);
-                }
-                else if (immediate === true) {
+                } else if (immediate === true) {
                     result = callback.apply(callbackScope, args);
                 }
                 timeout = setTimeout(delayed, wait);
                 return result;
             };
-            debounced.cancel = function () {
+            debounced.cancel = function() {
                 clearTimeout(timeout);
             };
             return debounced;

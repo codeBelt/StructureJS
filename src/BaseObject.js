@@ -24,7 +24,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var BaseObject = (function () {
+    var BaseObject = (function() {
 
         function BaseObject() {
             /**
@@ -49,7 +49,7 @@
          * @example
          *     instance.getQualifiedClassName();
          */
-        BaseObject.prototype.getQualifiedClassName = function () {
+        BaseObject.prototype.getQualifiedClassName = function() {
             return Util.getClassName(this);
         };
         /**
@@ -72,7 +72,7 @@
          *          _super.prototype.destroy.call(this);
          *     }
          */
-        BaseObject.prototype.destroy = function () {
+        BaseObject.prototype.destroy = function() {
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {
                     this[key] = null;

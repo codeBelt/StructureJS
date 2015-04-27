@@ -17,14 +17,16 @@
      * A bind polyfill for browsers that don't support the bind method.
      */
     if (!Function.prototype.bind) {
-        Function.prototype.bind = function (oThis) {
+        Function.prototype.bind = function(oThis) {
             if (typeof this !== 'function') {
                 throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
             }
-            var aArgs = Array.prototype.slice.call(arguments, 1), fToBind = this, fNOP = function () {
-            }, fBound = function () {
-                return fToBind.apply(this instanceof fNOP && oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
-            };
+            var aArgs = Array.prototype.slice.call(arguments, 1),
+                fToBind = this,
+                fNOP = function() {},
+                fBound = function() {
+                    return fToBind.apply(this instanceof fNOP && oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+                };
             fNOP.prototype = this.prototype;
             fBound.prototype = new fNOP();
             return fBound;
@@ -36,7 +38,7 @@
      * @param str
      * @returns {String}
      */
-    var hashCode = function (str) {
+    var hashCode = function(str) {
         str = String(str);
         // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
         var character;
@@ -54,7 +56,7 @@
     /**
      * The jQuery addEventListener plugin
      */
-    $.fn.addEventListener = function (type, selector, data, callback, scope) {
+    $.fn.addEventListener = function(type, selector, data, callback, scope) {
         var _callback;
         var _scope;
         var _handler;
@@ -88,7 +90,7 @@
     /**
      * The jQuery removeEventListener plugin
      */
-    $.fn.removeEventListener = function (type, selector, callback, scope) {
+    $.fn.removeEventListener = function(type, selector, callback, scope) {
         var _callback;
         var _scope;
         var _handler;

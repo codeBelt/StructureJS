@@ -26,7 +26,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ObjectManager = (function () {
+    var ObjectManager = (function() {
 
         var _super = Extend(ObjectManager, BaseObject);
 
@@ -58,7 +58,7 @@
          *          return _super.prototype.enable.call(this);
          *     }
          */
-        ObjectManager.prototype.enable = function () {
+        ObjectManager.prototype.enable = function() {
             if (this.isEnabled === true) {
                 return this;
             }
@@ -81,7 +81,7 @@
          *          return _super.prototype.disable.call(this);
          *      }
          */
-        ObjectManager.prototype.disable = function () {
+        ObjectManager.prototype.disable = function() {
             if (this.isEnabled === false) {
                 return this;
             }
@@ -93,4 +93,3 @@
 
     return ObjectManager;
 }));
-

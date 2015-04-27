@@ -32,7 +32,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var RouterEvent = (function () {
+    var RouterEvent = (function() {
 
         var _super = Extend(RouterEvent, BaseEvent);
 
@@ -95,7 +95,7 @@
         /**
          * @overridden BaseEvent.clone
          */
-        RouterEvent.prototype.clone = function () {
+        RouterEvent.prototype.clone = function() {
             var event = new RouterEvent(this.type, this.bubbles, this.cancelable, this.data);
             event.route = this.route;
             event.newURL = this.newURL;

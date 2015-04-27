@@ -142,8 +142,8 @@
      *
      *          return ClassName;
      *     })();
-         */
-    var DOMElement = (function () {
+     */
+    var DOMElement = (function() {
 
         var _super = Extend(DOMElement, DisplayObjectContainer);
 
@@ -204,8 +204,7 @@
                 this.$element = type;
                 this.element = this.$element[0];
                 this._isReference = true;
-            }
-            else if (type) {
+            } else if (type) {
                 this._type = type;
                 this._params = params;
             }
@@ -273,7 +272,7 @@
          *
          *     }
          */
-        DOMElement.prototype.create = function (type, params) {
+        DOMElement.prototype.create = function(type, params) {
             if (type === void 0) { type = 'div'; }
             if (params === void 0) { params = null; }
             // Use the data passed into the constructor first else use the arguments from create.
@@ -283,8 +282,7 @@
                 var html = TemplateFactory.create(type, params);
                 if (html) {
                     this.$element = jQuery(html);
-                }
-                else {
+                } else {
                     this.$element = jQuery("<" + type + "/>", params);
                 }
             }
@@ -300,7 +298,7 @@
          * @example
          *     container.addChild(domElementInstance);
          */
-        DOMElement.prototype.addChild = function (child) {
+        DOMElement.prototype.addChild = function(child) {
             _super.prototype.addChild.call(this, child);
             if (this.$element == null) {
                 throw new Error('[' + this.getQualifiedClassName() + '] You cannot use the addChild method if the parent object is not added to the DOM.');
@@ -329,7 +327,7 @@
          * @param child {DOMElement} The DOMElement instance to add the cid too.
          * @private
          */
-        DOMElement.prototype.addClientSideId = function (child) {
+        DOMElement.prototype.addClientSideId = function(child) {
             // TODO: Calling the getChild method there is a chance that multiple DOMElement have reference to the same DOM HTML element causing the cid to be over written with a new cid. Probably should handle that.
             child.$element.attr('data-cid', child.cid);
         };
@@ -340,15 +338,14 @@
          * @method onDomAdded
          * @private
          */
-        DOMElement.prototype.onAddedToDom = function (child) {
+        DOMElement.prototype.onAddedToDom = function(child) {
             var _this = this;
             child.checkCount++;
             if (child.$element.width() === 0 && child.checkCount < 5) {
-                setTimeout(function () {
+                setTimeout(function() {
                     _this.onAddedToDom(child);
                 }, 100);
-            }
-            else {
+            } else {
                 child.layout();
                 child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
@@ -356,7 +353,7 @@
         /**
          * @overridden DisplayObjectContainer.addChildAt
          */
-        DOMElement.prototype.addChildAt = function (child, index) {
+        DOMElement.prototype.addChildAt = function(child, index) {
             var children = this.$element.children();
             var length = children.length;
             // If an empty jQuery object is passed into the constructor then don't run the code below.
@@ -367,8 +364,7 @@
             // the total number of children then place the item at the end.
             if (index < 0 || index >= length) {
                 this.addChild(child);
-            }
-            else {
+            } else {
                 if (child.isCreated === false) {
                     child.create(); // Render the item before adding to the DOM
                     child.isCreated = true;
@@ -386,7 +382,7 @@
         /**
          * @overridden DisplayObjectContainer.swapChildren
          */
-        DOMElement.prototype.swapChildren = function (child1, child2) {
+        DOMElement.prototype.swapChildren = function(child1, child2) {
             var child1Index = child1.$element.index();
             var child2Index = child2.$element.index();
             this.addChildAt(child1, child2Index);
@@ -396,7 +392,7 @@
         /**
          * @overridden DisplayObjectContainer.getChildAt
          */
-        DOMElement.prototype.getChildAt = function (index) {
+        DOMElement.prototype.getChildAt = function(index) {
             return _super.prototype.getChildAt.call(this, index);
         };
         /**
@@ -407,7 +403,7 @@
          * @returns {DOMElement}
          * @public
          */
-        DOMElement.prototype.getChild = function (selector) {
+        DOMElement.prototype.getChild = function(selector) {
             // Get the first match from the selector passed in.
             var jQueryElement = this.$element.find(selector).first();
             if (jQueryElement.length === 0) {
@@ -439,7 +435,7 @@
          * If the 'data-cid' property exists is on an HTML element a DOMElement will not be create for that element because it will be assumed it already exists as a DOMElement.
          * @public
          */
-        DOMElement.prototype.getChildren = function (selector) {
+        DOMElement.prototype.getChildren = function(selector) {
             if (selector === void 0) { selector = ''; }
             //TODO: Make sure the index of the children added is the same as the what is in the actual DOM.
             var $child;
@@ -474,7 +470,7 @@
          * @public
          * @chainable
          */
-        DOMElement.prototype.removeChild = function (child, destroy) {
+        DOMElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) { destroy = true; }
             // If destroy was called before removeChild so id doesn't error.
             if (child.$element != null) {
@@ -492,7 +488,7 @@
          * @public
          * @chainable
          */
-        DOMElement.prototype.removeChildAt = function (index, destroy) {
+        DOMElement.prototype.removeChildAt = function(index, destroy) {
             if (destroy === void 0) { destroy = true; }
             this.removeChild(this.getChildAt(index), destroy);
             return this;
@@ -508,7 +504,7 @@
          * @public
          * @chainable
          */
-        DOMElement.prototype.removeChildren = function (destroy) {
+        DOMElement.prototype.removeChildren = function(destroy) {
             if (destroy === void 0) { destroy = true; }
             _super.prototype.removeChildren.call(this, destroy);
             this.$element.empty();
@@ -517,7 +513,7 @@
         /**
          * @overridden DisplayObjectContainer.destroy
          */
-        DOMElement.prototype.destroy = function () {
+        DOMElement.prototype.destroy = function() {
             // If the addChild method is never called before the destroyed the $element will be null and cause an TypeError.
             if (this.$element != null) {
                 this.$element.unbind();
@@ -546,7 +542,7 @@
          *          ]);
          *      };
          */
-        DOMElement.prototype.createComponents = function (componentList) {
+        DOMElement.prototype.createComponents = function(componentList) {
             var length = componentList.length;
             var obj;
             for (var i = 0; i < length; i++) {

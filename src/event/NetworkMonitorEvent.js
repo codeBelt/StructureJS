@@ -32,7 +32,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var NetworkMonitorEvent = (function () {
+    var NetworkMonitorEvent = (function() {
 
         var _super = Extend(NetworkMonitorEvent, BaseEvent);
 
@@ -65,7 +65,7 @@
         /**
          * @overridden BaseEvent.clone
          */
-        NetworkMonitorEvent.prototype.clone = function () {
+        NetworkMonitorEvent.prototype.clone = function() {
             return new NetworkMonitorEvent(this.type, this.bubbles, this.cancelable, this.status, this.connected, this.data);
         };
         /**

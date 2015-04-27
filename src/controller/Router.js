@@ -26,7 +26,7 @@
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
-    var Router = (function () {
+    var Router = (function() {
         function Router() {
             throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
         }
@@ -109,7 +109,7 @@
          *     Router.add('/about/*', this.method4, this);
          *
          */
-        Router.add = function (routePattern, callback, callbackScope) {
+        Router.add = function(routePattern, callback, callbackScope) {
             Router.enable();
             var route = new Route(routePattern, callback, callbackScope);
             Router._routes.push(route);
@@ -130,7 +130,7 @@
          *     // Example of removing the same added route listener above.
          *     Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);
          */
-        Router.remove = function (routePattern, callback, callbackScope) {
+        Router.remove = function(routePattern, callback, callbackScope) {
             var route;
             for (var i = Router._routes.length - 1; i >= 0; i--) {
                 route = Router._routes[i];
@@ -150,7 +150,7 @@
          * @example
          *     Router.addDefault(this.noRoutesFoundHandler, this);
          */
-        Router.addDefault = function (callback, callbackScope) {
+        Router.addDefault = function(callback, callbackScope) {
             Router._defaultRoute = new Route('', callback, callbackScope);
         };
         /**
@@ -162,7 +162,7 @@
          * @example
          *     Router.removeDefault();
          */
-        Router.removeDefault = function () {
+        Router.removeDefault = function() {
             Router._defaultRoute = null;
         };
         /**
@@ -175,7 +175,7 @@
          * @example
          *     var str = Router.getHash();
          */
-        Router.getHash = function () {
+        Router.getHash = function() {
             var hash = Router._window.location.hash;
             var strIndex = (hash.substr(0, 2) === '#!') ? 2 : 1;
             return hash.substring(strIndex); // Return everything after # or #!
@@ -189,14 +189,13 @@
          * @example
          *     Router.enable();
          */
-        Router.enable = function () {
+        Router.enable = function() {
             if (Router.isEnabled === true) {
                 return;
             }
             if (Router._window.addEventListener) {
                 Router._window.addEventListener('hashchange', Router.onHashChange, false);
-            }
-            else {
+            } else {
                 Router._window.attachEvent('onhashchange', Router.onHashChange);
             }
             Router.isEnabled = true;
@@ -210,14 +209,13 @@
          * @example
          *     Router.disable();
          */
-        Router.disable = function () {
+        Router.disable = function() {
             if (Router.isEnabled === false) {
                 return;
             }
             if (Router._window.removeEventListener) {
                 Router._window.removeEventListener('hashchange', Router.onHashChange);
-            }
-            else {
+            } else {
                 Router._window.detachEvent('onhashchange', Router.onHashChange);
             }
             Router.isEnabled = false;
@@ -237,7 +235,7 @@
          *
          *     Router.start();
          */
-        Router.start = function () {
+        Router.start = function() {
             setTimeout(Router.onHashChange, 1);
         };
         /**
@@ -262,7 +260,7 @@
          *     // This will not update the hash url but will trigger the matching route.
          *     Router.navigateTo('/games/asteroids/2/', true, true);
          */
-        Router.navigateTo = function (route, silent, disableHistory) {
+        Router.navigateTo = function(route, silent, disableHistory) {
             if (silent === void 0) { silent = false; }
             if (disableHistory === void 0) { disableHistory = false; }
             if (Router.isEnabled === false) {
@@ -283,18 +281,16 @@
             if (Router.useDeepLinking === true) {
                 if (silent === true) {
                     Router.disable();
-                    setTimeout(function () {
+                    setTimeout(function() {
                         window.location.hash = route;
                         setTimeout(Router.enable, 1);
                     }, 1);
-                }
-                else {
-                    setTimeout(function () {
+                } else {
+                    setTimeout(function() {
                         window.location.hash = route;
                     }, 1);
                 }
-            }
-            else {
+            } else {
                 Router.changeRoute(route);
             }
         };
@@ -307,7 +303,7 @@
          * @example
          *     Router.clear();
          */
-        Router.prototype.clear = function () {
+        Router.prototype.clear = function() {
             Router._routes = [];
             Router._defaultRoute = null;
             Router._hashChangeEvent = null;
@@ -321,7 +317,7 @@
          * @example
          *     Router.destroy();
          */
-        Router.prototype.destroy = function () {
+        Router.prototype.destroy = function() {
             Router._window = null;
             Router._routes = null;
             Router._defaultRoute = null;
@@ -336,7 +332,7 @@
          * @private
          * @static
          */
-        Router.onHashChange = function (event) {
+        Router.onHashChange = function(event) {
             if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) {
                 return;
             }
@@ -352,7 +348,7 @@
          * @private
          * @static
          */
-        Router.changeRoute = function (hash) {
+        Router.changeRoute = function(hash) {
             var route;
             var match;
             var routerEvent = null;
@@ -377,8 +373,7 @@
                     if (Router._hashChangeEvent != null) {
                         routerEvent.newURL = Router._hashChangeEvent.newURL;
                         routerEvent.oldURL = Router._hashChangeEvent.oldURL;
-                    }
-                    else {
+                    } else {
                         routerEvent.newURL = window.location.href;
                     }
                     // Execute the callback function and pass the route event.
@@ -399,8 +394,7 @@
                 if (Router._hashChangeEvent != null) {
                     routerEvent.newURL = Router._hashChangeEvent.newURL;
                     routerEvent.oldURL = Router._hashChangeEvent.oldURL;
-                }
-                else {
+                } else {
                     routerEvent.newURL = window.location.href;
                 }
                 Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);

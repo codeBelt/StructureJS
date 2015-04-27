@@ -36,7 +36,7 @@
      *      eventDispatcher.addEventListener('change', this.handlerMethod, this);
      *      eventDispatcher.dispatchEvent('change');
      */
-    var EventDispatcher = (function () {
+    var EventDispatcher = (function() {
 
         var _super = Extend(EventDispatcher, ObjectManager);
 
@@ -80,7 +80,7 @@
          *          console.log(event.type, event.data);
          *      }
          */
-        EventDispatcher.prototype.addEventListener = function (type, callback, scope, priority) {
+        EventDispatcher.prototype.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
             // Get the list of event listener(s) by the associated type value that is passed in.
             var list = this._listeners[type];
@@ -96,8 +96,7 @@
                 if (listener.callback === callback && listener.scope === scope) {
                     // If same callback and scope is found then remove it. Then add the current one below.
                     list.splice(i, 1);
-                }
-                else if (index === 0 && listener.priority < priority) {
+                } else if (index === 0 && listener.priority < priority) {
                     index = i + 1;
                 }
             }
@@ -121,7 +120,7 @@
          *      ClassName.prototype.handlerMethod = function (event) {
          *      }
          */
-        EventDispatcher.prototype.removeEventListener = function (type, callback, scope) {
+        EventDispatcher.prototype.removeEventListener = function(type, callback, scope) {
             // Get the list of event listener(s) by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list) {
@@ -158,7 +157,7 @@
          *      // Here is a common inline event object being dispatched:
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
-        EventDispatcher.prototype.dispatchEvent = function (type, data) {
+        EventDispatcher.prototype.dispatchEvent = function(type, data) {
             if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === 'string') {
@@ -216,7 +215,7 @@
          * @example
          *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          */
-        EventDispatcher.prototype.hasEventListener = function (type, callback, scope) {
+        EventDispatcher.prototype.hasEventListener = function(type, callback, scope) {
             if (typeof this._listeners[type] !== 'undefined') {
                 var listener;
                 var numOfCallbacks = this._listeners[type].length;
@@ -240,7 +239,7 @@
          *
          *      // [ClassName] is listen for 'BaseEvent.change' event.
          */
-        EventDispatcher.prototype.getEventListeners = function () {
+        EventDispatcher.prototype.getEventListeners = function() {
             var str = '';
             var numOfCallbacks;
             var listener;
@@ -250,8 +249,7 @@
                     listener = this._listeners[type][i];
                     if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
                         str += '[' + listener.scope.getQualifiedClassName() + ']';
-                    }
-                    else {
+                    } else {
                         str += '[Unknown]';
                     }
                     str += " is listen for '" + type + "' event.\n";
@@ -262,7 +260,7 @@
         /**
          * @overridden BaseObject.destroy
          */
-        EventDispatcher.prototype.destroy = function () {
+        EventDispatcher.prototype.destroy = function() {
             _super.prototype.disable.call(this);
             _super.prototype.destroy.call(this);
         };

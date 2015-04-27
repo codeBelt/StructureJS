@@ -32,7 +32,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var TimerEvent = (function () {
+    var TimerEvent = (function() {
 
         var _super = Extend(TimerEvent, BaseEvent);
 
@@ -45,7 +45,7 @@
         /**
          * @overridden BaseEvent.clone
          */
-        TimerEvent.prototype.clone = function () {
+        TimerEvent.prototype.clone = function() {
             return new TimerEvent(this.type, this.bubbles, this.cancelable, this.data);
         };
         /**

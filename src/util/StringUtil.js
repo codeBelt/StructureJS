@@ -23,7 +23,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var StringUtil = (function () {
+    var StringUtil = (function() {
 
         function StringUtil() {
             throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
@@ -44,7 +44,7 @@
          *      StringUtil.getExtension('file.exe', true);
          *      // '.exe'
          */
-        StringUtil.getExtension = function (filename, withDot) {
+        StringUtil.getExtension = function(filename, withDot) {
             if (withDot === void 0) { withDot = false; }
             var num = (withDot === true) ? 0 : 1;
             return filename.slice(filename.lastIndexOf('.') + num, filename.length);
@@ -71,7 +71,7 @@
          *      StringUtil.toSentence("liveDown_by-the.River", '/');
          *      // 'live/down/by/the/river'
          */
-        StringUtil.toSentence = function (str, separator) {
+        StringUtil.toSentence = function(str, separator) {
             if (separator === void 0) { separator = ' '; }
             return String(str)
                 // Add a space after any digits.
@@ -101,10 +101,10 @@
          *      StringUtil.toCamelCase("liveDown_by-the.River");
          *      // 'liveDownByTheRiver'
          */
-        StringUtil.toCamelCase = function (str) {
+        StringUtil.toCamelCase = function(str) {
             return StringUtil.toSentence(str)
                 // Replace spaces between words with a string upper cased character.
-                .replace(/ (\w)/g, function (_, $1) {
+                .replace(/ (\w)/g, function(_, $1) {
                     return $1.toUpperCase();
                 });
         };
@@ -120,10 +120,10 @@
          *      StringUtil.toPascalCase("liveDown_by-the.River");
          *      // 'LiveDownByTheRiver'
          */
-        StringUtil.toPascalCase = function (str) {
+        StringUtil.toPascalCase = function(str) {
             return StringUtil.toCamelCase(str)
                 // Make first character uppercase.
-                .replace(/^[a-zA-Z]/, function (a, b, c) {
+                .replace(/^[a-zA-Z]/, function(a, b, c) {
                     return a.toUpperCase();
                 });
         };
@@ -139,7 +139,7 @@
          *      StringUtil.toConstantCase("liveDown_by-the.River");
          *      // 'LIVE_DOWN_BY_THE_RIVER'
          */
-        StringUtil.toConstantCase = function (str) {
+        StringUtil.toConstantCase = function(str) {
             return StringUtil.toSentence(str, '_')
                 .toUpperCase();
         };
@@ -154,8 +154,8 @@
          *      StringUtil.createUUID();
          *      // 'a95d7134-3342-4001-bcea-cc0371b70dec'
          */
-        StringUtil.createUUID = function () {
-            var uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function (c) {
+        StringUtil.createUUID = function() {
+            var uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function(c) {
                 var r = Math.random() * 16 | 0;
                 var v = (c == 'x') ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
@@ -178,7 +178,7 @@
          *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
          *      // {name: 'Robert', age: '23', gender: 'male'}
          */
-        StringUtil.queryStringToObject = function (queryString, useParseFloat) {
+        StringUtil.queryStringToObject = function(queryString, useParseFloat) {
             if (useParseFloat === void 0) { useParseFloat = true; }
             var params = {};
             var temp = null;
@@ -209,7 +209,7 @@
          *      StringUtil.removeAllWhitespace(str);
          *      // 'abcdefg'
          */
-        StringUtil.removeAllWhitespace = function (str) {
+        StringUtil.removeAllWhitespace = function(str) {
             return str.replace(/\s+/g, '');
         };
         /**
@@ -225,7 +225,7 @@
          *      StringUtil.removeLeadingTrailingWhitespace(str);
          *      // 'a b    c d e f g'
          */
-        StringUtil.removeLeadingTrailingWhitespace = function (str) {
+        StringUtil.removeLeadingTrailingWhitespace = function(str) {
             return str.replace(/(^\s+|\s+$)/g, '');
         };
         /**
@@ -240,11 +240,10 @@
          *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
          *      // 'Robert is cool...'
          */
-        StringUtil.truncate = function (text, length) {
+        StringUtil.truncate = function(text, length) {
             if (text.length <= length) {
                 return text;
-            }
-            else {
+            } else {
                 return text.substr(0, length) + '...';
             }
         };
@@ -261,7 +260,7 @@
          *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
          *      // 'Robert is cool. Very cool and smart!'
          */
-        StringUtil.format = function (str) {
+        StringUtil.format = function(str) {
             var rest = [];
             for (var _i = 1; _i < arguments.length; _i++) {
                 rest[_i - 1] = arguments[_i];
@@ -286,7 +285,7 @@
          *      StringUtil.paramReplace('?name=Robert&age=23&gender=male', 'gender', 'female');
          *      // '?name=Robert&age=23&gender=female'
          */
-        StringUtil.paramReplace = function (queryString, name, value) {
+        StringUtil.paramReplace = function(queryString, name, value) {
             // Find the param with regex
             // Grab the first character in the returned string (should be ? or &)
             // Replace our href string with our new value, passing on the name and delimiter

@@ -81,7 +81,7 @@
      *          return CarVO;
      *      })();
      */
-    var ValueObject = (function () {
+    var ValueObject = (function() {
 
         var _super = Extend(ValueObject, BaseObject);
 
@@ -102,7 +102,7 @@
          *     carVO.year = 2015;
          *     carVO.allWheel = false;
          */
-        ValueObject.prototype.update = function (data) {
+        ValueObject.prototype.update = function(data) {
             var propertyData;
             for (var propertyKey in this) {
                 // If this class has a property that matches a property on the data being passed in then set it.
@@ -126,7 +126,7 @@
          * @param data
          * @private
          */
-        ValueObject.prototype._setData = function (key, data) {
+        ValueObject.prototype._setData = function(key, data) {
             if (data instanceof Array) {
                 var temp = [];
                 var len = data.length;
@@ -137,8 +137,7 @@
                     }
                 }
                 this[key] = temp;
-            }
-            else {
+            } else {
                 this[key] = this._updateData(this[key], data);
             }
         };
@@ -150,18 +149,16 @@
          * @param data
          * @private
          */
-        ValueObject.prototype._updateData = function (keyValue, data) {
+        ValueObject.prototype._updateData = function(keyValue, data) {
             if (keyValue instanceof ValueObject.constructor) {
                 // If the property is an instance of a ValueObject class and has not been created yet.
                 // Then instantiate it and pass in the data to the constructor.
                 keyValue = new keyValue(data);
-            }
-            else if (keyValue instanceof ValueObject) {
+            } else if (keyValue instanceof ValueObject) {
                 // If property is an instance of a ValueObject class and has already been created.
                 // Then call the update method and pass in the data.
                 keyValue.update(data);
-            }
-            else {
+            } else {
                 // Else just assign the data to the property.
                 keyValue = data;
             }
@@ -176,7 +173,7 @@
          * @example
          *     var obj = carVO.toJSON();
          */
-        ValueObject.prototype.toJSON = function () {
+        ValueObject.prototype.toJSON = function() {
             var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, ['cid']);
         };
@@ -189,7 +186,7 @@
          * @example
          *     var str = carVO.toJSONString();
          */
-        ValueObject.prototype.toJSONString = function () {
+        ValueObject.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
         };
         /**
@@ -203,7 +200,7 @@
          *      var carVO = new CarVO();
          *      carVO.fromJSON(str);
          */
-        ValueObject.prototype.fromJSON = function (json) {
+        ValueObject.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
             this.update(parsedData);
             return this;
@@ -217,7 +214,7 @@
          * @example
          *     var clone = carVO.clone();
          */
-        ValueObject.prototype.clone = function () {
+        ValueObject.prototype.clone = function() {
             var clonedValueObject = new this.constructor(this);
             return clonedValueObject;
         };

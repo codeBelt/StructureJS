@@ -89,7 +89,7 @@
      *      app.appendTo('body');
      *
      */
-    var Stage = (function () {
+    var Stage = (function() {
 
         var _super = Extend(Stage, DOMElement);
 
@@ -104,7 +104,7 @@
          * @param [enabled=true] {boolean} Sets the enabled state of the object.
          * @chainable
          */
-        Stage.prototype.appendTo = function (type, enabled) {
+        Stage.prototype.appendTo = function(type, enabled) {
             if (enabled === void 0) { enabled = true; }
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr('data-cid', this.cid);
@@ -115,8 +115,7 @@
             }
             if (enabled === false) {
                 this.disable();
-            }
-            else {
+            } else {
                 this.enable();
             }
             return this;

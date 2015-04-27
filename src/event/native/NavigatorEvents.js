@@ -14,7 +14,7 @@
 }(this, function() {
     'use strict';
 
-    var NavigatorEvents = (function () {
+    var NavigatorEvents = (function() {
         function NavigatorEvents() {
         }
         /**

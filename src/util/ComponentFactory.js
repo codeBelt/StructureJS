@@ -21,7 +21,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var ComponentFactory = (function () {
+    var ComponentFactory = (function() {
 
         function ComponentFactory() {
             throw new Error('[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.');
@@ -39,7 +39,7 @@
          * @example
          *      ComponentFactory.create($('.js-list'), SomeClass);
          */
-        ComponentFactory.create = function ($elements, ComponentClass, scope) {
+        ComponentFactory.create = function($elements, ComponentClass, scope) {
             if (scope === void 0) { scope = null; }
             var list = [];
             var length = $elements.length;

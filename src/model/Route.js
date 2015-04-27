@@ -80,7 +80,7 @@
      *     var route = new Route('/about/*', this.method4, this);
      *
      */
-    var Route = (function () {
+    var Route = (function() {
         function Route(routePattern, callback, scope) {
             /**
              * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
@@ -128,7 +128,7 @@
          * @returns {RegExp}
          * @private
          */
-        Route.prototype.routePatternToRegexp = function (routePattern) {
+        Route.prototype.routePatternToRegexp = function(routePattern) {
             var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
             var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
             var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
@@ -154,7 +154,7 @@
          *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
          *     console.log( route.match('/games/asteroids/2/') );
          */
-        Route.prototype.match = function (route) {
+        Route.prototype.match = function(route) {
             // Remove the query string before matching against the route pattern.
             var routeWithoutQueryString = route.replace(/\?.*/, '');
             return routeWithoutQueryString.match(this.regex);

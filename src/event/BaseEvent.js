@@ -67,7 +67,7 @@
      *     event.countryName = 'Canada';
      *     this.dispatchEvent(event);
      */
-    var BaseEvent = (function () {
+    var BaseEvent = (function() {
 
         var _super = Extend(BaseEvent, BaseObject);
 
@@ -174,7 +174,7 @@
          * @example
          *     var cloneOfEvent = event.clone();
          */
-        BaseEvent.prototype.clone = function () {
+        BaseEvent.prototype.clone = function() {
             var event = new BaseEvent(this.type, this.bubbles, this.cancelable, this.data);
             event.target = this.target;
             event.currentTarget = this.currentTarget;
@@ -193,7 +193,7 @@
          * @example
          *     event.stopPropagation();
          */
-        BaseEvent.prototype.stopPropagation = function () {
+        BaseEvent.prototype.stopPropagation = function() {
             this.isPropagationStopped = true;
         };
         /**
@@ -207,7 +207,7 @@
          * @example
          *     event.stopImmediatePropagation();
          */
-        BaseEvent.prototype.stopImmediatePropagation = function () {
+        BaseEvent.prototype.stopImmediatePropagation = function() {
             this.stopPropagation();
             this.isImmediatePropagationStopped = true;
         };
