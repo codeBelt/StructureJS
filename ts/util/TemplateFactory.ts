@@ -1,4 +1,4 @@
-///<reference path='../util/StringUtil.ts'/>
+'use strict';
 /*
  UMD Stuff
  @import ../util/Extend as Extend

@@ -1,7 +1,4 @@
-///<reference path='../interface/IValueObject.ts'/>
-///<reference path='../BaseObject.ts'/>
-///<reference path='../util/Util.ts'/>
-
+'use strict';
 /*
  UMD Stuff
  @import ../util/Extend as Extend

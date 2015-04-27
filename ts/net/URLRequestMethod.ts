@@ -1,3 +1,4 @@
+'use strict';
 /*
  UMD Stuff
  @export URLRequestMethod

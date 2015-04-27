@@ -1,6 +1,6 @@
+'use strict';
 /*
  UMD Stuff
- @import ../util/Extend as Extend
  @import ../event/ApplicationCacheEvent as ApplicationCacheEvent
  @import ../event/EventDispatcher as EventDispatcher
  @export ApplicationCacheController

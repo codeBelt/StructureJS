@@ -1,5 +1,6 @@
+'use strict';
 /*
-UMD stuff
+ UMD Stuff
 @import ../event/EventDispatcher as EventDispatcher
 @import ../display/DOMElement as DOMElement
 @import ../DisplayObjectContainer/DOMElement as DisplayObjectContainer
@@ -8,6 +9,7 @@ UMD stuff
 @import ../constant/TransitionType as TransitionType
 @import ../event/TransitionManagerEvent as TransitionManagerEvent
 @import ../event/TweenEvent as TweenEvent
+@export TransitionManager
 */
 import EventDispatcher = require('../event/EventDispatcher');
 import DOMElement = require('../display/DOMElement');

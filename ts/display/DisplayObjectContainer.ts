@@ -1,3 +1,4 @@
+'use strict';
 /*
  UMD Stuff
  @import ../util/Extend as Extend
