@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../util/Util', '../event/EventDispatcher', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../util/Extend'), require('../util/Util'), require('../event/EventDispatcher'), require('../event/BaseEvent'));
     } else {
         /*jshint sub:true */
@@ -12,6 +12,7 @@
         root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.Util, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
     }
 }(this, function(Extend, Util, EventDispatcher, BaseEvent) {
+
     'use strict';
 
     /**

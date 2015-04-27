@@ -4,13 +4,14 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        factory(require('jquery'));
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('jquery'));
     } else {
         /*jshint sub:true */
         factory(root.jQuery);
     }
 }(this, function($) {
+
     'use strict';
 
     /**

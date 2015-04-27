@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../event/EventDispatcher', '../event/native/NavigatorEvents', '../event/NetworkMonitorEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../event/EventDispatcher'), require('../event/native/NavigatorEvents'), require('../event/NetworkMonitorEvent'));
+        define(['../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../event/EventDispatcher'), require('../event/NetworkMonitorEvent'), require('../event/native/NavigatorEvents'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.NetworkMonitor = factory(root.structurejs.EventDispatcher, root.structurejs.NavigatorEvents, root.structurejs.NetworkMonitorEvent);
+        root.structurejs.TimerEvent = factory(root.structurejs.EventDispatcher, root.structurejs.NetworkMonitorEvent, root.structurejs.NavigatorEvents);
     }
-}(this, function(EventDispatcher, NavigatorEvents, NetworkMonitorEvent) {
+}(this, function(EventDispatcher, NetworkMonitorEvent, NavigatorEvents) {
+
     'use strict';
 
     /**

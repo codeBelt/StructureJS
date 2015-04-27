@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../BaseObject', '../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../util/Util'));
     } else {
         /*jshint sub:true */
@@ -12,6 +12,7 @@
         root.structurejs.ValueObject = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.Util);
     }
 }(this, function(Extend, BaseObject, Util) {
+
     'use strict';
 
     /**
