@@ -252,11 +252,11 @@ module.exports = function(grunt) {
          */
         typescript: {
             main: {
-                src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
+                src: ['<%= BASE_PATH %>' + 'ts/ObjectManager.ts'],
                 outdir: '<%= BASE_PATH %>js',
                 options: {
                     target: 'es3', //or es5
-                    module: 'AMD',
+                    module: 'commonjs',
                     basePath: '',
                     sourcemap: false,
                     declaration: false,
@@ -274,8 +274,14 @@ module.exports = function(grunt) {
                     rootName: 'root.structurejs'
                 },
                 files: {
-                    './Stage.js': './module.js'
+                    'ts/ObjectManager.js': 'ts/ObjectManager.js'
                 }
+            }
+        },
+
+        jsbeautifier : {
+            "default": {
+                src : ["ts/**/*.js"]
             }
         },
 
@@ -406,7 +412,8 @@ module.exports = function(grunt) {
      * grunt doc    (Will generate the YUI documentation from the code comments)
      */
     grunt.registerTask('default', [
-        'server'
+        'typescript',
+        'umd_wrapper'
     ]);
 
     grunt.registerTask('server', [
