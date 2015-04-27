@@ -15,19 +15,7 @@
 
     'use strict';
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @class Bitmap
-     * @extends DisplayObject
-     * @module StructureJS
-     * @submodule view
-     * @requires Extend
-     * @requires DisplayObject
-     * @requires MathUtil
-     * @constructor
-     * @author Robert S. (www.codeBelt.com)
-     */
+
     var Bitmap = (function() {
 
         var _super = Extend(Bitmap, DisplayObject);

@@ -15,19 +15,6 @@
 
     'use strict';
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @class Sprite
-     * @extends DisplayObjectContainer
-     * @module StructureJS
-     * @submodule view
-     * @requires Extend
-     * @requires DisplayObjectContainer
-     * @requires MathUtil
-     * @constructor
-     * @author Robert S. (www.codeBelt.com)
-     */
     var Sprite = (function() {
 
         var _super = Extend(Sprite, DisplayObjectContainer);

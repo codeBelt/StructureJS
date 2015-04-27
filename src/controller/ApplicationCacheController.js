@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../event/ApplicationCacheEvent', '../event/EventDispatcher'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../event/ApplicationCacheEvent'), require('../event/EventDispatcher'));
     } else {
         /*jshint sub:true */
@@ -12,6 +12,7 @@
         root.structurejs.ApplicationCacheController = factory(root.structurejs.ApplicationCacheEvent, root.structurejs.EventDispatcher);
     }
 }(this, function(ApplicationCacheEvent, EventDispatcher) {
+
     'use strict';
 
     /**
@@ -198,51 +199,56 @@
         };
         /**
          * Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.
-         * @example
-         ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function(event) {
-               console.log(event.target + " sent the event.");
-           }
+         *
          * @method addEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
          * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @static
+         * @example
+         *      ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
+         *      ClassName.prototype.handlerMethod = function(event) {
+         *          console.log(event.target + " sent the event.");
+         *      }
          */
         ApplicationCacheController.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
+            if (priority === void 0) {
+                priority = 0;
+            }
             ApplicationCacheController._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
         /**
          * Removes a specified listener from the ApplicationCacheController object.
-         * @example
-         ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
-         ClassName.prototype.handlerMethod = function(event) {
-               console.log(event.target + " sent the event.");
-           }
+         *
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
          * @param scope {any} The scope of the listener object to be removed. This was added because it was need for the {{#crossLink "ApplicationCacheController"}}{{/crossLink}} class.
          * To keep things consistent this parameter is required.
          * @static
+         * @example
+         *      ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
+         *      ClassName.prototype.handlerMethod = function(event) {
+         *          console.log(event.target + " sent the event.");
+         *      }
          */
         ApplicationCacheController.removeEventListener = function(type, callback, scope) {
             ApplicationCacheController._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
          * <p>Dispatches an event within the ApplicationCacheController object.</p>
-         * @example
-         var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
-         ApplicationCacheController.dispatchEvent(event);
-
-         // Here is a common inline event being dispatched
-         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
+         *
          * @method dispatchEvent
          * @param event {ApplicationCacheEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
          * extend the {{#crossLink "ApplicationCacheEvent"}}{{/crossLink}}.
          * @static
+         * @example
+         *      var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
+         *      ApplicationCacheController.dispatchEvent(event);
+         *
+         *      // Here is a common inline event being dispatched
+         *      ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
          */
         ApplicationCacheController.dispatchEvent = function(event) {
             ApplicationCacheController._eventDispatcher.dispatchEvent(event);

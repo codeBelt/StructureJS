@@ -15,19 +15,6 @@
 
     'use strict';
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @class Bitmap
-     * @extends DOMElement
-     * @module StructureJS
-     * @submodule view
-     * @requires Extend
-     * @requires DOMElement
-     * @requires DOMElePointment
-     * @constructor
-     * @author Robert S. (www.codeBelt.com)
-     */
     var CanvasElement = (function() {
 
         var _super = Extend(CanvasElement, DOMElement);

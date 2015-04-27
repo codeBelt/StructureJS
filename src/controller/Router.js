@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../model/Route', '../event/RouterEvent', '../util/StringUtil'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../model/Route'), require('../event/RouterEvent'), require('../util/StringUtil'));
+        define(['../util/StringUtil', '../event/RouterEvent', '../model/Route'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/StringUtil'), require('../event/RouterEvent'), require('../model/Route'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.Router = factory(root.structurejs.Route, root.structurejs.RouterEvent, root.structurejs.StringUtil);
+        root.structurejs.Router = factory(root.structurejs.StringUtil, root.structurejs.RouterEvent, root.structurejs.Route);
     }
-}(this, function(Route, RouterEvent, StringUtil) {
+}(this, function(StringUtil, RouterEvent, Route) {
+
     'use strict';
 
     /**

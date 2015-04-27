@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../BaseObject', '../event/EventDispatcher', '../event/LocalStorageEvent', '../model/ValueObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/LocalStorageEvent'), require('../model/ValueObject'));
+        define(['../util/Extend', '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/ValueObject'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/ValueObject'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.LocalStorageController = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.LocalStorageEvent, root.structurejs.ValueObject);
+        root.structurejs.LocalStorageController = factory(root.structurejs.Extend, root.structurejs.LocalStorageEvent, root.structurejs.EventDispatcher, root.structurejs.ValueObject);
     }
-}(this, function(Extend, EventDispatcher, LocalStorageEvent, ValueObject) {
+}(this, function(Extend, LocalStorageEvent, EventDispatcher, ValueObject) {
+
     'use strict';
 
     /**

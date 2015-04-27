@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../display/DOMElement', 'jquery'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../display/DOMElement'), require('jquery'));
+        define(['../util/Extend', './DOMElement', 'jquery'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('jquery'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
         root.structurejs.Stage = factory(root.structurejs.Extend, root.structurejs.DOMElement, root.jQuery);
     }
 }(this, function(Extend, DOMElement, jQuery) {
+
     'use strict';
 
     /**
@@ -42,13 +43,13 @@
      *                 _super.call(this);
      *             }
      *
-     *             MainClass.prototype.createChildren = function () {
-     *                 _super.prototype.createChildren.call(this);
+     *             MainClass.prototype.create = function () {
+     *                 _super.prototype.create.call(this);
      *
      *                 // Create and add your child objects to this parent class.
      *             }
      *
-     *             MainClass.prototype.layoutChildren = function () {
+     *             MainClass.prototype.layout = function () {
      *                 // Layout or update the child objects in this parent class.
      *
      *                 return this;
@@ -109,9 +110,9 @@
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr('data-cid', this.cid);
             if (this.isCreated === false) {
-                this.createChildren();
+                this.create();
                 this.isCreated = true;
-                this.layoutChildren();
+                this.layout();
             }
             if (enabled === false) {
                 this.disable();

@@ -4,14 +4,15 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../display/DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', 'jquery', '../plugin/jquery.eventListener'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../util/Extend'), require('../display/DisplayObjectContainer'), require('../event/BaseEvent'), require('../util/TemplateFactory'), require('../util/ComponentFactory'), require('jquery'), require('../plugin/jquery.eventListener'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.DOMElement = factory(root.structurejs.Extend, root.structurejs.DisplayObjectContainer, root.structurejs.BaseEvent, root.structurejs.TemplateFactory, root.structurejs.ComponentFactory, root.jQuery);
+        root.structurejs.DOMElement = factory(root.structurejs.Extend, root.structurejs.DisplayObjectContainer, root.structurejs.BaseEvent, root.structurejs.TemplateFactory, root.structurejs.ComponentFactory, root.structurejs.jQuery, root.structurejs.$eventListener);
     }
-}(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery) {
+}(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery, $eventListener) {
+
     'use strict';
 
     /**
@@ -278,6 +279,9 @@
             // Use the data passed into the constructor first else use the arguments from create.
             type = this._type || type;
             params = this._params || params;
+            if (this.isCreated === true) {
+                throw new Error('[' + this.getQualifiedClassName() + '] You cannot call the create method manually. It is only called once automatically during the view lifecycle and should only be called once.');
+            }
             if (this.$element == null) {
                 var html = TemplateFactory.create(type, params);
                 if (html) {
@@ -307,16 +311,10 @@
             if (child._isReference === true && child.$element.length === 0) {
                 return this;
             }
-            if (child.isCreated === false) {
-                child.create(); // Render the item before adding to the DOM
-                child.isCreated = true;
-            }
-            this.addClientSideId(child);
             // If the child object is not a reference of a jQuery object in the DOM then append it.
             if (child._isReference === false) {
                 this.$element.append(child.$element);
             }
-            child.enable();
             this.onAddedToDom(child);
             return this;
         };
@@ -345,10 +343,18 @@
                 setTimeout(function() {
                     _this.onAddedToDom(child);
                 }, 100);
-            } else {
-                child.layout();
-                child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
+                return;
             }
+            child.width = child.$element.width();
+            child.height = child.$element.height();
+            if (child.isCreated === false) {
+                child.create();
+                child.isCreated = true;
+            }
+            this.addClientSideId(child);
+            child.enable();
+            child.layout();
+            child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
         };
         /**
          * @overridden DisplayObjectContainer.addChildAt
@@ -365,16 +371,10 @@
             if (index < 0 || index >= length) {
                 this.addChild(child);
             } else {
-                if (child.isCreated === false) {
-                    child.create(); // Render the item before adding to the DOM
-                    child.isCreated = true;
-                }
-                this.addClientSideId(child);
                 // Adds the child at a specific index but also will remove the child from another parent object if one exists.
                 _super.prototype.addChildAt.call(this, child, index);
                 // Adds the child before the a child already in the DOM.
                 jQuery(children.get(index)).before(child.$element);
-                child.enable();
                 this.onAddedToDom(child);
             }
             return this;

@@ -15,18 +15,6 @@
 
     'use strict';
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @class TextField
-     * @extends DisplayObject
-     * @module StructureJS
-     * @submodule view
-     * @requires Extend
-     * @requires DisplayObject
-     * @constructor
-     * @author Robert S. (www.codeBelt.com)
-     */
     var TextField = (function() {
 
         var _super = Extend(TextField, DisplayObject);
