@@ -1,3 +1,7 @@
+/*
+ UMD Stuff
+ @export NavigatorEvents
+ */
 class NavigatorEvents
 {
     /**

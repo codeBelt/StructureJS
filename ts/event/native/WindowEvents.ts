@@ -1,3 +1,7 @@
+/*
+ UMD Stuff
+ @export WindowEvents
+ */
 class WindowEvents
 {
     /**

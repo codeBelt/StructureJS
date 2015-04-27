@@ -1,4 +1,10 @@
-///<reference path='../BaseObject.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../BaseObject as BaseObject
+ @export BaseEvent
+ */
+import BaseObject = require('../BaseObject');
 
 /**
  * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.

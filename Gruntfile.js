@@ -274,7 +274,7 @@ module.exports = function(grunt) {
                     rootName: 'root.structurejs'
                 },
                 files: {
-                    'ts/ObjectManager.js': 'ts/ObjectManager.js'
+                    'ts/display/DOMElement.js': 'ts/display/DOMElement.js'
                 }
             }
         },
@@ -413,7 +413,8 @@ module.exports = function(grunt) {
      */
     grunt.registerTask('default', [
         'typescript',
-        'umd_wrapper'
+        'umd_wrapper',
+        'jsbeautifier'
     ]);
 
     grunt.registerTask('server', [

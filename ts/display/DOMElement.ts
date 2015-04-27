@@ -1,18 +1,19 @@
-///<reference path='../plugin/jquery.eventListener.ts'/>
-///<reference path='DisplayObjectContainer.ts'/>
-///<reference path='../event/BaseEvent.ts'/>
-///<reference path='../util/TemplateFactory.ts'/>
-///<reference path='../util/ComponentFactory.ts'/>
 /*
+ UMD Stuff
  @import ../util/Extend as Extend
  @import ../display/DisplayObjectContainer as DisplayObjectContainer
  @import ../event/BaseEvent as BaseEvent
  @import ../util/TemplateFactory as TemplateFactory
  @import ../util/ComponentFactory as ComponentFactory
- @import jquery as $
+ @import jquery as jQuery
  @import ../plugin/jquery.eventListener as $eventListener
  @export DOMElement
  */
+import DisplayObjectContainer = require('./DisplayObjectContainer');
+import BaseEvent = require('../event/BaseEvent');
+import TemplateFactory = require('../util/TemplateFactory');
+import ComponentFactory = require('../util/ComponentFactory');
+
 /**
  * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
  *
@@ -237,24 +238,24 @@ class DOMElement extends DisplayObjectContainer
      * @example
      *     // EXAMPLE 1: By default your view class will be a div element:
      *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this);
-         *
-         *          this._childInstance = new DOMElement();
-         *          this.addChild(this._childInstance);
-         *     }
+     *          _super.prototype.create.call(this);
+     *
+     *          this._childInstance = new DOMElement();
+     *          this.addChild(this._childInstance);
+     *     }
      *
      *     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
      *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, 'ul');
-         *     }
+     *          _super.prototype.create.call(this, 'ul');
+     *     }
      *
      *     // Then you could nest other elements inside this base view/element.
      *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
-         *
-         *          var li = new DOMElement('li', {text: 'Robert is cool'});
-         *          this.addChild(li);
-         *     }
+     *          _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
+     *
+     *          var li = new DOMElement('li', {text: 'Robert is cool'});
+     *          this.addChild(li);
+     *     }
      *
      *     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below
      *     // inline Handlebar template in your html file.
@@ -270,17 +271,17 @@ class DOMElement extends DisplayObjectContainer
      *     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate".
      *     // There is a second optional argument where you can pass data for the Handlebar template to use.
      *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });
-         *
-         *     }
+     *          _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });
+     *
+     *     }
      *
      *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.
      *     var HomeTemplate = require('hbs!templates/HomeTemplate');
      *
      *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
-         *
-         *     }
+     *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
+     *
+     *     }
      */
     public create(type:string = 'div', params:any = null):any
     {
@@ -620,14 +621,14 @@ class DOMElement extends DisplayObjectContainer
      * @chainable
      * @example
      *      ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this);
-         *
-         *          this.createComponents([
-         *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
-         *              {selector: '.js-pagination', componentClass: PaginationComponent},
-         *              {selector: '.js-carousel', componentClass: CarouselComponent}
-         *          ]);
-         *      };
+     *          _super.prototype.create.call(this);
+     *
+     *          this.createComponents([
+     *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
+     *              {selector: '.js-pagination', componentClass: PaginationComponent},
+     *              {selector: '.js-carousel', componentClass: CarouselComponent}
+     *          ]);
+     *      };
      */
     public createComponents(componentList:any[]):any
     {

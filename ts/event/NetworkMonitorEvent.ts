@@ -1,4 +1,10 @@
-///<reference path='BaseEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export NetworkMonitorEvent
+ */
+import BaseEvent = require('./BaseEvent');
 
 /**
  * The NetworkMonitorEvent...

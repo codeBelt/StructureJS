@@ -1,5 +1,12 @@
-///<reference path='../display/DOMElement.ts'/>
-///<reference path='../display/DisplayObjectContainer.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../display/DisplayObjectContainer as DisplayObjectContainer
+ @import ../display/DOMElement as DOMElement
+ @export ComponentFactory
+ */
+import DisplayObjectContainer = require('../display/DisplayObjectContainer');
+import DOMElement = require('../display/DOMElement');
 
 /**
  * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.

@@ -1,5 +1,12 @@
-///<reference path='../ObjectManager.ts'/>
-///<reference path='BaseEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../ObjectManager as ObjectManager
+ @import ./BaseEvent as BaseEvent
+ @export EventDispatcher
+ */
+import ObjectManager = require('../ObjectManager');
+import BaseEvent = require('./BaseEvent');
 
 /**
  * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.

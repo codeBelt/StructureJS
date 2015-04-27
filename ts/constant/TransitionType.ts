@@ -1,3 +1,7 @@
+/*
+ UMD Stuff
+ @export TransitionType
+ */
 /**
  * TODO: YUIDoc_comment
  *

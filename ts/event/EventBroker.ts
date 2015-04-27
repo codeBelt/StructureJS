@@ -1,5 +1,13 @@
-///<reference path='EventDispatcher.ts'/>
-///<reference path='BaseEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./EventDispatcher as EventDispatcher
+ @import ./BaseEvent as BaseEvent
+ @export EventBroker
+ */
+import EventDispatcher = require('./EventDispatcher');
+import BaseEvent = require('./BaseEvent');
+
 /**
  * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
  * Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.

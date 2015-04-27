@@ -1,4 +1,10 @@
-///<reference path='../event/EventDispatcher.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/EventDispatcher as EventDispatcher
+ @export DisplayObject
+ */
+import EventDispatcher = require('../event/EventDispatcher');
 
 /**
  * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -19,12 +25,10 @@ class DisplayObject extends EventDispatcher
      * The Stage of the display object.
      *
      * @property stage
-     * @type {Stage|CanvasElement}
+     * @type {any}
      * @public
      */
-    public stage:Stage
-|
-    CanvasElement = null;
+    public stage:any = null;
 
     /**
      * The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a <canvas> element.

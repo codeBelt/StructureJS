@@ -5,11 +5,11 @@
 ///<reference path='_declare/log.d.ts'/>
 
 /*
- @import util/Util as Util
+ UMD Stuff
+ @import ./util/Util as Util
  @export BaseObject
  */
-
-import Util = require('util/Util');
+import Util = require('./util/Util');
 
 /**
  * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.

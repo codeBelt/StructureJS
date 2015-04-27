@@ -1,10 +1,20 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../display/DOMElement.ts'/>
-///<reference path='../util/TransitionFactory.ts'/>
-///<reference path='../interface/ITransition.ts'/>
-///<reference path='../constant/TransitionType.ts'/>
-///<reference path='../event/TransitionManagerEvent.ts'/>
-///<reference path='../event/TweenEvent.ts'/>
+/*
+UMD stuff
+@import ../event/EventDispatcher as EventDispatcher
+@import ../display/DOMElement as DOMElement
+@import ../util/TransitionFactory as TransitionFactory
+@import ../interface/ITransition as ITransition
+@import ../constant/TransitionType as TransitionType
+@import ../event/TransitionManagerEvent as TransitionManagerEvent
+@import ../event/TweenEvent as TweenEvent
+*/
+import EventDispatcher = require('../event/EventDispatcher');
+import DOMElement = require('../display/DOMElement');
+import TransitionFactory = require('../util/TransitionFactory');
+import ITransition = require('../interface/ITransition');
+import TransitionType = require('../constant/TransitionType');
+import TransitionManagerEvent = require('../event/TransitionManagerEvent');
+import TweenEvent = require('../event/TweenEvent');
 
 /**
  * TODO: YUIDoc_comment

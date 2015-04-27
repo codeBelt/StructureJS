@@ -1,4 +1,10 @@
-///<reference path='BaseEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export TransitionManagerEvent
+ */
+import BaseEvent = require('./BaseEvent');
 
 /**
  * The TransitionManagerEvent...

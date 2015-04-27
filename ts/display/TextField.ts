@@ -1,9 +1,15 @@
-///<reference path='DisplayObject.ts'/>
-///<reference path='../util/NumberUtil.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./DisplayObject as DisplayObject
+ @import ../util/NumberUtil as NumberUtil
+ @export TextField
+ */
+import DisplayObject = require('./DisplayObject');
+import NumberUtil = require('../util/NumberUtil');
 
 class TextField extends DisplayObject
 {
-
     public text:string = '';
     public style:string = 'normal';
     public font:string = 'Verdana';

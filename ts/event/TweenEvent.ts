@@ -1,4 +1,10 @@
-///<reference path='BaseEvent.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export TweenEvent
+ */
+import BaseEvent = require('./BaseEvent');
 
 /**
  * TODO: YUIDoc_comment

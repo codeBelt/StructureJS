@@ -1,4 +1,12 @@
 ///<reference path='../util/StringUtil.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../util/StringUtil as StringUtil
+ @import jquery as jQuery
+ @export TemplateFactory
+ */
+import StringUtil = require('./StringUtil');
 
 /**
  * A helper class to provide a convenient and consistent way to render templates.

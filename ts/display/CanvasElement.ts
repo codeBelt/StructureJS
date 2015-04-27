@@ -1,8 +1,17 @@
-///<reference path='DOMElement.ts'/>
-///<reference path='DisplayObject.ts'/>
-///<reference path='DisplayObjectContainer.ts'/>
-///<reference path='Sprite.ts'/>
-///<reference path='../geom/Point.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./DisplayObjectContainer as DisplayObjectContainer
+ @import ./DOMElement as DOMElement
+ @import ./Sprite as Sprite
+ @import ../geom/Point as Point
+ @export CanvasElement
+ */
+import DisplayObjectContainer = require('./DisplayObjectContainer');
+import DOMElement = require('./DOMElement');
+import Sprite = require('./Sprite');
+import Point = require('./DisplayObjectContainer');
+import DisplayObjectContainer = require('../geom/Point');
 
 class CanvasElement extends DOMElement
 {
@@ -262,235 +271,152 @@ class CanvasElement extends DOMElement
         }
     }
 
-    public getMousePos(event:MouseEvent
-
-|
-    JQueryEventObject
-):
-    Point
-{
-    var
-    rect = this.canvas.getBoundingClientRect();
-
-    return
-    new
-
-    Point(event
-
-.
-    clientX
--
-    rect
-.
-    left
-,
-    event
-.
-    clientY
--
-    rect
-.
-    top
-);
-}
-
-public
-getObjectUnderPoint(x
-:
-number, y
-:
-number
-):
-DisplayObject
-{
-    var foundItem:DisplayObject = null;
-    var sprite:DisplayObject;
-
-    for (var i = this.numChildren - 1; i >= 0; i--)
+    public getMousePos(event:MouseEvent|JQueryEventObject):Point
     {
-        sprite = this.children[i];
-        if (sprite.visible === true && sprite.mouseEnabled === true)
+        var rect = this.canvas.getBoundingClientRect();
+
+        return new Point(event.clientX - rect.left, event.clientY - rect.top);
+    }
+
+    public getObjectUnderPoint(x:number, y:number):DisplayObject
+    {
+        var foundItem:DisplayObject = null;
+        var sprite:DisplayObject;
+
+        for (var i = this.numChildren - 1; i >= 0; i--)
         {
-            if (this.hitTest(sprite, x, y))
+            sprite = this.children[i];
+            if (sprite.visible === true && sprite.mouseEnabled === true)
             {
-                foundItem = sprite;
-                break;
-            }
-        }
-    }
-
-    return foundItem;
-}
-
-public
-getObjectsUnderPoint(x
-:
-number, y
-:
-number
-):
-Array<DisplayObject>
-{
-    var list:Array<DisplayObject> = [];
-    var sprite:DisplayObject;
-
-    for (var i = this.numChildren - 1; i >= 0; i--)
-    {
-        sprite = this.children[i];
-        if (this.hitTest(sprite, x, y))
-        {
-            list.push(sprite);
-        }
-    }
-    return list;
-}
-
-public
-hitTest(sprite
-:
-DisplayObject, mouseX
-:
-number, mouseY
-:
-number
-):
-boolean
-{
-    if (mouseX >= sprite.x && mouseX <= sprite.x + sprite.width && mouseY >= sprite.y && mouseY <= sprite.y + sprite.height)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-protected
-onPointerDown(event
-:
-MouseEvent | JQueryEventObject
-):
-void {
-    this._sendEvent(event);
-}
-
-protected
-onPointerUp(event
-:
-MouseEvent | JQueryEventObject
-):
-void {
-    this._sendEvent(event);
-}
-
-protected
-onPointerMove(event
-:
-MouseEvent | JQueryEventObject
-):
-void {
-    var displayObject
-:
-DisplayObject = this._sendEvent(event);
-
-if (displayObject != null && displayObject.useHandCursor === true && displayObject.visible === true)
-{
-    document.body.style.cursor = 'pointer';
-}
-else
-{
-    document.body.style.cursor = 'default';
-}
-}
-
-protected
-onPointerOut(event
-:
-MouseEvent | JQueryEventObject
-):
-void {
-    this._sendEvent(event);
-}
-
-private
-_sendEvent(event
-:
-MouseEvent | JQueryEventObject
-):
-DisplayObject
-{
-    var mousePos:Point = this.getMousePos(event);
-    var displayObject:DisplayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
-
-    if (displayObject === null)
-    {
-        event.bubbles = true;
-        event.target = <any>this;
-        event.currentTarget = <any>this;
-        this.dispatchEvent(event);
-    }
-    else if (
-        displayObject !== null &&
-        displayObject instanceof DisplayObjectContainer &&
-        (<DisplayObjectContainer>displayObject).mouseChildren === true
-    )
-    {
-        event.currentTarget = <any>displayObject;
-
-        displayObject = this.getActualClickedOnChild(<DisplayObjectContainer>displayObject, mousePos.x, mousePos.y);
-        event.bubbles = true;
-        event.target = <any>displayObject;
-
-        displayObject.dispatchEvent(event);
-    }
-    else
-    {
-        event.bubbles = true;
-        event.target = <any>displayObject;
-        event.currentTarget = <any>this;
-
-        displayObject.dispatchEvent(event);
-    }
-
-    return displayObject;
-}
-
-protected
-getActualClickedOnChild(displayObject
-:
-DisplayObjectContainer, x
-:
-number, y
-:
-number
-):
-any
-{
-    var item;
-    var newX:number;
-    var newY:number;
-    if (displayObject.numChildren > 0)
-    {
-        for (var i = displayObject.numChildren - 1; i >= 0; i--)
-        {
-            item = displayObject.children[i];
-            if (item.visible === true)
-            {
-                newX = x - item.parent.x;
-                newY = y - item.parent.y;
-                if (this.hitTest(item, newX, newY))
+                if (this.hitTest(sprite, x, y))
                 {
-                    return this.getActualClickedOnChild(item, newX, newY);
+                    foundItem = sprite;
+                    break;
                 }
             }
         }
+
+        return foundItem;
     }
-    else
+
+    public getObjectsUnderPoint(x:number, y:number):Array<DisplayObject>
     {
+        var list:Array<DisplayObject> = [];
+        var sprite:DisplayObject;
+
+        for (var i = this.numChildren - 1; i >= 0; i--)
+        {
+            sprite = this.children[i];
+            if (this.hitTest(sprite, x, y))
+            {
+                list.push(sprite);
+            }
+        }
+        return list;
+    }
+
+    public hitTest(sprite:DisplayObject, mouseX:number, mouseY:number):boolean
+    {
+        if (mouseX >= sprite.x && mouseX <= sprite.x + sprite.width && mouseY >= sprite.y && mouseY <= sprite.y + sprite.height)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    protected onPointerDown(event:MouseEvent|JQueryEventObject):void
+    {
+        this._sendEvent(event);
+    }
+
+    protected onPointerUp(event:MouseEvent|JQueryEventObject):void
+    {
+        this._sendEvent(event);
+    }
+
+    protected onPointerMove(event:MouseEvent|JQueryEventObject):void
+    {
+        var displayObject:DisplayObject = this._sendEvent(event);
+
+        if (displayObject != null && displayObject.useHandCursor === true && displayObject.visible === true)
+        {
+            document.body.style.cursor = 'pointer';
+        }
+        else
+        {
+            document.body.style.cursor = 'default';
+        }
+    }
+
+    protected onPointerOut(event:MouseEvent|JQueryEventObject):void
+    {
+        this._sendEvent(event);
+    }
+
+
+    protected _sendEvent(event:MouseEvent|JQueryEventObject):DisplayObject
+    {
+        var mousePos:Point = this.getMousePos(event);
+        var displayObject:DisplayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
+
+        if (displayObject === null)
+        {
+            event.bubbles = true;
+            event.target = <any>this;
+            event.currentTarget = <any>this;
+            this.dispatchEvent(event);
+        }
+        else if (displayObject !== null && displayObject instanceof DisplayObjectContainer && (<DisplayObjectContainer>displayObject).mouseChildren === true)
+        {
+            event.currentTarget = <any>displayObject;
+
+            displayObject = this.getActualClickedOnChild(<DisplayObjectContainer>displayObject, mousePos.x, mousePos.y);
+            event.bubbles = true;
+            event.target = <any>displayObject;
+
+            displayObject.dispatchEvent(event);
+        }
+        else
+        {
+            event.bubbles = true;
+            event.target = <any>displayObject;
+            event.currentTarget = <any>this;
+
+            displayObject.dispatchEvent(event);
+        }
+
         return displayObject;
     }
-}
+
+    protected getActualClickedOnChild(displayObject:DisplayObjectContainer, x:number, y:number):any
+    {
+        var item;
+        var newX:number;
+        var newY:number;
+        if (displayObject.numChildren > 0)
+        {
+            for (var i = displayObject.numChildren - 1; i >= 0; i--)
+            {
+                item = displayObject.children[i];
+                if (item.visible === true)
+                {
+                    newX = x - item.parent.x;
+                    newY = y - item.parent.y;
+                    if (this.hitTest(item, newX, newY))
+                    {
+                        return this.getActualClickedOnChild(item, newX, newY);
+                    }
+                }
+            }
+        }
+        else
+        {
+            return displayObject;
+        }
+    }
 
 }
 

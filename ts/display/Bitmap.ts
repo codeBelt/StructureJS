@@ -1,5 +1,12 @@
-///<reference path='DisplayObject.ts'/>
-///<reference path='../util/MathUtil.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./DisplayObject as DisplayObject
+ @import ../util/MathUtil as MathUtil
+ @export CanvasElement
+ */
+import DisplayObject = require('./DisplayObject');
+import MathUtil = require('../util/MathUtil');
 
 class Bitmap extends DisplayObject
 {

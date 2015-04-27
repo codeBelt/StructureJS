@@ -1,4 +1,10 @@
-///<reference path='./DisplayObject.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./DisplayObject as DisplayObject
+ @export DisplayObjectContainer
+ */
+import DisplayObject = require('./DisplayObject');
 
 /**
  * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.

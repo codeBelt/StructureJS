@@ -1,4 +1,7 @@
 /*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseObject as BaseObject
  @export ObjectManager
  */
 import BaseObject = require('BaseObject');

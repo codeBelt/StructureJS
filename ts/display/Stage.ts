@@ -1,4 +1,11 @@
-///<reference path='DOMElement.ts'/>
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./DOMElement as DOMElement
+ @import jquery as jQuery
+ @export Stage
+ */
+import DOMElement = require('./DOMElement');
 
 /**
  * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
