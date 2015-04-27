@@ -519,8 +519,8 @@ class Collection extends EventDispatcher
      * @return {Array} Returns the list of models in the collection.
      * @example
      *      var sortByDate = function(a, b){
-         *          return new Date(a.date) - new Date(b.date)
-         *      }
+     *          return new Date(a.date) - new Date(b.date)
+     *      }
      *
      *      collection.sort(sortByDate);
      */
@@ -529,6 +529,25 @@ class Collection extends EventDispatcher
         this.models.sort(sortFunction);
 
         return this.models;
+    }
+
+    /**
+     * The filter method creates a new array with all elements that pass the test implemented by the provided function.
+     *
+     * @method filter
+     * @param filterFunction {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+     * @public
+     * @return {Array} Returns the list of models in the collection.
+     * @example
+     *      var isOldEnough = function(model){
+     *          return model.age >= 21;
+     *      }
+     *
+     *      var list = collection.filter(isOldEnough);
+     */
+    public filter(filterFunction:Function):Array<any>
+    {
+        return this.models.filter(filterFunction);
     }
 
     /**
