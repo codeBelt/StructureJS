@@ -1,4 +1,3 @@
-
 /**
  * TODO: YUIDoc_comment
  *
@@ -7,33 +6,32 @@
  * @submodule interface
  * @interface
  */
-module StructureJS
+interface IValueObject
 {
-    export interface IValueObject
-    {
-        /**
-         * @method clone
-         */
-        clone():Object;
+    /**
+     * @method clone
+     */
+    clone():Object;
 
-        /**
-         * @method toJSON
-         */
-        toJSON():any;
+    /**
+     * @method toJSON
+     */
+    toJSON():any;
 
-        /**
-         * @method toJSONString
-         */
-        toJSONString():string
+    /**
+     * @method toJSONString
+     */
+    toJSONString():string
 
-        /**
-         * @method fromJSON
-         */
-        fromJSON(json:Object):any;
+    /**
+     * @method fromJSON
+     */
+    fromJSON(json:Object):any;
 
-        /**
-         * @method destroy
-         */
-        destroy():void;
-    }
+    /**
+     * @method destroy
+     */
+    destroy():void;
 }
+
+export = IValueObject;

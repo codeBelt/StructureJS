@@ -69,178 +69,177 @@
  *          return CarVO;
  *      })();
  */
-module StructureJS
+class ValueObject extends BaseObject implements IValueObject
 {
-    export class ValueObject extends BaseObject implements IValueObject
+    constructor()
     {
-        constructor()
+        super();
+    }
+
+    /**
+     * Provide a way to update the value object.
+     *
+     * @method update
+     * @param data {any}
+     * @public
+     * @example
+     *     // Example of updating some of the data:
+     *     carVO.update({ year: 2015, allWheel: true});
+     *
+     *     // Of course you can also do it the following way:
+     *     carVO.year = 2015;
+     *     carVO.allWheel = false;
+     */
+    public update(data:any):any
+    {
+        var propertyData:any;
+
+        for (var propertyKey in this)
         {
-            super();
+            // If this class has a property that matches a property on the data being passed in then set it.
+            // Also don't set the cid data value because it is automatically set in the constructor and
+            // we do want it to be overridden when the clone method has been called.
+            if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid')
+            {
+                // If the data passed in does not have a property that matches a property on the value object then
+                // use the default value/data that was assigned to the property.
+                // Else use the data that was passed in.
+                propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
+
+                this._setData(propertyKey, propertyData);
+            }
         }
 
-        /**
-         * Provide a way to update the value object.
-         *
-         * @method update
-         * @param data {any}
-         * @public
-         * @example
-         *     // Example of updating some of the data:
-         *     carVO.update({ year: 2015, allWheel: true});
-         *
-         *     // Of course you can also do it the following way:
-         *     carVO.year = 2015;
-         *     carVO.allWheel = false;
-         */
-        public update(data:any):any
+        return this;
+    }
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method _setData
+     * @param key
+     * @param data
+     * @private
+     */
+    private _setData(key:any, data:any):void
+    {
+        if (data instanceof Array)
         {
-            var propertyData:any;
+            var temp:Array<any> = [];
+            var len:number = data.length;
 
-            for (var propertyKey in this)
+            if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false)
             {
-                // If this class has a property that matches a property on the data being passed in then set it.
-                // Also don't set the cid data value because it is automatically set in the constructor and
-                // we do want it to be overridden when the clone method has been called.
-                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid')
+                var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                for (var i:number = 0; i < len; i++)
                 {
-                    // If the data passed in does not have a property that matches a property on the value object then
-                    // use the default value/data that was assigned to the property.
-                    // Else use the data that was passed in.
-                    propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
-
-                    this._setData(propertyKey, propertyData);
+                    temp[i] = this._updateData(valueObjectOrOther, data[i]);
                 }
             }
 
-            return this;
+            this[key] = temp;
         }
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @method _setData
-         * @param key
-         * @param data
-         * @private
-         */
-        private _setData(key:any, data:any):void
+        else
         {
-            if (data instanceof Array)
-            {
-                var temp:Array<any> = [];
-                var len:number = data.length;
-
-                if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false)
-                {
-                    var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
-                    for (var i:number = 0; i < len; i++)
-                    {
-                        temp[i] = this._updateData(valueObjectOrOther, data[i]);
-                    }
-                }
-
-                this[key] = temp;
-            }
-            else
-            {
-                this[key] = this._updateData(this[key], data);
-            }
-        }
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @method _updateData
-         * @param keyValue
-         * @param data
-         * @private
-         */
-        private _updateData(keyValue:any, data:any):any
-        {
-            if (keyValue instanceof ValueObject.constructor)
-            {
-                // If the property is an instance of a ValueObject class and has not been created yet.
-                // Then instantiate it and pass in the data to the constructor.
-                keyValue = new keyValue(data);
-            }
-            else if (keyValue instanceof ValueObject)
-            {
-                // If property is an instance of a ValueObject class and has already been created.
-                // Then call the update method and pass in the data.
-                keyValue.update(data);
-            }
-            else
-            {
-                // Else just assign the data to the property.
-                keyValue = data;
-            }
-
-            return keyValue;
-        }
-
-        /**
-         * Converts the value object data into a JSON object and deletes the cid property.
-         *
-         * @method toJSON
-         * @returns {ValueObject}
-         * @public
-         * @example
-         *     var obj = carVO.toJSON();
-         */
-        public toJSON():ValueObject
-        {
-            var clone:any = Util.clone(this);
-            return Util.deletePropertyFromObject(clone, ['cid']);
-        }
-
-        /**
-         * Converts a value object to a JSON string,
-         *
-         * @method toJSONString
-         * @returns {string}
-         * @public
-         * @example
-         *     var str = carVO.toJSONString();
-         */
-        public toJSONString():string
-        {
-            return JSON.stringify(this.toJSON());
-        }
-
-        /**
-         * Converts the string json data into an Object and calls the {{#crossLink "ValueObject/update:method"}}{{/crossLink}} method with the converted Object.
-         *
-         * @method fromJSON
-         * @param json {string}
-         * @public
-         * @example
-         *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
-         *      var carVO = new CarVO();
-         *      carVO.fromJSON(str);
-         */
-        public fromJSON(json:string):any
-        {
-            var parsedData:any = JSON.parse(json);
-
-            this.update(parsedData);
-
-            return this;
-        }
-
-        /**
-         * Create a clone/copy of the value object.
-         *
-         * @method clone
-         * @returns {ValueObject}
-         * @public
-         * @example
-         *     var clone = carVO.clone();
-         */
-        public clone():ValueObject
-        {
-            var clonedValueObject:ValueObject = new (<any>this).constructor(this);
-
-            return clonedValueObject;
+            this[key] = this._updateData(this[key], data);
         }
     }
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method _updateData
+     * @param keyValue
+     * @param data
+     * @private
+     */
+    private _updateData(keyValue:any, data:any):any
+    {
+        if (keyValue instanceof ValueObject.constructor)
+        {
+            // If the property is an instance of a ValueObject class and has not been created yet.
+            // Then instantiate it and pass in the data to the constructor.
+            keyValue = new keyValue(data);
+        }
+        else if (keyValue instanceof ValueObject)
+        {
+            // If property is an instance of a ValueObject class and has already been created.
+            // Then call the update method and pass in the data.
+            keyValue.update(data);
+        }
+        else
+        {
+            // Else just assign the data to the property.
+            keyValue = data;
+        }
+
+        return keyValue;
+    }
+
+    /**
+     * Converts the value object data into a JSON object and deletes the cid property.
+     *
+     * @method toJSON
+     * @returns {ValueObject}
+     * @public
+     * @example
+     *     var obj = carVO.toJSON();
+     */
+    public toJSON():ValueObject
+    {
+        var clone:any = Util.clone(this);
+        return Util.deletePropertyFromObject(clone, ['cid']);
+    }
+
+    /**
+     * Converts a value object to a JSON string,
+     *
+     * @method toJSONString
+     * @returns {string}
+     * @public
+     * @example
+     *     var str = carVO.toJSONString();
+     */
+    public toJSONString():string
+    {
+        return JSON.stringify(this.toJSON());
+    }
+
+    /**
+     * Converts the string json data into an Object and calls the {{#crossLink "ValueObject/update:method"}}{{/crossLink}} method with the converted Object.
+     *
+     * @method fromJSON
+     * @param json {string}
+     * @public
+     * @example
+     *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
+     *      var carVO = new CarVO();
+     *      carVO.fromJSON(str);
+     */
+    public fromJSON(json:string):any
+    {
+        var parsedData:any = JSON.parse(json);
+
+        this.update(parsedData);
+
+        return this;
+    }
+
+    /**
+     * Create a clone/copy of the value object.
+     *
+     * @method clone
+     * @returns {ValueObject}
+     * @public
+     * @example
+     *     var clone = carVO.clone();
+     */
+    public clone():ValueObject
+    {
+        var clonedValueObject:ValueObject = new (<any>this).constructor(this);
+
+        return clonedValueObject;
+    }
 }
+
+export = ValueObject;

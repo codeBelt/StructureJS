@@ -252,7 +252,7 @@ module.exports = function(grunt) {
          */
         typescript: {
             main: {
-                src: ['<%= BASE_PATH %>' + 'ts/ObjectManager.ts'],
+                src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
                 outdir: '<%= BASE_PATH %>js',
                 options: {
                     target: 'es3', //or es5

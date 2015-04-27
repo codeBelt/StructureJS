@@ -1,4 +1,3 @@
-
 /**
  * TODO: YUIDoc_comment
  *
@@ -7,24 +6,23 @@
  * @submodule interface
  * @interface
  */
-module StructureJS
+interface ICore
 {
-    export interface ICore
-    {
-        /**
-         * @property cid
-         * @readOnly
-         */
-        cid:number;
+    /**
+     * @property cid
+     * @readOnly
+     */
+    cid:number;
 
-        /**
-         * @method getQualifiedClassName
-         */
-        getQualifiedClassName():string;
+    /**
+     * @method getQualifiedClassName
+     */
+    getQualifiedClassName():string;
 
-        /**
-         * @method destroy
-         */
-        destroy():void
-    }
+    /**
+     * @method destroy
+     */
+    destroy():void
 }
+
+export = ICore;

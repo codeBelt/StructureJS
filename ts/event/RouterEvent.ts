@@ -18,78 +18,77 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class RouterEvent extends BaseEvent
 {
-    export class RouterEvent extends BaseEvent
+    /**
+     * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
+     *
+     * @event CHANGE
+     * @type {string}
+     * @static
+     */
+    public static CHANGE:string = 'RouterEvent.change';
+
+    /**
+     * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+     *
+     * @property route
+     * @type {string}
+     * @public
+     */
+    public route:string = null;
+
+    /**
+     * The new URL to which the window is navigating.
+     *
+     * @property newURL
+     * @type {string}
+     * @public
+     */
+    public newURL:string = null;
+
+    /**
+     * The previous URL from which the window was navigated.
+     *
+     * @property oldURL
+     * @type {string}
+     * @public
+     */
+    public oldURL:string = null;
+
+    /**
+     * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
+     *
+     * @property routePattern
+     * @type {string}
+     * @public
+     */
+    public routePattern:string = null;
+
+    /**
+     * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
+     * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+     *
+     * @property params
+     * @type {string}
+     * @public
+     */
+    public params:string[] = [];
+
+    /**
+     * A query object the represents the query string in the hash url.
+     *
+     * @property query
+     * @type {any}
+     * @public
+     */
+    public query:any = null;
+
+    constructor(type:string = RouterEvent.CHANGE, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
-         *
-         * @event CHANGE
-         * @type {string}
-         * @static
-         */
-        public static CHANGE:string = 'RouterEvent.change';
-
-        /**
-         * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
-         *
-         * @property route
-         * @type {string}
-         * @public
-         */
-        public route:string = null;
-
-        /**
-         * The new URL to which the window is navigating.
-         *
-         * @property newURL
-         * @type {string}
-         * @public
-         */
-        public newURL:string = null;
-
-        /**
-         * The previous URL from which the window was navigated.
-         *
-         * @property oldURL
-         * @type {string}
-         * @public
-         */
-        public oldURL:string = null;
-
-        /**
-         * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
-         *
-         * @property routePattern
-         * @type {string}
-         * @public
-         */
-        public routePattern:string = null;
-
-        /**
-         * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
-         * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
-         *
-         * @property params
-         * @type {string}
-         * @public
-         */
-        public params:string[] = [];
-
-        /**
-         * A query object the represents the query string in the hash url.
-         *
-         * @property query
-         * @type {any}
-         * @public
-         */
-        public query:any = null;
-
-        constructor(type:string = RouterEvent.CHANGE, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = RouterEvent;

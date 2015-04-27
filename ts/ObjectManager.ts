@@ -1,6 +1,4 @@
 /*
- @import jquery as $
- @import jquery.ui
  @export ObjectManager
  */
 import BaseObject = require('BaseObject');
@@ -69,13 +67,13 @@ class ObjectManager extends BaseObject
      * @chainable
      * @example
      *      ClassName.prototype.disable = function() {
-         *          if (this.isEnabled === false) { return this; }
-         *
-         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *          this._childInstance.disable();
-         *
-         *          return _super.prototype.disable.call(this);
-         *      }
+     *          if (this.isEnabled === false) { return this; }
+     *
+     *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *          this._childInstance.disable();
+     *
+     *          return _super.prototype.disable.call(this);
+     *      }
      */
     public disable():any
     {

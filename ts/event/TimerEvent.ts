@@ -18,32 +18,31 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class TimerEvent extends BaseEvent
 {
-    export class TimerEvent extends BaseEvent
+    /**
+     * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
+     *
+     * @event TIMER
+     * @type {string}
+     * @static
+     */
+    public static TIMER:string = 'TimerEvent.timer';
+
+    /**
+     * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
+     *
+     * @event TIMER_COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static TIMER_COMPLETE:string = 'TimerEvent.timerComplete';
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
-         *
-         * @event TIMER
-         * @type {string}
-         * @static
-         */
-        public static TIMER:string = 'TimerEvent.timer';
-
-        /**
-         * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
-         *
-         * @event TIMER_COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static TIMER_COMPLETE:string = 'TimerEvent.timerComplete';
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = TimerEvent;

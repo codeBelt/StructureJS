@@ -16,41 +16,40 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class TransitionManagerEvent extends BaseEvent
 {
-    export class TransitionManagerEvent extends BaseEvent
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event TRANSITION
+     * @type {string}
+     * @static
+     */
+    public static TRANSITION:string = 'TransitionManagerEvent.transition';
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event TRANSITION_START
+     * @type {string}
+     * @static
+     */
+    public static TRANSITION_START:string = 'TransitionManagerEvent.transitionStart';
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event TRANSITION_COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static TRANSITION_COMPLETE:string = 'TransitionManagerEvent.transitionComplete';
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event TRANSITION
-         * @type {string}
-         * @static
-         */
-        public static TRANSITION:string = 'TransitionManagerEvent.transition';
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event TRANSITION_START
-         * @type {string}
-         * @static
-         */
-        public static TRANSITION_START:string = 'TransitionManagerEvent.transitionStart';
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event TRANSITION_COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static TRANSITION_COMPLETE:string = 'TransitionManagerEvent.transitionComplete';
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = TransitionManagerEvent;

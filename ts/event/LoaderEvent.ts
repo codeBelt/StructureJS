@@ -17,41 +17,40 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class LoaderEvent extends BaseEvent
 {
-    export class LoaderEvent extends BaseEvent
+    /**
+     * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static COMPLETE:string = 'LoaderEvent.complete';
+
+    /**
+     * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event LOAD_COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static LOAD_COMPLETE:string = 'LoaderEvent.loadComplete';
+
+    /**
+     * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    public static ERROR:string = 'LoaderEvent.error';
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static COMPLETE:string = 'LoaderEvent.complete';
-
-        /**
-         * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event LOAD_COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static LOAD_COMPLETE:string = 'LoaderEvent.loadComplete';
-
-        /**
-         * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        public static ERROR:string = 'LoaderEvent.error';
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = LoaderEvent;

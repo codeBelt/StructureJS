@@ -16,41 +16,40 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class TweenEvent extends BaseEvent
 {
-    export class TweenEvent extends BaseEvent
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static START:string = "TweenEvent.start";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static UPDATE:string = "TweenEvent.update";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static COMPLETE:string = "TweenEvent.complete";
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, tweenObject:any = null)
     {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static START:string = "TweenEvent.start";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static UPDATE:string = "TweenEvent.update";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static COMPLETE:string = "TweenEvent.complete";
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, tweenObject:any = null)
-        {
-            super(type, bubbles, cancelable, tweenObject);
-        }
-
+        super(type, bubbles, cancelable, tweenObject);
     }
+
 }
+
+export = TweenEvent;

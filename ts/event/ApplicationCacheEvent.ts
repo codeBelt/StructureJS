@@ -18,94 +18,93 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class ApplicationCacheEvent extends BaseEvent
 {
-    export class ApplicationCacheEvent extends BaseEvent
+    /**
+     * The browser is checking for an update, or is attempting to download
+     * the cache manifest for the first time. This is always the first event
+     * in the sequence.
+     *
+     * @event CHECKING
+     * @type {string}
+     * @static
+     */
+    public static CHECKING:string = 'checking';
+
+    /**
+     * The cache manifest hadn't changed.
+     *
+     * @event NO_UPDATE
+     * @type {string}
+     * @static
+     */
+    public static NO_UPDATE:string = 'noupdate';
+
+    /**
+     * The browser has started to download the cache manifest, either for the
+     * first time or because changes have been detected.
+     *
+     * @event DOWNLOADING
+     * @type {string}
+     * @static
+     */
+    public static DOWNLOADING:string = 'downloading';
+
+    /**
+     * The browser had downloaded and cached an asset. This is fired once for
+     * every file that is downloaded (including the current page which is cached implicitly).
+     *
+     * @event PROGRESS
+     * @type {string}
+     * @static
+     */
+    public static PROGRESS:string = 'progress';
+
+    /**
+     * The resources listed in the manifest have been fully downloaded, and the application is
+     * now cached locally.
+     *
+     * @event CACHED
+     * @type {string}
+     * @static
+     */
+    public static CACHED:string = 'cached';
+
+    /**
+     * The resources listed in the manifest have been newly re-downloaded, and the script can
+     * use swapCache() to switch to the new cache.
+     *
+     * @event UPDATE_READY
+     * @type {string}
+     * @static
+     */
+    public static UPDATE_READY:string = 'updateready';
+
+    /**
+     * The cache manifest file could not be found, indicating that the cache is no longer needed.
+     * The application cache is being deleted.
+     *
+     * @event OBSOLETE
+     * @type {string}
+     * @static
+     */
+    public static OBSOLETE:string = 'obsolete';
+
+    /**
+     * An error occurred at some point - this could be caused by a number of things. This will
+     * always be the last event in the sequence.
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    public static ERROR:string = 'error';
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * The browser is checking for an update, or is attempting to download
-         * the cache manifest for the first time. This is always the first event
-         * in the sequence.
-         *
-         * @event CHECKING
-         * @type {string}
-         * @static
-         */
-        public static CHECKING:string = 'checking';
-
-        /**
-         * The cache manifest hadn't changed.
-         *
-         * @event NO_UPDATE
-         * @type {string}
-         * @static
-         */
-        public static NO_UPDATE:string = 'noupdate';
-
-        /**
-         * The browser has started to download the cache manifest, either for the
-         * first time or because changes have been detected.
-         *
-         * @event DOWNLOADING
-         * @type {string}
-         * @static
-         */
-        public static DOWNLOADING:string = 'downloading';
-
-        /**
-         * The browser had downloaded and cached an asset. This is fired once for
-         * every file that is downloaded (including the current page which is cached implicitly).
-         *
-         * @event PROGRESS
-         * @type {string}
-         * @static
-         */
-        public static PROGRESS:string = 'progress';
-
-        /**
-         * The resources listed in the manifest have been fully downloaded, and the application is
-         * now cached locally.
-         *
-         * @event CACHED
-         * @type {string}
-         * @static
-         */
-        public static CACHED:string = 'cached';
-
-        /**
-         * The resources listed in the manifest have been newly re-downloaded, and the script can
-         * use swapCache() to switch to the new cache.
-         *
-         * @event UPDATE_READY
-         * @type {string}
-         * @static
-         */
-        public static UPDATE_READY:string = 'updateready';
-
-        /**
-         * The cache manifest file could not be found, indicating that the cache is no longer needed.
-         * The application cache is being deleted.
-         *
-         * @event OBSOLETE
-         * @type {string}
-         * @static
-         */
-        public static OBSOLETE:string = 'obsolete';
-
-        /**
-         * An error occurred at some point - this could be caused by a number of things. This will
-         * always be the last event in the sequence.
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        public static ERROR:string = 'error';
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = ApplicationCacheEvent;

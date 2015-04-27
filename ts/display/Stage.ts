@@ -75,45 +75,44 @@
  *      app.appendTo('body');
  *
  */
-module StructureJS
+class Stage extends DOMElement
 {
-    export class Stage extends DOMElement
+    constructor()
     {
-        constructor()
+        super();
+    }
+
+    /**
+     * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
+     *
+     * @method appendTo
+     * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+     * @param [enabled=true] {boolean} Sets the enabled state of the object.
+     * @chainable
+     */
+    public appendTo(type:any, enabled:boolean = true):any
+    {
+        this.$element = (type instanceof jQuery) ? type : jQuery(type);
+        this.$element.attr('data-cid', this.cid);
+
+        if (this.isCreated === false)
         {
-            super();
+            this.create();
+            this.isCreated = true;
+            this.layout();
         }
 
-        /**
-         * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
-         *
-         * @method appendTo
-         * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
-         * @param [enabled=true] {boolean} Sets the enabled state of the object.
-         * @chainable
-         */
-        public appendTo(type:any, enabled:boolean = true):any
+        if (enabled === false)
         {
-            this.$element = (type instanceof jQuery) ? type : jQuery(type);
-            this.$element.attr('data-cid', this.cid);
-
-            if (this.isCreated === false)
-            {
-                this.create();
-                this.isCreated = true;
-                this.layout();
-            }
-
-            if (enabled === false)
-            {
-                this.disable();
-            }
-            else
-            {
-                this.enable();
-            }
-
-            return this;
+            this.disable();
         }
+        else
+        {
+            this.enable();
+        }
+
+        return this;
     }
 }
+
+export = Stage;

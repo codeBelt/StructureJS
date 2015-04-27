@@ -1,4 +1,3 @@
-
 /**
  * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
  *
@@ -65,103 +64,103 @@
  *     var route = new Route('/about/*', this.method4, this);
  *
  */
-module StructureJS
+class Route
 {
-    export class Route
+    /**
+     * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
+     *
+     * @property routePattern
+     * @type String
+     * @public
+     */
+    public routePattern = '';
+
+    /**
+     * The regex representation for the routePattern that was passed into the constructor.
+     *
+     * @property regex
+     * @type RegExp
+     * @public
+     * @readOnly
+     */
+    public regex:RegExp = null;
+
+    /**
+     * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+     *
+     * @property callback
+     * @type {Function}
+     * @public
+     */
+    public callback:Function = null;
+
+    /**
+     * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+     *
+     * @property callbackScope
+     * @type {any}
+     * @public
+     */
+    public callbackScope:any = null;
+
+    constructor(routePattern:string, callback:Function, scope:any)
     {
-        /**
-         * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
-         *
-         * @property routePattern
-         * @type String
-         * @public
-         */
-        public routePattern = '';
-
-        /**
-         * The regex representation for the routePattern that was passed into the constructor.
-         *
-         * @property regex
-         * @type RegExp
-         * @public
-         * @readOnly
-         */
-        public regex:RegExp = null;
-
-        /**
-         * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-         *
-         * @property callback
-         * @type {Function}
-         * @public
-         */
-        public callback:Function = null;
-
-        /**
-         * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-         *
-         * @property callbackScope
-         * @type {any}
-         * @public
-         */
-        public callbackScope:any = null;
-
-        constructor(routePattern:string, callback:Function, scope:any)
-        {
-            this.routePattern = routePattern;
-            this.regex = this.routePatternToRegexp(routePattern);
-            this.callback = callback;
-            this.callbackScope = scope;
-        }
-
-        /**
-         * Converts the routePattern that was passed into the constructor to a regexp object.
-         *
-         * @method routePatternToRegexp
-         * @param {String} routePattern
-         * @returns {RegExp}
-         * @private
-         */
-        private routePatternToRegexp(routePattern):RegExp
-        {
-            var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
-            var findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
-            var findRequiredBrackets:RegExp = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
-            var optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
-            var optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
-
-            // Remove first and last forward slash.
-            routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
-
-            // Convert the wild card * be a regex ?(.*) to select all.
-            routePattern = routePattern.replace('*', '?(.*)');
-
-            // Make any :alphanumeric: optional
-            routePattern = routePattern.replace(findOptionalColons, '?([^/]*)');
-
-            // Make any {alphanumeric} required
-            routePattern = routePattern.replace(findRequiredBrackets, '([^/]+)');
-
-            return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, 'i');
-        }
-
-        /**
-         * Determine if a route matches a routePattern.
-         *
-         * @method match
-         * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
-         * @returns {Array}
-         * @example
-         *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
-         *     console.log( route.match('/games/asteroids/2/') );
-         */
-        public match(route):any[]
-        {
-            // Remove the query string before matching against the route pattern.
-            var routeWithoutQueryString:string = route.replace(/\?.*/,'');
-
-            return routeWithoutQueryString.match(this.regex);
-        }
-
+        this.routePattern = routePattern;
+        this.regex = this.routePatternToRegexp(routePattern);
+        this.callback = callback;
+        this.callbackScope = scope;
     }
+
+    /**
+     * Converts the routePattern that was passed into the constructor to a regexp object.
+     *
+     * @method routePatternToRegexp
+     * @param {String} routePattern
+     * @returns {RegExp}
+     * @private
+     */
+    private routePatternToRegexp(routePattern):RegExp
+    {
+        var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
+        var findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
+        var findRequiredBrackets:RegExp = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+        var optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
+        var optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
+
+        // Remove first and last forward slash.
+        routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
+
+        // Convert the wild card * be a regex ?(.*) to select all.
+        routePattern = routePattern.replace('*', '?(.*)');
+
+        // Make any :alphanumeric: optional
+        routePattern = routePattern.replace(findOptionalColons, '?([^/]*)');
+
+        // Make any {alphanumeric} required
+        routePattern = routePattern.replace(findRequiredBrackets, '([^/]+)');
+
+        return new RegExp(optionalFirstCharSlash + routePattern + optionalLastCharSlash, 'i');
+    }
+
+    /**
+     * Determine if a route matches a routePattern.
+     *
+     * @method match
+     * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
+     * @returns {Array}
+     * @example
+     *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
+     *     console.log( route.match('/games/asteroids/2/') );
+     */
+    public match(route):any[]
+    {
+        // Remove the query string before matching against the route pattern.
+        var routeWithoutQueryString:string = route.replace(/\?.*/, '');
+
+        return routeWithoutQueryString.match(this.regex);
+    }
+
 }
+
+export = Route;
+

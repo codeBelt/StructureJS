@@ -9,11 +9,10 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+interface ITransition extends IEventDispatcher
 {
-    export interface ITransition extends IEventDispatcher
-    {
-        createTransition(transitionType:string, sectionStage:DisplayObjectContainer, currentView:DOMElement, nextView:DOMElement, duration?:number):ITransition;
-        complete():any;
-    }
+    createTransition(transitionType:string, sectionStage:DisplayObjectContainer, currentView:DOMElement, nextView:DOMElement, duration?:number):ITransition;
+    complete():any;
 }
+
+export = ITransition;

@@ -1,35 +1,34 @@
 ///<reference path='BaseRequest'/>
 
-module StructureJS
+class JsonRequest extends BaseRequest
 {
-    export class JsonRequest extends BaseRequest
+    constructor(baseUrl:string)
     {
-        constructor(baseUrl:string)
-        {
-            super(baseUrl);
+        super(baseUrl);
 
-            this.configureRequest();
-        }
+        this.configureRequest();
+    }
 
-        /**
-         * @overridden BaseRequest.parseData
-         */
-        public parseData():void
-        {
-            super.parseData();
+    /**
+     * @overridden BaseRequest.parseData
+     */
+    public parseData():void
+    {
+        super.parseData();
 
-            this.data = JSON.parse(this.data);
-        }
+        this.data = JSON.parse(this.data);
+    }
 
-        /**
-         * @overridden BaseRequest.configureRequest
-         */
-        public configureRequest():URLRequest
-        {
-            var urlRequest:URLRequest = super.configureRequest();
-            urlRequest.contentType = URLContentType.JSON;
+    /**
+     * @overridden BaseRequest.configureRequest
+     */
+    public configureRequest():URLRequest
+    {
+        var urlRequest:URLRequest = super.configureRequest();
+        urlRequest.contentType = URLContentType.JSON;
 
-            return urlRequest;
-        }
+        return urlRequest;
     }
 }
+
+export = JsonRequest;

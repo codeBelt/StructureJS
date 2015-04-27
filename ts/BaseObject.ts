@@ -4,6 +4,11 @@
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>
 
+/*
+ @import util/Util as Util
+ @export BaseObject
+ */
+
 import Util = require('util/Util');
 
 /**
@@ -64,10 +69,10 @@ class BaseObject
      * @public
      * @example
      *     ClassName.prototype.destroy = function() {
-         *          this._childInstance.destroy();
-         *
-         *          _super.prototype.destroy.call(this);
-         *     }
+     *          this._childInstance.destroy();
+     *
+     *          _super.prototype.destroy.call(this);
+     *     }
      */
     public destroy():void
     {

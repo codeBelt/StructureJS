@@ -1,4 +1,3 @@
-
 /**
  * The DataLoader...
  *
@@ -8,13 +7,12 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class DataLoader
 {
-    export class DataLoader
+    constructor()
     {
-        constructor()
-        {
 
-        }
     }
 }
+
+export = DataLoader;

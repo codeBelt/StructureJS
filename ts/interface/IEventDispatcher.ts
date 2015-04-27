@@ -9,28 +9,27 @@
  * @submodule interface
  * @interface
  */
-module StructureJS
+interface IEventDispatcher extends ICore
 {
-    export interface IEventDispatcher extends ICore
-    {
-        /**
-         * @property parent
-         */
-        parent:any;
+    /**
+     * @property parent
+     */
+    parent:any;
 
-        /**
-         * @method addEventListener
-         */
-        addEventListener(type:string, func:Function, scope:any, priority?:number):any;
+    /**
+     * @method addEventListener
+     */
+    addEventListener(type:string, func:Function, scope:any, priority?:number):any;
 
-        /**
-         * @method removeEventListener
-         */
-        removeEventListener(type:string, func:Function, scope:any):any;
+    /**
+     * @method removeEventListener
+     */
+    removeEventListener(type:string, func:Function, scope:any):any;
 
-        /**
-         * @method dispatchEvent
-         */
-        dispatchEvent(event:BaseEvent):any;
-    }
+    /**
+     * @method dispatchEvent
+     */
+    dispatchEvent(event:BaseEvent):any;
 }
+
+export = IEventDispatcher;

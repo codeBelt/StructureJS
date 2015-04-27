@@ -18,32 +18,31 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class RequestEvent extends BaseEvent
 {
-    export class RequestEvent extends BaseEvent
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event SUCCESS
+     * @type {string}
+     * @static
+     */
+    public static SUCCESS:string = "RequestEvent.success";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    public static ERROR:string = "RequestEvent.error";
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event SUCCESS
-         * @type {string}
-         * @static
-         */
-        public static SUCCESS:string = "RequestEvent.success";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        public static ERROR:string = "RequestEvent.error";
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = RequestEvent;

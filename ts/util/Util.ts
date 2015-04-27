@@ -271,19 +271,25 @@ class Util
         var timeout:any;
         var result:any;
 
-        var debounced:any = function(){
+        var debounced:any = function ()
+        {
             var args:any = arguments;
 
-            function delayed() {
-                if (immediate == false) {
+            function delayed()
+            {
+                if (immediate == false)
+                {
                     result = callback.apply(callbackScope, args);
                 }
                 timeout = null;
             }
 
-            if (timeout) {
+            if (timeout)
+            {
                 clearTimeout(timeout);
-            } else if (immediate === true) {
+            }
+            else if (immediate === true)
+            {
                 result = callback.apply(callbackScope, args);
             }
 
@@ -292,7 +298,8 @@ class Util
             return result;
         };
 
-        debounced.cancel = function(){
+        debounced.cancel = function ()
+        {
             clearTimeout(timeout);
         };
 

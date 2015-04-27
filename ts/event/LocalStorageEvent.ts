@@ -19,74 +19,73 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class LocalStorageEvent extends BaseEvent
 {
-    export class LocalStorageEvent extends BaseEvent
+    /**
+     * The storage event is fired on a Document's Window object when a storage area changes.
+     *
+     * @event STORAGE
+     * @type {string}
+     * @static
+     */
+    public static STORAGE:string = 'storage';
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property originalEvent
+     * @type {any}
+     * @public
+     */
+    public originalEvent:any = null;
+
+    /**
+     * The named key that was added, removed, or modified
+     *
+     * @event key
+     * @type {string}
+     */
+    public key:string;
+
+    /**
+     * The previous value (now overwritten), or null if a new item was added
+     *
+     * @event oldValue
+     * @type {string}
+     */
+    public oldValue:string;
+
+    /**
+     * The new value, or null if an item was removed
+     *
+     * @event newValue
+     * @type {string}
+     */
+    public newValue:string;
+
+    /**
+     * The page which called a method that triggered this change
+     *
+     * @event key
+     * @type {string}
+     */
+    public url:string;
+
+    constructor(type:string, bubbles:boolean, cancelable:boolean, nativeEvent:StorageEvent)
     {
-        /**
-         * The storage event is fired on a Document's Window object when a storage area changes.
-         *
-         * @event STORAGE
-         * @type {string}
-         * @static
-         */
-        public static STORAGE:string = 'storage';
+        super(type, bubbles, cancelable, nativeEvent);
 
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @property originalEvent
-         * @type {any}
-         * @public
-         */
-        public originalEvent:any = null;
-
-        /**
-         * The named key that was added, removed, or modified
-         *
-         * @event key
-         * @type {string}
-         */
-        public key:string;
-
-        /**
-         * The previous value (now overwritten), or null if a new item was added
-         *
-         * @event oldValue
-         * @type {string}
-         */
-        public oldValue:string;
-
-        /**
-         * The new value, or null if an item was removed
-         *
-         * @event newValue
-         * @type {string}
-         */
-        public newValue:string;
-
-        /**
-         * The page which called a method that triggered this change
-         *
-         * @event key
-         * @type {string}
-         */
-        public url:string;
-
-        constructor(type:string, bubbles:boolean, cancelable:boolean, nativeEvent:StorageEvent)
+        if (nativeEvent)
         {
-            super(type, bubbles, cancelable, nativeEvent);
-
-            if (nativeEvent)
-            {
-                this.key = nativeEvent.key;
-                this.oldValue = nativeEvent.oldValue;
-                this.newValue = nativeEvent.newValue;
-                this.url = nativeEvent.url;
-            }
-
-            this.originalEvent = nativeEvent;
+            this.key = nativeEvent.key;
+            this.oldValue = nativeEvent.oldValue;
+            this.newValue = nativeEvent.newValue;
+            this.url = nativeEvent.url;
         }
 
+        this.originalEvent = nativeEvent;
     }
+
 }
+
+export = LocalStorageEvent;

@@ -16,41 +16,40 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureJS
+class LanguageEvent extends BaseEvent
 {
-    export class LanguageEvent extends BaseEvent
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event CONFIG_LOADED
+     * @type {string}
+     * @static
+     */
+    public static CONFIG_LOADED:string = "LanguageEvent.configLoaded";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event LOAD_COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static LANGUAGE_LOADED:string = "LanguageEvent.languageLoaded";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event LANGUAGE_CHANGE
+     * @type {string}
+     * @static
+     */
+    public static LANGUAGE_CHANGE:string = "LanguageEvent.languageChange";
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event CONFIG_LOADED
-         * @type {string}
-         * @static
-         */
-        public static CONFIG_LOADED:string = "LanguageEvent.configLoaded";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event LOAD_COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static LANGUAGE_LOADED:string = "LanguageEvent.languageLoaded";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event LANGUAGE_CHANGE
-         * @type {string}
-         * @static
-         */
-        public static LANGUAGE_CHANGE:string = "LanguageEvent.languageChange";
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = LanguageEvent;

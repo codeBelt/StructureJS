@@ -62,7 +62,7 @@ module StructureJS
 
             if (this._isJsonP === true)
             {
-                request.data = { format: 'json' };
+                request.data = {format: 'json'};
             }
 
             this._urlLoader = new URLLoader();
