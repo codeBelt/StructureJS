@@ -3,146 +3,78 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'));
+        define(['../util/Extend', './DisplayObject'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./DisplayObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DisplayObjectContainer = factory(root.structurejs.Extend, root.structurejs.EventDispatcher);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DisplayObjectContainer = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject);
     }
-}(this, function(Extend, EventDispatcher) {
+}(this, function(Extend, DisplayObject) {
+
     'use strict';
 
     /**
      * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
      * @class DisplayObjectContainer
-     * @extends EventDispatcher
+     * @extends DisplayObject
      * @module StructureJS
      * @submodule view
      * @requires Extend
-     * @requires EventDispatcher
+     * @requires DisplayObject
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObjectContainer = (function () {
+    var DisplayObjectContainer = (function() {
 
-        var _super = Extend(DisplayObjectContainer, EventDispatcher);
+        var _super = Extend(DisplayObjectContainer, DisplayObject);
 
         function DisplayObjectContainer() {
             _super.call(this);
             /**
-             * The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.
-             *
-             * @property isCreated
-             * @type {boolean}
-             * @default false
-             * @protected
-             */
-            this.isCreated = false;
-            /**
              * Returns the number of children of this object.
              *
              * @property numChildren
-             * @type {init}
+             * @type {int}
              * @default 0
              * @readOnly
              * @public
              */
             this.numChildren = 0;
             /**
-             * A reference to the child DisplayObjectContainer instances to this parent object instance.
+             * A reference to the child DisplayObject instances to this parent object instance.
              *
              * @property children
-             * @type {array}
+             * @type {Array}
              * @readOnly
              * @public
              */
             this.children = [];
             /**
-             * A property providing access to the x position.
+             * Determines whether or not the children of the object are mouse enabled.
              *
-             * @property x
-             * @type {number}
-             * @default 0
+             * @property mouseChildren
+             * @type {boolean}
              * @public
              */
-            this.x = 0;
-            /**
-             * A property providing access to the y position.
-             *
-             * @property y
-             * @type {number}
-             * @default 0
-             * @public
-             */
-            this.y = 0;
-            /**
-             * A property providing access to the width.
-             *
-             * @property width
-             * @type {number}
-             * @default 0
-             * @public
-             */
-            this.width = 0;
-            /**
-             * A property providing access to the height.
-             *
-             * @property height
-             * @type {number}
-             * @default 0
-             * @public
-             */
-            this.height = 0;
-            /**
-             * A property providing access to the unscaledWidth.
-             *
-             * @property unscaledWidth
-             * @type {number}
-             * @default 100
-             * @public
-             */
-            this.unscaledWidth = 100;
-            /**
-             * A property providing access to the unscaledHeight.
-             *
-             * @property unscaledHeight
-             * @type {number}
-             * @default 100
-             * @public
-             */
-            this.unscaledHeight = 100;
+            this.mouseChildren = false;
         }
         /**
-         * The createChildren function is intended to provide a consistent place for the creation and adding
-         * of children to the view. It will automatically be called the first time that the view is added
-         * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
-         * their overridden methods.
-         *
-         * @method createChildren
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        DisplayObjectContainer.prototype.createChildren = function () {
-            throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
-        };
-        /**
-         * Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other
+         * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
          * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
          *
          * If you add a child object that already has a different parent, the object is removed from the child
          * list of the other parent object.
          *
          * @method addChild
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to add as a child of this DisplayObjectContainerContainer instance.
+         * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.addChild = function (child) {
+        DisplayObjectContainer.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child, false);
@@ -153,18 +85,18 @@
             return this;
         };
         /**
-         * Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.
+         * Adds a child DisplayObject instance to this DisplayObjectContainerContainer instance.
          * The child is added at the index position specified. An index of 0 represents the back
          * (bottom) of the display list for this DisplayObjectContainerContainer object.
          *
          * @method addChildAt
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to add as a child of this object instance.
+         * @param child {DisplayObject} The DisplayObject instance to add as a child of this object instance.
          * @param index {int} The index position to which the child is added. If you specify a currently occupied index position, the child object that exists at that position and all higher positions are moved up one position in the child list.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.addChildAt = function (child, index) {
+        DisplayObjectContainer.prototype.addChildAt = function(child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child, false);
@@ -180,12 +112,12 @@
          * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
          *
          * @method removeChild
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to remove.
+         * @param child {DisplayObject} The DisplayObject instance to remove.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChild = function (child, destroy) {
+        DisplayObjectContainer.prototype.removeChild = function(child, destroy) {
             var index = this.getChildIndex(child);
             if (index !== -1) {
                 // Removes the child object from the parent.
@@ -194,15 +126,14 @@
             this.numChildren = this.children.length;
             if (destroy === true) {
                 child.destroy();
-            }
-            else {
+            } else {
                 child.disable();
             }
             child.parent = null;
             return this;
         };
         /**
-         * Removes all child DisplayObjectContainer instances from the child list of the DisplayObjectContainerContainer instance.
+         * Removes all child DisplayObject instances from the child list of the DisplayObjectContainerContainer instance.
          * The parent property of the removed children is set to null , and the objects are garbage collected if
          * no other references to the children exist.
          *
@@ -211,24 +142,27 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChildren = function (destroy) {
+        DisplayObjectContainer.prototype.removeChildren = function(destroy) {
             while (this.children.length > 0) {
                 this.removeChild(this.children.pop(), destroy);
             }
             return this;
         };
         /**
-         * Swaps two DisplayObjectContainer's with each other.
+         * Swaps two DisplayObject's with each other.
          *
          * @method swapChildren
-         * @param child1 {DisplayObjectContainer} The DisplayObjectContainer instance to be swap.
-         * @param child2 {DisplayObjectContainer} The DisplayObjectContainer instance to be swap.
+         * @param child1 {DisplayObject} The DisplayObject instance to be swap.
+         * @param child2 {DisplayObject} The DisplayObject instance to be swap.
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.swapChildren = function (child1, child2) {
-            throw new Error('[' + this.getQualifiedClassName() + '] Error: The swapChildren method is meant to be overridden.');
+        DisplayObjectContainer.prototype.swapChildren = function(child1, child2) {
+            var child1Index = this.getChildIndex(child1);
+            var child2Index = this.getChildIndex(child2);
+            this.addChildAt(child1, child2Index);
+            this.addChildAt(child2, child1Index);
         };
         /**
          * Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.
@@ -240,7 +174,7 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.swapChildrenAt = function (index1, index2) {
+        DisplayObjectContainer.prototype.swapChildrenAt = function(index1, index2) {
             if (index1 < 0 || index1 < 0 || index1 >= this.numChildren || index2 >= this.numChildren) {
                 throw new TypeError('[' + this.getQualifiedClassName() + '] index value(s) cannot be out of bounds. index1 value is ' + index1 + ' index2 value is ' + index2);
             }
@@ -250,25 +184,25 @@
             return this;
         };
         /**
-         * Returns the index position of a child DisplayObjectContainer instance.
+         * Returns the index position of a child DisplayObject instance.
          *
          * @method getChildIndex
-         * @param child {DisplayObjectContainer} The DisplayObjectContainer instance to identify.
+         * @param child {DisplayObject} The DisplayObject instance to identify.
          * @returns {int} The index position of the child display object to identify.
          * @public
          */
-        DisplayObjectContainer.prototype.getChildIndex = function (child) {
+        DisplayObjectContainer.prototype.getChildIndex = function(child) {
             return this.children.indexOf(child);
         };
         /**
-         * Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.
+         * Determines whether the specified display object is a child of the DisplayObject instance or the instance itself. The search includes the entire display list including this DisplayObject instance.
          *
          * @method contains
-         * @param child {DisplayObjectContainer} The child object to test.
-         * @returns {boolean}  true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.
+         * @param child {DisplayObject} The child object to test.
+         * @returns {boolean}  true if the child object is a child of the DisplayObject or the container itself; otherwise false.
          * @public
          */
-        DisplayObjectContainer.prototype.contains = function (child) {
+        DisplayObjectContainer.prototype.contains = function(child) {
             return this.children.indexOf(child) >= 0;
         };
         /**
@@ -276,62 +210,29 @@
          *
          * @method getChildAt
          * @param index {int} The index position of the child object.
-         * @returns {DisplayObjectContainer} The child display object at the specified index position.
+         * @returns {DisplayObject} The child display object at the specified index position.
          */
-        DisplayObjectContainer.prototype.getChildAt = function (index) {
+        DisplayObjectContainer.prototype.getChildAt = function(index) {
             return this.children[index];
         };
         /**
-         * Gets a DisplayObjectContainer by its cid.
+         * Gets a DisplayObject by its cid.
          *
          * @method getChildByCid
          * @param cid {number}
-         * @returns {DisplayObjectContainer}
+         * @returns {DisplayObject|null}
          * @override
          * @public
          */
-        DisplayObjectContainer.prototype.getChildByCid = function (cid) {
-            var children = this.children.filter(function (child) {
-                return child.cid == cid;
-            });
-            return children[0] || null;
-        };
-        /**
-         * The setSize method sets the bounds within which the containing DisplayObjectContainer would
-         * like that component to lay itself out. It is expected that calling setSize will automatically
-         * call {{#crossLink "DisplayObjectContainer/layoutChildren:method"}}{{/crossLink}}.
-         *
-         * @param unscaledWidth {number} The width within which the component should lay itself out.
-         * @param unscaledHeight {number} The height within which the component should lay itself out.
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        DisplayObjectContainer.prototype.setSize = function (unscaledWidth, unscaledHeight) {
-            this.unscaledWidth = unscaledWidth;
-            this.unscaledHeight = unscaledHeight;
-            if (this.isCreated) {
-                this.layoutChildren();
+        DisplayObjectContainer.prototype.getChildByCid = function(cid) {
+            var child = null;
+            for (var i = this.numChildren - 1; i >= 0; i--) {
+                if (this.children[i].cid == cid) {
+                    child = this.children[i];
+                    break;
+                }
             }
-            return this;
-        };
-        /**
-         * The layoutComponent method provides a common function to handle updating child objects.
-         *
-         * @method layoutChildren
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
-        DisplayObjectContainer.prototype.layoutChildren = function () {
-            return this;
-        };
-        /**
-         * @overridden EventDispatcher.destroy
-         */
-        DisplayObjectContainer.prototype.destroy = function () {
-            // TODO: if you call destroy on an object should it remove itself from the parent children array?
-            _super.prototype.destroy.call(this);
+            return child;
         };
         return DisplayObjectContainer;
     })();

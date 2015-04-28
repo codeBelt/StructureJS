@@ -19,18 +19,18 @@ module ${Namespace} {
         }
 
         /**
-         * @overridden ${Extends}.createChildren
+         * @overridden ${Extends}.create
          */
-        public createChildren():void {
-            super.createChildren();
+        public create():void {
+            super.create();
 
             // Create and add your child objects to this parent class.
         }
 
         /**
-         * @overridden ${Extends}.layoutChildren
+         * @overridden ${Extends}.layout
          */
-        public layoutChildren():void {
+        public layout():void {
             // Layout or update the child objects in this parent class.
         }
 

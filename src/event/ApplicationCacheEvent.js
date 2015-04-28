@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/BaseEvent'));
+        define(['../util/Extend', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ApplicationCacheEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ApplicationCacheEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
+
     'use strict';
 
     /**
@@ -32,7 +33,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ApplicationCacheEvent = (function () {
+    var ApplicationCacheEvent = (function() {
 
         var _super = Extend(ApplicationCacheEvent, BaseEvent);
 
@@ -42,12 +43,6 @@
             if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
-        /**
-         * @overridden BaseEvent.clone
-         */
-        ApplicationCacheEvent.prototype.clone = function () {
-            return new ApplicationCacheEvent(this.type, this.bubble, this.cancelable, this.data);
-        };
         /**
          * The browser is checking for an update, or is attempting to download
          * the cache manifest for the first time. This is always the first event

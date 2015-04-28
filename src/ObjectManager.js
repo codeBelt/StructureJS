@@ -4,14 +4,15 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['./util/Extend', './BaseObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('./util/Extend'), require('./BaseObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ObjectManager = factory(root.structurejs.Extend, root.structurejs.BaseObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ObjectManager = factory(root.StructureJS.Extend, root.StructureJS.BaseObject);
     }
 }(this, function(Extend, BaseObject) {
+
     'use strict';
 
     /**
@@ -26,7 +27,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ObjectManager = (function () {
+    var ObjectManager = (function() {
 
         var _super = Extend(ObjectManager, BaseObject);
 
@@ -58,7 +59,7 @@
          *          return _super.prototype.enable.call(this);
          *     }
          */
-        ObjectManager.prototype.enable = function () {
+        ObjectManager.prototype.enable = function() {
             if (this.isEnabled === true) {
                 return this;
             }
@@ -81,7 +82,7 @@
          *          return _super.prototype.disable.call(this);
          *      }
          */
-        ObjectManager.prototype.disable = function () {
+        ObjectManager.prototype.disable = function() {
             if (this.isEnabled === false) {
                 return this;
             }
@@ -93,4 +94,3 @@
 
     return ObjectManager;
 }));
-

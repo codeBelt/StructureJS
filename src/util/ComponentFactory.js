@@ -4,16 +4,16 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ComponentFactory = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ComponentFactory = factory();
     }
 }(this, function() {
-    'use strict';
 
+    'use strict';
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
@@ -21,10 +21,10 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var ComponentFactory = (function () {
+    var ComponentFactory = (function() {
 
         function ComponentFactory() {
-            throw new Error('[ComponentFactory] Do not instantiation the ComponentFactory class because it is a static class.');
+            throw new Error('[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.');
         }
         /**
          * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
@@ -39,7 +39,7 @@
          * @example
          *      ComponentFactory.create($('.js-list'), SomeClass);
          */
-        ComponentFactory.create = function ($elements, ComponentClass, scope) {
+        ComponentFactory.create = function($elements, ComponentClass, scope) {
             if (scope === void 0) { scope = null; }
             var list = [];
             var length = $elements.length;

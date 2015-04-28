@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../event/EventDispatcher', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../event/EventDispatcher'), require('../event/BaseEvent'));
+        define(['./EventDispatcher', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('./EventDispatcher'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.EventBroker = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.EventBroker = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
     }
 }(this, function(EventDispatcher, BaseEvent) {
+
     'use strict';
 
     /**
@@ -26,9 +27,9 @@
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
-    var EventBroker = (function () {
+    var EventBroker = (function() {
         function EventBroker() {
-            throw new Error('[EventBroker] Do not instantiation the EventBroker class because it is a static class.');
+            throw new Error('[EventBroker] Do not instantiate the EventBroker class because it is a static class.');
         }
         /**
          * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
@@ -50,7 +51,7 @@
          *          console.log(event.data);
          *     }
          */
-        EventBroker.addEventListener = function (type, callback, scope, priority) {
+        EventBroker.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
             EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
@@ -68,7 +69,7 @@
          *
          *     EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          */
-        EventBroker.removeEventListener = function (type, callback, scope) {
+        EventBroker.removeEventListener = function(type, callback, scope) {
             EventBroker._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -90,7 +91,7 @@
          *      event.data = {some: 'data'};
          *      EventBroker.dispatchEvent(event);
          */
-        EventBroker.dispatchEvent = function (type, data) {
+        EventBroker.dispatchEvent = function(type, data) {
             if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === 'string') {
@@ -113,7 +114,7 @@
          * @example
          *      EventBroker.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          */
-        EventBroker.hasEventListener = function (type, callback, scope) {
+        EventBroker.hasEventListener = function(type, callback, scope) {
             return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
         };
         /**
@@ -128,7 +129,7 @@
          *
          *      // [ClassName] is listen for 'BaseEvent.change' event.
          */
-        EventBroker.getEventListeners = function () {
+        EventBroker.getEventListeners = function() {
             return EventBroker._eventDispatcher.getEventListeners();
         };
         /**

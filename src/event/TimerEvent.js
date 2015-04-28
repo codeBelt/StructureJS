@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/BaseEvent'));
+        define(['../util/Extend', './BaseEvent'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TimerEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TimerEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
+
     'use strict';
 
     /**
@@ -32,7 +33,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var TimerEvent = (function () {
+    var TimerEvent = (function() {
 
         var _super = Extend(TimerEvent, BaseEvent);
 
@@ -42,12 +43,6 @@
             if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
-        /**
-         * @overridden BaseEvent.clone
-         */
-        TimerEvent.prototype.clone = function () {
-            return new TimerEvent(this.type, this.bubble, this.cancelable, this.data);
-        };
         /**
          * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
          *

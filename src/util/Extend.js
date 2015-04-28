@@ -8,8 +8,8 @@
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Extend = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Extend = factory();
     }
 }(this, function() {
     'use strict';
@@ -36,20 +36,16 @@
      *         return AnotherClass;
      *     })();
      */
-    var Extend = function (inheritorClass, baseClass)
-    {
-        for (var p in baseClass)
-        {
-            if (baseClass.hasOwnProperty(p))
-            {
+    var Extend = function(inheritorClass, baseClass) {
+        for (var p in baseClass) {
+            if (baseClass.hasOwnProperty(p)) {
                 // Add any static properties from the baseClass to the inheritorClass.
                 inheritorClass[p] = baseClass[p];
             }
         }
 
         // Creates an anonymous Class and sets the constructor as the inheritorClass.
-        function __()
-        {
+        function __() {
             this.constructor = inheritorClass;
         }
 

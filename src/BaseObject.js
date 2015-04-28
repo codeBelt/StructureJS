@@ -4,12 +4,12 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['./util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('./util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BaseObject = factory(root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
     }
 }(this, function(Util) {
     'use strict';
@@ -24,7 +24,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var BaseObject = (function () {
+    var BaseObject = (function() {
 
         function BaseObject() {
             /**
@@ -49,7 +49,7 @@
          * @example
          *     instance.getQualifiedClassName();
          */
-        BaseObject.prototype.getQualifiedClassName = function () {
+        BaseObject.prototype.getQualifiedClassName = function() {
             return Util.getClassName(this);
         };
         /**
@@ -72,7 +72,7 @@
          *          _super.prototype.destroy.call(this);
          *     }
          */
-        BaseObject.prototype.destroy = function () {
+        BaseObject.prototype.destroy = function() {
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {
                     this[key] = null;
