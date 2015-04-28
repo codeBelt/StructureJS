@@ -147,6 +147,21 @@ module.exports = function(grunt) {
             all: {
                 src: 'src/**/*.js',
                 dest: './structurejs.' + '<%= pkg.appVersion %>' +'.js'
+            },
+            view: {
+                src: [
+                    'src/display/DOMElement.js',
+                    'src/display/DisplayObjectContainer.js',
+                    'src/display/DisplayObject.js',
+                    'src/event/BaseEvent.js',
+                    'src/event/EventDispatcher.js',
+                    'src/util/ComponentFactory.js',
+                    'src/util/TemplateFactory.js',
+                    'src/util/Extend.js',
+                    'src/ObjectManager.js',
+                    'src/BaseObject.js',
+                ],
+                dest: './structurejs.view.js'
             }
         },
 
@@ -154,6 +169,11 @@ module.exports = function(grunt) {
             all: {
                 files: {
                     './structurejs.0.7.0.min.js': ['./structurejs.0.7.0.js']
+                }
+            },
+            view: {
+                files: {
+                    './structurejs.view.min.js': ['./structurejs.view.js']
                 }
             }
         },
