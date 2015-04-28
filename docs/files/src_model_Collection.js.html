@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([&#x27;../util/Extend&#x27;, &#x27;../util/Util&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../util/Util&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/BaseEvent&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.Util, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Collection = factory(root.StructureJS.Extend, root.StructureJS.Util, root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, Util, EventDispatcher, BaseEvent) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -170,7 +177,7 @@
      * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
      */
-    var Collection = (function () {
+    var Collection = (function() {
 
         var _super = Extend(Collection, EventDispatcher);
 
@@ -217,7 +224,7 @@
          *      collection.add(vo);
          *      collection.add(vo, true);
          */
-        Collection.prototype.add = function (model, silent) {
+        Collection.prototype.add = function(model, silent) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
@@ -228,8 +235,7 @@
                     if (this._modelType !== null) {
                         // If the modeType is set then instantiate it and pass the data into the constructor.
                         this.models.push(new this._modelType(models[i]));
-                    }
-                    else {
+                    } else {
                         // Pass the data object to the array.
                         this.models.push(models[i]);
                     }
@@ -254,7 +260,7 @@
          *
          *      collection.remove(vo, true);
          */
-        Collection.prototype.remove = function (model, silent) {
+        Collection.prototype.remove = function(model, silent) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
@@ -280,7 +286,7 @@
          * @example
          *      collection.has(vo);
          */
-        Collection.prototype.has = function (model) {
+        Collection.prototype.has = function(model) {
             return this.indexOf(model) &gt; -1;
         };
         /**
@@ -293,7 +299,7 @@
          * @example
          *      collection.indexOf(vo);
          */
-        Collection.prototype.indexOf = function (model) {
+        Collection.prototype.indexOf = function(model) {
             return this.models.indexOf(model);
         };
         /**
@@ -307,7 +313,7 @@
          * @example
          *      collection.get(1);
          */
-        Collection.prototype.get = function (index) {
+        Collection.prototype.get = function(index) {
             if (index &lt; 0) {
                 index = 0;
             }
@@ -334,7 +340,7 @@
          *      this._collection.findBy({ name: &#x27;apple&#x27;, organic: false, type: &#x27;fruit&#x27; });
          *      this._collection.findBy([{ type: &#x27;vegetable&#x27; }, { name: &#x27;apple&#x27;, &#x27;organic: false, type&#x27;: &#x27;fruit&#x27; }]);
          */
-        Collection.prototype.findBy = function (arg) {
+        Collection.prototype.findBy = function(arg) {
             // If properties is not an array then make it an array object.
             var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
@@ -346,8 +352,7 @@
                 if ((typeof prop === &#x27;string&#x27;) || (typeof prop === &#x27;number&#x27;) || (typeof prop === &#x27;boolean&#x27;)) {
                     // If the model is not an object.
                     foundItems = foundItems.concat(this._findPropertyValue(prop));
-                }
-                else {
+                } else {
                     // If the model is an object.
                     foundItems = foundItems.concat(this._where(prop));
                 }
@@ -363,7 +368,7 @@
          * @return {Array} Returns a list of found object&#x27;s.
          * @private
          */
-        Collection.prototype._where = function (propList) {
+        Collection.prototype._where = function(propList) {
             // If properties is not an array then make it an array object.
             var list = (propList instanceof Array) ? propList : [propList];
             var foundItems = [];
@@ -406,7 +411,7 @@
          * @return {Array} Returns a list of found object&#x27;s.
          * @private
          */
-        Collection.prototype._findPropertyValue = function (arg) {
+        Collection.prototype._findPropertyValue = function(arg) {
             // If properties is not an array then make it an array object.
             var list = (arg instanceof Array) ? arg : [arg];
             var foundItems = [];
@@ -447,7 +452,7 @@
          * @example
          *      collection.clear();
          */
-        Collection.prototype.clear = function (silent) {
+        Collection.prototype.clear = function(silent) {
             if (silent === void 0) { silent = false; }
             this.models = [];
             this.length = 0;
@@ -465,7 +470,7 @@
          * @example
          *     var clone = collection.clone();
          */
-        Collection.prototype.clone = function () {
+        Collection.prototype.clone = function() {
             var clonedValueObject = new this.constructor(this._modelType);
             clonedValueObject.add(this.models.slice(0));
             return clonedValueObject;
@@ -479,7 +484,7 @@
          * @example
          *     var arrayOfObjects = collection.toJSON();
          */
-        Collection.prototype.toJSON = function () {
+        Collection.prototype.toJSON = function() {
             if (this._modelType !== null) {
                 var list = [];
                 var len = this.length;
@@ -487,8 +492,7 @@
                     list[i] = this.models[i].toJSON();
                 }
                 return list;
-            }
-            else {
+            } else {
                 return Util.clone(this.models);
             }
         };
@@ -501,7 +505,7 @@
          * @example
          *     var str = collection.toJSONString();
          */
-        Collection.prototype.toJSONString = function () {
+        Collection.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
         };
         /**
@@ -514,7 +518,7 @@
          * @example
          *      collection.fromJSON(str);
          */
-        Collection.prototype.fromJSON = function (json) {
+        Collection.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
             this.add(parsedData);
             return this;
@@ -531,10 +535,10 @@
          *      collection.sortOn(&#x27;name&#x27;);
          *      collection.sortOn(&#x27;name&#x27;, false);
          */
-        Collection.prototype.sortOn = function (propertyName, sortAscending) {
+        Collection.prototype.sortOn = function(propertyName, sortAscending) {
             if (sortAscending === void 0) { sortAscending = true; }
             if (sortAscending === false) {
-                return this.sort(function (a, b) {
+                return this.sort(function(a, b) {
                     if (a[propertyName] &lt; b[propertyName]) {
                         return 1;
                     }
@@ -543,9 +547,8 @@
                     }
                     return 0;
                 });
-            }
-            else {
-                return this.sort(function (a, b) {
+            } else {
+                return this.sort(function(a, b) {
                     if (a[propertyName] &gt; b[propertyName]) {
                         return 1;
                     }
@@ -571,10 +574,28 @@
          *
          *      collection.sort(sortByDate);
          */
-        Collection.prototype.sort = function (sortFunction) {
+        Collection.prototype.sort = function(sortFunction) {
             if (sortFunction === void 0) { sortFunction = null; }
             this.models.sort(sortFunction);
             return this.models;
+        };
+        /**
+         * The filter method creates a new array with all elements that pass the test implemented by the provided function.
+         *
+         * @method filter
+         * @param filterFunction {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+         * @public
+         * @return {Array} Returns the list of models in the collection.
+         * @example
+         *      var isOldEnough = function(model){
+         *          return model.age &gt;= 21;
+         *      }
+         *
+         *      var list = collection.filter(isOldEnough);
+         */
+        Collection.prototype.filter = function(filterFunction) {
+            if (filterFunction === void 0) { filterFunction = null; }
+            return this.models.filter(filterFunction);
         };
         /**
          * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.
@@ -585,7 +606,7 @@
          * @example
          *      collection.reverse();
          */
-        Collection.prototype.reverse = function () {
+        Collection.prototype.reverse = function() {
             return this.models.reverse();
         };
         /**
@@ -596,8 +617,8 @@
          * @return {Array} Returns a new array list of models in the collection with duplicates removed.
          * @private
          */
-        Collection.prototype._unique = function (list) {
-            var unique = list.reduce(function (previousValue, currentValue) {
+        Collection.prototype._unique = function(list) {
+            var unique = list.reduce(function(previousValue, currentValue) {
                 if (previousValue.indexOf(currentValue) === -1) {
                     previousValue.push(currentValue);
                 }

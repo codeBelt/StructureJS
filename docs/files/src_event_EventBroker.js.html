@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -145,15 +151,16 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/BaseEvent&#x27;));
+        define([&#x27;./EventDispatcher&#x27;, &#x27;./BaseEvent&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;./EventDispatcher&#x27;), require(&#x27;./BaseEvent&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.EventBroker = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.EventBroker = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
     }
 }(this, function(EventDispatcher, BaseEvent) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -168,7 +175,7 @@
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
-    var EventBroker = (function () {
+    var EventBroker = (function() {
         function EventBroker() {
             throw new Error(&#x27;[EventBroker] Do not instantiate the EventBroker class because it is a static class.&#x27;);
         }
@@ -192,7 +199,7 @@
          *          console.log(event.data);
          *     }
          */
-        EventBroker.addEventListener = function (type, callback, scope, priority) {
+        EventBroker.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
             EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
@@ -210,7 +217,7 @@
          *
          *     EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          */
-        EventBroker.removeEventListener = function (type, callback, scope) {
+        EventBroker.removeEventListener = function(type, callback, scope) {
             EventBroker._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -232,7 +239,7 @@
          *      event.data = {some: &#x27;data&#x27;};
          *      EventBroker.dispatchEvent(event);
          */
-        EventBroker.dispatchEvent = function (type, data) {
+        EventBroker.dispatchEvent = function(type, data) {
             if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === &#x27;string&#x27;) {
@@ -255,7 +262,7 @@
          * @example
          *      EventBroker.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          */
-        EventBroker.hasEventListener = function (type, callback, scope) {
+        EventBroker.hasEventListener = function(type, callback, scope) {
             return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
         };
         /**
@@ -270,7 +277,7 @@
          *
          *      // [ClassName] is listen for &#x27;BaseEvent.change&#x27; event.
          */
-        EventBroker.getEventListeners = function () {
+        EventBroker.getEventListeners = function() {
             return EventBroker._eventDispatcher.getEventListeners();
         };
         /**
@@ -287,6 +294,7 @@
 
     return EventBroker;
 }));
+
     </pre>
 </div>
 

@@ -10,6 +10,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ComponentFactory",
         "DOMElement",
         "DateUtil",
+        "DisplayObject",
         "DisplayObjectContainer",
         "EventBroker",
         "EventDispatcher",
@@ -22,6 +23,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "NetworkMonitorEvent",
         "NumberUtil",
         "ObjectManager",
+        "Point",
         "Route",
         "Router",
         "RouterEvent",
@@ -39,6 +41,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "controller",
         "core",
         "event",
+        "geom",
         "model",
         "util",
         "view"
@@ -58,6 +61,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "event",
             "name": "event",
             "description": "The ApplicationCacheEvent ...."
+        },
+        {
+            "displayName": "geom",
+            "name": "geom",
+            "description": "The Point object represents a location in a two-dimensional coordinate system, where x represents the horizontal axis and y represents the vertical axis."
         },
         {
             "displayName": "model",
