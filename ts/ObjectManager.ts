@@ -1,7 +1,7 @@
 'use strict';
 /*
  UMD Stuff
- @import ../util/Extend as Extend
+ @import ./util/Extend as Extend
  @import ./BaseObject as BaseObject
  @export ObjectManager
  */

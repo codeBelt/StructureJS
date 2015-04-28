@@ -3,9 +3,9 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './BaseObject'], factory);
+        define(['./util/Extend', './BaseObject'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./BaseObject'));
+        module.exports = factory(require('./util/Extend'), require('./BaseObject'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
