@@ -8,8 +8,8 @@
         module.exports = factory(require('../event/ApplicationCacheEvent'), require('../event/EventDispatcher'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ApplicationCacheController = factory(root.structurejs.ApplicationCacheEvent, root.structurejs.EventDispatcher);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ApplicationCacheController = factory(root.StructureJS.ApplicationCacheEvent, root.StructureJS.EventDispatcher);
     }
 }(this, function(ApplicationCacheEvent, EventDispatcher) {
 

@@ -8,8 +8,8 @@
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.MathUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.MathUtil = factory();
     }
 }(this, function() {
 

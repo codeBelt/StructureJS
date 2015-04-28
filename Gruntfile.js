@@ -286,7 +286,7 @@ module.exports = function(grunt) {
             default_options: {
                 options: {
                     template: 'umd.template',
-                    rootName: 'root.structurejs'
+                    rootName: 'root.StructureJS'
                 },
                 files: {
                     'src/controller/ApplicationCacheController.js': 'ts/controller/ApplicationCacheController.js',

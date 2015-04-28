@@ -8,8 +8,8 @@
         module.exports = factory(require('./util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BaseObject = factory(root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
     }
 }(this, function(Util) {
     'use strict';

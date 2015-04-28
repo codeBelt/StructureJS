@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/Extend'), require('./DisplayObject'), require('../util/MathUtil'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.CanvasElement = factory(root.structurejs.Extend, root.structurejs.DisplayObject, root.structurejs.MathUtil);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject, root.StructureJS.MathUtil);
     }
 }(this, function(Extend, DisplayObject, MathUtil) {
 

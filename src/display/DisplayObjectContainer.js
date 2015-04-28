@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/Extend'), require('./DisplayObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DisplayObjectContainer = factory(root.structurejs.Extend, root.structurejs.DisplayObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DisplayObjectContainer = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject);
     }
 }(this, function(Extend, DisplayObject) {
 

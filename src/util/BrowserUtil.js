@@ -8,8 +8,8 @@
         module.exports = factory(require('../event/EventDispatcher'), require('../event/BaseEvent'), require('../util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BrowserUtil = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent, root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BrowserUtil = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent, root.StructureJS.Util);
     }
 }(this, function(EventDispatcher, BaseEvent, Util) {
 

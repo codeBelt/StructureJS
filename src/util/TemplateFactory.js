@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/StringUtil'), require('jquery'), require('handlebars'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.jQuery, root.Handlebars);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.jQuery, root.Handlebars);
     }
 }(this, function(StringUtil, jQuery, Handlebars) {
 

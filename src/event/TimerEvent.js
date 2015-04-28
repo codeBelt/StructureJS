@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TimerEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TimerEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
 

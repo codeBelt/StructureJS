@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/StringUtil'), require('../event/RouterEvent'), require('../model/Route'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Router = factory(root.structurejs.StringUtil, root.structurejs.RouterEvent, root.structurejs.Route);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Router = factory(root.StructureJS.StringUtil, root.StructureJS.RouterEvent, root.StructureJS.Route);
     }
 }(this, function(StringUtil, RouterEvent, Route) {
 

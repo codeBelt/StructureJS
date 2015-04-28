@@ -8,8 +8,8 @@
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.MerchantUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.MerchantUtil = factory();
     }
 }(this, function() {
 

@@ -8,8 +8,8 @@
         module.exports = factory(require('../event/EventDispatcher'), require('../event/NetworkMonitorEvent'), require('../event/native/NavigatorEvents'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TimerEvent = factory(root.structurejs.EventDispatcher, root.structurejs.NetworkMonitorEvent, root.structurejs.NavigatorEvents);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TimerEvent = factory(root.StructureJS.EventDispatcher, root.StructureJS.NetworkMonitorEvent, root.StructureJS.NavigatorEvents);
     }
 }(this, function(EventDispatcher, NetworkMonitorEvent, NavigatorEvents) {
 

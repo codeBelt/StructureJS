@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('jquery'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Stage = factory(root.structurejs.Extend, root.structurejs.DOMElement, root.jQuery);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Stage = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.jQuery);
     }
 }(this, function(Extend, DOMElement, jQuery) {
 

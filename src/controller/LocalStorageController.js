@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/ValueObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.LocalStorageController = factory(root.structurejs.Extend, root.structurejs.LocalStorageEvent, root.structurejs.EventDispatcher, root.structurejs.ValueObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.ValueObject);
     }
 }(this, function(Extend, LocalStorageEvent, EventDispatcher, ValueObject) {
 

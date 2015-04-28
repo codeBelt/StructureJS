@@ -8,8 +8,8 @@
         module.exports = factory(%CJS_ARGS%);
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.%EXPORT_NAME% = factory(%BROWSER_ARGS%);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.%EXPORT_NAME% = factory(%BROWSER_ARGS%);
     }
 }(this, function(%ARGS%) {
     %SRC%

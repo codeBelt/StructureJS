@@ -34,8 +34,6 @@ class Util
      * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
      *
      * @method uniqueId
-     *
-     *
      * @param [prefix] {string} The string value used for the prefix.
      * @returns {init|string} Returns the unique identifier.
      * @public

@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/Extend'), require('../display/DisplayObjectContainer'), require('../event/BaseEvent'), require('../util/TemplateFactory'), require('../util/ComponentFactory'), require('jquery'), require('../plugin/jquery.eventListener'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DOMElement = factory(root.structurejs.Extend, root.structurejs.DisplayObjectContainer, root.structurejs.BaseEvent, root.structurejs.TemplateFactory, root.structurejs.ComponentFactory, root.jQuery);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DOMElement = factory(root.StructureJS.Extend, root.StructureJS.DisplayObjectContainer, root.StructureJS.BaseEvent, root.StructureJS.TemplateFactory, root.StructureJS.ComponentFactory, root.jQuery);
     }
 }(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery) {
 

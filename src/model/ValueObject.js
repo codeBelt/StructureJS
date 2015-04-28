@@ -8,8 +8,8 @@
         module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ValueObject = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ValueObject = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
     }
 }(this, function(Extend, BaseObject, Util) {
 
