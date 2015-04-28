@@ -29,7 +29,7 @@
      */
     var DisplayObjectContainer = (function() {
 
-        var _super = Extend(DisplayObjectContainer, EventDispatcher);
+        var _super = Extend(DisplayObjectContainer, DisplayObject);
 
         function DisplayObjectContainer() {
             _super.call(this);
