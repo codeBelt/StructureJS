@@ -17,7 +17,6 @@ class CanvasElement extends DOMElement
     /**
      * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property**.
      *
-     * @property $canvas
      * @type {JQuery}
      * @public
      */
@@ -26,7 +25,6 @@ class CanvasElement extends DOMElement
     /**
      * A reference to the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/element:property"}}{{/crossLink}} property**.
      *
-     * @property canvas
      * @type {HTMLCanvasElement}
      * @public
      */
@@ -244,7 +242,7 @@ class CanvasElement extends DOMElement
      * references to the children exist.
      *
      * @method removeChildren
-     * @returns {DOMElement} Returns an instance of itself.
+     * @returns {CanvasElement} Returns an instance of itself.
      * @override
      * @public
      * @chainable

@@ -24,7 +24,6 @@
                 /**
                  * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property**.
                  *
-                 * @property $canvas
                  * @type {JQuery}
                  * @public
                  */
@@ -32,7 +31,6 @@
                 /**
                  * A reference to the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/element:property"}}{{/crossLink}} property**.
                  *
-                 * @property canvas
                  * @type {HTMLCanvasElement}
                  * @public
                  */
@@ -199,7 +197,7 @@
          * references to the children exist.
          *
          * @method removeChildren
-         * @returns {DOMElement} Returns an instance of itself.
+         * @returns {CanvasElement} Returns an instance of itself.
          * @override
          * @public
          * @chainable
