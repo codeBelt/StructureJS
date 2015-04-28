@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -148,7 +154,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_display_DOMElement.js.html#l17"><code>src&#x2F;display&#x2F;DOMElement.js:17</code></a>
+            Defined in: <a href="../files/src_display_DOMElement.js.html#l18"><code>src&#x2F;display&#x2F;DOMElement.js:18</code></a>
         </div>
     
 
@@ -206,7 +212,7 @@
 
         <ul class="index-list properties extends">
             
-                <li class="index-item property">
+                <li class="index-item property public">
                     <a href="#property_$element">$element</a>
 
                     
@@ -224,14 +230,20 @@
                     
                 </li>
             
-                <li class="index-item property">
+                <li class="index-item property private">
                     <a href="#property__params">_params</a>
 
                     
                 </li>
             
-                <li class="index-item property">
+                <li class="index-item property private">
                     <a href="#property__type">_type</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_alpha">alpha</a>
 
                     
                 </li>
@@ -254,7 +266,13 @@
                     
                 </li>
             
-                <li class="index-item property">
+                <li class="index-item property public inherited">
+                    <a href="#property_ctx">ctx</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
                     <a href="#property_element">element</a>
 
                     
@@ -279,6 +297,24 @@
                 </li>
             
                 <li class="index-item property public inherited">
+                    <a href="#property_mouseChildren">mouseChildren</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_mouseEnabled">mouseEnabled</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_name">name</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
                     <a href="#property_numChildren">numChildren</a>
 
                     
@@ -291,6 +327,30 @@
                 </li>
             
                 <li class="index-item property public inherited">
+                    <a href="#property_rotation">rotation</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_scaleX">scaleX</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_scaleY">scaleY</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_stage">stage</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
                     <a href="#property_unscaledHeight">unscaledHeight</a>
 
                     
@@ -298,6 +358,18 @@
             
                 <li class="index-item property public inherited">
                     <a href="#property_unscaledWidth">unscaledWidth</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_useHandCursor">useHandCursor</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_visible">visible</a>
 
                     
                 </li>
@@ -345,7 +417,14 @@
             
 
             
-                <li class="index-item method inherited">
+                <li class="index-item method public inherited">
+                    <a href="#method_addChild">addChild</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
                     <a href="#method_addChild">addChild</a>
 
                     
@@ -381,7 +460,7 @@
                 </li>
             
                 <li class="index-item method public inherited">
-                    <a href="#method_createChildren">createChildren</a>
+                    <a href="#method_create">create</a>
 
                     
                     
@@ -479,7 +558,7 @@
                 </li>
             
                 <li class="index-item method public inherited">
-                    <a href="#method_layoutChildren">layoutChildren</a>
+                    <a href="#method_layout">layout</a>
 
                     
                     
@@ -500,7 +579,28 @@
                 </li>
             
                 <li class="index-item method public">
+                    <a href="#method_removeChild">removeChild</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
                     <a href="#method_removeChildAt">removeChildAt</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_removeChildAt">removeChildAt</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
+                    <a href="#method_removeChildren">removeChildren</a>
 
                     
                     
@@ -550,12 +650,14 @@
 
         
             <a name="property_$element" class="anchor-link"></a>
-<div class="property item">
+<div class="property item public">
     <h3 class="name"><code>$element</code>
     <span class="type">JQuery</span>
 
     
 
+    
+        <span class="flag public">public</span>
     
 
     
@@ -575,7 +677,7 @@
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l170"><code>src&#x2F;display&#x2F;DOMElement.js:170</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l172"><code>src&#x2F;display&#x2F;DOMElement.js:172</code></a>
         
         </p>
 
@@ -629,7 +731,7 @@
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l178"><code>src&#x2F;display&#x2F;DOMElement.js:178</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l181"><code>src&#x2F;display&#x2F;DOMElement.js:181</code></a>
         
         </p>
 
@@ -679,7 +781,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l45"><code>src&#x2F;event&#x2F;EventDispatcher.js:45</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l46"><code>src&#x2F;event&#x2F;EventDispatcher.js:46</code></a>
         
         </p>
 
@@ -704,12 +806,14 @@ this class will not try add the view to the DOM because it should already exists
 
         
             <a name="property__params" class="anchor-link"></a>
-<div class="property item">
+<div class="property item private">
     <h3 class="name"><code>_params</code>
     <span class="type">Any</span>
 
     
 
+    
+        <span class="flag private">private</span>
     
 
     
@@ -729,7 +833,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l195"><code>src&#x2F;display&#x2F;DOMElement.js:195</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l199"><code>src&#x2F;display&#x2F;DOMElement.js:199</code></a>
         
         </p>
 
@@ -756,12 +860,14 @@ this class will not try add the view to the DOM because it should already exists
 
         
             <a name="property__type" class="anchor-link"></a>
-<div class="property item">
+<div class="property item private">
     <h3 class="name"><code>_type</code>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
     
 
+    
+        <span class="flag private">private</span>
     
 
     
@@ -781,7 +887,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l187"><code>src&#x2F;display&#x2F;DOMElement.js:187</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l190"><code>src&#x2F;display&#x2F;DOMElement.js:190</code></a>
         
         </p>
 
@@ -798,6 +904,55 @@ this class will not try add the view to the DOM because it should already exists
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_alpha" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>alpha</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_alpha" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l131"><code>src&#x2F;display&#x2F;DisplayObject.js:131</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the alpha transparency value of the object specified.</p>
+
+        </div>
+
         
 
         
@@ -835,7 +990,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l154"><code>src&#x2F;display&#x2F;DOMElement.js:154</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l155"><code>src&#x2F;display&#x2F;DOMElement.js:155</code></a>
         
         </p>
 
@@ -884,7 +1039,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l54"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:54</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l46"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:46</code></a>
         
         </p>
 
@@ -895,7 +1050,7 @@ this class will not try add the view to the DOM because it should already exists
 
     <div class="extended-detail">
         <div class="description">
-            <p>A reference to the child DisplayObjectContainer instances to this parent object instance.</p>
+            <p>A reference to the child DisplayObject instances to this parent object instance.</p>
 
         </div>
 
@@ -959,13 +1114,65 @@ this class will not try add the view to the DOM because it should already exists
 </div>
 
         
+            <a name="property_ctx" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>ctx</code>
+    <span class="type">CanvasRenderingContext2D</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_ctx" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l44"><code>src&#x2F;display&#x2F;DisplayObject.js:44</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a canvas element.
+This property is only used with the canvas specific display objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_element" class="anchor-link"></a>
-<div class="property item">
+<div class="property item public">
     <h3 class="name"><code>element</code>
     <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a></span>
 
     
 
+    
+        <span class="flag public">public</span>
     
 
     
@@ -985,7 +1192,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l162"><code>src&#x2F;display&#x2F;DOMElement.js:162</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l163"><code>src&#x2F;display&#x2F;DOMElement.js:163</code></a>
         
         </p>
 
@@ -1032,11 +1239,11 @@ this class will not try add the view to the DOM because it should already exists
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_height" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#property_height" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l90"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:90</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l80"><code>src&#x2F;display&#x2F;DisplayObject.js:80</code></a>
         
         </p>
 
@@ -1047,7 +1254,7 @@ this class will not try add the view to the DOM because it should already exists
 
     <div class="extended-detail">
         <div class="description">
-            <p>A property providing access to the height.</p>
+            <p>Indicates the height of the display object, in pixels.</p>
 
         </div>
 
@@ -1083,11 +1290,11 @@ this class will not try add the view to the DOM because it should already exists
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_isCreated" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#property_isCreated" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l35"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:35</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l163"><code>src&#x2F;display&#x2F;DisplayObject.js:163</code></a>
         
         </p>
 
@@ -1098,7 +1305,7 @@ this class will not try add the view to the DOM because it should already exists
 
     <div class="extended-detail">
         <div class="description">
-            <p>The isCreated property is used to keep track if it is the first time this DisplayObjectContainer is created.</p>
+            <p>The isCreated property is used to keep track if it is the first time this DisplayObject is created.</p>
 
         </div>
 
@@ -1138,7 +1345,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l35"><code>src&#x2F;ObjectManager.js:35</code></a>
+        <a href="../files/src_ObjectManager.js.html#l36"><code>src&#x2F;ObjectManager.js:36</code></a>
         
         </p>
 
@@ -1155,6 +1362,153 @@ this class will not try add the view to the DOM because it should already exists
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_mouseChildren" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>mouseChildren</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObjectContainer.html#property_mouseChildren" class="type">DisplayObjectContainer</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l55"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:55</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Determines whether or not the children of the object are mouse enabled.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_mouseEnabled" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>mouseEnabled</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_mouseEnabled" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l147"><code>src&#x2F;display&#x2F;DisplayObject.js:147</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Specifies whether this object receives mouse</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_name" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>name</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_name" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l172"><code>src&#x2F;display&#x2F;DisplayObject.js:172</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the instance name of the DisplayObject.</p>
+
+        </div>
+
         
 
         
@@ -1189,7 +1543,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l44"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:44</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l36"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:36</code></a>
         
         </p>
 
@@ -1240,7 +1594,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l53"><code>src&#x2F;event&#x2F;EventDispatcher.js:53</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l54"><code>src&#x2F;event&#x2F;EventDispatcher.js:54</code></a>
         
         </p>
 
@@ -1254,6 +1608,202 @@ this class will not try add the view to the DOM because it should already exists
             <p>Indicates the object that contains child object. Use the parent property
 to specify a relative path to display objects that are above the current display object in the display
 list hierarchy. Helps facilitates event bubbling.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_rotation" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>rotation</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_rotation" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l123"><code>src&#x2F;display&#x2F;DisplayObject.js:123</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the rotation of the DisplayObject instance, in degrees, from its original orientation.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_scaleX" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>scaleX</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_scaleX" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l107"><code>src&#x2F;display&#x2F;DisplayObject.js:107</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the horizontal scale (percentage) of the object as applied from the registration point.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_scaleY" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>scaleY</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_scaleY" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l115"><code>src&#x2F;display&#x2F;DisplayObject.js:115</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the vertical scale (percentage) of an object as applied from the registration point of the object.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_stage" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>stage</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_stage" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l36"><code>src&#x2F;display&#x2F;DisplayObject.js:36</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The Stage of the display object.</p>
 
         </div>
 
@@ -1287,11 +1837,11 @@ list hierarchy. Helps facilitates event bubbling.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_unscaledHeight" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#property_unscaledHeight" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l108"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:108</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l98"><code>src&#x2F;display&#x2F;DisplayObject.js:98</code></a>
         
         </p>
 
@@ -1338,11 +1888,11 @@ list hierarchy. Helps facilitates event bubbling.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_unscaledWidth" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#property_unscaledWidth" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l99"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:99</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l89"><code>src&#x2F;display&#x2F;DisplayObject.js:89</code></a>
         
         </p>
 
@@ -1359,6 +1909,104 @@ list hierarchy. Helps facilitates event bubbling.</p>
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">100</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_useHandCursor" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>useHandCursor</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_useHandCursor" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l155"><code>src&#x2F;display&#x2F;DisplayObject.js:155</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A Boolean value that indicates whether the pointing hand (hand cursor) appears when the pointer rolls over a display object.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_visible" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>visible</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/DisplayObject.html#property_visible" class="type">DisplayObject</a>:
+            
+        
+        
+        <a href="../files/src_display_DisplayObject.js.html#l139"><code>src&#x2F;display&#x2F;DisplayObject.js:139</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Whether or not the display object is visible.</p>
+
+        </div>
+
         
 
         
@@ -1389,11 +2037,11 @@ list hierarchy. Helps facilitates event bubbling.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_width" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#property_width" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l81"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:81</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l71"><code>src&#x2F;display&#x2F;DisplayObject.js:71</code></a>
         
         </p>
 
@@ -1404,7 +2052,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
 
     <div class="extended-detail">
         <div class="description">
-            <p>A property providing access to the width.</p>
+            <p>Indicates the width of the display object, in pixels.</p>
 
         </div>
 
@@ -1440,11 +2088,11 @@ list hierarchy. Helps facilitates event bubbling.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_x" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#property_x" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l63"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:63</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l53"><code>src&#x2F;display&#x2F;DisplayObject.js:53</code></a>
         
         </p>
 
@@ -1491,11 +2139,11 @@ list hierarchy. Helps facilitates event bubbling.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#property_y" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#property_y" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l72"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:72</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l62"><code>src&#x2F;display&#x2F;DisplayObject.js:62</code></a>
         
         </p>
 
@@ -1585,7 +2233,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l17"><code>src&#x2F;display&#x2F;DOMElement.js:17</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l18"><code>src&#x2F;display&#x2F;DOMElement.js:18</code></a>
         
         </p>
 
@@ -1670,13 +2318,13 @@ var ClassName = (function () {
          _super.call(this, $element);
      }
 
-     ClassName.prototype.createChildren = function () {
-         _super.prototype.createChildren.call(this);
+     ClassName.prototype.create = function () {
+         _super.prototype.create.call(this);
 
          // Create and add your child objects to this parent class.
      };
 
-     ClassName.prototype.layoutChildren = function () {
+     ClassName.prototype.layout = function () {
          // Layout or update the child objects in this parent class.
 
          return this;
@@ -1707,11 +2355,11 @@ var ClassName = (function () {
      return ClassName;
 })();
 
-// Example of a view extending DOMElement with template passed into createChildren.
+// Example of a view extending DOMElement with template passed into create.
 var view = new CustomView();
 this.addChild(view);
 
-// Example of a view extending DOMElement with template passed into createChildren.
+// Example of a view extending DOMElement with template passed into create.
 var Extend = require(&#39;structurejs/util/Extend&#39;);
 var DOMElement = require(&#39;structurejs/display/DOMElement&#39;);
 var HomeTemplate = require(&#39;hbs!templates/home/homeTemplate&#39;);
@@ -1724,13 +2372,13 @@ var ClassName = (function () {
          _super.call(this);
      }
 
-     ClassName.prototype.createChildren = function () {
-         _super.prototype.createChildren.call(this, HomeTemplate, {data: &#39;some data&#39;});
+     ClassName.prototype.create = function () {
+         _super.prototype.create.call(this, HomeTemplate, {data: &#39;some data&#39;});
 
          // Create and add your child objects to this parent class.
      };
 
-     ClassName.prototype.layoutChildren = function () {
+     ClassName.prototype.layout = function () {
          // Layout or update the child objects in this parent class.
 
          return this;
@@ -1776,7 +2424,123 @@ var ClassName = (function () {
 
         
             <a name="method_addChild" class="anchor-link"></a>
-<div class="method item inherited">
+<div class="method item public inherited">
+    <h3 class="name"><code>addChild</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>child</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">CanvasElement</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/DisplayObjectContainer.html#method_addChild" class="type">
+                DisplayObjectContainer
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_display_CanvasElement.js.html#l86"><code>src&#x2F;display&#x2F;CanvasElement.js:86</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">child</code>
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">CanvasElement</span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_addChild" class="anchor-link"></a>
+<div class="method item">
     <h3 class="name"><code>addChild</code>
 
     
@@ -1817,16 +2581,16 @@ var ClassName = (function () {
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_addChild" class="type">
-                DisplayObjectContainer
-            </a>
             
-            but overwritten in
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l294"><code>src&#x2F;display&#x2F;DOMElement.js:294</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l300"><code>src&#x2F;display&#x2F;DOMElement.js:300</code></a>
         
         </p>
 
@@ -1954,7 +2718,7 @@ var ClassName = (function () {
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l155"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:155</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l87"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:87</code></a>
         
         </p>
 
@@ -1967,7 +2731,7 @@ var ClassName = (function () {
     <div class="extended-detail">
 
         <div class="description">
-            <p>Adds a child DisplayObjectContainer instance to this DisplayObjectContainerContainer instance.
+            <p>Adds a child DisplayObject instance to this DisplayObjectContainerContainer instance.
 The child is added at the index position specified. An index of 0 represents the back
 (bottom) of the display list for this DisplayObjectContainerContainer object.</p>
 
@@ -1982,13 +2746,13 @@ The child is added at the index position specified. An index of 0 represents the
                     <li class="param">
                         
                             <code class="param-name">child</code>
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The DisplayObjectContainer instance to add as a child of this object instance.</p>
+                            <p>The DisplayObject instance to add as a child of this object instance.</p>
 
                         </div>
 
@@ -2083,7 +2847,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l325"><code>src&#x2F;display&#x2F;DOMElement.js:325</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l329"><code>src&#x2F;display&#x2F;DOMElement.js:329</code></a>
         
         </p>
 
@@ -2197,7 +2961,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l65"><code>src&#x2F;event&#x2F;EventDispatcher.js:65</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l66"><code>src&#x2F;event&#x2F;EventDispatcher.js:66</code></a>
         
         </p>
 
@@ -2358,7 +3122,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l263"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:263</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l197"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:197</code></a>
         
         </p>
 
@@ -2371,7 +3135,7 @@ The child is added at the index position specified. An index of 0 represents the
     <div class="extended-detail">
 
         <div class="description">
-            <p>Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance itself. The search includes the entire display list including this DisplayObjectContainer instance.</p>
+            <p>Determines whether the specified display object is a child of the DisplayObject instance or the instance itself. The search includes the entire display list including this DisplayObject instance.</p>
 
         </div>
 
@@ -2384,7 +3148,7 @@ The child is added at the index position specified. An index of 0 represents the
                     <li class="param">
                         
                             <code class="param-name">child</code>
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
                         
 
                         
@@ -2410,7 +3174,7 @@ The child is added at the index position specified. An index of 0 represents the
                         
                             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
-                        <p>true if the child object is a child of the DisplayObjectContainer or the container itself; otherwise false.</p>
+                        <p>true if the child object is a child of the DisplayObject or the container itself; otherwise false.</p>
 
                     
                 </div>
@@ -2422,9 +3186,9 @@ The child is added at the index position specified. An index of 0 represents the
 </div>
 
         
-            <a name="method_createChildren" class="anchor-link"></a>
+            <a name="method_create" class="anchor-link"></a>
 <div class="method item public inherited">
-    <h3 class="name"><code>createChildren</code>
+    <h3 class="name"><code>create</code>
 
     
         <div class="args">
@@ -2473,15 +3237,15 @@ The child is added at the index position specified. An index of 0 represents the
     <div class="meta">
         
             <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_createChildren" class="type">
-                DisplayObjectContainer
+            <a href="../classes/DisplayObject.html#method_create" class="type">
+                DisplayObject
             </a>
             
             but overwritten in
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l213"><code>src&#x2F;display&#x2F;DOMElement.js:213</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l217"><code>src&#x2F;display&#x2F;DOMElement.js:217</code></a>
         
         </p>
 
@@ -2494,12 +3258,12 @@ The child is added at the index position specified. An index of 0 represents the
     <div class="extended-detail">
 
         <div class="description">
-            <p>The createChildren function is intended to provide a consistent place for the creation and adding
+            <p>The create function is intended to provide a consistent place for the creation and adding
 of children to the view. It will automatically be called the first time that the view is added
 to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
 their overridden methods.</p>
 <p>This method gets called only once when the child view is added to another view. If the child view is removed
-and added to another view the createChildren method will not be called again.</p>
+and added to another view the create method will not be called again.</p>
 
         </div>
 
@@ -2567,21 +3331,21 @@ and added to another view the createChildren method will not be called again.</p
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// EXAMPLE 1: By default your view class will be a div element:
-ClassName.prototype.createChildren = function () {
-     _super.prototype.createChildren.call(this);
+ClassName.prototype.create = function () {
+     _super.prototype.create.call(this);
 
      this._childInstance = new DOMElement();
      this.addChild(this._childInstance);
 }
 
 // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
-ClassName.prototype.createChildren = function () {
-     _super.prototype.createChildren.call(this, &#39;ul&#39;);
+ClassName.prototype.create = function () {
+     _super.prototype.create.call(this, &#39;ul&#39;);
 }
 
 // Then you could nest other elements inside this base view/element.
-ClassName.prototype.createChildren = function () {
-     _super.prototype.createChildren.call(this, &#39;ul&#39;, {id: &#39;myId&#39;, &#39;class&#39;: &#39;myClass anotherClass&#39;});
+ClassName.prototype.create = function () {
+     _super.prototype.create.call(this, &#39;ul&#39;, {id: &#39;myId&#39;, &#39;class&#39;: &#39;myClass anotherClass&#39;});
 
      var li = new DOMElement(&#39;li&#39;, {text: &#39;Robert is cool&#39;});
      this.addChild(li);
@@ -2600,16 +3364,16 @@ ClassName.prototype.createChildren = function () {
 
 // You would just pass in the id or class selector of the template which in this case is &quot;#todoTemplate&quot;.
 // There is a second optional argument where you can pass data for the Handlebar template to use.
-ClassName.prototype.createChildren = function () {
-     _super.prototype.createChildren.call(this, &#39;#todoTemplate&#39;, { data: this.viewData });
+ClassName.prototype.create = function () {
+     _super.prototype.create.call(this, &#39;#todoTemplate&#39;, { data: this.viewData });
 
 }
 
-// EXAMPLE 4: One more way. Let&#39;s say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into createChildren.
+// EXAMPLE 4: One more way. Let&#39;s say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.
 var HomeTemplate = require(&#39;hbs!templates/HomeTemplate&#39;);
 
-ClassName.prototype.createChildren = function () {
-     _super.prototype.createChildren.call(this, HomeTemplate, {data: &quot;some data&quot;});
+ClassName.prototype.create = function () {
+     _super.prototype.create.call(this, HomeTemplate, {data: &quot;some data&quot;});
 
 }</code></pre>
 
@@ -2669,7 +3433,7 @@ ClassName.prototype.createChildren = function () {
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l528"><code>src&#x2F;display&#x2F;DOMElement.js:528</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l532"><code>src&#x2F;display&#x2F;DOMElement.js:532</code></a>
         
         </p>
 
@@ -2721,8 +3485,8 @@ If any selectors are found the EmailShareComponent class will be instantiate and
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ClassName.prototype.createChildren = function () {
-     _super.prototype.createChildren.call(this);
+                    <pre class="code prettyprint"><code> ClassName.prototype.create = function () {
+     _super.prototype.create.call(this);
 
      this.createComponents([
          {selector: &#39;.js-shareEmail&#39;, componentClass: EmailShareComponent},
@@ -2869,7 +3633,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l68"><code>src&#x2F;ObjectManager.js:68</code></a>
+        <a href="../files/src_ObjectManager.js.html#l69"><code>src&#x2F;ObjectManager.js:69</code></a>
         
         </p>
 
@@ -3085,7 +3849,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l45"><code>src&#x2F;ObjectManager.js:45</code></a>
+        <a href="../files/src_ObjectManager.js.html#l46"><code>src&#x2F;ObjectManager.js:46</code></a>
         
         </p>
 
@@ -3178,7 +3942,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l402"><code>src&#x2F;display&#x2F;DOMElement.js:402</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l406"><code>src&#x2F;display&#x2F;DOMElement.js:406</code></a>
         
         </p>
 
@@ -3260,7 +4024,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
         </span>
     
 
@@ -3286,7 +4050,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l274"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:274</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l208"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:208</code></a>
         
         </p>
 
@@ -3336,7 +4100,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>:
                         
                         <p>The child display object at the specified index position.</p>
 
@@ -3370,7 +4134,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a> | Null</span>
         </span>
     
 
@@ -3398,7 +4162,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l284"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:284</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l218"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:218</code></a>
         
         </p>
 
@@ -3411,7 +4175,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Gets a DisplayObjectContainer by its cid.</p>
+            <p>Gets a DisplayObject by its cid.</p>
 
         </div>
 
@@ -3447,7 +4211,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a> | Null</span>:
                         
                     
                 </div>
@@ -3507,7 +4271,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l252"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:252</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l186"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:186</code></a>
         
         </p>
 
@@ -3520,7 +4284,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Returns the index position of a child DisplayObjectContainer instance.</p>
+            <p>Returns the index position of a child DisplayObject instance.</p>
 
         </div>
 
@@ -3533,13 +4297,13 @@ on other objects before calling the super.</p>
                     <li class="param">
                         
                             <code class="param-name">child</code>
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The DisplayObjectContainer instance to identify.</p>
+                            <p>The DisplayObject instance to identify.</p>
 
                         </div>
 
@@ -3622,7 +4386,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l433"><code>src&#x2F;display&#x2F;DOMElement.js:433</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l437"><code>src&#x2F;display&#x2F;DOMElement.js:437</code></a>
         
         </p>
 
@@ -3726,7 +4490,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l232"><code>src&#x2F;event&#x2F;EventDispatcher.js:232</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l224"><code>src&#x2F;event&#x2F;EventDispatcher.js:224</code></a>
         
         </p>
 
@@ -3922,7 +4686,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l207"><code>src&#x2F;event&#x2F;EventDispatcher.js:207</code></a>
+        <a href="../files/src_event_EventDispatcher.js.html#l199"><code>src&#x2F;event&#x2F;EventDispatcher.js:199</code></a>
         
         </p>
 
@@ -4025,9 +4789,9 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
 </div>
 
         
-            <a name="method_layoutChildren" class="anchor-link"></a>
+            <a name="method_layout" class="anchor-link"></a>
 <div class="method item public inherited">
-    <h3 class="name"><code>layoutChildren</code>
+    <h3 class="name"><code>layout</code>
 
     
         <span class="paren">()</span>
@@ -4035,7 +4799,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
         </span>
     
 
@@ -4061,11 +4825,11 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
         
             
                 <p>Inherited from
-                <a href="../classes/DisplayObjectContainer.html#method_layoutChildren" class="type">DisplayObjectContainer</a>:
+                <a href="../classes/DisplayObject.html#method_layout" class="type">DisplayObject</a>:
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l318"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:318</code></a>
+        <a href="../files/src_display_DisplayObject.js.html#l195"><code>src&#x2F;display&#x2F;DisplayObject.js:195</code></a>
         
         </p>
 
@@ -4078,7 +4842,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
     <div class="extended-detail">
 
         <div class="description">
-            <p>The layoutComponent method provides a common function to handle updating child objects.</p>
+            <p>The layout method provides a common function to handle updating objects in the view.</p>
 
         </div>
 
@@ -4091,7 +4855,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>:
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>:
                         
                         <p>Returns an instance of itself.</p>
 
@@ -4142,7 +4906,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l336"><code>src&#x2F;display&#x2F;DOMElement.js:336</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l340"><code>src&#x2F;display&#x2F;DOMElement.js:340</code></a>
         
         </p>
 
@@ -4156,7 +4920,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
 
         <div class="description">
             <p>Gets called when the child object is added to the DOM.
-The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent.ADDED event.</p>
+The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_TO_STAGE event.</p>
 
         </div>
 
@@ -4171,6 +4935,122 @@ The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent
         
             <a name="method_removeChild" class="anchor-link"></a>
 <div class="method item public inherited">
+    <h3 class="name"><code>removeChild</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>child</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">CanvasElement</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/DisplayObjectContainer.html#method_removeChild" class="type">
+                DisplayObjectContainer
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_display_CanvasElement.js.html#l149"><code>src&#x2F;display&#x2F;CanvasElement.js:149</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">child</code>
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">CanvasElement</span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeChild" class="anchor-link"></a>
+<div class="method item public">
     <h3 class="name"><code>removeChild</code>
 
     
@@ -4213,16 +5093,16 @@ The method will call DOMElement/layoutChildren:method and dispatch the BaseEvent
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_removeChild" class="type">
-                DisplayObjectContainer
-            </a>
             
-            but overwritten in
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l465"><code>src&#x2F;display&#x2F;DOMElement.js:465</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l469"><code>src&#x2F;display&#x2F;DOMElement.js:469</code></a>
         
         </p>
 
@@ -4330,6 +5210,8 @@ to the child exist. The index positions of any objects above the child in the pa
         
             
                 
+                    <p>Provided by the <a href="../modules/StructureJS.html" class="module-name">StructureJS</a> module.</p>
+                
                 <p>
                 
                 Defined in
@@ -4337,7 +5219,106 @@ to the child exist. The index positions of any objects above the child in the pa
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l487"><code>src&#x2F;display&#x2F;DOMElement.js:487</code></a>
+        <a href="../files/src_display_CanvasElement.js.html#l179"><code>src&#x2F;display&#x2F;CanvasElement.js:179</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes the child display object instance that exists at the specified index.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">index</code>
+                            <span class="type">Int</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The index position of the child object.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeChildAt" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>removeChildAt</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>index</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_display_DOMElement.js.html#l491"><code>src&#x2F;display&#x2F;DOMElement.js:491</code></a>
         
         </p>
 
@@ -4388,7 +5369,7 @@ to the child exist. The index positions of any objects above the child in the pa
 
         
             <a name="method_removeChildren" class="anchor-link"></a>
-<div class="method item public inherited">
+<div class="method item public">
     <h3 class="name"><code>removeChildren</code>
 
     
@@ -4421,16 +5402,16 @@ to the child exist. The index positions of any objects above the child in the pa
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_removeChildren" class="type">
-                DisplayObjectContainer
-            </a>
             
-            but overwritten in
+                
+                <p>
+                
+                Defined in
+                
             
         
         
-        <a href="../files/src_display_DOMElement.js.html#l500"><code>src&#x2F;display&#x2F;DOMElement.js:500</code></a>
+        <a href="../files/src_display_DOMElement.js.html#l504"><code>src&#x2F;display&#x2F;DOMElement.js:504</code></a>
         
         </p>
 
@@ -4459,6 +5440,91 @@ references to the children exist.</p>
                     
                         
                             <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
+                        
+                        <p>Returns an instance of itself.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method_removeChildren" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>removeChildren</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">CanvasElement</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/DisplayObjectContainer.html#method_removeChildren" class="type">
+                DisplayObjectContainer
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_display_CanvasElement.js.html#l194"><code>src&#x2F;display&#x2F;CanvasElement.js:194</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Removes all child object instances from the child list of the parent object instance.
+The parent property of the removed children is set to null , and the objects are garbage collected if no other
+references to the children exist.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">CanvasElement</span>:
                         
                         <p>Returns an instance of itself.</p>
 
@@ -4680,7 +5746,7 @@ references to the children exist.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l220"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:220</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l151"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:151</code></a>
         
         </p>
 
@@ -4693,7 +5759,7 @@ references to the children exist.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Swaps two DisplayObjectContainer&#39;s with each other.</p>
+            <p>Swaps two DisplayObject&#39;s with each other.</p>
 
         </div>
 
@@ -4706,13 +5772,13 @@ references to the children exist.</p>
                     <li class="param">
                         
                             <code class="param-name">child1</code>
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The DisplayObjectContainer instance to be swap.</p>
+                            <p>The DisplayObject instance to be swap.</p>
 
                         </div>
 
@@ -4722,13 +5788,13 @@ references to the children exist.</p>
                     <li class="param">
                         
                             <code class="param-name">child2</code>
-                            <span class="type"><a href="../classes/DisplayObjectContainer.html" class="crosslink">DisplayObjectContainer</a></span>
+                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The DisplayObjectContainer instance to be swap.</p>
+                            <p>The DisplayObject instance to be swap.</p>
 
                         </div>
 
@@ -4816,7 +5882,7 @@ references to the children exist.</p>
             
         
         
-        <a href="../files/src_display_DisplayObjectContainer.js.html#l233"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:233</code></a>
+        <a href="../files/src_display_DisplayObjectContainer.js.html#l167"><code>src&#x2F;display&#x2F;DisplayObjectContainer.js:167</code></a>
         
         </p>
 

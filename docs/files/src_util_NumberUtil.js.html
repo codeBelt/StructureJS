@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.NumberUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.NumberUtil = factory();
     }
 }(this, function() {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -165,7 +172,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var NumberUtil = (function () {
+    var NumberUtil = (function() {
         function NumberUtil() {
             throw new Error(&#x27;[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.&#x27;);
         }
@@ -180,7 +187,7 @@
          * @example
          *
          */
-        NumberUtil.bytesToMegabytes = function (bytes) {
+        NumberUtil.bytesToMegabytes = function(bytes) {
             return bytes / 1048576;
         };
         /**
@@ -195,7 +202,7 @@
          *     NumberUtil.centimeterToInch(1);
          *     // 0.3937
          */
-        NumberUtil.centimeterToInch = function (cm) {
+        NumberUtil.centimeterToInch = function(cm) {
             return cm * 0.39370;
         };
         /**
@@ -210,7 +217,7 @@
          *     NumberUtil.inchToCentimeter(1);
          *     // 2.54
          */
-        NumberUtil.inchToCentimeter = function (inch) {
+        NumberUtil.inchToCentimeter = function(inch) {
             return inch * 2.54;
         };
         /**
@@ -224,7 +231,7 @@
          * @example
          *
          */
-        NumberUtil.feetToMeter = function (feet) {
+        NumberUtil.feetToMeter = function(feet) {
             return feet / 3.2808;
         };
         /**
@@ -239,7 +246,7 @@
          *     NumberUtil.convertToHHMMSS(33333);
          *     // &#x27;09:15:33&#x27;
          */
-        NumberUtil.convertToHHMMSS = function (seconds) {
+        NumberUtil.convertToHHMMSS = function(seconds) {
             var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
@@ -267,7 +274,7 @@
          *     NumberUtil.doubleDigitFormat(9);
          *     // &#x27;09&#x27;
          */
-        NumberUtil.doubleDigitFormat = function (num) {
+        NumberUtil.doubleDigitFormat = function(num) {
             if (num &lt; 10) {
                 return (&#x27;0&#x27; + num);
             }
@@ -291,7 +298,7 @@
          *     NumberUtil.unformatUnit(&#x27;$-123,456,789.99&#x27;);
          *     // -123456789.99
          */
-        NumberUtil.unformatUnit = function (value) {
+        NumberUtil.unformatUnit = function(value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
             var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, &#x27;&#x27;);
             // Gets the index where the decimal placement is located.
@@ -300,8 +307,7 @@
             if (decimalSeparator === &#x27;.&#x27;) {
                 // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d.-]/g, &#x27;&#x27;);
-            }
-            else {
+            } else {
                 // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d,-]/g, &#x27;&#x27;);
                 decimalIndex = withoutSpecialCharacters.length - 3;
@@ -333,7 +339,7 @@
          *     NumberUtil.formatUnit(-1900.24, 1);
          *     // &#x27;-1,900.2&#x27;
          */
-        NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
+        NumberUtil.formatUnit = function(value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
             if (decimalPlacement === void 0) { decimalPlacement = 2; }
             if (decimalSeparator === void 0) { decimalSeparator = &#x27;.&#x27;; }
             if (thousandsSeparator === void 0) { thousandsSeparator = &#x27;,&#x27;; }
@@ -353,11 +359,9 @@
             if (str.length &gt; 0) {
                 if (currencySymbolPlacement === 0) {
                     result = currencySymbol + str + result;
-                }
-                else if (currencySymbolPlacement === 1) {
+                } else if (currencySymbolPlacement === 1) {
                     result = str + result + currencySymbol;
-                }
-                else {
+                } else {
                     result = str + result;
                 }
             }
@@ -377,15 +381,14 @@
          *      MathUtil.fahrenheitToCelsius(212);
          *      // 100
          */
-        NumberUtil.fahrenheitToCelsius = function (fahrenheit, decimals) {
+        NumberUtil.fahrenheitToCelsius = function(fahrenheit, decimals) {
             if (decimals === void 0) { decimals = 2; }
             var d = &#x27;&#x27;;
             var r = (5 / 9) * (fahrenheit - 32);
             var s = r.toString().split(&#x27;.&#x27;);
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            }
-            else {
+            } else {
                 var i = decimals;
                 while (i &gt; 0) {
                     d += &#x27;0&#x27;;
@@ -409,15 +412,14 @@
          *      MathUtil.celsiusToFahrenheit(100);
          *      // 212
          */
-        NumberUtil.celsiusToFahrenheit = function (celsius, decimals) {
+        NumberUtil.celsiusToFahrenheit = function(celsius, decimals) {
             if (decimals === void 0) { decimals = 2; }
             var d = &#x27;&#x27;;
             var r = (celsius / (5 / 9)) + 32;
             var s = r.toString().split(&#x27;.&#x27;);
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            }
-            else {
+            } else {
                 var i = decimals;
                 while (i &gt; 0) {
                     d += &#x27;0&#x27;;
@@ -432,6 +434,7 @@
 
     return NumberUtil;
 }));
+
     </pre>
 </div>
 

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -145,15 +151,16 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/StringUtil&#x27;, &#x27;handlebars&#x27;, &#x27;jquery&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../util/StringUtil&#x27;), require(&#x27;handlebars&#x27;), require(&#x27;jquery&#x27;));
+        define([&#x27;../util/StringUtil&#x27;, &#x27;jquery&#x27;, &#x27;handlebars&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;../util/StringUtil&#x27;), require(&#x27;jquery&#x27;), require(&#x27;handlebars&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.Handlebars, root.jQuery);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.jQuery, root.Handlebars);
     }
-}(this, function(StringUtil, Handlebars, jQuery) {
+}(this, function(StringUtil, jQuery, Handlebars) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -168,7 +175,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var TemplateFactory = (function () {
+    var TemplateFactory = (function() {
 
         function TemplateFactory() {
             throw new Error(&#x27;[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.&#x27;);
@@ -185,7 +192,7 @@
          * @example
          *      TemplateFactory.create(&#x27;templateName&#x27;, {some: &#x27;data&#x27;});
          */
-        TemplateFactory.create = function (templatePath, data) {
+        TemplateFactory.create = function(templatePath, data) {
             if (data === void 0) { data = null; }
             //Checks the first character to see if it is a &#x27;.&#x27; or &#x27;#&#x27;.
             var regex = /^([.#])(.+)/;
@@ -194,22 +201,19 @@
             var isClassOrIdName = regex.test(templatePath);
             if (isFunctionTemplate) {
                 template = templatePath(data);
-            }
-            else if (isClassOrIdName) {
+            } else if (isClassOrIdName) {
                 var htmlString = jQuery(templatePath).html();
                 htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
-                    var templateMethod = _.template(htmlString);
+                    var templateMethod = window[&#x27;_&#x27;].template(htmlString);
                     template = templateMethod(data);
-                }
-                else {
+                } else {
                     // Handlebars Template
                     var templateMethod = Handlebars.compile(htmlString);
                     template = templateMethod(data);
                 }
-            }
-            else {
+            } else {
                 var templateObj = window[TemplateFactory.templateNamespace];
                 if (!templateObj) {
                     // Returns null because the template namespace is not found.
@@ -269,6 +273,7 @@
 
     return TemplateFactory;
 }));
+
     </pre>
 </div>
 

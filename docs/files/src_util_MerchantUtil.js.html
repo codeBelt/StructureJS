@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.MerchantUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.MerchantUtil = factory();
     }
 }(this, function() {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -165,7 +172,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var MerchantUtil = (function () {
+    var MerchantUtil = (function() {
         function MerchantUtil() {
             throw new Error(&#x27;[MerchantUtil] Do not instantiate the MerchantUtil class because it is a static class.&#x27;);
         }
@@ -181,7 +188,7 @@
          *      MerchantUtil.isCreditCard(&#x27;4556106734384949&#x27;);
          *      // true
          */
-        MerchantUtil.isCreditCard = function (cardNumber) {
+        MerchantUtil.isCreditCard = function(cardNumber) {
             if (cardNumber.length &lt; 7 || cardNumber.length &gt; 19 || Number(cardNumber) &lt; 1000000) {
                 return false;
             }
@@ -192,8 +199,7 @@
             while (--i &gt; -1) {
                 if (alt) {
                     sum += Number(cardNumber.substr(i, 1));
-                }
-                else {
+                } else {
                     pre = Number(cardNumber.substr(i, 1)) * 2;
                     sum += (pre &gt; 8) ? pre -= 9 : pre;
                 }
@@ -218,7 +224,7 @@
          *      MerchantUtil.encodeCreditCardNumber(&#x27;4556106734384949&#x27;, 5, &#x27;x&#x27;);
          *      // xxxxxxxxxxx84949
          */
-        MerchantUtil.encodeCreditCardNumber = function (strNumber, digitsShown, encodeChar) {
+        MerchantUtil.encodeCreditCardNumber = function(strNumber, digitsShown, encodeChar) {
             if (digitsShown === void 0) { digitsShown = 4; }
             if (encodeChar === void 0) { encodeChar = &#x27;*&#x27;; }
             var encoded = &#x27;&#x27;;
@@ -241,26 +247,21 @@
          *      MerchantUtil.getCreditCardProvider(&quot;5428070016026573&quot;);
          *      // mastercard
          */
-        MerchantUtil.getCreditCardProvider = function (cardNumber) {
+        MerchantUtil.getCreditCardProvider = function(cardNumber) {
             if (MerchantUtil.isCreditCard(cardNumber) == false) {
                 return &#x27;invalid&#x27;;
             }
             if (cardNumber.length == 13 || cardNumber.length == 16 &amp;&amp; cardNumber.indexOf(&#x27;4&#x27;) == 0) {
                 return &#x27;visa&#x27;;
-            }
-            else if (cardNumber.indexOf(&#x27;51&#x27;) == 0 || cardNumber.indexOf(&#x27;52&#x27;) == 0 || cardNumber.indexOf(&#x27;53&#x27;) == 0 || cardNumber.indexOf(&#x27;54&#x27;) == 0 || cardNumber.indexOf(&#x27;55&#x27;) == 0 &amp;&amp; cardNumber.length == 16) {
+            } else if (cardNumber.indexOf(&#x27;51&#x27;) == 0 || cardNumber.indexOf(&#x27;52&#x27;) == 0 || cardNumber.indexOf(&#x27;53&#x27;) == 0 || cardNumber.indexOf(&#x27;54&#x27;) == 0 || cardNumber.indexOf(&#x27;55&#x27;) == 0 &amp;&amp; cardNumber.length == 16) {
                 return &#x27;mastercard&#x27;;
-            }
-            else if (cardNumber.length == 16 &amp;&amp; cardNumber.indexOf(&#x27;6011&#x27;) == 0) {
+            } else if (cardNumber.length == 16 &amp;&amp; cardNumber.indexOf(&#x27;6011&#x27;) == 0) {
                 return &#x27;discover&#x27;;
-            }
-            else if (cardNumber.indexOf(&#x27;34&#x27;) == 0 || cardNumber.indexOf(&#x27;37&#x27;) == 0 &amp;&amp; cardNumber.length == 15) {
+            } else if (cardNumber.indexOf(&#x27;34&#x27;) == 0 || cardNumber.indexOf(&#x27;37&#x27;) == 0 &amp;&amp; cardNumber.length == 15) {
                 return &#x27;amex&#x27;;
-            }
-            else if (cardNumber.indexOf(&#x27;300&#x27;) == 0 || cardNumber.indexOf(&#x27;301&#x27;) == 0 || cardNumber.indexOf(&#x27;302&#x27;) == 0 || cardNumber.indexOf(&#x27;303&#x27;) == 0 || cardNumber.indexOf(&#x27;304&#x27;) == 0 || cardNumber.indexOf(&#x27;305&#x27;) == 0 || cardNumber.indexOf(&#x27;36&#x27;) == 0 || cardNumber.indexOf(&#x27;38&#x27;) == 0 &amp;&amp; cardNumber.length == 14) {
+            } else if (cardNumber.indexOf(&#x27;300&#x27;) == 0 || cardNumber.indexOf(&#x27;301&#x27;) == 0 || cardNumber.indexOf(&#x27;302&#x27;) == 0 || cardNumber.indexOf(&#x27;303&#x27;) == 0 || cardNumber.indexOf(&#x27;304&#x27;) == 0 || cardNumber.indexOf(&#x27;305&#x27;) == 0 || cardNumber.indexOf(&#x27;36&#x27;) == 0 || cardNumber.indexOf(&#x27;38&#x27;) == 0 &amp;&amp; cardNumber.length == 14) {
                 return &#x27;diners&#x27;;
-            }
-            else {
+            } else {
                 return &#x27;other&#x27;;
             }
         };
@@ -275,7 +276,7 @@
          *      MerchantUtil.isValidExDate(11, 2010);
          *      // false
          */
-        MerchantUtil.isValidExpirationDate = function (month, year) {
+        MerchantUtil.isValidExpirationDate = function(month, year) {
             var d = new Date();
             var currentMonth = d.getMonth() + 1;
             var currentYear = d.getFullYear();
@@ -289,6 +290,7 @@
 
     return MerchantUtil;
 }));
+
     </pre>
 </div>
 

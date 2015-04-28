@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.17</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Route = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Route = factory();
     }
 }(this, function() {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -222,7 +229,7 @@
      *     var route = new Route(&#x27;/about/*&#x27;, this.method4, this);
      *
      */
-    var Route = (function () {
+    var Route = (function() {
         function Route(routePattern, callback, scope) {
             /**
              * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, &quot;&quot;. See below for examples.
@@ -270,7 +277,7 @@
          * @returns {RegExp}
          * @private
          */
-        Route.prototype.routePatternToRegexp = function (routePattern) {
+        Route.prototype.routePatternToRegexp = function(routePattern) {
             var findFirstOrLastForwardSlash = new RegExp(&#x27;^\/|\/$&#x27;, &#x27;g&#x27;); // Finds if the first character OR if the last character is a forward slash
             var findOptionalColons = new RegExp(&#x27;:([^:]*):&#x27;, &#x27;g&#x27;); // Finds the colons : :
             var findRequiredBrackets = new RegExp(&#x27;{([^}]+)}&#x27;, &#x27;g&#x27;); // Finds the brackets { }
@@ -296,7 +303,7 @@
          *     var route = new Route(&#x27;/games/{gameName}/:level:/&#x27;, this.method, this);
          *     console.log( route.match(&#x27;/games/asteroids/2/&#x27;) );
          */
-        Route.prototype.match = function (route) {
+        Route.prototype.match = function(route) {
             // Remove the query string before matching against the route pattern.
             var routeWithoutQueryString = route.replace(/\?.*/, &#x27;&#x27;);
             return routeWithoutQueryString.match(this.regex);
@@ -306,6 +313,7 @@
 
     return Route;
 }));
+
     </pre>
 </div>
 
