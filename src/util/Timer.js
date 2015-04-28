@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../event/EventDispatcher', '../event/TimerEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/TimerEvent'));
     } else {
         /*jshint sub:true */
@@ -12,6 +12,7 @@
         root.structurejs.Timer = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.TimerEvent);
     }
 }(this, function(Extend, EventDispatcher, TimerEvent) {
+
     'use strict';
 
     /**

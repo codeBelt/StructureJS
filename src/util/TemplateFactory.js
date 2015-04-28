@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/StringUtil', 'handlebars', 'jquery'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/StringUtil'), require('handlebars'), require('jquery'));
+        define(['../util/StringUtil', 'jquery', 'Handlebars'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/StringUtil'), require('jquery'), require('Handlebars'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.Handlebars, root.jQuery);
+        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.structurejs.jQuery, root.structurejs.Handlebars);
     }
-}(this, function(StringUtil, Handlebars, jQuery) {
+}(this, function(StringUtil, jQuery, Handlebars) {
+
     'use strict';
 
     /**
@@ -57,7 +58,7 @@
                 htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
-                    var templateMethod = _.template(htmlString);
+                    var templateMethod = window['_'].template(htmlString);
                     template = templateMethod(data);
                 } else {
                     // Handlebars Template

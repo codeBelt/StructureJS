@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
@@ -12,8 +12,8 @@
         root.structurejs.ComponentFactory = factory();
     }
 }(this, function() {
-    'use strict';
 
+    'use strict';
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *

@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../event/EventDispatcher'), require('../event/BaseEvent'), require('../util/Util'));
     } else {
         /*jshint sub:true */
@@ -12,6 +12,7 @@
         root.structurejs.BrowserUtil = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent, root.structurejs.Util);
     }
 }(this, function(EventDispatcher, BaseEvent, Util) {
+
     'use strict';
 
     /**

@@ -4,7 +4,7 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
@@ -12,6 +12,7 @@
         root.structurejs.Util = factory();
     }
 }(this, function() {
+
     'use strict';
 
     /**
@@ -250,7 +251,7 @@
          * Keeps track of the count for the uniqueId method.
          *
          * @property _idCounter
-         * @type {init}
+         * @type {int}
          * @private
          * @static
          */
