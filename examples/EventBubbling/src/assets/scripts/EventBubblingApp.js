@@ -1,9 +1,9 @@
 // Imports
-var Extend = window.structurejs.Extend;
-var Stage = window.structurejs.Stage;
-var BaseEvent = window.structurejs.BaseEvent;
-var EventBroker = window.structurejs.EventBroker;
-var Router = window.structurejs.Router;
+var Extend = window.StructureJS.Extend;
+var Stage = window.StructureJS.Stage;
+var BaseEvent = window.StructureJS.BaseEvent;
+var EventBroker = window.StructureJS.EventBroker;
+var Router = window.StructureJS.Router;
 
 var GrandparentView = window.GrandparentView;
 

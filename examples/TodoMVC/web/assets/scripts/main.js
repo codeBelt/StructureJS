@@ -12785,10 +12785,10 @@ var ListItemCollection = (function () {
     };
 
     /**
-     * @overridden ListItemCollection.removeItem
+     * @overridden ListItemCollection.remove
      */
-    ListItemCollection.prototype.removeItem = function (item, silent) {
-        _super.prototype.removeItem.call(this, item, silent);
+    ListItemCollection.prototype.remove = function (item, silent) {
+        _super.prototype.remove.call(this, item, silent);
 
         this.save();
     };
@@ -12819,7 +12819,7 @@ var ListItemCollection = (function () {
      * @public
      */
     ListItemCollection.prototype.save = function() {
-        this._localStorageController.addItem('todos', this.items);
+        this._localStorageController.addItem('todos', this.models);
     };
 
     /**
@@ -13048,8 +13048,8 @@ module.exports = FooterView;
         module.exports = factory(require('./util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BaseObject = factory(root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
     }
 }(this, function(Util) {
     'use strict';
@@ -13136,8 +13136,8 @@ module.exports = FooterView;
         module.exports = factory(require('./util/Extend'), require('./BaseObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ObjectManager = factory(root.structurejs.Extend, root.structurejs.BaseObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ObjectManager = factory(root.StructureJS.Extend, root.StructureJS.BaseObject);
     }
 }(this, function(Extend, BaseObject) {
 
@@ -13234,8 +13234,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/ValueObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.LocalStorageController = factory(root.structurejs.Extend, root.structurejs.LocalStorageEvent, root.structurejs.EventDispatcher, root.structurejs.ValueObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.ValueObject);
     }
 }(this, function(Extend, LocalStorageEvent, EventDispatcher, ValueObject) {
 
@@ -13473,8 +13473,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/StringUtil'), require('../event/RouterEvent'), require('../model/Route'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Router = factory(root.structurejs.StringUtil, root.structurejs.RouterEvent, root.structurejs.Route);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Router = factory(root.StructureJS.StringUtil, root.StructureJS.RouterEvent, root.StructureJS.Route);
     }
 }(this, function(StringUtil, RouterEvent, Route) {
 
@@ -13998,8 +13998,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('../display/DisplayObjectContainer'), require('../event/BaseEvent'), require('../util/TemplateFactory'), require('../util/ComponentFactory'), require('jquery'), require('../plugin/jquery.eventListener'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DOMElement = factory(root.structurejs.Extend, root.structurejs.DisplayObjectContainer, root.structurejs.BaseEvent, root.structurejs.TemplateFactory, root.structurejs.ComponentFactory, root.jQuery);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DOMElement = factory(root.StructureJS.Extend, root.StructureJS.DisplayObjectContainer, root.StructureJS.BaseEvent, root.StructureJS.TemplateFactory, root.StructureJS.ComponentFactory, root.jQuery);
     }
 }(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery) {
 
@@ -14562,8 +14562,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DisplayObject = factory(root.structurejs.Extend, root.structurejs.EventDispatcher);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DisplayObject = factory(root.StructureJS.Extend, root.StructureJS.EventDispatcher);
     }
 }(this, function(Extend, EventDispatcher) {
 
@@ -14802,8 +14802,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('./DisplayObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DisplayObjectContainer = factory(root.structurejs.Extend, root.structurejs.DisplayObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DisplayObjectContainer = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject);
     }
 }(this, function(Extend, DisplayObject) {
 
@@ -15045,8 +15045,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('jquery'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Stage = factory(root.structurejs.Extend, root.structurejs.DOMElement, root.jQuery);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Stage = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.jQuery);
     }
 }(this, function(Extend, DOMElement, jQuery) {
 
@@ -15177,8 +15177,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('../BaseObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BaseEvent = factory(root.structurejs.Extend, root.structurejs.BaseObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BaseEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseObject);
     }
 }(this, function(Extend, BaseObject) {
 
@@ -15639,8 +15639,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('../ObjectManager'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.EventDispatcher = factory(root.structurejs.Extend, root.structurejs.ObjectManager, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.EventDispatcher = factory(root.StructureJS.Extend, root.StructureJS.ObjectManager, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, ObjectManager, BaseEvent) {
 
@@ -15905,8 +15905,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.LocalStorageEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.LocalStorageEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
 
@@ -15978,8 +15978,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.RouterEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.RouterEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
 
@@ -16088,8 +16088,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('../util/Util'), require('../event/EventDispatcher'), require('../event/BaseEvent'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Collection = factory(root.structurejs.Extend, root.structurejs.Util, root.structurejs.EventDispatcher, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Collection = factory(root.StructureJS.Extend, root.StructureJS.Util, root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, Util, EventDispatcher, BaseEvent) {
 
@@ -16575,8 +16575,8 @@ module.exports = FooterView;
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Route = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Route = factory();
     }
 }(this, function() {
 
@@ -16744,8 +16744,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ValueObject = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ValueObject = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
     }
 }(this, function(Extend, BaseObject, Util) {
 
@@ -16978,109 +16978,109 @@ module.exports = FooterView;
 
     'use strict';
 
-    /**
-     * A bind polyfill for browsers that don't support the bind method.
-     */
-    if (!Function.prototype.bind) {
-        Function.prototype.bind = function(oThis) {
-            if (typeof this !== 'function') {
-                throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+        /**
+         * A bind polyfill for browsers that don't support the bind method.
+         */
+        if (!Function.prototype.bind) {
+            Function.prototype.bind = function(oThis) {
+                if (typeof this !== 'function') {
+                    throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+                }
+                var aArgs = Array.prototype.slice.call(arguments, 1),
+                    fToBind = this,
+                    fNOP = function() {},
+                    fBound = function() {
+                        return fToBind.apply(this instanceof fNOP && oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+                    };
+                fNOP.prototype = this.prototype;
+                fBound.prototype = new fNOP();
+                return fBound;
+            };
+        }
+        /**
+         * Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.
+         *
+         * @param str
+         * @returns {String}
+         */
+        var hashCode = function(str) {
+            str = String(str);
+            // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
+            var character;
+            var hash = null;
+            var strLength = str.length;
+            if (strLength == 0)
+                return hash;
+            for (var i = 0; i < strLength; i++) {
+                character = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + character;
+                hash = hash & hash; // Convert to 32bit integer
             }
-            var aArgs = Array.prototype.slice.call(arguments, 1),
-                fToBind = this,
-                fNOP = function() {},
-                fBound = function() {
-                    return fToBind.apply(this instanceof fNOP && oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
-                };
-            fNOP.prototype = this.prototype;
-            fBound.prototype = new fNOP();
-            return fBound;
+            return String(Math.abs(hash));
         };
-    }
-    /**
-     * Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.
-     *
-     * @param str
-     * @returns {String}
-     */
-    var hashCode = function(str) {
-        str = String(str);
-        // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
-        var character;
-        var hash = null;
-        var strLength = str.length;
-        if (strLength == 0)
-            return hash;
-        for (var i = 0; i < strLength; i++) {
-            character = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + character;
-            hash = hash & hash; // Convert to 32bit integer
-        }
-        return String(Math.abs(hash));
-    };
-    /**
-     * The jQuery addEventListener plugin
-     */
-    $.fn.addEventListener = function(type, selector, data, callback, scope) {
-        var _callback;
-        var _scope;
-        var _handler;
-        switch (arguments.length) {
-            case 3:
-                _callback = selector;
-                _scope = data;
-                _scope._handlerMap = _scope._handlerMap || {};
-                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
-                this.on(type, _handler);
-                break;
-            case 4:
-                _callback = data;
-                _scope = callback;
-                _scope._handlerMap = _scope._handlerMap || {};
-                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
-                this.on(type, selector, _handler);
-                break;
-            case 5:
-                _callback = callback;
-                _scope = scope;
-                _scope._handlerMap = _scope._handlerMap || {};
-                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
-                this.on(type, selector, data, _handler);
-                break;
-            default:
-                throw new Error('jQuery addEventListener plugin requires at least 3 arguments.');
-        }
-        return this;
-    };
-    /**
-     * The jQuery removeEventListener plugin
-     */
-    $.fn.removeEventListener = function(type, selector, callback, scope) {
-        var _callback;
-        var _scope;
-        var _handler;
-        switch (arguments.length) {
-            case 3:
-                _callback = selector;
-                _scope = callback;
-                _scope._handlerMap = _scope._handlerMap || {};
-                _handler = _scope._handlerMap[hashCode(_callback)];
-                this.off(type, _handler);
-                _scope._handlerMap[hashCode(_callback)] = null;
-                break;
-            case 4:
-                _callback = callback;
-                _scope = scope;
-                _scope._handlerMap = _scope._handlerMap || {};
-                _handler = _scope._handlerMap[hashCode(_callback)];
-                this.off(type, selector, _handler);
-                _scope._handlerMap[hashCode(_callback)] = null;
-                break;
-            default:
-                throw new Error('jQuery removeEventListener plugin requires at least 3 arguments.');
-        }
-        return this;
-    };
+        /**
+         * The jQuery addEventListener plugin
+         */
+        $.fn.addEventListener = function(type, selector, data, callback, scope) {
+            var _callback;
+            var _scope;
+            var _handler;
+            switch (arguments.length) {
+                case 3:
+                    _callback = selector;
+                    _scope = data;
+                    _scope._handlerMap = _scope._handlerMap || {};
+                    _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                    this.on(type, _handler);
+                    break;
+                case 4:
+                    _callback = data;
+                    _scope = callback;
+                    _scope._handlerMap = _scope._handlerMap || {};
+                    _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                    this.on(type, selector, _handler);
+                    break;
+                case 5:
+                    _callback = callback;
+                    _scope = scope;
+                    _scope._handlerMap = _scope._handlerMap || {};
+                    _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                    this.on(type, selector, data, _handler);
+                    break;
+                default:
+                    throw new Error('jQuery addEventListener plugin requires at least 3 arguments.');
+            }
+            return this;
+        };
+        /**
+         * The jQuery removeEventListener plugin
+         */
+        $.fn.removeEventListener = function(type, selector, callback, scope) {
+            var _callback;
+            var _scope;
+            var _handler;
+            switch (arguments.length) {
+                case 3:
+                    _callback = selector;
+                    _scope = callback;
+                    _scope._handlerMap = _scope._handlerMap || {};
+                    _handler = _scope._handlerMap[hashCode(_callback)];
+                    this.off(type, _handler);
+                    _scope._handlerMap[hashCode(_callback)] = null;
+                    break;
+                case 4:
+                    _callback = callback;
+                    _scope = scope;
+                    _scope._handlerMap = _scope._handlerMap || {};
+                    _handler = _scope._handlerMap[hashCode(_callback)];
+                    this.off(type, selector, _handler);
+                    _scope._handlerMap[hashCode(_callback)] = null;
+                    break;
+                default:
+                    throw new Error('jQuery removeEventListener plugin requires at least 3 arguments.');
+            }
+            return this;
+        };
 
     return $;
 }));
@@ -17096,8 +17096,8 @@ module.exports = FooterView;
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ComponentFactory = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ComponentFactory = factory();
     }
 }(this, function() {
 
@@ -17158,8 +17158,8 @@ module.exports = FooterView;
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Extend = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Extend = factory();
     }
 }(this, function() {
     'use strict';
@@ -17222,8 +17222,8 @@ module.exports = FooterView;
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.StringUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.StringUtil = factory();
     }
 }(this, function() {
 
@@ -17525,8 +17525,8 @@ module.exports = FooterView;
         module.exports = factory(require('../util/StringUtil'), require('jquery'), require('handlebars'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.jQuery, root.Handlebars);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.jQuery, root.Handlebars);
     }
 }(this, function(StringUtil, jQuery, Handlebars) {
 
@@ -17654,8 +17654,8 @@ module.exports = FooterView;
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Util = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Util = factory();
     }
 }(this, function() {
 

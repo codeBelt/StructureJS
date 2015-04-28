@@ -1,7 +1,7 @@
 // Imports
-var Extend = window.structurejs.Extend;
-var DOMElement = window.structurejs.DOMElement;
-var BaseEvent = window.structurejs.BaseEvent;
+var Extend = window.StructureJS.Extend;
+var DOMElement = window.StructureJS.DOMElement;
+var BaseEvent = window.StructureJS.BaseEvent;
 
 var ChildView = window.ChildView;
 

@@ -1,8 +1,8 @@
 // Imports
-var Extend = window.structurejs.Extend;
-var DOMElement = window.structurejs.DOMElement;
-var BaseEvent = window.structurejs.BaseEvent;
-var EventBroker = window.structurejs.EventBroker;
+var Extend = window.StructureJS.Extend;
+var DOMElement = window.StructureJS.DOMElement;
+var BaseEvent = window.StructureJS.BaseEvent;
+var EventBroker = window.StructureJS.EventBroker;
 
 /**
  * TODO: YUIDoc_comment
