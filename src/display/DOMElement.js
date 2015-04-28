@@ -311,6 +311,12 @@
             if (child._isReference === true && child.$element.length === 0) {
                 return this;
             }
+
+            if (child.isCreated === false) {
+                child.create(); // Render the item before adding to the DOM
+                child.isCreated = true;
+            }
+
             // If the child object is not a reference of a jQuery object in the DOM then append it.
             if (child._isReference === false) {
                 this.$element.append(child.$element);
@@ -331,7 +337,7 @@
         };
         /**
          * Gets called when the child object is added to the DOM.
-         * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.
+         * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
          *
          * @method onDomAdded
          * @private
@@ -345,16 +351,14 @@
                 }, 100);
                 return;
             }
+
+            this.addClientSideId(child);
+
             child.width = child.$element.width();
             child.height = child.$element.height();
-            if (child.isCreated === false) {
-                child.create();
-                child.isCreated = true;
-            }
-            this.addClientSideId(child);
             child.enable();
             child.layout();
-            child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
+            child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));
         };
         /**
          * @overridden DisplayObjectContainer.addChildAt
@@ -371,6 +375,10 @@
             if (index < 0 || index >= length) {
                 this.addChild(child);
             } else {
+                if (child.isCreated === false) {
+                    child.create(); // Render the item before adding to the DOM
+                    child.isCreated = true;
+                }
                 // Adds the child at a specific index but also will remove the child from another parent object if one exists.
                 _super.prototype.addChildAt.call(this, child, index);
                 // Adds the child before the a child already in the DOM.
