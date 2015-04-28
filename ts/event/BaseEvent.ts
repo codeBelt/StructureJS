@@ -45,13 +45,6 @@ import BaseObject = require('../BaseObject');
  *              this.countryName = null;
  *          }
  *
- *          CountryEvent.prototype.clone = function () {
- *              var event = new CountryEvent(this.type, this.bubbles, this.cancelable, this.data);
- *              event.countryName = this.countryName;
- *
- *              return event;
- *           };
- *
  *           return CountryEvent;
  *      })();
  *

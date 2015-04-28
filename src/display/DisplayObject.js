@@ -42,8 +42,8 @@
                  */
                 this.stage = null;
                 /**
-                 * The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a <canvas> element.
-                 * This property is only used with the <canvas> specific display objects.
+                 * The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a canvas element.
+                 * This property is only used with the canvas specific display objects.
                  *
                  * @property ctx
                  * @type {CanvasRenderingContext2D}

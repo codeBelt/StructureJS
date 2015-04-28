@@ -166,6 +166,7 @@
              * @property element
              * @type {HTMLElement}
              * @default null
+             * @public
              */
             this.element = null;
             /**
@@ -174,6 +175,7 @@
              * @property $element
              * @type {JQuery}
              * @default null
+             * @public
              */
             this.$element = null;
             /**
@@ -191,6 +193,7 @@
              * @property _type
              * @type {string}
              * @default null
+             * @private
              */
             this._type = null;
             /**
@@ -199,6 +202,7 @@
              * @property _params
              * @type {any}
              * @default null
+             * @private
              */
             this._params = null;
             if (type instanceof jQuery) {

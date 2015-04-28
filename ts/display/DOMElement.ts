@@ -161,6 +161,7 @@ class DOMElement extends DisplayObjectContainer
      * @property element
      * @type {HTMLElement}
      * @default null
+     * @public
      */
     public element:HTMLElement = null;
 
@@ -170,6 +171,7 @@ class DOMElement extends DisplayObjectContainer
      * @property $element
      * @type {JQuery}
      * @default null
+     * @public
      */
     public $element:JQuery = null;
 
@@ -189,6 +191,7 @@ class DOMElement extends DisplayObjectContainer
      * @property _type
      * @type {string}
      * @default null
+     * @private
      */
     private _type:string = null;
 
@@ -198,6 +201,7 @@ class DOMElement extends DisplayObjectContainer
      * @property _params
      * @type {any}
      * @default null
+     * @private
      */
     private _params:any = null;
 

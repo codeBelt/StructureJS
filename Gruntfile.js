@@ -515,4 +515,9 @@ module.exports = function(grunt) {
         'browserify:todomvc', 'watch:browserify'
     ]);
 
+    grunt.registerTask('all', [
+        'concat',
+        'uglify'
+    ]);
+
 };
