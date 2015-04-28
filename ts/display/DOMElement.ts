@@ -146,8 +146,6 @@ import ComponentFactory = require('../util/ComponentFactory');
  */
 class DOMElement extends DisplayObjectContainer
 {
-    'use strict';
-
     /**
      * TODO: YUIDoc_comment
      *
@@ -202,7 +200,6 @@ class DOMElement extends DisplayObjectContainer
      * @default null
      */
     private _params:any = null;
-
 
     constructor(type:any = null, params:any = null)
     {
@@ -337,6 +334,12 @@ class DOMElement extends DisplayObjectContainer
             return this;
         }
 
+        if (child.isCreated === false)
+        {
+            child.create();// Render the item before adding to the DOM
+            child.isCreated = true;
+        }
+
         // If the child object is not a reference of a jQuery object in the DOM then append it.
         if (child._isReference === false)
         {
@@ -363,7 +366,7 @@ class DOMElement extends DisplayObjectContainer
 
     /**
      * Gets called when the child object is added to the DOM.
-     * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.
+     * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
      *
      * @method onDomAdded
      * @private
@@ -378,24 +381,16 @@ class DOMElement extends DisplayObjectContainer
             {
                 this.onAddedToDom(child);
             }, 100);
-
             return;
-        }
-
-        child.width = child.$element.width();
-        child.height = child.$element.height();
-
-        if (child.isCreated === false)
-        {
-            child.create();
-            child.isCreated = true;
         }
 
         this.addClientSideId(child);
 
+        child.width = child.$element.width();
+        child.height = child.$element.height();
         child.enable();
         child.layout();
-        child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
+        child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));
     }
 
     /**
@@ -422,6 +417,12 @@ class DOMElement extends DisplayObjectContainer
         // index passed in and place the item before that child.
         else
         {
+            if (child.isCreated === false)
+            {
+                child.create();// Render the item before adding to the DOM
+                child.isCreated = true;
+            }
+
             // Adds the child at a specific index but also will remove the child from another parent object if one exists.
             super.addChildAt(child, index);
 

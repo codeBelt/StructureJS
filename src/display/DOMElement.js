@@ -311,12 +311,10 @@
             if (child._isReference === true && child.$element.length === 0) {
                 return this;
             }
-
             if (child.isCreated === false) {
                 child.create(); // Render the item before adding to the DOM
                 child.isCreated = true;
             }
-
             // If the child object is not a reference of a jQuery object in the DOM then append it.
             if (child._isReference === false) {
                 this.$element.append(child.$element);
@@ -351,9 +349,7 @@
                 }, 100);
                 return;
             }
-
             this.addClientSideId(child);
-
             child.width = child.$element.width();
             child.height = child.$element.height();
             child.enable();
