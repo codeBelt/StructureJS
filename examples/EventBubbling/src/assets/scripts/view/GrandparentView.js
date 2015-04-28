@@ -1,7 +1,7 @@
 // Imports
-var Extend = window.structurejs.Extend;
-var DOMElement = window.structurejs.DOMElement;
-var BaseEvent = window.structurejs.BaseEvent;
+var Extend = window.StructureJS.Extend;
+var DOMElement = window.StructureJS.DOMElement;
+var BaseEvent = window.StructureJS.BaseEvent;
 
 var ParentView = window.ParentView;
 
@@ -25,10 +25,10 @@ var GrandparentView = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    GrandparentView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    GrandparentView.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._parentView = new ParentView(this.$element.find('.js-parentContent'));
         this.addChild(this._parentView);
@@ -39,12 +39,12 @@ var GrandparentView = (function () {
     };
 
     /**
-     * @overridden DOMElement.layoutChildren
+     * @overridden DOMElement.layout
      */
-    GrandparentView.prototype.layoutChildren = function () {
+    GrandparentView.prototype.layout = function () {
         this._$grandparentMessage.text('');
         this._$checkbox.prop('checked', false);
-        this._parentView.layoutChildren();
+        this._parentView.layout();
 
         return this;
     };

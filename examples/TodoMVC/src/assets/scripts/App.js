@@ -68,10 +68,10 @@ var App = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    App.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    App.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._listItemCollection = new ListItemCollection();
 
@@ -88,9 +88,9 @@ var App = (function () {
     };
 
     /**
-     * @overridden DOMElement.layoutChildren
+     * @overridden DOMElement.layout
      */
-    App.prototype.layoutChildren = function () {
+    App.prototype.layout = function () {
 
         this._footerView.updateCounts(this._listItemCollection.getCompletedCount(), this._listItemCollection.getRemainingCount());
 
@@ -179,7 +179,7 @@ var App = (function () {
             this._$addTodoInput.val('');
         }
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -219,7 +219,7 @@ var App = (function () {
         this._listItemCollection.remove(listItemVO);
         this._todoListContainer.removeChild(listItemComponent);
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -232,7 +232,7 @@ var App = (function () {
     App.prototype._onItemChange = function(event) {
         this._listItemCollection.save();
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -262,7 +262,7 @@ var App = (function () {
         Router.add('', this._onDefaultHandler.bind(this));
         Router.start();
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -286,7 +286,7 @@ var App = (function () {
             }
         }
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -310,7 +310,7 @@ var App = (function () {
 
         this._footerView.updateNav('active');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -334,7 +334,7 @@ var App = (function () {
 
         this._footerView.updateNav('completed');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -354,7 +354,7 @@ var App = (function () {
 
         this._footerView.updateNav('');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     return App;

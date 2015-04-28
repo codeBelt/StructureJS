@@ -35,10 +35,10 @@ var ListItemCollection = (function () {
     };
 
     /**
-     * @overridden ListItemCollection.removeItem
+     * @overridden ListItemCollection.remove
      */
-    ListItemCollection.prototype.removeItem = function (item, silent) {
-        _super.prototype.removeItem.call(this, item, silent);
+    ListItemCollection.prototype.remove = function (item, silent) {
+        _super.prototype.remove.call(this, item, silent);
 
         this.save();
     };
@@ -69,7 +69,7 @@ var ListItemCollection = (function () {
      * @public
      */
     ListItemCollection.prototype.save = function() {
-        this._localStorageController.addItem('todos', this.items);
+        this._localStorageController.addItem('todos', this.models);
     };
 
     /**

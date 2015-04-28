@@ -39,17 +39,17 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        DeviceButton.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, DeviceButtonTemplate, {buttonColor: this._color});// Example of passing a template in.
+        DeviceButton.prototype.create = function () {
+            _super.prototype.create.call(this, DeviceButtonTemplate, {buttonColor: this._color});// Example of passing a template in.
 
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        DeviceButton.prototype.layoutChildren = function () {
+        DeviceButton.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

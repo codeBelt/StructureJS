@@ -13,7 +13,7 @@ describe('ExternalLinks', function() {
         });
     });
 
-    describe('createChildren', function() {
+    describe('create', function() {
         it('should', function() {
             // TODO: test this
             assert.ok(true);

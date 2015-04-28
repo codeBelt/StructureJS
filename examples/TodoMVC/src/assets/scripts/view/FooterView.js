@@ -46,10 +46,10 @@ var FooterView = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    FooterView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    FooterView.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._$itemsCompleteText = this.$element.find('.js-itemsComplete');
         this._$itemsRemainingText = this.$element.find('.js-itemsRemaining');

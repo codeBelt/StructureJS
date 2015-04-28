@@ -20,10 +20,10 @@ var Main = (function () {
     }
 
     /**
-     * @overridden Main.createChildren
+     * @overridden Main.create
      */
-    Main.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    Main.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         Router.add('', function(event) { console.log(event.routePattern, event); }, this);
 
