@@ -6,7 +6,7 @@
  @import ../event/LoaderEvent as LoaderEvent
  @import ./URLRequest as URLRequest
  @import ./BaseEvent as BaseEvent
- @export TimerEvent
+ @export URLLoader
  */
 import EventDispatcher = require('../event/EventDispatcher');
 import LoaderEvent = require('../event/LoaderEvent');

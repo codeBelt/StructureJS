@@ -4,7 +4,7 @@
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/NetworkMonitorEvent as NetworkMonitorEvent
  @import ../event/native/NavigatorEvents as NavigatorEvents
- @export TimerEvent
+ @export NetworkMonitor
  */
 import EventDispatcher = require('../event/EventDispatcher');
 import NetworkMonitorEvent = require('../event/NetworkMonitorEvent');

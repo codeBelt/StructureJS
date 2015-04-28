@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject, root.StructureJS.MathUtil);
+        root.StructureJS.Bitmap = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject, root.StructureJS.MathUtil);
     }
 }(this, function(Extend, DisplayObject, MathUtil) {
 

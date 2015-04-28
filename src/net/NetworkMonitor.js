@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.TimerEvent = factory(root.StructureJS.EventDispatcher, root.StructureJS.NetworkMonitorEvent, root.StructureJS.NavigatorEvents);
+        root.StructureJS.NetworkMonitor = factory(root.StructureJS.EventDispatcher, root.StructureJS.NetworkMonitorEvent, root.StructureJS.NavigatorEvents);
     }
 }(this, function(EventDispatcher, NetworkMonitorEvent, NavigatorEvents) {
 

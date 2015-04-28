@@ -4,7 +4,7 @@
  @import ../util/Extend as Extend
  @import ./DisplayObject as DisplayObject
  @import ../util/MathUtil as MathUtil
- @export CanvasElement
+ @export Bitmap
  */
 import DisplayObject = require('./DisplayObject');
 import MathUtil = require('../util/MathUtil');
