@@ -143,6 +143,21 @@ module.exports = function(grunt) {
             }
         },
 
+        concat: {
+            all: {
+                src: 'src/**/*.js',
+                dest: './structurejs.' + '<%= pkg.appVersion %>' +'.js'
+            }
+        },
+
+        uglify: {
+            all: {
+                files: {
+                    './structurejs.0.7.0.min.js': ['./structurejs.0.7.0.js']
+                }
+            }
+        },
+
         /**
          * The RequireJS plugin that will use uglify2 to build and minify our JavaScript,
          * templates and any other data we include in the require files.
