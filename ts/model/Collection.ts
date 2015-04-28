@@ -545,7 +545,7 @@ class Collection extends EventDispatcher
      *
      *      var list = collection.filter(isOldEnough);
      */
-    public filter(filterFunction:Function):Array<any>
+    public filter(filterFunction:any):Array<any>
     {
         return this.models.filter(filterFunction);
     }
