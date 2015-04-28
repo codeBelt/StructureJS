@@ -25,10 +25,10 @@ var ParentView = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    ParentView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    ParentView.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._childView = new ChildView(this.$element.find('.js-childContent'));
         this.addChild(this._childView);
@@ -39,12 +39,12 @@ var ParentView = (function () {
     };
 
     /**
-     * @overridden DOMElement.layoutChildren
+     * @overridden DOMElement.layout
      */
-    ParentView.prototype.layoutChildren = function () {
+    ParentView.prototype.layout = function () {
         this._$parentMessage.text('');
         this._$checkbox.prop('checked', false);
-        this._childView.layoutChildren();
+        this._childView.layout();
 
         return this;
     };

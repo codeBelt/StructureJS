@@ -214,17 +214,17 @@ var AutoReplace = {
         }
 
         return this
-            .createChildren()
+            .create()
             .enable();
     },
 
     /**
      * Caches references to DOM elements to improve performance.
      *
-     * @method createChildren
+     * @method create
      * @chainable
      */
-    createChildren: function() {
+    create: function() {
         this.forms = document.getElementsByTagName('form');
         this.fields = getFieldsWithPlaceholder(document);
 

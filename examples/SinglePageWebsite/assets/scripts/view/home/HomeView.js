@@ -22,18 +22,18 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        HomeView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, HomeTemplates);
+        HomeView.prototype.create = function () {
+            _super.prototype.create.call(this, HomeTemplates);
 
             // Create and add your child objects to this parent class.
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        HomeView.prototype.layoutChildren = function () {
+        HomeView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

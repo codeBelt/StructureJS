@@ -29,11 +29,11 @@ define(function (require, exports, module)
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        WebsiteApp.prototype.createChildren = function ()
+        WebsiteApp.prototype.create = function ()
         {
-            _super.prototype.createChildren.call(this);
+            _super.prototype.create.call(this);
 
             var data = {
                 name: "robert",
@@ -176,9 +176,9 @@ define(function (require, exports, module)
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        WebsiteApp.prototype.layoutChildren = function ()
+        WebsiteApp.prototype.layout = function ()
         {
             // Layout or update the child objects in this parent class.
 

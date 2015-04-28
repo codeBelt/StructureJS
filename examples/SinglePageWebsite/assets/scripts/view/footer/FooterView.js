@@ -32,18 +32,18 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        FooterView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, FooterTemplate);
+        FooterView.prototype.create = function () {
+            _super.prototype.create.call(this, FooterTemplate);
 
             this._$footerLinks = this.$element.find('.js-href');
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        FooterView.prototype.layoutChildren = function () {
+        FooterView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

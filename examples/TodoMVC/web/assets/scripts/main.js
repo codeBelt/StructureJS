@@ -12104,10 +12104,10 @@ var App = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    App.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    App.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._listItemCollection = new ListItemCollection();
 
@@ -12124,9 +12124,9 @@ var App = (function () {
     };
 
     /**
-     * @overridden DOMElement.layoutChildren
+     * @overridden DOMElement.layout
      */
-    App.prototype.layoutChildren = function () {
+    App.prototype.layout = function () {
 
         this._footerView.updateCounts(this._listItemCollection.getCompletedCount(), this._listItemCollection.getRemainingCount());
 
@@ -12215,7 +12215,7 @@ var App = (function () {
             this._$addTodoInput.val('');
         }
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -12255,7 +12255,7 @@ var App = (function () {
         this._listItemCollection.remove(listItemVO);
         this._todoListContainer.removeChild(listItemComponent);
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -12268,7 +12268,7 @@ var App = (function () {
     App.prototype._onItemChange = function(event) {
         this._listItemCollection.save();
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -12298,7 +12298,7 @@ var App = (function () {
         Router.add('', this._onDefaultHandler.bind(this));
         Router.start();
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -12322,7 +12322,7 @@ var App = (function () {
             }
         }
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -12346,7 +12346,7 @@ var App = (function () {
 
         this._footerView.updateNav('active');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -12370,7 +12370,7 @@ var App = (function () {
 
         this._footerView.updateNav('completed');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -12390,7 +12390,7 @@ var App = (function () {
 
         this._footerView.updateNav('');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     return App;
@@ -12452,10 +12452,10 @@ var ListItemComponent = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    ListItemComponent.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, '#listItemTemplate', this.vo);
+    ListItemComponent.prototype.create = function () {
+        _super.prototype.create.call(this, '#listItemTemplate', this.vo);
 
         this._$itemInput = this.$element.find('.js-itemText');
         this._$itemLabel = this.$element.find('.js-editTodo');
@@ -12463,9 +12463,9 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * @overridden DOMElement.layoutChildren
+     * @overridden DOMElement.layout
      */
-    ListItemComponent.prototype.layoutChildren = function () {
+    ListItemComponent.prototype.layout = function () {
         this.$element.toggleClass('completed', this.vo.isComplete);
 
         this._$markCompleteCheckbox.prop('checked', this.vo.isComplete);
@@ -12525,7 +12525,7 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.setCompleted = function() {
         this.vo.isComplete = true;
 
-        this.layoutChildren();
+        this.layout();
         this._saveItemText();
     };
 
@@ -12538,7 +12538,7 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.setUnCompleted = function() {
         this.vo.isComplete = false;
 
-        this.layoutChildren();
+        this.layout();
         this._saveItemText();
     };
 
@@ -12583,7 +12583,7 @@ var ListItemComponent = (function () {
 
         this.vo.isComplete = isChecked;
 
-        this.layoutChildren();
+        this.layout();
         this._saveItemText();
     };
 
@@ -12932,10 +12932,10 @@ var FooterView = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    FooterView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    FooterView.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._$itemsCompleteText = this.$element.find('.js-itemsComplete');
         this._$itemsRemainingText = this.$element.find('.js-itemsRemaining');
@@ -14026,13 +14026,13 @@ module.exports = FooterView;
      *              _super.call(this, $element);
      *          }
      *
-     *          ClassName.prototype.createChildren = function () {
-     *              _super.prototype.createChildren.call(this);
+     *          ClassName.prototype.create = function () {
+     *              _super.prototype.create.call(this);
      *
      *              // Create and add your child objects to this parent class.
      *          };
      *
-     *          ClassName.prototype.layoutChildren = function () {
+     *          ClassName.prototype.layout = function () {
      *              // Layout or update the child objects in this parent class.
      *
      *              return this;
@@ -14063,11 +14063,11 @@ module.exports = FooterView;
      *          return ClassName;
      *     })();
      *
-     *     // Example of a view extending DOMElement with template passed into createChildren.
+     *     // Example of a view extending DOMElement with template passed into create.
      *     var view = new CustomView();
      *     this.addChild(view);
      *
-     *     // Example of a view extending DOMElement with template passed into createChildren.
+     *     // Example of a view extending DOMElement with template passed into create.
      *     var Extend = require('structurejs/util/Extend');
      *     var DOMElement = require('structurejs/display/DOMElement');
      *     var HomeTemplate = require('hbs!templates/home/homeTemplate');
@@ -14080,13 +14080,13 @@ module.exports = FooterView;
      *              _super.call(this);
      *          }
      *
-     *          ClassName.prototype.createChildren = function () {
-     *              _super.prototype.createChildren.call(this, HomeTemplate, {data: 'some data'});
+     *          ClassName.prototype.create = function () {
+     *              _super.prototype.create.call(this, HomeTemplate, {data: 'some data'});
      *
      *              // Create and add your child objects to this parent class.
      *          };
      *
-     *          ClassName.prototype.layoutChildren = function () {
+     *          ClassName.prototype.layout = function () {
      *              // Layout or update the child objects in this parent class.
      *
      *              return this;
@@ -14185,15 +14185,15 @@ module.exports = FooterView;
             }
         }
         /**
-         * The createChildren function is intended to provide a consistent place for the creation and adding
+         * The create function is intended to provide a consistent place for the creation and adding
          * of children to the view. It will automatically be called the first time that the view is added
          * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
          * their overridden methods.
          *
          * This method gets called only once when the child view is added to another view. If the child view is removed
-         * and added to another view the createChildren method will not be called again.
+         * and added to another view the create method will not be called again.
          *
-         * @method createChildren
+         * @method create
          * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
          * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
          * @returns {DOMElement} Returns an instance of itself.
@@ -14201,21 +14201,21 @@ module.exports = FooterView;
          * @chainable
          * @example
          *     // EXAMPLE 1: By default your view class will be a div element:
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this);
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this);
          *
          *          this._childInstance = new DOMElement();
          *          this.addChild(this._childInstance);
          *     }
          *
          *     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, 'ul');
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, 'ul');
          *     }
          *
          *     // Then you could nest other elements inside this base view/element.
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
          *
          *          var li = new DOMElement('li', {text: 'Robert is cool'});
          *          this.addChild(li);
@@ -14234,23 +14234,23 @@ module.exports = FooterView;
          *
          *     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate".
          *     // There is a second optional argument where you can pass data for the Handlebar template to use.
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, '#todoTemplate', { data: this.viewData });
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });
          *
          *     }
          *
-         *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into createChildren.
+         *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.
          *     var HomeTemplate = require('hbs!templates/HomeTemplate');
          *
-         *     ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this, HomeTemplate, {data: "some data"});
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
          *
          *     }
          */
-        DOMElement.prototype.createChildren = function (type, params) {
+        DOMElement.prototype.create = function (type, params) {
             if (type === void 0) { type = 'div'; }
             if (params === void 0) { params = null; }
-            // Use the data passed into the constructor first else use the arguments from createChildren.
+            // Use the data passed into the constructor first else use the arguments from create.
             type = this._type || type;
             params = this._params || params;
             if (this.$element == null) {
@@ -14284,7 +14284,7 @@ module.exports = FooterView;
                 return this;
             }
             if (child.isCreated === false) {
-                child.createChildren(); // Render the item before adding to the DOM
+                child.create(); // Render the item before adding to the DOM
                 child.isCreated = true;
             }
             this.addClientSideId(child);
@@ -14309,7 +14309,7 @@ module.exports = FooterView;
         };
         /**
          * Gets called when the child object is added to the DOM.
-         * The method will call {{#crossLink "DOMElement/layoutChildren:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.
+         * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED event.
          *
          * @method onDomAdded
          * @private
@@ -14323,7 +14323,7 @@ module.exports = FooterView;
                 }, 100);
             }
             else {
-                child.layoutChildren();
+                child.layout();
                 child.dispatchEvent(new BaseEvent(BaseEvent.ADDED));
             }
         };
@@ -14344,7 +14344,7 @@ module.exports = FooterView;
             }
             else {
                 if (child.isCreated === false) {
-                    child.createChildren(); // Render the item before adding to the DOM
+                    child.create(); // Render the item before adding to the DOM
                     child.isCreated = true;
                 }
                 this.addClientSideId(child);
@@ -14510,8 +14510,8 @@ module.exports = FooterView;
          * @public
          * @chainable
          * @example
-         *      ClassName.prototype.createChildren = function () {
-         *          _super.prototype.createChildren.call(this);
+         *      ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this);
          *
          *          this.createComponents([
          *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
@@ -14654,18 +14654,18 @@ module.exports = FooterView;
             this.unscaledHeight = 100;
         }
         /**
-         * The createChildren function is intended to provide a consistent place for the creation and adding
+         * The create function is intended to provide a consistent place for the creation and adding
          * of children to the view. It will automatically be called the first time that the view is added
          * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
          * their overridden methods.
          *
-         * @method createChildren
+         * @method create
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.createChildren = function () {
-            throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
+        DisplayObjectContainer.prototype.create = function () {
+            throw new Error('[' + this.getQualifiedClassName() + '] Error: The create method is meant to be overridden.');
         };
         /**
          * Adds a child DisplayObjectContainer instance to this parent object instance. The child is added to the front (top) of all other
@@ -14837,7 +14837,7 @@ module.exports = FooterView;
         /**
          * The setSize method sets the bounds within which the containing DisplayObjectContainer would
          * like that component to lay itself out. It is expected that calling setSize will automatically
-         * call {{#crossLink "DisplayObjectContainer/layoutChildren:method"}}{{/crossLink}}.
+         * call {{#crossLink "DisplayObjectContainer/layout:method"}}{{/crossLink}}.
          *
          * @param unscaledWidth {number} The width within which the component should lay itself out.
          * @param unscaledHeight {number} The height within which the component should lay itself out.
@@ -14849,19 +14849,19 @@ module.exports = FooterView;
             this.unscaledWidth = unscaledWidth;
             this.unscaledHeight = unscaledHeight;
             if (this.isCreated) {
-                this.layoutChildren();
+                this.layout();
             }
             return this;
         };
         /**
          * The layoutComponent method provides a common function to handle updating child objects.
          *
-         * @method layoutChildren
+         * @method layout
          * @returns {DisplayObjectContainer} Returns an instance of itself.
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.layoutChildren = function () {
+        DisplayObjectContainer.prototype.layout = function () {
             return this;
         };
         /**
@@ -14921,13 +14921,13 @@ module.exports = FooterView;
      *                 _super.call(this);
      *             }
      *
-     *             MainClass.prototype.createChildren = function () {
-     *                 _super.prototype.createChildren.call(this);
+     *             MainClass.prototype.create = function () {
+     *                 _super.prototype.create.call(this);
      *
      *                 // Create and add your child objects to this parent class.
      *             }
      *
-     *             MainClass.prototype.layoutChildren = function () {
+     *             MainClass.prototype.layout = function () {
      *                 // Layout or update the child objects in this parent class.
      *
      *                 return this;
@@ -14988,9 +14988,9 @@ module.exports = FooterView;
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr('data-cid', this.cid);
             if (this.isCreated === false) {
-                this.createChildren();
+                this.create();
                 this.isCreated = true;
-                this.layoutChildren();
+                this.layout();
             }
             if (enabled === false) {
                 this.disable();

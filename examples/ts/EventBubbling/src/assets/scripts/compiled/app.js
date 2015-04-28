@@ -460,8 +460,8 @@ var StructureTS;
             this.unscaledWidth = 100;
             this.unscaledHeight = 100;
         }
-        DisplayObjectContainer.prototype.createChildren = function () {
-            throw new Error('[' + this.getQualifiedClassName() + '] Error: The createChildren method is meant to be overridden.');
+        DisplayObjectContainer.prototype.create = function () {
+            throw new Error('[' + this.getQualifiedClassName() + '] Error: The create method is meant to be overridden.');
         };
 
         DisplayObjectContainer.prototype.addChild = function (child) {
@@ -558,13 +558,13 @@ var StructureTS;
             this.unscaledWidth = unscaledWidth;
             this.unscaledHeight = unscaledHeight;
             if (this.isCreated) {
-                this.layoutChildren();
+                this.layout();
             }
 
             return this;
         };
 
-        DisplayObjectContainer.prototype.layoutChildren = function () {
+        DisplayObjectContainer.prototype.layout = function () {
             return this;
         };
 
@@ -772,7 +772,7 @@ var StructureTS;
                 this._params = params;
             }
         }
-        DOMElement.prototype.createChildren = function (type, params) {
+        DOMElement.prototype.create = function (type, params) {
             if (typeof type === "undefined") { type = 'div'; }
             if (typeof params === "undefined") { params = null; }
             type = this._type || type;
@@ -804,7 +804,7 @@ var StructureTS;
             }
 
             if (child.isCreated === false) {
-                child.createChildren();
+                child.create();
                 child.isCreated = true;
             }
 
@@ -832,7 +832,7 @@ var StructureTS;
                     _this.onAddedToDom(child);
                 }, 100);
             } else {
-                child.layoutChildren();
+                child.layout();
                 child.dispatchEvent(new StructureTS.BaseEvent(StructureTS.BaseEvent.ADDED));
             }
         };
@@ -849,7 +849,7 @@ var StructureTS;
                 this.addChild(child);
             } else {
                 if (child.isCreated === false) {
-                    child.createChildren();
+                    child.create();
                     child.isCreated = true;
                 }
 
@@ -993,9 +993,9 @@ var StructureTS;
             this.$element.attr('data-cid', this.cid);
 
             if (this.isCreated === false) {
-                this.createChildren();
+                this.create();
                 this.isCreated = true;
-                this.layoutChildren();
+                this.layout();
             }
 
             if (enabled === false) {
@@ -1048,8 +1048,8 @@ var codeBelt;
             this._dispatchButton = null;
             this._sonMessage = null;
         }
-        ChildView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
+        ChildView.prototype.create = function () {
+            _super.prototype.create.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
 
             this._panelContainer = this.getChild('.js-panelContent');
 
@@ -1059,7 +1059,7 @@ var codeBelt;
             this._sonMessage = this.getChild('.js-message');
         };
 
-        ChildView.prototype.layoutChildren = function () {
+        ChildView.prototype.layout = function () {
             this._sonMessage.$element.css('opacity', 0);
         };
 
@@ -1127,8 +1127,8 @@ var codeBelt;
             this._childView = null;
             this._parentMessage = null;
         }
-        ParentView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
+        ParentView.prototype.create = function () {
+            _super.prototype.create.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
 
             this._panelContainer = this.getChild('.js-panelContent');
 
@@ -1138,9 +1138,9 @@ var codeBelt;
             this._parentMessage = this.getChild('.js-message');
         };
 
-        ParentView.prototype.layoutChildren = function () {
+        ParentView.prototype.layout = function () {
             this._parentMessage.$element.css('opacity', 0);
-            this._childView.layoutChildren();
+            this._childView.layout();
         };
 
         ParentView.prototype.enable = function () {
@@ -1201,8 +1201,8 @@ var codeBelt;
             this._parentView = null;
             this._grandparentMessage = null;
         }
-        GrandparentView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
+        GrandparentView.prototype.create = function () {
+            _super.prototype.create.call(this, '#containerTemplate', { title: this.getQualifiedClassName() });
 
             this._panelContainer = this.getChild('.js-panelContent');
 
@@ -1212,9 +1212,9 @@ var codeBelt;
             this._grandparentMessage = this.getChild('.js-message');
         };
 
-        GrandparentView.prototype.layoutChildren = function () {
+        GrandparentView.prototype.layout = function () {
             this._grandparentMessage.$element.css('opacity', 0);
-            this._parentView.layoutChildren();
+            this._parentView.layout();
         };
 
         GrandparentView.prototype.enable = function () {
@@ -1276,8 +1276,8 @@ var codeBelt;
             this._clearButton = null;
             this._stageMessage = null;
         }
-        EventBubblingApp.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        EventBubblingApp.prototype.create = function () {
+            _super.prototype.create.call(this);
 
             this._grandpaView = new codeBelt.GrandparentView();
             this.addChild(this._grandpaView);
@@ -1286,9 +1286,9 @@ var codeBelt;
             this._stageMessage = this.getChild('.js-message');
         };
 
-        EventBubblingApp.prototype.layoutChildren = function () {
+        EventBubblingApp.prototype.layout = function () {
             this._stageMessage.$element.css('opacity', 0);
-            this._grandpaView.layoutChildren();
+            this._grandpaView.layout();
         };
 
         EventBubblingApp.prototype.enable = function () {
@@ -1329,7 +1329,7 @@ var codeBelt;
         };
 
         EventBubblingApp.prototype.onClearClick = function (event) {
-            this.layoutChildren();
+            this.layout();
         };
 
         EventBubblingApp.prototype.onBubbled = function (event) {

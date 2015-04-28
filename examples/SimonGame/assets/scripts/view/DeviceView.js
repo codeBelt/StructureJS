@@ -61,10 +61,10 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        DeviceView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        DeviceView.prototype.create = function () {
+            _super.prototype.create.call(this);
 
             this._buttonList = [];
 
@@ -90,9 +90,9 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        DeviceView.prototype.layoutChildren = function () {
+        DeviceView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

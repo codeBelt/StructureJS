@@ -21,18 +21,18 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        ModalView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, 'templates/ModalTemplate', {error: 'Robert is cool'});
+        ModalView.prototype.create = function () {
+            _super.prototype.create.call(this, 'templates/ModalTemplate', {error: 'Robert is cool'});
 
             // Create and add your child objects to this parent class.
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        ModalView.prototype.layoutChildren = function () {
+        ModalView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

@@ -29,18 +29,18 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        HeaderView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, HeaderTemplate);
+        HeaderView.prototype.create = function () {
+            _super.prototype.create.call(this, HeaderTemplate);
 
             this._$navLinks = this.$element.find('#js-nav li');
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        HeaderView.prototype.layoutChildren = function () {
+        HeaderView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

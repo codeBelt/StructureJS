@@ -29,11 +29,11 @@ module codeBelt
         }
 
         /**
-         * @overridden Stage.createChildren
+         * @overridden Stage.create
          */
-        public createChildren():void
+        public create():void
         {
-            super.createChildren();
+            super.create();
 
             this._grandpaView = new GrandparentView();
             this.addChild(this._grandpaView);
@@ -43,12 +43,12 @@ module codeBelt
         }
 
         /**
-         * @overridden Stage.layoutChildren
+         * @overridden Stage.layout
          */
-        public layoutChildren():void
+        public layout():void
         {
             this._stageMessage.$element.css('opacity', 0);
-            this._grandpaView.layoutChildren();
+            this._grandpaView.layout();
         }
 
         /**
@@ -100,7 +100,7 @@ module codeBelt
 
         private onClearClick(event:JQueryEventObject):void
         {
-            this.layoutChildren();
+            this.layout();
         }
 
         private onBubbled(event:BaseEvent):void

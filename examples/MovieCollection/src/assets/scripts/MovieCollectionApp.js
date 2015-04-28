@@ -43,10 +43,10 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden Stage.createChildren
+         * @overridden Stage.create
          */
-        MovieCollectionApp.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        MovieCollectionApp.prototype.create = function () {
+            _super.prototype.create.call(this);
 
             this._pageControls = new PageControlView(this.$element.find('.js-pageControls'));
             this.addChild(this._pageControls);
@@ -63,9 +63,9 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden Stage.layoutChildren
+         * @overridden Stage.layout
          */
-        MovieCollectionApp.prototype.layoutChildren = function () {
+        MovieCollectionApp.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

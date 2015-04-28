@@ -56,10 +56,10 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        PageControlView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        PageControlView.prototype.create = function () {
+            _super.prototype.create.call(this);
 
             // Create and add your child objects to this parent class.
             this._$listSort = this.$element.find('.js-listSort');
@@ -68,9 +68,9 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        PageControlView.prototype.layoutChildren = function () {
+        PageControlView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             this.sortType = this._$listSort.val();
@@ -125,7 +125,7 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype._onSortChange = function(event) {
             event.preventDefault();
 
-            this.layoutChildren();
+            this.layout();
         };
 
         /**
@@ -138,7 +138,7 @@ define(function (require, exports, module) { // jshint ignore:line
         PageControlView.prototype._onLimitChange = function(event) {
             event.preventDefault();
 
-            this.layoutChildren();
+            this.layout();
         };
 
         /**
