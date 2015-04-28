@@ -9,9 +9,9 @@
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.DOMElement = factory(root.structurejs.Extend, root.structurejs.DisplayObjectContainer, root.structurejs.BaseEvent, root.structurejs.TemplateFactory, root.structurejs.ComponentFactory, root.structurejs.jQuery, root.structurejs.$eventListener);
+        root.structurejs.DOMElement = factory(root.structurejs.Extend, root.structurejs.DisplayObjectContainer, root.structurejs.BaseEvent, root.structurejs.TemplateFactory, root.structurejs.ComponentFactory, root.jQuery);
     }
-}(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery, $eventListener) {
+}(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery) {
 
     'use strict';
 

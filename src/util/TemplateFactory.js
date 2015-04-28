@@ -3,13 +3,13 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/StringUtil', 'jquery', 'Handlebars'], factory);
+        define(['../util/StringUtil', 'jquery', 'handlebars'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/StringUtil'), require('jquery'), require('Handlebars'));
+        module.exports = factory(require('../util/StringUtil'), require('jquery'), require('handlebars'));
     } else {
         /*jshint sub:true */
         root.structurejs = root.structurejs || {};
-        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.structurejs.jQuery, root.structurejs.Handlebars);
+        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.jQuery, root.Handlebars);
     }
 }(this, function(StringUtil, jQuery, Handlebars) {
 

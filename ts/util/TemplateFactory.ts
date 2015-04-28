@@ -3,7 +3,7 @@
  UMD Stuff
  @import ../util/StringUtil as StringUtil
  @import jquery as jQuery
- @import Handlebars as Handlebars
+ @import handlebars as Handlebars
  @export TemplateFactory
  */
 import StringUtil = require('./StringUtil');
