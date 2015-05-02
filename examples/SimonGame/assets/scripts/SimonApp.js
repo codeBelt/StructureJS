@@ -55,10 +55,10 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        SimonApp.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        SimonApp.prototype.create = function () {
+            _super.prototype.create.call(this);
 
             var $device = this.$element.find('.js-simonApp-device');
 
@@ -71,9 +71,9 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        SimonApp.prototype.layoutChildren = function () {
+        SimonApp.prototype.layout = function () {
             if (this._deviceView.isEnabled === true) {
                 this._centerDisplay.$element.text('Go!');
             } else {
@@ -143,7 +143,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
         /**
          * When the memory sequence completes this method will enable the color buttons and
-         * will update the white button text by calling the layoutChildren method.
+         * will update the white button text by calling the layout method.
          *
          * @method _onTimerComplete
          * @param event {TimerEvent}
@@ -153,7 +153,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this._timer.destroy();
 
             this._deviceView.enable();
-            this.layoutChildren();
+            this.layout();
         };
 
         /**
@@ -178,7 +178,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 }
                 this._userSequence = [];
                 this._deviceView.disable();
-                this.layoutChildren();
+                this.layout();
             }
         };
 

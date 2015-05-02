@@ -26,19 +26,19 @@ var ListItemCollection = (function () {
     }
 
     /**
-     * @overridden ListItemCollection.addItem
+     * @overridden ListItemCollection.add
      */
-    ListItemCollection.prototype.addItem = function (item, silent) {
-        _super.prototype.addItem.call(this, item, silent);
+    ListItemCollection.prototype.add = function (item, silent) {
+        _super.prototype.add.call(this, item, silent);
 
         this.save();
     };
 
     /**
-     * @overridden ListItemCollection.removeItem
+     * @overridden ListItemCollection.remove
      */
-    ListItemCollection.prototype.removeItem = function (item, silent) {
-        _super.prototype.removeItem.call(this, item, silent);
+    ListItemCollection.prototype.remove = function (item, silent) {
+        _super.prototype.remove.call(this, item, silent);
 
         this.save();
     };
@@ -55,7 +55,7 @@ var ListItemCollection = (function () {
         if (items != null) {
             var length = items.length;
             for (var i = 0; i < length; i++) {
-                this.addItem(new ListItemVO(items[i]));
+                this.add(new ListItemVO(items[i]));
             }
 
             this.dispatchEvent('loadComplete');
@@ -69,7 +69,7 @@ var ListItemCollection = (function () {
      * @public
      */
     ListItemCollection.prototype.save = function() {
-        this._localStorageController.addItem('todos', this.items);
+        this._localStorageController.addItem('todos', this.models);
     };
 
     /**
@@ -79,7 +79,7 @@ var ListItemCollection = (function () {
      * @public
      */
     ListItemCollection.prototype.getCompletedCount = function() {
-        return this.find({isComplete: true}).length;
+        return this.findBy({isComplete: true}).length;
     };
 
     /**
@@ -89,7 +89,7 @@ var ListItemCollection = (function () {
      * @public
      */
     ListItemCollection.prototype.getRemainingCount = function() {
-        return this.find({isComplete: false}).length;
+        return this.findBy({isComplete: false}).length;
     };
 
     return ListItemCollection;

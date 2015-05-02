@@ -1,3 +1,10 @@
+'use strict';
+/*
+ UMD Stuff
+ @import jquery as $
+ @export jQuery
+ */
+
 (function ($, window, document)
 {
     /**

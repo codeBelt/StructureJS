@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Util = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Util = factory();
     }
 }(this, function() {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -165,7 +172,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var Util = (function () {
+    var Util = (function() {
 
         function Util() {
             throw new Error(&#x27;[Util] Do not instantiate the Util class because it is a static class.&#x27;);
@@ -185,13 +192,12 @@
          *      var property = Util.uniqueId(&#x27;prefixName_&#x27;);
          *      // prefixName_1
          */
-        Util.uniqueId = function (prefix) {
+        Util.uniqueId = function(prefix) {
             if (prefix === void 0) { prefix = null; }
             var id = ++Util._idCounter;
             if (prefix != null) {
                 return String(prefix + id);
-            }
-            else {
+            } else {
                 return id;
             }
         };
@@ -211,7 +217,7 @@
          *
          *      // { name: &#x27;Robert&#x27; }
          */
-        Util.deletePropertyFromObject = function (object, list) {
+        Util.deletePropertyFromObject = function(object, list) {
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
@@ -224,11 +230,9 @@
                             // Recursive function call.
                             Util.deletePropertyFromObject(array[index], list);
                         }
-                    }
-                    else if (value instanceof Object) {
+                    } else if (value instanceof Object) {
                         Util.deletePropertyFromObject(value, list);
-                    }
-                    else {
+                    } else {
                         for (var listIndex in list) {
                             // If the key(property name) equals the property name in the list array.
                             if (key === list[listIndex]) {
@@ -258,7 +262,7 @@
          *
          *      // { name: &#x27;Robert&#x27;, sex: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
          */
-        Util.renamePropertyOnObject = function (object, oldName, newName) {
+        Util.renamePropertyOnObject = function(object, oldName, newName) {
             // Check for the old property name to avoid a ReferenceError in strict mode.
             if (object.hasOwnProperty(oldName)) {
                 object[newName] = object[oldName];
@@ -277,7 +281,7 @@
          * @example
          *      var cloneOfObject = Util.clone(obj);
          */
-        Util.clone = function (obj) {
+        Util.clone = function(obj) {
             //other scripts: http://davidwalsh.name/javascript-clone
             //http://oranlooney.com/functional-javascript/
             //http://oranlooney.com/deep-copy-javascript/
@@ -329,7 +333,7 @@
          *      Util.toBoolean(undefined);
          *      // false
          */
-        Util.toBoolean = function (strNum) {
+        Util.toBoolean = function(strNum) {
             var value = (typeof strNum === &#x27;string&#x27;) ? strNum.toLowerCase() : strNum;
             return (value &gt; 0 || value == &#x27;true&#x27; || value == &#x27;yes&#x27;);
         };
@@ -347,7 +351,7 @@
          *      Util.getClassName(someClass);
          *      // &#x27;SomeClass&#x27;
          */
-        Util.getClassName = function (classObject) {
+        Util.getClassName = function(classObject) {
             var funcNameRegex = /function (.{1,})\(/;
             var results = (funcNameRegex).exec(classObject.constructor.toString());
             return (results &amp;&amp; results.length &gt; 1) ? results[1] : &#x27;&#x27;;
@@ -366,11 +370,12 @@
          * @example
          *      Util.debounce(this._onBreakpointChange, 250, false, this);
          */
-        Util.debounce = function (callback, wait, immediate, callbackScope) {
+        Util.debounce = function(callback, wait, immediate, callbackScope) {
             var timeout;
             var result;
-            var debounced = function () {
+            var debounced = function() {
                 var args = arguments;
+
                 function delayed() {
                     if (immediate == false) {
                         result = callback.apply(callbackScope, args);
@@ -379,14 +384,13 @@
                 }
                 if (timeout) {
                     clearTimeout(timeout);
-                }
-                else if (immediate === true) {
+                } else if (immediate === true) {
                     result = callback.apply(callbackScope, args);
                 }
                 timeout = setTimeout(delayed, wait);
                 return result;
             };
-            debounced.cancel = function () {
+            debounced.cancel = function() {
                 clearTimeout(timeout);
             };
             return debounced;
@@ -395,7 +399,7 @@
          * Keeps track of the count for the uniqueId method.
          *
          * @property _idCounter
-         * @type {init}
+         * @type {int}
          * @private
          * @static
          */
@@ -405,6 +409,7 @@
 
     return Util;
 }));
+
     </pre>
 </div>
 

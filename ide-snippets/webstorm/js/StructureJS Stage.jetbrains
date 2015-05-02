@@ -21,19 +21,19 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        ${NAME}.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        ${NAME}.prototype.create = function () {
+            _super.prototype.create.call(this);
 
-            // Create and add your child objects to this parent class.
+            // Create or setup objects in this parent class.
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        ${NAME}.prototype.layoutChildren = function () {
-            // Layout or update the child objects in this parent class.
+        ${NAME}.prototype.layout = function () {
+            // Layout or update the objects in this parent class.
 
             return this;
         };
@@ -44,7 +44,7 @@ define(function(require, exports, module) { // jshint ignore:line
         ${NAME}.prototype.enable = function () {
             if (this.isEnabled === true) { return this; }
 
-            // Enable the child objects and add any event listeners.
+            // Enable the child objects and/or add any event listeners.
 
             return _super.prototype.enable.call(this);
         };
@@ -55,7 +55,7 @@ define(function(require, exports, module) { // jshint ignore:line
         ${NAME}.prototype.disable = function () {
             if (this.isEnabled === false) { return this; }
 
-            // Disable the child objects and remove any event listeners.
+            // Disable the child objects and/or remove any event listeners.
 
             return _super.prototype.disable.call(this);
         };
@@ -64,7 +64,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.destroy
          */
         ${NAME}.prototype.destroy = function () {
-            // Call destroy on any child objects that is need. 
+            // Call destroy on any child objects that is needed.
             // This super method will also null out all properties automatically to prevent memory leaks.
             
             _super.prototype.destroy.call(this);

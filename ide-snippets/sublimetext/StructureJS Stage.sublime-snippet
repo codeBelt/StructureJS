@@ -25,19 +25,19 @@ define(function(require, exports, module) { // jshint ignore:line
         }
  
         /**
-         * @overridden Stage.createChildren
+         * @overridden Stage.create
          */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.create = function () {
+            _super.prototype.create.call(this);
  
-            // Create and add your child objects to this parent class.
+            // Create or setup objects in this parent class.
         };
  
         /**
-         * @overridden Stage.layoutChildren
+         * @overridden Stage.layout
          */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layoutChildren = function () {
-            // Layout or update the child objects in this parent class.
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layout = function () {
+            // Layout or update the objects in this parent class.
  
             return this;
         };
@@ -48,7 +48,7 @@ define(function(require, exports, module) { // jshint ignore:line
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.enable = function () {
             if (this.isEnabled === true) { return this; }
  
-            // Enable the child objects and add any event listeners.
+            // Enable the child objects and/or add any event listeners.
  
             return _super.prototype.enable.call(this);
         };
@@ -59,7 +59,7 @@ define(function(require, exports, module) { // jshint ignore:line
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.disable = function () {
             if (this.isEnabled === false) { return this; }
  
-            // Disable the child objects and remove any event listeners.
+            // Disable the child objects and/or remove any event listeners.
  
             return _super.prototype.disable.call(this);
         };
@@ -68,7 +68,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden Stage.destroy
          */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.destroy = function () {
-            // Call destroy on any child objects that is need. 
+            // Call destroy on any child objects that is needed.
             // This super method will also null out all properties automatically to prevent memory leaks.
             
             _super.prototype.destroy.call(this);

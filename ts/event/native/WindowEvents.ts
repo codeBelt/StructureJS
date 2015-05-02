@@ -1,15 +1,18 @@
-
-module StructureTS
+'use strict';
+/*
+ UMD Stuff
+ @export WindowEvents
+ */
+class WindowEvents
 {
-    export class WindowEvents
-    {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @property CHANGE
-         * @type {string}
-         * @static
-         */
-        public static CHANGE:string = "change";
-    }
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property CHANGE
+     * @type {string}
+     * @static
+     */
+    public static CHANGE:string = "change";
 }
+
+export = WindowEvents;

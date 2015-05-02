@@ -1,4 +1,5 @@
-///<reference path='ICore.ts'/>
+import ICore = require('./ICore');
+import BaseEvent = require('../event/BaseEvent');
 
 /**
  * TODO: YUIDoc_comment
@@ -9,28 +10,27 @@
  * @submodule interface
  * @interface
  */
-module StructureTS
+interface IEventDispatcher extends ICore
 {
-    export interface IEventDispatcher extends ICore
-    {
-        /**
-         * @property parent
-         */
-        parent:any;
+    /**
+     * @property parent
+     */
+    parent:any;
 
-        /**
-         * @method addEventListener
-         */
-        addEventListener(type:string, func:Function, scope:any, priority?:number):any;
+    /**
+     * @method addEventListener
+     */
+    addEventListener(type:string, func:Function, scope:any, priority?:number):any;
 
-        /**
-         * @method removeEventListener
-         */
-        removeEventListener(type:string, func:Function, scope:any):any;
+    /**
+     * @method removeEventListener
+     */
+    removeEventListener(type:string, func:Function, scope:any):any;
 
-        /**
-         * @method dispatchEvent
-         */
-        dispatchEvent(event:BaseEvent):any;
-    }
+    /**
+     * @method dispatchEvent
+     */
+    dispatchEvent(event:BaseEvent):any;
 }
+
+export = IEventDispatcher;

@@ -4,17 +4,18 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.NavigatorEvents = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.NavigatorEvents = factory();
     }
 }(this, function() {
+
     'use strict';
 
-    var NavigatorEvents = (function () {
+    var NavigatorEvents = (function() {
         function NavigatorEvents() {
         }
         /**

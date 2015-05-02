@@ -4,14 +4,15 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.NumberUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.NumberUtil = factory();
     }
 }(this, function() {
+
     'use strict';
 
     /**
@@ -23,7 +24,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var NumberUtil = (function () {
+    var NumberUtil = (function() {
         function NumberUtil() {
             throw new Error('[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.');
         }
@@ -38,7 +39,7 @@
          * @example
          *
          */
-        NumberUtil.bytesToMegabytes = function (bytes) {
+        NumberUtil.bytesToMegabytes = function(bytes) {
             return bytes / 1048576;
         };
         /**
@@ -53,7 +54,7 @@
          *     NumberUtil.centimeterToInch(1);
          *     // 0.3937
          */
-        NumberUtil.centimeterToInch = function (cm) {
+        NumberUtil.centimeterToInch = function(cm) {
             return cm * 0.39370;
         };
         /**
@@ -68,7 +69,7 @@
          *     NumberUtil.inchToCentimeter(1);
          *     // 2.54
          */
-        NumberUtil.inchToCentimeter = function (inch) {
+        NumberUtil.inchToCentimeter = function(inch) {
             return inch * 2.54;
         };
         /**
@@ -82,7 +83,7 @@
          * @example
          *
          */
-        NumberUtil.feetToMeter = function (feet) {
+        NumberUtil.feetToMeter = function(feet) {
             return feet / 3.2808;
         };
         /**
@@ -97,7 +98,7 @@
          *     NumberUtil.convertToHHMMSS(33333);
          *     // '09:15:33'
          */
-        NumberUtil.convertToHHMMSS = function (seconds) {
+        NumberUtil.convertToHHMMSS = function(seconds) {
             var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
@@ -125,7 +126,7 @@
          *     NumberUtil.doubleDigitFormat(9);
          *     // '09'
          */
-        NumberUtil.doubleDigitFormat = function (num) {
+        NumberUtil.doubleDigitFormat = function(num) {
             if (num < 10) {
                 return ('0' + num);
             }
@@ -149,7 +150,7 @@
          *     NumberUtil.unformatUnit('$-123,456,789.99');
          *     // -123456789.99
          */
-        NumberUtil.unformatUnit = function (value) {
+        NumberUtil.unformatUnit = function(value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
             var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, '');
             // Gets the index where the decimal placement is located.
@@ -158,8 +159,7 @@
             if (decimalSeparator === '.') {
                 // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d.-]/g, '');
-            }
-            else {
+            } else {
                 // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d,-]/g, '');
                 decimalIndex = withoutSpecialCharacters.length - 3;
@@ -191,7 +191,7 @@
          *     NumberUtil.formatUnit(-1900.24, 1);
          *     // '-1,900.2'
          */
-        NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
+        NumberUtil.formatUnit = function(value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
             if (decimalPlacement === void 0) { decimalPlacement = 2; }
             if (decimalSeparator === void 0) { decimalSeparator = '.'; }
             if (thousandsSeparator === void 0) { thousandsSeparator = ','; }
@@ -211,11 +211,9 @@
             if (str.length > 0) {
                 if (currencySymbolPlacement === 0) {
                     result = currencySymbol + str + result;
-                }
-                else if (currencySymbolPlacement === 1) {
+                } else if (currencySymbolPlacement === 1) {
                     result = str + result + currencySymbol;
-                }
-                else {
+                } else {
                     result = str + result;
                 }
             }
@@ -235,15 +233,14 @@
          *      MathUtil.fahrenheitToCelsius(212);
          *      // 100
          */
-        NumberUtil.fahrenheitToCelsius = function (fahrenheit, decimals) {
+        NumberUtil.fahrenheitToCelsius = function(fahrenheit, decimals) {
             if (decimals === void 0) { decimals = 2; }
             var d = '';
             var r = (5 / 9) * (fahrenheit - 32);
             var s = r.toString().split('.');
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            }
-            else {
+            } else {
                 var i = decimals;
                 while (i > 0) {
                     d += '0';
@@ -267,15 +264,14 @@
          *      MathUtil.celsiusToFahrenheit(100);
          *      // 212
          */
-        NumberUtil.celsiusToFahrenheit = function (celsius, decimals) {
+        NumberUtil.celsiusToFahrenheit = function(celsius, decimals) {
             if (decimals === void 0) { decimals = 2; }
             var d = '';
             var r = (celsius / (5 / 9)) + 32;
             var s = r.toString().split('.');
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            }
-            else {
+            } else {
                 var i = decimals;
                 while (i > 0) {
                     d += '0';

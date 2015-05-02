@@ -1,6 +1,6 @@
-///<reference path='./IEventDispatcher.ts'/>
-///<reference path='../display/DisplayObjectContainer.ts'/>
-///<reference path='../display/DOMElement.ts'/>
+import DisplayObjectContainer = require('../display/DisplayObjectContainer');
+import DOMElement = require('../display/DOMElement');
+import IEventDispatcher = require('../interface/IEventDispatcher');
 
 /**
  * TODO: YUIDoc_comment
@@ -9,11 +9,10 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+interface ITransition extends IEventDispatcher
 {
-    export interface ITransition extends IEventDispatcher
-    {
-        createTransition(transitionType:string, sectionStage:DisplayObjectContainer, currentView:DOMElement, nextView:DOMElement, duration?:number):ITransition;
-        complete():any;
-    }
+    createTransition(transitionType:string, sectionStage:DisplayObjectContainer, currentView:DOMElement, nextView:DOMElement, duration?:number):ITransition;
+    complete():any;
 }
+
+export = ITransition;

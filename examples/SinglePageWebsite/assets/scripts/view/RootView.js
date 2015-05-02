@@ -50,10 +50,10 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        RootView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, 'div', {'id': 'pageWrapper'});
+        RootView.prototype.create = function () {
+            _super.prototype.create.call(this, 'div', {'id': 'pageWrapper'});
 
             this._headerView = new HeaderView();
             this.addChild(this._headerView);
@@ -71,11 +71,11 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        RootView.prototype.layoutChildren = function () {
+        RootView.prototype.layout = function () {
             if (this._currentView) {
-                this._currentView.layoutChildren();
+                this._currentView.layout();
             }
 
             return this;

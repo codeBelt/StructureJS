@@ -22,18 +22,18 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        MenuView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, MenuTemplate);
+        MenuView.prototype.create = function () {
+            _super.prototype.create.call(this, MenuTemplate);
 
             // Create and add your child objects to this parent class.
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        MenuView.prototype.layoutChildren = function () {
+        MenuView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

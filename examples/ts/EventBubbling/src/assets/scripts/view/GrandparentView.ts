@@ -28,11 +28,11 @@ module codeBelt
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        public createChildren():void
+        public create():void
         {
-            super.createChildren('#containerTemplate', {title: this.getQualifiedClassName()});
+            super.create('#containerTemplate', {title: this.getQualifiedClassName()});
 
             this._panelContainer = this.getChild('.js-panelContent');
 
@@ -43,12 +43,12 @@ module codeBelt
         }
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        public layoutChildren():void
+        public layout():void
         {
             this._grandparentMessage.$element.css('opacity', 0);
-            this._parentView.layoutChildren();
+            this._parentView.layout();
         }
 
         /**

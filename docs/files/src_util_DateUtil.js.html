@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DateUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DateUtil = factory();
     }
 }(this, function() {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -165,7 +172,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var DateUtil = (function () {
+    var DateUtil = (function() {
         function DateUtil() {
             throw new Error(&#x27;[DateUtil] Do not instantiate the DateUtil class because it is a static class.&#x27;);
         }
@@ -190,7 +197,7 @@
          *      DateUtil.getDaySuffix(4);
          *      // &#x27;th&#x27;
          */
-        DateUtil.getDaySuffix = function (today) {
+        DateUtil.getDaySuffix = function(today) {
             var day = today % 100;
             return ((Math.floor(day / 10) === 1) ? &#x27;th&#x27; : [&#x27;th&#x27;, &#x27;st&#x27;, &#x27;nd&#x27;, &#x27;rd&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;][day % 10]);
         };
@@ -239,6 +246,7 @@
 
     return DateUtil;
 }));
+
     </pre>
 </div>
 

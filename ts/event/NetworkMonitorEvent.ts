@@ -1,4 +1,11 @@
-///<reference path='BaseEvent.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export NetworkMonitorEvent
+ */
+import BaseEvent = require('./BaseEvent');
 
 /**
  * The NetworkMonitorEvent...
@@ -18,69 +25,61 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class NetworkMonitorEvent extends BaseEvent
 {
-    export class NetworkMonitorEvent extends BaseEvent
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event STATUS
+     * @type {string}
+     * @static
+     */
+    public static STATUS:string = "NetworkMonitorEvent.status";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event ONLINE
+     * @type {string}
+     * @static
+     */
+    public static ONLINE:string = "NetworkMonitorEvent.online";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event OFFLINE
+     * @type {string}
+     * @static
+     */
+    public static OFFLINE:string = "NetworkMonitorEvent.offline";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property status
+     * @type {string}
+     * @public
+     */
+    public status:string = null;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property connected
+     * @type {boolean}
+     * @public
+     */
+    public connected:boolean = false;
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, status:string = null, connected:boolean = null, data:any = null)
     {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event STATUS
-         * @type {string}
-         * @static
-         */
-        public static STATUS:string = "NetworkMonitorEvent.status";
+        super(type, bubbles, cancelable, data);
 
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event ONLINE
-         * @type {string}
-         * @static
-         */
-        public static ONLINE:string = "NetworkMonitorEvent.online";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event OFFLINE
-         * @type {string}
-         * @static
-         */
-        public static OFFLINE:string = "NetworkMonitorEvent.offline";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @property status
-         * @type {string}
-         * @public
-         */
-        public status:string = null;
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @property connected
-         * @type {boolean}
-         * @public
-         */
-        public connected:boolean = false;
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, status:string = null, connected:boolean = null, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-
-            this.status = status;
-            this.connected = connected;
-        }
-
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():NetworkMonitorEvent
-        {
-            return new NetworkMonitorEvent(this.type, this.bubble, this.cancelable, this.status, this.connected, this.data);
-        }
+        this.status = status;
+        this.connected = connected;
     }
+
 }
+
+export = NetworkMonitorEvent;

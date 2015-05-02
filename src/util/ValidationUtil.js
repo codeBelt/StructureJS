@@ -4,14 +4,15 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ValidationUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ValidationUtil = factory();
     }
 }(this, function() {
+
     'use strict';
 
     /**
@@ -23,7 +24,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var ValidationUtil = (function () {
+    var ValidationUtil = (function() {
         function ValidationUtil() {
             throw new Error('[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.');
         }
@@ -38,7 +39,7 @@
          * @example
          *
          */
-        ValidationUtil.isEmpty = function (text) {
+        ValidationUtil.isEmpty = function(text) {
             return text.length < 1;
         };
         /**
@@ -53,7 +54,7 @@
          * @example
          *
          */
-        ValidationUtil.isMatch = function (value1, value2) {
+        ValidationUtil.isMatch = function(value1, value2) {
             return value1 === value2;
         };
         /**
@@ -67,7 +68,7 @@
          * @example
          *
          */
-        ValidationUtil.isValidEmailAddress = function (email) {
+        ValidationUtil.isValidEmailAddress = function(email) {
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
             return expression.test(email);
         };
@@ -82,7 +83,7 @@
          * @example
          *
          */
-        ValidationUtil.isValidPhoneNumber = function (phoneNumber) {
+        ValidationUtil.isValidPhoneNumber = function(phoneNumber) {
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
             return expression.test(phoneNumber);
         };
@@ -97,7 +98,7 @@
          * @example
          *
          */
-        ValidationUtil.isZipCode = function (zipCode) {
+        ValidationUtil.isZipCode = function(zipCode) {
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
             return expression.test(zipCode);
         };
@@ -112,7 +113,7 @@
          * @example
          *
          */
-        ValidationUtil.isPostalCode = function (postalCode) {
+        ValidationUtil.isPostalCode = function(postalCode) {
             var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
             return expression.test(postalCode);
         };
@@ -127,7 +128,7 @@
          * @example
          *
          */
-        ValidationUtil.isSocialSecurityNumber = function (ssn) {
+        ValidationUtil.isSocialSecurityNumber = function(ssn) {
             var expression = /^\d{3}-?\d{2}-?\d{4}$/;
             return expression.test(ssn);
         };

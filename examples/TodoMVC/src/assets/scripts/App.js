@@ -68,10 +68,10 @@ var App = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    App.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    App.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._listItemCollection = new ListItemCollection();
 
@@ -88,9 +88,9 @@ var App = (function () {
     };
 
     /**
-     * @overridden DOMElement.layoutChildren
+     * @overridden DOMElement.layout
      */
-    App.prototype.layoutChildren = function () {
+    App.prototype.layout = function () {
 
         this._footerView.updateCounts(this._listItemCollection.getCompletedCount(), this._listItemCollection.getRemainingCount());
 
@@ -174,12 +174,12 @@ var App = (function () {
             valueObject.id = StringUtil.createUUID();
             var childItem = new ListItemComponent(valueObject);
 
-            this._listItemCollection.addItem(valueObject);
+            this._listItemCollection.add(valueObject);
             this._todoListContainer.addChild(childItem);
             this._$addTodoInput.val('');
         }
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -198,8 +198,8 @@ var App = (function () {
                 listItemComponent.setCompleted();
             }
         } else {
-            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
-                listItemComponent = this._todoListContainer.getChildAt(i);
+            for (var j = 0; j < this._todoListContainer.numChildren; j++) {
+                listItemComponent = this._todoListContainer.getChildAt(j);
                 listItemComponent.setUnCompleted();
             }
         }
@@ -216,10 +216,10 @@ var App = (function () {
         var listItemComponent = event.target;
         var listItemVO = listItemComponent.vo;
 
-        this._listItemCollection.removeItem(listItemVO);
+        this._listItemCollection.remove(listItemVO);
         this._todoListContainer.removeChild(listItemComponent);
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -232,7 +232,7 @@ var App = (function () {
     App.prototype._onItemChange = function(event) {
         this._listItemCollection.save();
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -243,7 +243,7 @@ var App = (function () {
      * @private
      */
     App.prototype._onLoadedItems = function(event) {
-        var items = this._listItemCollection.items;
+        var items = this._listItemCollection.models;
         var length = items.length;
 
         // Create ListItemComponent view items from the stored ListItemVO value objects.
@@ -262,7 +262,7 @@ var App = (function () {
         Router.add('', this._onDefaultHandler.bind(this));
         Router.start();
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -282,11 +282,11 @@ var App = (function () {
 
             if (listItemVO.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);
-                this._listItemCollection.removeItem(listItemVO);
+                this._listItemCollection.remove(listItemVO);
             }
         }
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -310,7 +310,7 @@ var App = (function () {
 
         this._footerView.updateNav('active');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -334,7 +334,7 @@ var App = (function () {
 
         this._footerView.updateNav('completed');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     /**
@@ -354,7 +354,7 @@ var App = (function () {
 
         this._footerView.updateNav('');
 
-        this.layoutChildren();
+        this.layout();
     };
 
     return App;

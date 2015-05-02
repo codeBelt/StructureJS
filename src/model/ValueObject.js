@@ -4,14 +4,15 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../BaseObject', '../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ValueObject = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ValueObject = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
     }
 }(this, function(Extend, BaseObject, Util) {
+
     'use strict';
 
     /**
@@ -81,7 +82,7 @@
      *          return CarVO;
      *      })();
      */
-    var ValueObject = (function () {
+    var ValueObject = (function() {
 
         var _super = Extend(ValueObject, BaseObject);
 
@@ -102,24 +103,78 @@
          *     carVO.year = 2015;
          *     carVO.allWheel = false;
          */
-        ValueObject.prototype.update = function (data) {
-            for (var key in data) {
-                if (this.hasOwnProperty(key)) {
-                    this[key] = data[key];
+        ValueObject.prototype.update = function(data) {
+            var propertyData;
+            for (var propertyKey in this) {
+                // If this class has a property that matches a property on the data being passed in then set it.
+                // Also don't set the cid data value because it is automatically set in the constructor and
+                // we do want it to be overridden when the clone method has been called.
+                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid') {
+                    // If the data passed in does not have a property that matches a property on the value object then
+                    // use the default value/data that was assigned to the property.
+                    // Else use the data that was passed in.
+                    propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
+                    this._setData(propertyKey, propertyData);
                 }
             }
             return this;
         };
         /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _setData
+         * @param key
+         * @param data
+         * @private
+         */
+        ValueObject.prototype._setData = function(key, data) {
+            if (data instanceof Array) {
+                var temp = [];
+                var len = data.length;
+                if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false) {
+                    var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                    for (var i = 0; i < len; i++) {
+                        temp[i] = this._updateData(valueObjectOrOther, data[i]);
+                    }
+                }
+                this[key] = temp;
+            } else {
+                this[key] = this._updateData(this[key], data);
+            }
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _updateData
+         * @param keyValue
+         * @param data
+         * @private
+         */
+        ValueObject.prototype._updateData = function(keyValue, data) {
+            if (keyValue instanceof ValueObject.constructor) {
+                // If the property is an instance of a ValueObject class and has not been created yet.
+                // Then instantiate it and pass in the data to the constructor.
+                keyValue = new keyValue(data);
+            } else if (keyValue instanceof ValueObject) {
+                // If property is an instance of a ValueObject class and has already been created.
+                // Then call the update method and pass in the data.
+                keyValue.update(data);
+            } else {
+                // Else just assign the data to the property.
+                keyValue = data;
+            }
+            return keyValue;
+        };
+        /**
          * Converts the value object data into a JSON object and deletes the cid property.
          *
          * @method toJSON
-         * @returns {any}
+         * @returns {ValueObject}
          * @public
          * @example
          *     var obj = carVO.toJSON();
          */
-        ValueObject.prototype.toJSON = function () {
+        ValueObject.prototype.toJSON = function() {
             var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, ['cid']);
         };
@@ -132,7 +187,7 @@
          * @example
          *     var str = carVO.toJSONString();
          */
-        ValueObject.prototype.toJSONString = function () {
+        ValueObject.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
         };
         /**
@@ -146,7 +201,7 @@
          *      var carVO = new CarVO();
          *      carVO.fromJSON(str);
          */
-        ValueObject.prototype.fromJSON = function (json) {
+        ValueObject.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
             this.update(parsedData);
             return this;
@@ -154,13 +209,13 @@
         /**
          * Create a clone/copy of the value object.
          *
-         * @method Object
-         * @returns {any}
+         * @method clone
+         * @returns {ValueObject}
          * @public
          * @example
          *     var clone = carVO.clone();
          */
-        ValueObject.prototype.clone = function () {
+        ValueObject.prototype.clone = function() {
             var clonedValueObject = new this.constructor(this);
             return clonedValueObject;
         };

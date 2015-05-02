@@ -3,8 +3,8 @@
 
 module ${Namespace} {
 
-    import ValueObject = StructureTS.ValueObject;
-    import IValueObject = StructureTS.IValueObject;
+    import ValueObject = StructureJS.ValueObject;
+    import IValueObject = StructureJS.IValueObject;
 
     /**
      * TODO: YUIDoc_comment

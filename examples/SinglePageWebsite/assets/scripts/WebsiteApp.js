@@ -33,19 +33,19 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        WebsiteApp.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        WebsiteApp.prototype.create = function () {
+            _super.prototype.create.call(this);
 
             this._rootView = new RootView();
             this.addChild(this._rootView);
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        WebsiteApp.prototype.layoutChildren = function () {
+        WebsiteApp.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

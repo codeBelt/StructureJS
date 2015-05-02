@@ -1,6 +1,15 @@
-///<reference path='../BaseObject.ts'/>
-///<reference path='URLRequestMethod.ts'/>
-///<reference path='URLContentType.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../BaseObject as BaseObject
+ @import ./URLRequestMethod as URLRequestMethod
+ @import ./URLContentType as URLContentType
+ @export URLRequest
+ */
+import BaseObject = require('../BaseObject');
+import URLRequestMethod = require('./URLRequestMethod');
+import URLContentType = require('./URLContentType');
 
 /**
  * The URLRequest class captures all of the information in a single HTTP request.
@@ -18,52 +27,51 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class URLRequest extends BaseObject
 {
-    export class URLRequest extends BaseObject
+    /**
+     * The URL to be requested.
+     *
+     * @property url
+     * @type {string}
+     * @public
+     */
+    public url:string = null;
+
+    /**
+     * Controls the HTTP form submission method ({{#crossLink "URLRequestMethod"}}{{/crossLink}}).
+     *
+     * @property method
+     * @type {string}
+     * @default URLRequestMethod.GET
+     * @public
+     */
+    public method:string = URLRequestMethod.GET;
+
+    /**
+     * The MIME content type of the content in the the data property ({{#crossLink "URLContentType"}}{{/crossLink}}).
+     *
+     * @property method
+     * @type {string}
+     * @default application/x-www-form-urlencoded
+     * @public
+     */
+    public contentType:string = URLContentType.DEFAULT;
+
+    /**
+     * An object containing data to be transmitted with the URL request.
+     *
+     * @property data
+     * @type {any}
+     * @public
+     */
+    public data:any = null;
+
+    constructor(url:string = null)
     {
-        /**
-         * The URL to be requested.
-         *
-         * @property url
-         * @type {string}
-         * @public
-         */
-        public url:string = null;
-
-        /**
-         * Controls the HTTP form submission method ({{#crossLink "URLRequestMethod"}}{{/crossLink}}).
-         *
-         * @property method
-         * @type {string}
-         * @default URLRequestMethod.GET
-         * @public
-         */
-        public method:string = URLRequestMethod.GET;
-
-        /**
-         * The MIME content type of the content in the the data property ({{#crossLink "URLContentType"}}{{/crossLink}}).
-         *
-         * @property method
-         * @type {string}
-         * @default application/x-www-form-urlencoded
-         * @public
-         */
-        public contentType:string = URLContentType.DEFAULT;
-
-        /**
-         * An object containing data to be transmitted with the URL request.
-         *
-         * @property data
-         * @type {any}
-         * @public
-         */
-        public data:any = null;
-
-        constructor(url:string = null)
-        {
-            super();
-            this.url = url;
-        }
+        super();
+        this.url = url;
     }
 }
+
+export = URLRequest;

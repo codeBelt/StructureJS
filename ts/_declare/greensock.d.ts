@@ -6,13 +6,15 @@
 // JavaScript Docs http://api.greensock.com/js/
 // Version 1.1 (TypeScript 0.9)
 
-interface IDispatcher {
+interface IDispatcher
+{
     addEventListener(type:string, callback:Function, scope?:Object, useParam?:boolean, priority?:number):void;
     removeEventListener(type:string, callback:Function):void;
 }
 
 //com.greensock.core
-declare class Animation {
+declare class Animation
+{
     data:any;
     static ticker:IDispatcher;
     timeline:SimpleTimeline;
@@ -41,7 +43,8 @@ declare class Animation {
     totalTime(time:number, suppressEvents?:boolean):any;
 }
 
-declare class SimpleTimeline extends Animation {
+declare class SimpleTimeline extends Animation
+{
     autoRemoveChildren:boolean;
     smoothChildTiming:boolean;
 
@@ -53,7 +56,8 @@ declare class SimpleTimeline extends Animation {
 }
 
 //com.greensock
-declare class TweenLite extends Animation {
+declare class TweenLite extends Animation
+{
     static defaultEase:Ease;
     static defaultOverwrite:string;
     static selector:any;
@@ -75,7 +79,8 @@ declare class TweenLite extends Animation {
     static to(target:Object, duration:number, vars:Object):TweenLite;
 }
 
-declare class TweenMax extends TweenLite {
+declare class TweenMax extends TweenLite
+{
     static ticker:IDispatcher;
 
     constructor(target:Object, duration:number, vars:Object);
@@ -108,7 +113,8 @@ declare class TweenMax extends TweenLite {
     yoyo(value?:boolean):any;
 }
 
-declare class TimelineLite extends SimpleTimeline {
+declare class TimelineLite extends SimpleTimeline
+{
     constructor(vars?:Object);
 
     add(value:any, position?:any, align?:string, stagger?:number):any;
@@ -131,7 +137,7 @@ declare class TimelineLite extends SimpleTimeline {
     progress(value:number):any;
     remove(value:any):any;
     removeLabel(label:string):any;
-    set(target: Object, vars: Object, position?:any):any;
+    set(target:Object, vars:Object, position?:any):any;
     seek(position:any, suppressEvents?:boolean):any;
     shiftChildren(amount:number, adjustLabels?:boolean, ignoreBeforeTime?:number):any;
     staggerFrom(targets:any, duration:number, vars:Object, stagger?:number, position?:any, onCompleteAll?:Function, onCompleteAllParams?:any[], onCompleteScope?:any):any;
@@ -142,7 +148,8 @@ declare class TimelineLite extends SimpleTimeline {
     usesFrames():Boolean;
 }
 
-declare class TimelineMax extends TimelineLite {
+declare class TimelineMax extends TimelineLite
+{
     constructor(vars?:Object);
 
     addCallback(callback:Function, position:any, params?:any[], scope?:any):TimelineMax;
@@ -165,139 +172,169 @@ declare class TimelineMax extends TimelineLite {
 }
 
 //com.greensock.easing
-interface Back {
+interface Back
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Bounce {
+interface Bounce
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Circ {
+interface Circ
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Cubic {
+interface Cubic
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Ease {
+interface Ease
+{
     getRatio(p:number):number;
 }
-interface EaseLookup {
+interface EaseLookup
+{
     find(name:string):Ease;
 }
-interface Elastic {
+interface Elastic
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Expo {
+interface Expo
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Linear {
+interface Linear
+{
     ease:Linear;
     easeIn:Linear;
     easeInOut:Linear;
     easeNone:Linear;
     easeOut:Linear;
 }
-interface Power0 {
+interface Power0
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Power1 {
+interface Power1
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Power2 {
+interface Power2
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Power3 {
+interface Power3
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Power4 {
+interface Power4
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Quad {
+interface Quad
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Quart {
+interface Quart
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Quint {
+interface Quint
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface Sine {
+interface Sine
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
-interface SlowMo {
+interface SlowMo
+{
     ease:SlowMo;
 
     new (linearRatio:number, power:number, yoyoMode:boolean):SlowMo;
     config(linearRatio:number, power:number, yoyoMode:boolean):SlowMo;
     getRatio(p:number):number;
 }
-interface SteppedEase {
+interface SteppedEase
+{
     config(steps:number):SteppedEase;
     getRatio(p:number):number;
 }
-interface Strong {
+interface Strong
+{
     easeIn:Ease;
     easeInOut:Ease;
     easeOut:Ease;
 }
 
 //com.greensock.plugins
-interface BezierPlugin extends TweenPlugin {
+interface BezierPlugin extends TweenPlugin
+{
     bezierThrough(values:any[], curviness?:number, quadratic?:boolean, correlate?:string, prepend?:Object, calcDifs?:boolean):Object;
     cubicToQuadratic(a:number, b:number, c:number, d:number):any[];
     quadraticToCubic(a:number, b:number, c:number):Object;
 }
-interface ColorPropsPlugin extends TweenPlugin {
+interface ColorPropsPlugin extends TweenPlugin
+{
 
 }
-interface CSSPlugin extends TweenPlugin {
+interface CSSPlugin extends TweenPlugin
+{
 
 }
-interface CSSRulePlugin extends TweenPlugin {
+interface CSSRulePlugin extends TweenPlugin
+{
     getRule(selector:string):Object;
 }
-interface EaselPlugin extends TweenPlugin {
+interface EaselPlugin extends TweenPlugin
+{
 
 }
-interface RaphaelPlugin extends TweenPlugin {
+interface RaphaelPlugin extends TweenPlugin
+{
 
 }
-interface RoundPropsPlugin extends TweenPlugin {
+interface RoundPropsPlugin extends TweenPlugin
+{
 
 }
-interface ScrollToPlugin extends TweenPlugin {
+interface ScrollToPlugin extends TweenPlugin
+{
 
 }
-interface TweenPlugin {
+interface TweenPlugin
+{
     activate(plugins:any[]):boolean;
 }
 

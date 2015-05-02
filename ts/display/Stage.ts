@@ -1,4 +1,12 @@
-///<reference path='DOMElement.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./DOMElement as DOMElement
+ @import jquery as jQuery
+ @export Stage
+ */
+import DOMElement = require('./DOMElement');
 
 /**
  * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
@@ -28,13 +36,13 @@
  *                 _super.call(this);
  *             }
  *
- *             MainClass.prototype.createChildren = function () {
- *                 _super.prototype.createChildren.call(this);
+ *             MainClass.prototype.create = function () {
+ *                 _super.prototype.create.call(this);
  *
  *                 // Create and add your child objects to this parent class.
  *             }
  *
- *             MainClass.prototype.layoutChildren = function () {
+ *             MainClass.prototype.layout = function () {
  *                 // Layout or update the child objects in this parent class.
  *
  *                 return this;
@@ -75,34 +83,33 @@
  *      app.appendTo('body');
  *
  */
-module StructureTS
+class Stage extends DOMElement
 {
-    export class Stage extends DOMElement
+    constructor()
     {
-        constructor()
-        {
-            super();
-        }
+        super();
+    }
 
-        /**
-         * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
-         *
-         * @method appendTo
-         * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
-         * @param [enabled=true] {boolean} Sets the enabled state of the object.
-         * @chainable
-         */
-        public appendTo(type:any, enabled:boolean = true):any
-        {
-            this.$element = (type instanceof jQuery) ? type : jQuery(type);
-            this.$element.attr('data-cid', this.cid);
+    /**
+     * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
+     *
+     * @method appendTo
+     * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+     * @param [enabled=true] {boolean} Sets the enabled state of the object.
+     * @chainable
+     */
+    public appendTo(type:any, enabled:boolean = true):any
+    {
+        this.$element = (type instanceof jQuery) ? type : jQuery(type);
+        this.$element.attr('data-cid', this.cid);
 
-            if (this.isCreated === false)
-            {
-                this.createChildren();
-                this.isCreated = true;
-                this.layoutChildren();
-            }
+        this.width = this.$element.width();
+        this.height = this.$element.height();
+
+        if (this.isCreated === false)
+        {
+            this.create();
+            this.isCreated = true;
 
             if (enabled === false)
             {
@@ -113,7 +120,11 @@ module StructureTS
                 this.enable();
             }
 
-            return this;
+            this.layout();
         }
+
+        return this;
     }
 }
+
+export = Stage;

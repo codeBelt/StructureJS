@@ -1,4 +1,12 @@
-///<reference path='BaseEvent.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export LoaderEvent
+ */
+import BaseEvent = require('./BaseEvent');
+
 /**
  * The LoaderEvent...
  *
@@ -17,48 +25,40 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class LoaderEvent extends BaseEvent
 {
-    export class LoaderEvent extends BaseEvent
+    /**
+     * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static COMPLETE:string = 'LoaderEvent.complete';
+
+    /**
+     * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event LOAD_COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static LOAD_COMPLETE:string = 'LoaderEvent.loadComplete';
+
+    /**
+     * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    public static ERROR:string = 'LoaderEvent.error';
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static COMPLETE:string = 'LoaderEvent.complete';
-
-        /**
-         * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event LOAD_COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static LOAD_COMPLETE:string = 'LoaderEvent.loadComplete';
-
-        /**
-         * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        public static ERROR:string = 'LoaderEvent.error';
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():LoaderEvent
-        {
-            return new LoaderEvent(this.type, this.bubble, this.cancelable, this.data);
-        }
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = LoaderEvent;

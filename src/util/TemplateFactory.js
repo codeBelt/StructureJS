@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/StringUtil', 'handlebars', 'jquery'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/StringUtil'), require('handlebars'), require('jquery'));
+        define(['../util/StringUtil', 'jquery', 'handlebars'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../util/StringUtil'), require('jquery'), require('handlebars'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TemplateFactory = factory(root.structurejs.StringUtil, root.Handlebars, root.jQuery);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.jQuery, root.Handlebars);
     }
-}(this, function(StringUtil, Handlebars, jQuery) {
+}(this, function(StringUtil, jQuery, Handlebars) {
+
     'use strict';
 
     /**
@@ -26,7 +27,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var TemplateFactory = (function () {
+    var TemplateFactory = (function() {
 
         function TemplateFactory() {
             throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
@@ -43,7 +44,7 @@
          * @example
          *      TemplateFactory.create('templateName', {some: 'data'});
          */
-        TemplateFactory.create = function (templatePath, data) {
+        TemplateFactory.create = function(templatePath, data) {
             if (data === void 0) { data = null; }
             //Checks the first character to see if it is a '.' or '#'.
             var regex = /^([.#])(.+)/;
@@ -52,22 +53,19 @@
             var isClassOrIdName = regex.test(templatePath);
             if (isFunctionTemplate) {
                 template = templatePath(data);
-            }
-            else if (isClassOrIdName) {
+            } else if (isClassOrIdName) {
                 var htmlString = jQuery(templatePath).html();
                 htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
-                    var templateMethod = _.template(htmlString);
+                    var templateMethod = window['_'].template(htmlString);
                     template = templateMethod(data);
-                }
-                else {
+                } else {
                     // Handlebars Template
                     var templateMethod = Handlebars.compile(htmlString);
                     template = templateMethod(data);
                 }
-            }
-            else {
+            } else {
                 var templateObj = window[TemplateFactory.templateNamespace];
                 if (!templateObj) {
                     // Returns null because the template namespace is not found.

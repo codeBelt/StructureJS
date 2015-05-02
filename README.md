@@ -46,7 +46,6 @@ var App = (function () {
 
 [Read more about `Stage`](http://codebelt.github.io/StructureJS/docs/classes/Stage.html)
 
-### `DOMElement`
 
 A base view class for all objects that can be placed into the DOM. All of your View classes will extend the `DOMelement` class.
 
@@ -153,17 +152,6 @@ var App = (function () {
 * ___eventListener jQuery Plugin___
 	* There are two methods to the plugin ```addEventListener``` and ```removeEventListener```. These two methods allow you to pass in the scope of the class so you do not need to bind your function call(s) and assign them to a property on the class.
 	* To learn more about the eventListener jQuery plugin check out [https://github.com/codeBelt/jquery-eventListener](https://github.com/codeBelt/jquery-eventListener)
-	*
-
-#### Editor/IDE Snippets:
-[WebStorm](//github.com/codeBelt/StructureJS/tree/master/ide-snippets/webstorm)
-[Sublime Text](//github.com/codeBelt/StructureJS/tree/master/ide-snippets/sublimetext)
-[Atom](//github.com/codeBelt/StructureJS/tree/master/ide-snippets/atom)
-
-####Examples:
-[Event Bubbling Example](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/)
-
-[SinglePageWebsite with the Router class](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/)
 
 ##Add StructureJS to Your Project
 
@@ -187,3 +175,10 @@ Example if you wanted to import the **EventBroker** class to use:
 ```
 var EventBroker = require('structurejs/event/EventBroker');
 ```
+
+## Release History
+
+ * 2015-04-26   v0.7.0   Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes.
+ * 2015-04-15   v0.6.17   Previous version before I started doing this release history.
+
+---

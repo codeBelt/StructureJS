@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,12 +152,12 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([&#x27;./util/Util&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory(require(&#x27;./util/Util&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BaseObject = factory(root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
     }
 }(this, function(Util) {
     &#x27;use strict&#x27;;
@@ -166,7 +172,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var BaseObject = (function () {
+    var BaseObject = (function() {
 
         function BaseObject() {
             /**
@@ -191,7 +197,7 @@
          * @example
          *     instance.getQualifiedClassName();
          */
-        BaseObject.prototype.getQualifiedClassName = function () {
+        BaseObject.prototype.getQualifiedClassName = function() {
             return Util.getClassName(this);
         };
         /**
@@ -214,7 +220,7 @@
          *          _super.prototype.destroy.call(this);
          *     }
          */
-        BaseObject.prototype.destroy = function () {
+        BaseObject.prototype.destroy = function() {
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {
                     this[key] = null;
@@ -226,6 +232,7 @@
 
     return BaseObject;
 }));
+
     </pre>
 </div>
 

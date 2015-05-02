@@ -1,5 +1,13 @@
-///<reference path='../event/EventDispatcher.ts'/>
-///<reference path='../event/TimerEvent.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ../event/EventDispatcher as EventDispatcher
+ @import ../event/TimerEvent as TimerEvent
+ @export Timer
+ */
+import EventDispatcher = require('../event/EventDispatcher');
+import TimerEvent = require('../event/TimerEvent');
 
 /**
  * Constructs a new Timer object with the specified delay and repeatCount states.
@@ -14,210 +22,208 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class Timer extends EventDispatcher
 {
-    export class Timer extends EventDispatcher
+    /**
+     * A reference to the setInterval object.
+     *
+     * @property _timer
+     * @type {Function}
+     * @private
+     */
+    private _timer:any = null;
+
+    /**
+     * The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.
+     *
+     * @property currentCount
+     * @type {int}
+     * @private
+     */
+    private _currentCount:number = 0;
+
+    /**
+     * The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
+     * <strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.
+     *
+     * @property delay
+     * @type {number}
+     * @private
+     */
+    private _delay:number = null;
+
+    /**
+     * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
+     *
+     * @property repeatCount
+     * @type {int}
+     * @private
+     */
+    private _repeatCount:number = 0;
+
+    /**
+     * The timer's current state; true if the timer is running, otherwise false.
+     *
+     * @property running
+     * @type {boolean}
+     * @readOnly
+     */
+    public running:boolean = false;
+
+    constructor(delay:number, repeatCount:number = 0)
     {
-        /**
-         * A reference to the setInterval object.
-         *
-         * @property _timer
-         * @type {Function}
-         * @private
-         */
-        private _timer:any = null;
+        super();
 
-        /**
-         * The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.
-         *
-         * @property currentCount
-         * @type {int}
-         * @private
-         */
-        private _currentCount:number = 0;
+        this._delay = delay;
+        this._repeatCount = repeatCount;
+        this._currentCount = repeatCount;
+    }
 
-        /**
-         * The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
-         * <strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.
-         *
-         * @property delay
-         * @type {number}
-         * @private
-         */
-        private _delay:number = null;
+    /**
+     * Returns the total number of times the timer has fired since it started at zero.
+     *
+     * @method getCurrentCount
+     * @returns {number} The total number of times the timer has fired since it started at zero.
+     */
+    public getCurrentCount():number
+    {
+        return this._currentCount;
+    }
 
-        /**
-         * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
-         *
-         * @property repeatCount
-         * @type {int}
-         * @private
-         */
-        private _repeatCount:number = 0;
+    /**
+     * Returns the delay time in milliseconds.
+     *
+     * @method getDelay
+     * @returns {number} Returns the delay time in milliseconds.
+     */
+    public getDelay():number
+    {
+        return this._delay;
+    }
 
-        /**
-         * The timer's current state; true if the timer is running, otherwise false.
-         *
-         * @property running
-         * @type {boolean}
-         * @readOnly
-         */
-        public running:boolean = false;
+    /**
+     * Sets the delay, in milliseconds, between timer events.
+     *
+     * @method setDelay
+     * @param value {number}
+     */
+    public setDelay(value:number):any
+    {
+        this.stop();
+        this._delay = value;
+        this.start();
 
-        constructor(delay:number, repeatCount:number = 0)
+        return this;
+    }
+
+    /**
+     * Returns the total number of times the timer is set to run.
+     *
+     * @method getRepeatCount
+     * @returns {number} Returns the total number of times the timer is set to run.
+     */
+    public getRepeatCount():number
+    {
+        return this._repeatCount;
+    }
+
+    /**
+     * Set the total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
+     *
+     * @method setRepeatCount
+     * @param value {number}
+     */
+    public setRepeatCount(value:number):any
+    {
+        this.stop();
+        this._repeatCount = value;
+        this._currentCount = value;
+        this.start();
+
+        return this;
+    }
+
+    /**
+     * Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.
+     *
+     * @method reset
+     */
+    public reset():any
+    {
+        this.stop();
+        this._currentCount = this._repeatCount;
+
+        return this;
+    }
+
+    /**
+     * Starts the timer, if it is not already running.
+     *
+     * @method start
+     */
+    public start():any
+    {
+        if (this.running)
         {
-            super();
-
-            this._delay = delay;
-            this._repeatCount = repeatCount;
-            this._currentCount = repeatCount;
+            return this;
         }
 
-        /**
-         * Returns the total number of times the timer has fired since it started at zero.
-         *
-         * @method getCurrentCount
-         * @returns {number} The total number of times the timer has fired since it started at zero.
-         */
-        public getCurrentCount():number
+        this._timer = setInterval(() =>
         {
-            return this._currentCount;
+            this.decrementCounter();
+        }, this._delay);
+
+        this.running = true;
+
+        return this;
+    }
+
+    /**
+     * Stops the timer.
+     *
+     * @method stop
+     */
+    public stop():any
+    {
+        clearInterval(this._timer);
+        this.running = false;
+
+        return this;
+    }
+
+    /**
+     *
+     * @method decrementCounter
+     * @private
+     */
+    private decrementCounter()
+    {
+        if (this._currentCount > 0)
+        {
+            this._currentCount--;
         }
 
-        /**
-         * Returns the delay time in milliseconds.
-         *
-         * @method getDelay
-         * @returns {number} Returns the delay time in milliseconds.
-         */
-        public getDelay():number
+        if (this._delay && this._currentCount > 0 || this._repeatCount === 0)
         {
-            return this._delay;
+            this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
         }
-
-        /**
-         * Sets the delay, in milliseconds, between timer events.
-         *
-         * @method setDelay
-         * @param value {number}
-         */
-        public setDelay(value:number):any
+        else
         {
             this.stop();
-            this._delay = value;
-            this.start();
-
-            return this;
-        }
-
-        /**
-         * Returns the total number of times the timer is set to run.
-         *
-         * @method getRepeatCount
-         * @returns {number} Returns the total number of times the timer is set to run.
-         */
-        public getRepeatCount():number
-        {
-            return this._repeatCount;
-        }
-
-        /**
-         * Set the total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
-         *
-         * @method setRepeatCount
-         * @param value {number}
-         */
-        public setRepeatCount(value:number):any
-        {
-            this.stop();
-            this._repeatCount = value;
-            this._currentCount = value;
-            this.start();
-
-            return this;
-        }
-
-        /**
-         * Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.
-         *
-         * @method reset
-         */
-        public reset():any
-        {
-            this.stop();
-            this._currentCount = this._repeatCount;
-            this.start();
-
-            return this;
-        }
-
-        /**
-         * Starts the timer, if it is not already running.
-         *
-         * @method start
-         */
-        public start():any
-        {
-            if (this.running)
-            {
-                return this;
-            }
-
-            this._timer = setInterval(() =>
-            {
-                this.decrementCounter();
-            }, this._delay);
-
-            this.running = true;
-
-            return this;
-        }
-
-        /**
-         * Stops the timer.
-         *
-         * @method stop
-         */
-        public stop():any
-        {
-            clearInterval(this._timer);
-            this.running = false;
-
-            return this;
-        }
-
-        /**
-         *
-         * @method decrementCounter
-         * @private
-         */
-        private decrementCounter()
-        {
-            if (this._currentCount > 0)
-            {
-                this._currentCount--;
-            }
-
-            if (this._delay && this._currentCount > 0 || this._repeatCount === 0)
-            {
-                this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
-            }
-            else
-            {
-                this.stop();
-                this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
-                this.dispatchEvent(new TimerEvent(TimerEvent.TIMER_COMPLETE));
-            }
-        }
-
-        /**
-         * @overridden EventDispatcher.destroy
-         */
-        public destroy():void
-        {
-            this.stop();
-
-            super.destroy();
+            this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
+            this.dispatchEvent(new TimerEvent(TimerEvent.TIMER_COMPLETE));
         }
     }
+
+    /**
+     * @overridden EventDispatcher.destroy
+     */
+    public destroy():void
+    {
+        this.stop();
+
+        super.destroy();
+    }
 }
+
+export = Timer;

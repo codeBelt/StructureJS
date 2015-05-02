@@ -4,14 +4,15 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', '../BaseObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory(require('../util/Extend'), require('../BaseObject'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BaseEvent = factory(root.structurejs.Extend, root.structurejs.BaseObject);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BaseEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseObject);
     }
 }(this, function(Extend, BaseObject) {
+
     'use strict';
 
     /**
@@ -52,13 +53,6 @@
      *              this.countryName = null;
      *          }
      *
-     *          CountryEvent.prototype.clone = function () {
-     *              var event = new CountryEvent(this.type, this.bubble, this.cancelable, this.data);
-     *              event.countryName = this.countryName;
-     *
-     *              return event;
-     *           };
-     *
      *           return CountryEvent;
      *      })();
      *
@@ -67,7 +61,7 @@
      *     event.countryName = 'Canada';
      *     this.dispatchEvent(event);
      */
-    var BaseEvent = (function () {
+    var BaseEvent = (function() {
 
         var _super = Extend(BaseEvent, BaseObject);
 
@@ -118,12 +112,12 @@
             /**
              * Indicates whether an event is a bubbling event.
              *
-             * @property bubble
+             * @property bubbles
              * @type {boolean}
              * @public
              * @default false
              */
-            this.bubble = false;
+            this.bubbles = false;
             /**
              * Indicates whether the behavior associated with the event can be prevented.
              *
@@ -154,34 +148,10 @@
              */
             this.isImmediatePropagationStopped = false;
             this.type = type;
-            this.bubble = bubbles;
+            this.bubbles = bubbles;
             this.cancelable = cancelable;
             this.data = data;
         }
-        /**
-         * Duplicates an instance of an BaseEvent subclass.
-         *
-         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
-         *
-         * The new BaseEvent object includes all the properties of the original.
-         *
-         * When creating your own custom Event class, you must override the inherited BaseEvent.clone() method in order for it
-         * to duplicate the properties of your custom class.
-         *
-         * @method clone
-         * @returns {BaseEvent}
-         * @public
-         * @example
-         *     var cloneOfEvent = event.clone();
-         */
-        BaseEvent.prototype.clone = function () {
-            var event = new BaseEvent(this.type, this.bubble, this.cancelable, this.data);
-            event.target = this.target;
-            event.currentTarget = this.currentTarget;
-            event.isPropagationStopped = this.isPropagationStopped;
-            event.isImmediatePropagationStopped = this.isImmediatePropagationStopped;
-            return event;
-        };
         /**
          * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
          * This method does not affect any event listeners in the current node (currentTarget). In contrast,
@@ -193,7 +163,7 @@
          * @example
          *     event.stopPropagation();
          */
-        BaseEvent.prototype.stopPropagation = function () {
+        BaseEvent.prototype.stopPropagation = function() {
             this.isPropagationStopped = true;
         };
         /**
@@ -207,9 +177,31 @@
          * @example
          *     event.stopImmediatePropagation();
          */
-        BaseEvent.prototype.stopImmediatePropagation = function () {
+        BaseEvent.prototype.stopImmediatePropagation = function() {
             this.stopPropagation();
             this.isImmediatePropagationStopped = true;
+        };
+        /**
+         * Duplicates an instance of an BaseEvent subclass.
+         *
+         * Returns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.
+         *
+         * The new BaseEvent object includes all the properties of the original.
+         *
+         * @method clone
+         * @returns {BaseEvent}
+         * @public
+         * @example
+         *     var cloneOfEvent = event.clone();
+         */
+        BaseEvent.prototype.clone = function() {
+            var clonedValueObject = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
+            for (var key in this) {
+                if (this.hasOwnProperty(key)) {
+                    clonedValueObject[key] = this[key];
+                }
+            }
+            return clonedValueObject;
         };
         /**
          * The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.

@@ -1,4 +1,11 @@
-///<reference path='BaseEvent.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export RouterEvent
+ */
+import BaseEvent = require('./BaseEvent');
 
 /**
  * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
@@ -18,91 +25,77 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class RouterEvent extends BaseEvent
 {
-    export class RouterEvent extends BaseEvent
+    /**
+     * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
+     *
+     * @event CHANGE
+     * @type {string}
+     * @static
+     */
+    public static CHANGE:string = 'RouterEvent.change';
+
+    /**
+     * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+     *
+     * @property route
+     * @type {string}
+     * @public
+     */
+    public route:string = null;
+
+    /**
+     * The new URL to which the window is navigating.
+     *
+     * @property newURL
+     * @type {string}
+     * @public
+     */
+    public newURL:string = null;
+
+    /**
+     * The previous URL from which the window was navigated.
+     *
+     * @property oldURL
+     * @type {string}
+     * @public
+     */
+    public oldURL:string = null;
+
+    /**
+     * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
+     *
+     * @property routePattern
+     * @type {string}
+     * @public
+     */
+    public routePattern:string = null;
+
+    /**
+     * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
+     * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+     *
+     * @property params
+     * @type {string}
+     * @public
+     */
+    public params:string[] = [];
+
+    /**
+     * A query object the represents the query string in the hash url.
+     *
+     * @property query
+     * @type {any}
+     * @public
+     */
+    public query:any = null;
+
+    constructor(type:string = RouterEvent.CHANGE, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
-         *
-         * @event CHANGE
-         * @type {string}
-         * @static
-         */
-        public static CHANGE:string = 'RouterEvent.change';
-
-        /**
-         * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
-         *
-         * @property route
-         * @type {string}
-         * @public
-         */
-        public route:string = null;
-
-        /**
-         * The new URL to which the window is navigating.
-         *
-         * @property newURL
-         * @type {string}
-         * @public
-         */
-        public newURL:string = null;
-
-        /**
-         * The previous URL from which the window was navigated.
-         *
-         * @property oldURL
-         * @type {string}
-         * @public
-         */
-        public oldURL:string = null;
-
-        /**
-         * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
-         *
-         * @property routePattern
-         * @type {string}
-         * @public
-         */
-        public routePattern:string = null;
-
-        /**
-         * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
-         * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
-         *
-         * @property params
-         * @type {string}
-         * @public
-         */
-        public params:string[] = [];
-
-        /**
-         * A query object the represents the query string in the hash url.
-         *
-         * @property query
-         * @type {any}
-         * @public
-         */
-        public query:any = null;
-
-        constructor(type:string = RouterEvent.CHANGE, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():RouterEvent
-        {
-            var event:RouterEvent = new RouterEvent(this.type, this.bubble, this.cancelable, this.data);
-            event.route = this.route;
-            event.newURL = this.newURL;
-            event.oldURL = this.oldURL;
-            event.routePattern = this.routePattern;
-            event.query = this.query;
-            return event;
-        }
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = RouterEvent;

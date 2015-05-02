@@ -1,0 +1,16 @@
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([%AMD_REQUIRES%], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(%CJS_ARGS%);
+    } else {
+        /*jshint sub:true */
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.%EXPORT_NAME% = factory(%BROWSER_ARGS%);
+    }
+}(this, function(%ARGS%) {
+    %SRC%
+}));

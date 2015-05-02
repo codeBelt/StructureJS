@@ -1,35 +1,45 @@
-///<reference path='BaseRequest'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseRequest as BaseRequest
+ @import ../net/URLRequest as URLRequest
+ @import ../net/URLContentType as URLContentType
+ @export JsonRequest
+ */
+import BaseRequest = require('./BaseRequest');
+import URLRequest = require('../net/URLRequest');
+import URLContentType = require('../net/URLContentType');
 
-module StructureTS
+class JsonRequest extends BaseRequest
 {
-    export class JsonRequest extends BaseRequest
+    constructor(baseUrl:string)
     {
-        constructor(baseUrl:string)
-        {
-            super(baseUrl);
+        super(baseUrl);
 
-            this.configureRequest();
-        }
+        this.configureRequest();
+    }
 
-        /**
-         * @overridden BaseRequest.parseData
-         */
-        public parseData():void
-        {
-            super.parseData();
+    /**
+     * @overridden BaseRequest.parseData
+     */
+    public parseData():void
+    {
+        super.parseData();
 
-            this.data = JSON.parse(this.data);
-        }
+        this.data = JSON.parse(this.data);
+    }
 
-        /**
-         * @overridden BaseRequest.configureRequest
-         */
-        public configureRequest():URLRequest
-        {
-            var urlRequest:URLRequest = super.configureRequest();
-            urlRequest.contentType = URLContentType.JSON;
+    /**
+     * @overridden BaseRequest.configureRequest
+     */
+    public configureRequest():URLRequest
+    {
+        var urlRequest:URLRequest = super.configureRequest();
+        urlRequest.contentType = URLContentType.JSON;
 
-            return urlRequest;
-        }
+        return urlRequest;
     }
 }
+
+export = JsonRequest;

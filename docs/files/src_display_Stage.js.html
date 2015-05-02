@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.14</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -145,15 +151,16 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../display/DOMElement&#x27;, &#x27;jquery&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../display/DOMElement&#x27;), require(&#x27;jquery&#x27;));
+        define([&#x27;../util/Extend&#x27;, &#x27;./DOMElement&#x27;, &#x27;jquery&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./DOMElement&#x27;), require(&#x27;jquery&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.Stage = factory(root.structurejs.Extend, root.structurejs.DOMElement, root.jQuery);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.Stage = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.jQuery);
     }
 }(this, function(Extend, DOMElement, jQuery) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -184,13 +191,13 @@
      *                 _super.call(this);
      *             }
      *
-     *             MainClass.prototype.createChildren = function () {
-     *                 _super.prototype.createChildren.call(this);
+     *             MainClass.prototype.create = function () {
+     *                 _super.prototype.create.call(this);
      *
      *                 // Create and add your child objects to this parent class.
      *             }
      *
-     *             MainClass.prototype.layoutChildren = function () {
+     *             MainClass.prototype.layout = function () {
      *                 // Layout or update the child objects in this parent class.
      *
      *                 return this;
@@ -231,7 +238,7 @@
      *      app.appendTo(&#x27;body&#x27;);
      *
      */
-    var Stage = (function () {
+    var Stage = (function() {
 
         var _super = Extend(Stage, DOMElement);
 
@@ -246,20 +253,21 @@
          * @param [enabled=true] {boolean} Sets the enabled state of the object.
          * @chainable
          */
-        Stage.prototype.appendTo = function (type, enabled) {
+        Stage.prototype.appendTo = function(type, enabled) {
             if (enabled === void 0) { enabled = true; }
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr(&#x27;data-cid&#x27;, this.cid);
+            this.width = this.$element.width();
+            this.height = this.$element.height();
             if (this.isCreated === false) {
-                this.createChildren();
+                this.create();
                 this.isCreated = true;
-                this.layoutChildren();
-            }
-            if (enabled === false) {
-                this.disable();
-            }
-            else {
-                this.enable();
+                if (enabled === false) {
+                    this.disable();
+                } else {
+                    this.enable();
+                }
+                this.layout();
             }
             return this;
         };
@@ -268,6 +276,7 @@
 
     return Stage;
 }));
+
     </pre>
 </div>
 

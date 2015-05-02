@@ -1,4 +1,11 @@
-///<reference path='BaseEvent.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export RequestEvent
+ */
+import BaseEvent = require('./BaseEvent');
 
 /**
  * The RequestEvent...
@@ -18,39 +25,31 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class RequestEvent extends BaseEvent
 {
-    export class RequestEvent extends BaseEvent
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event SUCCESS
+     * @type {string}
+     * @static
+     */
+    public static SUCCESS:string = "RequestEvent.success";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    public static ERROR:string = "RequestEvent.error";
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
     {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event SUCCESS
-         * @type {string}
-         * @static
-         */
-        public static SUCCESS:string = "RequestEvent.success";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        public static ERROR:string = "RequestEvent.error";
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null)
-        {
-            super(type, bubbles, cancelable, data);
-        }
-
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():RequestEvent
-        {
-            return new RequestEvent(this.type, this.bubble, this.cancelable, this.data);
-        }
+        super(type, bubbles, cancelable, data);
     }
+
 }
+
+export = RequestEvent;

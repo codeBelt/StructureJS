@@ -1,3 +1,8 @@
+'use strict';
+/*
+ UMD Stuff
+ @export DataLoader
+ */
 
 /**
  * The DataLoader...
@@ -8,13 +13,12 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class DataLoader
 {
-    export class DataLoader
+    constructor()
     {
-        constructor()
-        {
 
-        }
     }
 }
+
+export = DataLoader;

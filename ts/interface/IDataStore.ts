@@ -1,4 +1,4 @@
-///<reference path='IEventDispatcher.ts'/>
+import IEventDispatcher = require('./IEventDispatcher');
 
 /**
  * TODO: YUIDoc_comment
@@ -9,29 +9,28 @@
  * @submodule interface
  * @interface
  */
-module StructureTS
+interface IDataStore extends IEventDispatcher
 {
-    export interface IDataStore extends IEventDispatcher
-    {
 
-        /**
-         * @property data
-         */
-        data:any;
+    /**
+     * @property data
+     */
+    data:any;
 
-        /**
-         * @property src
-         */
-        src:string;
+    /**
+     * @property src
+     */
+    src:string;
 
-        /**
-         * @property complete
-         */
-        complete:boolean;
+    /**
+     * @property complete
+     */
+    complete:boolean;
 
-        /**
-         * @method load
-         */
-        load():any;
-    }
+    /**
+     * @method load
+     */
+    load():any;
 }
+
+export = IDataStore;

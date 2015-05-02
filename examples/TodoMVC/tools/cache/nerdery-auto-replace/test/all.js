@@ -215,17 +215,17 @@ var AutoReplace = {
         }
 
         return this
-            .createChildren()
+            .create()
             .enable();
     },
 
     /**
      * Caches references to DOM elements to improve performance.
      *
-     * @method createChildren
+     * @method create
      * @chainable
      */
-    createChildren: function() {
+    create: function() {
         this.forms = document.getElementsByTagName('form');
         this.fields = getFieldsWithPlaceholder(document);
 
@@ -1499,7 +1499,7 @@ describe('AutoReplace', function() {
         });
     });
 
-    describe('createChildren', function() {
+    describe('create', function() {
         it('should', function() {
             // TODO: test this
             assert.ok(true);

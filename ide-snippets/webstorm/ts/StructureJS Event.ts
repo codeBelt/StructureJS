@@ -2,7 +2,7 @@
 
 module ${Namespace} {
 
-    import BaseEvent = StructureTS.BaseEvent;
+    import BaseEvent = StructureJS.BaseEvent;
 
     /**
      * TODO: YUIDoc_comment

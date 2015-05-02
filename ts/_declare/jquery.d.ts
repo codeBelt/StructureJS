@@ -1549,7 +1549,7 @@ interface JQuery
 }
 declare module "jquery"
 {
-export = $;
+    export = $;
 }
 declare var jQuery:JQueryStatic;
 declare var $:JQueryStatic;

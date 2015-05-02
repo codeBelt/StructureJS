@@ -1,46 +1,51 @@
-///<reference path='../ValueObject.ts'/>
-///<reference path='../../interface/IValueObject.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../../util/Extend as Extend
+ @import ../ValueObject as ValueObject
+ @export LoaderEvent
+ */
+import ValueObject = require('../ValueObject');
 
-module StructureTS
+class LanguageConfigVO extends ValueObject
 {
-    export class LanguageConfigVO extends ValueObject
+    public id:string;
+    public lang:string;
+    public text:string;
+    public path:string;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @class LanguageConfigVO
+     * @param [data] {any} Provide a way to update the value object upon initialization.
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     * @module StructureJS
+     * @version 0.1.0
+     */
+    constructor(data:any = null)
     {
-        public id:string;
-        public lang:string;
-        public text:string;
-        public path:string;
+        super();
 
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @class LanguageConfigVO
-         * @param [data] {any} Provide a way to update the value object upon initialization.
-         * @constructor
-         * @author Robert S. (www.codeBelt.com)
-         * @module StructureJS
-         * @version 0.1.0
-         */
-        constructor(data:any = null)
+        if (data)
         {
-            super();
-
-            if (data)
-            {
-                this.update(data);
-            }
+            this.update(data);
         }
-
-        /**
-         * @overridden ValueObject.update
-         */
-        public update(data:any):any
-        {
-            super.update(data);
-
-            // Override any values after the default super update method has set the values.
-
-            return this;
-        }
-
     }
+
+    /**
+     * @overridden ValueObject.update
+     */
+    public update(data:any):any
+    {
+        super.update(data);
+
+        // Override any values after the default super update method has set the values.
+
+        return this;
+    }
+
 }
+
+export = LanguageConfigVO;

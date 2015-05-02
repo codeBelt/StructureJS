@@ -1,4 +1,12 @@
-///<reference path='../util/StringUtil.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/StringUtil as StringUtil
+ @import jquery as jQuery
+ @import handlebars as Handlebars
+ @export TemplateFactory
+ */
+import StringUtil = require('./StringUtil');
 
 /**
  * A helper class to provide a convenient and consistent way to render templates.
@@ -12,120 +20,119 @@
  * @author Robert S. (www.codeBelt.com)
  * @static
  */
-module StructureTS
+class TemplateFactory
 {
-    export class TemplateFactory
+    /**
+     * A constant value for using Underscore or Lodash templates.
+     *
+     * @property UNDERSCORE
+     * @type {string}
+     * @public
+     * @final
+     * @static
+     */
+    public static UNDERSCORE:string = 'underscore';
+
+    /**
+     * A constant value for using Handlebars templates. This is the default template engine.
+     *
+     * @property HANDLEBARS
+     * @type {string}
+     * @public
+     * @final
+     * @static
+     */
+    public static HANDLEBARS:string = 'handlebars';
+
+    /**
+     * Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS
+     *
+     * @property templateEngine
+     * @type {string}
+     * @default TemplateFactory.HANDLEBARS
+     * @public
+     * @static
+     */
+    public static templateEngine:string = TemplateFactory.HANDLEBARS;
+
+    /**
+     * The global namespace for pre-compiled templates.
+     *
+     * @property templateNamespace
+     * @type {string}
+     * @default 'JST'
+     * @public
+     * @static
+     */
+    public static templateNamespace:string = 'JST';
+
+    constructor()
     {
-        /**
-         * A constant value for using Underscore or Lodash templates.
-         *
-         * @property UNDERSCORE
-         * @type {string}
-         * @public
-         * @final
-         * @static
-         */
-        public static UNDERSCORE:string = 'underscore';
+        throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
+    }
 
-        /**
-         * A constant value for using Handlebars templates. This is the default template engine.
-         *
-         * @property HANDLEBARS
-         * @type {string}
-         * @public
-         * @final
-         * @static
-         */
-        public static HANDLEBARS:string = 'handlebars';
+    /**
+     * Creates a template.
+     *
+     * @method create
+     * @param templatePath {any}
+     * @param [data=any]
+     * @returns {string}
+     * @public
+     * @static
+     * @example
+     *      TemplateFactory.create('templateName', {some: 'data'});
+     */
+    public static create(templatePath:any, data:any = null):string
+    {
+        //Checks the first character to see if it is a '.' or '#'.
+        var regex = /^([.#])(.+)/;
+        var template:string = null;
+        var isFunctionTemplate = typeof templatePath === 'function';
+        var isClassOrIdName:boolean = regex.test(templatePath);
 
-        /**
-         * Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS
-         *
-         * @property templateEngine
-         * @type {string}
-         * @default TemplateFactory.HANDLEBARS
-         * @public
-         * @static
-         */
-        public static templateEngine:string = TemplateFactory.HANDLEBARS;
-
-        /**
-         * The global namespace for pre-compiled templates.
-         *
-         * @property templateNamespace
-         * @type {string}
-         * @default 'JST'
-         * @public
-         * @static
-         */
-        public static templateNamespace:string = 'JST';
-
-        constructor()
+        if (isFunctionTemplate)
         {
-            throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
+            template = templatePath(data);
         }
-
-        /**
-         * Creates a template.
-         *
-         * @method create
-         * @param templatePath {any}
-         * @param [data=any]
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      TemplateFactory.create('templateName', {some: 'data'});
-         */
-        public static create(templatePath:any, data:any = null):string
+        else if (isClassOrIdName)
         {
-            //Checks the first character to see if it is a '.' or '#'.
-            var regex = /^([.#])(.+)/;
-            var template:string = null;
-            var isFunctionTemplate = typeof templatePath === 'function';
-            var isClassOrIdName:boolean = regex.test(templatePath);
+            var htmlString:string = jQuery(templatePath).html();
+            htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
 
-            if (isFunctionTemplate)
+            if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE)
             {
-                template = templatePath(data);
-            }
-            else if (isClassOrIdName)
-            {
-                var htmlString:string = jQuery(templatePath).html();
-                htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
-
-                if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE)
-                {
-                    // Underscore Template:
-                    var templateMethod:Function = _.template(htmlString);
-                    template = templateMethod(data);
-                }
-                else
-                {
-                    // Handlebars Template
-                    var templateMethod:Function = Handlebars.compile(htmlString);
-                    template = templateMethod(data);
-                }
+                // Underscore Template:
+                var templateMethod:Function = window['_'].template(htmlString);
+                template = templateMethod(data);
             }
             else
             {
-                var templateObj:Object = window[TemplateFactory.templateNamespace];
-                if (!templateObj)
-                {
-                    // Returns null because the template namespace is not found.
-                    return null;
-                }
-
-                var templateFunction:Function = templateObj[templatePath];
-                if (templateFunction)
-                {
-                    // The templatePath gets a function storage in the associative array.
-                    // We call the function by passing in the data as the argument.
-                    template = templateFunction(data);
-                }
+                // Handlebars Template
+                var templateMethod:Function = Handlebars.compile(htmlString);
+                template = templateMethod(data);
+            }
+        }
+        else
+        {
+            var templateObj:Object = window[TemplateFactory.templateNamespace];
+            if (!templateObj)
+            {
+                // Returns null because the template namespace is not found.
+                return null;
             }
 
-            return template;
+            var templateFunction:Function = templateObj[templatePath];
+            if (templateFunction)
+            {
+                // The templatePath gets a function storage in the associative array.
+                // We call the function by passing in the data as the argument.
+                template = templateFunction(data);
+            }
         }
+
+        return template;
     }
 }
+
+export = TemplateFactory;

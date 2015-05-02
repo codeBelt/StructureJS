@@ -1,4 +1,11 @@
-///<reference path='BaseEvent.ts'/>
+'use strict';
+/*
+ UMD Stuff
+ @import ../util/Extend as Extend
+ @import ./BaseEvent as BaseEvent
+ @export TweenEvent
+ */
+import BaseEvent = require('./BaseEvent');
 
 /**
  * TODO: YUIDoc_comment
@@ -16,48 +23,40 @@
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-module StructureTS
+class TweenEvent extends BaseEvent
 {
-    export class TweenEvent extends BaseEvent
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static START:string = "TweenEvent.start";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static UPDATE:string = "TweenEvent.update";
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    public static COMPLETE:string = "TweenEvent.complete";
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, tweenObject:any = null)
     {
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static START:string = "TweenEvent.start";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static UPDATE:string = "TweenEvent.update";
-
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        public static COMPLETE:string = "TweenEvent.complete";
-
-        constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, tweenObject:any = null)
-        {
-            super(type, bubbles, cancelable, tweenObject);
-        }
-
-        /**
-         * @overridden BaseEvent.clone
-         */
-        public clone():TweenEvent
-        {
-            return new TweenEvent(this.type, this.bubble, this.cancelable, this.data);
-        }
+        super(type, bubbles, cancelable, tweenObject);
     }
+
 }
+
+export = TweenEvent;
