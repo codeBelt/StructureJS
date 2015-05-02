@@ -24,9 +24,14 @@ var App = (function () {
 		_super.call(this);
 	}
 
-	App.prototype.createChildren = function () {
-		_super.prototype.createChildren.call(this);
+	App.prototype.create = function () {
+		_super.prototype.create.call(this);
 
+		// single instance
+		this._fooBarView = new FooBarView('#js-fooBar');
+		this.addChild(this._fooBarView);
+
+		// multiple instances
 		this.createComponents([
 			{ selector: '.js-foo', componentClass: FooView },
 			{ selector: '.js-bar', componentClass: BarView }
@@ -39,7 +44,7 @@ var App = (function () {
 
 [Example `Stage` Class](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/MovieCollectionApp.js)
 
-[Read more about `DOMElement`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
+[Read more about `Stage`](http://codebelt.github.io/StructureJS/docs/classes/Stage.html)
 
 ### `DOMElement`
 
@@ -60,8 +65,8 @@ var ExampleView = (function () {
 
 `DOMElement` provides several helper methods and adds the following lifecycle to your class:
 * `create()`
-* `layout()`
 * `enable()`
+* `layout()`
 
 ```js
 var ExampleView = (function () {
@@ -76,11 +81,14 @@ var ExampleView = (function () {
 		_super.prototype.create.call(this);
 	};
 
-	MenuView.prototype.layout = function () {
+	MenuView.prototype.enable = function () {
+		if (this.isEnabled) { return; }
+
+		return _super.prototype.enable.call(this);
 	};
 
-	MenuView.prototype.enable = function () {
-		return _super.prototype.enable.call(this);
+	MenuView.prototype.layout = function () {
+		return this;
 	};
 
 	return ExampleView;
@@ -91,8 +99,36 @@ var ExampleView = (function () {
 
 [Read more about `DOMElement`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
 
-* ___Stage___
-	* The Stage class is what your main application class will extend. This class extends the DOMElement class and the only difference you will notice is it has an appendTo method. This allows us to use an id name, class name or tag name to have a reference point where your code will control DOM elements with in the referenced area.
+### `___EventDispatcher___`
+
+A base application class for your project. `Stage` allows you to set DOM references for your application to control.
+
+```js
+var App = (function () {
+
+	var _super = Extend (App, DOMElement);
+
+	function App () {
+		_super.call(this);
+	}
+
+	App.prototype.create = function () {
+		_super.prototype.create.call(this);
+
+		// single instance
+		this._fooBarView = new FooBarView('#js-fooBar');
+		this.addChild(this._fooBarView);
+
+		// multiple instances
+		this.createComponents([
+			{ selector: '.js-foo', componentClass: FooView },
+			{ selector: '.js-bar', componentClass: BarView }
+		]);
+	};
+
+	return App;
+}
+```
 
 * ___EventDispatcher___
 	* The EventDispatcher class is the base class for all classes that need to dispatch events. For example if you wanted to create a Controller class, you would extend EventDispatcher. The DOMElement class extends EventDispatcher which allows events to bubble throughout the display list.
