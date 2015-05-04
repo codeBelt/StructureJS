@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.16</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([&#x27;../util/Extend&#x27;, &#x27;../BaseObject&#x27;, &#x27;../util/Util&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../BaseObject&#x27;), require(&#x27;../util/Util&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.ValueObject = factory(root.structurejs.Extend, root.structurejs.BaseObject, root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.ValueObject = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
     }
 }(this, function(Extend, BaseObject, Util) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -223,7 +230,7 @@
      *          return CarVO;
      *      })();
      */
-    var ValueObject = (function () {
+    var ValueObject = (function() {
 
         var _super = Extend(ValueObject, BaseObject);
 
@@ -244,7 +251,7 @@
          *     carVO.year = 2015;
          *     carVO.allWheel = false;
          */
-        ValueObject.prototype.update = function (data) {
+        ValueObject.prototype.update = function(data) {
             var propertyData;
             for (var propertyKey in this) {
                 // If this class has a property that matches a property on the data being passed in then set it.
@@ -268,7 +275,7 @@
          * @param data
          * @private
          */
-        ValueObject.prototype._setData = function (key, data) {
+        ValueObject.prototype._setData = function(key, data) {
             if (data instanceof Array) {
                 var temp = [];
                 var len = data.length;
@@ -279,8 +286,7 @@
                     }
                 }
                 this[key] = temp;
-            }
-            else {
+            } else {
                 this[key] = this._updateData(this[key], data);
             }
         };
@@ -292,18 +298,16 @@
          * @param data
          * @private
          */
-        ValueObject.prototype._updateData = function (keyValue, data) {
+        ValueObject.prototype._updateData = function(keyValue, data) {
             if (keyValue instanceof ValueObject.constructor) {
-                // If property is an instance of a ValueObject class and has not been created yet.
-                // Than instantiate it and pass in the data to the constructor.
+                // If the property is an instance of a ValueObject class and has not been created yet.
+                // Then instantiate it and pass in the data to the constructor.
                 keyValue = new keyValue(data);
-            }
-            else if (keyValue instanceof ValueObject) {
+            } else if (keyValue instanceof ValueObject) {
                 // If property is an instance of a ValueObject class and has already been created.
-                // Than call the update method and pass in the data.
+                // Then call the update method and pass in the data.
                 keyValue.update(data);
-            }
-            else {
+            } else {
                 // Else just assign the data to the property.
                 keyValue = data;
             }
@@ -318,7 +322,7 @@
          * @example
          *     var obj = carVO.toJSON();
          */
-        ValueObject.prototype.toJSON = function () {
+        ValueObject.prototype.toJSON = function() {
             var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, [&#x27;cid&#x27;]);
         };
@@ -331,7 +335,7 @@
          * @example
          *     var str = carVO.toJSONString();
          */
-        ValueObject.prototype.toJSONString = function () {
+        ValueObject.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
         };
         /**
@@ -345,7 +349,7 @@
          *      var carVO = new CarVO();
          *      carVO.fromJSON(str);
          */
-        ValueObject.prototype.fromJSON = function (json) {
+        ValueObject.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
             this.update(parsedData);
             return this;
@@ -359,7 +363,7 @@
          * @example
          *     var clone = carVO.clone();
          */
-        ValueObject.prototype.clone = function () {
+        ValueObject.prototype.clone = function() {
             var clonedValueObject = new this.constructor(this);
             return clonedValueObject;
         };
@@ -368,6 +372,7 @@
 
     return ValueObject;
 }));
+
     </pre>
 </div>
 

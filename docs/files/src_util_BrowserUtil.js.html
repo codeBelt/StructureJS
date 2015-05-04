@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.16</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -146,14 +152,15 @@
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define([&#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/Util&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
         module.exports = factory(require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/BaseEvent&#x27;), require(&#x27;../util/Util&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BrowserUtil = factory(root.structurejs.EventDispatcher, root.structurejs.BaseEvent, root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BrowserUtil = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent, root.StructureJS.Util);
     }
 }(this, function(EventDispatcher, BaseEvent, Util) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -165,7 +172,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var BrowserUtil = (function () {
+    var BrowserUtil = (function() {
 
         function BrowserUtil() {
             throw new Error(&#x27;[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.&#x27;);
@@ -177,7 +184,7 @@
          * @public
          * @static
          */
-        BrowserUtil.enable = function () {
+        BrowserUtil.enable = function() {
             if (BrowserUtil.isEnabled === true) {
                 return;
             }
@@ -188,7 +195,7 @@
         /**
          * @overridden EventDispatcher.disable
          */
-        BrowserUtil.disable = function () {
+        BrowserUtil.disable = function() {
             if (BrowserUtil.isEnabled === false) {
                 return;
             }
@@ -206,7 +213,7 @@
          *      BrowserUtil.browserName();
          *      // &#x27;Chrome&#x27;
          */
-        BrowserUtil.browserName = function () {
+        BrowserUtil.browserName = function() {
             return BrowserUtil.getBrowser()[0];
         };
         /**
@@ -224,13 +231,12 @@
          *      BrowserUtil.browserVersion(false);
          *      // &#x27;39.0.2171.99&#x27;
          */
-        BrowserUtil.browserVersion = function (majorVersion) {
+        BrowserUtil.browserVersion = function(majorVersion) {
             if (majorVersion === void 0) { majorVersion = true; }
             var version = BrowserUtil.getBrowser()[1];
             if (majorVersion === true) {
                 return parseInt(version, 10);
-            }
-            else {
+            } else {
                 return version;
             }
         };
@@ -245,15 +251,14 @@
          *      BrowserUtil.getBrowser();
          *      // [&quot;Chrome&quot;, &quot;39.0.2171.99&quot;]
          */
-        BrowserUtil.getBrowser = function () {
+        BrowserUtil.getBrowser = function() {
             var N = navigator.appName;
             var ua = navigator.userAgent;
             var tem = ua.match(/version\/([\.\d]+)/i);
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
             if (M &amp;&amp; tem != null) {
                 M[2] = tem[1];
-            }
-            else {
+            } else {
                 M = M ? [M[1], M[2]] : [N, navigator.appVersion, &#x27;-?&#x27;];
             }
             return M;
@@ -269,7 +274,7 @@
          *      BrowserUtil.isAndroid();
          *      // false
          */
-        BrowserUtil.isAndroid = function () {
+        BrowserUtil.isAndroid = function() {
             return !!navigator.userAgent.match(/Android/i);
         };
         /**
@@ -283,7 +288,7 @@
          *      BrowserUtil.isBlackBerry();
          *      // false
          */
-        BrowserUtil.isBlackBerry = function () {
+        BrowserUtil.isBlackBerry = function() {
             return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
         };
         /**
@@ -297,7 +302,7 @@
          *      BrowserUtil.isIOS();
          *      // false
          */
-        BrowserUtil.isIOS = function () {
+        BrowserUtil.isIOS = function() {
             return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
         };
         /**
@@ -311,7 +316,7 @@
          *      BrowserUtil.isOperaMini();
          *      // false
          */
-        BrowserUtil.isOperaMini = function () {
+        BrowserUtil.isOperaMini = function() {
             return !!navigator.userAgent.match(/Opera Mini/i);
         };
         /**
@@ -325,7 +330,7 @@
          *      BrowserUtil.isIEMobile();
          *      // false
          */
-        BrowserUtil.isIEMobile = function () {
+        BrowserUtil.isIEMobile = function() {
             return !!navigator.userAgent.match(/IEMobile/i);
         };
         /**
@@ -339,7 +344,7 @@
          *      BrowserUtil.isMobile();
          *      // false
          */
-        BrowserUtil.isMobile = function () {
+        BrowserUtil.isMobile = function() {
             return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
         };
         /**
@@ -353,7 +358,7 @@
          *      BrowserUtil.hasBrowserHistory();
          *      // true
          */
-        BrowserUtil.hasBrowserHistory = function () {
+        BrowserUtil.hasBrowserHistory = function() {
             return !!(window.history &amp;&amp; history.pushState);
         };
         /**
@@ -367,11 +372,10 @@
          *      BrowserUtil.hasLocalStorage();
          *      // true
          */
-        BrowserUtil.hasLocalStorage = function () {
+        BrowserUtil.hasLocalStorage = function() {
             try {
                 return (&#x27;localStorage&#x27; in window) &amp;&amp; window.localStorage !== null;
-            }
-            catch (error) {
+            } catch (error) {
                 return false;
             }
         };
@@ -386,11 +390,10 @@
          *      BrowserUtil.hasSessionStorage();
          *      // true
          */
-        BrowserUtil.hasSessionStorage = function () {
+        BrowserUtil.hasSessionStorage = function() {
             try {
                 return (&#x27;sessionStorage&#x27; in window) &amp;&amp; window.sessionStorage !== null;
-            }
-            catch (error) {
+            } catch (error) {
                 return false;
             }
         };
@@ -405,9 +408,13 @@
          * @example
          *      // For each of your different style sheets add something like below:
          *      // screen_lg.css
-         *      body:after { content: &#x27;screen_lg&#x27;; }
+         *      body:after {
+         *          content: &#x27;screen_lg&#x27;;  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *      // screen_sm.css
-         *      body:after { content: &#x27;screen_sm&#x27;; }
+         *      body:after {
+         *          content: &#x27;screen_sm&#x27;;  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *
          *      BrowserUtil.getBreakpoint();
          *      // &#x27;screen_lg&#x27;
@@ -420,7 +427,7 @@
          *          // &#x27;screen_sm&#x27;
          *      };
          */
-        BrowserUtil.getBreakpoint = function () {
+        BrowserUtil.getBreakpoint = function() {
             return BrowserUtil._window.getComputedStyle(document.querySelector(&#x27;body&#x27;), &#x27;:after&#x27;).getPropertyValue(&#x27;content&#x27;).replace(/&quot;/g, &#x27;&#x27;);
         };
         /**
@@ -430,7 +437,7 @@
          * @public
          * @static
          */
-        BrowserUtil.addEventListener = function (type, callback, scope, priority) {
+        BrowserUtil.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
             BrowserUtil._eventDispatcher.addEventListener(type, callback, scope, priority);
             BrowserUtil.enable();
@@ -442,7 +449,7 @@
          * @public
          * @static
          */
-        BrowserUtil.removeEventListener = function (type, callback, scope) {
+        BrowserUtil.removeEventListener = function(type, callback, scope) {
             BrowserUtil._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -452,7 +459,7 @@
          * @public
          * @static
          */
-        BrowserUtil.dispatchEvent = function (type, data) {
+        BrowserUtil.dispatchEvent = function(type, data) {
             if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === &#x27;string&#x27;) {
@@ -469,7 +476,7 @@
          * @private
          * @static
          */
-        BrowserUtil._onBreakpointChange = function (event) {
+        BrowserUtil._onBreakpointChange = function(event) {
             BrowserUtil.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, BrowserUtil.getBreakpoint()));
         };
         /**
@@ -524,6 +531,7 @@
 
     return BrowserUtil;
 }));
+
     </pre>
 </div>
 

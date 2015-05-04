@@ -3,15 +3,16 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/BaseEvent'), require('../util/Util'));
+        define(['../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
+    } else if (typeof module !== 'undefined' && module.exports) {
+        module.exports = factory(require('../event/EventDispatcher'), require('../event/BaseEvent'), require('../util/Util'));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.BrowserUtil = factory(root.structurejs.Extend, root.structurejs.EventDispatcher, root.structurejs.BaseEvent, root.structurejs.Util);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.BrowserUtil = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent, root.StructureJS.Util);
     }
-}(this, function(Extend, EventDispatcher, BaseEvent, Util) {
+}(this, function(EventDispatcher, BaseEvent, Util) {
+
     'use strict';
 
     /**
@@ -23,58 +24,35 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var BrowserUtil = (function () {
-
-        var _super = Extend(BrowserUtil, EventDispatcher);
+    var BrowserUtil = (function() {
 
         function BrowserUtil() {
-            _super.call(this);
-            /**
-             * The delay in milliseconds for the Util.{{#crossLink "Util/debounce:method"}}{{/crossLink}} method that dispatches
-             * the BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink "BrowserUtil/getBreakpoint:method"}}{{/crossLink}}.
-             *
-             * @property debounceDelay
-             * @type {number}
-             * @default 250
-             * @public
-             */
-            this.debounceDelay = 250;
-            /**
-             * A reference to the browser window object.
-             *
-             * @property _window
-             * @type {Window}
-             * @private
-             */
-            this._window = window;
-            /**
-             * TODO: YUIDoc_comment
-             *
-             * @property _onBreakpointChangeHandler
-             * @type {any}
-             * @private
-             */
-            this._onBreakpointChangeHandler = null;
-            this.enable();
+            throw new Error('[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.');
         }
         /**
-         * @overridden EventDispatcher.enable
+         * Dispatches a breakpoint event.
+         *
+         * @method enable
+         * @public
+         * @static
          */
-        BrowserUtil.prototype.enable = function () {
-            if (this.isEnabled === true)
+        BrowserUtil.enable = function() {
+            if (BrowserUtil.isEnabled === true) {
                 return;
-            this._onBreakpointChangeHandler = Util.debounce(this.onBreakpointChange, this.debounceDelay, false, this);
-            this._window.addEventListener('resize', this._onBreakpointChangeHandler);
-            _super.prototype.enable.call(this);
+            }
+            BrowserUtil._onBreakpointChangeHandler = Util.debounce(BrowserUtil._onBreakpointChange, BrowserUtil.debounceDelay, false, BrowserUtil);
+            BrowserUtil._window.addEventListener('resize', BrowserUtil._onBreakpointChangeHandler);
+            BrowserUtil.isEnabled = true;
         };
         /**
          * @overridden EventDispatcher.disable
          */
-        BrowserUtil.prototype.disable = function () {
-            if (this.isEnabled === false)
+        BrowserUtil.disable = function() {
+            if (BrowserUtil.isEnabled === false) {
                 return;
-            this._window.removeEventListener('resize', this._onBreakpointChangeHandler);
-            _super.prototype.disable.call(this);
+            }
+            BrowserUtil._window.removeEventListener('resize', BrowserUtil._onBreakpointChangeHandler);
+            BrowserUtil.isEnabled = false;
         };
         /**
          * Returns the name of the browser.
@@ -87,8 +65,8 @@
          *      BrowserUtil.browserName();
          *      // 'Chrome'
          */
-        BrowserUtil.prototype.browserName = function () {
-            return this.getBrowser()[0];
+        BrowserUtil.browserName = function() {
+            return BrowserUtil.getBrowser()[0];
         };
         /**
          * Returns the version of the browser.
@@ -105,13 +83,12 @@
          *      BrowserUtil.browserVersion(false);
          *      // '39.0.2171.99'
          */
-        BrowserUtil.prototype.browserVersion = function (majorVersion) {
+        BrowserUtil.browserVersion = function(majorVersion) {
             if (majorVersion === void 0) { majorVersion = true; }
-            var version = this.getBrowser()[1];
+            var version = BrowserUtil.getBrowser()[1];
             if (majorVersion === true) {
                 return parseInt(version, 10);
-            }
-            else {
+            } else {
                 return version;
             }
         };
@@ -126,15 +103,14 @@
          *      BrowserUtil.getBrowser();
          *      // ["Chrome", "39.0.2171.99"]
          */
-        BrowserUtil.prototype.getBrowser = function () {
+        BrowserUtil.getBrowser = function() {
             var N = navigator.appName;
             var ua = navigator.userAgent;
             var tem = ua.match(/version\/([\.\d]+)/i);
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
             if (M && tem != null) {
                 M[2] = tem[1];
-            }
-            else {
+            } else {
                 M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
             }
             return M;
@@ -150,7 +126,7 @@
          *      BrowserUtil.isAndroid();
          *      // false
          */
-        BrowserUtil.prototype.isAndroid = function () {
+        BrowserUtil.isAndroid = function() {
             return !!navigator.userAgent.match(/Android/i);
         };
         /**
@@ -164,7 +140,7 @@
          *      BrowserUtil.isBlackBerry();
          *      // false
          */
-        BrowserUtil.prototype.isBlackBerry = function () {
+        BrowserUtil.isBlackBerry = function() {
             return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
         };
         /**
@@ -178,7 +154,7 @@
          *      BrowserUtil.isIOS();
          *      // false
          */
-        BrowserUtil.prototype.isIOS = function () {
+        BrowserUtil.isIOS = function() {
             return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
         };
         /**
@@ -192,7 +168,7 @@
          *      BrowserUtil.isOperaMini();
          *      // false
          */
-        BrowserUtil.prototype.isOperaMini = function () {
+        BrowserUtil.isOperaMini = function() {
             return !!navigator.userAgent.match(/Opera Mini/i);
         };
         /**
@@ -206,7 +182,7 @@
          *      BrowserUtil.isIEMobile();
          *      // false
          */
-        BrowserUtil.prototype.isIEMobile = function () {
+        BrowserUtil.isIEMobile = function() {
             return !!navigator.userAgent.match(/IEMobile/i);
         };
         /**
@@ -220,8 +196,8 @@
          *      BrowserUtil.isMobile();
          *      // false
          */
-        BrowserUtil.prototype.isMobile = function () {
-            return (this.isAndroid() || this.isBlackBerry() || this.isIOS() || this.isOperaMini() || this.isIEMobile());
+        BrowserUtil.isMobile = function() {
+            return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
         };
         /**
          * Determines if the browser can you Browser History push states.
@@ -234,7 +210,7 @@
          *      BrowserUtil.hasBrowserHistory();
          *      // true
          */
-        BrowserUtil.prototype.hasBrowserHistory = function () {
+        BrowserUtil.hasBrowserHistory = function() {
             return !!(window.history && history.pushState);
         };
         /**
@@ -248,11 +224,10 @@
          *      BrowserUtil.hasLocalStorage();
          *      // true
          */
-        BrowserUtil.prototype.hasLocalStorage = function () {
+        BrowserUtil.hasLocalStorage = function() {
             try {
                 return ('localStorage' in window) && window.localStorage !== null;
-            }
-            catch (error) {
+            } catch (error) {
                 return false;
             }
         };
@@ -267,11 +242,10 @@
          *      BrowserUtil.hasSessionStorage();
          *      // true
          */
-        BrowserUtil.prototype.hasSessionStorage = function () {
+        BrowserUtil.hasSessionStorage = function() {
             try {
                 return ('sessionStorage' in window) && window.sessionStorage !== null;
-            }
-            catch (error) {
+            } catch (error) {
                 return false;
             }
         };
@@ -286,9 +260,13 @@
          * @example
          *      // For each of your different style sheets add something like below:
          *      // screen_lg.css
-         *      body:after { content: 'screen_lg'; }
+         *      body:after {
+         *          content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *      // screen_sm.css
-         *      body:after { content: 'screen_sm'; }
+         *      body:after {
+         *          content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+         *      }
          *
          *      BrowserUtil.getBreakpoint();
          *      // 'screen_lg'
@@ -301,20 +279,107 @@
          *          // 'screen_sm'
          *      };
          */
-        BrowserUtil.prototype.getBreakpoint = function () {
-            return this._window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/"/g, '');
+        BrowserUtil.getBreakpoint = function() {
+            return BrowserUtil._window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/"/g, '');
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method addEventListener
+         * @public
+         * @static
+         */
+        BrowserUtil.addEventListener = function(type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
+            BrowserUtil._eventDispatcher.addEventListener(type, callback, scope, priority);
+            BrowserUtil.enable();
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method removeEventListener
+         * @public
+         * @static
+         */
+        BrowserUtil.removeEventListener = function(type, callback, scope) {
+            BrowserUtil._eventDispatcher.removeEventListener(type, callback, scope);
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method dispatchEvent
+         * @public
+         * @static
+         */
+        BrowserUtil.dispatchEvent = function(type, data) {
+            if (data === void 0) { data = null; }
+            var event = type;
+            if (typeof event === 'string') {
+                event = new BaseEvent(type, false, false, data);
+            }
+            event.target = BrowserUtil;
+            event.currentTarget = BrowserUtil;
+            BrowserUtil._eventDispatcher.dispatchEvent(event);
         };
         /**
          * Dispatches a breakpoint event.
          *
          * @method _onBreakpointChange
          * @private
+         * @static
          */
-        BrowserUtil.prototype.onBreakpointChange = function (event) {
-            this.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, this.getBreakpoint()));
+        BrowserUtil._onBreakpointChange = function(event) {
+            BrowserUtil.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, BrowserUtil.getBreakpoint()));
         };
+        /**
+         * A reference to the EventDispatcher object.
+         *
+         * @property _eventDispatcher
+         * @type {EventDispatcher}
+         * @private
+         * @static
+         */
+        BrowserUtil._eventDispatcher = new EventDispatcher();
+        /**
+         * A reference to the browser window object.
+         *
+         * @property _window
+         * @type {Window}
+         * @private
+         * @static
+         */
+        BrowserUtil._window = window;
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property _onBreakpointChangeHandler
+         * @type {any}
+         * @private
+         * @static
+         */
+        BrowserUtil._onBreakpointChangeHandler = null;
+        /**
+         * The delay in milliseconds for the Util.{{#crossLink "Util/debounce:method"}}{{/crossLink}} method that dispatches
+         * the BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink "BrowserUtil/getBreakpoint:method"}}{{/crossLink}}.
+         *
+         * @property debounceDelay
+         * @type {number}
+         * @default 250
+         * @public
+         * @static
+         */
+        BrowserUtil.debounceDelay = 250;
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property isEnabled
+         * @type {boolean}
+         * @public
+         * @static
+         */
+        BrowserUtil.isEnabled = false;
         return BrowserUtil;
     })();
 
-    return new BrowserUtil();
+    return BrowserUtil;
 }));

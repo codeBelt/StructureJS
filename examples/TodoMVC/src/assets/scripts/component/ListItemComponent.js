@@ -52,10 +52,10 @@ var ListItemComponent = (function () {
     }
 
     /**
-     * @overridden DOMElement.createChildren
+     * @overridden DOMElement.create
      */
-    ListItemComponent.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this, '#listItemTemplate', this.vo);
+    ListItemComponent.prototype.create = function () {
+        _super.prototype.create.call(this, '#listItemTemplate', this.vo);
 
         this._$itemInput = this.$element.find('.js-itemText');
         this._$itemLabel = this.$element.find('.js-editTodo');
@@ -63,9 +63,9 @@ var ListItemComponent = (function () {
     };
 
     /**
-     * @overridden DOMElement.layoutChildren
+     * @overridden DOMElement.layout
      */
-    ListItemComponent.prototype.layoutChildren = function () {
+    ListItemComponent.prototype.layout = function () {
         this.$element.toggleClass('completed', this.vo.isComplete);
 
         this._$markCompleteCheckbox.prop('checked', this.vo.isComplete);
@@ -125,7 +125,7 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.setCompleted = function() {
         this.vo.isComplete = true;
 
-        this.layoutChildren();
+        this.layout();
         this._saveItemText();
     };
 
@@ -138,7 +138,7 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype.setUnCompleted = function() {
         this.vo.isComplete = false;
 
-        this.layoutChildren();
+        this.layout();
         this._saveItemText();
     };
 
@@ -183,7 +183,7 @@ var ListItemComponent = (function () {
 
         this.vo.isComplete = isChecked;
 
-        this.layoutChildren();
+        this.layout();
         this._saveItemText();
     };
 

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.16</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -145,15 +151,16 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../event/EventDispatcher&#x27;, &#x27;../event/native/NavigatorEvents&#x27;, &#x27;../event/NetworkMonitorEvent&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/native/NavigatorEvents&#x27;), require(&#x27;../event/NetworkMonitorEvent&#x27;));
+        define([&#x27;../event/EventDispatcher&#x27;, &#x27;../event/NetworkMonitorEvent&#x27;, &#x27;../event/native/NavigatorEvents&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/NetworkMonitorEvent&#x27;), require(&#x27;../event/native/NavigatorEvents&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.NetworkMonitor = factory(root.structurejs.EventDispatcher, root.structurejs.NavigatorEvents, root.structurejs.NetworkMonitorEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.NetworkMonitor = factory(root.StructureJS.EventDispatcher, root.StructureJS.NetworkMonitorEvent, root.StructureJS.NavigatorEvents);
     }
-}(this, function(EventDispatcher, NavigatorEvents, NetworkMonitorEvent) {
+}(this, function(EventDispatcher, NetworkMonitorEvent, NavigatorEvents) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -167,7 +174,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var NetworkMonitor = (function () {
+    var NetworkMonitor = (function() {
 
         function NetworkMonitor() {
             throw new Error(&#x27;[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.&#x27;);
@@ -182,11 +189,10 @@
          * @static
          * @public
          */
-        NetworkMonitor.start = function () {
+        NetworkMonitor.start = function() {
             if (NetworkMonitor._initialized === true) {
                 return;
-            }
-            else {
+            } else {
                 NetworkMonitor._initialized = true;
             }
             window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor.onNetworkMonitorEvent, false);
@@ -202,7 +208,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.connected = function () {
+        NetworkMonitor.connected = function() {
             // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
             NetworkMonitor.start();
             return window.navigator.onLine;
@@ -216,7 +222,7 @@
          * @public
          * @static
          */
-        NetworkMonitor.getStatus = function () {
+        NetworkMonitor.getStatus = function() {
             // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
             NetworkMonitor.start();
             return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
@@ -229,7 +235,7 @@
          * @private
          * @static
          */
-        NetworkMonitor.onNetworkMonitorEvent = function (event) {
+        NetworkMonitor.onNetworkMonitorEvent = function(event) {
             var type = (event) ? event.type : NetworkMonitor.getStatus();
             var networkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
             NetworkMonitor.dispatchEvent(networkMonitorEvent);
@@ -249,7 +255,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.addEventListener = function (type, callback, scope, priority) {
+        NetworkMonitor.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
             NetworkMonitor._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
@@ -268,7 +274,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.removeEventListener = function (type, callback, scope) {
+        NetworkMonitor.removeEventListener = function(type, callback, scope) {
             NetworkMonitor._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -279,7 +285,7 @@
          * @static
          * @private
          */
-        NetworkMonitor.dispatchEvent = function (event) {
+        NetworkMonitor.dispatchEvent = function(event) {
             NetworkMonitor._eventDispatcher.dispatchEvent(event);
         };
         /**
@@ -304,6 +310,7 @@
 
     return NetworkMonitor;
 }));
+
     </pre>
 </div>
 

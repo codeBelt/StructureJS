@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.6.16</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -61,6 +61,8 @@
             
                 <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
             
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
                 <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
             
                 <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
@@ -86,6 +88,8 @@
                 <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
             
                 <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
             
                 <li><a class="type" href="../classes/Route.html">Route</a></li>
             
@@ -119,6 +123,8 @@
             
                 <li><a class="module" href="../modules/event.html">event</a></li>
             
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
                 <li><a class="module" href="../modules/model.html">model</a></li>
             
                 <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
@@ -145,15 +151,16 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../event/BaseEvent&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) { //Node
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/BaseEvent&#x27;));
+        define([&#x27;../util/Extend&#x27;, &#x27;./BaseEvent&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./BaseEvent&#x27;));
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.TimerEvent = factory(root.structurejs.Extend, root.structurejs.BaseEvent);
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.TimerEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
     }
 }(this, function(Extend, BaseEvent) {
+
     &#x27;use strict&#x27;;
 
     /**
@@ -174,7 +181,7 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var TimerEvent = (function () {
+    var TimerEvent = (function() {
 
         var _super = Extend(TimerEvent, BaseEvent);
 
@@ -184,12 +191,6 @@
             if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
         }
-        /**
-         * @overridden BaseEvent.clone
-         */
-        TimerEvent.prototype.clone = function () {
-            return new TimerEvent(this.type, this.bubble, this.cancelable, this.data);
-        };
         /**
          * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
          *
@@ -211,6 +212,7 @@
 
     return TimerEvent;
 }));
+
     </pre>
 </div>
 

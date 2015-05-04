@@ -25,18 +25,18 @@ define(function(require, exports, module) { // jshint ignore:line
         }
  
         /**
-         * @overridden Stage.createChildren
+         * @overridden Stage.create
          */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.create = function () {
+            _super.prototype.create.call(this);
  
             // Create and add your child objects to this parent class.
         };
  
         /**
-         * @overridden Stage.layoutChildren
+         * @overridden Stage.layout
          */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layoutChildren = function () {
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
  
             return this;

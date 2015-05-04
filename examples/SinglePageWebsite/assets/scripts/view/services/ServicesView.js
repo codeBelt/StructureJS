@@ -22,18 +22,18 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        ServicesView.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this, ServiceTemplate);
+        ServicesView.prototype.create = function () {
+            _super.prototype.create.call(this, ServiceTemplate);
 
             // Create and add your child objects to this parent class.
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        ServicesView.prototype.layoutChildren = function () {
+        ServicesView.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
 
             return this;

@@ -1,9 +1,9 @@
 // Imports
-var Extend = window.structurejs.Extend;
-var Stage = window.structurejs.Stage;
-var BaseEvent = window.structurejs.BaseEvent;
-var EventBroker = window.structurejs.EventBroker;
-var Router = window.structurejs.Router;
+var Extend = window.StructureJS.Extend;
+var Stage = window.StructureJS.Stage;
+var BaseEvent = window.StructureJS.BaseEvent;
+var EventBroker = window.StructureJS.EventBroker;
+var Router = window.StructureJS.Router;
 
 var GrandparentView = window.GrandparentView;
 
@@ -27,10 +27,10 @@ var EventBubblingApp = (function () {
     }
 
     /**
-     * @overridden EventBubblingApp.createChildren
+     * @overridden EventBubblingApp.create
      */
-    EventBubblingApp.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    EventBubblingApp.prototype.create = function () {
+        _super.prototype.create.call(this);
 
         this._grandpaView = new GrandparentView(this.$element.find('.js-grandParentContent'));
         this.addChild(this._grandpaView);
@@ -40,11 +40,11 @@ var EventBubblingApp = (function () {
     };
 
     /**
-     * @overridden Stage.layoutChildren
+     * @overridden Stage.layout
      */
-    EventBubblingApp.prototype.layoutChildren = function () {
+    EventBubblingApp.prototype.layout = function () {
         this._$stageMessage.text('');
-        this._grandpaView.layoutChildren();
+        this._grandpaView.layout();
 
         return this;
     };
@@ -91,7 +91,7 @@ var EventBubblingApp = (function () {
     };
 
     EventBubblingApp.prototype._onClearClick = function (event) {
-        this.layoutChildren();
+        this.layout();
     };
 
     EventBubblingApp.prototype._onBubbled = function (baseEvent) {

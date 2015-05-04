@@ -127,17 +127,17 @@ var ExternalLinks = {
      */
     init: function() {
         return this
-            .createChildren()
+            .create()
             .enable();
     },
 
     /**
      * Caches references to DOM elements.
      *
-     * @method createChildren
+     * @method create
      * @chainable
      */
-    createChildren: function() {
+    create: function() {
         this.element = document;
 
         return this;
@@ -1328,7 +1328,7 @@ describe('ExternalLinks', function() {
         });
     });
 
-    describe('createChildren', function() {
+    describe('create', function() {
         it('should', function() {
             // TODO: test this
             assert.ok(true);

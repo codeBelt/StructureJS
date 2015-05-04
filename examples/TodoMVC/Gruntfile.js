@@ -336,5 +336,5 @@ module.exports = function(grunt) {
     } else {
         grunt.registerTask('styles', ['useminPrepare', 'concat', 'cssmin', 'usemin']);
     }
-    grunt.registerTask('scripts', ['handlebars, browserify']);
+    grunt.registerTask('scripts', ['handlebars', 'browserify']);
 };

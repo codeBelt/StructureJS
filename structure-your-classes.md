@@ -13,10 +13,10 @@ var BaseView = (function () {
     function BaseView() {
     }
 
-    BaseView.prototype.createChildren = function () {
+    BaseView.prototype.create = function () {
     };
 
-    BaseView.prototype.layoutChildren = function () {
+    BaseView.prototype.layout = function () {
     };
 
     return BaseView;
@@ -35,11 +35,11 @@ var AnotherView = (function () {
         _super.call(this);
     }
 
-    AnotherView.prototype.createChildren = function () {
-        _super.prototype.createChildren.call(this);
+    AnotherView.prototype.create = function () {
+        _super.prototype.create.call(this);
     };
 
-    AnotherView.prototype.layoutChildren = function () {
+    AnotherView.prototype.layout = function () {
     };
 
     return AnotherView;

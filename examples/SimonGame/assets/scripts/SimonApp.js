@@ -11,7 +11,6 @@ define(function (require, exports, module) { // jshint ignore:line
 
     var DeviceView = require('view/DeviceView');
     var GameVO = require('model/GameVO');
-    var RouteVO = require('model/route/RouteVO');
 
     /**
      * Application code for a memory skill game.
@@ -53,94 +52,13 @@ define(function (require, exports, module) { // jshint ignore:line
              * @private
              */
             this._timer = null;
-
-            var data = {
-                Id: 888,
-                RideId: 21,
-                Points: [
-                    {
-                        Lat: -323,
-                        Lon: 233,
-                        Elev: 2
-                    },
-                    {
-                        Lat: -111,
-                        Lon: 44,
-                        Elev: 2
-                    }
-                ],
-                Waypoints: [
-                    {
-                        Id: 2,
-                        LocationPoint: {
-                            Lat: -323,
-                            Lon: 233,
-                            Elev: 2
-                        }
-                    },
-                    {
-                        Id: 4,
-                        LocationPoint: {
-                            Lat: -54,
-                            Lon: 6767,
-                            Elev: 8
-                        }
-                    }
-                ],
-                IsImportedFromFile: false,
-                IsCreatedFromMapTool: true,
-                PointsOfInterest: [
-                    {
-                        Id: 3,
-                        Name: 'robert',
-                        Description: 'string and string',
-                        LocationPoint: {
-                            Lat: -323,
-                            Lon: 233,
-                            Elev: 2
-                        },
-                        Image: {
-                            Id: 2,
-                            Small: 'asdf/asdf/asdf/asdf/asdf',
-                            Large: 'asdf/asdf/asdf/asdf/asdf'
-                        }
-                    },
-                    {
-                        Id: 4,
-                        Name: 'john',
-                        Description: 'string and string',
-                        LocationPoint: {
-                            Lat: -111,
-                            Lon: 44,
-                            Elev: 2
-                        },
-                        Image: {
-                            Id: 7,
-                            Small: 'asdf/asdf/asdf/asdf/asdf',
-                            Large: 'asdf/asdf/asdf/asdf/asdf'
-                        }
-                    }
-                ],
-                Distance: 23,
-                ElevationData: {
-                    ElevationChange: 44,
-                    MaxAltitude: 12,
-                    Grade: 2,
-                    IsPrivate: true
-                }
-            };
-
-            var vo = new RouteVO(data);
-            //console.log("vo", vo);
-            //console.log("toJSON", vo.toJSON());
-            console.log("toPascalCaseJSON", vo.toPascalCaseJSON());
         }
 
         /**
-         * @overridden DOMElement.createChildren
+         * @overridden DOMElement.create
          */
-        SimonApp.prototype.createChildren = function () {
-            _super.prototype.createChildren.call(this);
+        SimonApp.prototype.create = function () {
+            _super.prototype.create.call(this);
 
             var $device = this.$element.find('.js-simonApp-device');
 
@@ -153,9 +71,9 @@ define(function (require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden DOMElement.layoutChildren
+         * @overridden DOMElement.layout
          */
-        SimonApp.prototype.layoutChildren = function () {
+        SimonApp.prototype.layout = function () {
             if (this._deviceView.isEnabled === true) {
                 this._centerDisplay.$element.text('Go!');
             } else {
@@ -225,7 +143,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
         /**
          * When the memory sequence completes this method will enable the color buttons and
-         * will update the white button text by calling the layoutChildren method.
+         * will update the white button text by calling the layout method.
          *
          * @method _onTimerComplete
          * @param event {TimerEvent}
@@ -235,7 +153,7 @@ define(function (require, exports, module) { // jshint ignore:line
             this._timer.destroy();
 
             this._deviceView.enable();
-            this.layoutChildren();
+            this.layout();
         };
 
         /**
@@ -260,7 +178,7 @@ define(function (require, exports, module) { // jshint ignore:line
                 }
                 this._userSequence = [];
                 this._deviceView.disable();
-                this.layoutChildren();
+                this.layout();
             }
         };
 

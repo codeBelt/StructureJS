@@ -67,7 +67,7 @@ strong {
 .splitPair > * {
     display: table-cell;
     vertical-align: middle;
-    width: 100%;
+    width: 90%;
 }
 
 .message {

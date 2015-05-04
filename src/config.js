@@ -1,3 +1,3 @@
 require.config({
-  deps: ['']
+    deps: ['']
 });

@@ -4,14 +4,15 @@
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) { //Node
+    } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = factory();
     } else {
         /*jshint sub:true */
-        root.structurejs = root.structurejs || {};
-        root.structurejs.DateUtil = factory();
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.DateUtil = factory();
     }
 }(this, function() {
+
     'use strict';
 
     /**
@@ -23,9 +24,9 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var DateUtil = (function () {
+    var DateUtil = (function() {
         function DateUtil() {
-            throw new Error('[DateUtil] Do not instantiation the DateUtil class because it is a static class.');
+            throw new Error('[DateUtil] Do not instantiate the DateUtil class because it is a static class.');
         }
         /**
          * Returns the suffix of a given day.
@@ -48,7 +49,7 @@
          *      DateUtil.getDaySuffix(4);
          *      // 'th'
          */
-        DateUtil.getDaySuffix = function (today) {
+        DateUtil.getDaySuffix = function(today) {
             var day = today % 100;
             return ((Math.floor(day / 10) === 1) ? 'th' : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][day % 10]);
         };
@@ -56,7 +57,7 @@
          * A list of day names.
          *
          * @property LONG_DAY_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
@@ -66,7 +67,7 @@
          * TODO: YUIDoc_comment
          *
          * @property SHORT_DAY_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
@@ -76,7 +77,7 @@
          * A list of month names.
          *
          * @property LONG_MONTH_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
@@ -86,7 +87,7 @@
          * TODO: YUIDoc_comment
          *
          * @property SHORT_MONTH_LABELS
-         * @type {array}
+         * @type {Array}
          * @public
          * @static
          * @final
