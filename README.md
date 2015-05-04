@@ -82,7 +82,7 @@ var EventBroker = require('structurejs/event/EventBroker');
 
 ## Release History
 
- * 2015-04-26   v0.7.0   Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes.
+ * 2015-04-26   v0.7.0   Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
  * 2015-04-15   v0.6.17   Previous version before I started doing this release history.
 
 ---
