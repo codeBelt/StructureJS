@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/display/CanvasElement.js - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                
+                
+                    <p class="description">Code and documentation for the StructureJS library.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: src/display/CanvasElement.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;../util/Extend&#x27;, &#x27;./DOMElement&#x27;, &#x27;../geom/Point&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./DOMElement&#x27;), require(&#x27;../geom/Point&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.CanvasElement = factory(root.structurejs.Extend, root.structurejs.DOMElement, root.structurejs.Point);
+    }
+}(this, function(Extend, DOMElement, Point) {
+
+    &#x27;use strict&#x27;;
+    var __extends = this.__extends || function(d, b) {
+        for (var p in b)
+            if (b.hasOwnProperty(p)) d[p] = b[p];
+
+        function __() {
+            this.constructor = d;
+        }
+        __.prototype = b.prototype;
+        d.prototype = new __();
+    };
+    /*
+     UMD Stuff
+
+
+
+
+     */
+    var DisplayObjectContainer = require(&#x27;./DisplayObjectContainer&#x27;);
+    var DOMElement = require(&#x27;./DOMElement&#x27;);
+    var Point = require(&#x27;../geom/Point&#x27;);
+    var CanvasElement = (function(_super) {
+        __extends(CanvasElement, _super);
+
+        function CanvasElement($element) {
+                _super.call(this, $element);
+                /**
+                 * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink &quot;DOMElement/$element:property&quot;}}{{/crossLink}} property**.
+                 *
+                 * @property $canvas
+                 * @type {JQuery}
+                 * @public
+                 */
+                this.$canvas = null;
+                /**
+                 * A reference to the canvas element. This has the exact same reference as **{{#crossLink &quot;DOMElement/element:property&quot;}}{{/crossLink}} property**.
+                 *
+                 * @property canvas
+                 * @type {HTMLCanvasElement}
+                 * @public
+                 */
+                this.canvas = null;
+            }
+            /**
+             * @overridden CanvasElement.create
+             */
+        CanvasElement.prototype.create = function() {
+            _super.prototype.create.call(this);
+            this.$canvas = this.$element;
+            this.canvas = this.element;
+            this.ctx = this.canvas.getContext(&#x27;2d&#x27;);
+        };
+        /**
+         * @overridden CanvasElement.enable
+         */
+        CanvasElement.prototype.enable = function() {
+            if (this.isEnabled === true) {
+                return;
+            }
+            // Add mouse event listeners to $canvas element
+            this.$canvas.addEventListener(&#x27;mousedown&#x27;, this.onPointerDown, this);
+            this.$canvas.addEventListener(&#x27;mousemove&#x27;, this.onPointerMove, this);
+            this.$canvas.addEventListener(&#x27;mouseup&#x27;, this.onPointerUp, this);
+            this.$canvas.addEventListener(&#x27;mouseout&#x27;, this.onPointerOut, this);
+            // Add touch event listeners to $canvas element
+            this.$canvas.addEventListener(&#x27;touchstart&#x27;, this.onPointerDown, this);
+            this.$canvas.addEventListener(&#x27;touchmove&#x27;, this.onPointerMove, this);
+            this.$canvas.addEventListener(&#x27;touchend&#x27;, this.onPointerUp, this);
+            this.$canvas.addEventListener(&#x27;touchcancel&#x27;, this.onPointerOut, this);
+            _super.prototype.enable.call(this);
+        };
+        /**
+         * @overridden CanvasElement.disable
+         */
+        CanvasElement.prototype.disable = function() {
+            if (this.isEnabled === false) {
+                return;
+            }
+            // Remove mouse event listeners on $canvas element
+            this.$canvas.removeEventListener(&#x27;mousedown&#x27;, this.onPointerDown, this);
+            this.$canvas.removeEventListener(&#x27;mousemove&#x27;, this.onPointerMove, this);
+            this.$canvas.removeEventListener(&#x27;mouseup&#x27;, this.onPointerUp, this);
+            this.$canvas.removeEventListener(&#x27;mouseout&#x27;, this.onPointerOut, this);
+            // Remove touch event listeners on $canvas element
+            this.$canvas.removeEventListener(&#x27;touchstart&#x27;, this.onPointerDown, this);
+            this.$canvas.removeEventListener(&#x27;touchmove&#x27;, this.onPointerMove, this);
+            this.$canvas.removeEventListener(&#x27;touchend&#x27;, this.onPointerUp, this);
+            this.$canvas.removeEventListener(&#x27;touchcancel&#x27;, this.onPointerOut, this);
+            _super.prototype.disable.call(this);
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method addChild
+         * @param child {DisplayObject}
+         * @returns {CanvasElement} Returns an instance of itself.
+         * @override
+         * @public
+         * @chainable
+         */
+        CanvasElement.prototype.addChild = function(child) {
+            //If the child being passed in already has a parent then remove the reference from there.
+            if (child.parent) {
+                child.parent.removeChild(child, false);
+            }
+            this.children.push(child);
+            this.numChildren = this.children.length;
+            child.ctx = this.ctx;
+            child.stage = this;
+            child.parent = this;
+            if (child.isCreated === false) {
+                child.create();
+                child.isCreated = true;
+            }
+            child.enable();
+            return this;
+        };
+        /**
+         * @overridden DOMElement.addChildAt
+         */
+        CanvasElement.prototype.addChildAt = function(child, index) {
+            //If the child being passed in already has a parent then remove the reference from there.
+            if (child.parent) {
+                child.parent.removeChild(child, false);
+            }
+            this.children.splice(index, 0, child);
+            this.numChildren = this.children.length;
+            child.ctx = this.ctx;
+            child.stage = this;
+            child.parent = this;
+            if (child.isCreated === false) {
+                child.create();
+                child.isCreated = true;
+            }
+            child.enable();
+            return this;
+        };
+        /**
+         * @overridden DOMElement.swapChildren
+         */
+        CanvasElement.prototype.swapChildren = function(child1, child2) {
+            var child1Index = this.children.indexOf(child1);
+            var child2Index = this.children.indexOf(child2);
+            this.addChildAt(child1, child2Index);
+            this.addChildAt(child2, child1Index);
+            return this;
+        };
+        /**
+         * @overridden DOMElement.getChildAt
+         */
+        CanvasElement.prototype.getChildAt = function(index) {
+            return _super.prototype.getChildAt.call(this, index);
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method removeChild
+         * @param child {DisplayObject}
+         * @returns {CanvasElement} Returns an instance of itself.
+         * @override
+         * @public
+         * @chainable
+         */
+        CanvasElement.prototype.removeChild = function(child, destroy) {
+            if (destroy === void 0) {
+                destroy = true;
+            }
+            var index = this.getChildIndex(child);
+            if (index !== -1) {
+                // Removes the child object from the parent.
+                this.children.splice(index, 1);
+            }
+            this.numChildren = this.children.length;
+            if (destroy === true) {
+                child.destroy();
+            } else {
+                child.disable();
+            }
+            child.ctx = null;
+            child.stage = null;
+            child.parent = null;
+            return this;
+        };
+        /**
+         * Removes the child display object instance that exists at the specified index.
+         *
+         * @method removeChildAt
+         * @param index {int} The index position of the child object.
+         * @public
+         * @chainable
+         */
+        CanvasElement.prototype.removeChildAt = function(index, destroy) {
+            if (destroy === void 0) {
+                destroy = true;
+            }
+            this.removeChild(this.getChildAt(index), destroy);
+            return this;
+        };
+        /**
+         * Removes all child object instances from the child list of the parent object instance.
+         * The parent property of the removed children is set to null , and the objects are garbage collected if no other
+         * references to the children exist.
+         *
+         * @method removeChildren
+         * @returns {DOMElement} Returns an instance of itself.
+         * @override
+         * @public
+         * @chainable
+         */
+        CanvasElement.prototype.removeChildren = function(destroy) {
+            if (destroy === void 0) {
+                destroy = true;
+            }
+            while (this.children.length &gt; 0) {
+                this.removeChild(this.children.pop(), destroy);
+            }
+            return this;
+        };
+        CanvasElement.prototype.update = function() {
+            this.ctx.clearRect(0, 0, this.width, this.height);
+            for (var i = 0; i &lt; this.numChildren; i++) {
+                this.children[i].update();
+            }
+        };
+        CanvasElement.prototype.getMousePos = function(event) {
+            var rect = this.canvas.getBoundingClientRect();
+            return new Point(event.clientX - rect.left, event.clientY - rect.top);
+        };
+        CanvasElement.prototype.getObjectUnderPoint = function(x, y) {
+            var foundItem = null;
+            var sprite;
+            for (var i = this.numChildren - 1; i &gt;= 0; i--) {
+                sprite = this.children[i];
+                if (sprite.visible === true &amp;&amp; sprite.mouseEnabled === true) {
+                    if (this.hitTest(sprite, x, y)) {
+                        foundItem = sprite;
+                        break;
+                    }
+                }
+            }
+            return foundItem;
+        };
+        CanvasElement.prototype.getObjectsUnderPoint = function(x, y) {
+            var list = [];
+            var sprite;
+            for (var i = this.numChildren - 1; i &gt;= 0; i--) {
+                sprite = this.children[i];
+                if (this.hitTest(sprite, x, y)) {
+                    list.push(sprite);
+                }
+            }
+            return list;
+        };
+        CanvasElement.prototype.hitTest = function(sprite, mouseX, mouseY) {
+            if (mouseX &gt;= sprite.x &amp;&amp; mouseX &lt;= sprite.x + sprite.width &amp;&amp; mouseY &gt;= sprite.y &amp;&amp; mouseY &lt;= sprite.y + sprite.height) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        CanvasElement.prototype.onPointerDown = function(event) {
+            this._sendEvent(event);
+        };
+        CanvasElement.prototype.onPointerUp = function(event) {
+            this._sendEvent(event);
+        };
+        CanvasElement.prototype.onPointerMove = function(event) {
+            var displayObject = this._sendEvent(event);
+            if (displayObject != null &amp;&amp; displayObject.useHandCursor === true &amp;&amp; displayObject.visible === true) {
+                document.body.style.cursor = &#x27;pointer&#x27;;
+            } else {
+                document.body.style.cursor = &#x27;default&#x27;;
+            }
+        };
+        CanvasElement.prototype.onPointerOut = function(event) {
+            this._sendEvent(event);
+        };
+        CanvasElement.prototype._sendEvent = function(event) {
+            var mousePos = this.getMousePos(event);
+            var displayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
+            if (displayObject === null) {
+                event.bubbles = true;
+                event.target = this;
+                event.currentTarget = this;
+                this.dispatchEvent(event);
+            } else if (displayObject !== null &amp;&amp; displayObject instanceof DisplayObjectContainer &amp;&amp; displayObject.mouseChildren === true) {
+                event.currentTarget = displayObject;
+                displayObject = this.getActualClickedOnChild(displayObject, mousePos.x, mousePos.y);
+                event.bubbles = true;
+                event.target = displayObject;
+                displayObject.dispatchEvent(event);
+            } else {
+                event.bubbles = true;
+                event.target = displayObject;
+                event.currentTarget = this;
+                displayObject.dispatchEvent(event);
+            }
+            return displayObject;
+        };
+        CanvasElement.prototype.getActualClickedOnChild = function(displayObject, x, y) {
+            var item;
+            var newX;
+            var newY;
+            if (displayObject.numChildren &gt; 0) {
+                for (var i = displayObject.numChildren - 1; i &gt;= 0; i--) {
+                    item = displayObject.children[i];
+                    if (item.visible === true) {
+                        newX = x - item.parent.x;
+                        newY = y - item.parent.y;
+                        if (this.hitTest(item, newX, newY)) {
+                            return this.getActualClickedOnChild(item, newX, newY);
+                        }
+                    }
+                }
+            } else {
+                return displayObject;
+            }
+        };
+        return CanvasElement;
+    })(DOMElement);
+    module.exports = CanvasElement;
+
+}));
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

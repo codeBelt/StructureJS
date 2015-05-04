@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/display/TextField.js - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                
+                
+                    <p class="description">Code and documentation for the StructureJS library.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: src/display/TextField.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;../util/Extend&#x27;, &#x27;./DisplayObject&#x27;, &#x27;../util/NumberUtil&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./DisplayObject&#x27;), require(&#x27;../util/NumberUtil&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.structurejs = root.structurejs || {};
+        root.structurejs.TextField = factory(root.structurejs.Extend, root.structurejs.DisplayObject, root.structurejs.NumberUtil);
+    }
+}(this, function(Extend, DisplayObject, NumberUtil) {
+
+    &#x27;use strict&#x27;;
+    var __extends = this.__extends || function(d, b) {
+        for (var p in b)
+            if (b.hasOwnProperty(p)) d[p] = b[p];
+
+        function __() {
+            this.constructor = d;
+        }
+        __.prototype = b.prototype;
+        d.prototype = new __();
+    };
+    /*
+     UMD Stuff
+
+
+
+
+     */
+    var DisplayObject = require(&#x27;./DisplayObject&#x27;);
+    var TextField = (function(_super) {
+        __extends(TextField, _super);
+
+        function TextField() {
+            _super.call(this);
+            this.text = &#x27;&#x27;;
+            this.style = &#x27;normal&#x27;;
+            this.font = &#x27;Verdana&#x27;;
+            this.size = &#x27;14px&#x27;;
+            this.color = &#x27;#000000&#x27;;
+            this.lineHeight = 14;
+        }
+        TextField.prototype.create = function() {
+            _super.prototype.create.call(this);
+        };
+        TextField.prototype.layout = function() {
+            this.ctx.translate(this.parent.x, this.parent.y);
+            this.ctx.translate(this.x, this.y);
+            this.ctx.font = [this.style, this.size, this.font].join(&#x27; &#x27;);
+            this.ctx.fillStyle = this.color;
+            this.ctx.textBaseline = &#x27;top&#x27;; //http://www.ckollars.org/canvas-text-centering.html
+            if (this.text.indexOf(&#x27;\n&#x27;) !== -1) {
+                this.wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
+            } else if (this.width &gt; 0) {
+                this.wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
+            } else {
+                this.ctx.fillText(this.text, 0, 0);
+            }
+        };
+        TextField.prototype.wrapTextByWidth = function(context, text, x, y, maxWidth, lineHeight) {
+            var wordList = text.split(&#x27; &#x27;);
+            var line = &#x27;&#x27;;
+            var testLine;
+            var metrics;
+            var testWidth;
+            var length = wordList.length;
+            for (var i = 0; i &lt; length; i++) {
+                testLine = line + wordList[i] + &#x27; &#x27;;
+                metrics = context.measureText(testLine);
+                testWidth = metrics.width;
+                if (testWidth &gt; maxWidth &amp;&amp; i &gt; 0) {
+                    context.fillText(line, x, y);
+                    line = wordList[i] + &#x27; &#x27;;
+                    y += lineHeight;
+                } else {
+                    line = testLine;
+                }
+            }
+            context.fillText(line, x, y);
+        };
+        TextField.prototype.wrapTextOnLineBreak = function(context, text, x, y, lineHeight) {
+            var wordList = text.split(&#x27;\n&#x27;);
+            var length = wordList.length;
+            for (var i = 0; i &lt; length; i++) {
+                context.fillText(wordList[i], x, y);
+                y += lineHeight;
+            }
+        };
+        return TextField;
+    })(DisplayObject);
+    module.exports = TextField;
+
+}));
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
