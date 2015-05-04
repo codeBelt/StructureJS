@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>js/controller/LocalStorageController.js - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                
+                
+                    <p class="description">Code and documentation for the StructureJS library.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: js/controller/LocalStorageController.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;../util/Extend&#x27;, &#x27;../event/LocalStorageEvent&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../model/ValueObject&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/LocalStorageEvent&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../model/ValueObject&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.ValueObject);
+    }
+}(this, function(Extend, LocalStorageEvent, EventDispatcher, ValueObject) {
+
+    &#x27;use strict&#x27;;
+
+    /**
+     * The LocalStorageController...
+     *
+     * @class LocalStorageController
+     * @extends EventDispatcher
+     * @module StructureJS
+     * @submodule controller
+     * @requires Extend
+     * @requires EventDispatcher
+     * @requires LocalStorageEvent
+     * @requires ValueObject
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     */
+    var LocalStorageController = (function() {
+
+        var _super = Extend(LocalStorageController, EventDispatcher);
+
+        function LocalStorageController() {
+            _super.call(this);
+            /**
+             * Current user namespace. The namespace is optional.
+             *
+             * @property _namespace
+             * @type {string}
+             * @default defaultNamespace
+             * @optional
+             * @private
+             */
+            this._namespace = &#x27;defaultNamespace&#x27;;
+            /**
+             * A reference to window.localStorage for faster access.
+             *
+             * @property _localStorage
+             * @type {Storage}
+             * @private
+             */
+            this._localStorage = null;
+            this._localStorage = window.localStorage;
+            window.addEventListener(&#x27;storage&#x27;, this.onLocalStorageEvent.bind(this));
+        }
+        /**
+         * Set storage namespace
+         *
+         * @method setNamespace
+         * @param namespace
+         * @returns {string}
+         */
+        LocalStorageController.prototype.setNamespace = function(namespace) {
+            this._namespace = namespace;
+        };
+        /**
+         * Get storage namespace
+         *
+         * @method getNamespace
+         * @returns {string}
+         */
+        LocalStorageController.prototype.getNamespace = function() {
+            return this._namespace;
+        };
+        /**
+         * Add a key/value pair to localStorage.
+         *
+         * @method addItem
+         * @param key {string}
+         * @param data {Object}
+         * @param useNamespace {boolean}
+         * @return {boolean}
+         */
+        LocalStorageController.prototype.addItem = function(key, data, useNamespace) {
+            if (useNamespace === void 0) { useNamespace = false; }
+            if (useNamespace) {
+                key = this.getNamespace() + key;
+            }
+            if (data instanceof ValueObject) {
+                data = data.toJSON();
+            }
+            data = JSON.stringify(data);
+            try {
+                this._localStorage.setItem(key, data);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        };
+        /**
+         * Retrieves the current value associated with the Local Storage key.
+         *
+         * @method getItem
+         * @param key {string}
+         * @param [useNamespace=false] {string}
+         * @returns {any}
+         */
+        LocalStorageController.prototype.getItem = function(key, useNamespace) {
+            if (useNamespace === void 0) { useNamespace = false; }
+            if (useNamespace) {
+                key = this.getNamespace() + key;
+            }
+            var value = this._localStorage.getItem(key);
+            if (value) {
+                try {
+                    value = JSON.parse(value);
+                } catch (error) {
+                    // We are assuming the error is because value being parsed is a plain string with spaces.
+                    value = value;
+                }
+            }
+            return value;
+        };
+        /**
+         * Returns all items in local storage as an Object with key and value properties that has a certain namespace.
+         *
+         * @method getItemsWithNamespace
+         * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
+         * @return {Array.&lt;Object&gt;}
+         */
+        LocalStorageController.prototype.getItemsWithNamespace = function(namespace) {
+            if (namespace === void 0) { namespace = this._namespace; }
+            var list = [];
+            var length = this.getLength();
+            for (var i = 0; i &lt; length; i++) {
+                var key = this._localStorage.key(i);
+                if (key.indexOf(namespace) &gt; -1) {
+                    var value = this.getItem(key);
+                    var obj = {
+                        key: key,
+                        value: value
+                    };
+                    list.push(obj);
+                }
+            }
+            return list;
+        };
+        /**
+         * Returns all items in local storage as an Object with key and value properties.
+         *
+         * @method getAllItems
+         * @return {Array.&lt;Object&gt;}
+         */
+        LocalStorageController.prototype.getAllItems = function() {
+            var list = [];
+            var length = this.getLength();
+            for (var i = 0; i &lt; length; i++) {
+                var key = this._localStorage.key(i);
+                var value = this.getItem(key);
+                var obj = {
+                    key: key,
+                    value: value
+                };
+                list.push(obj);
+            }
+            return list;
+        };
+        /**
+         * Deletes a key/value pair from the Local Storage collection.
+         *
+         * @method removeItem
+         * @param key {string}
+         * @param [useNamespace=false] {string}
+         * @return {boolean}
+         */
+        LocalStorageController.prototype.removeItem = function(key, useNamespace) {
+            if (useNamespace === void 0) { useNamespace = false; }
+            if (useNamespace) {
+                key = this.getNamespace() + key;
+            }
+            try {
+                this._localStorage.removeItem(key);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        };
+        /**
+         * Returns the number of items storage in local storage.
+         *
+         * @method getLength
+         * @returns {number}
+         */
+        LocalStorageController.prototype.getLength = function() {
+            return this._localStorage.length;
+        };
+        /**
+         * Returns the size of the Local Storage.
+         *
+         * @method getSize
+         * @returns {number}
+         */
+        LocalStorageController.prototype.getSize = function() {
+            return encodeURIComponent(JSON.stringify(this._localStorage)).length;
+        };
+        /**
+         * Removes all key/value pairs from the Local Storage area.
+         *
+         * @method clear
+         */
+        LocalStorageController.prototype.clear = function() {
+            this._localStorage.clear();
+        };
+        /**
+         * @overridden BaseController.destroy
+         */
+        LocalStorageController.prototype.destroy = function() {
+            _super.prototype.destroy.call(this);
+        };
+        /**
+         *
+         *
+         * @method onLocalStorageEvent
+         * @param event {StorageEvent} The native browser event for Web Storage.
+         * @private
+         */
+        LocalStorageController.prototype.onLocalStorageEvent = function(event) {
+            this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
+        };
+        return LocalStorageController;
+    })();
+
+    return LocalStorageController;
+}));
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
