@@ -9,7 +9,9 @@
     "main": "src/",
     "keywords": [
         "structurejs",
-        "structure.js"
+        "structure.js",
+        "typescript",
+        "javascript"
     ],
     "license": "MIT",
     "homepage": "https://github.com/codeBelt/StructureJS",
@@ -17,7 +19,7 @@
         "node_modules",
         "examples",
         "friendly-theme",
-        "src/config.js",
+        "js/config.js",
         "test",
         "LICENSE",
         "Gruntfile.js",
