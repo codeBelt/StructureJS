@@ -1,20 +1,20 @@
-import DOMElement = require('../vendor/structurejs/ts/display/DOMElement');
+import Stage = require('../vendor/structurejs/ts/display/Stage');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class ${NAME}
- * @extends DOMElement
+ * @extends Stage
  * @constructor
  **/
-class ${NAME} extends DOMElement {
+class ${NAME} extends Stage {
 
     constructor() {
         super();
     }
 
     /**
-     * @overridden DOMElement.create
+     * @overridden Stage.create
      */
     public create():void {
         super.create();
@@ -23,14 +23,14 @@ class ${NAME} extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.layout
+     * @overridden Stage.layout
      */
     public layout():void {
         // Layout or update the objects in this parent class.
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden Stage.enable
      */
     public enable():void {
         if (this.isEnabled === true) { return; }
@@ -41,7 +41,7 @@ class ${NAME} extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden Stage.disable
      */
     public disable():void {
         if (this.isEnabled === false) { return; }
@@ -52,7 +52,7 @@ class ${NAME} extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.destroy
+     * @overridden Stage.destroy
      */
     public destroy():void {
         // Call destroy on any child objects that is needed.
