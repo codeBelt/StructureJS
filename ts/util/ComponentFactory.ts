@@ -35,7 +35,7 @@ class ComponentFactory
      * @example
      *      ComponentFactory.create($('.js-list'), SomeClass);
      */
-    public static create = function ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):any[]
+    public static create = function ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
     {
         var list:DisplayObjectContainer[] = [];
         var length:number = $elements.length;

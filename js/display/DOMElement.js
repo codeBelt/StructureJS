@@ -552,12 +552,13 @@
          *      };
          */
         DOMElement.prototype.createComponents = function(componentList) {
+            var list;
             var createdChildren = [];
             var length = componentList.length;
             var obj;
             for (var i = 0; i < length; i++) {
                 obj = componentList[i];
-                var list = ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+                list = ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
                 createdChildren = createdChildren.concat(list);
             }
             return createdChildren;
