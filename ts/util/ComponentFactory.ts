@@ -33,7 +33,7 @@ class ComponentFactory
      * @public
      * @static
      * @example
-     *      ComponentFactory.create($('.js-list'), SomeClass);
+     *      ComponentFactory.create($('.js-list'), SomeClass, this);
      */
     public static create = function ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
     {

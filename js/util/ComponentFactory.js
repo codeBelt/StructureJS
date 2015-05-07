@@ -37,7 +37,7 @@
          * @public
          * @static
          * @example
-         *      ComponentFactory.create($('.js-list'), SomeClass);
+         *      ComponentFactory.create($('.js-list'), SomeClass, this);
          */
         ComponentFactory.create = function($elements, ComponentClass, scope) {
             if (scope === void 0) { scope = null; }
