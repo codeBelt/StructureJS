@@ -24,9 +24,9 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         ${NAME}.EXAMPLE = '${NAME}.example';
 
-        var _super = Extend(${NAME}, BaseEvent);
+        var _super = Extend(${NAME}, BaseEvent); // jshint ignore:line
 
-        function ${NAME}(type, bubbles, cancelable, data) {
+        function ${NAME}(type, bubbles, cancelable, data) { // jshint ignore:line
             _super.call(this, type, bubbles, cancelable, data);
         }
 

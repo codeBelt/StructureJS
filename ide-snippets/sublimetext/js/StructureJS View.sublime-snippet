@@ -16,9 +16,9 @@ define(function(require, exports, module) { // jshint ignore:line
      **/
     var ${TM_FILENAME/(.*)[.](.*)/$1/g} = (function () {
  
-        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, DOMElement);
+        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, DOMElement); // jshint ignore:line
  
-        function ${TM_FILENAME/(.*)[.](.*)/$1/g}() {
+        function ${TM_FILENAME/(.*)[.](.*)/$1/g}() { // jshint ignore:line
             _super.call(this);
  
  			$2

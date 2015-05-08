@@ -14,9 +14,9 @@ define(function(require, exports, module) { // jshint ignore:line
      **/
     var ${NAME} = (function () {
 
-        var _super = Extend(${NAME}, ${Extends});
+        var _super = Extend(${NAME}, ${Extends}); // jshint ignore:line
 
-        function ${NAME}() {
+        function ${NAME}() { // jshint ignore:line
             _super.call(this);
         }
 
