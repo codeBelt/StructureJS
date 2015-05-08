@@ -32,15 +32,18 @@
          * Determines if the String passed has a length.
          *
          * @method isEmpty
-         * @param text {string}
+         * @param value {string}
          * @returns {boolean}
          * @public
          * @static
          * @example
          *
          */
-        ValidationUtil.isEmpty = function(text) {
-            return text.length < 1;
+        ValidationUtil.isEmpty = function(value) {
+            if (value != null) {
+                return value.length < 1;
+            }
+            return true;
         };
         /**
          * Determines if the two values passed in are the same.
