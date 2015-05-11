@@ -19,11 +19,11 @@ A class based utility library for building modular and scalable web platform app
 [StructureJS-Boilerplate](https://github.com/codeBelt/StructureJS-Boilerplate)
 
 ## Examples
-* [Event Bubbling](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
-* [Movie Collection](https://github.com/codeBelt/StructureJS/tree/master/examples/MovieCollection)
-* [Single Page Application](https://github.com/codeBelt/StructureJS/tree/master/examples/SinglePageWebsite)
-* [TodoMVC](https://github.com/codeBelt/StructureJS/tree/master/examples/TodoMVC)
-* [Simon Game](https://github.com/codeBelt/StructureJS/tree/master/examples/SimonGame)
+* Event Bubbling [Demo](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
+* Movie Collection [Demo](http://codebelt.github.io/StructureJS/examples/MovieCollection/src/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/MovieCollection)
+* Single Page Application [Demo](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/SinglePageWebsite)
+* TodoMVC [Demo](http://codebelt.github.io/StructureJS/examples/TodoMVC/web/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/TodoMVC)
+* Simon Game [Demo](http://codebelt.github.io/StructureJS/examples/SimonGame/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/SimonGame)
 
 ## Core Classes
 
