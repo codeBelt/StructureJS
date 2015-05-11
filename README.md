@@ -1,4 +1,5 @@
 # `StructureJS`
+[![devDependency Status](https://david-dm.org/codeBelt/StructureJS/dev-status.svg)](https://david-dm.org/codeBelt/StructureJS#info=devDependencies)
 
 A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.
 
@@ -8,6 +9,22 @@ A class based utility library for building modular and scalable web platform app
 
 ## Install
     $ bower install --save structurejs
+
+## IDE Snippets
+* [Webstorm JS](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/webstorm/js)
+* [Webstorm TS](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/webstorm/ts)
+* [Sublime](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/sublimetext)
+* [Atom](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/atom)
+
+## Boilerplate
+[StructureJS-Boilerplate](https://github.com/codeBelt/StructureJS-Boilerplate)
+
+## Examples
+* [Event Bubbling](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
+* [Movie Collection](https://github.com/codeBelt/StructureJS/tree/master/examples/MovieCollection)
+* [Single Page Application](https://github.com/codeBelt/StructureJS/tree/master/examples/SinglePageWebsite)
+* [TodoMVC](https://github.com/codeBelt/StructureJS/tree/master/examples/TodoMVC)
+* [Simon Game](https://github.com/codeBelt/StructureJS/tree/master/examples/SimonGame)
 
 ## Core Classes
 
@@ -22,16 +39,18 @@ var App = (function () {
 
 	function App () {
 		_super.call(this);
+
+        this._fooBarView = null;
 	}
 
 	App.prototype.create = function () {
 		_super.prototype.create.call(this);
 
-		// instance
+		// single instance of a component
 		this._fooBarView = new FooBarView('#js-fooBar');
 		this.addChild(this._fooBarView);
 
-		// instances
+		// multiple instances of a component
 		this.createComponents([
 			{ selector: '.js-foo', componentClass: FooView },
 			{ selector: '.js-bar', componentClass: BarView }
@@ -59,11 +78,15 @@ var ExampleView = (function () {
 		_super.call(this);
 	}
 
+    ExampleView.prototype.create = function () {
+		_super.prototype.create.call(this);
+	};
+
 	return ExampleView;
 }
 ```
 
-`DOMElement` provides helper methods and adds the following lifecycle to your class:
+`DOMElement` provides helper methods and adds the following lifecycle to your class, these methods get called in this order:
 * `create()`
 * `enable()`
 * `layout()`
@@ -75,20 +98,35 @@ var ExampleView = (function () {
 
 	function ExampleView () {
 		_super.call(this);
+        // setup properties here
 	}
 
 	MenuView.prototype.create = function () {
 		_super.prototype.create.call(this);
+        // Create or setup objects in this parent class.
 	};
 
 	MenuView.prototype.enable = function () {
-		if (this.isEnabled) { return; }
-
+		if (this.isEnabled === true) { return this; }
+        // Enable the child objects and/or add any event listeners.
 		return _super.prototype.enable.call(this);
 	};
 
+    MenuView.prototype.disable = function () {
+        if (this.isEnabled === false) { return this; }
+        // Disable the child objects and/or remove any event listeners.
+        return _super.prototype.disable.call(this);
+	};
+
 	MenuView.prototype.layout = function () {
+        // Layout or update the objects in this parent class.
 		return this;
+	};
+
+    MenuView.prototype.destroy = function () {
+        // Call destroy on any child objects.
+        // This super method will also null out your properties for garbage collection.
+        _super.prototype.destroy.call(this);
 	};
 
 	return ExampleView;
@@ -129,18 +167,18 @@ this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
 A pub/sub static class for dispatching and listening for events.
 
 ```js
-EventBroker.addEventListener('change', this.handlerMethod, this);
+EventBroker.addEventListener('change', this._handlerMethod, this);
 
 // Using a constant event type
-EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
 // Event passed to the method will always be a BaseEvent object.
-ClassName.prototype.handlerMethod = function (event) {
-     console.log(event.data);
+ClassName.prototype._handlerMethod = function (event) {
+     console.log(event);
 }
 ```
 
-[Read more about `EventBroker`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
+[Read more about `EventBroker`](http://codebelt.github.io/StructureJS/docs/classes/EventBroker.html)
 
 [Read more about `BaseEvent`](http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html)
 
@@ -155,11 +193,16 @@ A static class for managing route patterns for single page applications.
 
 ```js
 // A route listener with an event handler
-Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+Router.add('/games/{gameName}/:level:/', this._onRouteHandler, this);
 Router.start();
 
 // The above route would match the string below:
 // '/games/asteroids/2/'
+
+// The Call back receives a RouterEvent object.
+ExampleClass.prototype._onRouteHandler = function (routerEvent) {
+    console.log(routerEvent.params);
+}
 ```
 [Example `Router`](https://github.com/codeBelt/StructureJS/blob/master/examples/SinglePageWebsite/assets/scripts/view/RootView.js)
 
@@ -171,7 +214,7 @@ Router.start();
 
 ### `jQueryEventListener`
 
-A jQuery plugin that allows you to bind your function calls and assign them to a property on the class avoiding something like setupHandlers or bindAll methods.
+Similar to the `.on()` & `.off()` jQuery methods, this plugin allows you to bind your function calls and assign them to a property on the class avoiding something like setupHandlers or bindAll methods.
 
 * eventType
 * delegation (optional)
@@ -190,8 +233,8 @@ Class.prototype.disable = function () {
     this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
 };
 
-Class.prototype._onClickHandler = function () {
-    console.log('click');
+Class.prototype._onClickHandler = function (event) {
+    console.log('click', event);
 };
 ```
 
