@@ -27,11 +27,11 @@ var App = (function () {
 	App.prototype.create = function () {
 		_super.prototype.create.call(this);
 
-		// single instance
+		// instance
 		this._fooBarView = new FooBarView('#js-fooBar');
 		this.addChild(this._fooBarView);
 
-		// multiple instances
+		// instances
 		this.createComponents([
 			{ selector: '.js-foo', componentClass: FooView },
 			{ selector: '.js-bar', componentClass: BarView }
@@ -46,8 +46,9 @@ var App = (function () {
 
 [Read more about `Stage`](http://codebelt.github.io/StructureJS/docs/classes/Stage.html)
 
+### `DOMElement`
 
-A base view class for all objects that can be placed into the DOM. All of your View classes will extend the `DOMelement` class.
+A base view class for objects that control the DOM. Your View classes will extend this `DOMElement` class.
 
 ```js
 var ExampleView = (function () {
@@ -62,7 +63,7 @@ var ExampleView = (function () {
 }
 ```
 
-`DOMElement` provides several helper methods and adds the following lifecycle to your class:
+`DOMElement` provides helper methods and adds the following lifecycle to your class:
 * `create()`
 * `enable()`
 * `layout()`
@@ -98,87 +99,105 @@ var ExampleView = (function () {
 
 [Read more about `DOMElement`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
 
-### `___EventDispatcher___`
+### `EventDispatcher`
 
-A base application class for your project. `Stage` allows you to set DOM references for your application to control.
+A base event bus class for managing prioritized queues of event listeners and dispatching events.
 
 ```js
-var App = (function () {
+this.dispatchEvent('change');
 
-	var _super = Extend (App, DOMElement);
+// Send data object with the event:
+this.dispatchEvent('change', { some: 'data' });
 
-	function App () {
-		_super.call(this);
-	}
+// Example with an event object
+// (event type, bubbling set to true, cancelable set to true and passing data)
+var event = new BaseEvent(BaseEvent.CHANGE, true, true, { some: 'data' });
+this.dispatchEvent(event);
 
-	App.prototype.create = function () {
-		_super.prototype.create.call(this);
+// Dispatching an inline event object
+this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
+```
 
-		// single instance
-		this._fooBarView = new FooBarView('#js-fooBar');
-		this.addChild(this._fooBarView);
+[Read more about `EventDispatcher`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
 
-		// multiple instances
-		this.createComponents([
-			{ selector: '.js-foo', componentClass: FooView },
-			{ selector: '.js-bar', componentClass: BarView }
-		]);
-	};
+[Read more about `BaseEvent`](http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html)
 
-	return App;
+
+
+### `EventBroker`
+
+A pub/sub static class for dispatching and listening for events.
+
+```js
+EventBroker.addEventListener('change', this.handlerMethod, this);
+
+// Using a constant event type
+EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+// Event passed to the method will always be a BaseEvent object.
+ClassName.prototype.handlerMethod = function (event) {
+     console.log(event.data);
 }
 ```
 
-* ___EventDispatcher___
-	* The EventDispatcher class is the base class for all classes that need to dispatch events. For example if you wanted to create a Controller class, you would extend EventDispatcher. The DOMElement class extends EventDispatcher which allows events to bubble throughout the display list.
+[Read more about `EventBroker`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
 
-* ___EventBroker___
-	* EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications. Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type. Basically the EventBroker class is a static version of the EventDispatcher class.
-
-* ___BaseEvent___
-	* Whenever you want to create a Event Class you should extend BaseEvent.
+[Read more about `BaseEvent`](http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html)
 
 
-* ___ValueObject___
-	* Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+### `Router`
 
-* ___Extend___
-	* The Extend class is a utility class that will allow you easily to extend other classes.
+A static class for managing route patterns for single page applications.
 
-* ___Router___
-    * The Router class is a hash routing class.
+* {required}
+* :optional:
+* \* (all)
 
+```js
+// A route listener with an event handler
+Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+Router.start();
 
-* ___eventListener jQuery Plugin___
-	* There are two methods to the plugin ```addEventListener``` and ```removeEventListener```. These two methods allow you to pass in the scope of the class so you do not need to bind your function call(s) and assign them to a property on the class.
-	* To learn more about the eventListener jQuery plugin check out [https://github.com/codeBelt/jquery-eventListener](https://github.com/codeBelt/jquery-eventListener)
-
-##Add StructureJS to Your Project
-
-If you are using RequireJS all you have to do is:
-
-Add the path to the **config.js** file:
-
-```
-require.config({
-    paths: {
-        ...
-        structurejs: '../vendor/structurejs/src',
-        ...
-    },
-    shim: {...}
-});
+// The above route would match the string below:
+// '/games/asteroids/2/'
 ```
 
-Example if you wanted to import the **EventBroker** class to use:
+[Read more about `Router`](http://codebelt.github.io/StructureJS/docs/classes/Router.html)
 
+[Read more about `Route`](http://codebelt.github.io/StructureJS/docs/classes/Route.html)
+
+[Read more about `RouteEvent`](http://codebelt.github.io/StructureJS/docs/classes/RouterEvent.html)
+
+### `jQueryEventListener`
+
+A jQuery plugin that allows you to bind your function calls and assign them to a property on the class avoiding something like setupHandlers or bindAll methods.
+
+* eventType
+* delegation (optional)
+* eventHandler
+* scope
+
+```js
+Class.prototype.enable = function () {
+    this._$element.addEventListener('click', this._onClickHandler, this);
+    // event delegation
+    this._$element.addEventListener('click', 'button', this._onClickHandler, this);
+};
+
+Class.prototype.disable = function () {
+    this._$element.removeEventListener('click', this._onClickHandler, this);
+    this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
+};
+
+Class.prototype._onClickHandler = function () {
+    console.log('click');
+};
 ```
-var EventBroker = require('structurejs/event/EventBroker');
-```
+
+[Read more about `jQueryEventListener`](https://github.com/codeBelt/jquery-eventListener)
 
 ## Release History
 
  * 2015-04-26   v0.7.0   Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
  * 2015-04-15   v0.6.17   Previous version before I started doing this release history.
-
 ---
