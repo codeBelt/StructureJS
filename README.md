@@ -47,7 +47,8 @@ var App = (function () {
 		_super.prototype.create.call(this);
 
 		// single instance of a component
-		this._fooBarView = new FooBarView('#js-fooBar');
+        var $fooBar = this.$element.find('#js-fooBar');
+		this._fooBarView = new FooBarView($fooBar);
 		this.addChild(this._fooBarView);
 
 		// multiple instances of a component
