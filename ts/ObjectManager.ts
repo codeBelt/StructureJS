@@ -5,7 +5,7 @@
  @import ./BaseObject as BaseObject
  @export ObjectManager
  */
-import BaseObject = require('BaseObject');
+import BaseObject = require('./BaseObject');
 
 /**
  * The {{#crossLink "ObjectManager"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
