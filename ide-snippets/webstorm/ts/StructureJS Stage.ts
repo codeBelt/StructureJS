@@ -23,13 +23,6 @@ class ${NAME} extends Stage {
     }
 
     /**
-     * @overridden Stage.layout
-     */
-    public layout():void {
-        // Layout or update the objects in this parent class.
-    }
-
-    /**
      * @overridden Stage.enable
      */
     public enable():void {
@@ -49,6 +42,13 @@ class ${NAME} extends Stage {
         // Disable the child objects and/or remove any event listeners.
 
         super.disable();
+    }
+
+    /**
+     * @overridden Stage.layout
+     */
+    public layout():void {
+        // Layout or update the objects in this parent class.
     }
 
     /**

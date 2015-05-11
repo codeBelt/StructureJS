@@ -30,15 +30,6 @@ define(function(require, exports, module) { // jshint ignore:line
         };
  
         /**
-         * @overridden DOMElement.layout
-         */
-        ${NAME}.prototype.layout = function () {
-            // Layout or update the objects in this parent class.
- 
-            return this;
-        };
- 
-        /**
          * @overridden DOMElement.enable
          */
         ${NAME}.prototype.enable = function () {
@@ -58,6 +49,15 @@ define(function(require, exports, module) { // jshint ignore:line
             // Disable the child objects and/or remove any event listeners.
  
             return _super.prototype.disable.call(this);
+        };
+
+        /**
+         * @overridden DOMElement.layout
+         */
+        ${NAME}.prototype.layout = function () {
+            // Layout or update the objects in this parent class.
+
+            return this;
         };
  
         /**

@@ -53,15 +53,6 @@
                 };
 
                 /**
-                 * @overridden DOMElement.layout
-                 */
-                ${1:Class}.prototype.layout = function () {
-                    // Layout or update the child objects in this parent class.
-
-                    return this;
-                };
-
-                /**
                  * @overridden DOMElement.enable
                  */
                 ${1:Class}.prototype.enable = function () {
@@ -81,6 +72,15 @@
                     // Disable the child objects and/or remove any event listeners.
 
                     return _super.prototype.disable.call(this);
+                };
+
+                /**
+                 * @overridden DOMElement.layout
+                 */
+                ${1:Class}.prototype.layout = function () {
+                    // Layout or update the child objects in this parent class.
+
+                    return this;
                 };
 
                 /**
@@ -182,15 +182,6 @@
                 };
 
                 /**
-                 * @overridden Stage.layout
-                 */
-                ${1:Class}.prototype.layout = function () {
-                    // Layout or update the objects in this parent class.
-
-                    return this;
-                };
-
-                /**
                  * @overridden Stage.enable
                  */
                 ${1:Class}.prototype.enable = function () {
@@ -210,6 +201,15 @@
                     // Disable the child objects and/or remove any event listeners.
 
                     return _super.prototype.disable.call(this);
+                };
+
+                /**
+                 * @overridden Stage.layout
+                 */
+                ${1:Class}.prototype.layout = function () {
+                    // Layout or update the objects in this parent class.
+
+                    return this;
                 };
 
                 /**

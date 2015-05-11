@@ -28,13 +28,6 @@ module ${Namespace} {
         }
 
         /**
-         * @overridden ${Extends}.layout
-         */
-        public layout():void {
-            // Layout or update the objects in this parent class.
-        }
-
-        /**
          * @overridden ${Extends}.enable
          */
         public enable():void {
@@ -54,6 +47,13 @@ module ${Namespace} {
             // Disable the child objects and/or remove any event listeners.
 
             super.disable();
+        }
+
+        /**
+         * @overridden ${Extends}.layout
+         */
+        public layout():void {
+            // Layout or update the objects in this parent class.
         }
 
         /**

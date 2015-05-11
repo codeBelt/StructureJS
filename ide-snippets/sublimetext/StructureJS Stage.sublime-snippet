@@ -34,15 +34,6 @@ define(function(require, exports, module) { // jshint ignore:line
         };
  
         /**
-         * @overridden Stage.layout
-         */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layout = function () {
-            // Layout or update the objects in this parent class.
- 
-            return this;
-        };
- 
-        /**
          * @overridden Stage.enable
          */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.enable = function () {
@@ -62,6 +53,15 @@ define(function(require, exports, module) { // jshint ignore:line
             // Disable the child objects and/or remove any event listeners.
  
             return _super.prototype.disable.call(this);
+        };
+
+        /**
+         * @overridden Stage.layout
+         */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layout = function () {
+            // Layout or update the objects in this parent class.
+
+            return this;
         };
  
         /**

@@ -34,15 +34,6 @@ define(function(require, exports, module) { // jshint ignore:line
         };
  
         /**
-         * @overridden DOMElement.layout
-         */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layout = function () {
-            // Layout or update the objects in this parent class.
- 
-            return this;
-        };
- 
-        /**
          * @overridden DOMElement.enable
          */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.enable = function () {
@@ -63,7 +54,16 @@ define(function(require, exports, module) { // jshint ignore:line
  
             return _super.prototype.disable.call(this);
         };
- 
+
+        /**
+        * @overridden DOMElement.layout
+        */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layout = function () {
+            // Layout or update the objects in this parent class.
+
+            return this;
+        };
+
         /**
          * @overridden DOMElement.destroy
          */
