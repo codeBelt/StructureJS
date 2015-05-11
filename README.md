@@ -161,6 +161,7 @@ Router.start();
 // The above route would match the string below:
 // '/games/asteroids/2/'
 ```
+[Example `Router`](https://github.com/codeBelt/StructureJS/blob/master/examples/SinglePageWebsite/assets/scripts/view/RootView.js)
 
 [Read more about `Router`](http://codebelt.github.io/StructureJS/docs/classes/Router.html)
 
