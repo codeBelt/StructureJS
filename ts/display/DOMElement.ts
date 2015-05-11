@@ -623,6 +623,7 @@ class DOMElement extends DisplayObjectContainer
      *
      * @method createComponents
      * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
+     * @return {Array.<DOMElement>} Returns all the items created from this createComponents method.
      * @public
      * @chainable
      * @example
@@ -636,17 +637,20 @@ class DOMElement extends DisplayObjectContainer
      *          ]);
      *      };
      */
-    public createComponents(componentList:any[]):any
+    public createComponents(componentList:any[]):Array<DOMElement>
     {
+        var list:Array<DOMElement>;
+        var createdChildren:Array<DOMElement> = [];
         var length:number = componentList.length;
         var obj:any;
         for (var i = 0; i < length; i++)
         {
             obj = componentList[i];
-            ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+            list = <Array<DOMElement>>ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+            createdChildren = createdChildren.concat(list);
         }
 
-        return this;
+        return createdChildren;
     }
 }
 

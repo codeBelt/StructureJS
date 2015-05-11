@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 
         /**
          * This will load in our package.json file so we can have access
-         * to the project name and appVersion number.
+         * to the project name and version number.
          */
         pkg: grunt.file.readJSON('package.json'),
 
@@ -16,19 +16,19 @@ module.exports = function(grunt) {
          * Constants for the Gruntfile so we can easily change the path for our environments.
          */
         BASE_PATH: '',
-        DEVELOPMENT_PATH: 'src/',
+        DEVELOPMENT_PATH: 'js/',
         EXAMPLES_PATH: 'examples/',
         PRODUCTION_PATH: 'web/',
 
         /**
          * A code block that will be added to our minified code files.
-         * Gets the name and appVersion and other info from the above loaded 'package.json' file.
+         * Gets the name and version and other info from the above loaded 'package.json' file.
          * @example <%= banner.join("\\n") %>
          */
         banner: [
                  '/*',
                  '* Project: <%= pkg.name %>',
-                 '* Version: <%= pkg.appVersion %> (<%= grunt.template.today("yyyy-mm-dd") %>)',
+                 '* Version: <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)',
                  '* Development By: <%= pkg.developedBy %>',
                  '* Copyright(c): <%= grunt.template.today("yyyy") %>',
                  '*/'
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
                 dest : '<%= DEVELOPMENT_PATH %>' + 'index.html',
                 options : {
                     context : {
-                        appVersion : '<%= pkg.appVersion %>',
+                        appVersion : '<%= pkg.version %>',
                         filePath: ''
                     }
                 }
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
                 dest : '<%= PRODUCTION_PATH %>' + 'index.html',
                 options : {
                     context : {
-                        appVersion : '<%= pkg.appVersion %>',
+                        appVersion : '<%= pkg.version %>',
                         filePath: ''
                     }
                 }
@@ -145,21 +145,21 @@ module.exports = function(grunt) {
 
         concat: {
             all: {
-                src: 'src/**/*.js',
-                dest: './structurejs.' + '<%= pkg.appVersion %>' +'.js'
+                src: 'js/**/*.js',
+                dest: './structurejs.' + '<%= pkg.version %>' +'.js'
             },
             view: {
                 src: [
-                    'src/display/DOMElement.js',
-                    'src/display/DisplayObjectContainer.js',
-                    'src/display/DisplayObject.js',
-                    'src/event/BaseEvent.js',
-                    'src/event/EventDispatcher.js',
-                    'src/util/ComponentFactory.js',
-                    'src/util/TemplateFactory.js',
-                    'src/util/Extend.js',
-                    'src/ObjectManager.js',
-                    'src/BaseObject.js',
+                    'js/display/DOMElement.js',
+                    'js/display/DisplayObjectContainer.js',
+                    'js/display/DisplayObject.js',
+                    'js/event/BaseEvent.js',
+                    'js/event/EventDispatcher.js',
+                    'js/util/ComponentFactory.js',
+                    'js/util/TemplateFactory.js',
+                    'js/util/Extend.js',
+                    'js/ObjectManager.js',
+                    'js/BaseObject.js',
                 ],
                 dest: './structurejs.view.js'
             }
@@ -269,7 +269,7 @@ module.exports = function(grunt) {
             compile: {
                 name: '<%= pkg.name %>',
                 description: '<%= pkg.description %>',
-                version: '<%= pkg.appVersion %>',
+                version: '<%= pkg.version %>',
                 url: '<%= pkg.homepage %>',
                 options: {
                     'linkNatives': 'true',
@@ -309,52 +309,52 @@ module.exports = function(grunt) {
                     rootName: 'root.StructureJS'
                 },
                 files: {
-                    'src/controller/ApplicationCacheController.js': 'ts/controller/ApplicationCacheController.js',
-                    'src/controller/LocalStorageController.js': 'ts/controller/LocalStorageController.js',
-                    'src/controller/Router.js': 'ts/controller/Router.js',
-                    'src/display/Bitmap.js': 'ts/display/Bitmap.js',
-                    'src/display/CanvasElement.js': 'ts/display/CanvasElement.js',
-                    'src/display/DisplayObject.js': 'ts/display/DisplayObject.js',
-                    'src/display/DisplayObjectContainer.js': 'ts/display/DisplayObjectContainer.js',
-                    'src/display/DOMElement.js': 'ts/display/DOMElement.js',
-                    'src/display/Sprite.js': 'ts/display/Sprite.js',
-                    'src/display/Stage.js': 'ts/display/Stage.js',
-                    'src/display/TextField.js': 'ts/display/TextField.js',
-                    'src/event/native/NavigatorEvents.js': 'ts/event/native/NavigatorEvents.js',
-                    'src/event/ApplicationCacheEvent.js': 'ts/event/ApplicationCacheEvent.js',
-                    'src/event/BaseEvent.js': 'ts/event/BaseEvent.js',
-                    'src/event/EventBroker.js': 'ts/event/EventBroker.js',
-                    'src/event/EventDispatcher.js': 'ts/event/EventDispatcher.js',
-                    'src/event/LocalStorageEvent.js': 'ts/event/LocalStorageEvent.js',
-                    'src/event/NetworkMonitorEvent.js': 'ts/event/NetworkMonitorEvent.js',
-                    'src/event/RouterEvent.js': 'ts/event/RouterEvent.js',
-                    'src/event/TimerEvent.js': 'ts/event/TimerEvent.js',
-                    'src/geom/Point.js': 'ts/geom/Point.js',
-                    'src/model/Collection.js': 'ts/model/Collection.js',
-                    'src/model/Route.js': 'ts/model/Route.js',
-                    'src/model/ValueObject.js': 'ts/model/ValueObject.js',
-                    'src/net/NetworkMonitor.js': 'ts/net/NetworkMonitor.js',
-                    'src/plugin/jquery.eventListener.js': 'ts/plugin/jquery.eventListener.js',
-                    'src/util/BrowserUtil.js': 'ts/util/BrowserUtil.js',
-                    'src/util/ComponentFactory.js': 'ts/util/ComponentFactory.js',
-                    'src/util/DateUtil.js': 'ts/util/DateUtil.js',
-                    'src/util/MathUtil.js': 'ts/util/MathUtil.js',
-                    'src/util/MerchantUtil.js': 'ts/util/MerchantUtil.js',
-                    'src/util/NumberUtil.js': 'ts/util/NumberUtil.js',
-                    'src/util/StringUtil.js': 'ts/util/StringUtil.js',
-                    'src/util/TemplateFactory.js': 'ts/util/TemplateFactory.js',
-                    'src/util/Timer.js': 'ts/util/Timer.js',
-                    'src/util/Util.js': 'ts/util/Util.js',
-                    'src/util/ValidationUtil.js': 'ts/util/ValidationUtil.js',
-                    'src/BaseObject.js': 'ts/BaseObject.js',
-                    'src/ObjectManager.js': 'ts/ObjectManager.js'
+                    'js/controller/ApplicationCacheController.js': 'ts/controller/ApplicationCacheController.js',
+                    'js/controller/LocalStorageController.js': 'ts/controller/LocalStorageController.js',
+                    'js/controller/Router.js': 'ts/controller/Router.js',
+                    'js/display/Bitmap.js': 'ts/display/Bitmap.js',
+                    'js/display/CanvasElement.js': 'ts/display/CanvasElement.js',
+                    'js/display/DisplayObject.js': 'ts/display/DisplayObject.js',
+                    'js/display/DisplayObjectContainer.js': 'ts/display/DisplayObjectContainer.js',
+                    'js/display/DOMElement.js': 'ts/display/DOMElement.js',
+                    'js/display/Sprite.js': 'ts/display/Sprite.js',
+                    'js/display/Stage.js': 'ts/display/Stage.js',
+                    'js/display/TextField.js': 'ts/display/TextField.js',
+                    'js/event/native/NavigatorEvents.js': 'ts/event/native/NavigatorEvents.js',
+                    'js/event/ApplicationCacheEvent.js': 'ts/event/ApplicationCacheEvent.js',
+                    'js/event/BaseEvent.js': 'ts/event/BaseEvent.js',
+                    'js/event/EventBroker.js': 'ts/event/EventBroker.js',
+                    'js/event/EventDispatcher.js': 'ts/event/EventDispatcher.js',
+                    'js/event/LocalStorageEvent.js': 'ts/event/LocalStorageEvent.js',
+                    'js/event/NetworkMonitorEvent.js': 'ts/event/NetworkMonitorEvent.js',
+                    'js/event/RouterEvent.js': 'ts/event/RouterEvent.js',
+                    'js/event/TimerEvent.js': 'ts/event/TimerEvent.js',
+                    'js/geom/Point.js': 'ts/geom/Point.js',
+                    'js/model/Collection.js': 'ts/model/Collection.js',
+                    'js/model/Route.js': 'ts/model/Route.js',
+                    'js/model/ValueObject.js': 'ts/model/ValueObject.js',
+                    'js/net/NetworkMonitor.js': 'ts/net/NetworkMonitor.js',
+                    'js/plugin/jquery.eventListener.js': 'ts/plugin/jquery.eventListener.js',
+                    'js/util/BrowserUtil.js': 'ts/util/BrowserUtil.js',
+                    'js/util/ComponentFactory.js': 'ts/util/ComponentFactory.js',
+                    'js/util/DateUtil.js': 'ts/util/DateUtil.js',
+                    'js/util/MathUtil.js': 'ts/util/MathUtil.js',
+                    'js/util/MerchantUtil.js': 'ts/util/MerchantUtil.js',
+                    'js/util/NumberUtil.js': 'ts/util/NumberUtil.js',
+                    'js/util/StringUtil.js': 'ts/util/StringUtil.js',
+                    'js/util/TemplateFactory.js': 'ts/util/TemplateFactory.js',
+                    'js/util/Timer.js': 'ts/util/Timer.js',
+                    'js/util/Util.js': 'ts/util/Util.js',
+                    'js/util/ValidationUtil.js': 'ts/util/ValidationUtil.js',
+                    'js/BaseObject.js': 'ts/BaseObject.js',
+                    'js/ObjectManager.js': 'ts/ObjectManager.js'
                 }
             }
         },
 
         jsbeautifier : {
             "default": {
-                src : ["src/**/*.js"]
+                src : ["js/**/*.js"]
             }
         },
 
@@ -422,7 +422,7 @@ module.exports = function(grunt) {
             },
             all: {
                 src: [
-                    'src/**/*.js'
+                    'js/**/*.js'
                 ]
             }
         },

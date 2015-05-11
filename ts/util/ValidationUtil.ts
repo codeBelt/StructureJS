@@ -24,16 +24,19 @@ class ValidationUtil
      * Determines if the String passed has a length.
      *
      * @method isEmpty
-     * @param text {string}
+     * @param value {string}
      * @returns {boolean}
      * @public
      * @static
      * @example
      *
      */
-    public static isEmpty(text:string):boolean
+    public static isEmpty(value:string):boolean
     {
-        return text.length < 1;
+        if (value != null) {
+            return value.length < 1;
+        }
+        return true;
     }
 
     /**
