@@ -1,6 +1,6 @@
 # `StructureJS`
 
-A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and tool set to build your next project.
+A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.
 
 ## Documentation
 * [Overview Video](http://www.codebelt.com/javascript/StructureJS_web.mp4)
@@ -101,7 +101,7 @@ var ExampleView = (function () {
 
 ### `EventDispatcher`
 
-A base event bus class for managing prioritized queues of event listeners and dispatching events.
+A base event bus class for managing prioritized queues of event listeners and dispatched events.
 
 ```js
 this.dispatchEvent('change');
@@ -118,7 +118,7 @@ this.dispatchEvent(event);
 this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
 ```
 
-[Read more about `EventDispatcher`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
+[Read more about `EventDispatcher`](http://codebelt.github.io/StructureJS/docs/classes/EventDispatcher.html)
 
 [Read more about `BaseEvent`](http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html)
 
@@ -198,6 +198,6 @@ Class.prototype._onClickHandler = function () {
 
 ## Release History
 
- * 2015-04-26   v0.7.0   Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
- * 2015-04-15   v0.6.17   Previous version before I started doing this release history.
----
+ * 2015-04-26 v0.7.0 Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
+
+ * 2015-04-15 v0.6.17 Previous version before I started doing this release history.
