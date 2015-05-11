@@ -1,4 +1,6 @@
 # `StructureJS`
+[![Dependency Status](https://david-dm.org/codeBelt/StructureJS.svg)](https://david-dm.org/codeBelt/StructureJS)
+[![devDependency Status](https://david-dm.org/codeBelt/StructureJS/dev-status.svg)](https://david-dm.org/codeBelt/StructureJS#info=devDependencies)
 
 A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.
 
