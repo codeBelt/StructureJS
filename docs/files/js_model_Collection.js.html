@@ -176,6 +176,16 @@
      * @constructor
      * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
+     * @example
+     *     var data = [{ make: &#x27;Tesla&#x27;, model: &#x27;Model S&#x27;, year: 2014 }, { make: &#x27;Tesla&#x27;, model: &#x27;Model X&#x27;, year: 2016 }];
+     *
+     *     // Example of adding data to a collection
+     *     var collection = new Collection();
+     *     collection.add(data);
+     *
+     *     // Example of adding data to a collection that will create a CarVO model for each data object passed in.
+     *     var collection = new Collection(CarVO);
+     *     collection.add(data);
      */
     var Collection = (function() {
 

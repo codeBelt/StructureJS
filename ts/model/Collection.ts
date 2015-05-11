@@ -26,6 +26,16 @@ import Util = require('../util/Util');
  * @constructor
  * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
  * @author Robert S. (www.codeBelt.com)
+ * @example
+ *     var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
+ *
+ *     // Example of adding data to a collection
+ *     var collection = new Collection();
+ *     collection.add(data);
+ *
+ *     // Example of adding data to a collection that will create a CarVO model for each data object passed in.
+ *     var collection = new Collection(CarVO);
+ *     collection.add(data);
  */
 class Collection extends EventDispatcher
 {

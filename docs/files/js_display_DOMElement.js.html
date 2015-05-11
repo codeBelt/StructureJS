@@ -685,6 +685,7 @@
          *
          * @method createComponents
          * @param componentList (Array.&lt;{ selector: string; componentClass: DisplayObjectContainer }&gt;
+         * @return {Array.&lt;DOMElement&gt;} Returns all the items created from this createComponents method.
          * @public
          * @chainable
          * @example
@@ -699,13 +700,16 @@
          *      };
          */
         DOMElement.prototype.createComponents = function(componentList) {
+            var list;
+            var createdChildren = [];
             var length = componentList.length;
             var obj;
             for (var i = 0; i &lt; length; i++) {
                 obj = componentList[i];
-                ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+                list = ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+                createdChildren = createdChildren.concat(list);
             }
-            return this;
+            return createdChildren;
         };
         return DOMElement;
     })();

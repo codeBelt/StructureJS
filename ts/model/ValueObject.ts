@@ -30,7 +30,7 @@ import Util = require('../util/Util');
  *     var data = {
  *          make: 'Tesla',
  *          model: 'Model S',
- *          year: 2014,
+ *          YeAr: 2014,
  *          feature: {
  *              abs: true,
  *              airbags: true
@@ -52,9 +52,12 @@ import Util = require('../util/Util');
  *              this.year = null;
  *              this.allWheel = false; // Set a default value.
  *
- *              // You can assign another ValueObject to a property which will
+ *              // You can assign ValueObject to a property which will
  *              // automatically created it and pass the data to it.
  *              this.feature = FeatureVO;
+ *
+ *              // If you have an array of data and want them assign to a ValueObject.
+ *              this.feature = [FeatureVO];
  *
  *              if (data) {
  *                  this.update(data);
@@ -65,13 +68,9 @@ import Util = require('../util/Util');
  *          CarVO.prototype.update = function (data) {
  *              _super.prototype.update.call(this, data);
  *
- *              // Override any values after the default super update method has set the values.
- *
- *              // If the data doesn't match the property names you can set the values
- *              // manually after update super method has been called.
- *              // Also in the class you inherit ValueObject from you can override the
- *              // update method to handle the data how you want.
- *              this.allWheel = data.AllWheel;
+ *              // If the data doesn't match the property name.
+  *             // You can set the value(s) manually after the update super method has been called.
+ *              this.year = data.YeAr;
  *          };
  *
  *          return CarVO;

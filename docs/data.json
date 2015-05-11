@@ -1108,7 +1108,10 @@
                     "type": "ValueObject"
                 }
             ],
-            "author": "Robert S. (www.codeBelt.com)"
+            "author": "Robert S. (www.codeBelt.com)",
+            "example": [
+                "\n    var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];\n\n    // Example of adding data to a collection\n    var collection = new Collection();\n    collection.add(data);\n\n    // Example of adding data to a collection that will create a CarVO model for each data object passed in.\n    var collection = new Collection(CarVO);\n    collection.add(data);"
+            ]
         },
         "Route": {
             "name": "Route",
@@ -1178,7 +1181,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         year: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign another ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // Override any values after the default super update method has set the values.\n\n             // If the data doesn't match the property names you can set the values\n             // manually after update super method has been called.\n             // Also in the class you inherit ValueObject from you can override the\n             // update method to handle the data how you want.\n             this.allWheel = data.AllWheel;\n         };\n\n         return CarVO;\n     })();"
+                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         YeAr: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign a ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             // If you have an array of data and want them assign to a ValueObject.\n             this.feature = [FeatureVO];\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // If the data doesn't match the property name.\n            // You can set the value(s) manually after the update super method has been called.\n             this.year = data.YeAr;\n         };\n\n         return CarVO;\n     })();"
             ]
         },
         "NetworkMonitor": {
@@ -2975,6 +2978,10 @@
                     "type": "Selector: string; componentClass: DisplayObjectContainer"
                 }
             ],
+            "return": {
+                "description": "Returns all the items created from this createComponents method.",
+                "type": "Array.<DOMElement>"
+            },
             "access": "public",
             "tagname": "",
             "chainable": 1,
@@ -4954,7 +4961,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 39,
+            "line": 49,
             "description": "The list of models in the collection.",
             "itemtype": "property",
             "name": "models",
@@ -4966,7 +4973,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 47,
+            "line": 57,
             "description": "The count of how many models are in the collection.",
             "itemtype": "property",
             "name": "length",
@@ -4981,7 +4988,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 57,
+            "line": 67,
             "description": "A reference to a ValueObject that will be used in the collection.",
             "itemtype": "property",
             "name": "_modelType",
@@ -4994,7 +5001,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 67,
+            "line": 77,
             "description": "Adds model or an array of models to the collection.",
             "itemtype": "method",
             "name": "add",
@@ -5024,7 +5031,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 102,
+            "line": 112,
             "description": "Removes a model or an array of models from the collection.",
             "itemtype": "method",
             "name": "remove",
@@ -5054,7 +5061,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 131,
+            "line": 141,
             "description": "Checks if a collection has an model.",
             "itemtype": "method",
             "name": "has",
@@ -5080,7 +5087,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 144,
+            "line": 154,
             "description": "Returns the array index position of the value object.",
             "itemtype": "method",
             "name": "indexOf",
@@ -5106,7 +5113,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 157,
+            "line": 167,
             "description": "Finds an object by an index value.\nIf the index is out of bounds, the collection will clamp it.",
             "itemtype": "method",
             "name": "get",
@@ -5132,7 +5139,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 178,
+            "line": 188,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
             "itemtype": "method",
             "name": "findBy",
@@ -5158,7 +5165,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 215,
+            "line": 225,
             "description": "Loops through the models array and creates a new array of models that match all the properties on the object passed in.",
             "itemtype": "method",
             "name": "_where",
@@ -5181,7 +5188,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 258,
+            "line": 268,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
             "name": "_findPropertyValue",
@@ -5204,7 +5211,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 297,
+            "line": 307,
             "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
@@ -5229,7 +5236,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 316,
+            "line": 326,
             "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
             "itemtype": "method",
             "name": "clone",
@@ -5248,7 +5255,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 330,
+            "line": 340,
             "description": "Creates a JSON object of the collection.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5267,7 +5274,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 351,
+            "line": 361,
             "description": "Creates a JSON string of the collection.",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5286,7 +5293,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 363,
+            "line": 373,
             "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5309,7 +5316,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 378,
+            "line": 388,
             "description": "Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys",
             "itemtype": "method",
             "name": "sortOn",
@@ -5342,7 +5349,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 414,
+            "line": 424,
             "description": "Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code\npoint value, according to the string conversion of each element.",
             "itemtype": "method",
             "name": "sort",
@@ -5370,7 +5377,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 434,
+            "line": 444,
             "description": "The filter method creates a new array with all elements that pass the test implemented by the provided function.",
             "itemtype": "method",
             "name": "filter",
@@ -5396,7 +5403,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 452,
+            "line": 462,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -5415,7 +5422,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 464,
+            "line": 474,
             "description": "Returns a new array of models with duplicates removed.",
             "itemtype": "method",
             "name": "_unique",
@@ -5552,7 +5559,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 92,
+            "line": 91,
             "description": "Provide a way to update the value object.",
             "itemtype": "method",
             "name": "update",
@@ -5574,7 +5581,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 122,
+            "line": 121,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_setData",
@@ -5596,7 +5603,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 145,
+            "line": 144,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_updateData",
@@ -5618,7 +5625,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 168,
+            "line": 167,
             "description": "Converts the value object data into a JSON object and deletes the cid property.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5637,7 +5644,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 181,
+            "line": 180,
             "description": "Converts a value object to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5656,7 +5663,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 193,
+            "line": 192,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5678,7 +5685,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 209,
+            "line": 208,
             "description": "Create a clone/copy of the value object.",
             "itemtype": "method",
             "name": "clone",
@@ -6393,7 +6400,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     ComponentFactory.create($('.js-list'), SomeClass);"
+                "\n     ComponentFactory.create($('.js-list'), SomeClass, this);"
             ],
             "class": "ComponentFactory",
             "module": "StructureJS"
@@ -8285,7 +8292,7 @@
             "name": "isEmpty",
             "params": [
                 {
-                    "name": "text",
+                    "name": "value",
                     "description": "",
                     "type": "String"
                 }
@@ -8306,7 +8313,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 45,
+            "line": 48,
             "description": "Determines if the two values passed in are the same.",
             "itemtype": "method",
             "name": "isMatch",
@@ -8338,7 +8345,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 60,
+            "line": 63,
             "description": "Determines if the String passed in is a valid email address.",
             "itemtype": "method",
             "name": "isValidEmailAddress",
@@ -8365,7 +8372,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 75,
+            "line": 78,
             "description": "Determines if the String passed in is a phone number.",
             "itemtype": "method",
             "name": "isValidPhoneNumber",
@@ -8392,7 +8399,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 90,
+            "line": 93,
             "description": "Determines if the String passed in is a zip code.",
             "itemtype": "method",
             "name": "isZipCode",
@@ -8419,7 +8426,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 105,
+            "line": 108,
             "description": "Determines if the String passed in is a postal code.",
             "itemtype": "method",
             "name": "isPostalCode",
@@ -8446,7 +8453,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 120,
+            "line": 123,
             "description": "Determines if the String passed in is a Social Security Number.",
             "itemtype": "method",
             "name": "isSocialSecurityNumber",
@@ -8789,15 +8796,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:316"
+            "line": " js/model/Collection.js:326"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:330"
+            "line": " js/model/Collection.js:340"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:351"
+            "line": " js/model/Collection.js:361"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8809,15 +8816,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:168"
+            "line": " js/model/ValueObject.js:167"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:181"
+            "line": " js/model/ValueObject.js:180"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:209"
+            "line": " js/model/ValueObject.js:208"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9029,27 +9036,27 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:45"
+            "line": " js/util/ValidationUtil.js:48"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:60"
+            "line": " js/util/ValidationUtil.js:63"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:75"
+            "line": " js/util/ValidationUtil.js:78"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:90"
+            "line": " js/util/ValidationUtil.js:93"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:105"
+            "line": " js/util/ValidationUtil.js:108"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:120"
+            "line": " js/util/ValidationUtil.js:123"
         },
         {
             "message": "replacing incorrect tag: returns with return",

@@ -485,7 +485,7 @@
                     <pre class="code prettyprint"><code>var data = {
      make: &#39;Tesla&#39;,
      model: &#39;Model S&#39;,
-     year: 2014,
+     YeAr: 2014,
      feature: {
          abs: true,
          airbags: true
@@ -507,9 +507,12 @@ var carVO = new CarVO(data);
          this.year = null;
          this.allWheel = false; // Set a default value.
 
-         // You can assign another ValueObject to a property which will
+         // You can assign a ValueObject to a property which will
          // automatically created it and pass the data to it.
          this.feature = FeatureVO;
+
+         // If you have an array of data and want them assign to a ValueObject.
+         this.feature = [FeatureVO];
 
          if (data) {
              this.update(data);
@@ -520,13 +523,9 @@ var carVO = new CarVO(data);
      CarVO.prototype.update = function (data) {
          _super.prototype.update.call(this, data);
 
-         // Override any values after the default super update method has set the values.
-
-         // If the data doesn&#39;t match the property names you can set the values
-         // manually after update super method has been called.
-         // Also in the class you inherit ValueObject from you can override the
-         // update method to handle the data how you want.
-         this.allWheel = data.AllWheel;
+         // If the data doesn&#39;t match the property name.
+        // You can set the value(s) manually after the update super method has been called.
+         this.year = data.YeAr;
      };
 
      return CarVO;
@@ -599,7 +598,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l122"><code>js&#x2F;model&#x2F;ValueObject.js:122</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l121"><code>js&#x2F;model&#x2F;ValueObject.js:121</code></a>
         
         </p>
 
@@ -716,7 +715,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l145"><code>js&#x2F;model&#x2F;ValueObject.js:145</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l144"><code>js&#x2F;model&#x2F;ValueObject.js:144</code></a>
         
         </p>
 
@@ -821,7 +820,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l209"><code>js&#x2F;model&#x2F;ValueObject.js:209</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l208"><code>js&#x2F;model&#x2F;ValueObject.js:208</code></a>
         
         </p>
 
@@ -1010,7 +1009,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l193"><code>js&#x2F;model&#x2F;ValueObject.js:193</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l192"><code>js&#x2F;model&#x2F;ValueObject.js:192</code></a>
         
         </p>
 
@@ -1198,7 +1197,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l168"><code>js&#x2F;model&#x2F;ValueObject.js:168</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l167"><code>js&#x2F;model&#x2F;ValueObject.js:167</code></a>
         
         </p>
 
@@ -1286,7 +1285,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l181"><code>js&#x2F;model&#x2F;ValueObject.js:181</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l180"><code>js&#x2F;model&#x2F;ValueObject.js:180</code></a>
         
         </p>
 
@@ -1380,7 +1379,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l92"><code>js&#x2F;model&#x2F;ValueObject.js:92</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l91"><code>js&#x2F;model&#x2F;ValueObject.js:91</code></a>
         
         </p>
 
