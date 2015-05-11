@@ -1,88 +1,204 @@
-#StructureJS
+# `StructureJS`
 
-A workflow and several core class to help structure and build JavaScript applications.
+A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.
 
-####WebStorm & Sublime Text Templates/Snippets:
-[WebStorm & Sublime Text Templates/Snippets](https://github.com/codeBelt/StructureJS/tree/master/ide-snippets)
+## Documentation
+* [Overview Video](http://www.codebelt.com/javascript/StructureJS_web.mp4)
+* [YUI Docs](http://codebelt.github.io/StructureJS/docs/)
 
-####Examples:
-[Event Bubbling Example](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/)
+## Install
+    $ bower install --save structurejs
 
-[SinglePageWebsite with the Router class](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/)
+## Core Classes
 
-[TodoMVC Example](http://codebelt.github.io/StructureJS/examples/TodoMVC/web/)
+### `Stage`
 
-[Simon Says Game Example](http://codebelt.github.io/StructureJS/examples/SimonGame/)
+A base application class for your project. `Stage` allows you to set DOM references for your application to control.
 
-####Documentation:
-[Docs](http://codebelt.github.io/StructureJS/docs/)
+```js
+var App = (function () {
 
-####Video:
-[StructureJS Overview](http://www.codebelt.com/javascript/StructureJS_web.mp4)
+	var _super = Extend (App, DOMElement);
 
+	function App () {
+		_super.call(this);
+	}
 
-###Core Classes
-* ___DOMElement___
-	* All your view classes will extend the DOMElement class and all your views will have the following lifecycle: create, layout, enable, disable and distroy. The DOMElement has several convenient methods (addChild, addChildAt, removeChild, getChild, etc.) to provide a structured base for your view classes. Within your views you will be able to listen and dispatch class based events. This is because DOMElement extends the EventDispacter class and your views will support event bubbling, stopPropagation and stopImmediatePropagation.
-	
-* ___Stage___
-	* The Stage class is what your main application class will extend. This class extends the DOMElement class and the only difference you will notice is it has an appendTo method. This allows us to use an id name, class name or tag name to have a reference point where your code will control DOM elements with in the referenced area.
-	
-* ___EventDispatcher___
-	* The EventDispatcher class is the base class for all classes that need to dispatch events. For example if you wanted to create a Controller class, you would extend EventDispatcher. The DOMElement class extends EventDispatcher which allows events to bubble throughout the display list. 
-	
-* ___EventBroker___
-	* EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications. Loosely coupled event handling, the subscriber does not have to know the publisher. Both of them only need to know the event type. Basically the EventBroker class is a static version of the EventDispatcher class.
+	App.prototype.create = function () {
+		_super.prototype.create.call(this);
 
-* ___BaseEvent___
-	* Whenever you want to create a Event Class you should extend BaseEvent.
-	
+		// instance
+		this._fooBarView = new FooBarView('#js-fooBar');
+		this.addChild(this._fooBarView);
 
-* ___ValueObject___
-	* Value Object (VO) is a design pattern used to transfer data between software application subsystems.
-	
-* ___Extend___
-	* The Extend class is a utility class that will allow you easily to extend other classes.
-	
-* ___Router___
-    * The Router class is a hash routing class.
-	
-	
-* ___eventListener jQuery Plugin___
-	* There are two methods to the plugin ```addEventListener``` and ```removeEventListener```. These two methods allow you to pass in the scope of the class so you do not need to bind your function call(s) and assign them to a property on the class. 
-	* To learn more about the eventListener jQuery plugin check out [https://github.com/codeBelt/jquery-eventListener](https://github.com/codeBelt/jquery-eventListener)
+		// instances
+		this.createComponents([
+			{ selector: '.js-foo', componentClass: FooView },
+			{ selector: '.js-bar', componentClass: BarView }
+		]);
+	};
 
-	
-##Add StructureJS to Your Project
-
-If you are using RequireJS all you have to do is:
-
-```
-bower install structurejs
+	return App;
+}
 ```
 
-Add the path to the **config.js** file:
+[Example `Stage` Class](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/MovieCollectionApp.js)
 
-```
-require.config({
-    paths: {
-        ...
-        structurejs: '../vendor/structurejs/src',
-        ...
-    },
-    shim: {...}
-});
+[Read more about `Stage`](http://codebelt.github.io/StructureJS/docs/classes/Stage.html)
+
+### `DOMElement`
+
+A base view class for objects that control the DOM. Your View classes will extend this `DOMElement` class.
+
+```js
+var ExampleView = (function () {
+
+	var _super = Extend (ExampleView, DOMElement);
+
+	function ExampleView () {
+		_super.call(this);
+	}
+
+	return ExampleView;
+}
 ```
 
-Example if you wanted to import the **EventBroker** class to use:
+`DOMElement` provides helper methods and adds the following lifecycle to your class:
+* `create()`
+* `enable()`
+* `layout()`
 
+```js
+var ExampleView = (function () {
+
+	var _super = Extend (ExampleView, DOMElement);
+
+	function ExampleView () {
+		_super.call(this);
+	}
+
+	MenuView.prototype.create = function () {
+		_super.prototype.create.call(this);
+	};
+
+	MenuView.prototype.enable = function () {
+		if (this.isEnabled) { return; }
+
+		return _super.prototype.enable.call(this);
+	};
+
+	MenuView.prototype.layout = function () {
+		return this;
+	};
+
+	return ExampleView;
+}
 ```
-var EventBroker = require('structurejs/event/EventBroker');
+
+[Example `DOMElement` View](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/view/ListView.js)
+
+[Read more about `DOMElement`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
+
+### `EventDispatcher`
+
+A base event bus class for managing prioritized queues of event listeners and dispatched events.
+
+```js
+this.dispatchEvent('change');
+
+// Send data object with the event:
+this.dispatchEvent('change', { some: 'data' });
+
+// Example with an event object
+// (event type, bubbling set to true, cancelable set to true and passing data)
+var event = new BaseEvent(BaseEvent.CHANGE, true, true, { some: 'data' });
+this.dispatchEvent(event);
+
+// Dispatching an inline event object
+this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
 ```
+
+[Read more about `EventDispatcher`](http://codebelt.github.io/StructureJS/docs/classes/EventDispatcher.html)
+
+[Read more about `BaseEvent`](http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html)
+
+
+
+### `EventBroker`
+
+A pub/sub static class for dispatching and listening for events.
+
+```js
+EventBroker.addEventListener('change', this.handlerMethod, this);
+
+// Using a constant event type
+EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+// Event passed to the method will always be a BaseEvent object.
+ClassName.prototype.handlerMethod = function (event) {
+     console.log(event.data);
+}
+```
+
+[Read more about `EventBroker`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
+
+[Read more about `BaseEvent`](http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html)
+
+
+### `Router`
+
+A static class for managing route patterns for single page applications.
+
+* {required}
+* :optional:
+* \* (all)
+
+```js
+// A route listener with an event handler
+Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+Router.start();
+
+// The above route would match the string below:
+// '/games/asteroids/2/'
+```
+[Example `Router`](https://github.com/codeBelt/StructureJS/blob/master/examples/SinglePageWebsite/assets/scripts/view/RootView.js)
+
+[Read more about `Router`](http://codebelt.github.io/StructureJS/docs/classes/Router.html)
+
+[Read more about `Route`](http://codebelt.github.io/StructureJS/docs/classes/Route.html)
+
+[Read more about `RouteEvent`](http://codebelt.github.io/StructureJS/docs/classes/RouterEvent.html)
+
+### `jQueryEventListener`
+
+A jQuery plugin that allows you to bind your function calls and assign them to a property on the class avoiding something like setupHandlers or bindAll methods.
+
+* eventType
+* delegation (optional)
+* eventHandler
+* scope
+
+```js
+Class.prototype.enable = function () {
+    this._$element.addEventListener('click', this._onClickHandler, this);
+    // event delegation
+    this._$element.addEventListener('click', 'button', this._onClickHandler, this);
+};
+
+Class.prototype.disable = function () {
+    this._$element.removeEventListener('click', this._onClickHandler, this);
+    this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
+};
+
+Class.prototype._onClickHandler = function () {
+    console.log('click');
+};
+```
+
+[Read more about `jQueryEventListener`](https://github.com/codeBelt/jquery-eventListener)
 
 ## Release History
 
- * 2015-04-26   v0.7.0   Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
- * 2015-04-15   v0.6.17   Previous version before I started doing this release history.
+ * 2015-04-26 v0.7.0 Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
 
----
+ * 2015-04-15 v0.6.17 Previous version before I started doing this release history.

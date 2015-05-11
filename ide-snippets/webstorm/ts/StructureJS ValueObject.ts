@@ -1,33 +1,38 @@
-import ValueObject = require('../vendor/structurejs/ts/model/ValueObject');
+///<reference path='replace/path/structurejs/ts/model/ValueObject.ts'/>
+///<reference path='replace/path/structurejs/ts/interface/IValueObject.ts'/>
 
-/**
- * TODO: YUIDoc_comment
- *
- * @class ${NAME}
- * @param [data] {any} Provide a way to update the value object upon initialization.
- * @extends ValueObject
- * @module ${Namespace}
- * @constructor
- **/
-export class ${NAME} extends ValueObject {
+module ${Namespace} {
 
-    constructor(data:any = null) {
-        super();
-
-        if (data) {
-            this.update(data);
-        }
-    }
+    import ValueObject = StructureJS.ValueObject;
+    import IValueObject = StructureJS.IValueObject;
 
     /**
-     * @overridden ValueObject.update
-     */
-    public update(data:any):void {
-        super.update(data);
+     * TODO: YUIDoc_comment
+     *
+     * @class ${NAME}
+     * @param [data] {any} Provide a way to update the value object upon initialization.
+     * @extends ValueObject
+     * @module ${Namespace}
+     * @constructor
+     **/
+    export class ${NAME} extends ValueObject {
 
-        // Override any values after the default super update method has set the values.
+        constructor(data:any = null) {
+            super();
+
+            if (data) {
+                this.update(data);
+            }
+        }
+
+        /**
+         * @overridden ValueObject.update
+         */
+        public update(data:any):void {
+            super.update(data);
+
+            // Override any values after the default super update method has set the values.
+        }
+
     }
-
 }
-
-export = ${NAME};

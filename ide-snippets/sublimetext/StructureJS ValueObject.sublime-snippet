@@ -5,22 +5,35 @@ define(function(require, exports, module) { // jshint ignore:line
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var ${1:Extends} = require('${2:path}/${1}');
+    var ValueObject = require('structurejs/model/ValueObject');
 
     /**
      * TODO: YUIDoc_comment
      *
      * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
-     * @extends ${1}
+     * @extends ValueObject
      * @constructor
      **/
     var ${TM_FILENAME/(.*)[.](.*)/$1/g} = (function () {
 
-        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, ${1}); // jshint ignore:line
+        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, ValueObject);
 
-        function ${TM_FILENAME/(.*)[.](.*)/$1/g}() { // jshint ignore:line
+        function ${TM_FILENAME/(.*)[.](.*)/$1/g}() {
             _super.call(this);
+
+            if (data) {
+                this.update(data);
+            }
         }
+
+        /**
+        * @overridden ValueObject.update
+        */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.update = function (data) {
+            _super.prototype.update.call(this, data);
+            
+            // Override any values after the default super update method has set the values.
+        };
 
         return ${TM_FILENAME/(.*)[.](.*)/$1/g};
     })();
@@ -30,7 +43,7 @@ define(function(require, exports, module) { // jshint ignore:line
 });
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>extendClass</tabTrigger>
+	<tabTrigger>valueObject</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.js</scope>
 </snippet>
