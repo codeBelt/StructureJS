@@ -6,14 +6,14 @@
  @import ../event/BaseEvent as BaseEvent
  @import ../util/TemplateFactory as TemplateFactory
  @import ../util/ComponentFactory as ComponentFactory
- @import jquery as jQuery
- @import ../plugin/jquery.eventListener as $eventListener
+ @import ../plugin/jquery.eventListener as jQuery
  @export DOMElement
  */
 import DisplayObjectContainer = require('./DisplayObjectContainer');
 import BaseEvent = require('../event/BaseEvent');
 import TemplateFactory = require('../util/TemplateFactory');
 import ComponentFactory = require('../util/ComponentFactory');
+import jQuery = require('../plugin/jquery.eventListener');
 
 /**
  * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
