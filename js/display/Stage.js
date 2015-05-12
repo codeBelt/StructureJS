@@ -16,7 +16,7 @@
     'use strict';
 
     /**
-     * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
+     * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
      *
      * @class Stage
      * @extends DOMElement
@@ -28,7 +28,7 @@
      * @requires DOMElement
      * @requires jQuery
      * @example
-     *     // This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
+     *     // This example illustrates how to setup your main application or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
      *     define(function (require, exports, module) {
      *         'use strict';
      *
@@ -72,7 +72,7 @@
      *             }
      *
      *             MainClass.prototype.destroy = function () {
-     *                 // Destroy the child objects and references in this parent class to prevent memory leaks.
+     *                 // Destroy the child objects and references in this parent class to prepare for garbage collection.
      *
      *                 _super.prototype.destroy.call(this);
      *             }
@@ -84,7 +84,7 @@
      *     });
      *
      * <b>Instantiation Example</b><br>
-     * This example illustrates how to instantiation your main or root class.
+     * This example illustrates how to instantiate your main application or root class.
      *
      *      var app = new MainClass();
      *      app.appendTo('body');
@@ -98,10 +98,10 @@
             _super.call(this);
         }
         /**
-         * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
+         * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
          *
          * @method appendTo
-         * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+         * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
          * @param [enabled=true] {boolean} Sets the enabled state of the object.
          * @chainable
          */

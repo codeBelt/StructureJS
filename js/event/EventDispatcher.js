@@ -16,8 +16,8 @@
     'use strict';
 
     /**
-     * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
-     * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
+     * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
+     * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
      *
      * @class EventDispatcher
      * @extends ObjectManager
@@ -52,9 +52,9 @@
              */
             this._listeners = null;
             /**
-             * Indicates the object that contains child object. Use the parent property
+             * Indicates the object that contains a child object. Uses the parent property
              * to specify a relative path to display objects that are above the current display object in the display
-             * list hierarchy. Helps facilitates event bubbling.
+             * list hierarchy and helps facilitate event bubbling.
              *
              * @property parent
              * @type {any}
@@ -64,7 +64,7 @@
             this._listeners = [];
         }
         /**
-         * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
+         * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
          *
          * @method addEventListener
          * @param type {String} The type of event.
@@ -83,10 +83,10 @@
          */
         EventDispatcher.prototype.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
-            // Get the list of event listener(s) by the associated type value that is passed in.
+            // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list == null) {
-                // If a list of event listener(s) do not exist for the type value passed in then create a new empty array.
+                // If a list of event listeners do not exist for the type value passed in then create a new empty array.
                 this._listeners[type] = list = [];
             }
             var index = 0;
@@ -95,7 +95,7 @@
             while (--i > -1) {
                 listener = list[i];
                 if (listener.callback === callback && listener.scope === scope) {
-                    // If same callback and scope is found then remove it. Then add the current one below.
+                    // If the same callback and scope are found then remove it and add the current one below.
                     list.splice(i, 1);
                 } else if (index === 0 && listener.priority < priority) {
                     index = i + 1;
@@ -112,22 +112,22 @@
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
          * @param scope {any} The scope of the listener object to be removed.
-         * @hide This was added because it was need for the {{#crossLink "EventBroker"}}{{/crossLink}} class. To keep things consistent this parameter is required.
+         * @hide This was added because it was needed for the {{#crossLink "EventBroker"}}{{/crossLink}} class. To keep things consistent this parameter is required.
          * @public
          * @chainable
          * @example
-         *      this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *      this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          *
-         *      ClassName.prototype.handlerMethod = function (event) {
-         *      }
+         *      ClassName.prototype._handlerMethod = function (event) {
+         *      };
          */
         EventDispatcher.prototype.removeEventListener = function(type, callback, scope) {
-            // Get the list of event listener(s) by the associated type value that is passed in.
+            // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list !== void 0) {
                 var i = list.length;
                 while (--i > -1) {
-                    // If the callback and the scope are the same then remove the event listener.
+                    // If the callback and scope are the same then remove the event listener.
                     if (list[i].callback === callback && list[i].scope === scope) {
                         list.splice(i, 1);
                         break;
@@ -147,10 +147,10 @@
          * @example
          *      this.dispatchEvent('change');
          *
-         *      // Example with sending data with the event:
+         *      // Example: Sending data with the event:
          *      this.dispatchEvent('change', {some: 'data'});
          *
-         *      // Example with an event object
+         *      // Example: With an event object
          *      // (event type, bubbling set to true, cancelable set to true and passing data) :
          *      var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
          *      this.dispatchEvent(event);
@@ -169,7 +169,7 @@
                 event.target = this;
                 event.currentTarget = this;
             }
-            // Get the list of event listener(s) by the associated type value.
+            // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
                 var i = list.length;
@@ -230,7 +230,7 @@
          * @example
          *      this.getEventListeners();
          *
-         *      // [ClassName] is listen for 'BaseEvent.change' event.
+         *      // [ClassName] is listening for the 'BaseEvent.change' event.
          */
         EventDispatcher.prototype.getEventListeners = function() {
             var str = '';

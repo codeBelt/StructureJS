@@ -253,7 +253,7 @@ class DOMElement extends DisplayObjectContainer
      *     ClassName.prototype.create = function () {
      *          _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
      *
-     *          var li = new DOMElement('li', {text: 'Robert is ok'});
+     *          var li = new DOMElement('li', {text: 'Robert is cool'});
      *          this.addChild(li);
      *     }
      *

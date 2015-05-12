@@ -1994,7 +1994,7 @@ module.exports = FooterView;
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
      *
      * @class DOMElement
-     * @param type [any=null] Either a jQuery object or template you want to use the as the view. Check out the examples below.
+     * @param type [any=null] Either a jQuery object or JavaScript template string reference you want to use as the view. Check out the examples below.
      * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
      * @extends DisplayObjectContainer
      * @module StructureJS
@@ -2008,15 +2008,15 @@ module.exports = FooterView;
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
-     *     // Example of using DOMElement with out extending it.
+     *     // Example: Using DOMElement without extending it.
      *     var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
      *     this.addChild(aLink);
      *
-     *     // Example of a view passing in a jQuery object.
+     *     // Example: A view passing in a jQuery object.
      *     var view = new CustomView($('.selector'));
      *     this.addChild(view);
      *
-     *     // Example of a view extending DOMElement when passing in a jQuery object.
+     *     // Example: A view extending DOMElement while passing in a jQuery object.
      *     var Extend = require('structurejs/util/Extend');
      *     var DOMElement = require('structurejs/display/DOMElement');
      *
@@ -2032,12 +2032,6 @@ module.exports = FooterView;
      *              _super.prototype.create.call(this);
      *
      *              // Create and add your child objects to this parent class.
-     *          };
-     *
-     *          ClassName.prototype.layout = function () {
-     *              // Layout or update the child objects in this parent class.
-     *
-     *              return this;
      *          };
      *
      *          ClassName.prototype.enable = function () {
@@ -2056,6 +2050,12 @@ module.exports = FooterView;
      *              return _super.prototype.disable.call(this);
      *          };
      *
+     *          ClassName.prototype.layout = function () {
+     *              // Layout or update the child objects in this parent class.
+     *
+     *              return this;
+     *          };
+     *
      *          ClassName.prototype.destroy = function () {
      *              // Destroy the child objects and references in this parent class to prevent memory leaks.
      *
@@ -2065,11 +2065,7 @@ module.exports = FooterView;
      *          return ClassName;
      *     })();
      *
-     *     // Example of a view extending DOMElement with template passed into create.
-     *     var view = new CustomView();
-     *     this.addChild(view);
-     *
-     *     // Example of a view extending DOMElement with template passed into create.
+     *     // Example: A view extending DOMElement with a JavaScript template reference passed in.
      *     var Extend = require('structurejs/util/Extend');
      *     var DOMElement = require('structurejs/display/DOMElement');
      *     var HomeTemplate = require('hbs!templates/home/homeTemplate');
@@ -2088,12 +2084,6 @@ module.exports = FooterView;
      *              // Create and add your child objects to this parent class.
      *          };
      *
-     *          ClassName.prototype.layout = function () {
-     *              // Layout or update the child objects in this parent class.
-     *
-     *              return this;
-     *          };
-     *
      *          ClassName.prototype.enable = function () {
      *              if (this.isEnabled === true) { return this; }
      *
@@ -2110,8 +2100,14 @@ module.exports = FooterView;
      *              return _super.prototype.disable.call(this);
      *          };
      *
+     *          ClassName.prototype.layout = function () {
+     *              // Layout or update the child objects in this parent class.
+     *
+     *              return this;
+     *          };
+     *
      *          ClassName.prototype.destroy = function () {
-     *              // Destroy the child objects and references in this parent class to prevent memory leaks.
+     *              // Destroy the child objects and references in this parent class to prepare for garbage collection.
      *
      *              _super.prototype.destroy.call(this);
      *          };
@@ -2128,7 +2124,9 @@ module.exports = FooterView;
             if (params === void 0) { params = null; }
             _super.call(this);
             /**
-             * TODO: YUIDoc_comment
+             * Tracks number of times an element's width has been checked
+             * in order to determine if the element has been added
+             * to the DOM.
              *
              * @property checkCount
              * @type {number}
@@ -2136,7 +2134,7 @@ module.exports = FooterView;
              */
             this.checkCount = 0;
             /**
-             * A cached of the DOM Element.
+             * A cached reference to the DOM Element
              *
              * @property element
              * @type {HTMLElement}
@@ -2145,7 +2143,7 @@ module.exports = FooterView;
              */
             this.element = null;
             /**
-             * A cached jQuery object for the view's element.
+             * A cached reference to the jQuery DOM element
              *
              * @property $element
              * @type {JQuery}
@@ -2155,7 +2153,7 @@ module.exports = FooterView;
             this.$element = null;
             /**
              * If a jQuery object was passed into the constructor this will be set as true and
-             * this class will not try add the view to the DOM because it should already exists.
+             * this class will not try to add the view to the DOM since it already exists.
              *
              * @property _isReference
              * @type {boolean}
@@ -2195,7 +2193,7 @@ module.exports = FooterView;
          * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
          * their overridden methods.
          *
-         * This method gets called only once when the child view is added to another view. If the child view is removed
+         * This method gets called once when the child view is added to another view. If the child view is removed
          * and added to another view the create method will not be called again.
          *
          * @method create
@@ -2213,7 +2211,7 @@ module.exports = FooterView;
          *          this.addChild(this._childInstance);
          *     }
          *
-         *     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
+         *     // EXAMPLE 2: But lets say you wanted the view to be a ul element:
          *     ClassName.prototype.create = function () {
          *          _super.prototype.create.call(this, 'ul');
          *     }
@@ -2229,7 +2227,7 @@ module.exports = FooterView;
          *     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below
          *     // inline Handlebar template in your html file.
          *     <script id="todoTemplate" type="text/template">
-         *          <div id="htmlTemplatel" class="js-todo">
+         *          <div id="htmlTemplate" class="js-todo">
          *              <div id="input-wrapper">
          *                  <input type="text" class="list-input" placeholder="{{ data.text }}">
          *                  <input type="button" class="list-item-submit" value="Add">
@@ -2244,11 +2242,19 @@ module.exports = FooterView;
          *
          *     }
          *
-         *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.
+         *     // EXAMPLE 4: Let's say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.
          *     var HomeTemplate = require('hbs!templates/HomeTemplate');
          *
          *     ClassName.prototype.create = function () {
          *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
+         *
+         *     }
+         *
+         *     // EXAMPLE 5: Or maybe you're using grunt-contrib-handlebars, or similar, to precompile hbs templates
+         *     require('templates'); // templates.js
+         *
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, 'templates/HomeTemplate', {data: "some data"});
          *
          *     }
          */
@@ -2311,11 +2317,13 @@ module.exports = FooterView;
          * @private
          */
         DOMElement.prototype.addClientSideId = function(child) {
-            // TODO: Calling the getChild method there is a chance that multiple DOMElement have reference to the same DOM HTML element causing the cid to be over written with a new cid. Probably should handle that.
+            /* TODO: Calling the getChild method there is a chance that multiple DOMElement's have a reference to the same HTMLElement
+             * in the DOM causing the cid to be overwritten with a new cid. Probably should handle that.
+             */
             child.$element.attr('data-cid', child.cid);
         };
         /**
-         * Gets called when the child object is added to the DOM.
+         * Called when the child object is added to the DOM.
          * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
          *
          * @method onDomAdded
@@ -2358,7 +2366,7 @@ module.exports = FooterView;
                 }
                 // Adds the child at a specific index but also will remove the child from another parent object if one exists.
                 _super.prototype.addChildAt.call(this, child, index);
-                // Adds the child before the a child already in the DOM.
+                // Adds the child before any child already added in the DOM.
                 jQuery(children.get(index)).before(child.$element);
                 this.onAddedToDom(child);
             }
@@ -2394,7 +2402,7 @@ module.exports = FooterView;
             if (jQueryElement.length === 0) {
                 throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
             }
-            // Check to see if there the element already has a cid value and is a child of this parent object.
+            // Check to see if the element has a cid value and is a child of this parent object.
             var cid = jQueryElement.data('cid');
             var domElement = this.getChildByCid(cid);
             // Creates a DOMElement from the jQueryElement.
@@ -2415,9 +2423,9 @@ module.exports = FooterView;
          * Gets all the HTML elements children of this object.
          *
          * @method getChildren
-         * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children this parent element.
+         * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.
          * @returns {Array} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
-         * If the 'data-cid' property exists is on an HTML element a DOMElement will not be create for that element because it will be assumed it already exists as a DOMElement.
+         * If the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
          * @public
          */
         DOMElement.prototype.getChildren = function(selector) {
@@ -2429,7 +2437,7 @@ module.exports = FooterView;
             var listLength = $list.length;
             for (var i = 0; i < listLength; i++) {
                 $child = jQuery($list[i]);
-                // If the jQuery element already has cid data property then must be an existing DisplayObjectContainer (DOMElement) in the children array.
+                // If the jQuery element already has cid data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
                 if (!$child.data('cid')) {
                     domElement = new DOMElement();
                     domElement.$element = $child;
@@ -2445,8 +2453,8 @@ module.exports = FooterView;
         };
         /**
          * Removes the specified child object instance from the child list of the parent object instance.
-         * The parent property of the removed child is set to null , and the object is garbage collected if no other references
-         * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
+         * The parent property of the removed child is set to null and the object is garbage collected if there are no other references
+         * to the child. The index positions of any objects above the child in the parent object are decreased by 1.
          *
          * @method removeChild
          * @param child {DOMElement} The DisplayObjectContainer instance to remove.
@@ -2457,7 +2465,7 @@ module.exports = FooterView;
          */
         DOMElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) { destroy = true; }
-            // If destroy was called before removeChild so id doesn't error.
+            // Checks if destroy was called before removeChild so it doesn't error.
             if (child.$element != null) {
                 child.$element.unbind();
                 child.$element.remove();
@@ -2480,7 +2488,7 @@ module.exports = FooterView;
         };
         /**
          * Removes all child object instances from the child list of the parent object instance.
-         * The parent property of the removed children is set to null , and the objects are garbage collected if no other
+         * The parent property of the removed children is set to null and the objects are garbage collected if no other
          * references to the children exist.
          *
          * @method removeChildren
@@ -2499,7 +2507,7 @@ module.exports = FooterView;
          * @overridden DisplayObjectContainer.destroy
          */
         DOMElement.prototype.destroy = function() {
-            // If the addChild method is never called before the destroyed the $element will be null and cause an TypeError.
+            // If the addChild method is never called before the $element is detroyed then it will be null and cause an TypeError.
             if (this.$element != null) {
                 this.$element.unbind();
                 this.$element.remove();
@@ -2510,7 +2518,7 @@ module.exports = FooterView;
          * A way to instantiate view classes by found html selectors.
          *
          * Example: It will find all children elements of the {{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property with the 'js-shareEmail' selector.
-         * If any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.
+         * If any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.
          *
          * @method createComponents
          * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
@@ -3049,7 +3057,7 @@ module.exports = FooterView;
     'use strict';
 
     /**
-     * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main or root class.
+     * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
      *
      * @class Stage
      * @extends DOMElement
@@ -3061,7 +3069,7 @@ module.exports = FooterView;
      * @requires DOMElement
      * @requires jQuery
      * @example
-     *     // This example illustrates how to setup your main or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
+     *     // This example illustrates how to setup your main application or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
      *     define(function (require, exports, module) {
      *         'use strict';
      *
@@ -3105,7 +3113,7 @@ module.exports = FooterView;
      *             }
      *
      *             MainClass.prototype.destroy = function () {
-     *                 // Destroy the child objects and references in this parent class to prevent memory leaks.
+     *                 // Destroy the child objects and references in this parent class to prepare for garbage collection.
      *
      *                 _super.prototype.destroy.call(this);
      *             }
@@ -3117,7 +3125,7 @@ module.exports = FooterView;
      *     });
      *
      * <b>Instantiation Example</b><br>
-     * This example illustrates how to instantiation your main or root class.
+     * This example illustrates how to instantiate your main application or root class.
      *
      *      var app = new MainClass();
      *      app.appendTo('body');
@@ -3131,10 +3139,10 @@ module.exports = FooterView;
             _super.call(this);
         }
         /**
-         * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
+         * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
          *
          * @method appendTo
-         * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+         * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
          * @param [enabled=true] {boolean} Sets the enabled state of the object.
          * @chainable
          */
@@ -3635,8 +3643,8 @@ module.exports = FooterView;
     'use strict';
 
     /**
-     * The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
-     * The EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
+     * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
+     * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
      *
      * @class EventDispatcher
      * @extends ObjectManager
@@ -3671,9 +3679,9 @@ module.exports = FooterView;
              */
             this._listeners = null;
             /**
-             * Indicates the object that contains child object. Use the parent property
+             * Indicates the object that contains a child object. Uses the parent property
              * to specify a relative path to display objects that are above the current display object in the display
-             * list hierarchy. Helps facilitates event bubbling.
+             * list hierarchy and helps facilitate event bubbling.
              *
              * @property parent
              * @type {any}
@@ -3683,7 +3691,7 @@ module.exports = FooterView;
             this._listeners = [];
         }
         /**
-         * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.
+         * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
          *
          * @method addEventListener
          * @param type {String} The type of event.
@@ -3702,10 +3710,10 @@ module.exports = FooterView;
          */
         EventDispatcher.prototype.addEventListener = function(type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
-            // Get the list of event listener(s) by the associated type value that is passed in.
+            // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list == null) {
-                // If a list of event listener(s) do not exist for the type value passed in then create a new empty array.
+                // If a list of event listeners do not exist for the type value passed in then create a new empty array.
                 this._listeners[type] = list = [];
             }
             var index = 0;
@@ -3714,7 +3722,7 @@ module.exports = FooterView;
             while (--i > -1) {
                 listener = list[i];
                 if (listener.callback === callback && listener.scope === scope) {
-                    // If same callback and scope is found then remove it. Then add the current one below.
+                    // If the same callback and scope are found then remove it and add the current one below.
                     list.splice(i, 1);
                 } else if (index === 0 && listener.priority < priority) {
                     index = i + 1;
@@ -3731,22 +3739,22 @@ module.exports = FooterView;
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
          * @param scope {any} The scope of the listener object to be removed.
-         * @hide This was added because it was need for the {{#crossLink "EventBroker"}}{{/crossLink}} class. To keep things consistent this parameter is required.
+         * @hide This was added because it was needed for the {{#crossLink "EventBroker"}}{{/crossLink}} class. To keep things consistent this parameter is required.
          * @public
          * @chainable
          * @example
-         *      this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *      this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          *
-         *      ClassName.prototype.handlerMethod = function (event) {
-         *      }
+         *      ClassName.prototype._handlerMethod = function (event) {
+         *      };
          */
         EventDispatcher.prototype.removeEventListener = function(type, callback, scope) {
-            // Get the list of event listener(s) by the associated type value that is passed in.
+            // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list !== void 0) {
                 var i = list.length;
                 while (--i > -1) {
-                    // If the callback and the scope are the same then remove the event listener.
+                    // If the callback and scope are the same then remove the event listener.
                     if (list[i].callback === callback && list[i].scope === scope) {
                         list.splice(i, 1);
                         break;
@@ -3766,10 +3774,10 @@ module.exports = FooterView;
          * @example
          *      this.dispatchEvent('change');
          *
-         *      // Example with sending data with the event:
+         *      // Example: Sending data with the event:
          *      this.dispatchEvent('change', {some: 'data'});
          *
-         *      // Example with an event object
+         *      // Example: With an event object
          *      // (event type, bubbling set to true, cancelable set to true and passing data) :
          *      var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
          *      this.dispatchEvent(event);
@@ -3788,7 +3796,7 @@ module.exports = FooterView;
                 event.target = this;
                 event.currentTarget = this;
             }
-            // Get the list of event listener(s) by the associated type value.
+            // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
                 var i = list.length;
@@ -3849,7 +3857,7 @@ module.exports = FooterView;
          * @example
          *      this.getEventListeners();
          *
-         *      // [ClassName] is listen for 'BaseEvent.change' event.
+         *      // [ClassName] is listening for the 'BaseEvent.change' event.
          */
         EventDispatcher.prototype.getEventListeners = function() {
             var str = '';

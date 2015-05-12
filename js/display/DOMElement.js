@@ -19,7 +19,7 @@
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
      *
      * @class DOMElement
-     * @param type [any=null] Either a jQuery object or template you want to use the as the view. Check out the examples below.
+     * @param type [any=null] Either a jQuery object or JavaScript template string reference you want to use as the view. Check out the examples below.
      * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
      * @extends DisplayObjectContainer
      * @module StructureJS
@@ -33,15 +33,15 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
-     *     // Example of using DOMElement with out extending it.
+     *     // Example: Using DOMElement without extending it.
      *     var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});
      *     this.addChild(aLink);
      *
-     *     // Example of a view passing in a jQuery object.
+     *     // Example: A view passing in a jQuery object.
      *     var view = new CustomView($('.selector'));
      *     this.addChild(view);
      *
-     *     // Example of a view extending DOMElement when passing in a jQuery object.
+     *     // Example: A view extending DOMElement while passing in a jQuery object.
      *     var Extend = require('structurejs/util/Extend');
      *     var DOMElement = require('structurejs/display/DOMElement');
      *
@@ -57,12 +57,6 @@
      *              _super.prototype.create.call(this);
      *
      *              // Create and add your child objects to this parent class.
-     *          };
-     *
-     *          ClassName.prototype.layout = function () {
-     *              // Layout or update the child objects in this parent class.
-     *
-     *              return this;
      *          };
      *
      *          ClassName.prototype.enable = function () {
@@ -81,6 +75,12 @@
      *              return _super.prototype.disable.call(this);
      *          };
      *
+     *          ClassName.prototype.layout = function () {
+     *              // Layout or update the child objects in this parent class.
+     *
+     *              return this;
+     *          };
+     *
      *          ClassName.prototype.destroy = function () {
      *              // Destroy the child objects and references in this parent class to prevent memory leaks.
      *
@@ -90,11 +90,7 @@
      *          return ClassName;
      *     })();
      *
-     *     // Example of a view extending DOMElement with template passed into create.
-     *     var view = new CustomView();
-     *     this.addChild(view);
-     *
-     *     // Example of a view extending DOMElement with template passed into create.
+     *     // Example: A view extending DOMElement with a JavaScript template reference passed in.
      *     var Extend = require('structurejs/util/Extend');
      *     var DOMElement = require('structurejs/display/DOMElement');
      *     var HomeTemplate = require('hbs!templates/home/homeTemplate');
@@ -113,12 +109,6 @@
      *              // Create and add your child objects to this parent class.
      *          };
      *
-     *          ClassName.prototype.layout = function () {
-     *              // Layout or update the child objects in this parent class.
-     *
-     *              return this;
-     *          };
-     *
      *          ClassName.prototype.enable = function () {
      *              if (this.isEnabled === true) { return this; }
      *
@@ -135,8 +125,14 @@
      *              return _super.prototype.disable.call(this);
      *          };
      *
+     *          ClassName.prototype.layout = function () {
+     *              // Layout or update the child objects in this parent class.
+     *
+     *              return this;
+     *          };
+     *
      *          ClassName.prototype.destroy = function () {
-     *              // Destroy the child objects and references in this parent class to prevent memory leaks.
+     *              // Destroy the child objects and references in this parent class to prepare for garbage collection.
      *
      *              _super.prototype.destroy.call(this);
      *          };
@@ -153,7 +149,9 @@
             if (params === void 0) { params = null; }
             _super.call(this);
             /**
-             * TODO: YUIDoc_comment
+             * Tracks number of times an element's width has been checked
+             * in order to determine if the element has been added
+             * to the DOM.
              *
              * @property checkCount
              * @type {number}
@@ -161,7 +159,7 @@
              */
             this.checkCount = 0;
             /**
-             * A cached of the DOM Element.
+             * A cached reference to the DOM Element
              *
              * @property element
              * @type {HTMLElement}
@@ -170,7 +168,7 @@
              */
             this.element = null;
             /**
-             * A cached jQuery object for the view's element.
+             * A cached reference to the jQuery DOM element
              *
              * @property $element
              * @type {JQuery}
@@ -180,7 +178,7 @@
             this.$element = null;
             /**
              * If a jQuery object was passed into the constructor this will be set as true and
-             * this class will not try add the view to the DOM because it should already exists.
+             * this class will not try to add the view to the DOM since it already exists.
              *
              * @property _isReference
              * @type {boolean}
@@ -220,7 +218,7 @@
          * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
          * their overridden methods.
          *
-         * This method gets called only once when the child view is added to another view. If the child view is removed
+         * This method gets called once when the child view is added to another view. If the child view is removed
          * and added to another view the create method will not be called again.
          *
          * @method create
@@ -238,7 +236,7 @@
          *          this.addChild(this._childInstance);
          *     }
          *
-         *     // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
+         *     // EXAMPLE 2: But lets say you wanted the view to be a ul element:
          *     ClassName.prototype.create = function () {
          *          _super.prototype.create.call(this, 'ul');
          *     }
@@ -254,7 +252,7 @@
          *     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below
          *     // inline Handlebar template in your html file.
          *     <script id="todoTemplate" type="text/template">
-         *          <div id="htmlTemplatel" class="js-todo">
+         *          <div id="htmlTemplate" class="js-todo">
          *              <div id="input-wrapper">
          *                  <input type="text" class="list-input" placeholder="{{ data.text }}">
          *                  <input type="button" class="list-item-submit" value="Add">
@@ -269,11 +267,19 @@
          *
          *     }
          *
-         *     // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.
+         *     // EXAMPLE 4: Let's say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.
          *     var HomeTemplate = require('hbs!templates/HomeTemplate');
          *
          *     ClassName.prototype.create = function () {
          *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
+         *
+         *     }
+         *
+         *     // EXAMPLE 5: Or maybe you're using grunt-contrib-handlebars, or similar, to precompile hbs templates
+         *     require('templates'); // templates.js
+         *
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, 'templates/HomeTemplate', {data: "some data"});
          *
          *     }
          */
@@ -336,11 +342,13 @@
          * @private
          */
         DOMElement.prototype.addClientSideId = function(child) {
-            // TODO: Calling the getChild method there is a chance that multiple DOMElement have reference to the same DOM HTML element causing the cid to be over written with a new cid. Probably should handle that.
+            /* TODO: Calling the getChild method there is a chance that multiple DOMElement's have a reference to the same HTMLElement
+             * in the DOM causing the cid to be overwritten with a new cid. Probably should handle that.
+             */
             child.$element.attr('data-cid', child.cid);
         };
         /**
-         * Gets called when the child object is added to the DOM.
+         * Called when the child object is added to the DOM.
          * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
          *
          * @method onDomAdded
@@ -383,7 +391,7 @@
                 }
                 // Adds the child at a specific index but also will remove the child from another parent object if one exists.
                 _super.prototype.addChildAt.call(this, child, index);
-                // Adds the child before the a child already in the DOM.
+                // Adds the child before any child already added in the DOM.
                 jQuery(children.get(index)).before(child.$element);
                 this.onAddedToDom(child);
             }
@@ -419,7 +427,7 @@
             if (jQueryElement.length === 0) {
                 throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
             }
-            // Check to see if there the element already has a cid value and is a child of this parent object.
+            // Check to see if the element has a cid value and is a child of this parent object.
             var cid = jQueryElement.data('cid');
             var domElement = this.getChildByCid(cid);
             // Creates a DOMElement from the jQueryElement.
@@ -440,9 +448,9 @@
          * Gets all the HTML elements children of this object.
          *
          * @method getChildren
-         * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children this parent element.
+         * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.
          * @returns {Array} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
-         * If the 'data-cid' property exists is on an HTML element a DOMElement will not be create for that element because it will be assumed it already exists as a DOMElement.
+         * If the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
          * @public
          */
         DOMElement.prototype.getChildren = function(selector) {
@@ -454,7 +462,7 @@
             var listLength = $list.length;
             for (var i = 0; i < listLength; i++) {
                 $child = jQuery($list[i]);
-                // If the jQuery element already has cid data property then must be an existing DisplayObjectContainer (DOMElement) in the children array.
+                // If the jQuery element already has cid data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
                 if (!$child.data('cid')) {
                     domElement = new DOMElement();
                     domElement.$element = $child;
@@ -470,8 +478,8 @@
         };
         /**
          * Removes the specified child object instance from the child list of the parent object instance.
-         * The parent property of the removed child is set to null , and the object is garbage collected if no other references
-         * to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.
+         * The parent property of the removed child is set to null and the object is garbage collected if there are no other references
+         * to the child. The index positions of any objects above the child in the parent object are decreased by 1.
          *
          * @method removeChild
          * @param child {DOMElement} The DisplayObjectContainer instance to remove.
@@ -482,7 +490,7 @@
          */
         DOMElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) { destroy = true; }
-            // If destroy was called before removeChild so id doesn't error.
+            // Checks if destroy was called before removeChild so it doesn't error.
             if (child.$element != null) {
                 child.$element.unbind();
                 child.$element.remove();
@@ -505,7 +513,7 @@
         };
         /**
          * Removes all child object instances from the child list of the parent object instance.
-         * The parent property of the removed children is set to null , and the objects are garbage collected if no other
+         * The parent property of the removed children is set to null and the objects are garbage collected if no other
          * references to the children exist.
          *
          * @method removeChildren
@@ -524,7 +532,7 @@
          * @overridden DisplayObjectContainer.destroy
          */
         DOMElement.prototype.destroy = function() {
-            // If the addChild method is never called before the destroyed the $element will be null and cause an TypeError.
+            // If the addChild method is never called before the $element is detroyed then it will be null and cause an TypeError.
             if (this.$element != null) {
                 this.$element.unbind();
                 this.$element.remove();
@@ -535,7 +543,7 @@
          * A way to instantiate view classes by found html selectors.
          *
          * Example: It will find all children elements of the {{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property with the 'js-shareEmail' selector.
-         * If any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.
+         * If any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.
          *
          * @method createComponents
          * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
