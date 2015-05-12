@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -150,7 +150,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_event_EventBroker.js.html#l18"><code>src&#x2F;event&#x2F;EventBroker.js:18</code></a>
+            Defined in: <a href="../files/js_event_EventBroker.js.html#l18"><code>js&#x2F;event&#x2F;EventBroker.js:18</code></a>
         </div>
     
 
@@ -323,7 +323,7 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l135"><code>src&#x2F;event&#x2F;EventBroker.js:135</code></a>
+        <a href="../files/js_event_EventBroker.js.html#l135"><code>js&#x2F;event&#x2F;EventBroker.js:135</code></a>
         
         </p>
 
@@ -431,7 +431,7 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l34"><code>src&#x2F;event&#x2F;EventBroker.js:34</code></a>
+        <a href="../files/js_event_EventBroker.js.html#l34"><code>js&#x2F;event&#x2F;EventBroker.js:34</code></a>
         
         </p>
 
@@ -530,14 +530,14 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>EventBroker.addEventListener(&#39;change&#39;, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code>EventBroker.addEventListener(&#39;change&#39;, this._handlerMethod, this);
 // Example of using a constant event type.
-EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
 // The event passed to the method will always be a BaseEvent object.
-ClassName.prototype.handlerMethod = function (event) {
+ClassName.prototype._handlerMethod = function (event) {
      console.log(event.data);
-}</code></pre>
+};</code></pre>
 
                 </div>
             </div>
@@ -601,7 +601,7 @@ ClassName.prototype.handlerMethod = function (event) {
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l75"><code>src&#x2F;event&#x2F;EventBroker.js:75</code></a>
+        <a href="../files/js_event_EventBroker.js.html#l75"><code>js&#x2F;event&#x2F;EventBroker.js:75</code></a>
         
         </p>
 
@@ -670,10 +670,10 @@ ClassName.prototype.handlerMethod = function (event) {
                 <div class="example-content">
                     <pre class="code prettyprint"><code> EventBroker.dispatchEvent(&#39;change&#39;);
 
- // Example with sending data with the event.
+ // Example: Sending data with the event.
  EventBroker.dispatchEvent(&#39;change&#39;, {some: &#39;data&#39;});
 
- // Example of sending a BaseEvent or custom event object.
+ // Example: Sending a BaseEvent or custom event object.
  var event = new BaseEvent(BaseEvent.CHANGE);
  event.data = {some: &#39;data&#39;};
  EventBroker.dispatchEvent(event);</code></pre>
@@ -728,7 +728,7 @@ ClassName.prototype.handlerMethod = function (event) {
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l120"><code>src&#x2F;event&#x2F;EventBroker.js:120</code></a>
+        <a href="../files/js_event_EventBroker.js.html#l120"><code>js&#x2F;event&#x2F;EventBroker.js:120</code></a>
         
         </p>
 
@@ -842,7 +842,7 @@ ClassName.prototype.handlerMethod = function (event) {
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l104"><code>src&#x2F;event&#x2F;EventBroker.js:104</code></a>
+        <a href="../files/js_event_EventBroker.js.html#l104"><code>js&#x2F;event&#x2F;EventBroker.js:104</code></a>
         
         </p>
 
@@ -936,7 +936,7 @@ ClassName.prototype.handlerMethod = function (event) {
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> EventBroker.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
+                    <pre class="code prettyprint"><code> EventBroker.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
 
                 </div>
             </div>
@@ -1006,7 +1006,7 @@ ClassName.prototype.handlerMethod = function (event) {
             
         
         
-        <a href="../files/src_event_EventBroker.js.html#l58"><code>src&#x2F;event&#x2F;EventBroker.js:58</code></a>
+        <a href="../files/js_event_EventBroker.js.html#l58"><code>js&#x2F;event&#x2F;EventBroker.js:58</code></a>
         
         </p>
 
@@ -1088,9 +1088,9 @@ ClassName.prototype.handlerMethod = function (event) {
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>EventBroker.removeEventListener(&#39;change&#39;, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code>EventBroker.removeEventListener(&#39;change&#39;, this._handlerMethod, this);
 
-EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
+EventBroker.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
 
                 </div>
             </div>

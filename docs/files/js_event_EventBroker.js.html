@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>js/event/EventBroker.js - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                
+                
+                    <p class="description">Code and documentation for the StructureJS library.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: js/event/EventBroker.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/**
+ * UMD (Universal Module Definition) wrapper.
+ */
+(function(root, factory) {
+    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&#x27;./EventDispatcher&#x27;, &#x27;./BaseEvent&#x27;], factory);
+    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
+        module.exports = factory(require(&#x27;./EventDispatcher&#x27;), require(&#x27;./BaseEvent&#x27;));
+    } else {
+        /*jshint sub:true */
+        root.StructureJS = root.StructureJS || {};
+        root.StructureJS.EventBroker = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
+    }
+}(this, function(EventDispatcher, BaseEvent) {
+
+    &#x27;use strict&#x27;;
+
+    /**
+     * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
+     * Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.
+     *
+     * @class EventBroker
+     * @module StructureJS
+     * @submodule event
+     * @requires EventDispatcher
+     * @requires BaseEvent
+     * @static
+     * @author Robert S. (www.codeBelt.com)
+     */
+    var EventBroker = (function() {
+        function EventBroker() {
+            throw new Error(&#x27;[EventBroker] Do not instantiate the EventBroker class because it is a static class.&#x27;);
+        }
+        /**
+         * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
+         *
+         * @method addEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} object or custom event that extends the {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} class.
+         * @param scope {any} The scope of the callback function.
+         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+         * @static
+         * @public
+         * @example
+         *     EventBroker.addEventListener(&#x27;change&#x27;, this._handlerMethod, this);
+         *     // Example of using a constant event type.
+         *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
+         *
+         *     // The event passed to the method will always be a BaseEvent object.
+         *     ClassName.prototype._handlerMethod = function (event) {
+         *          console.log(event.data);
+         *     };
+         */
+        EventBroker.addEventListener = function(type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
+            EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
+        };
+        /**
+         * Removes a specified listener from the EventBroker object.
+         *
+         * @method removeEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The callback function to be removed.
+         * @param scope {any} The scope of the callback function to be removed.
+         * @static
+         * @public
+         * @example
+         *     EventBroker.removeEventListener(&#x27;change&#x27;, this._handlerMethod, this);
+         *
+         *     EventBroker.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
+         */
+        EventBroker.removeEventListener = function(type, callback, scope) {
+            EventBroker._eventDispatcher.removeEventListener(type, callback, scope);
+        };
+        /**
+         * Dispatches an event within the EventBroker object.
+         *
+         * @method dispatchEvent
+         * @param event {string|BaseEvent} The Event object or event type string you want to dispatch.
+         * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}}.
+         * @static
+         * @public
+         * @example
+         *      EventBroker.dispatchEvent(&#x27;change&#x27;);
+         *
+         *      // Example: Sending data with the event.
+         *      EventBroker.dispatchEvent(&#x27;change&#x27;, {some: &#x27;data&#x27;});
+         *
+         *      // Example: Sending a BaseEvent or custom event object.
+         *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      event.data = {some: &#x27;data&#x27;};
+         *      EventBroker.dispatchEvent(event);
+         */
+        EventBroker.dispatchEvent = function(type, data) {
+            if (data === void 0) { data = null; }
+            var event = type;
+            if (typeof event === &#x27;string&#x27;) {
+                event = new BaseEvent(type, false, false, data);
+            }
+            event.target = EventBroker;
+            event.currentTarget = EventBroker;
+            EventBroker._eventDispatcher.dispatchEvent(event);
+        };
+        /**
+         * Check if EventBroker has a specific event listener already added.
+         *
+         * @method hasEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener method to call.
+         * @param scope {any} The scope of the listener object.
+         * @return {boolean}
+         * @static
+         * @public
+         * @example
+         *      EventBroker.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
+         */
+        EventBroker.hasEventListener = function(type, callback, scope) {
+            return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
+        };
+        /**
+         * Generates a string output of event listeners for a given object.
+         *
+         * @method getEventListeners
+         * @return {string}
+         * @static
+         * @public
+         * @example
+         *      EventBroker.getEventListeners();
+         *
+         *      // [ClassName] is listen for &#x27;BaseEvent.change&#x27; event.
+         */
+        EventBroker.getEventListeners = function() {
+            return EventBroker._eventDispatcher.getEventListeners();
+        };
+        /**
+         * A reference to the EventDispatcher object.
+         *
+         * @property _eventDispatcher
+         * @type {EventDispatcher}
+         * @private
+         * @static
+         */
+        EventBroker._eventDispatcher = new EventDispatcher();
+        return EventBroker;
+    })();
+
+    return EventBroker;
+}));
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

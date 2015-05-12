@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -154,7 +154,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_model_Collection.js.html#l18"><code>src&#x2F;model&#x2F;Collection.js:18</code></a>
+            Defined in: <a href="../files/js_model_Collection.js.html#l18"><code>js&#x2F;model&#x2F;Collection.js:18</code></a>
         </div>
     
 
@@ -508,7 +508,7 @@
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l46"><code>src&#x2F;event&#x2F;EventDispatcher.js:46</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l46"><code>js&#x2F;event&#x2F;EventDispatcher.js:46</code></a>
         
         </p>
 
@@ -560,7 +560,7 @@
             
         
         
-        <a href="../files/src_model_Collection.js.html#l57"><code>src&#x2F;model&#x2F;Collection.js:57</code></a>
+        <a href="../files/js_model_Collection.js.html#l67"><code>js&#x2F;model&#x2F;Collection.js:67</code></a>
         
         </p>
 
@@ -609,7 +609,7 @@
             
         
         
-        <a href="../files/src_BaseObject.js.html#l30"><code>src&#x2F;BaseObject.js:30</code></a>
+        <a href="../files/js_BaseObject.js.html#l30"><code>js&#x2F;BaseObject.js:30</code></a>
         
         </p>
 
@@ -660,7 +660,7 @@
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l36"><code>src&#x2F;ObjectManager.js:36</code></a>
+        <a href="../files/js_ObjectManager.js.html#l36"><code>js&#x2F;ObjectManager.js:36</code></a>
         
         </p>
 
@@ -714,7 +714,7 @@
             
         
         
-        <a href="../files/src_model_Collection.js.html#l47"><code>src&#x2F;model&#x2F;Collection.js:47</code></a>
+        <a href="../files/js_model_Collection.js.html#l57"><code>js&#x2F;model&#x2F;Collection.js:57</code></a>
         
         </p>
 
@@ -766,7 +766,7 @@
             
         
         
-        <a href="../files/src_model_Collection.js.html#l39"><code>src&#x2F;model&#x2F;Collection.js:39</code></a>
+        <a href="../files/js_model_Collection.js.html#l49"><code>js&#x2F;model&#x2F;Collection.js:49</code></a>
         
         </p>
 
@@ -815,7 +815,7 @@
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l54"><code>src&#x2F;event&#x2F;EventDispatcher.js:54</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l54"><code>js&#x2F;event&#x2F;EventDispatcher.js:54</code></a>
         
         </p>
 
@@ -826,9 +826,9 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>Indicates the object that contains child object. Use the parent property
+            <p>Indicates the object that contains a child object. Uses the parent property
 to specify a relative path to display objects that are above the current display object in the display
-list hierarchy. Helps facilitates event bubbling.</p>
+list hierarchy and helps facilitate event bubbling.</p>
 
         </div>
 
@@ -899,7 +899,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l18"><code>src&#x2F;model&#x2F;Collection.js:18</code></a>
+        <a href="../files/js_model_Collection.js.html#l18"><code>js&#x2F;model&#x2F;Collection.js:18</code></a>
         
         </p>
 
@@ -943,6 +943,23 @@ list hierarchy. Helps facilitates event bubbling.</p>
 
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>var data = [{ make: &#39;Tesla&#39;, model: &#39;Model S&#39;, year: 2014 }, { make: &#39;Tesla&#39;, model: &#39;Model X&#39;, year: 2016 }];
+
+// Example of adding data to a collection
+var collection = new Collection();
+collection.add(data);
+
+// Example of adding data to a collection that will create a CarVO model for each data object passed in.
+var collection = new Collection(CarVO);
+collection.add(data);</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1006,7 +1023,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l258"><code>src&#x2F;model&#x2F;Collection.js:258</code></a>
+        <a href="../files/js_model_Collection.js.html#l268"><code>js&#x2F;model&#x2F;Collection.js:268</code></a>
         
         </p>
 
@@ -1120,7 +1137,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l464"><code>src&#x2F;model&#x2F;Collection.js:464</code></a>
+        <a href="../files/js_model_Collection.js.html#l474"><code>js&#x2F;model&#x2F;Collection.js:474</code></a>
         
         </p>
 
@@ -1235,7 +1252,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l215"><code>src&#x2F;model&#x2F;Collection.js:215</code></a>
+        <a href="../files/js_model_Collection.js.html#l225"><code>js&#x2F;model&#x2F;Collection.js:225</code></a>
         
         </p>
 
@@ -1353,7 +1370,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l67"><code>src&#x2F;model&#x2F;Collection.js:67</code></a>
+        <a href="../files/js_model_Collection.js.html#l77"><code>js&#x2F;model&#x2F;Collection.js:77</code></a>
         
         </p>
 
@@ -1494,7 +1511,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l66"><code>src&#x2F;event&#x2F;EventDispatcher.js:66</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l66"><code>js&#x2F;event&#x2F;EventDispatcher.js:66</code></a>
         
         </p>
 
@@ -1507,7 +1524,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
+            <p>Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.</p>
 
         </div>
 
@@ -1656,7 +1673,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l297"><code>src&#x2F;model&#x2F;Collection.js:297</code></a>
+        <a href="../files/js_model_Collection.js.html#l307"><code>js&#x2F;model&#x2F;Collection.js:307</code></a>
         
         </p>
 
@@ -1757,7 +1774,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l316"><code>src&#x2F;model&#x2F;Collection.js:316</code></a>
+        <a href="../files/js_model_Collection.js.html#l326"><code>js&#x2F;model&#x2F;Collection.js:326</code></a>
         
         </p>
 
@@ -1842,7 +1859,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
             
         
         
-        <a href="../files/src_BaseObject.js.html#l55"><code>src&#x2F;BaseObject.js:55</code></a>
+        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
         
         </p>
 
@@ -1935,7 +1952,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l69"><code>src&#x2F;ObjectManager.js:69</code></a>
+        <a href="../files/js_ObjectManager.js.html#l69"><code>js&#x2F;ObjectManager.js:69</code></a>
         
         </p>
 
@@ -2029,7 +2046,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l139"><code>src&#x2F;event&#x2F;EventDispatcher.js:139</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l139"><code>js&#x2F;event&#x2F;EventDispatcher.js:139</code></a>
         
         </p>
 
@@ -2097,10 +2114,10 @@ on other objects before calling the super.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code> this.dispatchEvent(&#39;change&#39;);
 
- // Example with sending data with the event:
+ // Example: Sending data with the event:
  this.dispatchEvent(&#39;change&#39;, {some: &#39;data&#39;});
 
- // Example with an event object
+ // Example: With an event object
  // (event type, bubbling set to true, cancelable set to true and passing data) :
  var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
  this.dispatchEvent(event);
@@ -2151,7 +2168,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_ObjectManager.js.html#l46"><code>src&#x2F;ObjectManager.js:46</code></a>
+        <a href="../files/js_ObjectManager.js.html#l46"><code>js&#x2F;ObjectManager.js:46</code></a>
         
         </p>
 
@@ -2244,7 +2261,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l434"><code>src&#x2F;model&#x2F;Collection.js:434</code></a>
+        <a href="../files/js_model_Collection.js.html#l444"><code>js&#x2F;model&#x2F;Collection.js:444</code></a>
         
         </p>
 
@@ -2372,7 +2389,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l178"><code>src&#x2F;model&#x2F;Collection.js:178</code></a>
+        <a href="../files/js_model_Collection.js.html#l188"><code>js&#x2F;model&#x2F;Collection.js:188</code></a>
         
         </p>
 
@@ -2501,7 +2518,7 @@ When checking properties, this method performs a deep comparison between values 
             
         
         
-        <a href="../files/src_model_Collection.js.html#l363"><code>src&#x2F;model&#x2F;Collection.js:363</code></a>
+        <a href="../files/js_model_Collection.js.html#l373"><code>js&#x2F;model&#x2F;Collection.js:373</code></a>
         
         </p>
 
@@ -2610,7 +2627,7 @@ When checking properties, this method performs a deep comparison between values 
             
         
         
-        <a href="../files/src_model_Collection.js.html#l157"><code>src&#x2F;model&#x2F;Collection.js:157</code></a>
+        <a href="../files/js_model_Collection.js.html#l167"><code>js&#x2F;model&#x2F;Collection.js:167</code></a>
         
         </p>
 
@@ -2722,7 +2739,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l224"><code>src&#x2F;event&#x2F;EventDispatcher.js:224</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l224"><code>js&#x2F;event&#x2F;EventDispatcher.js:224</code></a>
         
         </p>
 
@@ -2762,7 +2779,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code> this.getEventListeners();
 
- // [ClassName] is listen for &#39;BaseEvent.change&#39; event.</code></pre>
+ // [ClassName] is listening for the &#39;BaseEvent.change&#39; event.</code></pre>
 
                 </div>
             </div>
@@ -2809,7 +2826,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_BaseObject.js.html#l43"><code>src&#x2F;BaseObject.js:43</code></a>
+        <a href="../files/js_BaseObject.js.html#l43"><code>js&#x2F;BaseObject.js:43</code></a>
         
         </p>
 
@@ -2909,7 +2926,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l131"><code>src&#x2F;model&#x2F;Collection.js:131</code></a>
+        <a href="../files/js_model_Collection.js.html#l141"><code>js&#x2F;model&#x2F;Collection.js:141</code></a>
         
         </p>
 
@@ -3040,7 +3057,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l199"><code>src&#x2F;event&#x2F;EventDispatcher.js:199</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l199"><code>js&#x2F;event&#x2F;EventDispatcher.js:199</code></a>
         
         </p>
 
@@ -3194,7 +3211,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l144"><code>src&#x2F;model&#x2F;Collection.js:144</code></a>
+        <a href="../files/js_model_Collection.js.html#l154"><code>js&#x2F;model&#x2F;Collection.js:154</code></a>
         
         </p>
 
@@ -3320,7 +3337,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l102"><code>src&#x2F;model&#x2F;Collection.js:102</code></a>
+        <a href="../files/js_model_Collection.js.html#l112"><code>js&#x2F;model&#x2F;Collection.js:112</code></a>
         
         </p>
 
@@ -3456,7 +3473,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_event_EventDispatcher.js.html#l108"><code>src&#x2F;event&#x2F;EventDispatcher.js:108</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l108"><code>js&#x2F;event&#x2F;EventDispatcher.js:108</code></a>
         
         </p>
 
@@ -3538,10 +3555,10 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
- ClassName.prototype.handlerMethod = function (event) {
- }</code></pre>
+ ClassName.prototype._handlerMethod = function (event) {
+ };</code></pre>
 
                 </div>
             </div>
@@ -3591,7 +3608,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l452"><code>src&#x2F;model&#x2F;Collection.js:452</code></a>
+        <a href="../files/js_model_Collection.js.html#l462"><code>js&#x2F;model&#x2F;Collection.js:462</code></a>
         
         </p>
 
@@ -3691,7 +3708,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l414"><code>src&#x2F;model&#x2F;Collection.js:414</code></a>
+        <a href="../files/js_model_Collection.js.html#l424"><code>js&#x2F;model&#x2F;Collection.js:424</code></a>
         
         </p>
 
@@ -3826,7 +3843,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l378"><code>src&#x2F;model&#x2F;Collection.js:378</code></a>
+        <a href="../files/js_model_Collection.js.html#l388"><code>js&#x2F;model&#x2F;Collection.js:388</code></a>
         
         </p>
 
@@ -3956,7 +3973,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l330"><code>src&#x2F;model&#x2F;Collection.js:330</code></a>
+        <a href="../files/js_model_Collection.js.html#l340"><code>js&#x2F;model&#x2F;Collection.js:340</code></a>
         
         </p>
 
@@ -4044,7 +4061,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/src_model_Collection.js.html#l351"><code>src&#x2F;model&#x2F;Collection.js:351</code></a>
+        <a href="../files/js_model_Collection.js.html#l361"><code>js&#x2F;model&#x2F;Collection.js:361</code></a>
         
         </p>
 
