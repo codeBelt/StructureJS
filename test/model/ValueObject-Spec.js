@@ -1,16 +1,13 @@
-define(function (require, exports, module) {
+var ValueObject = require('../../js/model/ValueObject');
 
-    var ValueObject = require('model/ValueObject');
+describe("ValueObject", function() {
 
-    describe("ValueObject", function() {
+    var vo;
 
-        var vo;
-
-        it("getQualifiedClassName", function() {
-            vo = new ValueObject();
-            expect(vo.getQualifiedClassName()).toEqual('ValueObject');
-        });
-
+    it("getQualifiedClassName", function() {
+        vo = new ValueObject();
+        expect(vo.getQualifiedClassName()).toEqual('ValueObject');
     });
+
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/

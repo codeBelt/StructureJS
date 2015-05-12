@@ -87,8 +87,8 @@
                  * @overridden DOMElement.destroy
                  */
                 ${1:Class}.prototype.destroy = function () {
-                    // Call destroy on any child objects that is needed.
-                    // This super method will also null out all properties automatically to prevent memory leaks.
+                    // Call destroy on any child objects.
+                    // This super method will also null out your properties for garbage collection.
 
                     _super.prototype.destroy.call(this);
                 };
@@ -216,8 +216,8 @@
                  * @overridden Stage.destroy
                  */
                 ${1:Class}.prototype.destroy = function () {
-                    // Call destroy on any child objects that is needed.
-                    // This super method will also null out all properties automatically to prevent memory leaks.
+                    // Call destroy on any child objects.
+                    // This super method will also null out your properties for garbage collection.
 
                     _super.prototype.destroy.call(this);
                 };

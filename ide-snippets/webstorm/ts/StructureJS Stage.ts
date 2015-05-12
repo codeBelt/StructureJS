@@ -55,8 +55,8 @@ class ${NAME} extends Stage {
      * @overridden Stage.destroy
      */
     public destroy():void {
-        // Call destroy on any child objects that is needed.
-        // This super method will also null out all properties automatically to prevent memory leaks.
+        // Call destroy on any child objects.
+        // This super method will also null out your properties for garbage collection.
 
         super.destroy();
     }
