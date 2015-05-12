@@ -12,7 +12,7 @@ module.exports = function(config)
 
         // list of files / patterns to load in the browser
         files: [
-            'tests/*.js'
+            'test/**/*.js'
         ],
 
 
@@ -21,12 +21,12 @@ module.exports = function(config)
         ],
 
         preprocessors: {
-            'tests/*.js': ['browserify']
+            'test/**/*.js': ['browserify']
         },
 
-//        // test results reporter to use
-//        // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-//        reporters: ['progress'],
+        // test results reporter to use
+        // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+        reporters: ['progress'],
 
 
         // web server port
