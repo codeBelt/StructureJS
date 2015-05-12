@@ -311,6 +311,9 @@ class DOMElement extends DisplayObjectContainer
 
         this.element = this.$element[0];
 
+        this.width = this.$element.width();
+        this.height = this.$element.height();
+
         return this;
     }
 
