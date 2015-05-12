@@ -1,0 +1,10 @@
+{
+  "name": "Grunt-Browserify-Example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "structurejs": "*",
+    "handlebars": "*"
+  },
+  "devDependencies": {}
+}
