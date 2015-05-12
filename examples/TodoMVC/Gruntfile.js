@@ -3,6 +3,8 @@
 
 module.exports = function(grunt) {
 
+    var remapify = require('remapify');
+
     // -- Plugins --------------------------------------------------------------
 
     // Intelligently autoloads `grunt-*` plugins from the package dependencies.
@@ -209,20 +211,30 @@ module.exports = function(grunt) {
         // -- Script Tasks -----------------------------------------------------
 
         browserify: {
-            options: {
-                debug: grunt.option('maps'),
-                transform: [
-                    'debowerify',
-                    'decomponentify',
-                    'deamdify',
-                    'deglobalify'
-                ],
-                shim: {
-                    
-                }
-            },
+            //options: {
+            //    debug: grunt.option('maps'),
+            //    transform: [
+            //        'debowerify',
+            //        'decomponentify',
+            //        'deamdify',
+            //        'deglobalify'
+            //    ],
+            //    shim: {
+            //
+            //    }
+            //},
             all: {
                 options: {
+                    preBundleCB: function(bundle) {
+                        // Creates a CommonJS module around the script(s) in the file.
+                        //bundle.require('./src/assets/scripts/templates.js');
+                        // Creates a alias for a library that is already CommonJS.
+                        bundle.plugin(remapify, [{
+                            cwd: './src/assets/vendor/structurejs/js',
+                            src: '**/*.js',
+                            expose: 'structurejs'
+                        }]);
+                    },
                     postBundleCB: function(err, src, next) {
                         next(err, grunt.config.process('<%= banner %>') + src);
                     }

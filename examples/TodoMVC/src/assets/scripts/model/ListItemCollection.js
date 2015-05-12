@@ -1,6 +1,6 @@
-var Extend = require('../../vendor/structurejs/src/util/Extend');
-var Collection = require('../../vendor/structurejs/src/model/Collection');
-var LocalStorageController = require('../../vendor/structurejs/src/controller/LocalStorageController');
+var Extend = require('structurejs/util/Extend');
+var Collection = require('structurejs/model/Collection');
+var LocalStorageController = require('structurejs/controller/LocalStorageController');
 var ListItemVO = require('./vo/ListItemVO');
 
 /**

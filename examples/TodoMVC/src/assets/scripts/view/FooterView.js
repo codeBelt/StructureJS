@@ -1,6 +1,6 @@
-var Extend = require('../../vendor/structurejs/src/util/Extend');
-var DOMElement = require('../../vendor/structurejs/src/display/DOMElement');
-var BaseEvent = require('../../vendor/structurejs/src/event/BaseEvent');
+var Extend = require('structurejs/util/Extend');
+var DOMElement = require('structurejs/display/DOMElement');
+var BaseEvent = require('structurejs/event/BaseEvent');
 
 /**
  * This class is responsible for hand the display and interactions for the footer HTML.
