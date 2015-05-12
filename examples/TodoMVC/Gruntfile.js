@@ -120,7 +120,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: [
-                    'src/assets/vendor/handlebars/handlebars.runtime.min.js',
+                    'src/assets/vendor/handlebars/handlebars.min.js',
                     'web/assets/scripts/main.js'
                 ],
                 dest: 'web/assets/scripts/main.js'
@@ -190,6 +190,7 @@ module.exports = function(grunt) {
         'clean',
         'browserify',
         'handlebars',
+        'concat',
         'copy'
     ]);
 
@@ -197,6 +198,7 @@ module.exports = function(grunt) {
         'clean',
         'browserify',
         'handlebars',
+        'concat',
         'copy',
         'express',
         'open',

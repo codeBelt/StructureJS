@@ -7,10 +7,12 @@
   "author": "",
   "license": "ISC",
   "browser": {
-    "jquery": "./src/assets/vendor/jquery/dist/jquery.js"
+    "jquery": "./src/assets/vendor/jquery/dist/jquery.js",
+    "handlebars": "./src/assets/vendor/handlebars/handlebars.min.js"
   },
   "browserify-shim": {
-    "jquery": "global:$"
+    "jquery": "global:$",
+    "handlebars": "global:Handlebars"
   },
   "browserify": {
     "transform": [
