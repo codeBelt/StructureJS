@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -677,7 +677,7 @@
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l172"><code>js&#x2F;display&#x2F;DOMElement.js:172</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l170"><code>js&#x2F;display&#x2F;DOMElement.js:170</code></a>
         
         </p>
 
@@ -688,7 +688,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>A cached jQuery object for the view&#39;s element.</p>
+            <p>A cached reference to the jQuery DOM element</p>
 
         </div>
 
@@ -731,7 +731,7 @@
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l181"><code>js&#x2F;display&#x2F;DOMElement.js:181</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l179"><code>js&#x2F;display&#x2F;DOMElement.js:179</code></a>
         
         </p>
 
@@ -743,7 +743,7 @@
     <div class="extended-detail">
         <div class="description">
             <p>If a jQuery object was passed into the constructor this will be set as true and
-this class will not try add the view to the DOM because it should already exists.</p>
+this class will not try to add the view to the DOM since it already exists.</p>
 
         </div>
 
@@ -833,7 +833,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l199"><code>js&#x2F;display&#x2F;DOMElement.js:199</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l197"><code>js&#x2F;display&#x2F;DOMElement.js:197</code></a>
         
         </p>
 
@@ -887,7 +887,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l190"><code>js&#x2F;display&#x2F;DOMElement.js:190</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l188"><code>js&#x2F;display&#x2F;DOMElement.js:188</code></a>
         
         </p>
 
@@ -990,7 +990,7 @@ this class will not try add the view to the DOM because it should already exists
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l155"><code>js&#x2F;display&#x2F;DOMElement.js:155</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l151"><code>js&#x2F;display&#x2F;DOMElement.js:151</code></a>
         
         </p>
 
@@ -1001,7 +1001,9 @@ this class will not try add the view to the DOM because it should already exists
 
     <div class="extended-detail">
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Tracks number of times an element&#39;s width has been checked
+in order to determine if the element has been added
+to the DOM.</p>
 
         </div>
 
@@ -1192,7 +1194,7 @@ This property is only used with the canvas specific display objects.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l163"><code>js&#x2F;display&#x2F;DOMElement.js:163</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l161"><code>js&#x2F;display&#x2F;DOMElement.js:161</code></a>
         
         </p>
 
@@ -1203,7 +1205,7 @@ This property is only used with the canvas specific display objects.</p>
 
     <div class="extended-detail">
         <div class="description">
-            <p>A cached of the DOM Element.</p>
+            <p>A cached reference to the DOM Element</p>
 
         </div>
 
@@ -1605,9 +1607,9 @@ This property is only used with the canvas specific display objects.</p>
 
     <div class="extended-detail">
         <div class="description">
-            <p>Indicates the object that contains child object. Use the parent property
+            <p>Indicates the object that contains a child object. Uses the parent property
 to specify a relative path to display objects that are above the current display object in the display
-list hierarchy. Helps facilitates event bubbling.</p>
+list hierarchy and helps facilitate event bubbling.</p>
 
         </div>
 
@@ -2264,7 +2266,7 @@ list hierarchy. Helps facilitates event bubbling.</p>
                         
 
                         <div class="param-description">
-                            <p>[any=null] Either a jQuery object or template you want to use the as the view. Check out the examples below.</p>
+                            <p>[any=null] Either a jQuery object or JavaScript template string reference you want to use as the view. Check out the examples below.</p>
 
                         </div>
 
@@ -2298,15 +2300,15 @@ list hierarchy. Helps facilitates event bubbling.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>// Example of using DOMElement with out extending it.
+                    <pre class="code prettyprint"><code>// Example: Using DOMElement without extending it.
 var aLink = new DOMElement(&#39;a&#39;, {text: &#39;Google&#39;, href: &#39;http://www.google.com&#39;, &#39;class&#39;: &#39;externalLink&#39;});
 this.addChild(aLink);
 
-// Example of a view passing in a jQuery object.
+// Example: A view passing in a jQuery object.
 var view = new CustomView($(&#39;.selector&#39;));
 this.addChild(view);
 
-// Example of a view extending DOMElement when passing in a jQuery object.
+// Example: A view extending DOMElement while passing in a jQuery object.
 var Extend = require(&#39;structurejs/util/Extend&#39;);
 var DOMElement = require(&#39;structurejs/display/DOMElement&#39;);
 
@@ -2322,12 +2324,6 @@ var ClassName = (function () {
          _super.prototype.create.call(this);
 
          // Create and add your child objects to this parent class.
-     };
-
-     ClassName.prototype.layout = function () {
-         // Layout or update the child objects in this parent class.
-
-         return this;
      };
 
      ClassName.prototype.enable = function () {
@@ -2346,6 +2342,12 @@ var ClassName = (function () {
          return _super.prototype.disable.call(this);
      };
 
+     ClassName.prototype.layout = function () {
+         // Layout or update the child objects in this parent class.
+
+         return this;
+     };
+
      ClassName.prototype.destroy = function () {
          // Destroy the child objects and references in this parent class to prevent memory leaks.
 
@@ -2355,11 +2357,7 @@ var ClassName = (function () {
      return ClassName;
 })();
 
-// Example of a view extending DOMElement with template passed into create.
-var view = new CustomView();
-this.addChild(view);
-
-// Example of a view extending DOMElement with template passed into create.
+// Example: A view extending DOMElement with a JavaScript template reference passed in.
 var Extend = require(&#39;structurejs/util/Extend&#39;);
 var DOMElement = require(&#39;structurejs/display/DOMElement&#39;);
 var HomeTemplate = require(&#39;hbs!templates/home/homeTemplate&#39;);
@@ -2378,12 +2376,6 @@ var ClassName = (function () {
          // Create and add your child objects to this parent class.
      };
 
-     ClassName.prototype.layout = function () {
-         // Layout or update the child objects in this parent class.
-
-         return this;
-     };
-
      ClassName.prototype.enable = function () {
          if (this.isEnabled === true) { return this; }
 
@@ -2400,8 +2392,14 @@ var ClassName = (function () {
          return _super.prototype.disable.call(this);
      };
 
+     ClassName.prototype.layout = function () {
+         // Layout or update the child objects in this parent class.
+
+         return this;
+     };
+
      ClassName.prototype.destroy = function () {
-         // Destroy the child objects and references in this parent class to prevent memory leaks.
+         // Destroy the child objects and references in this parent class to prepare for garbage collection.
 
          _super.prototype.destroy.call(this);
      };
@@ -2590,7 +2588,7 @@ var ClassName = (function () {
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l300"><code>js&#x2F;display&#x2F;DOMElement.js:300</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l308"><code>js&#x2F;display&#x2F;DOMElement.js:308</code></a>
         
         </p>
 
@@ -2847,7 +2845,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l329"><code>js&#x2F;display&#x2F;DOMElement.js:329</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l337"><code>js&#x2F;display&#x2F;DOMElement.js:337</code></a>
         
         </p>
 
@@ -2974,7 +2972,7 @@ The child is added at the index position specified. An index of 0 represents the
     <div class="extended-detail">
 
         <div class="description">
-            <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
+            <p>Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.</p>
 
         </div>
 
@@ -3245,7 +3243,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l217"><code>js&#x2F;display&#x2F;DOMElement.js:217</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l215"><code>js&#x2F;display&#x2F;DOMElement.js:215</code></a>
         
         </p>
 
@@ -3262,7 +3260,7 @@ The child is added at the index position specified. An index of 0 represents the
 of children to the view. It will automatically be called the first time that the view is added
 to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
 their overridden methods.</p>
-<p>This method gets called only once when the child view is added to another view. If the child view is removed
+<p>This method gets called once when the child view is added to another view. If the child view is removed
 and added to another view the create method will not be called again.</p>
 
         </div>
@@ -3338,7 +3336,7 @@ ClassName.prototype.create = function () {
      this.addChild(this._childInstance);
 }
 
-// EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:
+// EXAMPLE 2: But lets say you wanted the view to be a ul element:
 ClassName.prototype.create = function () {
      _super.prototype.create.call(this, &#39;ul&#39;);
 }
@@ -3354,7 +3352,7 @@ ClassName.prototype.create = function () {
 // EXAMPLE 3: So that&#39;s cool but what if you wanted a block of html to be your view. Let&#39;s say you had the below
 // inline Handlebar template in your html file.
 &lt;script id=&quot;todoTemplate&quot; type=&quot;text/template&quot;&gt;
-     &lt;div id=&quot;htmlTemplatel&quot; class=&quot;js-todo&quot;&gt;
+     &lt;div id=&quot;htmlTemplate&quot; class=&quot;js-todo&quot;&gt;
          &lt;div id=&quot;input-wrapper&quot;&gt;
              &lt;input type=&quot;text&quot; class=&quot;list-input&quot; placeholder=&quot;{{ data.text }}&quot;&gt;
              &lt;input type=&quot;button&quot; class=&quot;list-item-submit&quot; value=&quot;Add&quot;&gt;
@@ -3369,11 +3367,19 @@ ClassName.prototype.create = function () {
 
 }
 
-// EXAMPLE 4: One more way. Let&#39;s say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.
+// EXAMPLE 4: Let&#39;s say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.
 var HomeTemplate = require(&#39;hbs!templates/HomeTemplate&#39;);
 
 ClassName.prototype.create = function () {
      _super.prototype.create.call(this, HomeTemplate, {data: &quot;some data&quot;});
+
+}
+
+// EXAMPLE 5: Or maybe you&#39;re using grunt-contrib-handlebars, or similar, to precompile hbs templates
+require(&#39;templates&#39;); // templates.js
+
+ClassName.prototype.create = function () {
+     _super.prototype.create.call(this, &#39;templates/HomeTemplate&#39;, {data: &quot;some data&quot;});
 
 }</code></pre>
 
@@ -3437,7 +3443,7 @@ ClassName.prototype.create = function () {
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l532"><code>js&#x2F;display&#x2F;DOMElement.js:532</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l542"><code>js&#x2F;display&#x2F;DOMElement.js:542</code></a>
         
         </p>
 
@@ -3452,7 +3458,7 @@ ClassName.prototype.create = function () {
         <div class="description">
             <p>A way to instantiate view classes by found html selectors.</p>
 <p>Example: It will find all children elements of the <a href="../classes/DOMElement.html#property_$element" class="crosslink">$element</a> property with the &#39;js-shareEmail&#39; selector.
-If any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.</p>
+If any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.</p>
 
         </div>
 
@@ -3813,10 +3819,10 @@ on other objects before calling the super.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code> this.dispatchEvent(&#39;change&#39;);
 
- // Example with sending data with the event:
+ // Example: Sending data with the event:
  this.dispatchEvent(&#39;change&#39;, {some: &#39;data&#39;});
 
- // Example with an event object
+ // Example: With an event object
  // (event type, bubbling set to true, cancelable set to true and passing data) :
  var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
  this.dispatchEvent(event);
@@ -3960,7 +3966,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l406"><code>js&#x2F;display&#x2F;DOMElement.js:406</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l416"><code>js&#x2F;display&#x2F;DOMElement.js:416</code></a>
         
         </p>
 
@@ -4404,7 +4410,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l437"><code>js&#x2F;display&#x2F;DOMElement.js:437</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l447"><code>js&#x2F;display&#x2F;DOMElement.js:447</code></a>
         
         </p>
 
@@ -4437,7 +4443,7 @@ on other objects before calling the super.</p>
                         
 
                         <div class="param-description">
-                            <p>You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children this parent element.</p>
+                            <p>You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.</p>
 
                         </div>
 
@@ -4458,7 +4464,7 @@ on other objects before calling the super.</p>
                             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
                         
                         <p>Returns a list of DOMElement&#39;s. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
-If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement will not be create for that element because it will be assumed it already exists as a DOMElement.</p>
+If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.</p>
 
                     
                 </div>
@@ -4548,7 +4554,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
                 <div class="example-content">
                     <pre class="code prettyprint"><code> this.getEventListeners();
 
- // [ClassName] is listen for &#39;BaseEvent.change&#39; event.</code></pre>
+ // [ClassName] is listening for the &#39;BaseEvent.change&#39; event.</code></pre>
 
                 </div>
             </div>
@@ -4924,7 +4930,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l340"><code>js&#x2F;display&#x2F;DOMElement.js:340</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l350"><code>js&#x2F;display&#x2F;DOMElement.js:350</code></a>
         
         </p>
 
@@ -4937,7 +4943,7 @@ If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement wil
     <div class="extended-detail">
 
         <div class="description">
-            <p>Gets called when the child object is added to the DOM.
+            <p>Called when the child object is added to the DOM.
 The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_TO_STAGE event.</p>
 
         </div>
@@ -5120,7 +5126,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l469"><code>js&#x2F;display&#x2F;DOMElement.js:469</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l479"><code>js&#x2F;display&#x2F;DOMElement.js:479</code></a>
         
         </p>
 
@@ -5134,8 +5140,8 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
 
         <div class="description">
             <p>Removes the specified child object instance from the child list of the parent object instance.
-The parent property of the removed child is set to null , and the object is garbage collected if no other references
-to the child exist. The index positions of any objects above the child in the parent object are decreased by 1.</p>
+The parent property of the removed child is set to null and the object is garbage collected if there are no other references
+to the child. The index positions of any objects above the child in the parent object are decreased by 1.</p>
 
         </div>
 
@@ -5336,7 +5342,7 @@ to the child exist. The index positions of any objects above the child in the pa
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l491"><code>js&#x2F;display&#x2F;DOMElement.js:491</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l501"><code>js&#x2F;display&#x2F;DOMElement.js:501</code></a>
         
         </p>
 
@@ -5429,7 +5435,7 @@ to the child exist. The index positions of any objects above the child in the pa
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l504"><code>js&#x2F;display&#x2F;DOMElement.js:504</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l514"><code>js&#x2F;display&#x2F;DOMElement.js:514</code></a>
         
         </p>
 
@@ -5443,7 +5449,7 @@ to the child exist. The index positions of any objects above the child in the pa
 
         <div class="description">
             <p>Removes all child object instances from the child list of the parent object instance.
-The parent property of the removed children is set to null , and the objects are garbage collected if no other
+The parent property of the removed children is set to null and the objects are garbage collected if no other
 references to the children exist.</p>
 
         </div>
@@ -5696,10 +5702,10 @@ references to the children exist.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
- ClassName.prototype.handlerMethod = function (event) {
- }</code></pre>
+ ClassName.prototype._handlerMethod = function (event) {
+ };</code></pre>
 
                 </div>
             </div>

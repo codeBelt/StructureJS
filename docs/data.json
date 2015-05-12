@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.0",
+        "version": "0.7.1",
         "url": ""
     },
     "files": {
@@ -623,7 +623,7 @@
             "params": [
                 {
                     "name": "type",
-                    "description": "[any=null] Either a jQuery object or template you want to use the as the view. Check out the examples below."
+                    "description": "[any=null] Either a jQuery object or JavaScript template string reference you want to use as the view. Check out the examples below."
                 },
                 {
                     "name": "params",
@@ -642,7 +642,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example of using DOMElement with out extending it.\n    var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example of a view passing in a jQuery object.\n    var view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example of a view extending DOMElement when passing in a jQuery object.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName($element) {\n             _super.call(this, $element);\n         }\n\n         ClassName.prototype.create = function () {\n             _super.prototype.create.call(this);\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layout = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();\n\n    // Example of a view extending DOMElement with template passed into create.\n    var view = new CustomView();\n    this.addChild(view);\n\n    // Example of a view extending DOMElement with template passed into create.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n    var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName() {\n             _super.call(this);\n         }\n\n         ClassName.prototype.create = function () {\n             _super.prototype.create.call(this, HomeTemplate, {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.layout = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();"
+                "\n    // Example: Using DOMElement without extending it.\n    var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example: A view passing in a jQuery object.\n    var view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example: A view extending DOMElement while passing in a jQuery object.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName($element) {\n             _super.call(this, $element);\n         }\n\n         ClassName.prototype.create = function () {\n             _super.prototype.create.call(this);\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.layout = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();\n\n    // Example: A view extending DOMElement with a JavaScript template reference passed in.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n    var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName() {\n             _super.call(this);\n         }\n\n         ClassName.prototype.create = function () {\n             _super.prototype.create.call(this, HomeTemplate, {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.layout = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();"
             ]
         },
         "DisplayObject": {
@@ -701,7 +701,7 @@
             "namespace": "",
             "file": "js/display/Stage.js",
             "line": 18,
-            "description": "The {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main or root class.",
+            "description": "The {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main application or root class.",
             "submodule": "view",
             "extends": "DOMElement",
             "is_constructor": 1,
@@ -712,7 +712,7 @@
                 "jQuery"
             ],
             "example": [
-                "\n    // This example illustrates how to setup your main or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n    define(function (require, exports, module) {\n        'use strict';\n\n        var Extend = require('structurejs/util/Extend');\n        var Stage = require('replace/path/Stage');\n\n        var MainClass = (function () {\n\n        var _super = Extend(MainClass, Stage);\n\n            function MainClass() {\n                _super.call(this);\n            }\n\n            MainClass.prototype.create = function () {\n                _super.prototype.create.call(this);\n\n                // Create and add your child objects to this parent class.\n            }\n\n            MainClass.prototype.layout = function () {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            MainClass.prototype.enable = function () {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return _super.prototype.enable.call(this);\n            }\n\n            MainClass.prototype.disable = function () {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return _super.prototype.disable.call(this);\n            }\n\n            MainClass.prototype.destroy = function () {\n                // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n                _super.prototype.destroy.call(this);\n            }\n\n            return MainClass;\n        })();\n\n        module.exports = MainClass;\n    });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiation your main or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');\n"
+                "\n    // This example illustrates how to setup your main application or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n    define(function (require, exports, module) {\n        'use strict';\n\n        var Extend = require('structurejs/util/Extend');\n        var Stage = require('replace/path/Stage');\n\n        var MainClass = (function () {\n\n        var _super = Extend(MainClass, Stage);\n\n            function MainClass() {\n                _super.call(this);\n            }\n\n            MainClass.prototype.create = function () {\n                _super.prototype.create.call(this);\n\n                // Create and add your child objects to this parent class.\n            }\n\n            MainClass.prototype.layout = function () {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            MainClass.prototype.enable = function () {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return _super.prototype.enable.call(this);\n            }\n\n            MainClass.prototype.disable = function () {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return _super.prototype.disable.call(this);\n            }\n\n            MainClass.prototype.destroy = function () {\n                // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n                _super.prototype.destroy.call(this);\n            }\n\n            return MainClass;\n        })();\n\n        module.exports = MainClass;\n    });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiate your main application or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');\n"
             ]
         },
         "ApplicationCacheEvent": {
@@ -851,7 +851,7 @@
             "namespace": "",
             "file": "js/event/EventDispatcher.js",
             "line": 18,
-            "description": "The EventDispatcher class is the base class for all classes that dispatch events and is the base class for the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class.\nThe EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.",
+            "description": "EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class.\nEventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.",
             "submodule": "event",
             "extends": "ObjectManager",
             "requires": [
@@ -2657,8 +2657,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 155,
-            "description": "TODO: YUIDoc_comment",
+            "line": 151,
+            "description": "Tracks number of times an element's width has been checked\nin order to determine if the element has been added\nto the DOM.",
             "itemtype": "property",
             "name": "checkCount",
             "type": "{number}",
@@ -2670,8 +2670,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 163,
-            "description": "A cached of the DOM Element.",
+            "line": 161,
+            "description": "A cached reference to the DOM Element",
             "itemtype": "property",
             "name": "element",
             "type": "{HTMLElement}",
@@ -2684,8 +2684,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 172,
-            "description": "A cached jQuery object for the view's element.",
+            "line": 170,
+            "description": "A cached reference to the jQuery DOM element",
             "itemtype": "property",
             "name": "$element",
             "type": "{JQuery}",
@@ -2698,8 +2698,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 181,
-            "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try add the view to the DOM because it should already exists.",
+            "line": 179,
+            "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try to add the view to the DOM since it already exists.",
             "itemtype": "property",
             "name": "_isReference",
             "type": "{boolean}",
@@ -2711,7 +2711,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 190,
+            "line": 188,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_type",
@@ -2725,7 +2725,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 199,
+            "line": 197,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_params",
@@ -2739,8 +2739,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 217,
-            "description": "The create function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called only once when the child view is added to another view. If the child view is removed\nand added to another view the create method will not be called again.",
+            "line": 215,
+            "description": "The create function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called once when the child view is added to another view. If the child view is removed\nand added to another view the create method will not be called again.",
             "itemtype": "method",
             "name": "create",
             "params": [
@@ -2761,7 +2761,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n    // EXAMPLE 1: By default your view class will be a div element:\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this);\n\n         this._childInstance = new DOMElement();\n         this.addChild(this._childInstance);\n    }\n\n    // EXAMPLE 2: But lets say you wanted the view to be a ul element your would do:\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'ul');\n    }\n\n    // Then you could nest other elements inside this base view/element.\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n         var li = new DOMElement('li', {text: 'Robert is cool'});\n         this.addChild(li);\n    }\n\n    // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below\n    // inline Handlebar template in your html file.\n    <script id=\"todoTemplate\" type=\"text/template\">\n         <div id=\"htmlTemplatel\" class=\"js-todo\">\n             <div id=\"input-wrapper\">\n                 <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                 <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n             </div>\n         </div>\n    </script>\n\n    // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\".\n    // There is a second optional argument where you can pass data for the Handlebar template to use.\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });\n\n    }\n\n    // EXAMPLE 4: One more way. Let's say you wanted to use th Handlebar plugin within RequireJS. You can pass the template into create.\n    var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, HomeTemplate, {data: \"some data\"});\n\n    }"
+                "\n    // EXAMPLE 1: By default your view class will be a div element:\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this);\n\n         this._childInstance = new DOMElement();\n         this.addChild(this._childInstance);\n    }\n\n    // EXAMPLE 2: But lets say you wanted the view to be a ul element:\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'ul');\n    }\n\n    // Then you could nest other elements inside this base view/element.\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n         var li = new DOMElement('li', {text: 'Robert is cool'});\n         this.addChild(li);\n    }\n\n    // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below\n    // inline Handlebar template in your html file.\n    <script id=\"todoTemplate\" type=\"text/template\">\n         <div id=\"htmlTemplate\" class=\"js-todo\">\n             <div id=\"input-wrapper\">\n                 <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                 <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n             </div>\n         </div>\n    </script>\n\n    // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\".\n    // There is a second optional argument where you can pass data for the Handlebar template to use.\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });\n\n    }\n\n    // EXAMPLE 4: Let's say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.\n    var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, HomeTemplate, {data: \"some data\"});\n\n    }\n\n    // EXAMPLE 5: Or maybe you're using grunt-contrib-handlebars, or similar, to precompile hbs templates\n    require('templates'); // templates.js\n\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'templates/HomeTemplate', {data: \"some data\"});\n\n    }"
             ],
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2769,7 +2769,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 300,
+            "line": 308,
             "overridden": "DisplayObjectContainer.addChild",
             "itemtype": "method",
             "name": "addChild",
@@ -2794,7 +2794,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 329,
+            "line": 337,
             "description": "Adds the cid to the DOM element so we can know what what Class object the element belongs too.",
             "itemtype": "method",
             "name": "addClientSideId",
@@ -2813,8 +2813,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 340,
-            "description": "Gets called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layout:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.",
+            "line": 350,
+            "description": "Called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layout:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.",
             "itemtype": "method",
             "name": "onDomAdded",
             "access": "private",
@@ -2825,7 +2825,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 363,
+            "line": 373,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2833,7 +2833,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 390,
+            "line": 400,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2841,7 +2841,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 400,
+            "line": 410,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2849,7 +2849,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 406,
+            "line": 416,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -2872,20 +2872,20 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 437,
+            "line": 447,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
             "params": [
                 {
                     "name": "selector",
-                    "description": "You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children this parent element.",
+                    "description": "You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.",
                     "type": "String",
                     "optional": true
                 }
             ],
             "return": {
-                "description": "Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.\nIf the 'data-cid' property exists is on an HTML element a DOMElement will not be create for that element because it will be assumed it already exists as a DOMElement.",
+                "description": "Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.\nIf the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.",
                 "type": "Array"
             },
             "access": "public",
@@ -2896,8 +2896,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 469,
-            "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
+            "line": 479,
+            "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null and the object is garbage collected if there are no other references\nto the child. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
             "params": [
@@ -2921,7 +2921,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 491,
+            "line": 501,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -2941,8 +2941,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 504,
-            "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if no other\nreferences to the children exist.",
+            "line": 514,
+            "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
             "return": {
@@ -2959,7 +2959,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 521,
+            "line": 531,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2967,8 +2967,8 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 532,
-            "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiate and pass the found jQuery element into the contructor.",
+            "line": 542,
+            "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.",
             "itemtype": "method",
             "name": "createComponents",
             "params": [
@@ -3597,13 +3597,13 @@
         {
             "file": "js/display/Stage.js",
             "line": 100,
-            "description": "The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.",
+            "description": "The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.",
             "itemtype": "method",
             "name": "appendTo",
             "params": [
                 {
                     "name": "type",
-                    "description": "A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).",
+                    "description": "A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).",
                     "type": "Any"
                 },
                 {
@@ -4350,7 +4350,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    EventBroker.addEventListener('change', this.handlerMethod, this);\n    // Example of using a constant event type.\n    EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n    // The event passed to the method will always be a BaseEvent object.\n    ClassName.prototype.handlerMethod = function (event) {\n         console.log(event.data);\n    }"
+                "\n    EventBroker.addEventListener('change', this._handlerMethod, this);\n    // Example of using a constant event type.\n    EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);\n\n    // The event passed to the method will always be a BaseEvent object.\n    ClassName.prototype._handlerMethod = function (event) {\n         console.log(event.data);\n    };"
             ],
             "class": "EventBroker",
             "module": "StructureJS",
@@ -4383,7 +4383,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    EventBroker.removeEventListener('change', this.handlerMethod, this);\n\n    EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);"
+                "\n    EventBroker.removeEventListener('change', this._handlerMethod, this);\n\n    EventBroker.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);"
             ],
             "class": "EventBroker",
             "module": "StructureJS",
@@ -4413,7 +4413,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     EventBroker.dispatchEvent('change');\n\n     // Example with sending data with the event.\n     EventBroker.dispatchEvent('change', {some: 'data'});\n\n     // Example of sending a BaseEvent or custom event object.\n     var event = new BaseEvent(BaseEvent.CHANGE);\n     event.data = {some: 'data'};\n     EventBroker.dispatchEvent(event);"
+                "\n     EventBroker.dispatchEvent('change');\n\n     // Example: Sending data with the event.\n     EventBroker.dispatchEvent('change', {some: 'data'});\n\n     // Example: Sending a BaseEvent or custom event object.\n     var event = new BaseEvent(BaseEvent.CHANGE);\n     event.data = {some: 'data'};\n     EventBroker.dispatchEvent(event);"
             ],
             "class": "EventBroker",
             "module": "StructureJS",
@@ -4450,7 +4450,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     EventBroker.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);"
+                "\n     EventBroker.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);"
             ],
             "class": "EventBroker",
             "module": "StructureJS",
@@ -4513,7 +4513,7 @@
         {
             "file": "js/event/EventDispatcher.js",
             "line": 54,
-            "description": "Indicates the object that contains child object. Use the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy. Helps facilitates event bubbling.",
+            "description": "Indicates the object that contains a child object. Uses the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy and helps facilitate event bubbling.",
             "itemtype": "property",
             "name": "parent",
             "type": "{any}",
@@ -4526,7 +4526,7 @@
         {
             "file": "js/event/EventDispatcher.js",
             "line": 66,
-            "description": "Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.",
+            "description": "Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
             "params": [
@@ -4586,12 +4586,12 @@
                     "type": "Any"
                 }
             ],
-            "hide": "This was added because it was need for the {{#crossLink \"EventBroker\"}}{{/crossLink}} class. To keep things consistent this parameter is required.",
+            "hide": "This was added because it was needed for the {{#crossLink \"EventBroker\"}}{{/crossLink}} class. To keep things consistent this parameter is required.",
             "access": "public",
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n     ClassName.prototype.handlerMethod = function (event) {\n     }"
+                "\n     this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);\n\n     ClassName.prototype._handlerMethod = function (event) {\n     };"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4621,7 +4621,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     this.dispatchEvent('change');\n\n     // Example with sending data with the event:\n     this.dispatchEvent('change', {some: 'data'});\n\n     // Example with an event object\n     // (event type, bubbling set to true, cancelable set to true and passing data) :\n     var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});\n     this.dispatchEvent(event);\n\n     // Here is a common inline event object being dispatched:\n     this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
+                "\n     this.dispatchEvent('change');\n\n     // Example: Sending data with the event:\n     this.dispatchEvent('change', {some: 'data'});\n\n     // Example: With an event object\n     // (event type, bubbling set to true, cancelable set to true and passing data) :\n     var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});\n     this.dispatchEvent(event);\n\n     // Here is a common inline event object being dispatched:\n     this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4676,7 +4676,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     this.getEventListeners();\n\n     // [ClassName] is listen for 'BaseEvent.change' event."
+                "\n     this.getEventListeners();\n\n     // [ClassName] is listening for the 'BaseEvent.change' event."
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -5904,14 +5904,14 @@
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 17,
+            "line": 18,
             "description": "A bind polyfill for browsers that don't support the bind method.",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 36,
+            "line": 37,
             "description": "Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
             "params": [
                 {
@@ -5928,14 +5928,14 @@
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 57,
+            "line": 58,
             "description": "The jQuery addEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 91,
+            "line": 92,
             "description": "The jQuery removeEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
@@ -8676,55 +8676,55 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:217"
+            "line": " js/display/DOMElement.js:215"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:300"
+            "line": " js/display/DOMElement.js:308"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:300"
+            "line": " js/display/DOMElement.js:308"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:363"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:390"
+            "line": " js/display/DOMElement.js:373"
         },
         {
             "message": "unknown tag: overridden",
             "line": " js/display/DOMElement.js:400"
         },
         {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:406"
+            "message": "unknown tag: overridden",
+            "line": " js/display/DOMElement.js:410"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:437"
+            "line": " js/display/DOMElement.js:416"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:469"
+            "line": " js/display/DOMElement.js:447"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " js/display/DOMElement.js:479"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:469"
+            "line": " js/display/DOMElement.js:479"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:504"
+            "line": " js/display/DOMElement.js:514"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:504"
+            "line": " js/display/DOMElement.js:514"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:521"
+            "line": " js/display/DOMElement.js:531"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8836,7 +8836,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/plugin/jquery.eventListener.js:36"
+            "line": " js/plugin/jquery.eventListener.js:37"
         },
         {
             "message": "unknown tag: overridden",
@@ -9132,11 +9132,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:363"
-        },
-        {
-            "message": "Missing item type",
-            "line": " js/display/DOMElement.js:390"
+            "line": " js/display/DOMElement.js:373"
         },
         {
             "message": "Missing item type",
@@ -9144,7 +9140,11 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:521"
+            "line": " js/display/DOMElement.js:410"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/display/DOMElement.js:531"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9236,19 +9236,19 @@
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",
-            "line": " js/plugin/jquery.eventListener.js:17"
+            "line": " js/plugin/jquery.eventListener.js:18"
         },
         {
             "message": "Missing item type\nGenerates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
-            "line": " js/plugin/jquery.eventListener.js:36"
+            "line": " js/plugin/jquery.eventListener.js:37"
         },
         {
             "message": "Missing item type\nThe jQuery addEventListener plugin",
-            "line": " js/plugin/jquery.eventListener.js:57"
+            "line": " js/plugin/jquery.eventListener.js:58"
         },
         {
             "message": "Missing item type\nThe jQuery removeEventListener plugin",
-            "line": " js/plugin/jquery.eventListener.js:91"
+            "line": " js/plugin/jquery.eventListener.js:92"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

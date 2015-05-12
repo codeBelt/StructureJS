@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -164,7 +164,7 @@
     &#x27;use strict&#x27;;
 
     /**
-     * The {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class should be extended by your main or root class.
+     * The {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class should be extended by your main application or root class.
      *
      * @class Stage
      * @extends DOMElement
@@ -176,7 +176,7 @@
      * @requires DOMElement
      * @requires jQuery
      * @example
-     *     // This example illustrates how to setup your main or root class when extending the {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class.
+     *     // This example illustrates how to setup your main application or root class when extending the {{#crossLink &quot;Stage&quot;}}{{/crossLink}} class.
      *     define(function (require, exports, module) {
      *         &#x27;use strict&#x27;;
      *
@@ -220,7 +220,7 @@
      *             }
      *
      *             MainClass.prototype.destroy = function () {
-     *                 // Destroy the child objects and references in this parent class to prevent memory leaks.
+     *                 // Destroy the child objects and references in this parent class to prepare for garbage collection.
      *
      *                 _super.prototype.destroy.call(this);
      *             }
@@ -232,7 +232,7 @@
      *     });
      *
      * &lt;b&gt;Instantiation Example&lt;/b&gt;&lt;br&gt;
-     * This example illustrates how to instantiation your main or root class.
+     * This example illustrates how to instantiate your main application or root class.
      *
      *      var app = new MainClass();
      *      app.appendTo(&#x27;body&#x27;);
@@ -246,10 +246,10 @@
             _super.call(this);
         }
         /**
-         * The selected HTML element where all the child elements will be created. This method also starts the lifecycle of the application.
+         * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
          *
          * @method appendTo
-         * @param type {any} A string value that you want the your code appended too. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+         * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
          * @param [enabled=true] {boolean} Sets the enabled state of the object.
          * @chainable
          */
@@ -257,8 +257,6 @@
             if (enabled === void 0) { enabled = true; }
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
             this.$element.attr(&#x27;data-cid&#x27;, this.cid);
-            this.width = this.$element.width();
-            this.height = this.$element.height();
             if (this.isCreated === false) {
                 this.create();
                 this.isCreated = true;

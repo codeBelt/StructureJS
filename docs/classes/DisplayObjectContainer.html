@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -1187,9 +1187,9 @@ This property is only used with the canvas specific display objects.</p>
 
     <div class="extended-detail">
         <div class="description">
-            <p>Indicates the object that contains child object. Use the parent property
+            <p>Indicates the object that contains a child object. Uses the parent property
 to specify a relative path to display objects that are above the current display object in the display
-list hierarchy. Helps facilitates event bubbling.</p>
+list hierarchy and helps facilitate event bubbling.</p>
 
         </div>
 
@@ -2169,7 +2169,7 @@ The child is added at the index position specified. An index of 0 represents the
     <div class="extended-detail">
 
         <div class="description">
-            <p>Registers an event listener object with an EventDispatcher object so that the listener receives notification of an event.</p>
+            <p>Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.</p>
 
         </div>
 
@@ -2759,10 +2759,10 @@ on other objects before calling the super.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code> this.dispatchEvent(&#39;change&#39;);
 
- // Example with sending data with the event:
+ // Example: Sending data with the event:
  this.dispatchEvent(&#39;change&#39;, {some: &#39;data&#39;});
 
- // Example with an event object
+ // Example: With an event object
  // (event type, bubbling set to true, cancelable set to true and passing data) :
  var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
  this.dispatchEvent(event);
@@ -3273,7 +3273,7 @@ on other objects before calling the super.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code> this.getEventListeners();
 
- // [ClassName] is listen for &#39;BaseEvent.change&#39; event.</code></pre>
+ // [ClassName] is listening for the &#39;BaseEvent.change&#39; event.</code></pre>
 
                 </div>
             </div>
@@ -3956,10 +3956,10 @@ no other references to the children exist.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
- ClassName.prototype.handlerMethod = function (event) {
- }</code></pre>
+ ClassName.prototype._handlerMethod = function (event) {
+ };</code></pre>
 
                 </div>
             </div>
