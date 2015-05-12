@@ -1,22 +1,18 @@
-///<reference path='replace/path/${Extends}.ts'/>
+import ${Extends} = require('replace/path/${Extends}');
 
-module ${Namespace} {
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${NAME}
+ * @extends ${Extends}
+ * @constructor
+ **/
+class ${NAME} extends ${Extends} {
 
-    import ${Extends} = StructureJS.${Extends};
-
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @class ${NAME}
-     * @extends ${Extends}
-     * @module ${Namespace}
-     * @constructor
-     **/
-    export class ${NAME} extends ${Extends} {
-
-        constructor() {
-            super();
-        }
-
+    constructor() {
+        super();
     }
+
 }
+
+export = ${NAME};
