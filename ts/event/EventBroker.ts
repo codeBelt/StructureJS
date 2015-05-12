@@ -48,14 +48,14 @@ class EventBroker
      * @static
      * @public
      * @example
-     *     EventBroker.addEventListener('change', this.handlerMethod, this);
+     *     EventBroker.addEventListener('change', this._handlerMethod, this);
      *     // Example of using a constant event type.
-     *     EventBroker.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
      *
      *     // The event passed to the method will always be a BaseEvent object.
-     *     ClassName.prototype.handlerMethod = function (event) {
-         *          console.log(event.data);
-         *     }
+     *     ClassName.prototype._handlerMethod = function (event) {
+     *          console.log(event.data);
+     *     };
      */
     public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):void
     {
@@ -72,9 +72,9 @@ class EventBroker
      * @static
      * @public
      * @example
-     *     EventBroker.removeEventListener('change', this.handlerMethod, this);
+     *     EventBroker.removeEventListener('change', this._handlerMethod, this);
      *
-     *     EventBroker.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *     EventBroker.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
      */
     public static removeEventListener(type:string, callback:Function, scope:any):void
     {
@@ -92,10 +92,10 @@ class EventBroker
      * @example
      *      EventBroker.dispatchEvent('change');
      *
-     *      // Example with sending data with the event.
+     *      // Example: Sending data with the event.
      *      EventBroker.dispatchEvent('change', {some: 'data'});
      *
-     *      // Example of sending a BaseEvent or custom event object.
+     *      // Example: Sending a BaseEvent or custom event object.
      *      var event = new BaseEvent(BaseEvent.CHANGE);
      *      event.data = {some: 'data'};
      *      EventBroker.dispatchEvent(event);
@@ -126,7 +126,7 @@ class EventBroker
      * @static
      * @public
      * @example
-     *      EventBroker.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *      EventBroker.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
      */
     public static hasEventListener(type:string, callback:Function, scope:any):boolean
     {
