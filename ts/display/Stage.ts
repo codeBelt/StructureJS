@@ -103,9 +103,6 @@ class Stage extends DOMElement
         this.$element = (type instanceof jQuery) ? type : jQuery(type);
         this.$element.attr('data-cid', this.cid);
 
-        this.width = this.$element.width();
-        this.height = this.$element.height();
-
         if (this.isCreated === false)
         {
             this.create();
