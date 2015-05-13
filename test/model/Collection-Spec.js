@@ -1,46 +1,121 @@
-var people = [
+var movies = [
     {
-        name: "krista",
-        age: 25,
-        house: {
-            address: '3 Street',
-            numOfBathrooms: 1,
-            numOfBedRooms: 1
+        "id": "770678819",
+        "title": "Man of Steel",
+        "year": "2013",
+        "mpaaRating": "PG-13",
+        "runtime": "148",
+        "releaseDates": { "theater": "2013-06-14" },
+        "ratings": {
+            "criticsRating": "Rotten",
+            "criticsScore": "56",
+            "audienceRating": "Upright",
+            "audienceScore": "82"
         },
-        cars: [
-            { make: 'Tesla', model: 'Model S', year: 2014 },
-            { make: 'Ford', model: 'Escort', year: 2000 }
+        "synopsis": "A young boy learns that he has extraordinary powers and is not of this Earth. As a young man, he journeys to discover where he came from and what he was sent here to do. But the hero in him must emerge if he is to save the world from annihilation and become the symbol of hope for all mankind. -- (C) Warner Bros",
+        "posters": {
+            "thumbnail": "http://content6.flixster.com/movie/11/17/13/11171304_mob.jpg",
+            "profile": "http://content6.flixster.com/movie/11/17/13/11171304_pro.jpg",
+            "detailed": "http://content6.flixster.com/movie/11/17/13/11171304_det.jpg",
+            "original": "http://content6.flixster.com/movie/11/17/13/11171304_ori.jpg"
+        },
+        "abridgedCast": [
+            {
+                "name": "Henry Cavill",
+                "id": "341817917",
+                "characters": [
+                    "Clark Kent/Kal-El"
+                ]
+            },
+            {
+                "name": "Amy Adams",
+                "id": "162653029",
+                "characters": [
+                    "Lois Lane"
+                ]
+            },
+            {
+                "name": "Michael Shannon",
+                "id": "368451324",
+                "characters": [
+                    "General Zod"
+                ]
+            },
+            {
+                "name": "Diane Lane",
+                "id": "162652926",
+                "characters": [
+                    "Martha Kent"
+                ]
+            },
+            {
+                "name": "Russell Crowe",
+                "id": "162652569",
+                "characters": [
+                    "Jor-El"
+                ]
+            }
         ]
     },
     {
-        name: "Robert",
-        age: 33,
-        house: {
-            address: '1 Street',
-            numOfBathrooms: 2,
-            numOfBedRooms: 4
-        }
-    },
-    {
-        name: "Robert",
-        age: 37,
-        house: {
-            address: '1 Street',
-            numOfBathrooms: 4,
-            numOfBedRooms: 4
-        }
-    },
-    {
-        name: "Mario",
-        house: {
-            address: '3 Street',
-            numOfBathrooms: 5,
-            numOfBedRooms: 11
-        }
-    },
-    {
-        name: "Joe",
-        age: 25
+        "id": "771238418",
+        "title": "Monsters University",
+        "year": "2013",
+        "mpaaRating": "G",
+        "runtime": "95",
+        "releaseDates": {
+            "theater": "2013-06-21"
+        },
+        "ratings": {
+            "criticsRating": "Certified Fresh",
+            "criticsScore": "77",
+            "audienceRating": "Upright",
+            "audienceScore": "88"
+        },
+        "synopsis": "Mike Wazowski and James P. Sullivan are an inseparable pair, but that wasn't always the case. From the moment these two mismatched monsters met they couldn't stand each other. \"Monsters University\" unlocks the door to how Mike and Sulley overcame their differences and became the best of friends. -- (C) Walt Disney",
+        "posters": {
+            "thumbnail": "http://content6.flixster.com/movie/11/16/99/11169964_mob.jpg",
+            "profile": "http://content6.flixster.com/movie/11/16/99/11169964_pro.jpg",
+            "detailed": "http://content6.flixster.com/movie/11/16/99/11169964_det.jpg",
+            "original": "http://content6.flixster.com/movie/11/16/99/11169964_ori.jpg"
+        },
+        "abridgedCast": [
+            {
+                "name": "Billy Crystal",
+                "id": "162655707",
+                "characters": [
+                    "Mike"
+                ]
+            },
+            {
+                "name": "John Goodman",
+                "id": "162655706",
+                "characters": [
+                    "Sullivan"
+                ]
+            },
+            {
+                "name": "Steve Buscemi",
+                "id": "162652875",
+                "characters": [
+                    "Randy"
+                ]
+            },
+            {
+                "name": "Helen Mirren",
+                "id": "162662871",
+                "characters": [
+                    "Dean Hardscrabble"
+                ]
+            },
+            {
+                "name": "Peter Sohn",
+                "id": "770673194",
+                "characters": [
+                    "Squishy"
+                ]
+            }
+        ]
     }
 ];
 
@@ -53,7 +128,7 @@ describe("Collection", function() {
     });
 
     it("add", function() {
-        vo.add(people);
+        vo.add(movies);
 
         expect(JSON.stringify(vo)).toEqual(vo.toJSONString());
     });
