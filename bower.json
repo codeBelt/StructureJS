@@ -6,7 +6,7 @@
         "handlebars": "2.0.0"
     },
     "description": "An Event Driven JavaScript Library.",
-    "main": "src/",
+    "main": "js/",
     "keywords": [
         "structurejs",
         "structure.js",
