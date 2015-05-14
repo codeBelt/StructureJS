@@ -16,7 +16,11 @@ A class based utility library for building modular and scalable web platform app
 * [Atom](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/atom)
 
 ## Boilerplate
-[StructureJS-Boilerplate](https://github.com/codeBelt/StructureJS-Boilerplate)
+[StructureJS Boilerplate (RequireJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
+
+[StructureJS Boilerplate (Browserify)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
+
+[StructureJS Boilerplate (TypeScript)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
 
 ## Examples
 * Event Bubbling [Demo](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
