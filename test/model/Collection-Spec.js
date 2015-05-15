@@ -120,17 +120,33 @@ var movies = [
 ];
 
 var Collection = require('../../js/model/Collection');
-var vo = new Collection();
 
 describe("Collection", function() {
-    it("getQualifiedClassName", function() {
-        expect(vo.getQualifiedClassName()).toEqual('Collection');
+    var collection = new Collection();
+
+    beforeEach(function () {
+        collection.add(movies);
     });
 
-    it("add", function() {
-        vo.add(movies);
+    afterEach(function () {
+        collection.clear();
+    });
 
-        expect(JSON.stringify(vo)).toEqual(vo.toJSONString());
+    it("collection.length === 2", function() {
+        expect(collection.length).toEqual(2);
+    });
+
+    it("collection.length === 0", function() {
+        collection.clear();
+        expect(collection.length).toEqual(0);
+    });
+
+    it("getQualifiedClassName === Collection", function() {
+        expect(collection.getQualifiedClassName()).toEqual('Collection');
+    });
+
+    it("toJSONString match", function() {
+        expect(JSON.stringify(collection.models)).toEqual(collection.toJSONString());
     });
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/
