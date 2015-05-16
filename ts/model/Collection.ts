@@ -545,7 +545,8 @@ class Collection extends EventDispatcher
      * The filter method creates a new array with all elements that pass the test implemented by the provided function.
      *
      * @method filter
-     * @param filterFunction {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+     * @param callback {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+     * @param [callbackScope=null] Optional. Value to use as this when executing callback.
      * @public
      * @return {Array} Returns the list of models in the collection.
      * @example
@@ -555,9 +556,9 @@ class Collection extends EventDispatcher
      *
      *      var list = collection.filter(isOldEnough);
      */
-    public filter(filterFunction:any):Array<any>
+    public filter(callback:any, callbackScope:any = null):Array<any>
     {
-        return this.models.filter(filterFunction);
+        return this.models.filter(callback, callbackScope);
     }
 
     /**

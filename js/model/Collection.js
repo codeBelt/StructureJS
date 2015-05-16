@@ -445,7 +445,8 @@
          * The filter method creates a new array with all elements that pass the test implemented by the provided function.
          *
          * @method filter
-         * @param filterFunction {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+         * @param callback {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+         * @param [callbackScope=null] Optional. Value to use as this when executing callback.
          * @public
          * @return {Array} Returns the list of models in the collection.
          * @example
@@ -455,9 +456,9 @@
          *
          *      var list = collection.filter(isOldEnough);
          */
-        Collection.prototype.filter = function(filterFunction) {
-            if (filterFunction === void 0) { filterFunction = null; }
-            return this.models.filter(filterFunction);
+        Collection.prototype.filter = function(callback, callbackScope) {
+            if (callbackScope === void 0) { callbackScope = null; }
+            return this.models.filter(callback, callbackScope);
         };
         /**
          * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.

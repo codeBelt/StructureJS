@@ -132,15 +132,31 @@ describe("Collection", function() {
         collection.clear();
     });
 
-    it("collection.length === 2", function() {
+    it("add collection.length === 2", function() {
         expect(collection.length).toEqual(2);
     });
 
-    it("collection.length === 0", function() {
+    it("clear collection.length === 0", function() {
         collection.clear();
         expect(collection.length).toEqual(0);
     });
 
+    it("clone", function() {
+        expect(collection.clone().models).toEqual(collection.models);
+    });
+
+    it("filter", function() {
+        var filterFunction = function(model){
+            return model.runtime < 100;
+        };
+        var filteredArray = collection.filter(filterFunction);
+
+        expect(filteredArray[0]).toEqual(collection.models[1]);
+    });
+
+
+
+    //runtime
     it("getQualifiedClassName === Collection", function() {
         expect(collection.getQualifiedClassName()).toEqual('Collection');
     });
@@ -150,4 +166,18 @@ describe("Collection", function() {
     });
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/
+
+
+//filter
+//findBy
+//fromJSON
+//get
+//has
+//indexOf
+//remove
+//reverse
+//sort
+//sortOn
+//toJSON
+//toJSONString
 
