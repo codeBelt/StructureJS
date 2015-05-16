@@ -154,9 +154,60 @@ describe("Collection", function() {
         expect(filteredArray[0]).toEqual(collection.models[1]);
     });
 
+    //it("findBy", function() {
+    //    expect(collection.findBy('148')).toEqual(collection.models[0]);
+    //});
+
+    it("fromJSON collection.length === 2", function() {
+        var moviesStringify = JSON.stringify(movies);
+        collection.clear();
+        collection.fromJSON(moviesStringify);
+
+        expect(collection.length).toEqual(2);
+    });
+
+    it("get", function() {
+        expect(collection.get(1)).toEqual(collection.models[1]);
+    });
+
+    it("has", function() {
+        var model = collection.models[1];
+        expect(collection.has(model)).toBeTruthy();
+    });
+
+    it("indexOf", function() {
+        var model = collection.models[1];
+        expect(collection.indexOf(model)).toEqual(1);
+    });
+
+    it("remove", function() {
+        var model = collection.models[0];
+        collection.remove(model);
+
+        expect(collection.length).toEqual(1);
+    });
+
+    //it("reverse", function() {
+    //    expect(collection.reverse()).toEqual(1);
+    //});
+
+    //it("sort", function() {
+    //    expect(collection.sort(1)).toEqual(collection.models[1]);
+    //});
+
+    //it("sortOn", function() {
+    //    expect(collection.sortOn(1)).toEqual(collection.models[1]);
+    //});
+
+    //it("toJSON", function() {
+    //    expect(collection.toJSON(1)).toEqual(collection.models[1]);
+    //});
+
+    //it("toJSONString", function() {
+    //    expect(collection.toJSONString(1)).toEqual(collection.models[1]);
+    //});
 
 
-    //runtime
     it("getQualifiedClassName === Collection", function() {
         expect(collection.getQualifiedClassName()).toEqual('Collection');
     });
@@ -166,18 +217,3 @@ describe("Collection", function() {
     });
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/
-
-
-//filter
-//findBy
-//fromJSON
-//get
-//has
-//indexOf
-//remove
-//reverse
-//sort
-//sortOn
-//toJSON
-//toJSONString
-
