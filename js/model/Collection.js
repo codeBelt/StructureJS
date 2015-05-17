@@ -50,7 +50,7 @@
              * The list of models in the collection.
              *
              * @property models
-             * @type {Array}
+             * @type {Array.<any>}
              * @readOnly
              */
             this.models = [];
@@ -190,7 +190,7 @@
          * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
          * @method findBy
          * @param arg {Object|Array}
-         * @return {Array} Returns a list of found object's.
+         * @return {Array.<any>} Returns a list of found object's.
          * @public
          * @example
          *      // Finds all value object that has 'Robert' in it.
@@ -227,7 +227,7 @@
          *
          * @method _where
          * @param propList {Object|Array}
-         * @return {Array} Returns a list of found object's.
+         * @return {Array.<any>} Returns a list of found object's.
          * @private
          */
         Collection.prototype._where = function(propList) {
@@ -270,7 +270,7 @@
          *
          * @method _findPropertyValue
          * @param arg {String|Number|Boolean>}
-         * @return {Array} Returns a list of found object's.
+         * @return {Array.<any>} Returns a list of found object's.
          * @private
          */
         Collection.prototype._findPropertyValue = function(arg) {
@@ -341,7 +341,7 @@
          * Creates a JSON object of the collection.
          *
          * @method toJSON
-         * @returns {Array}
+         * @returns {Array.<any>}
          * @public
          * @example
          *     var arrayOfObjects = collection.toJSON();
@@ -392,7 +392,7 @@
          * @param propertyName {string}
          * @param [sortAscending=true] {boolean}
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array<any>} Returns the list of models in the collection.
          * @example
          *      collection.sortOn('name');
          *      collection.sortOn('name', false);
@@ -428,7 +428,7 @@
          * @method sort
          * @param [sortFunction=null] {Function}
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array.<any>} Returns the list of models in the collection.
          * @example
          *      var sortByDate = function(a, b){
          *          return new Date(a.date) - new Date(b.date)
@@ -448,7 +448,7 @@
          * @param callback {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
          * @param [callbackScope=null] Optional. Value to use as this when executing callback.
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array.<any>} Returns the list of models in the collection.
          * @example
          *      var isOldEnough = function(model){
          *          return model.age >= 21;
@@ -465,7 +465,7 @@
          *
          * @method reverse
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array.<any>} Returns the list of models in the collection.
          * @example
          *      collection.reverse();
          */
@@ -476,8 +476,8 @@
          * Returns a new array of models with duplicates removed.
          *
          * @method _unique
-         * @param list {Array} The array you want to use to generate the unique array.
-         * @return {Array} Returns a new array list of models in the collection with duplicates removed.
+         * @param list {Array.<any>} The array you want to use to generate the unique array.
+         * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
          * @private
          */
         Collection.prototype._unique = function(list) {

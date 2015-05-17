@@ -43,7 +43,7 @@ class Collection extends EventDispatcher
      * The list of models in the collection.
      *
      * @property models
-     * @type {Array}
+     * @type {Array.<any>}
      * @readOnly
      */
     public models:Array<any> = [];
@@ -219,7 +219,7 @@ class Collection extends EventDispatcher
      * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
      * @method findBy
      * @param arg {Object|Array}
-     * @return {Array} Returns a list of found object's.
+     * @return {Array.<any>} Returns a list of found object's.
      * @public
      * @example
      *      // Finds all value object that has 'Robert' in it.
@@ -264,7 +264,7 @@ class Collection extends EventDispatcher
      *
      * @method _where
      * @param propList {Object|Array}
-     * @return {Array} Returns a list of found object's.
+     * @return {Array.<any>} Returns a list of found object's.
      * @private
      */
     private _where(propList:any):Array<any>
@@ -321,7 +321,7 @@ class Collection extends EventDispatcher
      *
      * @method _findPropertyValue
      * @param arg {String|Number|Boolean>}
-     * @return {Array} Returns a list of found object's.
+     * @return {Array.<any>} Returns a list of found object's.
      * @private
      */
     private _findPropertyValue(arg):Array<any>
@@ -411,7 +411,7 @@ class Collection extends EventDispatcher
      * Creates a JSON object of the collection.
      *
      * @method toJSON
-     * @returns {Array}
+     * @returns {Array.<any>}
      * @public
      * @example
      *     var arrayOfObjects = collection.toJSON();
@@ -476,12 +476,12 @@ class Collection extends EventDispatcher
      * @param propertyName {string}
      * @param [sortAscending=true] {boolean}
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array<any>} Returns the list of models in the collection.
      * @example
      *      collection.sortOn('name');
      *      collection.sortOn('name', false);
      */
-    private sortOn(propertyName:string, sortAscending:boolean = true)
+    private sortOn(propertyName:string, sortAscending:boolean = true):Array<any>
     {
         if (sortAscending === false)
         {
@@ -526,7 +526,7 @@ class Collection extends EventDispatcher
      * @method sort
      * @param [sortFunction=null] {Function}
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array.<any>} Returns the list of models in the collection.
      * @example
      *      var sortByDate = function(a, b){
      *          return new Date(a.date) - new Date(b.date)
@@ -548,7 +548,7 @@ class Collection extends EventDispatcher
      * @param callback {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
      * @param [callbackScope=null] Optional. Value to use as this when executing callback.
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array.<any>} Returns the list of models in the collection.
      * @example
      *      var isOldEnough = function(model){
      *          return model.age >= 21;
@@ -566,7 +566,7 @@ class Collection extends EventDispatcher
      *
      * @method reverse
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array.<any>} Returns the list of models in the collection.
      * @example
      *      collection.reverse();
      */
@@ -579,11 +579,11 @@ class Collection extends EventDispatcher
      * Returns a new array of models with duplicates removed.
      *
      * @method _unique
-     * @param list {Array} The array you want to use to generate the unique array.
-     * @return {Array} Returns a new array list of models in the collection with duplicates removed.
+     * @param list {Array.<any>} The array you want to use to generate the unique array.
+     * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
      * @private
      */
-    private _unique(list):Array<any>
+    private _unique(list:Array<any>):Array<any>
     {
         var unique:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
         {
