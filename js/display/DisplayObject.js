@@ -166,7 +166,7 @@
                  * @property isCreated
                  * @type {boolean}
                  * @default false
-                 * @protected
+                 * @public
                  */
                 this.isCreated = false;
                 /**

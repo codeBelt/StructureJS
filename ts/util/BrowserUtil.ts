@@ -64,7 +64,7 @@ class BrowserUtil
     public static debounceDelay:number = 250;
 
     /**
-     * TODO: YUIDoc_comment
+     * The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.
      *
      * @property isEnabled
      * @type {boolean}
@@ -358,12 +358,12 @@ class BrowserUtil
      *      // For each of your different style sheets add something like below:
      *      // screen_lg.css
      *      body:after {
-         *          content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
-         *      }
+     *          content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+     *      }
      *      // screen_sm.css
      *      body:after {
-         *          content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
-         *      }
+     *          content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+     *      }
      *
      *      BrowserUtil.getBreakpoint();
      *      // 'screen_lg'
@@ -372,9 +372,9 @@ class BrowserUtil
      *      BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
      *      ...
      *      ClassName.prototype._onBreakpointChange = function (baseEvent) {
-         *          console.log(baseEvent.data);
-         *          // 'screen_sm'
-         *      };
+     *          console.log(baseEvent.data);
+     *          // 'screen_sm'
+     *      };
      */
     public static getBreakpoint()
     {

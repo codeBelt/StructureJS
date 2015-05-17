@@ -370,7 +370,7 @@
          */
         BrowserUtil.debounceDelay = 250;
         /**
-         * TODO: YUIDoc_comment
+         * The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.
          *
          * @property isEnabled
          * @type {boolean}

@@ -190,7 +190,7 @@ class LocalStorageController extends EventDispatcher
             var obj:any = {
                 key: key,
                 value: value
-            }
+            };
 
             list.push(obj);
         }
