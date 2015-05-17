@@ -256,7 +256,7 @@ class NumberUtil
     {
         var d:string = '';
         var r:number = (5 / 9) * (fahrenheit - 32);
-        var s:string[] = r.toString().split('.');
+        var s:Array<string> = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);
@@ -292,7 +292,7 @@ class NumberUtil
     {
         var d:string = '';
         var r:number = (celsius / (5 / 9)) + 32;
-        var s:string[] = r.toString().split('.');
+        var s:Array<string> = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);

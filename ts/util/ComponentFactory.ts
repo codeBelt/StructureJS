@@ -37,7 +37,7 @@ class ComponentFactory
      */
     public static create = function ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
     {
-        var list:DisplayObjectContainer[] = [];
+        var list:Array<DisplayObjectContainer> = [];
         var length:number = $elements.length;
 
         for (var i = 0; i < length; i++)

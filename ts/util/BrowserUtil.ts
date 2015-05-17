@@ -169,7 +169,7 @@ class BrowserUtil
      *      BrowserUtil.getBrowser();
      *      // ["Chrome", "39.0.2171.99"]
      */
-    private static getBrowser():string[]
+    private static getBrowser():Array<string>
     {
         var N = navigator.appName;
         var ua = navigator.userAgent;

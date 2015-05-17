@@ -31,7 +31,7 @@ import LanguageConfigVO = require('./vo/LanguageConfigVO');
 class LanguageModel extends EventDispatcher
 {
     private _request:BaseRequest = null;
-    private _availableLanguagesDictionary:LanguageConfigVO[] = [];
+    private _availableLanguagesDictionary:Array<LanguageConfigVO> = [];
     private _localStorageController:LocalStorageController = null;
 
     public currentLanguage:string = null;
@@ -107,7 +107,7 @@ class LanguageModel extends EventDispatcher
      */
     public getSupportedLanguages()
     {
-        var temp:LanguageConfigVO[] = [];
+        var temp:Array<LanguageConfigVO> = [];
         for (var key in this._availableLanguagesDictionary)
         {
             temp.push(this._availableLanguagesDictionary[key]);

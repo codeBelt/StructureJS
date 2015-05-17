@@ -80,7 +80,7 @@
              * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
              *
              * @property params
-             * @type {string}
+             * @type {Array.<string>}
              * @public
              */
             this.params = [];

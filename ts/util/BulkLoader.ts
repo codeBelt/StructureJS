@@ -25,7 +25,7 @@ import IDataStore = require('../interface/IDataStore');
  */
 class BulkLoader extends EventDispatcher
 {
-    public _dataStores:IDataStore[] = [];
+    public _dataStores:Array<IDataStore> = [];
 
     constructor()
     {

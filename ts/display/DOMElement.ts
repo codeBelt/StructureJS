@@ -547,7 +547,7 @@ class DOMElement extends DisplayObjectContainer
             }
         }
 
-        return <DOMElement[]>this.children;
+        return <Array<DOMElement>>this.children;
     }
 
     /**
