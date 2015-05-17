@@ -63,7 +63,9 @@ module.exports = function(config)
 
         plugins: [
             'karma-phantomjs-launcher',
-            'karma-jasmine','karma-bro'],
+            'karma-jasmine',
+            'karma-bro'
+        ],
 
 
         // If browser does not capture in given timeout [ms], kill it
