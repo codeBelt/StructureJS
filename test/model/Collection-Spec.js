@@ -87,19 +87,8 @@ var movies = [
                 "name": "David Attenborough",
                 "id": "335719288"
             }
-        ],
-        "alternateIds": {
-            "imdb": "2076349"
-        },
-        "links": {
-            "self": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237.json",
-            "alternate": "http://www.rottentomatoes.com/m/penguins_3d/",
-            "cast": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/cast.json",
-            "clips": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/clips.json",
-            "reviews": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/reviews.json",
-            "similar": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/similar.json"
-        }
-    },
+        ]
+    }
 ];
 
 var Collection = require('../../js/model/Collection');

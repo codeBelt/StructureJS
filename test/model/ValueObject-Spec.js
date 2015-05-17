@@ -56,66 +56,6 @@ var movies = [
                 ]
             }
         ]
-    },
-    {
-        "id": "771238418",
-        "title": "Monsters University",
-        "year": "2013",
-        "mpaaRating": "G",
-        "runtime": "95",
-        "releaseDates": {
-            "theater": "2013-06-21"
-        },
-        "ratings": {
-            "criticsRating": "Certified Fresh",
-            "criticsScore": "77",
-            "audienceRating": "Upright",
-            "audienceScore": "88"
-        },
-        "synopsis": "Mike Wazowski and James P. Sullivan are an inseparable pair, but that wasn't always the case. From the moment these two mismatched monsters met they couldn't stand each other. \"Monsters University\" unlocks the door to how Mike and Sulley overcame their differences and became the best of friends. -- (C) Walt Disney",
-        "posters": {
-            "thumbnail": "http://content6.flixster.com/movie/11/16/99/11169964_mob.jpg",
-            "profile": "http://content6.flixster.com/movie/11/16/99/11169964_pro.jpg",
-            "detailed": "http://content6.flixster.com/movie/11/16/99/11169964_det.jpg",
-            "original": "http://content6.flixster.com/movie/11/16/99/11169964_ori.jpg"
-        },
-        "abridgedCast": [
-            {
-                "name": "Billy Crystal",
-                "id": "162655707",
-                "characters": [
-                    "Mike"
-                ]
-            },
-            {
-                "name": "John Goodman",
-                "id": "162655706",
-                "characters": [
-                    "Sullivan"
-                ]
-            },
-            {
-                "name": "Steve Buscemi",
-                "id": "162652875",
-                "characters": [
-                    "Randy"
-                ]
-            },
-            {
-                "name": "Helen Mirren",
-                "id": "162662871",
-                "characters": [
-                    "Dean Hardscrabble"
-                ]
-            },
-            {
-                "name": "Peter Sohn",
-                "id": "770673194",
-                "characters": [
-                    "Squishy"
-                ]
-            }
-        ]
     }
 ];
 
