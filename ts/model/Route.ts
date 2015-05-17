@@ -153,7 +153,7 @@ class Route
      *
      * @method match
      * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
-     * @returns {Array}
+     * @returns {Array.<any>}
      * @example
      *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
      *     console.log( route.match('/games/asteroids/2/') );

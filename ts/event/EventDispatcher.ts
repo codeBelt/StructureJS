@@ -37,7 +37,7 @@ class EventDispatcher extends ObjectManager
      * Holds a reference to added listeners.
      *
      * @property _listeners
-     * @type {Array}
+     * @type {Array.<any>}
      * @private
      */
     private _listeners:Array<any> = null;

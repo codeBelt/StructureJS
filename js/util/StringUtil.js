@@ -254,7 +254,7 @@
          * @method format
          * @returns {string}
          * @param str {string}
-         * @param ...rest {Array}
+         * @param ...rest {Array.<any>}
          * @public
          * @static
          * @example

@@ -47,7 +47,7 @@
              * Holds a reference to added listeners.
              *
              * @property _listeners
-             * @type {Array}
+             * @type {Array.<any>}
              * @private
              */
             this._listeners = null;

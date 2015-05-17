@@ -57,7 +57,7 @@
          * A list of day names.
          *
          * @property LONG_DAY_LABELS
-         * @type {Array}
+         * @type {Array.<any>}
          * @public
          * @static
          * @final
@@ -67,7 +67,7 @@
          * TODO: YUIDoc_comment
          *
          * @property SHORT_DAY_LABELS
-         * @type {Array}
+         * @type {Array.<any>}
          * @public
          * @static
          * @final
@@ -77,7 +77,7 @@
          * A list of month names.
          *
          * @property LONG_MONTH_LABELS
-         * @type {Array}
+         * @type {Array.<any>}
          * @public
          * @static
          * @final
@@ -87,7 +87,7 @@
          * TODO: YUIDoc_comment
          *
          * @property SHORT_MONTH_LABELS
-         * @type {Array}
+         * @type {Array.<any>}
          * @public
          * @static
          * @final

@@ -47,7 +47,7 @@
              * A reference to the child DisplayObject instances to this parent object instance.
              *
              * @property children
-             * @type {Array}
+             * @type {Array.<DisplayObject>}
              * @readOnly
              * @public
              */

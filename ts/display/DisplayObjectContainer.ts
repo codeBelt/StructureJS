@@ -36,11 +36,11 @@ class DisplayObjectContainer extends DisplayObject
      * A reference to the child DisplayObject instances to this parent object instance.
      *
      * @property children
-     * @type {Array}
+     * @type {Array.<DisplayObject>}
      * @readOnly
      * @public
      */
-    public children:DisplayObject[] = [];
+    public children:Array<DisplayObject> = [];
 
     /**
      * Determines whether or not the children of the object are mouse enabled.
