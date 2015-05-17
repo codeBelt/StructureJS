@@ -58,70 +58,53 @@ var movies = [
         ]
     },
     {
-        "id": "771238418",
-        "title": "Monsters University",
-        "year": "2013",
-        "mpaaRating": "G",
-        "runtime": "95",
+        "id": "771352237",
+        "title": "Penguins 3D",
+        "year": "2012",
+        "mpaaRating": "PG-13",
+        "runtime": "78",
         "releaseDates": {
-            "theater": "2013-06-21"
+            "theater": "2013-05-24"
         },
         "ratings": {
-            "criticsRating": "Certified Fresh",
-            "criticsScore": "77",
-            "audienceRating": "Upright",
-            "audienceScore": "88"
+            "criticsScore": -1,
+            "audienceRating": "Spilled",
+            "audienceScore": "57"
         },
-        "synopsis": "Mike Wazowski and James P. Sullivan are an inseparable pair, but that wasn't always the case. From the moment these two mismatched monsters met they couldn't stand each other. \"Monsters University\" unlocks the door to how Mike and Sulley overcame their differences and became the best of friends. -- (C) Walt Disney",
+        "synopsis": "\"Penguins 3D,\" which comes in 40- and 20-minute versions, 3D and 2D, 15-perf./70-mm, and digital in 4K and 2K, will be available from nWave exclusively, for exhibition at IMAX theatres, REALD and digital 3D giant screen cinemas. The film depicts the fortunes of a young male King Penguin, who returns to the place where he was born and raised. Known as Penguin City, this sub-Antarctic island is home to albatrosses, leopard seals and elephant seals-and six million penguins! Somehow our hero must earn his place among the inhabitants and fulfill his destiny by finding a mate and raising a family. (c) nWave Pictures Distribution",
         "posters": {
-            "thumbnail": "http://content6.flixster.com/movie/11/16/99/11169964_mob.jpg",
-            "profile": "http://content6.flixster.com/movie/11/16/99/11169964_pro.jpg",
-            "detailed": "http://content6.flixster.com/movie/11/16/99/11169964_det.jpg",
-            "original": "http://content6.flixster.com/movie/11/16/99/11169964_ori.jpg"
+            "thumbnail": "http://content9.flixster.com/movie/11/17/13/11171315_mob.jpg",
+            "profile": "http://content9.flixster.com/movie/11/17/13/11171315_pro.jpg",
+            "detailed": "http://content9.flixster.com/movie/11/17/13/11171315_det.jpg",
+            "original": "http://content9.flixster.com/movie/11/17/13/11171315_ori.jpg"
         },
         "abridgedCast": [
             {
-                "name": "Billy Crystal",
-                "id": "162655707",
-                "characters": [
-                    "Mike"
-                ]
+                "name": "Tim Allen",
+                "id": "162655909"
             },
             {
-                "name": "John Goodman",
-                "id": "162655706",
-                "characters": [
-                    "Sullivan"
-                ]
-            },
-            {
-                "name": "Steve Buscemi",
-                "id": "162652875",
-                "characters": [
-                    "Randy"
-                ]
-            },
-            {
-                "name": "Helen Mirren",
-                "id": "162662871",
-                "characters": [
-                    "Dean Hardscrabble"
-                ]
-            },
-            {
-                "name": "Peter Sohn",
-                "id": "770673194",
-                "characters": [
-                    "Squishy"
-                ]
+                "name": "David Attenborough",
+                "id": "335719288"
             }
-        ]
-    }
+        ],
+        "alternateIds": {
+            "imdb": "2076349"
+        },
+        "links": {
+            "self": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237.json",
+            "alternate": "http://www.rottentomatoes.com/m/penguins_3d/",
+            "cast": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/cast.json",
+            "clips": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/clips.json",
+            "reviews": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/reviews.json",
+            "similar": "http://api.rottentomatoes.com/api/public/v1.0/movies/771352237/similar.json"
+        }
+    },
 ];
 
 var Collection = require('../../js/model/Collection');
 
-describe("Collection", function() {
+describe('Collection', function() {
     var collection = new Collection();
 
     beforeEach(function () {
@@ -132,20 +115,20 @@ describe("Collection", function() {
         collection.clear();
     });
 
-    it("add collection.length === 2", function() {
+    it('add collection.length === 2', function() {
         expect(collection.length).toEqual(2);
     });
 
-    it("clear collection.length === 0", function() {
+    it('clear collection.length === 0', function() {
         collection.clear();
         expect(collection.length).toEqual(0);
     });
 
-    it("clone", function() {
+    it('clone', function() {
         expect(collection.clone().models).toEqual(collection.models);
     });
 
-    it("filter", function() {
+    it('filter', function() {
         var filterFunction = function(model){
             return model.runtime < 100;
         };
@@ -154,11 +137,24 @@ describe("Collection", function() {
         expect(filteredArray[0]).toEqual(collection.models[1]);
     });
 
-    //it("findBy", function() {
-    //    expect(collection.findBy('148')).toEqual(collection.models[0]);
-    //});
+    it('findBy', function() {
+        var foundModels = collection.findBy('2012');
+        expect(foundModels[0]).toEqual(collection.models[1]);
 
-    it("fromJSON collection.length === 2", function() {
+        foundModels = collection.findBy({mpaaRating: 'PG-13'});
+        expect(foundModels.length).toEqual(2);
+
+        foundModels = collection.findBy({year: '2013', mpaaRating: 'PG-13'});
+        expect(foundModels[0]).toEqual(collection.models[0]);
+
+        foundModels = collection.findBy(['2013', 'PG-13', 'Penguins 3D']);
+        expect(foundModels.length).toEqual(2);
+
+        foundModels = collection.findBy([{title: 'Penguins 3D'}, {title: 'Man of Steel'}]);
+        expect(foundModels.length).toEqual(2);
+    });
+
+    it('fromJSON collection.length === 2', function() {
         var moviesStringify = JSON.stringify(movies);
         collection.clear();
         collection.fromJSON(moviesStringify);
@@ -166,54 +162,58 @@ describe("Collection", function() {
         expect(collection.length).toEqual(2);
     });
 
-    it("get", function() {
+    it('get', function() {
         expect(collection.get(1)).toEqual(collection.models[1]);
     });
 
-    it("has", function() {
+    it('has', function() {
         var model = collection.models[1];
         expect(collection.has(model)).toBeTruthy();
     });
 
-    it("indexOf", function() {
+    it('indexOf', function() {
         var model = collection.models[1];
         expect(collection.indexOf(model)).toEqual(1);
     });
 
-    it("remove", function() {
+    it('remove', function() {
         var model = collection.models[0];
         collection.remove(model);
 
         expect(collection.length).toEqual(1);
     });
 
-    //it("reverse", function() {
-    //    expect(collection.reverse()).toEqual(1);
-    //});
-
-    //it("sort", function() {
-    //    expect(collection.sort(1)).toEqual(collection.models[1]);
-    //});
-
-    //it("sortOn", function() {
-    //    expect(collection.sortOn(1)).toEqual(collection.models[1]);
-    //});
-
-    //it("toJSON", function() {
-    //    expect(collection.toJSON(1)).toEqual(collection.models[1]);
-    //});
-
-    //it("toJSONString", function() {
-    //    expect(collection.toJSONString(1)).toEqual(collection.models[1]);
-    //});
-
-
-    it("getQualifiedClassName === Collection", function() {
-        expect(collection.getQualifiedClassName()).toEqual('Collection');
+    it('reverse', function() {
+        collection.reverse();
+        expect(collection.models[0].title).toEqual('Penguins 3D');
     });
 
-    it("toJSONString match", function() {
+    it('sort', function() {
+        var sortByDate = function(a, b){
+            return a.runtime - b.runtime;
+        };
+
+        collection.sort(sortByDate);
+
+        expect(collection.models[0].title).toEqual('Penguins 3D');
+    });
+
+    it('sortOn', function() {
+        collection.sortOn('title', false);
+
+        expect(collection.models[0].title).toEqual('Penguins 3D');
+    });
+
+    it('toJSON', function() {
+        expect(collection.models).toEqual(collection.toJSON());
+    });
+
+    it('toJSONString', function() {
         expect(JSON.stringify(collection.models)).toEqual(collection.toJSONString());
+    });
+
+    it('getQualifiedClassName === Collection', function() {
+        expect(collection.getQualifiedClassName()).toEqual('Collection');
     });
 });
 //http://net.tutsplus.com/tutorials/javascript-ajax/testing-your-javascript-with-jasmine/
