@@ -16,7 +16,7 @@
     'use strict';
 
     /**
-     * The ApplicationCacheController...
+     * The ApplicationCacheController is a static class works with the window applicationCache object.
      *
      * @class ApplicationCacheController
      * @module StructureJS
@@ -254,6 +254,7 @@
             ApplicationCacheController._eventDispatcher.dispatchEvent(event);
         };
         /**
+         * A reference to the applicationCache property on the window object.
          *
          * @property _appCache
          * @type {ApplicationCache}
@@ -262,6 +263,7 @@
          */
         ApplicationCacheController._appCache = window.applicationCache;
         /**
+         * A reference to the EventDispatcher object.
          *
          * @property _eventDispatcher
          * @type {EventDispatcher}
@@ -275,7 +277,7 @@
          * @property isEnabled
          * @type {boolean}
          * @default false
-         * @private
+         * @public
          * @static
          */
         ApplicationCacheController.isEnabled = false;

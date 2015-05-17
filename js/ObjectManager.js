@@ -39,7 +39,7 @@
              * @property isEnabled
              * @type {boolean}
              * @default false
-             * @protected
+             * @public
              */
             this.isEnabled = false;
         }

@@ -27,7 +27,7 @@ class ObjectManager extends BaseObject
      * @property isEnabled
      * @type {boolean}
      * @default false
-     * @protected
+     * @public
      */
     public isEnabled:boolean = false;
 
