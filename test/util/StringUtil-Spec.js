@@ -53,7 +53,7 @@ describe("StringUtil", function() {
     it("queryStringToObject()", function() {
         var obj1 = StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', true);
         var obj2 = {name: 'Robert', age: 23, gender: 'male'};
-        //expect(_.isEqual(obj1, obj2)).toEqual(true);
+        expect(JSON.stringify(obj1)).toEqual(JSON.stringify(obj2));
     });
 
     it("removeAllWhitespace()", function() {
