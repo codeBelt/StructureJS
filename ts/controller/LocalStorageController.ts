@@ -152,9 +152,9 @@ class LocalStorageController extends EventDispatcher
      * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
      * @return {Array.<Object>}
      */
-    public getItemsWithNamespace(namespace:string = this._namespace):any[]
+    public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
-        var list:any[] = [];
+        var list:Array<any> = [];
         var length:number = this.getLength();
         for (var i:number = 0; i < length; i++)
         {
@@ -179,9 +179,9 @@ class LocalStorageController extends EventDispatcher
      * @method getAllItems
      * @return {Array.<Object>}
      */
-    public getAllItems():any[]
+    public getAllItems():Array<any>
     {
-        var list:any[] = [];
+        var list:Array<any> = [];
         var length:number = this.getLength();
         for (var i:number = 0; i < length; i++)
         {

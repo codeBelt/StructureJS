@@ -648,7 +648,7 @@ class DOMElement extends DisplayObjectContainer
      *          ]);
      *      };
      */
-    public createComponents(componentList:any[]):Array<DOMElement>
+    public createComponents(componentList:Array<any>):Array<DOMElement>
     {
         var list:Array<DOMElement>;
         var createdChildren:Array<DOMElement> = [];

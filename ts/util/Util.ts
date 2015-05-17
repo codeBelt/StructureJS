@@ -75,7 +75,7 @@ class Util
      *
      *      // { name: 'Robert' }
      */
-    public static deletePropertyFromObject(object:any, list:any[]):any
+    public static deletePropertyFromObject(object:any, list:Array<any>):any
     {
         // Loop through the object properties.
         for (var key in object)
@@ -88,7 +88,7 @@ class Util
                 if (value instanceof Array)
                 {
                     // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                    var array:any[] = value;
+                    var array:Array<any> = value;
                     for (var index in array)
                     {
                         // Recursive function call.
@@ -184,7 +184,7 @@ class Util
         // Handle Array
         if (obj instanceof Array)
         {
-            var array:any[] = [];
+            var array:Array<any> = [];
             for (var i = 0, len = obj.length; i < len; i++)
             {
                 array[i] = Util.clone(obj[i]);

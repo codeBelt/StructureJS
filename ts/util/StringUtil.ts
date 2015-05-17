@@ -284,7 +284,7 @@ class StringUtil
      *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
      *      // 'Robert is cool. Very cool and smart!'
      */
-    public static format(str:string, ...rest:any[]):string
+    public static format(str:string, ...rest:Array<any>):string
     {
         var length = rest.length;
         var value:string = str;
