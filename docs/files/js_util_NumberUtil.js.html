@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.2</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -229,7 +229,8 @@
          * @static
          * @returns {number}
          * @example
-         *
+         *     NumberUtil.feetToMeter(1);
+         *     // 0.3048
          */
         NumberUtil.feetToMeter = function(feet) {
             return feet / 3.2808;
@@ -239,6 +240,7 @@
          *
          * @method convertToHHMMSS
          * @param seconds {number}
+         * @param showHours [boolean=true] By default if the time does not pass one hour it will show 00:05:34. Pass false to display the time as 05:34 until it gets pass one hour and then it will show 01:00:00
          * @returns {string}
          * @public
          * @static
@@ -246,12 +248,18 @@
          *     NumberUtil.convertToHHMMSS(33333);
          *     // &#x27;09:15:33&#x27;
          */
-        NumberUtil.convertToHHMMSS = function(seconds) {
+        NumberUtil.convertToHHMMSS = function(seconds, showHours) {
+            if (showHours === void 0) { showHours = true; }
             var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
             var h = Math.floor(sec / (60 * 60));
-            var hourStr = (h == 0) ? &#x27;&#x27; : NumberUtil.doubleDigitFormat(h) + &#x27;:&#x27;;
+            var hourStr;
+            if (showHours === false) {
+                hourStr = (h == 0) ? &#x27;&#x27; : NumberUtil.doubleDigitFormat(h) + &#x27;:&#x27;;
+            } else {
+                hourStr = NumberUtil.doubleDigitFormat(h) + &#x27;:&#x27;;
+            }
             var minuteStr = NumberUtil.doubleDigitFormat(m) + &#x27;:&#x27;;
             var secondsStr = NumberUtil.doubleDigitFormat(s);
             return hourStr + minuteStr + secondsStr;

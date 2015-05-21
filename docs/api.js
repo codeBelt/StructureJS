@@ -50,7 +50,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "controller",
             "name": "controller",
-            "description": "The ApplicationCacheController..."
+            "description": "The ApplicationCacheController is a static class works with the window applicationCache object."
         },
         {
             "displayName": "core",

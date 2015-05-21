@@ -246,8 +246,10 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
+ * 2015-05-21 v0.7.2 Add showHours flag to NumberUtil.convertToHHMMSS to display as 00:05:23 or 05:23
+
  * 2015-05-12 v0.7.1 DOMElement have createComponents return the list of children it created. Fix small bugs. Update comments. Add some unit tests.
- 
+
  * 2015-04-26 v0.7.0 Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
 
  * 2015-04-15 v0.6.17 Previous version before I started doing this release history.
