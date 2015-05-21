@@ -19,6 +19,10 @@ describe("NumberUtil", function() {
 
     it("convertToHHMMSS() 33333 seconds should be 09:15:33", function() {
         expect(NumberUtil.convertToHHMMSS(33333)).toEqual('09:15:33');
+        expect(NumberUtil.convertToHHMMSS(3599, false)).toEqual('59:59');
+        expect(NumberUtil.convertToHHMMSS(3600, false)).toEqual('01:00:00');
+        expect(NumberUtil.convertToHHMMSS(3599, true)).toEqual('00:59:59');
+        expect(NumberUtil.convertToHHMMSS(3599)).toEqual('00:59:59');
     });
 
     it("doubleDigitFormat() 8 seconds should be 08", function() {

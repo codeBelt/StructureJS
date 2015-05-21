@@ -81,7 +81,8 @@
          * @static
          * @returns {number}
          * @example
-         *
+         *     NumberUtil.feetToMeter(1);
+         *     // 0.3048
          */
         NumberUtil.feetToMeter = function(feet) {
             return feet / 3.2808;
@@ -91,6 +92,7 @@
          *
          * @method convertToHHMMSS
          * @param seconds {number}
+         * @param showHours [boolean=true] By default if the time does not pass one hour it will show 00:05:34. Pass false to display the time as 05:34 until it gets pass one hour and then it will show 01:00:00
          * @returns {string}
          * @public
          * @static
@@ -98,12 +100,18 @@
          *     NumberUtil.convertToHHMMSS(33333);
          *     // '09:15:33'
          */
-        NumberUtil.convertToHHMMSS = function(seconds) {
+        NumberUtil.convertToHHMMSS = function(seconds, showHours) {
+            if (showHours === void 0) { showHours = true; }
             var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
             var h = Math.floor(sec / (60 * 60));
-            var hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+            var hourStr;
+            if (showHours === false) {
+                hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+            } else {
+                hourStr = NumberUtil.doubleDigitFormat(h) + ':';
+            }
             var minuteStr = NumberUtil.doubleDigitFormat(m) + ':';
             var secondsStr = NumberUtil.doubleDigitFormat(s);
             return hourStr + minuteStr + secondsStr;
