@@ -280,7 +280,7 @@
          *      };
          */
         BrowserUtil.getBreakpoint = function() {
-            return BrowserUtil._window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/["']/g, '');
+            return BrowserUtil._styleDeclaration.getPropertyValue('content').replace(/["']/g, '');
         };
         /**
          * TODO: YUIDoc_comment
@@ -349,6 +349,15 @@
          * @static
          */
         BrowserUtil._window = window;
+        /**
+         * A reference to the getComputedStyle method.
+         *
+         * @property _styleDeclaration
+         * @type {any}
+         * @private
+         * @static
+         */
+        BrowserUtil._styleDeclaration = window.getComputedStyle(document.querySelector('body'), ':after');
         /**
          * TODO: YUIDoc_comment
          *

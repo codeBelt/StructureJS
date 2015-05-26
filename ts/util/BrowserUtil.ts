@@ -42,7 +42,7 @@ class BrowserUtil
     private static _window:Window = window;
 
     /**
-     * A reference to the browser window object.
+     * A reference to the getComputedStyle method.
      *
      * @property _styleDeclaration
      * @type {any}
