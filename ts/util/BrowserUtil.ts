@@ -42,6 +42,16 @@ class BrowserUtil
     private static _window:Window = window;
 
     /**
+     * A reference to the browser window object.
+     *
+     * @property _styleDeclaration
+     * @type {any}
+     * @private
+     * @static
+     */
+    private static _styleDeclaration:any = window.getComputedStyle(document.querySelector('body'), ':after');
+
+    /**
      * TODO: YUIDoc_comment
      *
      * @property _onBreakpointChangeHandler
@@ -378,9 +388,7 @@ class BrowserUtil
      */
     public static getBreakpoint()
     {
-        return BrowserUtil._window.getComputedStyle(
-            document.querySelector('body'), ':after'
-        ).getPropertyValue('content').replace(/["']/g, '');
+        return BrowserUtil._styleDeclaration.getPropertyValue('content').replace(/["']/g, '');
     }
 
     /**
