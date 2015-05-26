@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.2",
+        "version": "0.7.3",
         "url": ""
     },
     "files": {
@@ -6328,6 +6328,20 @@
         {
             "file": "js/util/BrowserUtil.js",
             "line": 352,
+            "description": "A reference to the getComputedStyle method.",
+            "itemtype": "property",
+            "name": "_styleDeclaration",
+            "type": "{any}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/BrowserUtil.js",
+            "line": 361,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_onBreakpointChangeHandler",
@@ -6341,7 +6355,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 361,
+            "line": 370,
             "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "debounceDelay",
@@ -6356,7 +6370,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 372,
+            "line": 381,
             "description": "The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.",
             "itemtype": "property",
             "name": "isEnabled",

@@ -246,6 +246,8 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
+ * 2015-05-26 v0.7.3 Corrects string replacement on getBreakpoint
+
  * 2015-05-21 v0.7.2 Add showHours flag to NumberUtil.convertToHHMMSS to display as 00:05:23 or 05:23
 
  * 2015-05-12 v0.7.1 DOMElement have createComponents return the list of children it created. Fix small bugs. Update comments. Add some unit tests.
