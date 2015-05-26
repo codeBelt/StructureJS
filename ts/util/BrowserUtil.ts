@@ -380,7 +380,7 @@ class BrowserUtil
     {
         return BrowserUtil._window.getComputedStyle(
             document.querySelector('body'), ':after'
-        ).getPropertyValue('content').replace(/"/g, '');
+        ).getPropertyValue('content').replace(/["']/g, '');
     }
 
     /**

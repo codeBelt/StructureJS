@@ -280,7 +280,7 @@
          *      };
          */
         BrowserUtil.getBreakpoint = function() {
-            return BrowserUtil._window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/"/g, '');
+            return BrowserUtil._window.getComputedStyle(document.querySelector('body'), ':after').getPropertyValue('content').replace(/["']/g, '');
         };
         /**
          * TODO: YUIDoc_comment
