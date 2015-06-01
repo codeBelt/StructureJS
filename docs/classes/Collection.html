@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -184,7 +184,7 @@
     <div id="api-options">
         Show:
         <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
             Inherited
         </label>
 
@@ -230,7 +230,7 @@
                     
                 </li>
             
-                <li class="index-item property protected inherited">
+                <li class="index-item property public inherited">
                     <a href="#property_isEnabled">isEnabled</a>
 
                     
@@ -486,7 +486,7 @@
             <a name="property__listeners" class="anchor-link"></a>
 <div class="property item private inherited">
     <h3 class="name"><code>_listeners</code>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+    <span class="type">Array.<any></span>
 
     
 
@@ -636,14 +636,14 @@
 
         
             <a name="property_isEnabled" class="anchor-link"></a>
-<div class="property item protected inherited">
+<div class="property item public inherited">
     <h3 class="name"><code>isEnabled</code>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
     
-        <span class="flag protected">protected</span>
+        <span class="flag public">public</span>
     
 
     
@@ -743,7 +743,7 @@
             <a name="property_models" class="anchor-link"></a>
 <div class="property item">
     <h3 class="name"><code>models</code>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+    <span class="type">Array.<any></span>
 
     
 
@@ -992,7 +992,7 @@ collection.add(data);</code></pre>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<any></span>
         </span>
     
 
@@ -1072,7 +1072,7 @@ collection.add(data);</code></pre>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<any></span>:
                         
                         <p>Returns a list of found object&#39;s.</p>
 
@@ -1106,7 +1106,7 @@ collection.add(data);</code></pre>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array<any></span>
         </span>
     
 
@@ -1137,7 +1137,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l474"><code>js&#x2F;model&#x2F;Collection.js:474</code></a>
+        <a href="../files/js_model_Collection.js.html#l475"><code>js&#x2F;model&#x2F;Collection.js:475</code></a>
         
         </p>
 
@@ -1163,7 +1163,7 @@ collection.add(data);</code></pre>
                     <li class="param">
                         
                             <code class="param-name">list</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+                            <span class="type">Array.<any></span>
                         
 
                         
@@ -1187,7 +1187,7 @@ collection.add(data);</code></pre>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array<any></span>:
                         
                         <p>Returns a new array list of models in the collection with duplicates removed.</p>
 
@@ -1221,7 +1221,7 @@ collection.add(data);</code></pre>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<any></span>
         </span>
     
 
@@ -1301,7 +1301,7 @@ collection.add(data);</code></pre>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<any></span>:
                         
                         <p>Returns a list of found object&#39;s.</p>
 
@@ -2220,7 +2220,13 @@ on other objects before calling the super.</p>
             
                 <li class="arg">
                     
-                        <code>filterFunction</code>
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[callbackScope=null]</code>
                     
                 </li>
             
@@ -2230,7 +2236,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<any></span>
         </span>
     
 
@@ -2286,7 +2292,7 @@ on other objects before calling the super.</p>
                 
                     <li class="param">
                         
-                            <code class="param-name">filterFunction</code>
+                            <code class="param-name">callback</code>
                             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
@@ -2294,6 +2300,23 @@ on other objects before calling the super.</p>
 
                         <div class="param-description">
                             <p>Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[callbackScope=null]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>Optional. Value to use as this when executing callback.</p>
 
                         </div>
 
@@ -2311,7 +2334,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<any></span>:
                         
                         <p>Returns the list of models in the collection.</p>
 
@@ -2358,7 +2381,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<any></span>
         </span>
     
 
@@ -2439,7 +2462,7 @@ When checking properties, this method performs a deep comparison between values 
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<any></span>:
                         
                         <p>Returns a list of found object&#39;s.</p>
 
@@ -3577,7 +3600,7 @@ If the index is out of bounds, the collection will clamp it.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<any></span>
         </span>
     
 
@@ -3608,7 +3631,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l462"><code>js&#x2F;model&#x2F;Collection.js:462</code></a>
+        <a href="../files/js_model_Collection.js.html#l463"><code>js&#x2F;model&#x2F;Collection.js:463</code></a>
         
         </p>
 
@@ -3634,7 +3657,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<any></span>:
                         
                         <p>Returns the list of models in the collection.</p>
 
@@ -3677,7 +3700,7 @@ If the index is out of bounds, the collection will clamp it.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<any></span>
         </span>
     
 
@@ -3759,7 +3782,7 @@ point value, according to the string conversion of each element.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<any></span>:
                         
                         <p>Returns the list of models in the collection.</p>
 
@@ -3812,7 +3835,7 @@ point value, according to the string conversion of each element.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array<any></span>
         </span>
     
 
@@ -3908,7 +3931,7 @@ point value, according to the string conversion of each element.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array<any></span>:
                         
                         <p>Returns the list of models in the collection.</p>
 
@@ -3942,7 +3965,7 @@ point value, according to the string conversion of each element.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<any></span>
         </span>
     
 
@@ -3999,7 +4022,7 @@ point value, according to the string conversion of each element.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<any></span>:
                         
                     
                 </div>

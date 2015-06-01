@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/event/EventBroker.js - StructureJS</title>
+    <title>js/plugin/jquery.eventListener.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -142,7 +142,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/event/EventBroker.js</h1>
+                <h1 class="file-heading">File: js/plugin/jquery.eventListener.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -151,148 +151,123 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;./EventDispatcher&#x27;, &#x27;./BaseEvent&#x27;], factory);
+        define([&#x27;jquery&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;./EventDispatcher&#x27;), require(&#x27;./BaseEvent&#x27;));
+        module.exports = factory(require(&#x27;jquery&#x27;));
     } else {
         /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.EventBroker = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
+        factory(root.jQuery);
     }
-}(this, function(EventDispatcher, BaseEvent) {
+}(this, function($) {
 
     &#x27;use strict&#x27;;
 
+    var $eventListener = $;
     /**
-     * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
-     * Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.
-     *
-     * @class EventBroker
-     * @module StructureJS
-     * @submodule event
-     * @requires EventDispatcher
-     * @requires BaseEvent
-     * @static
-     * @author Robert S. (www.codeBelt.com)
+     * A bind polyfill for browsers that don&#x27;t support the bind method.
      */
-    var EventBroker = (function() {
-        function EventBroker() {
-            throw new Error(&#x27;[EventBroker] Do not instantiate the EventBroker class because it is a static class.&#x27;);
-        }
-        /**
-         * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
-         *
-         * @method addEventListener
-         * @param type {String} The type of event.
-         * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} object or custom event that extends the {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} class.
-         * @param scope {any} The scope of the callback function.
-         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
-         * @static
-         * @public
-         * @example
-         *     EventBroker.addEventListener(&#x27;change&#x27;, this._handlerMethod, this);
-         *     // Example of using a constant event type.
-         *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-         *
-         *     // The event passed to the method will always be a BaseEvent object.
-         *     ClassName.prototype._handlerMethod = function (event) {
-         *          console.log(event.data);
-         *     };
-         */
-        EventBroker.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
-            EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
-        };
-        /**
-         * Removes a specified listener from the EventBroker object.
-         *
-         * @method removeEventListener
-         * @param type {String} The type of event.
-         * @param callback {Function} The callback function to be removed.
-         * @param scope {any} The scope of the callback function to be removed.
-         * @static
-         * @public
-         * @example
-         *     EventBroker.removeEventListener(&#x27;change&#x27;, this._handlerMethod, this);
-         *
-         *     EventBroker.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-         */
-        EventBroker.removeEventListener = function(type, callback, scope) {
-            EventBroker._eventDispatcher.removeEventListener(type, callback, scope);
-        };
-        /**
-         * Dispatches an event within the EventBroker object.
-         *
-         * @method dispatchEvent
-         * @param event {string|BaseEvent} The Event object or event type string you want to dispatch.
-         * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}}.
-         * @static
-         * @public
-         * @example
-         *      EventBroker.dispatchEvent(&#x27;change&#x27;);
-         *
-         *      // Example: Sending data with the event.
-         *      EventBroker.dispatchEvent(&#x27;change&#x27;, {some: &#x27;data&#x27;});
-         *
-         *      // Example: Sending a BaseEvent or custom event object.
-         *      var event = new BaseEvent(BaseEvent.CHANGE);
-         *      event.data = {some: &#x27;data&#x27;};
-         *      EventBroker.dispatchEvent(event);
-         */
-        EventBroker.dispatchEvent = function(type, data) {
-            if (data === void 0) { data = null; }
-            var event = type;
-            if (typeof event === &#x27;string&#x27;) {
-                event = new BaseEvent(type, false, false, data);
+    if (!Function.prototype.bind) {
+        Function.prototype.bind = function(oThis) {
+            if (typeof this !== &#x27;function&#x27;) {
+                throw new TypeError(&#x27;Function.prototype.bind - what is trying to be bound is not callable&#x27;);
             }
-            event.target = EventBroker;
-            event.currentTarget = EventBroker;
-            EventBroker._eventDispatcher.dispatchEvent(event);
+            var aArgs = Array.prototype.slice.call(arguments, 1),
+                fToBind = this,
+                fNOP = function() {},
+                fBound = function() {
+                    return fToBind.apply(this instanceof fNOP &amp;&amp; oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+                };
+            fNOP.prototype = this.prototype;
+            fBound.prototype = new fNOP();
+            return fBound;
         };
-        /**
-         * Check if EventBroker has a specific event listener already added.
-         *
-         * @method hasEventListener
-         * @param type {String} The type of event.
-         * @param callback {Function} The listener method to call.
-         * @param scope {any} The scope of the listener object.
-         * @return {boolean}
-         * @static
-         * @public
-         * @example
-         *      EventBroker.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-         */
-        EventBroker.hasEventListener = function(type, callback, scope) {
-            return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
-        };
-        /**
-         * Generates a string output of event listeners for a given object.
-         *
-         * @method getEventListeners
-         * @return {string}
-         * @static
-         * @public
-         * @example
-         *      EventBroker.getEventListeners();
-         *
-         *      // [ClassName] is listen for &#x27;BaseEvent.change&#x27; event.
-         */
-        EventBroker.getEventListeners = function() {
-            return EventBroker._eventDispatcher.getEventListeners();
-        };
-        /**
-         * A reference to the EventDispatcher object.
-         *
-         * @property _eventDispatcher
-         * @type {EventDispatcher}
-         * @private
-         * @static
-         */
-        EventBroker._eventDispatcher = new EventDispatcher();
-        return EventBroker;
-    })();
+    }
+    /**
+     * Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.
+     *
+     * @param str
+     * @returns {String}
+     */
+    var hashCode = function(str) {
+        str = String(str);
+        // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
+        var character;
+        var hash = null;
+        var strLength = str.length;
+        if (strLength == 0)
+            return hash;
+        for (var i = 0; i &lt; strLength; i++) {
+            character = str.charCodeAt(i);
+            hash = ((hash &lt;&lt; 5) - hash) + character;
+            hash = hash &amp; hash; // Convert to 32bit integer
+        }
+        return String(Math.abs(hash));
+    };
+    /**
+     * The jQuery addEventListener plugin
+     */
+    $eventListener.fn.addEventListener = function(type, selector, data, callback, scope) {
+        var _callback;
+        var _scope;
+        var _handler;
+        switch (arguments.length) {
+            case 3:
+                _callback = selector;
+                _scope = data;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                this.on(type, _handler);
+                break;
+            case 4:
+                _callback = data;
+                _scope = callback;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                this.on(type, selector, _handler);
+                break;
+            case 5:
+                _callback = callback;
+                _scope = scope;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)] = _callback.bind(_scope);
+                this.on(type, selector, data, _handler);
+                break;
+            default:
+                throw new Error(&#x27;jQuery addEventListener plugin requires at least 3 arguments.&#x27;);
+        }
+        return this;
+    };
+    /**
+     * The jQuery removeEventListener plugin
+     */
+    $eventListener.fn.removeEventListener = function(type, selector, callback, scope) {
+        var _callback;
+        var _scope;
+        var _handler;
+        switch (arguments.length) {
+            case 3:
+                _callback = selector;
+                _scope = callback;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)];
+                this.off(type, _handler);
+                _scope._handlerMap[hashCode(_callback)] = null;
+                break;
+            case 4:
+                _callback = callback;
+                _scope = scope;
+                _scope._handlerMap = _scope._handlerMap || {};
+                _handler = _scope._handlerMap[hashCode(_callback)];
+                this.off(type, selector, _handler);
+                _scope._handlerMap[hashCode(_callback)] = null;
+                break;
+            default:
+                throw new Error(&#x27;jQuery removeEventListener plugin requires at least 3 arguments.&#x27;);
+        }
+        return this;
+    };
 
-    return EventBroker;
+    return $eventListener;
 }));
 
     </pre>

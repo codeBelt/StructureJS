@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.1",
+        "version": "0.7.3",
         "url": ""
     },
     "files": {
@@ -421,7 +421,7 @@
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The ApplicationCacheController...",
+            "description": "The ApplicationCacheController is a static class works with the window applicationCache object.",
             "file": "js/controller/Router.js",
             "line": 18
         },
@@ -551,7 +551,7 @@
             "module": "StructureJS",
             "file": "js/controller/ApplicationCacheController.js",
             "line": 18,
-            "description": "The ApplicationCacheController...",
+            "description": "The ApplicationCacheController is a static class works with the window applicationCache object.",
             "submodule": "controller",
             "requires": [
                 "ApplicationCacheEvent",
@@ -1755,6 +1755,7 @@
         {
             "file": "js/controller/ApplicationCacheController.js",
             "line": 256,
+            "description": "A reference to the applicationCache property on the window object.",
             "itemtype": "property",
             "name": "_appCache",
             "type": "{ApplicationCache}",
@@ -1767,7 +1768,8 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 264,
+            "line": 265,
+            "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
             "type": "{EventDispatcher}",
@@ -1780,13 +1782,13 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 272,
+            "line": 274,
             "description": "The isEnabled property is used to keep track of the enabled state.",
             "itemtype": "property",
             "name": "isEnabled",
             "type": "{boolean}",
             "default": "false",
-            "access": "private",
+            "access": "public",
             "tagname": "",
             "static": 1,
             "class": "ApplicationCacheController",
@@ -2886,7 +2888,7 @@
             ],
             "return": {
                 "description": "Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.\nIf the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.",
-                "type": "Array"
+                "type": "Array.<DOMElement>"
             },
             "access": "public",
             "tagname": "",
@@ -3208,7 +3210,7 @@
             "name": "isCreated",
             "type": "{boolean}",
             "default": "false",
-            "access": "protected",
+            "access": "public",
             "tagname": "",
             "class": "DisplayObject",
             "module": "StructureJS",
@@ -3316,7 +3318,7 @@
             "description": "A reference to the child DisplayObject instances to this parent object instance.",
             "itemtype": "property",
             "name": "children",
-            "type": "{Array}",
+            "type": "{Array.<DisplayObject>}",
             "readonly": "",
             "access": "public",
             "tagname": "",
@@ -4503,7 +4505,7 @@
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
             "name": "_listeners",
-            "type": "{Array}",
+            "type": "{Array.<any>}",
             "access": "private",
             "tagname": "",
             "class": "EventDispatcher",
@@ -4856,7 +4858,7 @@
             "description": "An array containing the parameters captured from the Route.{{#crossLink \"Route/match:method\"}}{{/crossLink}}\nbeing called with the {{#crossLink \"RouterEvent/routePattern:property\"}}{{/crossLink}} property.",
             "itemtype": "property",
             "name": "params",
-            "type": "{string}",
+            "type": "{Array.<string>}",
             "access": "public",
             "tagname": "",
             "class": "RouterEvent",
@@ -4965,7 +4967,7 @@
             "description": "The list of models in the collection.",
             "itemtype": "property",
             "name": "models",
-            "type": "{Array}",
+            "type": "{Array.<any>}",
             "readonly": "",
             "class": "Collection",
             "module": "StructureJS",
@@ -5152,7 +5154,7 @@
             ],
             "return": {
                 "description": "Returns a list of found object's.",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "access": "public",
             "tagname": "",
@@ -5178,7 +5180,7 @@
             ],
             "return": {
                 "description": "Returns a list of found object's.",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "access": "private",
             "tagname": "",
@@ -5201,7 +5203,7 @@
             ],
             "return": {
                 "description": "Returns a list of found object's.",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "access": "private",
             "tagname": "",
@@ -5261,7 +5263,7 @@
             "name": "toJSON",
             "return": {
                 "description": "",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "access": "public",
             "tagname": "",
@@ -5338,7 +5340,7 @@
             "tagname": "",
             "return": {
                 "description": "Returns the list of models in the collection.",
-                "type": "Array"
+                "type": "Array<any>"
             },
             "example": [
                 "\n     collection.sortOn('name');\n     collection.sortOn('name', false);"
@@ -5366,7 +5368,7 @@
             "tagname": "",
             "return": {
                 "description": "Returns the list of models in the collection.",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "example": [
                 "\n     var sortByDate = function(a, b){\n         return new Date(a.date) - new Date(b.date)\n     }\n\n     collection.sort(sortByDate);"
@@ -5383,16 +5385,22 @@
             "name": "filter",
             "params": [
                 {
-                    "name": "filterFunction",
+                    "name": "callback",
                     "description": "Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.",
                     "type": "Function"
+                },
+                {
+                    "name": "callbackScope",
+                    "description": "Optional. Value to use as this when executing callback.",
+                    "optional": true,
+                    "optdefault": "null"
                 }
             ],
             "access": "public",
             "tagname": "",
             "return": {
                 "description": "Returns the list of models in the collection.",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "example": [
                 "\n     var isOldEnough = function(model){\n         return model.age >= 21;\n     }\n\n     var list = collection.filter(isOldEnough);"
@@ -5403,7 +5411,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 462,
+            "line": 463,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -5411,7 +5419,7 @@
             "tagname": "",
             "return": {
                 "description": "Returns the list of models in the collection.",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "example": [
                 "\n     collection.reverse();"
@@ -5422,7 +5430,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 474,
+            "line": 475,
             "description": "Returns a new array of models with duplicates removed.",
             "itemtype": "method",
             "name": "_unique",
@@ -5430,12 +5438,12 @@
                 {
                     "name": "list",
                     "description": "The array you want to use to generate the unique array.",
-                    "type": "Array"
+                    "type": "Array.<any>"
                 }
             ],
             "return": {
                 "description": "Returns a new array list of models in the collection with duplicates removed.",
-                "type": "Array"
+                "type": "Array<any>"
             },
             "access": "private",
             "tagname": "",
@@ -5541,7 +5549,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Array"
+                "type": "Array.<any>"
             },
             "example": [
                 "\n    var route = new Route('/games/{gameName}/:level:/', this.method, this);\n    console.log( route.match('/games/asteroids/2/') );"
@@ -6320,6 +6328,20 @@
         {
             "file": "js/util/BrowserUtil.js",
             "line": 352,
+            "description": "A reference to the getComputedStyle method.",
+            "itemtype": "property",
+            "name": "_styleDeclaration",
+            "type": "{any}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "BrowserUtil",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/BrowserUtil.js",
+            "line": 361,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_onBreakpointChangeHandler",
@@ -6333,7 +6355,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 361,
+            "line": 370,
             "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "debounceDelay",
@@ -6348,8 +6370,8 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 372,
-            "description": "TODO: YUIDoc_comment",
+            "line": 381,
+            "description": "The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.",
             "itemtype": "property",
             "name": "isEnabled",
             "type": "{boolean}",
@@ -6445,7 +6467,7 @@
             "description": "A list of day names.",
             "itemtype": "property",
             "name": "LONG_DAY_LABELS",
-            "type": "{Array}",
+            "type": "{Array.<any>}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -6460,7 +6482,7 @@
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_DAY_LABELS",
-            "type": "{Array}",
+            "type": "{Array.<any>}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -6475,7 +6497,7 @@
             "description": "A list of month names.",
             "itemtype": "property",
             "name": "LONG_MONTH_LABELS",
-            "type": "{Array}",
+            "type": "{Array.<any>}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -6490,7 +6512,7 @@
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "SHORT_MONTH_LABELS",
-            "type": "{Array}",
+            "type": "{Array.<any>}",
             "access": "public",
             "tagname": "",
             "static": 1,
@@ -7182,7 +7204,7 @@
                 "type": "Number"
             },
             "example": [
-                "\n"
+                "\n    NumberUtil.feetToMeter(1);\n    // 0.3048"
             ],
             "class": "NumberUtil",
             "module": "StructureJS",
@@ -7190,7 +7212,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 89,
+            "line": 90,
             "description": "Converts seconds into hour, minutes, seconds.",
             "itemtype": "method",
             "name": "convertToHHMMSS",
@@ -7199,6 +7221,10 @@
                     "name": "seconds",
                     "description": "",
                     "type": "Number"
+                },
+                {
+                    "name": "showHours",
+                    "description": "[boolean=true] By default if the time does not pass one hour it will show 00:05:34. Pass false to display the time as 05:34 until it gets pass one hour and then it will show 01:00:00"
                 }
             ],
             "return": {
@@ -7217,7 +7243,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 111,
+            "line": 119,
             "description": "Formats a number from 0-9 to display with 2 digits.",
             "itemtype": "method",
             "name": "doubleDigitFormat",
@@ -7244,7 +7270,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 135,
+            "line": 143,
             "description": "Formats a currency string as a number.",
             "itemtype": "method",
             "name": "unformatUnit",
@@ -7271,7 +7297,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 171,
+            "line": 179,
             "description": "Formats a number as a currency string.",
             "itemtype": "method",
             "name": "formatUnit",
@@ -7333,7 +7359,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 222,
+            "line": 230,
             "description": "Convert Fahrenheit to Celsius.",
             "itemtype": "method",
             "name": "fahrenheitToCelsius",
@@ -7362,7 +7388,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 253,
+            "line": 261,
             "description": "Convert Celsius to Fahrenheit.",
             "itemtype": "method",
             "name": "celsiusToFahrenheit",
@@ -7700,7 +7726,7 @@
                 {
                     "name": "...rest",
                     "description": "",
-                    "type": "Array"
+                    "type": "Array.<any>"
                 }
             ],
             "access": "public",
@@ -8090,7 +8116,7 @@
                 {
                     "name": "list",
                     "description": "A list of property names you want to remove from the object.",
-                    "type": "Array"
+                    "type": "Array.<any>"
                 }
             ],
             "return": {
@@ -8554,7 +8580,7 @@
             "name": "isEnabled",
             "type": "{boolean}",
             "default": "false",
-            "access": "protected",
+            "access": "public",
             "tagname": "",
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -8924,19 +8950,19 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:89"
+            "line": " js/util/NumberUtil.js:90"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:111"
+            "line": " js/util/NumberUtil.js:119"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:135"
+            "line": " js/util/NumberUtil.js:143"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:171"
+            "line": " js/util/NumberUtil.js:179"
         },
         {
             "message": "replacing incorrect tag: returns with return",

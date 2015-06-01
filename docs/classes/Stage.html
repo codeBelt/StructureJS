@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -184,7 +184,7 @@
     <div id="api-options">
         Show:
         <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
             Inherited
         </label>
 
@@ -284,13 +284,13 @@
                     
                 </li>
             
-                <li class="index-item property protected inherited">
+                <li class="index-item property public inherited">
                     <a href="#property_isCreated">isCreated</a>
 
                     
                 </li>
             
-                <li class="index-item property protected inherited">
+                <li class="index-item property public inherited">
                     <a href="#property_isEnabled">isEnabled</a>
 
                     
@@ -732,7 +732,7 @@ this class will not try to add the view to the DOM since it already exists.</p>
             <a name="property__listeners" class="anchor-link"></a>
 <div class="property item private inherited">
     <h3 class="name"><code>_listeners</code>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+    <span class="type">Array.<any></span>
 
     
 
@@ -983,7 +983,7 @@ to the DOM.</p>
             <a name="property_children" class="anchor-link"></a>
 <div class="property item public inherited">
     <h3 class="name"><code>children</code>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+    <span class="type">Array.<DisplayObject></span>
 
     
 
@@ -1233,14 +1233,14 @@ This property is only used with the canvas specific display objects.</p>
 
         
             <a name="property_isCreated" class="anchor-link"></a>
-<div class="property item protected inherited">
+<div class="property item public inherited">
     <h3 class="name"><code>isCreated</code>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
     
-        <span class="flag protected">protected</span>
+        <span class="flag public">public</span>
     
 
     
@@ -1284,14 +1284,14 @@ This property is only used with the canvas specific display objects.</p>
 
         
             <a name="property_isEnabled" class="anchor-link"></a>
-<div class="property item protected inherited">
+<div class="property item public inherited">
     <h3 class="name"><code>isEnabled</code>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
     
 
     
-        <span class="flag protected">protected</span>
+        <span class="flag public">public</span>
     
 
     
@@ -4224,7 +4224,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+            <span class="type">Array.<DOMElement></span>
         </span>
     
 
@@ -4303,7 +4303,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                            <span class="type">Array.<DOMElement></span>:
                         
                         <p>Returns a list of DOMElement&#39;s. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
 If the &#39;data-cid&#39; property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.</p>

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -428,7 +428,7 @@
          *      };
          */
         BrowserUtil.getBreakpoint = function() {
-            return BrowserUtil._window.getComputedStyle(document.querySelector(&#x27;body&#x27;), &#x27;:after&#x27;).getPropertyValue(&#x27;content&#x27;).replace(/&quot;/g, &#x27;&#x27;);
+            return BrowserUtil._styleDeclaration.getPropertyValue(&#x27;content&#x27;).replace(/[&quot;&#x27;]/g, &#x27;&#x27;);
         };
         /**
          * TODO: YUIDoc_comment
@@ -498,6 +498,15 @@
          */
         BrowserUtil._window = window;
         /**
+         * A reference to the getComputedStyle method.
+         *
+         * @property _styleDeclaration
+         * @type {any}
+         * @private
+         * @static
+         */
+        BrowserUtil._styleDeclaration = window.getComputedStyle(document.querySelector(&#x27;body&#x27;), &#x27;:after&#x27;);
+        /**
          * TODO: YUIDoc_comment
          *
          * @property _onBreakpointChangeHandler
@@ -518,7 +527,7 @@
          */
         BrowserUtil.debounceDelay = 250;
         /**
-         * TODO: YUIDoc_comment
+         * The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.
          *
          * @property isEnabled
          * @type {boolean}
