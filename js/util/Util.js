@@ -58,7 +58,7 @@
          *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
-         * @param list {Array.<any>} A list of property names you want to remove from the object.
+         * @param value {string|Array.<string>} A property name or an array of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static
@@ -69,7 +69,9 @@
          *
          *      // { name: 'Robert' }
          */
-        Util.deletePropertyFromObject = function(object, list) {
+        Util.deletePropertyFromObject = function(object, value) {
+            // If properties is not an array then make it an array object.
+            var list = (value instanceof Array) ? value : [value];
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {

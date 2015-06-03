@@ -64,7 +64,7 @@ class Util
      *
      * @method deletePropertyFromObject
      * @param object {Object} The object you want to remove properties from.
-     * @param list {Array.<any>} A list of property names you want to remove from the object.
+     * @param value {string|Array.<string>} A property name or an array of property names you want to remove from the object.
      * @returns {any} Returns the object passed in without the removed the properties.
      * @public
      * @static
@@ -75,8 +75,11 @@ class Util
      *
      *      // { name: 'Robert' }
      */
-    public static deletePropertyFromObject(object:any, list:Array<any>):any
+    public static deletePropertyFromObject(object:any, value:any):any
     {
+        // If properties is not an array then make it an array object.
+        var list:any = (value instanceof Array) ? value : [value];
+
         // Loop through the object properties.
         for (var key in object)
         {
