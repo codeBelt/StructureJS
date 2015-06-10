@@ -5412,6 +5412,39 @@
         {
             "file": "js/model/Collection.js",
             "line": 463,
+            "description": "Convenient way to get a list of property values.",
+            "itemtype": "method",
+            "name": "pluck",
+            "params": [
+                {
+                    "name": "propertyName",
+                    "description": "The property name you want the values from.",
+                    "type": "String"
+                },
+                {
+                    "name": "unique",
+                    "description": "Pass in true to remove duplicates.",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array.<any>"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n     collection.add({name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'});\n\n     var list = collection.pluck('name');\n     // ['Robert', 'Robert', 'Chris']\n\n     var list = collection.pluck('name', true);\n     // ['Robert', 'Chris']"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/Collection.js",
+            "line": 493,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -5430,7 +5463,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 475,
+            "line": 505,
             "description": "Returns a new array of models with duplicates removed.",
             "itemtype": "method",
             "name": "_unique",
@@ -8114,9 +8147,9 @@
                     "type": "Object"
                 },
                 {
-                    "name": "list",
-                    "description": "A list of property names you want to remove from the object.",
-                    "type": "Array.<any>"
+                    "name": "value",
+                    "description": "A property name or an array of property names you want to remove from the object.",
+                    "type": "string|Array.<string>"
                 }
             ],
             "return": {
@@ -8135,7 +8168,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 100,
+            "line": 102,
             "description": "Renames a property name on an object.",
             "itemtype": "method",
             "name": "renamePropertyOnObject",
@@ -8172,7 +8205,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 125,
+            "line": 127,
             "description": "Makes a clone of an object.",
             "itemtype": "method",
             "name": "clone",
@@ -8199,7 +8232,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 170,
+            "line": 172,
             "description": "Converts a string or number to a boolean.",
             "itemtype": "method",
             "name": "toBoolean",
@@ -8226,7 +8259,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 192,
+            "line": 194,
             "description": "Returns the name of the class object passed in.",
             "itemtype": "method",
             "name": "getClassName",
@@ -8253,7 +8286,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 211,
+            "line": 213,
             "description": "Creates and returns a new debounced version of the passed function which will postpone its execution until after\nwait milliseconds have elapsed since the last time it was invoked.",
             "itemtype": "method",
             "name": "debounce",
@@ -8291,7 +8324,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 250,
+            "line": 252,
             "description": "Keeps track of the count for the uniqueId method.",
             "itemtype": "property",
             "name": "_idCounter",
@@ -9042,19 +9075,19 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:100"
+            "line": " js/util/Util.js:102"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:125"
+            "line": " js/util/Util.js:127"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:170"
+            "line": " js/util/Util.js:172"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:192"
+            "line": " js/util/Util.js:194"
         },
         {
             "message": "replacing incorrect tag: returns with return",

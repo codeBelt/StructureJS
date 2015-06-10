@@ -562,6 +562,40 @@ class Collection extends EventDispatcher
     }
 
     /**
+     * Convenient way to get a list of property values.
+     *
+     * @method pluck
+     * @param propertyName {string} The property name you want the values from.
+     * @param [unique=false] {string} Pass in true to remove duplicates.
+     * @return {Array.<any>}
+     * @public
+     * @example
+     *      collection.add({name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'});
+     *
+     *      var list = collection.pluck('name');
+     *      // ['Robert', 'Robert', 'Chris']
+     *
+     *      var list = collection.pluck('name', true);
+     *      // ['Robert', 'Chris']
+     */
+    public pluck(propertyName:string, unique:boolean = false):Array<any>
+    {
+        var list:Array<any> = [];
+
+        for (var i = 0; i < this.length; i++) {
+            if (this.models[i].hasOwnProperty(propertyName) === true) {
+                list[i] = this.models[i][propertyName];
+            }
+        }
+
+        if (unique === true) {
+            list = this._unique(list);
+        }
+
+        return list;
+    }
+
+    /**
      * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.
      *
      * @method reverse
