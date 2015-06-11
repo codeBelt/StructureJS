@@ -570,7 +570,7 @@ class Collection extends EventDispatcher
      * @return {Array.<any>}
      * @public
      * @example
-     *      collection.add({name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'});
+     *      collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);
      *
      *      var list = collection.pluck('name');
      *      // ['Robert', 'Robert', 'Chris']

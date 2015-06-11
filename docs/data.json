@@ -5436,7 +5436,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     collection.add({name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'});\n\n     var list = collection.pluck('name');\n     // ['Robert', 'Robert', 'Chris']\n\n     var list = collection.pluck('name', true);\n     // ['Robert', 'Chris']"
+                "\n     collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);\n\n     var list = collection.pluck('name');\n     // ['Robert', 'Robert', 'Chris']\n\n     var list = collection.pluck('name', true);\n     // ['Robert', 'Chris']"
             ],
             "class": "Collection",
             "module": "StructureJS",

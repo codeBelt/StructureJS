@@ -3448,7 +3448,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> collection.add({name: &#39;Robert&#39;}, {name: &#39;Robert&#39;}, {name: &#39;Chris&#39;});
+                    <pre class="code prettyprint"><code> collection.add([{name: &#39;Robert&#39;}, {name: &#39;Robert&#39;}, {name: &#39;Chris&#39;}]);
 
  var list = collection.pluck(&#39;name&#39;);
  // [&#39;Robert&#39;, &#39;Robert&#39;, &#39;Chris&#39;]
