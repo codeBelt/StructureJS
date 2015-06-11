@@ -246,6 +246,8 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
+ * 2015-06-10 v0.7.4 Add pluck method to Collection. Move removeChild destroy functionality from DisplayObjectContainer to DOMElement.
+
  * 2015-05-26 v0.7.3 Corrects string replacement on getBreakpoint
 
  * 2015-05-21 v0.7.2 Add showHours flag to NumberUtil.convertToHHMMSS to display as 00:05:23 or 05:23

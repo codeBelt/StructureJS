@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.3",
+        "version": "0.7.4",
         "url": ""
     },
     "files": {
@@ -2835,7 +2835,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 400,
+            "line": 405,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2843,7 +2843,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 410,
+            "line": 415,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2851,7 +2851,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 416,
+            "line": 421,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -2874,7 +2874,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 447,
+            "line": 452,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -2898,7 +2898,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 479,
+            "line": 484,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null and the object is garbage collected if there are no other references\nto the child. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -2923,7 +2923,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 501,
+            "line": 511,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -2943,7 +2943,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 514,
+            "line": 524,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -2961,7 +2961,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 531,
+            "line": 543,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2969,7 +2969,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 542,
+            "line": 554,
             "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.",
             "itemtype": "method",
             "name": "createComponents",
@@ -3418,7 +3418,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 135,
+            "line": 130,
             "description": "Removes all child DisplayObject instances from the child list of the DisplayObjectContainerContainer instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if\nno other references to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -3435,7 +3435,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 151,
+            "line": 146,
             "description": "Swaps two DisplayObject's with each other.",
             "itemtype": "method",
             "name": "swapChildren",
@@ -3464,7 +3464,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 167,
+            "line": 162,
             "description": "Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.",
             "itemtype": "method",
             "name": "swapChildrenAt",
@@ -3493,7 +3493,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 186,
+            "line": 181,
             "description": "Returns the index position of a child DisplayObject instance.",
             "itemtype": "method",
             "name": "getChildIndex",
@@ -3516,7 +3516,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 197,
+            "line": 192,
             "description": "Determines whether the specified display object is a child of the DisplayObject instance or the instance itself. The search includes the entire display list including this DisplayObject instance.",
             "itemtype": "method",
             "name": "contains",
@@ -3539,7 +3539,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 208,
+            "line": 203,
             "description": "Returns the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "getChildAt",
@@ -3560,7 +3560,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 218,
+            "line": 213,
             "description": "Gets a DisplayObject by its cid.",
             "itemtype": "method",
             "name": "getChildByCid",
@@ -8751,39 +8751,39 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:400"
+            "line": " js/display/DOMElement.js:405"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:410"
+            "line": " js/display/DOMElement.js:415"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:416"
+            "line": " js/display/DOMElement.js:421"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:447"
+            "line": " js/display/DOMElement.js:452"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:479"
+            "line": " js/display/DOMElement.js:484"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:479"
+            "line": " js/display/DOMElement.js:484"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:514"
+            "line": " js/display/DOMElement.js:524"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:514"
+            "line": " js/display/DOMElement.js:524"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:531"
+            "line": " js/display/DOMElement.js:543"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8811,35 +8811,35 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:135"
+            "line": " js/display/DisplayObjectContainer.js:130"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:151"
+            "line": " js/display/DisplayObjectContainer.js:146"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:167"
+            "line": " js/display/DisplayObjectContainer.js:162"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:186"
+            "line": " js/display/DisplayObjectContainer.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:197"
+            "line": " js/display/DisplayObjectContainer.js:192"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:208"
+            "line": " js/display/DisplayObjectContainer.js:203"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:218"
+            "line": " js/display/DisplayObjectContainer.js:213"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DisplayObjectContainer.js:218"
+            "line": " js/display/DisplayObjectContainer.js:213"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9195,15 +9195,15 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:400"
+            "line": " js/display/DOMElement.js:405"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:410"
+            "line": " js/display/DOMElement.js:415"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:531"
+            "line": " js/display/DOMElement.js:543"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
