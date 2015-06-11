@@ -32,7 +32,7 @@ this.usePartial=this.usePartial||c.usePartial,this.children[d]=c;for(var e=0,f=c
  * Grunt-Browserify-Example v1.0.0
  * 
  * Development By: 
- * Build Date: 2015-05-12
+ * Build Date: 2015-06-10
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
@@ -1152,7 +1152,7 @@ module.exports = FooterView;
              * @property isEnabled
              * @type {boolean}
              * @default false
-             * @protected
+             * @public
              */
             this.isEnabled = false;
         }
@@ -2424,7 +2424,7 @@ module.exports = FooterView;
          *
          * @method getChildren
          * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.
-         * @returns {Array} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
+         * @returns {Array.<DOMElement>} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
          * If the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
          * @public
          */
@@ -2470,7 +2470,12 @@ module.exports = FooterView;
                 child.$element.unbind();
                 child.$element.remove();
             }
-            _super.prototype.removeChild.call(this, child, destroy);
+            if (destroy === true) {
+                child.destroy();
+            } else {
+                child.disable();
+            }
+            _super.prototype.removeChild.call(this, child);
             return this;
         };
         /**
@@ -2499,7 +2504,9 @@ module.exports = FooterView;
          */
         DOMElement.prototype.removeChildren = function(destroy) {
             if (destroy === void 0) { destroy = true; }
-            _super.prototype.removeChildren.call(this, destroy);
+            while (this.children.length > 0) {
+                this.removeChild(this.children.pop(), destroy);
+            }
             this.$element.empty();
             return this;
         };
@@ -2723,7 +2730,7 @@ module.exports = FooterView;
                  * @property isCreated
                  * @type {boolean}
                  * @default false
-                 * @protected
+                 * @public
                  */
                 this.isCreated = false;
                 /**
@@ -2844,7 +2851,7 @@ module.exports = FooterView;
              * A reference to the child DisplayObject instances to this parent object instance.
              *
              * @property children
-             * @type {Array}
+             * @type {Array.<DisplayObject>}
              * @readOnly
              * @public
              */
@@ -2874,7 +2881,7 @@ module.exports = FooterView;
         DisplayObjectContainer.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child, false);
+                child.parent.removeChild(child);
             }
             this.children.push(child);
             this.numChildren = this.children.length;
@@ -2896,7 +2903,7 @@ module.exports = FooterView;
         DisplayObjectContainer.prototype.addChildAt = function(child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child, false);
+                child.parent.removeChild(child);
             }
             this.children.splice(index, 0, child);
             this.numChildren = this.children.length;
@@ -2914,18 +2921,13 @@ module.exports = FooterView;
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChild = function(child, destroy) {
+        DisplayObjectContainer.prototype.removeChild = function(child) {
             var index = this.getChildIndex(child);
             if (index !== -1) {
                 // Removes the child object from the parent.
                 this.children.splice(index, 1);
             }
             this.numChildren = this.children.length;
-            if (destroy === true) {
-                child.destroy();
-            } else {
-                child.disable();
-            }
             child.parent = null;
             return this;
         };
@@ -2939,9 +2941,9 @@ module.exports = FooterView;
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChildren = function(destroy) {
+        DisplayObjectContainer.prototype.removeChildren = function() {
             while (this.children.length > 0) {
-                this.removeChild(this.children.pop(), destroy);
+                this.removeChild(this.children.pop());
             }
             return this;
         };
@@ -3674,7 +3676,7 @@ module.exports = FooterView;
              * Holds a reference to added listeners.
              *
              * @property _listeners
-             * @type {Array}
+             * @type {Array.<any>}
              * @private
              */
             this._listeners = null;
@@ -4046,7 +4048,7 @@ module.exports = FooterView;
              * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
              *
              * @property params
-             * @type {string}
+             * @type {Array.<string>}
              * @public
              */
             this.params = [];
@@ -4126,7 +4128,7 @@ module.exports = FooterView;
              * The list of models in the collection.
              *
              * @property models
-             * @type {Array}
+             * @type {Array.<any>}
              * @readOnly
              */
             this.models = [];
@@ -4266,7 +4268,7 @@ module.exports = FooterView;
          * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
          * @method findBy
          * @param arg {Object|Array}
-         * @return {Array} Returns a list of found object's.
+         * @return {Array.<any>} Returns a list of found object's.
          * @public
          * @example
          *      // Finds all value object that has 'Robert' in it.
@@ -4303,7 +4305,7 @@ module.exports = FooterView;
          *
          * @method _where
          * @param propList {Object|Array}
-         * @return {Array} Returns a list of found object's.
+         * @return {Array.<any>} Returns a list of found object's.
          * @private
          */
         Collection.prototype._where = function(propList) {
@@ -4346,7 +4348,7 @@ module.exports = FooterView;
          *
          * @method _findPropertyValue
          * @param arg {String|Number|Boolean>}
-         * @return {Array} Returns a list of found object's.
+         * @return {Array.<any>} Returns a list of found object's.
          * @private
          */
         Collection.prototype._findPropertyValue = function(arg) {
@@ -4417,7 +4419,7 @@ module.exports = FooterView;
          * Creates a JSON object of the collection.
          *
          * @method toJSON
-         * @returns {Array}
+         * @returns {Array.<any>}
          * @public
          * @example
          *     var arrayOfObjects = collection.toJSON();
@@ -4468,7 +4470,7 @@ module.exports = FooterView;
          * @param propertyName {string}
          * @param [sortAscending=true] {boolean}
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array<any>} Returns the list of models in the collection.
          * @example
          *      collection.sortOn('name');
          *      collection.sortOn('name', false);
@@ -4504,7 +4506,7 @@ module.exports = FooterView;
          * @method sort
          * @param [sortFunction=null] {Function}
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array.<any>} Returns the list of models in the collection.
          * @example
          *      var sortByDate = function(a, b){
          *          return new Date(a.date) - new Date(b.date)
@@ -4521,9 +4523,10 @@ module.exports = FooterView;
          * The filter method creates a new array with all elements that pass the test implemented by the provided function.
          *
          * @method filter
-         * @param filterFunction {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+         * @param callback {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+         * @param [callbackScope=null] Optional. Value to use as this when executing callback.
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array.<any>} Returns the list of models in the collection.
          * @example
          *      var isOldEnough = function(model){
          *          return model.age >= 21;
@@ -4531,16 +4534,46 @@ module.exports = FooterView;
          *
          *      var list = collection.filter(isOldEnough);
          */
-        Collection.prototype.filter = function(filterFunction) {
-            if (filterFunction === void 0) { filterFunction = null; }
-            return this.models.filter(filterFunction);
+        Collection.prototype.filter = function(callback, callbackScope) {
+            if (callbackScope === void 0) { callbackScope = null; }
+            return this.models.filter(callback, callbackScope);
+        };
+        /**
+         * Convenient way to get a list of property values.
+         *
+         * @method pluck
+         * @param propertyName {string} The property name you want the values from.
+         * @param [unique=false] {string} Pass in true to remove duplicates.
+         * @return {Array.<any>}
+         * @public
+         * @example
+         *      collection.add({name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'});
+         *
+         *      var list = collection.pluck('name');
+         *      // ['Robert', 'Robert', 'Chris']
+         *
+         *      var list = collection.pluck('name', true);
+         *      // ['Robert', 'Chris']
+         */
+        Collection.prototype.pluck = function(propertyName, unique) {
+            if (unique === void 0) { unique = false; }
+            var list = [];
+            for (var i = 0; i < this.length; i++) {
+                if (this.models[i].hasOwnProperty(propertyName) === true) {
+                    list[i] = this.models[i][propertyName];
+                }
+            }
+            if (unique === true) {
+                list = this._unique(list);
+            }
+            return list;
         };
         /**
          * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.
          *
          * @method reverse
          * @public
-         * @return {Array} Returns the list of models in the collection.
+         * @return {Array.<any>} Returns the list of models in the collection.
          * @example
          *      collection.reverse();
          */
@@ -4551,8 +4584,8 @@ module.exports = FooterView;
          * Returns a new array of models with duplicates removed.
          *
          * @method _unique
-         * @param list {Array} The array you want to use to generate the unique array.
-         * @return {Array} Returns a new array list of models in the collection with duplicates removed.
+         * @param list {Array.<any>} The array you want to use to generate the unique array.
+         * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
          * @private
          */
         Collection.prototype._unique = function(list) {
@@ -4723,7 +4756,7 @@ module.exports = FooterView;
          *
          * @method match
          * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
-         * @returns {Array}
+         * @returns {Array.<any>}
          * @example
          *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
          *     console.log( route.match('/games/asteroids/2/') );
@@ -5476,7 +5509,7 @@ module.exports = FooterView;
          * @method format
          * @returns {string}
          * @param str {string}
-         * @param ...rest {Array}
+         * @param ...rest {Array.<any>}
          * @public
          * @static
          * @example
@@ -5714,7 +5747,7 @@ module.exports = FooterView;
          *
          * @method deletePropertyFromObject
          * @param object {Object} The object you want to remove properties from.
-         * @param list {Array} A list of property names you want to remove from the object.
+         * @param value {string|Array.<string>} A property name or an array of property names you want to remove from the object.
          * @returns {any} Returns the object passed in without the removed the properties.
          * @public
          * @static
@@ -5725,7 +5758,9 @@ module.exports = FooterView;
          *
          *      // { name: 'Robert' }
          */
-        Util.deletePropertyFromObject = function(object, list) {
+        Util.deletePropertyFromObject = function(object, value) {
+            // If properties is not an array then make it an array object.
+            var list = (value instanceof Array) ? value : [value];
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
