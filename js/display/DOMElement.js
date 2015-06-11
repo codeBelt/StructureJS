@@ -389,7 +389,6 @@
                     child.create(); // Render the item before adding to the DOM
                     child.isCreated = true;
                 }
-
                 // Adds the child at a specific index but also will remove the child from another parent object if one exists.
                 if (child.parent) {
                     child.parent.removeChild(child, false);
@@ -397,7 +396,6 @@
                 this.children.splice(index, 0, child);
                 this.numChildren = this.children.length;
                 child.parent = this;
-
                 // Adds the child before any child already added in the DOM.
                 jQuery(children.get(index)).before(child.$element);
                 this.onAddedToDom(child);
@@ -546,7 +544,6 @@
          * @overridden DisplayObjectContainer.destroy
          */
         DOMElement.prototype.destroy = function() {
-            debugger;
             // If the addChild method is never called before the $element is detroyed then it will be null and cause an TypeError.
             if (this.$element != null) {
                 this.$element.unbind();
