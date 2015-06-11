@@ -27,6 +27,7 @@
         "package.json",
         ".jshintrc",
         "umd.template",
-        ".gitignore"
+        ".gitignore",
+        ".bower.json"
     ]
 }
