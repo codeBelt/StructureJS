@@ -439,7 +439,12 @@ class DOMElement extends DisplayObjectContainer
             }
 
             // Adds the child at a specific index but also will remove the child from another parent object if one exists.
-            super.addChildAt(child, index);
+            if (child.parent) {
+                child.parent.removeChild(child, false);
+            }
+            this.children.splice(index, 0, child);
+            this.numChildren = this.children.length;
+            child.parent = this;
 
             // Adds the child before any child already added in the DOM.
             jQuery(children.get(index)).before(child.$element);
@@ -571,7 +576,16 @@ class DOMElement extends DisplayObjectContainer
             child.$element.remove();
         }
 
-        super.removeChild(child, destroy);
+        if (destroy === true)
+        {
+            child.destroy();
+        }
+        else
+        {
+            child.disable();
+        }
+
+        super.removeChild(child);
 
         return this;
     }
@@ -604,7 +618,10 @@ class DOMElement extends DisplayObjectContainer
      */
     public removeChildren(destroy:boolean = true):any
     {
-        super.removeChildren(destroy);
+        while (this.children.length > 0)
+        {
+            this.removeChild(<DOMElement>this.children.pop(), destroy);
+        }
 
         this.$element.empty();
 

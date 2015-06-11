@@ -389,8 +389,15 @@
                     child.create(); // Render the item before adding to the DOM
                     child.isCreated = true;
                 }
+
                 // Adds the child at a specific index but also will remove the child from another parent object if one exists.
-                _super.prototype.addChildAt.call(this, child, index);
+                if (child.parent) {
+                    child.parent.removeChild(child, false);
+                }
+                this.children.splice(index, 0, child);
+                this.numChildren = this.children.length;
+                child.parent = this;
+
                 // Adds the child before any child already added in the DOM.
                 jQuery(children.get(index)).before(child.$element);
                 this.onAddedToDom(child);
@@ -495,7 +502,12 @@
                 child.$element.unbind();
                 child.$element.remove();
             }
-            _super.prototype.removeChild.call(this, child, destroy);
+            if (destroy === true) {
+                child.destroy();
+            } else {
+                child.disable();
+            }
+            _super.prototype.removeChild.call(this, child);
             return this;
         };
         /**
@@ -524,7 +536,9 @@
          */
         DOMElement.prototype.removeChildren = function(destroy) {
             if (destroy === void 0) { destroy = true; }
-            _super.prototype.removeChildren.call(this, destroy);
+            while (this.children.length > 0) {
+                this.removeChild(this.children.pop(), destroy);
+            }
             this.$element.empty();
             return this;
         };
@@ -532,6 +546,7 @@
          * @overridden DisplayObjectContainer.destroy
          */
         DOMElement.prototype.destroy = function() {
+            debugger;
             // If the addChild method is never called before the $element is detroyed then it will be null and cause an TypeError.
             if (this.$element != null) {
                 this.$element.unbind();

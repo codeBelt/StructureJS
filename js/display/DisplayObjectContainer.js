@@ -77,7 +77,7 @@
         DisplayObjectContainer.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child, false);
+                child.parent.removeChild(child);
             }
             this.children.push(child);
             this.numChildren = this.children.length;
@@ -99,7 +99,7 @@
         DisplayObjectContainer.prototype.addChildAt = function(child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
-                child.parent.removeChild(child, false);
+                child.parent.removeChild(child);
             }
             this.children.splice(index, 0, child);
             this.numChildren = this.children.length;
@@ -117,18 +117,13 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChild = function(child, destroy) {
+        DisplayObjectContainer.prototype.removeChild = function(child) {
             var index = this.getChildIndex(child);
             if (index !== -1) {
                 // Removes the child object from the parent.
                 this.children.splice(index, 1);
             }
             this.numChildren = this.children.length;
-            if (destroy === true) {
-                child.destroy();
-            } else {
-                child.disable();
-            }
             child.parent = null;
             return this;
         };
@@ -142,9 +137,9 @@
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChildren = function(destroy) {
+        DisplayObjectContainer.prototype.removeChildren = function() {
             while (this.children.length > 0) {
-                this.removeChild(this.children.pop(), destroy);
+                this.removeChild(this.children.pop());
             }
             return this;
         };

@@ -74,7 +74,7 @@ class DisplayObjectContainer extends DisplayObject
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent)
         {
-            child.parent.removeChild(child, false);
+            child.parent.removeChild(child);
         }
 
         this.children.push(child);
@@ -102,7 +102,7 @@ class DisplayObjectContainer extends DisplayObject
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent)
         {
-            child.parent.removeChild(child, false);
+            child.parent.removeChild(child);
         }
 
         this.children.splice(index, 0, child);
@@ -124,7 +124,7 @@ class DisplayObjectContainer extends DisplayObject
      * @public
      * @chainable
      */
-    public removeChild(child:DisplayObject, destroy:boolean):any
+    public removeChild(child:DisplayObject):any
     {
         var index = this.getChildIndex(child);
         if (index !== -1)
@@ -134,15 +134,6 @@ class DisplayObjectContainer extends DisplayObject
         }
 
         this.numChildren = this.children.length;
-
-        if (destroy === true)
-        {
-            child.destroy();
-        }
-        else
-        {
-            child.disable();
-        }
 
         child.parent = null;
 
@@ -159,11 +150,11 @@ class DisplayObjectContainer extends DisplayObject
      * @public
      * @chainable
      */
-    public removeChildren(destroy:boolean):any
+    public removeChildren():any
     {
         while (this.children.length > 0)
         {
-            this.removeChild(this.children.pop(), destroy);
+            this.removeChild(this.children.pop());
         }
 
         return this;
