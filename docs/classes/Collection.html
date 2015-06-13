@@ -399,6 +399,13 @@
                 </li>
             
                 <li class="index-item method public">
+                    <a href="#method_groupBy">groupBy</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
                     <a href="#method_has">has</a>
 
                     
@@ -1144,7 +1151,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l505"><code>js&#x2F;model&#x2F;Collection.js:505</code></a>
+        <a href="../files/js_model_Collection.js.html#l537"><code>js&#x2F;model&#x2F;Collection.js:537</code></a>
         
         </p>
 
@@ -2905,6 +2912,137 @@ If the index is out of bounds, the collection will clamp it.</p>
 </div>
 
         
+            <a name="method_groupBy" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>groupBy</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>propertyName</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Any</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_model_Collection.js.html#l493"><code>js&#x2F;model&#x2F;Collection.js:493</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Convenient way to group models into categories/groups by a property name.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">propertyName</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The string value of the property you want to group with.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Any</span>:
+                        
+                        <p>Returns an object that is categorized by the property name.</p>
+
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> collection.add([{name: &#39;Robert&#39;, id: 0}, {name: &#39;Robert&#39;, id: 1}, {name: &#39;Chris&#39;, id: 2}]);
+
+ var list = collection.groupBy(&#39;name&#39;);
+
+ // {
+ //    Robert: [{name: &#39;Robert&#39;, id: 0}, {name: &#39;Robert&#39;, id: 1}]
+ //    Chris: [{name: &#39;Chris&#39;, id: 2}]
+ // }</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_has" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>has</code>
@@ -3789,7 +3927,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l493"><code>js&#x2F;model&#x2F;Collection.js:493</code></a>
+        <a href="../files/js_model_Collection.js.html#l525"><code>js&#x2F;model&#x2F;Collection.js:525</code></a>
         
         </p>
 

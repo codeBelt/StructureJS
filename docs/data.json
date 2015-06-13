@@ -5445,6 +5445,32 @@
         {
             "file": "js/model/Collection.js",
             "line": 493,
+            "description": "Convenient way to group models into categories/groups by a property name.",
+            "itemtype": "method",
+            "name": "groupBy",
+            "params": [
+                {
+                    "name": "propertyName",
+                    "description": "The string value of the property you want to group with.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns an object that is categorized by the property name.",
+                "type": "Any"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n     collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);\n\n     var list = collection.groupBy('name');\n\n     // {\n     //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]\n     //    Chris: [{name: 'Chris', id: 2}]\n     // }"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/Collection.js",
+            "line": 525,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -5463,7 +5489,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 505,
+            "line": 537,
             "description": "Returns a new array of models with duplicates removed.",
             "itemtype": "method",
             "name": "_unique",

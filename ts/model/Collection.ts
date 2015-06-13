@@ -596,6 +596,43 @@ class Collection extends EventDispatcher
     }
 
     /**
+     * Convenient way to group models into categories/groups by a property name.
+     *
+     * @method groupBy
+     * @param propertyName {string} The string value of the property you want to group with.
+     * @return {any} Returns an object that is categorized by the property name.
+     * @public
+     * @example
+     *      collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);
+     *
+     *      var list = collection.groupBy('name');
+     *
+     *      // {
+     *      //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]
+     *      //    Chris: [{name: 'Chris', id: 2}]
+     *      // }
+     */
+    public groupBy(propertyName):any
+    {
+        var model:any;
+        var groupName:string;
+        var groupList:any = {};
+
+        // Loop through all the models in this collection.
+        for (var i:number = 0; i < this.length; i++) {
+            model = this.models[i];
+            // Get the value from the property name passed in and uses that as the group name.
+            groupName = model[propertyName];
+
+            if (groupList[groupName] == null) {
+                groupList[groupName] = [];
+            }
+            groupList[groupName].push(model);
+        }
+        return groupList;
+    }
+
+    /**
      * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.
      *
      * @method reverse
