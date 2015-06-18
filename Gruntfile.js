@@ -26,12 +26,12 @@ module.exports = function(grunt) {
          * @example <%= banner.join("\\n") %>
          */
         banner: [
-                 '/*',
-                 '* Project: <%= pkg.name %>',
-                 '* Version: <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)',
-                 '* Development By: <%= pkg.developedBy %>',
-                 '* Copyright(c): <%= grunt.template.today("yyyy") %>',
-                 '*/'
+            '/*',
+            '* Project: <%= pkg.name %>',
+            '* Version: <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>)',
+            '* Development By: <%= pkg.developedBy %>',
+            '* Copyright(c): <%= grunt.template.today("yyyy") %>',
+            '*/'
         ],
 
         /**
@@ -145,8 +145,49 @@ module.exports = function(grunt) {
 
         concat: {
             all: {
-                src: 'js/**/*.js',
-                dest: './structurejs.' + '<%= pkg.version %>' +'.js'
+                src: [
+                    'js/plugin/jquery.eventListener.js',
+                    'js/util/ComponentFactory.js',
+                    'js/util/DateUtil.js',
+                    'js/util/MathUtil.js',
+                    'js/util/MerchantUtil.js',
+                    'js/util/NumberUtil.js',
+                    'js/util/StringUtil.js',
+                    'js/util/TemplateFactory.js',
+                    'js/util/Util.js',
+                    'js/util/ValidationUtil.js',
+                    'js/util/Extend.js',
+                    'js/BaseObject.js',
+                    'js/ObjectManager.js',
+                    'js/event/BaseEvent.js',
+                    'js/event/native/NavigatorEvents.js',
+                    'js/event/ApplicationCacheEvent.js',
+                    'js/event/EventDispatcher.js',
+                    'js/event/EventBroker.js',
+                    'js/event/LocalStorageEvent.js',
+                    'js/event/NetworkMonitorEvent.js',
+                    'js/event/RouterEvent.js',
+                    'js/event/TimerEvent.js',
+                    'js/util/Timer.js',
+                    //'js/util/BrowserUtil.js',
+                    'js/controller/ApplicationCacheController.js',
+                    'js/controller/LocalStorageController.js',
+                    'js/controller/Router.js',
+                    'js/geom/Point.js',
+                    'js/model/ValueObject.js',
+                    'js/model/Collection.js',
+                    'js/model/Route.js',
+                    'js/net/NetworkMonitor.js',
+                    'js/display/DisplayObject.js',
+                    'js/display/DisplayObjectContainer.js',
+                    'js/display/DOMElement.js',
+                    'js/display/Bitmap.js',
+                    'js/display/CanvasElement.js',
+                    'js/display/Sprite.js',
+                    'js/display/Stage.js',
+                    'js/display/TextField.js'
+                ],
+                dest: './structurejs.js'
             },
             view: {
                 src: [
@@ -159,7 +200,7 @@ module.exports = function(grunt) {
                     'js/util/TemplateFactory.js',
                     'js/util/Extend.js',
                     'js/ObjectManager.js',
-                    'js/BaseObject.js',
+                    'js/BaseObject.js'
                 ],
                 dest: './structurejs.view.js'
             }
@@ -168,7 +209,7 @@ module.exports = function(grunt) {
         uglify: {
             all: {
                 files: {
-                    './structurejs.0.7.0.min.js': ['./structurejs.0.7.0.js']
+                    './structurejs.min.js': ['./structurejs.js']
                 }
             },
             view: {
@@ -371,8 +412,8 @@ module.exports = function(grunt) {
                     debug: false
                 },
                 src: [
-                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/main.js',
-                        '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/templates/**/*.hbs'
+                    '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/scripts/main.js',
+                    '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/templates/**/*.hbs'
                 ],
                 dest: '<%= EXAMPLES_PATH %>' + 'TodoMVC/assets/compile/build.js'
             }
