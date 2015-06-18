@@ -37,7 +37,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isEmpty('sometext');
+         *      // false
          */
         ValidationUtil.isEmpty = function(value) {
             if (value != null) {
@@ -55,7 +56,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isMatch('one@email.com', 'two@email.com');
+         *      // false
          */
         ValidationUtil.isMatch = function(value1, value2) {
             return value1 === value2;
@@ -69,7 +71,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isValidEmailAddress('someemail@address.com');
+         *      // true
          */
         ValidationUtil.isValidEmailAddress = function(email) {
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
@@ -84,7 +87,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isValidPhoneNumber('123 456 7899');
+         *      // true
          */
         ValidationUtil.isValidPhoneNumber = function(phoneNumber) {
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
@@ -99,7 +103,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isZipCode('55067 4434');
+         *      // true
          */
         ValidationUtil.isZipCode = function(zipCode) {
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
@@ -114,7 +119,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isPostalCode('p8n3h3');
+         *      // true
          */
         ValidationUtil.isPostalCode = function(postalCode) {
             var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
@@ -129,7 +135,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isSocialSecurityNumber('178051120');
+         *      // true
          */
         ValidationUtil.isSocialSecurityNumber = function(ssn) {
             var expression = /^\d{3}-?\d{2}-?\d{4}$/;

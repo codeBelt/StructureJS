@@ -29,7 +29,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isEmpty('sometext');
+     *      // false
      */
     public static isEmpty(value:string):boolean
     {
@@ -49,7 +50,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isMatch('one@email.com', 'two@email.com');
+     *      // false
      */
     public static isMatch(value1:any, value2:any):boolean
     {
@@ -65,7 +67,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isValidEmailAddress('someemail@address.com');
+     *      // true
      */
     public static isValidEmailAddress(email:string):boolean
     {
@@ -82,7 +85,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isValidPhoneNumber('123 456 7899');
+     *      // true
      */
     public static isValidPhoneNumber(phoneNumber:string):boolean
     {
@@ -99,7 +103,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isZipCode('55067 4434');
+     *      // true
      */
     public static isZipCode(zipCode:string):boolean
     {
@@ -116,7 +121,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isPostalCode('p8n3h3');
+     *      // true
      */
     public static isPostalCode(postalCode:string):boolean
     {
@@ -133,7 +139,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isSocialSecurityNumber('178051120');
+     *      // true
      */
     public static isSocialSecurityNumber(ssn:string):boolean
     {
