@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.4",
+        "version": "0.7.5",
         "url": ""
     },
     "files": {
@@ -5436,7 +5436,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     collection.add({name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'});\n\n     var list = collection.pluck('name');\n     // ['Robert', 'Robert', 'Chris']\n\n     var list = collection.pluck('name', true);\n     // ['Robert', 'Chris']"
+                "\n     collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);\n\n     var list = collection.pluck('name');\n     // ['Robert', 'Robert', 'Chris']\n\n     var list = collection.pluck('name', true);\n     // ['Robert', 'Chris']"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5445,6 +5445,32 @@
         {
             "file": "js/model/Collection.js",
             "line": 493,
+            "description": "Convenient way to group models into categories/groups by a property name.",
+            "itemtype": "method",
+            "name": "groupBy",
+            "params": [
+                {
+                    "name": "propertyName",
+                    "description": "The string value of the property you want to group with.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns an object that is categorized by the property name.",
+                "type": "Any"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n     collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);\n\n     var list = collection.groupBy('name');\n\n     // {\n     //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]\n     //    Chris: [{name: 'Chris', id: 2}]\n     // }"
+            ],
+            "class": "Collection",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/Collection.js",
+            "line": 525,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -5463,7 +5489,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 505,
+            "line": 537,
             "description": "Returns a new array of models with duplicates removed.",
             "itemtype": "method",
             "name": "_unique",
@@ -8364,7 +8390,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n"
+                "\n     ValidationUtil.isEmpty('sometext');\n     // false"
             ],
             "class": "ValidationUtil",
             "module": "StructureJS",
@@ -8372,7 +8398,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 48,
+            "line": 49,
             "description": "Determines if the two values passed in are the same.",
             "itemtype": "method",
             "name": "isMatch",
@@ -8396,7 +8422,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n"
+                "\n     ValidationUtil.isMatch('one@email.com', 'two@email.com');\n     // false"
             ],
             "class": "ValidationUtil",
             "module": "StructureJS",
@@ -8404,7 +8430,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 63,
+            "line": 65,
             "description": "Determines if the String passed in is a valid email address.",
             "itemtype": "method",
             "name": "isValidEmailAddress",
@@ -8423,7 +8449,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n"
+                "\n     ValidationUtil.isValidEmailAddress('someemail@address.com');\n     // true"
             ],
             "class": "ValidationUtil",
             "module": "StructureJS",
@@ -8431,7 +8457,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 78,
+            "line": 81,
             "description": "Determines if the String passed in is a phone number.",
             "itemtype": "method",
             "name": "isValidPhoneNumber",
@@ -8450,7 +8476,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n"
+                "\n     ValidationUtil.isValidPhoneNumber('123 456 7899');\n     // true"
             ],
             "class": "ValidationUtil",
             "module": "StructureJS",
@@ -8458,7 +8484,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 93,
+            "line": 97,
             "description": "Determines if the String passed in is a zip code.",
             "itemtype": "method",
             "name": "isZipCode",
@@ -8477,7 +8503,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n"
+                "\n     ValidationUtil.isZipCode('55067 4434');\n     // true"
             ],
             "class": "ValidationUtil",
             "module": "StructureJS",
@@ -8485,7 +8511,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 108,
+            "line": 113,
             "description": "Determines if the String passed in is a postal code.",
             "itemtype": "method",
             "name": "isPostalCode",
@@ -8504,7 +8530,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n"
+                "\n     ValidationUtil.isPostalCode('p8n3h3');\n     // true"
             ],
             "class": "ValidationUtil",
             "module": "StructureJS",
@@ -8512,7 +8538,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 123,
+            "line": 129,
             "description": "Determines if the String passed in is a Social Security Number.",
             "itemtype": "method",
             "name": "isSocialSecurityNumber",
@@ -8531,7 +8557,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n"
+                "\n     ValidationUtil.isSocialSecurityNumber('178051120');\n     // true"
             ],
             "class": "ValidationUtil",
             "module": "StructureJS",
@@ -9095,27 +9121,27 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:48"
+            "line": " js/util/ValidationUtil.js:49"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:63"
+            "line": " js/util/ValidationUtil.js:65"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:78"
+            "line": " js/util/ValidationUtil.js:81"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:93"
+            "line": " js/util/ValidationUtil.js:97"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:108"
+            "line": " js/util/ValidationUtil.js:113"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:123"
+            "line": " js/util/ValidationUtil.js:129"
         },
         {
             "message": "replacing incorrect tag: returns with return",

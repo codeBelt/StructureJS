@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.4</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.5</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -185,7 +185,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isEmpty(&#x27;sometext&#x27;);
+         *      // false
          */
         ValidationUtil.isEmpty = function(value) {
             if (value != null) {
@@ -203,7 +204,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isMatch(&#x27;one@email.com&#x27;, &#x27;two@email.com&#x27;);
+         *      // false
          */
         ValidationUtil.isMatch = function(value1, value2) {
             return value1 === value2;
@@ -217,7 +219,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isValidEmailAddress(&#x27;someemail@address.com&#x27;);
+         *      // true
          */
         ValidationUtil.isValidEmailAddress = function(email) {
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
@@ -232,7 +235,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isValidPhoneNumber(&#x27;123 456 7899&#x27;);
+         *      // true
          */
         ValidationUtil.isValidPhoneNumber = function(phoneNumber) {
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
@@ -247,7 +251,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isZipCode(&#x27;55067 4434&#x27;);
+         *      // true
          */
         ValidationUtil.isZipCode = function(zipCode) {
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
@@ -262,10 +267,11 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isPostalCode(&#x27;p8n3h3&#x27;);
+         *      // true
          */
         ValidationUtil.isPostalCode = function(postalCode) {
-            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
+            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
             return expression.test(postalCode);
         };
         /**
@@ -277,7 +283,8 @@
          * @public
          * @static
          * @example
-         *
+         *      ValidationUtil.isSocialSecurityNumber(&#x27;178051120&#x27;);
+         *      // true
          */
         ValidationUtil.isSocialSecurityNumber = function(ssn) {
             var expression = /^\d{3}-?\d{2}-?\d{4}$/;

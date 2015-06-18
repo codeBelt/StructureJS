@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.4</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.5</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -617,7 +617,7 @@
          * @return {Array.&lt;any&gt;}
          * @public
          * @example
-         *      collection.add({name: &#x27;Robert&#x27;}, {name: &#x27;Robert&#x27;}, {name: &#x27;Chris&#x27;});
+         *      collection.add([{name: &#x27;Robert&#x27;}, {name: &#x27;Robert&#x27;}, {name: &#x27;Chris&#x27;}]);
          *
          *      var list = collection.pluck(&#x27;name&#x27;);
          *      // [&#x27;Robert&#x27;, &#x27;Robert&#x27;, &#x27;Chris&#x27;]
@@ -637,6 +637,38 @@
                 list = this._unique(list);
             }
             return list;
+        };
+        /**
+         * Convenient way to group models into categories/groups by a property name.
+         *
+         * @method groupBy
+         * @param propertyName {string} The string value of the property you want to group with.
+         * @return {any} Returns an object that is categorized by the property name.
+         * @public
+         * @example
+         *      collection.add([{name: &#x27;Robert&#x27;, id: 0}, {name: &#x27;Robert&#x27;, id: 1}, {name: &#x27;Chris&#x27;, id: 2}]);
+         *
+         *      var list = collection.groupBy(&#x27;name&#x27;);
+         *
+         *      // {
+         *      //    Robert: [{name: &#x27;Robert&#x27;, id: 0}, {name: &#x27;Robert&#x27;, id: 1}]
+         *      //    Chris: [{name: &#x27;Chris&#x27;, id: 2}]
+         *      // }
+         */
+        Collection.prototype.groupBy = function(propertyName) {
+            var model;
+            var groupName;
+            var groupList = {};
+            for (var i = 0; i &lt; this.length; i++) {
+                model = this.models[i];
+                // Get the value from the property name passed in and uses that as the group name.
+                groupName = model[propertyName];
+                if (groupList[groupName] == null) {
+                    groupList[groupName] = [];
+                }
+                groupList[groupName].push(model);
+            }
+            return groupList;
         };
         /**
          * Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.
