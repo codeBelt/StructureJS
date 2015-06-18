@@ -246,6 +246,8 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
+ * 2015-06-18 v0.7.5 Add groupBy method on Collection. Change ValidationUtil.isPostalCode to be case insensitive.
+
  * 2015-06-10 v0.7.4 Add pluck method to Collection. Move removeChild destroy functionality from DisplayObjectContainer to DOMElement.
 
  * 2015-05-26 v0.7.3 Corrects string replacement on getBreakpoint

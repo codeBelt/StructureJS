@@ -1,6 +1,6 @@
 {
     "name": "structurejs",
-    "version": "0.7.4",
+    "version": "0.7.5",
     "dependencies": {
         "jquery": ">=1.9.1",
         "handlebars": "2.0.0"
