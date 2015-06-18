@@ -55,7 +55,9 @@ describe("ValidationUtil", function() {
 
     it("isPostalCode()", function() {
         expect(ValidationUtil.isPostalCode('P8N 3G3')).toBeTruthy();
+        expect(ValidationUtil.isPostalCode('p8n 3g3')).toBeTruthy();
         expect(ValidationUtil.isPostalCode('P8N3G3')).toBeTruthy();
+        expect(ValidationUtil.isPostalCode('p8n3h3')).toBeTruthy();
 
         expect(ValidationUtil.isPostalCode('P8N-3G3')).toBeFalsy();
         expect(ValidationUtil.isPostalCode('P8N3G32')).toBeFalsy();

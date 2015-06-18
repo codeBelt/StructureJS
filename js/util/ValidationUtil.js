@@ -117,7 +117,7 @@
          *
          */
         ValidationUtil.isPostalCode = function(postalCode) {
-            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
+            var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
             return expression.test(postalCode);
         };
         /**
