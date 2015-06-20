@@ -20,25 +20,25 @@
         var _super = Extend(CanvasElement, DOMElement);
 
         function CanvasElement($element) {
-                _super.call(this, $element);
-                /**
-                 * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property**.
-                 *
-                 * @type {JQuery}
-                 * @public
-                 */
-                this.$canvas = null;
-                /**
-                 * A reference to the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/element:property"}}{{/crossLink}} property**.
-                 *
-                 * @type {HTMLCanvasElement}
-                 * @public
-                 */
-                this.canvas = null;
-            }
+            _super.call(this, $element);
             /**
-             * @overridden CanvasElement.create
+             * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property**.
+             *
+             * @type {JQuery}
+             * @public
              */
+            this.$canvas = null;
+            /**
+             * A reference to the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/element:property"}}{{/crossLink}} property**.
+             *
+             * @type {HTMLCanvasElement}
+             * @public
+             */
+            this.canvas = null;
+        }
+        /**
+         * @overridden CanvasElement.create
+         */
         CanvasElement.prototype.create = function() {
             _super.prototype.create.call(this);
             this.$canvas = this.$element;
@@ -84,14 +84,7 @@
             _super.prototype.disable.call(this);
         };
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @method addChild
-         * @param child {DisplayObject}
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.addChild
          */
         CanvasElement.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
@@ -147,14 +140,7 @@
             return _super.prototype.getChildAt.call(this, index);
         };
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @method removeChild
-         * @param child {DisplayObject}
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChild
          */
         CanvasElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) {
@@ -177,12 +163,7 @@
             return this;
         };
         /**
-         * Removes the child display object instance that exists at the specified index.
-         *
-         * @method removeChildAt
-         * @param index {int} The index position of the child object.
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChildAt
          */
         CanvasElement.prototype.removeChildAt = function(index, destroy) {
             if (destroy === void 0) {
@@ -192,15 +173,7 @@
             return this;
         };
         /**
-         * Removes all child object instances from the child list of the parent object instance.
-         * The parent property of the removed children is set to null , and the objects are garbage collected if no other
-         * references to the children exist.
-         *
-         * @method removeChildren
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChildren
          */
         CanvasElement.prototype.removeChildren = function(destroy) {
             if (destroy === void 0) {

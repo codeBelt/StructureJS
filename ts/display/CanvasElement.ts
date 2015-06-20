@@ -14,20 +14,8 @@ import Point = require('../geom/Point');
 class CanvasElement extends DOMElement
 {
 
-    /**
-     * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property**.
-     *
-     * @type {JQuery}
-     * @public
-     */
     public $canvas:JQuery = null;
 
-    /**
-     * A reference to the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/element:property"}}{{/crossLink}} property**.
-     *
-     * @type {HTMLCanvasElement}
-     * @public
-     */
     public canvas:HTMLCanvasElement = null;
 
     constructor($element:JQuery)
@@ -98,14 +86,7 @@ class CanvasElement extends DOMElement
     }
 
     /**
-     * TODO: YUIDoc_comment
-     *
-     * @method addChild
-     * @param child {DisplayObject}
-     * @returns {CanvasElement} Returns an instance of itself.
-     * @override
-     * @public
-     * @chainable
+     * @overridden DOMElement.addChild
      */
     public addChild(child:DisplayObject):any
     {
@@ -185,14 +166,7 @@ class CanvasElement extends DOMElement
     }
 
     /**
-     * TODO: YUIDoc_comment
-     *
-     * @method removeChild
-     * @param child {DisplayObject}
-     * @returns {CanvasElement} Returns an instance of itself.
-     * @override
-     * @public
-     * @chainable
+     * @overridden DOMElement.removeChild
      */
     public removeChild(child:DisplayObject, destroy:boolean = true):any
     {
@@ -222,12 +196,7 @@ class CanvasElement extends DOMElement
     }
 
     /**
-     * Removes the child display object instance that exists at the specified index.
-     *
-     * @method removeChildAt
-     * @param index {int} The index position of the child object.
-     * @public
-     * @chainable
+     * @overridden DOMElement.removeChildAt
      */
     public removeChildAt(index:number, destroy:boolean = true):any
     {
@@ -237,15 +206,7 @@ class CanvasElement extends DOMElement
     }
 
     /**
-     * Removes all child object instances from the child list of the parent object instance.
-     * The parent property of the removed children is set to null , and the objects are garbage collected if no other
-     * references to the children exist.
-     *
-     * @method removeChildren
-     * @returns {CanvasElement} Returns an instance of itself.
-     * @override
-     * @public
-     * @chainable
+     * @overridden DOMElement.removeChildren
      */
     public removeChildren(destroy:boolean = true):any
     {
