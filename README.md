@@ -3,8 +3,8 @@
 A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.
 
 ## Documentation
+* [Documentation](http://codebelt.github.io/StructureJS/docs/)
 * [Overview Video](http://www.codebelt.com/javascript/StructureJS_web.mp4)
-* [YUI Docs](http://codebelt.github.io/StructureJS/docs/)
 
 ## Install
     $ bower install --save structurejs
@@ -21,6 +21,8 @@ A class based utility library for building modular and scalable web platform app
 [StructureJS Boilerplate (Browserify)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
 
 [StructureJS Boilerplate (TypeScript)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
+
+[StructureJS Boilerplate (Babel ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
 
 ## Examples
 * Event Bubbling [Demo](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
