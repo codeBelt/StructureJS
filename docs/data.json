@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.5",
+        "version": "0.7.6",
         "url": ""
     },
     "files": {
@@ -2548,105 +2548,49 @@
         {
             "file": "js/display/CanvasElement.js",
             "line": 86,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "addChild",
-            "params": [
-                {
-                    "name": "child",
-                    "description": "",
-                    "type": "DisplayObject"
-                }
-            ],
-            "return": {
-                "description": "Returns an instance of itself.",
-                "type": "CanvasElement"
-            },
-            "override": "",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
+            "overridden": "DOMElement.addChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 113,
+            "line": 106,
             "overridden": "DOMElement.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 133,
+            "line": 126,
             "overridden": "DOMElement.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 143,
+            "line": 136,
             "overridden": "DOMElement.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 149,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "removeChild",
-            "params": [
-                {
-                    "name": "child",
-                    "description": "",
-                    "type": "DisplayObject"
-                }
-            ],
-            "return": {
-                "description": "Returns an instance of itself.",
-                "type": "CanvasElement"
-            },
-            "override": "",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
+            "line": 142,
+            "overridden": "DOMElement.removeChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 179,
-            "description": "Removes the child display object instance that exists at the specified index.",
-            "itemtype": "method",
-            "name": "removeChildAt",
-            "params": [
-                {
-                    "name": "index",
-                    "description": "The index position of the child object.",
-                    "type": "Int"
-                }
-            ],
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
+            "line": 165,
+            "overridden": "DOMElement.removeChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 194,
-            "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if no other\nreferences to the children exist.",
-            "itemtype": "method",
-            "name": "removeChildren",
-            "return": {
-                "description": "Returns an instance of itself.",
-                "type": "CanvasElement"
-            },
-            "override": "",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
+            "line": 175,
+            "overridden": "DOMElement.removeChildren",
             "class": "DOMElement",
             "module": "StructureJS"
         },
@@ -2977,7 +2921,7 @@
                 {
                     "name": "componentList",
                     "description": "(Array.<>",
-                    "type": "Selector: string; componentClass: DisplayObjectContainer"
+                    "type": "Selector: string; component: DOMElement"
                 }
             ],
             "return": {
@@ -2988,7 +2932,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     ClassName.prototype.create = function () {\n         _super.prototype.create.call(this);\n\n         this.createComponents([\n             {selector: '.js-shareEmail', componentClass: EmailShareComponent},\n             {selector: '.js-pagination', componentClass: PaginationComponent},\n             {selector: '.js-carousel', componentClass: CarouselComponent}\n         ]);\n     };"
+                "\n     ClassName.prototype.create = function () {\n         _super.prototype.create.call(this);\n\n         this.createComponents([\n             {selector: '.js-shareEmail', component: EmailShareComponent},\n             {selector: '.js-pagination', component: PaginationComponent},\n             {selector: '.js-carousel', component: CarouselComponent}\n         ]);\n     };"
             ],
             "class": "DOMElement",
             "module": "StructureJS",
@@ -8724,40 +8668,32 @@
             "line": " js/display/CanvasElement.js:67"
         },
         {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/CanvasElement.js:86"
-        },
-        {
-            "message": "unknown tag: override",
+            "message": "unknown tag: overridden",
             "line": " js/display/CanvasElement.js:86"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:113"
+            "line": " js/display/CanvasElement.js:106"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:133"
+            "line": " js/display/CanvasElement.js:126"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:143"
+            "line": " js/display/CanvasElement.js:136"
         },
         {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/CanvasElement.js:149"
+            "message": "unknown tag: overridden",
+            "line": " js/display/CanvasElement.js:142"
         },
         {
-            "message": "unknown tag: override",
-            "line": " js/display/CanvasElement.js:149"
+            "message": "unknown tag: overridden",
+            "line": " js/display/CanvasElement.js:165"
         },
         {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/CanvasElement.js:194"
-        },
-        {
-            "message": "unknown tag: override",
-            "line": " js/display/CanvasElement.js:194"
+            "message": "unknown tag: overridden",
+            "line": " js/display/CanvasElement.js:175"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9201,15 +9137,31 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:113"
+            "line": " js/display/CanvasElement.js:86"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:133"
+            "line": " js/display/CanvasElement.js:106"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:143"
+            "line": " js/display/CanvasElement.js:126"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/display/CanvasElement.js:136"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/display/CanvasElement.js:142"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/display/CanvasElement.js:165"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/display/CanvasElement.js:175"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

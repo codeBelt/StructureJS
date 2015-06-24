@@ -1,9 +1,9 @@
 {
     "name": "structurejs",
-    "version": "0.7.5",
+    "version": "0.7.6",
     "dependencies": {
-        "jquery": ">=1.9.1",
-        "handlebars": "2.0.0"
+        "jquery": "*",
+        "handlebars": "^3.0.0"
     },
     "description": "An Event Driven JavaScript Library.",
     "main": "js/",

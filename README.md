@@ -58,8 +58,8 @@ var App = (function () {
 
 		// multiple instances of a component
 		this.createComponents([
-			{ selector: '.js-foo', componentClass: FooView },
-			{ selector: '.js-bar', componentClass: BarView }
+			{ selector: '.js-foo', component: FooView },
+			{ selector: '.js-bar', component: BarView }
 		]);
 	};
 
@@ -247,6 +247,8 @@ Class.prototype._onClickHandler = function (event) {
 [Read more about `jQueryEventListener`](https://github.com/codeBelt/jquery-eventListener)
 
 ## Release History
+
+ * 2015-06-23 v0.7.6 DOMElement createComponents rename componentClass to component.
 
  * 2015-06-18 v0.7.5 Add groupBy method on Collection. Change ValidationUtil.isPostalCode to be case insensitive.
 

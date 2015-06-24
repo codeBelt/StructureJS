@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -417,7 +417,7 @@
             
 
             
-                <li class="index-item method public inherited inherited">
+                <li class="index-item method inherited inherited">
                     <a href="#method_addChild">addChild</a>
 
                     
@@ -578,7 +578,7 @@
                     
                 </li>
             
-                <li class="index-item method public inherited inherited">
+                <li class="index-item method public inherited">
                     <a href="#method_removeChildAt">removeChildAt</a>
 
                     
@@ -2279,7 +2279,7 @@ This example illustrates how to instantiate your main application or root class.
 
         
             <a name="method_addChild" class="anchor-link"></a>
-<div class="method item public inherited inherited">
+<div class="method item inherited inherited">
     <h3 class="name"><code>addChild</code>
 
     
@@ -2298,14 +2298,12 @@ This example illustrates how to instantiate your main application or root class.
 
     
         <span class="returns-inline">
-            <span class="type">CanvasElement</span>
+            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
         </span>
     
 
     
 
-    
-        <span class="flag public">public</span>
     
 
     
@@ -2331,7 +2329,7 @@ This example illustrates how to instantiate your main application or root class.
             
         
         
-        <a href="../files/js_display_CanvasElement.js.html#l86"><code>js&#x2F;display&#x2F;CanvasElement.js:86</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l308"><code>js&#x2F;display&#x2F;DOMElement.js:308</code></a>
         
         </p>
 
@@ -2344,8 +2342,7 @@ This example illustrates how to instantiate your main application or root class.
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
+            
         </div>
 
         
@@ -2357,13 +2354,14 @@ This example illustrates how to instantiate your main application or root class.
                     <li class="param">
                         
                             <code class="param-name">child</code>
-                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            
+                            <p>The DOMElement instance to add as a child of this object instance.</p>
+
                         </div>
 
                         
@@ -2380,7 +2378,7 @@ This example illustrates how to instantiate your main application or root class.
                 <div class="returns-description">
                     
                         
-                            <span class="type">CanvasElement</span>:
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
                         
                         <p>Returns an instance of itself.</p>
 
@@ -2389,6 +2387,15 @@ This example illustrates how to instantiate your main application or root class.
             </div>
         
 
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>container.addChild(domElementInstance);</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -3319,7 +3326,7 @@ If any selectors are found the EmailShareComponent class will be instantiated an
                     <li class="param">
                         
                             <code class="param-name">componentList</code>
-                            <span class="type">Selector: string; componentClass: DisplayObjectContainer</span>
+                            <span class="type">Selector: string; component: DOMElement</span>
                         
 
                         
@@ -3361,9 +3368,9 @@ If any selectors are found the EmailShareComponent class will be instantiated an
      _super.prototype.create.call(this);
 
      this.createComponents([
-         {selector: &#39;.js-shareEmail&#39;, componentClass: EmailShareComponent},
-         {selector: &#39;.js-pagination&#39;, componentClass: PaginationComponent},
-         {selector: &#39;.js-carousel&#39;, componentClass: CarouselComponent}
+         {selector: &#39;.js-shareEmail&#39;, component: EmailShareComponent},
+         {selector: &#39;.js-pagination&#39;, component: PaginationComponent},
+         {selector: &#39;.js-carousel&#39;, component: CarouselComponent}
      ]);
  };</code></pre>
 
@@ -4816,7 +4823,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
 
     
         <span class="returns-inline">
-            <span class="type">CanvasElement</span>
+            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
         </span>
     
 
@@ -4849,7 +4856,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             
         
         
-        <a href="../files/js_display_CanvasElement.js.html#l149"><code>js&#x2F;display&#x2F;CanvasElement.js:149</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l484"><code>js&#x2F;display&#x2F;DOMElement.js:484</code></a>
         
         </p>
 
@@ -4862,7 +4869,9 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Removes the specified child object instance from the child list of the parent object instance.
+The parent property of the removed child is set to null and the object is garbage collected if there are no other references
+to the child. The index positions of any objects above the child in the parent object are decreased by 1.</p>
 
         </div>
 
@@ -4875,13 +4884,14 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
                     <li class="param">
                         
                             <code class="param-name">child</code>
-                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            
+                            <p>The DisplayObjectContainer instance to remove.</p>
+
                         </div>
 
                         
@@ -4898,7 +4908,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
                 <div class="returns-description">
                     
                         
-                            <span class="type">CanvasElement</span>:
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
                         
                         <p>Returns an instance of itself.</p>
 
@@ -4913,7 +4923,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
 
         
             <a name="method_removeChildAt" class="anchor-link"></a>
-<div class="method item public inherited inherited">
+<div class="method item public inherited">
     <h3 class="name"><code>removeChildAt</code>
 
     
@@ -4952,16 +4962,13 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/DOMElement.html#method_removeChildAt" class="type">
-                DOMElement
-            </a>
             
-            but overwritten in
+                <p>Inherited from
+                <a href="../classes/DOMElement.html#method_removeChildAt" class="type">DOMElement</a>:
             
         
         
-        <a href="../files/js_display_CanvasElement.js.html#l179"><code>js&#x2F;display&#x2F;CanvasElement.js:179</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l511"><code>js&#x2F;display&#x2F;DOMElement.js:511</code></a>
         
         </p>
 
@@ -5021,7 +5028,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
 
     
         <span class="returns-inline">
-            <span class="type">CanvasElement</span>
+            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
         </span>
     
 
@@ -5054,7 +5061,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             
         
         
-        <a href="../files/js_display_CanvasElement.js.html#l194"><code>js&#x2F;display&#x2F;CanvasElement.js:194</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l524"><code>js&#x2F;display&#x2F;DOMElement.js:524</code></a>
         
         </p>
 
@@ -5068,7 +5075,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
 
         <div class="description">
             <p>Removes all child object instances from the child list of the parent object instance.
-The parent property of the removed children is set to null , and the objects are garbage collected if no other
+The parent property of the removed children is set to null and the objects are garbage collected if no other
 references to the children exist.</p>
 
         </div>
@@ -5082,7 +5089,7 @@ references to the children exist.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">CanvasElement</span>:
+                            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
                         
                         <p>Returns an instance of itself.</p>
 
