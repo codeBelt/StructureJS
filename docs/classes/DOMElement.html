@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -417,14 +417,7 @@
             
 
             
-                <li class="index-item method public inherited">
-                    <a href="#method_addChild">addChild</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
+                <li class="index-item method inherited">
                     <a href="#method_addChild">addChild</a>
 
                     
@@ -579,28 +572,7 @@
                 </li>
             
                 <li class="index-item method public">
-                    <a href="#method_removeChild">removeChild</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
                     <a href="#method_removeChildAt">removeChildAt</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_removeChildAt">removeChildAt</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_removeChildren">removeChildren</a>
 
                     
                     
@@ -2422,123 +2394,7 @@ var ClassName = (function () {
 
         
             <a name="method_addChild" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>addChild</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>child</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">CanvasElement</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_addChild" class="type">
-                DisplayObjectContainer
-            </a>
-            
-            but overwritten in
-            
-        
-        
-        <a href="../files/js_display_CanvasElement.js.html#l86"><code>js&#x2F;display&#x2F;CanvasElement.js:86</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">child</code>
-                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">CanvasElement</span>:
-                        
-                        <p>Returns an instance of itself.</p>
-
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_addChild" class="anchor-link"></a>
-<div class="method item">
+<div class="method item inherited">
     <h3 class="name"><code>addChild</code>
 
     
@@ -2579,12 +2435,12 @@ var ClassName = (function () {
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/DisplayObjectContainer.html#method_addChild" class="type">
+                DisplayObjectContainer
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
@@ -3471,7 +3327,7 @@ If any selectors are found the EmailShareComponent class will be instantiated an
                     <li class="param">
                         
                             <code class="param-name">componentList</code>
-                            <span class="type">Selector: string; componentClass: DisplayObjectContainer</span>
+                            <span class="type">Selector: string; component: DOMElement</span>
                         
 
                         
@@ -3513,9 +3369,9 @@ If any selectors are found the EmailShareComponent class will be instantiated an
      _super.prototype.create.call(this);
 
      this.createComponents([
-         {selector: &#39;.js-shareEmail&#39;, componentClass: EmailShareComponent},
-         {selector: &#39;.js-pagination&#39;, componentClass: PaginationComponent},
-         {selector: &#39;.js-carousel&#39;, componentClass: CarouselComponent}
+         {selector: &#39;.js-shareEmail&#39;, component: EmailShareComponent},
+         {selector: &#39;.js-pagination&#39;, component: PaginationComponent},
+         {selector: &#39;.js-carousel&#39;, component: CarouselComponent}
      ]);
  };</code></pre>
 
@@ -4977,7 +4833,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
 
     
         <span class="returns-inline">
-            <span class="type">CanvasElement</span>
+            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
         </span>
     
 
@@ -5007,122 +4863,6 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             </a>
             
             but overwritten in
-            
-        
-        
-        <a href="../files/js_display_CanvasElement.js.html#l149"><code>js&#x2F;display&#x2F;CanvasElement.js:149</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">child</code>
-                            <span class="type"><a href="../classes/DisplayObject.html" class="crosslink">DisplayObject</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">CanvasElement</span>:
-                        
-                        <p>Returns an instance of itself.</p>
-
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_removeChild" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>removeChild</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>child</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
             
         
         
@@ -5234,107 +4974,6 @@ to the child. The index positions of any objects above the child in the parent o
         
             
                 
-                    <p>Provided by the <a href="../modules/StructureJS.html" class="module-name">StructureJS</a> module.</p>
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_display_CanvasElement.js.html#l179"><code>js&#x2F;display&#x2F;CanvasElement.js:179</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Removes the child display object instance that exists at the specified index.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">index</code>
-                            <span class="type">Int</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The index position of the child object.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_removeChildAt" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>removeChildAt</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>index</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
                 <p>
                 
                 Defined in
@@ -5393,7 +5032,7 @@ to the child. The index positions of any objects above the child in the parent o
 
         
             <a name="method_removeChildren" class="anchor-link"></a>
-<div class="method item public">
+<div class="method item public inherited">
     <h3 class="name"><code>removeChildren</code>
 
     
@@ -5426,12 +5065,12 @@ to the child. The index positions of any objects above the child in the parent o
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/DisplayObjectContainer.html#method_removeChildren" class="type">
+                DisplayObjectContainer
+            </a>
             
-                
-                <p>
-                
-                Defined in
-                
+            but overwritten in
             
         
         
@@ -5464,91 +5103,6 @@ references to the children exist.</p>
                     
                         
                             <span class="type"><a href="../classes/DOMElement.html" class="crosslink">DOMElement</a></span>:
-                        
-                        <p>Returns an instance of itself.</p>
-
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_removeChildren" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>removeChildren</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">CanvasElement</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            <p>Inherited from
-            <a href="../classes/DisplayObjectContainer.html#method_removeChildren" class="type">
-                DisplayObjectContainer
-            </a>
-            
-            but overwritten in
-            
-        
-        
-        <a href="../files/js_display_CanvasElement.js.html#l194"><code>js&#x2F;display&#x2F;CanvasElement.js:194</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Removes all child object instances from the child list of the parent object instance.
-The parent property of the removed children is set to null , and the objects are garbage collected if no other
-references to the children exist.</p>
-
-        </div>
-
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">CanvasElement</span>:
                         
                         <p>Returns an instance of itself.</p>
 
