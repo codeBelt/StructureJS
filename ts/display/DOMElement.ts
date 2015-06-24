@@ -650,7 +650,7 @@ class DOMElement extends DisplayObjectContainer
      * If any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.
      *
      * @method createComponents
-     * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
+     * @param componentList (Array.<{ selector: string; component: DOMElement }>
      * @return {Array.<DOMElement>} Returns all the items created from this createComponents method.
      * @public
      * @chainable
@@ -659,9 +659,9 @@ class DOMElement extends DisplayObjectContainer
      *          _super.prototype.create.call(this);
      *
      *          this.createComponents([
-     *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
-     *              {selector: '.js-pagination', componentClass: PaginationComponent},
-     *              {selector: '.js-carousel', componentClass: CarouselComponent}
+     *              {selector: '.js-shareEmail', component: EmailShareComponent},
+     *              {selector: '.js-pagination', component: PaginationComponent},
+     *              {selector: '.js-carousel', component: CarouselComponent}
      *          ]);
      *      };
      */
@@ -674,7 +674,7 @@ class DOMElement extends DisplayObjectContainer
         for (var i = 0; i < length; i++)
         {
             obj = componentList[i];
-            list = <Array<DOMElement>>ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+            list = <Array<DOMElement>>ComponentFactory.create(this.$element.find(obj.selector), obj.component, this);
             createdChildren = createdChildren.concat(list);
         }
 
