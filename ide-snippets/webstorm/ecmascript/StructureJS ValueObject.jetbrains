@@ -1,0 +1,31 @@
+import ValueObject from 'structurejs/model/ValueObject';
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${NAME}
+ * @extends ValueObject
+ * @constructor
+ **/
+class ${NAME} extends ValueObject {
+
+    constructor(data) {
+        super();
+
+        if (data) {
+            this.update(data);
+        }
+    }
+    
+    /**
+     * @overridden ValueObject.update
+     */
+    update(data) {
+        super.update(data);
+        
+        // Override any values after the default super update method has set the values.
+    }
+
+}
+
+export { ${NAME} };
