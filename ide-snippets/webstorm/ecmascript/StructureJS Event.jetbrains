@@ -24,3 +24,5 @@ class ${NAME} extends BaseEvent {
     }
     
 }
+
+export default ${NAME};

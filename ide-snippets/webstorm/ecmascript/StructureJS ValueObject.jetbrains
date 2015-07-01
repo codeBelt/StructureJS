@@ -28,4 +28,4 @@ class ${NAME} extends ValueObject {
 
 }
 
-export { ${NAME} };
+export default ${NAME};

@@ -11,9 +11,8 @@ class ${NAME} extends ${Extends} {
 
     constructor() {
         super();
-
     }
 
 }
 
-export { ${NAME} };
+export default ${NAME};

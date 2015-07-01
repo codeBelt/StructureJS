@@ -5,4 +5,4 @@
  * @type {$type$}
  * @$accessType$
  */
-this.$name$ = null;
+$name$ = null;
