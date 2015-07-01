@@ -10,10 +10,10 @@ A class based utility library for building modular and scalable web platform app
     $ bower install --save structurejs
 
 ## IDE Snippets
-* [Webstorm JS](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/webstorm/js)
-* [Webstorm TS](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/webstorm/ts)
-* [Sublime](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/sublimetext)
-* [Atom](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/atom)
+* [Webstorm JS](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/webstorm/js)
+* [Webstorm TS](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/webstorm/ts)
+* [Sublime](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/sublimetext)
+* [Atom](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/atom)
 
 ## Boilerplate
 [StructureJS Boilerplate (RequireJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
