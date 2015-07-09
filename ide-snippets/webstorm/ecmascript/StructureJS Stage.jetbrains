@@ -1,3 +1,6 @@
+'use strict';
+
+// Imports
 import Stage from 'structurejs/display/Stage';
 
 /**
