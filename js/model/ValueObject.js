@@ -127,7 +127,8 @@
          * @private
          */
         ValueObject.prototype._setData = function(key, data) {
-            if (data instanceof Array) {
+            // If the data is an array and if the property its being assigned to is an array.
+            if (data instanceof Array && this[key] instanceof Array) {
                 var temp = [];
                 var len = data.length;
                 if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false) {

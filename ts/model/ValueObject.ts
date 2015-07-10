@@ -130,7 +130,8 @@ class ValueObject extends BaseObject implements IValueObject
      */
     private _setData(key:any, data:any):void
     {
-        if (data instanceof Array)
+        // If the data is an array and if the property its being assigned to is an array.
+        if (data instanceof Array && this[key] instanceof Array)
         {
             var temp:Array<any> = [];
             var len:number = data.length;
