@@ -39,6 +39,8 @@ describe("ValidationUtil", function() {
         expect(ValidationUtil.isValidPhoneNumber('1 123.234.4567')).toBeTruthy();
 
         expect(ValidationUtil.isValidPhoneNumber('3456')).toBeFalsy();
+        expect(ValidationUtil.isValidPhoneNumber('123-456-7890appleCoffee')).toBeFalsy();
+        expect(ValidationUtil.isValidPhoneNumber('appleCoffee123-456-7890')).toBeFalsy();
     });
 
     it("isZipCode()", function() {
