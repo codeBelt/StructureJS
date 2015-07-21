@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.7</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -239,7 +239,7 @@
          *      // true
          */
         ValidationUtil.isValidPhoneNumber = function(phoneNumber) {
-            var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+            var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
             return expression.test(phoneNumber);
         };
         /**

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.7</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -275,7 +275,8 @@
          * @private
          */
         ValueObject.prototype._setData = function(key, data) {
-            if (data instanceof Array) {
+            // If the data is an array and if the property its being assigned to is an array.
+            if (data instanceof Array &amp;&amp; this[key] instanceof Array) {
                 var temp = [];
                 var len = data.length;
                 if ((this[key][0] instanceof ValueObject.constructor &amp;&amp; data[0] instanceof ValueObject.constructor) === false) {

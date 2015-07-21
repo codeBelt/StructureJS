@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.6",
+        "version": "0.7.7",
         "url": ""
     },
     "files": {
@@ -5614,7 +5614,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 144,
+            "line": 145,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_updateData",
@@ -5636,7 +5636,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 167,
+            "line": 168,
             "description": "Converts the value object data into a JSON object and deletes the cid property.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5655,7 +5655,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 180,
+            "line": 181,
             "description": "Converts a value object to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5674,7 +5674,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 192,
+            "line": 193,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5696,7 +5696,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 208,
+            "line": 209,
             "description": "Create a clone/copy of the value object.",
             "itemtype": "method",
             "name": "clone",
@@ -8837,15 +8837,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:167"
+            "line": " js/model/ValueObject.js:168"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:180"
+            "line": " js/model/ValueObject.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:208"
+            "line": " js/model/ValueObject.js:209"
         },
         {
             "message": "replacing incorrect tag: returns with return",
