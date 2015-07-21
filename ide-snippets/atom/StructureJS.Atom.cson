@@ -311,7 +311,7 @@ define(function (require, exports, module) { // jshint ignore:line
      * TODO: YUIDoc_comment
      *
      * @class ${1:Class}
-     * @extends ${1}
+     * @extends BaseEvent
      * @constructor
      **/
     var ${1:Class} = (function () {
@@ -326,7 +326,7 @@ define(function (require, exports, module) { // jshint ignore:line
          */
         ${1:Class}.EXAMPLE = '${1:Class}.example';
 
-      var _super = Extend(${1:Class}, ${1});
+      var _super = Extend(${1:Class}, BaseEvent);
 
           function ${1:Class}() {
               _super.call(this);
