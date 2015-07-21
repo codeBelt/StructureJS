@@ -90,7 +90,7 @@ class ValidationUtil
      */
     public static isValidPhoneNumber(phoneNumber:string):boolean
     {
-        var expression:RegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+        var expression:RegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
         return expression.test(phoneNumber);
     }
 
