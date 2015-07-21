@@ -91,7 +91,7 @@
          *      // true
          */
         ValidationUtil.isValidPhoneNumber = function(phoneNumber) {
-            var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+            var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
             return expression.test(phoneNumber);
         };
         /**
