@@ -19,9 +19,10 @@
 
         var _super = Extend(CanvasElement, DOMElement);
 
+        // Notice the capital W and H. That sets the attributes not the styles.
         function CanvasElement(type, params) {
             if (type === void 0) { type = 'canvas'; }
-            if (params === void 0) { params = {width: 100, height: 100}; }
+            if (params === void 0) { params = {Width: 100, Height: 100}; }
             _super.call(this, type, params);
             this.$canvas = null;
             this.canvas = null;

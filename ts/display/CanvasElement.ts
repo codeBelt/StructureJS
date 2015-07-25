@@ -18,7 +18,8 @@ class CanvasElement extends DOMElement
 
     public canvas:HTMLCanvasElement = null;
 
-    constructor(type:any = 'canvas', params:any = {width: 100, height: 100})
+    // Notice the capital W and H. That sets the attributes not the styles.
+    constructor(type:any = 'canvas', params:any = {Width: 100, Height: 100})
     {
         super(type, params);
     }
