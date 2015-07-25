@@ -319,6 +319,7 @@ class DOMElement extends DisplayObjectContainer
 
         this.width = this.$element.width();
         this.height = this.$element.height();
+        this.setSize(this.width, this.height);
 
         return this;
     }
@@ -403,6 +404,7 @@ class DOMElement extends DisplayObjectContainer
 
         child.width = child.$element.width();
         child.height = child.$element.height();
+        child.setSize(child.width, child.height);
         child.enable();
         child.layout();
         child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));

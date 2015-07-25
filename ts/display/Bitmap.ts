@@ -23,6 +23,7 @@ class Bitmap extends DisplayObject
         this._image = image;
         this.width = this._image.width;
         this.height = this._image.height;
+        this.setSize(this.width, this.height);
     }
 
     public create():void
