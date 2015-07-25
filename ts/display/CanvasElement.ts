@@ -18,9 +18,9 @@ class CanvasElement extends DOMElement
 
     public canvas:HTMLCanvasElement = null;
 
-    constructor($element:JQuery)
+    constructor(type:any = 'canvas', params:any = {width: 100, height: 100})
     {
-        super($element);
+        super(type, params);
     }
 
     /**

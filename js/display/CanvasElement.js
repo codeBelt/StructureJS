@@ -17,23 +17,11 @@
 
     var CanvasElement = (function() {
 
-        var _super = Extend(CanvasElement, DOMElement);
-
-        function CanvasElement($element) {
-            _super.call(this, $element);
-            /**
-             * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property**.
-             *
-             * @type {JQuery}
-             * @public
-             */
+        function CanvasElement(type, params) {
+            if (type === void 0) { type = 'canvas'; }
+            if (params === void 0) { params = {width: 100, height: 100}; }
+            _super.call(this, type, params);
             this.$canvas = null;
-            /**
-             * A reference to the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/element:property"}}{{/crossLink}} property**.
-             *
-             * @type {HTMLCanvasElement}
-             * @public
-             */
             this.canvas = null;
         }
         /**
