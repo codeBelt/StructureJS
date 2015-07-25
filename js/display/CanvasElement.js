@@ -17,6 +17,8 @@
 
     var CanvasElement = (function() {
 
+        var _super = Extend(CanvasElement, DOMElement);
+
         function CanvasElement(type, params) {
             if (type === void 0) { type = 'canvas'; }
             if (params === void 0) { params = {width: 100, height: 100}; }
