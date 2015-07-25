@@ -9,7 +9,7 @@
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BrowserUtil = factory(root.StructureJS.EventDispatcher, root.StructureJS.LoaderEvent);
+        root.StructureJS.BulkLoader = factory(root.StructureJS.EventDispatcher, root.StructureJS.LoaderEvent);
     }
 }(this, function(EventDispatcher, LoaderEvent) {
 
@@ -28,11 +28,9 @@
      * @author Robert S. (www.codeBelt.com)
      */
     var BulkLoader = (function() {
-
         function BulkLoader() {
             throw new Error('[BulkLoader] Do not instantiate the BulkLoader class because it is a static class.');
         }
-
         BulkLoader.addFile = function(dataStore, key) {
             BulkLoader._dataStores[key] = dataStore;
         };
