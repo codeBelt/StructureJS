@@ -1,7 +1,6 @@
 'use strict';
 /*
  UMD Stuff
- @import ../util/Extend as Extend
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/LoaderEvent as LoaderEvent
  @import ../event/BaseEvent as BaseEvent
@@ -28,6 +27,11 @@ class BulkLoader {
 
     private static _dataStores:Array<IDataStore> = [];
     private static _eventDispatcher:EventDispatcher = new EventDispatcher();
+
+    constructor()
+    {
+        throw new Error('[BulkLoader] Do not instantiate the BulkLoader class because it is a static class.');
+    }
 
     public static addFile(dataStore:IDataStore, key:string):void
     {

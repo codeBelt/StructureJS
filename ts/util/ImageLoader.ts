@@ -1,7 +1,7 @@
 'use strict';
 /*
  UMD Stuff
- @import ../util/Extend as Extend
+ @import ./util/Extend as Extend
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/LoaderEvent as LoaderEvent
  @export ImageLoader
@@ -14,6 +14,7 @@ import LoaderEvent = require('../event/LoaderEvent');
  * The ImageLoader...
  *
  * @class ImageLoader
+ * @extends EventDispatcher
  * @module StructureJS
  * @submodule util
  * @constructor
