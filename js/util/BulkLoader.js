@@ -63,7 +63,7 @@
             }
             var event = type;
             if (typeof event === 'string') {
-                event = new BaseEvent(type, data);
+                event = new LoaderEvent(type, data);
             }
             event.target = BulkLoader;
             event.currentTarget = BulkLoader;
@@ -77,7 +77,7 @@
                     return;
                 }
             }
-            BulkLoader._eventDispatcher.dispatchEvent(LoaderEvent.LOAD_COMPLETE);
+            BulkLoader._eventDispatcher.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE));
         };
         BulkLoader._dataStores = [];
         BulkLoader._eventDispatcher = new EventDispatcher();

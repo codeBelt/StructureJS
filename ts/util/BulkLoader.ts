@@ -3,13 +3,11 @@
  UMD Stuff
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/LoaderEvent as LoaderEvent
- @import ../event/BaseEvent as BaseEvent
  @export BulkLoader
  */
 import IDataStore = require('../interface/IDataStore');
 import EventDispatcher = require('../event/EventDispatcher');
 import LoaderEvent = require('../event/LoaderEvent');
-import BaseEvent = require('../event/BaseEvent');
 
 /**
  * The BulkLoader...
@@ -74,7 +72,7 @@ class BulkLoader {
 
         if (typeof event === 'string')
         {
-            event = new BaseEvent(type, data);
+            event = new LoaderEvent(type, data);
         }
 
         event.target = BulkLoader;
@@ -96,7 +94,7 @@ class BulkLoader {
             }
         }
 
-        BulkLoader._eventDispatcher.dispatchEvent(LoaderEvent.LOAD_COMPLETE);
+        BulkLoader._eventDispatcher.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE));
     }
 
 }
