@@ -323,13 +323,10 @@ module.exports = function(grunt) {
             }
         },
 
-        /**
-         * Compiles the TypeScript files into one JavaScript file.
-         */
-        typescript: {
-            main: {
+        ts: {
+            default: {
                 src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
-                outdir: '<%= BASE_PATH %>js',
+                outDir: '<%= BASE_PATH %>ts',
                 options: {
                     target: 'es3', //or es5
                     module: 'commonjs',
@@ -341,6 +338,25 @@ module.exports = function(grunt) {
                 }
             }
         },
+
+        ///**
+        // * Compiles the TypeScript files into one JavaScript file.
+        // */
+        //typescript: {
+        //    main: {
+        //        src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
+        //        dest: '<%= BASE_PATH %>js',
+        //        options: {
+        //            target: 'es3', //or es5
+        //            module: 'commonjs',
+        //            basePath: '',
+        //            sourcemap: false,
+        //            declaration: false,
+        //            nolib: false,
+        //            comments: true
+        //        }
+        //    }
+        //},
 
         // Configuration to be run (and then tested).
         umd_wrapper: {
@@ -366,6 +382,7 @@ module.exports = function(grunt) {
                     'js/event/BaseEvent.js': 'ts/event/BaseEvent.js',
                     'js/event/EventBroker.js': 'ts/event/EventBroker.js',
                     'js/event/EventDispatcher.js': 'ts/event/EventDispatcher.js',
+                    'js/event/LoaderEvent.js': 'ts/event/LoaderEvent.js',
                     'js/event/LocalStorageEvent.js': 'ts/event/LocalStorageEvent.js',
                     'js/event/NetworkMonitorEvent.js': 'ts/event/NetworkMonitorEvent.js',
                     'js/event/RouterEvent.js': 'ts/event/RouterEvent.js',
@@ -377,8 +394,10 @@ module.exports = function(grunt) {
                     'js/net/NetworkMonitor.js': 'ts/net/NetworkMonitor.js',
                     'js/plugin/jquery.eventListener.js': 'ts/plugin/jquery.eventListener.js',
                     'js/util/BrowserUtil.js': 'ts/util/BrowserUtil.js',
+                    'js/util/BulkLoader.js': 'ts/util/BulkLoader.js',
                     'js/util/ComponentFactory.js': 'ts/util/ComponentFactory.js',
                     'js/util/DateUtil.js': 'ts/util/DateUtil.js',
+                    'js/util/ImageLoader.js': 'ts/util/ImageLoader.js',
                     'js/util/MathUtil.js': 'ts/util/MathUtil.js',
                     'js/util/MerchantUtil.js': 'ts/util/MerchantUtil.js',
                     'js/util/NumberUtil.js': 'ts/util/NumberUtil.js',
@@ -526,7 +545,7 @@ module.exports = function(grunt) {
      * grunt doc    (Will generate the YUI documentation from the code comments)
      */
     grunt.registerTask('default', [
-        'typescript',
+        'ts',
         'umd_wrapper',
         'jsbeautifier',
         'clean'
