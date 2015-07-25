@@ -4,12 +4,13 @@
  @import ../util/Extend as Extend
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/LoaderEvent as LoaderEvent
- @import ../interface/IDataStore as IDataStore
+ @import ../event/BaseEvent as BaseEvent
  @export BulkLoader
  */
-import EventDispatcher = require('../event/EventDispatcher');
-import LoaderEvent = require('../event/LoaderEvent');
-import IDataStore = require('../interface/IDataStore');
+import IDataStore = require('../interfaces/IDataStore');
+import EventDispatcher = require('../../vendor/structurejs/ts/event/EventDispatcher');
+import LoaderEvent = require('../../vendor/structurejs/ts/event/LoaderEvent');
+import BaseEvent = require('../../vendor/structurejs/ts/event/BaseEvent');
 
 /**
  * The BulkLoader...
@@ -23,100 +24,77 @@ import IDataStore = require('../interface/IDataStore');
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
-class BulkLoader extends EventDispatcher
-{
-    public _dataStores:Array<IDataStore> = [];
+class BulkLoader {
 
-    constructor()
+    private static _dataStores:Array<IDataStore> = [];
+    private static _eventDispatcher:EventDispatcher = new EventDispatcher();
+
+    public static addFile(dataStore:IDataStore, key:string):void
     {
-        super();
+        BulkLoader._dataStores[key] = dataStore;
     }
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @method addFile
-     * @param dataStore {IDataStore}
-     * @param key {string}
-     * @returns {BulkLoader}
-     */
-    public addFile(dataStore:IDataStore, key:string):any
+    public static getFile(key:string):IDataStore
     {
-        this._dataStores[key] = dataStore;
-        return this;
+        return BulkLoader._dataStores[key] || null;
     }
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @method getFile
-     * @param key {string}
-     * @returns {IDataStore}
-     */
-    public getFile(key:string):IDataStore
+    public static getImage(key:string):HTMLImageElement
     {
-        return this._dataStores[key];
+        var imageLoader:IDataStore = BulkLoader.getFile(key);
+        return (imageLoader !== null) ? imageLoader.data : null;
     }
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @method getData
-     * @param key
-     * @returns {any}
-     */
-    public getData(key:string):any
+    public static load():void
     {
-        return this._dataStores[key].data;
-    }
-
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @method load
-     * @returns {BulkLoader}
-     */
-    public load():any
-    {
-        for (var key in this._dataStores)
+        for (var key in BulkLoader._dataStores)
         {
-            var dataStore:IDataStore = this._dataStores[key];
+            var dataStore:IDataStore = BulkLoader._dataStores[key];
+            dataStore.addEventListener(LoaderEvent.COMPLETE, BulkLoader.onLoadComplete, BulkLoader);
+            dataStore.load();
+        }
+    }
 
-            // Don't re-load data store's if they are completed.
-            if (dataStore.complete === false)
-            {
-                dataStore.addEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
-                dataStore.load();
-            }
+    public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):void {
+        BulkLoader._eventDispatcher.addEventListener(type, callback, scope, priority);
+    }
+
+    public static removeEventListener(type:string, callback:Function, scope:any):void
+    {
+        BulkLoader._eventDispatcher.removeEventListener(type, callback, scope);
+    }
+
+    public static dispatchEvent(type:any, data:any = null):void
+    {
+        var event:any = type;
+
+        if (typeof event === 'string')
+        {
+            event = new BaseEvent(type, data);
         }
 
-        return this;
+        event.target = BulkLoader;
+        event.currentTarget = BulkLoader;
+
+        BulkLoader._eventDispatcher.dispatchEvent(event);
     }
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @method onLoadComplete
-     * @param event {LoaderEvent}
-     */
-    private onLoadComplete(event:LoaderEvent):void
+    private static onLoadComplete(event:LoaderEvent):void
     {
-        event.target.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+        event.target.removeEventListener(LoaderEvent.COMPLETE, BulkLoader.onLoadComplete, BulkLoader);
 
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, event.target));
-
-        for (var key in this._dataStores)
+        for (var key in BulkLoader._dataStores)
         {
-            var dataStore:IDataStore = this._dataStores[key];
+            var dataStore:IDataStore = BulkLoader._dataStores[key];
             if (dataStore.complete === false)
             {
-                // If any data store items are not complete then exit and don't let the LoaderEvent.LOAD_COMPLETE event to dispatch.
                 return;
             }
         }
 
-        this.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE, false, false, this._dataStores));
+        BulkLoader._eventDispatcher.dispatchEvent(LoaderEvent.LOAD_COMPLETE);
     }
+
 }
 
 export = BulkLoader;
