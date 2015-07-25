@@ -7,10 +7,10 @@
  @import ../event/BaseEvent as BaseEvent
  @export BulkLoader
  */
-import IDataStore = require('../interfaces/IDataStore');
-import EventDispatcher = require('../../vendor/structurejs/ts/event/EventDispatcher');
-import LoaderEvent = require('../../vendor/structurejs/ts/event/LoaderEvent');
-import BaseEvent = require('../../vendor/structurejs/ts/event/BaseEvent');
+import IDataStore = require('../interface/IDataStore');
+import EventDispatcher = require('../event/EventDispatcher');
+import LoaderEvent = require('../event/LoaderEvent');
+import BaseEvent = require('../event/BaseEvent');
 
 /**
  * The BulkLoader...

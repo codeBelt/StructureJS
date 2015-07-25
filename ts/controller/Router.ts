@@ -32,7 +32,7 @@ class Router
      * @private
      * @static
      */
-    private static _window:Window = window;
+    private static _window:any = window;
 
     /**
      * A list of the added Route objects.

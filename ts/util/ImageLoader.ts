@@ -6,9 +6,9 @@
  @import ../event/LoaderEvent as LoaderEvent
  @export ImageLoader
  */
-import IDataStore = require('../interfaces/IDataStore');
-import EventDispatcher = require('../../vendor/structurejs/ts/event/EventDispatcher');
-import LoaderEvent = require('../../vendor/structurejs/ts/event/LoaderEvent');
+import IDataStore = require('../interface/IDataStore');
+import EventDispatcher = require('../event/EventDispatcher');
+import LoaderEvent = require('../event/LoaderEvent');
 
 /**
  * The ImageLoader...
