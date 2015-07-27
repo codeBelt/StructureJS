@@ -18,6 +18,8 @@
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
      * @class ComponentFactory
+     * @module StructureJS
+     * @submodule util
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
