@@ -1,12 +1,10 @@
 'use strict';
 /*
  UMD Stuff
- @import ../display/DisplayObjectContainer as DisplayObjectContainer
- @import ../display/DOMElement as DOMElement
  @export ComponentFactory
  */
 import DisplayObjectContainer = require('../display/DisplayObjectContainer');
-import DOMElement = require('../display/DOMElement');
+import DisplayObject = require('../display/DisplayObject');
 
 /**
  * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
@@ -39,22 +37,27 @@ class ComponentFactory
      */
     public static create = function ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
     {
-        var list:Array<DisplayObjectContainer> = [];
+        var list:Array<DisplayObject> = [];
+        var component:DisplayObject;
+        var $element:JQuery;
         var length:number = $elements.length;
 
         for (var i = 0; i < length; i++)
         {
-            var component = new (<any>ComponentClass)($elements.eq(i));
+            $element = $elements.eq(i);
 
-            // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
-            if (scope !== null && typeof component.getQualifiedClassName === 'function')
+            // If the element doesn't have a cid attribute set already. This way you can call this method on the same page and it won't overwrite components already created.
+            if ($element.data('cid') === void 0)
             {
-                scope.addChild(component);
+                component = new (<any>ComponentClass)($element);
+                // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObject class.
+                if (scope !== null && typeof component.getQualifiedClassName === 'function')
+                {
+                    scope.addChild(component);
+                }
+                list.push(component);
             }
-
-            list.push(component);
         }
-
         return list;
     }
 }

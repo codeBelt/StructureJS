@@ -248,8 +248,10 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
+ * ?????????? v0.7.8 Allow ComponentFactory.create to be called multiple times with the same selector names and not overwrite active components. Add BulkLoader, ImageLoader ...
+
  * 2015-07-20 v0.7.7 Fixed ValueObject - Allow data passed in that is an array to get assigned to the property even if it is not of type of an array. Fix for phone number validation.
- 
+
  * 2015-06-23 v0.7.6 DOMElement createComponents rename componentClass to component.
 
  * 2015-06-18 v0.7.5 Add groupBy method on Collection. Change ValidationUtil.isPostalCode to be case insensitive.
