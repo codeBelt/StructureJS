@@ -254,7 +254,7 @@
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function() {
-            _super.prototype.disable.call(this);
+            this.disable();
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;

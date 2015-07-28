@@ -299,7 +299,7 @@ class EventDispatcher extends ObjectManager
      */
     public destroy():void
     {
-        super.disable();
+        this.disable();
 
         super.destroy();
     }
