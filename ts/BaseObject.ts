@@ -24,20 +24,20 @@ import Util = require('./util/Util');
 class BaseObject
 {
     /**
-     * The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+     * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
      *
-     * @property cid
+     * @property sjsId
      * @type {int}
      * @default null
      * @writeOnce
      * @readOnly
      * @public
      */
-    public cid:number = null;
+    public sjsId:number = null;
 
     constructor()
     {
-        this.cid = Util.uniqueId();
+        this.sjsId = Util.uniqueId();
     }
 
     /**

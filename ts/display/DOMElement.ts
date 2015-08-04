@@ -366,18 +366,19 @@ class DOMElement extends DisplayObjectContainer
     }
 
     /**
-     * Adds the cid to the DOM element so we can know what what Class object the element belongs too.
+     * Adds the sjsId to the DOM element so we can know what what Class object the element belongs too.
      *
      * @method addClientSideId
-     * @param child {DOMElement} The DOMElement instance to add the cid too.
+     * @param child {DOMElement} The DOMElement instance to add the sjsId too.
      * @private
      */
     private addClientSideId(child:DOMElement):void
     {
         /* TODO: Calling the getChild method there is a chance that multiple DOMElement's have a reference to the same HTMLElement
-         * in the DOM causing the cid to be overwritten with a new cid. Probably should handle that.
+         * in the DOM causing the sjsId to be overwritten with a new sjsId. Probably should handle that.
          */
-        child.$element.attr('data-cid', child.cid);
+        child.$element.attr('data-sjs-id', child.sjsId);
+        child.$element.attr('data-sjs-type', child.getQualifiedClassName());
     }
 
     /**
@@ -496,9 +497,9 @@ class DOMElement extends DisplayObjectContainer
             throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
         }
 
-        // Check to see if the element has a cid value and is a child of this parent object.
-        var cid:number = jQueryElement.data('cid');
-        var domElement:DOMElement = <DOMElement>this.getChildByCid(cid);
+        // Check to see if the element has a sjsId value and is a child of this parent object.
+        var sjsId:number = jQueryElement.data('sjsId');
+        var domElement:DOMElement = <DOMElement>this.getChildByCid(sjsId);
 
         // Creates a DOMElement from the jQueryElement.
         if (domElement == null)
@@ -506,7 +507,8 @@ class DOMElement extends DisplayObjectContainer
             // Create a new DOMElement and assign the jQuery element to it.
             domElement = new DOMElement();
             domElement.$element = jQueryElement;
-            domElement.$element.attr('data-cid', domElement.cid);
+            domElement.$element.attr('data-sjs-id', domElement.sjsId);
+            domElement.$element.attr('data-sjs-type', domElement.getQualifiedClassName());
             domElement.element = jQueryElement[0];
             domElement.isCreated = true;
 
@@ -524,7 +526,7 @@ class DOMElement extends DisplayObjectContainer
      * @method getChildren
      * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.
      * @returns {Array.<DOMElement>} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
-     * If the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
+     * If the 'data-sjs-id' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
      * @public
      */
     public getChildren(selector:string = ''):Array<DOMElement>
@@ -539,12 +541,13 @@ class DOMElement extends DisplayObjectContainer
         {
             $child = jQuery($list[i]);
 
-            // If the jQuery element already has cid data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
-            if (!$child.data('cid'))
+            // If the jQuery element already has sjsId data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
+            if (!$child.data('sjs-id'))
             {
                 domElement = new DOMElement();
                 domElement.$element = $child;
-                domElement.$element.attr('data-cid', domElement.cid);
+                domElement.$element.attr('data-sjs-id', domElement.sjsId);
+                domElement.$element.attr('data-sjs-type', domElement.getQualifiedClassName());
                 domElement.element = $child.get(0);
                 domElement.isCreated = true;
 

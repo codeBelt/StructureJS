@@ -101,7 +101,8 @@ class Stage extends DOMElement
     public appendTo(type:any, enabled:boolean = true):any
     {
         this.$element = (type instanceof jQuery) ? type : jQuery(type);
-        this.$element.attr('data-cid', this.cid);
+        this.$element.attr('data-sjs-id', this.sjsId);
+        this.$element.attr('data-sjs-type', this.getQualifiedClassName());
 
         if (this.isCreated === false)
         {

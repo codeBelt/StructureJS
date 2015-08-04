@@ -25,20 +25,19 @@
      * @author Robert S. (www.codeBelt.com)
      */
     var BaseObject = (function() {
-
         function BaseObject() {
             /**
-             * The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+             * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
              *
-             * @property cid
+             * @property sjsId
              * @type {int}
              * @default null
              * @writeOnce
              * @readOnly
              * @public
              */
-            this.cid = null;
-            this.cid = Util.uniqueId();
+            this.sjsId = null;
+            this.sjsId = Util.uniqueId();
         }
         /**
          * Returns the fully qualified class name of an object.

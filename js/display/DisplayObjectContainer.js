@@ -211,18 +211,18 @@
             return this.children[index];
         };
         /**
-         * Gets a DisplayObject by its cid.
+         * Gets a DisplayObject by its sjsId.
          *
          * @method getChildByCid
-         * @param cid {number}
+         * @param sjsId {number}
          * @returns {DisplayObject|null}
          * @override
          * @public
          */
-        DisplayObjectContainer.prototype.getChildByCid = function(cid) {
+        DisplayObjectContainer.prototype.getChildByCid = function(sjsId) {
             var child = null;
             for (var i = this.numChildren - 1; i >= 0; i--) {
-                if (this.children[i].cid == cid) {
+                if (this.children[i].sjsId == sjsId) {
                     child = this.children[i];
                     break;
                 }

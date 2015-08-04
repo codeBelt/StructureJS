@@ -48,8 +48,8 @@
             var length = $elements.length;
             for (var i = 0; i < length; i++) {
                 $element = $elements.eq(i);
-                // If the element doesn't have a cid attribute set already. This way you can call this method on the same page and it won't overwrite components already created.
-                if ($element.data('cid') === void 0) {
+                // If the element doesn't have a sjs-id attribute set already. This way you can call this method on the same page and it won't overwrite components already created.
+                if ($element.data('sjs-id') === void 0) {
                     component = new ComponentClass($element);
                     // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObject class.
                     if (scope !== null && typeof component.getQualifiedClassName === 'function') {

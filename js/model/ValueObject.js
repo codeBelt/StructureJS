@@ -57,7 +57,7 @@
      *              this.year = null;
      *              this.allWheel = false; // Set a default value.
      *
-     *              // You can assign a ValueObject to a property which will
+     *              // You can assign ValueObject to a property which will
      *              // automatically created it and pass the data to it.
      *              this.feature = FeatureVO;
      *
@@ -106,9 +106,9 @@
             var propertyData;
             for (var propertyKey in this) {
                 // If this class has a property that matches a property on the data being passed in then set it.
-                // Also don't set the cid data value because it is automatically set in the constructor and
+                // Also don't set the sjsId data value because it is automatically set in the constructor and
                 // we do want it to be overridden when the clone method has been called.
-                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid') {
+                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'sjsId') {
                     // If the data passed in does not have a property that matches a property on the value object then
                     // use the default value/data that was assigned to the property.
                     // Else use the data that was passed in.
@@ -166,7 +166,7 @@
             return keyValue;
         };
         /**
-         * Converts the value object data into a JSON object and deletes the cid property.
+         * Converts the value object data into a JSON object and deletes the sjsId property.
          *
          * @method toJSON
          * @returns {ValueObject}
@@ -176,7 +176,7 @@
          */
         ValueObject.prototype.toJSON = function() {
             var clone = Util.clone(this);
-            return Util.deletePropertyFromObject(clone, ['cid']);
+            return Util.deletePropertyFromObject(clone, ['sjsId']);
         };
         /**
          * Converts a value object to a JSON string,

@@ -104,9 +104,9 @@ class ValueObject extends BaseObject implements IValueObject
         for (var propertyKey in this)
         {
             // If this class has a property that matches a property on the data being passed in then set it.
-            // Also don't set the cid data value because it is automatically set in the constructor and
+            // Also don't set the sjsId data value because it is automatically set in the constructor and
             // we do want it to be overridden when the clone method has been called.
-            if (this.hasOwnProperty(propertyKey) && propertyKey !== 'cid')
+            if (this.hasOwnProperty(propertyKey) && propertyKey !== 'sjsId')
             {
                 // If the data passed in does not have a property that matches a property on the value object then
                 // use the default value/data that was assigned to the property.
@@ -185,7 +185,7 @@ class ValueObject extends BaseObject implements IValueObject
     }
 
     /**
-     * Converts the value object data into a JSON object and deletes the cid property.
+     * Converts the value object data into a JSON object and deletes the sjsId property.
      *
      * @method toJSON
      * @returns {ValueObject}
@@ -196,7 +196,7 @@ class ValueObject extends BaseObject implements IValueObject
     public toJSON():ValueObject
     {
         var clone:any = Util.clone(this);
-        return Util.deletePropertyFromObject(clone, ['cid']);
+        return Util.deletePropertyFromObject(clone, ['sjsId']);
     }
 
     /**

@@ -108,7 +108,8 @@
         Stage.prototype.appendTo = function(type, enabled) {
             if (enabled === void 0) { enabled = true; }
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
-            this.$element.attr('data-cid', this.cid);
+            this.$element.attr('data-sjs-id', this.sjsId);
+            this.$element.attr('data-sjs-type', this.getQualifiedClassName());
             if (this.isCreated === false) {
                 this.create();
                 this.isCreated = true;

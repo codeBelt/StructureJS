@@ -243,21 +243,21 @@ class DisplayObjectContainer extends DisplayObject
     }
 
     /**
-     * Gets a DisplayObject by its cid.
+     * Gets a DisplayObject by its sjsId.
      *
      * @method getChildByCid
-     * @param cid {number}
+     * @param sjsId {number}
      * @returns {DisplayObject|null}
      * @override
      * @public
      */
-    public getChildByCid(cid:number):DisplayObject
+    public getChildByCid(sjsId:number):DisplayObject
     {
         var child:DisplayObject = null;
 
         for (var i:number = this.numChildren - 1; i >= 0; i--)
         {
-            if (this.children[i].cid == cid)
+            if (this.children[i].sjsId == sjsId)
             {
                 child = this.children[i];
                 break;
