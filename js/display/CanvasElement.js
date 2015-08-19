@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DOMElement', '../geom/Point'], factory);
+        define(['../util/Extend', './DOMElement', './DisplayObjectContainer', '../geom/Point'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('../geom/Point'));
+        module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('./DisplayObjectContainer'), require('../geom/Point'));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.StructureJS.Point);
+        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.StructureJS.DisplayObjectContainer, root.StructureJS.Point);
     }
-}(this, function(Extend, DOMElement, Point) {
+}(this, function(Extend, DOMElement, DisplayObjectContainer, Point) {
 
     'use strict';
 
