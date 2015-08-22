@@ -48,30 +48,26 @@
             var length = $elements.length;
             var types;
             var componentName;
-
             for (var i = 0; i < length; i++) {
                 $element = $elements.eq(i);
                 types = $element.attr('data-sjs-type');
-
                 if (types === void 0) {
                     // Create the component if there is not a 'data-sjs-type' attribute on the element.
-                    component = this._createComponent($element, ComponentClass, scope);
+                    component = ComponentFactory._createComponent($element, ComponentClass, scope);
                     list.push(component);
                 } else {
                     // Else if there is already a 'data-sjs-type' attribute then get the type(s).
                     types = types.split(',');
                     componentName = Util.getFunctionName(ComponentClass);
-
                     // Only create the component if the component type does not already exist.
                     if (types.indexOf(componentName) === -1) {
-                        component = this._createComponent($element, ComponentClass, scope);
+                        component = ComponentFactory._createComponent($element, ComponentClass, scope);
                         list.push(component);
                     }
                 }
             }
             return list;
         };
-
         /**
          * Helper method to create the component.
          *

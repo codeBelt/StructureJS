@@ -319,9 +319,7 @@
             if (this.$element == null) {
                 throw new Error('[' + this.getQualifiedClassName() + '] You cannot use the addChild method if the parent object is not added to the DOM.');
             }
-
             _super.prototype.addChild.call(this, child);
-
             // If an empty jQuery object is passed into the constructor then don't run the code below.
             if (child._isReference === true && child.$element.length === 0) {
                 return this;
@@ -347,7 +345,6 @@
         DOMElement.prototype.addClientSideId = function(child) {
             var type = child.$element.attr('data-sjs-type');
             var id = child.$element.attr('data-sjs-id');
-
             if (type === void 0) {
                 // Make them array's so the join method will work.
                 type = [child.getQualifiedClassName()];
@@ -356,7 +353,6 @@
                 // Split them so we can push/add the new values.
                 type = type.split(',');
                 id = id.split(',');
-
                 type.push(child.getQualifiedClassName());
                 id.push(child.sjsId);
             }
@@ -370,16 +366,15 @@
          * @method removeClientSideId
          * @param child {DOMElement} The DOMElement instance to add the sjsId too.
          * @private
+         * @return {boolean}
          */
         DOMElement.prototype.removeClientSideId = function(child) {
             var type = child.$element.attr('data-sjs-type');
             var id = child.$element.attr('data-sjs-id');
-
             // Split them so we can remove the child sjsId and type.
             var typeList = type.split(',');
-            var idList = id.split(',').map(Number);// Convert each item into a number.
+            var idList = id.split(',').map(Number); // Convert each item into a number.
             var index = idList.indexOf(child.sjsId);
-
             if (index > -1) {
                 // Remove the id and type from the array.
                 typeList.splice(index, 1);
@@ -388,7 +383,6 @@
                 child.$element.attr('data-sjs-type', typeList.join(','));
                 child.$element.attr('data-sjs-id', idList.join(','));
             }
-
             return idList.length === 0;
         };
         /**
@@ -425,11 +419,11 @@
             if (child._isReference === true && child.$element.length === 0) {
                 return this;
             }
-            // If the index passed in is less than 0 and greater than
-            // the total number of children then place the item at the end.
             if (index < 0 || index >= length) {
+                // If the index passed in is less than 0 and greater than the total number of children then place the item at the end.
                 this.addChild(child);
             } else {
+                // Else get the child in the children array by the index passed in and place the item before that child.
                 if (child.isCreated === false) {
                     child.create(); // Render the item before adding to the DOM
                     child.isCreated = true;
@@ -478,7 +472,7 @@
                 throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
             }
             // Check to see if the element has a sjsId value and is a child of this parent object.
-            var sjsId = jQueryElement.attr('data-sjsId');
+            var sjsId = parseInt(jQueryElement.attr('data-sjs-id'));
             var domElement = this.getChildByCid(sjsId);
             // Creates a DOMElement from the jQueryElement.
             if (domElement == null) {
@@ -540,21 +534,16 @@
          */
         DOMElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) { destroy = true; }
-
             var remove = this.removeClientSideId(child);
-
             child.disable();
-
             // Checks if destroy was called before removeChild so it doesn't error.
             if (remove === true && child.$element != null) {
                 child.$element.unbind();
                 child.$element.remove();
             }
-
             if (destroy === true) {
                 child.destroy();
             }
-
             _super.prototype.removeChild.call(this, child);
             return this;
         };
@@ -596,9 +585,9 @@
         DOMElement.prototype.destroy = function() {
             // Note: we can't just call destroy to remove the HTMLElement because there could be other views managing the same HTMLElement.
             /*if (this.$element != null) {
-                this.$element.unbind();
-                this.$element.remove();
-            }*/
+                 this.$element.unbind();
+                 this.$element.remove();
+             }*/
             _super.prototype.destroy.call(this);
         };
         /**

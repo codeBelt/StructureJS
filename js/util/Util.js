@@ -25,7 +25,6 @@
      * @static
      */
     var Util = (function() {
-
         function Util() {
             throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
         }
@@ -72,6 +71,7 @@
         Util.deletePropertyFromObject = function(object, value) {
             // If properties is not an array then make it an array object.
             var list = (value instanceof Array) ? value : [value];
+            // Loop through the object properties.
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
@@ -87,6 +87,7 @@
                     } else if (value instanceof Object) {
                         Util.deletePropertyFromObject(value, list);
                     } else {
+                        // Loop through the list of property name.
                         for (var listIndex in list) {
                             // If the key(property name) equals the property name in the list array.
                             if (key === list[listIndex]) {
