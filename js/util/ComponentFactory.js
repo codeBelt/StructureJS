@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define([], factory);
+        define(['../util/Util'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
+        module.exports = factory(require('../util/Util'));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ComponentFactory = factory();
+        root.StructureJS.ComponentFactory = factory(root.StructureJS.Util);
     }
-}(this, function() {
+}(this, function(Util) {
 
     'use strict';
     /**
@@ -46,19 +46,45 @@
             var component;
             var $element;
             var length = $elements.length;
+            var types;
+            var componentName;
+
             for (var i = 0; i < length; i++) {
                 $element = $elements.eq(i);
-                // If the element doesn't have a sjs-id attribute set already. This way you can call this method on the same page and it won't overwrite components already created.
-                if ($element.data('sjs-id') === void 0) {
-                    component = new ComponentClass($element);
-                    // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObject class.
-                    if (scope !== null && typeof component.getQualifiedClassName === 'function') {
-                        scope.addChild(component);
-                    }
+                types = $element.attr('data-sjs-type');
+
+                if (types === void 0) {
+                    // Create the component if there is not a 'data-sjs-type' attribute on the element.
+                    component = this._createComponent($element, ComponentClass, scope);
                     list.push(component);
+                } else {
+                    // Else if there is already a 'data-sjs-type' attribute then get the type(s).
+                    types = types.split(',');
+                    componentName = Util.getFunctionName(ComponentClass);
+
+                    // Only create the component if the component type does not already exist.
+                    if (types.indexOf(componentName) === -1) {
+                        component = this._createComponent($element, ComponentClass, scope);
+                        list.push(component);
+                    }
                 }
             }
             return list;
+        };
+
+        /**
+         * Helper method to create the component.
+         *
+         * @method _createComponent
+         * @private
+         */
+        ComponentFactory._createComponent = function($element, ComponentClass, scope) {
+            var component = new ComponentClass($element);
+            // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.
+            if (scope !== null && component.hasOwnProperty('sjsId') === true) {
+                scope.addChild(component);
+            }
+            return component;
         };
         return ComponentFactory;
     })();

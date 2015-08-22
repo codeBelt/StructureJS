@@ -211,6 +211,20 @@
             return (results && results.length > 1) ? results[1] : '';
         };
         /**
+         * Returns the name of the function passed in.
+         *
+         * @method getFunctionName
+         * @param func {Function}
+         * @returns {string} Returns the name of the function.
+         * @static
+         */
+        Util.getFunctionName = function(func) {
+            var str = func.toString();
+            str = str.substr('function '.length);
+            str = str.substr(0, str.indexOf('('));
+            return str;
+        };
+        /**
          * Creates and returns a new debounced version of the passed function which will postpone its execution until after
          * wait milliseconds have elapsed since the last time it was invoked.
          *
