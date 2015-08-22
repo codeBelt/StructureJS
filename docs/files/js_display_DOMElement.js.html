@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
@@ -72,6 +74,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -451,6 +457,7 @@
             this.element = this.$element[0];
             this.width = this.$element.width();
             this.height = this.$element.height();
+            this.setSize(this.width, this.height);
             return this;
         };
         /**
@@ -463,10 +470,10 @@
          *     container.addChild(domElementInstance);
          */
         DOMElement.prototype.addChild = function(child) {
-            _super.prototype.addChild.call(this, child);
             if (this.$element == null) {
                 throw new Error(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;] You cannot use the addChild method if the parent object is not added to the DOM.&#x27;);
             }
+            _super.prototype.addChild.call(this, child);
             // If an empty jQuery object is passed into the constructor then don&#x27;t run the code below.
             if (child._isReference === true &amp;&amp; child.$element.length === 0) {
                 return this;
@@ -483,17 +490,54 @@
             return this;
         };
         /**
-         * Adds the cid to the DOM element so we can know what what Class object the element belongs too.
+         * Adds the sjsId to the DOM element so we can know what what Class object the HTMLElement belongs too.
          *
          * @method addClientSideId
-         * @param child {DOMElement} The DOMElement instance to add the cid too.
+         * @param child {DOMElement} The DOMElement instance to add the sjsId too.
          * @private
          */
         DOMElement.prototype.addClientSideId = function(child) {
-            /* TODO: Calling the getChild method there is a chance that multiple DOMElement&#x27;s have a reference to the same HTMLElement
-             * in the DOM causing the cid to be overwritten with a new cid. Probably should handle that.
-             */
-            child.$element.attr(&#x27;data-cid&#x27;, child.cid);
+            var type = child.$element.attr(&#x27;data-sjs-type&#x27;);
+            var id = child.$element.attr(&#x27;data-sjs-id&#x27;);
+            if (type === void 0) {
+                // Make them array&#x27;s so the join method will work.
+                type = [child.getQualifiedClassName()];
+                id = [child.sjsId];
+            } else {
+                // Split them so we can push/add the new values.
+                type = type.split(&#x27;,&#x27;);
+                id = id.split(&#x27;,&#x27;);
+                type.push(child.getQualifiedClassName());
+                id.push(child.sjsId);
+            }
+            // Updated list of id&#x27;s and types
+            child.$element.attr(&#x27;data-sjs-id&#x27;, id.join(&#x27;,&#x27;));
+            child.$element.attr(&#x27;data-sjs-type&#x27;, type.join(&#x27;,&#x27;));
+        };
+        /**
+         * Removes the sjsId and class type from the HTMLElement.
+         *
+         * @method removeClientSideId
+         * @param child {DOMElement} The DOMElement instance to add the sjsId too.
+         * @private
+         * @return {boolean}
+         */
+        DOMElement.prototype.removeClientSideId = function(child) {
+            var type = child.$element.attr(&#x27;data-sjs-type&#x27;);
+            var id = child.$element.attr(&#x27;data-sjs-id&#x27;);
+            // Split them so we can remove the child sjsId and type.
+            var typeList = type.split(&#x27;,&#x27;);
+            var idList = id.split(&#x27;,&#x27;).map(Number); // Convert each item into a number.
+            var index = idList.indexOf(child.sjsId);
+            if (index &gt; -1) {
+                // Remove the id and type from the array.
+                typeList.splice(index, 1);
+                idList.splice(index, 1);
+                // Updated list of id&#x27;s and types
+                child.$element.attr(&#x27;data-sjs-type&#x27;, typeList.join(&#x27;,&#x27;));
+                child.$element.attr(&#x27;data-sjs-id&#x27;, idList.join(&#x27;,&#x27;));
+            }
+            return idList.length === 0;
         };
         /**
          * Called when the child object is added to the DOM.
@@ -514,6 +558,7 @@
             this.addClientSideId(child);
             child.width = child.$element.width();
             child.height = child.$element.height();
+            child.setSize(child.width, child.height);
             child.enable();
             child.layout();
             child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));
@@ -528,11 +573,11 @@
             if (child._isReference === true &amp;&amp; child.$element.length === 0) {
                 return this;
             }
-            // If the index passed in is less than 0 and greater than
-            // the total number of children then place the item at the end.
             if (index &lt; 0 || index &gt;= length) {
+                // If the index passed in is less than 0 and greater than the total number of children then place the item at the end.
                 this.addChild(child);
             } else {
+                // Else get the child in the children array by the index passed in and place the item before that child.
                 if (child.isCreated === false) {
                     child.create(); // Render the item before adding to the DOM
                     child.isCreated = true;
@@ -580,15 +625,15 @@
             if (jQueryElement.length === 0) {
                 throw new TypeError(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;] getChild(&#x27; + selector + &#x27;) Cannot find DOM $element&#x27;);
             }
-            // Check to see if the element has a cid value and is a child of this parent object.
-            var cid = jQueryElement.data(&#x27;cid&#x27;);
-            var domElement = this.getChildByCid(cid);
+            // Check to see if the element has a sjsId value and is a child of this parent object.
+            var sjsId = parseInt(jQueryElement.attr(&#x27;data-sjs-id&#x27;));
+            var domElement = this.getChildByCid(sjsId);
             // Creates a DOMElement from the jQueryElement.
             if (domElement == null) {
                 // Create a new DOMElement and assign the jQuery element to it.
                 domElement = new DOMElement();
                 domElement.$element = jQueryElement;
-                domElement.$element.attr(&#x27;data-cid&#x27;, domElement.cid);
+                this.addClientSideId(domElement);
                 domElement.element = jQueryElement[0];
                 domElement.isCreated = true;
                 // Added to the super addChild method because we don&#x27;t need to append the element to the DOM.
@@ -603,7 +648,7 @@
          * @method getChildren
          * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.
          * @returns {Array.&lt;DOMElement&gt;} Returns a list of DOMElement&#x27;s. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
-         * If the &#x27;data-cid&#x27; property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
+         * If the &#x27;data-sjs-id&#x27; property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
          * @public
          */
         DOMElement.prototype.getChildren = function(selector) {
@@ -614,12 +659,12 @@
             var $list = this.$element.children(selector);
             var listLength = $list.length;
             for (var i = 0; i &lt; listLength; i++) {
-                $child = jQuery($list[i]);
-                // If the jQuery element already has cid data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
-                if (!$child.data(&#x27;cid&#x27;)) {
+                $child = $list.eq(i);
+                // If the jQuery element already has sjsId data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
+                if ($child.attr(&#x27;data-sjs-id&#x27;) === void 0) {
                     domElement = new DOMElement();
                     domElement.$element = $child;
-                    domElement.$element.attr(&#x27;data-cid&#x27;, domElement.cid);
+                    this.addClientSideId(domElement);
                     domElement.element = $child.get(0);
                     domElement.isCreated = true;
                     // Added to the super addChild method because we don&#x27;t need to append the element to the DOM.
@@ -643,15 +688,15 @@
          */
         DOMElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) { destroy = true; }
+            var remove = this.removeClientSideId(child);
+            child.disable();
             // Checks if destroy was called before removeChild so it doesn&#x27;t error.
-            if (child.$element != null) {
+            if (remove === true &amp;&amp; child.$element != null) {
                 child.$element.unbind();
                 child.$element.remove();
             }
             if (destroy === true) {
                 child.destroy();
-            } else {
-                child.disable();
             }
             _super.prototype.removeChild.call(this, child);
             return this;
@@ -692,11 +737,11 @@
          * @overridden DisplayObjectContainer.destroy
          */
         DOMElement.prototype.destroy = function() {
-            // If the addChild method is never called before the $element is detroyed then it will be null and cause an TypeError.
-            if (this.$element != null) {
-                this.$element.unbind();
-                this.$element.remove();
-            }
+            // Note: we can&#x27;t just call destroy to remove the HTMLElement because there could be other views managing the same HTMLElement.
+            /*if (this.$element != null) {
+                 this.$element.unbind();
+                 this.$element.remove();
+             }*/
             _super.prototype.destroy.call(this);
         };
         /**

@@ -150,7 +150,7 @@ class LocalStorageController extends EventDispatcher
      *
      * @method getItemsWithNamespace
      * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
-     * @return {Array.<Object>}
+     * @return {Array}
      */
     public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
@@ -177,7 +177,7 @@ class LocalStorageController extends EventDispatcher
      * Returns all items in local storage as an Object with key and value properties.
      *
      * @method getAllItems
-     * @return {Array.<Object>}
+     * @return {Array}
      */
     public getAllItems():Array<any>
     {

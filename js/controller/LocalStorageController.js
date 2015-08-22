@@ -129,7 +129,7 @@
          *
          * @method getItemsWithNamespace
          * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
-         * @return {Array.<Object>}
+         * @return {Array}
          */
         LocalStorageController.prototype.getItemsWithNamespace = function(namespace) {
             if (namespace === void 0) { namespace = this._namespace; }
@@ -152,7 +152,7 @@
          * Returns all items in local storage as an Object with key and value properties.
          *
          * @method getAllItems
-         * @return {Array.<Object>}
+         * @return {Array}
          */
         LocalStorageController.prototype.getAllItems = function() {
             var list = [];

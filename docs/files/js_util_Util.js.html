@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
@@ -72,6 +74,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -173,7 +179,6 @@
      * @static
      */
     var Util = (function() {
-
         function Util() {
             throw new Error(&#x27;[Util] Do not instantiate the Util class because it is a static class.&#x27;);
         }
@@ -220,6 +225,7 @@
         Util.deletePropertyFromObject = function(object, value) {
             // If properties is not an array then make it an array object.
             var list = (value instanceof Array) ? value : [value];
+            // Loop through the object properties.
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
@@ -235,6 +241,7 @@
                     } else if (value instanceof Object) {
                         Util.deletePropertyFromObject(value, list);
                     } else {
+                        // Loop through the list of property name.
                         for (var listIndex in list) {
                             // If the key(property name) equals the property name in the list array.
                             if (key === list[listIndex]) {
@@ -357,6 +364,20 @@
             var funcNameRegex = /function (.{1,})\(/;
             var results = (funcNameRegex).exec(classObject.constructor.toString());
             return (results &amp;&amp; results.length &gt; 1) ? results[1] : &#x27;&#x27;;
+        };
+        /**
+         * Returns the name of the function passed in.
+         *
+         * @method getFunctionName
+         * @param func {Function}
+         * @returns {string} Returns the name of the function.
+         * @static
+         */
+        Util.getFunctionName = function(func) {
+            var str = func.toString();
+            str = str.substr(&#x27;function &#x27;.length);
+            str = str.substr(0, str.indexOf(&#x27;(&#x27;));
+            return str;
         };
         /**
          * Creates and returns a new debounced version of the passed function which will postpone its execution until after
