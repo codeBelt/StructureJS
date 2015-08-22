@@ -1,10 +1,13 @@
 'use strict';
 /*
  UMD Stuff
+ @import ../util/Util as Util
  @export ComponentFactory
  */
 import DisplayObjectContainer = require('../display/DisplayObjectContainer');
 import DisplayObject = require('../display/DisplayObject');
+import Util = require('../util/Util');
+
 
 /**
  * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
@@ -35,31 +38,62 @@ class ComponentFactory
      * @example
      *      ComponentFactory.create($('.js-list'), SomeClass, this);
      */
-    public static create = function ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
+    public static create ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
     {
         var list:Array<DisplayObject> = [];
         var component:DisplayObject;
         var $element:JQuery;
         var length:number = $elements.length;
+        var types:any;
+        var componentName:string;
 
-        for (var i = 0; i < length; i++)
+        for (var i:number = 0; i < length; i++)
         {
             $element = $elements.eq(i);
+            types = $element.attr('data-sjs-type');
 
-            // If the element doesn't have a sjs-id attribute set already. This way you can call this method on the same page and it won't overwrite components already created.
-            if ($element.data('sjs-id') === void 0)
+            if (types === void 0)
             {
-                component = new (<any>ComponentClass)($element);
-                // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObject class.
-                if (scope !== null && typeof component.getQualifiedClassName === 'function')
-                {
-                    scope.addChild(component);
-                }
+                // Create the component if there is not a 'data-sjs-type' attribute on the element.
+                component = ComponentFactory._createComponent($element, ComponentClass, scope);
                 list.push(component);
             }
+            else
+            {
+                // Else if there is already a 'data-sjs-type' attribute then get the type(s).
+                types = types.split(',');
+                componentName = Util.getFunctionName(ComponentClass);
+
+                // Only create the component if the component type does not already exist.
+                if (types.indexOf(componentName) === -1)
+                {
+                    component = ComponentFactory._createComponent($element, ComponentClass, scope);
+                    list.push(component);
+                }
+            }
         }
+
         return list;
     }
+
+    /**
+     * Helper method to create the component.
+     *
+     * @method _createComponent
+     * @private
+     */
+    public static _createComponent($element:JQuery, ComponentClass:any, scope:DisplayObjectContainer):any {
+        var component = new ComponentClass($element);
+
+        // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.
+        if (scope !== null && component.hasOwnProperty('sjsId') === true)
+        {
+            scope.addChild(component);
+        }
+
+        return component;
+    }
+
 }
 
 export = ComponentFactory;
