@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ApplicationCacheController - StructureJS</title>
+    <title>ImageLoader - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -148,21 +148,25 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>ApplicationCacheController Class</h1>
+                <h1>ImageLoader Class</h1>
 <div class="box meta">
     
 
     
+        <div class="extends">
+            Extends <a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a>
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_controller_ApplicationCacheController.js.html#l18"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:18</code></a>
+            Defined in: <a href="../files/js_util_ImageLoader.js.html#l18"><code>js&#x2F;util&#x2F;ImageLoader.js:18</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/controller.html">controller</a><br>
+            Module: <a href="../modules/util.html">util</a><br>
             Parent Module: <a href="../modules/StructureJS.html">StructureJS</a>
         
     
@@ -173,7 +177,7 @@
 
 
 <div class="box intro">
-    <p>The ApplicationCacheController is a static class works with the window applicationCache object.</p>
+    <p>The ImageLoader...</p>
 
 </div>
 
@@ -212,29 +216,29 @@
     <div class="index-section properties">
         <h3>Properties</h3>
 
-        <ul class="index-list properties">
+        <ul class="index-list properties extends">
             
-                <li class="index-item property private">
-                    <a href="#property__appCache">_appCache</a>
+                <li class="index-item property private inherited">
+                    <a href="#property__listeners">_listeners</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                 </li>
             
-                <li class="index-item property private">
-                    <a href="#property__eventDispatcher">_eventDispatcher</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                </li>
-            
-                <li class="index-item property public">
+                <li class="index-item property public inherited">
                     <a href="#property_isEnabled">isEnabled</a>
 
                     
-                        <span class="flag static">static</span>
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_parent">parent</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_sjsId">sjsId</a>
+
                     
                 </li>
             
@@ -249,106 +253,79 @@
     <div class="index-section methods">
         <h3>Methods</h3>
 
-        <ul class="index-list methods">
+        <ul class="index-list methods extends">
 
+            
+                <li class="index-item method constructor">
+                    <a href="#method_ImageLoader">ImageLoader</a>
+
+                    <span class="flag constructor">constructor</span>
+
+                    
+                    
+                </li>
             
 
             
-                <li class="index-item method">
+                <li class="index-item method public inherited">
                     <a href="#method_addEventListener">addEventListener</a>
 
                     
-                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_destroy">destroy</a>
+
                     
                     
                 </li>
             
-                <li class="index-item method">
+                <li class="index-item method public inherited">
+                    <a href="#method_disable">disable</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
                     <a href="#method_dispatchEvent">dispatchEvent</a>
 
                     
-                        <span class="flag static">static</span>
-                    
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_onCached">onCached</a>
+                <li class="index-item method public inherited">
+                    <a href="#method_enable">enable</a>
 
                     
-                        <span class="flag static">static</span>
-                    
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_onChecking">onChecking</a>
+                <li class="index-item method public inherited">
+                    <a href="#method_getEventListeners">getEventListeners</a>
 
                     
-                        <span class="flag static">static</span>
-                    
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_onDownloading">onDownloading</a>
+                <li class="index-item method public inherited">
+                    <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
 
                     
-                        <span class="flag static">static</span>
-                    
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_onError">onError</a>
+                <li class="index-item method public inherited">
+                    <a href="#method_hasEventListener">hasEventListener</a>
 
                     
-                        <span class="flag static">static</span>
-                    
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_onNoUpdate">onNoUpdate</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onObsolete">onObsolete</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onProgress">onProgress</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onUpdateReady">onUpdateReady</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method">
+                <li class="index-item method public inherited">
                     <a href="#method_removeEventListener">removeEventListener</a>
 
-                    
-                        <span class="flag static">static</span>
                     
                     
                 </li>
@@ -368,10 +345,10 @@
         <h2>Properties</h2>
 
         
-            <a name="property__appCache" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>_appCache</code>
-    <span class="type">ApplicationCache</span>
+            <a name="property__listeners" class="anchor-link"></a>
+<div class="property item private inherited">
+    <h3 class="name"><code>_listeners</code>
+    <span class="type">Array.<any></span>
 
     
 
@@ -382,23 +359,18 @@
     
 
     
-        <span class="flag static">static</span>
-    
 
     </h3>
 
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property__listeners" class="type">EventDispatcher</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l256"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:256</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l46"><code>js&#x2F;event&#x2F;EventDispatcher.js:46</code></a>
         
         </p>
 
@@ -409,61 +381,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>A reference to the applicationCache property on the window object.</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property__eventDispatcher" class="anchor-link"></a>
-<div class="property item private">
-    <h3 class="name"><code>_eventDispatcher</code>
-    <span class="type"><a href="../classes/EventDispatcher.html" class="crosslink">EventDispatcher</a></span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l265"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:265</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>A reference to the EventDispatcher object.</p>
+            <p>Holds a reference to added listeners.</p>
 
         </div>
 
@@ -477,7 +395,7 @@
 
         
             <a name="property_isEnabled" class="anchor-link"></a>
-<div class="property item public">
+<div class="property item public inherited">
     <h3 class="name"><code>isEnabled</code>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
@@ -490,23 +408,18 @@
     
 
     
-        <span class="flag static">static</span>
-    
 
     </h3>
 
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#property_isEnabled" class="type">ObjectManager</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l274"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:274</code></a>
+        <a href="../files/js_ObjectManager.js.html#l36"><code>js&#x2F;ObjectManager.js:36</code></a>
         
         </p>
 
@@ -517,12 +430,114 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>The isEnabled property is used to keep track of the enabled state.</p>
+            <p>The isEnabled property is used to keep track of the enabled state of the object.</p>
 
         </div>
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_parent" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>parent</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#property_parent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/js_event_EventDispatcher.js.html#l54"><code>js&#x2F;event&#x2F;EventDispatcher.js:54</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Indicates the object that contains a child object. Uses the parent property
+to specify a relative path to display objects that are above the current display object in the display
+list hierarchy and helps facilitate event bubbling.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_sjsId" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>sjsId</code>
+    <span class="type">Int</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#property_sjsId" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/js_BaseObject.js.html#l29"><code>js&#x2F;BaseObject.js:29</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
         
 
         
@@ -543,6 +558,69 @@
 
 
 
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <a name="method_ImageLoader" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>ImageLoader</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_ImageLoader.js.html#l18"><code>js&#x2F;util&#x2F;ImageLoader.js:18</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+    </div>
+
 
 
     <div class="methods-detail">
@@ -550,7 +628,7 @@
 
         
             <a name="method_addEventListener" class="anchor-link"></a>
-<div class="method item">
+<div class="method item public inherited">
     <h3 class="name"><code>addEventListener</code>
 
     
@@ -590,13 +668,15 @@
     
 
     
+        <span class="flag public">public</span>
+    
+
+    
 
     
 
     
-        <span class="flag static">static</span>
-    
-
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -606,15 +686,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_addEventListener" class="type">EventDispatcher</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l200"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:200</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l66"><code>js&#x2F;event&#x2F;EventDispatcher.js:66</code></a>
         
         </p>
 
@@ -627,7 +704,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.</p>
+            <p>Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.</p>
 
         </div>
 
@@ -713,9 +790,11 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
- ClassName.prototype.handlerMethod = function(event) {
+                    <pre class="code prettyprint"><code> this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+
+ ClassName.prototype.handlerMethod = function (event) {
      console.log(event.target + &quot; sent the event.&quot;);
+     console.log(event.type, event.data);
  }</code></pre>
 
                 </div>
@@ -725,34 +804,28 @@
 </div>
 
         
-            <a name="method_dispatchEvent" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>dispatchEvent</code>
+            <a name="method_destroy" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>destroy</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
     
 
     
 
     
-
+        <span class="flag public">public</span>
     
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -764,15 +837,12 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#method_destroy" class="type">BaseObject</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l239"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:239</code></a>
+        <a href="../files/js_BaseObject.js.html#l54"><code>js&#x2F;BaseObject.js:54</code></a>
         
         </p>
 
@@ -785,7 +855,194 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Dispatches an event within the ApplicationCacheController object.</p>
+            <p>The purpose of the destroy method is to make an object ready for garbage collection. This
+should be thought of as a one way function. Once destroy is called no further methods should be
+called on the object or properties accessed. It is the responsibility of those who implement this
+function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
+object eligible for garbage collection.</p>
+<p>By default the destroy method will null out all properties of the class automatically. You should call destroy
+on other objects before calling the super.</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Void</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+     this._childInstance.destroy();
+
+     _super.prototype.destroy.call(this);
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_disable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>disable</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_disable" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/js_ObjectManager.js.html#l69"><code>js&#x2F;ObjectManager.js:69</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> ClassName.prototype.disable = function() {
+     if (this.isEnabled === false) { return this; }
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     return _super.prototype.disable.call(this);
+ }</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_dispatchEvent" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>dispatchEvent</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[data=null]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_dispatchEvent" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/js_event_EventDispatcher.js.html#l139"><code>js&#x2F;event&#x2F;EventDispatcher.js:139</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>
         </div>
 
         
@@ -797,14 +1054,30 @@
                     <li class="param">
                         
                             <code class="param-name">event</code>
-                            <span class="type"><a href="../classes/ApplicationCacheEvent.html" class="crosslink">ApplicationCacheEvent</a></span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">ApplicationCacheEvent</a>.</p>
+                            <p>The Event object or event type string you want to dispatch. You can create custom events, the only requirement is all events must extend <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[data=null]</code>
+                            <span class="type">Any</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The optional data you want to send with the event. Do not use this parameter if you are passing in a <a href="../classes/BaseEvent.html" class="crosslink">BaseEvent</a>.</p>
 
                         </div>
 
@@ -822,11 +1095,18 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
- ApplicationCacheController.dispatchEvent(event);
+                    <pre class="code prettyprint"><code> this.dispatchEvent(&#39;change&#39;);
 
- // Here is a common inline event being dispatched
- ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));</code></pre>
+ // Example: Sending data with the event:
+ this.dispatchEvent(&#39;change&#39;, {some: &#39;data&#39;});
+
+ // Example: With an event object
+ // (event type, bubbling set to true, cancelable set to true and passing data) :
+ var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
+ this.dispatchEvent(event);
+
+ // Here is a common inline event object being dispatched:
+ this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));</code></pre>
 
                 </div>
             </div>
@@ -835,22 +1115,12 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
 </div>
 
         
-            <a name="method_onCached" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onCached</code>
+            <a name="method_enable" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>enable</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
     
 
     
@@ -858,15 +1128,15 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
     
 
     
-        <span class="flag private">private</span>
+        <span class="flag public">public</span>
     
 
     
 
     
-        <span class="flag static">static</span>
-    
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -876,15 +1146,12 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_enable" class="type">ObjectManager</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l96"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:96</code></a>
+        <a href="../files/js_ObjectManager.js.html#l46"><code>js&#x2F;ObjectManager.js:46</code></a>
         
         </p>
 
@@ -897,74 +1164,57 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
     <div class="extended-detail">
 
         <div class="description">
-            <p>The resources listed in the manifest have been fully downloaded, and the application is
-now cached locally.</p>
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
 
         </div>
 
         
-            <div class="params">
-                <h4>Parameters:</h4>
 
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
+        
 
-                        
+        
+            <div class="example">
+                <h4>Example:</h4>
 
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+     if (this.isEnabled === true) { return this; }
 
-                        </div>
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
 
-                        
-                    </li>
-                
-                </ul>
+     return _super.prototype.enable.call(this);
+}</code></pre>
+
+                </div>
             </div>
-        
-
-        
-
         
     </div>
 </div>
 
         
-            <a name="method_onChecking" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onChecking</code>
+            <a name="method_getEventListeners" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getEventListeners</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
     
 
     
 
     
-
-    
-        <span class="flag private">private</span>
+        <span class="flag public">public</span>
     
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -976,15 +1226,12 @@ now cached locally.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_getEventListeners" class="type">EventDispatcher</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l109"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:109</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l224"><code>js&#x2F;event&#x2F;EventDispatcher.js:224</code></a>
         
         </p>
 
@@ -997,75 +1244,64 @@ now cached locally.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The browser is checking for an update, or is attempting to download
-the cache manifest for the first time. This is always the first event
-in the sequence.</p>
+            <p>Generates a string output of event listeners for a given object.</p>
 
         </div>
 
         
-            <div class="params">
-                <h4>Parameters:</h4>
 
-                <ul class="params-list">
-                
-                    <li class="param">
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
                         
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
+                    
+                </div>
             </div>
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
 
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.getEventListeners();
+
+ // [ClassName] is listening for the &#39;BaseEvent.change&#39; event.</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
 
         
-            <a name="method_onDownloading" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onDownloading</code>
+            <a name="method_getQualifiedClassName" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>getQualifiedClassName</code>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
     
 
     
 
     
-
-    
-        <span class="flag private">private</span>
+        <span class="flag public">public</span>
     
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -1077,15 +1313,12 @@ in the sequence.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#method_getQualifiedClassName" class="type">BaseObject</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l123"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:123</code></a>
+        <a href="../files/js_BaseObject.js.html#l42"><code>js&#x2F;BaseObject.js:42</code></a>
         
         </p>
 
@@ -1098,47 +1331,45 @@ in the sequence.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The browser has started to download the cache manifest, either for the
-first time or because changes have been detected.</p>
+            <p>Returns the fully qualified class name of an object.</p>
 
         </div>
 
         
-            <div class="params">
-                <h4>Parameters:</h4>
 
-                <ul class="params-list">
-                
-                    <li class="param">
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
                         
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
+                        <p>Returns the class name.</p>
 
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
+                    
+                </div>
             </div>
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
 
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
 
         
-            <a name="method_onError" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onError</code>
+            <a name="method_hasEventListener" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>hasEventListener</code>
 
     
         <div class="args">
@@ -1146,7 +1377,19 @@ first time or because changes have been detected.</p>
             
                 <li class="arg">
                     
-                        <code>event</code>
+                        <code>type</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
                     
                 </li>
             
@@ -1155,17 +1398,19 @@ first time or because changes have been detected.</p>
     
 
     
-
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
     
 
     
-        <span class="flag private">private</span>
+
+    
+        <span class="flag public">public</span>
     
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -1177,15 +1422,12 @@ first time or because changes have been detected.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_hasEventListener" class="type">EventDispatcher</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l136"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:136</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l199"><code>js&#x2F;event&#x2F;EventDispatcher.js:199</code></a>
         
         </p>
 
@@ -1198,8 +1440,7 @@ first time or because changes have been detected.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>An error occurred at some point - this could be caused by a number of things. This will
-always be the last event in the sequence.</p>
+            <p>Check if an object has a specific event listener already added.</p>
 
         </div>
 
@@ -1211,213 +1452,46 @@ always be the last event in the sequence.</p>
                 
                     <li class="param">
                         
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
+                            <code class="param-name">type</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
+                            <p>The type of event.</p>
 
                         </div>
 
                         
                     </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onNoUpdate" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onNoUpdate</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l149"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:149</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The cache manifest hadn&#39;t changed.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
                 
                     <li class="param">
                         
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
+                            <code class="param-name">callback</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
+                            <p>The listener method to call.</p>
 
                         </div>
 
                         
                     </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onObsolete" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onObsolete</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l161"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:161</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The cache manifest file could not be found, indicating that the cache is no longer needed.
-The application cache is being deleted.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
                 
                     <li class="param">
                         
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
+                            <code class="param-name">scope</code>
+                            <span class="type">Any</span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
+                            <p>The scope of the listener object.</p>
 
                         </div>
 
@@ -1429,214 +1503,35 @@ The application cache is being deleted.</p>
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
 
-        
-    </div>
-</div>
-
-        
-            <a name="method_onProgress" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onProgress</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
+                <div class="returns-description">
                     
-                        <code>event</code>
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                        
                     
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l174"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:174</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The browser had downloaded and cached an asset. This is fired once for
-every file that is downloaded (including the current page which is cached implicitly).</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
+                </div>
             </div>
         
 
         
+            <div class="example">
+                <h4>Example:</h4>
 
-        
-    </div>
-</div>
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
 
-        
-            <a name="method_onUpdateReady" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onUpdateReady</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l187"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:187</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The resources listed in the manifest have been newly re-downloaded, and the script can
-use swapCache() to switch to the new cache.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
+                </div>
             </div>
-        
-
-        
-
         
     </div>
 </div>
 
         
             <a name="method_removeEventListener" class="anchor-link"></a>
-<div class="method item">
+<div class="method item public inherited">
     <h3 class="name"><code>removeEventListener</code>
 
     
@@ -1670,13 +1565,15 @@ use swapCache() to switch to the new cache.</p>
     
 
     
+        <span class="flag public">public</span>
+    
+
+    
 
     
 
     
-        <span class="flag static">static</span>
-    
-
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -1686,15 +1583,12 @@ use swapCache() to switch to the new cache.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_removeEventListener" class="type">EventDispatcher</a>:
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l221"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:221</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l108"><code>js&#x2F;event&#x2F;EventDispatcher.js:108</code></a>
         
         </p>
 
@@ -1707,7 +1601,7 @@ use swapCache() to switch to the new cache.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Removes a specified listener from the ApplicationCacheController object.</p>
+            <p>Removes a specified listener from the EventDispatcher object.</p>
 
         </div>
 
@@ -1758,8 +1652,7 @@ use swapCache() to switch to the new cache.</p>
                         
 
                         <div class="param-description">
-                            <p>The scope of the listener object to be removed. This was added because it was need for the <a href="../classes/ApplicationCacheController.html" class="crosslink">ApplicationCacheController</a> class.
-To keep things consistent this parameter is required.</p>
+                            <p>The scope of the listener object to be removed.</p>
 
                         </div>
 
@@ -1777,10 +1670,10 @@ To keep things consistent this parameter is required.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
- ClassName.prototype.handlerMethod = function(event) {
-     console.log(event.target + &quot; sent the event.&quot;);
- }</code></pre>
+                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
+
+ ClassName.prototype._handlerMethod = function (event) {
+ };</code></pre>
 
                 </div>
             </div>

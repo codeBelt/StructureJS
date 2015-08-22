@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.8</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
@@ -72,6 +74,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -256,7 +262,8 @@
         Stage.prototype.appendTo = function(type, enabled) {
             if (enabled === void 0) { enabled = true; }
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
-            this.$element.attr(&#x27;data-cid&#x27;, this.cid);
+            this.$element.attr(&#x27;data-sjs-id&#x27;, this.sjsId);
+            this.$element.attr(&#x27;data-sjs-type&#x27;, this.getQualifiedClassName());
             if (this.isCreated === false) {
                 this.create();
                 this.isCreated = true;

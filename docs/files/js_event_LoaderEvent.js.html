@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/BaseObject.js - StructureJS</title>
+    <title>js/event/LoaderEvent.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -148,7 +148,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/BaseObject.js</h1>
+                <h1 class="file-heading">File: js/event/LoaderEvent.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -157,87 +157,76 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;./util/Util&#x27;], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;./BaseEvent&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;./util/Util&#x27;));
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./BaseEvent&#x27;));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
+        root.StructureJS.LoaderEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
     }
-}(this, function(Util) {
+}(this, function(Extend, BaseEvent) {
+
     &#x27;use strict&#x27;;
 
     /**
-     * The {{#crossLink &quot;BaseObject&quot;}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
+     * The LoaderEvent...
      *
-     * @class BaseObject
+     * @class LoaderEvent
+     * @extends BaseEvent
+     * @param type {string} The type of event. The type is case-sensitive.
+     * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
+     * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink &quot;EventDispatcher/parent:property&quot;}}{{/crossLink}})
+     * (containers of containers of etc.) of the {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink &quot;Stage&quot;}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
+     * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
+     * @param [data=null] {any} Use to pass any type of data with the event.
      * @module StructureJS
-     * @submodule core
-     * @requires Util
+     * @submodule event
+     * @requires Extend
+     * @requires BaseEvent
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var BaseObject = (function() {
-        function BaseObject() {
-            /**
-             * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
-             *
-             * @property sjsId
-             * @type {int}
-             * @default null
-             * @writeOnce
-             * @readOnly
-             * @public
-             */
-            this.sjsId = null;
-            this.sjsId = Util.uniqueId();
+    var LoaderEvent = (function() {
+
+        var _super = Extend(LoaderEvent, BaseEvent);
+
+        function LoaderEvent(type, bubbles, cancelable, data) {
+            if (type === void 0) { type = RouterEvent.CHANGE; }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
+            _super.call(this, type, bubbles, cancelable, data);
         }
         /**
-         * Returns the fully qualified class name of an object.
+         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
          *
-         * @method getQualifiedClassName
-         * @returns {string} Returns the class name.
-         * @public
-         * @example
-         *     instance.getQualifiedClassName();
+         * @event COMPLETE
+         * @type {string}
+         * @static
          */
-        BaseObject.prototype.getQualifiedClassName = function() {
-            return Util.getClassName(this);
-        };
+        LoaderEvent.COMPLETE = &#x27;LoaderEvent.complete&#x27;;
         /**
-         * The purpose of the destroy method is to make an object ready for garbage collection. This
-         * should be thought of as a one way function. Once destroy is called no further methods should be
-         * called on the object or properties accessed. It is the responsibility of those who implement this
-         * function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
-         * object eligible for garbage collection.
+         * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
          *
-         * By default the destroy method will null out all properties of the class automatically. You should call destroy
-         * on other objects before calling the super.
-         *
-         * @method destroy
-         * @return {void}
-         * @public
-         * @example
-         *     ClassName.prototype.destroy = function() {
-         *          this._childInstance.destroy();
-         *
-         *          _super.prototype.destroy.call(this);
-         *     }
+         * @event LOAD_COMPLETE
+         * @type {string}
+         * @static
          */
-        BaseObject.prototype.destroy = function() {
-            for (var key in this) {
-                if (this.hasOwnProperty(key)) {
-                    this[key] = null;
-                }
-            }
-        };
-        return BaseObject;
+        LoaderEvent.LOAD_COMPLETE = &#x27;LoaderEvent.loadComplete&#x27;;
+        /**
+         * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+         *
+         * @event ERROR
+         * @type {string}
+         * @static
+         */
+        LoaderEvent.ERROR = &#x27;LoaderEvent.error&#x27;;
+        return LoaderEvent;
     })();
 
-    return BaseObject;
+    return LoaderEvent;
 }));
-
     </pre>
 </div>
 

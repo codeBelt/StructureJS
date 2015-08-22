@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.6",
+        "version": "0.7.8",
         "url": ""
     },
     "files": {
@@ -140,6 +140,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/event/LoaderEvent.js": {
+            "name": "js/event/LoaderEvent.js",
+            "modules": {},
+            "classes": {
+                "LoaderEvent": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/event/LocalStorageEvent.js": {
             "name": "js/event/LocalStorageEvent.js",
             "modules": {},
@@ -237,6 +246,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/util/BulkLoader.js": {
+            "name": "js/util/BulkLoader.js",
+            "modules": {},
+            "classes": {
+                "BulkLoader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/util/ComponentFactory.js": {
             "name": "js/util/ComponentFactory.js",
             "modules": {},
@@ -260,6 +278,15 @@
             "modules": {},
             "classes": {
                 "Extend": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "js/util/ImageLoader.js": {
+            "name": "js/util/ImageLoader.js",
+            "modules": {},
+            "classes": {
+                "ImageLoader": 1
             },
             "fors": {},
             "namespaces": {}
@@ -379,6 +406,7 @@
                 "BaseEvent": 1,
                 "EventBroker": 1,
                 "EventDispatcher": 1,
+                "LoaderEvent": 1,
                 "LocalStorageEvent": 1,
                 "NetworkMonitorEvent": 1,
                 "RouterEvent": 1,
@@ -389,9 +417,11 @@
                 "ValueObject": 1,
                 "NetworkMonitor": 1,
                 "BrowserUtil": 1,
+                "BulkLoader": 1,
                 "ComponentFactory": 1,
                 "DateUtil": 1,
                 "Extend": 1,
+                "ImageLoader": 1,
                 "MathUtil": 1,
                 "MerchantUtil": 1,
                 "NumberUtil": 1,
@@ -451,6 +481,7 @@
                 "BaseEvent": 1,
                 "EventBroker": 1,
                 "EventDispatcher": 1,
+                "LoaderEvent": 1,
                 "LocalStorageEvent": 1,
                 "NetworkMonitorEvent": 1,
                 "RouterEvent": 1,
@@ -502,8 +533,11 @@
             "submodules": {},
             "classes": {
                 "BrowserUtil": 1,
+                "BulkLoader": 1,
+                "ComponentFactory": 1,
                 "DateUtil": 1,
                 "Extend": 1,
+                "ImageLoader": 1,
                 "MathUtil": 1,
                 "MerchantUtil": 1,
                 "NumberUtil": 1,
@@ -865,6 +899,56 @@
                 "\n     // Extending EventDispatcher. See DisplayObjectContainer as an example that extends EventDispatcher.\n     var _super = Extend(ClassExtendingEventDispatcher, EventDispatcher);\n\n     // Another way to use the EventDispatcher.\n     var eventDispatcher = new EventDispatcher();\n     eventDispatcher.addEventListener('change', this.handlerMethod, this);\n     eventDispatcher.dispatchEvent('change');"
             ]
         },
+        "LoaderEvent": {
+            "name": "LoaderEvent",
+            "shortname": "LoaderEvent",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "js/event/LoaderEvent.js",
+            "line": 18,
+            "description": "The LoaderEvent...",
+            "submodule": "event",
+            "extends": "BaseEvent",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of event. The type is case-sensitive.",
+                    "type": "String"
+                },
+                {
+                    "name": "bubbles",
+                    "description": "Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.\nNote: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink \"EventDispatcher/parent:property\"}}{{/crossLink}})\n(containers of containers of etc.) of the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink \"Stage\"}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "cancelable",
+                    "description": "Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "data",
+                    "description": "Use to pass any type of data with the event.",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                }
+            ],
+            "requires": [
+                "Extend",
+                "BaseEvent"
+            ],
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "LocalStorageEvent": {
             "name": "LocalStorageEvent",
             "shortname": "LocalStorageEvent",
@@ -1181,7 +1265,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         YeAr: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign a ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             // If you have an array of data and want them assign to a ValueObject.\n             this.feature = [FeatureVO];\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // If the data doesn't match the property name.\n            // You can set the value(s) manually after the update super method has been called.\n             this.year = data.YeAr;\n         };\n\n         return CarVO;\n     })();"
+                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         YeAr: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             // If you have an array of data and want them assign to a ValueObject.\n             this.feature = [FeatureVO];\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // If the data doesn't match the property name.\n            // You can set the value(s) manually after the update super method has been called.\n             this.year = data.YeAr;\n         };\n\n         return CarVO;\n     })();"
             ]
         },
         "NetworkMonitor": {
@@ -1223,6 +1307,28 @@
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
         },
+        "BulkLoader": {
+            "name": "BulkLoader",
+            "shortname": "BulkLoader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "js/util/BulkLoader.js",
+            "line": 18,
+            "description": "The BulkLoader...",
+            "submodule": "util",
+            "requires": [
+                "Extend",
+                "EventDispatcher",
+                "LoaderEvent"
+            ],
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
+        },
         "ComponentFactory": {
             "name": "ComponentFactory",
             "shortname": "ComponentFactory",
@@ -1236,6 +1342,7 @@
             "file": "js/util/ComponentFactory.js",
             "line": 17,
             "description": "A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.",
+            "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
         },
@@ -1288,6 +1395,24 @@
             "example": [
                 "\n    var AnotherClass = (function () {\n\n        var _super = Extend(AnotherClass, BaseClass);\n\n        function AnotherClass() {\n            _super.call(this);\n        }\n\n        return AnotherClass;\n    })();"
             ]
+        },
+        "ImageLoader": {
+            "name": "ImageLoader",
+            "shortname": "ImageLoader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "js/util/ImageLoader.js",
+            "line": 18,
+            "description": "The ImageLoader...",
+            "submodule": "util",
+            "extends": "EventDispatcher",
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)"
         },
         "MathUtil": {
             "name": "MathUtil",
@@ -1938,7 +2063,7 @@
             ],
             "return": {
                 "description": "",
-                "type": "Array.<Object>"
+                "type": "Array"
             },
             "class": "LocalStorageController",
             "module": "StructureJS",
@@ -1952,7 +2077,7 @@
             "name": "getAllItems",
             "return": {
                 "description": "",
-                "type": "Array.<Object>"
+                "type": "Array"
             },
             "class": "LocalStorageController",
             "module": "StructureJS",
@@ -2506,90 +2631,70 @@
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 24,
-            "description": "A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property**.",
-            "type": "{JQuery}",
-            "access": "public",
-            "tagname": "",
-            "class": "DOMElement",
-            "module": "StructureJS"
-        },
-        {
-            "file": "js/display/CanvasElement.js",
-            "line": 31,
-            "description": "A reference to the canvas element. This has the exact same reference as **{{#crossLink \"DOMElement/element:property\"}}{{/crossLink}} property**.",
-            "type": "{HTMLCanvasElement}",
-            "access": "public",
-            "tagname": "",
-            "class": "DOMElement",
-            "module": "StructureJS"
-        },
-        {
-            "file": "js/display/CanvasElement.js",
-            "line": 39,
+            "line": 30,
             "overridden": "CanvasElement.create",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 48,
+            "line": 39,
             "overridden": "CanvasElement.enable",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 67,
+            "line": 58,
             "overridden": "CanvasElement.disable",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 86,
+            "line": 77,
             "overridden": "DOMElement.addChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 106,
+            "line": 97,
             "overridden": "DOMElement.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 126,
+            "line": 117,
             "overridden": "DOMElement.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 136,
+            "line": 127,
             "overridden": "DOMElement.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 142,
+            "line": 133,
             "overridden": "DOMElement.removeChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 165,
+            "line": 156,
             "overridden": "DOMElement.removeChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 175,
+            "line": 166,
             "overridden": "DOMElement.removeChildren",
             "class": "DOMElement",
             "module": "StructureJS"
@@ -2715,7 +2820,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 308,
+            "line": 309,
             "overridden": "DisplayObjectContainer.addChild",
             "itemtype": "method",
             "name": "addChild",
@@ -2740,14 +2845,14 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 337,
-            "description": "Adds the cid to the DOM element so we can know what what Class object the element belongs too.",
+            "line": 338,
+            "description": "Adds the sjsId to the DOM element so we can know what what Class object the HTMLElement belongs too.",
             "itemtype": "method",
             "name": "addClientSideId",
             "params": [
                 {
                     "name": "child",
-                    "description": "The DOMElement instance to add the cid too.",
+                    "description": "The DOMElement instance to add the sjsId too.",
                     "type": "DOMElement"
                 }
             ],
@@ -2759,7 +2864,30 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 350,
+            "line": 363,
+            "description": "Removes the sjsId and class type from the HTMLElement.",
+            "itemtype": "method",
+            "name": "removeClientSideId",
+            "params": [
+                {
+                    "name": "child",
+                    "description": "The DOMElement instance to add the sjsId too.",
+                    "type": "DOMElement"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "DOMElement",
+            "module": "StructureJS",
+            "submodule": "view"
+        },
+        {
+            "file": "js/display/DOMElement.js",
+            "line": 388,
             "description": "Called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layout:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.",
             "itemtype": "method",
             "name": "onDomAdded",
@@ -2771,7 +2899,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 373,
+            "line": 412,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2779,7 +2907,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 405,
+            "line": 444,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2787,7 +2915,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 415,
+            "line": 454,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2795,7 +2923,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 421,
+            "line": 460,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -2818,7 +2946,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 452,
+            "line": 491,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -2831,7 +2959,7 @@
                 }
             ],
             "return": {
-                "description": "Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.\nIf the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.",
+                "description": "Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.\nIf the 'data-sjs-id' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.",
                 "type": "Array.<DOMElement>"
             },
             "access": "public",
@@ -2842,7 +2970,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 484,
+            "line": 523,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null and the object is garbage collected if there are no other references\nto the child. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -2867,7 +2995,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 511,
+            "line": 550,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -2887,7 +3015,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 524,
+            "line": 563,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -2905,7 +3033,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 543,
+            "line": 582,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2913,7 +3041,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 554,
+            "line": 593,
             "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.",
             "itemtype": "method",
             "name": "createComponents",
@@ -3505,12 +3633,12 @@
         {
             "file": "js/display/DisplayObjectContainer.js",
             "line": 213,
-            "description": "Gets a DisplayObject by its cid.",
+            "description": "Gets a DisplayObject by its sjsId.",
             "itemtype": "method",
             "name": "getChildByCid",
             "params": [
                 {
-                    "name": "cid",
+                    "name": "sjsId",
                     "description": "",
                     "type": "Number"
                 }
@@ -4637,6 +4765,49 @@
             "submodule": "event"
         },
         {
+            "file": "js/event/LoaderEvent.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "LoaderEvent",
+            "module": "StructureJS"
+        },
+        {
+            "file": "js/event/LoaderEvent.js",
+            "line": 47,
+            "description": "The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.",
+            "itemtype": "event",
+            "name": "COMPLETE",
+            "type": "{string}",
+            "static": 1,
+            "class": "LoaderEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "js/event/LoaderEvent.js",
+            "line": 55,
+            "description": "The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.",
+            "itemtype": "event",
+            "name": "LOAD_COMPLETE",
+            "type": "{string}",
+            "static": 1,
+            "class": "LoaderEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "js/event/LoaderEvent.js",
+            "line": 63,
+            "description": "The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.",
+            "itemtype": "event",
+            "name": "ERROR",
+            "type": "{string}",
+            "static": 1,
+            "class": "LoaderEvent",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
             "file": "js/event/LocalStorageEvent.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -5614,7 +5785,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 144,
+            "line": 145,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_updateData",
@@ -5636,8 +5807,8 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 167,
-            "description": "Converts the value object data into a JSON object and deletes the cid property.",
+            "line": 168,
+            "description": "Converts the value object data into a JSON object and deletes the sjsId property.",
             "itemtype": "method",
             "name": "toJSON",
             "return": {
@@ -5655,7 +5826,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 180,
+            "line": 181,
             "description": "Converts a value object to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5674,7 +5845,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 192,
+            "line": 193,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5696,7 +5867,7 @@
         },
         {
             "file": "js/model/ValueObject.js",
-            "line": 208,
+            "line": 209,
             "description": "Create a clone/copy of the value object.",
             "itemtype": "method",
             "name": "clone",
@@ -6386,6 +6557,13 @@
             "submodule": "util"
         },
         {
+            "file": "js/util/BulkLoader.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "BulkLoader",
+            "module": "StructureJS"
+        },
+        {
             "file": "js/util/ComponentFactory.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -6394,7 +6572,7 @@
         },
         {
             "file": "js/util/ComponentFactory.js",
-            "line": 29,
+            "line": 30,
             "description": "Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.",
             "itemtype": "method",
             "name": "create",
@@ -6428,7 +6606,20 @@
                 "\n     ComponentFactory.create($('.js-list'), SomeClass, this);"
             ],
             "class": "ComponentFactory",
-            "module": "StructureJS"
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/ComponentFactory.js",
+            "line": 71,
+            "description": "Helper method to create the component.",
+            "itemtype": "method",
+            "name": "_createComponent",
+            "access": "private",
+            "tagname": "",
+            "class": "ComponentFactory",
+            "module": "StructureJS",
+            "submodule": "util"
         },
         {
             "file": "js/util/DateUtil.js",
@@ -6529,6 +6720,13 @@
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
             "class": "Extend",
+            "module": "StructureJS"
+        },
+        {
+            "file": "js/util/ImageLoader.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "ImageLoader",
             "module": "StructureJS"
         },
         {
@@ -8078,7 +8276,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 32,
+            "line": 31,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
             "itemtype": "method",
             "name": "uniqueId",
@@ -8106,7 +8304,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 56,
+            "line": 55,
             "description": "Removes a list of properties from an object.",
             "itemtype": "method",
             "name": "deletePropertyFromObject",
@@ -8138,7 +8336,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 102,
+            "line": 103,
             "description": "Renames a property name on an object.",
             "itemtype": "method",
             "name": "renamePropertyOnObject",
@@ -8175,7 +8373,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 127,
+            "line": 128,
             "description": "Makes a clone of an object.",
             "itemtype": "method",
             "name": "clone",
@@ -8202,7 +8400,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 172,
+            "line": 173,
             "description": "Converts a string or number to a boolean.",
             "itemtype": "method",
             "name": "toBoolean",
@@ -8229,7 +8427,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 194,
+            "line": 195,
             "description": "Returns the name of the class object passed in.",
             "itemtype": "method",
             "name": "getClassName",
@@ -8256,7 +8454,29 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 213,
+            "line": 214,
+            "description": "Returns the name of the function passed in.",
+            "itemtype": "method",
+            "name": "getFunctionName",
+            "params": [
+                {
+                    "name": "func",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "Returns the name of the function.",
+                "type": "String"
+            },
+            "static": 1,
+            "class": "Util",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/Util.js",
+            "line": 228,
             "description": "Creates and returns a new debounced version of the passed function which will postpone its execution until after\nwait milliseconds have elapsed since the last time it was invoked.",
             "itemtype": "method",
             "name": "debounce",
@@ -8294,7 +8514,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 252,
+            "line": 267,
             "description": "Keeps track of the count for the uniqueId method.",
             "itemtype": "property",
             "name": "_idCounter",
@@ -8516,10 +8736,10 @@
         },
         {
             "file": "js/BaseObject.js",
-            "line": 30,
-            "description": "The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.",
+            "line": 29,
+            "description": "The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.",
             "itemtype": "property",
-            "name": "cid",
+            "name": "sjsId",
             "type": "{int}",
             "default": "null",
             "writeonce": "",
@@ -8532,7 +8752,7 @@
         },
         {
             "file": "js/BaseObject.js",
-            "line": 43,
+            "line": 42,
             "description": "Returns the fully qualified class name of an object.",
             "itemtype": "method",
             "name": "getQualifiedClassName",
@@ -8551,7 +8771,7 @@
         },
         {
             "file": "js/BaseObject.js",
-            "line": 55,
+            "line": 54,
             "description": "The purpose of the destroy method is to make an object ready for garbage collection. This\nshould be thought of as a one way function. Once destroy is called no further methods should be\ncalled on the object or properties accessed. It is the responsibility of those who implement this\nfunction to stop all running Timers, all running Sounds, and take any other steps necessary to make an\nobject eligible for garbage collection.\n\nBy default the destroy method will null out all properties of the class automatically. You should call destroy\non other objects before calling the super.",
             "itemtype": "method",
             "name": "destroy",
@@ -8657,43 +8877,43 @@
         },
         {
             "message": "unknown tag: overridden",
+            "line": " js/display/CanvasElement.js:30"
+        },
+        {
+            "message": "unknown tag: overridden",
             "line": " js/display/CanvasElement.js:39"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:48"
+            "line": " js/display/CanvasElement.js:58"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:67"
+            "line": " js/display/CanvasElement.js:77"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:86"
+            "line": " js/display/CanvasElement.js:97"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:106"
+            "line": " js/display/CanvasElement.js:117"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:126"
+            "line": " js/display/CanvasElement.js:127"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:136"
+            "line": " js/display/CanvasElement.js:133"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:142"
+            "line": " js/display/CanvasElement.js:156"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:165"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:175"
+            "line": " js/display/CanvasElement.js:166"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8701,51 +8921,51 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:308"
+            "line": " js/display/DOMElement.js:309"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:308"
+            "line": " js/display/DOMElement.js:309"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:373"
+            "line": " js/display/DOMElement.js:412"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:405"
+            "line": " js/display/DOMElement.js:444"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:415"
+            "line": " js/display/DOMElement.js:454"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:421"
+            "line": " js/display/DOMElement.js:460"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:452"
+            "line": " js/display/DOMElement.js:491"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:484"
+            "line": " js/display/DOMElement.js:523"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:484"
+            "line": " js/display/DOMElement.js:523"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:524"
+            "line": " js/display/DOMElement.js:563"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:524"
+            "line": " js/display/DOMElement.js:563"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:543"
+            "line": " js/display/DOMElement.js:582"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -8837,15 +9057,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:167"
+            "line": " js/model/ValueObject.js:168"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:180"
+            "line": " js/model/ValueObject.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:208"
+            "line": " js/model/ValueObject.js:209"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9029,27 +9249,31 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:32"
+            "line": " js/util/Util.js:31"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:56"
+            "line": " js/util/Util.js:55"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:102"
+            "line": " js/util/Util.js:103"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:127"
+            "line": " js/util/Util.js:128"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:172"
+            "line": " js/util/Util.js:173"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:194"
+            "line": " js/util/Util.js:195"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " js/util/Util.js:214"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9081,7 +9305,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/BaseObject.js:43"
+            "line": " js/BaseObject.js:42"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9116,12 +9340,8 @@
             "line": " js/display/CanvasElement.js:1"
         },
         {
-            "message": "Missing item type\nA cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property**.",
-            "line": " js/display/CanvasElement.js:24"
-        },
-        {
-            "message": "Missing item type\nA reference to the canvas element. This has the exact same reference as **{{#crossLink \"DOMElement/element:property\"}}{{/crossLink}} property**.",
-            "line": " js/display/CanvasElement.js:31"
+            "message": "Missing item type",
+            "line": " js/display/CanvasElement.js:30"
         },
         {
             "message": "Missing item type",
@@ -9129,39 +9349,35 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:48"
+            "line": " js/display/CanvasElement.js:58"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:67"
+            "line": " js/display/CanvasElement.js:77"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:86"
+            "line": " js/display/CanvasElement.js:97"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:106"
+            "line": " js/display/CanvasElement.js:117"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:126"
+            "line": " js/display/CanvasElement.js:127"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:136"
+            "line": " js/display/CanvasElement.js:133"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:142"
+            "line": " js/display/CanvasElement.js:156"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:165"
-        },
-        {
-            "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:175"
+            "line": " js/display/CanvasElement.js:166"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9169,19 +9385,19 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:373"
+            "line": " js/display/DOMElement.js:412"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:405"
+            "line": " js/display/DOMElement.js:444"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:415"
+            "line": " js/display/DOMElement.js:454"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:543"
+            "line": " js/display/DOMElement.js:582"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9230,6 +9446,10 @@
         {
             "message": "Missing item type",
             "line": " js/event/EventDispatcher.js:253"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " js/event/LoaderEvent.js:1"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9297,6 +9517,10 @@
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " js/util/BulkLoader.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " js/util/ComponentFactory.js:1"
         },
         {
@@ -9306,6 +9530,10 @@
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " js/util/Extend.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " js/util/ImageLoader.js:1"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.8</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
@@ -72,6 +74,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -359,18 +365,18 @@
             return this.children[index];
         };
         /**
-         * Gets a DisplayObject by its cid.
+         * Gets a DisplayObject by its sjsId.
          *
          * @method getChildByCid
-         * @param cid {number}
+         * @param sjsId {number}
          * @returns {DisplayObject|null}
          * @override
          * @public
          */
-        DisplayObjectContainer.prototype.getChildByCid = function(cid) {
+        DisplayObjectContainer.prototype.getChildByCid = function(sjsId) {
             var child = null;
             for (var i = this.numChildren - 1; i &gt;= 0; i--) {
-                if (this.children[i].cid == cid) {
+                if (this.children[i].sjsId == sjsId) {
                     child = this.children[i];
                     break;
                 }

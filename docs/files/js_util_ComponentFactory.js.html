@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.8</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
@@ -72,6 +74,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -151,26 +157,27 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([], factory);
+        define([&#x27;../util/Util&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory();
+        module.exports = factory(require(&#x27;../util/Util&#x27;));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ComponentFactory = factory();
+        root.StructureJS.ComponentFactory = factory(root.StructureJS.Util);
     }
-}(this, function() {
+}(this, function(Util) {
 
     &#x27;use strict&#x27;;
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
      * @class ComponentFactory
+     * @module StructureJS
+     * @submodule util
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
     var ComponentFactory = (function() {
-
         function ComponentFactory() {
             throw new Error(&#x27;[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.&#x27;);
         }
@@ -190,16 +197,44 @@
         ComponentFactory.create = function($elements, ComponentClass, scope) {
             if (scope === void 0) { scope = null; }
             var list = [];
+            var component;
+            var $element;
             var length = $elements.length;
+            var types;
+            var componentName;
             for (var i = 0; i &lt; length; i++) {
-                var component = new ComponentClass($elements.eq(i));
-                // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
-                if (scope !== null &amp;&amp; typeof component.getQualifiedClassName === &#x27;function&#x27;) {
-                    scope.addChild(component);
+                $element = $elements.eq(i);
+                types = $element.attr(&#x27;data-sjs-type&#x27;);
+                if (types === void 0) {
+                    // Create the component if there is not a &#x27;data-sjs-type&#x27; attribute on the element.
+                    component = ComponentFactory._createComponent($element, ComponentClass, scope);
+                    list.push(component);
+                } else {
+                    // Else if there is already a &#x27;data-sjs-type&#x27; attribute then get the type(s).
+                    types = types.split(&#x27;,&#x27;);
+                    componentName = Util.getFunctionName(ComponentClass);
+                    // Only create the component if the component type does not already exist.
+                    if (types.indexOf(componentName) === -1) {
+                        component = ComponentFactory._createComponent($element, ComponentClass, scope);
+                        list.push(component);
+                    }
                 }
-                list.push(component);
             }
             return list;
+        };
+        /**
+         * Helper method to create the component.
+         *
+         * @method _createComponent
+         * @private
+         */
+        ComponentFactory._createComponent = function($element, ComponentClass, scope) {
+            var component = new ComponentClass($element);
+            // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.
+            if (scope !== null &amp;&amp; component.hasOwnProperty(&#x27;sjsId&#x27;) === true) {
+                scope.addChild(component);
+            }
+            return component;
         };
         return ComponentFactory;
     })();

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.8</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
@@ -72,6 +74,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -215,7 +221,7 @@
         <ul class="index-list properties extends">
             
                 <li class="index-item property public inherited">
-                    <a href="#property_cid">cid</a>
+                    <a href="#property_sjsId">sjsId</a>
 
                     
                 </li>
@@ -323,9 +329,9 @@
         <h2>Properties</h2>
 
         
-            <a name="property_cid" class="anchor-link"></a>
+            <a name="property_sjsId" class="anchor-link"></a>
 <div class="property item public inherited">
-    <h3 class="name"><code>cid</code>
+    <h3 class="name"><code>sjsId</code>
     <span class="type">Int</span>
 
     
@@ -344,11 +350,11 @@
         
             
                 <p>Inherited from
-                <a href="../classes/BaseObject.html#property_cid" class="type">BaseObject</a>:
+                <a href="../classes/BaseObject.html#property_sjsId" class="type">BaseObject</a>:
             
         
         
-        <a href="../files/js_BaseObject.js.html#l30"><code>js&#x2F;BaseObject.js:30</code></a>
+        <a href="../files/js_BaseObject.js.html#l29"><code>js&#x2F;BaseObject.js:29</code></a>
         
         </p>
 
@@ -359,7 +365,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
+            <p>The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
 
         </div>
 
@@ -507,7 +513,7 @@ var carVO = new CarVO(data);
          this.year = null;
          this.allWheel = false; // Set a default value.
 
-         // You can assign a ValueObject to a property which will
+         // You can assign ValueObject to a property which will
          // automatically created it and pass the data to it.
          this.feature = FeatureVO;
 
@@ -715,7 +721,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l144"><code>js&#x2F;model&#x2F;ValueObject.js:144</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l145"><code>js&#x2F;model&#x2F;ValueObject.js:145</code></a>
         
         </p>
 
@@ -820,7 +826,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l208"><code>js&#x2F;model&#x2F;ValueObject.js:208</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l209"><code>js&#x2F;model&#x2F;ValueObject.js:209</code></a>
         
         </p>
 
@@ -905,7 +911,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
+        <a href="../files/js_BaseObject.js.html#l54"><code>js&#x2F;BaseObject.js:54</code></a>
         
         </p>
 
@@ -1009,7 +1015,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l192"><code>js&#x2F;model&#x2F;ValueObject.js:192</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l193"><code>js&#x2F;model&#x2F;ValueObject.js:193</code></a>
         
         </p>
 
@@ -1107,7 +1113,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_BaseObject.js.html#l43"><code>js&#x2F;BaseObject.js:43</code></a>
+        <a href="../files/js_BaseObject.js.html#l42"><code>js&#x2F;BaseObject.js:42</code></a>
         
         </p>
 
@@ -1197,7 +1203,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l167"><code>js&#x2F;model&#x2F;ValueObject.js:167</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l168"><code>js&#x2F;model&#x2F;ValueObject.js:168</code></a>
         
         </p>
 
@@ -1210,7 +1216,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Converts the value object data into a JSON object and deletes the cid property.</p>
+            <p>Converts the value object data into a JSON object and deletes the sjsId property.</p>
 
         </div>
 
@@ -1285,7 +1291,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l180"><code>js&#x2F;model&#x2F;ValueObject.js:180</code></a>
+        <a href="../files/js_model_ValueObject.js.html#l181"><code>js&#x2F;model&#x2F;ValueObject.js:181</code></a>
         
         </p>
 

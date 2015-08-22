@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.8</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -55,6 +55,8 @@
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
                 <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
@@ -72,6 +74,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -151,15 +157,15 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;./DOMElement&#x27;, &#x27;../geom/Point&#x27;], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;./DOMElement&#x27;, &#x27;./DisplayObjectContainer&#x27;, &#x27;../geom/Point&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./DOMElement&#x27;), require(&#x27;../geom/Point&#x27;));
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./DOMElement&#x27;), require(&#x27;./DisplayObjectContainer&#x27;), require(&#x27;../geom/Point&#x27;));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.StructureJS.Point);
+        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.StructureJS.DisplayObjectContainer, root.StructureJS.Point);
     }
-}(this, function(Extend, DOMElement, Point) {
+}(this, function(Extend, DOMElement, DisplayObjectContainer, Point) {
 
     &#x27;use strict&#x27;;
 
@@ -167,21 +173,12 @@
 
         var _super = Extend(CanvasElement, DOMElement);
 
-        function CanvasElement($element) {
-            _super.call(this, $element);
-            /**
-             * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink &quot;DOMElement/$element:property&quot;}}{{/crossLink}} property**.
-             *
-             * @type {JQuery}
-             * @public
-             */
+        // Notice the capital W and H. That sets the attributes not the styles.
+        function CanvasElement(type, params) {
+            if (type === void 0) { type = &#x27;canvas&#x27;; }
+            if (params === void 0) { params = {Width: 100, Height: 100}; }
+            _super.call(this, type, params);
             this.$canvas = null;
-            /**
-             * A reference to the canvas element. This has the exact same reference as **{{#crossLink &quot;DOMElement/element:property&quot;}}{{/crossLink}} property**.
-             *
-             * @type {HTMLCanvasElement}
-             * @public
-             */
             this.canvas = null;
         }
         /**
