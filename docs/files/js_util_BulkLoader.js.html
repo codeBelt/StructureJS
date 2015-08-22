@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/BaseObject.js - StructureJS</title>
+    <title>js/util/BulkLoader.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -148,7 +148,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/BaseObject.js</h1>
+                <h1 class="file-heading">File: js/util/BulkLoader.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -157,86 +157,90 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;./util/Util&#x27;], factory);
+        define([&#x27;../event/EventDispatcher&#x27;, &#x27;../event/LoaderEvent&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;./util/Util&#x27;));
+        module.exports = factory(require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/LoaderEvent&#x27;));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
+        root.StructureJS.BulkLoader = factory(root.StructureJS.EventDispatcher, root.StructureJS.LoaderEvent);
     }
-}(this, function(Util) {
+}(this, function(EventDispatcher, LoaderEvent) {
+
     &#x27;use strict&#x27;;
 
     /**
-     * The {{#crossLink &quot;BaseObject&quot;}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
+     * The BulkLoader...
      *
-     * @class BaseObject
+     * @class BulkLoader
      * @module StructureJS
-     * @submodule core
-     * @requires Util
+     * @submodule util
+     * @requires Extend
+     * @requires EventDispatcher
+     * @requires LoaderEvent
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var BaseObject = (function() {
-        function BaseObject() {
-            /**
-             * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
-             *
-             * @property sjsId
-             * @type {int}
-             * @default null
-             * @writeOnce
-             * @readOnly
-             * @public
-             */
-            this.sjsId = null;
-            this.sjsId = Util.uniqueId();
+    var BulkLoader = (function() {
+        function BulkLoader() {
+            throw new Error(&#x27;[BulkLoader] Do not instantiate the BulkLoader class because it is a static class.&#x27;);
         }
-        /**
-         * Returns the fully qualified class name of an object.
-         *
-         * @method getQualifiedClassName
-         * @returns {string} Returns the class name.
-         * @public
-         * @example
-         *     instance.getQualifiedClassName();
-         */
-        BaseObject.prototype.getQualifiedClassName = function() {
-            return Util.getClassName(this);
+        BulkLoader.addFile = function(dataStore, key) {
+            BulkLoader._dataStores[key] = dataStore;
         };
-        /**
-         * The purpose of the destroy method is to make an object ready for garbage collection. This
-         * should be thought of as a one way function. Once destroy is called no further methods should be
-         * called on the object or properties accessed. It is the responsibility of those who implement this
-         * function to stop all running Timers, all running Sounds, and take any other steps necessary to make an
-         * object eligible for garbage collection.
-         *
-         * By default the destroy method will null out all properties of the class automatically. You should call destroy
-         * on other objects before calling the super.
-         *
-         * @method destroy
-         * @return {void}
-         * @public
-         * @example
-         *     ClassName.prototype.destroy = function() {
-         *          this._childInstance.destroy();
-         *
-         *          _super.prototype.destroy.call(this);
-         *     }
-         */
-        BaseObject.prototype.destroy = function() {
-            for (var key in this) {
-                if (this.hasOwnProperty(key)) {
-                    this[key] = null;
-                }
+        BulkLoader.getFile = function(key) {
+            return BulkLoader._dataStores[key] || null;
+        };
+        BulkLoader.getImage = function(key) {
+            var imageLoader = BulkLoader.getFile(key);
+            return (imageLoader !== null) ? imageLoader.data : null;
+        };
+        BulkLoader.load = function() {
+            for (var key in BulkLoader._dataStores) {
+                var dataStore = BulkLoader._dataStores[key];
+                dataStore.addEventListener(LoaderEvent.COMPLETE, BulkLoader.onLoadComplete, BulkLoader);
+                dataStore.load();
             }
         };
-        return BaseObject;
+        BulkLoader.addEventListener = function(type, callback, scope, priority) {
+            if (priority === void 0) {
+                priority = 0;
+            }
+            BulkLoader._eventDispatcher.addEventListener(type, callback, scope, priority);
+        };
+        BulkLoader.removeEventListener = function(type, callback, scope) {
+            BulkLoader._eventDispatcher.removeEventListener(type, callback, scope);
+        };
+        BulkLoader.dispatchEvent = function(type, data) {
+            if (data === void 0) {
+                data = null;
+            }
+            var event = type;
+            if (typeof event === &#x27;string&#x27;) {
+                event = new LoaderEvent(type, data);
+            }
+            event.target = BulkLoader;
+            event.currentTarget = BulkLoader;
+            BulkLoader._eventDispatcher.dispatchEvent(event);
+        };
+        BulkLoader.onLoadComplete = function(event) {
+            event.target.removeEventListener(LoaderEvent.COMPLETE, BulkLoader.onLoadComplete, BulkLoader);
+            for (var key in BulkLoader._dataStores) {
+                var dataStore = BulkLoader._dataStores[key];
+                if (dataStore.complete === false) {
+                    return;
+                }
+            }
+            BulkLoader._eventDispatcher.dispatchEvent(new LoaderEvent(LoaderEvent.LOAD_COMPLETE));
+        };
+        BulkLoader._dataStores = [];
+        BulkLoader._eventDispatcher = new EventDispatcher();
+        return BulkLoader;
     })();
 
-    return BaseObject;
+    return BulkLoader;
 }));
+
 
     </pre>
 </div>

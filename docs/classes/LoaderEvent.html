@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>NetworkMonitorEvent - StructureJS</title>
+    <title>LoaderEvent - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -148,7 +148,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>NetworkMonitorEvent Class</h1>
+                <h1>LoaderEvent Class</h1>
 <div class="box meta">
     
 
@@ -160,7 +160,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_event_NetworkMonitorEvent.js.html#l18"><code>js&#x2F;event&#x2F;NetworkMonitorEvent.js:18</code></a>
+            Defined in: <a href="../files/js_event_LoaderEvent.js.html#l18"><code>js&#x2F;event&#x2F;LoaderEvent.js:18</code></a>
         </div>
     
 
@@ -177,7 +177,7 @@
 
 
 <div class="box intro">
-    <p>The NetworkMonitorEvent...</p>
+    <p>The LoaderEvent...</p>
 
 </div>
 
@@ -230,12 +230,6 @@
                     
                 </li>
             
-                <li class="index-item property public">
-                    <a href="#property_connected">connected</a>
-
-                    
-                </li>
-            
                 <li class="index-item property public inherited">
                     <a href="#property_currentTarget">currentTarget</a>
 
@@ -262,12 +256,6 @@
             
                 <li class="index-item property public inherited">
                     <a href="#property_sjsId">sjsId</a>
-
-                    
-                </li>
-            
-                <li class="index-item property public">
-                    <a href="#property_status">status</a>
 
                     
                 </li>
@@ -299,7 +287,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_NetworkMonitorEvent">NetworkMonitorEvent</a>
+                    <a href="#method_LoaderEvent">LoaderEvent</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -355,7 +343,7 @@
             <ul class="index-list events extends">
                 
                     <li class="index-item event">
-                        <a href="#event_OFFLINE">OFFLINE</a>
+                        <a href="#event_COMPLETE">COMPLETE</a>
 
                         
                             <span class="flag static">static</span>
@@ -364,7 +352,7 @@
                     </li>
                 
                     <li class="index-item event">
-                        <a href="#event_ONLINE">ONLINE</a>
+                        <a href="#event_ERROR">ERROR</a>
 
                         
                             <span class="flag static">static</span>
@@ -373,7 +361,7 @@
                     </li>
                 
                     <li class="index-item event">
-                        <a href="#event_STATUS">STATUS</a>
+                        <a href="#event_LOAD_COMPLETE">LOAD_COMPLETE</a>
 
                         
                             <span class="flag static">static</span>
@@ -487,58 +475,6 @@
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_connected" class="anchor-link"></a>
-<div class="property item public">
-    <h3 class="name"><code>connected</code>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_event_NetworkMonitorEvent.js.html#l55"><code>js&#x2F;event&#x2F;NetworkMonitorEvent.js:55</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
         
 
         
@@ -803,58 +739,6 @@
 </div>
 
         
-            <a name="property_status" class="anchor-link"></a>
-<div class="property item public">
-    <h3 class="name"><code>status</code>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_event_NetworkMonitorEvent.js.html#l47"><code>js&#x2F;event&#x2F;NetworkMonitorEvent.js:47</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="property_target" class="anchor-link"></a>
 <div class="property item public inherited">
     <h3 class="name"><code>target</code>
@@ -970,9 +854,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_NetworkMonitorEvent" class="anchor-link"></a>
+        <a name="method_LoaderEvent" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>NetworkMonitorEvent</code>
+    <h3 class="name"><code>LoaderEvent</code>
 
     
         <div class="args">
@@ -1033,7 +917,7 @@
             
         
         
-        <a href="../files/js_event_NetworkMonitorEvent.js.html#l18"><code>js&#x2F;event&#x2F;NetworkMonitorEvent.js:18</code></a>
+        <a href="../files/js_event_LoaderEvent.js.html#l18"><code>js&#x2F;event&#x2F;LoaderEvent.js:18</code></a>
         
         </p>
 
@@ -1568,9 +1452,9 @@ of event listeners in both the current node and subsequent nodes. Additional cal
         <h2>Events</h2>
 
         
-            <a name="event_OFFLINE" class="anchor-link"></a>
+            <a name="event_COMPLETE" class="anchor-link"></a>
 <div class="events item">
-    <h3 class="name"><code>OFFLINE</code></h3>
+    <h3 class="name"><code>COMPLETE</code></h3>
     
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
     
@@ -1596,7 +1480,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
             
         
         
-        <a href="../files/js_event_NetworkMonitorEvent.js.html#l82"><code>js&#x2F;event&#x2F;NetworkMonitorEvent.js:82</code></a>
+        <a href="../files/js_event_LoaderEvent.js.html#l47"><code>js&#x2F;event&#x2F;LoaderEvent.js:47</code></a>
         
         </p>
 
@@ -1608,7 +1492,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.</p>
 
         </div>
 
@@ -1620,9 +1504,9 @@ of event listeners in both the current node and subsequent nodes. Additional cal
 </div>
 
         
-            <a name="event_ONLINE" class="anchor-link"></a>
+            <a name="event_ERROR" class="anchor-link"></a>
 <div class="events item">
-    <h3 class="name"><code>ONLINE</code></h3>
+    <h3 class="name"><code>ERROR</code></h3>
     
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
     
@@ -1648,7 +1532,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
             
         
         
-        <a href="../files/js_event_NetworkMonitorEvent.js.html#l74"><code>js&#x2F;event&#x2F;NetworkMonitorEvent.js:74</code></a>
+        <a href="../files/js_event_LoaderEvent.js.html#l63"><code>js&#x2F;event&#x2F;LoaderEvent.js:63</code></a>
         
         </p>
 
@@ -1660,7 +1544,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.</p>
 
         </div>
 
@@ -1672,9 +1556,9 @@ of event listeners in both the current node and subsequent nodes. Additional cal
 </div>
 
         
-            <a name="event_STATUS" class="anchor-link"></a>
+            <a name="event_LOAD_COMPLETE" class="anchor-link"></a>
 <div class="events item">
-    <h3 class="name"><code>STATUS</code></h3>
+    <h3 class="name"><code>LOAD_COMPLETE</code></h3>
     
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
     
@@ -1700,7 +1584,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
             
         
         
-        <a href="../files/js_event_NetworkMonitorEvent.js.html#l66"><code>js&#x2F;event&#x2F;NetworkMonitorEvent.js:66</code></a>
+        <a href="../files/js_event_LoaderEvent.js.html#l55"><code>js&#x2F;event&#x2F;LoaderEvent.js:55</code></a>
         
         </p>
 
@@ -1712,7 +1596,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.</p>
 
         </div>
 
