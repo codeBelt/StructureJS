@@ -82,7 +82,7 @@ class ComponentFactory
      * @method _createComponent
      * @private
      */
-    public static _createComponent($element:JQuery, ComponentClass:any, scope:DisplayObjectContainer):any {
+    private static _createComponent($element:JQuery, ComponentClass:any, scope:DisplayObjectContainer):any {
         var component = new ComponentClass($element);
 
         // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.

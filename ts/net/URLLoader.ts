@@ -64,9 +64,9 @@ class URLLoader extends EventDispatcher
      * @property _xhr
      * @type {JQueryXHR}
      * @default null
-     * @private
+     * @protected
      */
-    private _xhr:JQueryXHR = null;
+    protected _xhr:JQueryXHR = null;
 
     constructor(request:URLRequest = null)
     {
@@ -131,9 +131,9 @@ class URLLoader extends EventDispatcher
      * TODO: YUIDoc_comment
      *
      * @method onError
-     * @private
+     * @protected
      */
-    private onError():void
+    protected onError():void
     {
         console.log("[URLLoader] - onError", arguments);
         this.dispatchEvent(new LoaderEvent(LoaderEvent.ERROR));
@@ -143,9 +143,9 @@ class URLLoader extends EventDispatcher
      * TODO: YUIDoc_comment
      *
      * @method onSuccess
-     * @private
+     * @protected
      */
-    private onSuccess(data):void
+    protected onSuccess(data):void
     {
         this.complete = true;
         this.dispatchEvent(new LoaderEvent(LoaderEvent.COMPLETE, false, false, this.data));

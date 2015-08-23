@@ -123,9 +123,9 @@ class Route
      * @method routePatternToRegexp
      * @param {String} routePattern
      * @returns {RegExp}
-     * @private
+     * @protected
      */
-    private routePatternToRegexp(routePattern):RegExp
+    protected routePatternToRegexp(routePattern):RegExp
     {
         var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
         var findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :

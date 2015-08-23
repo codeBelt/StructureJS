@@ -30,9 +30,9 @@ import LanguageConfigVO = require('./vo/LanguageConfigVO');
  */
 class LanguageModel extends EventDispatcher
 {
-    private _request:BaseRequest = null;
-    private _availableLanguagesDictionary:Array<LanguageConfigVO> = [];
-    private _localStorageController:LocalStorageController = null;
+    protected _request:BaseRequest = null;
+    protected _availableLanguagesDictionary:Array<LanguageConfigVO> = [];
+    protected _localStorageController:LocalStorageController = null;
 
     public currentLanguage:string = null;
     public data:any = null;
@@ -196,9 +196,9 @@ class LanguageModel extends EventDispatcher
      * If the application was updated and the language id's changed it would break the application.
      *
      * @method hasLanguage
-     * @private
+     * @protected
      */
-    private hasLanguage(languageId:string):boolean
+    protected hasLanguage(languageId:string):boolean
     {
         return !!this._availableLanguagesDictionary[languageId];
     }

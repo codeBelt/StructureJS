@@ -179,9 +179,9 @@ class DOMElement extends DisplayObjectContainer
      *
      * @property _isReference
      * @type {boolean}
-     * @private
+     * @protected
      */
-    private _isReference:boolean = false;
+    protected _isReference:boolean = false;
 
     /**
      * Holds onto the value passed into the constructor.
@@ -189,9 +189,9 @@ class DOMElement extends DisplayObjectContainer
      * @property _type
      * @type {string}
      * @default null
-     * @private
+     * @protected
      */
-    private _type:string = null;
+    protected _type:string = null;
 
     /**
      * Holds onto the value passed into the constructor.
@@ -199,9 +199,9 @@ class DOMElement extends DisplayObjectContainer
      * @property _params
      * @type {any}
      * @default null
-     * @private
+     * @protected
      */
-    private _params:any = null;
+    protected _params:any = null;
 
     constructor(type:any = null, params:any = null)
     {
@@ -370,9 +370,9 @@ class DOMElement extends DisplayObjectContainer
      *
      * @method addClientSideId
      * @param child {DOMElement} The DOMElement instance to add the sjsId too.
-     * @private
+     * @protected
      */
-    private addClientSideId(child:DOMElement):void
+    protected addClientSideId(child:DOMElement):void
     {
         var type:any = child.$element.attr('data-sjs-type');
         var id:any = child.$element.attr('data-sjs-id');
@@ -399,10 +399,10 @@ class DOMElement extends DisplayObjectContainer
      *
      * @method removeClientSideId
      * @param child {DOMElement} The DOMElement instance to add the sjsId too.
-     * @private
+     * @protected
      * @return {boolean}
      */
-    private removeClientSideId(child):boolean
+    protected removeClientSideId(child):boolean
     {
         var type:string = child.$element.attr('data-sjs-type');
         var id:string = child.$element.attr('data-sjs-id');
@@ -429,9 +429,9 @@ class DOMElement extends DisplayObjectContainer
      * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
      *
      * @method onDomAdded
-     * @private
+     * @protected
      */
-    private onAddedToDom(child:DOMElement)
+    protected onAddedToDom(child:DOMElement)
     {
         child.checkCount++;
 

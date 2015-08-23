@@ -34,18 +34,18 @@ class LocalStorageController extends EventDispatcher
      * @type {string}
      * @default defaultNamespace
      * @optional
-     * @private
+     * @protected
      */
-    private _namespace:string = 'defaultNamespace';
+    protected _namespace:string = 'defaultNamespace';
 
     /**
      * A reference to window.localStorage for faster access.
      *
      * @property _localStorage
      * @type {Storage}
-     * @private
+     * @protected
      */
-    private _localStorage:Storage = null;
+    protected _localStorage:Storage = null;
 
     constructor()
     {
@@ -268,9 +268,9 @@ class LocalStorageController extends EventDispatcher
      *
      * @method onLocalStorageEvent
      * @param event {StorageEvent} The native browser event for Web Storage.
-     * @private
+     * @protected
      */
-    private onLocalStorageEvent(event:StorageEvent)
+    protected onLocalStorageEvent(event:StorageEvent)
     {
         this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
     }

@@ -38,9 +38,9 @@ class EventDispatcher extends ObjectManager
      *
      * @property _listeners
      * @type {Array.<any>}
-     * @private
+     * @protected
      */
-    private _listeners:Array<any> = null;
+    protected _listeners:Array<any> = null;
 
     /**
      * Indicates the object that contains a child object. Uses the parent property

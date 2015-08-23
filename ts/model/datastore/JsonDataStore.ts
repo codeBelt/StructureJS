@@ -37,9 +37,9 @@ class JsonDataStore extends DataStoreAbstract
          *
          * @property _urlLoader
          * @type {URLLoader}
-         * @private
+         * @protected
          */
-        private _urlLoader:URLLoader = null;
+        protected _urlLoader:URLLoader = null;
 
         /**
          * TODO: YUIDoc_comment
@@ -47,9 +47,9 @@ class JsonDataStore extends DataStoreAbstract
          * @property _isJsonP
          * @type {boolean}
          * @default false
-         * @private
+         * @protected
          */
-        private _isJsonP:boolean = false;
+        protected _isJsonP:boolean = false;
 
         constructor(path:string, jsonp:boolean = false)
         {

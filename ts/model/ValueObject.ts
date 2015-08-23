@@ -126,9 +126,9 @@ class ValueObject extends BaseObject implements IValueObject
      * @method _setData
      * @param key
      * @param data
-     * @private
+     * @protected
      */
-    private _setData(key:any, data:any):void
+    protected _setData(key:any, data:any):void
     {
         // If the data is an array and if the property its being assigned to is an array.
         if (data instanceof Array && this[key] instanceof Array)
@@ -159,9 +159,9 @@ class ValueObject extends BaseObject implements IValueObject
      * @method _updateData
      * @param keyValue
      * @param data
-     * @private
+     * @protected
      */
-    private _updateData(keyValue:any, data:any):any
+    protected _updateData(keyValue:any, data:any):any
     {
         if (keyValue instanceof ValueObject.constructor)
         {

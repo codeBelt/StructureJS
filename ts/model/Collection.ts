@@ -64,9 +64,9 @@ class Collection extends EventDispatcher
      *
      * @property _modelType
      * @type {ValueObject}
-     * @private
+     * @protected
      */
-    private _modelType:ValueObject = null;
+    protected _modelType:ValueObject = null;
 
     constructor(valueObjectType:ValueObject = null)
     {
@@ -198,7 +198,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.get(1);
      */
-    private get(index:number):any
+    public get(index:number):any
     {
         if (index < 0)
         {
@@ -231,7 +231,7 @@ class Collection extends EventDispatcher
      *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
      *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
      */
-    private findBy(arg:any):Array<any>
+    public findBy(arg:any):Array<any>
     {
         // If properties is not an array then make it an array object.
         var list:Array<any> = (arg instanceof Array) ? arg : [arg];
@@ -265,9 +265,9 @@ class Collection extends EventDispatcher
      * @method _where
      * @param propList {Object|Array}
      * @return {Array.<any>} Returns a list of found object's.
-     * @private
+     * @protected
      */
-    private _where(propList:any):Array<any>
+    protected _where(propList:any):Array<any>
     {
         // If properties is not an array then make it an array object.
         var list:Array<any> = (propList instanceof Array) ? propList : [propList];
@@ -322,9 +322,9 @@ class Collection extends EventDispatcher
      * @method _findPropertyValue
      * @param arg {String|Number|Boolean>}
      * @return {Array.<any>} Returns a list of found object's.
-     * @private
+     * @protected
      */
-    private _findPropertyValue(arg):Array<any>
+    protected _findPropertyValue(arg):Array<any>
     {
         // If properties is not an array then make it an array object.
         var list = (arg instanceof Array) ? arg : [arg];
@@ -377,7 +377,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.clear();
      */
-    private clear(silent:boolean = false):any
+    public clear(silent:boolean = false):any
     {
         this.models = [];
         this.length = 0;
@@ -399,7 +399,7 @@ class Collection extends EventDispatcher
      * @example
      *     var clone = collection.clone();
      */
-    private clone():Collection
+    public clone():Collection
     {
         var clonedValueObject:Collection = new (<any>this).constructor(this._modelType);
         clonedValueObject.add(this.models.slice(0));
@@ -416,7 +416,7 @@ class Collection extends EventDispatcher
      * @example
      *     var arrayOfObjects = collection.toJSON();
      */
-    private toJSON():Array<any>
+    public toJSON():Array<any>
     {
         if (this._modelType !== null)
         {
@@ -445,7 +445,7 @@ class Collection extends EventDispatcher
      * @example
      *     var str = collection.toJSONString();
      */
-    private toJSONString():string
+    public toJSONString():string
     {
         return JSON.stringify(this.toJSON());
     }
@@ -460,7 +460,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.fromJSON(str);
      */
-    private fromJSON(json):any
+    public fromJSON(json):any
     {
         var parsedData:any = JSON.parse(json);
 
@@ -481,7 +481,7 @@ class Collection extends EventDispatcher
      *      collection.sortOn('name');
      *      collection.sortOn('name', false);
      */
-    private sortOn(propertyName:string, sortAscending:boolean = true):Array<any>
+    public sortOn(propertyName:string, sortAscending:boolean = true):Array<any>
     {
         if (sortAscending === false)
         {
@@ -534,7 +534,7 @@ class Collection extends EventDispatcher
      *
      *      collection.sort(sortByDate);
      */
-    private sort(sortFunction = null):Array<any>
+    public sort(sortFunction = null):Array<any>
     {
         this.models.sort(sortFunction);
 
@@ -641,7 +641,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.reverse();
      */
-    private reverse():Array<any>
+    public reverse():Array<any>
     {
         return this.models.reverse();
     }
@@ -652,9 +652,9 @@ class Collection extends EventDispatcher
      * @method _unique
      * @param list {Array.<any>} The array you want to use to generate the unique array.
      * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
-     * @private
+     * @protected
      */
-    private _unique(list:Array<any>):Array<any>
+    protected _unique(list:Array<any>):Array<any>
     {
         var unique:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
         {

@@ -248,6 +248,8 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
+ * ?????????? v0.7.9 Change private methods and properties to protected.
+
  * 2015-08-22 v0.7.8 Fix issue with disable not being called when the destroy method is called on a DisplayObject. Add import for DisplayObjectContainer on CanvasElement. Allow ComponentFactory.create to be called multiple times with the same selector names and not overwrite active components. Update addClientSideId and add removeClientSideId. Add BulkLoader, ImageLoader ...
 
  * 2015-07-20 v0.7.7 Fixed ValueObject - Allow data passed in that is an array to get assigned to the property even if it is not of type of an array. Fix for phone number validation.

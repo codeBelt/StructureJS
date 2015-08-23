@@ -33,13 +33,13 @@ class TransitionManager extends EventDispatcher
     public static READY:string = 'ready';
     public static TRANSITION_RUNNING:string = 'transitionRunning';
 
-    private _viewContainer:DOMElement = null;
-    private _currentView:DOMElement = null;
-    private _nextView:DOMElement = null;
-    private _state:string = TransitionManager.READY;
+    protected _viewContainer:DOMElement = null;
+    protected _currentView:DOMElement = null;
+    protected _nextView:DOMElement = null;
+    protected _state:string = TransitionManager.READY;
 
-    private _transitionFactory:TransitionFactory = new TransitionFactory();
-    private _runningTransition:ITransition = null;
+    protected _transitionFactory:TransitionFactory = new TransitionFactory();
+    protected _runningTransition:ITransition = null;
 
     constructor(displayContainer:DOMElement)
     {
@@ -101,7 +101,7 @@ class TransitionManager extends EventDispatcher
         super.destroy();
     }
 
-    private removeCurrentView():void
+    protected removeCurrentView():void
     {
         if (this._currentView === null)
         {
@@ -143,16 +143,16 @@ class TransitionManager extends EventDispatcher
         return this;
     }
 
-    private onTransitionStart(event:TweenEvent):void
+    protected onTransitionStart(event:TweenEvent):void
     {
         this.dispatchEvent(new TransitionManagerEvent(TransitionManagerEvent.TRANSITION_START));
     }
 
-    private onTransitionUpdate(event:TweenEvent):void
+    protected onTransitionUpdate(event:TweenEvent):void
     {
     }
 
-    private onTransitionComplete(event:TweenEvent):void
+    protected onTransitionComplete(event:TweenEvent):void
     {
         if (this._currentView)
         {

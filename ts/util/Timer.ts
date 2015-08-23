@@ -29,18 +29,18 @@ class Timer extends EventDispatcher
      *
      * @property _timer
      * @type {Function}
-     * @private
+     * @protected
      */
-    private _timer:any = null;
+    protected _timer:any = null;
 
     /**
      * The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.
      *
      * @property currentCount
      * @type {int}
-     * @private
+     * @protected
      */
-    private _currentCount:number = 0;
+    protected _currentCount:number = 0;
 
     /**
      * The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
@@ -48,18 +48,18 @@ class Timer extends EventDispatcher
      *
      * @property delay
      * @type {number}
-     * @private
+     * @protected
      */
-    private _delay:number = null;
+    protected _delay:number = null;
 
     /**
      * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
      *
      * @property repeatCount
      * @type {int}
-     * @private
+     * @protected
      */
-    private _repeatCount:number = 0;
+    protected _repeatCount:number = 0;
 
     /**
      * The timer's current state; true if the timer is running, otherwise false.
@@ -194,9 +194,9 @@ class Timer extends EventDispatcher
     /**
      *
      * @method decrementCounter
-     * @private
+     * @protected
      */
-    private decrementCounter()
+    protected decrementCounter()
     {
         if (this._currentCount > 0)
         {

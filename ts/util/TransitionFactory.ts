@@ -46,9 +46,9 @@ class TransitionFactory extends BaseObject
      *
      * @property _transitions
      * @type {Object}
-     * @private
+     * @protected
      */
-    private _transitions:Object = {};
+    protected _transitions:Object = {};
 
     constructor()
     {

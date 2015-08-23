@@ -23,7 +23,7 @@ import LoaderEvent = require('../event/LoaderEvent');
 class ImageLoader extends EventDispatcher implements IDataStore
 {
 
-    private _image:HTMLImageElement;
+    protected _image:HTMLImageElement;
 
     public data:any;
     public src:string;
@@ -37,7 +37,7 @@ class ImageLoader extends EventDispatcher implements IDataStore
         this.init();
     }
 
-    private init():void
+    protected init():void
     {
         this._image = new Image();
         this._image.onload = (event:Event) => {
@@ -50,7 +50,7 @@ class ImageLoader extends EventDispatcher implements IDataStore
         this._image.src = this.src;
     }
 
-    private onImageLoad():void
+    protected onImageLoad():void
     {
         this.data = this._image;
         this.complete = true;
