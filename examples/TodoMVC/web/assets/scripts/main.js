@@ -33,11 +33,11 @@ d._setup(c),!c.partial&&a.useData&&(f=j(b,f));var g=void 0,h=a.useBlockParams?[]
  * Grunt-Browserify-Example v1.0.0
  * 
  * Development By: 
- * Build Date: 2015-08-22
+ * Build Date: 2015-09-04
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
+var $ = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
 var Extend = require('structurejs/util/Extend');
 var Stage = require('structurejs/display/Stage');
 var BaseEvent = require('structurejs/event/BaseEvent');
@@ -403,7 +403,7 @@ module.exports = App;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./component/ListItemComponent":2,"./constant/Key":3,"./model/ListItemCollection":5,"./model/vo/ListItemVO":6,"./view/FooterView":7,"structurejs/controller/Router":11,"structurejs/display/Stage":15,"structurejs/event/BaseEvent":16,"structurejs/util/Extend":25,"structurejs/util/StringUtil":26}],2:[function(require,module,exports){
 (function (global){
-var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
+var $ = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
 var Extend = require('structurejs/util/Extend');
 var DOMElement = require('structurejs/display/DOMElement');
 var BaseEvent = require('structurejs/event/BaseEvent');
@@ -1340,7 +1340,7 @@ module.exports = FooterView;
          *
          * @method getItemsWithNamespace
          * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
-         * @return {Array.<Object>}
+         * @return {Array}
          */
         LocalStorageController.prototype.getItemsWithNamespace = function(namespace) {
             if (namespace === void 0) { namespace = this._namespace; }
@@ -1363,7 +1363,7 @@ module.exports = FooterView;
          * Returns all items in local storage as an Object with key and value properties.
          *
          * @method getAllItems
-         * @return {Array.<Object>}
+         * @return {Array}
          */
         LocalStorageController.prototype.getAllItems = function() {
             var list = [];
@@ -3092,7 +3092,7 @@ module.exports = FooterView;
     if (typeof define === 'function' && define.amd) {
         define(['../util/Extend', './DOMElement', 'jquery'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DOMElement'), (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null));
+        module.exports = factory(require('../util/Extend'), require('./DOMElement'), (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
@@ -5086,7 +5086,7 @@ module.exports = FooterView;
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory((typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null));
+        module.exports = factory((typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null));
     } else {
         /*jshint sub:true */
         factory(root.jQuery);
@@ -5671,7 +5671,7 @@ module.exports = FooterView;
     if (typeof define === 'function' && define.amd) {
         define(['../util/StringUtil', 'jquery', 'handlebars'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/StringUtil'), (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null), (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null));
+        module.exports = factory(require('../util/StringUtil'), (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null), (typeof window !== "undefined" ? window['Handlebars'] : typeof global !== "undefined" ? global['Handlebars'] : null));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
