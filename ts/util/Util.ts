@@ -238,41 +238,45 @@ class Util
     }
 
     /**
-     * Returns the name of the class object passed in.
+     * Returns the name of the function/object passed in.
      *
-     * @method getClassName
-     * @param classObject {Object}
-     * @returns {string} Returns the name of the class object passed in.
-     * @public
+     * @method getName
+     * @param classObject {any}
+     * @returns {string} Returns the name of the function or object.
      * @static
      * @example
      *      var someClass = new SomeClass();
+     *      Util.getName(someClass);            // 'SomeClass'
      *
-     *      Util.getClassName(someClass);
-     *      // 'SomeClass'
+     *      Util.getName(function Test(){});    // 'Test'
+     *      Util.getName(function (){});        // 'anonymous'
      */
-    public static getClassName(classObject:any):string
+    public static getName(classObject:any):string
     {
-        var funcNameRegex:RegExp = /function (.{1,})\(/;
-        var results:RegExpExecArray = (funcNameRegex).exec((<any>classObject).constructor.toString());
+        var type:string = typeof classObject;
+        var value:string;
+        var funcNameRegex:RegExp = /function ([^\(]+)/;
 
-        return (results && results.length > 1) ? results[1] : '';
-    }
+        if (type === 'object') {
+            // Gets the name of the object.
+            var results:RegExpExecArray = (<any>classObject).constructor.toString().match(funcNameRegex);
+            value = results[1];
+        } else {
+            // This else code is mainly for Internet Explore.
+            var isFunction:boolean = (type === 'function');
+            // TODO: figure out how to explain this
+            var name:any = isFunction && ((classObject.name && ['', classObject.name]) || (<any>classObject).toString().match(funcNameRegex));
 
-    /**
-     * Returns the name of the function passed in.
-     *
-     * @method getFunctionName
-     * @param func {Function}
-     * @returns {string} Returns the name of the function.
-     * @static
-     */
-    public static getFunctionName(func):string
-    {
-        var str:string = func.toString();
-        str = str.substr('function '.length);
-        str = str.substr(0, str.indexOf('('));
-        return str;
+            if (isFunction === false) {
+                value = type;
+            } else if (name && name[1]) {
+                value = name[1];
+            } else {
+                value = 'anonymous';
+            }
+        }
+
+        return value;
     }
 
     /**

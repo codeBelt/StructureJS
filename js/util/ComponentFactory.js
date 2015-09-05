@@ -58,7 +58,7 @@
                 } else {
                     // Else if there is already a 'data-sjs-type' attribute then get the type(s).
                     types = types.split(',');
-                    componentName = Util.getFunctionName(ComponentClass);
+                    componentName = Util.getName(ComponentClass);
                     // Only create the component if the component type does not already exist.
                     if (types.indexOf(componentName) === -1) {
                         component = ComponentFactory._createComponent($element, ComponentClass, scope);

@@ -193,37 +193,41 @@
             return (value > 0 || value == 'true' || value == 'yes');
         };
         /**
-         * Returns the name of the class object passed in.
+         * Returns the name of the function/object passed in.
          *
-         * @method getClassName
-         * @param classObject {Object}
-         * @returns {string} Returns the name of the class object passed in.
-         * @public
+         * @method getName
+         * @param classObject {any}
+         * @returns {string} Returns the name of the function or object.
          * @static
          * @example
          *      var someClass = new SomeClass();
+         *      Util.getName(someClass);            // 'SomeClass'
          *
-         *      Util.getClassName(someClass);
-         *      // 'SomeClass'
+         *      Util.getName(function Test(){});    // 'Test'
+         *      Util.getName(function (){});        // 'anonymous'
          */
-        Util.getClassName = function(classObject) {
-            var funcNameRegex = /function (.{1,})\(/;
-            var results = (funcNameRegex).exec(classObject.constructor.toString());
-            return (results && results.length > 1) ? results[1] : '';
-        };
-        /**
-         * Returns the name of the function passed in.
-         *
-         * @method getFunctionName
-         * @param func {Function}
-         * @returns {string} Returns the name of the function.
-         * @static
-         */
-        Util.getFunctionName = function(func) {
-            var str = func.toString();
-            str = str.substr('function '.length);
-            str = str.substr(0, str.indexOf('('));
-            return str;
+        Util.getName = function(classObject) {
+            var type = typeof classObject;
+            var value;
+            var funcNameRegex = /function ([^\(]+)/;
+            if (type === 'object') {
+                // Gets the name of the object.
+                var results = classObject.constructor.toString().match(funcNameRegex);
+                value = results[1];
+            } else {
+                // This else code is mainly for Internet Explore.
+                var isFunction = (type === 'function');
+                // TODO: figure out how to explain this
+                var name = isFunction && ((classObject.name && ['', classObject.name]) || classObject.toString().match(funcNameRegex));
+                if (isFunction === false) {
+                    value = type;
+                } else if (name && name[1]) {
+                    value = name[1];
+                } else {
+                    value = 'anonymous';
+                }
+            }
+            return value;
         };
         /**
          * Creates and returns a new debounced version of the passed function which will postpone its execution until after

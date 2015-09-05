@@ -51,7 +51,7 @@ class BaseObject
      */
     public getQualifiedClassName():string
     {
-        return Util.getClassName(this);
+        return Util.getName(this);
     }
 
     /**

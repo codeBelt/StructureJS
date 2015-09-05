@@ -49,7 +49,7 @@
          *     instance.getQualifiedClassName();
          */
         BaseObject.prototype.getQualifiedClassName = function() {
-            return Util.getClassName(this);
+            return Util.getName(this);
         };
         /**
          * The purpose of the destroy method is to make an object ready for garbage collection. This
