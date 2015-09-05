@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.7.8",
+        "version": "0.7.9",
         "url": ""
     },
     "files": {
@@ -1498,8 +1498,7 @@
             "submodule": "util",
             "requires": [
                 "StringUtil",
-                "Handlebars",
-                "jQuery"
+                "Handlebars"
             ],
             "author": "Robert S. (www.codeBelt.com)",
             "static": 1
@@ -7980,7 +7979,7 @@
         },
         {
             "file": "js/util/TemplateFactory.js",
-            "line": 35,
+            "line": 33,
             "description": "Creates a template.",
             "itemtype": "method",
             "name": "create",
@@ -8428,25 +8427,23 @@
         {
             "file": "js/util/Util.js",
             "line": 195,
-            "description": "Returns the name of the class object passed in.",
+            "description": "Returns the name of the function/object passed in.",
             "itemtype": "method",
-            "name": "getClassName",
+            "name": "getName",
             "params": [
                 {
                     "name": "classObject",
                     "description": "",
-                    "type": "Object"
+                    "type": "Any"
                 }
             ],
             "return": {
-                "description": "Returns the name of the class object passed in.",
+                "description": "Returns the name of the function or object.",
                 "type": "String"
             },
-            "access": "public",
-            "tagname": "",
             "static": 1,
             "example": [
-                "\n     var someClass = new SomeClass();\n\n     Util.getClassName(someClass);\n     // 'SomeClass'"
+                "\n     var someClass = new SomeClass();\n     Util.getName(someClass);            // 'SomeClass'\n\n     Util.getName(function Test(){});    // 'Test'\n     Util.getName(function (){});        // 'anonymous'"
             ],
             "class": "Util",
             "module": "StructureJS",
@@ -8454,29 +8451,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 214,
-            "description": "Returns the name of the function passed in.",
-            "itemtype": "method",
-            "name": "getFunctionName",
-            "params": [
-                {
-                    "name": "func",
-                    "description": "",
-                    "type": "Function"
-                }
-            ],
-            "return": {
-                "description": "Returns the name of the function.",
-                "type": "String"
-            },
-            "static": 1,
-            "class": "Util",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "js/util/Util.js",
-            "line": 228,
+            "line": 232,
             "description": "Creates and returns a new debounced version of the passed function which will postpone its execution until after\nwait milliseconds have elapsed since the last time it was invoked.",
             "itemtype": "method",
             "name": "debounce",
@@ -8514,7 +8489,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 267,
+            "line": 271,
             "description": "Keeps track of the count for the uniqueId method.",
             "itemtype": "property",
             "name": "_idCounter",
@@ -9229,7 +9204,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/TemplateFactory.js:35"
+            "line": " js/util/TemplateFactory.js:33"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9270,10 +9245,6 @@
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " js/util/Util.js:195"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:214"
         },
         {
             "message": "replacing incorrect tag: returns with return",
