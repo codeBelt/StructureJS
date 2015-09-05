@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/StringUtil', 'jquery', 'handlebars'], factory);
+        define(['../util/StringUtil', 'handlebars'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/StringUtil'), require('jquery'), require('handlebars'));
+        module.exports = factory(require('../util/StringUtil'), require('handlebars'));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.jQuery, root.Handlebars);
+        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.Handlebars);
     }
-}(this, function(StringUtil, jQuery, Handlebars) {
+}(this, function(StringUtil, Handlebars) {
 
     'use strict';
 
@@ -23,12 +23,10 @@
      * @submodule util
      * @requires StringUtil
      * @requires Handlebars
-     * @requires jQuery
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
     var TemplateFactory = (function() {
-
         function TemplateFactory() {
             throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
         }
@@ -54,7 +52,9 @@
             if (isFunctionTemplate) {
                 template = templatePath(data);
             } else if (isClassOrIdName) {
-                var htmlString = jQuery(templatePath).html();
+                // Remove pound sign from the id name.
+                templatePath = templatePath.substring(1);
+                var htmlString = document.getElementById(templatePath).innerHTML;
                 htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
