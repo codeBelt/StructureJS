@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.8</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -265,17 +265,8 @@
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_getClassName">getClassName</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
                 <li class="index-item method">
-                    <a href="#method_getFunctionName">getFunctionName</a>
+                    <a href="#method_getName">getName</a>
 
                     
                         <span class="flag static">static</span>
@@ -355,7 +346,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l267"><code>js&#x2F;util&#x2F;Util.js:267</code></a>
+        <a href="../files/js_util_Util.js.html#l271"><code>js&#x2F;util&#x2F;Util.js:271</code></a>
         
         </p>
 
@@ -589,7 +580,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l228"><code>js&#x2F;util&#x2F;Util.js:228</code></a>
+        <a href="../files/js_util_Util.js.html#l232"><code>js&#x2F;util&#x2F;Util.js:232</code></a>
         
         </p>
 
@@ -849,9 +840,9 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 </div>
 
         
-            <a name="method_getClassName" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>getClassName</code>
+            <a name="method_getName" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getName</code>
 
     
         <div class="args">
@@ -875,8 +866,6 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 
     
 
-    
-        <span class="flag public">public</span>
     
 
     
@@ -915,7 +904,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Returns the name of the class object passed in.</p>
+            <p>Returns the name of the function/object passed in.</p>
 
         </div>
 
@@ -928,7 +917,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">classObject</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            <span class="type">Any</span>
                         
 
                         
@@ -953,7 +942,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                         
                             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
-                        <p>Returns the name of the class object passed in.</p>
+                        <p>Returns the name of the function or object.</p>
 
                     
                 </div>
@@ -966,126 +955,13 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code> var someClass = new SomeClass();
+ Util.getName(someClass);            // &#39;SomeClass&#39;
 
- Util.getClassName(someClass);
- // &#39;SomeClass&#39;</code></pre>
+ Util.getName(function Test(){});    // &#39;Test&#39;
+ Util.getName(function (){});        // &#39;anonymous&#39;</code></pre>
 
                 </div>
             </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_getFunctionName" class="anchor-link"></a>
-<div class="method item">
-    <h3 class="name"><code>getFunctionName</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>func</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_util_Util.js.html#l214"><code>js&#x2F;util&#x2F;Util.js:214</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Returns the name of the function passed in.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">func</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
-                        
-                        <p>Returns the name of the function.</p>
-
-                    
-                </div>
-            </div>
-        
-
         
     </div>
 </div>

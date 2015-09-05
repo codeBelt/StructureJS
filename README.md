@@ -248,7 +248,7 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
- * ?????????? v0.7.9 Change private methods and properties to protected.
+ * 2015-09-04 v0.7.9 Remove Util.getClassName, Util.getFunctionName and add Util.getName. Fix issue with getQualifiedClassName now working when code was uglified (Now need to have mangle set as false). Remove jQuery dependency from TemplateFactory. Change private methods and properties to protected.
 
  * 2015-08-22 v0.7.8 Fix issue with disable not being called when the destroy method is called on a DisplayObject. Add import for DisplayObjectContainer on CanvasElement. Allow ComponentFactory.create to be called multiple times with the same selector names and not overwrite active components. Update addClientSideId and add removeClientSideId. Add BulkLoader, ImageLoader ...
 

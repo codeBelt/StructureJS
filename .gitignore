@@ -18,5 +18,6 @@ coverage
 build/Release
 node_modules
 bower_components
+.bower.json
 .lock-wscript
 ts/**/*.js

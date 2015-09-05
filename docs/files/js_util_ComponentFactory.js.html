@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.8</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -212,7 +212,7 @@
                 } else {
                     // Else if there is already a &#x27;data-sjs-type&#x27; attribute then get the type(s).
                     types = types.split(&#x27;,&#x27;);
-                    componentName = Util.getFunctionName(ComponentClass);
+                    componentName = Util.getName(ComponentClass);
                     // Only create the component if the component type does not already exist.
                     if (types.indexOf(componentName) === -1) {
                         component = ComponentFactory._createComponent($element, ComponentClass, scope);
