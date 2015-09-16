@@ -1,5 +1,3 @@
-'use strict';
-
 // Imports
 import ValueObject from 'structurejs/model/ValueObject';
 
