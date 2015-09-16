@@ -1,5 +1,3 @@
-'use strict';
-
 // Imports
 import ${Extends} from '${path}/${Extends}';
 
