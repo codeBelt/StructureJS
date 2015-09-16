@@ -1,5 +1,3 @@
-'use strict';
-
 // Imports
 import DOMElement from 'structurejs/display/DOMElement';
 
