@@ -51,6 +51,8 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -157,15 +157,15 @@
  */
 (function(root, factory) {
     if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../event/LocalStorageEvent&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../model/ValueObject&#x27;], factory);
+        define([&#x27;../util/Extend&#x27;, &#x27;../event/LocalStorageEvent&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../model/BaseModel&#x27;], factory);
     } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/LocalStorageEvent&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../model/ValueObject&#x27;));
+        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/LocalStorageEvent&#x27;), require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../model/BaseModel&#x27;));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.ValueObject);
+        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.BaseModel);
     }
-}(this, function(Extend, LocalStorageEvent, EventDispatcher, ValueObject) {
+}(this, function(Extend, LocalStorageEvent, EventDispatcher, BaseModel) {
 
     &#x27;use strict&#x27;;
 
@@ -179,7 +179,7 @@
      * @requires Extend
      * @requires EventDispatcher
      * @requires LocalStorageEvent
-     * @requires ValueObject
+     * @requires BaseModel
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -243,7 +243,7 @@
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
-            if (data instanceof ValueObject) {
+            if (data instanceof BaseModel) {
                 data = data.toJSON();
             }
             data = JSON.stringify(data);

@@ -195,13 +195,13 @@
          *     var cloneOfEvent = event.clone();
          */
         BaseEvent.prototype.clone = function() {
-            var clonedValueObject = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
+            var clonedBaseModel = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {
-                    clonedValueObject[key] = this[key];
+                    clonedBaseModel[key] = this[key];
                 }
             }
-            return clonedValueObject;
+            return clonedBaseModel;
         };
         /**
          * The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.

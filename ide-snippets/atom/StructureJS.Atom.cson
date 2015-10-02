@@ -7,7 +7,7 @@
 #
 # Shortcuts
 # DOMElement: viewClass
-# ValueObject: valueObject
+# BaseModel: baseModel
 # Stage: stageClass
 # Property: property
 # Method: method
@@ -101,26 +101,26 @@ define(function(require, exports, module) { // jshint ignore:line
 
 });
    """
-  "Value Object":
-   prefix: "valueObject"
+  " Base Model":
+   prefix: "baseModel"
    body: """
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var ValueObject = require('structurejs/model/ValueObject');
+    var BaseModel = require('structurejs/model/BaseModel');
 
     /**
      * TODO: YUIDoc_comment
      *
      * @class ${1:Class}
-     * @extends ValueObject
+     * @extends BaseModel
      * @constructor
      **/
     var ${1:Class} = (function () {
 
-        var _super = Extend (${1:Class}, ValueObject); // jshint ignore:line
+        var _super = Extend (${1:Class}, BaseModel); // jshint ignore:line
 
         function ${1:Class} () { // jshint ignore:line
             _super.call(this);
@@ -131,7 +131,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         /**
-        * @overridden ValueObject.update
+        * @overridden BaseModel.update
         */
         ${1:Class}.prototype.update = function (data) {
             _super.prototype.update.call(this, data);

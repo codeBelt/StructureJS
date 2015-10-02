@@ -3,7 +3,7 @@ define(function (require, exports, module) { // jshint ignore:line
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var ValueObject = require('structurejs/model/ValueObject');
+    var BaseModel = require('structurejs/model/BaseModel');
     var RatingsVO = require('model/RatingsVO');
     var PosterVO = require('model/PosterVO');
     var CastVO = require('model/CastVO');
@@ -13,12 +13,12 @@ define(function (require, exports, module) { // jshint ignore:line
      * TODO: YUIDoc_comment
      *
      * @class MovieVO
-     * @extends ValueObject
+     * @extends BaseModel
      * @constructor
      **/
     var MovieVO = (function () {
 
-        var _super = Extend(MovieVO, ValueObject);
+        var _super = Extend(MovieVO, BaseModel);
 
         function MovieVO(data) {
             _super.call(this);
@@ -40,7 +40,7 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden ValueObject.update
+         * @overridden BaseModel.update
          */
         MovieVO.prototype.update = function (data) {
             _super.prototype.update.call(this, data);

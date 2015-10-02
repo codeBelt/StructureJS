@@ -1,16 +1,16 @@
 var Extend = require('structurejs/util/Extend');
-var ValueObject = require('structurejs/model/ValueObject');
+var BaseModel = require('structurejs/model/BaseModel');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class ListItemVO
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
 var ListItemVO = (function () {
 
-    var _super = Extend(ListItemVO, ValueObject);
+    var _super = Extend(ListItemVO, BaseModel);
 
     function ListItemVO(data) {
         _super.call(this);
@@ -42,7 +42,7 @@ var ListItemVO = (function () {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     ListItemVO.prototype.update = function (data) {
         _super.prototype.update.call(this, data);

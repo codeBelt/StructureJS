@@ -2,18 +2,18 @@
 
 // Imports
 var Extend = require('../../../js/util/Extend');
-var ValueObject = require('../../../js/model/ValueObject');
+var BaseModel = require('../../../js/model/BaseModel');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class RatingsVO
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
 var RatingsVO = (function () {
 
-    var _super = Extend(RatingsVO, ValueObject);
+    var _super = Extend(RatingsVO, BaseModel);
 
     function RatingsVO(data) {
         _super.call(this);
@@ -29,7 +29,7 @@ var RatingsVO = (function () {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     RatingsVO.prototype.update = function (data) {
          _super.prototype.update.call(this, data);

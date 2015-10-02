@@ -4,21 +4,21 @@ UMD Stuff
 @import ../util/Extend as Extend
 @import ../BaseObject as BaseObject
 @import ../util/Util as Util
-@export ValueObject
+@export BaseModel
  */
-import IValueObject = require('../interface/IValueObject');
+import IBaseModel = require('../interface/IBaseModel');
 import BaseObject = require('../BaseObject');
 import Util = require('../util/Util');
 
 /**
- * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+ *  Base Model (VO) is a design pattern used to transfer data between software application subsystems.
  *
  * Note: If the data doesn't match the property names you can set the value manually after update super method has been called.
- *  Also in the class you inherit ValueObject from you can override the update method to handle the data how you want.
+ *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
  *
- * @class ValueObject
+ * @class BaseModel
  * @extends BaseObject
- * @param [data] {any} Provide a way to update the value object upon initialization.
+ * @param [data] {any} Provide a way to update the  Base Model upon initialization.
  * @module StructureJS
  * @submodule model
  * @requires Extend
@@ -39,9 +39,9 @@ import Util = require('../util/Util');
  *     var carVO = new CarVO(data);
  *
  *
- *     // Example how to extend the ValueObject class.
+ *     // Example how to extend the BaseModel class.
  *      var CarVO = (function () {
- *          var _super = Extend(CarVO, ValueObject);
+ *          var _super = Extend(CarVO, BaseModel);
  *          function CarVO(data) {
  *              _super.call(this);
  *
@@ -52,11 +52,11 @@ import Util = require('../util/Util');
  *              this.year = null;
  *              this.allWheel = false; // Set a default value.
  *
- *              // You can assign ValueObject to a property which will
+ *              // You can assign BaseModel to a property which will
  *              // automatically created it and pass the data to it.
  *              this.feature = FeatureVO;
  *
- *              // If you have an array of data and want them assign to a ValueObject.
+ *              // If you have an array of data and want them assign to a BaseModel.
  *              this.feature = [FeatureVO];
  *
  *              if (data) {
@@ -64,7 +64,7 @@ import Util = require('../util/Util');
  *              }
  *          }
  *
- *          // @overridden ValueObject.update
+ *          // @overridden BaseModel.update
  *          CarVO.prototype.update = function (data) {
  *              _super.prototype.update.call(this, data);
  *
@@ -76,7 +76,7 @@ import Util = require('../util/Util');
  *          return CarVO;
  *      })();
  */
-class ValueObject extends BaseObject implements IValueObject
+class BaseModel extends BaseObject implements IBaseModel
 {
     constructor()
     {
@@ -84,7 +84,7 @@ class ValueObject extends BaseObject implements IValueObject
     }
 
     /**
-     * Provide a way to update the value object.
+     * Provide a way to update the  Base Model.
      *
      * @method update
      * @param data {any}
@@ -108,7 +108,7 @@ class ValueObject extends BaseObject implements IValueObject
             // we do want it to be overridden when the clone method has been called.
             if (this.hasOwnProperty(propertyKey) && propertyKey !== 'sjsId')
             {
-                // If the data passed in does not have a property that matches a property on the value object then
+                // If the data passed in does not have a property that matches a property on the  Base Model then
                 // use the default value/data that was assigned to the property.
                 // Else use the data that was passed in.
                 propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
@@ -136,12 +136,12 @@ class ValueObject extends BaseObject implements IValueObject
             var temp:Array<any> = [];
             var len:number = data.length;
 
-            if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false)
+            if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false)
             {
-                var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
                 for (var i:number = 0; i < len; i++)
                 {
-                    temp[i] = this._updateData(valueObjectOrOther, data[i]);
+                    temp[i] = this._updateData(baseModelOrOther, data[i]);
                 }
             }
 
@@ -163,15 +163,15 @@ class ValueObject extends BaseObject implements IValueObject
      */
     protected _updateData(keyValue:any, data:any):any
     {
-        if (keyValue instanceof ValueObject.constructor)
+        if (keyValue instanceof BaseModel.constructor)
         {
-            // If the property is an instance of a ValueObject class and has not been created yet.
+            // If the property is an instance of a BaseModel class and has not been created yet.
             // Then instantiate it and pass in the data to the constructor.
             keyValue = new keyValue(data);
         }
-        else if (keyValue instanceof ValueObject)
+        else if (keyValue instanceof BaseModel)
         {
-            // If property is an instance of a ValueObject class and has already been created.
+            // If property is an instance of a BaseModel class and has already been created.
             // Then call the update method and pass in the data.
             keyValue.update(data);
         }
@@ -185,22 +185,22 @@ class ValueObject extends BaseObject implements IValueObject
     }
 
     /**
-     * Converts the value object data into a JSON object and deletes the sjsId property.
+     * Converts the  Base Model data into a JSON object and deletes the sjsId property.
      *
      * @method toJSON
-     * @returns {ValueObject}
+     * @returns {BaseModel}
      * @public
      * @example
      *     var obj = carVO.toJSON();
      */
-    public toJSON():ValueObject
+    public toJSON():BaseModel
     {
         var clone:any = Util.clone(this);
         return Util.deletePropertyFromObject(clone, ['sjsId']);
     }
 
     /**
-     * Converts a value object to a JSON string,
+     * Converts a  Base Model to a JSON string,
      *
      * @method toJSONString
      * @returns {string}
@@ -214,7 +214,7 @@ class ValueObject extends BaseObject implements IValueObject
     }
 
     /**
-     * Converts the string json data into an Object and calls the {{#crossLink "ValueObject/update:method"}}{{/crossLink}} method with the converted Object.
+     * Converts the string json data into an Object and calls the {{#crossLink "BaseModel/update:method"}}{{/crossLink}} method with the converted Object.
      *
      * @method fromJSON
      * @param json {string}
@@ -234,20 +234,20 @@ class ValueObject extends BaseObject implements IValueObject
     }
 
     /**
-     * Create a clone/copy of the value object.
+     * Create a clone/copy of the  Base Model.
      *
      * @method clone
-     * @returns {ValueObject}
+     * @returns {BaseModel}
      * @public
      * @example
      *     var clone = carVO.clone();
      */
-    public clone():ValueObject
+    public clone():BaseModel
     {
-        var clonedValueObject:ValueObject = new (<any>this).constructor(this);
+        var clonedBaseModel:BaseModel = new (<any>this).constructor(this);
 
-        return clonedValueObject;
+        return clonedBaseModel;
     }
 }
 
-export = ValueObject;
+export = BaseModel;

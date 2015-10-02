@@ -60,10 +60,10 @@ var movies = [
 ];
 
 
-var ValueObject = require('../../js/model/ValueObject');
-var MovieVO = require('./valueobjects/MovieVO');
+var BaseModel = require('../../js/model/BaseModel');
+var MovieVO = require('./basemodels/MovieVO');
 
-describe("ValueObject", function() {
+describe("BaseModel", function() {
 
     var movieVO = new MovieVO(movies[0]);
 

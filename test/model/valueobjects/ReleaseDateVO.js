@@ -2,19 +2,19 @@
 
 // Imports
 var Extend = require('../../../js/util/Extend');
-var ValueObject = require('../../../js/model/ValueObject');
+var BaseModel = require('../../../js/model/BaseModel');
 var NumberUtil = require('../../../js/util/NumberUtil');
 
 /**
  * YUIDoc_comment
  *
  * @class ReleaseDateVO
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
 var ReleaseDateVO = (function () {
 
-    var _super = Extend(ReleaseDateVO, ValueObject);
+    var _super = Extend(ReleaseDateVO, BaseModel);
 
     function ReleaseDateVO(data) {
         _super.call(this);
@@ -27,7 +27,7 @@ var ReleaseDateVO = (function () {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     ReleaseDateVO.prototype.update = function (data) {
         _super.prototype.update.call(this, data);
@@ -38,7 +38,7 @@ var ReleaseDateVO = (function () {
     };
 
     /**
-     * @overridden ValueObject.toJSON
+     * @overridden BaseModel.toJSON
      */
     ReleaseDateVO.prototype.toJSON = function() {
         var json = _super.prototype.toJSON.call(this);

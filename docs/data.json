@@ -194,6 +194,15 @@
             "fors": {},
             "namespaces": {}
         },
+        "js/model/BaseModel.js": {
+            "name": "js/model/BaseModel.js",
+            "modules": {},
+            "classes": {
+                "BaseModel": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "js/model/Collection.js": {
             "name": "js/model/Collection.js",
             "modules": {},
@@ -208,15 +217,6 @@
             "modules": {},
             "classes": {
                 "Route": 1
-            },
-            "fors": {},
-            "namespaces": {}
-        },
-        "js/model/ValueObject.js": {
-            "name": "js/model/ValueObject.js",
-            "modules": {},
-            "classes": {
-                "ValueObject": 1
             },
             "fors": {},
             "namespaces": {}
@@ -412,9 +412,9 @@
                 "RouterEvent": 1,
                 "TimerEvent": 1,
                 "Point": 1,
+                "BaseModel": 1,
                 "Collection": 1,
                 "Route": 1,
-                "ValueObject": 1,
                 "NetworkMonitor": 1,
                 "BrowserUtil": 1,
                 "BulkLoader": 1,
@@ -515,17 +515,17 @@
             "name": "model",
             "submodules": {},
             "classes": {
+                "BaseModel": 1,
                 "Collection": 1,
-                "Route": 1,
-                "ValueObject": 1
+                "Route": 1
             },
             "fors": {},
             "is_submodule": 1,
             "namespaces": {},
             "module": "StructureJS",
             "namespace": "",
-            "description": "The Collection class provides a way for you to manage your models.",
-            "file": "js/model/ValueObject.js",
+            "description": "Base Model (VO) is a design pattern used to transfer data between software application subsystems.\n\n Note: If the data doesn't match the property names you can set the value manually after update super method has been called.\nAlso in the class you inherit BaseModel from you can override the update method to handle the data how you want.",
+            "file": "js/model/Route.js",
             "line": 18
         },
         "util": {
@@ -613,7 +613,7 @@
                 "Extend",
                 "EventDispatcher",
                 "LocalStorageEvent",
-                "ValueObject"
+                "BaseModel"
             ],
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
@@ -1164,6 +1164,40 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)"
         },
+        "BaseModel": {
+            "name": "BaseModel",
+            "shortname": "BaseModel",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "StructureJS",
+            "namespace": "",
+            "file": "js/model/BaseModel.js",
+            "line": 18,
+            "description": "Base Model (VO) is a design pattern used to transfer data between software application subsystems.\n\n Note: If the data doesn't match the property names you can set the value manually after update super method has been called.\nAlso in the class you inherit BaseModel from you can override the update method to handle the data how you want.",
+            "submodule": "model",
+            "extends": "BaseObject",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Provide a way to update the  Base Model upon initialization.",
+                    "type": "Any",
+                    "optional": true
+                }
+            ],
+            "requires": [
+                "Extend",
+                "BaseObject",
+                "Util"
+            ],
+            "is_constructor": 1,
+            "author": "Robert S. (www.codeBelt.com)",
+            "example": [
+                "\n   var data = {\n        make: 'Tesla',\n        model: 'Model S',\n        YeAr: 2014,\n        feature: {\n            abs: true,\n            airbags: true\n        }\n   }\n   var carVO = new CarVO(data);\n\n\n   // Example how to extend the BaseModel class.\n    var CarVO = (function () {\n        var _super = Extend(CarVO, BaseModel);\n        function CarVO(data) {\n            _super.call(this);\n\n            // You need to have properties so the data will get assigned.\n            // If not the data will not get assigned to the vo.\n            this.make = null;\n            this.model = null;\n            this.year = null;\n            this.allWheel = false; // Set a default value.\n\n            // You can assign BaseModel to a property which will\n            // automatically created it and pass the data to it.\n            this.feature = FeatureVO;\n\n            // If you have an array of data and want them assign to a BaseModel.\n            this.feature = [FeatureVO];\n\n            if (data) {\n                this.update(data);\n            }\n        }\n\n        // @overridden BaseModel.update\n        CarVO.prototype.update = function (data) {\n            _super.prototype.update.call(this, data);\n\n            // If the data doesn't match the property name.\n           // You can set the value(s) manually after the update super method has been called.\n            this.year = data.YeAr;\n        };\n\n        return CarVO;\n    })();"
+            ]
+        },
         "Collection": {
             "name": "Collection",
             "shortname": "Collection",
@@ -1187,9 +1221,9 @@
             "is_constructor": 1,
             "params": [
                 {
-                    "name": "valueObjectType",
-                    "description": "Pass a class that extends ValueObject and the data added to the collection will be created as that type.",
-                    "type": "ValueObject"
+                    "name": "baseModelType",
+                    "description": "Pass a class that extends BaseModel and the data added to the collection will be created as that type.",
+                    "type": "BaseModel"
                 }
             ],
             "author": "Robert S. (www.codeBelt.com)",
@@ -1232,40 +1266,6 @@
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
                 "\n    // Example of adding a route listener and the function callback below.\n    var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route would match the string below:\n    route.match('/games/asteroids/2/');\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/contact/');\n    route.match('/contact/heather/');\n    route.match('/contact/john/');\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/product/shoes/');\n    route.match('/product/jackets/');\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    var route = new Route('*', this.method, this);\n\n    // Will match one of the following:\n    route.match('/anything/');\n    route.match('/matches/any/hash/url/');\n    route.match('/really/it/matches/any/and/all/hash/urls/');\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    var route = new Route('', this.method, this);\n    var route = new Route('/', this.method, this);\n\n    // Will match one of the following:\n    route.match('');\n    route.match('/');\n\n\nOther possible combinations but not limited too:\n\n    var route = new Route('/games/{gameName}/:level:/', this.method1, this);\n    var route = new Route('/{category}/blog/', this.method2, this);\n    var route = new Route('/about/*', this.method4, this);\n"
-            ]
-        },
-        "ValueObject": {
-            "name": "ValueObject",
-            "shortname": "ValueObject",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "module": "StructureJS",
-            "namespace": "",
-            "file": "js/model/ValueObject.js",
-            "line": 18,
-            "description": "Value Object (VO) is a design pattern used to transfer data between software application subsystems.\n\nNote: If the data doesn't match the property names you can set the value manually after update super method has been called.\n Also in the class you inherit ValueObject from you can override the update method to handle the data how you want.",
-            "submodule": "model",
-            "extends": "BaseObject",
-            "params": [
-                {
-                    "name": "data",
-                    "description": "Provide a way to update the value object upon initialization.",
-                    "type": "Any",
-                    "optional": true
-                }
-            ],
-            "requires": [
-                "Extend",
-                "BaseObject",
-                "Util"
-            ],
-            "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)",
-            "example": [
-                "\n    var data = {\n         make: 'Tesla',\n         model: 'Model S',\n         YeAr: 2014,\n         feature: {\n             abs: true,\n             airbags: true\n         }\n    }\n    var carVO = new CarVO(data);\n\n\n    // Example how to extend the ValueObject class.\n     var CarVO = (function () {\n         var _super = Extend(CarVO, ValueObject);\n         function CarVO(data) {\n             _super.call(this);\n\n             // You need to have properties so the data will get assigned.\n             // If not the data will not get assigned to the vo.\n             this.make = null;\n             this.model = null;\n             this.year = null;\n             this.allWheel = false; // Set a default value.\n\n             // You can assign ValueObject to a property which will\n             // automatically created it and pass the data to it.\n             this.feature = FeatureVO;\n\n             // If you have an array of data and want them assign to a ValueObject.\n             this.feature = [FeatureVO];\n\n             if (data) {\n                 this.update(data);\n             }\n         }\n\n         // @overridden ValueObject.update\n         CarVO.prototype.update = function (data) {\n             _super.prototype.update.call(this, data);\n\n             // If the data doesn't match the property name.\n            // You can set the value(s) manually after the update super method has been called.\n             this.year = data.YeAr;\n         };\n\n         return CarVO;\n     })();"
             ]
         },
         "NetworkMonitor": {
@@ -5069,6 +5069,158 @@
             "submodule": "geom"
         },
         {
+            "file": "js/model/BaseModel.js",
+            "line": 1,
+            "description": "UMD (Universal Module Definition) wrapper.",
+            "class": "BaseModel",
+            "module": "StructureJS"
+        },
+        {
+            "file": "js/model/BaseModel.js",
+            "line": 91,
+            "description": "Provide a way to update the  Base Model.",
+            "itemtype": "method",
+            "name": "update",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "Any"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    // Example of updating some of the data:\n    carVO.update({ year: 2015, allWheel: true});\n\n    // Of course you can also do it the following way:\n    carVO.year = 2015;\n    carVO.allWheel = false;"
+            ],
+            "class": "BaseModel",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/BaseModel.js",
+            "line": 121,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "_setData",
+            "params": [
+                {
+                    "name": "key",
+                    "description": ""
+                },
+                {
+                    "name": "data",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "BaseModel",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/BaseModel.js",
+            "line": 145,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "_updateData",
+            "params": [
+                {
+                    "name": "keyValue",
+                    "description": ""
+                },
+                {
+                    "name": "data",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "class": "BaseModel",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/BaseModel.js",
+            "line": 168,
+            "description": "Converts the  Base Model data into a JSON object and deletes the sjsId property.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "",
+                "type": "BaseModel"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var obj = carVO.toJSON();"
+            ],
+            "class": "BaseModel",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/BaseModel.js",
+            "line": 181,
+            "description": "Converts a  Base Model to a JSON string,",
+            "itemtype": "method",
+            "name": "toJSONString",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var str = carVO.toJSONString();"
+            ],
+            "class": "BaseModel",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/BaseModel.js",
+            "line": 193,
+            "description": "Converts the string json data into an Object and calls the {{#crossLink \"BaseModel/update:method\"}}{{/crossLink}} method with the converted Object.",
+            "itemtype": "method",
+            "name": "fromJSON",
+            "params": [
+                {
+                    "name": "json",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n     var str = '{\"make\":\"Tesla\",\"model\":\"Model S\",\"year\":2014}'\n     var carVO = new CarVO();\n     carVO.fromJSON(str);"
+            ],
+            "class": "BaseModel",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
+            "file": "js/model/BaseModel.js",
+            "line": 209,
+            "description": "Create a clone/copy of the  Base Model.",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "",
+                "type": "BaseModel"
+            },
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    var clone = carVO.clone();"
+            ],
+            "class": "BaseModel",
+            "module": "StructureJS",
+            "submodule": "model"
+        },
+        {
             "file": "js/model/Collection.js",
             "line": 1,
             "description": "UMD (Universal Module Definition) wrapper.",
@@ -5105,10 +5257,10 @@
         {
             "file": "js/model/Collection.js",
             "line": 67,
-            "description": "A reference to a ValueObject that will be used in the collection.",
+            "description": "A reference to a BaseModel that will be used in the collection.",
             "itemtype": "property",
             "name": "_modelType",
-            "type": "{ValueObject}",
+            "type": "{BaseModel}",
             "access": "private",
             "tagname": "",
             "class": "Collection",
@@ -5204,7 +5356,7 @@
         {
             "file": "js/model/Collection.js",
             "line": 154,
-            "description": "Returns the array index position of the value object.",
+            "description": "Returns the array index position of the  Base Model.",
             "itemtype": "method",
             "name": "indexOf",
             "params": [
@@ -5273,7 +5425,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     // Finds all value object that has 'Robert' in it.\n     this._collection.findBy(\"Robert\");\n     // Finds any value object that has 'Robert' or 'Heater' or 23 in it.\n     this._collection.findBy([\"Robert\", \"Heather\", 32]);\n\n     // Finds all value objects that same key and value you are searching for.\n     this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });\n     this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
+                "\n     // Finds all  Base Model that has 'Robert' in it.\n     this._collection.findBy(\"Robert\");\n     // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.\n     this._collection.findBy([\"Robert\", \"Heather\", 32]);\n\n     // Finds all  Base Models that same key and value you are searching for.\n     this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });\n     this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5728,158 +5880,6 @@
                 "\n    var route = new Route('/games/{gameName}/:level:/', this.method, this);\n    console.log( route.match('/games/asteroids/2/') );"
             ],
             "class": "Route",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 1,
-            "description": "UMD (Universal Module Definition) wrapper.",
-            "class": "ValueObject",
-            "module": "StructureJS"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 91,
-            "description": "Provide a way to update the value object.",
-            "itemtype": "method",
-            "name": "update",
-            "params": [
-                {
-                    "name": "data",
-                    "description": "",
-                    "type": "Any"
-                }
-            ],
-            "access": "public",
-            "tagname": "",
-            "example": [
-                "\n    // Example of updating some of the data:\n    carVO.update({ year: 2015, allWheel: true});\n\n    // Of course you can also do it the following way:\n    carVO.year = 2015;\n    carVO.allWheel = false;"
-            ],
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 121,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "_setData",
-            "params": [
-                {
-                    "name": "key",
-                    "description": ""
-                },
-                {
-                    "name": "data",
-                    "description": ""
-                }
-            ],
-            "access": "private",
-            "tagname": "",
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 145,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "_updateData",
-            "params": [
-                {
-                    "name": "keyValue",
-                    "description": ""
-                },
-                {
-                    "name": "data",
-                    "description": ""
-                }
-            ],
-            "access": "private",
-            "tagname": "",
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 168,
-            "description": "Converts the value object data into a JSON object and deletes the sjsId property.",
-            "itemtype": "method",
-            "name": "toJSON",
-            "return": {
-                "description": "",
-                "type": "ValueObject"
-            },
-            "access": "public",
-            "tagname": "",
-            "example": [
-                "\n    var obj = carVO.toJSON();"
-            ],
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 181,
-            "description": "Converts a value object to a JSON string,",
-            "itemtype": "method",
-            "name": "toJSONString",
-            "return": {
-                "description": "",
-                "type": "String"
-            },
-            "access": "public",
-            "tagname": "",
-            "example": [
-                "\n    var str = carVO.toJSONString();"
-            ],
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 193,
-            "description": "Converts the string json data into an Object and calls the {{#crossLink \"ValueObject/update:method\"}}{{/crossLink}} method with the converted Object.",
-            "itemtype": "method",
-            "name": "fromJSON",
-            "params": [
-                {
-                    "name": "json",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "access": "public",
-            "tagname": "",
-            "example": [
-                "\n     var str = '{\"make\":\"Tesla\",\"model\":\"Model S\",\"year\":2014}'\n     var carVO = new CarVO();\n     carVO.fromJSON(str);"
-            ],
-            "class": "ValueObject",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/ValueObject.js",
-            "line": 209,
-            "description": "Create a clone/copy of the value object.",
-            "itemtype": "method",
-            "name": "clone",
-            "return": {
-                "description": "",
-                "type": "ValueObject"
-            },
-            "access": "public",
-            "tagname": "",
-            "example": [
-                "\n    var clone = carVO.clone();"
-            ],
-            "class": "ValueObject",
             "module": "StructureJS",
             "submodule": "model"
         },
@@ -9012,6 +9012,18 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
+            "line": " js/model/BaseModel.js:168"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " js/model/BaseModel.js:181"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " js/model/BaseModel.js:209"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
             "line": " js/model/Collection.js:326"
         },
         {
@@ -9029,18 +9041,6 @@
         {
             "message": "replacing incorrect tag: returns with return",
             "line": " js/model/Route.js:148"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:168"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:181"
-        },
-        {
-            "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/ValueObject.js:209"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9444,15 +9444,15 @@
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
+            "line": " js/model/BaseModel.js:1"
+        },
+        {
+            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " js/model/Collection.js:1"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
             "line": " js/model/Route.js:1"
-        },
-        {
-            "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
-            "line": " js/model/ValueObject.js:1"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",

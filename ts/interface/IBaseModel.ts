@@ -1,12 +1,12 @@
 /**
  * TODO: YUIDoc_comment
  *
- * @class IValueObject
+ * @class IBaseModel
  * @module StructureJS
  * @submodule interface
  * @interface
  */
-interface IValueObject
+interface IBaseModel
 {
     /**
      * @method clone
@@ -34,4 +34,4 @@ interface IValueObject
     destroy():void;
 }
 
-export = IValueObject;
+export = IBaseModel;

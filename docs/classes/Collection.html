@@ -51,6 +51,8 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
@@ -116,8 +118,6 @@
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
-            
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
             
             </ul>
 
@@ -555,7 +555,7 @@
             <a name="property__modelType" class="anchor-link"></a>
 <div class="property item private">
     <h3 class="name"><code>_modelType</code>
-    <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
+    <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>
 
     
 
@@ -591,7 +591,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>A reference to a ValueObject that will be used in the collection.</p>
+            <p>A reference to a BaseModel that will be used in the collection.</p>
 
         </div>
 
@@ -884,7 +884,7 @@ list hierarchy and helps facilitate event bubbling.</p>
             
                 <li class="arg">
                     
-                        <code>valueObjectType</code>
+                        <code>baseModelType</code>
                     
                 </li>
             
@@ -943,14 +943,14 @@ list hierarchy and helps facilitate event bubbling.</p>
                 
                     <li class="param">
                         
-                            <code class="param-name">valueObjectType</code>
-                            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
+                            <code class="param-name">baseModelType</code>
+                            <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>Pass a class that extends ValueObject and the data added to the collection will be created as that type.</p>
+                            <p>Pass a class that extends BaseModel and the data added to the collection will be created as that type.</p>
 
                         </div>
 
@@ -2496,12 +2496,12 @@ When checking properties, this method performs a deep comparison between values 
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> // Finds all value object that has &#39;Robert&#39; in it.
+                    <pre class="code prettyprint"><code> // Finds all  Base Model that has &#39;Robert&#39; in it.
  this._collection.findBy(&quot;Robert&quot;);
- // Finds any value object that has &#39;Robert&#39; or &#39;Heater&#39; or 23 in it.
+ // Finds any  Base Model that has &#39;Robert&#39; or &#39;Heater&#39; or 23 in it.
  this._collection.findBy([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
 
- // Finds all value objects that same key and value you are searching for.
+ // Finds all  Base Models that same key and value you are searching for.
  this._collection.findBy({ name: &#39;apple&#39;, organic: false, type: &#39;fruit&#39; });
  this._collection.findBy([{ type: &#39;vegetable&#39; }, { name: &#39;apple&#39;, &#39;organic: false, type&#39;: &#39;fruit&#39; }]);</code></pre>
 
@@ -3398,7 +3398,7 @@ If the index is out of bounds, the collection will clamp it.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Returns the array index position of the value object.</p>
+            <p>Returns the array index position of the  Base Model.</p>
 
         </div>
 

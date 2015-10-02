@@ -3,18 +3,18 @@ define(function(require, exports, module) { // jshint ignore:line
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var ValueObject = require('structurejs/model/ValueObject');
+    var BaseModel = require('structurejs/model/BaseModel');
 
     /**
      * TODO: YUIDoc_comment
      *
      * @class PosterVO
-     * @extends ValueObject
+     * @extends BaseModel
      * @constructor
      **/
     var PosterVO = (function () {
 
-        var _super = Extend(PosterVO, ValueObject);
+        var _super = Extend(PosterVO, BaseModel);
 
         function PosterVO(data) {
             _super.call(this);
@@ -30,7 +30,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden ValueObject.update
+         * @overridden BaseModel.update
          */
         PosterVO.prototype.update = function (data) {
              _super.prototype.update.call(this, data);

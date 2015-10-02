@@ -3,18 +3,18 @@ define(function(require, exports, module) { // jshint ignore:line
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var ValueObject = require('structurejs/model/ValueObject');
+    var BaseModel = require('structurejs/model/BaseModel');
 
     /**
      * TODO: YUIDoc_comment
      *
      * @class ${NAME}
-     * @extends ValueObject
+     * @extends BaseModel
      * @constructor
      **/
     var ${NAME} = (function () {
 
-        var _super = Extend(${NAME}, ValueObject); // jshint ignore:line
+        var _super = Extend(${NAME}, BaseModel); // jshint ignore:line
 
         function ${NAME}(data) { // jshint ignore:line
             _super.call(this);
@@ -25,7 +25,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden ValueObject.update
+         * @overridden BaseModel.update
          */
         ${NAME}.prototype.update = function (data) {
              _super.prototype.update.call(this, data);

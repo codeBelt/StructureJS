@@ -170,11 +170,11 @@ var App = (function () {
         var todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
-            var valueObject = new ListItemVO({text: todoText});
-            valueObject.id = StringUtil.createUUID();
-            var childItem = new ListItemComponent(valueObject);
+            var baseModel = new ListItemVO({text: todoText});
+            baseModel.id = StringUtil.createUUID();
+            var childItem = new ListItemComponent(baseModel);
 
-            this._listItemCollection.add(valueObject);
+            this._listItemCollection.add(baseModel);
             this._todoListContainer.addChild(childItem);
             this._$addTodoInput.val('');
         }
@@ -246,7 +246,7 @@ var App = (function () {
         var items = this._listItemCollection.models;
         var length = items.length;
 
-        // Create ListItemComponent view items from the stored ListItemVO value objects.
+        // Create ListItemComponent view items from the stored ListItemVO  Base Models.
         for (var i = 0; i < length; i++) {
             var childItem = new ListItemComponent(items[i]);
             this._todoListContainer.addChild(childItem);

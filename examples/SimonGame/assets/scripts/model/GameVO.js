@@ -3,18 +3,18 @@ define(function (require, exports, module) { // jshint ignore:line
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var ValueObject = require('structurejs/model/ValueObject');
+    var BaseModel = require('structurejs/model/BaseModel');
 
     /**
      * TODO: YUIDoc_comment
      *
      * @class GameVO
-     * @extends ValueObject
+     * @extends BaseModel
      * @constructor
      **/
     var GameVO = (function () {
 
-        var _super = Extend(GameVO, ValueObject);
+        var _super = Extend(GameVO, BaseModel);
 
         function GameVO(data) {
             _super.call(this);
@@ -34,14 +34,14 @@ define(function (require, exports, module) { // jshint ignore:line
         }
 
         /**
-         * @overridden ValueObject.update
+         * @overridden BaseModel.update
          */
         GameVO.prototype.update = function (data) {
             this.buttonIndex = data.buttonIndex;
         };
 
         /**
-         * @overridden ValueObject.copy
+         * @overridden BaseModel.copy
          */
         GameVO.prototype.copy = function () {
             var data = _super.prototype.copy();

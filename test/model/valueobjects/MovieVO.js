@@ -2,7 +2,7 @@
 
 // Imports
 var Extend = require('../../../js/util/Extend');
-var ValueObject = require('../../../js/model/ValueObject');
+var BaseModel = require('../../../js/model/BaseModel');
 var RatingsVO = require('./RatingsVO');
 var PosterVO = require('./PosterVO');
 var CastVO = require('./CastVO');
@@ -12,12 +12,12 @@ var ReleaseDateVO = require('./ReleaseDateVO');
  * TODO: YUIDoc_comment
  *
  * @class MovieVO
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
 var MovieVO = (function () {
 
-    var _super = Extend(MovieVO, ValueObject);
+    var _super = Extend(MovieVO, BaseModel);
 
     function MovieVO(data) {
         _super.call(this);
@@ -39,7 +39,7 @@ var MovieVO = (function () {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     MovieVO.prototype.update = function (data) {
         _super.prototype.update.call(this, data);

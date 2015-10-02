@@ -2,7 +2,6 @@
 /*
  UMD Stuff
  @import ../util/Extend as Extend
- @import ../model/ValueObject as ValueObject
  @import ../controller/LocalStorageController as LocalStorageController
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/RequestEvent as RequestEvent
@@ -11,7 +10,6 @@
  @import ./vo/LanguageConfigVO as LanguageConfigVO
  @export LoaderEvent
  */
-import ValueObject = require('../interface/IDataStore');
 import LocalStorageController = require('../controller/LocalStorageController');
 import EventDispatcher = require('../event/EventDispatcher');
 import RequestEvent = require('../event/RequestEvent');

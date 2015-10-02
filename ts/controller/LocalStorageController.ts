@@ -4,12 +4,12 @@
  @import ../util/Extend as Extend
  @import ../event/LocalStorageEvent as LocalStorageEvent
  @import ../event/EventDispatcher as EventDispatcher
- @import ../model/ValueObject as ValueObject
+ @import ../model/BaseModel as BaseModel
  @export LocalStorageController
  */
 import LocalStorageEvent = require('../event/LocalStorageEvent');
 import EventDispatcher = require('../event/EventDispatcher');
-import ValueObject = require('../model/ValueObject');
+import BaseModel = require('../model/BaseModel');
 
 /**
  * The LocalStorageController...
@@ -21,7 +21,7 @@ import ValueObject = require('../model/ValueObject');
  * @requires Extend
  * @requires EventDispatcher
  * @requires LocalStorageEvent
- * @requires ValueObject
+ * @requires BaseModel
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
@@ -95,9 +95,9 @@ class LocalStorageController extends EventDispatcher
             key = this.getNamespace() + key;
         }
 
-        if (data instanceof ValueObject)
+        if (data instanceof BaseModel)
         {
-            data = <ValueObject>data.toJSON();
+            data = <BaseModel>data.toJSON();
         }
 
         data = JSON.stringify(data);

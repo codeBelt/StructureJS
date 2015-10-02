@@ -2,12 +2,12 @@
 /*
  UMD Stuff
  @import ../../util/Extend as Extend
- @import ../ValueObject as ValueObject
+ @import ../BaseModel as BaseModel
  @export StatusVO
  */
-import ValueObject = require('../ValueObject');
+import BaseModel = require('../BaseModel');
 
-class StatusVO extends ValueObject
+class StatusVO extends BaseModel
 {
     /**
      * TODO: YUIDoc_comment
@@ -35,8 +35,8 @@ class StatusVO extends ValueObject
      * TODO: YUIDoc_comment
      *
      * @class StatusVO
-     * @param [data] {any} Provide a way to update the value object upon initialization.
-     * @extends ValueObject
+     * @param [data] {any} Provide a way to update the  Base Model upon initialization.
+     * @extends BaseModel
      * @module StructureJS
      * @constructor
      * @author Robert S. (www.codeBelt.com)
@@ -52,7 +52,7 @@ class StatusVO extends ValueObject
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     public update(data:any):void
     {

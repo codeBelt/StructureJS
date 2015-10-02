@@ -4,6 +4,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "ApplicationCacheController",
         "ApplicationCacheEvent",
         "BaseEvent",
+        "BaseModel",
         "BaseObject",
         "BrowserUtil",
         "BulkLoader",
@@ -36,8 +37,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Timer",
         "TimerEvent",
         "Util",
-        "ValidationUtil",
-        "ValueObject"
+        "ValidationUtil"
     ],
     "modules": [
         "StructureJS",
@@ -73,7 +73,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "model",
             "name": "model",
-            "description": "The Collection class provides a way for you to manage your models."
+            "description": "Base Model (VO) is a design pattern used to transfer data between software application subsystems.\n\n Note: If the data doesn't match the property names you can set the value manually after update super method has been called.\nAlso in the class you inherit BaseModel from you can override the update method to handle the data how you want."
         },
         {
             "displayName": "StructureJS",

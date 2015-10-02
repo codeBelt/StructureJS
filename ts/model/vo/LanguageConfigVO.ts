@@ -2,12 +2,12 @@
 /*
  UMD Stuff
  @import ../../util/Extend as Extend
- @import ../ValueObject as ValueObject
+ @import ../BaseModel as BaseModel
  @export LoaderEvent
  */
-import ValueObject = require('../ValueObject');
+import BaseModel = require('../BaseModel');
 
-class LanguageConfigVO extends ValueObject
+class LanguageConfigVO extends BaseModel
 {
     public id:string;
     public lang:string;
@@ -18,7 +18,7 @@ class LanguageConfigVO extends ValueObject
      * TODO: YUIDoc_comment
      *
      * @class LanguageConfigVO
-     * @param [data] {any} Provide a way to update the value object upon initialization.
+     * @param [data] {any} Provide a way to update the  Base Model upon initialization.
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @module StructureJS
@@ -35,7 +35,7 @@ class LanguageConfigVO extends ValueObject
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     public update(data:any):any
     {

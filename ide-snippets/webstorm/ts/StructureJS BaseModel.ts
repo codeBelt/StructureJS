@@ -1,14 +1,14 @@
-import ValueObject = require('../vendor/structurejs/ts/model/ValueObject');
+import BaseModel = require('../vendor/structurejs/ts/model/BaseModel');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class ${NAME}
- * @param [data] {any} Provide a way to update the value object upon initialization.
- * @extends ValueObject
+ * @param [data] {any} Provide a way to update the  Base Model upon initialization.
+ * @extends BaseModel
  * @constructor
  **/
-class ${NAME} extends ValueObject {
+class ${NAME} extends BaseModel {
 
     constructor(data:any = null) {
         super();
@@ -19,7 +19,7 @@ class ${NAME} extends ValueObject {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     public update(data:any):void {
         super.update(data);

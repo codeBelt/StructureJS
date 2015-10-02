@@ -31,8 +31,8 @@ d._setup(c),!c.partial&&a.useData&&(f=j(b,f));var g=void 0,h=a.useBlockParams?[]
  * DO NOT MODIFY DIRECTLY. INSTEAD, MODIFY THE APPROPRIATE SOURCE CODE.
  *
  * Grunt-Browserify-Example v1.0.0
- * 
- * Development By: 
+ *
+ * Development By:
  * Build Date: 2015-09-04
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
@@ -209,11 +209,11 @@ var App = (function () {
         var todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
-            var valueObject = new ListItemVO({text: todoText});
-            valueObject.id = StringUtil.createUUID();
-            var childItem = new ListItemComponent(valueObject);
+            var baseModel = new ListItemVO({text: todoText});
+            baseModel.id = StringUtil.createUUID();
+            var childItem = new ListItemComponent(baseModel);
 
-            this._listItemCollection.add(valueObject);
+            this._listItemCollection.add(baseModel);
             this._todoListContainer.addChild(childItem);
             this._$addTodoInput.val('');
         }
@@ -285,7 +285,7 @@ var App = (function () {
         var items = this._listItemCollection.models;
         var length = items.length;
 
-        // Create ListItemComponent view items from the stored ListItemVO value objects.
+        // Create ListItemComponent view items from the stored ListItemVO  Base Models.
         for (var i = 0; i < length; i++) {
             var childItem = new ListItemComponent(items[i]);
             this._todoListContainer.addChild(childItem);
@@ -834,18 +834,18 @@ var ListItemCollection = (function () {
 module.exports = ListItemCollection;
 },{"./vo/ListItemVO":6,"structurejs/controller/LocalStorageController":10,"structurejs/model/Collection":20,"structurejs/util/Extend":25}],6:[function(require,module,exports){
 var Extend = require('structurejs/util/Extend');
-var ValueObject = require('structurejs/model/ValueObject');
+var BaseModel = require('structurejs/model/BaseModel');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class ListItemVO
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
 var ListItemVO = (function () {
 
-    var _super = Extend(ListItemVO, ValueObject);
+    var _super = Extend(ListItemVO, BaseModel);
 
     function ListItemVO(data) {
         _super.call(this);
@@ -877,7 +877,7 @@ var ListItemVO = (function () {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     ListItemVO.prototype.update = function (data) {
         _super.prototype.update.call(this, data);
@@ -889,7 +889,7 @@ var ListItemVO = (function () {
 })();
 
 module.exports = ListItemVO;
-},{"structurejs/model/ValueObject":22,"structurejs/util/Extend":25}],7:[function(require,module,exports){
+},{"structurejs/model/BaseModel":22,"structurejs/util/Extend":25}],7:[function(require,module,exports){
 var Extend = require('structurejs/util/Extend');
 var DOMElement = require('structurejs/display/DOMElement');
 var BaseEvent = require('structurejs/event/BaseEvent');
@@ -1214,15 +1214,15 @@ module.exports = FooterView;
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/ValueObject'], factory);
+        define(['../util/Extend', '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/ValueObject'));
+        module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/BaseModel'));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.ValueObject);
+        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.BaseModel);
     }
-}(this, function(Extend, LocalStorageEvent, EventDispatcher, ValueObject) {
+}(this, function(Extend, LocalStorageEvent, EventDispatcher, BaseModel) {
 
     'use strict';
 
@@ -1236,7 +1236,7 @@ module.exports = FooterView;
      * @requires Extend
      * @requires EventDispatcher
      * @requires LocalStorageEvent
-     * @requires ValueObject
+     * @requires BaseModel
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -1300,7 +1300,7 @@ module.exports = FooterView;
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
-            if (data instanceof ValueObject) {
+            if (data instanceof BaseModel) {
                 data = data.toJSON();
             }
             data = JSON.stringify(data);
@@ -1447,7 +1447,7 @@ module.exports = FooterView;
     return LocalStorageController;
 }));
 
-},{"../event/EventDispatcher":17,"../event/LocalStorageEvent":18,"../model/ValueObject":22,"../util/Extend":25}],11:[function(require,module,exports){
+},{"../event/EventDispatcher":17,"../event/LocalStorageEvent":18,"../model/BaseModel":22,"../util/Extend":25}],11:[function(require,module,exports){
 /**
  * UMD (Universal Module Definition) wrapper.
  */
@@ -3414,13 +3414,13 @@ module.exports = FooterView;
          *     var cloneOfEvent = event.clone();
          */
         BaseEvent.prototype.clone = function() {
-            var clonedValueObject = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
+            var clonedBaseModel = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {
-                    clonedValueObject[key] = this[key];
+                    clonedBaseModel[key] = this[key];
                 }
             }
-            return clonedValueObject;
+            return clonedBaseModel;
         };
         /**
          * The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.
@@ -4149,7 +4149,7 @@ module.exports = FooterView;
      * @requires EventDispatcher
      * @requires BaseEvent
      * @constructor
-     * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
+     * @param baseModelType {BaseModel} Pass a class that extends BaseModel and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
      * @example
      *     var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
@@ -4166,8 +4166,8 @@ module.exports = FooterView;
 
         var _super = Extend(Collection, EventDispatcher);
 
-        function Collection(valueObjectType) {
-            if (valueObjectType === void 0) { valueObjectType = null; }
+        function Collection(baseModelType) {
+            if (baseModelType === void 0) { baseModelType = null; }
             _super.call(this);
             /**
              * The list of models in the collection.
@@ -4188,14 +4188,14 @@ module.exports = FooterView;
              */
             this.length = 0;
             /**
-             * A reference to a ValueObject that will be used in the collection.
+             * A reference to a BaseModel that will be used in the collection.
              *
              * @property _modelType
-             * @type {ValueObject}
+             * @type {BaseModel}
              * @private
              */
             this._modelType = null;
-            this._modelType = valueObjectType;
+            this._modelType = baseModelType;
         }
         /**
          * Adds model or an array of models to the collection.
@@ -4275,7 +4275,7 @@ module.exports = FooterView;
             return this.indexOf(model) > -1;
         };
         /**
-         * Returns the array index position of the value object.
+         * Returns the array index position of the  Base Model.
          *
          * @method indexOf
          * @param model {Object} get the index of.
@@ -4316,12 +4316,12 @@ module.exports = FooterView;
          * @return {Array.<any>} Returns a list of found object's.
          * @public
          * @example
-         *      // Finds all value object that has 'Robert' in it.
+         *      // Finds all  Base Model that has 'Robert' in it.
          *      this._collection.findBy("Robert");
-         *      // Finds any value object that has 'Robert' or 'Heater' or 23 in it.
+         *      // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.
          *      this._collection.findBy(["Robert", "Heather", 32]);
          *
-         *      // Finds all value objects that same key and value you are searching for.
+         *      // Finds all  Base Models that same key and value you are searching for.
          *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
          *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          */
@@ -4333,7 +4333,7 @@ module.exports = FooterView;
             var prop;
             for (var i = 0; i < len; i++) {
                 prop = list[i];
-                // Adds found value object to the foundItems array.
+                // Adds found  Base Model to the foundItems array.
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the model is not an object.
                     foundItems = foundItems.concat(this._findPropertyValue(prop));
@@ -4415,9 +4415,9 @@ module.exports = FooterView;
                         propertyValue = model[key];
                         for (j = 0; j < itemsToFindLength; j++) {
                             value = list[j];
-                            // If the value object property equals the string value then keep a reference to that value object.
+                            // If the  Base Model property equals the string value then keep a reference to that  Base Model.
                             if (propertyValue === value) {
-                                // Add found value object to the foundItems array.
+                                // Add found  Base Model to the foundItems array.
                                 foundItems.push(model);
                                 break;
                             }
@@ -4456,9 +4456,9 @@ module.exports = FooterView;
          *     var clone = collection.clone();
          */
         Collection.prototype.clone = function() {
-            var clonedValueObject = new this.constructor(this._modelType);
-            clonedValueObject.add(this.models.slice(0));
-            return clonedValueObject;
+            var clonedBaseModel = new this.constructor(this._modelType);
+            clonedBaseModel.add(this.models.slice(0));
+            return clonedBaseModel;
         };
         /**
          * Creates a JSON object of the collection.
@@ -4861,21 +4861,21 @@ module.exports = FooterView;
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ValueObject = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
+        root.StructureJS.BaseModel = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
     }
 }(this, function(Extend, BaseObject, Util) {
 
     'use strict';
 
     /**
-     * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+     *  Base Model (VO) is a design pattern used to transfer data between software application subsystems.
      *
      * Note: If the data doesn't match the property names you can set the value manually after update super method has been called.
-     *  Also in the class you inherit ValueObject from you can override the update method to handle the data how you want.
+     *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
      *
-     * @class ValueObject
+     * @class BaseModel
      * @extends BaseObject
-     * @param [data] {any} Provide a way to update the value object upon initialization.
+     * @param [data] {any} Provide a way to update the  Base Model upon initialization.
      * @module StructureJS
      * @submodule model
      * @requires Extend
@@ -4896,9 +4896,9 @@ module.exports = FooterView;
      *     var carVO = new CarVO(data);
      *
      *
-     *     // Example how to extend the ValueObject class.
+     *     // Example how to extend the BaseModel class.
      *      var CarVO = (function () {
-     *          var _super = Extend(CarVO, ValueObject);
+     *          var _super = Extend(CarVO, BaseModel);
      *          function CarVO(data) {
      *              _super.call(this);
      *
@@ -4909,11 +4909,11 @@ module.exports = FooterView;
      *              this.year = null;
      *              this.allWheel = false; // Set a default value.
      *
-     *              // You can assign ValueObject to a property which will
+     *              // You can assign BaseModel to a property which will
      *              // automatically created it and pass the data to it.
      *              this.feature = FeatureVO;
      *
-     *              // If you have an array of data and want them assign to a ValueObject.
+     *              // If you have an array of data and want them assign to a BaseModel.
      *              this.feature = [FeatureVO];
      *
      *              if (data) {
@@ -4921,7 +4921,7 @@ module.exports = FooterView;
      *              }
      *          }
      *
-     *          // @overridden ValueObject.update
+     *          // @overridden BaseModel.update
      *          CarVO.prototype.update = function (data) {
      *              _super.prototype.update.call(this, data);
      *
@@ -4933,15 +4933,15 @@ module.exports = FooterView;
      *          return CarVO;
      *      })();
      */
-    var ValueObject = (function() {
+    var BaseModel = (function() {
 
-        var _super = Extend(ValueObject, BaseObject);
+        var _super = Extend(BaseModel, BaseObject);
 
-        function ValueObject() {
+        function BaseModel() {
             _super.call(this);
         }
         /**
-         * Provide a way to update the value object.
+         * Provide a way to update the  Base Model.
          *
          * @method update
          * @param data {any}
@@ -4954,14 +4954,14 @@ module.exports = FooterView;
          *     carVO.year = 2015;
          *     carVO.allWheel = false;
          */
-        ValueObject.prototype.update = function(data) {
+        BaseModel.prototype.update = function(data) {
             var propertyData;
             for (var propertyKey in this) {
                 // If this class has a property that matches a property on the data being passed in then set it.
                 // Also don't set the sjsId data value because it is automatically set in the constructor and
                 // we do want it to be overridden when the clone method has been called.
                 if (this.hasOwnProperty(propertyKey) && propertyKey !== 'sjsId') {
-                    // If the data passed in does not have a property that matches a property on the value object then
+                    // If the data passed in does not have a property that matches a property on the  Base Model then
                     // use the default value/data that was assigned to the property.
                     // Else use the data that was passed in.
                     propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
@@ -4978,15 +4978,15 @@ module.exports = FooterView;
          * @param data
          * @private
          */
-        ValueObject.prototype._setData = function(key, data) {
+        BaseModel.prototype._setData = function(key, data) {
             // If the data is an array and if the property its being assigned to is an array.
             if (data instanceof Array && this[key] instanceof Array) {
                 var temp = [];
                 var len = data.length;
-                if ((this[key][0] instanceof ValueObject.constructor && data[0] instanceof ValueObject.constructor) === false) {
-                    var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false) {
+                    var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
                     for (var i = 0; i < len; i++) {
-                        temp[i] = this._updateData(valueObjectOrOther, data[i]);
+                        temp[i] = this._updateData(baseModelOrOther, data[i]);
                     }
                 }
                 this[key] = temp;
@@ -5002,13 +5002,13 @@ module.exports = FooterView;
          * @param data
          * @private
          */
-        ValueObject.prototype._updateData = function(keyValue, data) {
-            if (keyValue instanceof ValueObject.constructor) {
-                // If the property is an instance of a ValueObject class and has not been created yet.
+        BaseModel.prototype._updateData = function(keyValue, data) {
+            if (keyValue instanceof BaseModel.constructor) {
+                // If the property is an instance of a BaseModel class and has not been created yet.
                 // Then instantiate it and pass in the data to the constructor.
                 keyValue = new keyValue(data);
-            } else if (keyValue instanceof ValueObject) {
-                // If property is an instance of a ValueObject class and has already been created.
+            } else if (keyValue instanceof BaseModel) {
+                // If property is an instance of a BaseModel class and has already been created.
                 // Then call the update method and pass in the data.
                 keyValue.update(data);
             } else {
@@ -5018,20 +5018,20 @@ module.exports = FooterView;
             return keyValue;
         };
         /**
-         * Converts the value object data into a JSON object and deletes the sjsId property.
+         * Converts the  Base Model data into a JSON object and deletes the sjsId property.
          *
          * @method toJSON
-         * @returns {ValueObject}
+         * @returns {BaseModel}
          * @public
          * @example
          *     var obj = carVO.toJSON();
          */
-        ValueObject.prototype.toJSON = function() {
+        BaseModel.prototype.toJSON = function() {
             var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, ['sjsId']);
         };
         /**
-         * Converts a value object to a JSON string,
+         * Converts a  Base Model to a JSON string,
          *
          * @method toJSONString
          * @returns {string}
@@ -5039,11 +5039,11 @@ module.exports = FooterView;
          * @example
          *     var str = carVO.toJSONString();
          */
-        ValueObject.prototype.toJSONString = function() {
+        BaseModel.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
         };
         /**
-         * Converts the string json data into an Object and calls the {{#crossLink "ValueObject/update:method"}}{{/crossLink}} method with the converted Object.
+         * Converts the string json data into an Object and calls the {{#crossLink "BaseModel/update:method"}}{{/crossLink}} method with the converted Object.
          *
          * @method fromJSON
          * @param json {string}
@@ -5053,28 +5053,28 @@ module.exports = FooterView;
          *      var carVO = new CarVO();
          *      carVO.fromJSON(str);
          */
-        ValueObject.prototype.fromJSON = function(json) {
+        BaseModel.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
             this.update(parsedData);
             return this;
         };
         /**
-         * Create a clone/copy of the value object.
+         * Create a clone/copy of the  Base Model.
          *
          * @method clone
-         * @returns {ValueObject}
+         * @returns {BaseModel}
          * @public
          * @example
          *     var clone = carVO.clone();
          */
-        ValueObject.prototype.clone = function() {
-            var clonedValueObject = new this.constructor(this);
-            return clonedValueObject;
+        BaseModel.prototype.clone = function() {
+            var clonedBaseModel = new this.constructor(this);
+            return clonedBaseModel;
         };
-        return ValueObject;
+        return BaseModel;
     })();
 
-    return ValueObject;
+    return BaseModel;
 }));
 
 },{"../BaseObject":8,"../util/Extend":25,"../util/Util":28}],23:[function(require,module,exports){

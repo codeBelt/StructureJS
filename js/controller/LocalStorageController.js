@@ -3,15 +3,15 @@
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/ValueObject'], factory);
+        define(['../util/Extend', '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], factory);
     } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/ValueObject'));
+        module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/BaseModel'));
     } else {
         /*jshint sub:true */
         root.StructureJS = root.StructureJS || {};
-        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.ValueObject);
+        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.BaseModel);
     }
-}(this, function(Extend, LocalStorageEvent, EventDispatcher, ValueObject) {
+}(this, function(Extend, LocalStorageEvent, EventDispatcher, BaseModel) {
 
     'use strict';
 
@@ -25,7 +25,7 @@
      * @requires Extend
      * @requires EventDispatcher
      * @requires LocalStorageEvent
-     * @requires ValueObject
+     * @requires BaseModel
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
@@ -89,7 +89,7 @@
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
-            if (data instanceof ValueObject) {
+            if (data instanceof BaseModel) {
                 data = data.toJSON();
             }
             data = JSON.stringify(data);

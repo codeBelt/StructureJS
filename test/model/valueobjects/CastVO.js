@@ -2,18 +2,18 @@
 
 // Imports
 var Extend = require('../../../js/util/Extend');
-var ValueObject = require('../../../js/model/ValueObject');
+var BaseModel = require('../../../js/model/BaseModel');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class CastVO
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
 var CastVO = (function () {
 
-    var _super = Extend(CastVO, ValueObject);
+    var _super = Extend(CastVO, BaseModel);
 
     function CastVO(data) {
         _super.call(this);
@@ -28,7 +28,7 @@ var CastVO = (function () {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     CastVO.prototype.update = function (data) {
          _super.prototype.update.call(this, data);

@@ -1,16 +1,16 @@
 'use strict';
 
 // Imports
-import ValueObject from 'structurejs/model/ValueObject';
+import BaseModel from 'structurejs/model/BaseModel';
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class ${NAME}
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
-class ${NAME} extends ValueObject {
+class ${NAME} extends BaseModel {
 
     constructor(data) {
         super();
@@ -21,7 +21,7 @@ class ${NAME} extends ValueObject {
     }
     
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     update(data) {
         super.update(data);

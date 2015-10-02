@@ -5,18 +5,18 @@ define(function(require, exports, module) { // jshint ignore:line
 
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var ValueObject = require('structurejs/model/ValueObject');
+    var BaseModel = require('structurejs/model/BaseModel');
 
     /**
      * TODO: YUIDoc_comment
      *
      * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
-     * @extends ValueObject
+     * @extends BaseModel
      * @constructor
      **/
     var ${TM_FILENAME/(.*)[.](.*)/$1/g} = (function () {
 
-        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, ValueObject);
+        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, BaseModel);
 
         function ${TM_FILENAME/(.*)[.](.*)/$1/g}() {
             _super.call(this);
@@ -27,7 +27,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
 
         /**
-        * @overridden ValueObject.update
+        * @overridden BaseModel.update
         */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.update = function (data) {
             _super.prototype.update.call(this, data);
@@ -43,7 +43,7 @@ define(function(require, exports, module) { // jshint ignore:line
 });
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>valueObject</tabTrigger>
+	<tabTrigger>baseModel</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.js</scope>
 </snippet>

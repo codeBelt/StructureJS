@@ -16,8 +16,8 @@ define(function (require, exports, module) { // jshint ignore:line
 
         var _super = Extend(MovieCollection, Collection);
 
-        function MovieCollection(valueObjectType) {
-            _super.call(this, valueObjectType);
+        function MovieCollection(baseModelType) {
+            _super.call(this, baseModelType);
         }
 
         /**

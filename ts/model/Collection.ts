@@ -2,13 +2,13 @@
 /*
  UMD Stuff
  @import ../util/Extend as Extend
- @import ../model/ValueObject as ValueObject
+ @import ../model/BaseModel as BaseModel
  @import ../event/EventDispatcher as EventDispatcher
  @import ../event/BaseEvent as BaseEvent
  @import ../util/Util as Util
  @export LoaderEvent
  */
-import ValueObject = require('../model/ValueObject');
+import BaseModel = require('../model/BaseModel');
 import EventDispatcher = require('../event/EventDispatcher');
 import BaseEvent = require('../event/BaseEvent');
 import Util = require('../util/Util');
@@ -24,7 +24,7 @@ import Util = require('../util/Util');
  * @requires EventDispatcher
  * @requires BaseEvent
  * @constructor
- * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
+ * @param baseModelType {BaseModel} Pass a class that extends BaseModel and the data added to the collection will be created as that type.
  * @author Robert S. (www.codeBelt.com)
  * @example
  *     var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
@@ -60,7 +60,7 @@ class Collection extends EventDispatcher
     public length:number = 0;
 
     /**
-     * A reference to a ValueObject type that will be used in the collection.
+     * A reference to a BaseModel type that will be used in the collection.
      *
      * @property _modelType
      * @type {any}
@@ -68,11 +68,11 @@ class Collection extends EventDispatcher
      */
     protected _modelType:any = null;
 
-    constructor(valueObjectType:any = null)
+    constructor(baseModelType:any = null)
     {
         super();
 
-        this._modelType = valueObjectType;
+        this._modelType = baseModelType;
     }
 
     /**
@@ -174,7 +174,7 @@ class Collection extends EventDispatcher
     }
 
     /**
-     * Returns the array index position of the value object.
+     * Returns the array index position of the  Base Model.
      *
      * @method indexOf
      * @param model {Object} get the index of.
@@ -223,12 +223,12 @@ class Collection extends EventDispatcher
      * @return {Array.<any>} Returns a list of found object's.
      * @public
      * @example
-     *      // Finds all value object that has 'Robert' in it.
+     *      // Finds all  Base Model that has 'Robert' in it.
      *      this._collection.findBy("Robert");
-     *      // Finds any value object that has 'Robert' or 'Heater' or 23 in it.
+     *      // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.
      *      this._collection.findBy(["Robert", "Heather", 32]);
      *
-     *      // Finds all value objects that same key and value you are searching for.
+     *      // Finds all  Base Models that same key and value you are searching for.
      *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
      *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
      */
@@ -243,7 +243,7 @@ class Collection extends EventDispatcher
         for (var i:number = 0; i < len; i++)
         {
             prop = list[i];
-            // Adds found value object to the foundItems array.
+            // Adds found  Base Model to the foundItems array.
             if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean'))
             {
                 // If the model is not an object.
@@ -353,10 +353,10 @@ class Collection extends EventDispatcher
                     {
                         value = list[j];
 
-                        // If the value object property equals the string value then keep a reference to that value object.
+                        // If the  Base Model property equals the string value then keep a reference to that  Base Model.
                         if (propertyValue === value)
                         {
-                            // Add found value object to the foundItems array.
+                            // Add found  Base Model to the foundItems array.
                             foundItems.push(model);
                             break;
                         }
@@ -402,10 +402,10 @@ class Collection extends EventDispatcher
      */
     public clone():Collection
     {
-        var clonedValueObject:Collection = new (<any>this).constructor(this._modelType);
-        clonedValueObject.add(this.models.slice(0));
+        var clonedBaseModel:Collection = new (<any>this).constructor(this._modelType);
+        clonedBaseModel.add(this.models.slice(0));
 
-        return clonedValueObject;
+        return clonedBaseModel;
     }
 
     /**

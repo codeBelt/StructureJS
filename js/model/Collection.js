@@ -26,7 +26,7 @@
      * @requires EventDispatcher
      * @requires BaseEvent
      * @constructor
-     * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
+     * @param baseModelType {BaseModel} Pass a class that extends BaseModel and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
      * @example
      *     var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
@@ -43,8 +43,8 @@
 
         var _super = Extend(Collection, EventDispatcher);
 
-        function Collection(valueObjectType) {
-            if (valueObjectType === void 0) { valueObjectType = null; }
+        function Collection(baseModelType) {
+            if (baseModelType === void 0) { baseModelType = null; }
             _super.call(this);
             /**
              * The list of models in the collection.
@@ -65,14 +65,14 @@
              */
             this.length = 0;
             /**
-             * A reference to a ValueObject that will be used in the collection.
+             * A reference to a BaseModel that will be used in the collection.
              *
              * @property _modelType
-             * @type {ValueObject}
+             * @type {BaseModel}
              * @private
              */
             this._modelType = null;
-            this._modelType = valueObjectType;
+            this._modelType = baseModelType;
         }
         /**
          * Adds model or an array of models to the collection.
@@ -152,7 +152,7 @@
             return this.indexOf(model) > -1;
         };
         /**
-         * Returns the array index position of the value object.
+         * Returns the array index position of the  Base Model.
          *
          * @method indexOf
          * @param model {Object} get the index of.
@@ -193,12 +193,12 @@
          * @return {Array.<any>} Returns a list of found object's.
          * @public
          * @example
-         *      // Finds all value object that has 'Robert' in it.
+         *      // Finds all  Base Model that has 'Robert' in it.
          *      this._collection.findBy("Robert");
-         *      // Finds any value object that has 'Robert' or 'Heater' or 23 in it.
+         *      // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.
          *      this._collection.findBy(["Robert", "Heather", 32]);
          *
-         *      // Finds all value objects that same key and value you are searching for.
+         *      // Finds all  Base Models that same key and value you are searching for.
          *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
          *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          */
@@ -210,7 +210,7 @@
             var prop;
             for (var i = 0; i < len; i++) {
                 prop = list[i];
-                // Adds found value object to the foundItems array.
+                // Adds found  Base Model to the foundItems array.
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the model is not an object.
                     foundItems = foundItems.concat(this._findPropertyValue(prop));
@@ -292,9 +292,9 @@
                         propertyValue = model[key];
                         for (j = 0; j < itemsToFindLength; j++) {
                             value = list[j];
-                            // If the value object property equals the string value then keep a reference to that value object.
+                            // If the  Base Model property equals the string value then keep a reference to that  Base Model.
                             if (propertyValue === value) {
-                                // Add found value object to the foundItems array.
+                                // Add found  Base Model to the foundItems array.
                                 foundItems.push(model);
                                 break;
                             }
@@ -333,9 +333,9 @@
          *     var clone = collection.clone();
          */
         Collection.prototype.clone = function() {
-            var clonedValueObject = new this.constructor(this._modelType);
-            clonedValueObject.add(this.models.slice(0));
-            return clonedValueObject;
+            var clonedBaseModel = new this.constructor(this._modelType);
+            clonedBaseModel.add(this.models.slice(0));
+            return clonedBaseModel;
         };
         /**
          * Creates a JSON object of the collection.

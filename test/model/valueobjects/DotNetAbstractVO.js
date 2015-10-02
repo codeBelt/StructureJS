@@ -2,19 +2,19 @@
 
 // Imports
 var Extend = require('../../../js/util/Extend');
-var ValueObject = require('../../../js/model/ValueObject');
+var BaseModel = require('../../../js/model/BaseModel');
 var StringUtil = require('../../../js/util/StringUtil');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class DotNetAbstractVO
- * @extends ValueObject
+ * @extends BaseModel
  * @constructor
  **/
 var DotNetAbstractVO = (function () {
 
-    var _super = Extend(DotNetAbstractVO, ValueObject);
+    var _super = Extend(DotNetAbstractVO, BaseModel);
 
     function DotNetAbstractVO(data) {
         _super.call(this);
@@ -29,7 +29,7 @@ var DotNetAbstractVO = (function () {
     }
 
     /**
-     * @overridden ValueObject.update
+     * @overridden BaseModel.update
      */
     DotNetAbstractVO.prototype.update = function (data) {
         var camelCaseVersion;
