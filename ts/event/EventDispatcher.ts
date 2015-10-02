@@ -74,9 +74,9 @@ class EventDispatcher extends ObjectManager
      *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      *
      *      ClassName.prototype.handlerMethod = function (event) {
-         *          console.log(event.target + " sent the event.");
-         *          console.log(event.type, event.data);
-         *      }
+     *          console.log(event.target + " sent the event.");
+     *          console.log(event.type, event.data);
+     *      }
      */
     public addEventListener(type:string, callback:Function, scope:any, priority:number = 0):EventDispatcher
     {
@@ -104,7 +104,40 @@ class EventDispatcher extends ObjectManager
             }
         }
         // Add the event listener to the list array at the index value.
-        list.splice(index, 0, {callback: callback, scope: scope, priority: priority});
+        list.splice(index, 0, {callback: callback, scope: scope, priority: priority, once: false});
+
+        return this;
+    }
+
+    /**
+     * Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.
+     *
+     * @method addEventListenerOnce
+     * @param type {String} The type of event.
+     * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+     * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+     * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+     * @public
+     * @chainable
+     * @example
+     *      this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+     *
+     *      ClassName.prototype.handlerMethod = function (event) {
+     *          console.log(event.target + " sent the event.");
+     *          console.log(event.type, event.data);
+     *      }
+     */
+    public addEventListenerOnce(type:string, callback:Function, scope:any, priority:number = 0):EventDispatcher
+    {
+        // Add the event listener the normal way.
+        this.addEventListener(type, callback, scope, priority);
+
+        // Get the event listeners we just added.
+        var list = this._listeners[type];
+        var listener = list[0];
+
+        // Change the value to true so it will be remove after dispatchEvent is called.
+        listener.once = true;
 
         return this;
     }
@@ -184,7 +217,6 @@ class EventDispatcher extends ObjectManager
             event.currentTarget = this;
         }
 
-
         // Get the list of event listener by the associated type value.
         var list:Array<any> = this._listeners[event.type];
         if (list !== void 0)
@@ -201,6 +233,12 @@ class EventDispatcher extends ObjectManager
 
                 listener = list[i];
                 listener.callback.call(listener.scope, event);
+
+                // If the once value is true we want to remove the listener right after this callback was called.
+                if (listener.once === true)
+                {
+                    this.removeEventListener(event.type, listener.callback, listener.scope);
+                }
             }
         }
 

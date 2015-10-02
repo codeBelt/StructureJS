@@ -63,6 +63,31 @@ class EventBroker
     }
 
     /**
+     * Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.
+     *
+     * @method addEventListenerOnce
+     * @param type {String} The type of event.
+     * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink "BaseEvent"}}{{/crossLink}} object or custom event that extends the {{#crossLink "BaseEvent"}}{{/crossLink}} class.
+     * @param scope {any} The scope of the callback function.
+     * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+     * @static
+     * @public
+     * @example
+     *     EventBroker.addEventListenerOnce('change', this._handlerMethod, this);
+     *     // Example of using a constant event type.
+     *     EventBroker.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
+     *
+     *     // The event passed to the method will always be a BaseEvent object.
+     *     ClassName.prototype._handlerMethod = function (event) {
+     *          console.log(event.data);
+     *     };
+     */
+    public static addEventListenerOnce(type:string, callback:Function, scope:any, priority:number = 0):void
+    {
+        EventBroker._eventDispatcher.addEventListenerOnce(type, callback, scope, priority);
+    }
+
+    /**
      * Removes a specified listener from the EventBroker object.
      *
      * @method removeEventListener
