@@ -328,7 +328,7 @@ module.exports = function(grunt) {
                 src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
                 outDir: '<%= BASE_PATH %>ts',
                 options: {
-                    target: 'es3', //or es5
+                    target: 'es5', //or es5
                     module: 'commonjs',
                     basePath: '',
                     sourcemap: false,
