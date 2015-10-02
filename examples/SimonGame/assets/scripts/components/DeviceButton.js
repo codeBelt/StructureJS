@@ -7,7 +7,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var BaseEvent = require('structurejs/event/BaseEvent');
 
     var DeviceButtonTemplate = require('hbs!templates/DeviceButtonTemplate');
-    var GameVO = require('model/GameVO');
+    var GameModel = require('model/GameModel');
 
     /**
      * A generic button class to be used to create the four different colored buttons.
@@ -114,10 +114,10 @@ define(function (require, exports, module) { // jshint ignore:line
 
             this.animate();
 
-            var gameVO = new GameVO();
-            gameVO.buttonIndex = this._indexId;
+            var gameModel = new GameModel();
+            gameModel.buttonIndex = this._indexId;
 
-            this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, gameVO));
+            this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, gameModel));
         };
 
         return DeviceButton;

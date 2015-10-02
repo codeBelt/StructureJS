@@ -103,8 +103,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @method _removeMoviesWithNoScore
          * @private
          */
-        MovieCollection.prototype._removeMoviesWithNoScore = function(movieVO) {
-            return movieVO.ratings.criticsScore > 0 && movieVO.ratings.audienceScore > 0;
+        MovieCollection.prototype._removeMoviesWithNoScore = function(movieModel) {
+            return movieModel.ratings.criticsScore > 0 && movieModel.ratings.audienceScore > 0;
         };
 
         return MovieCollection;

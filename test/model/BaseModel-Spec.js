@@ -61,26 +61,26 @@ var movies = [
 
 
 var BaseModel = require('../../js/model/BaseModel');
-var MovieVO = require('./basemodels/MovieVO');
+var MovieModel = require('./basemodels/MovieModel');
 
 describe("BaseModel", function() {
 
-    var movieVO = new MovieVO(movies[0]);
+    var movieModel = new MovieModel(movies[0]);
 
     it("getQualifiedClassName", function() {
-        expect(movieVO.getQualifiedClassName()).toEqual('MovieVO');
+        expect(movieModel.getQualifiedClassName()).toEqual('MovieModel');
     });
 
     it("movie name", function() {
-        expect(movieVO.title).toEqual('Man of Steel');
+        expect(movieModel.title).toEqual('Man of Steel');
     });
 
-    it("Is PosterVO", function() {
-        expect(movieVO.posters.getQualifiedClassName()).toEqual('PosterVO');
+    it("Is PosterModel", function() {
+        expect(movieModel.posters.getQualifiedClassName()).toEqual('PosterModel');
     });
 
-    it("Is CastVO", function() {
-        expect(movieVO.abridgedCast[1].getQualifiedClassName()).toEqual('CastVO');
+    it("Is CastModel", function() {
+        expect(movieModel.abridgedCast[1].getQualifiedClassName()).toEqual('CastModel');
     });
 
 });

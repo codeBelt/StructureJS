@@ -9,15 +9,15 @@ define(function (require, exports, module) { // jshint ignore:line
     /**
      * YUIDoc_comment
      *
-     * @class ReleaseDateVO
+     * @class ReleaseDateModel
      * @extends BaseModel
      * @constructor
      **/
-    var ReleaseDateVO = (function () {
+    var ReleaseDateModel = (function () {
 
-        var _super = Extend(ReleaseDateVO, BaseModel);
+        var _super = Extend(ReleaseDateModel, BaseModel);
 
-        function ReleaseDateVO(data) {
+        function ReleaseDateModel(data) {
             _super.call(this);
 
             this.theater = null;
@@ -30,7 +30,7 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * @overridden BaseModel.update
          */
-        ReleaseDateVO.prototype.update = function (data) {
+        ReleaseDateModel.prototype.update = function (data) {
             _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.
@@ -41,7 +41,7 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * @overridden BaseModel.toJSON
          */
-        ReleaseDateVO.prototype.toJSON = function() {
+        ReleaseDateModel.prototype.toJSON = function() {
             var json = _super.prototype.toJSON.call(this);
 
             var year = this.theater.getFullYear();
@@ -56,9 +56,9 @@ define(function (require, exports, module) { // jshint ignore:line
             return json;
         };
 
-        return ReleaseDateVO;
+        return ReleaseDateModel;
     })();
 
-    module.exports = ReleaseDateVO;
+    module.exports = ReleaseDateModel;
 
 });

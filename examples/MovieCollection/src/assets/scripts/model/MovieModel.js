@@ -4,23 +4,23 @@ define(function (require, exports, module) { // jshint ignore:line
     // Imports
     var Extend = require('structurejs/util/Extend');
     var BaseModel = require('structurejs/model/BaseModel');
-    var RatingsVO = require('model/RatingsVO');
-    var PosterVO = require('model/PosterVO');
-    var CastVO = require('model/CastVO');
-    var ReleaseDateVO = require('model/ReleaseDateVO');
+    var RatingsModel = require('model/RatingsModel');
+    var PosterModel = require('model/PosterModel');
+    var CastModel = require('model/CastModel');
+    var ReleaseDateModel = require('model/ReleaseDateModel');
 
     /**
      * TODO: YUIDoc_comment
      *
-     * @class MovieVO
+     * @class MovieModel
      * @extends BaseModel
      * @constructor
      **/
-    var MovieVO = (function () {
+    var MovieModel = (function () {
 
-        var _super = Extend(MovieVO, BaseModel);
+        var _super = Extend(MovieModel, BaseModel);
 
-        function MovieVO(data) {
+        function MovieModel(data) {
             _super.call(this);
 
             this.id = null;
@@ -28,11 +28,11 @@ define(function (require, exports, module) { // jshint ignore:line
             this.year = null;
             this.mpaaRating = null;
             this.runtime = null;
-            this.ratings = RatingsVO;
+            this.ratings = RatingsModel;
             this.synopsis = null;
-            this.posters = PosterVO;
-            this.releaseDates = ReleaseDateVO;
-            this.abridgedCast = [CastVO];
+            this.posters = PosterModel;
+            this.releaseDates = ReleaseDateModel;
+            this.abridgedCast = [CastModel];
 
             if (data) {
                 this.update(data);
@@ -42,16 +42,16 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * @overridden BaseModel.update
          */
-        MovieVO.prototype.update = function (data) {
+        MovieModel.prototype.update = function (data) {
             _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.
             this.runtime = parseInt(data.runtime);
         };
 
-        return MovieVO;
+        return MovieModel;
     })();
 
-    module.exports = MovieVO;
+    module.exports = MovieModel;
 
 });

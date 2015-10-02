@@ -3,23 +3,23 @@
 // Imports
 var Extend = require('../../../js/util/Extend');
 var BaseModel = require('../../../js/model/BaseModel');
-var RatingsVO = require('./RatingsVO');
-var PosterVO = require('./PosterVO');
-var CastVO = require('./CastVO');
-var ReleaseDateVO = require('./ReleaseDateVO');
+var RatingsModel = require('./RatingsModel');
+var PosterModel = require('./PosterModel');
+var CastModel = require('./CastModel');
+var ReleaseDateModel = require('./ReleaseDateModel');
 
 /**
  * TODO: YUIDoc_comment
  *
- * @class MovieVO
+ * @class MovieModel
  * @extends BaseModel
  * @constructor
  **/
-var MovieVO = (function () {
+var MovieModel = (function () {
 
-    var _super = Extend(MovieVO, BaseModel);
+    var _super = Extend(MovieModel, BaseModel);
 
-    function MovieVO(data) {
+    function MovieModel(data) {
         _super.call(this);
 
         this.id = null;
@@ -27,11 +27,11 @@ var MovieVO = (function () {
         this.year = null;
         this.mpaaRating = null;
         this.runtime = null;
-        this.ratings = RatingsVO;
+        this.ratings = RatingsModel;
         this.synopsis = null;
-        this.posters = PosterVO;
-        this.releaseDates = ReleaseDateVO;
-        this.abridgedCast = [CastVO];
+        this.posters = PosterModel;
+        this.releaseDates = ReleaseDateModel;
+        this.abridgedCast = [CastModel];
 
         if (data) {
             this.update(data);
@@ -41,14 +41,14 @@ var MovieVO = (function () {
     /**
      * @overridden BaseModel.update
      */
-    MovieVO.prototype.update = function (data) {
+    MovieModel.prototype.update = function (data) {
         _super.prototype.update.call(this, data);
 
         // Override any values after the default super update method has set the values.
         this.runtime = parseInt(data.runtime);
     };
 
-    return MovieVO;
+    return MovieModel;
 })();
 
-module.exports = MovieVO;
+module.exports = MovieModel;

@@ -10,7 +10,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var TimerEvent = require('structurejs/event/TimerEvent');
 
     var DeviceView = require('view/DeviceView');
-    var GameVO = require('model/GameVO');
+    var GameModel = require('model/GameModel');
 
     /**
      * Application code for a memory skill game.
@@ -166,8 +166,8 @@ define(function (require, exports, module) { // jshint ignore:line
          * @private
          */
         SimonApp.prototype._onColorButt_onClick = function(event) {
-            var gameVO = event.data;
-            this._userSequence.push(gameVO.buttonIndex);
+            var gameModel = event.data;
+            this._userSequence.push(gameModel.buttonIndex);
 
             if (this._userSequence.length === this._memoryOrder.length) {
                 var isMatch = this._userSequence.toString() === this._memoryOrder.toString();

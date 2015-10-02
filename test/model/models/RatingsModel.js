@@ -7,20 +7,21 @@ var BaseModel = require('../../../js/model/BaseModel');
 /**
  * TODO: YUIDoc_comment
  *
- * @class CastVO
+ * @class RatingsModel
  * @extends BaseModel
  * @constructor
  **/
-var CastVO = (function () {
+var RatingsModel = (function () {
 
-    var _super = Extend(CastVO, BaseModel);
+    var _super = Extend(RatingsModel, BaseModel);
 
-    function CastVO(data) {
+    function RatingsModel(data) {
         _super.call(this);
 
-        this.id = null;
-        this.name = null;
-        this.characters = [];
+        this.criticsRating = null;
+        this.criticsScore = null;
+        this.audienceRating = null;
+        this.audienceScore = null;
 
         if (data) {
             this.update(data);
@@ -30,13 +31,15 @@ var CastVO = (function () {
     /**
      * @overridden BaseModel.update
      */
-    CastVO.prototype.update = function (data) {
+    RatingsModel.prototype.update = function (data) {
          _super.prototype.update.call(this, data);
 
         // Override any values after the default super update method has set the values.
+        this.criticsScore = parseInt(data.criticsScore);
+        this.audienceScore = parseInt(data.audienceScore);
     };
 
-    return CastVO;
+    return RatingsModel;
 })();
 
-module.exports = CastVO;
+module.exports = RatingsModel;

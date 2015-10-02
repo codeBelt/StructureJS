@@ -15,14 +15,14 @@ var ListItemComponent = (function () {
 
     var _super = Extend(ListItemComponent, DOMElement);
 
-    function ListItemComponent(vo) {
+    function ListItemComponent(model){
         _super.call(this);
 
         /**
          * Holds onto the model for this view.
          *
          * @property vo
-         * @type {ListItemVO}
+         * @type {ListItemModel}
          * @public
          */
         this.vo = vo;

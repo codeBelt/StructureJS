@@ -45,7 +45,7 @@ var Router = require('structurejs/controller/Router');
 var StringUtil = require('structurejs/util/StringUtil');
 var ListItemCollection = require('./model/ListItemCollection');
 var ListItemComponent = require('./component/ListItemComponent');
-var ListItemVO = require('./model/vo/ListItemVO');
+var ListItemModel = require('./model/vo/ListItemModel');
 var Key = require('./constant/Key');
 var FooterView = require('./view/FooterView');
 
@@ -209,7 +209,7 @@ var App = (function () {
         var todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
-            var baseModel = new ListItemVO({text: todoText});
+            var baseModel = new ListItemModel({text: todoText});
             baseModel.id = StringUtil.createUUID();
             var childItem = new ListItemComponent(baseModel);
 
@@ -253,9 +253,9 @@ var App = (function () {
      */
     App.prototype._onItemRemove = function(event) {
         var listItemComponent = event.target;
-        var listItemVO = listItemComponent.vo;
+        var listItemModel = listItemComponent.vo;
 
-        this._listItemCollection.remove(listItemVO);
+        this._listItemCollection.remove(listItemModel);
         this._todoListContainer.removeChild(listItemComponent);
 
         this.layout();
@@ -285,7 +285,7 @@ var App = (function () {
         var items = this._listItemCollection.models;
         var length = items.length;
 
-        // Create ListItemComponent view items from the stored ListItemVO  Base Models.
+        // Create ListItemComponent view items from the stored ListItemModel  Base Models.
         for (var i = 0; i < length; i++) {
             var childItem = new ListItemComponent(items[i]);
             this._todoListContainer.addChild(childItem);
@@ -312,16 +312,16 @@ var App = (function () {
      * @private
      */
     App.prototype._onClearCompleted = function(event) {
-        var listItemVO;
+        var listItemModel;
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemVO = listItemComponent.vo;
+            listItemModel = listItemComponent.vo;
 
-            if (listItemVO.isComplete === true) {
+            if (listItemModel.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);
-                this._listItemCollection.remove(listItemVO);
+                this._listItemCollection.remove(listItemModel);
             }
         }
 
@@ -401,7 +401,7 @@ var App = (function () {
 
 module.exports = App;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./component/ListItemComponent":2,"./constant/Key":3,"./model/ListItemCollection":5,"./model/vo/ListItemVO":6,"./view/FooterView":7,"structurejs/controller/Router":11,"structurejs/display/Stage":15,"structurejs/event/BaseEvent":16,"structurejs/util/Extend":25,"structurejs/util/StringUtil":26}],2:[function(require,module,exports){
+},{"./component/ListItemComponent":2,"./constant/Key":3,"./model/ListItemCollection":5,"./model/vo/ListItemModel":6,"./view/FooterView":7,"structurejs/controller/Router":11,"structurejs/display/Stage":15,"structurejs/event/BaseEvent":16,"structurejs/util/Extend":25,"structurejs/util/StringUtil":26}],2:[function(require,module,exports){
 (function (global){
 var $ = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
 var Extend = require('structurejs/util/Extend');
@@ -420,14 +420,14 @@ var ListItemComponent = (function () {
 
     var _super = Extend(ListItemComponent, DOMElement);
 
-    function ListItemComponent(vo) {
+    function ListItemComponent(model){
         _super.call(this);
 
         /**
          * Holds onto the model for this view.
          *
          * @property vo
-         * @type {ListItemVO}
+         * @type {ListItemModel}
          * @public
          */
         this.vo = vo;
@@ -737,7 +737,7 @@ window.app.appendTo('#todoapp');// Need to specify what area our code has contro
 var Extend = require('structurejs/util/Extend');
 var Collection = require('structurejs/model/Collection');
 var LocalStorageController = require('structurejs/controller/LocalStorageController');
-var ListItemVO = require('./vo/ListItemVO');
+var ListItemModel = require('./vo/ListItemModel');
 
 /**
  * TODO: YUIDoc_comment
@@ -791,7 +791,7 @@ var ListItemCollection = (function () {
         if (items != null) {
             var length = items.length;
             for (var i = 0; i < length; i++) {
-                this.add(new ListItemVO(items[i]));
+                this.add(new ListItemModel(items[i]));
             }
 
             this.dispatchEvent('loadComplete');
@@ -832,22 +832,22 @@ var ListItemCollection = (function () {
 })();
 
 module.exports = ListItemCollection;
-},{"./vo/ListItemVO":6,"structurejs/controller/LocalStorageController":10,"structurejs/model/Collection":20,"structurejs/util/Extend":25}],6:[function(require,module,exports){
+},{"./vo/ListItemModel":6,"structurejs/controller/LocalStorageController":10,"structurejs/model/Collection":20,"structurejs/util/Extend":25}],6:[function(require,module,exports){
 var Extend = require('structurejs/util/Extend');
 var BaseModel = require('structurejs/model/BaseModel');
 
 /**
  * TODO: YUIDoc_comment
  *
- * @class ListItemVO
+ * @class ListItemModel
  * @extends BaseModel
  * @constructor
  **/
-var ListItemVO = (function () {
+var ListItemModel = (function () {
 
-    var _super = Extend(ListItemVO, BaseModel);
+    var _super = Extend(ListItemModel, BaseModel);
 
-    function ListItemVO(data) {
+    function ListItemModel(data) {
         _super.call(this);
 
         /**
@@ -879,16 +879,16 @@ var ListItemVO = (function () {
     /**
      * @overridden BaseModel.update
      */
-    ListItemVO.prototype.update = function (data) {
+    ListItemModel.prototype.update = function (data) {
         _super.prototype.update.call(this, data);
 
         // Override any values after the default super update method has set the values.
     };
 
-    return ListItemVO;
+    return ListItemModel;
 })();
 
-module.exports = ListItemVO;
+module.exports = ListItemModel;
 },{"structurejs/model/BaseModel":22,"structurejs/util/Extend":25}],7:[function(require,module,exports){
 var Extend = require('structurejs/util/Extend');
 var DOMElement = require('structurejs/display/DOMElement');
@@ -4158,8 +4158,8 @@ module.exports = FooterView;
      *     var collection = new Collection();
      *     collection.add(data);
      *
-     *     // Example of adding data to a collection that will create a CarVO model for each data object passed in.
-     *     var collection = new Collection(CarVO);
+     *     // Example of adding data to a collection that will create a CarModel model for each data object passed in.
+     *     var collection = new Collection(CarModel);
      *     collection.add(data);
      */
     var Collection = (function() {
@@ -4868,7 +4868,7 @@ module.exports = FooterView;
     'use strict';
 
     /**
-     *  Base Model (VO) is a design pattern used to transfer data between software application subsystems.
+     *  Base Model is a design pattern used to transfer data between software application subsystems.
      *
      * Note: If the data doesn't match the property names you can set the value manually after update super method has been called.
      *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
@@ -4893,13 +4893,13 @@ module.exports = FooterView;
      *              airbags: true
      *          }
      *     }
-     *     var carVO = new CarVO(data);
+     *     var carModel = new CarModel(data);
      *
      *
      *     // Example how to extend the BaseModel class.
-     *      var CarVO = (function () {
-     *          var _super = Extend(CarVO, BaseModel);
-     *          function CarVO(data) {
+     *      var CarModel = (function () {
+     *          var _super = Extend(CarModel, BaseModel);
+     *          function CarModel(data) {
      *              _super.call(this);
      *
      *              // You need to have properties so the data will get assigned.
@@ -4911,10 +4911,10 @@ module.exports = FooterView;
      *
      *              // You can assign BaseModel to a property which will
      *              // automatically created it and pass the data to it.
-     *              this.feature = FeatureVO;
+     *              this.feature = FeatureModel;
      *
      *              // If you have an array of data and want them assign to a BaseModel.
-     *              this.feature = [FeatureVO];
+     *              this.feature = [FeatureModel];
      *
      *              if (data) {
      *                  this.update(data);
@@ -4922,7 +4922,7 @@ module.exports = FooterView;
      *          }
      *
      *          // @overridden BaseModel.update
-     *          CarVO.prototype.update = function (data) {
+     *          CarModel.prototype.update = function (data) {
      *              _super.prototype.update.call(this, data);
      *
      *              // If the data doesn't match the property name.
@@ -4930,7 +4930,7 @@ module.exports = FooterView;
      *              this.year = data.YeAr;
      *          };
      *
-     *          return CarVO;
+     *          return CarModel;
      *      })();
      */
     var BaseModel = (function() {
@@ -4948,11 +4948,11 @@ module.exports = FooterView;
          * @public
          * @example
          *     // Example of updating some of the data:
-         *     carVO.update({ year: 2015, allWheel: true});
+         *     carModel.update({ year: 2015, allWheel: true});
          *
          *     // Of course you can also do it the following way:
-         *     carVO.year = 2015;
-         *     carVO.allWheel = false;
+         *     carModel.year = 2015;
+         *     carModel.allWheel = false;
          */
         BaseModel.prototype.update = function(data) {
             var propertyData;
@@ -5024,7 +5024,7 @@ module.exports = FooterView;
          * @returns {BaseModel}
          * @public
          * @example
-         *     var obj = carVO.toJSON();
+         *     var obj = carModel.toJSON();
          */
         BaseModel.prototype.toJSON = function() {
             var clone = Util.clone(this);
@@ -5037,7 +5037,7 @@ module.exports = FooterView;
          * @returns {string}
          * @public
          * @example
-         *     var str = carVO.toJSONString();
+         *     var str = carModel.toJSONString();
          */
         BaseModel.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
@@ -5050,8 +5050,8 @@ module.exports = FooterView;
          * @public
          * @example
          *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
-         *      var carVO = new CarVO();
-         *      carVO.fromJSON(str);
+         *      var carModel = new CarModel();
+         *      carModel.fromJSON(str);
          */
         BaseModel.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
@@ -5065,7 +5065,7 @@ module.exports = FooterView;
          * @returns {BaseModel}
          * @public
          * @example
-         *     var clone = carVO.clone();
+         *     var clone = carModel.clone();
          */
         BaseModel.prototype.clone = function() {
             var clonedBaseModel = new this.constructor(this);

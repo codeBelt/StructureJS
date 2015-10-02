@@ -3,43 +3,26 @@
  UMD Stuff
  @import ../../util/Extend as Extend
  @import ../BaseModel as BaseModel
- @export StatusVO
+ @export LoaderEvent
  */
 import BaseModel = require('../BaseModel');
 
-class StatusVO extends BaseModel
+class LanguageConfigModel extends BaseModel
 {
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @property ERROR
-     * @type {string}
-     * @public
-     */
-    public static ERROR:string = 'error';
+    public id:string;
+    public lang:string;
+    public text:string;
+    public path:string;
 
     /**
      * TODO: YUIDoc_comment
      *
-     * @property SUCCESS
-     * @type {string}
-     * @public
-     */
-    public static SUCCESS:string = 'success';
-
-    public status:string = null;
-    public message:string = null;
-    public code:number = null;
-
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @class StatusVO
+     * @class LanguageConfigModel
      * @param [data] {any} Provide a way to update the  Base Model upon initialization.
-     * @extends BaseModel
-     * @module StructureJS
      * @constructor
      * @author Robert S. (www.codeBelt.com)
+     * @module StructureJS
+     * @version 0.1.0
      */
     constructor(data:any = null)
     {
@@ -54,13 +37,15 @@ class StatusVO extends BaseModel
     /**
      * @overridden BaseModel.update
      */
-    public update(data:any):void
+    public update(data:any):any
     {
         super.update(data);
 
         // Override any values after the default super update method has set the values.
+
+        return this;
     }
 
 }
 
-export = StatusVO;
+export = LanguageConfigModel;

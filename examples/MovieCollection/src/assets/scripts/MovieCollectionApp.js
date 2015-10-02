@@ -8,7 +8,7 @@ define(function (require, exports, module) { // jshint ignore:line
     var ListView = require('view/ListView');
     var ModalView = require('view/ModalView');
     var RequestService = require('service/RequestService');
-    var MovieVO = require('model/MovieVO');
+    var MovieModel = require('model/MovieModel');
     var MovieCollection = require('collection/MovieCollection');
     require('templates');
     require('utils/HandlebarsHelpers');
@@ -100,7 +100,7 @@ define(function (require, exports, module) { // jshint ignore:line
         * @private
         */
        MovieCollectionApp.prototype._onMovieRequestComplete = function(data) {
-           this._movieCollection = new MovieCollection(MovieVO);
+           this._movieCollection = new MovieCollection(MovieModel);
            this._movieCollection.add(data.movies);
 
            this._updateList();

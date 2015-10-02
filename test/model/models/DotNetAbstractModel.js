@@ -8,15 +8,15 @@ var StringUtil = require('../../../js/util/StringUtil');
 /**
  * TODO: YUIDoc_comment
  *
- * @class DotNetAbstractVO
+ * @class DotNetAbstractModel
  * @extends BaseModel
  * @constructor
  **/
-var DotNetAbstractVO = (function () {
+var DotNetAbstractModel = (function () {
 
-    var _super = Extend(DotNetAbstractVO, BaseModel);
+    var _super = Extend(DotNetAbstractModel, BaseModel);
 
-    function DotNetAbstractVO(data) {
+    function DotNetAbstractModel(data) {
         _super.call(this);
 
         this.name = null;
@@ -31,7 +31,7 @@ var DotNetAbstractVO = (function () {
     /**
      * @overridden BaseModel.update
      */
-    DotNetAbstractVO.prototype.update = function (data) {
+    DotNetAbstractModel.prototype.update = function (data) {
         var camelCaseVersion;
 
         for (var key in data)
@@ -52,7 +52,7 @@ var DotNetAbstractVO = (function () {
      * @method toPascalCaseJSON
      * @public
      */
-    DotNetAbstractVO.prototype.toPascalCaseJSON = function() {
+    DotNetAbstractModel.prototype.toPascalCaseJSON = function() {
         return this._toPascalCase(this.toJSON());
     };
 
@@ -62,7 +62,7 @@ var DotNetAbstractVO = (function () {
      * @method _toPascalCase
      * @private
      */
-    DotNetAbstractVO.prototype._toPascalCase = function(obj) {
+    DotNetAbstractModel.prototype._toPascalCase = function(obj) {
         var newObj = {};
         var pascalCaseVersion;
 
@@ -83,7 +83,7 @@ var DotNetAbstractVO = (function () {
         return newObj;
     };
 
-    return DotNetAbstractVO;
+    return DotNetAbstractModel;
 })();
 
-module.exports = DotNetAbstractVO;
+module.exports = DotNetAbstractModel;

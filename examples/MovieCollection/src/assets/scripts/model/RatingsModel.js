@@ -8,21 +8,21 @@ define(function(require, exports, module) { // jshint ignore:line
     /**
      * TODO: YUIDoc_comment
      *
-     * @class PosterVO
+     * @class RatingsModel
      * @extends BaseModel
      * @constructor
      **/
-    var PosterVO = (function () {
+    var RatingsModel = (function () {
 
-        var _super = Extend(PosterVO, BaseModel);
+        var _super = Extend(RatingsModel, BaseModel);
 
-        function PosterVO(data) {
+        function RatingsModel(data) {
             _super.call(this);
 
-            this.thumbnail = null;
-            this.profile = null;
-            this.detailed = null;
-            this.original = null;
+            this.criticsRating = null;
+            this.criticsScore = null;
+            this.audienceRating = null;
+            this.audienceScore = null;
 
             if (data) {
                 this.update(data);
@@ -32,15 +32,17 @@ define(function(require, exports, module) { // jshint ignore:line
         /**
          * @overridden BaseModel.update
          */
-        PosterVO.prototype.update = function (data) {
+        RatingsModel.prototype.update = function (data) {
              _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.
+            this.criticsScore = parseInt(data.criticsScore);
+            this.audienceScore = parseInt(data.audienceScore);
         };
 
-        return PosterVO;
+        return RatingsModel;
     })();
 
-    module.exports = PosterVO;
+    module.exports = RatingsModel;
 
 });

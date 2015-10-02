@@ -6,7 +6,7 @@ var Router = require('structurejs/controller/Router');
 var StringUtil = require('structurejs/util/StringUtil');
 var ListItemCollection = require('./model/ListItemCollection');
 var ListItemComponent = require('./component/ListItemComponent');
-var ListItemVO = require('./model/vo/ListItemVO');
+var ListItemModel = require('./model/vo/ListItemModel');
 var Key = require('./constant/Key');
 var FooterView = require('./view/FooterView');
 
@@ -170,7 +170,7 @@ var App = (function () {
         var todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
-            var baseModel = new ListItemVO({text: todoText});
+            var baseModel = new ListItemModel({text: todoText});
             baseModel.id = StringUtil.createUUID();
             var childItem = new ListItemComponent(baseModel);
 
@@ -214,9 +214,9 @@ var App = (function () {
      */
     App.prototype._onItemRemove = function(event) {
         var listItemComponent = event.target;
-        var listItemVO = listItemComponent.vo;
+        var listItemModel = listItemComponent.vo;
 
-        this._listItemCollection.remove(listItemVO);
+        this._listItemCollection.remove(listItemModel);
         this._todoListContainer.removeChild(listItemComponent);
 
         this.layout();
@@ -246,7 +246,7 @@ var App = (function () {
         var items = this._listItemCollection.models;
         var length = items.length;
 
-        // Create ListItemComponent view items from the stored ListItemVO  Base Models.
+        // Create ListItemComponent view items from the stored ListItemModel  Base Models.
         for (var i = 0; i < length; i++) {
             var childItem = new ListItemComponent(items[i]);
             this._todoListContainer.addChild(childItem);
@@ -273,16 +273,16 @@ var App = (function () {
      * @private
      */
     App.prototype._onClearCompleted = function(event) {
-        var listItemVO;
+        var listItemModel;
         var listItemComponent;
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemVO = listItemComponent.vo;
+            listItemModel = listItemComponent.vo;
 
-            if (listItemVO.isComplete === true) {
+            if (listItemModel.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);
-                this._listItemCollection.remove(listItemVO);
+                this._listItemCollection.remove(listItemModel);
             }
         }
 

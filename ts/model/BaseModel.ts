@@ -11,7 +11,7 @@ import BaseObject = require('../BaseObject');
 import Util = require('../util/Util');
 
 /**
- *  Base Model (VO) is a design pattern used to transfer data between software application subsystems.
+ *  Base Model is a design pattern used to transfer data between software application subsystems.
  *
  * Note: If the data doesn't match the property names you can set the value manually after update super method has been called.
  *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
@@ -36,13 +36,13 @@ import Util = require('../util/Util');
  *              airbags: true
  *          }
  *     }
- *     var carVO = new CarVO(data);
+ *     var carModel = new CarModel(data);
  *
  *
  *     // Example how to extend the BaseModel class.
- *      var CarVO = (function () {
- *          var _super = Extend(CarVO, BaseModel);
- *          function CarVO(data) {
+ *      var CarModel = (function () {
+ *          var _super = Extend(CarModel, BaseModel);
+ *          function CarModel(data) {
  *              _super.call(this);
  *
  *              // You need to have properties so the data will get assigned.
@@ -54,10 +54,10 @@ import Util = require('../util/Util');
  *
  *              // You can assign BaseModel to a property which will
  *              // automatically created it and pass the data to it.
- *              this.feature = FeatureVO;
+ *              this.feature = FeatureModel;
  *
  *              // If you have an array of data and want them assign to a BaseModel.
- *              this.feature = [FeatureVO];
+ *              this.feature = [FeatureModel];
  *
  *              if (data) {
  *                  this.update(data);
@@ -65,7 +65,7 @@ import Util = require('../util/Util');
  *          }
  *
  *          // @overridden BaseModel.update
- *          CarVO.prototype.update = function (data) {
+ *          CarModel.prototype.update = function (data) {
  *              _super.prototype.update.call(this, data);
  *
  *              // If the data doesn't match the property name.
@@ -73,7 +73,7 @@ import Util = require('../util/Util');
  *              this.year = data.YeAr;
  *          };
  *
- *          return CarVO;
+ *          return CarModel;
  *      })();
  */
 class BaseModel extends BaseObject implements IBaseModel
@@ -91,11 +91,11 @@ class BaseModel extends BaseObject implements IBaseModel
      * @public
      * @example
      *     // Example of updating some of the data:
-     *     carVO.update({ year: 2015, allWheel: true});
+     *     carModel.update({ year: 2015, allWheel: true});
      *
      *     // Of course you can also do it the following way:
-     *     carVO.year = 2015;
-     *     carVO.allWheel = false;
+     *     carModel.year = 2015;
+     *     carModel.allWheel = false;
      */
     public update(data:any):any
     {
@@ -191,7 +191,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {BaseModel}
      * @public
      * @example
-     *     var obj = carVO.toJSON();
+     *     var obj = carModel.toJSON();
      */
     public toJSON():BaseModel
     {
@@ -206,7 +206,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {string}
      * @public
      * @example
-     *     var str = carVO.toJSONString();
+     *     var str = carModel.toJSONString();
      */
     public toJSONString():string
     {
@@ -221,8 +221,8 @@ class BaseModel extends BaseObject implements IBaseModel
      * @public
      * @example
      *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
-     *      var carVO = new CarVO();
-     *      carVO.fromJSON(str);
+     *      var carModel = new CarModel();
+     *      carModel.fromJSON(str);
      */
     public fromJSON(json:string):any
     {
@@ -240,7 +240,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {BaseModel}
      * @public
      * @example
-     *     var clone = carVO.clone();
+     *     var clone = carModel.clone();
      */
     public clone():BaseModel
     {

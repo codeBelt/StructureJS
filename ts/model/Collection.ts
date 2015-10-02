@@ -33,8 +33,8 @@ import Util = require('../util/Util');
  *     var collection = new Collection();
  *     collection.add(data);
  *
- *     // Example of adding data to a collection that will create a CarVO model for each data object passed in.
- *     var collection = new Collection(CarVO);
+ *     // Example of adding data to a collection that will create a CarModel model for each data object passed in.
+ *     var collection = new Collection(CarModel);
  *     collection.add(data);
  */
 class Collection extends EventDispatcher

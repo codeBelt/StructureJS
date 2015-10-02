@@ -8,15 +8,15 @@ define(function (require, exports, module) { // jshint ignore:line
     /**
      * TODO: YUIDoc_comment
      *
-     * @class GameVO
+     * @class GameModel
      * @extends BaseModel
      * @constructor
      **/
-    var GameVO = (function () {
+    var GameModel = (function () {
 
-        var _super = Extend(GameVO, BaseModel);
+        var _super = Extend(GameModel, BaseModel);
 
-        function GameVO(data) {
+        function GameModel(data) {
             _super.call(this);
 
             /**
@@ -36,21 +36,21 @@ define(function (require, exports, module) { // jshint ignore:line
         /**
          * @overridden BaseModel.update
          */
-        GameVO.prototype.update = function (data) {
+        GameModel.prototype.update = function (data) {
             this.buttonIndex = data.buttonIndex;
         };
 
         /**
          * @overridden BaseModel.copy
          */
-        GameVO.prototype.copy = function () {
+        GameModel.prototype.copy = function () {
             var data = _super.prototype.copy();
-            return new GameVO(data);
+            return new GameModel(data);
         };
 
-        return GameVO;
+        return GameModel;
     })();
 
-    module.exports = GameVO;
+    module.exports = GameModel;
 
 });

@@ -8,15 +8,15 @@ define(function(require, exports, module) { // jshint ignore:line
     /**
      * TODO: YUIDoc_comment
      *
-     * @class CastVO
+     * @class CastModel
      * @extends BaseModel
      * @constructor
      **/
-    var CastVO = (function () {
+    var CastModel = (function () {
 
-        var _super = Extend(CastVO, BaseModel);
+        var _super = Extend(CastModel, BaseModel);
 
-        function CastVO(data) {
+        function CastModel(data) {
             _super.call(this);
 
             this.id = null;
@@ -31,15 +31,15 @@ define(function(require, exports, module) { // jshint ignore:line
         /**
          * @overridden BaseModel.update
          */
-        CastVO.prototype.update = function (data) {
+        CastModel.prototype.update = function (data) {
              _super.prototype.update.call(this, data);
 
             // Override any values after the default super update method has set the values.
         };
 
-        return CastVO;
+        return CastModel;
     })();
 
-    module.exports = CastVO;
+    module.exports = CastModel;
 
 });

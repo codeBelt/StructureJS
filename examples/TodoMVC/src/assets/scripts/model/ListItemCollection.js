@@ -1,7 +1,7 @@
 var Extend = require('structurejs/util/Extend');
 var Collection = require('structurejs/model/Collection');
 var LocalStorageController = require('structurejs/controller/LocalStorageController');
-var ListItemVO = require('./vo/ListItemVO');
+var ListItemModel = require('./vo/ListItemModel');
 
 /**
  * TODO: YUIDoc_comment
@@ -55,7 +55,7 @@ var ListItemCollection = (function () {
         if (items != null) {
             var length = items.length;
             for (var i = 0; i < length; i++) {
-                this.add(new ListItemVO(items[i]));
+                this.add(new ListItemModel(items[i]));
             }
 
             this.dispatchEvent('loadComplete');

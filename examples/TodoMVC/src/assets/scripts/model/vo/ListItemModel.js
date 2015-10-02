@@ -4,15 +4,15 @@ var BaseModel = require('structurejs/model/BaseModel');
 /**
  * TODO: YUIDoc_comment
  *
- * @class ListItemVO
+ * @class ListItemModel
  * @extends BaseModel
  * @constructor
  **/
-var ListItemVO = (function () {
+var ListItemModel = (function () {
 
-    var _super = Extend(ListItemVO, BaseModel);
+    var _super = Extend(ListItemModel, BaseModel);
 
-    function ListItemVO(data) {
+    function ListItemModel(data) {
         _super.call(this);
 
         /**
@@ -44,13 +44,13 @@ var ListItemVO = (function () {
     /**
      * @overridden BaseModel.update
      */
-    ListItemVO.prototype.update = function (data) {
+    ListItemModel.prototype.update = function (data) {
         _super.prototype.update.call(this, data);
 
         // Override any values after the default super update method has set the values.
     };
 
-    return ListItemVO;
+    return ListItemModel;
 })();
 
-module.exports = ListItemVO;
+module.exports = ListItemModel;
