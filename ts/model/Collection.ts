@@ -60,15 +60,15 @@ class Collection extends EventDispatcher
     public length:number = 0;
 
     /**
-     * A reference to a ValueObject that will be used in the collection.
+     * A reference to a ValueObject type that will be used in the collection.
      *
      * @property _modelType
-     * @type {ValueObject}
+     * @type {any}
      * @protected
      */
-    protected _modelType:ValueObject = null;
+    protected _modelType:any = null;
 
-    constructor(valueObjectType:ValueObject = null)
+    constructor(valueObjectType:any = null)
     {
         super();
 
@@ -98,9 +98,10 @@ class Collection extends EventDispatcher
             // Only add the model if it does not exist in the the collection.
             if (this.has(models[i]) === false)
             {
-                if (this._modelType !== null)
+                if (this._modelType !== null && (models[i] instanceof this._modelType) === false)
                 {
-                    // If the modeType is set then instantiate it and pass the data into the constructor.
+                    // If the modelType is set and the data is not already a instance of the modelType
+                    // then instantiate it and pass the data into the constructor.
                     this.models.push(new (<any>this)._modelType(models[i]));
                 }
                 else
