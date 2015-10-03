@@ -1,5 +1,3 @@
-'use strict';
-
 // Imports
 import BaseModel from 'structurejs/model/BaseModel';
 
