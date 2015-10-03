@@ -6,7 +6,7 @@ var Router = require('structurejs/controller/Router');
 var StringUtil = require('structurejs/util/StringUtil');
 var ListItemCollection = require('./model/ListItemCollection');
 var ListItemComponent = require('./component/ListItemComponent');
-var ListItemModel = require('./model/vo/ListItemModel');
+var ListItemModel = require('./model/ListItemModel');
 var Key = require('./constant/Key');
 var FooterView = require('./view/FooterView');
 
@@ -214,7 +214,7 @@ var App = (function () {
      */
     App.prototype._onItemRemove = function(event) {
         var listItemComponent = event.target;
-        var listItemModel = listItemComponent.vo;
+        var listItemModel = listItemComponent.model;
 
         this._listItemCollection.remove(listItemModel);
         this._todoListContainer.removeChild(listItemComponent);
@@ -278,7 +278,7 @@ var App = (function () {
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemModel = listItemComponent.vo;
+            listItemModel = listItemComponent.model;
 
             if (listItemModel.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);

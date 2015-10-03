@@ -35,19 +35,20 @@ var __extends = (this && this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
-     *     var data = {
-     *          make: 'Tesla',
-     *          model: 'Model S',
-     *          YeAr: 2014,
-     *          feature: {
-     *              abs: true,
-     *              airbags: true
-     *          }
-     *     }
-     *     var carModel = new CarModel(data);
+     *      // Example how to extend the BaseModel class.
+     *      var data = {
+     *              make: 'Tesla',
+     *              model: 'Model S',
+     *              YeAr: 2014,
+     *              feature: {
+     *                  abs: true,
+     *                  airbags: true
+     *              }
+     *      }
+     *      var carModel = new CarModel(data);
      *
      *
-     *     // Example how to extend the BaseModel class.
+     *      // Example how to extend the BaseModel class.
      *      var CarModel = (function () {
      *          var _super = Extend(CarModel, BaseModel);
      *          function CarModel(data) {
@@ -77,7 +78,7 @@ var __extends = (this && this.__extends) || function(d, b) {
      *              _super.prototype.update.call(this, data);
      *
      *              // If the data doesn't match the property name.
-     *             // You can set the value(s) manually after the update super method has been called.
+     *              // You can set the value(s) manually after the update super method has been called.
      *              this.year = data.YeAr;
      *          };
      *

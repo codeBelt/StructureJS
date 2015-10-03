@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -152,23 +152,15 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/StringUtil&#x27;, &#x27;handlebars&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/StringUtil&#x27;), require(&#x27;handlebars&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.Handlebars);
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function(StringUtil, Handlebars) {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./StringUtil&#x27;], function(require, exports) {
+    var StringUtil = require(&#x27;./StringUtil&#x27;);
     /**
      * A helper class to provide a convenient and consistent way to render templates.
      *
@@ -182,22 +174,24 @@
      */
     var TemplateFactory = (function() {
         function TemplateFactory() {
-            throw new Error(&#x27;[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.&#x27;);
-        }
-        /**
-         * Creates a template.
-         *
-         * @method create
-         * @param templatePath {any}
-         * @param [data=any]
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      TemplateFactory.create(&#x27;templateName&#x27;, {some: &#x27;data&#x27;});
-         */
+                throw new Error(&#x27;[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.&#x27;);
+            }
+            /**
+             * Creates a template.
+             *
+             * @method create
+             * @param templatePath {any}
+             * @param [data=any]
+             * @returns {string}
+             * @public
+             * @static
+             * @example
+             *      TemplateFactory.create(&#x27;templateName&#x27;, {some: &#x27;data&#x27;});
+             */
         TemplateFactory.create = function(templatePath, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             //Checks the first character to see if it is a &#x27;.&#x27; or &#x27;#&#x27;.
             var regex = /^([.#])(.+)/;
             var template = null;
@@ -276,9 +270,8 @@
         TemplateFactory.templateNamespace = &#x27;JST&#x27;;
         return TemplateFactory;
     })();
-
     return TemplateFactory;
-}));
+});
 
     </pre>
 </div>

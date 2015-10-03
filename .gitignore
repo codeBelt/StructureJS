@@ -21,4 +21,5 @@ bower_components
 .bower.json
 .lock-wscript
 ts/**/*.js
-js/.baseDir.js
+.baseDir.js
+.baseDir.ts

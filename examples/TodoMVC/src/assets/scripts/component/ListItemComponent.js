@@ -21,11 +21,11 @@ var ListItemComponent = (function () {
         /**
          * Holds onto the model for this view.
          *
-         * @property vo
+         * @property model
          * @type {ListItemModel}
          * @public
          */
-        this.vo = vo;
+        this.model = model;
 
         /**
          * @property _$itemInput
@@ -55,7 +55,7 @@ var ListItemComponent = (function () {
      * @overridden DOMElement.create
      */
     ListItemComponent.prototype.create = function () {
-        _super.prototype.create.call(this, '#listItemTemplate', this.vo);
+        _super.prototype.create.call(this, '#listItemTemplate', this.model);
 
         this._$itemInput = this.$element.find('.js-itemText');
         this._$itemLabel = this.$element.find('.js-editTodo');
@@ -66,9 +66,9 @@ var ListItemComponent = (function () {
      * @overridden DOMElement.layout
      */
     ListItemComponent.prototype.layout = function () {
-        this.$element.toggleClass('completed', this.vo.isComplete);
+        this.$element.toggleClass('completed', this.model.isComplete);
 
-        this._$markCompleteCheckbox.prop('checked', this.vo.isComplete);
+        this._$markCompleteCheckbox.prop('checked', this.model.isComplete);
 
         return this;
     };
@@ -123,7 +123,7 @@ var ListItemComponent = (function () {
      * @public
      */
     ListItemComponent.prototype.setCompleted = function() {
-        this.vo.isComplete = true;
+        this.model.isComplete = true;
 
         this.layout();
         this._saveItemText();
@@ -136,7 +136,7 @@ var ListItemComponent = (function () {
      * @public
      */
     ListItemComponent.prototype.setUnCompleted = function() {
-        this.vo.isComplete = false;
+        this.model.isComplete = false;
 
         this.layout();
         this._saveItemText();
@@ -149,7 +149,7 @@ var ListItemComponent = (function () {
      * @public
      */
     ListItemComponent.prototype.isComplete = function() {
-        return this.vo.isComplete;
+        return this.model.isComplete;
     };
 
     /**
@@ -181,7 +181,7 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype._onItemToggleComplete = function(event) {
         var isChecked = $(event.target).prop('checked');
 
-        this.vo.isComplete = isChecked;
+        this.model.isComplete = isChecked;
 
         this.layout();
         this._saveItemText();
@@ -222,7 +222,7 @@ var ListItemComponent = (function () {
         var todoText = this._$itemInput.val().trim();
 
         if (todoText != '') {
-            this.vo.text = todoText;
+            this.model.text = todoText;
             this._resetItemText();
             this._saveItemText();
         } else {
@@ -240,8 +240,8 @@ var ListItemComponent = (function () {
         this.$element.removeClass('editing');
 
         // We need to reset the hidden input back to the original value.
-        this._$itemInput.val(this.vo.text);
-        this._$itemLabel.text(this.vo.text);
+        this._$itemInput.val(this.model.text);
+        this._$itemLabel.text(this.model.text);
     };
 
     /**
@@ -251,7 +251,7 @@ var ListItemComponent = (function () {
      * @private
      */
     ListItemComponent.prototype._saveItemText = function() {
-        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.vo));
+        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.model));
     };
 
     /**
@@ -275,7 +275,7 @@ var ListItemComponent = (function () {
 
         if (event.which === Key.ENTER) {
             if (todoText != '') {
-                this.vo.text = todoText;
+                this.model.text = todoText;
                 this._resetItemText();
                 this._saveItemText();
             } else {

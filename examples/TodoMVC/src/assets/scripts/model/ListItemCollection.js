@@ -1,7 +1,7 @@
 var Extend = require('structurejs/util/Extend');
 var Collection = require('structurejs/model/Collection');
 var LocalStorageController = require('structurejs/controller/LocalStorageController');
-var ListItemModel = require('./vo/ListItemModel');
+var ListItemModel = require('./ListItemModel');
 
 /**
  * TODO: YUIDoc_comment

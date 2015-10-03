@@ -31,9 +31,9 @@ d._setup(c),!c.partial&&a.useData&&(f=j(b,f));var g=void 0,h=a.useBlockParams?[]
  * DO NOT MODIFY DIRECTLY. INSTEAD, MODIFY THE APPROPRIATE SOURCE CODE.
  *
  * Grunt-Browserify-Example v1.0.0
- *
- * Development By:
- * Build Date: 2015-09-04
+ * 
+ * Development By: 
+ * Build Date: 2015-10-03
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
@@ -45,7 +45,7 @@ var Router = require('structurejs/controller/Router');
 var StringUtil = require('structurejs/util/StringUtil');
 var ListItemCollection = require('./model/ListItemCollection');
 var ListItemComponent = require('./component/ListItemComponent');
-var ListItemModel = require('./model/vo/ListItemModel');
+var ListItemModel = require('./model/ListItemModel');
 var Key = require('./constant/Key');
 var FooterView = require('./view/FooterView');
 
@@ -253,7 +253,7 @@ var App = (function () {
      */
     App.prototype._onItemRemove = function(event) {
         var listItemComponent = event.target;
-        var listItemModel = listItemComponent.vo;
+        var listItemModel = listItemComponent.model;
 
         this._listItemCollection.remove(listItemModel);
         this._todoListContainer.removeChild(listItemComponent);
@@ -317,7 +317,7 @@ var App = (function () {
 
         for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
-            listItemModel = listItemComponent.vo;
+            listItemModel = listItemComponent.model;
 
             if (listItemModel.isComplete === true) {
                 this._todoListContainer.removeChild(listItemComponent);
@@ -400,8 +400,9 @@ var App = (function () {
 })();
 
 module.exports = App;
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./component/ListItemComponent":2,"./constant/Key":3,"./model/ListItemCollection":5,"./model/vo/ListItemModel":6,"./view/FooterView":7,"structurejs/controller/Router":11,"structurejs/display/Stage":15,"structurejs/event/BaseEvent":16,"structurejs/util/Extend":25,"structurejs/util/StringUtil":26}],2:[function(require,module,exports){
+},{"./component/ListItemComponent":2,"./constant/Key":3,"./model/ListItemCollection":5,"./model/ListItemModel":6,"./view/FooterView":7,"structurejs/controller/Router":11,"structurejs/display/Stage":15,"structurejs/event/BaseEvent":16,"structurejs/util/Extend":25,"structurejs/util/StringUtil":26}],2:[function(require,module,exports){
 (function (global){
 var $ = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
 var Extend = require('structurejs/util/Extend');
@@ -426,11 +427,11 @@ var ListItemComponent = (function () {
         /**
          * Holds onto the model for this view.
          *
-         * @property vo
+         * @property model
          * @type {ListItemModel}
          * @public
          */
-        this.vo = vo;
+        this.model = model;
 
         /**
          * @property _$itemInput
@@ -460,7 +461,7 @@ var ListItemComponent = (function () {
      * @overridden DOMElement.create
      */
     ListItemComponent.prototype.create = function () {
-        _super.prototype.create.call(this, '#listItemTemplate', this.vo);
+        _super.prototype.create.call(this, '#listItemTemplate', this.model);
 
         this._$itemInput = this.$element.find('.js-itemText');
         this._$itemLabel = this.$element.find('.js-editTodo');
@@ -471,9 +472,9 @@ var ListItemComponent = (function () {
      * @overridden DOMElement.layout
      */
     ListItemComponent.prototype.layout = function () {
-        this.$element.toggleClass('completed', this.vo.isComplete);
+        this.$element.toggleClass('completed', this.model.isComplete);
 
-        this._$markCompleteCheckbox.prop('checked', this.vo.isComplete);
+        this._$markCompleteCheckbox.prop('checked', this.model.isComplete);
 
         return this;
     };
@@ -528,7 +529,7 @@ var ListItemComponent = (function () {
      * @public
      */
     ListItemComponent.prototype.setCompleted = function() {
-        this.vo.isComplete = true;
+        this.model.isComplete = true;
 
         this.layout();
         this._saveItemText();
@@ -541,7 +542,7 @@ var ListItemComponent = (function () {
      * @public
      */
     ListItemComponent.prototype.setUnCompleted = function() {
-        this.vo.isComplete = false;
+        this.model.isComplete = false;
 
         this.layout();
         this._saveItemText();
@@ -554,7 +555,7 @@ var ListItemComponent = (function () {
      * @public
      */
     ListItemComponent.prototype.isComplete = function() {
-        return this.vo.isComplete;
+        return this.model.isComplete;
     };
 
     /**
@@ -586,7 +587,7 @@ var ListItemComponent = (function () {
     ListItemComponent.prototype._onItemToggleComplete = function(event) {
         var isChecked = $(event.target).prop('checked');
 
-        this.vo.isComplete = isChecked;
+        this.model.isComplete = isChecked;
 
         this.layout();
         this._saveItemText();
@@ -627,7 +628,7 @@ var ListItemComponent = (function () {
         var todoText = this._$itemInput.val().trim();
 
         if (todoText != '') {
-            this.vo.text = todoText;
+            this.model.text = todoText;
             this._resetItemText();
             this._saveItemText();
         } else {
@@ -645,8 +646,8 @@ var ListItemComponent = (function () {
         this.$element.removeClass('editing');
 
         // We need to reset the hidden input back to the original value.
-        this._$itemInput.val(this.vo.text);
-        this._$itemLabel.text(this.vo.text);
+        this._$itemInput.val(this.model.text);
+        this._$itemLabel.text(this.model.text);
     };
 
     /**
@@ -656,7 +657,7 @@ var ListItemComponent = (function () {
      * @private
      */
     ListItemComponent.prototype._saveItemText = function() {
-        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.vo));
+        this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, this.model));
     };
 
     /**
@@ -680,7 +681,7 @@ var ListItemComponent = (function () {
 
         if (event.which === Key.ENTER) {
             if (todoText != '') {
-                this.vo.text = todoText;
+                this.model.text = todoText;
                 this._resetItemText();
                 this._saveItemText();
             } else {
@@ -693,6 +694,7 @@ var ListItemComponent = (function () {
 })();
 
 module.exports = ListItemComponent;
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../constant/Key":3,"structurejs/display/DOMElement":12,"structurejs/event/BaseEvent":16,"structurejs/util/Extend":25}],3:[function(require,module,exports){
 /**
@@ -737,7 +739,7 @@ window.app.appendTo('#todoapp');// Need to specify what area our code has contro
 var Extend = require('structurejs/util/Extend');
 var Collection = require('structurejs/model/Collection');
 var LocalStorageController = require('structurejs/controller/LocalStorageController');
-var ListItemModel = require('./vo/ListItemModel');
+var ListItemModel = require('./ListItemModel');
 
 /**
  * TODO: YUIDoc_comment
@@ -832,7 +834,8 @@ var ListItemCollection = (function () {
 })();
 
 module.exports = ListItemCollection;
-},{"./vo/ListItemModel":6,"structurejs/controller/LocalStorageController":10,"structurejs/model/Collection":20,"structurejs/util/Extend":25}],6:[function(require,module,exports){
+
+},{"./ListItemModel":6,"structurejs/controller/LocalStorageController":10,"structurejs/model/Collection":21,"structurejs/util/Extend":25}],6:[function(require,module,exports){
 var Extend = require('structurejs/util/Extend');
 var BaseModel = require('structurejs/model/BaseModel');
 
@@ -889,7 +892,8 @@ var ListItemModel = (function () {
 })();
 
 module.exports = ListItemModel;
-},{"structurejs/model/BaseModel":22,"structurejs/util/Extend":25}],7:[function(require,module,exports){
+
+},{"structurejs/model/BaseModel":20,"structurejs/util/Extend":25}],7:[function(require,module,exports){
 var Extend = require('structurejs/util/Extend');
 var DOMElement = require('structurejs/display/DOMElement');
 var BaseEvent = require('structurejs/event/BaseEvent');
@@ -1024,22 +1028,20 @@ var FooterView = (function () {
 
 module.exports = FooterView;
 },{"structurejs/display/DOMElement":12,"structurejs/event/BaseEvent":16,"structurejs/util/Extend":25}],8:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['./util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('./util/Util'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(Util) {
-    'use strict';
-
+})(["require", "exports", './util/Util'], function(require, exports) {
+    ///<reference path='_declare/jquery.d.ts'/>
+    ///<reference path='_declare/handlebars.d.ts'/>
+    ///<reference path='_declare/greensock.d.ts'/>
+    ///<reference path='_declare/jquery.eventListener.d.ts'/>
+    ///<reference path='_declare/log.d.ts'/>
+    var Util = require('./util/Util');
     /**
      * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
      *
@@ -1052,30 +1054,30 @@ module.exports = FooterView;
      */
     var BaseObject = (function() {
         function BaseObject() {
+                /**
+                 * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+                 *
+                 * @property sjsId
+                 * @type {int}
+                 * @default null
+                 * @writeOnce
+                 * @readOnly
+                 * @public
+                 */
+                this.sjsId = null;
+                this.sjsId = Util.uniqueId();
+            }
             /**
-             * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+             * Returns the fully qualified class name of an object.
              *
-             * @property sjsId
-             * @type {int}
-             * @default null
-             * @writeOnce
-             * @readOnly
+             * @method getQualifiedClassName
+             * @returns {string} Returns the class name.
              * @public
+             * @example
+             *     instance.getQualifiedClassName();
              */
-            this.sjsId = null;
-            this.sjsId = Util.uniqueId();
-        }
-        /**
-         * Returns the fully qualified class name of an object.
-         *
-         * @method getQualifiedClassName
-         * @returns {string} Returns the class name.
-         * @public
-         * @example
-         *     instance.getQualifiedClassName();
-         */
         BaseObject.prototype.getQualifiedClassName = function() {
-            return Util.getClassName(this);
+            return Util.getName(this);
         };
         /**
          * The purpose of the destroy method is to make an object ready for garbage collection. This
@@ -1106,28 +1108,29 @@ module.exports = FooterView;
         };
         return BaseObject;
     })();
-
     return BaseObject;
-}));
+});
 
 },{"./util/Util":28}],9:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['./util/Extend', './BaseObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('./util/Extend'), require('./BaseObject'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ObjectManager = factory(root.StructureJS.Extend, root.StructureJS.BaseObject);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseObject) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './BaseObject'], function(require, exports) {
+    var BaseObject = require('./BaseObject');
     /**
      * The {{#crossLink "ObjectManager"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
      *
@@ -1140,38 +1143,37 @@ module.exports = FooterView;
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ObjectManager = (function() {
-
-        var _super = Extend(ObjectManager, BaseObject);
+    var ObjectManager = (function(_super) {
+        __extends(ObjectManager, _super);
 
         function ObjectManager() {
-            _super.call(this);
+                _super.call(this);
+                /**
+                 * The isEnabled property is used to keep track of the enabled state of the object.
+                 *
+                 * @property isEnabled
+                 * @type {boolean}
+                 * @default false
+                 * @public
+                 */
+                this.isEnabled = false;
+            }
             /**
-             * The isEnabled property is used to keep track of the enabled state of the object.
+             * The enable method is responsible for enabling event listeners and/or children of the containing objects.
              *
-             * @property isEnabled
-             * @type {boolean}
-             * @default false
+             * @method enable
              * @public
+             * @chainable
+             * @example
+             *     ClassName.prototype.enable = function() {
+             *          if (this.isEnabled === true) { return this; }
+             *
+             *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+             *          this._childInstance.enable();
+             *
+             *          return _super.prototype.enable.call(this);
+             *     }
              */
-            this.isEnabled = false;
-        }
-        /**
-         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
-         *
-         * @method enable
-         * @public
-         * @chainable
-         * @example
-         *     ClassName.prototype.enable = function() {
-         *          if (this.isEnabled === true) { return this; }
-         *
-         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *          this._childInstance.enable();
-         *
-         *          return _super.prototype.enable.call(this);
-         *     }
-         */
         ObjectManager.prototype.enable = function() {
             if (this.isEnabled === true) {
                 return this;
@@ -1203,29 +1205,32 @@ module.exports = FooterView;
             return this;
         };
         return ObjectManager;
-    })();
-
+    })(BaseObject);
     return ObjectManager;
-}));
+});
 
-},{"./BaseObject":8,"./util/Extend":25}],10:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../event/LocalStorageEvent'), require('../event/EventDispatcher'), require('../model/BaseModel'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.LocalStorageController = factory(root.StructureJS.Extend, root.StructureJS.LocalStorageEvent, root.StructureJS.EventDispatcher, root.StructureJS.BaseModel);
+},{"./BaseObject":8}],10:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, LocalStorageEvent, EventDispatcher, BaseModel) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], function(require, exports) {
+    var LocalStorageEvent = require('../event/LocalStorageEvent');
+    var EventDispatcher = require('../event/EventDispatcher');
+    var BaseModel = require('../model/BaseModel');
     /**
      * The LocalStorageController...
      *
@@ -1240,40 +1245,39 @@ module.exports = FooterView;
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var LocalStorageController = (function() {
-
-        var _super = Extend(LocalStorageController, EventDispatcher);
+    var LocalStorageController = (function(_super) {
+        __extends(LocalStorageController, _super);
 
         function LocalStorageController() {
-            _super.call(this);
+                _super.call(this);
+                /**
+                 * Current user namespace. The namespace is optional.
+                 *
+                 * @property _namespace
+                 * @type {string}
+                 * @default defaultNamespace
+                 * @optional
+                 * @protected
+                 */
+                this._namespace = 'defaultNamespace';
+                /**
+                 * A reference to window.localStorage for faster access.
+                 *
+                 * @property _localStorage
+                 * @type {Storage}
+                 * @protected
+                 */
+                this._localStorage = null;
+                this._localStorage = window.localStorage;
+                window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
+            }
             /**
-             * Current user namespace. The namespace is optional.
+             * Set storage namespace
              *
-             * @property _namespace
-             * @type {string}
-             * @default defaultNamespace
-             * @optional
-             * @private
+             * @method setNamespace
+             * @param namespace
+             * @returns {string}
              */
-            this._namespace = 'defaultNamespace';
-            /**
-             * A reference to window.localStorage for faster access.
-             *
-             * @property _localStorage
-             * @type {Storage}
-             * @private
-             */
-            this._localStorage = null;
-            this._localStorage = window.localStorage;
-            window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
-        }
-        /**
-         * Set storage namespace
-         *
-         * @method setNamespace
-         * @param namespace
-         * @returns {string}
-         */
         LocalStorageController.prototype.setNamespace = function(namespace) {
             this._namespace = namespace;
         };
@@ -1296,7 +1300,9 @@ module.exports = FooterView;
          * @return {boolean}
          */
         LocalStorageController.prototype.addItem = function(key, data, useNamespace) {
-            if (useNamespace === void 0) { useNamespace = false; }
+            if (useNamespace === void 0) {
+                useNamespace = false;
+            }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
@@ -1320,7 +1326,9 @@ module.exports = FooterView;
          * @returns {any}
          */
         LocalStorageController.prototype.getItem = function(key, useNamespace) {
-            if (useNamespace === void 0) { useNamespace = false; }
+            if (useNamespace === void 0) {
+                useNamespace = false;
+            }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
@@ -1343,7 +1351,9 @@ module.exports = FooterView;
          * @return {Array}
          */
         LocalStorageController.prototype.getItemsWithNamespace = function(namespace) {
-            if (namespace === void 0) { namespace = this._namespace; }
+            if (namespace === void 0) {
+                namespace = this._namespace;
+            }
             var list = [];
             var length = this.getLength();
             for (var i = 0; i < length; i++) {
@@ -1388,7 +1398,9 @@ module.exports = FooterView;
          * @return {boolean}
          */
         LocalStorageController.prototype.removeItem = function(key, useNamespace) {
-            if (useNamespace === void 0) { useNamespace = false; }
+            if (useNamespace === void 0) {
+                useNamespace = false;
+            }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
@@ -1426,7 +1438,7 @@ module.exports = FooterView;
             this._localStorage.clear();
         };
         /**
-         * @overridden BaseController.destroy
+         * @overridden EventDispatcher.destroy
          */
         LocalStorageController.prototype.destroy = function() {
             _super.prototype.destroy.call(this);
@@ -1436,35 +1448,28 @@ module.exports = FooterView;
          *
          * @method onLocalStorageEvent
          * @param event {StorageEvent} The native browser event for Web Storage.
-         * @private
+         * @protected
          */
         LocalStorageController.prototype.onLocalStorageEvent = function(event) {
             this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
         };
         return LocalStorageController;
-    })();
-
+    })(EventDispatcher);
     return LocalStorageController;
-}));
+});
 
-},{"../event/EventDispatcher":17,"../event/LocalStorageEvent":18,"../model/BaseModel":22,"../util/Extend":25}],11:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/StringUtil', '../event/RouterEvent', '../model/Route'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/StringUtil'), require('../event/RouterEvent'), require('../model/Route'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Router = factory(root.StructureJS.StringUtil, root.StructureJS.RouterEvent, root.StructureJS.Route);
+},{"../event/EventDispatcher":17,"../event/LocalStorageEvent":18,"../model/BaseModel":20}],11:[function(require,module,exports){
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(StringUtil, RouterEvent, Route) {
-
-    'use strict';
-
+})(["require", "exports", '../util/StringUtil', '../event/RouterEvent', '../model/Route'], function(require, exports) {
+    var StringUtil = require('../util/StringUtil');
+    var RouterEvent = require('../event/RouterEvent');
+    var Route = require('../model/Route');
     /**
      * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
      *
@@ -1479,87 +1484,87 @@ module.exports = FooterView;
      */
     var Router = (function() {
         function Router() {
-            throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
-        }
-        /**
-         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouterEvent"}}{{/crossLink}}.
-         *
-         * @method add
-         * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouterEvent"}}{{/crossLink}} object.
-         * @param callbackScope {any} The scope of the callback function that should be executed.
-         * @public
-         * @static
-         * @example
-         *     // Example of adding a route listener and the function callback below.
-         *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
-         *
-         *     // The above route listener would match the below url:
-         *     // www.site.com/#/games/asteroids/2/
-         *
-         *     // The Call back receives a RouterEvent object.
-         *     ClassName.prototype.onRouteHandler = function (routerEvent) {
-         *         console.log(routerEvent.params);
-         *     }
-         *
-         * Route Pattern Options:
-         * ----------------------
-         * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
-         *
-         *     Router.add('/contact/:name:/', this.method, this);
-         *
-         *     // Will match one of the following:
-         *     // www.site.com/#/contact/
-         *     // www.site.com/#/contact/heather/
-         *     // www.site.com/#/contact/john/
-         *
-         *
-         * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
-         *
-         *     Router.add('/product/{productName}/', this.method, this);
-         *
-         *     // Will match one of the following:
-         *     // www.site.com/#/product/shoes/
-         *     // www.site.com/#/product/jackets/
-         *
-         *
-         * **\*** The asterisk character means it will match all or part of part the hash url.
-         *
-         *     Router.add('*', this.method, this);
-         *
-         *     // Will match one of the following:
-         *     // www.site.com/#/anything/
-         *     // www.site.com/#/matches/any/hash/url/
-         *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
-         *
-         *
-         * **?** The question mark character means it will match a query string for the hash url.
-         *
-         *     Router.add('?', this.method, this);
-         *
-         *     // Will match one of the following:
-         *     // www.site.com/#/?one=1&two=2&three=3
-         *     // www.site.com/#?one=1&two=2&three=3
-         *
-         *
-         * **''** The empty string means it will match when there are no hash url.
-         *
-         *     Router.add('', this.method, this);
-         *     Router.add('/', this.method, this);
-         *
-         *     // Will match one of the following:
-         *     // www.site.com/
-         *     // www.site.com/#/
-         *
-         *
-         * Other possible combinations but not limited too:
-         *
-         *     Router.add('/games/{gameName}/:level:/', this.method1, this);
-         *     Router.add('/{category}/blog/', this.method2, this);
-         *     Router.add('/home/?', this.method3, this);
-         *     Router.add('/about/*', this.method4, this);
-         *
-         */
+                throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
+            }
+            /**
+             * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouterEvent"}}{{/crossLink}}.
+             *
+             * @method add
+             * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
+             * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouterEvent"}}{{/crossLink}} object.
+             * @param callbackScope {any} The scope of the callback function that should be executed.
+             * @public
+             * @static
+             * @example
+             *     // Example of adding a route listener and the function callback below.
+             *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+             *
+             *     // The above route listener would match the below url:
+             *     // www.site.com/#/games/asteroids/2/
+             *
+             *     // The Call back receives a RouterEvent object.
+             *     ClassName.prototype.onRouteHandler = function (routerEvent) {
+             *         console.log(routerEvent.params);
+             *     }
+             *
+             * Route Pattern Options:
+             * ----------------------
+             * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
+             *
+             *     Router.add('/contact/:name:/', this.method, this);
+             *
+             *     // Will match one of the following:
+             *     // www.site.com/#/contact/
+             *     // www.site.com/#/contact/heather/
+             *     // www.site.com/#/contact/john/
+             *
+             *
+             * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
+             *
+             *     Router.add('/product/{productName}/', this.method, this);
+             *
+             *     // Will match one of the following:
+             *     // www.site.com/#/product/shoes/
+             *     // www.site.com/#/product/jackets/
+             *
+             *
+             * **\*** The asterisk character means it will match all or part of part the hash url.
+             *
+             *     Router.add('*', this.method, this);
+             *
+             *     // Will match one of the following:
+             *     // www.site.com/#/anything/
+             *     // www.site.com/#/matches/any/hash/url/
+             *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
+             *
+             *
+             * **?** The question mark character means it will match a query string for the hash url.
+             *
+             *     Router.add('?', this.method, this);
+             *
+             *     // Will match one of the following:
+             *     // www.site.com/#/?one=1&two=2&three=3
+             *     // www.site.com/#?one=1&two=2&three=3
+             *
+             *
+             * **''** The empty string means it will match when there are no hash url.
+             *
+             *     Router.add('', this.method, this);
+             *     Router.add('/', this.method, this);
+             *
+             *     // Will match one of the following:
+             *     // www.site.com/
+             *     // www.site.com/#/
+             *
+             *
+             * Other possible combinations but not limited too:
+             *
+             *     Router.add('/games/{gameName}/:level:/', this.method1, this);
+             *     Router.add('/{category}/blog/', this.method2, this);
+             *     Router.add('/home/?', this.method3, this);
+             *     Router.add('/about/*', this.method4, this);
+             *
+             */
         Router.add = function(routePattern, callback, callbackScope) {
             Router.enable();
             var route = new Route(routePattern, callback, callbackScope);
@@ -1583,6 +1588,7 @@ module.exports = FooterView;
          */
         Router.remove = function(routePattern, callback, callbackScope) {
             var route;
+            // Since we are removing (splice) from routes we need to check the length every iteration.
             for (var i = Router._routes.length - 1; i >= 0; i--) {
                 route = Router._routes[i];
                 if (route.routePattern === routePattern && route.callback === callback && route.callbackScope === callbackScope) {
@@ -1712,8 +1718,12 @@ module.exports = FooterView;
          *     Router.navigateTo('/games/asteroids/2/', true, true);
          */
         Router.navigateTo = function(route, silent, disableHistory) {
-            if (silent === void 0) { silent = false; }
-            if (disableHistory === void 0) { disableHistory = false; }
+            if (silent === void 0) {
+                silent = false;
+            }
+            if (disableHistory === void 0) {
+                disableHistory = false;
+            }
             if (Router.isEnabled === false) {
                 return;
             }
@@ -1803,6 +1813,7 @@ module.exports = FooterView;
             var route;
             var match;
             var routerEvent = null;
+            // Loop through all the route's. Note: we need to check the length every loop in case one was removed.
             for (var i = 0; i < Router._routes.length; i++) {
                 route = Router._routes[i];
                 match = route.match(hash);
@@ -1815,6 +1826,8 @@ module.exports = FooterView;
                     routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
                     routerEvent.target = Router;
                     routerEvent.currentTarget = Router;
+                    // Remove any empty strings in the array due to the :optional: route pattern.
+                    // Since we are removing (splice) from params we need to check the length every iteration.
                     for (var j = routerEvent.params.length - 1; j >= 0; j--) {
                         if (routerEvent.params[j] === '') {
                             routerEvent.params.splice(j, 1);
@@ -1968,28 +1981,33 @@ module.exports = FooterView;
         Router.allowMultipleMatches = true;
         return Router;
     })();
-
     return Router;
-}));
+});
 
-},{"../event/RouterEvent":19,"../model/Route":21,"../util/StringUtil":26}],12:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../display/DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', '../plugin/jquery.eventListener'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../display/DisplayObjectContainer'), require('../event/BaseEvent'), require('../util/TemplateFactory'), require('../util/ComponentFactory'), require('../plugin/jquery.eventListener'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.DOMElement = factory(root.StructureJS.Extend, root.StructureJS.DisplayObjectContainer, root.StructureJS.BaseEvent, root.StructureJS.TemplateFactory, root.StructureJS.ComponentFactory, root.jQuery);
+},{"../event/RouterEvent":19,"../model/Route":22,"../util/StringUtil":26}],12:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DisplayObjectContainer, BaseEvent, TemplateFactory, ComponentFactory, jQuery) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', '../plugin/jquery.eventListener'], function(require, exports) {
+    var DisplayObjectContainer = require('./DisplayObjectContainer');
+    var BaseEvent = require('../event/BaseEvent');
+    var TemplateFactory = require('../util/TemplateFactory');
+    var ComponentFactory = require('../util/ComponentFactory');
+    var jQuery = require('../plugin/jquery.eventListener');
     /**
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
      *
@@ -2115,152 +2133,159 @@ module.exports = FooterView;
      *          return ClassName;
      *     })();
      */
-    var DOMElement = (function() {
-
-        var _super = Extend(DOMElement, DisplayObjectContainer);
+    var DOMElement = (function(_super) {
+        __extends(DOMElement, _super);
 
         function DOMElement(type, params) {
-            if (type === void 0) { type = null; }
-            if (params === void 0) { params = null; }
-            _super.call(this);
-            /**
-             * Tracks number of times an element's width has been checked
-             * in order to determine if the element has been added
-             * to the DOM.
-             *
-             * @property checkCount
-             * @type {number}
-             * @public
-             */
-            this.checkCount = 0;
-            /**
-             * A cached reference to the DOM Element
-             *
-             * @property element
-             * @type {HTMLElement}
-             * @default null
-             * @public
-             */
-            this.element = null;
-            /**
-             * A cached reference to the jQuery DOM element
-             *
-             * @property $element
-             * @type {JQuery}
-             * @default null
-             * @public
-             */
-            this.$element = null;
-            /**
-             * If a jQuery object was passed into the constructor this will be set as true and
-             * this class will not try to add the view to the DOM since it already exists.
-             *
-             * @property _isReference
-             * @type {boolean}
-             * @private
-             */
-            this._isReference = false;
-            /**
-             * Holds onto the value passed into the constructor.
-             *
-             * @property _type
-             * @type {string}
-             * @default null
-             * @private
-             */
-            this._type = null;
-            /**
-             * Holds onto the value passed into the constructor.
-             *
-             * @property _params
-             * @type {any}
-             * @default null
-             * @private
-             */
-            this._params = null;
-            if (type instanceof jQuery) {
-                this.$element = type;
-                this.element = this.$element[0];
-                this._isReference = true;
-            } else if (type) {
-                this._type = type;
-                this._params = params;
+                if (type === void 0) {
+                    type = null;
+                }
+                if (params === void 0) {
+                    params = null;
+                }
+                _super.call(this);
+                /**
+                 * Tracks number of times an element's width has been checked
+                 * in order to determine if the element has been added
+                 * to the DOM.
+                 *
+                 * @property checkCount
+                 * @type {number}
+                 * @public
+                 */
+                this.checkCount = 0;
+                /**
+                 * A cached reference to the DOM Element
+                 *
+                 * @property element
+                 * @type {HTMLElement}
+                 * @default null
+                 * @public
+                 */
+                this.element = null;
+                /**
+                 * A cached reference to the jQuery DOM element
+                 *
+                 * @property $element
+                 * @type {JQuery}
+                 * @default null
+                 * @public
+                 */
+                this.$element = null;
+                /**
+                 * If a jQuery object was passed into the constructor this will be set as true and
+                 * this class will not try to add the view to the DOM since it already exists.
+                 *
+                 * @property _isReference
+                 * @type {boolean}
+                 * @protected
+                 */
+                this._isReference = false;
+                /**
+                 * Holds onto the value passed into the constructor.
+                 *
+                 * @property _type
+                 * @type {string}
+                 * @default null
+                 * @protected
+                 */
+                this._type = null;
+                /**
+                 * Holds onto the value passed into the constructor.
+                 *
+                 * @property _params
+                 * @type {any}
+                 * @default null
+                 * @protected
+                 */
+                this._params = null;
+                if (type instanceof jQuery) {
+                    this.$element = type;
+                    this.element = this.$element[0];
+                    this._isReference = true;
+                } else if (type) {
+                    this._type = type;
+                    this._params = params;
+                }
             }
-        }
-        /**
-         * The create function is intended to provide a consistent place for the creation and adding
-         * of children to the view. It will automatically be called the first time that the view is added
-         * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
-         * their overridden methods.
-         *
-         * This method gets called once when the child view is added to another view. If the child view is removed
-         * and added to another view the create method will not be called again.
-         *
-         * @method create
-         * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
-         * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
-         * @returns {DOMElement} Returns an instance of itself.
-         * @public
-         * @chainable
-         * @example
-         *     // EXAMPLE 1: By default your view class will be a div element:
-         *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this);
-         *
-         *          this._childInstance = new DOMElement();
-         *          this.addChild(this._childInstance);
-         *     }
-         *
-         *     // EXAMPLE 2: But lets say you wanted the view to be a ul element:
-         *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, 'ul');
-         *     }
-         *
-         *     // Then you could nest other elements inside this base view/element.
-         *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
-         *
-         *          var li = new DOMElement('li', {text: 'Robert is cool'});
-         *          this.addChild(li);
-         *     }
-         *
-         *     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below
-         *     // inline Handlebar template in your html file.
-         *     <script id="todoTemplate" type="text/template">
-         *          <div id="htmlTemplate" class="js-todo">
-         *              <div id="input-wrapper">
-         *                  <input type="text" class="list-input" placeholder="{{ data.text }}">
-         *                  <input type="button" class="list-item-submit" value="Add">
-         *              </div>
-         *          </div>
-         *     </script>
-         *
-         *     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate".
-         *     // There is a second optional argument where you can pass data for the Handlebar template to use.
-         *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });
-         *
-         *     }
-         *
-         *     // EXAMPLE 4: Let's say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.
-         *     var HomeTemplate = require('hbs!templates/HomeTemplate');
-         *
-         *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
-         *
-         *     }
-         *
-         *     // EXAMPLE 5: Or maybe you're using grunt-contrib-handlebars, or similar, to precompile hbs templates
-         *     require('templates'); // templates.js
-         *
-         *     ClassName.prototype.create = function () {
-         *          _super.prototype.create.call(this, 'templates/HomeTemplate', {data: "some data"});
-         *
-         *     }
-         */
+            /**
+             * The create function is intended to provide a consistent place for the creation and adding
+             * of children to the view. It will automatically be called the first time that the view is added
+             * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
+             * their overridden methods.
+             *
+             * This method gets called once when the child view is added to another view. If the child view is removed
+             * and added to another view the create method will not be called again.
+             *
+             * @method create
+             * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
+             * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
+             * @returns {DOMElement} Returns an instance of itself.
+             * @public
+             * @chainable
+             * @example
+             *     // EXAMPLE 1: By default your view class will be a div element:
+             *     ClassName.prototype.create = function () {
+             *          _super.prototype.create.call(this);
+             *
+             *          this._childInstance = new DOMElement();
+             *          this.addChild(this._childInstance);
+             *     }
+             *
+             *     // EXAMPLE 2: But lets say you wanted the view to be a ul element:
+             *     ClassName.prototype.create = function () {
+             *          _super.prototype.create.call(this, 'ul');
+             *     }
+             *
+             *     // Then you could nest other elements inside this base view/element.
+             *     ClassName.prototype.create = function () {
+             *          _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});
+             *
+             *          var li = new DOMElement('li', {text: 'Robert is cool'});
+             *          this.addChild(li);
+             *     }
+             *
+             *     // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below
+             *     // inline Handlebar template in your html file.
+             *     <script id="todoTemplate" type="text/template">
+             *          <div id="htmlTemplate" class="js-todo">
+             *              <div id="input-wrapper">
+             *                  <input type="text" class="list-input" placeholder="{{ data.text }}">
+             *                  <input type="button" class="list-item-submit" value="Add">
+             *              </div>
+             *          </div>
+             *     </script>
+             *
+             *     // You would just pass in the id or class selector of the template which in this case is "#todoTemplate".
+             *     // There is a second optional argument where you can pass data for the Handlebar template to use.
+             *     ClassName.prototype.create = function () {
+             *          _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });
+             *
+             *     }
+             *
+             *     // EXAMPLE 4: Let's say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.
+             *     var HomeTemplate = require('hbs!templates/HomeTemplate');
+             *
+             *     ClassName.prototype.create = function () {
+             *          _super.prototype.create.call(this, HomeTemplate, {data: "some data"});
+             *
+             *     }
+             *
+             *     // EXAMPLE 5: Or maybe you're using grunt-contrib-handlebars, or similar, to precompile hbs templates
+             *     require('templates'); // templates.js
+             *
+             *     ClassName.prototype.create = function () {
+             *          _super.prototype.create.call(this, 'templates/HomeTemplate', {data: "some data"});
+             *
+             *     }
+             */
         DOMElement.prototype.create = function(type, params) {
-            if (type === void 0) { type = 'div'; }
-            if (params === void 0) { params = null; }
+            if (type === void 0) {
+                type = 'div';
+            }
+            if (params === void 0) {
+                params = null;
+            }
             // Use the data passed into the constructor first else use the arguments from create.
             type = this._type || type;
             params = this._params || params;
@@ -2315,7 +2340,7 @@ module.exports = FooterView;
          *
          * @method addClientSideId
          * @param child {DOMElement} The DOMElement instance to add the sjsId too.
-         * @private
+         * @protected
          */
         DOMElement.prototype.addClientSideId = function(child) {
             var type = child.$element.attr('data-sjs-type');
@@ -2340,7 +2365,7 @@ module.exports = FooterView;
          *
          * @method removeClientSideId
          * @param child {DOMElement} The DOMElement instance to add the sjsId too.
-         * @private
+         * @protected
          * @return {boolean}
          */
         DOMElement.prototype.removeClientSideId = function(child) {
@@ -2365,7 +2390,7 @@ module.exports = FooterView;
          * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
          *
          * @method onDomAdded
-         * @private
+         * @protected
          */
         DOMElement.prototype.onAddedToDom = function(child) {
             var _this = this;
@@ -2473,7 +2498,9 @@ module.exports = FooterView;
          * @public
          */
         DOMElement.prototype.getChildren = function(selector) {
-            if (selector === void 0) { selector = ''; }
+            if (selector === void 0) {
+                selector = '';
+            }
             //TODO: Make sure the index of the children added is the same as the what is in the actual DOM.
             var $child;
             var domElement;
@@ -2508,7 +2535,9 @@ module.exports = FooterView;
          * @chainable
          */
         DOMElement.prototype.removeChild = function(child, destroy) {
-            if (destroy === void 0) { destroy = true; }
+            if (destroy === void 0) {
+                destroy = true;
+            }
             var remove = this.removeClientSideId(child);
             child.disable();
             // Checks if destroy was called before removeChild so it doesn't error.
@@ -2531,7 +2560,9 @@ module.exports = FooterView;
          * @chainable
          */
         DOMElement.prototype.removeChildAt = function(index, destroy) {
-            if (destroy === void 0) { destroy = true; }
+            if (destroy === void 0) {
+                destroy = true;
+            }
             this.removeChild(this.getChildAt(index), destroy);
             return this;
         };
@@ -2547,7 +2578,9 @@ module.exports = FooterView;
          * @chainable
          */
         DOMElement.prototype.removeChildren = function(destroy) {
-            if (destroy === void 0) { destroy = true; }
+            if (destroy === void 0) {
+                destroy = true;
+            }
             while (this.children.length > 0) {
                 this.removeChild(this.children.pop(), destroy);
             }
@@ -2600,29 +2633,30 @@ module.exports = FooterView;
             return createdChildren;
         };
         return DOMElement;
-    })();
-
+    })(DisplayObjectContainer);
     return DOMElement;
-}));
+});
 
-},{"../display/DisplayObjectContainer":14,"../event/BaseEvent":16,"../plugin/jquery.eventListener":23,"../util/ComponentFactory":24,"../util/Extend":25,"../util/TemplateFactory":27}],13:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.DisplayObject = factory(root.StructureJS.Extend, root.StructureJS.EventDispatcher);
+},{"../event/BaseEvent":16,"../plugin/jquery.eventListener":23,"../util/ComponentFactory":24,"../util/TemplateFactory":27,"./DisplayObjectContainer":14}],13:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, EventDispatcher) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../event/EventDispatcher'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
     /**
      * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -2635,9 +2669,8 @@ module.exports = FooterView;
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObject = (function() {
-
-        var _super = Extend(DisplayObject, EventDispatcher);
+    var DisplayObject = (function(_super) {
+        __extends(DisplayObject, _super);
 
         function DisplayObject() {
                 _super.call(this);
@@ -2840,29 +2873,30 @@ module.exports = FooterView;
             this.ctx.restore();
         };
         return DisplayObject;
-    })();
-
+    })(EventDispatcher);
     return DisplayObject;
-}));
+});
 
-},{"../event/EventDispatcher":17,"../util/Extend":25}],14:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DisplayObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DisplayObject'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.DisplayObjectContainer = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject);
+},{"../event/EventDispatcher":17}],14:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DisplayObject) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DisplayObject'], function(require, exports) {
+    var DisplayObject = require('./DisplayObject');
     /**
      * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -2875,53 +2909,52 @@ module.exports = FooterView;
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObjectContainer = (function() {
-
-        var _super = Extend(DisplayObjectContainer, DisplayObject);
+    var DisplayObjectContainer = (function(_super) {
+        __extends(DisplayObjectContainer, _super);
 
         function DisplayObjectContainer() {
-            _super.call(this);
+                _super.call(this);
+                /**
+                 * Returns the number of children of this object.
+                 *
+                 * @property numChildren
+                 * @type {int}
+                 * @default 0
+                 * @readOnly
+                 * @public
+                 */
+                this.numChildren = 0;
+                /**
+                 * A reference to the child DisplayObject instances to this parent object instance.
+                 *
+                 * @property children
+                 * @type {Array.<DisplayObject>}
+                 * @readOnly
+                 * @public
+                 */
+                this.children = [];
+                /**
+                 * Determines whether or not the children of the object are mouse enabled.
+                 *
+                 * @property mouseChildren
+                 * @type {boolean}
+                 * @public
+                 */
+                this.mouseChildren = false;
+            }
             /**
-             * Returns the number of children of this object.
+             * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
+             * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
              *
-             * @property numChildren
-             * @type {int}
-             * @default 0
-             * @readOnly
-             * @public
-             */
-            this.numChildren = 0;
-            /**
-             * A reference to the child DisplayObject instances to this parent object instance.
+             * If you add a child object that already has a different parent, the object is removed from the child
+             * list of the other parent object.
              *
-             * @property children
-             * @type {Array.<DisplayObject>}
-             * @readOnly
+             * @method addChild
+             * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
+             * @returns {DisplayObjectContainer} Returns an instance of itself.
              * @public
+             * @chainable
              */
-            this.children = [];
-            /**
-             * Determines whether or not the children of the object are mouse enabled.
-             *
-             * @property mouseChildren
-             * @type {boolean}
-             * @public
-             */
-            this.mouseChildren = false;
-        }
-        /**
-         * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
-         * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
-         *
-         * If you add a child object that already has a different parent, the object is removed from the child
-         * list of the other parent object.
-         *
-         * @method addChild
-         * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
         DisplayObjectContainer.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
@@ -3078,30 +3111,30 @@ module.exports = FooterView;
             return child;
         };
         return DisplayObjectContainer;
-    })();
-
+    })(DisplayObject);
     return DisplayObjectContainer;
-}));
+});
 
-},{"../util/Extend":25,"./DisplayObject":13}],15:[function(require,module,exports){
-(function (global){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DOMElement', 'jquery'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DOMElement'), (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Stage = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.jQuery);
+},{"./DisplayObject":13}],15:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DOMElement, jQuery) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DOMElement'], function(require, exports) {
+    var DOMElement = require('./DOMElement');
     /**
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
      *
@@ -3177,26 +3210,26 @@ module.exports = FooterView;
      *      app.appendTo('body');
      *
      */
-    var Stage = (function() {
-
-        var _super = Extend(Stage, DOMElement);
+    var Stage = (function(_super) {
+        __extends(Stage, _super);
 
         function Stage() {
-            _super.call(this);
-        }
-        /**
-         * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
-         *
-         * @method appendTo
-         * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
-         * @param [enabled=true] {boolean} Sets the enabled state of the object.
-         * @chainable
-         */
+                _super.call(this);
+            }
+            /**
+             * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
+             *
+             * @method appendTo
+             * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+             * @param [enabled=true] {boolean} Sets the enabled state of the object.
+             * @chainable
+             */
         Stage.prototype.appendTo = function(type, enabled) {
-            if (enabled === void 0) { enabled = true; }
+            if (enabled === void 0) {
+                enabled = true;
+            }
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
-            this.$element.attr('data-sjs-id', this.sjsId);
-            this.$element.attr('data-sjs-type', this.getQualifiedClassName());
+            this.addClientSideId(this);
             if (this.isCreated === false) {
                 this.create();
                 this.isCreated = true;
@@ -3210,30 +3243,30 @@ module.exports = FooterView;
             return this;
         };
         return Stage;
-    })();
-
+    })(DOMElement);
     return Stage;
-}));
+});
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../util/Extend":25,"./DOMElement":12}],16:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../BaseObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../BaseObject'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BaseEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseObject);
+},{"./DOMElement":12}],16:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseObject) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../BaseObject'], function(require, exports) {
+    var BaseObject = require('../BaseObject');
     /**
      * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
      *
@@ -3280,108 +3313,113 @@ module.exports = FooterView;
      *     event.countryName = 'Canada';
      *     this.dispatchEvent(event);
      */
-    var BaseEvent = (function() {
-
-        var _super = Extend(BaseEvent, BaseObject);
+    var BaseEvent = (function(_super) {
+        __extends(BaseEvent, _super);
 
         function BaseEvent(type, bubbles, cancelable, data) {
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this);
+                if (bubbles === void 0) {
+                    bubbles = false;
+                }
+                if (cancelable === void 0) {
+                    cancelable = false;
+                }
+                if (data === void 0) {
+                    data = null;
+                }
+                _super.call(this);
+                /**
+                 * The type of event.
+                 *
+                 * @property type
+                 * @type {string}
+                 * @default null
+                 * @public
+                 * @readOnly
+                 */
+                this.type = null;
+                /**
+                 * A reference to the object that originally dispatched the event.
+                 *
+                 * @property target
+                 * @type {any}
+                 * @default null
+                 * @public
+                 * @readOnly
+                 */
+                this.target = null;
+                /**
+                 * The currentTarget property always points to the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
+                 *
+                 * @property currentTarget
+                 * @type {any}
+                 * @default null
+                 * @public
+                 * @readOnly
+                 */
+                this.currentTarget = null;
+                /**
+                 * Used to pass any type of data with the event.
+                 *
+                 * @property data
+                 * @type {any}
+                 * @public
+                 * @default null
+                 */
+                this.data = null;
+                /**
+                 * Indicates whether an event is a bubbling event.
+                 *
+                 * @property bubbles
+                 * @type {boolean}
+                 * @public
+                 * @default false
+                 */
+                this.bubbles = false;
+                /**
+                 * Indicates whether the behavior associated with the event can be prevented.
+                 *
+                 * @property cancelable
+                 * @type {boolean}
+                 * @public
+                 * @default false
+                 */
+                this.cancelable = false;
+                /**
+                 * Indicates if the {{#crossLink "BaseEvent/stopPropagation:method"}}{{/crossLink}} was called on the event object.
+                 *
+                 * @property isPropagationStopped
+                 * @type {boolean}
+                 * @default false
+                 * @public
+                 * @readOnly
+                 */
+                this.isPropagationStopped = false;
+                /**
+                 * Indicates if the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} was called on the event object.
+                 *
+                 * @property isImmediatePropagationStopped
+                 * @type {boolean}
+                 * @default false
+                 * @public
+                 * @readOnly
+                 */
+                this.isImmediatePropagationStopped = false;
+                this.type = type;
+                this.bubbles = bubbles;
+                this.cancelable = cancelable;
+                this.data = data;
+            }
             /**
-             * The type of event.
+             * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
+             * This method does not affect any event listeners in the current node (currentTarget). In contrast,
+             * the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} method prevents processing
+             * of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
              *
-             * @property type
-             * @type {string}
-             * @default null
+             * @method stopPropagation
              * @public
-             * @readOnly
+             * @example
+             *     event.stopPropagation();
              */
-            this.type = null;
-            /**
-             * A reference to the object that originally dispatched the event.
-             *
-             * @property target
-             * @type {any}
-             * @default null
-             * @public
-             * @readOnly
-             */
-            this.target = null;
-            /**
-             * The currentTarget property always points to the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
-             *
-             * @property currentTarget
-             * @type {any}
-             * @default null
-             * @public
-             * @readOnly
-             */
-            this.currentTarget = null;
-            /**
-             * Used to pass any type of data with the event.
-             *
-             * @property data
-             * @type {any}
-             * @public
-             * @default null
-             */
-            this.data = null;
-            /**
-             * Indicates whether an event is a bubbling event.
-             *
-             * @property bubbles
-             * @type {boolean}
-             * @public
-             * @default false
-             */
-            this.bubbles = false;
-            /**
-             * Indicates whether the behavior associated with the event can be prevented.
-             *
-             * @property cancelable
-             * @type {boolean}
-             * @public
-             * @default false
-             */
-            this.cancelable = false;
-            /**
-             * Indicates if the {{#crossLink "BaseEvent/stopPropagation:method"}}{{/crossLink}} was called on the event object.
-             *
-             * @property isPropagationStopped
-             * @type {boolean}
-             * @default false
-             * @public
-             * @readOnly
-             */
-            this.isPropagationStopped = false;
-            /**
-             * Indicates if the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} was called on the event object.
-             *
-             * @property isImmediatePropagationStopped
-             * @type {boolean}
-             * @default false
-             * @public
-             * @readOnly
-             */
-            this.isImmediatePropagationStopped = false;
-            this.type = type;
-            this.bubbles = bubbles;
-            this.cancelable = cancelable;
-            this.data = data;
-        }
-        /**
-         * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
-         * This method does not affect any event listeners in the current node (currentTarget). In contrast,
-         * the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} method prevents processing
-         * of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
-         *
-         * @method stopPropagation
-         * @public
-         * @example
-         *     event.stopPropagation();
-         */
         BaseEvent.prototype.stopPropagation = function() {
             this.isPropagationStopped = true;
         };
@@ -3666,29 +3704,31 @@ module.exports = FooterView;
          */
         BaseEvent.SELECTED = 'BaseEvent.selected';
         return BaseEvent;
-    })();
-
+    })(BaseObject);
     return BaseEvent;
-}));
+});
 
-},{"../BaseObject":8,"../util/Extend":25}],17:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../ObjectManager', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../ObjectManager'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.EventDispatcher = factory(root.StructureJS.Extend, root.StructureJS.ObjectManager, root.StructureJS.BaseEvent);
+},{"../BaseObject":8}],17:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, ObjectManager, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../ObjectManager', './BaseEvent'], function(require, exports) {
+    var ObjectManager = require('../ObjectManager');
+    var BaseEvent = require('./BaseEvent');
     /**
      * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
      * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
@@ -3711,52 +3751,53 @@ module.exports = FooterView;
      *      eventDispatcher.addEventListener('change', this.handlerMethod, this);
      *      eventDispatcher.dispatchEvent('change');
      */
-    var EventDispatcher = (function() {
-
-        var _super = Extend(EventDispatcher, ObjectManager);
+    var EventDispatcher = (function(_super) {
+        __extends(EventDispatcher, _super);
 
         function EventDispatcher() {
-            _super.call(this);
+                _super.call(this);
+                /**
+                 * Holds a reference to added listeners.
+                 *
+                 * @property _listeners
+                 * @type {Array.<any>}
+                 * @protected
+                 */
+                this._listeners = null;
+                /**
+                 * Indicates the object that contains a child object. Uses the parent property
+                 * to specify a relative path to display objects that are above the current display object in the display
+                 * list hierarchy and helps facilitate event bubbling.
+                 *
+                 * @property parent
+                 * @type {any}
+                 * @public
+                 */
+                this.parent = null;
+                this._listeners = [];
+            }
             /**
-             * Holds a reference to added listeners.
+             * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
              *
-             * @property _listeners
-             * @type {Array.<any>}
-             * @private
-             */
-            this._listeners = null;
-            /**
-             * Indicates the object that contains a child object. Uses the parent property
-             * to specify a relative path to display objects that are above the current display object in the display
-             * list hierarchy and helps facilitate event bubbling.
-             *
-             * @property parent
-             * @type {any}
+             * @method addEventListener
+             * @param type {String} The type of event.
+             * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+             * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+             * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
              * @public
+             * @chainable
+             * @example
+             *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+             *
+             *      ClassName.prototype.handlerMethod = function (event) {
+             *          console.log(event.target + " sent the event.");
+             *          console.log(event.type, event.data);
+             *      }
              */
-            this.parent = null;
-            this._listeners = [];
-        }
-        /**
-         * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
-         *
-         * @method addEventListener
-         * @param type {String} The type of event.
-         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
-         * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
-         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
-         * @public
-         * @chainable
-         * @example
-         *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *
-         *      ClassName.prototype.handlerMethod = function (event) {
-         *          console.log(event.target + " sent the event.");
-         *          console.log(event.type, event.data);
-         *      }
-         */
         EventDispatcher.prototype.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
+            if (priority === void 0) {
+                priority = 0;
+            }
             // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list == null) {
@@ -3776,7 +3817,43 @@ module.exports = FooterView;
                 }
             }
             // Add the event listener to the list array at the index value.
-            list.splice(index, 0, { callback: callback, scope: scope, priority: priority });
+            list.splice(index, 0, {
+                callback: callback,
+                scope: scope,
+                priority: priority,
+                once: false
+            });
+            return this;
+        };
+        /**
+         * Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.
+         *
+         * @method addEventListenerOnce
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+         * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+         * @public
+         * @chainable
+         * @example
+         *      this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+         *          console.log(event.target + " sent the event.");
+         *          console.log(event.type, event.data);
+         *      }
+         */
+        EventDispatcher.prototype.addEventListenerOnce = function(type, callback, scope, priority) {
+            if (priority === void 0) {
+                priority = 0;
+            }
+            // Add the event listener the normal way.
+            this.addEventListener(type, callback, scope, priority);
+            // Get the event listeners we just added.
+            var list = this._listeners[type];
+            var listener = list[0];
+            // Change the value to true so it will be remove after dispatchEvent is called.
+            listener.once = true;
             return this;
         };
         /**
@@ -3833,7 +3910,9 @@ module.exports = FooterView;
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         EventDispatcher.prototype.dispatchEvent = function(type, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             var event = type;
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, true, data);
@@ -3855,6 +3934,10 @@ module.exports = FooterView;
                     }
                     listener = list[i];
                     listener.callback.call(listener.scope, event);
+                    // If the once value is true we want to remove the listener right after this callback was called.
+                    if (listener.once === true) {
+                        this.removeEventListener(event.type, listener.callback, listener.scope);
+                    }
                 }
             }
             //Dispatches up the chain of classes that have a parent.
@@ -3932,29 +4015,30 @@ module.exports = FooterView;
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;
-    })();
-
+    })(ObjectManager);
     return EventDispatcher;
-}));
+});
 
-},{"../ObjectManager":9,"../util/Extend":25,"./BaseEvent":16}],18:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.LocalStorageEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
+},{"../ObjectManager":9,"./BaseEvent":16}],18:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './BaseEvent'], function(require, exports) {
+    var BaseEvent = require('./BaseEvent');
     /**
      * The LocalStorageEvent ....
      * Note: the event only dispatches in other browser windows and does not show up in the window where you made a change to the local storage.
@@ -3974,60 +4058,60 @@ module.exports = FooterView;
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var LocalStorageEvent = (function() {
-
-        var _super = Extend(LocalStorageEvent, BaseEvent);
+    var LocalStorageEvent = (function(_super) {
+        __extends(LocalStorageEvent, _super);
 
         function LocalStorageEvent(type, bubbles, cancelable, nativeEvent) {
-            _super.call(this, type, bubbles, cancelable, nativeEvent);
-            /**
-             * TODO: YUIDoc_comment
-             *
-             * @property originalEvent
-             * @type {any}
-             * @public
-             */
-            this.originalEvent = null;
-            if (nativeEvent) {
-                this.key = nativeEvent.key;
-                this.oldValue = nativeEvent.oldValue;
-                this.newValue = nativeEvent.newValue;
-                this.url = nativeEvent.url;
+                _super.call(this, type, bubbles, cancelable, nativeEvent);
+                /**
+                 * TODO: YUIDoc_comment
+                 *
+                 * @property originalEvent
+                 * @type {any}
+                 * @public
+                 */
+                this.originalEvent = null;
+                if (nativeEvent) {
+                    this.key = nativeEvent.key;
+                    this.oldValue = nativeEvent.oldValue;
+                    this.newValue = nativeEvent.newValue;
+                    this.url = nativeEvent.url;
+                }
+                this.originalEvent = nativeEvent;
             }
-            this.originalEvent = nativeEvent;
-        }
-        /**
-         * The storage event is fired on a Document's Window object when a storage area changes.
-         *
-         * @event STORAGE
-         * @type {string}
-         * @static
-         */
+            /**
+             * The storage event is fired on a Document's Window object when a storage area changes.
+             *
+             * @event STORAGE
+             * @type {string}
+             * @static
+             */
         LocalStorageEvent.STORAGE = 'storage';
         return LocalStorageEvent;
-    })();
-
+    })(BaseEvent);
     return LocalStorageEvent;
-}));
+});
 
-},{"../util/Extend":25,"./BaseEvent":16}],19:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.RouterEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
+},{"./BaseEvent":16}],19:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './BaseEvent'], function(require, exports) {
+    var BaseEvent = require('./BaseEvent');
     /**
      * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
      *
@@ -4046,98 +4130,338 @@ module.exports = FooterView;
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var RouterEvent = (function() {
-
-        var _super = Extend(RouterEvent, BaseEvent);
+    var RouterEvent = (function(_super) {
+        __extends(RouterEvent, _super);
 
         function RouterEvent(type, bubbles, cancelable, data) {
-            if (type === void 0) { type = RouterEvent.CHANGE; }
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+                if (type === void 0) {
+                    type = RouterEvent.CHANGE;
+                }
+                if (bubbles === void 0) {
+                    bubbles = false;
+                }
+                if (cancelable === void 0) {
+                    cancelable = false;
+                }
+                if (data === void 0) {
+                    data = null;
+                }
+                _super.call(this, type, bubbles, cancelable, data);
+                /**
+                 * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+                 *
+                 * @property route
+                 * @type {string}
+                 * @public
+                 */
+                this.route = null;
+                /**
+                 * The new URL to which the window is navigating.
+                 *
+                 * @property newURL
+                 * @type {string}
+                 * @public
+                 */
+                this.newURL = null;
+                /**
+                 * The previous URL from which the window was navigated.
+                 *
+                 * @property oldURL
+                 * @type {string}
+                 * @public
+                 */
+                this.oldURL = null;
+                /**
+                 * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
+                 *
+                 * @property routePattern
+                 * @type {string}
+                 * @public
+                 */
+                this.routePattern = null;
+                /**
+                 * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
+                 * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+                 *
+                 * @property params
+                 * @type {Array.<string>}
+                 * @public
+                 */
+                this.params = [];
+                /**
+                 * A query object the represents the query string in the hash url.
+                 *
+                 * @property query
+                 * @type {any}
+                 * @public
+                 */
+                this.query = null;
+            }
             /**
-             * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+             * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
              *
-             * @property route
+             * @event CHANGE
              * @type {string}
-             * @public
+             * @static
              */
-            this.route = null;
-            /**
-             * The new URL to which the window is navigating.
-             *
-             * @property newURL
-             * @type {string}
-             * @public
-             */
-            this.newURL = null;
-            /**
-             * The previous URL from which the window was navigated.
-             *
-             * @property oldURL
-             * @type {string}
-             * @public
-             */
-            this.oldURL = null;
-            /**
-             * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
-             *
-             * @property routePattern
-             * @type {string}
-             * @public
-             */
-            this.routePattern = null;
-            /**
-             * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
-             * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
-             *
-             * @property params
-             * @type {Array.<string>}
-             * @public
-             */
-            this.params = [];
-            /**
-             * A query object the represents the query string in the hash url.
-             *
-             * @property query
-             * @type {any}
-             * @public
-             */
-            this.query = null;
-        }
-        /**
-         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
-         *
-         * @event CHANGE
-         * @type {string}
-         * @static
-         */
         RouterEvent.CHANGE = 'RouterEvent.change';
         return RouterEvent;
-    })();
-
+    })(BaseEvent);
     return RouterEvent;
-}));
+});
 
-},{"../util/Extend":25,"./BaseEvent":16}],20:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../util/Util', '../event/EventDispatcher', '../event/BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../util/Util'), require('../event/EventDispatcher'), require('../event/BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Collection = factory(root.StructureJS.Extend, root.StructureJS.Util, root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
+},{"./BaseEvent":16}],20:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, Util, EventDispatcher, BaseEvent) {
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../BaseObject', '../util/Util'], function(require, exports) {
+    var BaseObject = require('../BaseObject');
+    var Util = require('../util/Util');
+    /**
+     *  Base Model is a design pattern used to transfer data between software application subsystems.
+     *
+     * Note: If the data doesn't match the property names you can set the value manually after update super method has been called.
+     *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
+     *
+     * @class BaseModel
+     * @extends BaseObject
+     * @param [data] {any} Provide a way to update the  Base Model upon initialization.
+     * @module StructureJS
+     * @submodule model
+     * @requires Extend
+     * @requires BaseObject
+     * @requires Util
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     * @example
+     *      // Example how to extend the BaseModel class.
+     *      var data = {
+     *              make: 'Tesla',
+     *              model: 'Model S',
+     *              YeAr: 2014,
+     *              feature: {
+     *                  abs: true,
+     *                  airbags: true
+     *              }
+     *      }
+     *      var carModel = new CarModel(data);
+     *
+     *
+     *      // Example how to extend the BaseModel class.
+     *      var CarModel = (function () {
+     *          var _super = Extend(CarModel, BaseModel);
+     *          function CarModel(data) {
+     *              _super.call(this);
+     *
+     *              // You need to have properties so the data will get assigned.
+     *              // If not the data will not get assigned to the vo.
+     *              this.make = null;
+     *              this.model = null;
+     *              this.year = null;
+     *              this.allWheel = false; // Set a default value.
+     *
+     *              // You can assign BaseModel to a property which will
+     *              // automatically created it and pass the data to it.
+     *              this.feature = FeatureModel;
+     *
+     *              // If you have an array of data and want them assign to a BaseModel.
+     *              this.feature = [FeatureModel];
+     *
+     *              if (data) {
+     *                  this.update(data);
+     *              }
+     *          }
+     *
+     *          // @overridden BaseModel.update
+     *          CarModel.prototype.update = function (data) {
+     *              _super.prototype.update.call(this, data);
+     *
+     *              // If the data doesn't match the property name.
+     *              // You can set the value(s) manually after the update super method has been called.
+     *              this.year = data.YeAr;
+     *          };
+     *
+     *          return CarModel;
+     *      })();
+     */
+    var BaseModel = (function(_super) {
+        __extends(BaseModel, _super);
 
-    'use strict';
+        function BaseModel() {
+                _super.call(this);
+            }
+            /**
+             * Provide a way to update the  Base Model.
+             *
+             * @method update
+             * @param data {any}
+             * @public
+             * @example
+             *     // Example of updating some of the data:
+             *     carModel.update({ year: 2015, allWheel: true});
+             *
+             *     // Of course you can also do it the following way:
+             *     carModel.year = 2015;
+             *     carModel.allWheel = false;
+             */
+        BaseModel.prototype.update = function(data) {
+            var propertyData;
+            for (var propertyKey in this) {
+                // If this class has a property that matches a property on the data being passed in then set it.
+                // Also don't set the sjsId data value because it is automatically set in the constructor and
+                // we do want it to be overridden when the clone method has been called.
+                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'sjsId') {
+                    // If the data passed in does not have a property that matches a property on the  Base Model then
+                    // use the default value/data that was assigned to the property.
+                    // Else use the data that was passed in.
+                    propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
+                    this._setData(propertyKey, propertyData);
+                }
+            }
+            return this;
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _setData
+         * @param key
+         * @param data
+         * @protected
+         */
+        BaseModel.prototype._setData = function(key, data) {
+            // If the data is an array and if the property its being assigned to is an array.
+            if (data instanceof Array && this[key] instanceof Array) {
+                var temp = [];
+                var len = data.length;
+                if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false) {
+                    var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                    for (var i = 0; i < len; i++) {
+                        temp[i] = this._updateData(baseModelOrOther, data[i]);
+                    }
+                }
+                this[key] = temp;
+            } else {
+                this[key] = this._updateData(this[key], data);
+            }
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _updateData
+         * @param keyValue
+         * @param data
+         * @protected
+         */
+        BaseModel.prototype._updateData = function(keyValue, data) {
+            if (keyValue instanceof BaseModel.constructor) {
+                // If the property is an instance of a BaseModel class and has not been created yet.
+                // Then instantiate it and pass in the data to the constructor.
+                keyValue = new keyValue(data);
+            } else if (keyValue instanceof BaseModel) {
+                // If property is an instance of a BaseModel class and has already been created.
+                // Then call the update method and pass in the data.
+                keyValue.update(data);
+            } else {
+                // Else just assign the data to the property.
+                keyValue = data;
+            }
+            return keyValue;
+        };
+        /**
+         * Converts the  Base Model data into a JSON object and deletes the sjsId property.
+         *
+         * @method toJSON
+         * @returns {BaseModel}
+         * @public
+         * @example
+         *     var obj = carModel.toJSON();
+         */
+        BaseModel.prototype.toJSON = function() {
+            var clone = Util.clone(this);
+            return Util.deletePropertyFromObject(clone, ['sjsId']);
+        };
+        /**
+         * Converts a  Base Model to a JSON string,
+         *
+         * @method toJSONString
+         * @returns {string}
+         * @public
+         * @example
+         *     var str = carModel.toJSONString();
+         */
+        BaseModel.prototype.toJSONString = function() {
+            return JSON.stringify(this.toJSON());
+        };
+        /**
+         * Converts the string json data into an Object and calls the {{#crossLink "BaseModel/update:method"}}{{/crossLink}} method with the converted Object.
+         *
+         * @method fromJSON
+         * @param json {string}
+         * @public
+         * @example
+         *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
+         *      var carModel = new CarModel();
+         *      carModel.fromJSON(str);
+         */
+        BaseModel.prototype.fromJSON = function(json) {
+            var parsedData = JSON.parse(json);
+            this.update(parsedData);
+            return this;
+        };
+        /**
+         * Create a clone/copy of the  Base Model.
+         *
+         * @method clone
+         * @returns {BaseModel}
+         * @public
+         * @example
+         *     var clone = carModel.clone();
+         */
+        BaseModel.prototype.clone = function() {
+            var clonedBaseModel = new this.constructor(this);
+            return clonedBaseModel;
+        };
+        return BaseModel;
+    })(BaseObject);
+    return BaseModel;
+});
 
+},{"../BaseObject":8,"../util/Util":28}],21:[function(require,module,exports){
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
+    }
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
+    var BaseEvent = require('../event/BaseEvent');
+    var Util = require('../util/Util');
     /**
      * The Collection class provides a way for you to manage your models.
      *
@@ -4162,63 +4486,67 @@ module.exports = FooterView;
      *     var collection = new Collection(CarModel);
      *     collection.add(data);
      */
-    var Collection = (function() {
-
-        var _super = Extend(Collection, EventDispatcher);
+    var Collection = (function(_super) {
+        __extends(Collection, _super);
 
         function Collection(baseModelType) {
-            if (baseModelType === void 0) { baseModelType = null; }
-            _super.call(this);
+                if (baseModelType === void 0) {
+                    baseModelType = null;
+                }
+                _super.call(this);
+                /**
+                 * The list of models in the collection.
+                 *
+                 * @property models
+                 * @type {Array.<any>}
+                 * @readOnly
+                 */
+                this.models = [];
+                /**
+                 * The count of how many models are in the collection.
+                 *
+                 * @property length
+                 * @type {int}
+                 * @default 0
+                 * @readOnly
+                 * @public
+                 */
+                this.length = 0;
+                /**
+                 * A reference to a BaseModel type that will be used in the collection.
+                 *
+                 * @property _modelType
+                 * @type {any}
+                 * @protected
+                 */
+                this._modelType = null;
+                this._modelType = baseModelType;
+            }
             /**
-             * The list of models in the collection.
+             * Adds model or an array of models to the collection.
              *
-             * @property models
-             * @type {Array.<any>}
-             * @readOnly
-             */
-            this.models = [];
-            /**
-             * The count of how many models are in the collection.
-             *
-             * @property length
-             * @type {int}
-             * @default 0
-             * @readOnly
+             * @method add
+             * @param model {Any|Array} Single or an array of models to add to the current collection.
+             * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
              * @public
+             * @chainable
+             * @example
+             *      collection.add(vo);
+             *      collection.add(vo, true);
              */
-            this.length = 0;
-            /**
-             * A reference to a BaseModel that will be used in the collection.
-             *
-             * @property _modelType
-             * @type {BaseModel}
-             * @private
-             */
-            this._modelType = null;
-            this._modelType = baseModelType;
-        }
-        /**
-         * Adds model or an array of models to the collection.
-         *
-         * @method add
-         * @param model {Any|Array} Single or an array of models to add to the current collection.
-         * @param [silent=false] {boolean} If you'd like to prevent the event from being dispatched.
-         * @public
-         * @chainable
-         * @example
-         *      collection.add(vo);
-         *      collection.add(vo, true);
-         */
         Collection.prototype.add = function(model, silent) {
-            if (silent === void 0) { silent = false; }
+            if (silent === void 0) {
+                silent = false;
+            }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
             var len = models.length;
             for (var i = 0; i < len; i++) {
                 // Only add the model if it does not exist in the the collection.
                 if (this.has(models[i]) === false) {
-                    if (this._modelType !== null) {
-                        // If the modeType is set then instantiate it and pass the data into the constructor.
+                    if (this._modelType !== null && (models[i] instanceof this._modelType) === false) {
+                        // If the modelType is set and the data is not already a instance of the modelType
+                        // then instantiate it and pass the data into the constructor.
                         this.models.push(new this._modelType(models[i]));
                     } else {
                         // Pass the data object to the array.
@@ -4246,7 +4574,9 @@ module.exports = FooterView;
          *      collection.remove(vo, true);
          */
         Collection.prototype.remove = function(model, silent) {
-            if (silent === void 0) { silent = false; }
+            if (silent === void 0) {
+                silent = false;
+            }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
             for (var i = models.length - 1; i >= 0; i--) {
@@ -4351,7 +4681,7 @@ module.exports = FooterView;
          * @method _where
          * @param propList {Object|Array}
          * @return {Array.<any>} Returns a list of found object's.
-         * @private
+         * @protected
          */
         Collection.prototype._where = function(propList) {
             // If properties is not an array then make it an array object.
@@ -4394,7 +4724,7 @@ module.exports = FooterView;
          * @method _findPropertyValue
          * @param arg {String|Number|Boolean>}
          * @return {Array.<any>} Returns a list of found object's.
-         * @private
+         * @protected
          */
         Collection.prototype._findPropertyValue = function(arg) {
             // If properties is not an array then make it an array object.
@@ -4438,7 +4768,9 @@ module.exports = FooterView;
          *      collection.clear();
          */
         Collection.prototype.clear = function(silent) {
-            if (silent === void 0) { silent = false; }
+            if (silent === void 0) {
+                silent = false;
+            }
             this.models = [];
             this.length = 0;
             if (silent === false) {
@@ -4521,7 +4853,9 @@ module.exports = FooterView;
          *      collection.sortOn('name', false);
          */
         Collection.prototype.sortOn = function(propertyName, sortAscending) {
-            if (sortAscending === void 0) { sortAscending = true; }
+            if (sortAscending === void 0) {
+                sortAscending = true;
+            }
             if (sortAscending === false) {
                 return this.sort(function(a, b) {
                     if (a[propertyName] < b[propertyName]) {
@@ -4560,7 +4894,9 @@ module.exports = FooterView;
          *      collection.sort(sortByDate);
          */
         Collection.prototype.sort = function(sortFunction) {
-            if (sortFunction === void 0) { sortFunction = null; }
+            if (sortFunction === void 0) {
+                sortFunction = null;
+            }
             this.models.sort(sortFunction);
             return this.models;
         };
@@ -4580,7 +4916,9 @@ module.exports = FooterView;
          *      var list = collection.filter(isOldEnough);
          */
         Collection.prototype.filter = function(callback, callbackScope) {
-            if (callbackScope === void 0) { callbackScope = null; }
+            if (callbackScope === void 0) {
+                callbackScope = null;
+            }
             return this.models.filter(callback, callbackScope);
         };
         /**
@@ -4601,7 +4939,9 @@ module.exports = FooterView;
          *      // ['Robert', 'Chris']
          */
         Collection.prototype.pluck = function(propertyName, unique) {
-            if (unique === void 0) { unique = false; }
+            if (unique === void 0) {
+                unique = false;
+            }
             var list = [];
             for (var i = 0; i < this.length; i++) {
                 if (this.models[i].hasOwnProperty(propertyName) === true) {
@@ -4634,6 +4974,7 @@ module.exports = FooterView;
             var model;
             var groupName;
             var groupList = {};
+            // Loop through all the models in this collection.
             for (var i = 0; i < this.length; i++) {
                 model = this.models[i];
                 // Get the value from the property name passed in and uses that as the group name.
@@ -4663,7 +5004,7 @@ module.exports = FooterView;
          * @method _unique
          * @param list {Array.<any>} The array you want to use to generate the unique array.
          * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
-         * @private
+         * @protected
          */
         Collection.prototype._unique = function(list) {
             var unique = list.reduce(function(previousValue, currentValue) {
@@ -4675,29 +5016,19 @@ module.exports = FooterView;
             return unique;
         };
         return Collection;
-    })();
-
+    })(EventDispatcher);
     return Collection;
-}));
+});
 
-},{"../event/BaseEvent":16,"../event/EventDispatcher":17,"../util/Extend":25,"../util/Util":28}],21:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Route = factory();
+},{"../event/BaseEvent":16,"../event/EventDispatcher":17,"../util/Util":28}],22:[function(require,module,exports){
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
      *
@@ -4766,52 +5097,52 @@ module.exports = FooterView;
      */
     var Route = (function() {
         function Route(routePattern, callback, scope) {
+                /**
+                 * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
+                 *
+                 * @property routePattern
+                 * @type String
+                 * @public
+                 */
+                this.routePattern = '';
+                /**
+                 * The regex representation for the routePattern that was passed into the constructor.
+                 *
+                 * @property regex
+                 * @type RegExp
+                 * @public
+                 * @readOnly
+                 */
+                this.regex = null;
+                /**
+                 * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+                 *
+                 * @property callback
+                 * @type {Function}
+                 * @public
+                 */
+                this.callback = null;
+                /**
+                 * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+                 *
+                 * @property callbackScope
+                 * @type {any}
+                 * @public
+                 */
+                this.callbackScope = null;
+                this.routePattern = routePattern;
+                this.regex = this.routePatternToRegexp(routePattern);
+                this.callback = callback;
+                this.callbackScope = scope;
+            }
             /**
-             * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
+             * Converts the routePattern that was passed into the constructor to a regexp object.
              *
-             * @property routePattern
-             * @type String
-             * @public
+             * @method routePatternToRegexp
+             * @param {String} routePattern
+             * @returns {RegExp}
+             * @protected
              */
-            this.routePattern = '';
-            /**
-             * The regex representation for the routePattern that was passed into the constructor.
-             *
-             * @property regex
-             * @type RegExp
-             * @public
-             * @readOnly
-             */
-            this.regex = null;
-            /**
-             * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-             *
-             * @property callback
-             * @type {Function}
-             * @public
-             */
-            this.callback = null;
-            /**
-             * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-             *
-             * @property callbackScope
-             * @type {any}
-             * @public
-             */
-            this.callbackScope = null;
-            this.routePattern = routePattern;
-            this.regex = this.routePatternToRegexp(routePattern);
-            this.callback = callback;
-            this.callbackScope = scope;
-        }
-        /**
-         * Converts the routePattern that was passed into the constructor to a regexp object.
-         *
-         * @method routePatternToRegexp
-         * @param {String} routePattern
-         * @returns {RegExp}
-         * @private
-         */
         Route.prototype.routePatternToRegexp = function(routePattern) {
             var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
             var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
@@ -4845,256 +5176,20 @@ module.exports = FooterView;
         };
         return Route;
     })();
-
     return Route;
-}));
+});
 
-},{}],22:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../BaseObject', '../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../util/Util'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BaseModel = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
-    }
-}(this, function(Extend, BaseObject, Util) {
-
-    'use strict';
-
-    /**
-     *  Base Model is a design pattern used to transfer data between software application subsystems.
-     *
-     * Note: If the data doesn't match the property names you can set the value manually after update super method has been called.
-     *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
-     *
-     * @class BaseModel
-     * @extends BaseObject
-     * @param [data] {any} Provide a way to update the  Base Model upon initialization.
-     * @module StructureJS
-     * @submodule model
-     * @requires Extend
-     * @requires BaseObject
-     * @requires Util
-     * @constructor
-     * @author Robert S. (www.codeBelt.com)
-     * @example
-     *     var data = {
-     *          make: 'Tesla',
-     *          model: 'Model S',
-     *          YeAr: 2014,
-     *          feature: {
-     *              abs: true,
-     *              airbags: true
-     *          }
-     *     }
-     *     var carModel = new CarModel(data);
-     *
-     *
-     *     // Example how to extend the BaseModel class.
-     *      var CarModel = (function () {
-     *          var _super = Extend(CarModel, BaseModel);
-     *          function CarModel(data) {
-     *              _super.call(this);
-     *
-     *              // You need to have properties so the data will get assigned.
-     *              // If not the data will not get assigned to the vo.
-     *              this.make = null;
-     *              this.model = null;
-     *              this.year = null;
-     *              this.allWheel = false; // Set a default value.
-     *
-     *              // You can assign BaseModel to a property which will
-     *              // automatically created it and pass the data to it.
-     *              this.feature = FeatureModel;
-     *
-     *              // If you have an array of data and want them assign to a BaseModel.
-     *              this.feature = [FeatureModel];
-     *
-     *              if (data) {
-     *                  this.update(data);
-     *              }
-     *          }
-     *
-     *          // @overridden BaseModel.update
-     *          CarModel.prototype.update = function (data) {
-     *              _super.prototype.update.call(this, data);
-     *
-     *              // If the data doesn't match the property name.
-     *             // You can set the value(s) manually after the update super method has been called.
-     *              this.year = data.YeAr;
-     *          };
-     *
-     *          return CarModel;
-     *      })();
-     */
-    var BaseModel = (function() {
-
-        var _super = Extend(BaseModel, BaseObject);
-
-        function BaseModel() {
-            _super.call(this);
-        }
-        /**
-         * Provide a way to update the  Base Model.
-         *
-         * @method update
-         * @param data {any}
-         * @public
-         * @example
-         *     // Example of updating some of the data:
-         *     carModel.update({ year: 2015, allWheel: true});
-         *
-         *     // Of course you can also do it the following way:
-         *     carModel.year = 2015;
-         *     carModel.allWheel = false;
-         */
-        BaseModel.prototype.update = function(data) {
-            var propertyData;
-            for (var propertyKey in this) {
-                // If this class has a property that matches a property on the data being passed in then set it.
-                // Also don't set the sjsId data value because it is automatically set in the constructor and
-                // we do want it to be overridden when the clone method has been called.
-                if (this.hasOwnProperty(propertyKey) && propertyKey !== 'sjsId') {
-                    // If the data passed in does not have a property that matches a property on the  Base Model then
-                    // use the default value/data that was assigned to the property.
-                    // Else use the data that was passed in.
-                    propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
-                    this._setData(propertyKey, propertyData);
-                }
-            }
-            return this;
-        };
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @method _setData
-         * @param key
-         * @param data
-         * @private
-         */
-        BaseModel.prototype._setData = function(key, data) {
-            // If the data is an array and if the property its being assigned to is an array.
-            if (data instanceof Array && this[key] instanceof Array) {
-                var temp = [];
-                var len = data.length;
-                if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false) {
-                    var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
-                    for (var i = 0; i < len; i++) {
-                        temp[i] = this._updateData(baseModelOrOther, data[i]);
-                    }
-                }
-                this[key] = temp;
-            } else {
-                this[key] = this._updateData(this[key], data);
-            }
-        };
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @method _updateData
-         * @param keyValue
-         * @param data
-         * @private
-         */
-        BaseModel.prototype._updateData = function(keyValue, data) {
-            if (keyValue instanceof BaseModel.constructor) {
-                // If the property is an instance of a BaseModel class and has not been created yet.
-                // Then instantiate it and pass in the data to the constructor.
-                keyValue = new keyValue(data);
-            } else if (keyValue instanceof BaseModel) {
-                // If property is an instance of a BaseModel class and has already been created.
-                // Then call the update method and pass in the data.
-                keyValue.update(data);
-            } else {
-                // Else just assign the data to the property.
-                keyValue = data;
-            }
-            return keyValue;
-        };
-        /**
-         * Converts the  Base Model data into a JSON object and deletes the sjsId property.
-         *
-         * @method toJSON
-         * @returns {BaseModel}
-         * @public
-         * @example
-         *     var obj = carModel.toJSON();
-         */
-        BaseModel.prototype.toJSON = function() {
-            var clone = Util.clone(this);
-            return Util.deletePropertyFromObject(clone, ['sjsId']);
-        };
-        /**
-         * Converts a  Base Model to a JSON string,
-         *
-         * @method toJSONString
-         * @returns {string}
-         * @public
-         * @example
-         *     var str = carModel.toJSONString();
-         */
-        BaseModel.prototype.toJSONString = function() {
-            return JSON.stringify(this.toJSON());
-        };
-        /**
-         * Converts the string json data into an Object and calls the {{#crossLink "BaseModel/update:method"}}{{/crossLink}} method with the converted Object.
-         *
-         * @method fromJSON
-         * @param json {string}
-         * @public
-         * @example
-         *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
-         *      var carModel = new CarModel();
-         *      carModel.fromJSON(str);
-         */
-        BaseModel.prototype.fromJSON = function(json) {
-            var parsedData = JSON.parse(json);
-            this.update(parsedData);
-            return this;
-        };
-        /**
-         * Create a clone/copy of the  Base Model.
-         *
-         * @method clone
-         * @returns {BaseModel}
-         * @public
-         * @example
-         *     var clone = carModel.clone();
-         */
-        BaseModel.prototype.clone = function() {
-            var clonedBaseModel = new this.constructor(this);
-            return clonedBaseModel;
-        };
-        return BaseModel;
-    })();
-
-    return BaseModel;
-}));
-
-},{"../BaseObject":8,"../util/Extend":25,"../util/Util":28}],23:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 (function (global){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory((typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null));
-    } else {
-        /*jshint sub:true */
-        factory(root.jQuery);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function($) {
-
-    'use strict';
-
+})(["require", "exports", 'jquery'], function(require, exports) {
+    var $ = (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null);
     var $eventListener = $;
     /**
      * A bind polyfill for browsers that don't support the bind method.
@@ -5102,6 +5197,7 @@ module.exports = FooterView;
     if (!Function.prototype.bind) {
         Function.prototype.bind = function(oThis) {
             if (typeof this !== 'function') {
+                // closest thing possible to the ECMAScript 5 internal IsCallable function
                 throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
             }
             var aArgs = Array.prototype.slice.call(arguments, 1),
@@ -5199,28 +5295,20 @@ module.exports = FooterView;
         }
         return this;
     };
-
     return $eventListener;
-}));
+});
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],24:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Util'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ComponentFactory = factory(root.StructureJS.Util);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(Util) {
-
-    'use strict';
+})(["require", "exports", '../util/Util'], function(require, exports) {
+    var Util = require('../util/Util');
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
@@ -5232,23 +5320,25 @@ module.exports = FooterView;
      */
     var ComponentFactory = (function() {
         function ComponentFactory() {
-            throw new Error('[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.');
-        }
-        /**
-         * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
-         *
-         * @method create
-         * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {any} The class that you want instantiated.
-         * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink "DisplayObjectContainer/addChild:method"}}{{/crossLink}} method.
-         * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
-         * @public
-         * @static
-         * @example
-         *      ComponentFactory.create($('.js-list'), SomeClass, this);
-         */
+                throw new Error('[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.');
+            }
+            /**
+             * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
+             *
+             * @method create
+             * @param $element {jQuery} One or more jQuery referenced DOM elements.
+             * @param ComponentClass {any} The class that you want instantiated.
+             * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink "DisplayObjectContainer/addChild:method"}}{{/crossLink}} method.
+             * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+             * @public
+             * @static
+             * @example
+             *      ComponentFactory.create($('.js-list'), SomeClass, this);
+             */
         ComponentFactory.create = function($elements, ComponentClass, scope) {
-            if (scope === void 0) { scope = null; }
+            if (scope === void 0) {
+                scope = null;
+            }
             var list = [];
             var component;
             var $element;
@@ -5265,7 +5355,7 @@ module.exports = FooterView;
                 } else {
                     // Else if there is already a 'data-sjs-type' attribute then get the type(s).
                     types = types.split(',');
-                    componentName = Util.getFunctionName(ComponentClass);
+                    componentName = Util.getName(ComponentClass);
                     // Only create the component if the component type does not already exist.
                     if (types.indexOf(componentName) === -1) {
                         component = ComponentFactory._createComponent($element, ComponentClass, scope);
@@ -5291,9 +5381,8 @@ module.exports = FooterView;
         };
         return ComponentFactory;
     })();
-
     return ComponentFactory;
-}));
+});
 
 },{"../util/Util":28}],25:[function(require,module,exports){
 /**
@@ -5360,23 +5449,14 @@ module.exports = FooterView;
 }));
 
 },{}],26:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.StringUtil = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * The StringUtil...
      *
@@ -5387,28 +5467,29 @@ module.exports = FooterView;
      * @static
      */
     var StringUtil = (function() {
-
         function StringUtil() {
-            throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
-        }
-        /**
-         * Gets the extension name off the string being passed in.
-         *
-         * @method getExtension
-         * @param filename {string}
-         * @param withDot {boolean} If you want the period to be included in the extension name.
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      StringUtil.getExtension('file.exe');
-         *      // 'exe'
-         *
-         *      StringUtil.getExtension('file.exe', true);
-         *      // '.exe'
-         */
+                throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
+            }
+            /**
+             * Gets the extension name off the string being passed in.
+             *
+             * @method getExtension
+             * @param filename {string}
+             * @param withDot {boolean} If you want the period to be included in the extension name.
+             * @returns {string}
+             * @public
+             * @static
+             * @example
+             *      StringUtil.getExtension('file.exe');
+             *      // 'exe'
+             *
+             *      StringUtil.getExtension('file.exe', true);
+             *      // '.exe'
+             */
         StringUtil.getExtension = function(filename, withDot) {
-            if (withDot === void 0) { withDot = false; }
+            if (withDot === void 0) {
+                withDot = false;
+            }
             var num = (withDot === true) ? 0 : 1;
             return filename.slice(filename.lastIndexOf('.') + num, filename.length);
         };
@@ -5435,21 +5516,16 @@ module.exports = FooterView;
          *      // 'live/down/by/the/river'
          */
         StringUtil.toSentence = function(str, separator) {
-            if (separator === void 0) { separator = ' '; }
+            if (separator === void 0) {
+                separator = ' ';
+            }
             return String(str)
-                // Add a space after any digits.
                 .replace(/(\d)/g, '$1 ')
-                // Add a space before any upper case characters.
                 .replace(/([a-z](?=[A-Z]))/g, '$1 ')
-                // Remove all non-word characters and replace with a single space.
                 .replace(/[^a-zA-Z0-9 ]/g, ' ')
-                // Replace multiple Spaces with a single space.
                 .replace(/\s{2,}/g, ' ')
-                // Trim whitespace around the string.
                 .replace(/^ | $/g, '')
-                // Lower case the entire string.
                 .toLowerCase()
-                // If a separator is passed in then replace the space with it.
                 .replace(/\s+/g, separator);
         };
         /**
@@ -5466,7 +5542,6 @@ module.exports = FooterView;
          */
         StringUtil.toCamelCase = function(str) {
             return StringUtil.toSentence(str)
-                // Replace spaces between words with a string upper cased character.
                 .replace(/ (\w)/g, function(_, $1) {
                     return $1.toUpperCase();
                 });
@@ -5485,7 +5560,6 @@ module.exports = FooterView;
          */
         StringUtil.toPascalCase = function(str) {
             return StringUtil.toCamelCase(str)
-                // Make first character uppercase.
                 .replace(/^[a-zA-Z]/, function(a, b, c) {
                     return a.toUpperCase();
                 });
@@ -5542,7 +5616,9 @@ module.exports = FooterView;
          *      // {name: 'Robert', age: '23', gender: 'male'}
          */
         StringUtil.queryStringToObject = function(queryString, useParseFloat) {
-            if (useParseFloat === void 0) { useParseFloat = true; }
+            if (useParseFloat === void 0) {
+                useParseFloat = true;
+            }
             var params = {};
             var temp = null;
             var str = queryString.substring(queryString.indexOf('?') + 1);
@@ -5658,29 +5734,19 @@ module.exports = FooterView;
         };
         return StringUtil;
     })();
-
     return StringUtil;
-}));
+});
 
 },{}],27:[function(require,module,exports){
-(function (global){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/StringUtil', 'jquery', 'handlebars'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/StringUtil'), (typeof window !== "undefined" ? window['$'] : typeof global !== "undefined" ? global['$'] : null), (typeof window !== "undefined" ? window['Handlebars'] : typeof global !== "undefined" ? global['Handlebars'] : null));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.jQuery, root.Handlebars);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(StringUtil, jQuery, Handlebars) {
-
-    'use strict';
-
+})(["require", "exports", './StringUtil'], function(require, exports) {
+    var StringUtil = require('./StringUtil');
     /**
      * A helper class to provide a convenient and consistent way to render templates.
      *
@@ -5689,29 +5755,29 @@ module.exports = FooterView;
      * @submodule util
      * @requires StringUtil
      * @requires Handlebars
-     * @requires jQuery
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
     var TemplateFactory = (function() {
-
         function TemplateFactory() {
-            throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
-        }
-        /**
-         * Creates a template.
-         *
-         * @method create
-         * @param templatePath {any}
-         * @param [data=any]
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      TemplateFactory.create('templateName', {some: 'data'});
-         */
+                throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
+            }
+            /**
+             * Creates a template.
+             *
+             * @method create
+             * @param templatePath {any}
+             * @param [data=any]
+             * @returns {string}
+             * @public
+             * @static
+             * @example
+             *      TemplateFactory.create('templateName', {some: 'data'});
+             */
         TemplateFactory.create = function(templatePath, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             //Checks the first character to see if it is a '.' or '#'.
             var regex = /^([.#])(.+)/;
             var template = null;
@@ -5720,7 +5786,9 @@ module.exports = FooterView;
             if (isFunctionTemplate) {
                 template = templatePath(data);
             } else if (isClassOrIdName) {
-                var htmlString = jQuery(templatePath).html();
+                // Remove pound sign from the id name.
+                templatePath = templatePath.substring(1);
+                var htmlString = document.getElementById(templatePath).innerHTML;
                 htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
@@ -5788,29 +5856,18 @@ module.exports = FooterView;
         TemplateFactory.templateNamespace = 'JST';
         return TemplateFactory;
     })();
-
     return TemplateFactory;
-}));
+});
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../util/StringUtil":26}],28:[function(require,module,exports){
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Util = factory();
+},{"./StringUtil":26}],28:[function(require,module,exports){
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * A Utility class that has several static methods to assist in development.
      *
@@ -5822,25 +5879,27 @@ module.exports = FooterView;
      */
     var Util = (function() {
         function Util() {
-            throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
-        }
-        /**
-         * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
-         *
-         * @method uniqueId
-         * @param [prefix] {string} The string value used for the prefix.
-         * @returns {init|string} Returns the unique identifier.
-         * @public
-         * @static
-         * @example
-         *      var property = Util.uniqueId();
-         *      // 1
-         *
-         *      var property = Util.uniqueId('prefixName_');
-         *      // prefixName_1
-         */
+                throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
+            }
+            /**
+             * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
+             *
+             * @method uniqueId
+             * @param [prefix] {string} The string value used for the prefix.
+             * @returns {init|string} Returns the unique identifier.
+             * @public
+             * @static
+             * @example
+             *      var property = Util.uniqueId();
+             *      // 1
+             *
+             *      var property = Util.uniqueId('prefixName_');
+             *      // prefixName_1
+             */
         Util.uniqueId = function(prefix) {
-            if (prefix === void 0) { prefix = null; }
+            if (prefix === void 0) {
+                prefix = null;
+            }
             var id = ++Util._idCounter;
             if (prefix != null) {
                 return String(prefix + id);
@@ -5989,37 +6048,41 @@ module.exports = FooterView;
             return (value > 0 || value == 'true' || value == 'yes');
         };
         /**
-         * Returns the name of the class object passed in.
+         * Returns the name of the function/object passed in.
          *
-         * @method getClassName
-         * @param classObject {Object}
-         * @returns {string} Returns the name of the class object passed in.
-         * @public
+         * @method getName
+         * @param classObject {any}
+         * @returns {string} Returns the name of the function or object.
          * @static
          * @example
          *      var someClass = new SomeClass();
+         *      Util.getName(someClass);            // 'SomeClass'
          *
-         *      Util.getClassName(someClass);
-         *      // 'SomeClass'
+         *      Util.getName(function Test(){});    // 'Test'
+         *      Util.getName(function (){});        // 'anonymous'
          */
-        Util.getClassName = function(classObject) {
-            var funcNameRegex = /function (.{1,})\(/;
-            var results = (funcNameRegex).exec(classObject.constructor.toString());
-            return (results && results.length > 1) ? results[1] : '';
-        };
-        /**
-         * Returns the name of the function passed in.
-         *
-         * @method getFunctionName
-         * @param func {Function}
-         * @returns {string} Returns the name of the function.
-         * @static
-         */
-        Util.getFunctionName = function(func) {
-            var str = func.toString();
-            str = str.substr('function '.length);
-            str = str.substr(0, str.indexOf('('));
-            return str;
+        Util.getName = function(classObject) {
+            var type = typeof classObject;
+            var value;
+            var funcNameRegex = /function ([^\(]+)/;
+            if (type === 'object') {
+                // Gets the name of the object.
+                var results = classObject.constructor.toString().match(funcNameRegex);
+                value = results[1];
+            } else {
+                // This else code is mainly for Internet Explore.
+                var isFunction = (type === 'function');
+                // TODO: figure out how to explain this
+                var name = isFunction && ((classObject.name && ['', classObject.name]) || classObject.toString().match(funcNameRegex));
+                if (isFunction === false) {
+                    value = type;
+                } else if (name && name[1]) {
+                    value = name[1];
+                } else {
+                    value = 'anonymous';
+                }
+            }
+            return value;
         };
         /**
          * Creates and returns a new debounced version of the passed function which will postpone its execution until after
@@ -6071,8 +6134,7 @@ module.exports = FooterView;
         Util._idCounter = 0;
         return Util;
     })();
-
     return Util;
-}));
+});
 
 },{}]},{},[4]);

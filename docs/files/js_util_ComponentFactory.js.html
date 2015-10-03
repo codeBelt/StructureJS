@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -152,22 +152,15 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Util&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Util&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ComponentFactory = factory(root.StructureJS.Util);
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function(Util) {
-
-    &#x27;use strict&#x27;;
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../util/Util&#x27;], function(require, exports) {
+    var Util = require(&#x27;../util/Util&#x27;);
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
@@ -179,23 +172,25 @@
      */
     var ComponentFactory = (function() {
         function ComponentFactory() {
-            throw new Error(&#x27;[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.&#x27;);
-        }
-        /**
-         * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
-         *
-         * @method create
-         * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {any} The class that you want instantiated.
-         * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink &quot;DisplayObjectContainer/addChild:method&quot;}}{{/crossLink}} method.
-         * @return {Array.&lt;any&gt;} Returns a list of instantiated components/views so you can manage them within the Class that created them.
-         * @public
-         * @static
-         * @example
-         *      ComponentFactory.create($(&#x27;.js-list&#x27;), SomeClass, this);
-         */
+                throw new Error(&#x27;[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.&#x27;);
+            }
+            /**
+             * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
+             *
+             * @method create
+             * @param $element {jQuery} One or more jQuery referenced DOM elements.
+             * @param ComponentClass {any} The class that you want instantiated.
+             * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink &quot;DisplayObjectContainer/addChild:method&quot;}}{{/crossLink}} method.
+             * @return {Array.&lt;any&gt;} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+             * @public
+             * @static
+             * @example
+             *      ComponentFactory.create($(&#x27;.js-list&#x27;), SomeClass, this);
+             */
         ComponentFactory.create = function($elements, ComponentClass, scope) {
-            if (scope === void 0) { scope = null; }
+            if (scope === void 0) {
+                scope = null;
+            }
             var list = [];
             var component;
             var $element;
@@ -238,9 +233,8 @@
         };
         return ComponentFactory;
     })();
-
     return ComponentFactory;
-}));
+});
 
     </pre>
 </div>

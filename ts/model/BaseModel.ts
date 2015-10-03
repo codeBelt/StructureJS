@@ -19,19 +19,20 @@ import Util = require('../util/Util');
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example
- *     var data = {
- *          make: 'Tesla',
- *          model: 'Model S',
- *          YeAr: 2014,
- *          feature: {
- *              abs: true,
- *              airbags: true
- *          }
- *     }
- *     var carModel = new CarModel(data);
+ *      // Example how to extend the BaseModel class.
+ *      var data = {
+ *              make: 'Tesla',
+ *              model: 'Model S',
+ *              YeAr: 2014,
+ *              feature: {
+ *                  abs: true,
+ *                  airbags: true
+ *              }
+ *      }
+ *      var carModel = new CarModel(data);
  *
  *
- *     // Example how to extend the BaseModel class.
+ *      // Example how to extend the BaseModel class.
  *      var CarModel = (function () {
  *          var _super = Extend(CarModel, BaseModel);
  *          function CarModel(data) {
