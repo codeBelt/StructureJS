@@ -1,23 +1,24 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DisplayObject'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DisplayObject'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.TextField = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DisplayObject) {
-
-    'use strict';
-
-    var TextField = (function() {
-
-        var _super = Extend(TextField, DisplayObject);
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DisplayObject'], function(require, exports) {
+    var DisplayObject = require('./DisplayObject');
+    var TextField = (function(_super) {
+        __extends(TextField, _super);
 
         function TextField() {
             _super.call(this);
@@ -75,7 +76,6 @@
             }
         };
         return TextField;
-    })();
-
+    })(DisplayObject);
     return TextField;
-}));
+});

@@ -1,20 +1,13 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../event/ApplicationCacheEvent', '../event/EventDispatcher'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../event/ApplicationCacheEvent'), require('../event/EventDispatcher'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ApplicationCacheController = factory(root.StructureJS.ApplicationCacheEvent, root.StructureJS.EventDispatcher);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(ApplicationCacheEvent, EventDispatcher) {
-
-    'use strict';
-
+})(["require", "exports", '../event/ApplicationCacheEvent', '../event/EventDispatcher'], function(require, exports) {
+    var ApplicationCacheEvent = require('../event/ApplicationCacheEvent');
+    var EventDispatcher = require('../event/EventDispatcher');
     /**
      * The ApplicationCacheController is a static class works with the window applicationCache object.
      *
@@ -28,11 +21,11 @@
      */
     var ApplicationCacheController = (function() {
         function ApplicationCacheController() {
-            throw new Error('[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.');
-        }
-        /**
-         * @overridden BaseObject.enable
-         */
+                throw new Error('[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.');
+            }
+            /**
+             * @overridden BaseObject.enable
+             */
         ApplicationCacheController.enable = function() {
             if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true) {
                 return;
@@ -283,6 +276,5 @@
         ApplicationCacheController.isEnabled = false;
         return ApplicationCacheController;
     })();
-
     return ApplicationCacheController;
-}));
+});

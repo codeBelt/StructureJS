@@ -1,20 +1,23 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['./Extend', '../event/EventDispatcher', '../event/LoaderEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('./Extend'), require('../event/EventDispatcher'), require('../event/LoaderEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ImageLoader = factory(root.StructureJS.Extend, root.StructureJS.EventDispatcher, root.StructureJS.EventDispatcher);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, EventDispatcher, LoaderEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../event/EventDispatcher', '../event/LoaderEvent'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
+    var LoaderEvent = require('../event/LoaderEvent');
     /**
      * The ImageLoader...
      *
@@ -25,9 +28,8 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ImageLoader = (function() {
-
-        var _super = Extend(ImageLoader, EventDispatcher);
+    var ImageLoader = (function(_super) {
+        __extends(ImageLoader, _super);
 
         function ImageLoader(path) {
             _super.call(this);
@@ -51,7 +53,6 @@
             this.dispatchEvent(LoaderEvent.COMPLETE);
         };
         return ImageLoader;
-    })();
-
+    })(EventDispatcher);
     return ImageLoader;
-}));
+});

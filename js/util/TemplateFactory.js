@@ -1,20 +1,12 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/StringUtil', 'handlebars'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/StringUtil'), require('handlebars'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.TemplateFactory = factory(root.StructureJS.StringUtil, root.Handlebars);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(StringUtil, Handlebars) {
-
-    'use strict';
-
+})(["require", "exports", './StringUtil'], function(require, exports) {
+    var StringUtil = require('./StringUtil');
     /**
      * A helper class to provide a convenient and consistent way to render templates.
      *
@@ -28,22 +20,24 @@
      */
     var TemplateFactory = (function() {
         function TemplateFactory() {
-            throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
-        }
-        /**
-         * Creates a template.
-         *
-         * @method create
-         * @param templatePath {any}
-         * @param [data=any]
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      TemplateFactory.create('templateName', {some: 'data'});
-         */
+                throw new Error('[TemplateFactory] Do not instantiate the TemplateFactory class because it is a static class.');
+            }
+            /**
+             * Creates a template.
+             *
+             * @method create
+             * @param templatePath {any}
+             * @param [data=any]
+             * @returns {string}
+             * @public
+             * @static
+             * @example
+             *      TemplateFactory.create('templateName', {some: 'data'});
+             */
         TemplateFactory.create = function(templatePath, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             //Checks the first character to see if it is a '.' or '#'.
             var regex = /^([.#])(.+)/;
             var template = null;
@@ -122,6 +116,5 @@
         TemplateFactory.templateNamespace = 'JST';
         return TemplateFactory;
     })();
-
     return TemplateFactory;
-}));
+});

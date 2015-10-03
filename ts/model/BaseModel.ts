@@ -61,7 +61,7 @@ import Util = require('../util/Util');
  *              _super.prototype.update.call(this, data);
  *
  *              // If the data doesn't match the property name.
-  *             // You can set the value(s) manually after the update super method has been called.
+ *              // You can set the value(s) manually after the update super method has been called.
  *              this.year = data.YeAr;
  *          };
  *

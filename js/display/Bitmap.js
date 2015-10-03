@@ -1,24 +1,25 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DisplayObject', '../util/MathUtil'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DisplayObject'), require('../util/MathUtil'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Bitmap = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject, root.StructureJS.MathUtil);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DisplayObject, MathUtil) {
-
-    'use strict';
-
-
-    var Bitmap = (function() {
-
-        var _super = Extend(Bitmap, DisplayObject);
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DisplayObject', '../util/MathUtil'], function(require, exports) {
+    var DisplayObject = require('./DisplayObject');
+    var MathUtil = require('../util/MathUtil');
+    var Bitmap = (function(_super) {
+        __extends(Bitmap, _super);
 
         function Bitmap(image) {
             _super.call(this);
@@ -42,7 +43,6 @@
             this.ctx.drawImage(this._image, 0, 0);
         };
         return Bitmap;
-    })();
-
+    })(DisplayObject);
     return Bitmap;
-}));
+});

@@ -1,35 +1,44 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DOMElement', './DisplayObjectContainer', '../geom/Point'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('./DisplayObjectContainer'), require('../geom/Point'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.StructureJS.DisplayObjectContainer, root.StructureJS.Point);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DOMElement, DisplayObjectContainer, Point) {
-
-    'use strict';
-
-    var CanvasElement = (function() {
-
-        var _super = Extend(CanvasElement, DOMElement);
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DisplayObjectContainer', './DOMElement', '../geom/Point'], function(require, exports) {
+    var DisplayObjectContainer = require('./DisplayObjectContainer');
+    var DOMElement = require('./DOMElement');
+    var Point = require('../geom/Point');
+    var CanvasElement = (function(_super) {
+        __extends(CanvasElement, _super);
         // Notice the capital W and H. That sets the attributes not the styles.
         function CanvasElement(type, params) {
-            if (type === void 0) { type = 'canvas'; }
-            if (params === void 0) { params = {Width: 100, Height: 100}; }
-            _super.call(this, type, params);
-            this.$canvas = null;
-            this.canvas = null;
-        }
-        /**
-         * @overridden CanvasElement.create
-         */
+                if (type === void 0) {
+                    type = 'canvas';
+                }
+                if (params === void 0) {
+                    params = {
+                        Width: 100,
+                        Height: 100
+                    };
+                }
+                _super.call(this, type, params);
+                this.$canvas = null;
+                this.canvas = null;
+            }
+            /**
+             * @overridden CanvasElement.create
+             */
         CanvasElement.prototype.create = function() {
             _super.prototype.create.call(this);
             this.$canvas = this.$element;
@@ -276,7 +285,6 @@
             }
         };
         return CanvasElement;
-    })();
-
+    })(DOMElement);
     return CanvasElement;
-}));
+});

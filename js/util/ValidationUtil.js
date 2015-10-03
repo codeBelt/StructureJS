@@ -1,20 +1,11 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ValidationUtil = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * A ValidationUtility class that has several static methods to assist in development.
      *
@@ -26,20 +17,20 @@
      */
     var ValidationUtil = (function() {
         function ValidationUtil() {
-            throw new Error('[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.');
-        }
-        /**
-         * Determines if the String passed has a length.
-         *
-         * @method isEmpty
-         * @param value {string}
-         * @returns {boolean}
-         * @public
-         * @static
-         * @example
-         *      ValidationUtil.isEmpty('sometext');
-         *      // false
-         */
+                throw new Error('[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.');
+            }
+            /**
+             * Determines if the String passed has a length.
+             *
+             * @method isEmpty
+             * @param value {string}
+             * @returns {boolean}
+             * @public
+             * @static
+             * @example
+             *      ValidationUtil.isEmpty('sometext');
+             *      // false
+             */
         ValidationUtil.isEmpty = function(value) {
             if (value != null) {
                 return value.length < 1;
@@ -144,6 +135,5 @@
         };
         return ValidationUtil;
     })();
-
     return ValidationUtil;
-}));
+});

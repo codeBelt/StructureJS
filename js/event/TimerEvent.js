@@ -1,20 +1,22 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.TimerEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './BaseEvent'], function(require, exports) {
+    var BaseEvent = require('./BaseEvent');
     /**
      * The TimerEvent...
      *
@@ -33,23 +35,28 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var TimerEvent = (function() {
-
-        var _super = Extend(TimerEvent, BaseEvent);
+    var TimerEvent = (function(_super) {
+        __extends(TimerEvent, _super);
 
         function TimerEvent(type, bubbles, cancelable, data) {
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
-        }
-        /**
-         * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
-         *
-         * @event TIMER
-         * @type {string}
-         * @static
-         */
+                if (bubbles === void 0) {
+                    bubbles = false;
+                }
+                if (cancelable === void 0) {
+                    cancelable = false;
+                }
+                if (data === void 0) {
+                    data = null;
+                }
+                _super.call(this, type, bubbles, cancelable, data);
+            }
+            /**
+             * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
+             *
+             * @event TIMER
+             * @type {string}
+             * @static
+             */
         TimerEvent.TIMER = 'TimerEvent.timer';
         /**
          * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
@@ -60,7 +67,6 @@
          */
         TimerEvent.TIMER_COMPLETE = 'TimerEvent.timerComplete';
         return TimerEvent;
-    })();
-
+    })(BaseEvent);
     return TimerEvent;
-}));
+});

@@ -1,20 +1,22 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.RouterEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './BaseEvent'], function(require, exports) {
+    var BaseEvent = require('./BaseEvent');
     /**
      * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
      *
@@ -33,76 +35,82 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var RouterEvent = (function() {
-
-        var _super = Extend(RouterEvent, BaseEvent);
+    var RouterEvent = (function(_super) {
+        __extends(RouterEvent, _super);
 
         function RouterEvent(type, bubbles, cancelable, data) {
-            if (type === void 0) { type = RouterEvent.CHANGE; }
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+                if (type === void 0) {
+                    type = RouterEvent.CHANGE;
+                }
+                if (bubbles === void 0) {
+                    bubbles = false;
+                }
+                if (cancelable === void 0) {
+                    cancelable = false;
+                }
+                if (data === void 0) {
+                    data = null;
+                }
+                _super.call(this, type, bubbles, cancelable, data);
+                /**
+                 * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+                 *
+                 * @property route
+                 * @type {string}
+                 * @public
+                 */
+                this.route = null;
+                /**
+                 * The new URL to which the window is navigating.
+                 *
+                 * @property newURL
+                 * @type {string}
+                 * @public
+                 */
+                this.newURL = null;
+                /**
+                 * The previous URL from which the window was navigated.
+                 *
+                 * @property oldURL
+                 * @type {string}
+                 * @public
+                 */
+                this.oldURL = null;
+                /**
+                 * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
+                 *
+                 * @property routePattern
+                 * @type {string}
+                 * @public
+                 */
+                this.routePattern = null;
+                /**
+                 * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
+                 * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+                 *
+                 * @property params
+                 * @type {Array.<string>}
+                 * @public
+                 */
+                this.params = [];
+                /**
+                 * A query object the represents the query string in the hash url.
+                 *
+                 * @property query
+                 * @type {any}
+                 * @public
+                 */
+                this.query = null;
+            }
             /**
-             * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+             * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
              *
-             * @property route
+             * @event CHANGE
              * @type {string}
-             * @public
+             * @static
              */
-            this.route = null;
-            /**
-             * The new URL to which the window is navigating.
-             *
-             * @property newURL
-             * @type {string}
-             * @public
-             */
-            this.newURL = null;
-            /**
-             * The previous URL from which the window was navigated.
-             *
-             * @property oldURL
-             * @type {string}
-             * @public
-             */
-            this.oldURL = null;
-            /**
-             * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
-             *
-             * @property routePattern
-             * @type {string}
-             * @public
-             */
-            this.routePattern = null;
-            /**
-             * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
-             * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
-             *
-             * @property params
-             * @type {Array.<string>}
-             * @public
-             */
-            this.params = [];
-            /**
-             * A query object the represents the query string in the hash url.
-             *
-             * @property query
-             * @type {any}
-             * @public
-             */
-            this.query = null;
-        }
-        /**
-         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
-         *
-         * @event CHANGE
-         * @type {string}
-         * @static
-         */
         RouterEvent.CHANGE = 'RouterEvent.change';
         return RouterEvent;
-    })();
-
+    })(BaseEvent);
     return RouterEvent;
-}));
+});

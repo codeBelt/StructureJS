@@ -1,20 +1,11 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Route = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
      *
@@ -83,52 +74,52 @@
      */
     var Route = (function() {
         function Route(routePattern, callback, scope) {
+                /**
+                 * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
+                 *
+                 * @property routePattern
+                 * @type String
+                 * @public
+                 */
+                this.routePattern = '';
+                /**
+                 * The regex representation for the routePattern that was passed into the constructor.
+                 *
+                 * @property regex
+                 * @type RegExp
+                 * @public
+                 * @readOnly
+                 */
+                this.regex = null;
+                /**
+                 * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+                 *
+                 * @property callback
+                 * @type {Function}
+                 * @public
+                 */
+                this.callback = null;
+                /**
+                 * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+                 *
+                 * @property callbackScope
+                 * @type {any}
+                 * @public
+                 */
+                this.callbackScope = null;
+                this.routePattern = routePattern;
+                this.regex = this.routePatternToRegexp(routePattern);
+                this.callback = callback;
+                this.callbackScope = scope;
+            }
             /**
-             * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
+             * Converts the routePattern that was passed into the constructor to a regexp object.
              *
-             * @property routePattern
-             * @type String
-             * @public
+             * @method routePatternToRegexp
+             * @param {String} routePattern
+             * @returns {RegExp}
+             * @protected
              */
-            this.routePattern = '';
-            /**
-             * The regex representation for the routePattern that was passed into the constructor.
-             *
-             * @property regex
-             * @type RegExp
-             * @public
-             * @readOnly
-             */
-            this.regex = null;
-            /**
-             * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-             *
-             * @property callback
-             * @type {Function}
-             * @public
-             */
-            this.callback = null;
-            /**
-             * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-             *
-             * @property callbackScope
-             * @type {any}
-             * @public
-             */
-            this.callbackScope = null;
-            this.routePattern = routePattern;
-            this.regex = this.routePatternToRegexp(routePattern);
-            this.callback = callback;
-            this.callbackScope = scope;
-        }
-        /**
-         * Converts the routePattern that was passed into the constructor to a regexp object.
-         *
-         * @method routePatternToRegexp
-         * @param {String} routePattern
-         * @returns {RegExp}
-         * @private
-         */
         Route.prototype.routePatternToRegexp = function(routePattern) {
             var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
             var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
@@ -162,6 +153,5 @@
         };
         return Route;
     })();
-
     return Route;
-}));
+});

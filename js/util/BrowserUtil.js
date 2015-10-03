@@ -1,20 +1,14 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../event/EventDispatcher'), require('../event/BaseEvent'), require('../util/Util'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BrowserUtil = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent, root.StructureJS.Util);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(EventDispatcher, BaseEvent, Util) {
-
-    'use strict';
-
+})(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
+    var BaseEvent = require('../event/BaseEvent');
+    var Util = require('../util/Util');
     /**
      * A helper class to detect OS and browsers.
      *
@@ -25,17 +19,16 @@
      * @static
      */
     var BrowserUtil = (function() {
-
         function BrowserUtil() {
-            throw new Error('[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.');
-        }
-        /**
-         * Dispatches a breakpoint event.
-         *
-         * @method enable
-         * @public
-         * @static
-         */
+                throw new Error('[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.');
+            }
+            /**
+             * Dispatches a breakpoint event.
+             *
+             * @method enable
+             * @public
+             * @static
+             */
         BrowserUtil.enable = function() {
             if (BrowserUtil.isEnabled === true) {
                 return;
@@ -84,7 +77,9 @@
          *      // '39.0.2171.99'
          */
         BrowserUtil.browserVersion = function(majorVersion) {
-            if (majorVersion === void 0) { majorVersion = true; }
+            if (majorVersion === void 0) {
+                majorVersion = true;
+            }
             var version = BrowserUtil.getBrowser()[1];
             if (majorVersion === true) {
                 return parseInt(version, 10);
@@ -290,7 +285,9 @@
          * @static
          */
         BrowserUtil.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
+            if (priority === void 0) {
+                priority = 0;
+            }
             BrowserUtil._eventDispatcher.addEventListener(type, callback, scope, priority);
             BrowserUtil.enable();
         };
@@ -312,7 +309,9 @@
          * @static
          */
         BrowserUtil.dispatchEvent = function(type, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             var event = type;
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, false, data);
@@ -389,6 +388,5 @@
         BrowserUtil.isEnabled = false;
         return BrowserUtil;
     })();
-
     return BrowserUtil;
-}));
+});

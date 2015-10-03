@@ -1,22 +1,25 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../BaseObject', '../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../BaseObject'), require('../util/Util'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BaseModel = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseObject, Util) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../BaseObject', '../util/Util'], function(require, exports) {
+    var BaseObject = require('../BaseObject');
+    var Util = require('../util/Util');
     /**
-     *  Base Model (VO) is a design pattern used to transfer data between software application subsystems.
+     *  Base Model is a design pattern used to transfer data between software application subsystems.
      *
      * Note: If the data doesn't match the property names you can set the value manually after update super method has been called.
      *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
@@ -41,13 +44,13 @@
      *              airbags: true
      *          }
      *     }
-     *     var carVO = new CarVO(data);
+     *     var carModel = new CarModel(data);
      *
      *
      *     // Example how to extend the BaseModel class.
-     *      var CarVO = (function () {
-     *          var _super = Extend(CarVO, BaseModel);
-     *          function CarVO(data) {
+     *      var CarModel = (function () {
+     *          var _super = Extend(CarModel, BaseModel);
+     *          function CarModel(data) {
      *              _super.call(this);
      *
      *              // You need to have properties so the data will get assigned.
@@ -59,10 +62,10 @@
      *
      *              // You can assign BaseModel to a property which will
      *              // automatically created it and pass the data to it.
-     *              this.feature = FeatureVO;
+     *              this.feature = FeatureModel;
      *
      *              // If you have an array of data and want them assign to a BaseModel.
-     *              this.feature = [FeatureVO];
+     *              this.feature = [FeatureModel];
      *
      *              if (data) {
      *                  this.update(data);
@@ -70,7 +73,7 @@
      *          }
      *
      *          // @overridden BaseModel.update
-     *          CarVO.prototype.update = function (data) {
+     *          CarModel.prototype.update = function (data) {
      *              _super.prototype.update.call(this, data);
      *
      *              // If the data doesn't match the property name.
@@ -78,30 +81,29 @@
      *              this.year = data.YeAr;
      *          };
      *
-     *          return CarVO;
+     *          return CarModel;
      *      })();
      */
-    var BaseModel = (function() {
-
-        var _super = Extend(BaseModel, BaseObject);
+    var BaseModel = (function(_super) {
+        __extends(BaseModel, _super);
 
         function BaseModel() {
-            _super.call(this);
-        }
-        /**
-         * Provide a way to update the  Base Model.
-         *
-         * @method update
-         * @param data {any}
-         * @public
-         * @example
-         *     // Example of updating some of the data:
-         *     carVO.update({ year: 2015, allWheel: true});
-         *
-         *     // Of course you can also do it the following way:
-         *     carVO.year = 2015;
-         *     carVO.allWheel = false;
-         */
+                _super.call(this);
+            }
+            /**
+             * Provide a way to update the  Base Model.
+             *
+             * @method update
+             * @param data {any}
+             * @public
+             * @example
+             *     // Example of updating some of the data:
+             *     carModel.update({ year: 2015, allWheel: true});
+             *
+             *     // Of course you can also do it the following way:
+             *     carModel.year = 2015;
+             *     carModel.allWheel = false;
+             */
         BaseModel.prototype.update = function(data) {
             var propertyData;
             for (var propertyKey in this) {
@@ -124,7 +126,7 @@
          * @method _setData
          * @param key
          * @param data
-         * @private
+         * @protected
          */
         BaseModel.prototype._setData = function(key, data) {
             // If the data is an array and if the property its being assigned to is an array.
@@ -148,7 +150,7 @@
          * @method _updateData
          * @param keyValue
          * @param data
-         * @private
+         * @protected
          */
         BaseModel.prototype._updateData = function(keyValue, data) {
             if (keyValue instanceof BaseModel.constructor) {
@@ -172,7 +174,7 @@
          * @returns {BaseModel}
          * @public
          * @example
-         *     var obj = carVO.toJSON();
+         *     var obj = carModel.toJSON();
          */
         BaseModel.prototype.toJSON = function() {
             var clone = Util.clone(this);
@@ -185,7 +187,7 @@
          * @returns {string}
          * @public
          * @example
-         *     var str = carVO.toJSONString();
+         *     var str = carModel.toJSONString();
          */
         BaseModel.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
@@ -198,8 +200,8 @@
          * @public
          * @example
          *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
-         *      var carVO = new CarVO();
-         *      carVO.fromJSON(str);
+         *      var carModel = new CarModel();
+         *      carModel.fromJSON(str);
          */
         BaseModel.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
@@ -213,14 +215,13 @@
          * @returns {BaseModel}
          * @public
          * @example
-         *     var clone = carVO.clone();
+         *     var clone = carModel.clone();
          */
         BaseModel.prototype.clone = function() {
             var clonedBaseModel = new this.constructor(this);
             return clonedBaseModel;
         };
         return BaseModel;
-    })();
-
+    })(BaseObject);
     return BaseModel;
-}));
+});

@@ -1,20 +1,13 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../event/EventDispatcher', '../event/LoaderEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../event/EventDispatcher'), require('../event/LoaderEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BulkLoader = factory(root.StructureJS.EventDispatcher, root.StructureJS.LoaderEvent);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(EventDispatcher, LoaderEvent) {
-
-    'use strict';
-
+})(["require", "exports", '../event/EventDispatcher', '../event/LoaderEvent'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
+    var LoaderEvent = require('../event/LoaderEvent');
     /**
      * The BulkLoader...
      *
@@ -83,7 +76,5 @@
         BulkLoader._eventDispatcher = new EventDispatcher();
         return BulkLoader;
     })();
-
     return BulkLoader;
-}));
-
+});

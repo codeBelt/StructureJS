@@ -1,20 +1,22 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.LoaderEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './BaseEvent'], function(require, exports) {
+    var BaseEvent = require('./BaseEvent');
     /**
      * The LoaderEvent...
      *
@@ -33,24 +35,28 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var LoaderEvent = (function() {
-
-        var _super = Extend(LoaderEvent, BaseEvent);
+    var LoaderEvent = (function(_super) {
+        __extends(LoaderEvent, _super);
 
         function LoaderEvent(type, bubbles, cancelable, data) {
-            if (type === void 0) { type = RouterEvent.CHANGE; }
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
-        }
-        /**
-         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
+                if (bubbles === void 0) {
+                    bubbles = false;
+                }
+                if (cancelable === void 0) {
+                    cancelable = false;
+                }
+                if (data === void 0) {
+                    data = null;
+                }
+                _super.call(this, type, bubbles, cancelable, data);
+            }
+            /**
+             * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+             *
+             * @event COMPLETE
+             * @type {string}
+             * @static
+             */
         LoaderEvent.COMPLETE = 'LoaderEvent.complete';
         /**
          * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
@@ -69,7 +75,6 @@
          */
         LoaderEvent.ERROR = 'LoaderEvent.error';
         return LoaderEvent;
-    })();
-
+    })(BaseEvent);
     return LoaderEvent;
-}));
+});

@@ -1,20 +1,11 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.MathUtil = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * A helper class to do calculations and conversions.
      *
@@ -26,29 +17,33 @@
      */
     var MathUtil = (function() {
         function MathUtil() {
-            throw new Error('[MathUtil] Do not instantiate the MathUtil class because it is a static class.');
-        }
-        /**
-         * Returns a number constrained between min and max.
-         *
-         * @method constrain
-         * @param num {number}
-         * @param min {number}
-         * @param  max {number}
-         * @return  {number}
-         * @example
-         *      MathUtil.constrain(12, 3, 20);
-         *      // 12
-         *
-         *      MathUtil.constrain(22, 3, 20);
-         *      // 20
-         *
-         *      MathUtil.constrain(0, 3, 20);
-         *      // 3
-         */
+                throw new Error('[MathUtil] Do not instantiate the MathUtil class because it is a static class.');
+            }
+            /**
+             * Returns a number constrained between min and max.
+             *
+             * @method constrain
+             * @param num {number}
+             * @param min {number}
+             * @param  max {number}
+             * @return  {number}
+             * @example
+             *      MathUtil.constrain(12, 3, 20);
+             *      // 12
+             *
+             *      MathUtil.constrain(22, 3, 20);
+             *      // 20
+             *
+             *      MathUtil.constrain(0, 3, 20);
+             *      // 3
+             */
         MathUtil.constrain = function(num, min, max) {
-            if (min === void 0) { min = 0; }
-            if (max === void 0) { max = 1; }
+            if (min === void 0) {
+                min = 0;
+            }
+            if (max === void 0) {
+                max = 1;
+            }
             if (num < min) {
                 return min;
             }
@@ -69,7 +64,9 @@
          *
          */
         MathUtil.randomRange = function(min, max, wholeNumber) {
-            if (wholeNumber === void 0) { wholeNumber = true; }
+            if (wholeNumber === void 0) {
+                wholeNumber = true;
+            }
             var num = (min + Math.random() * (max - min));
             if (wholeNumber) {
                 return Math.round(num);
@@ -92,8 +89,12 @@
          *      // 0.5
          */
         MathUtil.rangeToPercent = function(num, min, max, constrainMin, constrainMax) {
-            if (constrainMin === void 0) { constrainMin = false; }
-            if (constrainMax === void 0) { constrainMax = false; }
+            if (constrainMin === void 0) {
+                constrainMin = false;
+            }
+            if (constrainMax === void 0) {
+                constrainMax = false;
+            }
             if (constrainMin && num < min) {
                 return 0;
             }
@@ -134,9 +135,15 @@
          *      // 5
          */
         MathUtil.map = function(num, min1, max1, min2, max2, round, constrainMin, constrainMax) {
-            if (round === void 0) { round = true; }
-            if (constrainMin === void 0) { constrainMin = true; }
-            if (constrainMax === void 0) { constrainMax = true; }
+            if (round === void 0) {
+                round = true;
+            }
+            if (constrainMin === void 0) {
+                constrainMin = true;
+            }
+            if (constrainMax === void 0) {
+                constrainMax = true;
+            }
             if (constrainMin && num < min1) {
                 return min2;
             }
@@ -343,6 +350,5 @@
         };
         return MathUtil;
     })();
-
     return MathUtil;
-}));
+});

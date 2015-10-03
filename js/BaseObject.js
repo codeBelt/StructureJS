@@ -1,19 +1,17 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['./util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('./util/Util'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BaseObject = factory(root.StructureJS.Util);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(Util) {
-    'use strict';
-
+})(["require", "exports", './util/Util'], function(require, exports) {
+    ///<reference path='_declare/jquery.d.ts'/>
+    ///<reference path='_declare/handlebars.d.ts'/>
+    ///<reference path='_declare/greensock.d.ts'/>
+    ///<reference path='_declare/jquery.eventListener.d.ts'/>
+    ///<reference path='_declare/log.d.ts'/>
+    var Util = require('./util/Util');
     /**
      * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
      *
@@ -26,28 +24,28 @@
      */
     var BaseObject = (function() {
         function BaseObject() {
+                /**
+                 * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+                 *
+                 * @property sjsId
+                 * @type {int}
+                 * @default null
+                 * @writeOnce
+                 * @readOnly
+                 * @public
+                 */
+                this.sjsId = null;
+                this.sjsId = Util.uniqueId();
+            }
             /**
-             * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+             * Returns the fully qualified class name of an object.
              *
-             * @property sjsId
-             * @type {int}
-             * @default null
-             * @writeOnce
-             * @readOnly
+             * @method getQualifiedClassName
+             * @returns {string} Returns the class name.
              * @public
+             * @example
+             *     instance.getQualifiedClassName();
              */
-            this.sjsId = null;
-            this.sjsId = Util.uniqueId();
-        }
-        /**
-         * Returns the fully qualified class name of an object.
-         *
-         * @method getQualifiedClassName
-         * @returns {string} Returns the class name.
-         * @public
-         * @example
-         *     instance.getQualifiedClassName();
-         */
         BaseObject.prototype.getQualifiedClassName = function() {
             return Util.getName(this);
         };
@@ -80,6 +78,5 @@
         };
         return BaseObject;
     })();
-
     return BaseObject;
-}));
+});

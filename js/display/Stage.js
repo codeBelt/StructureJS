@@ -1,20 +1,22 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DOMElement', 'jquery'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('jquery'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Stage = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.jQuery);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DOMElement, jQuery) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DOMElement'], function(require, exports) {
+    var DOMElement = require('./DOMElement');
     /**
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
      *
@@ -90,26 +92,26 @@
      *      app.appendTo('body');
      *
      */
-    var Stage = (function() {
-
-        var _super = Extend(Stage, DOMElement);
+    var Stage = (function(_super) {
+        __extends(Stage, _super);
 
         function Stage() {
-            _super.call(this);
-        }
-        /**
-         * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
-         *
-         * @method appendTo
-         * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
-         * @param [enabled=true] {boolean} Sets the enabled state of the object.
-         * @chainable
-         */
+                _super.call(this);
+            }
+            /**
+             * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
+             *
+             * @method appendTo
+             * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+             * @param [enabled=true] {boolean} Sets the enabled state of the object.
+             * @chainable
+             */
         Stage.prototype.appendTo = function(type, enabled) {
-            if (enabled === void 0) { enabled = true; }
+            if (enabled === void 0) {
+                enabled = true;
+            }
             this.$element = (type instanceof jQuery) ? type : jQuery(type);
-            this.$element.attr('data-sjs-id', this.sjsId);
-            this.$element.attr('data-sjs-type', this.getQualifiedClassName());
+            this.addClientSideId(this);
             if (this.isCreated === false) {
                 this.create();
                 this.isCreated = true;
@@ -123,7 +125,6 @@
             return this;
         };
         return Stage;
-    })();
-
+    })(DOMElement);
     return Stage;
-}));
+});

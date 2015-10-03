@@ -1,20 +1,11 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Util = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * A Utility class that has several static methods to assist in development.
      *
@@ -26,25 +17,27 @@
      */
     var Util = (function() {
         function Util() {
-            throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
-        }
-        /**
-         * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
-         *
-         * @method uniqueId
-         * @param [prefix] {string} The string value used for the prefix.
-         * @returns {init|string} Returns the unique identifier.
-         * @public
-         * @static
-         * @example
-         *      var property = Util.uniqueId();
-         *      // 1
-         *
-         *      var property = Util.uniqueId('prefixName_');
-         *      // prefixName_1
-         */
+                throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
+            }
+            /**
+             * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
+             *
+             * @method uniqueId
+             * @param [prefix] {string} The string value used for the prefix.
+             * @returns {init|string} Returns the unique identifier.
+             * @public
+             * @static
+             * @example
+             *      var property = Util.uniqueId();
+             *      // 1
+             *
+             *      var property = Util.uniqueId('prefixName_');
+             *      // prefixName_1
+             */
         Util.uniqueId = function(prefix) {
-            if (prefix === void 0) { prefix = null; }
+            if (prefix === void 0) {
+                prefix = null;
+            }
             var id = ++Util._idCounter;
             if (prefix != null) {
                 return String(prefix + id);
@@ -279,6 +272,5 @@
         Util._idCounter = 0;
         return Util;
     })();
-
     return Util;
-}));
+});

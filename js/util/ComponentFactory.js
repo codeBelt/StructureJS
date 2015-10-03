@@ -1,19 +1,12 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Util'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Util'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ComponentFactory = factory(root.StructureJS.Util);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(Util) {
-
-    'use strict';
+})(["require", "exports", '../util/Util'], function(require, exports) {
+    var Util = require('../util/Util');
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
@@ -25,23 +18,25 @@
      */
     var ComponentFactory = (function() {
         function ComponentFactory() {
-            throw new Error('[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.');
-        }
-        /**
-         * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
-         *
-         * @method create
-         * @param $element {jQuery} One or more jQuery referenced DOM elements.
-         * @param ComponentClass {any} The class that you want instantiated.
-         * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink "DisplayObjectContainer/addChild:method"}}{{/crossLink}} method.
-         * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
-         * @public
-         * @static
-         * @example
-         *      ComponentFactory.create($('.js-list'), SomeClass, this);
-         */
+                throw new Error('[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.');
+            }
+            /**
+             * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
+             *
+             * @method create
+             * @param $element {jQuery} One or more jQuery referenced DOM elements.
+             * @param ComponentClass {any} The class that you want instantiated.
+             * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink "DisplayObjectContainer/addChild:method"}}{{/crossLink}} method.
+             * @return {Array.<any>} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+             * @public
+             * @static
+             * @example
+             *      ComponentFactory.create($('.js-list'), SomeClass, this);
+             */
         ComponentFactory.create = function($elements, ComponentClass, scope) {
-            if (scope === void 0) { scope = null; }
+            if (scope === void 0) {
+                scope = null;
+            }
             var list = [];
             var component;
             var $element;
@@ -84,6 +79,5 @@
         };
         return ComponentFactory;
     })();
-
     return ComponentFactory;
-}));
+});

@@ -1,23 +1,24 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DisplayObjectContainer'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DisplayObjectContainer'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Sprite = factory(root.StructureJS.Extend, root.StructureJS.DisplayObjectContainer);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DisplayObjectContainer) {
-
-    'use strict';
-
-    var Sprite = (function() {
-
-        var _super = Extend(Sprite, DisplayObjectContainer);
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DisplayObjectContainer'], function(require, exports) {
+    var DisplayObjectContainer = require('./DisplayObjectContainer');
+    var Sprite = (function(_super) {
+        __extends(Sprite, _super);
 
         function Sprite() {
             _super.call(this);
@@ -81,7 +82,6 @@
             return this;
         };
         return Sprite;
-    })();
-
+    })(DisplayObjectContainer);
     return Sprite;
-}));
+});

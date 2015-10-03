@@ -1,20 +1,22 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ApplicationCacheEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './BaseEvent'], function(require, exports) {
+    var BaseEvent = require('./BaseEvent');
     /**
      * The ApplicationCacheEvent ....
      *
@@ -33,25 +35,30 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ApplicationCacheEvent = (function() {
-
-        var _super = Extend(ApplicationCacheEvent, BaseEvent);
+    var ApplicationCacheEvent = (function(_super) {
+        __extends(ApplicationCacheEvent, _super);
 
         function ApplicationCacheEvent(type, bubbles, cancelable, data) {
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
-        }
-        /**
-         * The browser is checking for an update, or is attempting to download
-         * the cache manifest for the first time. This is always the first event
-         * in the sequence.
-         *
-         * @event CHECKING
-         * @type {string}
-         * @static
-         */
+                if (bubbles === void 0) {
+                    bubbles = false;
+                }
+                if (cancelable === void 0) {
+                    cancelable = false;
+                }
+                if (data === void 0) {
+                    data = null;
+                }
+                _super.call(this, type, bubbles, cancelable, data);
+            }
+            /**
+             * The browser is checking for an update, or is attempting to download
+             * the cache manifest for the first time. This is always the first event
+             * in the sequence.
+             *
+             * @event CHECKING
+             * @type {string}
+             * @static
+             */
         ApplicationCacheEvent.CHECKING = 'checking';
         /**
          * The cache manifest hadn't changed.
@@ -116,7 +123,6 @@
          */
         ApplicationCacheEvent.ERROR = 'error';
         return ApplicationCacheEvent;
-    })();
-
+    })(BaseEvent);
     return ApplicationCacheEvent;
-}));
+});

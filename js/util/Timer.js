@@ -1,20 +1,23 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher', '../event/TimerEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'), require('../event/TimerEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Timer = factory(root.StructureJS.Extend, root.StructureJS.EventDispatcher, root.StructureJS.TimerEvent);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, EventDispatcher, TimerEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../event/EventDispatcher', '../event/TimerEvent'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
+    var TimerEvent = require('../event/TimerEvent');
     /**
      * Constructs a new Timer object with the specified delay and repeatCount states.
      *
@@ -28,64 +31,65 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var Timer = (function() {
-
-        var _super = Extend(Timer, EventDispatcher);
+    var Timer = (function(_super) {
+        __extends(Timer, _super);
 
         function Timer(delay, repeatCount) {
-            if (repeatCount === void 0) { repeatCount = 0; }
-            _super.call(this);
+                if (repeatCount === void 0) {
+                    repeatCount = 0;
+                }
+                _super.call(this);
+                /**
+                 * A reference to the setInterval object.
+                 *
+                 * @property _timer
+                 * @type {Function}
+                 * @protected
+                 */
+                this._timer = null;
+                /**
+                 * The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.
+                 *
+                 * @property currentCount
+                 * @type {int}
+                 * @protected
+                 */
+                this._currentCount = 0;
+                /**
+                 * The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
+                 * <strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.
+                 *
+                 * @property delay
+                 * @type {number}
+                 * @protected
+                 */
+                this._delay = null;
+                /**
+                 * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
+                 *
+                 * @property repeatCount
+                 * @type {int}
+                 * @protected
+                 */
+                this._repeatCount = 0;
+                /**
+                 * The timer's current state; true if the timer is running, otherwise false.
+                 *
+                 * @property running
+                 * @type {boolean}
+                 * @readOnly
+                 */
+                this.running = false;
+                this._delay = delay;
+                this._repeatCount = repeatCount;
+                this._currentCount = repeatCount;
+            }
             /**
-             * A reference to the setInterval object.
+             * Returns the total number of times the timer has fired since it started at zero.
              *
-             * @property _timer
-             * @type {Function}
-             * @private
+             * @method getCurrentCount
+             * @returns {number} The total number of times the timer has fired since it started at zero.
              */
-            this._timer = null;
-            /**
-             * The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.
-             *
-             * @property currentCount
-             * @type {int}
-             * @private
-             */
-            this._currentCount = 0;
-            /**
-             * The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
-             * <strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.
-             *
-             * @property delay
-             * @type {number}
-             * @private
-             */
-            this._delay = null;
-            /**
-             * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
-             *
-             * @property repeatCount
-             * @type {int}
-             * @private
-             */
-            this._repeatCount = 0;
-            /**
-             * The timer's current state; true if the timer is running, otherwise false.
-             *
-             * @property running
-             * @type {boolean}
-             * @readOnly
-             */
-            this.running = false;
-            this._delay = delay;
-            this._repeatCount = repeatCount;
-            this._currentCount = repeatCount;
-        }
-        /**
-         * Returns the total number of times the timer has fired since it started at zero.
-         *
-         * @method getCurrentCount
-         * @returns {number} The total number of times the timer has fired since it started at zero.
-         */
         Timer.prototype.getCurrentCount = function() {
             return this._currentCount;
         };
@@ -171,7 +175,7 @@
         /**
          *
          * @method decrementCounter
-         * @private
+         * @protected
          */
         Timer.prototype.decrementCounter = function() {
             if (this._currentCount > 0) {
@@ -193,7 +197,6 @@
             _super.prototype.destroy.call(this);
         };
         return Timer;
-    })();
-
+    })(EventDispatcher);
     return Timer;
-}));
+});

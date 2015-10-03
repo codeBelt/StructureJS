@@ -1,20 +1,14 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../event/EventDispatcher'), require('../event/NetworkMonitorEvent'), require('../event/native/NavigatorEvents'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.NetworkMonitor = factory(root.StructureJS.EventDispatcher, root.StructureJS.NetworkMonitorEvent, root.StructureJS.NavigatorEvents);
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function(EventDispatcher, NetworkMonitorEvent, NavigatorEvents) {
-
-    'use strict';
-
+})(["require", "exports", '../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
+    var NetworkMonitorEvent = require('../event/NetworkMonitorEvent');
+    var NavigatorEvents = require('../event/native/NavigatorEvents');
     /**
      * TODO: YUIDoc_comment
      *
@@ -27,20 +21,19 @@
      * @static
      */
     var NetworkMonitor = (function() {
-
         function NetworkMonitor() {
-            throw new Error('[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.');
-        }
-        /**
-         * Adds the necessary event listeners to listen for the 'online' and 'offline' events.
-         * Also dispatches a {{#crossLink "NetworkMonitorEvent"}}{{/crossLink}} right away with the status of the network connection.
-         * It is recommended you call NetworkMonitor.start(); when your application starts up.
-         * @example
-         *      NetworkMonitor.start();
-         * @method start
-         * @static
-         * @public
-         */
+                throw new Error('[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.');
+            }
+            /**
+             * Adds the necessary event listeners to listen for the 'online' and 'offline' events.
+             * Also dispatches a {{#crossLink "NetworkMonitorEvent"}}{{/crossLink}} right away with the status of the network connection.
+             * It is recommended you call NetworkMonitor.start(); when your application starts up.
+             * @example
+             *      NetworkMonitor.start();
+             * @method start
+             * @static
+             * @public
+             */
         NetworkMonitor.start = function() {
             if (NetworkMonitor._initialized === true) {
                 return;
@@ -108,7 +101,9 @@
          * @public
          */
         NetworkMonitor.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
+            if (priority === void 0) {
+                priority = 0;
+            }
             NetworkMonitor._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
         /**
@@ -159,6 +154,5 @@
         NetworkMonitor._initialized = false;
         return NetworkMonitor;
     })();
-
     return NetworkMonitor;
-}));
+});
