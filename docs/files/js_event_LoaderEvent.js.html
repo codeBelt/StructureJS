@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,25 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;./BaseEvent&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./BaseEvent&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.LoaderEvent = factory(root.StructureJS.Extend, root.StructureJS.BaseEvent);
+var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseEvent) {
-
-    &#x27;use strict&#x27;;
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
+    }
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseEvent&#x27;], function(require, exports) {
+    var BaseEvent = require(&#x27;./BaseEvent&#x27;);
     /**
      * The LoaderEvent...
      *
@@ -187,24 +189,28 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var LoaderEvent = (function() {
-
-        var _super = Extend(LoaderEvent, BaseEvent);
+    var LoaderEvent = (function(_super) {
+        __extends(LoaderEvent, _super);
 
         function LoaderEvent(type, bubbles, cancelable, data) {
-            if (type === void 0) { type = RouterEvent.CHANGE; }
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
-        }
-        /**
-         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
+                if (bubbles === void 0) {
+                    bubbles = false;
+                }
+                if (cancelable === void 0) {
+                    cancelable = false;
+                }
+                if (data === void 0) {
+                    data = null;
+                }
+                _super.call(this, type, bubbles, cancelable, data);
+            }
+            /**
+             * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+             *
+             * @event COMPLETE
+             * @type {string}
+             * @static
+             */
         LoaderEvent.COMPLETE = &#x27;LoaderEvent.complete&#x27;;
         /**
          * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
@@ -223,10 +229,10 @@
          */
         LoaderEvent.ERROR = &#x27;LoaderEvent.error&#x27;;
         return LoaderEvent;
-    })();
-
+    })(BaseEvent);
     return LoaderEvent;
-}));
+});
+
     </pre>
 </div>
 

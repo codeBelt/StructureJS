@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,16 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../event/ApplicationCacheEvent&#x27;, &#x27;../event/EventDispatcher&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../event/ApplicationCacheEvent&#x27;), require(&#x27;../event/EventDispatcher&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ApplicationCacheController = factory(root.StructureJS.ApplicationCacheEvent, root.StructureJS.EventDispatcher);
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function(ApplicationCacheEvent, EventDispatcher) {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/ApplicationCacheEvent&#x27;, &#x27;../event/EventDispatcher&#x27;], function(require, exports) {
+    var ApplicationCacheEvent = require(&#x27;../event/ApplicationCacheEvent&#x27;);
+    var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
     /**
      * The ApplicationCacheController is a static class works with the window applicationCache object.
      *
@@ -182,11 +175,11 @@
      */
     var ApplicationCacheController = (function() {
         function ApplicationCacheController() {
-            throw new Error(&#x27;[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.&#x27;);
-        }
-        /**
-         * @overridden BaseObject.enable
-         */
+                throw new Error(&#x27;[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.&#x27;);
+            }
+            /**
+             * @overridden BaseObject.enable
+             */
         ApplicationCacheController.enable = function() {
             if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true) {
                 return;
@@ -437,9 +430,8 @@
         ApplicationCacheController.isEnabled = false;
         return ApplicationCacheController;
     })();
-
     return ApplicationCacheController;
-}));
+});
 
     </pre>
 </div>

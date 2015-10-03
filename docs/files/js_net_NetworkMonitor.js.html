@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,17 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../event/EventDispatcher&#x27;, &#x27;../event/NetworkMonitorEvent&#x27;, &#x27;../event/native/NavigatorEvents&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/NetworkMonitorEvent&#x27;), require(&#x27;../event/native/NavigatorEvents&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.NetworkMonitor = factory(root.StructureJS.EventDispatcher, root.StructureJS.NetworkMonitorEvent, root.StructureJS.NavigatorEvents);
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function(EventDispatcher, NetworkMonitorEvent, NavigatorEvents) {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/NetworkMonitorEvent&#x27;, &#x27;../event/native/NavigatorEvents&#x27;], function(require, exports) {
+    var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
+    var NetworkMonitorEvent = require(&#x27;../event/NetworkMonitorEvent&#x27;);
+    var NavigatorEvents = require(&#x27;../event/native/NavigatorEvents&#x27;);
     /**
      * TODO: YUIDoc_comment
      *
@@ -181,20 +175,19 @@
      * @static
      */
     var NetworkMonitor = (function() {
-
         function NetworkMonitor() {
-            throw new Error(&#x27;[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.&#x27;);
-        }
-        /**
-         * Adds the necessary event listeners to listen for the &#x27;online&#x27; and &#x27;offline&#x27; events.
-         * Also dispatches a {{#crossLink &quot;NetworkMonitorEvent&quot;}}{{/crossLink}} right away with the status of the network connection.
-         * It is recommended you call NetworkMonitor.start(); when your application starts up.
-         * @example
-         *      NetworkMonitor.start();
-         * @method start
-         * @static
-         * @public
-         */
+                throw new Error(&#x27;[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.&#x27;);
+            }
+            /**
+             * Adds the necessary event listeners to listen for the &#x27;online&#x27; and &#x27;offline&#x27; events.
+             * Also dispatches a {{#crossLink &quot;NetworkMonitorEvent&quot;}}{{/crossLink}} right away with the status of the network connection.
+             * It is recommended you call NetworkMonitor.start(); when your application starts up.
+             * @example
+             *      NetworkMonitor.start();
+             * @method start
+             * @static
+             * @public
+             */
         NetworkMonitor.start = function() {
             if (NetworkMonitor._initialized === true) {
                 return;
@@ -262,7 +255,9 @@
          * @public
          */
         NetworkMonitor.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
+            if (priority === void 0) {
+                priority = 0;
+            }
             NetworkMonitor._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
         /**
@@ -313,9 +308,8 @@
         NetworkMonitor._initialized = false;
         return NetworkMonitor;
     })();
-
     return NetworkMonitor;
-}));
+});
 
     </pre>
 </div>

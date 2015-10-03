@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ValueObject - StructureJS</title>
+    <title>BaseModel - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -148,7 +148,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>ValueObject Class</h1>
+                <h1>BaseModel Class</h1>
 <div class="box meta">
     
 
@@ -160,7 +160,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_model_ValueObject.js.html#l18"><code>js&#x2F;model&#x2F;ValueObject.js:18</code></a>
+            Defined in: <a href="../files/js_model_BaseModel.js.html#l21"><code>js&#x2F;model&#x2F;BaseModel.js:21</code></a>
         </div>
     
 
@@ -177,9 +177,9 @@
 
 
 <div class="box intro">
-    <p>Value Object (VO) is a design pattern used to transfer data between software application subsystems.</p>
-<p>Note: If the data doesn&#39;t match the property names you can set the value manually after update super method has been called.
- Also in the class you inherit ValueObject from you can override the update method to handle the data how you want.</p>
+    <p>Base Model is a design pattern used to transfer data between software application subsystems.</p>
+<p> Note: If the data doesn&#39;t match the property names you can set the value manually after update super method has been called.
+Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.</p>
 
 </div>
 
@@ -241,7 +241,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_ValueObject">ValueObject</a>
+                    <a href="#method_BaseModel">BaseModel</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -251,14 +251,14 @@
             
 
             
-                <li class="index-item method private">
+                <li class="index-item method protected">
                     <a href="#method__setData">_setData</a>
 
                     
                     
                 </li>
             
-                <li class="index-item method private">
+                <li class="index-item method protected">
                     <a href="#method__updateData">_updateData</a>
 
                     
@@ -354,7 +354,7 @@
             
         
         
-        <a href="../files/js_BaseObject.js.html#l29"><code>js&#x2F;BaseObject.js:29</code></a>
+        <a href="../files/js_BaseObject.js.html#l27"><code>js&#x2F;BaseObject.js:27</code></a>
         
         </p>
 
@@ -393,9 +393,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_ValueObject" class="anchor-link"></a>
+        <a name="method_BaseModel" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>ValueObject</code>
+    <h3 class="name"><code>BaseModel</code>
 
     
         <div class="args">
@@ -438,7 +438,7 @@
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l18"><code>js&#x2F;model&#x2F;ValueObject.js:18</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l21"><code>js&#x2F;model&#x2F;BaseModel.js:21</code></a>
         
         </p>
 
@@ -470,7 +470,7 @@
                         
 
                         <div class="param-description">
-                            <p>Provide a way to update the value object upon initialization.</p>
+                            <p>Provide a way to update the  Base Model upon initialization.</p>
 
                         </div>
 
@@ -488,54 +488,55 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var data = {
-     make: &#39;Tesla&#39;,
-     model: &#39;Model S&#39;,
-     YeAr: 2014,
-     feature: {
-         abs: true,
-         airbags: true
-     }
+                    <pre class="code prettyprint"><code>// Example how to extend the BaseModel class.
+var data = {
+        make: &#39;Tesla&#39;,
+        model: &#39;Model S&#39;,
+        YeAr: 2014,
+        feature: {
+            abs: true,
+            airbags: true
+        }
 }
-var carVO = new CarVO(data);
+var carModel = new CarModel(data);
 
 
-// Example how to extend the ValueObject class.
- var CarVO = (function () {
-     var _super = Extend(CarVO, ValueObject);
-     function CarVO(data) {
-         _super.call(this);
+// Example how to extend the BaseModel class.
+var CarModel = (function () {
+    var _super = Extend(CarModel, BaseModel);
+    function CarModel(data) {
+        _super.call(this);
 
-         // You need to have properties so the data will get assigned.
-         // If not the data will not get assigned to the vo.
-         this.make = null;
-         this.model = null;
-         this.year = null;
-         this.allWheel = false; // Set a default value.
+        // You need to have properties so the data will get assigned.
+        // If not the data will not get assigned to the vo.
+        this.make = null;
+        this.model = null;
+        this.year = null;
+        this.allWheel = false; // Set a default value.
 
-         // You can assign ValueObject to a property which will
-         // automatically created it and pass the data to it.
-         this.feature = FeatureVO;
+        // You can assign BaseModel to a property which will
+        // automatically created it and pass the data to it.
+        this.feature = FeatureModel;
 
-         // If you have an array of data and want them assign to a ValueObject.
-         this.feature = [FeatureVO];
+        // If you have an array of data and want them assign to a BaseModel.
+        this.feature = [FeatureModel];
 
-         if (data) {
-             this.update(data);
-         }
-     }
+        if (data) {
+            this.update(data);
+        }
+    }
 
-     // @overridden ValueObject.update
-     CarVO.prototype.update = function (data) {
-         _super.prototype.update.call(this, data);
+    // @overridden BaseModel.update
+    CarModel.prototype.update = function (data) {
+        _super.prototype.update.call(this, data);
 
-         // If the data doesn&#39;t match the property name.
+        // If the data doesn&#39;t match the property name.
         // You can set the value(s) manually after the update super method has been called.
-         this.year = data.YeAr;
-     };
+        this.year = data.YeAr;
+    };
 
-     return CarVO;
- })();</code></pre>
+    return CarModel;
+})();</code></pre>
 
                 </div>
             </div>
@@ -552,7 +553,7 @@ var carVO = new CarVO(data);
 
         
             <a name="method__setData" class="anchor-link"></a>
-<div class="method item private">
+<div class="method item protected">
     <h3 class="name"><code>_setData</code>
 
     
@@ -580,7 +581,7 @@ var carVO = new CarVO(data);
     
 
     
-        <span class="flag private">private</span>
+        <span class="flag protected">protected</span>
     
 
     
@@ -604,7 +605,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l121"><code>js&#x2F;model&#x2F;ValueObject.js:121</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l124"><code>js&#x2F;model&#x2F;BaseModel.js:124</code></a>
         
         </p>
 
@@ -669,7 +670,7 @@ var carVO = new CarVO(data);
 
         
             <a name="method__updateData" class="anchor-link"></a>
-<div class="method item private">
+<div class="method item protected">
     <h3 class="name"><code>_updateData</code>
 
     
@@ -697,7 +698,7 @@ var carVO = new CarVO(data);
     
 
     
-        <span class="flag private">private</span>
+        <span class="flag protected">protected</span>
     
 
     
@@ -721,7 +722,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l145"><code>js&#x2F;model&#x2F;ValueObject.js:145</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l148"><code>js&#x2F;model&#x2F;BaseModel.js:148</code></a>
         
         </p>
 
@@ -795,7 +796,7 @@ var carVO = new CarVO(data);
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
+            <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>
         </span>
     
 
@@ -826,7 +827,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l209"><code>js&#x2F;model&#x2F;ValueObject.js:209</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l212"><code>js&#x2F;model&#x2F;BaseModel.js:212</code></a>
         
         </p>
 
@@ -839,7 +840,7 @@ var carVO = new CarVO(data);
     <div class="extended-detail">
 
         <div class="description">
-            <p>Create a clone/copy of the value object.</p>
+            <p>Create a clone/copy of the  Base Model.</p>
 
         </div>
 
@@ -852,7 +853,7 @@ var carVO = new CarVO(data);
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>:
+                            <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>:
                         
                     
                 </div>
@@ -864,7 +865,7 @@ var carVO = new CarVO(data);
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var clone = carVO.clone();</code></pre>
+                    <pre class="code prettyprint"><code>var clone = carModel.clone();</code></pre>
 
                 </div>
             </div>
@@ -911,7 +912,7 @@ var carVO = new CarVO(data);
             
         
         
-        <a href="../files/js_BaseObject.js.html#l54"><code>js&#x2F;BaseObject.js:54</code></a>
+        <a href="../files/js_BaseObject.js.html#l52"><code>js&#x2F;BaseObject.js:52</code></a>
         
         </p>
 
@@ -1015,7 +1016,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l193"><code>js&#x2F;model&#x2F;ValueObject.js:193</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l196"><code>js&#x2F;model&#x2F;BaseModel.js:196</code></a>
         
         </p>
 
@@ -1028,7 +1029,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Converts the string json data into an Object and calls the <a href="../classes/ValueObject.html#method_update" class="crosslink">update</a> method with the converted Object.</p>
+            <p>Converts the string json data into an Object and calls the <a href="../classes/BaseModel.html#method_update" class="crosslink">update</a> method with the converted Object.</p>
 
         </div>
 
@@ -1065,8 +1066,8 @@ on other objects before calling the super.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code> var str = &#39;{&quot;make&quot;:&quot;Tesla&quot;,&quot;model&quot;:&quot;Model S&quot;,&quot;year&quot;:2014}&#39;
- var carVO = new CarVO();
- carVO.fromJSON(str);</code></pre>
+ var carModel = new CarModel();
+ carModel.fromJSON(str);</code></pre>
 
                 </div>
             </div>
@@ -1113,7 +1114,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_BaseObject.js.html#l42"><code>js&#x2F;BaseObject.js:42</code></a>
+        <a href="../files/js_BaseObject.js.html#l40"><code>js&#x2F;BaseObject.js:40</code></a>
         
         </p>
 
@@ -1172,7 +1173,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>
+            <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>
         </span>
     
 
@@ -1203,7 +1204,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l168"><code>js&#x2F;model&#x2F;ValueObject.js:168</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l171"><code>js&#x2F;model&#x2F;BaseModel.js:171</code></a>
         
         </p>
 
@@ -1216,7 +1217,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Converts the value object data into a JSON object and deletes the sjsId property.</p>
+            <p>Converts the  Base Model data into a JSON object and deletes the sjsId property.</p>
 
         </div>
 
@@ -1229,7 +1230,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/ValueObject.html" class="crosslink">ValueObject</a></span>:
+                            <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>:
                         
                     
                 </div>
@@ -1241,7 +1242,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var obj = carVO.toJSON();</code></pre>
+                    <pre class="code prettyprint"><code>var obj = carModel.toJSON();</code></pre>
 
                 </div>
             </div>
@@ -1291,7 +1292,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l181"><code>js&#x2F;model&#x2F;ValueObject.js:181</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l184"><code>js&#x2F;model&#x2F;BaseModel.js:184</code></a>
         
         </p>
 
@@ -1304,7 +1305,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Converts a value object to a JSON string,</p>
+            <p>Converts a  Base Model to a JSON string,</p>
 
         </div>
 
@@ -1329,7 +1330,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var str = carVO.toJSONString();</code></pre>
+                    <pre class="code prettyprint"><code>var str = carModel.toJSONString();</code></pre>
 
                 </div>
             </div>
@@ -1385,7 +1386,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_ValueObject.js.html#l91"><code>js&#x2F;model&#x2F;ValueObject.js:91</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l94"><code>js&#x2F;model&#x2F;BaseModel.js:94</code></a>
         
         </p>
 
@@ -1398,7 +1399,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Provide a way to update the value object.</p>
+            <p>Provide a way to update the  Base Model.</p>
 
         </div>
 
@@ -1435,11 +1436,11 @@ on other objects before calling the super.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// Example of updating some of the data:
-carVO.update({ year: 2015, allWheel: true});
+carModel.update({ year: 2015, allWheel: true});
 
 // Of course you can also do it the following way:
-carVO.year = 2015;
-carVO.allWheel = false;</code></pre>
+carModel.year = 2015;
+carModel.allWheel = false;</code></pre>
 
                 </div>
             </div>

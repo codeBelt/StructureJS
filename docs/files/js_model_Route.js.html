@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.Route = factory();
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
     /**
      * The **Route** class is a model that keeps track of a specific route for the {{#crossLink &quot;Router&quot;}}{{/crossLink}} class.
      *
@@ -237,52 +228,52 @@
      */
     var Route = (function() {
         function Route(routePattern, callback, scope) {
+                /**
+                 * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, &quot;&quot;. See below for examples.
+                 *
+                 * @property routePattern
+                 * @type String
+                 * @public
+                 */
+                this.routePattern = &#x27;&#x27;;
+                /**
+                 * The regex representation for the routePattern that was passed into the constructor.
+                 *
+                 * @property regex
+                 * @type RegExp
+                 * @public
+                 * @readOnly
+                 */
+                this.regex = null;
+                /**
+                 * The function that should be executed when a request matches the routePattern. The {{#crossLink &quot;Router&quot;}}{{/crossLink}} class will be using this property.
+                 *
+                 * @property callback
+                 * @type {Function}
+                 * @public
+                 */
+                this.callback = null;
+                /**
+                 * The scope of the callback function that should be executed. The {{#crossLink &quot;Router&quot;}}{{/crossLink}} class will be using this property.
+                 *
+                 * @property callbackScope
+                 * @type {any}
+                 * @public
+                 */
+                this.callbackScope = null;
+                this.routePattern = routePattern;
+                this.regex = this.routePatternToRegexp(routePattern);
+                this.callback = callback;
+                this.callbackScope = scope;
+            }
             /**
-             * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, &quot;&quot;. See below for examples.
+             * Converts the routePattern that was passed into the constructor to a regexp object.
              *
-             * @property routePattern
-             * @type String
-             * @public
+             * @method routePatternToRegexp
+             * @param {String} routePattern
+             * @returns {RegExp}
+             * @protected
              */
-            this.routePattern = &#x27;&#x27;;
-            /**
-             * The regex representation for the routePattern that was passed into the constructor.
-             *
-             * @property regex
-             * @type RegExp
-             * @public
-             * @readOnly
-             */
-            this.regex = null;
-            /**
-             * The function that should be executed when a request matches the routePattern. The {{#crossLink &quot;Router&quot;}}{{/crossLink}} class will be using this property.
-             *
-             * @property callback
-             * @type {Function}
-             * @public
-             */
-            this.callback = null;
-            /**
-             * The scope of the callback function that should be executed. The {{#crossLink &quot;Router&quot;}}{{/crossLink}} class will be using this property.
-             *
-             * @property callbackScope
-             * @type {any}
-             * @public
-             */
-            this.callbackScope = null;
-            this.routePattern = routePattern;
-            this.regex = this.routePatternToRegexp(routePattern);
-            this.callback = callback;
-            this.callbackScope = scope;
-        }
-        /**
-         * Converts the routePattern that was passed into the constructor to a regexp object.
-         *
-         * @method routePatternToRegexp
-         * @param {String} routePattern
-         * @returns {RegExp}
-         * @private
-         */
         Route.prototype.routePatternToRegexp = function(routePattern) {
             var findFirstOrLastForwardSlash = new RegExp(&#x27;^\/|\/$&#x27;, &#x27;g&#x27;); // Finds if the first character OR if the last character is a forward slash
             var findOptionalColons = new RegExp(&#x27;:([^:]*):&#x27;, &#x27;g&#x27;); // Finds the colons : :
@@ -316,9 +307,8 @@
         };
         return Route;
     })();
-
     return Route;
-}));
+});
 
     </pre>
 </div>

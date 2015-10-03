@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,25 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;./DisplayObject&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./DisplayObject&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.DisplayObjectContainer = factory(root.StructureJS.Extend, root.StructureJS.DisplayObject);
+var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DisplayObject) {
-
-    &#x27;use strict&#x27;;
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
+    }
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./DisplayObject&#x27;], function(require, exports) {
+    var DisplayObject = require(&#x27;./DisplayObject&#x27;);
     /**
      * The {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -181,53 +183,52 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObjectContainer = (function() {
-
-        var _super = Extend(DisplayObjectContainer, DisplayObject);
+    var DisplayObjectContainer = (function(_super) {
+        __extends(DisplayObjectContainer, _super);
 
         function DisplayObjectContainer() {
-            _super.call(this);
+                _super.call(this);
+                /**
+                 * Returns the number of children of this object.
+                 *
+                 * @property numChildren
+                 * @type {int}
+                 * @default 0
+                 * @readOnly
+                 * @public
+                 */
+                this.numChildren = 0;
+                /**
+                 * A reference to the child DisplayObject instances to this parent object instance.
+                 *
+                 * @property children
+                 * @type {Array.&lt;DisplayObject&gt;}
+                 * @readOnly
+                 * @public
+                 */
+                this.children = [];
+                /**
+                 * Determines whether or not the children of the object are mouse enabled.
+                 *
+                 * @property mouseChildren
+                 * @type {boolean}
+                 * @public
+                 */
+                this.mouseChildren = false;
+            }
             /**
-             * Returns the number of children of this object.
+             * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
+             * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
              *
-             * @property numChildren
-             * @type {int}
-             * @default 0
-             * @readOnly
-             * @public
-             */
-            this.numChildren = 0;
-            /**
-             * A reference to the child DisplayObject instances to this parent object instance.
+             * If you add a child object that already has a different parent, the object is removed from the child
+             * list of the other parent object.
              *
-             * @property children
-             * @type {Array.&lt;DisplayObject&gt;}
-             * @readOnly
+             * @method addChild
+             * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
+             * @returns {DisplayObjectContainer} Returns an instance of itself.
              * @public
+             * @chainable
              */
-            this.children = [];
-            /**
-             * Determines whether or not the children of the object are mouse enabled.
-             *
-             * @property mouseChildren
-             * @type {boolean}
-             * @public
-             */
-            this.mouseChildren = false;
-        }
-        /**
-         * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
-         * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
-         *
-         * If you add a child object that already has a different parent, the object is removed from the child
-         * list of the other parent object.
-         *
-         * @method addChild
-         * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
-         * @returns {DisplayObjectContainer} Returns an instance of itself.
-         * @public
-         * @chainable
-         */
         DisplayObjectContainer.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
@@ -384,10 +385,9 @@
             return child;
         };
         return DisplayObjectContainer;
-    })();
-
+    })(DisplayObject);
     return DisplayObjectContainer;
-}));
+});
 
     </pre>
 </div>

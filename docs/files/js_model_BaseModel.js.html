@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/model/ValueObject.js - StructureJS</title>
+    <title>js/model/BaseModel.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -148,36 +148,39 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/model/ValueObject.js</h1>
+                <h1 class="file-heading">File: js/model/BaseModel.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../BaseObject&#x27;, &#x27;../util/Util&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../BaseObject&#x27;), require(&#x27;../util/Util&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ValueObject = factory(root.StructureJS.Extend, root.StructureJS.BaseObject, root.StructureJS.Util);
+var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseObject, Util) {
-
-    &#x27;use strict&#x27;;
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
+    }
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../BaseObject&#x27;, &#x27;../util/Util&#x27;], function(require, exports) {
+    var BaseObject = require(&#x27;../BaseObject&#x27;);
+    var Util = require(&#x27;../util/Util&#x27;);
     /**
-     * Value Object (VO) is a design pattern used to transfer data between software application subsystems.
+     *  Base Model is a design pattern used to transfer data between software application subsystems.
      *
      * Note: If the data doesn&#x27;t match the property names you can set the value manually after update super method has been called.
-     *  Also in the class you inherit ValueObject from you can override the update method to handle the data how you want.
+     *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
      *
-     * @class ValueObject
+     * @class BaseModel
      * @extends BaseObject
-     * @param [data] {any} Provide a way to update the value object upon initialization.
+     * @param [data] {any} Provide a way to update the  Base Model upon initialization.
      * @module StructureJS
      * @submodule model
      * @requires Extend
@@ -186,22 +189,23 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
-     *     var data = {
-     *          make: &#x27;Tesla&#x27;,
-     *          model: &#x27;Model S&#x27;,
-     *          YeAr: 2014,
-     *          feature: {
-     *              abs: true,
-     *              airbags: true
-     *          }
-     *     }
-     *     var carVO = new CarVO(data);
+     *      // Example how to extend the BaseModel class.
+     *      var data = {
+     *              make: &#x27;Tesla&#x27;,
+     *              model: &#x27;Model S&#x27;,
+     *              YeAr: 2014,
+     *              feature: {
+     *                  abs: true,
+     *                  airbags: true
+     *              }
+     *      }
+     *      var carModel = new CarModel(data);
      *
      *
-     *     // Example how to extend the ValueObject class.
-     *      var CarVO = (function () {
-     *          var _super = Extend(CarVO, ValueObject);
-     *          function CarVO(data) {
+     *      // Example how to extend the BaseModel class.
+     *      var CarModel = (function () {
+     *          var _super = Extend(CarModel, BaseModel);
+     *          function CarModel(data) {
      *              _super.call(this);
      *
      *              // You need to have properties so the data will get assigned.
@@ -211,59 +215,58 @@
      *              this.year = null;
      *              this.allWheel = false; // Set a default value.
      *
-     *              // You can assign ValueObject to a property which will
+     *              // You can assign BaseModel to a property which will
      *              // automatically created it and pass the data to it.
-     *              this.feature = FeatureVO;
+     *              this.feature = FeatureModel;
      *
-     *              // If you have an array of data and want them assign to a ValueObject.
-     *              this.feature = [FeatureVO];
+     *              // If you have an array of data and want them assign to a BaseModel.
+     *              this.feature = [FeatureModel];
      *
      *              if (data) {
      *                  this.update(data);
      *              }
      *          }
      *
-     *          // @overridden ValueObject.update
-     *          CarVO.prototype.update = function (data) {
+     *          // @overridden BaseModel.update
+     *          CarModel.prototype.update = function (data) {
      *              _super.prototype.update.call(this, data);
      *
      *              // If the data doesn&#x27;t match the property name.
-     *             // You can set the value(s) manually after the update super method has been called.
+     *              // You can set the value(s) manually after the update super method has been called.
      *              this.year = data.YeAr;
      *          };
      *
-     *          return CarVO;
+     *          return CarModel;
      *      })();
      */
-    var ValueObject = (function() {
+    var BaseModel = (function(_super) {
+        __extends(BaseModel, _super);
 
-        var _super = Extend(ValueObject, BaseObject);
-
-        function ValueObject() {
-            _super.call(this);
-        }
-        /**
-         * Provide a way to update the value object.
-         *
-         * @method update
-         * @param data {any}
-         * @public
-         * @example
-         *     // Example of updating some of the data:
-         *     carVO.update({ year: 2015, allWheel: true});
-         *
-         *     // Of course you can also do it the following way:
-         *     carVO.year = 2015;
-         *     carVO.allWheel = false;
-         */
-        ValueObject.prototype.update = function(data) {
+        function BaseModel() {
+                _super.call(this);
+            }
+            /**
+             * Provide a way to update the  Base Model.
+             *
+             * @method update
+             * @param data {any}
+             * @public
+             * @example
+             *     // Example of updating some of the data:
+             *     carModel.update({ year: 2015, allWheel: true});
+             *
+             *     // Of course you can also do it the following way:
+             *     carModel.year = 2015;
+             *     carModel.allWheel = false;
+             */
+        BaseModel.prototype.update = function(data) {
             var propertyData;
             for (var propertyKey in this) {
                 // If this class has a property that matches a property on the data being passed in then set it.
                 // Also don&#x27;t set the sjsId data value because it is automatically set in the constructor and
                 // we do want it to be overridden when the clone method has been called.
                 if (this.hasOwnProperty(propertyKey) &amp;&amp; propertyKey !== &#x27;sjsId&#x27;) {
-                    // If the data passed in does not have a property that matches a property on the value object then
+                    // If the data passed in does not have a property that matches a property on the  Base Model then
                     // use the default value/data that was assigned to the property.
                     // Else use the data that was passed in.
                     propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
@@ -278,17 +281,17 @@
          * @method _setData
          * @param key
          * @param data
-         * @private
+         * @protected
          */
-        ValueObject.prototype._setData = function(key, data) {
+        BaseModel.prototype._setData = function(key, data) {
             // If the data is an array and if the property its being assigned to is an array.
             if (data instanceof Array &amp;&amp; this[key] instanceof Array) {
                 var temp = [];
                 var len = data.length;
-                if ((this[key][0] instanceof ValueObject.constructor &amp;&amp; data[0] instanceof ValueObject.constructor) === false) {
-                    var valueObjectOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                if ((this[key][0] instanceof BaseModel.constructor &amp;&amp; data[0] instanceof BaseModel.constructor) === false) {
+                    var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
                     for (var i = 0; i &lt; len; i++) {
-                        temp[i] = this._updateData(valueObjectOrOther, data[i]);
+                        temp[i] = this._updateData(baseModelOrOther, data[i]);
                     }
                 }
                 this[key] = temp;
@@ -302,15 +305,15 @@
          * @method _updateData
          * @param keyValue
          * @param data
-         * @private
+         * @protected
          */
-        ValueObject.prototype._updateData = function(keyValue, data) {
-            if (keyValue instanceof ValueObject.constructor) {
-                // If the property is an instance of a ValueObject class and has not been created yet.
+        BaseModel.prototype._updateData = function(keyValue, data) {
+            if (keyValue instanceof BaseModel.constructor) {
+                // If the property is an instance of a BaseModel class and has not been created yet.
                 // Then instantiate it and pass in the data to the constructor.
                 keyValue = new keyValue(data);
-            } else if (keyValue instanceof ValueObject) {
-                // If property is an instance of a ValueObject class and has already been created.
+            } else if (keyValue instanceof BaseModel) {
+                // If property is an instance of a BaseModel class and has already been created.
                 // Then call the update method and pass in the data.
                 keyValue.update(data);
             } else {
@@ -320,64 +323,63 @@
             return keyValue;
         };
         /**
-         * Converts the value object data into a JSON object and deletes the sjsId property.
+         * Converts the  Base Model data into a JSON object and deletes the sjsId property.
          *
          * @method toJSON
-         * @returns {ValueObject}
+         * @returns {BaseModel}
          * @public
          * @example
-         *     var obj = carVO.toJSON();
+         *     var obj = carModel.toJSON();
          */
-        ValueObject.prototype.toJSON = function() {
+        BaseModel.prototype.toJSON = function() {
             var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, [&#x27;sjsId&#x27;]);
         };
         /**
-         * Converts a value object to a JSON string,
+         * Converts a  Base Model to a JSON string,
          *
          * @method toJSONString
          * @returns {string}
          * @public
          * @example
-         *     var str = carVO.toJSONString();
+         *     var str = carModel.toJSONString();
          */
-        ValueObject.prototype.toJSONString = function() {
+        BaseModel.prototype.toJSONString = function() {
             return JSON.stringify(this.toJSON());
         };
         /**
-         * Converts the string json data into an Object and calls the {{#crossLink &quot;ValueObject/update:method&quot;}}{{/crossLink}} method with the converted Object.
+         * Converts the string json data into an Object and calls the {{#crossLink &quot;BaseModel/update:method&quot;}}{{/crossLink}} method with the converted Object.
          *
          * @method fromJSON
          * @param json {string}
          * @public
          * @example
          *      var str = &#x27;{&quot;make&quot;:&quot;Tesla&quot;,&quot;model&quot;:&quot;Model S&quot;,&quot;year&quot;:2014}&#x27;
-         *      var carVO = new CarVO();
-         *      carVO.fromJSON(str);
+         *      var carModel = new CarModel();
+         *      carModel.fromJSON(str);
          */
-        ValueObject.prototype.fromJSON = function(json) {
+        BaseModel.prototype.fromJSON = function(json) {
             var parsedData = JSON.parse(json);
             this.update(parsedData);
             return this;
         };
         /**
-         * Create a clone/copy of the value object.
+         * Create a clone/copy of the  Base Model.
          *
          * @method clone
-         * @returns {ValueObject}
+         * @returns {BaseModel}
          * @public
          * @example
-         *     var clone = carVO.clone();
+         *     var clone = carModel.clone();
          */
-        ValueObject.prototype.clone = function() {
-            var clonedValueObject = new this.constructor(this);
-            return clonedValueObject;
+        BaseModel.prototype.clone = function() {
+            var clonedBaseModel = new this.constructor(this);
+            return clonedBaseModel;
         };
-        return ValueObject;
-    })();
-
-    return ValueObject;
-}));
+        return BaseModel;
+    })(BaseObject);
+    return BaseModel;
+});
 
     </pre>
 </div>

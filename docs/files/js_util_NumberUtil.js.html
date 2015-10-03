@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.NumberUtil = factory();
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
     /**
      * The NumberUtil class has many helper methods to work with number data.
      *
@@ -180,19 +171,19 @@
      */
     var NumberUtil = (function() {
         function NumberUtil() {
-            throw new Error(&#x27;[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.&#x27;);
-        }
-        /**
-         * Converts bytes into megabytes.
-         *
-         * @method bytesToMegabytes
-         * @param bytes {number}
-         * @returns {number}
-         * @public
-         * @static
-         * @example
-         *
-         */
+                throw new Error(&#x27;[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.&#x27;);
+            }
+            /**
+             * Converts bytes into megabytes.
+             *
+             * @method bytesToMegabytes
+             * @param bytes {number}
+             * @returns {number}
+             * @public
+             * @static
+             * @example
+             *
+             */
         NumberUtil.bytesToMegabytes = function(bytes) {
             return bytes / 1048576;
         };
@@ -237,6 +228,7 @@
          * @example
          *     NumberUtil.feetToMeter(1);
          *     // 0.3048
+         *
          */
         NumberUtil.feetToMeter = function(feet) {
             return feet / 3.2808;
@@ -255,7 +247,9 @@
          *     // &#x27;09:15:33&#x27;
          */
         NumberUtil.convertToHHMMSS = function(seconds, showHours) {
-            if (showHours === void 0) { showHours = true; }
+            if (showHours === void 0) {
+                showHours = true;
+            }
             var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
@@ -354,11 +348,21 @@
          *     // &#x27;-1,900.2&#x27;
          */
         NumberUtil.formatUnit = function(value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
-            if (decimalPlacement === void 0) { decimalPlacement = 2; }
-            if (decimalSeparator === void 0) { decimalSeparator = &#x27;.&#x27;; }
-            if (thousandsSeparator === void 0) { thousandsSeparator = &#x27;,&#x27;; }
-            if (currencySymbol === void 0) { currencySymbol = &#x27;&#x27;; }
-            if (currencySymbolPlacement === void 0) { currencySymbolPlacement = 0; }
+            if (decimalPlacement === void 0) {
+                decimalPlacement = 2;
+            }
+            if (decimalSeparator === void 0) {
+                decimalSeparator = &#x27;.&#x27;;
+            }
+            if (thousandsSeparator === void 0) {
+                thousandsSeparator = &#x27;,&#x27;;
+            }
+            if (currencySymbol === void 0) {
+                currencySymbol = &#x27;&#x27;;
+            }
+            if (currencySymbolPlacement === void 0) {
+                currencySymbolPlacement = 0;
+            }
             var str = String(Number(value).toFixed(decimalPlacement));
             var result = &#x27;&#x27;;
             if (decimalPlacement != 0) {
@@ -396,7 +400,9 @@
          *      // 100
          */
         NumberUtil.fahrenheitToCelsius = function(fahrenheit, decimals) {
-            if (decimals === void 0) { decimals = 2; }
+            if (decimals === void 0) {
+                decimals = 2;
+            }
             var d = &#x27;&#x27;;
             var r = (5 / 9) * (fahrenheit - 32);
             var s = r.toString().split(&#x27;.&#x27;);
@@ -427,7 +433,9 @@
          *      // 212
          */
         NumberUtil.celsiusToFahrenheit = function(celsius, decimals) {
-            if (decimals === void 0) { decimals = 2; }
+            if (decimals === void 0) {
+                decimals = 2;
+            }
             var d = &#x27;&#x27;;
             var r = (celsius / (5 / 9)) + 32;
             var s = r.toString().split(&#x27;.&#x27;);
@@ -445,9 +453,8 @@
         };
         return NumberUtil;
     })();
-
     return NumberUtil;
-}));
+});
 
     </pre>
 </div>

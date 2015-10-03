@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,25 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;../event/EventDispatcher&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;../event/EventDispatcher&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.DisplayObject = factory(root.StructureJS.Extend, root.StructureJS.EventDispatcher);
+var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, EventDispatcher) {
-
-    &#x27;use strict&#x27;;
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
+    }
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;], function(require, exports) {
+    var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
     /**
      * The {{#crossLink &quot;DisplayObject&quot;}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -181,9 +183,8 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObject = (function() {
-
-        var _super = Extend(DisplayObject, EventDispatcher);
+    var DisplayObject = (function(_super) {
+        __extends(DisplayObject, _super);
 
         function DisplayObject() {
                 _super.call(this);
@@ -386,10 +387,9 @@
             this.ctx.restore();
         };
         return DisplayObject;
-    })();
-
+    })(EventDispatcher);
     return DisplayObject;
-}));
+});
 
     </pre>
 </div>

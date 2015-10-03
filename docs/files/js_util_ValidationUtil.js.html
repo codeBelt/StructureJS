@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ValidationUtil = factory();
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
     /**
      * A ValidationUtility class that has several static methods to assist in development.
      *
@@ -180,20 +171,20 @@
      */
     var ValidationUtil = (function() {
         function ValidationUtil() {
-            throw new Error(&#x27;[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.&#x27;);
-        }
-        /**
-         * Determines if the String passed has a length.
-         *
-         * @method isEmpty
-         * @param value {string}
-         * @returns {boolean}
-         * @public
-         * @static
-         * @example
-         *      ValidationUtil.isEmpty(&#x27;sometext&#x27;);
-         *      // false
-         */
+                throw new Error(&#x27;[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.&#x27;);
+            }
+            /**
+             * Determines if the String passed has a length.
+             *
+             * @method isEmpty
+             * @param value {string}
+             * @returns {boolean}
+             * @public
+             * @static
+             * @example
+             *      ValidationUtil.isEmpty(&#x27;sometext&#x27;);
+             *      // false
+             */
         ValidationUtil.isEmpty = function(value) {
             if (value != null) {
                 return value.length &lt; 1;
@@ -298,9 +289,8 @@
         };
         return ValidationUtil;
     })();
-
     return ValidationUtil;
-}));
+});
 
     </pre>
 </div>

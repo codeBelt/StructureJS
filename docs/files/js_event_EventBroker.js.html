@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.9</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -50,6 +50,8 @@
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
             
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
@@ -117,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -152,23 +152,16 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;./EventDispatcher&#x27;, &#x27;./BaseEvent&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;./EventDispatcher&#x27;), require(&#x27;./BaseEvent&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.EventBroker = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent);
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function(EventDispatcher, BaseEvent) {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./EventDispatcher&#x27;, &#x27;./BaseEvent&#x27;], function(require, exports) {
+    var EventDispatcher = require(&#x27;./EventDispatcher&#x27;);
+    var BaseEvent = require(&#x27;./BaseEvent&#x27;);
     /**
      * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
      * Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.
@@ -183,12 +176,38 @@
      */
     var EventBroker = (function() {
         function EventBroker() {
-            throw new Error(&#x27;[EventBroker] Do not instantiate the EventBroker class because it is a static class.&#x27;);
-        }
+                throw new Error(&#x27;[EventBroker] Do not instantiate the EventBroker class because it is a static class.&#x27;);
+            }
+            /**
+             * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
+             *
+             * @method addEventListener
+             * @param type {String} The type of event.
+             * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} object or custom event that extends the {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} class.
+             * @param scope {any} The scope of the callback function.
+             * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+             * @static
+             * @public
+             * @example
+             *     EventBroker.addEventListener(&#x27;change&#x27;, this._handlerMethod, this);
+             *     // Example of using a constant event type.
+             *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
+             *
+             *     // The event passed to the method will always be a BaseEvent object.
+             *     ClassName.prototype._handlerMethod = function (event) {
+             *          console.log(event.data);
+             *     };
+             */
+        EventBroker.addEventListener = function(type, callback, scope, priority) {
+            if (priority === void 0) {
+                priority = 0;
+            }
+            EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
+        };
         /**
-         * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
+         * Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.
          *
-         * @method addEventListener
+         * @method addEventListenerOnce
          * @param type {String} The type of event.
          * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} object or custom event that extends the {{#crossLink &quot;BaseEvent&quot;}}{{/crossLink}} class.
          * @param scope {any} The scope of the callback function.
@@ -196,18 +215,20 @@
          * @static
          * @public
          * @example
-         *     EventBroker.addEventListener(&#x27;change&#x27;, this._handlerMethod, this);
+         *     EventBroker.addEventListenerOnce(&#x27;change&#x27;, this._handlerMethod, this);
          *     // Example of using a constant event type.
-         *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
+         *     EventBroker.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
          *
          *     // The event passed to the method will always be a BaseEvent object.
          *     ClassName.prototype._handlerMethod = function (event) {
          *          console.log(event.data);
          *     };
          */
-        EventBroker.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
-            EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
+        EventBroker.addEventListenerOnce = function(type, callback, scope, priority) {
+            if (priority === void 0) {
+                priority = 0;
+            }
+            EventBroker._eventDispatcher.addEventListenerOnce(type, callback, scope, priority);
         };
         /**
          * Removes a specified listener from the EventBroker object.
@@ -246,7 +267,9 @@
          *      EventBroker.dispatchEvent(event);
          */
         EventBroker.dispatchEvent = function(type, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             var event = type;
             if (typeof event === &#x27;string&#x27;) {
                 event = new BaseEvent(type, false, false, data);
@@ -297,9 +320,8 @@
         EventBroker._eventDispatcher = new EventDispatcher();
         return EventBroker;
     })();
-
     return EventBroker;
-}));
+});
 
     </pre>
 </div>
