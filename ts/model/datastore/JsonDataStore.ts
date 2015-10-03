@@ -1,15 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../../util/Extend as Extend
- @import ../../net/URLRequest as URLRequest
- @import ../../net/URLLoader as URLLoader
- @import ../../net/URLRequestMethod as URLRequestMethod
- @import ../../net/URLLoaderDataFormat as URLLoaderDataFormat
- @import ../../net/URLContentType as URLContentType
- @import ../../event/LoaderEvent as LoaderEvent
- @export JsonDataStore
- */
 import DataStoreAbstract = require('./DataStoreAbstract');
 import URLRequest = require('../../net/URLRequest');
 import URLLoader = require('../../net/URLLoader');

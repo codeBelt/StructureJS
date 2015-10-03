@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/EventDispatcher as EventDispatcher
- @export DisplayObject
- */
 import EventDispatcher = require('../event/EventDispatcher');
 
 /**

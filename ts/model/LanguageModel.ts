@@ -1,21 +1,9 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../controller/LocalStorageController as LocalStorageController
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/RequestEvent as RequestEvent
- @import ../event/LanguageEvent as LanguageEvent
- @import ../request/BaseRequest as BaseRequest
- @import ./vo/LanguageConfigModel as LanguageConfigModel
- @export LoaderEvent
- */
 import LocalStorageController = require('../controller/LocalStorageController');
 import EventDispatcher = require('../event/EventDispatcher');
 import RequestEvent = require('../event/RequestEvent');
 import LanguageEvent = require('../event/LanguageEvent');
 import BaseRequest = require('../request/BaseRequest');
-import LanguageConfigModel = require('./vo/LanguageConfigModel');
+import LanguageConfigModel = require('./LanguageConfigModel');
 
 /**
  * The LanguageModel...

@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DisplayObjectContainer as DisplayObjectContainer
- @export Sprite
- */
 import DisplayObject = require('./DisplayObject');
 import DisplayObjectContainer = require('./DisplayObjectContainer');
 

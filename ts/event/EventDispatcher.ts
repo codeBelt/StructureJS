@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../ObjectManager as ObjectManager
- @import ./BaseEvent as BaseEvent
- @export EventDispatcher
- */
 import ObjectManager = require('../ObjectManager');
 import BaseEvent = require('./BaseEvent');
 

@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DOMElement as DOMElement
- @import jquery as jQuery
- @export Stage
- */
 import DOMElement = require('./DOMElement');
 
 /**

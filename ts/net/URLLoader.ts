@@ -1,13 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/LoaderEvent as LoaderEvent
- @import ./URLRequest as URLRequest
- @import ./BaseEvent as BaseEvent
- @export URLLoader
- */
 import EventDispatcher = require('../event/EventDispatcher');
 import LoaderEvent = require('../event/LoaderEvent');
 import URLRequest = require('./URLRequest');

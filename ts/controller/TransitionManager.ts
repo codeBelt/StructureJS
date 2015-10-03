@@ -1,16 +1,3 @@
-'use strict';
-/*
- UMD Stuff
-@import ../event/EventDispatcher as EventDispatcher
-@import ../display/DOMElement as DOMElement
-@import ../DisplayObjectContainer/DOMElement as DisplayObjectContainer
-@import ../util/TransitionFactory as TransitionFactory
-@import ../interface/ITransition as ITransition
-@import ../constant/TransitionType as TransitionType
-@import ../event/TransitionManagerEvent as TransitionManagerEvent
-@import ../event/TweenEvent as TweenEvent
-@export TransitionManager
-*/
 import EventDispatcher = require('../event/EventDispatcher');
 import DOMElement = require('../display/DOMElement');
 import DisplayObjectContainer = require('../display/DisplayObjectContainer');
@@ -24,7 +11,7 @@ import TweenEvent = require('../event/TweenEvent');
  * TODO: YUIDoc_comment
  *
  * @class TransitionManager
- * @extends BaseController
+ * @extends EventDispatcher
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
@@ -92,7 +79,7 @@ class TransitionManager extends EventDispatcher
     }
 
     /**
-     * @overridden BaseController.destroy
+     * @overridden EventDispatcher.destroy
      */
     public destroy():void
     {

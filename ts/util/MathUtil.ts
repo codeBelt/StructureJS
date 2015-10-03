@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export MathUtil
- */
-
 /**
  * A helper class to do calculations and conversions.
  *

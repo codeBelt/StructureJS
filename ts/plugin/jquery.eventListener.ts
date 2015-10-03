@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import jquery as $
- @export jQuery
- */
-
 import $ = require('jquery');
 
 var $eventListener = $;

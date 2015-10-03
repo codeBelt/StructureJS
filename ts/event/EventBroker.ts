@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ./EventDispatcher as EventDispatcher
- @import ./BaseEvent as BaseEvent
- @export EventBroker
- */
 import EventDispatcher = require('./EventDispatcher');
 import BaseEvent = require('./BaseEvent');
 

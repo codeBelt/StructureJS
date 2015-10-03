@@ -326,10 +326,10 @@ module.exports = function(grunt) {
         ts: {
             default: {
                 src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
-                outDir: '<%= BASE_PATH %>ts',
+                outDir: '<%= DEVELOPMENT_PATH %>',
                 options: {
-                    target: 'es5', //or es5
-                    module: 'commonjs',
+                    target: 'es5',
+                    module: 'umd',
                     basePath: '',
                     sourcemap: false,
                     declaration: false,
@@ -338,25 +338,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        ///**
-        // * Compiles the TypeScript files into one JavaScript file.
-        // */
-        //typescript: {
-        //    main: {
-        //        src: ['<%= BASE_PATH %>' + 'ts/**/*.ts'],
-        //        dest: '<%= BASE_PATH %>js',
-        //        options: {
-        //            target: 'es3', //or es5
-        //            module: 'commonjs',
-        //            basePath: '',
-        //            sourcemap: false,
-        //            declaration: false,
-        //            nolib: false,
-        //            comments: true
-        //        }
-        //    }
-        //},
 
         // Configuration to be run (and then tested).
         umd_wrapper: {
@@ -546,7 +527,6 @@ module.exports = function(grunt) {
      */
     grunt.registerTask('default', [
         'ts',
-        'umd_wrapper',
         'jsbeautifier',
         'clean'
     ]);

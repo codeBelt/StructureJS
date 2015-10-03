@@ -1,12 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../BaseObject as BaseObject
- @import ./URLRequestMethod as URLRequestMethod
- @import ./URLContentType as URLContentType
- @export URLRequest
- */
 import BaseObject = require('../BaseObject');
 import URLRequestMethod = require('./URLRequestMethod');
 import URLContentType = require('./URLContentType');

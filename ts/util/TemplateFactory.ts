@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/StringUtil as StringUtil
- @import handlebars as Handlebars
- @export TemplateFactory
- */
 import StringUtil = require('./StringUtil');
 
 /**

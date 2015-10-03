@@ -1,11 +1,4 @@
-'use strict';
-/*
- UMD Stuff
- @import ../../util/Extend as Extend
- @import ../BaseModel as BaseModel
- @export StatusModel
- */
-import BaseModel = require('../BaseModel');
+import BaseModel = require('BaseModel');
 
 class StatusModel extends BaseModel
 {

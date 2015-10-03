@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Util as Util
- @export ComponentFactory
- */
 import DisplayObjectContainer = require('../display/DisplayObjectContainer');
 import DisplayObject = require('../display/DisplayObject');
 import Util = require('../util/Util');

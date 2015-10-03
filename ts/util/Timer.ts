@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/TimerEvent as TimerEvent
- @export Timer
- */
 import EventDispatcher = require('../event/EventDispatcher');
 import TimerEvent = require('../event/TimerEvent');
 

@@ -1,11 +1,3 @@
-'use strict';
-/*
-UMD Stuff
-@import ../util/Extend as Extend
-@import ../BaseObject as BaseObject
-@import ../util/Util as Util
-@export BaseModel
- */
 import IBaseModel = require('../interface/IBaseModel');
 import BaseObject = require('../BaseObject');
 import Util = require('../util/Util');

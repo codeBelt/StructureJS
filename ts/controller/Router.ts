@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/StringUtil as StringUtil
- @import ../event/RouterEvent as RouterEvent
- @import ../model/Route as Route
- @export Router
- */
 import StringUtil = require('../util/StringUtil');
 import RouterEvent = require('../event/RouterEvent');
 import Route = require('../model/Route');

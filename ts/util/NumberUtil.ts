@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export NumberUtil
- */
-
 /**
  * The NumberUtil class has many helper methods to work with number data.
  *

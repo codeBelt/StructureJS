@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ./util/Extend as Extend
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/LoaderEvent as LoaderEvent
- @export ImageLoader
- */
 import IDataStore = require('../interface/IDataStore');
 import EventDispatcher = require('../event/EventDispatcher');
 import LoaderEvent = require('../event/LoaderEvent');

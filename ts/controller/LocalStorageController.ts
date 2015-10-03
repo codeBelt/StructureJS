@@ -1,12 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/LocalStorageEvent as LocalStorageEvent
- @import ../event/EventDispatcher as EventDispatcher
- @import ../model/BaseModel as BaseModel
- @export LocalStorageController
- */
 import LocalStorageEvent = require('../event/LocalStorageEvent');
 import EventDispatcher = require('../event/EventDispatcher');
 import BaseModel = require('../model/BaseModel');
@@ -256,7 +247,7 @@ class LocalStorageController extends EventDispatcher
     }
 
     /**
-     * @overridden BaseController.destroy
+     * @overridden EventDispatcher.destroy
      */
     public destroy():void
     {

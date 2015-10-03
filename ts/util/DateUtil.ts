@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export DateUtil
- */
-
 /**
  * A helper class that deals with dates.
  *

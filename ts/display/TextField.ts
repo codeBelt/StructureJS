@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DisplayObject as DisplayObject
- @export TextField
- */
 import DisplayObject = require('./DisplayObject');
 
 class TextField extends DisplayObject

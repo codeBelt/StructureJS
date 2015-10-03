@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DOMElement as DOMElement
- @import ../geom/Point as Point
- @export CanvasElement
- */
 import DisplayObjectContainer = require('./DisplayObjectContainer');
 import DOMElement = require('./DOMElement');
 import DisplayObject = require('./DisplayObject');

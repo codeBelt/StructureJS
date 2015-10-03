@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export ValidationUtil
- */
-
 /**
  * A ValidationUtility class that has several static methods to assist in development.
  *

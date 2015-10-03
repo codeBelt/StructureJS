@@ -3,12 +3,6 @@
 ///<reference path='_declare/greensock.d.ts'/>
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>
-'use strict';
-/*
- UMD Stuff
- @import ./util/Util as Util
- @export BaseObject
- */
 import Util = require('./util/Util');
 
 /**

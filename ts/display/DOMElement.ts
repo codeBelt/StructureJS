@@ -1,14 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../display/DisplayObjectContainer as DisplayObjectContainer
- @import ../event/BaseEvent as BaseEvent
- @import ../util/TemplateFactory as TemplateFactory
- @import ../util/ComponentFactory as ComponentFactory
- @import ../plugin/jquery.eventListener as jQuery
- @export DOMElement
- */
 import DisplayObjectContainer = require('./DisplayObjectContainer');
 import BaseEvent = require('../event/BaseEvent');
 import TemplateFactory = require('../util/TemplateFactory');

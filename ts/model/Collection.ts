@@ -1,13 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../model/BaseModel as BaseModel
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/BaseEvent as BaseEvent
- @import ../util/Util as Util
- @export LoaderEvent
- */
 import BaseModel = require('../model/BaseModel');
 import EventDispatcher = require('../event/EventDispatcher');
 import BaseEvent = require('../event/BaseEvent');

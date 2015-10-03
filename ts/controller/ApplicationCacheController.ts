@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../event/ApplicationCacheEvent as ApplicationCacheEvent
- @import ../event/EventDispatcher as EventDispatcher
- @export ApplicationCacheController
- */
 import ApplicationCacheEvent = require('../event/ApplicationCacheEvent');
 import EventDispatcher = require('../event/EventDispatcher');
 
