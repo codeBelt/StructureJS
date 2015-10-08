@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/EventDispatcher as EventDispatcher
- @export DisplayObject
- */
 import EventDispatcher = require('../event/EventDispatcher');
 
 /**
@@ -170,7 +163,7 @@ class DisplayObject extends EventDispatcher
      * @property isCreated
      * @type {boolean}
      * @default false
-     * @protected
+     * @public
      */
     public isCreated:boolean = false;
 

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -150,7 +156,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_util_ValidationUtil.js.html#l18"><code>js&#x2F;util&#x2F;ValidationUtil.js:18</code></a>
+            Defined in: <a href="../files/js_util_ValidationUtil.js.html#l9"><code>js&#x2F;util&#x2F;ValidationUtil.js:9</code></a>
         </div>
     
 
@@ -180,7 +186,7 @@
     <div id="api-options">
         Show:
         <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
             Inherited
         </label>
 
@@ -353,7 +359,7 @@
             
         
         
-        <a href="../files/js_util_ValidationUtil.js.html#l31"><code>js&#x2F;util&#x2F;ValidationUtil.js:31</code></a>
+        <a href="../files/js_util_ValidationUtil.js.html#l22"><code>js&#x2F;util&#x2F;ValidationUtil.js:22</code></a>
         
         </p>
 
@@ -414,7 +420,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    
+                    <pre class="code prettyprint"><code> ValidationUtil.isEmpty(&#39;sometext&#39;);
+ // false</code></pre>
+
                 </div>
             </div>
         
@@ -481,7 +489,7 @@
             
         
         
-        <a href="../files/js_util_ValidationUtil.js.html#l48"><code>js&#x2F;util&#x2F;ValidationUtil.js:48</code></a>
+        <a href="../files/js_util_ValidationUtil.js.html#l40"><code>js&#x2F;util&#x2F;ValidationUtil.js:40</code></a>
         
         </p>
 
@@ -557,7 +565,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    
+                    <pre class="code prettyprint"><code> ValidationUtil.isMatch(&#39;one@email.com&#39;, &#39;two@email.com&#39;);
+ // false</code></pre>
+
                 </div>
             </div>
         
@@ -618,7 +628,7 @@
             
         
         
-        <a href="../files/js_util_ValidationUtil.js.html#l108"><code>js&#x2F;util&#x2F;ValidationUtil.js:108</code></a>
+        <a href="../files/js_util_ValidationUtil.js.html#l104"><code>js&#x2F;util&#x2F;ValidationUtil.js:104</code></a>
         
         </p>
 
@@ -679,7 +689,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    
+                    <pre class="code prettyprint"><code> ValidationUtil.isPostalCode(&#39;p8n3h3&#39;);
+ // true</code></pre>
+
                 </div>
             </div>
         
@@ -740,7 +752,7 @@
             
         
         
-        <a href="../files/js_util_ValidationUtil.js.html#l123"><code>js&#x2F;util&#x2F;ValidationUtil.js:123</code></a>
+        <a href="../files/js_util_ValidationUtil.js.html#l120"><code>js&#x2F;util&#x2F;ValidationUtil.js:120</code></a>
         
         </p>
 
@@ -801,7 +813,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    
+                    <pre class="code prettyprint"><code> ValidationUtil.isSocialSecurityNumber(&#39;178051120&#39;);
+ // true</code></pre>
+
                 </div>
             </div>
         
@@ -862,7 +876,7 @@
             
         
         
-        <a href="../files/js_util_ValidationUtil.js.html#l63"><code>js&#x2F;util&#x2F;ValidationUtil.js:63</code></a>
+        <a href="../files/js_util_ValidationUtil.js.html#l56"><code>js&#x2F;util&#x2F;ValidationUtil.js:56</code></a>
         
         </p>
 
@@ -923,7 +937,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    
+                    <pre class="code prettyprint"><code> ValidationUtil.isValidEmailAddress(&#39;someemail@address.com&#39;);
+ // true</code></pre>
+
                 </div>
             </div>
         
@@ -984,7 +1000,7 @@
             
         
         
-        <a href="../files/js_util_ValidationUtil.js.html#l78"><code>js&#x2F;util&#x2F;ValidationUtil.js:78</code></a>
+        <a href="../files/js_util_ValidationUtil.js.html#l72"><code>js&#x2F;util&#x2F;ValidationUtil.js:72</code></a>
         
         </p>
 
@@ -1045,7 +1061,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    
+                    <pre class="code prettyprint"><code> ValidationUtil.isValidPhoneNumber(&#39;123 456 7899&#39;);
+ // true</code></pre>
+
                 </div>
             </div>
         
@@ -1106,7 +1124,7 @@
             
         
         
-        <a href="../files/js_util_ValidationUtil.js.html#l93"><code>js&#x2F;util&#x2F;ValidationUtil.js:93</code></a>
+        <a href="../files/js_util_ValidationUtil.js.html#l88"><code>js&#x2F;util&#x2F;ValidationUtil.js:88</code></a>
         
         </p>
 
@@ -1167,7 +1185,9 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    
+                    <pre class="code prettyprint"><code> ValidationUtil.isZipCode(&#39;55067 4434&#39;);
+ // true</code></pre>
+
                 </div>
             </div>
         

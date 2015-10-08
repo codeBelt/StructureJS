@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export URLContentType
- */
-
 /**
  * The URLContentType...
  *

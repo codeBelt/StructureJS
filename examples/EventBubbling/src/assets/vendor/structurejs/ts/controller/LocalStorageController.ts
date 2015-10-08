@@ -1,15 +1,6 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/LocalStorageEvent as LocalStorageEvent
- @import ../event/EventDispatcher as EventDispatcher
- @import ../model/ValueObject as ValueObject
- @export LocalStorageController
- */
 import LocalStorageEvent = require('../event/LocalStorageEvent');
 import EventDispatcher = require('../event/EventDispatcher');
-import ValueObject = require('../model/ValueObject');
+import BaseModel = require('../model/BaseModel');
 
 /**
  * The LocalStorageController...
@@ -21,7 +12,7 @@ import ValueObject = require('../model/ValueObject');
  * @requires Extend
  * @requires EventDispatcher
  * @requires LocalStorageEvent
- * @requires ValueObject
+ * @requires BaseModel
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
@@ -34,18 +25,18 @@ class LocalStorageController extends EventDispatcher
      * @type {string}
      * @default defaultNamespace
      * @optional
-     * @private
+     * @protected
      */
-    private _namespace:string = 'defaultNamespace';
+    protected _namespace:string = 'defaultNamespace';
 
     /**
      * A reference to window.localStorage for faster access.
      *
      * @property _localStorage
      * @type {Storage}
-     * @private
+     * @protected
      */
-    private _localStorage:Storage = null;
+    protected _localStorage:Storage = null;
 
     constructor()
     {
@@ -95,9 +86,9 @@ class LocalStorageController extends EventDispatcher
             key = this.getNamespace() + key;
         }
 
-        if (data instanceof ValueObject)
+        if (data instanceof BaseModel)
         {
-            data = <ValueObject>data.toJSON();
+            data = <BaseModel>data.toJSON();
         }
 
         data = JSON.stringify(data);
@@ -150,11 +141,11 @@ class LocalStorageController extends EventDispatcher
      *
      * @method getItemsWithNamespace
      * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
-     * @return {Array.<Object>}
+     * @return {Array}
      */
-    public getItemsWithNamespace(namespace:string = this._namespace):any[]
+    public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
-        var list:any[] = [];
+        var list:Array<any> = [];
         var length:number = this.getLength();
         for (var i:number = 0; i < length; i++)
         {
@@ -177,11 +168,11 @@ class LocalStorageController extends EventDispatcher
      * Returns all items in local storage as an Object with key and value properties.
      *
      * @method getAllItems
-     * @return {Array.<Object>}
+     * @return {Array}
      */
-    public getAllItems():any[]
+    public getAllItems():Array<any>
     {
-        var list:any[] = [];
+        var list:Array<any> = [];
         var length:number = this.getLength();
         for (var i:number = 0; i < length; i++)
         {
@@ -190,7 +181,7 @@ class LocalStorageController extends EventDispatcher
             var obj:any = {
                 key: key,
                 value: value
-            }
+            };
 
             list.push(obj);
         }
@@ -256,7 +247,7 @@ class LocalStorageController extends EventDispatcher
     }
 
     /**
-     * @overridden BaseController.destroy
+     * @overridden EventDispatcher.destroy
      */
     public destroy():void
     {
@@ -268,9 +259,9 @@ class LocalStorageController extends EventDispatcher
      *
      * @method onLocalStorageEvent
      * @param event {StorageEvent} The native browser event for Web Storage.
-     * @private
+     * @protected
      */
-    private onLocalStorageEvent(event:StorageEvent)
+    protected onLocalStorageEvent(event:StorageEvent)
     {
         this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
     }

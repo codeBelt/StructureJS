@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./BaseEvent as BaseEvent
- @export RouterEvent
- */
 import BaseEvent = require('./BaseEvent');
 
 /**
@@ -77,10 +70,10 @@ class RouterEvent extends BaseEvent
      * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
      *
      * @property params
-     * @type {string}
+     * @type {Array.<string>}
      * @public
      */
-    public params:string[] = [];
+    public params:Array<string> = [];
 
     /**
      * A query object the represents the query string in the hash url.

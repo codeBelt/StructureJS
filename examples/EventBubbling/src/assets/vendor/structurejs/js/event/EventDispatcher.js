@@ -1,20 +1,23 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../ObjectManager', './BaseEvent'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../ObjectManager'), require('./BaseEvent'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.EventDispatcher = factory(root.StructureJS.Extend, root.StructureJS.ObjectManager, root.StructureJS.BaseEvent);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, ObjectManager, BaseEvent) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../ObjectManager', './BaseEvent'], function(require, exports) {
+    var ObjectManager = require('../ObjectManager');
+    var BaseEvent = require('./BaseEvent');
     /**
      * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
      * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
@@ -37,52 +40,53 @@
      *      eventDispatcher.addEventListener('change', this.handlerMethod, this);
      *      eventDispatcher.dispatchEvent('change');
      */
-    var EventDispatcher = (function() {
-
-        var _super = Extend(EventDispatcher, ObjectManager);
+    var EventDispatcher = (function(_super) {
+        __extends(EventDispatcher, _super);
 
         function EventDispatcher() {
-            _super.call(this);
+                _super.call(this);
+                /**
+                 * Holds a reference to added listeners.
+                 *
+                 * @property _listeners
+                 * @type {Array.<any>}
+                 * @protected
+                 */
+                this._listeners = null;
+                /**
+                 * Indicates the object that contains a child object. Uses the parent property
+                 * to specify a relative path to display objects that are above the current display object in the display
+                 * list hierarchy and helps facilitate event bubbling.
+                 *
+                 * @property parent
+                 * @type {any}
+                 * @public
+                 */
+                this.parent = null;
+                this._listeners = [];
+            }
             /**
-             * Holds a reference to added listeners.
+             * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
              *
-             * @property _listeners
-             * @type {Array}
-             * @private
-             */
-            this._listeners = null;
-            /**
-             * Indicates the object that contains a child object. Uses the parent property
-             * to specify a relative path to display objects that are above the current display object in the display
-             * list hierarchy and helps facilitate event bubbling.
-             *
-             * @property parent
-             * @type {any}
+             * @method addEventListener
+             * @param type {String} The type of event.
+             * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+             * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+             * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
              * @public
+             * @chainable
+             * @example
+             *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+             *
+             *      ClassName.prototype.handlerMethod = function (event) {
+             *          console.log(event.target + " sent the event.");
+             *          console.log(event.type, event.data);
+             *      }
              */
-            this.parent = null;
-            this._listeners = [];
-        }
-        /**
-         * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
-         *
-         * @method addEventListener
-         * @param type {String} The type of event.
-         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
-         * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
-         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
-         * @public
-         * @chainable
-         * @example
-         *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *
-         *      ClassName.prototype.handlerMethod = function (event) {
-         *          console.log(event.target + " sent the event.");
-         *          console.log(event.type, event.data);
-         *      }
-         */
         EventDispatcher.prototype.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
+            if (priority === void 0) {
+                priority = 0;
+            }
             // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list == null) {
@@ -102,7 +106,43 @@
                 }
             }
             // Add the event listener to the list array at the index value.
-            list.splice(index, 0, { callback: callback, scope: scope, priority: priority });
+            list.splice(index, 0, {
+                callback: callback,
+                scope: scope,
+                priority: priority,
+                once: false
+            });
+            return this;
+        };
+        /**
+         * Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.
+         *
+         * @method addEventListenerOnce
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+         * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+         * @public
+         * @chainable
+         * @example
+         *      this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+         *          console.log(event.target + " sent the event.");
+         *          console.log(event.type, event.data);
+         *      }
+         */
+        EventDispatcher.prototype.addEventListenerOnce = function(type, callback, scope, priority) {
+            if (priority === void 0) {
+                priority = 0;
+            }
+            // Add the event listener the normal way.
+            this.addEventListener(type, callback, scope, priority);
+            // Get the event listeners we just added.
+            var list = this._listeners[type];
+            var listener = list[0];
+            // Change the value to true so it will be remove after dispatchEvent is called.
+            listener.once = true;
             return this;
         };
         /**
@@ -159,7 +199,9 @@
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
         EventDispatcher.prototype.dispatchEvent = function(type, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             var event = type;
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, true, data);
@@ -181,6 +223,10 @@
                     }
                     listener = list[i];
                     listener.callback.call(listener.scope, event);
+                    // If the once value is true we want to remove the listener right after this callback was called.
+                    if (listener.once === true) {
+                        this.removeEventListener(event.type, listener.callback, listener.scope);
+                    }
                 }
             }
             //Dispatches up the chain of classes that have a parent.
@@ -254,11 +300,10 @@
          * @overridden BaseObject.destroy
          */
         EventDispatcher.prototype.destroy = function() {
-            _super.prototype.disable.call(this);
+            this.disable();
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;
-    })();
-
+    })(ObjectManager);
     return EventDispatcher;
-}));
+});

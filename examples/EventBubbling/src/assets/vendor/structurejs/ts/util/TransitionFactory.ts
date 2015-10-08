@@ -1,22 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../BaseObject as BaseObject
- @import ../display/DisplayObjectContainer as DisplayObjectContainer
- @import ../display/DOMElement as DOMElement
- @import ../interface/ITransition as ITransition
- @import ../constant/TransitionType as TransitionType
- @import ../controller/transition/TransitionNone as TransitionNone
- @import ../controller/transition/TransitionPushLeft as TransitionPushLeft
- @import ../controller/transition/TransitionPushRight as TransitionPushRight
- @import ../controller/transition/TransitionPushUp as TransitionPushUp
- @import ../controller/transition/TransitionPushDown as TransitionPushDown
- @import ../controller/transition/TransitionCrossFade as TransitionCrossFade
- @import ../controller/transition/TransitionFadeOutAndIn as TransitionFadeOutAndIn
- @export TransitionFactory
-*/
-
 import BaseObject = require('../BaseObject');
 import DisplayObjectContainer = require('../display/DisplayObjectContainer');
 import DOMElement = require('../display/DOMElement');
@@ -46,9 +27,9 @@ class TransitionFactory extends BaseObject
      *
      * @property _transitions
      * @type {Object}
-     * @private
+     * @protected
      */
-    private _transitions:Object = {};
+    protected _transitions:Object = {};
 
     constructor()
     {

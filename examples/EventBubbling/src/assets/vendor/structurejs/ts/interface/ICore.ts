@@ -9,10 +9,10 @@
 interface ICore
 {
     /**
-     * @property cid
+     * @property sjsId
      * @readOnly
      */
-    cid:number;
+    sjsId:number;
 
     /**
      * @method getQualifiedClassName

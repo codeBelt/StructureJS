@@ -1,8 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export MouseEvents
- */
 class MouseEvents
 {
     /**

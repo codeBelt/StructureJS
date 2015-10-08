@@ -1,16 +1,3 @@
-'use strict';
-/*
- UMD Stuff
-@import ../event/EventDispatcher as EventDispatcher
-@import ../display/DOMElement as DOMElement
-@import ../DisplayObjectContainer/DOMElement as DisplayObjectContainer
-@import ../util/TransitionFactory as TransitionFactory
-@import ../interface/ITransition as ITransition
-@import ../constant/TransitionType as TransitionType
-@import ../event/TransitionManagerEvent as TransitionManagerEvent
-@import ../event/TweenEvent as TweenEvent
-@export TransitionManager
-*/
 import EventDispatcher = require('../event/EventDispatcher');
 import DOMElement = require('../display/DOMElement');
 import DisplayObjectContainer = require('../display/DisplayObjectContainer');
@@ -24,7 +11,7 @@ import TweenEvent = require('../event/TweenEvent');
  * TODO: YUIDoc_comment
  *
  * @class TransitionManager
- * @extends BaseController
+ * @extends EventDispatcher
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  */
@@ -33,13 +20,13 @@ class TransitionManager extends EventDispatcher
     public static READY:string = 'ready';
     public static TRANSITION_RUNNING:string = 'transitionRunning';
 
-    private _viewContainer:DOMElement = null;
-    private _currentView:DOMElement = null;
-    private _nextView:DOMElement = null;
-    private _state:string = TransitionManager.READY;
+    protected _viewContainer:DOMElement = null;
+    protected _currentView:DOMElement = null;
+    protected _nextView:DOMElement = null;
+    protected _state:string = TransitionManager.READY;
 
-    private _transitionFactory:TransitionFactory = new TransitionFactory();
-    private _runningTransition:ITransition = null;
+    protected _transitionFactory:TransitionFactory = new TransitionFactory();
+    protected _runningTransition:ITransition = null;
 
     constructor(displayContainer:DOMElement)
     {
@@ -92,7 +79,7 @@ class TransitionManager extends EventDispatcher
     }
 
     /**
-     * @overridden BaseController.destroy
+     * @overridden EventDispatcher.destroy
      */
     public destroy():void
     {
@@ -101,7 +88,7 @@ class TransitionManager extends EventDispatcher
         super.destroy();
     }
 
-    private removeCurrentView():void
+    protected removeCurrentView():void
     {
         if (this._currentView === null)
         {
@@ -143,16 +130,16 @@ class TransitionManager extends EventDispatcher
         return this;
     }
 
-    private onTransitionStart(event:TweenEvent):void
+    protected onTransitionStart(event:TweenEvent):void
     {
         this.dispatchEvent(new TransitionManagerEvent(TransitionManagerEvent.TRANSITION_START));
     }
 
-    private onTransitionUpdate(event:TweenEvent):void
+    protected onTransitionUpdate(event:TweenEvent):void
     {
     }
 
-    private onTransitionComplete(event:TweenEvent):void
+    protected onTransitionComplete(event:TweenEvent):void
     {
         if (this._currentView)
         {

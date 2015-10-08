@@ -1,6 +1,6 @@
 /*!
 
- handlebars v2.0.0
+ handlebars v3.0.3
 
 Copyright (C) 2011-2014 by Yehuda Katz
 
@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 @license
 */
-!function(a,b){"function"==typeof define&&define.amd?define([],b):"object"==typeof exports?module.exports=b():a.Handlebars=a.Handlebars||b()}(this,function(){var a=function(){"use strict";function a(a){this.string=a}var b;return a.prototype.toString=function(){return""+this.string},b=a}(),b=function(a){"use strict";function b(a){return i[a]}function c(a){for(var b=1;b<arguments.length;b++)for(var c in arguments[b])Object.prototype.hasOwnProperty.call(arguments[b],c)&&(a[c]=arguments[b][c]);return a}function d(a){return a instanceof h?a.toString():null==a?"":a?(a=""+a,k.test(a)?a.replace(j,b):a):a+""}function e(a){return a||0===a?n(a)&&0===a.length?!0:!1:!0}function f(a,b){return(a?a+".":"")+b}var g={},h=a,i={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},j=/[&<>"'`]/g,k=/[&<>"'`]/;g.extend=c;var l=Object.prototype.toString;g.toString=l;var m=function(a){return"function"==typeof a};m(/x/)&&(m=function(a){return"function"==typeof a&&"[object Function]"===l.call(a)});var m;g.isFunction=m;var n=Array.isArray||function(a){return a&&"object"==typeof a?"[object Array]"===l.call(a):!1};return g.isArray=n,g.escapeExpression=d,g.isEmpty=e,g.appendContextPath=f,g}(a),c=function(){"use strict";function a(a,b){var d;b&&b.firstLine&&(d=b.firstLine,a+=" - "+d+":"+b.firstColumn);for(var e=Error.prototype.constructor.call(this,a),f=0;f<c.length;f++)this[c[f]]=e[c[f]];d&&(this.lineNumber=d,this.column=b.firstColumn)}var b,c=["description","fileName","lineNumber","message","name","number","stack"];return a.prototype=new Error,b=a}(),d=function(a,b){"use strict";function c(a,b){this.helpers=a||{},this.partials=b||{},d(this)}function d(a){a.registerHelper("helperMissing",function(){if(1===arguments.length)return void 0;throw new g("Missing helper: '"+arguments[arguments.length-1].name+"'")}),a.registerHelper("blockHelperMissing",function(b,c){var d=c.inverse,e=c.fn;if(b===!0)return e(this);if(b===!1||null==b)return d(this);if(k(b))return b.length>0?(c.ids&&(c.ids=[c.name]),a.helpers.each(b,c)):d(this);if(c.data&&c.ids){var g=q(c.data);g.contextPath=f.appendContextPath(c.data.contextPath,c.name),c={data:g}}return e(b,c)}),a.registerHelper("each",function(a,b){if(!b)throw new g("Must pass iterator to #each");var c,d,e=b.fn,h=b.inverse,i=0,j="";if(b.data&&b.ids&&(d=f.appendContextPath(b.data.contextPath,b.ids[0])+"."),l(a)&&(a=a.call(this)),b.data&&(c=q(b.data)),a&&"object"==typeof a)if(k(a))for(var m=a.length;m>i;i++)c&&(c.index=i,c.first=0===i,c.last=i===a.length-1,d&&(c.contextPath=d+i)),j+=e(a[i],{data:c});else for(var n in a)a.hasOwnProperty(n)&&(c&&(c.key=n,c.index=i,c.first=0===i,d&&(c.contextPath=d+n)),j+=e(a[n],{data:c}),i++);return 0===i&&(j=h(this)),j}),a.registerHelper("if",function(a,b){return l(a)&&(a=a.call(this)),!b.hash.includeZero&&!a||f.isEmpty(a)?b.inverse(this):b.fn(this)}),a.registerHelper("unless",function(b,c){return a.helpers["if"].call(this,b,{fn:c.inverse,inverse:c.fn,hash:c.hash})}),a.registerHelper("with",function(a,b){l(a)&&(a=a.call(this));var c=b.fn;if(f.isEmpty(a))return b.inverse(this);if(b.data&&b.ids){var d=q(b.data);d.contextPath=f.appendContextPath(b.data.contextPath,b.ids[0]),b={data:d}}return c(a,b)}),a.registerHelper("log",function(b,c){var d=c.data&&null!=c.data.level?parseInt(c.data.level,10):1;a.log(d,b)}),a.registerHelper("lookup",function(a,b){return a&&a[b]})}var e={},f=a,g=b,h="2.0.0";e.VERSION=h;var i=6;e.COMPILER_REVISION=i;var j={1:"<= 1.0.rc.2",2:"== 1.0.0-rc.3",3:"== 1.0.0-rc.4",4:"== 1.x.x",5:"== 2.0.0-alpha.x",6:">= 2.0.0-beta.1"};e.REVISION_CHANGES=j;var k=f.isArray,l=f.isFunction,m=f.toString,n="[object Object]";e.HandlebarsEnvironment=c,c.prototype={constructor:c,logger:o,log:p,registerHelper:function(a,b){if(m.call(a)===n){if(b)throw new g("Arg not supported with multiple helpers");f.extend(this.helpers,a)}else this.helpers[a]=b},unregisterHelper:function(a){delete this.helpers[a]},registerPartial:function(a,b){m.call(a)===n?f.extend(this.partials,a):this.partials[a]=b},unregisterPartial:function(a){delete this.partials[a]}};var o={methodMap:{0:"debug",1:"info",2:"warn",3:"error"},DEBUG:0,INFO:1,WARN:2,ERROR:3,level:3,log:function(a,b){if(o.level<=a){var c=o.methodMap[a];"undefined"!=typeof console&&console[c]&&console[c].call(console,b)}}};e.logger=o;var p=o.log;e.log=p;var q=function(a){var b=f.extend({},a);return b._parent=a,b};return e.createFrame=q,e}(b,c),e=function(a,b,c){"use strict";function d(a){var b=a&&a[0]||1,c=m;if(b!==c){if(c>b){var d=n[c],e=n[b];throw new l("Template was precompiled with an older version of Handlebars than the current runtime. Please update your precompiler to a newer version ("+d+") or downgrade your runtime to an older version ("+e+").")}throw new l("Template was precompiled with a newer version of Handlebars than the current runtime. Please update your runtime to a newer version ("+a[1]+").")}}function e(a,b){if(!b)throw new l("No environment passed to template");if(!a||!a.main)throw new l("Unknown template object: "+typeof a);b.VM.checkRevision(a.compiler);var c=function(c,d,e,f,g,h,i,j,m){g&&(f=k.extend({},f,g));var n=b.VM.invokePartial.call(this,c,e,f,h,i,j,m);if(null==n&&b.compile){var o={helpers:h,partials:i,data:j,depths:m};i[e]=b.compile(c,{data:void 0!==j,compat:a.compat},b),n=i[e](f,o)}if(null!=n){if(d){for(var p=n.split("\n"),q=0,r=p.length;r>q&&(p[q]||q+1!==r);q++)p[q]=d+p[q];n=p.join("\n")}return n}throw new l("The partial "+e+" could not be compiled when running in runtime-only mode")},d={lookup:function(a,b){for(var c=a.length,d=0;c>d;d++)if(a[d]&&null!=a[d][b])return a[d][b]},lambda:function(a,b){return"function"==typeof a?a.call(b):a},escapeExpression:k.escapeExpression,invokePartial:c,fn:function(b){return a[b]},programs:[],program:function(a,b,c){var d=this.programs[a],e=this.fn(a);return b||c?d=f(this,a,e,b,c):d||(d=this.programs[a]=f(this,a,e)),d},data:function(a,b){for(;a&&b--;)a=a._parent;return a},merge:function(a,b){var c=a||b;return a&&b&&a!==b&&(c=k.extend({},b,a)),c},noop:b.VM.noop,compilerInfo:a.compiler},e=function(b,c){c=c||{};var f=c.data;e._setup(c),!c.partial&&a.useData&&(f=i(b,f));var g;return a.useDepths&&(g=c.depths?[b].concat(c.depths):[b]),a.main.call(d,b,d.helpers,d.partials,f,g)};return e.isTop=!0,e._setup=function(c){c.partial?(d.helpers=c.helpers,d.partials=c.partials):(d.helpers=d.merge(c.helpers,b.helpers),a.usePartial&&(d.partials=d.merge(c.partials,b.partials)))},e._child=function(b,c,e){if(a.useDepths&&!e)throw new l("must pass parent depths");return f(d,b,a[b],c,e)},e}function f(a,b,c,d,e){var f=function(b,f){return f=f||{},c.call(a,b,a.helpers,a.partials,f.data||d,e&&[b].concat(e))};return f.program=b,f.depth=e?e.length:0,f}function g(a,b,c,d,e,f,g){var h={partial:!0,helpers:d,partials:e,data:f,depths:g};if(void 0===a)throw new l("The partial "+b+" could not be found");return a instanceof Function?a(c,h):void 0}function h(){return""}function i(a,b){return b&&"root"in b||(b=b?o(b):{},b.root=a),b}var j={},k=a,l=b,m=c.COMPILER_REVISION,n=c.REVISION_CHANGES,o=c.createFrame;return j.checkRevision=d,j.template=e,j.program=f,j.invokePartial=g,j.noop=h,j}(b,c,d),f=function(a,b,c,d,e){"use strict";var f,g=a,h=b,i=c,j=d,k=e,l=function(){var a=new g.HandlebarsEnvironment;return j.extend(a,g),a.SafeString=h,a.Exception=i,a.Utils=j,a.escapeExpression=j.escapeExpression,a.VM=k,a.template=function(b){return k.template(b,a)},a},m=l();return m.create=l,m["default"]=m,f=m}(d,a,c,b,e);return f});;this["JST"] = this["JST"] || {};
+!function(a,b){"object"==typeof exports&&"object"==typeof module?module.exports=b():"function"==typeof define&&define.amd?define(b):"object"==typeof exports?exports.Handlebars=b():a.Handlebars=b()}(this,function(){return function(a){function b(d){if(c[d])return c[d].exports;var e=c[d]={exports:{},id:d,loaded:!1};return a[d].call(e.exports,e,e.exports,b),e.loaded=!0,e.exports}var c={};return b.m=a,b.c=c,b.p="",b(0)}([function(a,b,c){"use strict";function d(){var a=new g.HandlebarsEnvironment;return m.extend(a,g),a.SafeString=i["default"],a.Exception=k["default"],a.Utils=m,a.escapeExpression=m.escapeExpression,a.VM=o,a.template=function(b){return o.template(b,a)},a}var e=c(7)["default"];b.__esModule=!0;var f=c(1),g=e(f),h=c(2),i=e(h),j=c(3),k=e(j),l=c(4),m=e(l),n=c(5),o=e(n),p=c(6),q=e(p),r=d();r.create=d,q["default"](r),r["default"]=r,b["default"]=r,a.exports=b["default"]},function(a,b,c){"use strict";function d(a,b){this.helpers=a||{},this.partials=b||{},e(this)}function e(a){a.registerHelper("helperMissing",function(){if(1===arguments.length)return void 0;throw new k["default"]('Missing helper: "'+arguments[arguments.length-1].name+'"')}),a.registerHelper("blockHelperMissing",function(b,c){var d=c.inverse,e=c.fn;if(b===!0)return e(this);if(b===!1||null==b)return d(this);if(o(b))return b.length>0?(c.ids&&(c.ids=[c.name]),a.helpers.each(b,c)):d(this);if(c.data&&c.ids){var g=f(c.data);g.contextPath=i.appendContextPath(c.data.contextPath,c.name),c={data:g}}return e(b,c)}),a.registerHelper("each",function(a,b){function c(b,c,e){j&&(j.key=b,j.index=c,j.first=0===c,j.last=!!e,l&&(j.contextPath=l+b)),h+=d(a[b],{data:j,blockParams:i.blockParams([a[b],b],[l+b,null])})}if(!b)throw new k["default"]("Must pass iterator to #each");var d=b.fn,e=b.inverse,g=0,h="",j=void 0,l=void 0;if(b.data&&b.ids&&(l=i.appendContextPath(b.data.contextPath,b.ids[0])+"."),p(a)&&(a=a.call(this)),b.data&&(j=f(b.data)),a&&"object"==typeof a)if(o(a))for(var m=a.length;m>g;g++)c(g,g,g===a.length-1);else{var n=void 0;for(var q in a)a.hasOwnProperty(q)&&(n&&c(n,g-1),n=q,g++);n&&c(n,g-1,!0)}return 0===g&&(h=e(this)),h}),a.registerHelper("if",function(a,b){return p(a)&&(a=a.call(this)),!b.hash.includeZero&&!a||i.isEmpty(a)?b.inverse(this):b.fn(this)}),a.registerHelper("unless",function(b,c){return a.helpers["if"].call(this,b,{fn:c.inverse,inverse:c.fn,hash:c.hash})}),a.registerHelper("with",function(a,b){p(a)&&(a=a.call(this));var c=b.fn;if(i.isEmpty(a))return b.inverse(this);if(b.data&&b.ids){var d=f(b.data);d.contextPath=i.appendContextPath(b.data.contextPath,b.ids[0]),b={data:d}}return c(a,b)}),a.registerHelper("log",function(b,c){var d=c.data&&null!=c.data.level?parseInt(c.data.level,10):1;a.log(d,b)}),a.registerHelper("lookup",function(a,b){return a&&a[b]})}function f(a){var b=i.extend({},a);return b._parent=a,b}var g=c(7)["default"];b.__esModule=!0,b.HandlebarsEnvironment=d,b.createFrame=f;var h=c(4),i=g(h),j=c(3),k=g(j),l="3.0.1";b.VERSION=l;var m=6;b.COMPILER_REVISION=m;var n={1:"<= 1.0.rc.2",2:"== 1.0.0-rc.3",3:"== 1.0.0-rc.4",4:"== 1.x.x",5:"== 2.0.0-alpha.x",6:">= 2.0.0-beta.1"};b.REVISION_CHANGES=n;var o=i.isArray,p=i.isFunction,q=i.toString,r="[object Object]";d.prototype={constructor:d,logger:s,log:t,registerHelper:function(a,b){if(q.call(a)===r){if(b)throw new k["default"]("Arg not supported with multiple helpers");i.extend(this.helpers,a)}else this.helpers[a]=b},unregisterHelper:function(a){delete this.helpers[a]},registerPartial:function(a,b){if(q.call(a)===r)i.extend(this.partials,a);else{if("undefined"==typeof b)throw new k["default"]("Attempting to register a partial as undefined");this.partials[a]=b}},unregisterPartial:function(a){delete this.partials[a]}};var s={methodMap:{0:"debug",1:"info",2:"warn",3:"error"},DEBUG:0,INFO:1,WARN:2,ERROR:3,level:1,log:function(a,b){if("undefined"!=typeof console&&s.level<=a){var c=s.methodMap[a];(console[c]||console.log).call(console,b)}}};b.logger=s;var t=s.log;b.log=t},function(a,b){"use strict";function c(a){this.string=a}b.__esModule=!0,c.prototype.toString=c.prototype.toHTML=function(){return""+this.string},b["default"]=c,a.exports=b["default"]},function(a,b){"use strict";function c(a,b){var e=b&&b.loc,f=void 0,g=void 0;e&&(f=e.start.line,g=e.start.column,a+=" - "+f+":"+g);for(var h=Error.prototype.constructor.call(this,a),i=0;i<d.length;i++)this[d[i]]=h[d[i]];Error.captureStackTrace&&Error.captureStackTrace(this,c),e&&(this.lineNumber=f,this.column=g)}b.__esModule=!0;var d=["description","fileName","lineNumber","message","name","number","stack"];c.prototype=new Error,b["default"]=c,a.exports=b["default"]},function(a,b){"use strict";function c(a){return j[a]}function d(a){for(var b=1;b<arguments.length;b++)for(var c in arguments[b])Object.prototype.hasOwnProperty.call(arguments[b],c)&&(a[c]=arguments[b][c]);return a}function e(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1}function f(a){if("string"!=typeof a){if(a&&a.toHTML)return a.toHTML();if(null==a)return"";if(!a)return a+"";a=""+a}return l.test(a)?a.replace(k,c):a}function g(a){return a||0===a?o(a)&&0===a.length?!0:!1:!0}function h(a,b){return a.path=b,a}function i(a,b){return(a?a+".":"")+b}b.__esModule=!0,b.extend=d,b.indexOf=e,b.escapeExpression=f,b.isEmpty=g,b.blockParams=h,b.appendContextPath=i;var j={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#x27;","`":"&#x60;"},k=/[&<>"'`]/g,l=/[&<>"'`]/,m=Object.prototype.toString;b.toString=m;var n=function(a){return"function"==typeof a};n(/x/)&&(b.isFunction=n=function(a){return"function"==typeof a&&"[object Function]"===m.call(a)});var n;b.isFunction=n;var o=Array.isArray||function(a){return a&&"object"==typeof a?"[object Array]"===m.call(a):!1};b.isArray=o},function(a,b,c){"use strict";function d(a){var b=a&&a[0]||1,c=p.COMPILER_REVISION;if(b!==c){if(c>b){var d=p.REVISION_CHANGES[c],e=p.REVISION_CHANGES[b];throw new o["default"]("Template was precompiled with an older version of Handlebars than the current runtime. Please update your precompiler to a newer version ("+d+") or downgrade your runtime to an older version ("+e+").")}throw new o["default"]("Template was precompiled with a newer version of Handlebars than the current runtime. Please update your runtime to a newer version ("+a[1]+").")}}function e(a,b){function c(c,d,e){e.hash&&(d=m.extend({},d,e.hash)),c=b.VM.resolvePartial.call(this,c,d,e);var f=b.VM.invokePartial.call(this,c,d,e);if(null==f&&b.compile&&(e.partials[e.name]=b.compile(c,a.compilerOptions,b),f=e.partials[e.name](d,e)),null!=f){if(e.indent){for(var g=f.split("\n"),h=0,i=g.length;i>h&&(g[h]||h+1!==i);h++)g[h]=e.indent+g[h];f=g.join("\n")}return f}throw new o["default"]("The partial "+e.name+" could not be compiled when running in runtime-only mode")}function d(b){var c=void 0===arguments[1]?{}:arguments[1],f=c.data;d._setup(c),!c.partial&&a.useData&&(f=j(b,f));var g=void 0,h=a.useBlockParams?[]:void 0;return a.useDepths&&(g=c.depths?[b].concat(c.depths):[b]),a.main.call(e,b,e.helpers,e.partials,f,h,g)}if(!b)throw new o["default"]("No environment passed to template");if(!a||!a.main)throw new o["default"]("Unknown template object: "+typeof a);b.VM.checkRevision(a.compiler);var e={strict:function(a,b){if(!(b in a))throw new o["default"]('"'+b+'" not defined in '+a);return a[b]},lookup:function(a,b){for(var c=a.length,d=0;c>d;d++)if(a[d]&&null!=a[d][b])return a[d][b]},lambda:function(a,b){return"function"==typeof a?a.call(b):a},escapeExpression:m.escapeExpression,invokePartial:c,fn:function(b){return a[b]},programs:[],program:function(a,b,c,d,e){var g=this.programs[a],h=this.fn(a);return b||e||d||c?g=f(this,a,h,b,c,d,e):g||(g=this.programs[a]=f(this,a,h)),g},data:function(a,b){for(;a&&b--;)a=a._parent;return a},merge:function(a,b){var c=a||b;return a&&b&&a!==b&&(c=m.extend({},b,a)),c},noop:b.VM.noop,compilerInfo:a.compiler};return d.isTop=!0,d._setup=function(c){c.partial?(e.helpers=c.helpers,e.partials=c.partials):(e.helpers=e.merge(c.helpers,b.helpers),a.usePartial&&(e.partials=e.merge(c.partials,b.partials)))},d._child=function(b,c,d,g){if(a.useBlockParams&&!d)throw new o["default"]("must pass block params");if(a.useDepths&&!g)throw new o["default"]("must pass parent depths");return f(e,b,a[b],c,0,d,g)},d}function f(a,b,c,d,e,f,g){function h(b){var e=void 0===arguments[1]?{}:arguments[1];return c.call(a,b,a.helpers,a.partials,e.data||d,f&&[e.blockParams].concat(f),g&&[b].concat(g))}return h.program=b,h.depth=g?g.length:0,h.blockParams=e||0,h}function g(a,b,c){return a?a.call||c.name||(c.name=a,a=c.partials[a]):a=c.partials[c.name],a}function h(a,b,c){if(c.partial=!0,void 0===a)throw new o["default"]("The partial "+c.name+" could not be found");return a instanceof Function?a(b,c):void 0}function i(){return""}function j(a,b){return b&&"root"in b||(b=b?p.createFrame(b):{},b.root=a),b}var k=c(7)["default"];b.__esModule=!0,b.checkRevision=d,b.template=e,b.wrapProgram=f,b.resolvePartial=g,b.invokePartial=h,b.noop=i;var l=c(4),m=k(l),n=c(3),o=k(n),p=c(1)},function(a,b){(function(c){"use strict";b.__esModule=!0,b["default"]=function(a){var b="undefined"!=typeof c?c:window,d=b.Handlebars;a.noConflict=function(){b.Handlebars===a&&(b.Handlebars=d)}},a.exports=b["default"]}).call(b,function(){return this}())},function(a,b){"use strict";b["default"]=function(a){return a&&a.__esModule?a:{"default":a}},b.__esModule=!0}])});;this["JST"] = this["JST"] || {};
 
 this["JST"]["templates/login/LoginTemplate"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
@@ -392,12 +392,6 @@ module.exports = ParentView;
 ///<reference path='_declare/greensock.d.ts'/>
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>
-'use strict';
-/*
- UMD Stuff
- @import ./util/Util as Util
- @export BaseObject
- */
 var Util = require('./util/Util');
 /**
  * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -412,17 +406,17 @@ var Util = require('./util/Util');
 var BaseObject = (function () {
     function BaseObject() {
         /**
-         * The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+         * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
          *
-         * @property cid
+         * @property sjsId
          * @type {int}
          * @default null
          * @writeOnce
          * @readOnly
          * @public
          */
-        this.cid = null;
-        this.cid = Util.uniqueId();
+        this.sjsId = null;
+        this.sjsId = Util.uniqueId();
     }
     /**
      * Returns the fully qualified class name of an object.
@@ -434,7 +428,7 @@ var BaseObject = (function () {
      *     instance.getQualifiedClassName();
      */
     BaseObject.prototype.getQualifiedClassName = function () {
-        return Util.getClassName(this);
+        return Util.getName(this);
     };
     /**
      * The purpose of the destroy method is to make an object ready for garbage collection. This
@@ -468,19 +462,12 @@ var BaseObject = (function () {
 module.exports = BaseObject;
 
 },{"./util/Util":19}],7:[function(require,module,exports){
-'use strict';
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/*
- UMD Stuff
- @import ./util/Extend as Extend
- @import ./BaseObject as BaseObject
- @export ObjectManager
- */
 var BaseObject = require('./BaseObject');
 /**
  * The {{#crossLink "ObjectManager"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
@@ -504,7 +491,7 @@ var ObjectManager = (function (_super) {
          * @property isEnabled
          * @type {boolean}
          * @default false
-         * @protected
+         * @public
          */
         this.isEnabled = false;
     }
@@ -559,23 +546,12 @@ var ObjectManager = (function (_super) {
 module.exports = ObjectManager;
 
 },{"./BaseObject":6}],8:[function(require,module,exports){
-'use strict';
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../display/DisplayObjectContainer as DisplayObjectContainer
- @import ../event/BaseEvent as BaseEvent
- @import ../util/TemplateFactory as TemplateFactory
- @import ../util/ComponentFactory as ComponentFactory
- @import ../plugin/jquery.eventListener as jQuery
- @export DOMElement
- */
 var DisplayObjectContainer = require('./DisplayObjectContainer');
 var BaseEvent = require('../event/BaseEvent');
 var TemplateFactory = require('../util/TemplateFactory');
@@ -746,7 +722,7 @@ var DOMElement = (function (_super) {
          *
          * @property _isReference
          * @type {boolean}
-         * @private
+         * @protected
          */
         this._isReference = false;
         /**
@@ -755,7 +731,7 @@ var DOMElement = (function (_super) {
          * @property _type
          * @type {string}
          * @default null
-         * @private
+         * @protected
          */
         this._type = null;
         /**
@@ -764,7 +740,7 @@ var DOMElement = (function (_super) {
          * @property _params
          * @type {any}
          * @default null
-         * @private
+         * @protected
          */
         this._params = null;
         if (type instanceof jQuery) {
@@ -869,6 +845,7 @@ var DOMElement = (function (_super) {
         this.element = this.$element[0];
         this.width = this.$element.width();
         this.height = this.$element.height();
+        this.setSize(this.width, this.height);
         return this;
     };
     /**
@@ -881,10 +858,10 @@ var DOMElement = (function (_super) {
      *     container.addChild(domElementInstance);
      */
     DOMElement.prototype.addChild = function (child) {
-        _super.prototype.addChild.call(this, child);
         if (this.$element == null) {
             throw new Error('[' + this.getQualifiedClassName() + '] You cannot use the addChild method if the parent object is not added to the DOM.');
         }
+        _super.prototype.addChild.call(this, child);
         // If an empty jQuery object is passed into the constructor then don't run the code below.
         if (child._isReference === true && child.$element.length === 0) {
             return this;
@@ -901,24 +878,62 @@ var DOMElement = (function (_super) {
         return this;
     };
     /**
-     * Adds the cid to the DOM element so we can know what what Class object the element belongs too.
+     * Adds the sjsId to the DOM element so we can know what what Class object the HTMLElement belongs too.
      *
      * @method addClientSideId
-     * @param child {DOMElement} The DOMElement instance to add the cid too.
-     * @private
+     * @param child {DOMElement} The DOMElement instance to add the sjsId too.
+     * @protected
      */
     DOMElement.prototype.addClientSideId = function (child) {
-        /* TODO: Calling the getChild method there is a chance that multiple DOMElement's have a reference to the same HTMLElement
-         * in the DOM causing the cid to be overwritten with a new cid. Probably should handle that.
-         */
-        child.$element.attr('data-cid', child.cid);
+        var type = child.$element.attr('data-sjs-type');
+        var id = child.$element.attr('data-sjs-id');
+        if (type === void 0) {
+            // Make them array's so the join method will work.
+            type = [child.getQualifiedClassName()];
+            id = [child.sjsId];
+        }
+        else {
+            // Split them so we can push/add the new values.
+            type = type.split(',');
+            id = id.split(',');
+            type.push(child.getQualifiedClassName());
+            id.push(child.sjsId);
+        }
+        // Updated list of id's and types
+        child.$element.attr('data-sjs-id', id.join(','));
+        child.$element.attr('data-sjs-type', type.join(','));
+    };
+    /**
+     * Removes the sjsId and class type from the HTMLElement.
+     *
+     * @method removeClientSideId
+     * @param child {DOMElement} The DOMElement instance to add the sjsId too.
+     * @protected
+     * @return {boolean}
+     */
+    DOMElement.prototype.removeClientSideId = function (child) {
+        var type = child.$element.attr('data-sjs-type');
+        var id = child.$element.attr('data-sjs-id');
+        // Split them so we can remove the child sjsId and type.
+        var typeList = type.split(',');
+        var idList = id.split(',').map(Number); // Convert each item into a number.
+        var index = idList.indexOf(child.sjsId);
+        if (index > -1) {
+            // Remove the id and type from the array.
+            typeList.splice(index, 1);
+            idList.splice(index, 1);
+            // Updated list of id's and types
+            child.$element.attr('data-sjs-type', typeList.join(','));
+            child.$element.attr('data-sjs-id', idList.join(','));
+        }
+        return idList.length === 0;
     };
     /**
      * Called when the child object is added to the DOM.
      * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
      *
      * @method onDomAdded
-     * @private
+     * @protected
      */
     DOMElement.prototype.onAddedToDom = function (child) {
         var _this = this;
@@ -932,6 +947,7 @@ var DOMElement = (function (_super) {
         this.addClientSideId(child);
         child.width = child.$element.width();
         child.height = child.$element.height();
+        child.setSize(child.width, child.height);
         child.enable();
         child.layout();
         child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));
@@ -946,18 +962,23 @@ var DOMElement = (function (_super) {
         if (child._isReference === true && child.$element.length === 0) {
             return this;
         }
-        // If the index passed in is less than 0 and greater than
-        // the total number of children then place the item at the end.
         if (index < 0 || index >= length) {
+            // If the index passed in is less than 0 and greater than the total number of children then place the item at the end.
             this.addChild(child);
         }
         else {
+            // Else get the child in the children array by the index passed in and place the item before that child.
             if (child.isCreated === false) {
                 child.create(); // Render the item before adding to the DOM
                 child.isCreated = true;
             }
             // Adds the child at a specific index but also will remove the child from another parent object if one exists.
-            _super.prototype.addChildAt.call(this, child, index);
+            if (child.parent) {
+                child.parent.removeChild(child, false);
+            }
+            this.children.splice(index, 0, child);
+            this.numChildren = this.children.length;
+            child.parent = this;
             // Adds the child before any child already added in the DOM.
             jQuery(children.get(index)).before(child.$element);
             this.onAddedToDom(child);
@@ -994,15 +1015,15 @@ var DOMElement = (function (_super) {
         if (jQueryElement.length === 0) {
             throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
         }
-        // Check to see if the element has a cid value and is a child of this parent object.
-        var cid = jQueryElement.data('cid');
-        var domElement = this.getChildByCid(cid);
+        // Check to see if the element has a sjsId value and is a child of this parent object.
+        var sjsId = parseInt(jQueryElement.attr('data-sjs-id'));
+        var domElement = this.getChildByCid(sjsId);
         // Creates a DOMElement from the jQueryElement.
         if (domElement == null) {
             // Create a new DOMElement and assign the jQuery element to it.
             domElement = new DOMElement();
             domElement.$element = jQueryElement;
-            domElement.$element.attr('data-cid', domElement.cid);
+            this.addClientSideId(domElement);
             domElement.element = jQueryElement[0];
             domElement.isCreated = true;
             // Added to the super addChild method because we don't need to append the element to the DOM.
@@ -1016,8 +1037,8 @@ var DOMElement = (function (_super) {
      *
      * @method getChildren
      * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.
-     * @returns {Array} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
-     * If the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
+     * @returns {Array.<DOMElement>} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
+     * If the 'data-sjs-id' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
      * @public
      */
     DOMElement.prototype.getChildren = function (selector) {
@@ -1028,12 +1049,12 @@ var DOMElement = (function (_super) {
         var $list = this.$element.children(selector);
         var listLength = $list.length;
         for (var i = 0; i < listLength; i++) {
-            $child = jQuery($list[i]);
-            // If the jQuery element already has cid data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
-            if (!$child.data('cid')) {
+            $child = $list.eq(i);
+            // If the jQuery element already has sjsId data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
+            if ($child.attr('data-sjs-id') === void 0) {
                 domElement = new DOMElement();
                 domElement.$element = $child;
-                domElement.$element.attr('data-cid', domElement.cid);
+                this.addClientSideId(domElement);
                 domElement.element = $child.get(0);
                 domElement.isCreated = true;
                 // Added to the super addChild method because we don't need to append the element to the DOM.
@@ -1057,12 +1078,17 @@ var DOMElement = (function (_super) {
      */
     DOMElement.prototype.removeChild = function (child, destroy) {
         if (destroy === void 0) { destroy = true; }
+        var remove = this.removeClientSideId(child);
+        child.disable();
         // Checks if destroy was called before removeChild so it doesn't error.
-        if (child.$element != null) {
+        if (remove === true && child.$element != null) {
             child.$element.unbind();
             child.$element.remove();
         }
-        _super.prototype.removeChild.call(this, child, destroy);
+        if (destroy === true) {
+            child.destroy();
+        }
+        _super.prototype.removeChild.call(this, child);
         return this;
     };
     /**
@@ -1091,7 +1117,9 @@ var DOMElement = (function (_super) {
      */
     DOMElement.prototype.removeChildren = function (destroy) {
         if (destroy === void 0) { destroy = true; }
-        _super.prototype.removeChildren.call(this, destroy);
+        while (this.children.length > 0) {
+            this.removeChild(this.children.pop(), destroy);
+        }
         this.$element.empty();
         return this;
     };
@@ -1099,11 +1127,11 @@ var DOMElement = (function (_super) {
      * @overridden DisplayObjectContainer.destroy
      */
     DOMElement.prototype.destroy = function () {
-        // If the addChild method is never called before the $element is detroyed then it will be null and cause an TypeError.
-        if (this.$element != null) {
-            this.$element.unbind();
-            this.$element.remove();
-        }
+        // Note: we can't just call destroy to remove the HTMLElement because there could be other views managing the same HTMLElement.
+        /*if (this.$element != null) {
+             this.$element.unbind();
+             this.$element.remove();
+         }*/
         _super.prototype.destroy.call(this);
     };
     /**
@@ -1113,7 +1141,7 @@ var DOMElement = (function (_super) {
      * If any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.
      *
      * @method createComponents
-     * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
+     * @param componentList (Array.<{ selector: string; component: DOMElement }>
      * @return {Array.<DOMElement>} Returns all the items created from this createComponents method.
      * @public
      * @chainable
@@ -1122,9 +1150,9 @@ var DOMElement = (function (_super) {
      *          _super.prototype.create.call(this);
      *
      *          this.createComponents([
-     *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
-     *              {selector: '.js-pagination', componentClass: PaginationComponent},
-     *              {selector: '.js-carousel', componentClass: CarouselComponent}
+     *              {selector: '.js-shareEmail', component: EmailShareComponent},
+     *              {selector: '.js-pagination', component: PaginationComponent},
+     *              {selector: '.js-carousel', component: CarouselComponent}
      *          ]);
      *      };
      */
@@ -1135,7 +1163,7 @@ var DOMElement = (function (_super) {
         var obj;
         for (var i = 0; i < length; i++) {
             obj = componentList[i];
-            list = ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+            list = ComponentFactory.create(this.$element.find(obj.selector), obj.component, this);
             createdChildren = createdChildren.concat(list);
         }
         return createdChildren;
@@ -1145,19 +1173,12 @@ var DOMElement = (function (_super) {
 module.exports = DOMElement;
 
 },{"../event/BaseEvent":12,"../plugin/jquery.eventListener":15,"../util/ComponentFactory":16,"../util/TemplateFactory":18,"./DisplayObjectContainer":10}],9:[function(require,module,exports){
-'use strict';
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/EventDispatcher as EventDispatcher
- @export DisplayObject
- */
 var EventDispatcher = require('../event/EventDispatcher');
 /**
  * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -1308,7 +1329,7 @@ var DisplayObject = (function (_super) {
          * @property isCreated
          * @type {boolean}
          * @default false
-         * @protected
+         * @public
          */
         this.isCreated = false;
         /**
@@ -1378,19 +1399,12 @@ var DisplayObject = (function (_super) {
 module.exports = DisplayObject;
 
 },{"../event/EventDispatcher":14}],10:[function(require,module,exports){
-'use strict';
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DisplayObject as DisplayObject
- @export DisplayObjectContainer
- */
 var DisplayObject = require('./DisplayObject');
 /**
  * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -1422,7 +1436,7 @@ var DisplayObjectContainer = (function (_super) {
          * A reference to the child DisplayObject instances to this parent object instance.
          *
          * @property children
-         * @type {Array}
+         * @type {Array.<DisplayObject>}
          * @readOnly
          * @public
          */
@@ -1452,7 +1466,7 @@ var DisplayObjectContainer = (function (_super) {
     DisplayObjectContainer.prototype.addChild = function (child) {
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent) {
-            child.parent.removeChild(child, false);
+            child.parent.removeChild(child);
         }
         this.children.push(child);
         this.numChildren = this.children.length;
@@ -1474,7 +1488,7 @@ var DisplayObjectContainer = (function (_super) {
     DisplayObjectContainer.prototype.addChildAt = function (child, index) {
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent) {
-            child.parent.removeChild(child, false);
+            child.parent.removeChild(child);
         }
         this.children.splice(index, 0, child);
         this.numChildren = this.children.length;
@@ -1492,19 +1506,13 @@ var DisplayObjectContainer = (function (_super) {
      * @public
      * @chainable
      */
-    DisplayObjectContainer.prototype.removeChild = function (child, destroy) {
+    DisplayObjectContainer.prototype.removeChild = function (child) {
         var index = this.getChildIndex(child);
         if (index !== -1) {
             // Removes the child object from the parent.
             this.children.splice(index, 1);
         }
         this.numChildren = this.children.length;
-        if (destroy === true) {
-            child.destroy();
-        }
-        else {
-            child.disable();
-        }
         child.parent = null;
         return this;
     };
@@ -1518,9 +1526,9 @@ var DisplayObjectContainer = (function (_super) {
      * @public
      * @chainable
      */
-    DisplayObjectContainer.prototype.removeChildren = function (destroy) {
+    DisplayObjectContainer.prototype.removeChildren = function () {
         while (this.children.length > 0) {
-            this.removeChild(this.children.pop(), destroy);
+            this.removeChild(this.children.pop());
         }
         return this;
     };
@@ -1592,18 +1600,18 @@ var DisplayObjectContainer = (function (_super) {
         return this.children[index];
     };
     /**
-     * Gets a DisplayObject by its cid.
+     * Gets a DisplayObject by its sjsId.
      *
      * @method getChildByCid
-     * @param cid {number}
+     * @param sjsId {number}
      * @returns {DisplayObject|null}
      * @override
      * @public
      */
-    DisplayObjectContainer.prototype.getChildByCid = function (cid) {
+    DisplayObjectContainer.prototype.getChildByCid = function (sjsId) {
         var child = null;
         for (var i = this.numChildren - 1; i >= 0; i--) {
-            if (this.children[i].cid == cid) {
+            if (this.children[i].sjsId == sjsId) {
                 child = this.children[i];
                 break;
             }
@@ -1615,20 +1623,12 @@ var DisplayObjectContainer = (function (_super) {
 module.exports = DisplayObjectContainer;
 
 },{"./DisplayObject":9}],11:[function(require,module,exports){
-'use strict';
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DOMElement as DOMElement
- @import jquery as jQuery
- @export Stage
- */
 var DOMElement = require('./DOMElement');
 /**
  * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
@@ -1721,7 +1721,7 @@ var Stage = (function (_super) {
     Stage.prototype.appendTo = function (type, enabled) {
         if (enabled === void 0) { enabled = true; }
         this.$element = (type instanceof jQuery) ? type : jQuery(type);
-        this.$element.attr('data-cid', this.cid);
+        this.addClientSideId(this);
         if (this.isCreated === false) {
             this.create();
             this.isCreated = true;
@@ -1740,19 +1740,12 @@ var Stage = (function (_super) {
 module.exports = Stage;
 
 },{"./DOMElement":8}],12:[function(require,module,exports){
-'use strict';
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../BaseObject as BaseObject
- @export BaseEvent
- */
 var BaseObject = require('../BaseObject');
 /**
  * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
@@ -1932,13 +1925,13 @@ var BaseEvent = (function (_super) {
      *     var cloneOfEvent = event.clone();
      */
     BaseEvent.prototype.clone = function () {
-        var clonedValueObject = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
+        var clonedBaseModel = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
         for (var key in this) {
             if (this.hasOwnProperty(key)) {
-                clonedValueObject[key] = this[key];
+                clonedBaseModel[key] = this[key];
             }
         }
-        return clonedValueObject;
+        return clonedBaseModel;
     };
     /**
      * The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.
@@ -2188,13 +2181,6 @@ var BaseEvent = (function (_super) {
 module.exports = BaseEvent;
 
 },{"../BaseObject":6}],13:[function(require,module,exports){
-'use strict';
-/*
- UMD Stuff
- @import ./EventDispatcher as EventDispatcher
- @import ./BaseEvent as BaseEvent
- @export EventBroker
- */
 var EventDispatcher = require('./EventDispatcher');
 var BaseEvent = require('./BaseEvent');
 /**
@@ -2236,6 +2222,30 @@ var EventBroker = (function () {
     EventBroker.addEventListener = function (type, callback, scope, priority) {
         if (priority === void 0) { priority = 0; }
         EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
+    };
+    /**
+     * Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.
+     *
+     * @method addEventListenerOnce
+     * @param type {String} The type of event.
+     * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink "BaseEvent"}}{{/crossLink}} object or custom event that extends the {{#crossLink "BaseEvent"}}{{/crossLink}} class.
+     * @param scope {any} The scope of the callback function.
+     * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+     * @static
+     * @public
+     * @example
+     *     EventBroker.addEventListenerOnce('change', this._handlerMethod, this);
+     *     // Example of using a constant event type.
+     *     EventBroker.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
+     *
+     *     // The event passed to the method will always be a BaseEvent object.
+     *     ClassName.prototype._handlerMethod = function (event) {
+     *          console.log(event.data);
+     *     };
+     */
+    EventBroker.addEventListenerOnce = function (type, callback, scope, priority) {
+        if (priority === void 0) { priority = 0; }
+        EventBroker._eventDispatcher.addEventListenerOnce(type, callback, scope, priority);
     };
     /**
      * Removes a specified listener from the EventBroker object.
@@ -2328,20 +2338,12 @@ var EventBroker = (function () {
 module.exports = EventBroker;
 
 },{"./BaseEvent":12,"./EventDispatcher":14}],14:[function(require,module,exports){
-'use strict';
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../ObjectManager as ObjectManager
- @import ./BaseEvent as BaseEvent
- @export EventDispatcher
- */
 var ObjectManager = require('../ObjectManager');
 var BaseEvent = require('./BaseEvent');
 /**
@@ -2374,8 +2376,8 @@ var EventDispatcher = (function (_super) {
          * Holds a reference to added listeners.
          *
          * @property _listeners
-         * @type {Array}
-         * @private
+         * @type {Array.<any>}
+         * @protected
          */
         this._listeners = null;
         /**
@@ -2404,9 +2406,9 @@ var EventDispatcher = (function (_super) {
      *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      *
      *      ClassName.prototype.handlerMethod = function (event) {
-         *          console.log(event.target + " sent the event.");
-         *          console.log(event.type, event.data);
-         *      }
+     *          console.log(event.target + " sent the event.");
+     *          console.log(event.type, event.data);
+     *      }
      */
     EventDispatcher.prototype.addEventListener = function (type, callback, scope, priority) {
         if (priority === void 0) { priority = 0; }
@@ -2430,7 +2432,36 @@ var EventDispatcher = (function (_super) {
             }
         }
         // Add the event listener to the list array at the index value.
-        list.splice(index, 0, { callback: callback, scope: scope, priority: priority });
+        list.splice(index, 0, { callback: callback, scope: scope, priority: priority, once: false });
+        return this;
+    };
+    /**
+     * Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.
+     *
+     * @method addEventListenerOnce
+     * @param type {String} The type of event.
+     * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+     * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+     * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+     * @public
+     * @chainable
+     * @example
+     *      this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+     *
+     *      ClassName.prototype.handlerMethod = function (event) {
+     *          console.log(event.target + " sent the event.");
+     *          console.log(event.type, event.data);
+     *      }
+     */
+    EventDispatcher.prototype.addEventListenerOnce = function (type, callback, scope, priority) {
+        if (priority === void 0) { priority = 0; }
+        // Add the event listener the normal way.
+        this.addEventListener(type, callback, scope, priority);
+        // Get the event listeners we just added.
+        var list = this._listeners[type];
+        var listener = list[0];
+        // Change the value to true so it will be remove after dispatchEvent is called.
+        listener.once = true;
         return this;
     };
     /**
@@ -2509,6 +2540,10 @@ var EventDispatcher = (function (_super) {
                 }
                 listener = list[i];
                 listener.callback.call(listener.scope, event);
+                // If the once value is true we want to remove the listener right after this callback was called.
+                if (listener.once === true) {
+                    this.removeEventListener(event.type, listener.callback, listener.scope);
+                }
             }
         }
         //Dispatches up the chain of classes that have a parent.
@@ -2583,7 +2618,7 @@ var EventDispatcher = (function (_super) {
      * @overridden BaseObject.destroy
      */
     EventDispatcher.prototype.destroy = function () {
-        _super.prototype.disable.call(this);
+        this.disable();
         _super.prototype.destroy.call(this);
     };
     return EventDispatcher;
@@ -2591,12 +2626,6 @@ var EventDispatcher = (function (_super) {
 module.exports = EventDispatcher;
 
 },{"../ObjectManager":7,"./BaseEvent":12}],15:[function(require,module,exports){
-'use strict';
-/*
- UMD Stuff
- @import jquery as $
- @export jQuery
- */
 var $ = (window.$);
 var $eventListener = $;
 /**
@@ -2703,11 +2732,13 @@ $eventListener.fn.removeEventListener = function (type, selector, callback, scop
 module.exports = $eventListener;
 
 },{}],16:[function(require,module,exports){
-'use strict';
+var Util = require('../util/Util');
 /**
  * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
  *
  * @class ComponentFactory
+ * @module StructureJS
+ * @submodule util
  * @author Robert S. (www.codeBelt.com)
  * @static
  */
@@ -2731,27 +2762,51 @@ var ComponentFactory = (function () {
     ComponentFactory.create = function ($elements, ComponentClass, scope) {
         if (scope === void 0) { scope = null; }
         var list = [];
+        var component;
+        var $element;
         var length = $elements.length;
+        var types;
+        var componentName;
         for (var i = 0; i < length; i++) {
-            var component = new ComponentClass($elements.eq(i));
-            // If the class object has the getQualifiedClassName method then I am assuming it is an instance of the DisplayObjectContainer class.
-            if (scope !== null && typeof component.getQualifiedClassName === 'function') {
-                scope.addChild(component);
+            $element = $elements.eq(i);
+            types = $element.attr('data-sjs-type');
+            if (types === void 0) {
+                // Create the component if there is not a 'data-sjs-type' attribute on the element.
+                component = ComponentFactory._createComponent($element, ComponentClass, scope);
+                list.push(component);
             }
-            list.push(component);
+            else {
+                // Else if there is already a 'data-sjs-type' attribute then get the type(s).
+                types = types.split(',');
+                componentName = Util.getName(ComponentClass);
+                // Only create the component if the component type does not already exist.
+                if (types.indexOf(componentName) === -1) {
+                    component = ComponentFactory._createComponent($element, ComponentClass, scope);
+                    list.push(component);
+                }
+            }
         }
         return list;
+    };
+    /**
+     * Helper method to create the component.
+     *
+     * @method _createComponent
+     * @private
+     */
+    ComponentFactory._createComponent = function ($element, ComponentClass, scope) {
+        var component = new ComponentClass($element);
+        // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.
+        if (scope !== null && component.hasOwnProperty('sjsId') === true) {
+            scope.addChild(component);
+        }
+        return component;
     };
     return ComponentFactory;
 })();
 module.exports = ComponentFactory;
 
-},{}],17:[function(require,module,exports){
-'use strict';
-/*
- UMD Stuff
- @export StringUtil
- */
+},{"../util/Util":19}],17:[function(require,module,exports){
 /**
  * The StringUtil...
  *
@@ -2972,7 +3027,7 @@ var StringUtil = (function () {
      * @method format
      * @returns {string}
      * @param str {string}
-     * @param ...rest {Array}
+     * @param ...rest {Array.<any>}
      * @public
      * @static
      * @example
@@ -3017,14 +3072,6 @@ var StringUtil = (function () {
 module.exports = StringUtil;
 
 },{}],18:[function(require,module,exports){
-'use strict';
-/*
- UMD Stuff
- @import ../util/StringUtil as StringUtil
- @import jquery as jQuery
- @import handlebars as Handlebars
- @export TemplateFactory
- */
 var StringUtil = require('./StringUtil');
 /**
  * A helper class to provide a convenient and consistent way to render templates.
@@ -3034,7 +3081,6 @@ var StringUtil = require('./StringUtil');
  * @submodule util
  * @requires StringUtil
  * @requires Handlebars
- * @requires jQuery
  * @author Robert S. (www.codeBelt.com)
  * @static
  */
@@ -3065,7 +3111,9 @@ var TemplateFactory = (function () {
             template = templatePath(data);
         }
         else if (isClassOrIdName) {
-            var htmlString = jQuery(templatePath).html();
+            // Remove pound sign from the id name.
+            templatePath = templatePath.substring(1);
+            var htmlString = document.getElementById(templatePath).innerHTML;
             htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
             if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                 // Underscore Template:
@@ -3138,11 +3186,6 @@ var TemplateFactory = (function () {
 module.exports = TemplateFactory;
 
 },{"./StringUtil":17}],19:[function(require,module,exports){
-'use strict';
-/*
- UMD Stuff
- @export Util
- */
 /**
  * A Utility class that has several static methods to assist in development.
  *
@@ -3186,7 +3229,7 @@ var Util = (function () {
      *
      * @method deletePropertyFromObject
      * @param object {Object} The object you want to remove properties from.
-     * @param list {Array} A list of property names you want to remove from the object.
+     * @param value {string|Array.<string>} A property name or an array of property names you want to remove from the object.
      * @returns {any} Returns the object passed in without the removed the properties.
      * @public
      * @static
@@ -3197,7 +3240,9 @@ var Util = (function () {
      *
      *      // { name: 'Robert' }
      */
-    Util.deletePropertyFromObject = function (object, list) {
+    Util.deletePropertyFromObject = function (object, value) {
+        // If properties is not an array then make it an array object.
+        var list = (value instanceof Array) ? value : [value];
         for (var key in object) {
             // If the key is a property and not function.
             if (object.hasOwnProperty(key)) {
@@ -3320,23 +3365,44 @@ var Util = (function () {
         return (value > 0 || value == 'true' || value == 'yes');
     };
     /**
-     * Returns the name of the class object passed in.
+     * Returns the name of the function/object passed in.
      *
-     * @method getClassName
-     * @param classObject {Object}
-     * @returns {string} Returns the name of the class object passed in.
-     * @public
+     * @method getName
+     * @param classObject {any}
+     * @returns {string} Returns the name of the function or object.
      * @static
      * @example
      *      var someClass = new SomeClass();
+     *      Util.getName(someClass);            // 'SomeClass'
      *
-     *      Util.getClassName(someClass);
-     *      // 'SomeClass'
+     *      Util.getName(function Test(){});    // 'Test'
+     *      Util.getName(function (){});        // 'anonymous'
      */
-    Util.getClassName = function (classObject) {
-        var funcNameRegex = /function (.{1,})\(/;
-        var results = (funcNameRegex).exec(classObject.constructor.toString());
-        return (results && results.length > 1) ? results[1] : '';
+    Util.getName = function (classObject) {
+        var type = typeof classObject;
+        var value;
+        var funcNameRegex = /function ([^\(]+)/;
+        if (type === 'object') {
+            // Gets the name of the object.
+            var results = classObject.constructor.toString().match(funcNameRegex);
+            value = results[1];
+        }
+        else {
+            // This else code is mainly for Internet Explore.
+            var isFunction = (type === 'function');
+            // TODO: figure out how to explain this
+            var name = isFunction && ((classObject.name && ['', classObject.name]) || classObject.toString().match(funcNameRegex));
+            if (isFunction === false) {
+                value = type;
+            }
+            else if (name && name[1]) {
+                value = name[1];
+            }
+            else {
+                value = 'anonymous';
+            }
+        }
+        return value;
     };
     /**
      * Creates and returns a new debounced version of the passed function which will postpone its execution until after

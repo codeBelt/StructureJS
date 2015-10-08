@@ -3,20 +3,26 @@
 A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.
 
 ## Documentation
+* [Documentation](http://codebelt.github.io/StructureJS/docs/)
 * [Overview Video](http://www.codebelt.com/javascript/StructureJS_web.mp4)
-* [YUI Docs](http://codebelt.github.io/StructureJS/docs/)
 
 ## Install
     $ bower install --save structurejs
 
 ## IDE Snippets
-* [Webstorm JS](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/webstorm/js)
-* [Webstorm TS](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/webstorm/ts)
-* [Sublime](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/sublimetext)
-* [Atom](https://github.com/ccheney/StructureJS/tree/master/ide-snippets/atom)
+* [Webstorm JS](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/webstorm/js)
+* [Webstorm TS](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/webstorm/ts)
+* [Sublime](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/sublimetext)
+* [Atom](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/atom)
 
 ## Boilerplate
-[StructureJS-Boilerplate](https://github.com/codeBelt/StructureJS-Boilerplate)
+[StructureJS Boilerplate (RequireJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
+
+[StructureJS Boilerplate (Browserify)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
+
+[StructureJS Boilerplate (TypeScript)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
+
+[StructureJS Boilerplate (Babel ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
 
 ## Examples
 * Event Bubbling [Demo](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
@@ -52,8 +58,8 @@ var App = (function () {
 
 		// multiple instances of a component
 		this.createComponents([
-			{ selector: '.js-foo', componentClass: FooView },
-			{ selector: '.js-bar', componentClass: BarView }
+			{ selector: '.js-foo', component: FooView },
+			{ selector: '.js-bar', component: BarView }
 		]);
 	};
 
@@ -242,8 +248,26 @@ Class.prototype._onClickHandler = function (event) {
 
 ## Release History
 
+ * ???????? v0.8.0 Rename ValueObject to BaseModel and update all classes using it. Added addEventListenerOnce to EventDispatcher and EventBroker. Fixed Collection assign it a type in the constructor causes issues if data was already that type.
+
+ * 2015-09-04 v0.7.9 Remove Util.getClassName, Util.getFunctionName and add Util.getName. Fix issue with getQualifiedClassName now working when code was uglified (Now need to have mangle set as false). Remove jQuery dependency from TemplateFactory. Change private methods and properties to protected.
+
+ * 2015-08-22 v0.7.8 Fix issue with disable not being called when the destroy method is called on a DisplayObject. Add import for DisplayObjectContainer on CanvasElement. Allow ComponentFactory.create to be called multiple times with the same selector names and not overwrite active components. Update addClientSideId and add removeClientSideId. Add BulkLoader, ImageLoader ...
+
+ * 2015-07-20 v0.7.7 Fixed ValueObject - Allow data passed in that is an array to get assigned to the property even if it is not of type of an array. Fix for phone number validation.
+
+ * 2015-06-23 v0.7.6 DOMElement createComponents rename componentClass to component.
+
+ * 2015-06-18 v0.7.5 Add groupBy method on Collection. Change ValidationUtil.isPostalCode to be case insensitive.
+
+ * 2015-06-10 v0.7.4 Add pluck method to Collection. Move removeChild destroy functionality from DisplayObjectContainer to DOMElement.
+
+ * 2015-05-26 v0.7.3 Corrects string replacement on getBreakpoint
+
+ * 2015-05-21 v0.7.2 Add showHours flag to NumberUtil.convertToHHMMSS to display as 00:05:23 or 05:23
+
  * 2015-05-12 v0.7.1 DOMElement have createComponents return the list of children it created. Fix small bugs. Update comments. Add some unit tests.
- 
+
  * 2015-04-26 v0.7.0 Breaking changes: Rename createChildren to create. Rename layoutChildren to layout. Create DisplayObject class and have DisplayObjectContainer extend it. Add Canvas specific classes. Rename namespace StructureTS to StructureJS in TypeScript files. Change namespace from structurejs to StructureJS in JavaScript classes. Rename folder src to js.
 
  * 2015-04-15 v0.6.17 Previous version before I started doing this release history.

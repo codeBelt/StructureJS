@@ -3,12 +3,6 @@
 ///<reference path='_declare/greensock.d.ts'/>
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>
-'use strict';
-/*
- UMD Stuff
- @import ./util/Util as Util
- @export BaseObject
- */
 import Util = require('./util/Util');
 
 /**
@@ -24,20 +18,20 @@ import Util = require('./util/Util');
 class BaseObject
 {
     /**
-     * The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
+     * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
      *
-     * @property cid
+     * @property sjsId
      * @type {int}
      * @default null
      * @writeOnce
      * @readOnly
      * @public
      */
-    public cid:number = null;
+    public sjsId:number = null;
 
     constructor()
     {
-        this.cid = Util.uniqueId();
+        this.sjsId = Util.uniqueId();
     }
 
     /**
@@ -51,7 +45,7 @@ class BaseObject
      */
     public getQualifiedClassName():string
     {
-        return Util.getClassName(this);
+        return Util.getName(this);
     }
 
     /**

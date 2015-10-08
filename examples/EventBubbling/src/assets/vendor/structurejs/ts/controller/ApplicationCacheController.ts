@@ -1,15 +1,8 @@
-'use strict';
-/*
- UMD Stuff
- @import ../event/ApplicationCacheEvent as ApplicationCacheEvent
- @import ../event/EventDispatcher as EventDispatcher
- @export ApplicationCacheController
- */
 import ApplicationCacheEvent = require('../event/ApplicationCacheEvent');
 import EventDispatcher = require('../event/EventDispatcher');
 
 /**
- * The ApplicationCacheController...
+ * The ApplicationCacheController is a static class works with the window applicationCache object.
  *
  * @class ApplicationCacheController
  * @module StructureJS
@@ -22,6 +15,7 @@ import EventDispatcher = require('../event/EventDispatcher');
 class ApplicationCacheController
 {
     /**
+     * A reference to the applicationCache property on the window object.
      *
      * @property _appCache
      * @type {ApplicationCache}
@@ -31,6 +25,7 @@ class ApplicationCacheController
     private static _appCache:ApplicationCache = window.applicationCache;
 
     /**
+     * A reference to the EventDispatcher object.
      *
      * @property _eventDispatcher
      * @type {EventDispatcher}
@@ -45,7 +40,7 @@ class ApplicationCacheController
      * @property isEnabled
      * @type {boolean}
      * @default false
-     * @private
+     * @public
      * @static
      */
     public static isEnabled:boolean = false;

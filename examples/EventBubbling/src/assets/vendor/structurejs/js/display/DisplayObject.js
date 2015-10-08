@@ -1,20 +1,22 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', '../event/EventDispatcher'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('../event/EventDispatcher'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.DisplayObject = factory(root.StructureJS.Extend, root.StructureJS.EventDispatcher);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, EventDispatcher) {
-
-    'use strict';
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", '../event/EventDispatcher'], function(require, exports) {
+    var EventDispatcher = require('../event/EventDispatcher');
     /**
      * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -27,9 +29,8 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObject = (function() {
-
-        var _super = Extend(DisplayObject, EventDispatcher);
+    var DisplayObject = (function(_super) {
+        __extends(DisplayObject, _super);
 
         function DisplayObject() {
                 _super.call(this);
@@ -166,7 +167,7 @@
                  * @property isCreated
                  * @type {boolean}
                  * @default false
-                 * @protected
+                 * @public
                  */
                 this.isCreated = false;
                 /**
@@ -232,7 +233,6 @@
             this.ctx.restore();
         };
         return DisplayObject;
-    })();
-
+    })(EventDispatcher);
     return DisplayObject;
-}));
+});

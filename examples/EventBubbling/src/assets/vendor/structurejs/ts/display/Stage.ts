@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DOMElement as DOMElement
- @import jquery as jQuery
- @export Stage
- */
 import DOMElement = require('./DOMElement');
 
 /**
@@ -101,7 +93,8 @@ class Stage extends DOMElement
     public appendTo(type:any, enabled:boolean = true):any
     {
         this.$element = (type instanceof jQuery) ? type : jQuery(type);
-        this.$element.attr('data-cid', this.cid);
+
+        this.addClientSideId(this);
 
         if (this.isCreated === false)
         {

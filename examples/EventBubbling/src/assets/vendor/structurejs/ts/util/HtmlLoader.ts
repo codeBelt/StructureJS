@@ -1,15 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/LoaderEvent as LoaderEvent
- @import ../net/URLRequest as URLRequest
- @import ../net/URLLoader as URLLoader
- @import ../net/URLRequestMethod as URLRequestMethod
- @import ../net/URLLoaderDataFormat as URLLoaderDataFormat
- @export HtmlLoader
- */
 import EventDispatcher = require('../event/EventDispatcher');
 import LoaderEvent = require('../event/LoaderEvent');
 import URLRequest = require('../net/URLRequest');
@@ -29,7 +17,7 @@ import IDataStore = require('../interface/IDataStore');
  */
 class HtmlLoader extends EventDispatcher implements IDataStore
 {
-    private _urlLoader:URLLoader = null;
+    protected _urlLoader:URLLoader = null;
 
     public data:any;
     public src:string;
@@ -59,7 +47,7 @@ class HtmlLoader extends EventDispatcher implements IDataStore
         this._urlLoader.load(request);
     }
 
-    private onLoaderComplete(event:LoaderEvent):void
+    protected onLoaderComplete(event:LoaderEvent):void
     {
         this.complete = true;
         this.data = this._urlLoader.data;

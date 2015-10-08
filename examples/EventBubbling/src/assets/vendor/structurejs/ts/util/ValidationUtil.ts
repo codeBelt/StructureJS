@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export ValidationUtil
- */
-
 /**
  * A ValidationUtility class that has several static methods to assist in development.
  *
@@ -29,7 +23,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isEmpty('sometext');
+     *      // false
      */
     public static isEmpty(value:string):boolean
     {
@@ -49,7 +44,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isMatch('one@email.com', 'two@email.com');
+     *      // false
      */
     public static isMatch(value1:any, value2:any):boolean
     {
@@ -65,7 +61,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isValidEmailAddress('someemail@address.com');
+     *      // true
      */
     public static isValidEmailAddress(email:string):boolean
     {
@@ -82,11 +79,12 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isValidPhoneNumber('123 456 7899');
+     *      // true
      */
     public static isValidPhoneNumber(phoneNumber:string):boolean
     {
-        var expression:RegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+        var expression:RegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
         return expression.test(phoneNumber);
     }
 
@@ -99,7 +97,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isZipCode('55067 4434');
+     *      // true
      */
     public static isZipCode(zipCode:string):boolean
     {
@@ -116,11 +115,12 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isPostalCode('p8n3h3');
+     *      // true
      */
     public static isPostalCode(postalCode:string):boolean
     {
-        var expression:RegExp = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/;
+        var expression:RegExp = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
         return expression.test(postalCode);
     }
 
@@ -133,7 +133,8 @@ class ValidationUtil
      * @public
      * @static
      * @example
-     *
+     *      ValidationUtil.isSocialSecurityNumber('178051120');
+     *      // true
      */
     public static isSocialSecurityNumber(ssn:string):boolean
     {

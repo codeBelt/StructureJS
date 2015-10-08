@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../BaseObject as BaseObject
- @export BaseEvent
- */
 import BaseObject = require('../BaseObject');
 
 /**
@@ -468,17 +461,17 @@ class BaseEvent extends BaseObject
      */
     public clone():BaseEvent
     {
-        var clonedValueObject:BaseEvent = new (<any>this).constructor(this.type, this.bubbles, this.cancelable, this.data);
+        var clonedBaseModel:BaseEvent = new (<any>this).constructor(this.type, this.bubbles, this.cancelable, this.data);
 
         for (var key in this)
         {
             if (this.hasOwnProperty(key))
             {
-                clonedValueObject[key] = this[key];
+                clonedBaseModel[key] = this[key];
             }
         }
 
-        return clonedValueObject;
+        return clonedBaseModel;
     }
 
 }

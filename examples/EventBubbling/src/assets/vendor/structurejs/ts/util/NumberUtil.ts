@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export NumberUtil
- */
-
 /**
  * The NumberUtil class has many helper methods to work with number data.
  *
@@ -79,6 +73,8 @@ class NumberUtil
      * @static
      * @returns {number}
      * @example
+     *     NumberUtil.feetToMeter(1);
+     *     // 0.3048
      *
      */
     public static feetToMeter(feet:number):number
@@ -91,6 +87,7 @@ class NumberUtil
      *
      * @method convertToHHMMSS
      * @param seconds {number}
+     * @param showHours [boolean=true] By default if the time does not pass one hour it will show 00:05:34. Pass false to display the time as 05:34 until it gets pass one hour and then it will show 01:00:00
      * @returns {string}
      * @public
      * @static
@@ -98,7 +95,7 @@ class NumberUtil
      *     NumberUtil.convertToHHMMSS(33333);
      *     // '09:15:33'
      */
-    public static convertToHHMMSS(seconds:number):string
+    public static convertToHHMMSS(seconds:number, showHours:boolean = true):string
     {
         var sec:number = isNaN(seconds) ? 0 : seconds;//Changes NaN to 0
 
@@ -106,7 +103,13 @@ class NumberUtil
         var m:number = Math.floor((sec % 3600 ) / 60);
         var h:number = Math.floor(sec / (60 * 60));
 
-        var hourStr:string = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+        var hourStr:string;
+        if (showHours === false) {
+            hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+        } else {
+            hourStr = NumberUtil.doubleDigitFormat(h) + ':';
+        }
+
         var minuteStr:string = NumberUtil.doubleDigitFormat(m) + ':';
         var secondsStr:string = NumberUtil.doubleDigitFormat(s);
 
@@ -256,7 +259,7 @@ class NumberUtil
     {
         var d:string = '';
         var r:number = (5 / 9) * (fahrenheit - 32);
-        var s:string[] = r.toString().split('.');
+        var s:Array<string> = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);
@@ -292,7 +295,7 @@ class NumberUtil
     {
         var d:string = '';
         var r:number = (celsius / (5 / 9)) + 32;
-        var s:string[] = r.toString().split('.');
+        var s:Array<string> = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);

@@ -1,20 +1,11 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.NumberUtil = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * The NumberUtil class has many helper methods to work with number data.
      *
@@ -26,19 +17,19 @@
      */
     var NumberUtil = (function() {
         function NumberUtil() {
-            throw new Error('[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.');
-        }
-        /**
-         * Converts bytes into megabytes.
-         *
-         * @method bytesToMegabytes
-         * @param bytes {number}
-         * @returns {number}
-         * @public
-         * @static
-         * @example
-         *
-         */
+                throw new Error('[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.');
+            }
+            /**
+             * Converts bytes into megabytes.
+             *
+             * @method bytesToMegabytes
+             * @param bytes {number}
+             * @returns {number}
+             * @public
+             * @static
+             * @example
+             *
+             */
         NumberUtil.bytesToMegabytes = function(bytes) {
             return bytes / 1048576;
         };
@@ -81,6 +72,8 @@
          * @static
          * @returns {number}
          * @example
+         *     NumberUtil.feetToMeter(1);
+         *     // 0.3048
          *
          */
         NumberUtil.feetToMeter = function(feet) {
@@ -91,6 +84,7 @@
          *
          * @method convertToHHMMSS
          * @param seconds {number}
+         * @param showHours [boolean=true] By default if the time does not pass one hour it will show 00:05:34. Pass false to display the time as 05:34 until it gets pass one hour and then it will show 01:00:00
          * @returns {string}
          * @public
          * @static
@@ -98,12 +92,20 @@
          *     NumberUtil.convertToHHMMSS(33333);
          *     // '09:15:33'
          */
-        NumberUtil.convertToHHMMSS = function(seconds) {
+        NumberUtil.convertToHHMMSS = function(seconds, showHours) {
+            if (showHours === void 0) {
+                showHours = true;
+            }
             var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
             var h = Math.floor(sec / (60 * 60));
-            var hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+            var hourStr;
+            if (showHours === false) {
+                hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
+            } else {
+                hourStr = NumberUtil.doubleDigitFormat(h) + ':';
+            }
             var minuteStr = NumberUtil.doubleDigitFormat(m) + ':';
             var secondsStr = NumberUtil.doubleDigitFormat(s);
             return hourStr + minuteStr + secondsStr;
@@ -192,11 +194,21 @@
          *     // '-1,900.2'
          */
         NumberUtil.formatUnit = function(value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
-            if (decimalPlacement === void 0) { decimalPlacement = 2; }
-            if (decimalSeparator === void 0) { decimalSeparator = '.'; }
-            if (thousandsSeparator === void 0) { thousandsSeparator = ','; }
-            if (currencySymbol === void 0) { currencySymbol = ''; }
-            if (currencySymbolPlacement === void 0) { currencySymbolPlacement = 0; }
+            if (decimalPlacement === void 0) {
+                decimalPlacement = 2;
+            }
+            if (decimalSeparator === void 0) {
+                decimalSeparator = '.';
+            }
+            if (thousandsSeparator === void 0) {
+                thousandsSeparator = ',';
+            }
+            if (currencySymbol === void 0) {
+                currencySymbol = '';
+            }
+            if (currencySymbolPlacement === void 0) {
+                currencySymbolPlacement = 0;
+            }
             var str = String(Number(value).toFixed(decimalPlacement));
             var result = '';
             if (decimalPlacement != 0) {
@@ -234,7 +246,9 @@
          *      // 100
          */
         NumberUtil.fahrenheitToCelsius = function(fahrenheit, decimals) {
-            if (decimals === void 0) { decimals = 2; }
+            if (decimals === void 0) {
+                decimals = 2;
+            }
             var d = '';
             var r = (5 / 9) * (fahrenheit - 32);
             var s = r.toString().split('.');
@@ -265,7 +279,9 @@
          *      // 212
          */
         NumberUtil.celsiusToFahrenheit = function(celsius, decimals) {
-            if (decimals === void 0) { decimals = 2; }
+            if (decimals === void 0) {
+                decimals = 2;
+            }
             var d = '';
             var r = (celsius / (5 / 9)) + 32;
             var s = r.toString().split('.');
@@ -283,6 +299,5 @@
         };
         return NumberUtil;
     })();
-
     return NumberUtil;
-}));
+});

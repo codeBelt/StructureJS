@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export Util
- */
-
 /**
  * A Utility class that has several static methods to assist in development.
  *
@@ -64,7 +58,7 @@ class Util
      *
      * @method deletePropertyFromObject
      * @param object {Object} The object you want to remove properties from.
-     * @param list {Array} A list of property names you want to remove from the object.
+     * @param value {string|Array.<string>} A property name or an array of property names you want to remove from the object.
      * @returns {any} Returns the object passed in without the removed the properties.
      * @public
      * @static
@@ -75,8 +69,11 @@ class Util
      *
      *      // { name: 'Robert' }
      */
-    public static deletePropertyFromObject(object:any, list:any[]):any
+    public static deletePropertyFromObject(object:any, value:any):any
     {
+        // If properties is not an array then make it an array object.
+        var list:any = (value instanceof Array) ? value : [value];
+
         // Loop through the object properties.
         for (var key in object)
         {
@@ -88,7 +85,7 @@ class Util
                 if (value instanceof Array)
                 {
                     // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                    var array:any[] = value;
+                    var array:Array<any> = value;
                     for (var index in array)
                     {
                         // Recursive function call.
@@ -184,7 +181,7 @@ class Util
         // Handle Array
         if (obj instanceof Array)
         {
-            var array:any[] = [];
+            var array:Array<any> = [];
             for (var i = 0, len = obj.length; i < len; i++)
             {
                 array[i] = Util.clone(obj[i]);
@@ -235,25 +232,45 @@ class Util
     }
 
     /**
-     * Returns the name of the class object passed in.
+     * Returns the name of the function/object passed in.
      *
-     * @method getClassName
-     * @param classObject {Object}
-     * @returns {string} Returns the name of the class object passed in.
-     * @public
+     * @method getName
+     * @param classObject {any}
+     * @returns {string} Returns the name of the function or object.
      * @static
      * @example
      *      var someClass = new SomeClass();
+     *      Util.getName(someClass);            // 'SomeClass'
      *
-     *      Util.getClassName(someClass);
-     *      // 'SomeClass'
+     *      Util.getName(function Test(){});    // 'Test'
+     *      Util.getName(function (){});        // 'anonymous'
      */
-    public static getClassName(classObject:any):string
+    public static getName(classObject:any):string
     {
-        var funcNameRegex:RegExp = /function (.{1,})\(/;
-        var results:RegExpExecArray = (funcNameRegex).exec((<any>classObject).constructor.toString());
+        var type:string = typeof classObject;
+        var value:string;
+        var funcNameRegex:RegExp = /function ([^\(]+)/;
 
-        return (results && results.length > 1) ? results[1] : '';
+        if (type === 'object') {
+            // Gets the name of the object.
+            var results:RegExpExecArray = (<any>classObject).constructor.toString().match(funcNameRegex);
+            value = results[1];
+        } else {
+            // This else code is mainly for Internet Explore.
+            var isFunction:boolean = (type === 'function');
+            // TODO: figure out how to explain this
+            var name:any = isFunction && ((classObject.name && ['', classObject.name]) || (<any>classObject).toString().match(funcNameRegex));
+
+            if (isFunction === false) {
+                value = type;
+            } else if (name && name[1]) {
+                value = name[1];
+            } else {
+                value = 'anonymous';
+            }
+        }
+
+        return value;
     }
 
     /**

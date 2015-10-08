@@ -1,39 +1,39 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define(['../util/Extend', './DOMElement', '../geom/Point'], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory(require('../util/Extend'), require('./DOMElement'), require('../geom/Point'));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.StructureJS.Point);
+var __extends = (this && this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DOMElement, Point) {
-
-    'use strict';
-
-    var CanvasElement = (function() {
-
-        var _super = Extend(CanvasElement, DOMElement);
-
-        function CanvasElement($element) {
-                _super.call(this, $element);
-                /**
-                 * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/$element:property"}}{{/crossLink}} property**.
-                 *
-                 * @type {JQuery}
-                 * @public
-                 */
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", './DisplayObjectContainer', './DOMElement', '../geom/Point'], function(require, exports) {
+    var DisplayObjectContainer = require('./DisplayObjectContainer');
+    var DOMElement = require('./DOMElement');
+    var Point = require('../geom/Point');
+    var CanvasElement = (function(_super) {
+        __extends(CanvasElement, _super);
+        // Notice the capital W and H. That sets the attributes not the styles.
+        function CanvasElement(type, params) {
+                if (type === void 0) {
+                    type = 'canvas';
+                }
+                if (params === void 0) {
+                    params = {
+                        Width: 100,
+                        Height: 100
+                    };
+                }
+                _super.call(this, type, params);
                 this.$canvas = null;
-                /**
-                 * A reference to the canvas element. This has the exact same reference as **{{#crossLink "DOMElement/element:property"}}{{/crossLink}} property**.
-                 *
-                 * @type {HTMLCanvasElement}
-                 * @public
-                 */
                 this.canvas = null;
             }
             /**
@@ -84,14 +84,7 @@
             _super.prototype.disable.call(this);
         };
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @method addChild
-         * @param child {DisplayObject}
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.addChild
          */
         CanvasElement.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
@@ -147,14 +140,7 @@
             return _super.prototype.getChildAt.call(this, index);
         };
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @method removeChild
-         * @param child {DisplayObject}
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChild
          */
         CanvasElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) {
@@ -177,12 +163,7 @@
             return this;
         };
         /**
-         * Removes the child display object instance that exists at the specified index.
-         *
-         * @method removeChildAt
-         * @param index {int} The index position of the child object.
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChildAt
          */
         CanvasElement.prototype.removeChildAt = function(index, destroy) {
             if (destroy === void 0) {
@@ -192,15 +173,7 @@
             return this;
         };
         /**
-         * Removes all child object instances from the child list of the parent object instance.
-         * The parent property of the removed children is set to null , and the objects are garbage collected if no other
-         * references to the children exist.
-         *
-         * @method removeChildren
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChildren
          */
         CanvasElement.prototype.removeChildren = function(destroy) {
             if (destroy === void 0) {
@@ -312,7 +285,6 @@
             }
         };
         return CanvasElement;
-    })();
-
+    })(DOMElement);
     return CanvasElement;
-}));
+});

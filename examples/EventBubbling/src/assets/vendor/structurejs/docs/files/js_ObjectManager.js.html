@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -146,23 +152,25 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;./util/Extend&#x27;, &#x27;./BaseObject&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;./util/Extend&#x27;), require(&#x27;./BaseObject&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.ObjectManager = factory(root.StructureJS.Extend, root.StructureJS.BaseObject);
+var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, BaseObject) {
-
-    &#x27;use strict&#x27;;
-
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
+    }
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseObject&#x27;], function(require, exports) {
+    var BaseObject = require(&#x27;./BaseObject&#x27;);
     /**
      * The {{#crossLink &quot;ObjectManager&quot;}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
      *
@@ -175,38 +183,37 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ObjectManager = (function() {
-
-        var _super = Extend(ObjectManager, BaseObject);
+    var ObjectManager = (function(_super) {
+        __extends(ObjectManager, _super);
 
         function ObjectManager() {
-            _super.call(this);
+                _super.call(this);
+                /**
+                 * The isEnabled property is used to keep track of the enabled state of the object.
+                 *
+                 * @property isEnabled
+                 * @type {boolean}
+                 * @default false
+                 * @public
+                 */
+                this.isEnabled = false;
+            }
             /**
-             * The isEnabled property is used to keep track of the enabled state of the object.
+             * The enable method is responsible for enabling event listeners and/or children of the containing objects.
              *
-             * @property isEnabled
-             * @type {boolean}
-             * @default false
-             * @protected
+             * @method enable
+             * @public
+             * @chainable
+             * @example
+             *     ClassName.prototype.enable = function() {
+             *          if (this.isEnabled === true) { return this; }
+             *
+             *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+             *          this._childInstance.enable();
+             *
+             *          return _super.prototype.enable.call(this);
+             *     }
              */
-            this.isEnabled = false;
-        }
-        /**
-         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
-         *
-         * @method enable
-         * @public
-         * @chainable
-         * @example
-         *     ClassName.prototype.enable = function() {
-         *          if (this.isEnabled === true) { return this; }
-         *
-         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *          this._childInstance.enable();
-         *
-         *          return _super.prototype.enable.call(this);
-         *     }
-         */
         ObjectManager.prototype.enable = function() {
             if (this.isEnabled === true) {
                 return this;
@@ -238,10 +245,9 @@
             return this;
         };
         return ObjectManager;
-    })();
-
+    })(BaseObject);
     return ObjectManager;
-}));
+});
 
     </pre>
 </div>

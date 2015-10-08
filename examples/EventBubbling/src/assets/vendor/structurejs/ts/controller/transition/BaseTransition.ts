@@ -1,14 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend');
- @import ../../BaseObject as BaseObject
- @import ../../event/EventDispatcher as EventDispatcher
- @import ../../display/DisplayObjectContainer as DisplayObjectContainer
- @import ../../display/DOMElement as DOMElement
- @import ../../event/TweenEvent as TweenEvent
- @export BaseTransition
- */
 import BaseObject = require('../../BaseObject');
 import ITransition = require('../../interface/ITransition');
 import EventDispatcher = require('../../event/EventDispatcher');

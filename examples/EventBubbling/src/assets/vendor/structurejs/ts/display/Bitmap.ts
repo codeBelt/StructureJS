@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DisplayObject as DisplayObject
- @import ../util/MathUtil as MathUtil
- @export Bitmap
- */
 import DisplayObject = require('./DisplayObject');
 import MathUtil = require('../util/MathUtil');
 
@@ -23,6 +15,7 @@ class Bitmap extends DisplayObject
         this._image = image;
         this.width = this._image.width;
         this.height = this._image.height;
+        this.setSize(this.width, this.height);
     }
 
     public create():void

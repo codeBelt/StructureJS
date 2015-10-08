@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export MerchantUtil
- */
-
 /**
  * A MerchantUtility class that has several static methods to assist in development.
  *

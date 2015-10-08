@@ -1,14 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../display/DisplayObjectContainer as DisplayObjectContainer
- @import ../event/BaseEvent as BaseEvent
- @import ../util/TemplateFactory as TemplateFactory
- @import ../util/ComponentFactory as ComponentFactory
- @import ../plugin/jquery.eventListener as jQuery
- @export DOMElement
- */
 import DisplayObjectContainer = require('./DisplayObjectContainer');
 import BaseEvent = require('../event/BaseEvent');
 import TemplateFactory = require('../util/TemplateFactory');
@@ -179,9 +168,9 @@ class DOMElement extends DisplayObjectContainer
      *
      * @property _isReference
      * @type {boolean}
-     * @private
+     * @protected
      */
-    private _isReference:boolean = false;
+    protected _isReference:boolean = false;
 
     /**
      * Holds onto the value passed into the constructor.
@@ -189,9 +178,9 @@ class DOMElement extends DisplayObjectContainer
      * @property _type
      * @type {string}
      * @default null
-     * @private
+     * @protected
      */
-    private _type:string = null;
+    protected _type:string = null;
 
     /**
      * Holds onto the value passed into the constructor.
@@ -199,9 +188,9 @@ class DOMElement extends DisplayObjectContainer
      * @property _params
      * @type {any}
      * @default null
-     * @private
+     * @protected
      */
-    private _params:any = null;
+    protected _params:any = null;
 
     constructor(type:any = null, params:any = null)
     {
@@ -319,6 +308,7 @@ class DOMElement extends DisplayObjectContainer
 
         this.width = this.$element.width();
         this.height = this.$element.height();
+        this.setSize(this.width, this.height);
 
         return this;
     }
@@ -334,12 +324,12 @@ class DOMElement extends DisplayObjectContainer
      */
     public addChild(child:DOMElement):any
     {
-        super.addChild(child);
-
         if (this.$element == null)
         {
             throw new Error('[' + this.getQualifiedClassName() + '] You cannot use the addChild method if the parent object is not added to the DOM.');
         }
+
+        super.addChild(child);
 
         // If an empty jQuery object is passed into the constructor then don't run the code below.
         if (child._isReference === true && child.$element.length === 0)
@@ -365,18 +355,62 @@ class DOMElement extends DisplayObjectContainer
     }
 
     /**
-     * Adds the cid to the DOM element so we can know what what Class object the element belongs too.
+     * Adds the sjsId to the DOM element so we can know what what Class object the HTMLElement belongs too.
      *
      * @method addClientSideId
-     * @param child {DOMElement} The DOMElement instance to add the cid too.
-     * @private
+     * @param child {DOMElement} The DOMElement instance to add the sjsId too.
+     * @protected
      */
-    private addClientSideId(child:DOMElement):void
+    protected addClientSideId(child:DOMElement):void
     {
-        /* TODO: Calling the getChild method there is a chance that multiple DOMElement's have a reference to the same HTMLElement
-         * in the DOM causing the cid to be overwritten with a new cid. Probably should handle that.
-         */
-        child.$element.attr('data-cid', child.cid);
+        var type:any = child.$element.attr('data-sjs-type');
+        var id:any = child.$element.attr('data-sjs-id');
+
+        if (type === void 0) {
+            // Make them array's so the join method will work.
+            type = [child.getQualifiedClassName()];
+            id = [child.sjsId];
+        } else {
+            // Split them so we can push/add the new values.
+            type = type.split(',');
+            id = id.split(',');
+
+            type.push(child.getQualifiedClassName());
+            id.push(child.sjsId);
+        }
+        // Updated list of id's and types
+        child.$element.attr('data-sjs-id', id.join(','));
+        child.$element.attr('data-sjs-type', type.join(','));
+    }
+
+    /**
+     * Removes the sjsId and class type from the HTMLElement.
+     *
+     * @method removeClientSideId
+     * @param child {DOMElement} The DOMElement instance to add the sjsId too.
+     * @protected
+     * @return {boolean}
+     */
+    protected removeClientSideId(child):boolean
+    {
+        var type:string = child.$element.attr('data-sjs-type');
+        var id:string = child.$element.attr('data-sjs-id');
+
+        // Split them so we can remove the child sjsId and type.
+        var typeList:Array<string> = type.split(',');
+        var idList:Array<number> = id.split(',').map(Number);// Convert each item into a number.
+        var index:number = idList.indexOf(child.sjsId);
+
+        if (index > -1) {
+            // Remove the id and type from the array.
+            typeList.splice(index, 1);
+            idList.splice(index, 1);
+            // Updated list of id's and types
+            child.$element.attr('data-sjs-type', typeList.join(','));
+            child.$element.attr('data-sjs-id', idList.join(','));
+        }
+
+        return idList.length === 0;
     }
 
     /**
@@ -384,9 +418,9 @@ class DOMElement extends DisplayObjectContainer
      * The method will call {{#crossLink "DOMElement/layout:method"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.
      *
      * @method onDomAdded
-     * @private
+     * @protected
      */
-    private onAddedToDom(child:DOMElement)
+    protected onAddedToDom(child:DOMElement)
     {
         child.checkCount++;
 
@@ -403,6 +437,7 @@ class DOMElement extends DisplayObjectContainer
 
         child.width = child.$element.width();
         child.height = child.$element.height();
+        child.setSize(child.width, child.height);
         child.enable();
         child.layout();
         child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));
@@ -422,16 +457,15 @@ class DOMElement extends DisplayObjectContainer
             return this;
         }
 
-        // If the index passed in is less than 0 and greater than
-        // the total number of children then place the item at the end.
-        if (index < 0 || index >= length)
+         if (index < 0 || index >= length)
         {
+            // If the index passed in is less than 0 and greater than the total number of children then place the item at the end.
             this.addChild(child);
         }
-        // Else get the child in the children array by the
-        // index passed in and place the item before that child.
         else
         {
+            // Else get the child in the children array by the index passed in and place the item before that child.
+
             if (child.isCreated === false)
             {
                 child.create();// Render the item before adding to the DOM
@@ -439,7 +473,12 @@ class DOMElement extends DisplayObjectContainer
             }
 
             // Adds the child at a specific index but also will remove the child from another parent object if one exists.
-            super.addChildAt(child, index);
+            if (child.parent) {
+                child.parent.removeChild(child, false);
+            }
+            this.children.splice(index, 0, child);
+            this.numChildren = this.children.length;
+            child.parent = this;
 
             // Adds the child before any child already added in the DOM.
             jQuery(children.get(index)).before(child.$element);
@@ -489,9 +528,9 @@ class DOMElement extends DisplayObjectContainer
             throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
         }
 
-        // Check to see if the element has a cid value and is a child of this parent object.
-        var cid:number = jQueryElement.data('cid');
-        var domElement:DOMElement = <DOMElement>this.getChildByCid(cid);
+        // Check to see if the element has a sjsId value and is a child of this parent object.
+        var sjsId:number = parseInt(jQueryElement.attr('data-sjs-id'));
+        var domElement:DOMElement = <DOMElement>this.getChildByCid(sjsId);
 
         // Creates a DOMElement from the jQueryElement.
         if (domElement == null)
@@ -499,7 +538,7 @@ class DOMElement extends DisplayObjectContainer
             // Create a new DOMElement and assign the jQuery element to it.
             domElement = new DOMElement();
             domElement.$element = jQueryElement;
-            domElement.$element.attr('data-cid', domElement.cid);
+            this.addClientSideId(domElement);
             domElement.element = jQueryElement[0];
             domElement.isCreated = true;
 
@@ -516,11 +555,11 @@ class DOMElement extends DisplayObjectContainer
      *
      * @method getChildren
      * @param [selector] {string} You can pass in any type of jQuery selector. If there is no selector passed in it will get all the children of this parent element.
-     * @returns {Array} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
-     * If the 'data-cid' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
+     * @returns {Array.<DOMElement>} Returns a list of DOMElement's. It will grab all children HTML DOM elements of this object and will create a DOMElement for each DOM child.
+     * If the 'data-sjs-id' property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
      * @public
      */
-    public getChildren(selector:string = ''):DOMElement[]
+    public getChildren(selector:string = ''):Array<DOMElement>
     {
         //TODO: Make sure the index of the children added is the same as the what is in the actual DOM.
         var $child:JQuery;
@@ -530,24 +569,22 @@ class DOMElement extends DisplayObjectContainer
         var listLength:number = $list.length;
         for (var i:number = 0; i < listLength; i++)
         {
-            $child = jQuery($list[i]);
-
-            // If the jQuery element already has cid data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
-            if (!$child.data('cid'))
+            $child = $list.eq(i);
+            // If the jQuery element already has sjsId data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
+            if ($child.attr('data-sjs-id') === void 0)
             {
                 domElement = new DOMElement();
                 domElement.$element = $child;
-                domElement.$element.attr('data-cid', domElement.cid);
+                this.addClientSideId(domElement);
                 domElement.element = $child.get(0);
                 domElement.isCreated = true;
-
                 // Added to the super addChild method because we don't need to append the element to the DOM.
                 // At this point it already exists and we are just getting a reference to the DOM element.
                 super.addChild(domElement);
             }
         }
 
-        return <DOMElement[]>this.children;
+        return <Array<DOMElement>>this.children;
     }
 
     /**
@@ -564,14 +601,21 @@ class DOMElement extends DisplayObjectContainer
      */
     public removeChild(child:DOMElement, destroy:boolean = true):any
     {
+        var remove:boolean = this.removeClientSideId(child);
+
+        child.disable();
+
         // Checks if destroy was called before removeChild so it doesn't error.
-        if (child.$element != null)
-        {
+        if (remove === true && child.$element != null) {
             child.$element.unbind();
             child.$element.remove();
         }
 
-        super.removeChild(child, destroy);
+        if (destroy === true) {
+            child.destroy();
+        }
+
+        super.removeChild(child);
 
         return this;
     }
@@ -604,7 +648,10 @@ class DOMElement extends DisplayObjectContainer
      */
     public removeChildren(destroy:boolean = true):any
     {
-        super.removeChildren(destroy);
+        while (this.children.length > 0)
+        {
+            this.removeChild(<DOMElement>this.children.pop(), destroy);
+        }
 
         this.$element.empty();
 
@@ -616,12 +663,11 @@ class DOMElement extends DisplayObjectContainer
      */
     public destroy():void
     {
-        // If the addChild method is never called before the $element is detroyed then it will be null and cause an TypeError.
-        if (this.$element != null)
-        {
-            this.$element.unbind();
-            this.$element.remove();
-        }
+        // Note: we can't just call destroy to remove the HTMLElement because there could be other views managing the same HTMLElement.
+        /*if (this.$element != null) {
+             this.$element.unbind();
+             this.$element.remove();
+         }*/
 
         super.destroy();
     }
@@ -633,7 +679,7 @@ class DOMElement extends DisplayObjectContainer
      * If any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.
      *
      * @method createComponents
-     * @param componentList (Array.<{ selector: string; componentClass: DisplayObjectContainer }>
+     * @param componentList (Array.<{ selector: string; component: DOMElement }>
      * @return {Array.<DOMElement>} Returns all the items created from this createComponents method.
      * @public
      * @chainable
@@ -642,13 +688,13 @@ class DOMElement extends DisplayObjectContainer
      *          _super.prototype.create.call(this);
      *
      *          this.createComponents([
-     *              {selector: '.js-shareEmail', componentClass: EmailShareComponent},
-     *              {selector: '.js-pagination', componentClass: PaginationComponent},
-     *              {selector: '.js-carousel', componentClass: CarouselComponent}
+     *              {selector: '.js-shareEmail', component: EmailShareComponent},
+     *              {selector: '.js-pagination', component: PaginationComponent},
+     *              {selector: '.js-carousel', component: CarouselComponent}
      *          ]);
      *      };
      */
-    public createComponents(componentList:any[]):Array<DOMElement>
+    public createComponents(componentList:Array<any>):Array<DOMElement>
     {
         var list:Array<DOMElement>;
         var createdChildren:Array<DOMElement> = [];
@@ -657,7 +703,7 @@ class DOMElement extends DisplayObjectContainer
         for (var i = 0; i < length; i++)
         {
             obj = componentList[i];
-            list = <Array<DOMElement>>ComponentFactory.create(this.$element.find(obj.selector), obj.componentClass, this);
+            list = <Array<DOMElement>>ComponentFactory.create(this.$element.find(obj.selector), obj.component, this);
             createdChildren = createdChildren.concat(list);
         }
 

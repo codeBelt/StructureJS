@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -146,23 +152,17 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/Util&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../event/EventDispatcher&#x27;), require(&#x27;../event/BaseEvent&#x27;), require(&#x27;../util/Util&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.BrowserUtil = factory(root.StructureJS.EventDispatcher, root.StructureJS.BaseEvent, root.StructureJS.Util);
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function(EventDispatcher, BaseEvent, Util) {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/Util&#x27;], function(require, exports) {
+    var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
+    var BaseEvent = require(&#x27;../event/BaseEvent&#x27;);
+    var Util = require(&#x27;../util/Util&#x27;);
     /**
      * A helper class to detect OS and browsers.
      *
@@ -173,17 +173,16 @@
      * @static
      */
     var BrowserUtil = (function() {
-
         function BrowserUtil() {
-            throw new Error(&#x27;[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.&#x27;);
-        }
-        /**
-         * Dispatches a breakpoint event.
-         *
-         * @method enable
-         * @public
-         * @static
-         */
+                throw new Error(&#x27;[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.&#x27;);
+            }
+            /**
+             * Dispatches a breakpoint event.
+             *
+             * @method enable
+             * @public
+             * @static
+             */
         BrowserUtil.enable = function() {
             if (BrowserUtil.isEnabled === true) {
                 return;
@@ -232,7 +231,9 @@
          *      // &#x27;39.0.2171.99&#x27;
          */
         BrowserUtil.browserVersion = function(majorVersion) {
-            if (majorVersion === void 0) { majorVersion = true; }
+            if (majorVersion === void 0) {
+                majorVersion = true;
+            }
             var version = BrowserUtil.getBrowser()[1];
             if (majorVersion === true) {
                 return parseInt(version, 10);
@@ -428,7 +429,7 @@
          *      };
          */
         BrowserUtil.getBreakpoint = function() {
-            return BrowserUtil._window.getComputedStyle(document.querySelector(&#x27;body&#x27;), &#x27;:after&#x27;).getPropertyValue(&#x27;content&#x27;).replace(/&quot;/g, &#x27;&#x27;);
+            return BrowserUtil._styleDeclaration.getPropertyValue(&#x27;content&#x27;).replace(/[&quot;&#x27;]/g, &#x27;&#x27;);
         };
         /**
          * TODO: YUIDoc_comment
@@ -438,7 +439,9 @@
          * @static
          */
         BrowserUtil.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) { priority = 0; }
+            if (priority === void 0) {
+                priority = 0;
+            }
             BrowserUtil._eventDispatcher.addEventListener(type, callback, scope, priority);
             BrowserUtil.enable();
         };
@@ -460,7 +463,9 @@
          * @static
          */
         BrowserUtil.dispatchEvent = function(type, data) {
-            if (data === void 0) { data = null; }
+            if (data === void 0) {
+                data = null;
+            }
             var event = type;
             if (typeof event === &#x27;string&#x27;) {
                 event = new BaseEvent(type, false, false, data);
@@ -498,6 +503,15 @@
          */
         BrowserUtil._window = window;
         /**
+         * A reference to the getComputedStyle method.
+         *
+         * @property _styleDeclaration
+         * @type {any}
+         * @private
+         * @static
+         */
+        BrowserUtil._styleDeclaration = window.getComputedStyle(document.querySelector(&#x27;body&#x27;), &#x27;:after&#x27;);
+        /**
          * TODO: YUIDoc_comment
          *
          * @property _onBreakpointChangeHandler
@@ -518,7 +532,7 @@
          */
         BrowserUtil.debounceDelay = 250;
         /**
-         * TODO: YUIDoc_comment
+         * The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.
          *
          * @property isEnabled
          * @type {boolean}
@@ -528,9 +542,8 @@
         BrowserUtil.isEnabled = false;
         return BrowserUtil;
     })();
-
     return BrowserUtil;
-}));
+});
 
     </pre>
 </div>

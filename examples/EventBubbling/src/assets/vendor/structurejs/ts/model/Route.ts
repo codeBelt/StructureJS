@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export Route
- */
-
 /**
  * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
  *
@@ -123,9 +117,9 @@ class Route
      * @method routePatternToRegexp
      * @param {String} routePattern
      * @returns {RegExp}
-     * @private
+     * @protected
      */
-    private routePatternToRegexp(routePattern):RegExp
+    protected routePatternToRegexp(routePattern):RegExp
     {
         var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
         var findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
@@ -153,12 +147,12 @@ class Route
      *
      * @method match
      * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
-     * @returns {Array}
+     * @returns {Array.<any>}
      * @example
      *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
      *     console.log( route.match('/games/asteroids/2/') );
      */
-    public match(route):any[]
+    public match(route):Array<any>
     {
         // Remove the query string before matching against the route pattern.
         var routeWithoutQueryString:string = route.replace(/\?.*/, '');

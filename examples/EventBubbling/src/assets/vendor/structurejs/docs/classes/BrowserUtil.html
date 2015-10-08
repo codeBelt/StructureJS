@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -150,7 +156,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_util_BrowserUtil.js.html#l18"><code>js&#x2F;util&#x2F;BrowserUtil.js:18</code></a>
+            Defined in: <a href="../files/js_util_BrowserUtil.js.html#l12"><code>js&#x2F;util&#x2F;BrowserUtil.js:12</code></a>
         </div>
     
 
@@ -180,7 +186,7 @@
     <div id="api-options">
         Show:
         <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
             Inherited
         </label>
 
@@ -218,6 +224,14 @@
             
                 <li class="index-item property private">
                     <a href="#property__onBreakpointChangeHandler">_onBreakpointChangeHandler</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property private">
+                    <a href="#property__styleDeclaration">_styleDeclaration</a>
 
                     
                         <span class="flag static">static</span>
@@ -471,7 +485,7 @@
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l334"><code>js&#x2F;util&#x2F;BrowserUtil.js:334</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l333"><code>js&#x2F;util&#x2F;BrowserUtil.js:333</code></a>
         
         </p>
 
@@ -525,7 +539,7 @@
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l352"><code>js&#x2F;util&#x2F;BrowserUtil.js:352</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l360"><code>js&#x2F;util&#x2F;BrowserUtil.js:360</code></a>
         
         </p>
 
@@ -537,6 +551,60 @@
     <div class="extended-detail">
         <div class="description">
             <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__styleDeclaration" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_styleDeclaration</code>
+    <span class="type">Any</span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_BrowserUtil.js.html#l351"><code>js&#x2F;util&#x2F;BrowserUtil.js:351</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the getComputedStyle method.</p>
 
         </div>
 
@@ -579,7 +647,7 @@
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l343"><code>js&#x2F;util&#x2F;BrowserUtil.js:343</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l342"><code>js&#x2F;util&#x2F;BrowserUtil.js:342</code></a>
         
         </p>
 
@@ -633,7 +701,7 @@
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l361"><code>js&#x2F;util&#x2F;BrowserUtil.js:361</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l369"><code>js&#x2F;util&#x2F;BrowserUtil.js:369</code></a>
         
         </p>
 
@@ -690,7 +758,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l372"><code>js&#x2F;util&#x2F;BrowserUtil.js:372</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l380"><code>js&#x2F;util&#x2F;BrowserUtil.js:380</code></a>
         
         </p>
 
@@ -701,7 +769,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
 
     <div class="extended-detail">
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.</p>
 
         </div>
 
@@ -770,7 +838,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l324"><code>js&#x2F;util&#x2F;BrowserUtil.js:324</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l323"><code>js&#x2F;util&#x2F;BrowserUtil.js:323</code></a>
         
         </p>
 
@@ -835,7 +903,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l285"><code>js&#x2F;util&#x2F;BrowserUtil.js:285</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l280"><code>js&#x2F;util&#x2F;BrowserUtil.js:280</code></a>
         
         </p>
 
@@ -904,7 +972,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l57"><code>js&#x2F;util&#x2F;BrowserUtil.js:57</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l50"><code>js&#x2F;util&#x2F;BrowserUtil.js:50</code></a>
         
         </p>
 
@@ -1005,7 +1073,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l71"><code>js&#x2F;util&#x2F;BrowserUtil.js:71</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l64"><code>js&#x2F;util&#x2F;BrowserUtil.js:64</code></a>
         
         </p>
 
@@ -1119,7 +1187,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l307"><code>js&#x2F;util&#x2F;BrowserUtil.js:307</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l304"><code>js&#x2F;util&#x2F;BrowserUtil.js:304</code></a>
         
         </p>
 
@@ -1184,7 +1252,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l32"><code>js&#x2F;util&#x2F;BrowserUtil.js:32</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l25"><code>js&#x2F;util&#x2F;BrowserUtil.js:25</code></a>
         
         </p>
 
@@ -1253,7 +1321,7 @@ the BaseEvent.RESIZE event to get the your browser breakpoints. See <a href="../
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l252"><code>js&#x2F;util&#x2F;BrowserUtil.js:252</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l247"><code>js&#x2F;util&#x2F;BrowserUtil.js:247</code></a>
         
         </p>
 
@@ -1365,7 +1433,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l95"><code>js&#x2F;util&#x2F;BrowserUtil.js:95</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l90"><code>js&#x2F;util&#x2F;BrowserUtil.js:90</code></a>
         
         </p>
 
@@ -1456,7 +1524,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l202"><code>js&#x2F;util&#x2F;BrowserUtil.js:202</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l197"><code>js&#x2F;util&#x2F;BrowserUtil.js:197</code></a>
         
         </p>
 
@@ -1547,7 +1615,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l216"><code>js&#x2F;util&#x2F;BrowserUtil.js:216</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l211"><code>js&#x2F;util&#x2F;BrowserUtil.js:211</code></a>
         
         </p>
 
@@ -1638,7 +1706,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l234"><code>js&#x2F;util&#x2F;BrowserUtil.js:234</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l229"><code>js&#x2F;util&#x2F;BrowserUtil.js:229</code></a>
         
         </p>
 
@@ -1729,7 +1797,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l118"><code>js&#x2F;util&#x2F;BrowserUtil.js:118</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l113"><code>js&#x2F;util&#x2F;BrowserUtil.js:113</code></a>
         
         </p>
 
@@ -1820,7 +1888,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l132"><code>js&#x2F;util&#x2F;BrowserUtil.js:132</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l127"><code>js&#x2F;util&#x2F;BrowserUtil.js:127</code></a>
         
         </p>
 
@@ -1911,7 +1979,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l174"><code>js&#x2F;util&#x2F;BrowserUtil.js:174</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l169"><code>js&#x2F;util&#x2F;BrowserUtil.js:169</code></a>
         
         </p>
 
@@ -2002,7 +2070,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l146"><code>js&#x2F;util&#x2F;BrowserUtil.js:146</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l141"><code>js&#x2F;util&#x2F;BrowserUtil.js:141</code></a>
         
         </p>
 
@@ -2093,7 +2161,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l188"><code>js&#x2F;util&#x2F;BrowserUtil.js:188</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l183"><code>js&#x2F;util&#x2F;BrowserUtil.js:183</code></a>
         
         </p>
 
@@ -2184,7 +2252,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l160"><code>js&#x2F;util&#x2F;BrowserUtil.js:160</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l155"><code>js&#x2F;util&#x2F;BrowserUtil.js:155</code></a>
         
         </p>
 
@@ -2271,7 +2339,7 @@ in each of your style sheets for this functionality to work.</p>
             
         
         
-        <a href="../files/js_util_BrowserUtil.js.html#l297"><code>js&#x2F;util&#x2F;BrowserUtil.js:297</code></a>
+        <a href="../files/js_util_BrowserUtil.js.html#l294"><code>js&#x2F;util&#x2F;BrowserUtil.js:294</code></a>
         
         </p>
 

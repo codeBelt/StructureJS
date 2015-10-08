@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -110,8 +118,6 @@
                 <li><a class="type" href="../classes/Util.html">Util</a></li>
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
-            
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
             
             </ul>
 
@@ -154,7 +160,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_event_LocalStorageEvent.js.html#l18"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:18</code></a>
+            Defined in: <a href="../files/js_event_LocalStorageEvent.js.html#l20"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:20</code></a>
         </div>
     
 
@@ -185,7 +191,7 @@ Note: the event only dispatches in other browser windows and does not show up in
     <div id="api-options">
         Show:
         <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
             Inherited
         </label>
 
@@ -226,12 +232,6 @@ Note: the event only dispatches in other browser windows and does not show up in
                 </li>
             
                 <li class="index-item property public inherited">
-                    <a href="#property_cid">cid</a>
-
-                    
-                </li>
-            
-                <li class="index-item property public inherited">
                     <a href="#property_currentTarget">currentTarget</a>
 
                     
@@ -257,6 +257,12 @@ Note: the event only dispatches in other browser windows and does not show up in
             
                 <li class="index-item property public">
                     <a href="#property_originalEvent">originalEvent</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public inherited">
+                    <a href="#property_sjsId">sjsId</a>
 
                     
                 </li>
@@ -390,7 +396,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l112"><code>js&#x2F;event&#x2F;BaseEvent.js:112</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l119"><code>js&#x2F;event&#x2F;BaseEvent.js:119</code></a>
         
         </p>
 
@@ -441,7 +447,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l121"><code>js&#x2F;event&#x2F;BaseEvent.js:121</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l128"><code>js&#x2F;event&#x2F;BaseEvent.js:128</code></a>
         
         </p>
 
@@ -458,57 +464,6 @@ Note: the event only dispatches in other browser windows and does not show up in
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="property_cid" class="anchor-link"></a>
-<div class="property item public inherited">
-    <h3 class="name"><code>cid</code>
-    <span class="type">Int</span>
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/BaseObject.html#property_cid" class="type">BaseObject</a>:
-            
-        
-        
-        <a href="../files/js_BaseObject.js.html#l30"><code>js&#x2F;BaseObject.js:30</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-        <div class="description">
-            <p>The cid (client-side id) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
-
-        </div>
-
-        
-            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
         
 
         
@@ -543,7 +498,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l93"><code>js&#x2F;event&#x2F;BaseEvent.js:93</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l100"><code>js&#x2F;event&#x2F;BaseEvent.js:100</code></a>
         
         </p>
 
@@ -594,7 +549,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l103"><code>js&#x2F;event&#x2F;BaseEvent.js:103</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l110"><code>js&#x2F;event&#x2F;BaseEvent.js:110</code></a>
         
         </p>
 
@@ -645,7 +600,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l140"><code>js&#x2F;event&#x2F;BaseEvent.js:140</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l147"><code>js&#x2F;event&#x2F;BaseEvent.js:147</code></a>
         
         </p>
 
@@ -696,7 +651,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l130"><code>js&#x2F;event&#x2F;BaseEvent.js:130</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l137"><code>js&#x2F;event&#x2F;BaseEvent.js:137</code></a>
         
         </p>
 
@@ -750,7 +705,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_LocalStorageEvent.js.html#l43"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:43</code></a>
+        <a href="../files/js_event_LocalStorageEvent.js.html#l44"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:44</code></a>
         
         </p>
 
@@ -765,6 +720,57 @@ Note: the event only dispatches in other browser windows and does not show up in
 
         </div>
 
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_sjsId" class="anchor-link"></a>
+<div class="property item public inherited">
+    <h3 class="name"><code>sjsId</code>
+    <span class="type">Int</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/BaseObject.html#property_sjsId" class="type">BaseObject</a>:
+            
+        
+        
+        <a href="../files/js_BaseObject.js.html#l27"><code>js&#x2F;BaseObject.js:27</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
         
 
         
@@ -799,7 +805,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l83"><code>js&#x2F;event&#x2F;BaseEvent.js:83</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l90"><code>js&#x2F;event&#x2F;BaseEvent.js:90</code></a>
         
         </p>
 
@@ -850,7 +856,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l73"><code>js&#x2F;event&#x2F;BaseEvent.js:73</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l80"><code>js&#x2F;event&#x2F;BaseEvent.js:80</code></a>
         
         </p>
 
@@ -952,7 +958,7 @@ Note: the event only dispatches in other browser windows and does not show up in
             
         
         
-        <a href="../files/js_event_LocalStorageEvent.js.html#l18"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:18</code></a>
+        <a href="../files/js_event_LocalStorageEvent.js.html#l20"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:20</code></a>
         
         </p>
 
@@ -1098,7 +1104,7 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l184"><code>js&#x2F;event&#x2F;BaseEvent.js:184</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l191"><code>js&#x2F;event&#x2F;BaseEvent.js:191</code></a>
         
         </p>
 
@@ -1185,7 +1191,7 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
             
         
         
-        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
+        <a href="../files/js_BaseObject.js.html#l52"><code>js&#x2F;BaseObject.js:52</code></a>
         
         </p>
 
@@ -1280,7 +1286,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_BaseObject.js.html#l43"><code>js&#x2F;BaseObject.js:43</code></a>
+        <a href="../files/js_BaseObject.js.html#l40"><code>js&#x2F;BaseObject.js:40</code></a>
         
         </p>
 
@@ -1363,7 +1369,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l169"><code>js&#x2F;event&#x2F;BaseEvent.js:169</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l176"><code>js&#x2F;event&#x2F;BaseEvent.js:176</code></a>
         
         </p>
 
@@ -1435,7 +1441,7 @@ all the event listeners in the current node finish processing.</p>
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l155"><code>js&#x2F;event&#x2F;BaseEvent.js:155</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l162"><code>js&#x2F;event&#x2F;BaseEvent.js:162</code></a>
         
         </p>
 
@@ -1514,7 +1520,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
             
         
         
-        <a href="../files/js_event_LocalStorageEvent.js.html#l59"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:59</code></a>
+        <a href="../files/js_event_LocalStorageEvent.js.html#l60"><code>js&#x2F;event&#x2F;LocalStorageEvent.js:60</code></a>
         
         </p>
 

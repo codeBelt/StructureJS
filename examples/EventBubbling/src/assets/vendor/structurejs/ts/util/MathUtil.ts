@@ -1,9 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @export MathUtil
- */
-
 /**
  * A helper class to do calculations and conversions.
  *
@@ -364,9 +358,9 @@ class MathUtil
      * @example
      *
      */
-    public static getDivisors(num:number):number[]
+    public static getDivisors(num:number):Array<number>
     {
-        var r:number[] = [];
+        var r:Array<number> = [];
 
         for (var i:number = 1, e:number = num / 2; i <= e; i++)
         {

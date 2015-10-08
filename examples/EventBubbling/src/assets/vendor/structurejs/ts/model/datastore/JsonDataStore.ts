@@ -1,15 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../../util/Extend as Extend
- @import ../../net/URLRequest as URLRequest
- @import ../../net/URLLoader as URLLoader
- @import ../../net/URLRequestMethod as URLRequestMethod
- @import ../../net/URLLoaderDataFormat as URLLoaderDataFormat
- @import ../../net/URLContentType as URLContentType
- @import ../../event/LoaderEvent as LoaderEvent
- @export JsonDataStore
- */
 import DataStoreAbstract = require('./DataStoreAbstract');
 import URLRequest = require('../../net/URLRequest');
 import URLLoader = require('../../net/URLLoader');
@@ -37,9 +25,9 @@ class JsonDataStore extends DataStoreAbstract
          *
          * @property _urlLoader
          * @type {URLLoader}
-         * @private
+         * @protected
          */
-        private _urlLoader:URLLoader = null;
+        protected _urlLoader:URLLoader = null;
 
         /**
          * TODO: YUIDoc_comment
@@ -47,9 +35,9 @@ class JsonDataStore extends DataStoreAbstract
          * @property _isJsonP
          * @type {boolean}
          * @default false
-         * @private
+         * @protected
          */
-        private _isJsonP:boolean = false;
+        protected _isJsonP:boolean = false;
 
         constructor(path:string, jsonp:boolean = false)
         {

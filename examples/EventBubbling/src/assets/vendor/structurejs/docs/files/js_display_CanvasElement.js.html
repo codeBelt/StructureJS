@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -146,42 +152,42 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&#x27;../util/Extend&#x27;, &#x27;./DOMElement&#x27;, &#x27;../geom/Point&#x27;], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory(require(&#x27;../util/Extend&#x27;), require(&#x27;./DOMElement&#x27;), require(&#x27;../geom/Point&#x27;));
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.CanvasElement = factory(root.StructureJS.Extend, root.StructureJS.DOMElement, root.StructureJS.Point);
+var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p)) d[p] = b[p];
+
+    function __() {
+        this.constructor = d;
     }
-}(this, function(Extend, DOMElement, Point) {
-
-    &#x27;use strict&#x27;;
-
-    var CanvasElement = (function() {
-
-        var _super = Extend(CanvasElement, DOMElement);
-
-        function CanvasElement($element) {
-                _super.call(this, $element);
-                /**
-                 * A cached jQuery object for the canvas element. This has the exact same reference as **{{#crossLink &quot;DOMElement/$element:property&quot;}}{{/crossLink}} property**.
-                 *
-                 * @type {JQuery}
-                 * @public
-                 */
+    __.prototype = b.prototype;
+    d.prototype = new __();
+};
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
+    }
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./DisplayObjectContainer&#x27;, &#x27;./DOMElement&#x27;, &#x27;../geom/Point&#x27;], function(require, exports) {
+    var DisplayObjectContainer = require(&#x27;./DisplayObjectContainer&#x27;);
+    var DOMElement = require(&#x27;./DOMElement&#x27;);
+    var Point = require(&#x27;../geom/Point&#x27;);
+    var CanvasElement = (function(_super) {
+        __extends(CanvasElement, _super);
+        // Notice the capital W and H. That sets the attributes not the styles.
+        function CanvasElement(type, params) {
+                if (type === void 0) {
+                    type = &#x27;canvas&#x27;;
+                }
+                if (params === void 0) {
+                    params = {
+                        Width: 100,
+                        Height: 100
+                    };
+                }
+                _super.call(this, type, params);
                 this.$canvas = null;
-                /**
-                 * A reference to the canvas element. This has the exact same reference as **{{#crossLink &quot;DOMElement/element:property&quot;}}{{/crossLink}} property**.
-                 *
-                 * @type {HTMLCanvasElement}
-                 * @public
-                 */
                 this.canvas = null;
             }
             /**
@@ -232,14 +238,7 @@
             _super.prototype.disable.call(this);
         };
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @method addChild
-         * @param child {DisplayObject}
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.addChild
          */
         CanvasElement.prototype.addChild = function(child) {
             //If the child being passed in already has a parent then remove the reference from there.
@@ -295,14 +294,7 @@
             return _super.prototype.getChildAt.call(this, index);
         };
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @method removeChild
-         * @param child {DisplayObject}
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChild
          */
         CanvasElement.prototype.removeChild = function(child, destroy) {
             if (destroy === void 0) {
@@ -325,12 +317,7 @@
             return this;
         };
         /**
-         * Removes the child display object instance that exists at the specified index.
-         *
-         * @method removeChildAt
-         * @param index {int} The index position of the child object.
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChildAt
          */
         CanvasElement.prototype.removeChildAt = function(index, destroy) {
             if (destroy === void 0) {
@@ -340,15 +327,7 @@
             return this;
         };
         /**
-         * Removes all child object instances from the child list of the parent object instance.
-         * The parent property of the removed children is set to null , and the objects are garbage collected if no other
-         * references to the children exist.
-         *
-         * @method removeChildren
-         * @returns {CanvasElement} Returns an instance of itself.
-         * @override
-         * @public
-         * @chainable
+         * @overridden DOMElement.removeChildren
          */
         CanvasElement.prototype.removeChildren = function(destroy) {
             if (destroy === void 0) {
@@ -460,10 +439,9 @@
             }
         };
         return CanvasElement;
-    })();
-
+    })(DOMElement);
     return CanvasElement;
-}));
+});
 
     </pre>
 </div>

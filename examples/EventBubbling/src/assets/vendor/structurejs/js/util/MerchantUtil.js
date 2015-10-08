@@ -1,20 +1,11 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.MerchantUtil = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * A MerchantUtility class that has several static methods to assist in development.
      *
@@ -26,20 +17,20 @@
      */
     var MerchantUtil = (function() {
         function MerchantUtil() {
-            throw new Error('[MerchantUtil] Do not instantiate the MerchantUtil class because it is a static class.');
-        }
-        /**
-         * Determines if credit card is valid using the Luhn formula.
-         *
-         * @method isCreditCard
-         * @param cardNumber {string} The credit card number.
-         * @returns {boolean} <code>true</code> if String is a valid credit card number; otherwise <code>false</code>.
-         * @public
-         * @static
-         * @example
-         *      MerchantUtil.isCreditCard('4556106734384949');
-         *      // true
-         */
+                throw new Error('[MerchantUtil] Do not instantiate the MerchantUtil class because it is a static class.');
+            }
+            /**
+             * Determines if credit card is valid using the Luhn formula.
+             *
+             * @method isCreditCard
+             * @param cardNumber {string} The credit card number.
+             * @returns {boolean} <code>true</code> if String is a valid credit card number; otherwise <code>false</code>.
+             * @public
+             * @static
+             * @example
+             *      MerchantUtil.isCreditCard('4556106734384949');
+             *      // true
+             */
         MerchantUtil.isCreditCard = function(cardNumber) {
             if (cardNumber.length < 7 || cardNumber.length > 19 || Number(cardNumber) < 1000000) {
                 return false;
@@ -77,8 +68,12 @@
          *      // xxxxxxxxxxx84949
          */
         MerchantUtil.encodeCreditCardNumber = function(strNumber, digitsShown, encodeChar) {
-            if (digitsShown === void 0) { digitsShown = 4; }
-            if (encodeChar === void 0) { encodeChar = '*'; }
+            if (digitsShown === void 0) {
+                digitsShown = 4;
+            }
+            if (encodeChar === void 0) {
+                encodeChar = '*';
+            }
             var encoded = '';
             for (var i = 0; i < strNumber.length - digitsShown; i++) {
                 encoded += encodeChar;
@@ -139,6 +134,5 @@
         };
         return MerchantUtil;
     })();
-
     return MerchantUtil;
-}));
+});

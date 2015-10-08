@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/StringUtil as StringUtil
- @import jquery as jQuery
- @import handlebars as Handlebars
- @export TemplateFactory
- */
 import StringUtil = require('./StringUtil');
 
 /**
@@ -16,7 +8,6 @@ import StringUtil = require('./StringUtil');
  * @submodule util
  * @requires StringUtil
  * @requires Handlebars
- * @requires jQuery
  * @author Robert S. (www.codeBelt.com)
  * @static
  */
@@ -97,7 +88,9 @@ class TemplateFactory
         }
         else if (isClassOrIdName)
         {
-            var htmlString:string = jQuery(templatePath).html();
+            // Remove pound sign from the id name.
+            templatePath = templatePath.substring(1);
+            var htmlString:string = document.getElementById(templatePath).innerHTML;
             htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
 
             if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE)

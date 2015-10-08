@@ -1,14 +1,4 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../model/ValueObject as ValueObject
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/BaseEvent as BaseEvent
- @import ../util/Util as Util
- @export LoaderEvent
- */
-import ValueObject = require('../model/ValueObject');
+import BaseModel = require('../model/BaseModel');
 import EventDispatcher = require('../event/EventDispatcher');
 import BaseEvent = require('../event/BaseEvent');
 import Util = require('../util/Util');
@@ -24,7 +14,7 @@ import Util = require('../util/Util');
  * @requires EventDispatcher
  * @requires BaseEvent
  * @constructor
- * @param valueObjectType {ValueObject} Pass a class that extends ValueObject and the data added to the collection will be created as that type.
+ * @param baseModelType {BaseModel} Pass a class that extends BaseModel and the data added to the collection will be created as that type.
  * @author Robert S. (www.codeBelt.com)
  * @example
  *     var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
@@ -33,8 +23,8 @@ import Util = require('../util/Util');
  *     var collection = new Collection();
  *     collection.add(data);
  *
- *     // Example of adding data to a collection that will create a CarVO model for each data object passed in.
- *     var collection = new Collection(CarVO);
+ *     // Example of adding data to a collection that will create a CarModel model for each data object passed in.
+ *     var collection = new Collection(CarModel);
  *     collection.add(data);
  */
 class Collection extends EventDispatcher
@@ -43,7 +33,7 @@ class Collection extends EventDispatcher
      * The list of models in the collection.
      *
      * @property models
-     * @type {Array}
+     * @type {Array.<any>}
      * @readOnly
      */
     public models:Array<any> = [];
@@ -60,19 +50,19 @@ class Collection extends EventDispatcher
     public length:number = 0;
 
     /**
-     * A reference to a ValueObject that will be used in the collection.
+     * A reference to a BaseModel type that will be used in the collection.
      *
      * @property _modelType
-     * @type {ValueObject}
-     * @private
+     * @type {any}
+     * @protected
      */
-    private _modelType:ValueObject = null;
+    protected _modelType:any = null;
 
-    constructor(valueObjectType:ValueObject = null)
+    constructor(baseModelType:any = null)
     {
         super();
 
-        this._modelType = valueObjectType;
+        this._modelType = baseModelType;
     }
 
     /**
@@ -98,9 +88,10 @@ class Collection extends EventDispatcher
             // Only add the model if it does not exist in the the collection.
             if (this.has(models[i]) === false)
             {
-                if (this._modelType !== null)
+                if (this._modelType !== null && (models[i] instanceof this._modelType) === false)
                 {
-                    // If the modeType is set then instantiate it and pass the data into the constructor.
+                    // If the modelType is set and the data is not already a instance of the modelType
+                    // then instantiate it and pass the data into the constructor.
                     this.models.push(new (<any>this)._modelType(models[i]));
                 }
                 else
@@ -173,7 +164,7 @@ class Collection extends EventDispatcher
     }
 
     /**
-     * Returns the array index position of the value object.
+     * Returns the array index position of the  Base Model.
      *
      * @method indexOf
      * @param model {Object} get the index of.
@@ -198,7 +189,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.get(1);
      */
-    private get(index:number):any
+    public get(index:number):any
     {
         if (index < 0)
         {
@@ -219,19 +210,19 @@ class Collection extends EventDispatcher
      * When checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.
      * @method findBy
      * @param arg {Object|Array}
-     * @return {Array} Returns a list of found object's.
+     * @return {Array.<any>} Returns a list of found object's.
      * @public
      * @example
-     *      // Finds all value object that has 'Robert' in it.
+     *      // Finds all  Base Model that has 'Robert' in it.
      *      this._collection.findBy("Robert");
-     *      // Finds any value object that has 'Robert' or 'Heater' or 23 in it.
+     *      // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.
      *      this._collection.findBy(["Robert", "Heather", 32]);
      *
-     *      // Finds all value objects that same key and value you are searching for.
+     *      // Finds all  Base Models that same key and value you are searching for.
      *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
      *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
      */
-    private findBy(arg:any):Array<any>
+    public findBy(arg:any):Array<any>
     {
         // If properties is not an array then make it an array object.
         var list:Array<any> = (arg instanceof Array) ? arg : [arg];
@@ -242,7 +233,7 @@ class Collection extends EventDispatcher
         for (var i:number = 0; i < len; i++)
         {
             prop = list[i];
-            // Adds found value object to the foundItems array.
+            // Adds found  Base Model to the foundItems array.
             if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean'))
             {
                 // If the model is not an object.
@@ -264,10 +255,10 @@ class Collection extends EventDispatcher
      *
      * @method _where
      * @param propList {Object|Array}
-     * @return {Array} Returns a list of found object's.
-     * @private
+     * @return {Array.<any>} Returns a list of found object's.
+     * @protected
      */
-    private _where(propList:any):Array<any>
+    protected _where(propList:any):Array<any>
     {
         // If properties is not an array then make it an array object.
         var list:Array<any> = (propList instanceof Array) ? propList : [propList];
@@ -321,10 +312,10 @@ class Collection extends EventDispatcher
      *
      * @method _findPropertyValue
      * @param arg {String|Number|Boolean>}
-     * @return {Array} Returns a list of found object's.
-     * @private
+     * @return {Array.<any>} Returns a list of found object's.
+     * @protected
      */
-    private _findPropertyValue(arg):Array<any>
+    protected _findPropertyValue(arg):Array<any>
     {
         // If properties is not an array then make it an array object.
         var list = (arg instanceof Array) ? arg : [arg];
@@ -352,10 +343,10 @@ class Collection extends EventDispatcher
                     {
                         value = list[j];
 
-                        // If the value object property equals the string value then keep a reference to that value object.
+                        // If the  Base Model property equals the string value then keep a reference to that  Base Model.
                         if (propertyValue === value)
                         {
-                            // Add found value object to the foundItems array.
+                            // Add found  Base Model to the foundItems array.
                             foundItems.push(model);
                             break;
                         }
@@ -377,7 +368,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.clear();
      */
-    private clear(silent:boolean = false):any
+    public clear(silent:boolean = false):any
     {
         this.models = [];
         this.length = 0;
@@ -399,24 +390,24 @@ class Collection extends EventDispatcher
      * @example
      *     var clone = collection.clone();
      */
-    private clone():Collection
+    public clone():Collection
     {
-        var clonedValueObject:Collection = new (<any>this).constructor(this._modelType);
-        clonedValueObject.add(this.models.slice(0));
+        var clonedBaseModel:Collection = new (<any>this).constructor(this._modelType);
+        clonedBaseModel.add(this.models.slice(0));
 
-        return clonedValueObject;
+        return clonedBaseModel;
     }
 
     /**
      * Creates a JSON object of the collection.
      *
      * @method toJSON
-     * @returns {Array}
+     * @returns {Array.<any>}
      * @public
      * @example
      *     var arrayOfObjects = collection.toJSON();
      */
-    private toJSON():Array<any>
+    public toJSON():Array<any>
     {
         if (this._modelType !== null)
         {
@@ -445,7 +436,7 @@ class Collection extends EventDispatcher
      * @example
      *     var str = collection.toJSONString();
      */
-    private toJSONString():string
+    public toJSONString():string
     {
         return JSON.stringify(this.toJSON());
     }
@@ -460,7 +451,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.fromJSON(str);
      */
-    private fromJSON(json):any
+    public fromJSON(json):any
     {
         var parsedData:any = JSON.parse(json);
 
@@ -476,12 +467,12 @@ class Collection extends EventDispatcher
      * @param propertyName {string}
      * @param [sortAscending=true] {boolean}
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array<any>} Returns the list of models in the collection.
      * @example
      *      collection.sortOn('name');
      *      collection.sortOn('name', false);
      */
-    private sortOn(propertyName:string, sortAscending:boolean = true)
+    public sortOn(propertyName:string, sortAscending:boolean = true):Array<any>
     {
         if (sortAscending === false)
         {
@@ -526,7 +517,7 @@ class Collection extends EventDispatcher
      * @method sort
      * @param [sortFunction=null] {Function}
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array.<any>} Returns the list of models in the collection.
      * @example
      *      var sortByDate = function(a, b){
      *          return new Date(a.date) - new Date(b.date)
@@ -534,7 +525,7 @@ class Collection extends EventDispatcher
      *
      *      collection.sort(sortByDate);
      */
-    private sort(sortFunction = null):Array<any>
+    public sort(sortFunction = null):Array<any>
     {
         this.models.sort(sortFunction);
 
@@ -545,9 +536,10 @@ class Collection extends EventDispatcher
      * The filter method creates a new array with all elements that pass the test implemented by the provided function.
      *
      * @method filter
-     * @param filterFunction {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+     * @param callback {Function} Function to test each element of the array. Invoked with arguments (element, index, array). Return true to keep the element, false otherwise.
+     * @param [callbackScope=null] Optional. Value to use as this when executing callback.
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array.<any>} Returns the list of models in the collection.
      * @example
      *      var isOldEnough = function(model){
      *          return model.age >= 21;
@@ -555,9 +547,80 @@ class Collection extends EventDispatcher
      *
      *      var list = collection.filter(isOldEnough);
      */
-    public filter(filterFunction:any):Array<any>
+    public filter(callback:any, callbackScope:any = null):Array<any>
     {
-        return this.models.filter(filterFunction);
+        return this.models.filter(callback, callbackScope);
+    }
+
+    /**
+     * Convenient way to get a list of property values.
+     *
+     * @method pluck
+     * @param propertyName {string} The property name you want the values from.
+     * @param [unique=false] {string} Pass in true to remove duplicates.
+     * @return {Array.<any>}
+     * @public
+     * @example
+     *      collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);
+     *
+     *      var list = collection.pluck('name');
+     *      // ['Robert', 'Robert', 'Chris']
+     *
+     *      var list = collection.pluck('name', true);
+     *      // ['Robert', 'Chris']
+     */
+    public pluck(propertyName:string, unique:boolean = false):Array<any>
+    {
+        var list:Array<any> = [];
+
+        for (var i = 0; i < this.length; i++) {
+            if (this.models[i].hasOwnProperty(propertyName) === true) {
+                list[i] = this.models[i][propertyName];
+            }
+        }
+
+        if (unique === true) {
+            list = this._unique(list);
+        }
+
+        return list;
+    }
+
+    /**
+     * Convenient way to group models into categories/groups by a property name.
+     *
+     * @method groupBy
+     * @param propertyName {string} The string value of the property you want to group with.
+     * @return {any} Returns an object that is categorized by the property name.
+     * @public
+     * @example
+     *      collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);
+     *
+     *      var list = collection.groupBy('name');
+     *
+     *      // {
+     *      //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]
+     *      //    Chris: [{name: 'Chris', id: 2}]
+     *      // }
+     */
+    public groupBy(propertyName):any
+    {
+        var model:any;
+        var groupName:string;
+        var groupList:any = {};
+
+        // Loop through all the models in this collection.
+        for (var i:number = 0; i < this.length; i++) {
+            model = this.models[i];
+            // Get the value from the property name passed in and uses that as the group name.
+            groupName = model[propertyName];
+
+            if (groupList[groupName] == null) {
+                groupList[groupName] = [];
+            }
+            groupList[groupName].push(model);
+        }
+        return groupList;
     }
 
     /**
@@ -565,11 +628,11 @@ class Collection extends EventDispatcher
      *
      * @method reverse
      * @public
-     * @return {Array} Returns the list of models in the collection.
+     * @return {Array.<any>} Returns the list of models in the collection.
      * @example
      *      collection.reverse();
      */
-    private reverse():Array<any>
+    public reverse():Array<any>
     {
         return this.models.reverse();
     }
@@ -578,11 +641,11 @@ class Collection extends EventDispatcher
      * Returns a new array of models with duplicates removed.
      *
      * @method _unique
-     * @param list {Array} The array you want to use to generate the unique array.
-     * @return {Array} Returns a new array list of models in the collection with duplicates removed.
-     * @private
+     * @param list {Array.<any>} The array you want to use to generate the unique array.
+     * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
+     * @protected
      */
-    private _unique(list):Array<any>
+    protected _unique(list:Array<any>):Array<any>
     {
         var unique:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
         {

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -146,23 +152,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([], factory);
-    } else if (typeof module !== &#x27;undefined&#x27; &amp;&amp; module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.DateUtil = factory();
+(function(deps, factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    &#x27;use strict&#x27;;
-
+})([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
     /**
      * A helper class that deals with dates.
      *
@@ -174,29 +171,29 @@
      */
     var DateUtil = (function() {
         function DateUtil() {
-            throw new Error(&#x27;[DateUtil] Do not instantiate the DateUtil class because it is a static class.&#x27;);
-        }
-        /**
-         * Returns the suffix of a given day.
-         *
-         * @method getDaySuffix
-         * @param today {number}
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      DateUtil.getDaySuffix(1);
-         *      // &#x27;st&#x27;
-         *
-         *      DateUtil.getDaySuffix(2);
-         *      // &#x27;nd&#x27;
-         *
-         *      DateUtil.getDaySuffix(3);
-         *      // &#x27;rd&#x27;
-         *
-         *      DateUtil.getDaySuffix(4);
-         *      // &#x27;th&#x27;
-         */
+                throw new Error(&#x27;[DateUtil] Do not instantiate the DateUtil class because it is a static class.&#x27;);
+            }
+            /**
+             * Returns the suffix of a given day.
+             *
+             * @method getDaySuffix
+             * @param today {number}
+             * @returns {string}
+             * @public
+             * @static
+             * @example
+             *      DateUtil.getDaySuffix(1);
+             *      // &#x27;st&#x27;
+             *
+             *      DateUtil.getDaySuffix(2);
+             *      // &#x27;nd&#x27;
+             *
+             *      DateUtil.getDaySuffix(3);
+             *      // &#x27;rd&#x27;
+             *
+             *      DateUtil.getDaySuffix(4);
+             *      // &#x27;th&#x27;
+             */
         DateUtil.getDaySuffix = function(today) {
             var day = today % 100;
             return ((Math.floor(day / 10) === 1) ? &#x27;th&#x27; : [&#x27;th&#x27;, &#x27;st&#x27;, &#x27;nd&#x27;, &#x27;rd&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;][day % 10]);
@@ -205,7 +202,7 @@
          * A list of day names.
          *
          * @property LONG_DAY_LABELS
-         * @type {Array}
+         * @type {Array.&lt;any&gt;}
          * @public
          * @static
          * @final
@@ -215,7 +212,7 @@
          * TODO: YUIDoc_comment
          *
          * @property SHORT_DAY_LABELS
-         * @type {Array}
+         * @type {Array.&lt;any&gt;}
          * @public
          * @static
          * @final
@@ -225,7 +222,7 @@
          * A list of month names.
          *
          * @property LONG_MONTH_LABELS
-         * @type {Array}
+         * @type {Array.&lt;any&gt;}
          * @public
          * @static
          * @final
@@ -235,7 +232,7 @@
          * TODO: YUIDoc_comment
          *
          * @property SHORT_MONTH_LABELS
-         * @type {Array}
+         * @type {Array.&lt;any&gt;}
          * @public
          * @static
          * @final
@@ -243,9 +240,8 @@
         DateUtil.SHORT_MONTH_LABELS = [&#x27;Jan&#x27;, &#x27;Feb&#x27;, &#x27;Mar&#x27;, &#x27;Apr&#x27;, &#x27;May&#x27;, &#x27;Jun&#x27;, &#x27;Jul&#x27;, &#x27;Aug&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;Dec&#x27;];
         return DateUtil;
     })();
-
     return DateUtil;
-}));
+});
 
     </pre>
 </div>

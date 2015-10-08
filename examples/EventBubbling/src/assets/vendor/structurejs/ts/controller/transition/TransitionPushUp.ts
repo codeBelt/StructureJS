@@ -1,12 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend');
- @import BaseTransition
- @import ../../display/DisplayObjectContainer as DisplayObjectContainer
- @import ../../display/DOMElement as DOMElement
- @export TransitionPushUp
- */
 import BaseTransition = require('BaseTransition');
 import ITransition = require('../../interface/ITransition');
 import DisplayObjectContainer = require('../../display/DisplayObjectContainer');

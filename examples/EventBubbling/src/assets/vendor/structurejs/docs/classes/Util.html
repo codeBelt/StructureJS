@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.7.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -51,9 +51,13 @@
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
                 <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
             
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -72,6 +76,10 @@
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
             
                 <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
             
@@ -111,8 +119,6 @@
             
                 <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
             
-                <li><a class="type" href="../classes/ValueObject.html">ValueObject</a></li>
-            
             </ul>
 
             <ul id="api-modules" class="apis modules">
@@ -150,7 +156,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_util_Util.js.html#l18"><code>js&#x2F;util&#x2F;Util.js:18</code></a>
+            Defined in: <a href="../files/js_util_Util.js.html#l9"><code>js&#x2F;util&#x2F;Util.js:9</code></a>
         </div>
     
 
@@ -180,7 +186,7 @@
     <div id="api-options">
         Show:
         <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
             Inherited
         </label>
 
@@ -259,8 +265,8 @@
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_getClassName">getClassName</a>
+                <li class="index-item method">
+                    <a href="#method_getName">getName</a>
 
                     
                         <span class="flag static">static</span>
@@ -340,7 +346,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l250"><code>js&#x2F;util&#x2F;Util.js:250</code></a>
+        <a href="../files/js_util_Util.js.html#l264"><code>js&#x2F;util&#x2F;Util.js:264</code></a>
         
         </p>
 
@@ -434,7 +440,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l125"><code>js&#x2F;util&#x2F;Util.js:125</code></a>
+        <a href="../files/js_util_Util.js.html#l121"><code>js&#x2F;util&#x2F;Util.js:121</code></a>
         
         </p>
 
@@ -574,7 +580,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l211"><code>js&#x2F;util&#x2F;Util.js:211</code></a>
+        <a href="../files/js_util_Util.js.html#l225"><code>js&#x2F;util&#x2F;Util.js:225</code></a>
         
         </p>
 
@@ -698,7 +704,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
                 <li class="arg">
                     
-                        <code>list</code>
+                        <code>value</code>
                     
                 </li>
             
@@ -741,7 +747,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l56"><code>js&#x2F;util&#x2F;Util.js:56</code></a>
+        <a href="../files/js_util_Util.js.html#l48"><code>js&#x2F;util&#x2F;Util.js:48</code></a>
         
         </p>
 
@@ -782,14 +788,14 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                 
                     <li class="param">
                         
-                            <code class="param-name">list</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+                            <code class="param-name">value</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | Array.<string></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>A list of property names you want to remove from the object.</p>
+                            <p>A property name or an array of property names you want to remove from the object.</p>
 
                         </div>
 
@@ -834,9 +840,9 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 </div>
 
         
-            <a name="method_getClassName" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>getClassName</code>
+            <a name="method_getName" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>getName</code>
 
     
         <div class="args">
@@ -860,8 +866,6 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 
     
 
-    
-        <span class="flag public">public</span>
     
 
     
@@ -887,7 +891,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l192"><code>js&#x2F;util&#x2F;Util.js:192</code></a>
+        <a href="../files/js_util_Util.js.html#l188"><code>js&#x2F;util&#x2F;Util.js:188</code></a>
         
         </p>
 
@@ -900,7 +904,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Returns the name of the class object passed in.</p>
+            <p>Returns the name of the function/object passed in.</p>
 
         </div>
 
@@ -913,7 +917,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">classObject</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            <span class="type">Any</span>
                         
 
                         
@@ -938,7 +942,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                         
                             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
-                        <p>Returns the name of the class object passed in.</p>
+                        <p>Returns the name of the function or object.</p>
 
                     
                 </div>
@@ -951,9 +955,10 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code> var someClass = new SomeClass();
+ Util.getName(someClass);            // &#39;SomeClass&#39;
 
- Util.getClassName(someClass);
- // &#39;SomeClass&#39;</code></pre>
+ Util.getName(function Test(){});    // &#39;Test&#39;
+ Util.getName(function (){});        // &#39;anonymous&#39;</code></pre>
 
                 </div>
             </div>
@@ -1027,7 +1032,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l100"><code>js&#x2F;util&#x2F;Util.js:100</code></a>
+        <a href="../files/js_util_Util.js.html#l96"><code>js&#x2F;util&#x2F;Util.js:96</code></a>
         
         </p>
 
@@ -1187,7 +1192,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l170"><code>js&#x2F;util&#x2F;Util.js:170</code></a>
+        <a href="../files/js_util_Util.js.html#l166"><code>js&#x2F;util&#x2F;Util.js:166</code></a>
         
         </p>
 
@@ -1317,7 +1322,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l32"><code>js&#x2F;util&#x2F;Util.js:32</code></a>
+        <a href="../files/js_util_Util.js.html#l22"><code>js&#x2F;util&#x2F;Util.js:22</code></a>
         
         </p>
 

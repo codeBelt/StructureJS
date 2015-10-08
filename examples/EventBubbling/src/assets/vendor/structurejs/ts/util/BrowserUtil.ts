@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/BaseEvent as BaseEvent
- @import ../util/Util as Util
- @export BrowserUtil
- */
 import EventDispatcher = require('../event/EventDispatcher');
 import BaseEvent = require('../event/BaseEvent');
 import Util = require('../util/Util');
@@ -42,6 +34,16 @@ class BrowserUtil
     private static _window:Window = window;
 
     /**
+     * A reference to the getComputedStyle method.
+     *
+     * @property _styleDeclaration
+     * @type {any}
+     * @private
+     * @static
+     */
+    private static _styleDeclaration:any = window.getComputedStyle(document.querySelector('body'), ':after');
+
+    /**
      * TODO: YUIDoc_comment
      *
      * @property _onBreakpointChangeHandler
@@ -64,7 +66,7 @@ class BrowserUtil
     public static debounceDelay:number = 250;
 
     /**
-     * TODO: YUIDoc_comment
+     * The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.
      *
      * @property isEnabled
      * @type {boolean}
@@ -169,7 +171,7 @@ class BrowserUtil
      *      BrowserUtil.getBrowser();
      *      // ["Chrome", "39.0.2171.99"]
      */
-    private static getBrowser():string[]
+    private static getBrowser():Array<string>
     {
         var N = navigator.appName;
         var ua = navigator.userAgent;
@@ -358,12 +360,12 @@ class BrowserUtil
      *      // For each of your different style sheets add something like below:
      *      // screen_lg.css
      *      body:after {
-         *          content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
-         *      }
+     *          content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+     *      }
      *      // screen_sm.css
      *      body:after {
-         *          content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
-         *      }
+     *          content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;
+     *      }
      *
      *      BrowserUtil.getBreakpoint();
      *      // 'screen_lg'
@@ -372,15 +374,13 @@ class BrowserUtil
      *      BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
      *      ...
      *      ClassName.prototype._onBreakpointChange = function (baseEvent) {
-         *          console.log(baseEvent.data);
-         *          // 'screen_sm'
-         *      };
+     *          console.log(baseEvent.data);
+     *          // 'screen_sm'
+     *      };
      */
     public static getBreakpoint()
     {
-        return BrowserUtil._window.getComputedStyle(
-            document.querySelector('body'), ':after'
-        ).getPropertyValue('content').replace(/"/g, '');
+        return BrowserUtil._styleDeclaration.getPropertyValue('content').replace(/["']/g, '');
     }
 
     /**

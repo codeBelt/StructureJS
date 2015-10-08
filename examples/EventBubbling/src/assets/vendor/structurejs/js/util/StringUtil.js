@@ -1,20 +1,11 @@
-/**
- * UMD (Universal Module Definition) wrapper.
- */
-(function(root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    } else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = factory();
-    } else {
-        /*jshint sub:true */
-        root.StructureJS = root.StructureJS || {};
-        root.StructureJS.StringUtil = factory();
+(function(deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    } else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
     }
-}(this, function() {
-
-    'use strict';
-
+})(["require", "exports"], function(require, exports) {
     /**
      * The StringUtil...
      *
@@ -25,28 +16,29 @@
      * @static
      */
     var StringUtil = (function() {
-
         function StringUtil() {
-            throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
-        }
-        /**
-         * Gets the extension name off the string being passed in.
-         *
-         * @method getExtension
-         * @param filename {string}
-         * @param withDot {boolean} If you want the period to be included in the extension name.
-         * @returns {string}
-         * @public
-         * @static
-         * @example
-         *      StringUtil.getExtension('file.exe');
-         *      // 'exe'
-         *
-         *      StringUtil.getExtension('file.exe', true);
-         *      // '.exe'
-         */
+                throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
+            }
+            /**
+             * Gets the extension name off the string being passed in.
+             *
+             * @method getExtension
+             * @param filename {string}
+             * @param withDot {boolean} If you want the period to be included in the extension name.
+             * @returns {string}
+             * @public
+             * @static
+             * @example
+             *      StringUtil.getExtension('file.exe');
+             *      // 'exe'
+             *
+             *      StringUtil.getExtension('file.exe', true);
+             *      // '.exe'
+             */
         StringUtil.getExtension = function(filename, withDot) {
-            if (withDot === void 0) { withDot = false; }
+            if (withDot === void 0) {
+                withDot = false;
+            }
             var num = (withDot === true) ? 0 : 1;
             return filename.slice(filename.lastIndexOf('.') + num, filename.length);
         };
@@ -73,21 +65,16 @@
          *      // 'live/down/by/the/river'
          */
         StringUtil.toSentence = function(str, separator) {
-            if (separator === void 0) { separator = ' '; }
+            if (separator === void 0) {
+                separator = ' ';
+            }
             return String(str)
-                // Add a space after any digits.
                 .replace(/(\d)/g, '$1 ')
-                // Add a space before any upper case characters.
                 .replace(/([a-z](?=[A-Z]))/g, '$1 ')
-                // Remove all non-word characters and replace with a single space.
                 .replace(/[^a-zA-Z0-9 ]/g, ' ')
-                // Replace multiple Spaces with a single space.
                 .replace(/\s{2,}/g, ' ')
-                // Trim whitespace around the string.
                 .replace(/^ | $/g, '')
-                // Lower case the entire string.
                 .toLowerCase()
-                // If a separator is passed in then replace the space with it.
                 .replace(/\s+/g, separator);
         };
         /**
@@ -104,7 +91,6 @@
          */
         StringUtil.toCamelCase = function(str) {
             return StringUtil.toSentence(str)
-                // Replace spaces between words with a string upper cased character.
                 .replace(/ (\w)/g, function(_, $1) {
                     return $1.toUpperCase();
                 });
@@ -123,7 +109,6 @@
          */
         StringUtil.toPascalCase = function(str) {
             return StringUtil.toCamelCase(str)
-                // Make first character uppercase.
                 .replace(/^[a-zA-Z]/, function(a, b, c) {
                     return a.toUpperCase();
                 });
@@ -180,7 +165,9 @@
          *      // {name: 'Robert', age: '23', gender: 'male'}
          */
         StringUtil.queryStringToObject = function(queryString, useParseFloat) {
-            if (useParseFloat === void 0) { useParseFloat = true; }
+            if (useParseFloat === void 0) {
+                useParseFloat = true;
+            }
             var params = {};
             var temp = null;
             var str = queryString.substring(queryString.indexOf('?') + 1);
@@ -254,7 +241,7 @@
          * @method format
          * @returns {string}
          * @param str {string}
-         * @param ...rest {Array}
+         * @param ...rest {Array.<any>}
          * @public
          * @static
          * @example
@@ -296,6 +283,5 @@
         };
         return StringUtil;
     })();
-
     return StringUtil;
-}));
+});

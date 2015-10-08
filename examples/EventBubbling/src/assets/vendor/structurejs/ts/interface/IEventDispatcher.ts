@@ -4,7 +4,7 @@ import BaseEvent = require('../event/BaseEvent');
 /**
  * TODO: YUIDoc_comment
  *
- * @class IValueObject
+ * @class IBaseModel
  * @extends ICore
  * @module StructureJS
  * @submodule interface

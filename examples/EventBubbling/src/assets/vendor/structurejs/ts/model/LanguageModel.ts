@@ -1,23 +1,9 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ../model/ValueObject as ValueObject
- @import ../controller/LocalStorageController as LocalStorageController
- @import ../event/EventDispatcher as EventDispatcher
- @import ../event/RequestEvent as RequestEvent
- @import ../event/LanguageEvent as LanguageEvent
- @import ../request/BaseRequest as BaseRequest
- @import ./vo/LanguageConfigVO as LanguageConfigVO
- @export LoaderEvent
- */
-import ValueObject = require('../interface/IDataStore');
 import LocalStorageController = require('../controller/LocalStorageController');
 import EventDispatcher = require('../event/EventDispatcher');
 import RequestEvent = require('../event/RequestEvent');
 import LanguageEvent = require('../event/LanguageEvent');
 import BaseRequest = require('../request/BaseRequest');
-import LanguageConfigVO = require('./vo/LanguageConfigVO');
+import LanguageConfigModel = require('./LanguageConfigModel');
 
 /**
  * The LanguageModel...
@@ -30,9 +16,9 @@ import LanguageConfigVO = require('./vo/LanguageConfigVO');
  */
 class LanguageModel extends EventDispatcher
 {
-    private _request:BaseRequest = null;
-    private _availableLanguagesDictionary:LanguageConfigVO[] = [];
-    private _localStorageController:LocalStorageController = null;
+    protected _request:BaseRequest = null;
+    protected _availableLanguagesDictionary:Array<LanguageConfigModel> = [];
+    protected _localStorageController:LocalStorageController = null;
 
     public currentLanguage:string = null;
     public data:any = null;
@@ -89,10 +75,10 @@ class LanguageModel extends EventDispatcher
     /**
      *
      * @method loadLanguageData
-     * @param path {LanguageConfigVO}
+     * @param path {LanguageConfigModel}
      * @protected
      */
-    public loadLanguageData(vo:LanguageConfigVO):void
+    public loadLanguageData(vo:LanguageConfigModel):void
     {
         this._localStorageController.addItem('language', vo.id, true);
 
@@ -107,7 +93,7 @@ class LanguageModel extends EventDispatcher
      */
     public getSupportedLanguages()
     {
-        var temp:LanguageConfigVO[] = [];
+        var temp:Array<LanguageConfigModel> = [];
         for (var key in this._availableLanguagesDictionary)
         {
             temp.push(this._availableLanguagesDictionary[key]);
@@ -121,7 +107,7 @@ class LanguageModel extends EventDispatcher
      */
     public loadLanguageById(id:string):void
     {
-        var vo:LanguageConfigVO = this.getLangConfigById(id);
+        var vo:LanguageConfigModel = this.getLangConfigById(id);
         this.loadLanguageData(vo);
     }
 
@@ -129,10 +115,10 @@ class LanguageModel extends EventDispatcher
      *
      * @method getLangConfigById
      * @param id {string}
-     * @return {LanguageConfigVO}
+     * @return {LanguageConfigModel}
      * @protected
      */
-    public getLangConfigById(id:string):LanguageConfigVO
+    public getLangConfigById(id:string):LanguageConfigModel
     {
         return this._availableLanguagesDictionary[id];
     }
@@ -149,11 +135,11 @@ class LanguageModel extends EventDispatcher
 
         var firstLanguageId:string = null;
         var jsonData:any = JSON.parse(event.target.data);
-        var vo:LanguageConfigVO;
+        var vo:LanguageConfigModel;
         var len:number = jsonData.data.length;
         for (var i:number = 0; i < len; i++)
         {
-            vo = new LanguageConfigVO(jsonData.data[i]);
+            vo = new LanguageConfigModel(jsonData.data[i]);
             this._availableLanguagesDictionary[vo.id] = vo;
 
             // Save a reference to the first vo id so we can set that as the default language.
@@ -172,8 +158,8 @@ class LanguageModel extends EventDispatcher
         this.dispatchEvent(new RequestEvent(LanguageEvent.CONFIG_LOADED, false, false, this.data));
 
         // Get the language vo and get the json file path to load that specific language.
-        var currentLanguageVO:LanguageConfigVO = this.getLangConfigById(this.currentLanguage);
-        this.loadLanguageData(currentLanguageVO);
+        var currentLanguageModel:LanguageConfigModel = this.getLangConfigById(this.currentLanguage);
+        this.loadLanguageData(currentLanguageModel);
     }
 
     /**
@@ -196,9 +182,9 @@ class LanguageModel extends EventDispatcher
      * If the application was updated and the language id's changed it would break the application.
      *
      * @method hasLanguage
-     * @private
+     * @protected
      */
-    private hasLanguage(languageId:string):boolean
+    protected hasLanguage(languageId:string):boolean
     {
         return !!this._availableLanguagesDictionary[languageId];
     }

@@ -1,11 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/StringUtil as StringUtil
- @import ../event/RouterEvent as RouterEvent
- @import ../model/Route as Route
- @export Router
- */
 import StringUtil = require('../util/StringUtil');
 import RouterEvent = require('../event/RouterEvent');
 import Route = require('../model/Route');
@@ -32,7 +24,7 @@ class Router
      * @private
      * @static
      */
-    private static _window:Window = window;
+    private static _window:any = window;
 
     /**
      * A list of the added Route objects.

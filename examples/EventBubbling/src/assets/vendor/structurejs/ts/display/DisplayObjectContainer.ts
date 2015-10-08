@@ -1,10 +1,3 @@
-'use strict';
-/*
- UMD Stuff
- @import ../util/Extend as Extend
- @import ./DisplayObject as DisplayObject
- @export DisplayObjectContainer
- */
 import DisplayObject = require('./DisplayObject');
 
 /**
@@ -36,11 +29,11 @@ class DisplayObjectContainer extends DisplayObject
      * A reference to the child DisplayObject instances to this parent object instance.
      *
      * @property children
-     * @type {Array}
+     * @type {Array.<DisplayObject>}
      * @readOnly
      * @public
      */
-    public children:DisplayObject[] = [];
+    public children:Array<DisplayObject> = [];
 
     /**
      * Determines whether or not the children of the object are mouse enabled.
@@ -74,7 +67,7 @@ class DisplayObjectContainer extends DisplayObject
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent)
         {
-            child.parent.removeChild(child, false);
+            child.parent.removeChild(child);
         }
 
         this.children.push(child);
@@ -102,7 +95,7 @@ class DisplayObjectContainer extends DisplayObject
         //If the child being passed in already has a parent then remove the reference from there.
         if (child.parent)
         {
-            child.parent.removeChild(child, false);
+            child.parent.removeChild(child);
         }
 
         this.children.splice(index, 0, child);
@@ -124,7 +117,7 @@ class DisplayObjectContainer extends DisplayObject
      * @public
      * @chainable
      */
-    public removeChild(child:DisplayObject, destroy:boolean):any
+    public removeChild(child:DisplayObject):any
     {
         var index = this.getChildIndex(child);
         if (index !== -1)
@@ -134,15 +127,6 @@ class DisplayObjectContainer extends DisplayObject
         }
 
         this.numChildren = this.children.length;
-
-        if (destroy === true)
-        {
-            child.destroy();
-        }
-        else
-        {
-            child.disable();
-        }
 
         child.parent = null;
 
@@ -159,11 +143,11 @@ class DisplayObjectContainer extends DisplayObject
      * @public
      * @chainable
      */
-    public removeChildren(destroy:boolean):any
+    public removeChildren():any
     {
         while (this.children.length > 0)
         {
-            this.removeChild(this.children.pop(), destroy);
+            this.removeChild(this.children.pop());
         }
 
         return this;
@@ -252,21 +236,21 @@ class DisplayObjectContainer extends DisplayObject
     }
 
     /**
-     * Gets a DisplayObject by its cid.
+     * Gets a DisplayObject by its sjsId.
      *
      * @method getChildByCid
-     * @param cid {number}
+     * @param sjsId {number}
      * @returns {DisplayObject|null}
      * @override
      * @public
      */
-    public getChildByCid(cid:number):DisplayObject
+    public getChildByCid(sjsId:number):DisplayObject
     {
         var child:DisplayObject = null;
 
         for (var i:number = this.numChildren - 1; i >= 0; i--)
         {
-            if (this.children[i].cid == cid)
+            if (this.children[i].sjsId == sjsId)
             {
                 child = this.children[i];
                 break;
