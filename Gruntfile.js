@@ -331,7 +331,7 @@ module.exports = function(grunt) {
                     target: 'es5',
                     module: 'umd',
                     basePath: '',
-                    sourcemap: false,
+                    sourceMap: false,
                     declaration: false,
                     nolib: false,
                     comments: true

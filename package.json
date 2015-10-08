@@ -6,15 +6,15 @@
   "repository": "https://github.com/codeBelt/StructureJS",
   "developedBy": "codeBelt",
   "devDependencies": {
-    "browserify": "^9.0.8",
+    "browserify": "^11.2.0",
     "grunt": "0.4.5",
     "grunt-banner": "0.2.0",
-    "grunt-browserify": "^3.8.0",
+    "grunt-browserify": "^4.0.1",
     "grunt-contrib-clean": "0.5.0",
     "grunt-contrib-concat": "0.3.0",
     "grunt-contrib-copy": "0.4.1",
     "grunt-contrib-cssmin": "0.7.0",
-    "grunt-contrib-handlebars": "0.9.0",
+    "grunt-contrib-handlebars": "^0.10.2",
     "grunt-contrib-htmlmin": "0.1.3",
     "grunt-contrib-jshint": "0.7.2",
     "grunt-contrib-requirejs": "0.4.1",
@@ -28,8 +28,7 @@
     "grunt-manifest": "0.4.0",
     "grunt-open": "0.2.2",
     "grunt-preprocess": "4.0.0",
-    "grunt-ts": "^4.2.0",
-    "grunt-typescript": "^0.6.2",
+    "grunt-ts": "^5.0.0",
     "grunt-umd-wrapper": "^0.3.0",
     "grunt-usemin": "2.0.2",
     "jasmine-core": "^2.3.3",
@@ -41,6 +40,6 @@
     "karma-requirejs": "0.2.1",
     "lodash": "^3.6.0",
     "matchdep": "0.3.0",
-    "typescript": "^1.5.3"
+    "typescript": "^1.6.2"
   }
 }
