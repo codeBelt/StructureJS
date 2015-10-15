@@ -3,7 +3,7 @@
     "version": "0.8.0",
     "dependencies": {
         "jquery": "*",
-        "handlebars": "^3.0.0"
+        "handlebars": "*"
     },
     "description": "An Event Driven JavaScript Library.",
     "main": "js/",
