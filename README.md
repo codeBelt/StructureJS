@@ -38,21 +38,23 @@ A class based utility library for building modular and scalable web platform app
 A base application class for your project. `Stage` allows you to set DOM references for your application to control.
 
 ```js
-var App = (function () {
+import FooView from 'views/FooView';
+import BarView from 'views/BarView';
+import FooBarView from 'views/FooBarView';
 
-	var _super = Extend (App, DOMElement);
+class App extends Stage {
 
-	function App () {
-		_super.call(this);
+    _fooBarView = null;
 
-        this._fooBarView = null;
-	}
+    constructor() {
+        super()
+    }
 
-	App.prototype.create = function () {
-		_super.prototype.create.call(this);
+    create() {
+        super.create();
 
-		// single instance of a component
-        var $fooBar = this.$element.find('#js-fooBar');
+        // single instance of a component
+        let $fooBar = this.$element.find('#js-fooBar');
 		this._fooBarView = new FooBarView($fooBar);
 		this.addChild(this._fooBarView);
 
@@ -61,10 +63,11 @@ var App = (function () {
 			{ selector: '.js-foo', component: FooView },
 			{ selector: '.js-bar', component: BarView }
 		]);
-	};
+    }
 
-	return App;
 }
+
+export default App;
 ```
 
 [Example `Stage` Class](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/MovieCollectionApp.js)
@@ -76,20 +79,19 @@ var App = (function () {
 A base view class for objects that control the DOM. Your View classes will extend this `DOMElement` class.
 
 ```js
-var ExampleView = (function () {
+class ExampleView extends DOMElement {
 
-	var _super = Extend (ExampleView, DOMElement);
+    constructor() {
+        super();
+    }
 
-	function ExampleView () {
-		_super.call(this);
-	}
+    create() {
+        super.create();
+    }
 
-    ExampleView.prototype.create = function () {
-		_super.prototype.create.call(this);
-	};
-
-	return ExampleView;
 }
+
+export default ExampleView;
 ```
 
 `DOMElement` provides helper methods and adds the following lifecycle to your class, these methods get called in this order:
@@ -98,45 +100,43 @@ var ExampleView = (function () {
 * `layout()`
 
 ```js
-var ExampleView = (function () {
+class ExampleView extends DOMElement {
 
-	var _super = Extend (ExampleView, DOMElement);
+    constructor() {
+        super();
+    }
 
-	function ExampleView () {
-		_super.call(this);
-        // setup properties here
-	}
-
-	MenuView.prototype.create = function () {
-		_super.prototype.create.call(this);
+    create() {
+        super.create();
         // Create or setup objects in this parent class.
-	};
+    }
 
-	MenuView.prototype.enable = function () {
-		if (this.isEnabled === true) { return this; }
+    enable() {
+        if (this.isEnabled === true) { return this; }
         // Enable the child objects and/or add any event listeners.
-		return _super.prototype.enable.call(this);
-	};
+        return super.enable();
+    }
 
-    MenuView.prototype.disable = function () {
+    disable() {
         if (this.isEnabled === false) { return this; }
         // Disable the child objects and/or remove any event listeners.
-        return _super.prototype.disable.call(this);
-	};
+        return super.disable();
+    }
 
-	MenuView.prototype.layout = function () {
-        // Layout or update the objects in this parent class.
-		return this;
-	};
-
-    MenuView.prototype.destroy = function () {
+    destroy() {
         // Call destroy on any child objects.
         // This super method will also null out your properties for garbage collection.
-        _super.prototype.destroy.call(this);
-	};
+        super.destroy();
+    }
 
-	return ExampleView;
+    layout() {
+        // Layout or update the objects in this parent class.
+        return this;
+    }
+
 }
+
+export default ExampleView;
 ```
 
 [Example `DOMElement` View](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/view/ListView.js)
@@ -154,8 +154,8 @@ this.dispatchEvent('change');
 this.dispatchEvent('change', { some: 'data' });
 
 // Example with an event object
-// (event type, bubbling set to true, cancelable set to true and passing data)
-var event = new BaseEvent(BaseEvent.CHANGE, true, true, { some: 'data' });
+// (event type, bubbling set to true, cancelable set to true, and passing data)
+let event = new BaseEvent(BaseEvent.CHANGE, true, true, { some: 'data' });
 this.dispatchEvent(event);
 
 // Dispatching an inline event object
@@ -165,7 +165,6 @@ this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
 [Read more about `EventDispatcher`](http://codebelt.github.io/StructureJS/docs/classes/EventDispatcher.html)
 
 [Read more about `BaseEvent`](http://codebelt.github.io/StructureJS/docs/classes/BaseEvent.html)
-
 
 
 ### `EventBroker`
@@ -179,7 +178,7 @@ EventBroker.addEventListener('change', this._handlerMethod, this);
 EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
 // Event passed to the method will always be a BaseEvent object.
-ClassName.prototype._handlerMethod = function (event) {
+_handlerMethod(event) {
      console.log(event);
 }
 ```
@@ -206,7 +205,7 @@ Router.start();
 // '/games/asteroids/2/'
 
 // The Call back receives a RouterEvent object.
-ExampleClass.prototype._onRouteHandler = function (routerEvent) {
+_onRouteHandler(routerEvent) {
     console.log(routerEvent.params);
 }
 ```
@@ -228,20 +227,27 @@ Similar to the `.on()` & `.off()` jQuery methods, this plugin allows you to bind
 * scope
 
 ```js
-Class.prototype.enable = function () {
-    this._$element.addEventListener('click', this._onClickHandler, this);
-    // event delegation
-    this._$element.addEventListener('click', 'button', this._onClickHandler, this);
-};
+enable() {
+    if (this.isEnabled === true) { return this; }
 
-Class.prototype.disable = function () {
+    this._$element.addEventListener('click', this._onClickHandler, this);
+    this._$element.addEventListener('click', 'button', this._onClickHandler, this); // event delegation
+
+    return super.enable();
+}
+
+disable() {
+    if (this.isEnabled === false) { return this; }
+
     this._$element.removeEventListener('click', this._onClickHandler, this);
     this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
-};
 
-Class.prototype._onClickHandler = function (event) {
+    return super.disable();
+}
+
+_onClickHandler(event) {
     console.log('click', event);
-};
+}
 ```
 
 [Read more about `jQueryEventListener`](https://github.com/codeBelt/jquery-eventListener)
