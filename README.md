@@ -123,15 +123,15 @@ class ExampleView extends DOMElement {
         return super.disable();
     }
 
+    layout() {
+        // Layout or update the objects in this parent class.
+        return this;
+    }
+    
     destroy() {
         // Call destroy on any child objects.
         // This super method will also null out your properties for garbage collection.
         super.destroy();
-    }
-
-    layout() {
-        // Layout or update the objects in this parent class.
-        return this;
     }
 
 }
