@@ -254,6 +254,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2015-10-24 v0.9.0 Remove unnecessary classes. DisplayObject - rename update to renderCanvas. Util - add applyMixins static method. Updated BulkLoader and created BulkLoaderEvent. Update interface files.
+
  * 2015-10-03 v0.8.0 Rename ValueObject to BaseModel and update all classes using it. Added addEventListenerOnce to EventDispatcher and EventBroker. Fixed Collection assign it a type in the constructor causes issues if data was already that type.
 
  * 2015-09-04 v0.7.9 Remove Util.getClassName, Util.getFunctionName and add Util.getName. Fix issue with getQualifiedClassName now working when code was uglified (Now need to have mangle set as false). Remove jQuery dependency from TemplateFactory. Change private methods and properties to protected.
