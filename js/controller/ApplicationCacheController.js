@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", '../event/ApplicationCacheEvent', '../event/EventDispatcher'], function(require, exports) {
+})(["require", "exports", '../event/ApplicationCacheEvent', '../event/EventDispatcher'], function (require, exports) {
     var ApplicationCacheEvent = require('../event/ApplicationCacheEvent');
     var EventDispatcher = require('../event/EventDispatcher');
     /**
@@ -19,14 +19,14 @@
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
-    var ApplicationCacheController = (function() {
+    var ApplicationCacheController = (function () {
         function ApplicationCacheController() {
-                throw new Error('[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.');
-            }
-            /**
-             * @overridden BaseObject.enable
-             */
-        ApplicationCacheController.enable = function() {
+            throw new Error('[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.');
+        }
+        /**
+         * @overridden BaseObject.enable
+         */
+        ApplicationCacheController.enable = function () {
             if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true) {
                 return;
             }
@@ -44,7 +44,7 @@
         /**
          * @overridden BaseObject.disable
          */
-        ApplicationCacheController.disable = function() {
+        ApplicationCacheController.disable = function () {
             if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === false) {
                 return;
             }
@@ -58,10 +58,10 @@
             ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.ERROR, ApplicationCacheController.onError.bind(this), false);
             ApplicationCacheController.isEnabled = true;
         };
-        ApplicationCacheController.update = function() {
+        ApplicationCacheController.update = function () {
             ApplicationCacheController._appCache.update();
         };
-        ApplicationCacheController.getStatus = function() {
+        ApplicationCacheController.getStatus = function () {
             switch (ApplicationCacheController._appCache.status) {
                 case ApplicationCacheController._appCache.UNCACHED:
                     return 'UNCACHED';
@@ -95,7 +95,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onCached = function(event) {
+        ApplicationCacheController.onCached = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CACHED, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CACHED, false, false, event));
         };
@@ -109,7 +109,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onChecking = function(event) {
+        ApplicationCacheController.onChecking = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CHECKING, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CHECKING, false, false, event));
         };
@@ -122,7 +122,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onDownloading = function(event) {
+        ApplicationCacheController.onDownloading = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.DOWNLOADING, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.DOWNLOADING, false, false, event));
         };
@@ -135,7 +135,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onError = function(event) {
+        ApplicationCacheController.onError = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.ERROR, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.ERROR, false, false, event));
         };
@@ -147,7 +147,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onNoUpdate = function(event) {
+        ApplicationCacheController.onNoUpdate = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.NO_UPDATE, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.NO_UPDATE, false, false, event));
         };
@@ -160,7 +160,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onObsolete = function(event) {
+        ApplicationCacheController.onObsolete = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.OBSOLETE, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.OBSOLETE, false, false, event));
         };
@@ -173,7 +173,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onProgress = function(event) {
+        ApplicationCacheController.onProgress = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.PROGRESS, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.PROGRESS, false, false, event));
         };
@@ -186,7 +186,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController.onUpdateReady = function(event) {
+        ApplicationCacheController.onUpdateReady = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.UPDATE_READY, event);
             ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY, false, false, event));
         };
@@ -205,10 +205,8 @@
          *          console.log(event.target + " sent the event.");
          *      }
          */
-        ApplicationCacheController.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+        ApplicationCacheController.addEventListener = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             ApplicationCacheController._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
         /**
@@ -226,7 +224,7 @@
          *          console.log(event.target + " sent the event.");
          *      }
          */
-        ApplicationCacheController.removeEventListener = function(type, callback, scope) {
+        ApplicationCacheController.removeEventListener = function (type, callback, scope) {
             ApplicationCacheController._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -243,7 +241,7 @@
          *      // Here is a common inline event being dispatched
          *      ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
          */
-        ApplicationCacheController.dispatchEvent = function(event) {
+        ApplicationCacheController.dispatchEvent = function (event) {
             ApplicationCacheController._eventDispatcher.dispatchEvent(event);
         };
         /**

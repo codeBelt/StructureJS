@@ -1,21 +1,16 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], function(require, exports) {
+})(["require", "exports", '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], function (require, exports) {
     var LocalStorageEvent = require('../event/LocalStorageEvent');
     var EventDispatcher = require('../event/EventDispatcher');
     var BaseModel = require('../model/BaseModel');
@@ -33,40 +28,39 @@ var __extends = (this && this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var LocalStorageController = (function(_super) {
+    var LocalStorageController = (function (_super) {
         __extends(LocalStorageController, _super);
-
         function LocalStorageController() {
-                _super.call(this);
-                /**
-                 * Current user namespace. The namespace is optional.
-                 *
-                 * @property _namespace
-                 * @type {string}
-                 * @default defaultNamespace
-                 * @optional
-                 * @protected
-                 */
-                this._namespace = 'defaultNamespace';
-                /**
-                 * A reference to window.localStorage for faster access.
-                 *
-                 * @property _localStorage
-                 * @type {Storage}
-                 * @protected
-                 */
-                this._localStorage = null;
-                this._localStorage = window.localStorage;
-                window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
-            }
+            _super.call(this);
             /**
-             * Set storage namespace
+             * Current user namespace. The namespace is optional.
              *
-             * @method setNamespace
-             * @param namespace
-             * @returns {string}
+             * @property _namespace
+             * @type {string}
+             * @default defaultNamespace
+             * @optional
+             * @protected
              */
-        LocalStorageController.prototype.setNamespace = function(namespace) {
+            this._namespace = 'defaultNamespace';
+            /**
+             * A reference to window.localStorage for faster access.
+             *
+             * @property _localStorage
+             * @type {Storage}
+             * @protected
+             */
+            this._localStorage = null;
+            this._localStorage = window.localStorage;
+            window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
+        }
+        /**
+         * Set storage namespace
+         *
+         * @method setNamespace
+         * @param namespace
+         * @returns {string}
+         */
+        LocalStorageController.prototype.setNamespace = function (namespace) {
             this._namespace = namespace;
         };
         /**
@@ -75,7 +69,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @method getNamespace
          * @returns {string}
          */
-        LocalStorageController.prototype.getNamespace = function() {
+        LocalStorageController.prototype.getNamespace = function () {
             return this._namespace;
         };
         /**
@@ -87,10 +81,8 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param useNamespace {boolean}
          * @return {boolean}
          */
-        LocalStorageController.prototype.addItem = function(key, data, useNamespace) {
-            if (useNamespace === void 0) {
-                useNamespace = false;
-            }
+        LocalStorageController.prototype.addItem = function (key, data, useNamespace) {
+            if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
@@ -101,7 +93,8 @@ var __extends = (this && this.__extends) || function(d, b) {
             try {
                 this._localStorage.setItem(key, data);
                 return true;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
@@ -113,10 +106,8 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param [useNamespace=false] {string}
          * @returns {any}
          */
-        LocalStorageController.prototype.getItem = function(key, useNamespace) {
-            if (useNamespace === void 0) {
-                useNamespace = false;
-            }
+        LocalStorageController.prototype.getItem = function (key, useNamespace) {
+            if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
@@ -124,7 +115,8 @@ var __extends = (this && this.__extends) || function(d, b) {
             if (value) {
                 try {
                     value = JSON.parse(value);
-                } catch (error) {
+                }
+                catch (error) {
                     // We are assuming the error is because value being parsed is a plain string with spaces.
                     value = value;
                 }
@@ -138,10 +130,8 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
          * @return {Array}
          */
-        LocalStorageController.prototype.getItemsWithNamespace = function(namespace) {
-            if (namespace === void 0) {
-                namespace = this._namespace;
-            }
+        LocalStorageController.prototype.getItemsWithNamespace = function (namespace) {
+            if (namespace === void 0) { namespace = this._namespace; }
             var list = [];
             var length = this.getLength();
             for (var i = 0; i < length; i++) {
@@ -163,7 +153,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @method getAllItems
          * @return {Array}
          */
-        LocalStorageController.prototype.getAllItems = function() {
+        LocalStorageController.prototype.getAllItems = function () {
             var list = [];
             var length = this.getLength();
             for (var i = 0; i < length; i++) {
@@ -185,17 +175,16 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param [useNamespace=false] {string}
          * @return {boolean}
          */
-        LocalStorageController.prototype.removeItem = function(key, useNamespace) {
-            if (useNamespace === void 0) {
-                useNamespace = false;
-            }
+        LocalStorageController.prototype.removeItem = function (key, useNamespace) {
+            if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
             try {
                 this._localStorage.removeItem(key);
                 return true;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
@@ -205,7 +194,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @method getLength
          * @returns {number}
          */
-        LocalStorageController.prototype.getLength = function() {
+        LocalStorageController.prototype.getLength = function () {
             return this._localStorage.length;
         };
         /**
@@ -214,7 +203,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @method getSize
          * @returns {number}
          */
-        LocalStorageController.prototype.getSize = function() {
+        LocalStorageController.prototype.getSize = function () {
             return encodeURIComponent(JSON.stringify(this._localStorage)).length;
         };
         /**
@@ -222,13 +211,13 @@ var __extends = (this && this.__extends) || function(d, b) {
          *
          * @method clear
          */
-        LocalStorageController.prototype.clear = function() {
+        LocalStorageController.prototype.clear = function () {
             this._localStorage.clear();
         };
         /**
          * @overridden EventDispatcher.destroy
          */
-        LocalStorageController.prototype.destroy = function() {
+        LocalStorageController.prototype.destroy = function () {
             _super.prototype.destroy.call(this);
         };
         /**
@@ -238,7 +227,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param event {StorageEvent} The native browser event for Web Storage.
          * @protected
          */
-        LocalStorageController.prototype.onLocalStorageEvent = function(event) {
+        LocalStorageController.prototype.onLocalStorageEvent = function (event) {
             this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
         };
         return LocalStorageController;

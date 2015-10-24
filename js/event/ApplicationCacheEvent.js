@@ -1,21 +1,16 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", './BaseEvent'], function(require, exports) {
+})(["require", "exports", './BaseEvent'], function (require, exports) {
     var BaseEvent = require('./BaseEvent');
     /**
      * The ApplicationCacheEvent ....
@@ -35,30 +30,23 @@ var __extends = (this && this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ApplicationCacheEvent = (function(_super) {
+    var ApplicationCacheEvent = (function (_super) {
         __extends(ApplicationCacheEvent, _super);
-
         function ApplicationCacheEvent(type, bubbles, cancelable, data) {
-                if (bubbles === void 0) {
-                    bubbles = false;
-                }
-                if (cancelable === void 0) {
-                    cancelable = false;
-                }
-                if (data === void 0) {
-                    data = null;
-                }
-                _super.call(this, type, bubbles, cancelable, data);
-            }
-            /**
-             * The browser is checking for an update, or is attempting to download
-             * the cache manifest for the first time. This is always the first event
-             * in the sequence.
-             *
-             * @event CHECKING
-             * @type {string}
-             * @static
-             */
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
+            _super.call(this, type, bubbles, cancelable, data);
+        }
+        /**
+         * The browser is checking for an update, or is attempting to download
+         * the cache manifest for the first time. This is always the first event
+         * in the sequence.
+         *
+         * @event CHECKING
+         * @type {string}
+         * @static
+         */
         ApplicationCacheEvent.CHECKING = 'checking';
         /**
          * The cache manifest hadn't changed.

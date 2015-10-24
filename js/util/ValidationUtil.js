@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports"], function(require, exports) {
+})(["require", "exports"], function (require, exports) {
     /**
      * A ValidationUtility class that has several static methods to assist in development.
      *
@@ -15,23 +15,23 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var ValidationUtil = (function() {
+    var ValidationUtil = (function () {
         function ValidationUtil() {
-                throw new Error('[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.');
-            }
-            /**
-             * Determines if the String passed has a length.
-             *
-             * @method isEmpty
-             * @param value {string}
-             * @returns {boolean}
-             * @public
-             * @static
-             * @example
-             *      ValidationUtil.isEmpty('sometext');
-             *      // false
-             */
-        ValidationUtil.isEmpty = function(value) {
+            throw new Error('[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.');
+        }
+        /**
+         * Determines if the String passed has a length.
+         *
+         * @method isEmpty
+         * @param value {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         * @example
+         *      ValidationUtil.isEmpty('sometext');
+         *      // false
+         */
+        ValidationUtil.isEmpty = function (value) {
             if (value != null) {
                 return value.length < 1;
             }
@@ -50,7 +50,7 @@
          *      ValidationUtil.isMatch('one@email.com', 'two@email.com');
          *      // false
          */
-        ValidationUtil.isMatch = function(value1, value2) {
+        ValidationUtil.isMatch = function (value1, value2) {
             return value1 === value2;
         };
         /**
@@ -65,7 +65,7 @@
          *      ValidationUtil.isValidEmailAddress('someemail@address.com');
          *      // true
          */
-        ValidationUtil.isValidEmailAddress = function(email) {
+        ValidationUtil.isValidEmailAddress = function (email) {
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
             return expression.test(email);
         };
@@ -81,7 +81,7 @@
          *      ValidationUtil.isValidPhoneNumber('123 456 7899');
          *      // true
          */
-        ValidationUtil.isValidPhoneNumber = function(phoneNumber) {
+        ValidationUtil.isValidPhoneNumber = function (phoneNumber) {
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
             return expression.test(phoneNumber);
         };
@@ -97,7 +97,7 @@
          *      ValidationUtil.isZipCode('55067 4434');
          *      // true
          */
-        ValidationUtil.isZipCode = function(zipCode) {
+        ValidationUtil.isZipCode = function (zipCode) {
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
             return expression.test(zipCode);
         };
@@ -113,7 +113,7 @@
          *      ValidationUtil.isPostalCode('p8n3h3');
          *      // true
          */
-        ValidationUtil.isPostalCode = function(postalCode) {
+        ValidationUtil.isPostalCode = function (postalCode) {
             var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
             return expression.test(postalCode);
         };
@@ -129,7 +129,7 @@
          *      ValidationUtil.isSocialSecurityNumber('178051120');
          *      // true
          */
-        ValidationUtil.isSocialSecurityNumber = function(ssn) {
+        ValidationUtil.isSocialSecurityNumber = function (ssn) {
             var expression = /^\d{3}-?\d{2}-?\d{4}$/;
             return expression.test(ssn);
         };

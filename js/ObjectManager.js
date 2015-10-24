@@ -1,21 +1,16 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", './BaseObject'], function(require, exports) {
+})(["require", "exports", './BaseObject'], function (require, exports) {
     var BaseObject = require('./BaseObject');
     /**
      * The {{#crossLink "ObjectManager"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
@@ -29,38 +24,37 @@ var __extends = (this && this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ObjectManager = (function(_super) {
+    var ObjectManager = (function (_super) {
         __extends(ObjectManager, _super);
-
         function ObjectManager() {
-                _super.call(this);
-                /**
-                 * The isEnabled property is used to keep track of the enabled state of the object.
-                 *
-                 * @property isEnabled
-                 * @type {boolean}
-                 * @default false
-                 * @public
-                 */
-                this.isEnabled = false;
-            }
+            _super.call(this);
             /**
-             * The enable method is responsible for enabling event listeners and/or children of the containing objects.
+             * The isEnabled property is used to keep track of the enabled state of the object.
              *
-             * @method enable
+             * @property isEnabled
+             * @type {boolean}
+             * @default false
              * @public
-             * @chainable
-             * @example
-             *     ClassName.prototype.enable = function() {
-             *          if (this.isEnabled === true) { return this; }
-             *
-             *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-             *          this._childInstance.enable();
-             *
-             *          return _super.prototype.enable.call(this);
-             *     }
              */
-        ObjectManager.prototype.enable = function() {
+            this.isEnabled = false;
+        }
+        /**
+         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
+         *
+         * @method enable
+         * @public
+         * @chainable
+         * @example
+         *     ClassName.prototype.enable = function() {
+         *          if (this.isEnabled === true) { return this; }
+         *
+         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.enable();
+         *
+         *          return _super.prototype.enable.call(this);
+         *     }
+         */
+        ObjectManager.prototype.enable = function () {
             if (this.isEnabled === true) {
                 return this;
             }
@@ -83,7 +77,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          *          return _super.prototype.disable.call(this);
          *      }
          */
-        ObjectManager.prototype.disable = function() {
+        ObjectManager.prototype.disable = function () {
             if (this.isEnabled === false) {
                 return this;
             }

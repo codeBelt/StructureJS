@@ -1,21 +1,16 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", '../BaseObject'], function(require, exports) {
+})(["require", "exports", '../BaseObject'], function (require, exports) {
     var BaseObject = require('../BaseObject');
     /**
      * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
@@ -63,114 +58,107 @@ var __extends = (this && this.__extends) || function(d, b) {
      *     event.countryName = 'Canada';
      *     this.dispatchEvent(event);
      */
-    var BaseEvent = (function(_super) {
+    var BaseEvent = (function (_super) {
         __extends(BaseEvent, _super);
-
         function BaseEvent(type, bubbles, cancelable, data) {
-                if (bubbles === void 0) {
-                    bubbles = false;
-                }
-                if (cancelable === void 0) {
-                    cancelable = false;
-                }
-                if (data === void 0) {
-                    data = null;
-                }
-                _super.call(this);
-                /**
-                 * The type of event.
-                 *
-                 * @property type
-                 * @type {string}
-                 * @default null
-                 * @public
-                 * @readOnly
-                 */
-                this.type = null;
-                /**
-                 * A reference to the object that originally dispatched the event.
-                 *
-                 * @property target
-                 * @type {any}
-                 * @default null
-                 * @public
-                 * @readOnly
-                 */
-                this.target = null;
-                /**
-                 * The currentTarget property always points to the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
-                 *
-                 * @property currentTarget
-                 * @type {any}
-                 * @default null
-                 * @public
-                 * @readOnly
-                 */
-                this.currentTarget = null;
-                /**
-                 * Used to pass any type of data with the event.
-                 *
-                 * @property data
-                 * @type {any}
-                 * @public
-                 * @default null
-                 */
-                this.data = null;
-                /**
-                 * Indicates whether an event is a bubbling event.
-                 *
-                 * @property bubbles
-                 * @type {boolean}
-                 * @public
-                 * @default false
-                 */
-                this.bubbles = false;
-                /**
-                 * Indicates whether the behavior associated with the event can be prevented.
-                 *
-                 * @property cancelable
-                 * @type {boolean}
-                 * @public
-                 * @default false
-                 */
-                this.cancelable = false;
-                /**
-                 * Indicates if the {{#crossLink "BaseEvent/stopPropagation:method"}}{{/crossLink}} was called on the event object.
-                 *
-                 * @property isPropagationStopped
-                 * @type {boolean}
-                 * @default false
-                 * @public
-                 * @readOnly
-                 */
-                this.isPropagationStopped = false;
-                /**
-                 * Indicates if the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} was called on the event object.
-                 *
-                 * @property isImmediatePropagationStopped
-                 * @type {boolean}
-                 * @default false
-                 * @public
-                 * @readOnly
-                 */
-                this.isImmediatePropagationStopped = false;
-                this.type = type;
-                this.bubbles = bubbles;
-                this.cancelable = cancelable;
-                this.data = data;
-            }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
+            _super.call(this);
             /**
-             * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
-             * This method does not affect any event listeners in the current node (currentTarget). In contrast,
-             * the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} method prevents processing
-             * of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
+             * The type of event.
              *
-             * @method stopPropagation
+             * @property type
+             * @type {string}
+             * @default null
              * @public
-             * @example
-             *     event.stopPropagation();
+             * @readOnly
              */
-        BaseEvent.prototype.stopPropagation = function() {
+            this.type = null;
+            /**
+             * A reference to the object that originally dispatched the event.
+             *
+             * @property target
+             * @type {any}
+             * @default null
+             * @public
+             * @readOnly
+             */
+            this.target = null;
+            /**
+             * The currentTarget property always points to the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).
+             *
+             * @property currentTarget
+             * @type {any}
+             * @default null
+             * @public
+             * @readOnly
+             */
+            this.currentTarget = null;
+            /**
+             * Used to pass any type of data with the event.
+             *
+             * @property data
+             * @type {any}
+             * @public
+             * @default null
+             */
+            this.data = null;
+            /**
+             * Indicates whether an event is a bubbling event.
+             *
+             * @property bubbles
+             * @type {boolean}
+             * @public
+             * @default false
+             */
+            this.bubbles = false;
+            /**
+             * Indicates whether the behavior associated with the event can be prevented.
+             *
+             * @property cancelable
+             * @type {boolean}
+             * @public
+             * @default false
+             */
+            this.cancelable = false;
+            /**
+             * Indicates if the {{#crossLink "BaseEvent/stopPropagation:method"}}{{/crossLink}} was called on the event object.
+             *
+             * @property isPropagationStopped
+             * @type {boolean}
+             * @default false
+             * @public
+             * @readOnly
+             */
+            this.isPropagationStopped = false;
+            /**
+             * Indicates if the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} was called on the event object.
+             *
+             * @property isImmediatePropagationStopped
+             * @type {boolean}
+             * @default false
+             * @public
+             * @readOnly
+             */
+            this.isImmediatePropagationStopped = false;
+            this.type = type;
+            this.bubbles = bubbles;
+            this.cancelable = cancelable;
+            this.data = data;
+        }
+        /**
+         * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.
+         * This method does not affect any event listeners in the current node (currentTarget). In contrast,
+         * the {{#crossLink "BaseEvent/stopImmediatePropagation:method"}}{{/crossLink}} method prevents processing
+         * of event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.
+         *
+         * @method stopPropagation
+         * @public
+         * @example
+         *     event.stopPropagation();
+         */
+        BaseEvent.prototype.stopPropagation = function () {
             this.isPropagationStopped = true;
         };
         /**
@@ -184,7 +172,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @example
          *     event.stopImmediatePropagation();
          */
-        BaseEvent.prototype.stopImmediatePropagation = function() {
+        BaseEvent.prototype.stopImmediatePropagation = function () {
             this.stopPropagation();
             this.isImmediatePropagationStopped = true;
         };
@@ -201,7 +189,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @example
          *     var cloneOfEvent = event.clone();
          */
-        BaseEvent.prototype.clone = function() {
+        BaseEvent.prototype.clone = function () {
             var clonedBaseModel = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {

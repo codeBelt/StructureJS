@@ -1,21 +1,16 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", '../ObjectManager', './BaseEvent'], function(require, exports) {
+})(["require", "exports", '../ObjectManager', './BaseEvent'], function (require, exports) {
     var ObjectManager = require('../ObjectManager');
     var BaseEvent = require('./BaseEvent');
     /**
@@ -40,53 +35,50 @@ var __extends = (this && this.__extends) || function(d, b) {
      *      eventDispatcher.addEventListener('change', this.handlerMethod, this);
      *      eventDispatcher.dispatchEvent('change');
      */
-    var EventDispatcher = (function(_super) {
+    var EventDispatcher = (function (_super) {
         __extends(EventDispatcher, _super);
-
         function EventDispatcher() {
-                _super.call(this);
-                /**
-                 * Holds a reference to added listeners.
-                 *
-                 * @property _listeners
-                 * @type {Array.<any>}
-                 * @protected
-                 */
-                this._listeners = null;
-                /**
-                 * Indicates the object that contains a child object. Uses the parent property
-                 * to specify a relative path to display objects that are above the current display object in the display
-                 * list hierarchy and helps facilitate event bubbling.
-                 *
-                 * @property parent
-                 * @type {any}
-                 * @public
-                 */
-                this.parent = null;
-                this._listeners = [];
-            }
+            _super.call(this);
             /**
-             * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
+             * Holds a reference to added listeners.
              *
-             * @method addEventListener
-             * @param type {String} The type of event.
-             * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
-             * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
-             * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
-             * @public
-             * @chainable
-             * @example
-             *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-             *
-             *      ClassName.prototype.handlerMethod = function (event) {
-             *          console.log(event.target + " sent the event.");
-             *          console.log(event.type, event.data);
-             *      }
+             * @property _listeners
+             * @type {Array.<any>}
+             * @protected
              */
-        EventDispatcher.prototype.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+            this._listeners = null;
+            /**
+             * Indicates the object that contains a child object. Uses the parent property
+             * to specify a relative path to display objects that are above the current display object in the display
+             * list hierarchy and helps facilitate event bubbling.
+             *
+             * @property parent
+             * @type {any}
+             * @public
+             */
+            this.parent = null;
+            this._listeners = [];
+        }
+        /**
+         * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
+         *
+         * @method addEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+         * @param scope {any} Binds the scope to a particular object (scope is basically what "this" refers to in your function). This can be very useful in JavaScript because scope isn't generally maintained.
+         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+         * @public
+         * @chainable
+         * @example
+         *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *
+         *      ClassName.prototype.handlerMethod = function (event) {
+         *          console.log(event.target + " sent the event.");
+         *          console.log(event.type, event.data);
+         *      }
+         */
+        EventDispatcher.prototype.addEventListener = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list == null) {
@@ -101,17 +93,13 @@ var __extends = (this && this.__extends) || function(d, b) {
                 if (listener.callback === callback && listener.scope === scope) {
                     // If the same callback and scope are found then remove it and add the current one below.
                     list.splice(i, 1);
-                } else if (index === 0 && listener.priority < priority) {
+                }
+                else if (index === 0 && listener.priority < priority) {
                     index = i + 1;
                 }
             }
             // Add the event listener to the list array at the index value.
-            list.splice(index, 0, {
-                callback: callback,
-                scope: scope,
-                priority: priority,
-                once: false
-            });
+            list.splice(index, 0, { callback: callback, scope: scope, priority: priority, once: false });
             return this;
         };
         /**
@@ -132,10 +120,8 @@ var __extends = (this && this.__extends) || function(d, b) {
          *          console.log(event.type, event.data);
          *      }
          */
-        EventDispatcher.prototype.addEventListenerOnce = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+        EventDispatcher.prototype.addEventListenerOnce = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             // Add the event listener the normal way.
             this.addEventListener(type, callback, scope, priority);
             // Get the event listeners we just added.
@@ -161,7 +147,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          *      ClassName.prototype._handlerMethod = function (event) {
          *      };
          */
-        EventDispatcher.prototype.removeEventListener = function(type, callback, scope) {
+        EventDispatcher.prototype.removeEventListener = function (type, callback, scope) {
             // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list !== void 0) {
@@ -198,10 +184,8 @@ var __extends = (this && this.__extends) || function(d, b) {
          *      // Here is a common inline event object being dispatched:
          *      this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));
          */
-        EventDispatcher.prototype.dispatchEvent = function(type, data) {
-            if (data === void 0) {
-                data = null;
-            }
+        EventDispatcher.prototype.dispatchEvent = function (type, data) {
+            if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, true, data);
@@ -254,7 +238,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @example
          *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          */
-        EventDispatcher.prototype.hasEventListener = function(type, callback, scope) {
+        EventDispatcher.prototype.hasEventListener = function (type, callback, scope) {
             if (this._listeners[type] !== void 0) {
                 var listener;
                 var numOfCallbacks = this._listeners[type].length;
@@ -278,7 +262,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          *
          *      // [ClassName] is listening for the 'BaseEvent.change' event.
          */
-        EventDispatcher.prototype.getEventListeners = function() {
+        EventDispatcher.prototype.getEventListeners = function () {
             var str = '';
             var numOfCallbacks;
             var listener;
@@ -288,7 +272,8 @@ var __extends = (this && this.__extends) || function(d, b) {
                     listener = this._listeners[type][i];
                     if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
                         str += '[' + listener.scope.getQualifiedClassName() + ']';
-                    } else {
+                    }
+                    else {
                         str += '[Unknown]';
                     }
                     str += " is listen for '" + type + "' event.\n";
@@ -299,7 +284,7 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden BaseObject.destroy
          */
-        EventDispatcher.prototype.destroy = function() {
+        EventDispatcher.prototype.destroy = function () {
             this.disable();
             _super.prototype.destroy.call(this);
         };

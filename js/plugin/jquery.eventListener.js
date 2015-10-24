@@ -1,28 +1,28 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", 'jquery'], function(require, exports) {
+})(["require", "exports", 'jquery'], function (require, exports) {
     var $ = require('jquery');
     var $eventListener = $;
     /**
      * A bind polyfill for browsers that don't support the bind method.
      */
     if (!Function.prototype.bind) {
-        Function.prototype.bind = function(oThis) {
+        Function.prototype.bind = function (oThis) {
             if (typeof this !== 'function') {
                 // closest thing possible to the ECMAScript 5 internal IsCallable function
                 throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
             }
-            var aArgs = Array.prototype.slice.call(arguments, 1),
-                fToBind = this,
-                fNOP = function() {},
-                fBound = function() {
-                    return fToBind.apply(this instanceof fNOP && oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
-                };
+            var aArgs = Array.prototype.slice.call(arguments, 1), fToBind = this, fNOP = function () {
+            }, fBound = function () {
+                return fToBind.apply(this instanceof fNOP && oThis
+                    ? this
+                    : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+            };
             fNOP.prototype = this.prototype;
             fBound.prototype = new fNOP();
             return fBound;
@@ -34,7 +34,7 @@
      * @param str
      * @returns {String}
      */
-    var hashCode = function(str) {
+    var hashCode = function (str) {
         str = String(str);
         // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
         var character;
@@ -52,7 +52,7 @@
     /**
      * The jQuery addEventListener plugin
      */
-    $eventListener.fn.addEventListener = function(type, selector, data, callback, scope) {
+    $eventListener.fn.addEventListener = function (type, selector, data, callback, scope) {
         var _callback;
         var _scope;
         var _handler;
@@ -86,7 +86,7 @@
     /**
      * The jQuery removeEventListener plugin
      */
-    $eventListener.fn.removeEventListener = function(type, selector, callback, scope) {
+    $eventListener.fn.removeEventListener = function (type, selector, callback, scope) {
         var _callback;
         var _scope;
         var _handler;

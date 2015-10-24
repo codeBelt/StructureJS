@@ -1,25 +1,19 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", './DisplayObject'], function(require, exports) {
+})(["require", "exports", './DisplayObject'], function (require, exports) {
     var DisplayObject = require('./DisplayObject');
-    var TextField = (function(_super) {
+    var TextField = (function (_super) {
         __extends(TextField, _super);
-
         function TextField() {
             _super.call(this);
             this.text = '';
@@ -29,10 +23,10 @@ var __extends = (this && this.__extends) || function(d, b) {
             this.color = '#000000';
             this.lineHeight = 14;
         }
-        TextField.prototype.create = function() {
+        TextField.prototype.create = function () {
             _super.prototype.create.call(this);
         };
-        TextField.prototype.layout = function() {
+        TextField.prototype.layout = function () {
             this.ctx.translate(this.parent.x, this.parent.y);
             this.ctx.translate(this.x, this.y);
             this.ctx.font = [this.style, this.size, this.font].join(' ');
@@ -40,13 +34,15 @@ var __extends = (this && this.__extends) || function(d, b) {
             this.ctx.textBaseline = 'top'; //http://www.ckollars.org/canvas-text-centering.html
             if (this.text.indexOf('\n') !== -1) {
                 this.wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
-            } else if (this.width > 0) {
+            }
+            else if (this.width > 0) {
                 this.wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
-            } else {
+            }
+            else {
                 this.ctx.fillText(this.text, 0, 0);
             }
         };
-        TextField.prototype.wrapTextByWidth = function(context, text, x, y, maxWidth, lineHeight) {
+        TextField.prototype.wrapTextByWidth = function (context, text, x, y, maxWidth, lineHeight) {
             var wordList = text.split(' ');
             var line = '';
             var testLine;
@@ -61,13 +57,14 @@ var __extends = (this && this.__extends) || function(d, b) {
                     context.fillText(line, x, y);
                     line = wordList[i] + ' ';
                     y += lineHeight;
-                } else {
+                }
+                else {
                     line = testLine;
                 }
             }
             context.fillText(line, x, y);
         };
-        TextField.prototype.wrapTextOnLineBreak = function(context, text, x, y, lineHeight) {
+        TextField.prototype.wrapTextOnLineBreak = function (context, text, x, y, lineHeight) {
             var wordList = text.split('\n');
             var length = wordList.length;
             for (var i = 0; i < length; i++) {

@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports"], function(require, exports) {
+})(["require", "exports"], function (require, exports) {
     /**
      * The NumberUtil class has many helper methods to work with number data.
      *
@@ -15,22 +15,22 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var NumberUtil = (function() {
+    var NumberUtil = (function () {
         function NumberUtil() {
-                throw new Error('[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.');
-            }
-            /**
-             * Converts bytes into megabytes.
-             *
-             * @method bytesToMegabytes
-             * @param bytes {number}
-             * @returns {number}
-             * @public
-             * @static
-             * @example
-             *
-             */
-        NumberUtil.bytesToMegabytes = function(bytes) {
+            throw new Error('[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.');
+        }
+        /**
+         * Converts bytes into megabytes.
+         *
+         * @method bytesToMegabytes
+         * @param bytes {number}
+         * @returns {number}
+         * @public
+         * @static
+         * @example
+         *
+         */
+        NumberUtil.bytesToMegabytes = function (bytes) {
             return bytes / 1048576;
         };
         /**
@@ -45,7 +45,7 @@
          *     NumberUtil.centimeterToInch(1);
          *     // 0.3937
          */
-        NumberUtil.centimeterToInch = function(cm) {
+        NumberUtil.centimeterToInch = function (cm) {
             return cm * 0.39370;
         };
         /**
@@ -60,7 +60,7 @@
          *     NumberUtil.inchToCentimeter(1);
          *     // 2.54
          */
-        NumberUtil.inchToCentimeter = function(inch) {
+        NumberUtil.inchToCentimeter = function (inch) {
             return inch * 2.54;
         };
         /**
@@ -76,7 +76,7 @@
          *     // 0.3048
          *
          */
-        NumberUtil.feetToMeter = function(feet) {
+        NumberUtil.feetToMeter = function (feet) {
             return feet / 3.2808;
         };
         /**
@@ -92,10 +92,8 @@
          *     NumberUtil.convertToHHMMSS(33333);
          *     // '09:15:33'
          */
-        NumberUtil.convertToHHMMSS = function(seconds, showHours) {
-            if (showHours === void 0) {
-                showHours = true;
-            }
+        NumberUtil.convertToHHMMSS = function (seconds, showHours) {
+            if (showHours === void 0) { showHours = true; }
             var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
             var s = sec % 60;
             var m = Math.floor((sec % 3600) / 60);
@@ -103,7 +101,8 @@
             var hourStr;
             if (showHours === false) {
                 hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
-            } else {
+            }
+            else {
                 hourStr = NumberUtil.doubleDigitFormat(h) + ':';
             }
             var minuteStr = NumberUtil.doubleDigitFormat(m) + ':';
@@ -128,7 +127,7 @@
          *     NumberUtil.doubleDigitFormat(9);
          *     // '09'
          */
-        NumberUtil.doubleDigitFormat = function(num) {
+        NumberUtil.doubleDigitFormat = function (num) {
             if (num < 10) {
                 return ('0' + num);
             }
@@ -152,7 +151,7 @@
          *     NumberUtil.unformatUnit('$-123,456,789.99');
          *     // -123456789.99
          */
-        NumberUtil.unformatUnit = function(value) {
+        NumberUtil.unformatUnit = function (value) {
             // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
             var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, '');
             // Gets the index where the decimal placement is located.
@@ -161,7 +160,8 @@
             if (decimalSeparator === '.') {
                 // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d.-]/g, '');
-            } else {
+            }
+            else {
                 // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
                 withoutSpecialCharacters = value.replace(/[^\d,-]/g, '');
                 decimalIndex = withoutSpecialCharacters.length - 3;
@@ -193,22 +193,12 @@
          *     NumberUtil.formatUnit(-1900.24, 1);
          *     // '-1,900.2'
          */
-        NumberUtil.formatUnit = function(value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
-            if (decimalPlacement === void 0) {
-                decimalPlacement = 2;
-            }
-            if (decimalSeparator === void 0) {
-                decimalSeparator = '.';
-            }
-            if (thousandsSeparator === void 0) {
-                thousandsSeparator = ',';
-            }
-            if (currencySymbol === void 0) {
-                currencySymbol = '';
-            }
-            if (currencySymbolPlacement === void 0) {
-                currencySymbolPlacement = 0;
-            }
+        NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
+            if (decimalPlacement === void 0) { decimalPlacement = 2; }
+            if (decimalSeparator === void 0) { decimalSeparator = '.'; }
+            if (thousandsSeparator === void 0) { thousandsSeparator = ','; }
+            if (currencySymbol === void 0) { currencySymbol = ''; }
+            if (currencySymbolPlacement === void 0) { currencySymbolPlacement = 0; }
             var str = String(Number(value).toFixed(decimalPlacement));
             var result = '';
             if (decimalPlacement != 0) {
@@ -223,9 +213,11 @@
             if (str.length > 0) {
                 if (currencySymbolPlacement === 0) {
                     result = currencySymbol + str + result;
-                } else if (currencySymbolPlacement === 1) {
+                }
+                else if (currencySymbolPlacement === 1) {
                     result = str + result + currencySymbol;
-                } else {
+                }
+                else {
                     result = str + result;
                 }
             }
@@ -245,16 +237,15 @@
          *      MathUtil.fahrenheitToCelsius(212);
          *      // 100
          */
-        NumberUtil.fahrenheitToCelsius = function(fahrenheit, decimals) {
-            if (decimals === void 0) {
-                decimals = 2;
-            }
+        NumberUtil.fahrenheitToCelsius = function (fahrenheit, decimals) {
+            if (decimals === void 0) { decimals = 2; }
             var d = '';
             var r = (5 / 9) * (fahrenheit - 32);
             var s = r.toString().split('.');
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            } else {
+            }
+            else {
                 var i = decimals;
                 while (i > 0) {
                     d += '0';
@@ -278,16 +269,15 @@
          *      MathUtil.celsiusToFahrenheit(100);
          *      // 212
          */
-        NumberUtil.celsiusToFahrenheit = function(celsius, decimals) {
-            if (decimals === void 0) {
-                decimals = 2;
-            }
+        NumberUtil.celsiusToFahrenheit = function (celsius, decimals) {
+            if (decimals === void 0) { decimals = 2; }
             var d = '';
             var r = (celsius / (5 / 9)) + 32;
             var s = r.toString().split('.');
             if (s[1] != undefined) {
                 d = s[1].substr(0, decimals);
-            } else {
+            }
+            else {
                 var i = decimals;
                 while (i > 0) {
                     d += '0';

@@ -13,9 +13,9 @@ var __extends = (this && this.__extends) || function (d, b) {
 })(["require", "exports", './BaseEvent'], function (require, exports) {
     var BaseEvent = require('./BaseEvent');
     /**
-     * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
+     * The BulkLoaderEvent...
      *
-     * @class RouterEvent
+     * @class BulkLoaderEvent
      * @extends BaseEvent
      * @param type {string} The type of event. The type is case-sensitive.
      * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
@@ -30,73 +30,63 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var RouterEvent = (function (_super) {
-        __extends(RouterEvent, _super);
-        function RouterEvent(type, bubbles, cancelable, data) {
-            if (type === void 0) { type = RouterEvent.CHANGE; }
+    var BulkLoaderEvent = (function (_super) {
+        __extends(BulkLoaderEvent, _super);
+        function BulkLoaderEvent(type, bubbles, cancelable, data) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = false; }
             if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
             /**
-             * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
+             * TODO: YUIDoc_comment
              *
-             * @property route
-             * @type {string}
+             * @property total
+             * @type {number}
              * @public
              */
-            this.route = null;
+            this.total = 0;
             /**
-             * The new URL to which the window is navigating.
+             * TODO: YUIDoc_comment
              *
-             * @property newURL
-             * @type {string}
+             * @property totalComplete
+             * @type {number}
              * @public
              */
-            this.newURL = null;
+            this.totalComplete = 0;
             /**
-             * The previous URL from which the window was navigated.
+             * TODO: YUIDoc_comment
              *
-             * @property oldURL
-             * @type {string}
+             * @property percentComplete
+             * @type {number}
              * @public
              */
-            this.oldURL = null;
-            /**
-             * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
-             *
-             * @property routePattern
-             * @type {string}
-             * @public
-             */
-            this.routePattern = null;
-            /**
-             * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
-             * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
-             *
-             * @property params
-             * @type {Array.<string>}
-             * @public
-             */
-            this.params = [];
-            /**
-             * A query object the represents the query string in the hash url.
-             *
-             * @property query
-             * @type {any}
-             * @public
-             */
-            this.query = null;
+            this.percentComplete = 0;
         }
         /**
-         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
+         * The BulkLoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
          *
-         * @event CHANGE
+         * @event COMPLETE
          * @type {string}
          * @static
          */
-        RouterEvent.CHANGE = 'RouterEvent.change';
-        return RouterEvent;
+        BulkLoaderEvent.COMPLETE = 'BulkLoaderEvent.complete';
+        /**
+         * The BulkLoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+         *
+         * @event LOAD_COMPLETE
+         * @type {string}
+         * @static
+         */
+        BulkLoaderEvent.LOAD_COMPLETE = 'BulkLoaderEvent.loadComplete';
+        /**
+         * The BulkLoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+         *
+         * @event ERROR
+         * @type {string}
+         * @static
+         */
+        BulkLoaderEvent.ERROR = 'BulkLoaderEvent.error';
+        return BulkLoaderEvent;
     })(BaseEvent);
-    return RouterEvent;
+    return BulkLoaderEvent;
 });

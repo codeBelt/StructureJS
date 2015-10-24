@@ -6,26 +6,18 @@
         define(deps, factory);
     }
 })(["require", "exports"], function (require, exports) {
-    var NavigatorEvents = (function () {
-        function NavigatorEvents() {
+    var WindowEvents = (function () {
+        function WindowEvents() {
         }
         /**
          * TODO: YUIDoc_comment
          *
-         * @event ONLINE
+         * @property CHANGE
          * @type {string}
          * @static
          */
-        NavigatorEvents.ONLINE = "online";
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event OFFLINE
-         * @type {string}
-         * @static
-         */
-        NavigatorEvents.OFFLINE = "offline";
-        return NavigatorEvents;
+        WindowEvents.CHANGE = "change";
+        return WindowEvents;
     })();
-    return NavigatorEvents;
+    return WindowEvents;
 });

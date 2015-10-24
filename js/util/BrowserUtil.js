@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], function(require, exports) {
+})(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], function (require, exports) {
     var EventDispatcher = require('../event/EventDispatcher');
     var BaseEvent = require('../event/BaseEvent');
     var Util = require('../util/Util');
@@ -18,18 +18,18 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var BrowserUtil = (function() {
+    var BrowserUtil = (function () {
         function BrowserUtil() {
-                throw new Error('[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.');
-            }
-            /**
-             * Dispatches a breakpoint event.
-             *
-             * @method enable
-             * @public
-             * @static
-             */
-        BrowserUtil.enable = function() {
+            throw new Error('[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.');
+        }
+        /**
+         * Dispatches a breakpoint event.
+         *
+         * @method enable
+         * @public
+         * @static
+         */
+        BrowserUtil.enable = function () {
             if (BrowserUtil.isEnabled === true) {
                 return;
             }
@@ -40,7 +40,7 @@
         /**
          * @overridden EventDispatcher.disable
          */
-        BrowserUtil.disable = function() {
+        BrowserUtil.disable = function () {
             if (BrowserUtil.isEnabled === false) {
                 return;
             }
@@ -58,7 +58,7 @@
          *      BrowserUtil.browserName();
          *      // 'Chrome'
          */
-        BrowserUtil.browserName = function() {
+        BrowserUtil.browserName = function () {
             return BrowserUtil.getBrowser()[0];
         };
         /**
@@ -76,14 +76,13 @@
          *      BrowserUtil.browserVersion(false);
          *      // '39.0.2171.99'
          */
-        BrowserUtil.browserVersion = function(majorVersion) {
-            if (majorVersion === void 0) {
-                majorVersion = true;
-            }
+        BrowserUtil.browserVersion = function (majorVersion) {
+            if (majorVersion === void 0) { majorVersion = true; }
             var version = BrowserUtil.getBrowser()[1];
             if (majorVersion === true) {
                 return parseInt(version, 10);
-            } else {
+            }
+            else {
                 return version;
             }
         };
@@ -98,14 +97,15 @@
          *      BrowserUtil.getBrowser();
          *      // ["Chrome", "39.0.2171.99"]
          */
-        BrowserUtil.getBrowser = function() {
+        BrowserUtil.getBrowser = function () {
             var N = navigator.appName;
             var ua = navigator.userAgent;
             var tem = ua.match(/version\/([\.\d]+)/i);
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
             if (M && tem != null) {
                 M[2] = tem[1];
-            } else {
+            }
+            else {
                 M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
             }
             return M;
@@ -121,7 +121,7 @@
          *      BrowserUtil.isAndroid();
          *      // false
          */
-        BrowserUtil.isAndroid = function() {
+        BrowserUtil.isAndroid = function () {
             return !!navigator.userAgent.match(/Android/i);
         };
         /**
@@ -135,7 +135,7 @@
          *      BrowserUtil.isBlackBerry();
          *      // false
          */
-        BrowserUtil.isBlackBerry = function() {
+        BrowserUtil.isBlackBerry = function () {
             return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
         };
         /**
@@ -149,7 +149,7 @@
          *      BrowserUtil.isIOS();
          *      // false
          */
-        BrowserUtil.isIOS = function() {
+        BrowserUtil.isIOS = function () {
             return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
         };
         /**
@@ -163,7 +163,7 @@
          *      BrowserUtil.isOperaMini();
          *      // false
          */
-        BrowserUtil.isOperaMini = function() {
+        BrowserUtil.isOperaMini = function () {
             return !!navigator.userAgent.match(/Opera Mini/i);
         };
         /**
@@ -177,7 +177,7 @@
          *      BrowserUtil.isIEMobile();
          *      // false
          */
-        BrowserUtil.isIEMobile = function() {
+        BrowserUtil.isIEMobile = function () {
             return !!navigator.userAgent.match(/IEMobile/i);
         };
         /**
@@ -191,7 +191,7 @@
          *      BrowserUtil.isMobile();
          *      // false
          */
-        BrowserUtil.isMobile = function() {
+        BrowserUtil.isMobile = function () {
             return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
         };
         /**
@@ -205,7 +205,7 @@
          *      BrowserUtil.hasBrowserHistory();
          *      // true
          */
-        BrowserUtil.hasBrowserHistory = function() {
+        BrowserUtil.hasBrowserHistory = function () {
             return !!(window.history && history.pushState);
         };
         /**
@@ -219,10 +219,11 @@
          *      BrowserUtil.hasLocalStorage();
          *      // true
          */
-        BrowserUtil.hasLocalStorage = function() {
+        BrowserUtil.hasLocalStorage = function () {
             try {
                 return ('localStorage' in window) && window.localStorage !== null;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
@@ -237,10 +238,11 @@
          *      BrowserUtil.hasSessionStorage();
          *      // true
          */
-        BrowserUtil.hasSessionStorage = function() {
+        BrowserUtil.hasSessionStorage = function () {
             try {
                 return ('sessionStorage' in window) && window.sessionStorage !== null;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
@@ -274,7 +276,7 @@
          *          // 'screen_sm'
          *      };
          */
-        BrowserUtil.getBreakpoint = function() {
+        BrowserUtil.getBreakpoint = function () {
             return BrowserUtil._styleDeclaration.getPropertyValue('content').replace(/["']/g, '');
         };
         /**
@@ -284,10 +286,8 @@
          * @public
          * @static
          */
-        BrowserUtil.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+        BrowserUtil.addEventListener = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             BrowserUtil._eventDispatcher.addEventListener(type, callback, scope, priority);
             BrowserUtil.enable();
         };
@@ -298,7 +298,7 @@
          * @public
          * @static
          */
-        BrowserUtil.removeEventListener = function(type, callback, scope) {
+        BrowserUtil.removeEventListener = function (type, callback, scope) {
             BrowserUtil._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -308,10 +308,8 @@
          * @public
          * @static
          */
-        BrowserUtil.dispatchEvent = function(type, data) {
-            if (data === void 0) {
-                data = null;
-            }
+        BrowserUtil.dispatchEvent = function (type, data) {
+            if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, false, data);
@@ -327,7 +325,7 @@
          * @private
          * @static
          */
-        BrowserUtil._onBreakpointChange = function(event) {
+        BrowserUtil._onBreakpointChange = function (event) {
             BrowserUtil.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, BrowserUtil.getBreakpoint()));
         };
         /**

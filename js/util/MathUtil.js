@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports"], function(require, exports) {
+})(["require", "exports"], function (require, exports) {
     /**
      * A helper class to do calculations and conversions.
      *
@@ -15,35 +15,31 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var MathUtil = (function() {
+    var MathUtil = (function () {
         function MathUtil() {
-                throw new Error('[MathUtil] Do not instantiate the MathUtil class because it is a static class.');
-            }
-            /**
-             * Returns a number constrained between min and max.
-             *
-             * @method constrain
-             * @param num {number}
-             * @param min {number}
-             * @param  max {number}
-             * @return  {number}
-             * @example
-             *      MathUtil.constrain(12, 3, 20);
-             *      // 12
-             *
-             *      MathUtil.constrain(22, 3, 20);
-             *      // 20
-             *
-             *      MathUtil.constrain(0, 3, 20);
-             *      // 3
-             */
-        MathUtil.constrain = function(num, min, max) {
-            if (min === void 0) {
-                min = 0;
-            }
-            if (max === void 0) {
-                max = 1;
-            }
+            throw new Error('[MathUtil] Do not instantiate the MathUtil class because it is a static class.');
+        }
+        /**
+         * Returns a number constrained between min and max.
+         *
+         * @method constrain
+         * @param num {number}
+         * @param min {number}
+         * @param  max {number}
+         * @return  {number}
+         * @example
+         *      MathUtil.constrain(12, 3, 20);
+         *      // 12
+         *
+         *      MathUtil.constrain(22, 3, 20);
+         *      // 20
+         *
+         *      MathUtil.constrain(0, 3, 20);
+         *      // 3
+         */
+        MathUtil.constrain = function (num, min, max) {
+            if (min === void 0) { min = 0; }
+            if (max === void 0) { max = 1; }
             if (num < min) {
                 return min;
             }
@@ -63,10 +59,8 @@
          * @example
          *
          */
-        MathUtil.randomRange = function(min, max, wholeNumber) {
-            if (wholeNumber === void 0) {
-                wholeNumber = true;
-            }
+        MathUtil.randomRange = function (min, max, wholeNumber) {
+            if (wholeNumber === void 0) { wholeNumber = true; }
             var num = (min + Math.random() * (max - min));
             if (wholeNumber) {
                 return Math.round(num);
@@ -88,13 +82,9 @@
          *      MathUtil.rangeToPercent(15, 10, 20);
          *      // 0.5
          */
-        MathUtil.rangeToPercent = function(num, min, max, constrainMin, constrainMax) {
-            if (constrainMin === void 0) {
-                constrainMin = false;
-            }
-            if (constrainMax === void 0) {
-                constrainMax = false;
-            }
+        MathUtil.rangeToPercent = function (num, min, max, constrainMin, constrainMax) {
+            if (constrainMin === void 0) { constrainMin = false; }
+            if (constrainMax === void 0) { constrainMax = false; }
             if (constrainMin && num < min) {
                 return 0;
             }
@@ -116,7 +106,7 @@
          *      MathUtil.percentToRange(0.5, 10, 20);
          *      // 15
          */
-        MathUtil.percentToRange = function(percent, min, max) {
+        MathUtil.percentToRange = function (percent, min, max) {
             return (percent * (max - min)) + min;
         };
         /**
@@ -134,16 +124,10 @@
          *      MathUtil.map(10, 0, 100, 0, 50);
          *      // 5
          */
-        MathUtil.map = function(num, min1, max1, min2, max2, round, constrainMin, constrainMax) {
-            if (round === void 0) {
-                round = true;
-            }
-            if (constrainMin === void 0) {
-                constrainMin = true;
-            }
-            if (constrainMax === void 0) {
-                constrainMax = true;
-            }
+        MathUtil.map = function (num, min1, max1, min2, max2, round, constrainMin, constrainMax) {
+            if (round === void 0) { round = true; }
+            if (constrainMin === void 0) { constrainMin = true; }
+            if (constrainMax === void 0) { constrainMax = true; }
             if (constrainMin && num < min1) {
                 return min2;
             }
@@ -170,7 +154,7 @@
          *      MathUtil.radiansToDegrees(3.141592653589793);
          *      // 180
          */
-        MathUtil.radiansToDegrees = function(radians) {
+        MathUtil.radiansToDegrees = function (radians) {
             return radians * (180 / Math.PI);
         };
         /**
@@ -186,7 +170,7 @@
          *      MathUtil.degreesToRadians(180);
          *      // 3.141592653589793
          */
-        MathUtil.degreesToRadians = function(degrees) {
+        MathUtil.degreesToRadians = function (degrees) {
             return (degrees * Math.PI / 180);
         };
         /**
@@ -202,7 +186,7 @@
          *      MathUtil.sign(-23);
          *      // -1
          */
-        MathUtil.sign = function(num) {
+        MathUtil.sign = function (num) {
             if (num < 0) {
                 return -1;
             }
@@ -221,7 +205,7 @@
          *      MathUtil.isPositive(-23);
          *      // false
          */
-        MathUtil.isPositive = function(num) {
+        MathUtil.isPositive = function (num) {
             return (num >= 0);
         };
         /**
@@ -237,7 +221,7 @@
          *      MathUtil.isNegative(-23);
          *      // true
          */
-        MathUtil.isNegative = function(num) {
+        MathUtil.isNegative = function (num) {
             return (num < 0);
         };
         /**
@@ -253,7 +237,7 @@
          *      MathUtil.isOdd(3);
          *      // true
          */
-        MathUtil.isOdd = function(num) {
+        MathUtil.isOdd = function (num) {
             var i = num;
             var e = 2;
             return Boolean(i % e);
@@ -271,7 +255,7 @@
          *      MathUtil.isEven(3);
          *      // false
          */
-        MathUtil.isEven = function(num) {
+        MathUtil.isEven = function (num) {
             var int = num;
             var e = 2;
             return (int % e == 0);
@@ -289,7 +273,7 @@
          *      MathUtil.isPrime(5);
          *      // true
          */
-        MathUtil.isPrime = function(num) {
+        MathUtil.isPrime = function (num) {
             if (num > 2 && num % 2 == 0) {
                 return false;
             }
@@ -315,7 +299,7 @@
          *      MathUtil.factorial(9);
          *      // 362880
          */
-        MathUtil.factorial = function(num) {
+        MathUtil.factorial = function (num) {
             if (num == 0) {
                 return 1;
             }
@@ -336,7 +320,7 @@
          * @example
          *
          */
-        MathUtil.getDivisors = function(num) {
+        MathUtil.getDivisors = function (num) {
             var r = [];
             for (var i = 1, e = num / 2; i <= e; i++) {
                 if (num % i == 0) {

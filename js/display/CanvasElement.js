@@ -1,45 +1,33 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", './DisplayObjectContainer', './DOMElement', '../geom/Point'], function(require, exports) {
+})(["require", "exports", './DisplayObjectContainer', './DOMElement', '../geom/Point'], function (require, exports) {
     var DisplayObjectContainer = require('./DisplayObjectContainer');
     var DOMElement = require('./DOMElement');
     var Point = require('../geom/Point');
-    var CanvasElement = (function(_super) {
+    var CanvasElement = (function (_super) {
         __extends(CanvasElement, _super);
         // Notice the capital W and H. That sets the attributes not the styles.
         function CanvasElement(type, params) {
-                if (type === void 0) {
-                    type = 'canvas';
-                }
-                if (params === void 0) {
-                    params = {
-                        Width: 100,
-                        Height: 100
-                    };
-                }
-                _super.call(this, type, params);
-                this.$canvas = null;
-                this.canvas = null;
-            }
-            /**
-             * @overridden CanvasElement.create
-             */
-        CanvasElement.prototype.create = function() {
+            if (type === void 0) { type = 'canvas'; }
+            if (params === void 0) { params = { Width: 100, Height: 100 }; }
+            _super.call(this, type, params);
+            this.$canvas = null;
+            this.canvas = null;
+        }
+        /**
+         * @overridden CanvasElement.create
+         */
+        CanvasElement.prototype.create = function () {
             _super.prototype.create.call(this);
             this.$canvas = this.$element;
             this.canvas = this.element;
@@ -48,7 +36,7 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden CanvasElement.enable
          */
-        CanvasElement.prototype.enable = function() {
+        CanvasElement.prototype.enable = function () {
             if (this.isEnabled === true) {
                 return;
             }
@@ -67,7 +55,7 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden CanvasElement.disable
          */
-        CanvasElement.prototype.disable = function() {
+        CanvasElement.prototype.disable = function () {
             if (this.isEnabled === false) {
                 return;
             }
@@ -86,7 +74,7 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden DOMElement.addChild
          */
-        CanvasElement.prototype.addChild = function(child) {
+        CanvasElement.prototype.addChild = function (child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child, false);
@@ -106,7 +94,7 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden DOMElement.addChildAt
          */
-        CanvasElement.prototype.addChildAt = function(child, index) {
+        CanvasElement.prototype.addChildAt = function (child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child, false);
@@ -126,7 +114,7 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden DOMElement.swapChildren
          */
-        CanvasElement.prototype.swapChildren = function(child1, child2) {
+        CanvasElement.prototype.swapChildren = function (child1, child2) {
             var child1Index = this.children.indexOf(child1);
             var child2Index = this.children.indexOf(child2);
             this.addChildAt(child1, child2Index);
@@ -136,16 +124,14 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden DOMElement.getChildAt
          */
-        CanvasElement.prototype.getChildAt = function(index) {
+        CanvasElement.prototype.getChildAt = function (index) {
             return _super.prototype.getChildAt.call(this, index);
         };
         /**
          * @overridden DOMElement.removeChild
          */
-        CanvasElement.prototype.removeChild = function(child, destroy) {
-            if (destroy === void 0) {
-                destroy = true;
-            }
+        CanvasElement.prototype.removeChild = function (child, destroy) {
+            if (destroy === void 0) { destroy = true; }
             var index = this.getChildIndex(child);
             if (index !== -1) {
                 // Removes the child object from the parent.
@@ -154,7 +140,8 @@ var __extends = (this && this.__extends) || function(d, b) {
             this.numChildren = this.children.length;
             if (destroy === true) {
                 child.destroy();
-            } else {
+            }
+            else {
                 child.disable();
             }
             child.ctx = null;
@@ -165,36 +152,32 @@ var __extends = (this && this.__extends) || function(d, b) {
         /**
          * @overridden DOMElement.removeChildAt
          */
-        CanvasElement.prototype.removeChildAt = function(index, destroy) {
-            if (destroy === void 0) {
-                destroy = true;
-            }
+        CanvasElement.prototype.removeChildAt = function (index, destroy) {
+            if (destroy === void 0) { destroy = true; }
             this.removeChild(this.getChildAt(index), destroy);
             return this;
         };
         /**
          * @overridden DOMElement.removeChildren
          */
-        CanvasElement.prototype.removeChildren = function(destroy) {
-            if (destroy === void 0) {
-                destroy = true;
-            }
+        CanvasElement.prototype.removeChildren = function (destroy) {
+            if (destroy === void 0) { destroy = true; }
             while (this.children.length > 0) {
                 this.removeChild(this.children.pop(), destroy);
             }
             return this;
         };
-        CanvasElement.prototype.update = function() {
+        CanvasElement.prototype.renderCanvas = function () {
             this.ctx.clearRect(0, 0, this.width, this.height);
             for (var i = 0; i < this.numChildren; i++) {
-                this.children[i].update();
+                this.children[i].renderCanvas();
             }
         };
-        CanvasElement.prototype.getMousePos = function(event) {
+        CanvasElement.prototype.getMousePos = function (event) {
             var rect = this.canvas.getBoundingClientRect();
             return new Point(event.clientX - rect.left, event.clientY - rect.top);
         };
-        CanvasElement.prototype.getObjectUnderPoint = function(x, y) {
+        CanvasElement.prototype.getObjectUnderPoint = function (x, y) {
             var foundItem = null;
             var sprite;
             for (var i = this.numChildren - 1; i >= 0; i--) {
@@ -208,7 +191,7 @@ var __extends = (this && this.__extends) || function(d, b) {
             }
             return foundItem;
         };
-        CanvasElement.prototype.getObjectsUnderPoint = function(x, y) {
+        CanvasElement.prototype.getObjectsUnderPoint = function (x, y) {
             var list = [];
             var sprite;
             for (var i = this.numChildren - 1; i >= 0; i--) {
@@ -219,31 +202,33 @@ var __extends = (this && this.__extends) || function(d, b) {
             }
             return list;
         };
-        CanvasElement.prototype.hitTest = function(sprite, mouseX, mouseY) {
+        CanvasElement.prototype.hitTest = function (sprite, mouseX, mouseY) {
             if (mouseX >= sprite.x && mouseX <= sprite.x + sprite.width && mouseY >= sprite.y && mouseY <= sprite.y + sprite.height) {
                 return true;
-            } else {
+            }
+            else {
                 return false;
             }
         };
-        CanvasElement.prototype.onPointerDown = function(event) {
+        CanvasElement.prototype.onPointerDown = function (event) {
             this._sendEvent(event);
         };
-        CanvasElement.prototype.onPointerUp = function(event) {
+        CanvasElement.prototype.onPointerUp = function (event) {
             this._sendEvent(event);
         };
-        CanvasElement.prototype.onPointerMove = function(event) {
+        CanvasElement.prototype.onPointerMove = function (event) {
             var displayObject = this._sendEvent(event);
             if (displayObject != null && displayObject.useHandCursor === true && displayObject.visible === true) {
                 document.body.style.cursor = 'pointer';
-            } else {
+            }
+            else {
                 document.body.style.cursor = 'default';
             }
         };
-        CanvasElement.prototype.onPointerOut = function(event) {
+        CanvasElement.prototype.onPointerOut = function (event) {
             this._sendEvent(event);
         };
-        CanvasElement.prototype._sendEvent = function(event) {
+        CanvasElement.prototype._sendEvent = function (event) {
             var mousePos = this.getMousePos(event);
             var displayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
             if (displayObject === null) {
@@ -251,13 +236,15 @@ var __extends = (this && this.__extends) || function(d, b) {
                 event.target = this;
                 event.currentTarget = this;
                 this.dispatchEvent(event);
-            } else if (displayObject !== null && displayObject instanceof DisplayObjectContainer && displayObject.mouseChildren === true) {
+            }
+            else if (displayObject !== null && displayObject instanceof DisplayObjectContainer && displayObject.mouseChildren === true) {
                 event.currentTarget = displayObject;
                 displayObject = this.getActualClickedOnChild(displayObject, mousePos.x, mousePos.y);
                 event.bubbles = true;
                 event.target = displayObject;
                 displayObject.dispatchEvent(event);
-            } else {
+            }
+            else {
                 event.bubbles = true;
                 event.target = displayObject;
                 event.currentTarget = this;
@@ -265,7 +252,7 @@ var __extends = (this && this.__extends) || function(d, b) {
             }
             return displayObject;
         };
-        CanvasElement.prototype.getActualClickedOnChild = function(displayObject, x, y) {
+        CanvasElement.prototype.getActualClickedOnChild = function (displayObject, x, y) {
             var item;
             var newX;
             var newY;
@@ -280,7 +267,8 @@ var __extends = (this && this.__extends) || function(d, b) {
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 return displayObject;
             }
         };

@@ -1,26 +1,20 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", './DisplayObject', '../util/MathUtil'], function(require, exports) {
+})(["require", "exports", './DisplayObject', '../util/MathUtil'], function (require, exports) {
     var DisplayObject = require('./DisplayObject');
     var MathUtil = require('../util/MathUtil');
-    var Bitmap = (function(_super) {
+    var Bitmap = (function (_super) {
         __extends(Bitmap, _super);
-
         function Bitmap(image) {
             _super.call(this);
             this.ready = false;
@@ -29,10 +23,10 @@ var __extends = (this && this.__extends) || function(d, b) {
             this.height = this._image.height;
             this.setSize(this.width, this.height);
         }
-        Bitmap.prototype.create = function() {
+        Bitmap.prototype.create = function () {
             _super.prototype.create.call(this);
         };
-        Bitmap.prototype.layout = function() {
+        Bitmap.prototype.layout = function () {
             this.ctx.translate(this.parent.x, this.parent.y);
             this.ctx.translate(this.x + this.width * 0.5, this.y + this.height * 0.5);
             this.ctx.scale(this.parent.scaleX, this.parent.scaleY);

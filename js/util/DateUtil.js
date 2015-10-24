@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports"], function(require, exports) {
+})(["require", "exports"], function (require, exports) {
     /**
      * A helper class that deals with dates.
      *
@@ -15,32 +15,32 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var DateUtil = (function() {
+    var DateUtil = (function () {
         function DateUtil() {
-                throw new Error('[DateUtil] Do not instantiate the DateUtil class because it is a static class.');
-            }
-            /**
-             * Returns the suffix of a given day.
-             *
-             * @method getDaySuffix
-             * @param today {number}
-             * @returns {string}
-             * @public
-             * @static
-             * @example
-             *      DateUtil.getDaySuffix(1);
-             *      // 'st'
-             *
-             *      DateUtil.getDaySuffix(2);
-             *      // 'nd'
-             *
-             *      DateUtil.getDaySuffix(3);
-             *      // 'rd'
-             *
-             *      DateUtil.getDaySuffix(4);
-             *      // 'th'
-             */
-        DateUtil.getDaySuffix = function(today) {
+            throw new Error('[DateUtil] Do not instantiate the DateUtil class because it is a static class.');
+        }
+        /**
+         * Returns the suffix of a given day.
+         *
+         * @method getDaySuffix
+         * @param today {number}
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      DateUtil.getDaySuffix(1);
+         *      // 'st'
+         *
+         *      DateUtil.getDaySuffix(2);
+         *      // 'nd'
+         *
+         *      DateUtil.getDaySuffix(3);
+         *      // 'rd'
+         *
+         *      DateUtil.getDaySuffix(4);
+         *      // 'th'
+         */
+        DateUtil.getDaySuffix = function (today) {
             var day = today % 100;
             return ((Math.floor(day / 10) === 1) ? 'th' : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][day % 10]);
         };

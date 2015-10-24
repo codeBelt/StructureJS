@@ -1,21 +1,16 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", '../BaseObject', '../util/Util'], function(require, exports) {
+})(["require", "exports", '../BaseObject', '../util/Util'], function (require, exports) {
     var BaseObject = require('../BaseObject');
     var Util = require('../util/Util');
     /**
@@ -85,27 +80,26 @@ var __extends = (this && this.__extends) || function(d, b) {
      *          return CarModel;
      *      })();
      */
-    var BaseModel = (function(_super) {
+    var BaseModel = (function (_super) {
         __extends(BaseModel, _super);
-
         function BaseModel() {
-                _super.call(this);
-            }
-            /**
-             * Provide a way to update the  Base Model.
-             *
-             * @method update
-             * @param data {any}
-             * @public
-             * @example
-             *     // Example of updating some of the data:
-             *     carModel.update({ year: 2015, allWheel: true});
-             *
-             *     // Of course you can also do it the following way:
-             *     carModel.year = 2015;
-             *     carModel.allWheel = false;
-             */
-        BaseModel.prototype.update = function(data) {
+            _super.call(this);
+        }
+        /**
+         * Provide a way to update the  Base Model.
+         *
+         * @method update
+         * @param data {any}
+         * @public
+         * @example
+         *     // Example of updating some of the data:
+         *     carModel.update({ year: 2015, allWheel: true});
+         *
+         *     // Of course you can also do it the following way:
+         *     carModel.year = 2015;
+         *     carModel.allWheel = false;
+         */
+        BaseModel.prototype.update = function (data) {
             var propertyData;
             for (var propertyKey in this) {
                 // If this class has a property that matches a property on the data being passed in then set it.
@@ -129,7 +123,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param data
          * @protected
          */
-        BaseModel.prototype._setData = function(key, data) {
+        BaseModel.prototype._setData = function (key, data) {
             // If the data is an array and if the property its being assigned to is an array.
             if (data instanceof Array && this[key] instanceof Array) {
                 var temp = [];
@@ -141,7 +135,8 @@ var __extends = (this && this.__extends) || function(d, b) {
                     }
                 }
                 this[key] = temp;
-            } else {
+            }
+            else {
                 this[key] = this._updateData(this[key], data);
             }
         };
@@ -153,16 +148,18 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param data
          * @protected
          */
-        BaseModel.prototype._updateData = function(keyValue, data) {
+        BaseModel.prototype._updateData = function (keyValue, data) {
             if (keyValue instanceof BaseModel.constructor) {
                 // If the property is an instance of a BaseModel class and has not been created yet.
                 // Then instantiate it and pass in the data to the constructor.
                 keyValue = new keyValue(data);
-            } else if (keyValue instanceof BaseModel) {
+            }
+            else if (keyValue instanceof BaseModel) {
                 // If property is an instance of a BaseModel class and has already been created.
                 // Then call the update method and pass in the data.
                 keyValue.update(data);
-            } else {
+            }
+            else {
                 // Else just assign the data to the property.
                 keyValue = data;
             }
@@ -177,7 +174,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @example
          *     var obj = carModel.toJSON();
          */
-        BaseModel.prototype.toJSON = function() {
+        BaseModel.prototype.toJSON = function () {
             var clone = Util.clone(this);
             return Util.deletePropertyFromObject(clone, ['sjsId']);
         };
@@ -190,7 +187,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @example
          *     var str = carModel.toJSONString();
          */
-        BaseModel.prototype.toJSONString = function() {
+        BaseModel.prototype.toJSONString = function () {
             return JSON.stringify(this.toJSON());
         };
         /**
@@ -204,7 +201,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          *      var carModel = new CarModel();
          *      carModel.fromJSON(str);
          */
-        BaseModel.prototype.fromJSON = function(json) {
+        BaseModel.prototype.fromJSON = function (json) {
             var parsedData = JSON.parse(json);
             this.update(parsedData);
             return this;
@@ -218,7 +215,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @example
          *     var clone = carModel.clone();
          */
-        BaseModel.prototype.clone = function() {
+        BaseModel.prototype.clone = function () {
             var clonedBaseModel = new this.constructor(this);
             return clonedBaseModel;
         };

@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", './EventDispatcher', './BaseEvent'], function(require, exports) {
+})(["require", "exports", './EventDispatcher', './BaseEvent'], function (require, exports) {
     var EventDispatcher = require('./EventDispatcher');
     var BaseEvent = require('./BaseEvent');
     /**
@@ -20,34 +20,32 @@
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
-    var EventBroker = (function() {
+    var EventBroker = (function () {
         function EventBroker() {
-                throw new Error('[EventBroker] Do not instantiate the EventBroker class because it is a static class.');
-            }
-            /**
-             * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
-             *
-             * @method addEventListener
-             * @param type {String} The type of event.
-             * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink "BaseEvent"}}{{/crossLink}} object or custom event that extends the {{#crossLink "BaseEvent"}}{{/crossLink}} class.
-             * @param scope {any} The scope of the callback function.
-             * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
-             * @static
-             * @public
-             * @example
-             *     EventBroker.addEventListener('change', this._handlerMethod, this);
-             *     // Example of using a constant event type.
-             *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-             *
-             *     // The event passed to the method will always be a BaseEvent object.
-             *     ClassName.prototype._handlerMethod = function (event) {
-             *          console.log(event.data);
-             *     };
-             */
-        EventBroker.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+            throw new Error('[EventBroker] Do not instantiate the EventBroker class because it is a static class.');
+        }
+        /**
+         * Registers an event listener object with an EventBroker object so that the listener receives notification of an event.
+         *
+         * @method addEventListener
+         * @param type {String} The type of event.
+         * @param callback {Function} The listener function that processes the event. The callback function will receive a {{#crossLink "BaseEvent"}}{{/crossLink}} object or custom event that extends the {{#crossLink "BaseEvent"}}{{/crossLink}} class.
+         * @param scope {any} The scope of the callback function.
+         * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+         * @static
+         * @public
+         * @example
+         *     EventBroker.addEventListener('change', this._handlerMethod, this);
+         *     // Example of using a constant event type.
+         *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
+         *
+         *     // The event passed to the method will always be a BaseEvent object.
+         *     ClassName.prototype._handlerMethod = function (event) {
+         *          console.log(event.data);
+         *     };
+         */
+        EventBroker.addEventListener = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             EventBroker._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
         /**
@@ -70,10 +68,8 @@
          *          console.log(event.data);
          *     };
          */
-        EventBroker.addEventListenerOnce = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+        EventBroker.addEventListenerOnce = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             EventBroker._eventDispatcher.addEventListenerOnce(type, callback, scope, priority);
         };
         /**
@@ -90,7 +86,7 @@
          *
          *     EventBroker.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          */
-        EventBroker.removeEventListener = function(type, callback, scope) {
+        EventBroker.removeEventListener = function (type, callback, scope) {
             EventBroker._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -112,10 +108,8 @@
          *      event.data = {some: 'data'};
          *      EventBroker.dispatchEvent(event);
          */
-        EventBroker.dispatchEvent = function(type, data) {
-            if (data === void 0) {
-                data = null;
-            }
+        EventBroker.dispatchEvent = function (type, data) {
+            if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === 'string') {
                 event = new BaseEvent(type, false, false, data);
@@ -137,7 +131,7 @@
          * @example
          *      EventBroker.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          */
-        EventBroker.hasEventListener = function(type, callback, scope) {
+        EventBroker.hasEventListener = function (type, callback, scope) {
             return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
         };
         /**
@@ -152,7 +146,7 @@
          *
          *      // [ClassName] is listen for 'BaseEvent.change' event.
          */
-        EventBroker.getEventListeners = function() {
+        EventBroker.getEventListeners = function () {
             return EventBroker._eventDispatcher.getEventListeners();
         };
         /**

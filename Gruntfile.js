@@ -83,7 +83,8 @@ module.exports = function(grunt) {
          * Cleans or deletes our production folder before we create a new production build.
          */
         clean: {
-            js: ['ts/**/*.js']
+            ts: ['ts/**/*.js'],
+            //js: ['js/**/*']
         },
 
         /**
@@ -526,9 +527,8 @@ module.exports = function(grunt) {
      * grunt doc    (Will generate the YUI documentation from the code comments)
      */
     grunt.registerTask('default', [
-        'ts',
-        'jsbeautifier',
-        'clean'
+        'clean',
+        'ts'
     ]);
 
     grunt.registerTask('server', [
