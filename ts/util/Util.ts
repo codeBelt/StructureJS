@@ -326,6 +326,45 @@ class Util
 
         return debounced;
     }
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method applyMixins
+     * @param derivedCtor {any}
+     * @param baseCtors {any}
+     * @public
+     * @static
+     * @example
+     *
+            class Flies {
+                fly() {
+                    alert('Is it a bird? Is it a plane?');
+                }
+            }
+
+            class Climbs {
+                climb() {
+                    alert('My spider-sense is tingling.');
+                }
+            }
+
+            class HorseflyWoman implements Climbs, Flies {
+                climb: () => void;
+                fly: () => void;
+            }
+
+            Util.applyMixins(HorseflyWoman, [Climbs, Flies]);
+     */
+    public static applyMixins(derivedCtor: any, baseCtors: any[]):void
+    {
+        baseCtors.forEach(baseCtor => {
+            Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+                derivedCtor.prototype[name] = baseCtor.prototype[name];
+            })
+        });
+    }
+
 }
 
 export = Util;
