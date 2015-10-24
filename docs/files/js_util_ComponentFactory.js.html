@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,14 +154,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;../util/Util&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../util/Util&#x27;], function (require, exports) {
     var Util = require(&#x27;../util/Util&#x27;);
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
@@ -170,27 +172,25 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var ComponentFactory = (function() {
+    var ComponentFactory = (function () {
         function ComponentFactory() {
-                throw new Error(&#x27;[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.&#x27;);
-            }
-            /**
-             * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
-             *
-             * @method create
-             * @param $element {jQuery} One or more jQuery referenced DOM elements.
-             * @param ComponentClass {any} The class that you want instantiated.
-             * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink &quot;DisplayObjectContainer/addChild:method&quot;}}{{/crossLink}} method.
-             * @return {Array.&lt;any&gt;} Returns a list of instantiated components/views so you can manage them within the Class that created them.
-             * @public
-             * @static
-             * @example
-             *      ComponentFactory.create($(&#x27;.js-list&#x27;), SomeClass, this);
-             */
-        ComponentFactory.create = function($elements, ComponentClass, scope) {
-            if (scope === void 0) {
-                scope = null;
-            }
+            throw new Error(&#x27;[ComponentFactory] Do not instantiate the ComponentFactory class because it is a static class.&#x27;);
+        }
+        /**
+         * Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.
+         *
+         * @method create
+         * @param $element {jQuery} One or more jQuery referenced DOM elements.
+         * @param ComponentClass {any} The class that you want instantiated.
+         * @param [scope=null] {DisplayObjectContainer} This scope (parent object) is needed to instantiate the component/view with the use of the {{#crossLink &quot;DisplayObjectContainer/addChild:method&quot;}}{{/crossLink}} method.
+         * @return {Array.&lt;any&gt;} Returns a list of instantiated components/views so you can manage them within the Class that created them.
+         * @public
+         * @static
+         * @example
+         *      ComponentFactory.create($(&#x27;.js-list&#x27;), SomeClass, this);
+         */
+        ComponentFactory.create = function ($elements, ComponentClass, scope) {
+            if (scope === void 0) { scope = null; }
             var list = [];
             var component;
             var $element;
@@ -204,7 +204,8 @@
                     // Create the component if there is not a &#x27;data-sjs-type&#x27; attribute on the element.
                     component = ComponentFactory._createComponent($element, ComponentClass, scope);
                     list.push(component);
-                } else {
+                }
+                else {
                     // Else if there is already a &#x27;data-sjs-type&#x27; attribute then get the type(s).
                     types = types.split(&#x27;,&#x27;);
                     componentName = Util.getName(ComponentClass);
@@ -223,7 +224,7 @@
          * @method _createComponent
          * @private
          */
-        ComponentFactory._createComponent = function($element, ComponentClass, scope) {
+        ComponentFactory._createComponent = function ($element, ComponentClass, scope) {
             var component = new ComponentClass($element);
             // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.
             if (scope !== null &amp;&amp; component.hasOwnProperty(&#x27;sjsId&#x27;) === true) {

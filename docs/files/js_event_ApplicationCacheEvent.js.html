@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,24 +154,19 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseEvent&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseEvent&#x27;], function (require, exports) {
     var BaseEvent = require(&#x27;./BaseEvent&#x27;);
     /**
      * The ApplicationCacheEvent ....
@@ -189,30 +186,23 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ApplicationCacheEvent = (function(_super) {
+    var ApplicationCacheEvent = (function (_super) {
         __extends(ApplicationCacheEvent, _super);
-
         function ApplicationCacheEvent(type, bubbles, cancelable, data) {
-                if (bubbles === void 0) {
-                    bubbles = false;
-                }
-                if (cancelable === void 0) {
-                    cancelable = false;
-                }
-                if (data === void 0) {
-                    data = null;
-                }
-                _super.call(this, type, bubbles, cancelable, data);
-            }
-            /**
-             * The browser is checking for an update, or is attempting to download
-             * the cache manifest for the first time. This is always the first event
-             * in the sequence.
-             *
-             * @event CHECKING
-             * @type {string}
-             * @static
-             */
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (data === void 0) { data = null; }
+            _super.call(this, type, bubbles, cancelable, data);
+        }
+        /**
+         * The browser is checking for an update, or is attempting to download
+         * the cache manifest for the first time. This is always the first event
+         * in the sequence.
+         *
+         * @event CHECKING
+         * @type {string}
+         * @static
+         */
         ApplicationCacheEvent.CHECKING = &#x27;checking&#x27;;
         /**
          * The cache manifest hadn&#x27;t changed.

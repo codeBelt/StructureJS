@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,23 +154,24 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
-    var NavigatorEvents = (function() {
-        function NavigatorEvents() {}
-            /**
-             * TODO: YUIDoc_comment
-             *
-             * @event ONLINE
-             * @type {string}
-             * @static
-             */
+})([&quot;require&quot;, &quot;exports&quot;], function (require, exports) {
+    var NavigatorEvents = (function () {
+        function NavigatorEvents() {
+        }
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @event ONLINE
+         * @type {string}
+         * @static
+         */
         NavigatorEvents.ONLINE = &quot;online&quot;;
         /**
          * TODO: YUIDoc_comment

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -239,6 +241,15 @@
 
             
                 <li class="index-item method public">
+                    <a href="#method_applyMixins">applyMixins</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
                     <a href="#method_clone">clone</a>
 
                     
@@ -346,7 +357,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l264"><code>js&#x2F;util&#x2F;Util.js:264</code></a>
+        <a href="../files/js_util_Util.js.html#l304"><code>js&#x2F;util&#x2F;Util.js:304</code></a>
         
         </p>
 
@@ -385,6 +396,151 @@
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method_applyMixins" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>applyMixins</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>derivedCtor</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>baseCtors</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_Util.js.html#l268"><code>js&#x2F;util&#x2F;Util.js:268</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">derivedCtor</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">baseCtors</code>
+                            <span class="type">Any</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>           class Flies {
+               fly() {
+                   alert(&#39;Is it a bird? Is it a plane?&#39;);
+               }
+           }
+
+           class Climbs {
+               climb() {
+                   alert(&#39;My spider-sense is tingling.&#39;);
+               }
+           }
+
+           class HorseflyWoman implements Climbs, Flies {
+               climb: () =&gt; void;
+               fly: () =&gt; void;
+           }
+
+           Util.applyMixins(HorseflyWoman, [Climbs, Flies]);</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
 
         
             <a name="method_clone" class="anchor-link"></a>
@@ -440,7 +596,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l121"><code>js&#x2F;util&#x2F;Util.js:121</code></a>
+        <a href="../files/js_util_Util.js.html#l122"><code>js&#x2F;util&#x2F;Util.js:122</code></a>
         
         </p>
 
@@ -580,7 +736,7 @@
             
         
         
-        <a href="../files/js_util_Util.js.html#l225"><code>js&#x2F;util&#x2F;Util.js:225</code></a>
+        <a href="../files/js_util_Util.js.html#l229"><code>js&#x2F;util&#x2F;Util.js:229</code></a>
         
         </p>
 
@@ -747,7 +903,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l48"><code>js&#x2F;util&#x2F;Util.js:48</code></a>
+        <a href="../files/js_util_Util.js.html#l47"><code>js&#x2F;util&#x2F;Util.js:47</code></a>
         
         </p>
 
@@ -891,7 +1047,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l188"><code>js&#x2F;util&#x2F;Util.js:188</code></a>
+        <a href="../files/js_util_Util.js.html#l189"><code>js&#x2F;util&#x2F;Util.js:189</code></a>
         
         </p>
 
@@ -1032,7 +1188,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l96"><code>js&#x2F;util&#x2F;Util.js:96</code></a>
+        <a href="../files/js_util_Util.js.html#l97"><code>js&#x2F;util&#x2F;Util.js:97</code></a>
         
         </p>
 
@@ -1192,7 +1348,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/js_util_Util.js.html#l166"><code>js&#x2F;util&#x2F;Util.js:166</code></a>
+        <a href="../files/js_util_Util.js.html#l167"><code>js&#x2F;util&#x2F;Util.js:167</code></a>
         
         </p>
 

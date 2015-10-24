@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,14 +154,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;], function (require, exports) {
     /**
      * A ValidationUtility class that has several static methods to assist in development.
      *
@@ -169,23 +171,23 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var ValidationUtil = (function() {
+    var ValidationUtil = (function () {
         function ValidationUtil() {
-                throw new Error(&#x27;[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.&#x27;);
-            }
-            /**
-             * Determines if the String passed has a length.
-             *
-             * @method isEmpty
-             * @param value {string}
-             * @returns {boolean}
-             * @public
-             * @static
-             * @example
-             *      ValidationUtil.isEmpty(&#x27;sometext&#x27;);
-             *      // false
-             */
-        ValidationUtil.isEmpty = function(value) {
+            throw new Error(&#x27;[ValidationUtil] Do not instantiate the ValidationUtil class because it is a static class.&#x27;);
+        }
+        /**
+         * Determines if the String passed has a length.
+         *
+         * @method isEmpty
+         * @param value {string}
+         * @returns {boolean}
+         * @public
+         * @static
+         * @example
+         *      ValidationUtil.isEmpty(&#x27;sometext&#x27;);
+         *      // false
+         */
+        ValidationUtil.isEmpty = function (value) {
             if (value != null) {
                 return value.length &lt; 1;
             }
@@ -204,7 +206,7 @@
          *      ValidationUtil.isMatch(&#x27;one@email.com&#x27;, &#x27;two@email.com&#x27;);
          *      // false
          */
-        ValidationUtil.isMatch = function(value1, value2) {
+        ValidationUtil.isMatch = function (value1, value2) {
             return value1 === value2;
         };
         /**
@@ -219,7 +221,7 @@
          *      ValidationUtil.isValidEmailAddress(&#x27;someemail@address.com&#x27;);
          *      // true
          */
-        ValidationUtil.isValidEmailAddress = function(email) {
+        ValidationUtil.isValidEmailAddress = function (email) {
             var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
             return expression.test(email);
         };
@@ -235,7 +237,7 @@
          *      ValidationUtil.isValidPhoneNumber(&#x27;123 456 7899&#x27;);
          *      // true
          */
-        ValidationUtil.isValidPhoneNumber = function(phoneNumber) {
+        ValidationUtil.isValidPhoneNumber = function (phoneNumber) {
             var expression = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
             return expression.test(phoneNumber);
         };
@@ -251,7 +253,7 @@
          *      ValidationUtil.isZipCode(&#x27;55067 4434&#x27;);
          *      // true
          */
-        ValidationUtil.isZipCode = function(zipCode) {
+        ValidationUtil.isZipCode = function (zipCode) {
             var expression = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
             return expression.test(zipCode);
         };
@@ -267,7 +269,7 @@
          *      ValidationUtil.isPostalCode(&#x27;p8n3h3&#x27;);
          *      // true
          */
-        ValidationUtil.isPostalCode = function(postalCode) {
+        ValidationUtil.isPostalCode = function (postalCode) {
             var expression = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
             return expression.test(postalCode);
         };
@@ -283,7 +285,7 @@
          *      ValidationUtil.isSocialSecurityNumber(&#x27;178051120&#x27;);
          *      // true
          */
-        ValidationUtil.isSocialSecurityNumber = function(ssn) {
+        ValidationUtil.isSocialSecurityNumber = function (ssn) {
             var expression = /^\d{3}-?\d{2}-?\d{4}$/;
             return expression.test(ssn);
         };

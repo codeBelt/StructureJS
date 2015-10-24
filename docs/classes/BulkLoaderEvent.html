@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>LoaderEvent - StructureJS</title>
+    <title>BulkLoaderEvent - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -150,7 +150,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1>LoaderEvent Class</h1>
+                <h1>BulkLoaderEvent Class</h1>
 <div class="box meta">
     
 
@@ -162,7 +162,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_event_LoaderEvent.js.html#l15"><code>js&#x2F;event&#x2F;LoaderEvent.js:15</code></a>
+            Defined in: <a href="../files/js_event_BulkLoaderEvent.js.html#l15"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:15</code></a>
         </div>
     
 
@@ -179,7 +179,7 @@
 
 
 <div class="box intro">
-    <p>The LoaderEvent...</p>
+    <p>The BulkLoaderEvent...</p>
 
 </div>
 
@@ -256,6 +256,12 @@
                     
                 </li>
             
+                <li class="index-item property public">
+                    <a href="#property_percentComplete">percentComplete</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_sjsId">sjsId</a>
 
@@ -264,6 +270,18 @@
             
                 <li class="index-item property public inherited">
                     <a href="#property_target">target</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_total">total</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_totalComplete">totalComplete</a>
 
                     
                 </li>
@@ -289,7 +307,7 @@
 
             
                 <li class="index-item method constructor">
-                    <a href="#method_LoaderEvent">LoaderEvent</a>
+                    <a href="#method_BulkLoaderEvent">BulkLoaderEvent</a>
 
                     <span class="flag constructor">constructor</span>
 
@@ -690,6 +708,58 @@
 </div>
 
         
+            <a name="property_percentComplete" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>percentComplete</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_event_BulkLoaderEvent.js.html#l56"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:56</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_sjsId" class="anchor-link"></a>
 <div class="property item public inherited">
     <h3 class="name"><code>sjsId</code>
@@ -792,6 +862,110 @@
 </div>
 
         
+            <a name="property_total" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>total</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_event_BulkLoaderEvent.js.html#l40"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:40</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_totalComplete" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>totalComplete</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_event_BulkLoaderEvent.js.html#l48"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:48</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_type" class="anchor-link"></a>
 <div class="property item public inherited">
     <h3 class="name"><code>type</code>
@@ -856,9 +1030,9 @@
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <a name="method_LoaderEvent" class="anchor-link"></a>
+        <a name="method_BulkLoaderEvent" class="anchor-link"></a>
 <div class="method item">
-    <h3 class="name"><code>LoaderEvent</code>
+    <h3 class="name"><code>BulkLoaderEvent</code>
 
     
         <div class="args">
@@ -919,7 +1093,7 @@
             
         
         
-        <a href="../files/js_event_LoaderEvent.js.html#l15"><code>js&#x2F;event&#x2F;LoaderEvent.js:15</code></a>
+        <a href="../files/js_event_BulkLoaderEvent.js.html#l15"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:15</code></a>
         
         </p>
 
@@ -1482,7 +1656,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
             
         
         
-        <a href="../files/js_event_LoaderEvent.js.html#l41"><code>js&#x2F;event&#x2F;LoaderEvent.js:41</code></a>
+        <a href="../files/js_event_BulkLoaderEvent.js.html#l65"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:65</code></a>
         
         </p>
 
@@ -1494,7 +1668,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
     <div class="extended-detail">
 
         <div class="description">
-            <p>The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.</p>
+            <p>The BulkLoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.</p>
 
         </div>
 
@@ -1534,7 +1708,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
             
         
         
-        <a href="../files/js_event_LoaderEvent.js.html#l57"><code>js&#x2F;event&#x2F;LoaderEvent.js:57</code></a>
+        <a href="../files/js_event_BulkLoaderEvent.js.html#l81"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:81</code></a>
         
         </p>
 
@@ -1546,7 +1720,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
     <div class="extended-detail">
 
         <div class="description">
-            <p>The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.</p>
+            <p>The BulkLoaderEvent.ERROR constant defines the value of the type property of an loader event object.</p>
 
         </div>
 
@@ -1586,7 +1760,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
             
         
         
-        <a href="../files/js_event_LoaderEvent.js.html#l49"><code>js&#x2F;event&#x2F;LoaderEvent.js:49</code></a>
+        <a href="../files/js_event_BulkLoaderEvent.js.html#l73"><code>js&#x2F;event&#x2F;BulkLoaderEvent.js:73</code></a>
         
         </p>
 
@@ -1598,7 +1772,7 @@ of event listeners in both the current node and subsequent nodes. Additional cal
     <div class="extended-detail">
 
         <div class="description">
-            <p>The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.</p>
+            <p>The BulkLoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.</p>
 
         </div>
 

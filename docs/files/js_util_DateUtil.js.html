@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,14 +154,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;], function (require, exports) {
     /**
      * A helper class that deals with dates.
      *
@@ -169,32 +171,32 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var DateUtil = (function() {
+    var DateUtil = (function () {
         function DateUtil() {
-                throw new Error(&#x27;[DateUtil] Do not instantiate the DateUtil class because it is a static class.&#x27;);
-            }
-            /**
-             * Returns the suffix of a given day.
-             *
-             * @method getDaySuffix
-             * @param today {number}
-             * @returns {string}
-             * @public
-             * @static
-             * @example
-             *      DateUtil.getDaySuffix(1);
-             *      // &#x27;st&#x27;
-             *
-             *      DateUtil.getDaySuffix(2);
-             *      // &#x27;nd&#x27;
-             *
-             *      DateUtil.getDaySuffix(3);
-             *      // &#x27;rd&#x27;
-             *
-             *      DateUtil.getDaySuffix(4);
-             *      // &#x27;th&#x27;
-             */
-        DateUtil.getDaySuffix = function(today) {
+            throw new Error(&#x27;[DateUtil] Do not instantiate the DateUtil class because it is a static class.&#x27;);
+        }
+        /**
+         * Returns the suffix of a given day.
+         *
+         * @method getDaySuffix
+         * @param today {number}
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      DateUtil.getDaySuffix(1);
+         *      // &#x27;st&#x27;
+         *
+         *      DateUtil.getDaySuffix(2);
+         *      // &#x27;nd&#x27;
+         *
+         *      DateUtil.getDaySuffix(3);
+         *      // &#x27;rd&#x27;
+         *
+         *      DateUtil.getDaySuffix(4);
+         *      // &#x27;th&#x27;
+         */
+        DateUtil.getDaySuffix = function (today) {
             var day = today % 100;
             return ((Math.floor(day / 10) === 1) ? &#x27;th&#x27; : [&#x27;th&#x27;, &#x27;st&#x27;, &#x27;nd&#x27;, &#x27;rd&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;, &#x27;th&#x27;][day % 10]);
         };

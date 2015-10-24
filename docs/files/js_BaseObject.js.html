@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,14 +154,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;./util/Util&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./util/Util&#x27;], function (require, exports) {
     ///&lt;reference path=&#x27;_declare/jquery.d.ts&#x27;/&gt;
     ///&lt;reference path=&#x27;_declare/handlebars.d.ts&#x27;/&gt;
     ///&lt;reference path=&#x27;_declare/greensock.d.ts&#x27;/&gt;
@@ -176,31 +178,31 @@
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var BaseObject = (function() {
+    var BaseObject = (function () {
         function BaseObject() {
-                /**
-                 * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
-                 *
-                 * @property sjsId
-                 * @type {int}
-                 * @default null
-                 * @writeOnce
-                 * @readOnly
-                 * @public
-                 */
-                this.sjsId = null;
-                this.sjsId = Util.uniqueId();
-            }
             /**
-             * Returns the fully qualified class name of an object.
+             * The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.
              *
-             * @method getQualifiedClassName
-             * @returns {string} Returns the class name.
+             * @property sjsId
+             * @type {int}
+             * @default null
+             * @writeOnce
+             * @readOnly
              * @public
-             * @example
-             *     instance.getQualifiedClassName();
              */
-        BaseObject.prototype.getQualifiedClassName = function() {
+            this.sjsId = null;
+            this.sjsId = Util.uniqueId();
+        }
+        /**
+         * Returns the fully qualified class name of an object.
+         *
+         * @method getQualifiedClassName
+         * @returns {string} Returns the class name.
+         * @public
+         * @example
+         *     instance.getQualifiedClassName();
+         */
+        BaseObject.prototype.getQualifiedClassName = function () {
             return Util.getName(this);
         };
         /**
@@ -223,7 +225,7 @@
          *          _super.prototype.destroy.call(this);
          *     }
          */
-        BaseObject.prototype.destroy = function() {
+        BaseObject.prototype.destroy = function () {
             for (var key in this) {
                 if (this.hasOwnProperty(key)) {
                     this[key] = null;

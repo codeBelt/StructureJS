@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,14 +154,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/NetworkMonitorEvent&#x27;, &#x27;../event/native/NavigatorEvents&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/NetworkMonitorEvent&#x27;, &#x27;../event/native/NavigatorEvents&#x27;], function (require, exports) {
     var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
     var NetworkMonitorEvent = require(&#x27;../event/NetworkMonitorEvent&#x27;);
     var NavigatorEvents = require(&#x27;../event/native/NavigatorEvents&#x27;);
@@ -174,24 +176,25 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var NetworkMonitor = (function() {
+    var NetworkMonitor = (function () {
         function NetworkMonitor() {
-                throw new Error(&#x27;[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.&#x27;);
-            }
-            /**
-             * Adds the necessary event listeners to listen for the &#x27;online&#x27; and &#x27;offline&#x27; events.
-             * Also dispatches a {{#crossLink &quot;NetworkMonitorEvent&quot;}}{{/crossLink}} right away with the status of the network connection.
-             * It is recommended you call NetworkMonitor.start(); when your application starts up.
-             * @example
-             *      NetworkMonitor.start();
-             * @method start
-             * @static
-             * @public
-             */
-        NetworkMonitor.start = function() {
+            throw new Error(&#x27;[NetworkMonitor] Do not instantiate the NetworkMonitor class because it is a static class.&#x27;);
+        }
+        /**
+         * Adds the necessary event listeners to listen for the &#x27;online&#x27; and &#x27;offline&#x27; events.
+         * Also dispatches a {{#crossLink &quot;NetworkMonitorEvent&quot;}}{{/crossLink}} right away with the status of the network connection.
+         * It is recommended you call NetworkMonitor.start(); when your application starts up.
+         * @example
+         *      NetworkMonitor.start();
+         * @method start
+         * @static
+         * @public
+         */
+        NetworkMonitor.start = function () {
             if (NetworkMonitor._initialized === true) {
                 return;
-            } else {
+            }
+            else {
                 NetworkMonitor._initialized = true;
             }
             window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor.onNetworkMonitorEvent, false);
@@ -207,7 +210,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.connected = function() {
+        NetworkMonitor.connected = function () {
             // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
             NetworkMonitor.start();
             return window.navigator.onLine;
@@ -221,7 +224,7 @@
          * @public
          * @static
          */
-        NetworkMonitor.getStatus = function() {
+        NetworkMonitor.getStatus = function () {
             // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
             NetworkMonitor.start();
             return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
@@ -234,7 +237,7 @@
          * @private
          * @static
          */
-        NetworkMonitor.onNetworkMonitorEvent = function(event) {
+        NetworkMonitor.onNetworkMonitorEvent = function (event) {
             var type = (event) ? event.type : NetworkMonitor.getStatus();
             var networkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
             NetworkMonitor.dispatchEvent(networkMonitorEvent);
@@ -254,10 +257,8 @@
          * @static
          * @public
          */
-        NetworkMonitor.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+        NetworkMonitor.addEventListener = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             NetworkMonitor._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
         /**
@@ -275,7 +276,7 @@
          * @static
          * @public
          */
-        NetworkMonitor.removeEventListener = function(type, callback, scope) {
+        NetworkMonitor.removeEventListener = function (type, callback, scope) {
             NetworkMonitor._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -286,7 +287,7 @@
          * @static
          * @private
          */
-        NetworkMonitor.dispatchEvent = function(event) {
+        NetworkMonitor.dispatchEvent = function (event) {
             NetworkMonitor._eventDispatcher.dispatchEvent(event);
         };
         /**

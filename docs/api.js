@@ -8,6 +8,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "BaseObject",
         "BrowserUtil",
         "BulkLoader",
+        "BulkLoaderEvent",
         "Collection",
         "ComponentFactory",
         "DOMElement",

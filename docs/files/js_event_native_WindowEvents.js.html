@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/event/TimerEvent.js - StructureJS</title>
+    <title>js/event/native/WindowEvents.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -150,15 +150,10 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/event/TimerEvent.js</h1>
+                <h1 class="file-heading">File: js/event/native/WindowEvents.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
-var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 (function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
@@ -166,53 +161,21 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
     else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseEvent&#x27;], function (require, exports) {
-    var BaseEvent = require(&#x27;./BaseEvent&#x27;);
-    /**
-     * The TimerEvent...
-     *
-     * @class TimerEvent
-     * @extends BaseEvent
-     * @param type {string} The type of event. The type is case-sensitive.
-     * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
-     * Note: With event-bubbling you can let one Event subsequently call on every ancestor ({{#crossLink &quot;EventDispatcher/parent:property&quot;}}{{/crossLink}})
-     * (containers of containers of etc.) of the {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} that originally dispatched the Event, all the way up to the surface ({{#crossLink &quot;Stage&quot;}}{{/crossLink}}). Any classes that do not have a parent cannot bubble.
-     * @param [cancelable=false] {boolean} Indicates whether the behavior associated with the event can be prevented. If the behavior can be canceled, this value is true; otherwise it is false.
-     * @param [data=null] {any} Use to pass any type of data with the event.
-     * @module StructureJS
-     * @submodule event
-     * @requires Extend
-     * @requires BaseEvent
-     * @constructor
-     * @author Robert S. (www.codeBelt.com)
-     */
-    var TimerEvent = (function (_super) {
-        __extends(TimerEvent, _super);
-        function TimerEvent(type, bubbles, cancelable, data) {
-            if (bubbles === void 0) { bubbles = false; }
-            if (cancelable === void 0) { cancelable = false; }
-            if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+})([&quot;require&quot;, &quot;exports&quot;], function (require, exports) {
+    var WindowEvents = (function () {
+        function WindowEvents() {
         }
         /**
-         * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
+         * TODO: YUIDoc_comment
          *
-         * @event TIMER
+         * @property CHANGE
          * @type {string}
          * @static
          */
-        TimerEvent.TIMER = &#x27;TimerEvent.timer&#x27;;
-        /**
-         * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
-         *
-         * @event TIMER_COMPLETE
-         * @type {string}
-         * @static
-         */
-        TimerEvent.TIMER_COMPLETE = &#x27;TimerEvent.timerComplete&#x27;;
-        return TimerEvent;
-    })(BaseEvent);
-    return TimerEvent;
+        WindowEvents.CHANGE = &quot;change&quot;;
+        return WindowEvents;
+    })();
+    return WindowEvents;
 });
 
     </pre>

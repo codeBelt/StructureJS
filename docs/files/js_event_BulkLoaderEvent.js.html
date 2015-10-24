@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/event/TimerEvent.js - StructureJS</title>
+    <title>js/event/BulkLoaderEvent.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -150,7 +150,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/event/TimerEvent.js</h1>
+                <h1 class="file-heading">File: js/event/BulkLoaderEvent.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -169,9 +169,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
 })([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseEvent&#x27;], function (require, exports) {
     var BaseEvent = require(&#x27;./BaseEvent&#x27;);
     /**
-     * The TimerEvent...
+     * The BulkLoaderEvent...
      *
-     * @class TimerEvent
+     * @class BulkLoaderEvent
      * @extends BaseEvent
      * @param type {string} The type of event. The type is case-sensitive.
      * @param [bubbles=false] {boolean} Indicates whether an event is a bubbling event. If the event can bubble, this value is true; otherwise it is false.
@@ -186,33 +186,65 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var TimerEvent = (function (_super) {
-        __extends(TimerEvent, _super);
-        function TimerEvent(type, bubbles, cancelable, data) {
+    var BulkLoaderEvent = (function (_super) {
+        __extends(BulkLoaderEvent, _super);
+        function BulkLoaderEvent(type, bubbles, cancelable, data) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = false; }
             if (data === void 0) { data = null; }
             _super.call(this, type, bubbles, cancelable, data);
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property total
+             * @type {number}
+             * @public
+             */
+            this.total = 0;
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property totalComplete
+             * @type {number}
+             * @public
+             */
+            this.totalComplete = 0;
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property percentComplete
+             * @type {number}
+             * @public
+             */
+            this.percentComplete = 0;
         }
         /**
-         * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
+         * The BulkLoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
          *
-         * @event TIMER
+         * @event COMPLETE
          * @type {string}
          * @static
          */
-        TimerEvent.TIMER = &#x27;TimerEvent.timer&#x27;;
+        BulkLoaderEvent.COMPLETE = &#x27;BulkLoaderEvent.complete&#x27;;
         /**
-         * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
+         * The BulkLoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
          *
-         * @event TIMER_COMPLETE
+         * @event LOAD_COMPLETE
          * @type {string}
          * @static
          */
-        TimerEvent.TIMER_COMPLETE = &#x27;TimerEvent.timerComplete&#x27;;
-        return TimerEvent;
+        BulkLoaderEvent.LOAD_COMPLETE = &#x27;BulkLoaderEvent.loadComplete&#x27;;
+        /**
+         * The BulkLoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+         *
+         * @event ERROR
+         * @type {string}
+         * @static
+         */
+        BulkLoaderEvent.ERROR = &#x27;BulkLoaderEvent.error&#x27;;
+        return BulkLoaderEvent;
     })(BaseEvent);
-    return TimerEvent;
+    return BulkLoaderEvent;
 });
 
     </pre>

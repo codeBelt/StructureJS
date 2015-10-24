@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,31 +154,31 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;jquery&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;jquery&#x27;], function (require, exports) {
     var $ = require(&#x27;jquery&#x27;);
     var $eventListener = $;
     /**
      * A bind polyfill for browsers that don&#x27;t support the bind method.
      */
     if (!Function.prototype.bind) {
-        Function.prototype.bind = function(oThis) {
+        Function.prototype.bind = function (oThis) {
             if (typeof this !== &#x27;function&#x27;) {
                 // closest thing possible to the ECMAScript 5 internal IsCallable function
                 throw new TypeError(&#x27;Function.prototype.bind - what is trying to be bound is not callable&#x27;);
             }
-            var aArgs = Array.prototype.slice.call(arguments, 1),
-                fToBind = this,
-                fNOP = function() {},
-                fBound = function() {
-                    return fToBind.apply(this instanceof fNOP &amp;&amp; oThis ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
-                };
+            var aArgs = Array.prototype.slice.call(arguments, 1), fToBind = this, fNOP = function () {
+            }, fBound = function () {
+                return fToBind.apply(this instanceof fNOP &amp;&amp; oThis
+                    ? this
+                    : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
+            };
             fNOP.prototype = this.prototype;
             fBound.prototype = new fNOP();
             return fBound;
@@ -188,7 +190,7 @@
      * @param str
      * @returns {String}
      */
-    var hashCode = function(str) {
+    var hashCode = function (str) {
         str = String(str);
         // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
         var character;
@@ -206,7 +208,7 @@
     /**
      * The jQuery addEventListener plugin
      */
-    $eventListener.fn.addEventListener = function(type, selector, data, callback, scope) {
+    $eventListener.fn.addEventListener = function (type, selector, data, callback, scope) {
         var _callback;
         var _scope;
         var _handler;
@@ -240,7 +242,7 @@
     /**
      * The jQuery removeEventListener plugin
      */
-    $eventListener.fn.removeEventListener = function(type, selector, callback, scope) {
+    $eventListener.fn.removeEventListener = function (type, selector, callback, scope) {
         var _callback;
         var _scope;
         var _handler;

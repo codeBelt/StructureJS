@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,24 +154,19 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseObject&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./BaseObject&#x27;], function (require, exports) {
     var BaseObject = require(&#x27;./BaseObject&#x27;);
     /**
      * The {{#crossLink &quot;ObjectManager&quot;}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
@@ -183,38 +180,37 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var ObjectManager = (function(_super) {
+    var ObjectManager = (function (_super) {
         __extends(ObjectManager, _super);
-
         function ObjectManager() {
-                _super.call(this);
-                /**
-                 * The isEnabled property is used to keep track of the enabled state of the object.
-                 *
-                 * @property isEnabled
-                 * @type {boolean}
-                 * @default false
-                 * @public
-                 */
-                this.isEnabled = false;
-            }
+            _super.call(this);
             /**
-             * The enable method is responsible for enabling event listeners and/or children of the containing objects.
+             * The isEnabled property is used to keep track of the enabled state of the object.
              *
-             * @method enable
+             * @property isEnabled
+             * @type {boolean}
+             * @default false
              * @public
-             * @chainable
-             * @example
-             *     ClassName.prototype.enable = function() {
-             *          if (this.isEnabled === true) { return this; }
-             *
-             *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-             *          this._childInstance.enable();
-             *
-             *          return _super.prototype.enable.call(this);
-             *     }
              */
-        ObjectManager.prototype.enable = function() {
+            this.isEnabled = false;
+        }
+        /**
+         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
+         *
+         * @method enable
+         * @public
+         * @chainable
+         * @example
+         *     ClassName.prototype.enable = function() {
+         *          if (this.isEnabled === true) { return this; }
+         *
+         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.enable();
+         *
+         *          return _super.prototype.enable.call(this);
+         *     }
+         */
+        ObjectManager.prototype.enable = function () {
             if (this.isEnabled === true) {
                 return this;
             }
@@ -237,7 +233,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          *          return _super.prototype.disable.call(this);
          *      }
          */
-        ObjectManager.prototype.disable = function() {
+        ObjectManager.prototype.disable = function () {
             if (this.isEnabled === false) {
                 return this;
             }

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,24 +154,19 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;./DisplayObjectContainer&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/TemplateFactory&#x27;, &#x27;../util/ComponentFactory&#x27;, &#x27;../plugin/jquery.eventListener&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;./DisplayObjectContainer&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/TemplateFactory&#x27;, &#x27;../util/ComponentFactory&#x27;, &#x27;../plugin/jquery.eventListener&#x27;], function (require, exports) {
     var DisplayObjectContainer = require(&#x27;./DisplayObjectContainer&#x27;);
     var BaseEvent = require(&#x27;../event/BaseEvent&#x27;);
     var TemplateFactory = require(&#x27;../util/TemplateFactory&#x27;);
@@ -300,159 +297,151 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
      *          return ClassName;
      *     })();
      */
-    var DOMElement = (function(_super) {
+    var DOMElement = (function (_super) {
         __extends(DOMElement, _super);
-
         function DOMElement(type, params) {
-                if (type === void 0) {
-                    type = null;
-                }
-                if (params === void 0) {
-                    params = null;
-                }
-                _super.call(this);
-                /**
-                 * Tracks number of times an element&#x27;s width has been checked
-                 * in order to determine if the element has been added
-                 * to the DOM.
-                 *
-                 * @property checkCount
-                 * @type {number}
-                 * @public
-                 */
-                this.checkCount = 0;
-                /**
-                 * A cached reference to the DOM Element
-                 *
-                 * @property element
-                 * @type {HTMLElement}
-                 * @default null
-                 * @public
-                 */
-                this.element = null;
-                /**
-                 * A cached reference to the jQuery DOM element
-                 *
-                 * @property $element
-                 * @type {JQuery}
-                 * @default null
-                 * @public
-                 */
-                this.$element = null;
-                /**
-                 * If a jQuery object was passed into the constructor this will be set as true and
-                 * this class will not try to add the view to the DOM since it already exists.
-                 *
-                 * @property _isReference
-                 * @type {boolean}
-                 * @protected
-                 */
-                this._isReference = false;
-                /**
-                 * Holds onto the value passed into the constructor.
-                 *
-                 * @property _type
-                 * @type {string}
-                 * @default null
-                 * @protected
-                 */
-                this._type = null;
-                /**
-                 * Holds onto the value passed into the constructor.
-                 *
-                 * @property _params
-                 * @type {any}
-                 * @default null
-                 * @protected
-                 */
-                this._params = null;
-                if (type instanceof jQuery) {
-                    this.$element = type;
-                    this.element = this.$element[0];
-                    this._isReference = true;
-                } else if (type) {
-                    this._type = type;
-                    this._params = params;
-                }
-            }
+            if (type === void 0) { type = null; }
+            if (params === void 0) { params = null; }
+            _super.call(this);
             /**
-             * The create function is intended to provide a consistent place for the creation and adding
-             * of children to the view. It will automatically be called the first time that the view is added
-             * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
-             * their overridden methods.
+             * Tracks number of times an element&#x27;s width has been checked
+             * in order to determine if the element has been added
+             * to the DOM.
              *
-             * This method gets called once when the child view is added to another view. If the child view is removed
-             * and added to another view the create method will not be called again.
-             *
-             * @method create
-             * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
-             * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
-             * @returns {DOMElement} Returns an instance of itself.
+             * @property checkCount
+             * @type {number}
              * @public
-             * @chainable
-             * @example
-             *     // EXAMPLE 1: By default your view class will be a div element:
-             *     ClassName.prototype.create = function () {
-             *          _super.prototype.create.call(this);
-             *
-             *          this._childInstance = new DOMElement();
-             *          this.addChild(this._childInstance);
-             *     }
-             *
-             *     // EXAMPLE 2: But lets say you wanted the view to be a ul element:
-             *     ClassName.prototype.create = function () {
-             *          _super.prototype.create.call(this, &#x27;ul&#x27;);
-             *     }
-             *
-             *     // Then you could nest other elements inside this base view/element.
-             *     ClassName.prototype.create = function () {
-             *          _super.prototype.create.call(this, &#x27;ul&#x27;, {id: &#x27;myId&#x27;, &#x27;class&#x27;: &#x27;myClass anotherClass&#x27;});
-             *
-             *          var li = new DOMElement(&#x27;li&#x27;, {text: &#x27;Robert is cool&#x27;});
-             *          this.addChild(li);
-             *     }
-             *
-             *     // EXAMPLE 3: So that&#x27;s cool but what if you wanted a block of html to be your view. Let&#x27;s say you had the below
-             *     // inline Handlebar template in your html file.
-             *     &lt;script id=&quot;todoTemplate&quot; type=&quot;text/template&quot;&gt;
-             *          &lt;div id=&quot;htmlTemplate&quot; class=&quot;js-todo&quot;&gt;
-             *              &lt;div id=&quot;input-wrapper&quot;&gt;
-             *                  &lt;input type=&quot;text&quot; class=&quot;list-input&quot; placeholder=&quot;{{ data.text }}&quot;&gt;
-             *                  &lt;input type=&quot;button&quot; class=&quot;list-item-submit&quot; value=&quot;Add&quot;&gt;
-             *              &lt;/div&gt;
-             *          &lt;/div&gt;
-             *     &lt;/script&gt;
-             *
-             *     // You would just pass in the id or class selector of the template which in this case is &quot;#todoTemplate&quot;.
-             *     // There is a second optional argument where you can pass data for the Handlebar template to use.
-             *     ClassName.prototype.create = function () {
-             *          _super.prototype.create.call(this, &#x27;#todoTemplate&#x27;, { data: this.viewData });
-             *
-             *     }
-             *
-             *     // EXAMPLE 4: Let&#x27;s say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.
-             *     var HomeTemplate = require(&#x27;hbs!templates/HomeTemplate&#x27;);
-             *
-             *     ClassName.prototype.create = function () {
-             *          _super.prototype.create.call(this, HomeTemplate, {data: &quot;some data&quot;});
-             *
-             *     }
-             *
-             *     // EXAMPLE 5: Or maybe you&#x27;re using grunt-contrib-handlebars, or similar, to precompile hbs templates
-             *     require(&#x27;templates&#x27;); // templates.js
-             *
-             *     ClassName.prototype.create = function () {
-             *          _super.prototype.create.call(this, &#x27;templates/HomeTemplate&#x27;, {data: &quot;some data&quot;});
-             *
-             *     }
              */
-        DOMElement.prototype.create = function(type, params) {
-            if (type === void 0) {
-                type = &#x27;div&#x27;;
+            this.checkCount = 0;
+            /**
+             * A cached reference to the DOM Element
+             *
+             * @property element
+             * @type {HTMLElement}
+             * @default null
+             * @public
+             */
+            this.element = null;
+            /**
+             * A cached reference to the jQuery DOM element
+             *
+             * @property $element
+             * @type {JQuery}
+             * @default null
+             * @public
+             */
+            this.$element = null;
+            /**
+             * If a jQuery object was passed into the constructor this will be set as true and
+             * this class will not try to add the view to the DOM since it already exists.
+             *
+             * @property _isReference
+             * @type {boolean}
+             * @protected
+             */
+            this._isReference = false;
+            /**
+             * Holds onto the value passed into the constructor.
+             *
+             * @property _type
+             * @type {string}
+             * @default null
+             * @protected
+             */
+            this._type = null;
+            /**
+             * Holds onto the value passed into the constructor.
+             *
+             * @property _params
+             * @type {any}
+             * @default null
+             * @protected
+             */
+            this._params = null;
+            if (type instanceof jQuery) {
+                this.$element = type;
+                this.element = this.$element[0];
+                this._isReference = true;
             }
-            if (params === void 0) {
-                params = null;
+            else if (type) {
+                this._type = type;
+                this._params = params;
             }
+        }
+        /**
+         * The create function is intended to provide a consistent place for the creation and adding
+         * of children to the view. It will automatically be called the first time that the view is added
+         * to another DisplayObjectContainer. It is critical that all subclasses call the super for this function in
+         * their overridden methods.
+         *
+         * This method gets called once when the child view is added to another view. If the child view is removed
+         * and added to another view the create method will not be called again.
+         *
+         * @method create
+         * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
+         * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
+         * @returns {DOMElement} Returns an instance of itself.
+         * @public
+         * @chainable
+         * @example
+         *     // EXAMPLE 1: By default your view class will be a div element:
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this);
+         *
+         *          this._childInstance = new DOMElement();
+         *          this.addChild(this._childInstance);
+         *     }
+         *
+         *     // EXAMPLE 2: But lets say you wanted the view to be a ul element:
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, &#x27;ul&#x27;);
+         *     }
+         *
+         *     // Then you could nest other elements inside this base view/element.
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, &#x27;ul&#x27;, {id: &#x27;myId&#x27;, &#x27;class&#x27;: &#x27;myClass anotherClass&#x27;});
+         *
+         *          var li = new DOMElement(&#x27;li&#x27;, {text: &#x27;Robert is cool&#x27;});
+         *          this.addChild(li);
+         *     }
+         *
+         *     // EXAMPLE 3: So that&#x27;s cool but what if you wanted a block of html to be your view. Let&#x27;s say you had the below
+         *     // inline Handlebar template in your html file.
+         *     &lt;script id=&quot;todoTemplate&quot; type=&quot;text/template&quot;&gt;
+         *          &lt;div id=&quot;htmlTemplate&quot; class=&quot;js-todo&quot;&gt;
+         *              &lt;div id=&quot;input-wrapper&quot;&gt;
+         *                  &lt;input type=&quot;text&quot; class=&quot;list-input&quot; placeholder=&quot;{{ data.text }}&quot;&gt;
+         *                  &lt;input type=&quot;button&quot; class=&quot;list-item-submit&quot; value=&quot;Add&quot;&gt;
+         *              &lt;/div&gt;
+         *          &lt;/div&gt;
+         *     &lt;/script&gt;
+         *
+         *     // You would just pass in the id or class selector of the template which in this case is &quot;#todoTemplate&quot;.
+         *     // There is a second optional argument where you can pass data for the Handlebar template to use.
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, &#x27;#todoTemplate&#x27;, { data: this.viewData });
+         *
+         *     }
+         *
+         *     // EXAMPLE 4: Let&#x27;s say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.
+         *     var HomeTemplate = require(&#x27;hbs!templates/HomeTemplate&#x27;);
+         *
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, HomeTemplate, {data: &quot;some data&quot;});
+         *
+         *     }
+         *
+         *     // EXAMPLE 5: Or maybe you&#x27;re using grunt-contrib-handlebars, or similar, to precompile hbs templates
+         *     require(&#x27;templates&#x27;); // templates.js
+         *
+         *     ClassName.prototype.create = function () {
+         *          _super.prototype.create.call(this, &#x27;templates/HomeTemplate&#x27;, {data: &quot;some data&quot;});
+         *
+         *     }
+         */
+        DOMElement.prototype.create = function (type, params) {
+            if (type === void 0) { type = &#x27;div&#x27;; }
+            if (params === void 0) { params = null; }
             // Use the data passed into the constructor first else use the arguments from create.
             type = this._type || type;
             params = this._params || params;
@@ -463,7 +452,8 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
                 var html = TemplateFactory.create(type, params);
                 if (html) {
                     this.$element = jQuery(html);
-                } else {
+                }
+                else {
                     this.$element = jQuery(&quot;&lt;&quot; + type + &quot;/&gt;&quot;, params);
                 }
             }
@@ -482,7 +472,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @example
          *     container.addChild(domElementInstance);
          */
-        DOMElement.prototype.addChild = function(child) {
+        DOMElement.prototype.addChild = function (child) {
             if (this.$element == null) {
                 throw new Error(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;] You cannot use the addChild method if the parent object is not added to the DOM.&#x27;);
             }
@@ -509,14 +499,15 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @param child {DOMElement} The DOMElement instance to add the sjsId too.
          * @protected
          */
-        DOMElement.prototype.addClientSideId = function(child) {
+        DOMElement.prototype.addClientSideId = function (child) {
             var type = child.$element.attr(&#x27;data-sjs-type&#x27;);
             var id = child.$element.attr(&#x27;data-sjs-id&#x27;);
             if (type === void 0) {
                 // Make them array&#x27;s so the join method will work.
                 type = [child.getQualifiedClassName()];
                 id = [child.sjsId];
-            } else {
+            }
+            else {
                 // Split them so we can push/add the new values.
                 type = type.split(&#x27;,&#x27;);
                 id = id.split(&#x27;,&#x27;);
@@ -535,7 +526,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @protected
          * @return {boolean}
          */
-        DOMElement.prototype.removeClientSideId = function(child) {
+        DOMElement.prototype.removeClientSideId = function (child) {
             var type = child.$element.attr(&#x27;data-sjs-type&#x27;);
             var id = child.$element.attr(&#x27;data-sjs-id&#x27;);
             // Split them so we can remove the child sjsId and type.
@@ -559,11 +550,11 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @method onDomAdded
          * @protected
          */
-        DOMElement.prototype.onAddedToDom = function(child) {
+        DOMElement.prototype.onAddedToDom = function (child) {
             var _this = this;
             child.checkCount++;
             if (child.$element.width() === 0 &amp;&amp; child.checkCount &lt; 5) {
-                setTimeout(function() {
+                setTimeout(function () {
                     _this.onAddedToDom(child);
                 }, 100);
                 return;
@@ -579,7 +570,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
         /**
          * @overridden DisplayObjectContainer.addChildAt
          */
-        DOMElement.prototype.addChildAt = function(child, index) {
+        DOMElement.prototype.addChildAt = function (child, index) {
             var children = this.$element.children();
             var length = children.length;
             // If an empty jQuery object is passed into the constructor then don&#x27;t run the code below.
@@ -589,7 +580,8 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
             if (index &lt; 0 || index &gt;= length) {
                 // If the index passed in is less than 0 and greater than the total number of children then place the item at the end.
                 this.addChild(child);
-            } else {
+            }
+            else {
                 // Else get the child in the children array by the index passed in and place the item before that child.
                 if (child.isCreated === false) {
                     child.create(); // Render the item before adding to the DOM
@@ -611,7 +603,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
         /**
          * @overridden DisplayObjectContainer.swapChildren
          */
-        DOMElement.prototype.swapChildren = function(child1, child2) {
+        DOMElement.prototype.swapChildren = function (child1, child2) {
             var child1Index = child1.$element.index();
             var child2Index = child2.$element.index();
             this.addChildAt(child1, child2Index);
@@ -621,7 +613,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
         /**
          * @overridden DisplayObjectContainer.getChildAt
          */
-        DOMElement.prototype.getChildAt = function(index) {
+        DOMElement.prototype.getChildAt = function (index) {
             return _super.prototype.getChildAt.call(this, index);
         };
         /**
@@ -632,7 +624,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @returns {DOMElement}
          * @public
          */
-        DOMElement.prototype.getChild = function(selector) {
+        DOMElement.prototype.getChild = function (selector) {
             // Get the first match from the selector passed in.
             var jQueryElement = this.$element.find(selector).first();
             if (jQueryElement.length === 0) {
@@ -664,10 +656,8 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * If the &#x27;data-sjs-id&#x27; property exists is on an HTML element a DOMElement will not be created for that element because it will be assumed it already exists as a DOMElement.
          * @public
          */
-        DOMElement.prototype.getChildren = function(selector) {
-            if (selector === void 0) {
-                selector = &#x27;&#x27;;
-            }
+        DOMElement.prototype.getChildren = function (selector) {
+            if (selector === void 0) { selector = &#x27;&#x27;; }
             //TODO: Make sure the index of the children added is the same as the what is in the actual DOM.
             var $child;
             var domElement;
@@ -701,10 +691,8 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DOMElement.prototype.removeChild = function(child, destroy) {
-            if (destroy === void 0) {
-                destroy = true;
-            }
+        DOMElement.prototype.removeChild = function (child, destroy) {
+            if (destroy === void 0) { destroy = true; }
             var remove = this.removeClientSideId(child);
             child.disable();
             // Checks if destroy was called before removeChild so it doesn&#x27;t error.
@@ -726,10 +714,8 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DOMElement.prototype.removeChildAt = function(index, destroy) {
-            if (destroy === void 0) {
-                destroy = true;
-            }
+        DOMElement.prototype.removeChildAt = function (index, destroy) {
+            if (destroy === void 0) { destroy = true; }
             this.removeChild(this.getChildAt(index), destroy);
             return this;
         };
@@ -744,10 +730,8 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DOMElement.prototype.removeChildren = function(destroy) {
-            if (destroy === void 0) {
-                destroy = true;
-            }
+        DOMElement.prototype.removeChildren = function (destroy) {
+            if (destroy === void 0) { destroy = true; }
             while (this.children.length &gt; 0) {
                 this.removeChild(this.children.pop(), destroy);
             }
@@ -757,7 +741,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
         /**
          * @overridden DisplayObjectContainer.destroy
          */
-        DOMElement.prototype.destroy = function() {
+        DOMElement.prototype.destroy = function () {
             // Note: we can&#x27;t just call destroy to remove the HTMLElement because there could be other views managing the same HTMLElement.
             /*if (this.$element != null) {
                  this.$element.unbind();
@@ -787,7 +771,7 @@ var __extends = (this &amp;&amp; this.__extends) || function(d, b) {
          *          ]);
          *      };
          */
-        DOMElement.prototype.createComponents = function(componentList) {
+        DOMElement.prototype.createComponents = function (componentList) {
             var list;
             var createdChildren = [];
             var length = componentList.length;

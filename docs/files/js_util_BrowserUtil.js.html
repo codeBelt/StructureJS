@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -152,14 +154,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function(deps, factory) {
+(function (deps, factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
         define(deps, factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/Util&#x27;], function(require, exports) {
+})([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/Util&#x27;], function (require, exports) {
     var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
     var BaseEvent = require(&#x27;../event/BaseEvent&#x27;);
     var Util = require(&#x27;../util/Util&#x27;);
@@ -172,18 +174,18 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var BrowserUtil = (function() {
+    var BrowserUtil = (function () {
         function BrowserUtil() {
-                throw new Error(&#x27;[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.&#x27;);
-            }
-            /**
-             * Dispatches a breakpoint event.
-             *
-             * @method enable
-             * @public
-             * @static
-             */
-        BrowserUtil.enable = function() {
+            throw new Error(&#x27;[BrowserUtil] Do not instantiate the BrowserUtil class because it is a static class.&#x27;);
+        }
+        /**
+         * Dispatches a breakpoint event.
+         *
+         * @method enable
+         * @public
+         * @static
+         */
+        BrowserUtil.enable = function () {
             if (BrowserUtil.isEnabled === true) {
                 return;
             }
@@ -194,7 +196,7 @@
         /**
          * @overridden EventDispatcher.disable
          */
-        BrowserUtil.disable = function() {
+        BrowserUtil.disable = function () {
             if (BrowserUtil.isEnabled === false) {
                 return;
             }
@@ -212,7 +214,7 @@
          *      BrowserUtil.browserName();
          *      // &#x27;Chrome&#x27;
          */
-        BrowserUtil.browserName = function() {
+        BrowserUtil.browserName = function () {
             return BrowserUtil.getBrowser()[0];
         };
         /**
@@ -230,14 +232,13 @@
          *      BrowserUtil.browserVersion(false);
          *      // &#x27;39.0.2171.99&#x27;
          */
-        BrowserUtil.browserVersion = function(majorVersion) {
-            if (majorVersion === void 0) {
-                majorVersion = true;
-            }
+        BrowserUtil.browserVersion = function (majorVersion) {
+            if (majorVersion === void 0) { majorVersion = true; }
             var version = BrowserUtil.getBrowser()[1];
             if (majorVersion === true) {
                 return parseInt(version, 10);
-            } else {
+            }
+            else {
                 return version;
             }
         };
@@ -252,14 +253,15 @@
          *      BrowserUtil.getBrowser();
          *      // [&quot;Chrome&quot;, &quot;39.0.2171.99&quot;]
          */
-        BrowserUtil.getBrowser = function() {
+        BrowserUtil.getBrowser = function () {
             var N = navigator.appName;
             var ua = navigator.userAgent;
             var tem = ua.match(/version\/([\.\d]+)/i);
             var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
             if (M &amp;&amp; tem != null) {
                 M[2] = tem[1];
-            } else {
+            }
+            else {
                 M = M ? [M[1], M[2]] : [N, navigator.appVersion, &#x27;-?&#x27;];
             }
             return M;
@@ -275,7 +277,7 @@
          *      BrowserUtil.isAndroid();
          *      // false
          */
-        BrowserUtil.isAndroid = function() {
+        BrowserUtil.isAndroid = function () {
             return !!navigator.userAgent.match(/Android/i);
         };
         /**
@@ -289,7 +291,7 @@
          *      BrowserUtil.isBlackBerry();
          *      // false
          */
-        BrowserUtil.isBlackBerry = function() {
+        BrowserUtil.isBlackBerry = function () {
             return Boolean(!!navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/BB10; Touch/));
         };
         /**
@@ -303,7 +305,7 @@
          *      BrowserUtil.isIOS();
          *      // false
          */
-        BrowserUtil.isIOS = function() {
+        BrowserUtil.isIOS = function () {
             return !!navigator.userAgent.match(/iPhone|iPad|iPod/i);
         };
         /**
@@ -317,7 +319,7 @@
          *      BrowserUtil.isOperaMini();
          *      // false
          */
-        BrowserUtil.isOperaMini = function() {
+        BrowserUtil.isOperaMini = function () {
             return !!navigator.userAgent.match(/Opera Mini/i);
         };
         /**
@@ -331,7 +333,7 @@
          *      BrowserUtil.isIEMobile();
          *      // false
          */
-        BrowserUtil.isIEMobile = function() {
+        BrowserUtil.isIEMobile = function () {
             return !!navigator.userAgent.match(/IEMobile/i);
         };
         /**
@@ -345,7 +347,7 @@
          *      BrowserUtil.isMobile();
          *      // false
          */
-        BrowserUtil.isMobile = function() {
+        BrowserUtil.isMobile = function () {
             return (BrowserUtil.isAndroid() || BrowserUtil.isBlackBerry() || BrowserUtil.isIOS() || BrowserUtil.isOperaMini() || BrowserUtil.isIEMobile());
         };
         /**
@@ -359,7 +361,7 @@
          *      BrowserUtil.hasBrowserHistory();
          *      // true
          */
-        BrowserUtil.hasBrowserHistory = function() {
+        BrowserUtil.hasBrowserHistory = function () {
             return !!(window.history &amp;&amp; history.pushState);
         };
         /**
@@ -373,10 +375,11 @@
          *      BrowserUtil.hasLocalStorage();
          *      // true
          */
-        BrowserUtil.hasLocalStorage = function() {
+        BrowserUtil.hasLocalStorage = function () {
             try {
                 return (&#x27;localStorage&#x27; in window) &amp;&amp; window.localStorage !== null;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
@@ -391,10 +394,11 @@
          *      BrowserUtil.hasSessionStorage();
          *      // true
          */
-        BrowserUtil.hasSessionStorage = function() {
+        BrowserUtil.hasSessionStorage = function () {
             try {
                 return (&#x27;sessionStorage&#x27; in window) &amp;&amp; window.sessionStorage !== null;
-            } catch (error) {
+            }
+            catch (error) {
                 return false;
             }
         };
@@ -428,7 +432,7 @@
          *          // &#x27;screen_sm&#x27;
          *      };
          */
-        BrowserUtil.getBreakpoint = function() {
+        BrowserUtil.getBreakpoint = function () {
             return BrowserUtil._styleDeclaration.getPropertyValue(&#x27;content&#x27;).replace(/[&quot;&#x27;]/g, &#x27;&#x27;);
         };
         /**
@@ -438,10 +442,8 @@
          * @public
          * @static
          */
-        BrowserUtil.addEventListener = function(type, callback, scope, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+        BrowserUtil.addEventListener = function (type, callback, scope, priority) {
+            if (priority === void 0) { priority = 0; }
             BrowserUtil._eventDispatcher.addEventListener(type, callback, scope, priority);
             BrowserUtil.enable();
         };
@@ -452,7 +454,7 @@
          * @public
          * @static
          */
-        BrowserUtil.removeEventListener = function(type, callback, scope) {
+        BrowserUtil.removeEventListener = function (type, callback, scope) {
             BrowserUtil._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
@@ -462,10 +464,8 @@
          * @public
          * @static
          */
-        BrowserUtil.dispatchEvent = function(type, data) {
-            if (data === void 0) {
-                data = null;
-            }
+        BrowserUtil.dispatchEvent = function (type, data) {
+            if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === &#x27;string&#x27;) {
                 event = new BaseEvent(type, false, false, data);
@@ -481,7 +481,7 @@
          * @private
          * @static
          */
-        BrowserUtil._onBreakpointChange = function(event) {
+        BrowserUtil._onBreakpointChange = function (event) {
             BrowserUtil.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, BrowserUtil.getBreakpoint()));
         };
         /**
