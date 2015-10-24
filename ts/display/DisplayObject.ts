@@ -233,7 +233,7 @@ class DisplayObject extends EventDispatcher
         this.ctx.save();
     }
 
-    public update():boolean
+    public renderCanvas():boolean
     {
         if (this.ctx === null || this.alpha <= 0 || this.visible === false) return false;
 

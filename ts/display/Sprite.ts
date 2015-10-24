@@ -17,9 +17,9 @@ class Sprite extends DisplayObjectContainer
         this.mouseEnabled = true;
     }
 
-    public update():any
+    public renderCanvas():any
     {
-        var isRendable:boolean = super.update();
+        var isRendable:boolean = super.renderCanvas();
 
         if (isRendable === false) return;
 
@@ -29,7 +29,7 @@ class Sprite extends DisplayObjectContainer
         for (var i:number = 0; i < this.numChildren; i++)
         {
             child = this.children[i];
-            child.update();
+            child.renderCanvas();
 
             newWidth = child.x + child.width;
             newHeight = child.y + child.height;
