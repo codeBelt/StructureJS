@@ -164,14 +164,14 @@ class BrowserUtil
      * Gets the browser name a user agent.
      *
      * @method getBrowser
-     * @private
+     * @public
      * @return {Array.<string>}
      * @static
      * @example
      *      BrowserUtil.getBrowser();
      *      // ["Chrome", "39.0.2171.99"]
      */
-    private static getBrowser():Array<string>
+    public static getBrowser():Array<string>
     {
         var N = navigator.appName;
         var ua = navigator.userAgent;

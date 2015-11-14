@@ -1,20 +1,20 @@
-import DOMElement = require('../vendor/structurejs/ts/display/DOMElement');
+import ${Extends} = require('replace/path/${Extends}');
 
 /**
  * TODO: YUIDoc_comment
  *
  * @class ${NAME}
- * @extends DOMElement
+ * @extends ${Extends}
  * @constructor
  **/
-class ${NAME} extends DOMElement {
+class ${NAME} extends ${Extends} {
 
     constructor() {
         super();
     }
 
     /**
-     * @overridden DOMElement.create
+     * @overridden ${Extends}.create
      */
     public create():void {
         super.create();
@@ -23,7 +23,7 @@ class ${NAME} extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden ${Extends}.enable
      */
     public enable():void {
         if (this.isEnabled === true) { return; }
@@ -34,7 +34,7 @@ class ${NAME} extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden ${Extends}.disable
      */
     public disable():void {
         if (this.isEnabled === false) { return; }
@@ -45,14 +45,14 @@ class ${NAME} extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.layout
+     * @overridden ${Extends}.layout
      */
     public layout():void {
         // Layout or update the objects in this parent class.
     }
 
     /**
-     * @overridden DOMElement.destroy
+     * @overridden ${Extends}.destroy
      */
     public destroy():void {
         // Call destroy on any child objects.
