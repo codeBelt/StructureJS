@@ -182,10 +182,8 @@ class BrowserUtil
         {
             M[2] = tem[1];
         }
-        else
-        {
-            M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
-        }
+
+        M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
 
         return M;
     }
