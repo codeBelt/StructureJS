@@ -492,6 +492,24 @@ class Router
     }
 
     /**
+     * A simple helper method to create a url route from an unlimited number of arguments.
+     *
+     * @method buildRoute
+     * @param ...rest {...rest}
+     * @return {string}
+     * @public
+     * @static
+     *      let someProperty = 'api/endpoint';
+     *
+     *      Router.buildRoute(someProperty, 'path', 7);
+     *
+     *      //Creates 'api/endpoint/path/7'
+     */
+    public static buildRoute(...rest):string {
+        return rest.join('/');
+    }
+
+    /**
      * This method will be called if the Window object dispatches a HashChangeEvent.
      * This method will not be called if the Router is disabled.
      *
