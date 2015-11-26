@@ -35,26 +35,20 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @author Robert S. (www.codeBelt.com)
      * @example
      *     // Example: how to create a custom event by extending BaseEvent.
-     *     var Extend = require('structurejs/util/Extend');
-     *     var BaseEvent = require('structurejs/event/BaseEvent');
      *
-     *     var CountryEvent = (function () {
+     *     class CountryEvent extends BaseEvent {
      *
-     *          var _super = Extend(CountryEvent, BaseEvent);
+     *          CHANGE_COUNTRY = 'CountryEvent.changeCountry';
      *
-     *          CountryEvent.CHANGE_COUNTRY = "CountryEvent.changeCountry";
-     *
-     *          function CountryEvent(type, bubbles, cancelable, data) {
-     *              _super.call(this, type, bubbles, cancelable, data);
+     *          constructor(type, bubbles = false, cancelable = false, data = null) {
+     *              super(type, bubbles, cancelable, data);
      *
      *              this.countryName = null;
      *          }
-     *
-     *           return CountryEvent;
-     *      })();
+     *      }
      *
      *     // Example: how to use the custom event.
-     *     var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
+     *     let event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
      *     event.countryName = 'Canada';
      *     this.dispatchEvent(event);
      */
@@ -187,7 +181,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {BaseEvent}
          * @public
          * @example
-         *     var cloneOfEvent = event.clone();
+         *     let cloneOfEvent = event.clone();
          */
         BaseEvent.prototype.clone = function () {
             var clonedBaseModel = new this.constructor(this.type, this.bubbles, this.cancelable, this.data);

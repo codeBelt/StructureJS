@@ -31,7 +31,7 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @author Robert S. (www.codeBelt.com)
      * @example
      *      // Example how to extend the BaseModel class.
-     *      var data = {
+     *      let data = {
      *              make: 'Tesla',
      *              model: 'Model S',
      *              YeAr: 2014,
@@ -40,28 +40,28 @@ var __extends = (this && this.__extends) || function (d, b) {
      *                  airbags: true
      *              }
      *      }
-     *      var carModel = new CarModel(data);
+     *      let carModel = new CarModel(data);
      *
      *
      *      // Example how to extend the BaseModel class.
-     *      var CarModel = (function () {
-     *          var _super = Extend(CarModel, BaseModel);
-     *          function CarModel(data) {
-     *              _super.call(this);
+     *      class CarModel extends BaseModel {
      *
-     *              // You need to have properties so the data will get assigned.
-     *              // If not the data will not get assigned to the vo.
-     *              this.make = null;
-     *              this.model = null;
-     *              this.year = null;
-     *              this.allWheel = false; // Set a default value.
+     *          // You need to have properties so the data will get assigned.
+     *          // If not the data will not get assigned to the model.
+     *          make = null;
+     *          model = null;
+     *          year = null;
+     *          allWheel = false; // Set a default value
      *
-     *              // You can assign BaseModel to a property which will
-     *              // automatically created it and pass the data to it.
-     *              this.feature = FeatureModel;
+     *          // You can assign BaseModel to a property which will
+     *          // automatically created it and pass the data to it.
+     *          feature = FeatureModel
      *
-     *              // If you have an array of data and want them assign to a BaseModel.
-     *              this.feature = [FeatureModel];
+     *          // If you have an array of data and want them assign to a BaseModel.
+     *          feature = [FeatureModel];
+     *
+     *          constructor(data) {
+     *              super();
      *
      *              if (data) {
      *                  this.update(data);
@@ -69,16 +69,14 @@ var __extends = (this && this.__extends) || function (d, b) {
      *          }
      *
      *          // @overridden BaseModel.update
-     *          CarModel.prototype.update = function (data) {
-     *              _super.prototype.update.call(this, data);
+     *          update(data) {
+     *              super.update(data);
      *
      *              // If the data doesn't match the property name.
      *              // You can set the value(s) manually after the update super method has been called.
      *              this.year = data.YeAr;
-     *          };
-     *
-     *          return CarModel;
-     *      })();
+     *          }
+     *      }
      */
     var BaseModel = (function (_super) {
         __extends(BaseModel, _super);
@@ -130,8 +128,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                 var len = data.length;
                 if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false) {
                     var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
-                    for (var i = 0; i < len; i++) {
-                        temp[i] = this._updateData(baseModelOrOther, data[i]);
+                    for (var i_1 = 0; i_1 < len; i_1++) {
+                        temp[i_1] = this._updateData(baseModelOrOther, data[i_1]);
                     }
                 }
                 this[key] = temp;
@@ -166,13 +164,13 @@ var __extends = (this && this.__extends) || function (d, b) {
             return keyValue;
         };
         /**
-         * Converts the  Base Model data into a JSON object and deletes the sjsId property.
+         * Converts the Base Model data into a JSON object and deletes the sjsId property.
          *
          * @method toJSON
-         * @returns {BaseModel}
+         * @returns {any}
          * @public
          * @example
-         *     var obj = carModel.toJSON();
+         *     let obj = carModel.toJSON();
          */
         BaseModel.prototype.toJSON = function () {
             var clone = Util.clone(this);
@@ -185,7 +183,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {string}
          * @public
          * @example
-         *     var str = carModel.toJSONString();
+         *     let str = carModel.toJSONString();
          */
         BaseModel.prototype.toJSONString = function () {
             return JSON.stringify(this.toJSON());
@@ -197,8 +195,8 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @param json {string}
          * @public
          * @example
-         *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
-         *      var carModel = new CarModel();
+         *      let str = '{"make":"Tesla","model":"Model S","year":2014}'
+         *      let carModel = new CarModel();
          *      carModel.fromJSON(str);
          */
         BaseModel.prototype.fromJSON = function (json) {
@@ -213,7 +211,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {BaseModel}
          * @public
          * @example
-         *     var clone = carModel.clone();
+         *     let clone = carModel.clone();
          */
         BaseModel.prototype.clone = function () {
             var clonedBaseModel = new this.constructor(this);

@@ -40,9 +40,9 @@
          *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          *
          *     // The event passed to the method will always be a BaseEvent object.
-         *     ClassName.prototype._handlerMethod = function (event) {
+         *     _handlerMethod(event) {
          *          console.log(event.data);
-         *     };
+         *     }
          */
         EventBroker.addEventListener = function (type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
@@ -64,9 +64,9 @@
          *     EventBroker.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
          *
          *     // The event passed to the method will always be a BaseEvent object.
-         *     ClassName.prototype._handlerMethod = function (event) {
+         *     _handlerMethod(event) {
          *          console.log(event.data);
-         *     };
+         *     }
          */
         EventBroker.addEventListenerOnce = function (type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
@@ -104,7 +104,7 @@
          *      EventBroker.dispatchEvent('change', {some: 'data'});
          *
          *      // Example: Sending a BaseEvent or custom event object.
-         *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      let event = new BaseEvent(BaseEvent.CHANGE);
          *      event.data = {some: 'data'};
          *      EventBroker.dispatchEvent(event);
          */

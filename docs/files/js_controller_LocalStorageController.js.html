@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -207,7 +207,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
              */
             this._localStorage = null;
             this._localStorage = window.localStorage;
-            window.addEventListener(&#x27;storage&#x27;, this.onLocalStorageEvent.bind(this));
+            window.addEventListener(&#x27;storage&#x27;, this._onLocalStorageEvent.bind(this));
         }
         /**
          * Set storage namespace
@@ -290,8 +290,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             if (namespace === void 0) { namespace = this._namespace; }
             var list = [];
             var length = this.getLength();
-            for (var i = 0; i &lt; length; i++) {
-                var key = this._localStorage.key(i);
+            for (var i_1 = 0; i_1 &lt; length; i_1++) {
+                var key = this._localStorage.key(i_1);
                 if (key.indexOf(namespace) &gt; -1) {
                     var value = this.getItem(key);
                     var obj = {
@@ -312,8 +312,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         LocalStorageController.prototype.getAllItems = function () {
             var list = [];
             var length = this.getLength();
-            for (var i = 0; i &lt; length; i++) {
-                var key = this._localStorage.key(i);
+            for (var i_2 = 0; i_2 &lt; length; i_2++) {
+                var key = this._localStorage.key(i_2);
                 var value = this.getItem(key);
                 var obj = {
                     key: key,
@@ -379,11 +379,11 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         /**
          *
          *
-         * @method onLocalStorageEvent
+         * @method _onLocalStorageEvent
          * @param event {StorageEvent} The native browser event for Web Storage.
          * @protected
          */
-        LocalStorageController.prototype.onLocalStorageEvent = function (event) {
+        LocalStorageController.prototype._onLocalStorageEvent = function (event) {
             this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
         };
         return LocalStorageController;

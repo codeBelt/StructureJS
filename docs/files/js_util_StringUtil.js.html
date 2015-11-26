@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -328,8 +328,8 @@
             var queries = str.split(&#x27;&amp;&#x27;);
             // Convert the array of strings into an object
             var len = queries.length;
-            for (var i = 0; i &lt; len; i++) {
-                temp = queries[i].split(&#x27;=&#x27;);
+            for (var i_1 = 0; i_1 &lt; len; i_1++) {
+                temp = queries[i_1].split(&#x27;=&#x27;);
                 params[temp[0]] = (useParseFloat === true &amp;&amp; isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
             return params;
@@ -343,7 +343,7 @@
          * @public
          * @static
          * @example
-         *      var str = &#x27;   a b    c d e f g &#x27;;
+         *      let str = &#x27;   a b    c d e f g &#x27;;
          *      StringUtil.removeAllWhitespace(str);
          *      // &#x27;abcdefg&#x27;
          */
@@ -359,7 +359,7 @@
          * @public
          * @static
          * @example
-         *      var str = &#x27;   a b    c d e f g &#x27;;
+         *      let str = &#x27;   a b    c d e f g &#x27;;
          *      StringUtil.removeLeadingTrailingWhitespace(str);
          *      // &#x27;a b    c d e f g&#x27;
          */
@@ -406,9 +406,9 @@
             }
             var length = rest.length;
             var value = str;
-            for (var i = 0; i &lt; length; i++) {
-                var reg = new RegExp(&#x27;\\{&#x27; + i + &#x27;\\}&#x27;, &#x27;gm&#x27;);
-                value = value.replace(reg, rest[i]);
+            for (var i_2 = 0; i_2 &lt; length; i_2++) {
+                var reg = new RegExp(&#x27;\\{&#x27; + i_2 + &#x27;\\}&#x27;, &#x27;gm&#x27;);
+                value = value.replace(reg, rest[i_2]);
             }
             return value;
         };

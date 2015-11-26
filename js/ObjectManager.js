@@ -45,13 +45,13 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
-         *     ClassName.prototype.enable = function() {
+         *     enable() {
          *          if (this.isEnabled === true) { return this; }
          *
          *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *          this._childInstance.enable();
          *
-         *          return _super.prototype.enable.call(this);
+         *          return super.enable();
          *     }
          */
         ObjectManager.prototype.enable = function () {
@@ -68,13 +68,13 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
-         *      ClassName.prototype.disable = function() {
+         *      disable() {
          *          if (this.isEnabled === false) { return this; }
          *
          *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *          this._childInstance.disable();
          *
-         *          return _super.prototype.disable.call(this);
+         *          return super.disable();
          *      }
          */
         ObjectManager.prototype.disable = function () {

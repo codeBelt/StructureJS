@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -491,7 +491,7 @@ Also in the class you inherit BaseModel from you can override the update method 
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// Example how to extend the BaseModel class.
-var data = {
+let data = {
         make: &#39;Tesla&#39;,
         model: &#39;Model S&#39;,
         YeAr: 2014,
@@ -500,28 +500,28 @@ var data = {
             airbags: true
         }
 }
-var carModel = new CarModel(data);
+let carModel = new CarModel(data);
 
 
 // Example how to extend the BaseModel class.
-var CarModel = (function () {
-    var _super = Extend(CarModel, BaseModel);
-    function CarModel(data) {
-        _super.call(this);
+class CarModel extends BaseModel {
 
-        // You need to have properties so the data will get assigned.
-        // If not the data will not get assigned to the vo.
-        this.make = null;
-        this.model = null;
-        this.year = null;
-        this.allWheel = false; // Set a default value.
+    // You need to have properties so the data will get assigned.
+    // If not the data will not get assigned to the model.
+    make = null;
+    model = null;
+    year = null;
+    allWheel = false; // Set a default value
 
-        // You can assign BaseModel to a property which will
-        // automatically created it and pass the data to it.
-        this.feature = FeatureModel;
+    // You can assign BaseModel to a property which will
+    // automatically created it and pass the data to it.
+    feature = FeatureModel
 
-        // If you have an array of data and want them assign to a BaseModel.
-        this.feature = [FeatureModel];
+    // If you have an array of data and want them assign to a BaseModel.
+    feature = [FeatureModel];
+
+    constructor(data) {
+        super();
 
         if (data) {
             this.update(data);
@@ -529,16 +529,14 @@ var CarModel = (function () {
     }
 
     // @overridden BaseModel.update
-    CarModel.prototype.update = function (data) {
-        _super.prototype.update.call(this, data);
+    update(data) {
+        super.update(data);
 
         // If the data doesn&#39;t match the property name.
         // You can set the value(s) manually after the update super method has been called.
         this.year = data.YeAr;
-    };
-
-    return CarModel;
-})();</code></pre>
+    }
+}</code></pre>
 
                 </div>
             </div>
@@ -607,7 +605,7 @@ var CarModel = (function () {
             
         
         
-        <a href="../files/js_model_BaseModel.js.html#l118"><code>js&#x2F;model&#x2F;BaseModel.js:118</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l116"><code>js&#x2F;model&#x2F;BaseModel.js:116</code></a>
         
         </p>
 
@@ -724,7 +722,7 @@ var CarModel = (function () {
             
         
         
-        <a href="../files/js_model_BaseModel.js.html#l143"><code>js&#x2F;model&#x2F;BaseModel.js:143</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l141"><code>js&#x2F;model&#x2F;BaseModel.js:141</code></a>
         
         </p>
 
@@ -829,7 +827,7 @@ var CarModel = (function () {
             
         
         
-        <a href="../files/js_model_BaseModel.js.html#l209"><code>js&#x2F;model&#x2F;BaseModel.js:209</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l207"><code>js&#x2F;model&#x2F;BaseModel.js:207</code></a>
         
         </p>
 
@@ -867,7 +865,7 @@ var CarModel = (function () {
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var clone = carModel.clone();</code></pre>
+                    <pre class="code prettyprint"><code>let clone = carModel.clone();</code></pre>
 
                 </div>
             </div>
@@ -914,7 +912,7 @@ var CarModel = (function () {
             
         
         
-        <a href="../files/js_BaseObject.js.html#l52"><code>js&#x2F;BaseObject.js:52</code></a>
+        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
         
         </p>
 
@@ -958,10 +956,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+                    <pre class="code prettyprint"><code>destroy() {
      this._childInstance.destroy();
 
-     _super.prototype.destroy.call(this);
+     super.destroy();
 }</code></pre>
 
                 </div>
@@ -1018,7 +1016,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_BaseModel.js.html#l193"><code>js&#x2F;model&#x2F;BaseModel.js:193</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l191"><code>js&#x2F;model&#x2F;BaseModel.js:191</code></a>
         
         </p>
 
@@ -1067,8 +1065,8 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> var str = &#39;{&quot;make&quot;:&quot;Tesla&quot;,&quot;model&quot;:&quot;Model S&quot;,&quot;year&quot;:2014}&#39;
- var carModel = new CarModel();
+                    <pre class="code prettyprint"><code> let str = &#39;{&quot;make&quot;:&quot;Tesla&quot;,&quot;model&quot;:&quot;Model S&quot;,&quot;year&quot;:2014}&#39;
+ let carModel = new CarModel();
  carModel.fromJSON(str);</code></pre>
 
                 </div>
@@ -1156,7 +1154,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+                    <pre class="code prettyprint"><code>let someClass = new SomeClass();
+someClass.getQualifiedClassName();
+
+// SomeClass</code></pre>
 
                 </div>
             </div>
@@ -1175,7 +1176,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>
+            <span class="type">Any</span>
         </span>
     
 
@@ -1206,7 +1207,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_BaseModel.js.html#l168"><code>js&#x2F;model&#x2F;BaseModel.js:168</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l166"><code>js&#x2F;model&#x2F;BaseModel.js:166</code></a>
         
         </p>
 
@@ -1219,7 +1220,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>Converts the  Base Model data into a JSON object and deletes the sjsId property.</p>
+            <p>Converts the Base Model data into a JSON object and deletes the sjsId property.</p>
 
         </div>
 
@@ -1232,7 +1233,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type"><a href="../classes/BaseModel.html" class="crosslink">BaseModel</a></span>:
+                            <span class="type">Any</span>:
                         
                     
                 </div>
@@ -1244,7 +1245,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var obj = carModel.toJSON();</code></pre>
+                    <pre class="code prettyprint"><code>let obj = carModel.toJSON();</code></pre>
 
                 </div>
             </div>
@@ -1294,7 +1295,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_BaseModel.js.html#l181"><code>js&#x2F;model&#x2F;BaseModel.js:181</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l179"><code>js&#x2F;model&#x2F;BaseModel.js:179</code></a>
         
         </p>
 
@@ -1332,7 +1333,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var str = carModel.toJSONString();</code></pre>
+                    <pre class="code prettyprint"><code>let str = carModel.toJSONString();</code></pre>
 
                 </div>
             </div>
@@ -1388,7 +1389,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_BaseModel.js.html#l88"><code>js&#x2F;model&#x2F;BaseModel.js:88</code></a>
+        <a href="../files/js_model_BaseModel.js.html#l86"><code>js&#x2F;model&#x2F;BaseModel.js:86</code></a>
         
         </p>
 

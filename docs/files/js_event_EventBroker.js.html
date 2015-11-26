@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -196,9 +196,9 @@
          *     EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          *
          *     // The event passed to the method will always be a BaseEvent object.
-         *     ClassName.prototype._handlerMethod = function (event) {
+         *     _handlerMethod(event) {
          *          console.log(event.data);
-         *     };
+         *     }
          */
         EventBroker.addEventListener = function (type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
@@ -220,9 +220,9 @@
          *     EventBroker.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
          *
          *     // The event passed to the method will always be a BaseEvent object.
-         *     ClassName.prototype._handlerMethod = function (event) {
+         *     _handlerMethod(event) {
          *          console.log(event.data);
-         *     };
+         *     }
          */
         EventBroker.addEventListenerOnce = function (type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
@@ -260,7 +260,7 @@
          *      EventBroker.dispatchEvent(&#x27;change&#x27;, {some: &#x27;data&#x27;});
          *
          *      // Example: Sending a BaseEvent or custom event object.
-         *      var event = new BaseEvent(BaseEvent.CHANGE);
+         *      let event = new BaseEvent(BaseEvent.CHANGE);
          *      event.data = {some: &#x27;data&#x27;};
          *      EventBroker.dispatchEvent(event);
          */

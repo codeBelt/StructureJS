@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -246,7 +246,7 @@
          * Gets the browser name a user agent.
          *
          * @method getBrowser
-         * @private
+         * @public
          * @return {Array.&lt;string&gt;}
          * @static
          * @example
@@ -261,9 +261,7 @@
             if (M &amp;&amp; tem != null) {
                 M[2] = tem[1];
             }
-            else {
-                M = M ? [M[1], M[2]] : [N, navigator.appVersion, &#x27;-?&#x27;];
-            }
+            M = M ? [M[1], M[2]] : [N, navigator.appVersion, &#x27;-?&#x27;];
             return M;
         };
         /**
@@ -427,10 +425,10 @@
          *      // Add a listener to get notified when the browser is resized:
          *      BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
          *      ...
-         *      ClassName.prototype._onBreakpointChange = function (baseEvent) {
+         *      _onBreakpointChange(baseEvent) {
          *          console.log(baseEvent.data);
          *          // &#x27;screen_sm&#x27;
-         *      };
+         *      }
          */
         BrowserUtil.getBreakpoint = function () {
             return BrowserUtil._styleDeclaration.getPropertyValue(&#x27;content&#x27;).replace(/[&quot;&#x27;]/g, &#x27;&#x27;);

@@ -27,12 +27,9 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
-     *      // Extending EventDispatcher. See DisplayObjectContainer as an example that extends EventDispatcher.
-     *      var _super = Extend(ClassExtendingEventDispatcher, EventDispatcher);
-     *
      *      // Another way to use the EventDispatcher.
-     *      var eventDispatcher = new EventDispatcher();
-     *      eventDispatcher.addEventListener('change', this.handlerMethod, this);
+     *      let eventDispatcher = new EventDispatcher();
+     *      eventDispatcher.addEventListener('change', this._handlerMethod, this);
      *      eventDispatcher.dispatchEvent('change');
      */
     var EventDispatcher = (function (_super) {
@@ -70,9 +67,9 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
-         *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *      this.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          *
-         *      ClassName.prototype.handlerMethod = function (event) {
+         *      _handlerMethod(event) {
          *          console.log(event.target + " sent the event.");
          *          console.log(event.type, event.data);
          *      }
@@ -113,9 +110,9 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
-         *      this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+         *      this.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
          *
-         *      ClassName.prototype.handlerMethod = function (event) {
+         *      _handlerMethod(event) {
          *          console.log(event.target + " sent the event.");
          *          console.log(event.type, event.data);
          *      }
@@ -143,19 +140,16 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @chainable
          * @example
          *      this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-         *
-         *      ClassName.prototype._handlerMethod = function (event) {
-         *      };
          */
         EventDispatcher.prototype.removeEventListener = function (type, callback, scope) {
             // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list !== void 0) {
-                var i = list.length;
-                while (--i > -1) {
+                var i_1 = list.length;
+                while (--i_1 > -1) {
                     // If the callback and scope are the same then remove the event listener.
-                    if (list[i].callback === callback && list[i].scope === scope) {
-                        list.splice(i, 1);
+                    if (list[i_1].callback === callback && list[i_1].scope === scope) {
+                        list.splice(i_1, 1);
                         break;
                     }
                 }
@@ -178,7 +172,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          *
          *      // Example: With an event object
          *      // (event type, bubbling set to true, cancelable set to true and passing data) :
-         *      var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
+         *      let event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
          *      this.dispatchEvent(event);
          *
          *      // Here is a common inline event object being dispatched:
@@ -198,14 +192,14 @@ var __extends = (this && this.__extends) || function (d, b) {
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
-                var i = list.length;
+                var i_2 = list.length;
                 var listener;
-                while (--i > -1) {
+                while (--i_2 > -1) {
                     // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
                     if (event.cancelable === true && event.isImmediatePropagationStopped === true) {
                         break;
                     }
-                    listener = list[i];
+                    listener = list[i_2];
                     listener.callback.call(listener.scope, event);
                     // If the once value is true we want to remove the listener right after this callback was called.
                     if (listener.once === true) {
@@ -236,14 +230,14 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @return {boolean}
          * @public
          * @example
-         *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *      this.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
          */
         EventDispatcher.prototype.hasEventListener = function (type, callback, scope) {
             if (this._listeners[type] !== void 0) {
                 var listener;
                 var numOfCallbacks = this._listeners[type].length;
-                for (var i = 0; i < numOfCallbacks; i++) {
-                    listener = this._listeners[type][i];
+                for (var i_3 = 0; i_3 < numOfCallbacks; i_3++) {
+                    listener = this._listeners[type][i_3];
                     if (listener.callback === callback && listener.scope === scope) {
                         return true;
                     }
@@ -268,8 +262,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var listener;
             for (var type in this._listeners) {
                 numOfCallbacks = this._listeners[type].length;
-                for (var i = 0; i < numOfCallbacks; i++) {
-                    listener = this._listeners[type][i];
+                for (var i_4 = 0; i_4 < numOfCallbacks; i_4++) {
+                    listener = this._listeners[type][i_4];
                     if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
                         str += '[' + listener.scope.getQualifiedClassName() + ']';
                     }

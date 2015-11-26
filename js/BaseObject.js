@@ -44,7 +44,10 @@
          * @returns {string} Returns the class name.
          * @public
          * @example
-         *     instance.getQualifiedClassName();
+         *     let someClass = new SomeClass();
+         *     someClass.getQualifiedClassName();
+         *
+         *     // SomeClass
          */
         BaseObject.prototype.getQualifiedClassName = function () {
             return Util.getName(this);
@@ -63,10 +66,10 @@
          * @return {void}
          * @public
          * @example
-         *     ClassName.prototype.destroy = function() {
+         *     destroy() {
          *          this._childInstance.destroy();
          *
-         *          _super.prototype.destroy.call(this);
+         *          super.destroy();
          *     }
          */
         BaseObject.prototype.destroy = function () {

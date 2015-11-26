@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -305,7 +305,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
                 return this;
             }
             this._timer = setInterval(function () {
-                _this.decrementCounter();
+                _this._decrementCounter();
             }, this._delay);
             this.running = true;
             return this;
@@ -322,10 +322,10 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         };
         /**
          *
-         * @method decrementCounter
+         * @method _decrementCounter
          * @protected
          */
-        Timer.prototype.decrementCounter = function () {
+        Timer.prototype._decrementCounter = function () {
             if (this._currentCount &gt; 0) {
                 this._currentCount--;
             }

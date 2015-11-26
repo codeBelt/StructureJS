@@ -246,10 +246,10 @@
                 d = s[1].substr(0, decimals);
             }
             else {
-                var i = decimals;
-                while (i > 0) {
+                var i_1 = decimals;
+                while (i_1 > 0) {
                     d += '0';
-                    i--;
+                    i_1--;
                 }
             }
             var c = s[0] + '.' + d;
@@ -278,10 +278,10 @@
                 d = s[1].substr(0, decimals);
             }
             else {
-                var i = decimals;
-                while (i > 0) {
+                var i_2 = decimals;
+                while (i_2 > 0) {
                     d += '0';
-                    i--;
+                    i_2--;
                 }
             }
             var f = s[0] + '.' + d;

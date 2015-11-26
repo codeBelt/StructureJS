@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -299,6 +299,13 @@
             
 
             
+                <li class="index-item method protected">
+                    <a href="#method__decrementCounter">_decrementCounter</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public inherited">
                     <a href="#method_addEventListener">addEventListener</a>
 
@@ -308,13 +315,6 @@
             
                 <li class="index-item method public inherited">
                     <a href="#method_addEventListenerOnce">addEventListenerOnce</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method protected">
-                    <a href="#method_decrementCounter">decrementCounter</a>
 
                     
                     
@@ -472,7 +472,7 @@
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l42"><code>js&#x2F;event&#x2F;EventDispatcher.js:42</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l39"><code>js&#x2F;event&#x2F;EventDispatcher.js:39</code></a>
         
         </p>
 
@@ -729,7 +729,7 @@
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l50"><code>js&#x2F;event&#x2F;EventDispatcher.js:50</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l47"><code>js&#x2F;event&#x2F;EventDispatcher.js:47</code></a>
         
         </p>
 
@@ -988,6 +988,68 @@ list hierarchy and helps facilitate event bubbling.</p>
         <h2>Methods</h2>
 
         
+            <a name="method__decrementCounter" class="anchor-link"></a>
+<div class="method item protected">
+    <h3 class="name"><code>_decrementCounter</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_Timer.js.html#l167"><code>js&#x2F;util&#x2F;Timer.js:167</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method_addEventListener" class="anchor-link"></a>
 <div class="method item public inherited">
     <h3 class="name"><code>addEventListener</code>
@@ -1052,7 +1114,7 @@ list hierarchy and helps facilitate event bubbling.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l62"><code>js&#x2F;event&#x2F;EventDispatcher.js:62</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l59"><code>js&#x2F;event&#x2F;EventDispatcher.js:59</code></a>
         
         </p>
 
@@ -1151,9 +1213,9 @@ list hierarchy and helps facilitate event bubbling.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code> this.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
- ClassName.prototype.handlerMethod = function (event) {
+ _handlerMethod(event) {
      console.log(event.target + &quot; sent the event.&quot;);
      console.log(event.type, event.data);
  }</code></pre>
@@ -1229,7 +1291,7 @@ list hierarchy and helps facilitate event bubbling.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l105"><code>js&#x2F;event&#x2F;EventDispatcher.js:105</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l102"><code>js&#x2F;event&#x2F;EventDispatcher.js:102</code></a>
         
         </p>
 
@@ -1328,77 +1390,15 @@ list hierarchy and helps facilitate event bubbling.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code> this.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
 
- ClassName.prototype.handlerMethod = function (event) {
+ _handlerMethod(event) {
      console.log(event.target + &quot; sent the event.&quot;);
      console.log(event.type, event.data);
  }</code></pre>
 
                 </div>
             </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_decrementCounter" class="anchor-link"></a>
-<div class="method item protected">
-    <h3 class="name"><code>decrementCounter</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_util_Timer.js.html#l167"><code>js&#x2F;util&#x2F;Timer.js:167</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            
-        </div>
-
-        
-
-        
-
         
     </div>
 </div>
@@ -1442,7 +1442,7 @@ list hierarchy and helps facilitate event bubbling.</p>
             
         
         
-        <a href="../files/js_BaseObject.js.html#l52"><code>js&#x2F;BaseObject.js:52</code></a>
+        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
         
         </p>
 
@@ -1486,10 +1486,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+                    <pre class="code prettyprint"><code>destroy() {
      this._childInstance.destroy();
 
-     _super.prototype.destroy.call(this);
+     super.destroy();
 }</code></pre>
 
                 </div>
@@ -1561,13 +1561,13 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ClassName.prototype.disable = function() {
+                    <pre class="code prettyprint"><code> disable() {
      if (this.isEnabled === false) { return this; }
 
      this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.disable();
 
-     return _super.prototype.disable.call(this);
+     return super.disable();
  }</code></pre>
 
                 </div>
@@ -1629,7 +1629,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l165"><code>js&#x2F;event&#x2F;EventDispatcher.js:165</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l159"><code>js&#x2F;event&#x2F;EventDispatcher.js:159</code></a>
         
         </p>
 
@@ -1702,7 +1702,7 @@ on other objects before calling the super.</p>
 
  // Example: With an event object
  // (event type, bubbling set to true, cancelable set to true and passing data) :
- var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
+ let event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
  this.dispatchEvent(event);
 
  // Here is a common inline event object being dispatched:
@@ -1777,13 +1777,13 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+                    <pre class="code prettyprint"><code>enable() {
      if (this.isEnabled === true) { return this; }
 
      this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.enable();
 
-     return _super.prototype.enable.call(this);
+     return super.enable();
 }</code></pre>
 
                 </div>
@@ -1989,7 +1989,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l254"><code>js&#x2F;event&#x2F;EventDispatcher.js:254</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l248"><code>js&#x2F;event&#x2F;EventDispatcher.js:248</code></a>
         
         </p>
 
@@ -2116,7 +2116,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+                    <pre class="code prettyprint"><code>let someClass = new SomeClass();
+someClass.getQualifiedClassName();
+
+// SomeClass</code></pre>
 
                 </div>
             </div>
@@ -2264,7 +2267,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l229"><code>js&#x2F;event&#x2F;EventDispatcher.js:229</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l223"><code>js&#x2F;event&#x2F;EventDispatcher.js:223</code></a>
         
         </p>
 
@@ -2358,7 +2361,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
+                    <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
 
                 </div>
             </div>
@@ -2425,7 +2428,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l134"><code>js&#x2F;event&#x2F;EventDispatcher.js:134</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l131"><code>js&#x2F;event&#x2F;EventDispatcher.js:131</code></a>
         
         </p>
 
@@ -2507,10 +2510,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-
- ClassName.prototype._handlerMethod = function (event) {
- };</code></pre>
+                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
 
                 </div>
             </div>

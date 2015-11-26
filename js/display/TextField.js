@@ -33,29 +33,29 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.ctx.fillStyle = this.color;
             this.ctx.textBaseline = 'top'; //http://www.ckollars.org/canvas-text-centering.html
             if (this.text.indexOf('\n') !== -1) {
-                this.wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
+                this._wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
             }
             else if (this.width > 0) {
-                this.wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
+                this._wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
             }
             else {
                 this.ctx.fillText(this.text, 0, 0);
             }
         };
-        TextField.prototype.wrapTextByWidth = function (context, text, x, y, maxWidth, lineHeight) {
+        TextField.prototype._wrapTextByWidth = function (context, text, x, y, maxWidth, lineHeight) {
             var wordList = text.split(' ');
             var line = '';
             var testLine;
             var metrics;
             var testWidth;
             var length = wordList.length;
-            for (var i = 0; i < length; i++) {
-                testLine = line + wordList[i] + ' ';
+            for (var i_1 = 0; i_1 < length; i_1++) {
+                testLine = line + wordList[i_1] + ' ';
                 metrics = context.measureText(testLine);
                 testWidth = metrics.width;
-                if (testWidth > maxWidth && i > 0) {
+                if (testWidth > maxWidth && i_1 > 0) {
                     context.fillText(line, x, y);
-                    line = wordList[i] + ' ';
+                    line = wordList[i_1] + ' ';
                     y += lineHeight;
                 }
                 else {
@@ -64,11 +64,11 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
             context.fillText(line, x, y);
         };
-        TextField.prototype.wrapTextOnLineBreak = function (context, text, x, y, lineHeight) {
+        TextField.prototype._wrapTextOnLineBreak = function (context, text, x, y, lineHeight) {
             var wordList = text.split('\n');
             var length = wordList.length;
-            for (var i = 0; i < length; i++) {
-                context.fillText(wordList[i], x, y);
+            for (var i_2 = 0; i_2 < length; i_2++) {
+                context.fillText(wordList[i_2], x, y);
                 y += lineHeight;
             }
         };

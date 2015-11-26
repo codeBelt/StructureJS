@@ -42,8 +42,8 @@
         var strLength = str.length;
         if (strLength == 0)
             return hash;
-        for (var i = 0; i < strLength; i++) {
-            character = str.charCodeAt(i);
+        for (var i_1 = 0; i_1 < strLength; i_1++) {
+            character = str.charCodeAt(i_1);
             hash = ((hash << 5) - hash) + character;
             hash = hash & hash; // Convert to 32bit integer
         }

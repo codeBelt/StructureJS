@@ -216,9 +216,9 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         DisplayObjectContainer.prototype.getChildByCid = function (sjsId) {
             var child = null;
-            for (var i = this.numChildren - 1; i >= 0; i--) {
-                if (this.children[i].sjsId == sjsId) {
-                    child = this.children[i];
+            for (var i_1 = this.numChildren - 1; i_1 >= 0; i_1--) {
+                if (this.children[i_1].sjsId == sjsId) {
+                    child = this.children[i_1];
                     break;
                 }
             }

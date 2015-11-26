@@ -149,7 +149,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 return this;
             }
             this._timer = setInterval(function () {
-                _this.decrementCounter();
+                _this._decrementCounter();
             }, this._delay);
             this.running = true;
             return this;
@@ -166,10 +166,10 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         /**
          *
-         * @method decrementCounter
+         * @method _decrementCounter
          * @protected
          */
-        Timer.prototype.decrementCounter = function () {
+        Timer.prototype._decrementCounter = function () {
             if (this._currentCount > 0) {
                 this._currentCount--;
             }

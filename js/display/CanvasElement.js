@@ -41,15 +41,15 @@ var __extends = (this && this.__extends) || function (d, b) {
                 return;
             }
             // Add mouse event listeners to $canvas element
-            this.$canvas.addEventListener('mousedown', this.onPointerDown, this);
-            this.$canvas.addEventListener('mousemove', this.onPointerMove, this);
-            this.$canvas.addEventListener('mouseup', this.onPointerUp, this);
-            this.$canvas.addEventListener('mouseout', this.onPointerOut, this);
+            this.$canvas.addEventListener('mousedown', this._onPointerDown, this);
+            this.$canvas.addEventListener('mousemove', this._onPointerMove, this);
+            this.$canvas.addEventListener('mouseup', this._onPointerUp, this);
+            this.$canvas.addEventListener('mouseout', this._onPointerOut, this);
             // Add touch event listeners to $canvas element
-            this.$canvas.addEventListener('touchstart', this.onPointerDown, this);
-            this.$canvas.addEventListener('touchmove', this.onPointerMove, this);
-            this.$canvas.addEventListener('touchend', this.onPointerUp, this);
-            this.$canvas.addEventListener('touchcancel', this.onPointerOut, this);
+            this.$canvas.addEventListener('touchstart', this._onPointerDown, this);
+            this.$canvas.addEventListener('touchmove', this._onPointerMove, this);
+            this.$canvas.addEventListener('touchend', this._onPointerUp, this);
+            this.$canvas.addEventListener('touchcancel', this._onPointerOut, this);
             _super.prototype.enable.call(this);
         };
         /**
@@ -60,15 +60,15 @@ var __extends = (this && this.__extends) || function (d, b) {
                 return;
             }
             // Remove mouse event listeners on $canvas element
-            this.$canvas.removeEventListener('mousedown', this.onPointerDown, this);
-            this.$canvas.removeEventListener('mousemove', this.onPointerMove, this);
-            this.$canvas.removeEventListener('mouseup', this.onPointerUp, this);
-            this.$canvas.removeEventListener('mouseout', this.onPointerOut, this);
+            this.$canvas.removeEventListener('mousedown', this._onPointerDown, this);
+            this.$canvas.removeEventListener('mousemove', this._onPointerMove, this);
+            this.$canvas.removeEventListener('mouseup', this._onPointerUp, this);
+            this.$canvas.removeEventListener('mouseout', this._onPointerOut, this);
             // Remove touch event listeners on $canvas element
-            this.$canvas.removeEventListener('touchstart', this.onPointerDown, this);
-            this.$canvas.removeEventListener('touchmove', this.onPointerMove, this);
-            this.$canvas.removeEventListener('touchend', this.onPointerUp, this);
-            this.$canvas.removeEventListener('touchcancel', this.onPointerOut, this);
+            this.$canvas.removeEventListener('touchstart', this._onPointerDown, this);
+            this.$canvas.removeEventListener('touchmove', this._onPointerMove, this);
+            this.$canvas.removeEventListener('touchend', this._onPointerUp, this);
+            this.$canvas.removeEventListener('touchcancel', this._onPointerOut, this);
             _super.prototype.disable.call(this);
         };
         /**
@@ -169,8 +169,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         CanvasElement.prototype.renderCanvas = function () {
             this.ctx.clearRect(0, 0, this.width, this.height);
-            for (var i = 0; i < this.numChildren; i++) {
-                this.children[i].renderCanvas();
+            for (var i_1 = 0; i_1 < this.numChildren; i_1++) {
+                this.children[i_1].renderCanvas();
             }
         };
         CanvasElement.prototype.getMousePos = function (event) {
@@ -180,8 +180,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         CanvasElement.prototype.getObjectUnderPoint = function (x, y) {
             var foundItem = null;
             var sprite;
-            for (var i = this.numChildren - 1; i >= 0; i--) {
-                sprite = this.children[i];
+            for (var i_2 = this.numChildren - 1; i_2 >= 0; i_2--) {
+                sprite = this.children[i_2];
                 if (sprite.visible === true && sprite.mouseEnabled === true) {
                     if (this.hitTest(sprite, x, y)) {
                         foundItem = sprite;
@@ -194,8 +194,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         CanvasElement.prototype.getObjectsUnderPoint = function (x, y) {
             var list = [];
             var sprite;
-            for (var i = this.numChildren - 1; i >= 0; i--) {
-                sprite = this.children[i];
+            for (var i_3 = this.numChildren - 1; i_3 >= 0; i_3--) {
+                sprite = this.children[i_3];
                 if (this.hitTest(sprite, x, y)) {
                     list.push(sprite);
                 }
@@ -210,13 +210,13 @@ var __extends = (this && this.__extends) || function (d, b) {
                 return false;
             }
         };
-        CanvasElement.prototype.onPointerDown = function (event) {
+        CanvasElement.prototype._onPointerDown = function (event) {
             this._sendEvent(event);
         };
-        CanvasElement.prototype.onPointerUp = function (event) {
+        CanvasElement.prototype._onPointerUp = function (event) {
             this._sendEvent(event);
         };
-        CanvasElement.prototype.onPointerMove = function (event) {
+        CanvasElement.prototype._onPointerMove = function (event) {
             var displayObject = this._sendEvent(event);
             if (displayObject != null && displayObject.useHandCursor === true && displayObject.visible === true) {
                 document.body.style.cursor = 'pointer';
@@ -225,7 +225,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 document.body.style.cursor = 'default';
             }
         };
-        CanvasElement.prototype.onPointerOut = function (event) {
+        CanvasElement.prototype._onPointerOut = function (event) {
             this._sendEvent(event);
         };
         CanvasElement.prototype._sendEvent = function (event) {
@@ -239,7 +239,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
             else if (displayObject !== null && displayObject instanceof DisplayObjectContainer && displayObject.mouseChildren === true) {
                 event.currentTarget = displayObject;
-                displayObject = this.getActualClickedOnChild(displayObject, mousePos.x, mousePos.y);
+                displayObject = this._getActualClickedOnChild(displayObject, mousePos.x, mousePos.y);
                 event.bubbles = true;
                 event.target = displayObject;
                 displayObject.dispatchEvent(event);
@@ -252,18 +252,18 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
             return displayObject;
         };
-        CanvasElement.prototype.getActualClickedOnChild = function (displayObject, x, y) {
+        CanvasElement.prototype._getActualClickedOnChild = function (displayObject, x, y) {
             var item;
             var newX;
             var newY;
             if (displayObject.numChildren > 0) {
-                for (var i = displayObject.numChildren - 1; i >= 0; i--) {
-                    item = displayObject.children[i];
+                for (var i_4 = displayObject.numChildren - 1; i_4 >= 0; i_4--) {
+                    item = displayObject.children[i_4];
                     if (item.visible === true) {
                         newX = x - item.parent.x;
                         newY = y - item.parent.y;
                         if (this.hitTest(item, newX, newY)) {
-                            return this.getActualClickedOnChild(item, newX, newY);
+                            return this._getActualClickedOnChild(item, newX, newY);
                         }
                     }
                 }

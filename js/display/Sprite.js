@@ -29,8 +29,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var newWidth;
             var newHeight;
             var child;
-            for (var i = 0; i < this.numChildren; i++) {
-                child = this.children[i];
+            for (var i_1 = 0; i_1 < this.numChildren; i_1++) {
+                child = this.children[i_1];
                 child.renderCanvas();
                 newWidth = child.x + child.width;
                 newHeight = child.y + child.height;

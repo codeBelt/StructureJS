@@ -28,14 +28,14 @@ var __extends = (this && this.__extends) || function (d, b) {
      * @param baseModelType {BaseModel} Pass a class that extends BaseModel and the data added to the collection will be created as that type.
      * @author Robert S. (www.codeBelt.com)
      * @example
-     *     var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
+     *     let data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
      *
      *     // Example of adding data to a collection
-     *     var collection = new Collection();
+     *     let collection = new Collection();
      *     collection.add(data);
      *
      *     // Example of adding data to a collection that will create a CarModel model for each data object passed in.
-     *     var collection = new Collection(CarModel);
+     *     let collection = new Collection(CarModel);
      *     collection.add(data);
      */
     var Collection = (function (_super) {
@@ -80,25 +80,28 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
-         *      collection.add(vo);
-         *      collection.add(vo, true);
+         *      collection.add(model);
+         *
+         *      collection.add([model, model, model, model]);
+         *
+         *      collection.add(model, true);
          */
         Collection.prototype.add = function (model, silent) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
             var len = models.length;
-            for (var i = 0; i < len; i++) {
+            for (var i_1 = 0; i_1 < len; i_1++) {
                 // Only add the model if it does not exist in the the collection.
-                if (this.has(models[i]) === false) {
-                    if (this._modelType !== null && (models[i] instanceof this._modelType) === false) {
+                if (this.has(models[i_1]) === false) {
+                    if (this._modelType !== null && (models[i_1] instanceof this._modelType) === false) {
                         // If the modelType is set and the data is not already a instance of the modelType
                         // then instantiate it and pass the data into the constructor.
-                        this.models.push(new this._modelType(models[i]));
+                        this.models.push(new this._modelType(models[i_1]));
                     }
                     else {
                         // Pass the data object to the array.
-                        this.models.push(models[i]);
+                        this.models.push(models[i_1]);
                     }
                     this.length = this.models.length;
                 }
@@ -117,18 +120,20 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
-         *      collection.remove(vo);
+         *      collection.remove(model);
          *
-         *      collection.remove(vo, true);
+         *      collection.remove([model, model, model, model]);
+         *
+         *      collection.remove(model, true);
          */
         Collection.prototype.remove = function (model, silent) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
-            for (var i = models.length - 1; i >= 0; i--) {
+            for (var i_2 = models.length - 1; i_2 >= 0; i_2--) {
                 // Only remove the model if it exists in the the collection.
-                if (this.has(models[i]) === true) {
-                    this.models.splice(this.indexOf(models[i]), 1);
+                if (this.has(models[i_2]) === true) {
+                    this.models.splice(this.indexOf(models[i_2]), 1);
                     this.length = this.models.length;
                 }
             }
@@ -145,7 +150,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @return {boolean}
          * @public
          * @example
-         *      collection.has(vo);
+         *      collection.has(model);
          */
         Collection.prototype.has = function (model) {
             return this.indexOf(model) > -1;
@@ -158,7 +163,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @return {int}
          * @public
          * @example
-         *      collection.indexOf(vo);
+         *      collection.indexOf(model);
          */
         Collection.prototype.indexOf = function (model) {
             return this.models.indexOf(model);
@@ -193,13 +198,13 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @example
          *      // Finds all  Base Model that has 'Robert' in it.
-         *      this._collection.findBy("Robert");
+         *      collection.findBy("Robert");
          *      // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.
-         *      this._collection.findBy(["Robert", "Heather", 32]);
+         *      collection.findBy(["Robert", "Heather", 32]);
          *
          *      // Finds all  Base Models that same key and value you are searching for.
-         *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
-         *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
+         *      collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
+         *      collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
          */
         Collection.prototype.findBy = function (arg) {
             // If properties is not an array then make it an array object.
@@ -207,8 +212,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var foundItems = [];
             var len = list.length;
             var prop;
-            for (var i = 0; i < len; i++) {
-                prop = list[i];
+            for (var i_3 = 0; i_3 < len; i_3++) {
+                prop = list[i_3];
                 // Adds found  Base Model to the foundItems array.
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the model is not an object.
@@ -220,7 +225,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 }
             }
             // Removes all duplicated objects found in the temp array.
-            return this._unique(foundItems);
+            return Util.unique(foundItems);
         };
         /**
          * Loops through the models array and creates a new array of models that match all the properties on the object passed in.
@@ -242,8 +247,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var obj;
             var key;
             var j;
-            for (var i = 0; i < itemsToFindLength; i++) {
-                obj = list[i];
+            for (var i_4 = 0; i_4 < itemsToFindLength; i_4++) {
+                obj = list[i_4];
                 for (j = 0; j < itemsLength; j++) {
                     hasMatchingProperty = false;
                     doesModelMatch = true;
@@ -284,8 +289,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var model;
             var key;
             var j;
-            for (var i = 0; i < itemsLength; i++) {
-                model = this.models[i];
+            for (var i_5 = 0; i_5 < itemsLength; i_5++) {
+                model = this.models[i_5];
                 for (key in model) {
                     // Check if the key value is a property.
                     if (model.hasOwnProperty(key)) {
@@ -330,7 +335,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {Collection}
          * @public
          * @example
-         *     var clone = collection.clone();
+         *     let clone = collection.clone();
          */
         Collection.prototype.clone = function () {
             var clonedBaseModel = new this.constructor(this._modelType);
@@ -344,14 +349,14 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {Array.<any>}
          * @public
          * @example
-         *     var arrayOfObjects = collection.toJSON();
+         *     let arrayOfObjects = collection.toJSON();
          */
         Collection.prototype.toJSON = function () {
             if (this._modelType !== null) {
                 var list = [];
                 var len = this.length;
-                for (var i = 0; i < len; i++) {
-                    list[i] = this.models[i].toJSON();
+                for (var i_6 = 0; i_6 < len; i_6++) {
+                    list[i_6] = this.models[i_6].toJSON();
                 }
                 return list;
             }
@@ -366,7 +371,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {string}
          * @public
          * @example
-         *     var str = collection.toJSONString();
+         *     let str = collection.toJSONString();
          */
         Collection.prototype.toJSONString = function () {
             return JSON.stringify(this.toJSON());
@@ -432,7 +437,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @return {Array.<any>} Returns the list of models in the collection.
          * @example
-         *      var sortByDate = function(a, b){
+         *      let sortByDate = function(a, b){
          *          return new Date(a.date) - new Date(b.date)
          *      }
          *
@@ -452,11 +457,11 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @return {Array.<any>} Returns the list of models in the collection.
          * @example
-         *      var isOldEnough = function(model){
+         *      let isOldEnough = function(model){
          *          return model.age >= 21;
          *      }
          *
-         *      var list = collection.filter(isOldEnough);
+         *      let list = collection.filter(isOldEnough);
          */
         Collection.prototype.filter = function (callback, callbackScope) {
             if (callbackScope === void 0) { callbackScope = null; }
@@ -473,22 +478,22 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @example
          *      collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);
          *
-         *      var list = collection.pluck('name');
+         *      let list = collection.pluck('name');
          *      // ['Robert', 'Robert', 'Chris']
          *
-         *      var list = collection.pluck('name', true);
+         *      let list = collection.pluck('name', true);
          *      // ['Robert', 'Chris']
          */
         Collection.prototype.pluck = function (propertyName, unique) {
             if (unique === void 0) { unique = false; }
             var list = [];
-            for (var i = 0; i < this.length; i++) {
-                if (this.models[i].hasOwnProperty(propertyName) === true) {
-                    list[i] = this.models[i][propertyName];
+            for (var i_7 = 0; i_7 < this.length; i_7++) {
+                if (this.models[i_7].hasOwnProperty(propertyName) === true) {
+                    list[i_7] = this.models[i_7][propertyName];
                 }
             }
             if (unique === true) {
-                list = this._unique(list);
+                list = Util.unique(list);
             }
             return list;
         };
@@ -502,7 +507,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @example
          *      collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);
          *
-         *      var list = collection.groupBy('name');
+         *      let list = collection.groupBy('name');
          *
          *      // {
          *      //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]
@@ -514,8 +519,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var groupName;
             var groupList = {};
             // Loop through all the models in this collection.
-            for (var i = 0; i < this.length; i++) {
-                model = this.models[i];
+            for (var i_8 = 0; i_8 < this.length; i_8++) {
+                model = this.models[i_8];
                 // Get the value from the property name passed in and uses that as the group name.
                 groupName = model[propertyName];
                 if (groupList[groupName] == null) {
@@ -536,23 +541,6 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         Collection.prototype.reverse = function () {
             return this.models.reverse();
-        };
-        /**
-         * Returns a new array of models with duplicates removed.
-         *
-         * @method _unique
-         * @param list {Array.<any>} The array you want to use to generate the unique array.
-         * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
-         * @protected
-         */
-        Collection.prototype._unique = function (list) {
-            var unique = list.reduce(function (previousValue, currentValue) {
-                if (previousValue.indexOf(currentValue) === -1) {
-                    previousValue.push(currentValue);
-                }
-                return previousValue;
-            }, []);
-            return unique;
         };
         return Collection;
     })(EventDispatcher);

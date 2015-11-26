@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -295,13 +295,6 @@
                 </li>
             
                 <li class="index-item method protected">
-                    <a href="#method__unique">_unique</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method protected">
                     <a href="#method__where">_where</a>
 
                     
@@ -537,7 +530,7 @@
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l42"><code>js&#x2F;event&#x2F;EventDispatcher.js:42</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l39"><code>js&#x2F;event&#x2F;EventDispatcher.js:39</code></a>
         
         </p>
 
@@ -793,7 +786,7 @@
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l50"><code>js&#x2F;event&#x2F;EventDispatcher.js:50</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l47"><code>js&#x2F;event&#x2F;EventDispatcher.js:47</code></a>
         
         </p>
 
@@ -977,14 +970,14 @@ list hierarchy and helps facilitate event bubbling.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var data = [{ make: &#39;Tesla&#39;, model: &#39;Model S&#39;, year: 2014 }, { make: &#39;Tesla&#39;, model: &#39;Model X&#39;, year: 2016 }];
+                    <pre class="code prettyprint"><code>let data = [{ make: &#39;Tesla&#39;, model: &#39;Model S&#39;, year: 2014 }, { make: &#39;Tesla&#39;, model: &#39;Model X&#39;, year: 2016 }];
 
 // Example of adding data to a collection
-var collection = new Collection();
+let collection = new Collection();
 collection.add(data);
 
 // Example of adding data to a collection that will create a CarModel model for each data object passed in.
-var collection = new Collection(CarModel);
+let collection = new Collection(CarModel);
 collection.add(data);</code></pre>
 
                 </div>
@@ -1052,7 +1045,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l268"><code>js&#x2F;model&#x2F;Collection.js:268</code></a>
+        <a href="../files/js_model_Collection.js.html#l273"><code>js&#x2F;model&#x2F;Collection.js:273</code></a>
         
         </p>
 
@@ -1115,121 +1108,6 @@ collection.add(data);</code></pre>
 </div>
 
         
-            <a name="method__unique" class="anchor-link"></a>
-<div class="method item protected">
-    <h3 class="name"><code>_unique</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>list</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Array<any></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_model_Collection.js.html#l540"><code>js&#x2F;model&#x2F;Collection.js:540</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Returns a new array of models with duplicates removed.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">list</code>
-                            <span class="type">Array.<any></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The array you want to use to generate the unique array.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Array<any></span>:
-                        
-                        <p>Returns a new array list of models in the collection with duplicates removed.</p>
-
-                    
-                </div>
-            </div>
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="method__where" class="anchor-link"></a>
 <div class="method item protected">
     <h3 class="name"><code>_where</code>
@@ -1281,7 +1159,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l225"><code>js&#x2F;model&#x2F;Collection.js:225</code></a>
+        <a href="../files/js_model_Collection.js.html#l230"><code>js&#x2F;model&#x2F;Collection.js:230</code></a>
         
         </p>
 
@@ -1466,8 +1344,11 @@ collection.add(data);</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> collection.add(vo);
- collection.add(vo, true);</code></pre>
+                    <pre class="code prettyprint"><code> collection.add(model);
+
+ collection.add([model, model, model, model]);
+
+ collection.add(model, true);</code></pre>
 
                 </div>
             </div>
@@ -1540,7 +1421,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l62"><code>js&#x2F;event&#x2F;EventDispatcher.js:62</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l59"><code>js&#x2F;event&#x2F;EventDispatcher.js:59</code></a>
         
         </p>
 
@@ -1639,9 +1520,9 @@ collection.add(data);</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code> this.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
 
- ClassName.prototype.handlerMethod = function (event) {
+ _handlerMethod(event) {
      console.log(event.target + &quot; sent the event.&quot;);
      console.log(event.type, event.data);
  }</code></pre>
@@ -1717,7 +1598,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l105"><code>js&#x2F;event&#x2F;EventDispatcher.js:105</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l102"><code>js&#x2F;event&#x2F;EventDispatcher.js:102</code></a>
         
         </p>
 
@@ -1816,9 +1697,9 @@ collection.add(data);</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+                    <pre class="code prettyprint"><code> this.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
 
- ClassName.prototype.handlerMethod = function (event) {
+ _handlerMethod(event) {
      console.log(event.target + &quot; sent the event.&quot;);
      console.log(event.type, event.data);
  }</code></pre>
@@ -1879,7 +1760,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l307"><code>js&#x2F;model&#x2F;Collection.js:307</code></a>
+        <a href="../files/js_model_Collection.js.html#l312"><code>js&#x2F;model&#x2F;Collection.js:312</code></a>
         
         </p>
 
@@ -1980,7 +1861,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l326"><code>js&#x2F;model&#x2F;Collection.js:326</code></a>
+        <a href="../files/js_model_Collection.js.html#l331"><code>js&#x2F;model&#x2F;Collection.js:331</code></a>
         
         </p>
 
@@ -2018,7 +1899,7 @@ collection.add(data);</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var clone = collection.clone();</code></pre>
+                    <pre class="code prettyprint"><code>let clone = collection.clone();</code></pre>
 
                 </div>
             </div>
@@ -2065,7 +1946,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_BaseObject.js.html#l52"><code>js&#x2F;BaseObject.js:52</code></a>
+        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
         
         </p>
 
@@ -2109,10 +1990,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+                    <pre class="code prettyprint"><code>destroy() {
      this._childInstance.destroy();
 
-     _super.prototype.destroy.call(this);
+     super.destroy();
 }</code></pre>
 
                 </div>
@@ -2184,13 +2065,13 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ClassName.prototype.disable = function() {
+                    <pre class="code prettyprint"><code> disable() {
      if (this.isEnabled === false) { return this; }
 
      this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.disable();
 
-     return _super.prototype.disable.call(this);
+     return super.disable();
  }</code></pre>
 
                 </div>
@@ -2252,7 +2133,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l165"><code>js&#x2F;event&#x2F;EventDispatcher.js:165</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l159"><code>js&#x2F;event&#x2F;EventDispatcher.js:159</code></a>
         
         </p>
 
@@ -2325,7 +2206,7 @@ on other objects before calling the super.</p>
 
  // Example: With an event object
  // (event type, bubbling set to true, cancelable set to true and passing data) :
- var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
+ let event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: &#39;data&#39;});
  this.dispatchEvent(event);
 
  // Here is a common inline event object being dispatched:
@@ -2400,13 +2281,13 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+                    <pre class="code prettyprint"><code>enable() {
      if (this.isEnabled === true) { return this; }
 
      this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.enable();
 
-     return _super.prototype.enable.call(this);
+     return super.enable();
 }</code></pre>
 
                 </div>
@@ -2473,7 +2354,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l446"><code>js&#x2F;model&#x2F;Collection.js:446</code></a>
+        <a href="../files/js_model_Collection.js.html#l451"><code>js&#x2F;model&#x2F;Collection.js:451</code></a>
         
         </p>
 
@@ -2554,11 +2435,11 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> var isOldEnough = function(model){
+                    <pre class="code prettyprint"><code> let isOldEnough = function(model){
      return model.age &gt;= 21;
  }
 
- var list = collection.filter(isOldEnough);</code></pre>
+ let list = collection.filter(isOldEnough);</code></pre>
 
                 </div>
             </div>
@@ -2618,7 +2499,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l187"><code>js&#x2F;model&#x2F;Collection.js:187</code></a>
+        <a href="../files/js_model_Collection.js.html#l192"><code>js&#x2F;model&#x2F;Collection.js:192</code></a>
         
         </p>
 
@@ -2683,13 +2564,13 @@ When checking properties, this method performs a deep comparison between values 
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code> // Finds all  Base Model that has &#39;Robert&#39; in it.
- this._collection.findBy(&quot;Robert&quot;);
+ collection.findBy(&quot;Robert&quot;);
  // Finds any  Base Model that has &#39;Robert&#39; or &#39;Heater&#39; or 23 in it.
- this._collection.findBy([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
+ collection.findBy([&quot;Robert&quot;, &quot;Heather&quot;, 32]);
 
  // Finds all  Base Models that same key and value you are searching for.
- this._collection.findBy({ name: &#39;apple&#39;, organic: false, type: &#39;fruit&#39; });
- this._collection.findBy([{ type: &#39;vegetable&#39; }, { name: &#39;apple&#39;, &#39;organic: false, type&#39;: &#39;fruit&#39; }]);</code></pre>
+ collection.findBy({ name: &#39;apple&#39;, organic: false, type: &#39;fruit&#39; });
+ collection.findBy([{ type: &#39;vegetable&#39; }, { name: &#39;apple&#39;, &#39;organic: false, type&#39;: &#39;fruit&#39; }]);</code></pre>
 
                 </div>
             </div>
@@ -2747,7 +2628,7 @@ When checking properties, this method performs a deep comparison between values 
             
         
         
-        <a href="../files/js_model_Collection.js.html#l374"><code>js&#x2F;model&#x2F;Collection.js:374</code></a>
+        <a href="../files/js_model_Collection.js.html#l379"><code>js&#x2F;model&#x2F;Collection.js:379</code></a>
         
         </p>
 
@@ -2856,7 +2737,7 @@ When checking properties, this method performs a deep comparison between values 
             
         
         
-        <a href="../files/js_model_Collection.js.html#l166"><code>js&#x2F;model&#x2F;Collection.js:166</code></a>
+        <a href="../files/js_model_Collection.js.html#l171"><code>js&#x2F;model&#x2F;Collection.js:171</code></a>
         
         </p>
 
@@ -2968,7 +2849,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l254"><code>js&#x2F;event&#x2F;EventDispatcher.js:254</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l248"><code>js&#x2F;event&#x2F;EventDispatcher.js:248</code></a>
         
         </p>
 
@@ -3095,7 +2976,10 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+                    <pre class="code prettyprint"><code>let someClass = new SomeClass();
+someClass.getQualifiedClassName();
+
+// SomeClass</code></pre>
 
                 </div>
             </div>
@@ -3155,7 +3039,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l495"><code>js&#x2F;model&#x2F;Collection.js:495</code></a>
+        <a href="../files/js_model_Collection.js.html#l500"><code>js&#x2F;model&#x2F;Collection.js:500</code></a>
         
         </p>
 
@@ -3221,7 +3105,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code> collection.add([{name: &#39;Robert&#39;, id: 0}, {name: &#39;Robert&#39;, id: 1}, {name: &#39;Chris&#39;, id: 2}]);
 
- var list = collection.groupBy(&#39;name&#39;);
+ let list = collection.groupBy(&#39;name&#39;);
 
  // {
  //    Robert: [{name: &#39;Robert&#39;, id: 0}, {name: &#39;Robert&#39;, id: 1}]
@@ -3286,7 +3170,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l140"><code>js&#x2F;model&#x2F;Collection.js:140</code></a>
+        <a href="../files/js_model_Collection.js.html#l145"><code>js&#x2F;model&#x2F;Collection.js:145</code></a>
         
         </p>
 
@@ -3348,7 +3232,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> collection.has(vo);</code></pre>
+                    <pre class="code prettyprint"><code> collection.has(model);</code></pre>
 
                 </div>
             </div>
@@ -3417,7 +3301,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l229"><code>js&#x2F;event&#x2F;EventDispatcher.js:229</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l223"><code>js&#x2F;event&#x2F;EventDispatcher.js:223</code></a>
         
         </p>
 
@@ -3511,7 +3395,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);</code></pre>
+                    <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
 
                 </div>
             </div>
@@ -3571,7 +3455,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l153"><code>js&#x2F;model&#x2F;Collection.js:153</code></a>
+        <a href="../files/js_model_Collection.js.html#l158"><code>js&#x2F;model&#x2F;Collection.js:158</code></a>
         
         </p>
 
@@ -3633,7 +3517,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> collection.indexOf(vo);</code></pre>
+                    <pre class="code prettyprint"><code> collection.indexOf(model);</code></pre>
 
                 </div>
             </div>
@@ -3699,7 +3583,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l465"><code>js&#x2F;model&#x2F;Collection.js:465</code></a>
+        <a href="../files/js_model_Collection.js.html#l470"><code>js&#x2F;model&#x2F;Collection.js:470</code></a>
         
         </p>
 
@@ -3780,10 +3664,10 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <div class="example-content">
                     <pre class="code prettyprint"><code> collection.add([{name: &#39;Robert&#39;}, {name: &#39;Robert&#39;}, {name: &#39;Chris&#39;}]);
 
- var list = collection.pluck(&#39;name&#39;);
+ let list = collection.pluck(&#39;name&#39;);
  // [&#39;Robert&#39;, &#39;Robert&#39;, &#39;Chris&#39;]
 
- var list = collection.pluck(&#39;name&#39;, true);
+ let list = collection.pluck(&#39;name&#39;, true);
  // [&#39;Robert&#39;, &#39;Chris&#39;]</code></pre>
 
                 </div>
@@ -3848,7 +3732,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l111"><code>js&#x2F;model&#x2F;Collection.js:111</code></a>
+        <a href="../files/js_model_Collection.js.html#l114"><code>js&#x2F;model&#x2F;Collection.js:114</code></a>
         
         </p>
 
@@ -3915,9 +3799,11 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> collection.remove(vo);
+                    <pre class="code prettyprint"><code> collection.remove(model);
 
- collection.remove(vo, true);</code></pre>
+ collection.remove([model, model, model, model]);
+
+ collection.remove(model, true);</code></pre>
 
                 </div>
             </div>
@@ -3984,7 +3870,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_event_EventDispatcher.js.html#l134"><code>js&#x2F;event&#x2F;EventDispatcher.js:134</code></a>
+        <a href="../files/js_event_EventDispatcher.js.html#l131"><code>js&#x2F;event&#x2F;EventDispatcher.js:131</code></a>
         
         </p>
 
@@ -4066,10 +3952,7 @@ If the index is out of bounds, the collection will clamp it.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-
- ClassName.prototype._handlerMethod = function (event) {
- };</code></pre>
+                    <pre class="code prettyprint"><code> this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
 
                 </div>
             </div>
@@ -4119,7 +4002,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l528"><code>js&#x2F;model&#x2F;Collection.js:528</code></a>
+        <a href="../files/js_model_Collection.js.html#l533"><code>js&#x2F;model&#x2F;Collection.js:533</code></a>
         
         </p>
 
@@ -4219,7 +4102,7 @@ If the index is out of bounds, the collection will clamp it.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l426"><code>js&#x2F;model&#x2F;Collection.js:426</code></a>
+        <a href="../files/js_model_Collection.js.html#l431"><code>js&#x2F;model&#x2F;Collection.js:431</code></a>
         
         </p>
 
@@ -4284,7 +4167,7 @@ point value, according to the string conversion of each element.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> var sortByDate = function(a, b){
+                    <pre class="code prettyprint"><code> let sortByDate = function(a, b){
      return new Date(a.date) - new Date(b.date)
  }
 
@@ -4354,7 +4237,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l389"><code>js&#x2F;model&#x2F;Collection.js:389</code></a>
+        <a href="../files/js_model_Collection.js.html#l394"><code>js&#x2F;model&#x2F;Collection.js:394</code></a>
         
         </p>
 
@@ -4484,7 +4367,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l340"><code>js&#x2F;model&#x2F;Collection.js:340</code></a>
+        <a href="../files/js_model_Collection.js.html#l345"><code>js&#x2F;model&#x2F;Collection.js:345</code></a>
         
         </p>
 
@@ -4522,7 +4405,7 @@ point value, according to the string conversion of each element.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var arrayOfObjects = collection.toJSON();</code></pre>
+                    <pre class="code prettyprint"><code>let arrayOfObjects = collection.toJSON();</code></pre>
 
                 </div>
             </div>
@@ -4572,7 +4455,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l362"><code>js&#x2F;model&#x2F;Collection.js:362</code></a>
+        <a href="../files/js_model_Collection.js.html#l367"><code>js&#x2F;model&#x2F;Collection.js:367</code></a>
         
         </p>
 
@@ -4610,7 +4493,7 @@ point value, according to the string conversion of each element.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var str = collection.toJSONString();</code></pre>
+                    <pre class="code prettyprint"><code>let str = collection.toJSONString();</code></pre>
 
                 </div>
             </div>

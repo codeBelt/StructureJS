@@ -322,9 +322,9 @@
          */
         MathUtil.getDivisors = function (num) {
             var r = [];
-            for (var i = 1, e = num / 2; i <= e; i++) {
-                if (num % i == 0) {
-                    r.push(i);
+            for (var i_1 = 1, e = num / 2; i_1 <= e; i_1++) {
+                if (num % i_1 == 0) {
+                    r.push(i_1);
                 }
             }
             if (num != 0) {

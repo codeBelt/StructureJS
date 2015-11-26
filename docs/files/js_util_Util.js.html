@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -184,10 +184,10 @@
          * @public
          * @static
          * @example
-         *      var property = Util.uniqueId();
+         *      let property = Util.uniqueId();
          *      // 1
          *
-         *      var property = Util.uniqueId(&#x27;prefixName_&#x27;);
+         *      let property = Util.uniqueId(&#x27;prefixName_&#x27;);
          *      // prefixName_1
          */
         Util.uniqueId = function (prefix) {
@@ -210,7 +210,7 @@
          * @public
          * @static
          * @example
-         *      var obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
+         *      let obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
          *
          *      Util.deletePropertyFromObject(obj, [&#x27;phone&#x27;, &#x27;gender&#x27;]);
          *
@@ -223,18 +223,18 @@
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
-                    var value = object[key];
+                    var value_1 = object[key];
                     // If the property is an Array.
-                    if (value instanceof Array) {
+                    if (value_1 instanceof Array) {
                         // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                        var array = value;
+                        var array = value_1;
                         for (var index in array) {
                             // Recursive function call.
                             Util.deletePropertyFromObject(array[index], list);
                         }
                     }
-                    else if (value instanceof Object) {
-                        Util.deletePropertyFromObject(value, list);
+                    else if (value_1 instanceof Object) {
+                        Util.deletePropertyFromObject(value_1, list);
                     }
                     else {
                         // Loop through the list of property name.
@@ -261,7 +261,7 @@
          * @public
          * @static
          * @example
-         *      var obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
+         *      let obj = { name: &#x27;Robert&#x27;, gender: &#x27;male&#x27;, phone: &#x27;555-555-5555&#x27; }
          *
          *      Util.renamePropertyOnObject(obj, &#x27;gender&#x27;, &#x27;sex&#x27;);
          *
@@ -284,7 +284,7 @@
          * @public
          * @static
          * @example
-         *      var cloneOfObject = Util.clone(obj);
+         *      let cloneOfObject = Util.clone(obj);
          */
         Util.clone = function (obj) {
             //other scripts: http://davidwalsh.name/javascript-clone
@@ -303,8 +303,8 @@
             // Handle Array
             if (obj instanceof Array) {
                 var array = [];
-                for (var i = 0, len = obj.length; i &lt; len; i++) {
-                    array[i] = Util.clone(obj[i]);
+                for (var i_1 = 0, len = obj.length; i_1 &lt; len; i_1++) {
+                    array[i_1] = Util.clone(obj[i_1]);
                 }
                 return array;
             }
@@ -350,7 +350,7 @@
          * @returns {string} Returns the name of the function or object.
          * @static
          * @example
-         *      var someClass = new SomeClass();
+         *      let someClass = new SomeClass();
          *      Util.getName(someClass);            // &#x27;SomeClass&#x27;
          *
          *      Util.getName(function Test(){});    // &#x27;Test&#x27;
@@ -369,12 +369,12 @@
                 // This else code is mainly for Internet Explore.
                 var isFunction = (type === &#x27;function&#x27;);
                 // TODO: figure out how to explain this
-                var name = isFunction &amp;&amp; ((classObject.name &amp;&amp; [&#x27;&#x27;, classObject.name]) || classObject.toString().match(funcNameRegex));
+                var name_1 = isFunction &amp;&amp; ((classObject.name &amp;&amp; [&#x27;&#x27;, classObject.name]) || classObject.toString().match(funcNameRegex));
                 if (isFunction === false) {
                     value = type;
                 }
-                else if (name &amp;&amp; name[1]) {
-                    value = name[1];
+                else if (name_1 &amp;&amp; name_1[1]) {
+                    value = name_1[1];
                 }
                 else {
                     value = &#x27;anonymous&#x27;;
@@ -456,6 +456,23 @@
                     derivedCtor.prototype[name] = baseCtor.prototype[name];
                 });
             });
+        };
+        /**
+         * Returns a new array with duplicates removed.
+         *
+         * @method unique
+         * @param list {Array.&lt;any&gt;} The array you want to use to generate the unique array.
+         * @return {Array&lt;any&gt;} Returns a new array list of unique items.
+         * @protected
+         */
+        Util.unique = function (list) {
+            var uniqueList = list.reduce(function (previousValue, currentValue) {
+                if (previousValue.indexOf(currentValue) === -1) {
+                    previousValue.push(currentValue);
+                }
+                return previousValue;
+            }, []);
+            return uniqueList;
         };
         /**
          * Keeps track of the count for the uniqueId method.

@@ -172,8 +172,8 @@
             var queries = str.split('&');
             // Convert the array of strings into an object
             var len = queries.length;
-            for (var i = 0; i < len; i++) {
-                temp = queries[i].split('=');
+            for (var i_1 = 0; i_1 < len; i_1++) {
+                temp = queries[i_1].split('=');
                 params[temp[0]] = (useParseFloat === true && isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
             return params;
@@ -187,7 +187,7 @@
          * @public
          * @static
          * @example
-         *      var str = '   a b    c d e f g ';
+         *      let str = '   a b    c d e f g ';
          *      StringUtil.removeAllWhitespace(str);
          *      // 'abcdefg'
          */
@@ -203,7 +203,7 @@
          * @public
          * @static
          * @example
-         *      var str = '   a b    c d e f g ';
+         *      let str = '   a b    c d e f g ';
          *      StringUtil.removeLeadingTrailingWhitespace(str);
          *      // 'a b    c d e f g'
          */
@@ -250,9 +250,9 @@
             }
             var length = rest.length;
             var value = str;
-            for (var i = 0; i < length; i++) {
-                var reg = new RegExp('\\{' + i + '\\}', 'gm');
-                value = value.replace(reg, rest[i]);
+            for (var i_2 = 0; i_2 < length; i_2++) {
+                var reg = new RegExp('\\{' + i_2 + '\\}', 'gm');
+                value = value.replace(reg, rest[i_2]);
             }
             return value;
         };

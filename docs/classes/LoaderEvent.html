@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -409,7 +409,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l107"><code>js&#x2F;event&#x2F;BaseEvent.js:107</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l101"><code>js&#x2F;event&#x2F;BaseEvent.js:101</code></a>
         
         </p>
 
@@ -460,7 +460,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l116"><code>js&#x2F;event&#x2F;BaseEvent.js:116</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l110"><code>js&#x2F;event&#x2F;BaseEvent.js:110</code></a>
         
         </p>
 
@@ -511,7 +511,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l88"><code>js&#x2F;event&#x2F;BaseEvent.js:88</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l82"><code>js&#x2F;event&#x2F;BaseEvent.js:82</code></a>
         
         </p>
 
@@ -562,7 +562,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l98"><code>js&#x2F;event&#x2F;BaseEvent.js:98</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l92"><code>js&#x2F;event&#x2F;BaseEvent.js:92</code></a>
         
         </p>
 
@@ -613,7 +613,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l135"><code>js&#x2F;event&#x2F;BaseEvent.js:135</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l129"><code>js&#x2F;event&#x2F;BaseEvent.js:129</code></a>
         
         </p>
 
@@ -664,7 +664,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l125"><code>js&#x2F;event&#x2F;BaseEvent.js:125</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l119"><code>js&#x2F;event&#x2F;BaseEvent.js:119</code></a>
         
         </p>
 
@@ -766,7 +766,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l78"><code>js&#x2F;event&#x2F;BaseEvent.js:78</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l72"><code>js&#x2F;event&#x2F;BaseEvent.js:72</code></a>
         
         </p>
 
@@ -817,7 +817,7 @@
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l68"><code>js&#x2F;event&#x2F;BaseEvent.js:68</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l62"><code>js&#x2F;event&#x2F;BaseEvent.js:62</code></a>
         
         </p>
 
@@ -1066,7 +1066,7 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l179"><code>js&#x2F;event&#x2F;BaseEvent.js:179</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l173"><code>js&#x2F;event&#x2F;BaseEvent.js:173</code></a>
         
         </p>
 
@@ -1106,7 +1106,7 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var cloneOfEvent = event.clone();</code></pre>
+                    <pre class="code prettyprint"><code>let cloneOfEvent = event.clone();</code></pre>
 
                 </div>
             </div>
@@ -1153,7 +1153,7 @@ Note: With event-bubbling you can let one Event subsequently call on every ances
             
         
         
-        <a href="../files/js_BaseObject.js.html#l52"><code>js&#x2F;BaseObject.js:52</code></a>
+        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
         
         </p>
 
@@ -1197,10 +1197,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+                    <pre class="code prettyprint"><code>destroy() {
      this._childInstance.destroy();
 
-     _super.prototype.destroy.call(this);
+     super.destroy();
 }</code></pre>
 
                 </div>
@@ -1288,7 +1288,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+                    <pre class="code prettyprint"><code>let someClass = new SomeClass();
+someClass.getQualifiedClassName();
+
+// SomeClass</code></pre>
 
                 </div>
             </div>
@@ -1331,7 +1334,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l164"><code>js&#x2F;event&#x2F;BaseEvent.js:164</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l158"><code>js&#x2F;event&#x2F;BaseEvent.js:158</code></a>
         
         </p>
 
@@ -1403,7 +1406,7 @@ all the event listeners in the current node finish processing.</p>
             
         
         
-        <a href="../files/js_event_BaseEvent.js.html#l150"><code>js&#x2F;event&#x2F;BaseEvent.js:150</code></a>
+        <a href="../files/js_event_BaseEvent.js.html#l144"><code>js&#x2F;event&#x2F;BaseEvent.js:144</code></a>
         
         </p>
 

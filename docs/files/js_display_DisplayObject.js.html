@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -368,18 +368,18 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             this.unscaledHeight = unscaledHeight;
             return this;
         };
-        DisplayObject.prototype.readerStart = function () {
+        DisplayObject.prototype._readerStart = function () {
             this.ctx.save();
         };
         DisplayObject.prototype.renderCanvas = function () {
             if (this.ctx === null || this.alpha &lt;= 0 || this.visible === false)
                 return false;
-            this.readerStart();
+            this._readerStart();
             this.ctx.globalAlpha = this.alpha;
             this.layout();
-            this.renderEnd();
+            this._renderEnd();
         };
-        DisplayObject.prototype.renderEnd = function () {
+        DisplayObject.prototype._renderEnd = function () {
             this.ctx.restore();
         };
         return DisplayObject;

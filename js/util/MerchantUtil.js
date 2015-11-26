@@ -72,7 +72,7 @@
             if (digitsShown === void 0) { digitsShown = 4; }
             if (encodeChar === void 0) { encodeChar = '*'; }
             var encoded = '';
-            for (var i = 0; i < strNumber.length - digitsShown; i++) {
+            for (var i_1 = 0; i_1 < strNumber.length - digitsShown; i_1++) {
                 encoded += encodeChar;
             }
             encoded += strNumber.slice(-digitsShown);

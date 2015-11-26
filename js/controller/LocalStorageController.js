@@ -51,7 +51,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              */
             this._localStorage = null;
             this._localStorage = window.localStorage;
-            window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
+            window.addEventListener('storage', this._onLocalStorageEvent.bind(this));
         }
         /**
          * Set storage namespace
@@ -134,8 +134,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (namespace === void 0) { namespace = this._namespace; }
             var list = [];
             var length = this.getLength();
-            for (var i = 0; i < length; i++) {
-                var key = this._localStorage.key(i);
+            for (var i_1 = 0; i_1 < length; i_1++) {
+                var key = this._localStorage.key(i_1);
                 if (key.indexOf(namespace) > -1) {
                     var value = this.getItem(key);
                     var obj = {
@@ -156,8 +156,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         LocalStorageController.prototype.getAllItems = function () {
             var list = [];
             var length = this.getLength();
-            for (var i = 0; i < length; i++) {
-                var key = this._localStorage.key(i);
+            for (var i_2 = 0; i_2 < length; i_2++) {
+                var key = this._localStorage.key(i_2);
                 var value = this.getItem(key);
                 var obj = {
                     key: key,
@@ -223,11 +223,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         /**
          *
          *
-         * @method onLocalStorageEvent
+         * @method _onLocalStorageEvent
          * @param event {StorageEvent} The native browser event for Web Storage.
          * @protected
          */
-        LocalStorageController.prototype.onLocalStorageEvent = function (event) {
+        LocalStorageController.prototype._onLocalStorageEvent = function (event) {
             this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
         };
         return LocalStorageController;

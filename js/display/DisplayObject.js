@@ -212,18 +212,18 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.unscaledHeight = unscaledHeight;
             return this;
         };
-        DisplayObject.prototype.readerStart = function () {
+        DisplayObject.prototype._readerStart = function () {
             this.ctx.save();
         };
         DisplayObject.prototype.renderCanvas = function () {
             if (this.ctx === null || this.alpha <= 0 || this.visible === false)
                 return false;
-            this.readerStart();
+            this._readerStart();
             this.ctx.globalAlpha = this.alpha;
             this.layout();
-            this.renderEnd();
+            this._renderEnd();
         };
-        DisplayObject.prototype.renderEnd = function () {
+        DisplayObject.prototype._renderEnd = function () {
             this.ctx.restore();
         };
         return DisplayObject;

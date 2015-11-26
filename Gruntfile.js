@@ -68,7 +68,7 @@ module.exports = function(grunt) {
                     'js/event/RouterEvent.js',
                     'js/event/TimerEvent.js',
                     'js/util/Timer.js',
-                    //'js/util/BrowserUtil.js',
+                    'js/util/BrowserUtil.js',
                     'js/controller/ApplicationCacheController.js',
                     'js/controller/LocalStorageController.js',
                     'js/controller/Router.js',
@@ -165,6 +165,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('docs', [
+        'default',
         'yuidoc'
     ]);
 

@@ -85,9 +85,9 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         BulkLoader.prototype.start = function () {
             var dataStore;
-            for (var i = 0; i < this._dataStores.length; i++) {
-                dataStore = this._dataStores.get(i).value;
-                dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+            for (var i_1 = 0; i_1 < this._dataStores.length; i_1++) {
+                dataStore = this._dataStores.get(i_1).value;
+                dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this._onLoadComplete, this);
                 dataStore.load();
             }
             return this;
@@ -100,9 +100,9 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         BulkLoader.prototype.clear = function () {
             var dataStore;
-            for (var i = 0; i < this._dataStores.length; i++) {
-                dataStore = this._dataStores.get(i).value;
-                dataStore.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+            for (var i_2 = 0; i_2 < this._dataStores.length; i_2++) {
+                dataStore = this._dataStores.get(i_2).value;
+                dataStore.removeEventListener(LoaderEvent.COMPLETE, this._onLoadComplete, this);
             }
             this._totalComplete = 0;
             this._dataStores = new Collection();
@@ -110,11 +110,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         /**
          * TODO: YUIDoc_comment
          *
-         * @method onLoadComplete
+         * @method _onLoadComplete
          * @param event {LoaderEvent}
          * @protected
          */
-        BulkLoader.prototype.onLoadComplete = function (event) {
+        BulkLoader.prototype._onLoadComplete = function (event) {
             var dataStore = event.target;
             this._totalComplete++;
             var bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.COMPLETE);
@@ -125,16 +125,16 @@ var __extends = (this && this.__extends) || function (d, b) {
             // Dispatch the IDataStore that was just completed.
             this.dispatchEvent(bulkLoaderEvent);
             // Loop through and check if all IDataStore have been loaded.
-            for (var i = 0; i < this._dataStores.length; i++) {
-                dataStore = this._dataStores.get(i).value;
+            for (var i_3 = 0; i_3 < this._dataStores.length; i_3++) {
+                dataStore = this._dataStores.get(i_3).value;
                 if (dataStore.complete === false) {
                     return;
                 }
             }
             var model;
             var dataStoreList = [];
-            for (var i = 0; i < this._dataStores.length; i++) {
-                model = this._dataStores.get(i);
+            for (var i_4 = 0; i_4 < this._dataStores.length; i_4++) {
+                model = this._dataStores.get(i_4);
                 dataStoreList.push(model.value);
             }
             // Add the whole list because all are completed.

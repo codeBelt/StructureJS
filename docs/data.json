@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.9.0",
+        "version": "0.9.1",
         "url": ""
     },
     "files": {
@@ -680,7 +680,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example: Using DOMElement without extending it.\n    var aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example: A view passing in a jQuery object.\n    var view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example: A view extending DOMElement while passing in a jQuery object.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName($element) {\n             _super.call(this, $element);\n         }\n\n         ClassName.prototype.create = function () {\n             _super.prototype.create.call(this);\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.layout = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();\n\n    // Example: A view extending DOMElement with a JavaScript template reference passed in.\n    var Extend = require('structurejs/util/Extend');\n    var DOMElement = require('structurejs/display/DOMElement');\n    var HomeTemplate = require('hbs!templates/home/homeTemplate');\n\n    var ClassName = (function () {\n\n         var _super = Extend(ClassName, DOMElement);\n\n         function ClassName() {\n             _super.call(this);\n         }\n\n         ClassName.prototype.create = function () {\n             _super.prototype.create.call(this, HomeTemplate, {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         };\n\n         ClassName.prototype.enable = function () {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return _super.prototype.enable.call(this);\n         };\n\n         ClassName.prototype.disable = function () {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return _super.prototype.disable.call(this);\n         };\n\n         ClassName.prototype.layout = function () {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         };\n\n         ClassName.prototype.destroy = function () {\n             // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n             _super.prototype.destroy.call(this);\n         };\n\n         return ClassName;\n    })();"
+                "\n    // Example: Using DOMElement without extending it.\n    let aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example: A view passing in a jQuery object.\n    let view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example: A view extending DOMElement while passing in a jQuery object.\n    class ClassName extends DOMElement {\n\n         constructor($element) {\n             super($element);\n         }\n\n         create() {\n             super.create();\n\n             // Create and add your child objects to this parent class.\n         }\n\n         enable() {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return super.enable();\n         }\n\n         disable() {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return super.disable();\n         }\n\n         layout() {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         }\n\n         destroy() {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             super.destroy();\n         }\n\n    }\n\n    // Example: A view extending DOMElement with a precompiled JavaScript template reference passed in.\n    class ClassName extends DOMElement {\n\n         constructor() {\n             _super();\n         }\n\n         create() {\n             super.create('templates/home/homeTemplate', {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         }\n\n         enable() {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return super.enable();\n         }\n\n         disable() {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return super.disable();\n         }\n\n         layout() {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         }\n\n         destroy() {\n             // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n             super.destroy();\n         }\n\n    }"
             ]
         },
         "DisplayObject": {
@@ -750,7 +750,7 @@
                 "jQuery"
             ],
             "example": [
-                "\n    // This example illustrates how to setup your main application or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n    define(function (require, exports, module) {\n        'use strict';\n\n        var Extend = require('structurejs/util/Extend');\n        var Stage = require('replace/path/Stage');\n\n        var MainClass = (function () {\n\n        var _super = Extend(MainClass, Stage);\n\n            function MainClass() {\n                _super.call(this);\n            }\n\n            MainClass.prototype.create = function () {\n                _super.prototype.create.call(this);\n\n                // Create and add your child objects to this parent class.\n            }\n\n            MainClass.prototype.layout = function () {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            MainClass.prototype.enable = function () {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return _super.prototype.enable.call(this);\n            }\n\n            MainClass.prototype.disable = function () {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return _super.prototype.disable.call(this);\n            }\n\n            MainClass.prototype.destroy = function () {\n                // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n                _super.prototype.destroy.call(this);\n            }\n\n            return MainClass;\n        })();\n\n        module.exports = MainClass;\n    });\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiate your main application or root class.\n\n     var app = new MainClass();\n     app.appendTo('body');\n"
+                "\n    // This example illustrates how to setup your main application or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n        class MainClass extends Stage {\n\n            constructor() {\n                super();\n            }\n\n            create() {\n                super.create();\n\n                // Create and add your child objects to this parent class.\n            }\n\n            layout() {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            enable() {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return super.enable();\n            }\n\n            disable() {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return super.disable();\n            }\n\n            destroy() {\n                // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n                super.destroy();\n            }\n\n        }\n\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiate your main application or root class.\n\n     let app = new MainClass();\n     app.appendTo('body');\n"
             ]
         },
         "ApplicationCacheEvent": {
@@ -853,7 +853,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example: how to create a custom event by extending BaseEvent.\n    var Extend = require('structurejs/util/Extend');\n    var BaseEvent = require('structurejs/event/BaseEvent');\n\n    var CountryEvent = (function () {\n\n         var _super = Extend(CountryEvent, BaseEvent);\n\n         CountryEvent.CHANGE_COUNTRY = \"CountryEvent.changeCountry\";\n\n         function CountryEvent(type, bubbles, cancelable, data) {\n             _super.call(this, type, bubbles, cancelable, data);\n\n             this.countryName = null;\n         }\n\n          return CountryEvent;\n     })();\n\n    // Example: how to use the custom event.\n    var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);\n    event.countryName = 'Canada';\n    this.dispatchEvent(event);"
+                "\n    // Example: how to create a custom event by extending BaseEvent.\n\n    class CountryEvent extends BaseEvent {\n\n         CHANGE_COUNTRY = 'CountryEvent.changeCountry';\n\n         constructor(type, bubbles = false, cancelable = false, data = null) {\n             super(type, bubbles, cancelable, data);\n\n             this.countryName = null;\n         }\n     }\n\n    // Example: how to use the custom event.\n    let event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);\n    event.countryName = 'Canada';\n    this.dispatchEvent(event);"
             ]
         },
         "BulkLoaderEvent": {
@@ -950,7 +950,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n     // Extending EventDispatcher. See DisplayObjectContainer as an example that extends EventDispatcher.\n     var _super = Extend(ClassExtendingEventDispatcher, EventDispatcher);\n\n     // Another way to use the EventDispatcher.\n     var eventDispatcher = new EventDispatcher();\n     eventDispatcher.addEventListener('change', this.handlerMethod, this);\n     eventDispatcher.dispatchEvent('change');"
+                "\n     // Another way to use the EventDispatcher.\n     let eventDispatcher = new EventDispatcher();\n     eventDispatcher.addEventListener('change', this._handlerMethod, this);\n     eventDispatcher.dispatchEvent('change');"
             ]
         },
         "LoaderEvent": {
@@ -1249,7 +1249,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example how to extend the BaseModel class.\n    var data = {\n            make: 'Tesla',\n            model: 'Model S',\n            YeAr: 2014,\n            feature: {\n                abs: true,\n                airbags: true\n            }\n    }\n    var carModel = new CarModel(data);\n\n\n    // Example how to extend the BaseModel class.\n    var CarModel = (function () {\n        var _super = Extend(CarModel, BaseModel);\n        function CarModel(data) {\n            _super.call(this);\n\n            // You need to have properties so the data will get assigned.\n            // If not the data will not get assigned to the vo.\n            this.make = null;\n            this.model = null;\n            this.year = null;\n            this.allWheel = false; // Set a default value.\n\n            // You can assign BaseModel to a property which will\n            // automatically created it and pass the data to it.\n            this.feature = FeatureModel;\n\n            // If you have an array of data and want them assign to a BaseModel.\n            this.feature = [FeatureModel];\n\n            if (data) {\n                this.update(data);\n            }\n        }\n\n        // @overridden BaseModel.update\n        CarModel.prototype.update = function (data) {\n            _super.prototype.update.call(this, data);\n\n            // If the data doesn't match the property name.\n            // You can set the value(s) manually after the update super method has been called.\n            this.year = data.YeAr;\n        };\n\n        return CarModel;\n    })();"
+                "\n    // Example how to extend the BaseModel class.\n    let data = {\n            make: 'Tesla',\n            model: 'Model S',\n            YeAr: 2014,\n            feature: {\n                abs: true,\n                airbags: true\n            }\n    }\n    let carModel = new CarModel(data);\n\n\n    // Example how to extend the BaseModel class.\n    class CarModel extends BaseModel {\n\n        // You need to have properties so the data will get assigned.\n        // If not the data will not get assigned to the model.\n        make = null;\n        model = null;\n        year = null;\n        allWheel = false; // Set a default value\n\n        // You can assign BaseModel to a property which will\n        // automatically created it and pass the data to it.\n        feature = FeatureModel\n\n        // If you have an array of data and want them assign to a BaseModel.\n        feature = [FeatureModel];\n\n        constructor(data) {\n            super();\n\n            if (data) {\n                this.update(data);\n            }\n        }\n\n        // @overridden BaseModel.update\n        update(data) {\n            super.update(data);\n\n            // If the data doesn't match the property name.\n            // You can set the value(s) manually after the update super method has been called.\n            this.year = data.YeAr;\n        }\n    }"
             ]
         },
         "Collection": {
@@ -1282,7 +1282,7 @@
             ],
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];\n\n    // Example of adding data to a collection\n    var collection = new Collection();\n    collection.add(data);\n\n    // Example of adding data to a collection that will create a CarModel model for each data object passed in.\n    var collection = new Collection(CarModel);\n    collection.add(data);"
+                "\n    let data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];\n\n    // Example of adding data to a collection\n    let collection = new Collection();\n    collection.add(data);\n\n    // Example of adding data to a collection that will create a CarModel model for each data object passed in.\n    let collection = new Collection(CarModel);\n    collection.add(data);"
             ]
         },
         "Route": {
@@ -1319,7 +1319,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example of adding a route listener and the function callback below.\n    var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route would match the string below:\n    route.match('/games/asteroids/2/');\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/contact/');\n    route.match('/contact/heather/');\n    route.match('/contact/john/');\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    var route = new Route('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    route.match('/product/shoes/');\n    route.match('/product/jackets/');\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    var route = new Route('*', this.method, this);\n\n    // Will match one of the following:\n    route.match('/anything/');\n    route.match('/matches/any/hash/url/');\n    route.match('/really/it/matches/any/and/all/hash/urls/');\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    var route = new Route('', this.method, this);\n    var route = new Route('/', this.method, this);\n\n    // Will match one of the following:\n    route.match('');\n    route.match('/');\n\n\nOther possible combinations but not limited too:\n\n    var route = new Route('/games/{gameName}/:level:/', this.method1, this);\n    var route = new Route('/{category}/blog/', this.method2, this);\n    var route = new Route('/about/*', this.method4, this);\n"
+                "\n    // Example of adding a route listener and the function callback below.\n    let route = new Route('/games/{gameName}/:level:/', this._method, this);\n\n    // The above route would match the string below:\n    route.match('/games/asteroids/2/');\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    let route = new Route('/contact/:name:/', this._method, this);\n\n    // Will match one of the following:\n    route.match('/contact/');\n    route.match('/contact/heather/');\n    route.match('/contact/john/');\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    let route = new Route('/product/{productName}/', this._method, this);\n\n    // Will match one of the following:\n    route.match('/product/shoes/');\n    route.match('/product/jackets/');\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    let route = new Route('*', this._method, this);\n\n    // Will match one of the following:\n    route.match('/anything/');\n    route.match('/matches/any/hash/url/');\n    route.match('/really/it/matches/any/and/all/hash/urls/');\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    let route = new Route('', this._method, this);\n    let route = new Route('/', this._method, this);\n\n    // Will match one of the following:\n    route.match('');\n    route.match('/');\n\n\nOther possible combinations but not limited too:\n\n    let route = new Route('/games/{gameName}/:level:/', this._method1, this);\n    let route = new Route('/{category}/blog/', this._method2, this);\n    let route = new Route('/about/*', this._method3, this);\n"
             ]
         },
         "NetworkMonitor": {
@@ -1679,7 +1679,7 @@
             "line": 89,
             "description": "The resources listed in the manifest have been fully downloaded, and the application is\nnow cached locally.",
             "itemtype": "method",
-            "name": "onCached",
+            "name": "_onCached",
             "params": [
                 {
                     "name": "event",
@@ -1699,7 +1699,7 @@
             "line": 102,
             "description": "The browser is checking for an update, or is attempting to download\nthe cache manifest for the first time. This is always the first event\nin the sequence.",
             "itemtype": "method",
-            "name": "onChecking",
+            "name": "_onChecking",
             "params": [
                 {
                     "name": "event",
@@ -1719,7 +1719,7 @@
             "line": 116,
             "description": "The browser has started to download the cache manifest, either for the\nfirst time or because changes have been detected.",
             "itemtype": "method",
-            "name": "onDownloading",
+            "name": "_onDownloading",
             "params": [
                 {
                     "name": "event",
@@ -1739,7 +1739,7 @@
             "line": 129,
             "description": "An error occurred at some point - this could be caused by a number of things. This will\nalways be the last event in the sequence.",
             "itemtype": "method",
-            "name": "onError",
+            "name": "_onError",
             "params": [
                 {
                     "name": "event",
@@ -1759,7 +1759,7 @@
             "line": 142,
             "description": "The cache manifest hadn't changed.",
             "itemtype": "method",
-            "name": "onNoUpdate",
+            "name": "_onNoUpdate",
             "params": [
                 {
                     "name": "event",
@@ -1779,7 +1779,7 @@
             "line": 154,
             "description": "The cache manifest file could not be found, indicating that the cache is no longer needed.\nThe application cache is being deleted.",
             "itemtype": "method",
-            "name": "onObsolete",
+            "name": "_onObsolete",
             "params": [
                 {
                     "name": "event",
@@ -1799,7 +1799,7 @@
             "line": 167,
             "description": "The browser had downloaded and cached an asset. This is fired once for\nevery file that is downloaded (including the current page which is cached implicitly).",
             "itemtype": "method",
-            "name": "onProgress",
+            "name": "_onProgress",
             "params": [
                 {
                     "name": "event",
@@ -1819,7 +1819,7 @@
             "line": 180,
             "description": "The resources listed in the manifest have been newly re-downloaded, and the script can\nuse swapCache() to switch to the new cache.",
             "itemtype": "method",
-            "name": "onUpdateReady",
+            "name": "_onUpdateReady",
             "params": [
                 {
                     "name": "event",
@@ -1866,7 +1866,7 @@
             ],
             "static": 1,
             "example": [
-                "\n     ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);\n     ClassName.prototype.handlerMethod = function(event) {\n         console.log(event.target + \" sent the event.\");\n     }"
+                "\n     ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.target + \" sent the event.\");\n     }"
             ],
             "class": "ApplicationCacheController",
             "module": "StructureJS",
@@ -1897,7 +1897,7 @@
             ],
             "static": 1,
             "example": [
-                "\n     ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);\n     ClassName.prototype.handlerMethod = function(event) {\n         console.log(event.target + \" sent the event.\");\n     }"
+                "\n     ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.target + \" sent the event.\");\n     }"
             ],
             "class": "ApplicationCacheController",
             "module": "StructureJS",
@@ -1918,7 +1918,7 @@
             ],
             "static": 1,
             "example": [
-                "\n     var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);\n     ApplicationCacheController.dispatchEvent(event);\n\n     // Here is a common inline event being dispatched\n     ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));"
+                "\n     let event = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);\n     ApplicationCacheController.dispatchEvent(event);\n\n     // Here is a common inline event being dispatched\n     ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));"
             ],
             "class": "ApplicationCacheController",
             "module": "StructureJS",
@@ -2201,7 +2201,7 @@
             "file": "js/controller/LocalStorageController.js",
             "line": 223,
             "itemtype": "method",
-            "name": "onLocalStorageEvent",
+            "name": "_onLocalStorageEvent",
             "params": [
                 {
                     "name": "event",
@@ -2242,7 +2242,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    // Example of adding a route listener and the function callback below.\n    Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // The above route listener would match the below url:\n    // www.site.com/#/games/asteroids/2/\n\n    // The Call back receives a RouterEvent object.\n    ClassName.prototype.onRouteHandler = function (routerEvent) {\n        console.log(routerEvent.params);\n    }\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    Router.add('/contact/:name:/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/contact/\n    // www.site.com/#/contact/heather/\n    // www.site.com/#/contact/john/\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    Router.add('/product/{productName}/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/product/shoes/\n    // www.site.com/#/product/jackets/\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    Router.add('*', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/anything/\n    // www.site.com/#/matches/any/hash/url/\n    // www.site.com/#/really/it/matches/any/and/all/hash/urls/\n\n\n**?** The question mark character means it will match a query string for the hash url.\n\n    Router.add('?', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/?one=1&two=2&three=3\n    // www.site.com/#?one=1&two=2&three=3\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    Router.add('', this.method, this);\n    Router.add('/', this.method, this);\n\n    // Will match one of the following:\n    // www.site.com/\n    // www.site.com/#/\n\n\nOther possible combinations but not limited too:\n\n    Router.add('/games/{gameName}/:level:/', this.method1, this);\n    Router.add('/{category}/blog/', this.method2, this);\n    Router.add('/home/?', this.method3, this);\n    Router.add('/about/*', this.method4, this);\n"
+                "\n    // Example of adding a route listener and the function callback below.\n    Router.add('/games/{gameName}/:level:/', this._method, this);\n\n    // The above route listener would match the below url:\n    // www.site.com/#/games/asteroids/2/\n\n    // The Call back receives a RouterEvent object.\n    _onRouteHandler(routerEvent) {\n        console.log(routerEvent.params);\n    }\n\nRoute Pattern Options:\n----------------------\n**:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.\n\n    Router.add('/contact/:name:/', this._method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/contact/\n    // www.site.com/#/contact/heather/\n    // www.site.com/#/contact/john/\n\n\n**{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.\n\n    Router.add('/product/{productName}/', this._method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/product/shoes/\n    // www.site.com/#/product/jackets/\n\n\n**\\*** The asterisk character means it will match all or part of part the hash url.\n\n    Router.add('*', this._method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/anything/\n    // www.site.com/#/matches/any/hash/url/\n    // www.site.com/#/really/it/matches/any/and/all/hash/urls/\n\n\n**?** The question mark character means it will match a query string for the hash url.\n\n    Router.add('?', this._method, this);\n\n    // Will match one of the following:\n    // www.site.com/#/?one=1&two=2&three=3\n    // www.site.com/#?one=1&two=2&three=3\n\n\n**''** The empty string means it will match when there are no hash url.\n\n    Router.add('', this._method, this);\n    Router.add('/', this._method, this);\n\n    // Will match one of the following:\n    // www.site.com/\n    // www.site.com/#/\n\n\nOther possible combinations but not limited too:\n\n    Router.add('/games/{gameName}/:level:/', this._method1, this);\n    Router.add('/{category}/blog/', this._method2, this);\n    Router.add('/home/?', this._method3, this);\n    Router.add('/about/*', this._method4, this);\n"
             ],
             "class": "Router",
             "module": "StructureJS",
@@ -2275,7 +2275,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    // Example of adding a route listener.\n    Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);\n\n    // Example of removing the same added route listener above.\n    Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);"
+                "\n    // Example of adding a route listener.\n    Router.add('/games/{gameName}/:level:/', this._method, this);\n\n    // Example of removing the same added route listener above.\n    Router.remove('/games/{gameName}/:level:/', this._method, this);"
             ],
             "class": "Router",
             "module": "StructureJS",
@@ -2303,7 +2303,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    Router.addDefault(this.noRoutesFoundHandler, this);"
+                "\n    Router.addDefault(this._noRoutesFoundHandler, this);"
             ],
             "class": "Router",
             "module": "StructureJS",
@@ -2339,7 +2339,7 @@
                 "type": "String"
             },
             "example": [
-                "\n    var str = Router.getHash();"
+                "\n    let str = Router.getHash();"
             ],
             "class": "Router",
             "module": "StructureJS",
@@ -2387,7 +2387,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n    // Example of adding routes and calling the start method.\n    Router.add('/games/{gameName}/:level:/', this.method1, this);\n    Router.add('/{category}/blog/', this.method2, this);\n\n    Router.start();"
+                "\n    // Example of adding routes and calling the start method.\n    Router.add('/games/{gameName}/:level:/', this._method1, this);\n    Router.add('/{category}/blog/', this._method2, this);\n\n    Router.start();"
             ],
             "class": "Router",
             "module": "StructureJS",
@@ -2465,9 +2465,52 @@
         {
             "file": "js/controller/Router.js",
             "line": 326,
+            "description": "A simple helper method to create a url route from an unlimited number of arguments.",
+            "itemtype": "method",
+            "name": "buildRoute",
+            "params": [
+                {
+                    "name": "...rest",
+                    "description": "",
+                    "type": "...rest"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n     let someProperty = 'api/endpoint';\n\n     Router.buildRoute(someProperty, 'path', 7);\n\n     //Creates 'api/endpoint/path/7'"
+            ],
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 348,
+            "description": "Returns the current router event that was last triggered.",
+            "itemtype": "method",
+            "name": "getCurrentRoute",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n     Router.getCurrentRoute();"
+            ],
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 360,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
-            "name": "onHashChange",
+            "name": "_onHashChange",
             "params": [
                 {
                     "name": "event",
@@ -2484,10 +2527,10 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 343,
+            "line": 377,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
-            "name": "changeRoute",
+            "name": "_changeRoute",
             "params": [
                 {
                     "name": "hash",
@@ -2504,7 +2547,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 409,
+            "line": 444,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2518,7 +2561,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 418,
+            "line": 453,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2532,7 +2575,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 427,
+            "line": 462,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2546,7 +2589,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 436,
+            "line": 471,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2560,7 +2603,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 445,
+            "line": 480,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2578,7 +2621,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 458,
+            "line": 493,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2596,7 +2639,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 474,
+            "line": 509,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful if want to use your added routes but don't want any external forces trigger your routes.\n\nTypically what I do for games is during development/testing I allow the hash url to change the states so testers can jump\nto sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump\naround if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2614,7 +2657,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 493,
+            "line": 528,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2632,7 +2675,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 510,
+            "line": 545,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2644,6 +2687,20 @@
             "example": [
                 "\n    // Only allow the first route matched to be triggered.\n    Router.allowMultipleMatches = false;"
             ],
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 558,
+            "description": "A reference to the current {{#crossLink \"RouterEvent\"}}{{/crossLink}} that was triggered.",
+            "itemtype": "property",
+            "name": "_currentRoute",
+            "type": "{RouterEvent}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
             "class": "Router",
             "module": "StructureJS",
             "submodule": "controller"
@@ -2720,7 +2777,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 150,
+            "line": 137,
             "description": "Tracks number of times an element's width has been checked\nin order to determine if the element has been added\nto the DOM.",
             "itemtype": "property",
             "name": "checkCount",
@@ -2733,7 +2790,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 160,
+            "line": 147,
             "description": "A cached reference to the DOM Element",
             "itemtype": "property",
             "name": "element",
@@ -2747,7 +2804,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 169,
+            "line": 156,
             "description": "A cached reference to the jQuery DOM element",
             "itemtype": "property",
             "name": "$element",
@@ -2761,7 +2818,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 178,
+            "line": 165,
             "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try to add the view to the DOM since it already exists.",
             "itemtype": "property",
             "name": "_isReference",
@@ -2774,7 +2831,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 187,
+            "line": 174,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_type",
@@ -2788,7 +2845,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 196,
+            "line": 183,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_params",
@@ -2802,7 +2859,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 215,
+            "line": 202,
             "description": "The create function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called once when the child view is added to another view. If the child view is removed\nand added to another view the create method will not be called again.",
             "itemtype": "method",
             "name": "create",
@@ -2818,13 +2875,13 @@
             ],
             "return": {
                 "description": "Returns an instance of itself.",
-                "type": "DOMElement"
+                "type": "Any"
             },
             "access": "public",
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n    // EXAMPLE 1: By default your view class will be a div element:\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this);\n\n         this._childInstance = new DOMElement();\n         this.addChild(this._childInstance);\n    }\n\n    // EXAMPLE 2: But lets say you wanted the view to be a ul element:\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'ul');\n    }\n\n    // Then you could nest other elements inside this base view/element.\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n         var li = new DOMElement('li', {text: 'Robert is cool'});\n         this.addChild(li);\n    }\n\n    // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below\n    // inline Handlebar template in your html file.\n    <script id=\"todoTemplate\" type=\"text/template\">\n         <div id=\"htmlTemplate\" class=\"js-todo\">\n             <div id=\"input-wrapper\">\n                 <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                 <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n             </div>\n         </div>\n    </script>\n\n    // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\".\n    // There is a second optional argument where you can pass data for the Handlebar template to use.\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, '#todoTemplate', { data: this.viewData });\n\n    }\n\n    // EXAMPLE 4: Let's say you wanted to use the Handlebar plugin within RequireJS. You can pass the template into create.\n    var HomeTemplate = require('hbs!templates/HomeTemplate');\n\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, HomeTemplate, {data: \"some data\"});\n\n    }\n\n    // EXAMPLE 5: Or maybe you're using grunt-contrib-handlebars, or similar, to precompile hbs templates\n    require('templates'); // templates.js\n\n    ClassName.prototype.create = function () {\n         _super.prototype.create.call(this, 'templates/HomeTemplate', {data: \"some data\"});\n\n    }"
+                "\n    // EXAMPLE 1: By default your view class will be a div element:\n    create() {\n         super.create();\n\n         this._childInstance = new DOMElement();\n         this.addChild(this._childInstance);\n    }\n\n    // EXAMPLE 2: But lets say you wanted the view to be a ul element:\n    create() {\n         super.create('ul');\n    }\n\n    // Then you could nest other elements inside this base view/element.\n    create() {\n         super.create('ul', {id: 'myId', 'class': 'myClass anotherClass'});\n\n         let li = new DOMElement('li', {text: 'Robert is cool'});\n         this.addChild(li);\n    }\n\n    // EXAMPLE 3: So that's cool but what if you wanted a block of html to be your view. Let's say you had the below\n    // inline Handlebar template in your html file.\n    <script id=\"todoTemplate\" type=\"text/template\">\n         <div id=\"htmlTemplate\" class=\"js-todo\">\n             <div id=\"input-wrapper\">\n                 <input type=\"text\" class=\"list-input\" placeholder=\"{{ data.text }}\">\n                 <input type=\"button\" class=\"list-item-submit\" value=\"Add\">\n             </div>\n         </div>\n    </script>\n\n    // You would just pass in the id or class selector of the template which in this case is \"#todoTemplate\".\n    // There is a second optional argument where you can pass data for the Handlebar template to use.\n    create() {\n         super.create('#todoTemplate', { data: this.viewData });\n\n    }\n\n    // EXAMPLE 4: Or maybe you're using grunt-contrib-handlebars, or similar, to precompile hbs templates\n    create() {\n         super.create('templates/HomeTemplate', {data: \"some data\"});\n\n    }"
             ],
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2832,7 +2889,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 310,
+            "line": 287,
             "overridden": "DisplayObjectContainer.addChild",
             "itemtype": "method",
             "name": "addChild",
@@ -2845,11 +2902,11 @@
             ],
             "return": {
                 "description": "Returns an instance of itself.",
-                "type": "DOMElement"
+                "type": "Any"
             },
             "chainable": 1,
             "example": [
-                "\n    container.addChild(domElementInstance);"
+                "\n    this.addChild(domElementInstance);"
             ],
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2857,10 +2914,10 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 339,
+            "line": 316,
             "description": "Adds the sjsId to the DOM element so we can know what what Class object the HTMLElement belongs too.",
             "itemtype": "method",
-            "name": "addClientSideId",
+            "name": "_addClientSideId",
             "params": [
                 {
                     "name": "child",
@@ -2876,10 +2933,10 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 365,
+            "line": 342,
             "description": "Removes the sjsId and class type from the HTMLElement.",
             "itemtype": "method",
-            "name": "removeClientSideId",
+            "name": "_removeClientSideId",
             "params": [
                 {
                     "name": "child",
@@ -2899,10 +2956,10 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 390,
+            "line": 367,
             "description": "Called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layout:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.",
             "itemtype": "method",
-            "name": "onDomAdded",
+            "name": "_onAddedToDom",
             "access": "protected",
             "tagname": "",
             "class": "DOMElement",
@@ -2911,7 +2968,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 414,
+            "line": 391,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2919,7 +2976,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 447,
+            "line": 424,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2927,7 +2984,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 457,
+            "line": 434,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2935,7 +2992,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 463,
+            "line": 440,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -2958,7 +3015,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 494,
+            "line": 471,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -2982,7 +3039,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 526,
+            "line": 503,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null and the object is garbage collected if there are no other references\nto the child. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -2995,7 +3052,7 @@
             ],
             "return": {
                 "description": "Returns an instance of itself.",
-                "type": "DOMElement"
+                "type": "Any"
             },
             "override": "",
             "access": "public",
@@ -3007,7 +3064,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 553,
+            "line": 530,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -3027,7 +3084,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 566,
+            "line": 543,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -3045,7 +3102,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 585,
+            "line": 562,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -3053,7 +3110,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 596,
+            "line": 573,
             "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.",
             "itemtype": "method",
             "name": "createComponents",
@@ -3072,7 +3129,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     ClassName.prototype.create = function () {\n         _super.prototype.create.call(this);\n\n         this.createComponents([\n             {selector: '.js-shareEmail', component: EmailShareComponent},\n             {selector: '.js-pagination', component: PaginationComponent},\n             {selector: '.js-carousel', component: CarouselComponent}\n         ]);\n     };"
+                "\n     create() {\n         super.create();\n\n         this.createComponents([\n             {selector: '.js-shareEmail', component: EmailShareComponent},\n             {selector: '.js-pagination', component: PaginationComponent},\n             {selector: '.js-carousel', component: CarouselComponent}\n         ]);\n     }"
             ],
             "class": "DOMElement",
             "module": "StructureJS",
@@ -3654,7 +3711,7 @@
         },
         {
             "file": "js/display/Stage.js",
-            "line": 95,
+            "line": 84,
             "description": "The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.",
             "itemtype": "method",
             "name": "appendTo",
@@ -3895,7 +3952,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 68,
+            "line": 62,
             "description": "The type of event.",
             "itemtype": "property",
             "name": "type",
@@ -3910,7 +3967,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 78,
+            "line": 72,
             "description": "A reference to the object that originally dispatched the event.",
             "itemtype": "property",
             "name": "target",
@@ -3925,7 +3982,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 88,
+            "line": 82,
             "description": "The currentTarget property always points to the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).",
             "itemtype": "property",
             "name": "currentTarget",
@@ -3940,7 +3997,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 98,
+            "line": 92,
             "description": "Used to pass any type of data with the event.",
             "itemtype": "property",
             "name": "data",
@@ -3954,7 +4011,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 107,
+            "line": 101,
             "description": "Indicates whether an event is a bubbling event.",
             "itemtype": "property",
             "name": "bubbles",
@@ -3968,7 +4025,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 116,
+            "line": 110,
             "description": "Indicates whether the behavior associated with the event can be prevented.",
             "itemtype": "property",
             "name": "cancelable",
@@ -3982,7 +4039,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 125,
+            "line": 119,
             "description": "Indicates if the {{#crossLink \"BaseEvent/stopPropagation:method\"}}{{/crossLink}} was called on the event object.",
             "itemtype": "property",
             "name": "isPropagationStopped",
@@ -3997,7 +4054,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 135,
+            "line": 129,
             "description": "Indicates if the {{#crossLink \"BaseEvent/stopImmediatePropagation:method\"}}{{/crossLink}} was called on the event object.",
             "itemtype": "property",
             "name": "isImmediatePropagationStopped",
@@ -4012,7 +4069,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 150,
+            "line": 144,
             "description": "Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.\nThis method does not affect any event listeners in the current node (currentTarget). In contrast,\nthe {{#crossLink \"BaseEvent/stopImmediatePropagation:method\"}}{{/crossLink}} method prevents processing\nof event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.",
             "itemtype": "method",
             "name": "stopPropagation",
@@ -4027,7 +4084,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 164,
+            "line": 158,
             "description": "Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.\nThis method takes effect immediately, and it affects event listeners in the current node. In contrast,\nthe {{#crossLink \"BaseEvent/stopPropagation:method\"}}{{/crossLink}} method doesn't take effect until\nall the event listeners in the current node finish processing.",
             "itemtype": "method",
             "name": "stopImmediatePropagation",
@@ -4042,7 +4099,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 179,
+            "line": 173,
             "description": "Duplicates an instance of an BaseEvent subclass.\n\nReturns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.\n\nThe new BaseEvent object includes all the properties of the original.",
             "itemtype": "method",
             "name": "clone",
@@ -4053,7 +4110,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    var cloneOfEvent = event.clone();"
+                "\n    let cloneOfEvent = event.clone();"
             ],
             "class": "BaseEvent",
             "module": "StructureJS",
@@ -4061,7 +4118,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 201,
+            "line": 195,
             "description": "The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.",
             "itemtype": "event",
             "name": "ACTIVATE",
@@ -4075,7 +4132,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 210,
+            "line": 204,
             "description": "The BaseEvent.ADDED constant defines the value of the type property of an added event object.",
             "itemtype": "event",
             "name": "ADDED",
@@ -4089,7 +4146,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 219,
+            "line": 213,
             "description": "The BaseEvent.ADDED_TO_STAGE constant defines the value of the type property of an addedToStage event object.",
             "itemtype": "event",
             "name": "ADDED_TO_STAGE",
@@ -4103,7 +4160,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 228,
+            "line": 222,
             "description": "The BaseEvent.CANCEL constant defines the value of the type property of a cancel event object.",
             "itemtype": "event",
             "name": "CANCEL",
@@ -4117,7 +4174,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 237,
+            "line": 231,
             "description": "The BaseEvent.CHANGE constant defines the value of the type property of a change event object.",
             "itemtype": "event",
             "name": "CHANGE",
@@ -4131,7 +4188,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 246,
+            "line": 240,
             "description": "The BaseEvent.CLEAR constant defines the value of the type property of a clear event object.",
             "itemtype": "event",
             "name": "CLEAR",
@@ -4145,7 +4202,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 255,
+            "line": 249,
             "description": "The BaseEvent.CLOSE constant defines the value of the type property of a close event object.",
             "itemtype": "event",
             "name": "CLOSE",
@@ -4159,7 +4216,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 264,
+            "line": 258,
             "description": "The BaseEvent.CLOSING constant defines the value of the type property of a closing event object.",
             "itemtype": "event",
             "name": "CLOSING",
@@ -4173,7 +4230,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 273,
+            "line": 267,
             "description": "The BaseEvent.COMPLETE constant defines the value of the type property of a complete event object.",
             "itemtype": "event",
             "name": "COMPLETE",
@@ -4187,7 +4244,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 282,
+            "line": 276,
             "description": "The BaseEvent.CONNECT constant defines the value of the type property of a connect event object.",
             "itemtype": "event",
             "name": "CONNECT",
@@ -4201,7 +4258,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 291,
+            "line": 285,
             "description": "Defines the value of the type property of a copy event object.",
             "itemtype": "event",
             "name": "COPY",
@@ -4215,7 +4272,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 300,
+            "line": 294,
             "description": "Defines the value of the type property of a cut event object.",
             "itemtype": "event",
             "name": "CUT",
@@ -4229,7 +4286,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 309,
+            "line": 303,
             "description": "The BaseEvent.DEACTIVATE constant defines the value of the type property of a deactivate event object.",
             "itemtype": "event",
             "name": "DEACTIVATE",
@@ -4243,7 +4300,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 318,
+            "line": 312,
             "description": "The BaseEvent.DISPLAYING constant defines the value of the type property of a displaying event object.",
             "itemtype": "event",
             "name": "DISPLAYING",
@@ -4257,7 +4314,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 327,
+            "line": 321,
             "description": "The BaseEvent.ENTER_FRAME constant defines the value of the type property of an enterFrame event object.",
             "itemtype": "event",
             "name": "ENTER_FRAME",
@@ -4271,7 +4328,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 336,
+            "line": 330,
             "description": "The BaseEvent.EXIT_FRAME constant defines the value of the type property of an exitFrame event object.",
             "itemtype": "event",
             "name": "EXIT_FRAME",
@@ -4285,7 +4342,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 345,
+            "line": 339,
             "description": "The BaseEvent.EXITING constant defines the value of the type property of an exiting event object.",
             "itemtype": "event",
             "name": "EXITING",
@@ -4299,7 +4356,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 354,
+            "line": 348,
             "description": "The BaseEvent.FULL_SCREEN constant defines the value of the type property of a fullScreen event object.",
             "itemtype": "event",
             "name": "FULLSCREEN",
@@ -4313,7 +4370,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 363,
+            "line": 357,
             "description": "The BaseEvent.INIT constant defines the value of the type property of an init event object.",
             "itemtype": "event",
             "name": "INIT",
@@ -4327,7 +4384,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 372,
+            "line": 366,
             "description": "The BaseEvent.NETWORK_CHANGE constant defines the value of the type property of a networkChange event object.",
             "itemtype": "event",
             "name": "NETWORK_CHANGE",
@@ -4341,7 +4398,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 381,
+            "line": 375,
             "description": "The BaseEvent.OPEN constant defines the value of the type property of an open event object.",
             "itemtype": "event",
             "name": "OPEN",
@@ -4355,7 +4412,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 390,
+            "line": 384,
             "description": "The BaseEvent.PASTE constant defines the value of the type property of a paste event object.",
             "itemtype": "event",
             "name": "PASTE",
@@ -4369,7 +4426,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 399,
+            "line": 393,
             "description": "The BaseEvent.PREPARING constant defines the value of the type property of a preparing event object.",
             "itemtype": "event",
             "name": "PREPARING",
@@ -4383,7 +4440,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 408,
+            "line": 402,
             "description": "The BaseEvent.REMOVED constant defines the value of the type property of a removed event object.",
             "itemtype": "event",
             "name": "REMOVED",
@@ -4397,7 +4454,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 417,
+            "line": 411,
             "description": "The BaseEvent.RENDER constant defines the value of the type property of a render event object.",
             "itemtype": "event",
             "name": "RENDER",
@@ -4411,7 +4468,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 426,
+            "line": 420,
             "description": "The BaseEvent.RESIZE constant defines the value of the type property of a resize event object.",
             "itemtype": "event",
             "name": "RESIZE",
@@ -4425,7 +4482,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 435,
+            "line": 429,
             "description": "The BaseEvent.SELECTED constant defines the value of the type property of a selected event object.",
             "itemtype": "event",
             "name": "SELECTED",
@@ -4546,7 +4603,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    EventBroker.addEventListener('change', this._handlerMethod, this);\n    // Example of using a constant event type.\n    EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);\n\n    // The event passed to the method will always be a BaseEvent object.\n    ClassName.prototype._handlerMethod = function (event) {\n         console.log(event.data);\n    };"
+                "\n    EventBroker.addEventListener('change', this._handlerMethod, this);\n    // Example of using a constant event type.\n    EventBroker.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);\n\n    // The event passed to the method will always be a BaseEvent object.\n    _handlerMethod(event) {\n         console.log(event.data);\n    }"
             ],
             "class": "EventBroker",
             "module": "StructureJS",
@@ -4586,7 +4643,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    EventBroker.addEventListenerOnce('change', this._handlerMethod, this);\n    // Example of using a constant event type.\n    EventBroker.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);\n\n    // The event passed to the method will always be a BaseEvent object.\n    ClassName.prototype._handlerMethod = function (event) {\n         console.log(event.data);\n    };"
+                "\n    EventBroker.addEventListenerOnce('change', this._handlerMethod, this);\n    // Example of using a constant event type.\n    EventBroker.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);\n\n    // The event passed to the method will always be a BaseEvent object.\n    _handlerMethod(event) {\n         console.log(event.data);\n    }"
             ],
             "class": "EventBroker",
             "module": "StructureJS",
@@ -4649,7 +4706,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     EventBroker.dispatchEvent('change');\n\n     // Example: Sending data with the event.\n     EventBroker.dispatchEvent('change', {some: 'data'});\n\n     // Example: Sending a BaseEvent or custom event object.\n     var event = new BaseEvent(BaseEvent.CHANGE);\n     event.data = {some: 'data'};\n     EventBroker.dispatchEvent(event);"
+                "\n     EventBroker.dispatchEvent('change');\n\n     // Example: Sending data with the event.\n     EventBroker.dispatchEvent('change', {some: 'data'});\n\n     // Example: Sending a BaseEvent or custom event object.\n     let event = new BaseEvent(BaseEvent.CHANGE);\n     event.data = {some: 'data'};\n     EventBroker.dispatchEvent(event);"
             ],
             "class": "EventBroker",
             "module": "StructureJS",
@@ -4728,7 +4785,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 42,
+            "line": 39,
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
             "name": "_listeners",
@@ -4741,7 +4798,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 50,
+            "line": 47,
             "description": "Indicates the object that contains a child object. Uses the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy and helps facilitate event bubbling.",
             "itemtype": "property",
             "name": "parent",
@@ -4754,7 +4811,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 62,
+            "line": 59,
             "description": "Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
@@ -4786,7 +4843,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n\n     ClassName.prototype.handlerMethod = function (event) {\n         console.log(event.target + \" sent the event.\");\n         console.log(event.type, event.data);\n     }"
+                "\n     this.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);\n\n     _handlerMethod(event) {\n         console.log(event.target + \" sent the event.\");\n         console.log(event.type, event.data);\n     }"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4794,7 +4851,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 105,
+            "line": 102,
             "description": "Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.",
             "itemtype": "method",
             "name": "addEventListenerOnce",
@@ -4826,7 +4883,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);\n\n     ClassName.prototype.handlerMethod = function (event) {\n         console.log(event.target + \" sent the event.\");\n         console.log(event.type, event.data);\n     }"
+                "\n     this.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);\n\n     _handlerMethod(event) {\n         console.log(event.target + \" sent the event.\");\n         console.log(event.type, event.data);\n     }"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4834,7 +4891,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 134,
+            "line": 131,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -4860,7 +4917,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);\n\n     ClassName.prototype._handlerMethod = function (event) {\n     };"
+                "\n     this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4868,7 +4925,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 165,
+            "line": 159,
             "description": "<p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -4890,7 +4947,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     this.dispatchEvent('change');\n\n     // Example: Sending data with the event:\n     this.dispatchEvent('change', {some: 'data'});\n\n     // Example: With an event object\n     // (event type, bubbling set to true, cancelable set to true and passing data) :\n     var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});\n     this.dispatchEvent(event);\n\n     // Here is a common inline event object being dispatched:\n     this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
+                "\n     this.dispatchEvent('change');\n\n     // Example: Sending data with the event:\n     this.dispatchEvent('change', {some: 'data'});\n\n     // Example: With an event object\n     // (event type, bubbling set to true, cancelable set to true and passing data) :\n     let event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});\n     this.dispatchEvent(event);\n\n     // Here is a common inline event object being dispatched:\n     this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE));"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4898,7 +4955,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 229,
+            "line": 223,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -4926,7 +4983,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);"
+                "\n     this.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);"
             ],
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -4934,7 +4991,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 254,
+            "line": 248,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -4953,7 +5010,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 284,
+            "line": 278,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -5224,7 +5281,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 88,
+            "line": 86,
             "description": "Provide a way to update the  Base Model.",
             "itemtype": "method",
             "name": "update",
@@ -5246,7 +5303,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 118,
+            "line": 116,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_setData",
@@ -5268,7 +5325,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 143,
+            "line": 141,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_updateData",
@@ -5290,18 +5347,18 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 168,
-            "description": "Converts the  Base Model data into a JSON object and deletes the sjsId property.",
+            "line": 166,
+            "description": "Converts the Base Model data into a JSON object and deletes the sjsId property.",
             "itemtype": "method",
             "name": "toJSON",
             "return": {
                 "description": "",
-                "type": "BaseModel"
+                "type": "Any"
             },
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    var obj = carModel.toJSON();"
+                "\n    let obj = carModel.toJSON();"
             ],
             "class": "BaseModel",
             "module": "StructureJS",
@@ -5309,7 +5366,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 181,
+            "line": 179,
             "description": "Converts a  Base Model to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5320,7 +5377,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    var str = carModel.toJSONString();"
+                "\n    let str = carModel.toJSONString();"
             ],
             "class": "BaseModel",
             "module": "StructureJS",
@@ -5328,7 +5385,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 193,
+            "line": 191,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"BaseModel/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5342,7 +5399,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     var str = '{\"make\":\"Tesla\",\"model\":\"Model S\",\"year\":2014}'\n     var carModel = new CarModel();\n     carModel.fromJSON(str);"
+                "\n     let str = '{\"make\":\"Tesla\",\"model\":\"Model S\",\"year\":2014}'\n     let carModel = new CarModel();\n     carModel.fromJSON(str);"
             ],
             "class": "BaseModel",
             "module": "StructureJS",
@@ -5350,7 +5407,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 209,
+            "line": 207,
             "description": "Create a clone/copy of the  Base Model.",
             "itemtype": "method",
             "name": "clone",
@@ -5361,7 +5418,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    var clone = carModel.clone();"
+                "\n    let clone = carModel.clone();"
             ],
             "class": "BaseModel",
             "module": "StructureJS",
@@ -5431,7 +5488,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     collection.add(vo);\n     collection.add(vo, true);"
+                "\n     collection.add(model);\n\n     collection.add([model, model, model, model]);\n\n     collection.add(model, true);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5439,7 +5496,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 111,
+            "line": 114,
             "description": "Removes a model or an array of models from the collection.",
             "itemtype": "method",
             "name": "remove",
@@ -5461,7 +5518,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     collection.remove(vo);\n\n     collection.remove(vo, true);"
+                "\n     collection.remove(model);\n\n     collection.remove([model, model, model, model]);\n\n     collection.remove(model, true);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5469,7 +5526,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 140,
+            "line": 145,
             "description": "Checks if a collection has an model.",
             "itemtype": "method",
             "name": "has",
@@ -5487,7 +5544,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     collection.has(vo);"
+                "\n     collection.has(model);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5495,7 +5552,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 153,
+            "line": 158,
             "description": "Returns the array index position of the  Base Model.",
             "itemtype": "method",
             "name": "indexOf",
@@ -5513,7 +5570,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     collection.indexOf(vo);"
+                "\n     collection.indexOf(model);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5521,7 +5578,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 166,
+            "line": 171,
             "description": "Finds an object by an index value.\nIf the index is out of bounds, the collection will clamp it.",
             "itemtype": "method",
             "name": "get",
@@ -5547,7 +5604,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 187,
+            "line": 192,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
             "itemtype": "method",
             "name": "findBy",
@@ -5565,7 +5622,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     // Finds all  Base Model that has 'Robert' in it.\n     this._collection.findBy(\"Robert\");\n     // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.\n     this._collection.findBy([\"Robert\", \"Heather\", 32]);\n\n     // Finds all  Base Models that same key and value you are searching for.\n     this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });\n     this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
+                "\n     // Finds all  Base Model that has 'Robert' in it.\n     collection.findBy(\"Robert\");\n     // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.\n     collection.findBy([\"Robert\", \"Heather\", 32]);\n\n     // Finds all  Base Models that same key and value you are searching for.\n     collection.findBy({ name: 'apple', organic: false, type: 'fruit' });\n     collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5573,7 +5630,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 225,
+            "line": 230,
             "description": "Loops through the models array and creates a new array of models that match all the properties on the object passed in.",
             "itemtype": "method",
             "name": "_where",
@@ -5596,7 +5653,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 268,
+            "line": 273,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
             "name": "_findPropertyValue",
@@ -5619,7 +5676,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 307,
+            "line": 312,
             "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
@@ -5644,7 +5701,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 326,
+            "line": 331,
             "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
             "itemtype": "method",
             "name": "clone",
@@ -5655,7 +5712,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    var clone = collection.clone();"
+                "\n    let clone = collection.clone();"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5663,7 +5720,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 340,
+            "line": 345,
             "description": "Creates a JSON object of the collection.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5674,7 +5731,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    var arrayOfObjects = collection.toJSON();"
+                "\n    let arrayOfObjects = collection.toJSON();"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5682,7 +5739,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 362,
+            "line": 367,
             "description": "Creates a JSON string of the collection.",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5693,7 +5750,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    var str = collection.toJSONString();"
+                "\n    let str = collection.toJSONString();"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5701,7 +5758,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 374,
+            "line": 379,
             "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5724,7 +5781,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 389,
+            "line": 394,
             "description": "Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys",
             "itemtype": "method",
             "name": "sortOn",
@@ -5757,7 +5814,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 426,
+            "line": 431,
             "description": "Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code\npoint value, according to the string conversion of each element.",
             "itemtype": "method",
             "name": "sort",
@@ -5777,7 +5834,7 @@
                 "type": "Array.<any>"
             },
             "example": [
-                "\n     var sortByDate = function(a, b){\n         return new Date(a.date) - new Date(b.date)\n     }\n\n     collection.sort(sortByDate);"
+                "\n     let sortByDate = function(a, b){\n         return new Date(a.date) - new Date(b.date)\n     }\n\n     collection.sort(sortByDate);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5785,7 +5842,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 446,
+            "line": 451,
             "description": "The filter method creates a new array with all elements that pass the test implemented by the provided function.",
             "itemtype": "method",
             "name": "filter",
@@ -5809,7 +5866,7 @@
                 "type": "Array.<any>"
             },
             "example": [
-                "\n     var isOldEnough = function(model){\n         return model.age >= 21;\n     }\n\n     var list = collection.filter(isOldEnough);"
+                "\n     let isOldEnough = function(model){\n         return model.age >= 21;\n     }\n\n     let list = collection.filter(isOldEnough);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5817,7 +5874,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 465,
+            "line": 470,
             "description": "Convenient way to get a list of property values.",
             "itemtype": "method",
             "name": "pluck",
@@ -5842,7 +5899,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);\n\n     var list = collection.pluck('name');\n     // ['Robert', 'Robert', 'Chris']\n\n     var list = collection.pluck('name', true);\n     // ['Robert', 'Chris']"
+                "\n     collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);\n\n     let list = collection.pluck('name');\n     // ['Robert', 'Robert', 'Chris']\n\n     let list = collection.pluck('name', true);\n     // ['Robert', 'Chris']"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5850,7 +5907,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 495,
+            "line": 500,
             "description": "Convenient way to group models into categories/groups by a property name.",
             "itemtype": "method",
             "name": "groupBy",
@@ -5868,7 +5925,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);\n\n     var list = collection.groupBy('name');\n\n     // {\n     //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]\n     //    Chris: [{name: 'Chris', id: 2}]\n     // }"
+                "\n     collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);\n\n     let list = collection.groupBy('name');\n\n     // {\n     //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]\n     //    Chris: [{name: 'Chris', id: 2}]\n     // }"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5876,7 +5933,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 528,
+            "line": 533,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -5889,29 +5946,6 @@
             "example": [
                 "\n     collection.reverse();"
             ],
-            "class": "Collection",
-            "module": "StructureJS",
-            "submodule": "model"
-        },
-        {
-            "file": "js/model/Collection.js",
-            "line": 540,
-            "description": "Returns a new array of models with duplicates removed.",
-            "itemtype": "method",
-            "name": "_unique",
-            "params": [
-                {
-                    "name": "list",
-                    "description": "The array you want to use to generate the unique array.",
-                    "type": "Array.<any>"
-                }
-            ],
-            "return": {
-                "description": "Returns a new array list of models in the collection with duplicates removed.",
-                "type": "Array<any>"
-            },
-            "access": "protected",
-            "tagname": "",
             "class": "Collection",
             "module": "StructureJS",
             "submodule": "model"
@@ -5974,7 +6008,7 @@
             "line": 115,
             "description": "Converts the routePattern that was passed into the constructor to a regexp object.",
             "itemtype": "method",
-            "name": "routePatternToRegexp",
+            "name": "_routePatternToRegexp",
             "params": [
                 {
                     "name": "routePattern",
@@ -6010,7 +6044,7 @@
                 "type": "Array.<any>"
             },
             "example": [
-                "\n    var route = new Route('/games/{gameName}/:level:/', this.method, this);\n    console.log( route.match('/games/asteroids/2/') );"
+                "\n    let route = new Route('/games/{gameName}/:level:/', this.method, this);\n    console.log( route.match('/games/asteroids/2/') );"
             ],
             "class": "Route",
             "module": "StructureJS",
@@ -6074,7 +6108,7 @@
             "line": 76,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
-            "name": "onNetworkMonitorEvent",
+            "name": "_onNetworkMonitorEvent",
             "params": [
                 {
                     "name": "event",
@@ -6092,7 +6126,7 @@
             "line": 89,
             "description": "Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.",
             "example": [
-                "\n     NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this.handlerMethod, this);\n     ClassName.prototype.handlerMethod = function (event) {\n         console.log(event.status, event.connected);\n     }"
+                "\n     NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.status, event.connected);\n     }"
             ],
             "itemtype": "method",
             "name": "addEventListener",
@@ -6104,7 +6138,7 @@
                 },
                 {
                     "name": "callback",
-                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void",
+                    "description": "The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows.",
                     "type": "Function"
                 },
                 {
@@ -6131,7 +6165,7 @@
             "line": 108,
             "description": "Removes a specified listener from the NetworkMonitor object.",
             "example": [
-                "\n     NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this.handlerMethod, this);\n     private handlerMethod(event:NetworkMonitorEvent):void {\n         console.log(event.status, event.connected);\n     }"
+                "\n     NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.status, event.connected);\n     }"
             ],
             "itemtype": "method",
             "name": "removeEventListener",
@@ -6316,7 +6350,7 @@
             "description": "Gets the browser name a user agent.",
             "itemtype": "method",
             "name": "getBrowser",
-            "access": "private",
+            "access": "public",
             "tagname": "",
             "return": {
                 "description": "",
@@ -6332,7 +6366,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 113,
+            "line": 111,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isAndroid",
@@ -6352,7 +6386,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 127,
+            "line": 125,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isBlackBerry",
@@ -6372,7 +6406,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 141,
+            "line": 139,
             "description": "Determines if the device OS is IOS.",
             "itemtype": "method",
             "name": "isIOS",
@@ -6392,7 +6426,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 155,
+            "line": 153,
             "description": "Determines if the device OS is Opera Mini.",
             "itemtype": "method",
             "name": "isOperaMini",
@@ -6412,7 +6446,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 169,
+            "line": 167,
             "description": "Determines if the device OS is IE Mobile.",
             "itemtype": "method",
             "name": "isIEMobile",
@@ -6432,7 +6466,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 183,
+            "line": 181,
             "description": "Determines if the it is run on a mobile or desktop device.",
             "itemtype": "method",
             "name": "isMobile",
@@ -6452,7 +6486,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 197,
+            "line": 195,
             "description": "Determines if the browser can you Browser History push states.",
             "itemtype": "method",
             "name": "hasBrowserHistory",
@@ -6472,7 +6506,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 211,
+            "line": 209,
             "description": "Determines if the browser can you Local Storage.",
             "itemtype": "method",
             "name": "hasLocalStorage",
@@ -6492,7 +6526,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 230,
+            "line": 228,
             "description": "Determines if the browser can you Session Storage.",
             "itemtype": "method",
             "name": "hasSessionStorage",
@@ -6512,7 +6546,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 249,
+            "line": 247,
             "description": "Get the current breakpoint from the style sheets. You must add a body:after property with a specific content\nin each of your style sheets for this functionality to work.",
             "itemtype": "method",
             "name": "getBreakpoint",
@@ -6524,7 +6558,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     // For each of your different style sheets add something like below:\n     // screen_lg.css\n     body:after {\n         content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;\n     }\n     // screen_sm.css\n     body:after {\n         content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;\n     }\n\n     BrowserUtil.getBreakpoint();\n     // 'screen_lg'\n\n     // Add a listener to get notified when the browser is resized:\n     BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);\n     ...\n     ClassName.prototype._onBreakpointChange = function (baseEvent) {\n         console.log(baseEvent.data);\n         // 'screen_sm'\n     };"
+                "\n     // For each of your different style sheets add something like below:\n     // screen_lg.css\n     body:after {\n         content: 'screen_lg';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;\n     }\n     // screen_sm.css\n     body:after {\n         content: 'screen_sm';  width: 1px; height: 1px; padding: 0; margin: -1px; border: 0; position: absolute; clip: rect(0 0 0 0); overflow: hidden;\n     }\n\n     BrowserUtil.getBreakpoint();\n     // 'screen_lg'\n\n     // Add a listener to get notified when the browser is resized:\n     BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);\n     ...\n     _onBreakpointChange(baseEvent) {\n         console.log(baseEvent.data);\n         // 'screen_sm'\n     }"
             ],
             "class": "BrowserUtil",
             "module": "StructureJS",
@@ -6532,7 +6566,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 282,
+            "line": 280,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "addEventListener",
@@ -6545,7 +6579,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 294,
+            "line": 292,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -6558,7 +6592,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 304,
+            "line": 302,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -6571,7 +6605,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 321,
+            "line": 319,
             "description": "Dispatches a breakpoint event.",
             "itemtype": "method",
             "name": "_onBreakpointChange",
@@ -6584,7 +6618,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 331,
+            "line": 329,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -6598,7 +6632,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 340,
+            "line": 338,
             "description": "A reference to the browser window object.",
             "itemtype": "property",
             "name": "_window",
@@ -6612,7 +6646,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 349,
+            "line": 347,
             "description": "A reference to the getComputedStyle method.",
             "itemtype": "property",
             "name": "_styleDeclaration",
@@ -6626,7 +6660,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 358,
+            "line": 356,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_onBreakpointChangeHandler",
@@ -6640,7 +6674,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 367,
+            "line": 365,
             "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "debounceDelay",
@@ -6655,7 +6689,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 378,
+            "line": 376,
             "description": "The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -6762,7 +6796,7 @@
             "line": 110,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
-            "name": "onLoadComplete",
+            "name": "_onLoadComplete",
             "params": [
                 {
                     "name": "event",
@@ -8008,7 +8042,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeAllWhitespace(str);\n     // 'abcdefg'"
+                "\n     let str = '   a b    c d e f g ';\n     StringUtil.removeAllWhitespace(str);\n     // 'abcdefg'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -8035,7 +8069,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     var str = '   a b    c d e f g ';\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // 'a b    c d e f g'"
+                "\n     let str = '   a b    c d e f g ';\n     StringUtil.removeLeadingTrailingWhitespace(str);\n     // 'a b    c d e f g'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -8402,7 +8436,7 @@
             "file": "js/util/Timer.js",
             "line": 167,
             "itemtype": "method",
-            "name": "decrementCounter",
+            "name": "_decrementCounter",
             "access": "protected",
             "tagname": "",
             "class": "Timer",
@@ -8439,7 +8473,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     var property = Util.uniqueId();\n     // 1\n\n     var property = Util.uniqueId('prefixName_');\n     // prefixName_1"
+                "\n     let property = Util.uniqueId();\n     // 1\n\n     let property = Util.uniqueId('prefixName_');\n     // prefixName_1"
             ],
             "class": "Util",
             "module": "StructureJS",
@@ -8471,7 +8505,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }\n\n     Util.deletePropertyFromObject(obj, ['phone', 'gender']);\n\n     // { name: 'Robert' }"
+                "\n     let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }\n\n     Util.deletePropertyFromObject(obj, ['phone', 'gender']);\n\n     // { name: 'Robert' }"
             ],
             "class": "Util",
             "module": "StructureJS",
@@ -8508,7 +8542,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }\n\n     Util.renamePropertyOnObject(obj, 'gender', 'sex');\n\n     // { name: 'Robert', sex: 'male', phone: '555-555-5555' }"
+                "\n     let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }\n\n     Util.renamePropertyOnObject(obj, 'gender', 'sex');\n\n     // { name: 'Robert', sex: 'male', phone: '555-555-5555' }"
             ],
             "class": "Util",
             "module": "StructureJS",
@@ -8535,7 +8569,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     var cloneOfObject = Util.clone(obj);"
+                "\n     let cloneOfObject = Util.clone(obj);"
             ],
             "class": "Util",
             "module": "StructureJS",
@@ -8587,7 +8621,7 @@
             },
             "static": 1,
             "example": [
-                "\n     var someClass = new SomeClass();\n     Util.getName(someClass);            // 'SomeClass'\n\n     Util.getName(function Test(){});    // 'Test'\n     Util.getName(function (){});        // 'anonymous'"
+                "\n     let someClass = new SomeClass();\n     Util.getName(someClass);            // 'SomeClass'\n\n     Util.getName(function Test(){});    // 'Test'\n     Util.getName(function (){});        // 'anonymous'"
             ],
             "class": "Util",
             "module": "StructureJS",
@@ -8662,6 +8696,29 @@
         {
             "file": "js/util/Util.js",
             "line": 304,
+            "description": "Returns a new array with duplicates removed.",
+            "itemtype": "method",
+            "name": "unique",
+            "params": [
+                {
+                    "name": "list",
+                    "description": "The array you want to use to generate the unique array.",
+                    "type": "Array.<any>"
+                }
+            ],
+            "return": {
+                "description": "Returns a new array list of unique items.",
+                "type": "Array<any>"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Util",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/Util.js",
+            "line": 321,
             "description": "Keeps track of the count for the uniqueId method.",
             "itemtype": "property",
             "name": "_idCounter",
@@ -8896,7 +8953,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    instance.getQualifiedClassName();"
+                "\n    let someClass = new SomeClass();\n    someClass.getQualifiedClassName();\n\n    // SomeClass"
             ],
             "class": "BaseObject",
             "module": "StructureJS",
@@ -8904,7 +8961,7 @@
         },
         {
             "file": "js/BaseObject.js",
-            "line": 52,
+            "line": 55,
             "description": "The purpose of the destroy method is to make an object ready for garbage collection. This\nshould be thought of as a one way function. Once destroy is called no further methods should be\ncalled on the object or properties accessed. It is the responsibility of those who implement this\nfunction to stop all running Timers, all running Sounds, and take any other steps necessary to make an\nobject eligible for garbage collection.\n\nBy default the destroy method will null out all properties of the class automatically. You should call destroy\non other objects before calling the super.",
             "itemtype": "method",
             "name": "destroy",
@@ -8915,7 +8972,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    ClassName.prototype.destroy = function() {\n         this._childInstance.destroy();\n\n         _super.prototype.destroy.call(this);\n    }"
+                "\n    destroy() {\n         this._childInstance.destroy();\n\n         super.destroy();\n    }"
             ],
             "class": "BaseObject",
             "module": "StructureJS",
@@ -8945,7 +9002,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n    ClassName.prototype.enable = function() {\n         if (this.isEnabled === true) { return this; }\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         return _super.prototype.enable.call(this);\n    }"
+                "\n    enable() {\n         if (this.isEnabled === true) { return this; }\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         return super.enable();\n    }"
             ],
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -8961,7 +9018,7 @@
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     ClassName.prototype.disable = function() {\n         if (this.isEnabled === false) { return this; }\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         return _super.prototype.disable.call(this);\n     }"
+                "\n     disable() {\n         if (this.isEnabled === false) { return this; }\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         return super.disable();\n     }"
             ],
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -9043,55 +9100,55 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:215"
+            "line": " js/display/DOMElement.js:202"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:310"
+            "line": " js/display/DOMElement.js:287"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:310"
+            "line": " js/display/DOMElement.js:287"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:414"
+            "line": " js/display/DOMElement.js:391"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:447"
+            "line": " js/display/DOMElement.js:424"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:457"
+            "line": " js/display/DOMElement.js:434"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:463"
+            "line": " js/display/DOMElement.js:440"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:494"
+            "line": " js/display/DOMElement.js:471"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:526"
+            "line": " js/display/DOMElement.js:503"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:526"
+            "line": " js/display/DOMElement.js:503"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:566"
+            "line": " js/display/DOMElement.js:543"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:566"
+            "line": " js/display/DOMElement.js:543"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:585"
+            "line": " js/display/DOMElement.js:562"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9151,39 +9208,39 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/event/BaseEvent.js:179"
+            "line": " js/event/BaseEvent.js:173"
         },
         {
             "message": "unknown tag: hide",
-            "line": " js/event/EventDispatcher.js:134"
+            "line": " js/event/EventDispatcher.js:131"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/event/EventDispatcher.js:284"
+            "line": " js/event/EventDispatcher.js:278"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:168"
+            "line": " js/model/BaseModel.js:166"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:181"
+            "line": " js/model/BaseModel.js:179"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:209"
+            "line": " js/model/BaseModel.js:207"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:326"
+            "line": " js/model/Collection.js:331"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:340"
+            "line": " js/model/Collection.js:345"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:362"
+            "line": " js/model/Collection.js:367"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9211,43 +9268,43 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:113"
+            "line": " js/util/BrowserUtil.js:111"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:127"
+            "line": " js/util/BrowserUtil.js:125"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:141"
+            "line": " js/util/BrowserUtil.js:139"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:155"
+            "line": " js/util/BrowserUtil.js:153"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:169"
+            "line": " js/util/BrowserUtil.js:167"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:183"
+            "line": " js/util/BrowserUtil.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:197"
+            "line": " js/util/BrowserUtil.js:195"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:211"
+            "line": " js/util/BrowserUtil.js:209"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:230"
+            "line": " js/util/BrowserUtil.js:228"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:249"
+            "line": " js/util/BrowserUtil.js:247"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9483,19 +9540,19 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:414"
+            "line": " js/display/DOMElement.js:391"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:447"
+            "line": " js/display/DOMElement.js:424"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:457"
+            "line": " js/display/DOMElement.js:434"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:585"
+            "line": " js/display/DOMElement.js:562"
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObject would like that component to lay itself out.",
@@ -9503,7 +9560,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/event/EventDispatcher.js:284"
+            "line": " js/event/EventDispatcher.js:278"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",

@@ -28,10 +28,10 @@
          * @public
          * @static
          * @example
-         *      var property = Util.uniqueId();
+         *      let property = Util.uniqueId();
          *      // 1
          *
-         *      var property = Util.uniqueId('prefixName_');
+         *      let property = Util.uniqueId('prefixName_');
          *      // prefixName_1
          */
         Util.uniqueId = function (prefix) {
@@ -54,7 +54,7 @@
          * @public
          * @static
          * @example
-         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *      let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
          *
          *      Util.deletePropertyFromObject(obj, ['phone', 'gender']);
          *
@@ -67,18 +67,18 @@
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
-                    var value = object[key];
+                    var value_1 = object[key];
                     // If the property is an Array.
-                    if (value instanceof Array) {
+                    if (value_1 instanceof Array) {
                         // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                        var array = value;
+                        var array = value_1;
                         for (var index in array) {
                             // Recursive function call.
                             Util.deletePropertyFromObject(array[index], list);
                         }
                     }
-                    else if (value instanceof Object) {
-                        Util.deletePropertyFromObject(value, list);
+                    else if (value_1 instanceof Object) {
+                        Util.deletePropertyFromObject(value_1, list);
                     }
                     else {
                         // Loop through the list of property name.
@@ -105,7 +105,7 @@
          * @public
          * @static
          * @example
-         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *      let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
          *
          *      Util.renamePropertyOnObject(obj, 'gender', 'sex');
          *
@@ -128,7 +128,7 @@
          * @public
          * @static
          * @example
-         *      var cloneOfObject = Util.clone(obj);
+         *      let cloneOfObject = Util.clone(obj);
          */
         Util.clone = function (obj) {
             //other scripts: http://davidwalsh.name/javascript-clone
@@ -147,8 +147,8 @@
             // Handle Array
             if (obj instanceof Array) {
                 var array = [];
-                for (var i = 0, len = obj.length; i < len; i++) {
-                    array[i] = Util.clone(obj[i]);
+                for (var i_1 = 0, len = obj.length; i_1 < len; i_1++) {
+                    array[i_1] = Util.clone(obj[i_1]);
                 }
                 return array;
             }
@@ -194,7 +194,7 @@
          * @returns {string} Returns the name of the function or object.
          * @static
          * @example
-         *      var someClass = new SomeClass();
+         *      let someClass = new SomeClass();
          *      Util.getName(someClass);            // 'SomeClass'
          *
          *      Util.getName(function Test(){});    // 'Test'
@@ -213,12 +213,12 @@
                 // This else code is mainly for Internet Explore.
                 var isFunction = (type === 'function');
                 // TODO: figure out how to explain this
-                var name = isFunction && ((classObject.name && ['', classObject.name]) || classObject.toString().match(funcNameRegex));
+                var name_1 = isFunction && ((classObject.name && ['', classObject.name]) || classObject.toString().match(funcNameRegex));
                 if (isFunction === false) {
                     value = type;
                 }
-                else if (name && name[1]) {
-                    value = name[1];
+                else if (name_1 && name_1[1]) {
+                    value = name_1[1];
                 }
                 else {
                     value = 'anonymous';

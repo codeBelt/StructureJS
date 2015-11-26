@@ -41,8 +41,8 @@
             var length = $elements.length;
             var types;
             var componentName;
-            for (var i = 0; i < length; i++) {
-                $element = $elements.eq(i);
+            for (var i_1 = 0; i_1 < length; i_1++) {
+                $element = $elements.eq(i_1);
                 types = $element.attr('data-sjs-type');
                 if (types === void 0) {
                     // Create the component if there is not a 'data-sjs-type' attribute on the element.

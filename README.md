@@ -254,7 +254,7 @@ _onClickHandler(event) {
 
 ## Release History
 
- * 2015-11-25 v0.9.1 Add Router.getCurrentRoute, Add Util.unique, Fix BrowserUtil.getBrowser and make public.
+ * 2015-11-25 v0.9.1 Add Router.getCurrentRoute, Add Util.unique, Fix BrowserUtil.getBrowser and make public. Update docs to ES6/Typescript. Rename all private and protected method to have an underscore in front.
 
   * 2015-10-24 v0.9.0 Remove unnecessary classes. DisplayObject - rename update to renderCanvas. Util - add applyMixins static method. Updated BulkLoader and created BulkLoaderEvent. Update interface files.
 

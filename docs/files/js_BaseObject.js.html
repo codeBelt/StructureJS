@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -200,7 +200,10 @@
          * @returns {string} Returns the class name.
          * @public
          * @example
-         *     instance.getQualifiedClassName();
+         *     let someClass = new SomeClass();
+         *     someClass.getQualifiedClassName();
+         *
+         *     // SomeClass
          */
         BaseObject.prototype.getQualifiedClassName = function () {
             return Util.getName(this);
@@ -219,10 +222,10 @@
          * @return {void}
          * @public
          * @example
-         *     ClassName.prototype.destroy = function() {
+         *     destroy() {
          *          this._childInstance.destroy();
          *
-         *          _super.prototype.destroy.call(this);
+         *          super.destroy();
          *     }
          */
         BaseObject.prototype.destroy = function () {

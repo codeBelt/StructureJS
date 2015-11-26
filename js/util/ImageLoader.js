@@ -29,19 +29,19 @@ var __extends = (this && this.__extends) || function (d, b) {
             _super.call(this);
             this.complete = false;
             this.src = path;
-            this.init();
+            this._init();
         }
-        ImageLoader.prototype.init = function () {
+        ImageLoader.prototype._init = function () {
             var _this = this;
             this._image = new Image();
             this._image.onload = function (event) {
-                _this.onImageLoad();
+                _this._onImageLoad();
             };
         };
         ImageLoader.prototype.load = function () {
             this._image.src = this.src;
         };
-        ImageLoader.prototype.onImageLoad = function () {
+        ImageLoader.prototype._onImageLoad = function () {
             this.data = this._image;
             this.complete = true;
             this.dispatchEvent(LoaderEvent.COMPLETE);

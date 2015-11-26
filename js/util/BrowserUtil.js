@@ -269,10 +269,10 @@
          *      // Add a listener to get notified when the browser is resized:
          *      BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
          *      ...
-         *      ClassName.prototype._onBreakpointChange = function (baseEvent) {
+         *      _onBreakpointChange(baseEvent) {
          *          console.log(baseEvent.data);
          *          // 'screen_sm'
-         *      };
+         *      }
          */
         BrowserUtil.getBreakpoint = function () {
             return BrowserUtil._styleDeclaration.getPropertyValue('content').replace(/["']/g, '');
