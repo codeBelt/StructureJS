@@ -59,7 +59,7 @@ class MathUtil
      */
     public static randomRange(min:number, max:number, wholeNumber:boolean = true):number
     {
-        var num:number = (min + Math.random() * (max - min));
+        let num:number = (min + Math.random() * (max - min));
 
         if (wholeNumber)
         {
@@ -143,8 +143,8 @@ class MathUtil
             return max2;
         }
 
-        var num1:number = (num - min1) / (max1 - min1);
-        var num2:number = (num1 * (max2 - min2)) + min2;
+        let num1:number = (num - min1) / (max1 - min1);
+        let num2:number = (num1 * (max2 - min2)) + min2;
         if (round)
         {
             return Math.round(num2);
@@ -264,8 +264,8 @@ class MathUtil
      */
     public static isOdd(num:number):boolean
     {
-        var i:number = num;
-        var e:number = 2;
+        let i:number = num;
+        let e:number = 2;
         return Boolean(i % e);
     }
 
@@ -284,8 +284,8 @@ class MathUtil
      */
     public static isEven(num:number):boolean
     {
-        var int:number = num;
-        var e:number = 2;
+        let int:number = num;
+        let e:number = 2;
         return (int % e == 0);
     }
 
@@ -308,8 +308,8 @@ class MathUtil
         {
             return false;
         }
-        var l:number = Math.sqrt(num);
-        var i:number = 3;
+        let l:number = Math.sqrt(num);
+        let i:number = 3;
         for (i; i <= l; i += 2)
         {
             if (num % i == 0)
@@ -339,8 +339,8 @@ class MathUtil
         {
             return 1;
         }
-        var d:number = <number>num.valueOf();
-        var i:number = d - 1;
+        let d:number = <number>num.valueOf();
+        let i:number = d - 1;
         while (i)
         {
             d = d * i;
@@ -360,9 +360,9 @@ class MathUtil
      */
     public static getDivisors(num:number):Array<number>
     {
-        var r:Array<number> = [];
+        let r:Array<number> = [];
 
-        for (var i:number = 1, e:number = num / 2; i <= e; i++)
+        for (let i:number = 1, e:number = num / 2; i <= e; i++)
         {
             if (num % i == 0)
             {

@@ -148,7 +148,7 @@ class BrowserUtil
      */
     public static browserVersion(majorVersion:boolean = true):any
     {
-        var version:string = BrowserUtil.getBrowser()[1];
+        let version:string = BrowserUtil.getBrowser()[1];
 
         if (majorVersion === true)
         {
@@ -173,10 +173,10 @@ class BrowserUtil
      */
     public static getBrowser():Array<string>
     {
-        var N = navigator.appName;
-        var ua = navigator.userAgent;
-        var tem = ua.match(/version\/([\.\d]+)/i);
-        var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+        let N = navigator.appName;
+        let ua = navigator.userAgent;
+        let tem = ua.match(/version\/([\.\d]+)/i);
+        let M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
 
         if (M && tem != null)
         {
@@ -371,7 +371,7 @@ class BrowserUtil
      *      // Add a listener to get notified when the browser is resized:
      *      BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
      *      ...
-     *      ClassName.prototype._onBreakpointChange = function (baseEvent) {
+     *      _onBreakpointChange(baseEvent) {
      *          console.log(baseEvent.data);
      *          // 'screen_sm'
      *      };
@@ -415,7 +415,7 @@ class BrowserUtil
      */
     public static dispatchEvent(type:any, data:any = null):void
     {
-        var event:any = type;
+        let event:any = type;
 
         if (typeof event === 'string')
         {

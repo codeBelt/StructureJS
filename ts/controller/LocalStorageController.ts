@@ -119,7 +119,7 @@ class LocalStorageController extends EventDispatcher
             key = this.getNamespace() + key;
         }
 
-        var value = this._localStorage.getItem(key);
+        let value = this._localStorage.getItem(key);
         if (value)
         {
             try
@@ -145,15 +145,15 @@ class LocalStorageController extends EventDispatcher
      */
     public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
-        var list:Array<any> = [];
-        var length:number = this.getLength();
-        for (var i:number = 0; i < length; i++)
+        let list:Array<any> = [];
+        let length:number = this.getLength();
+        for (let i:number = 0; i < length; i++)
         {
-            var key:string = this._localStorage.key(i);
+            let key:string = this._localStorage.key(i);
             if (key.indexOf(namespace) > -1)
             {
-                var value:any = this.getItem(key);
-                var obj:any = {
+                let value:any = this.getItem(key);
+                let obj:any = {
                     key: key,
                     value: value
                 }
@@ -172,13 +172,13 @@ class LocalStorageController extends EventDispatcher
      */
     public getAllItems():Array<any>
     {
-        var list:Array<any> = [];
-        var length:number = this.getLength();
-        for (var i:number = 0; i < length; i++)
+        let list:Array<any> = [];
+        let length:number = this.getLength();
+        for (let i:number = 0; i < length; i++)
         {
-            var key:string = this._localStorage.key(i);
-            var value:any = this.getItem(key);
-            var obj:any = {
+            let key:string = this._localStorage.key(i);
+            let value:any = this.getItem(key);
+            let obj:any = {
                 key: key,
                 value: value
             };

@@ -33,10 +33,10 @@ class MerchantUtil
             return false;
         }
 
-        var pre:number;
-        var sum:number = 0;
-        var alt:boolean = true;
-        var i:number = cardNumber.length;
+        let pre:number;
+        let sum:number = 0;
+        let alt:boolean = true;
+        let i:number = cardNumber.length;
         while (--i > -1)
         {
             if (alt)
@@ -74,8 +74,8 @@ class MerchantUtil
      */
     public static encodeCreditCardNumber(strNumber:string, digitsShown:number = 4, encodeChar:string = '*'):string
     {
-        var encoded:string = '';
-        for (var i:number = 0; i < strNumber.length - digitsShown; i++)
+        let encoded:string = '';
+        for (let i:number = 0; i < strNumber.length - digitsShown; i++)
         {
             encoded += encodeChar;
         }
@@ -143,9 +143,9 @@ class MerchantUtil
      */
     public static isValidExpirationDate(month:number, year:number):boolean
     {
-        var d:Date = new Date();
-        var currentMonth:number = d.getMonth() + 1;
-        var currentYear:number = d.getFullYear();
+        let d:Date = new Date();
+        let currentMonth:number = d.getMonth() + 1;
+        let currentYear:number = d.getFullYear();
         if ((year > currentYear) || (year == currentYear && month >= currentMonth))
         {
             return true;

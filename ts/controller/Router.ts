@@ -165,21 +165,21 @@ class Router
      * @static
      * @example
      *     // Example of adding a route listener and the function callback below.
-     *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+     *     Router.add('/games/{gameName}/:level:/', this._method, this);
      *
      *     // The above route listener would match the below url:
      *     // www.site.com/#/games/asteroids/2/
      *
      *     // The Call back receives a RouterEvent object.
-     *     ClassName.prototype.onRouteHandler = function (routerEvent) {
-         *         console.log(routerEvent.params);
-         *     }
+     *     _onRouteHandler(routerEvent) {
+     *         console.log(routerEvent.params);
+     *     }
      *
      * Route Pattern Options:
      * ----------------------
      * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
      *
-     *     Router.add('/contact/:name:/', this.method, this);
+     *     Router.add('/contact/:name:/', this._method, this);
      *
      *     // Will match one of the following:
      *     // www.site.com/#/contact/
@@ -189,7 +189,7 @@ class Router
      *
      * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
      *
-     *     Router.add('/product/{productName}/', this.method, this);
+     *     Router.add('/product/{productName}/', this._method, this);
      *
      *     // Will match one of the following:
      *     // www.site.com/#/product/shoes/
@@ -198,7 +198,7 @@ class Router
      *
      * **\*** The asterisk character means it will match all or part of part the hash url.
      *
-     *     Router.add('*', this.method, this);
+     *     Router.add('*', this._method, this);
      *
      *     // Will match one of the following:
      *     // www.site.com/#/anything/
@@ -208,7 +208,7 @@ class Router
      *
      * **?** The question mark character means it will match a query string for the hash url.
      *
-     *     Router.add('?', this.method, this);
+     *     Router.add('?', this._method, this);
      *
      *     // Will match one of the following:
      *     // www.site.com/#/?one=1&two=2&three=3
@@ -217,8 +217,8 @@ class Router
      *
      * **''** The empty string means it will match when there are no hash url.
      *
-     *     Router.add('', this.method, this);
-     *     Router.add('/', this.method, this);
+     *     Router.add('', this._method, this);
+     *     Router.add('/', this._method, this);
      *
      *     // Will match one of the following:
      *     // www.site.com/
@@ -227,17 +227,17 @@ class Router
      *
      * Other possible combinations but not limited too:
      *
-     *     Router.add('/games/{gameName}/:level:/', this.method1, this);
-     *     Router.add('/{category}/blog/', this.method2, this);
-     *     Router.add('/home/?', this.method3, this);
-     *     Router.add('/about/*', this.method4, this);
+     *     Router.add('/games/{gameName}/:level:/', this._method1, this);
+     *     Router.add('/{category}/blog/', this._method2, this);
+     *     Router.add('/home/?', this._method3, this);
+     *     Router.add('/about/*', this._method4, this);
      *
      */
     public static add(routePattern:string, callback:Function, callbackScope:any):void
     {
         Router.enable();
 
-        var route:Route = new Route(routePattern, callback, callbackScope);
+        let route:Route = new Route(routePattern, callback, callbackScope);
 
         Router._routes.push(route);
     }
@@ -253,16 +253,16 @@ class Router
      * @static
      * @example
      *     // Example of adding a route listener.
-     *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+     *     Router.add('/games/{gameName}/:level:/', this._method, this);
      *
      *     // Example of removing the same added route listener above.
-     *     Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);
+     *     Router.remove('/games/{gameName}/:level:/', this._method, this);
      */
     public static remove(routePattern:string, callback:Function, callbackScope:any):void
     {
-        var route:Route;
+        let route:Route;
         // Since we are removing (splice) from routes we need to check the length every iteration.
-        for (var i = Router._routes.length - 1; i >= 0; i--)
+        for (let i = Router._routes.length - 1; i >= 0; i--)
         {
             route = Router._routes[i];
             if (route.routePattern === routePattern && route.callback === callback && route.callbackScope === callbackScope)
@@ -281,7 +281,7 @@ class Router
      * @public
      * @static
      * @example
-     *     Router.addDefault(this.noRoutesFoundHandler, this);
+     *     Router.addDefault(this._noRoutesFoundHandler, this);
      */
     public static addDefault(callback:Function, callbackScope:any):void
     {
@@ -310,12 +310,12 @@ class Router
      * @static
      * @return {string} Returns current hash url minus the # or #! symbol(s).
      * @example
-     *     var str = Router.getHash();
+     *     let str = Router.getHash();
      */
     public static getHash():string
     {
-        var hash:string = Router._window.location.hash;
-        var strIndex:number = (hash.substr(0, 2) === '#!') ? 2 : 1;
+        let hash:string = Router._window.location.hash;
+        let strIndex:number = (hash.substr(0, 2) === '#!') ? 2 : 1;
 
         return hash.substring(strIndex); // Return everything after # or #!
     }
@@ -386,8 +386,8 @@ class Router
      * @static
      * @example
      *     // Example of adding routes and calling the start method.
-     *     Router.add('/games/{gameName}/:level:/', this.method1, this);
-     *     Router.add('/{category}/blog/', this.method2, this);
+     *     Router.add('/games/{gameName}/:level:/', this._method1, this);
+     *     Router.add('/{category}/blog/', this._method2, this);
      *
      *     Router.start();
      */
@@ -427,7 +427,7 @@ class Router
 
         if (route.charAt(0) === '#')
         {
-            var strIndex = (route.substr(0, 2) === '#!') ? 2 : 1;
+            let strIndex = (route.substr(0, 2) === '#!') ? 2 : 1;
             route = route.substring(strIndex);
         }
 
@@ -509,6 +509,7 @@ class Router
      * @return {string}
      * @public
      * @static
+     * @example
      *      let someProperty = 'api/endpoint';
      *
      *      Router.buildRoute(someProperty, 'path', 7);
@@ -525,6 +526,7 @@ class Router
      * @method getCurrentRoute
      * @public
      * @static
+     * @example
      *      Router.getCurrentRoute();
      */
     public static getCurrentRoute():RouterEvent {
@@ -549,7 +551,7 @@ class Router
 
         Router._hashChangeEvent = event;
 
-        var hash = Router.getHash();
+        let hash = Router.getHash();
 
         Router.changeRoute(hash);
     }
@@ -564,12 +566,12 @@ class Router
      */
     private static changeRoute(hash:string):void
     {
-        var route:Route;
-        var match:any;
-        var routerEvent:RouterEvent = null;
+        let route:Route;
+        let match:any;
+        let routerEvent:RouterEvent = null;
 
         // Loop through all the route's. Note: we need to check the length every loop in case one was removed.
-        for (var i = 0; i < Router._routes.length; i++)
+        for (let i = 0; i < Router._routes.length; i++)
         {
             route = Router._routes[i];
             match = route.match(hash);
@@ -587,7 +589,7 @@ class Router
 
                 // Remove any empty strings in the array due to the :optional: route pattern.
                 // Since we are removing (splice) from params we need to check the length every iteration.
-                for (var j = routerEvent.params.length - 1; j >= 0; j--)
+                for (let j = routerEvent.params.length - 1; j >= 0; j--)
                 {
                     if (routerEvent.params[j] === '')
                     {

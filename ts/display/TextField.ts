@@ -43,14 +43,14 @@ class TextField extends DisplayObject
 
     protected wrapTextByWidth(context, text, x, y, maxWidth, lineHeight):void
     {
-        var wordList:Array<string> = text.split(' ');
-        var line:string = '';
-        var testLine:string;
-        var metrics:{width: number};
-        var testWidth:number;
-        var length:number = wordList.length;
+        let wordList:Array<string> = text.split(' ');
+        let line:string = '';
+        let testLine:string;
+        let metrics:{width: number};
+        let testWidth:number;
+        let length:number = wordList.length;
 
-        for (var i:number = 0; i < length; i++)
+        for (let i:number = 0; i < length; i++)
         {
             testLine = line + wordList[i] + ' ';
             metrics = context.measureText(testLine);
@@ -73,10 +73,10 @@ class TextField extends DisplayObject
 
     protected wrapTextOnLineBreak(context, text, x, y, lineHeight):void
     {
-        var wordList:Array<string> = text.split('\n');
-        var length:number = wordList.length;
+        let wordList:Array<string> = text.split('\n');
+        let length:number = wordList.length;
 
-        for (var i:number = 0; i < length; i++)
+        for (let i:number = 0; i < length; i++)
         {
             context.fillText(wordList[i], x, y);
 

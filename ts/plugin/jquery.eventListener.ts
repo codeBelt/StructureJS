@@ -1,6 +1,6 @@
 import $ = require('jquery');
 
-var $eventListener = $;
+let $eventListener = $;
 
 /**
  * A bind polyfill for browsers that don't support the bind method.
@@ -15,7 +15,7 @@ if (!Function.prototype.bind)
             throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
         }
 
-        var aArgs = Array.prototype.slice.call(arguments, 1),
+        let aArgs = Array.prototype.slice.call(arguments, 1),
             fToBind = this,
             fNOP = function ()
             {
@@ -41,17 +41,17 @@ if (!Function.prototype.bind)
  * @param str
  * @returns {String}
  */
-var hashCode = function (str)
+let hashCode = function (str)
 {
     str = String(str);
     // http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
-    var character;
-    var hash = null;
-    var strLength = str.length;
+    let character;
+    let hash = null;
+    let strLength = str.length;
 
     if (strLength == 0) return hash;
 
-    for (var i = 0; i < strLength; i++)
+    for (let i = 0; i < strLength; i++)
     {
         character = str.charCodeAt(i);
         hash = ((hash << 5) - hash) + character;
@@ -66,9 +66,9 @@ var hashCode = function (str)
  */
 $eventListener.fn.addEventListener = function (type, selector, data, callback, scope)
 {
-    var _callback;
-    var _scope;
-    var _handler;
+    let _callback;
+    let _scope;
+    let _handler;
     switch (arguments.length)
     {
         case 3:
@@ -103,9 +103,9 @@ $eventListener.fn.addEventListener = function (type, selector, data, callback, s
  */
 $eventListener.fn.removeEventListener = function (type, selector, callback, scope)
 {
-    var _callback;
-    var _scope;
-    var _handler;
+    let _callback;
+    let _scope;
+    let _handler;
 
     switch (arguments.length)
     {

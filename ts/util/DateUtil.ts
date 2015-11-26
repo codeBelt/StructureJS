@@ -81,7 +81,7 @@ class DateUtil
      */
     public static getDaySuffix(today:number):string
     {
-        var day:number = today % 100;
+        let day:number = today % 100;
         return (( Math.floor(day / 10) === 1) ? 'th' : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][day % 10]);
     }
 }

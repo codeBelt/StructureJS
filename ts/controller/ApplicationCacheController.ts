@@ -258,8 +258,8 @@ class ApplicationCacheController
      * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
      * @static
      * @example
-     *      ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
-     *      ClassName.prototype.handlerMethod = function(event) {
+     *      ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+     *      _handlerMethod(event) {
      *          console.log(event.target + " sent the event.");
      *      }
      */
@@ -278,8 +278,8 @@ class ApplicationCacheController
      * To keep things consistent this parameter is required.
      * @static
      * @example
-     *      ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
-     *      ClassName.prototype.handlerMethod = function(event) {
+     *      ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+     *      _handlerMethod(event) {
      *          console.log(event.target + " sent the event.");
      *      }
      */
@@ -296,7 +296,7 @@ class ApplicationCacheController
      * extend the {{#crossLink "ApplicationCacheEvent"}}{{/crossLink}}.
      * @static
      * @example
-     *      var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
+     *      let event = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
      *      ApplicationCacheController.dispatchEvent(event);
      *
      *      // Here is a common inline event being dispatched

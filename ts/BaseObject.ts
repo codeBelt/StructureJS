@@ -41,7 +41,10 @@ class BaseObject
      * @returns {string} Returns the class name.
      * @public
      * @example
-     *     instance.getQualifiedClassName();
+     *     let someClass = new SomeClass();
+     *     someClass.getQualifiedClassName();
+     *
+     *     // SomeClass
      */
     public getQualifiedClassName():string
     {
@@ -62,15 +65,15 @@ class BaseObject
      * @return {void}
      * @public
      * @example
-     *     ClassName.prototype.destroy = function() {
+     *     destroy() {
      *          this._childInstance.destroy();
      *
-     *          _super.prototype.destroy.call(this);
+     *          super.destroy();
      *     }
      */
     public destroy():void
     {
-        for (var key in this)
+        for (let key in this)
         {
             if (this.hasOwnProperty(key))
             {

@@ -43,7 +43,7 @@ class BulkLoader extends EventDispatcher
             key = String(dataStore.sjsId);
         }
 
-        var model = {
+        let model = {
             key: key,
             value: dataStore
         };
@@ -60,7 +60,7 @@ class BulkLoader extends EventDispatcher
      */
     public getFile(key:string):IDataStore
     {
-        var model = this._dataStores.findBy({key: key})[0];
+        let model = this._dataStores.findBy({key: key})[0];
         return model.value;
     }
 
@@ -74,7 +74,7 @@ class BulkLoader extends EventDispatcher
      */
     public getImage(key:string):HTMLImageElement
     {
-        var imageLoader:IDataStore = this.getFile(key);
+        let imageLoader:IDataStore = this.getFile(key);
         return (imageLoader !== null) ? imageLoader.data : null;
     }
 
@@ -86,9 +86,9 @@ class BulkLoader extends EventDispatcher
      */
     public start():any
     {
-        var dataStore:IDataStore;
+        let dataStore:IDataStore;
 
-        for (var i:number = 0; i < this._dataStores.length; i++)
+        for (let i:number = 0; i < this._dataStores.length; i++)
         {
             dataStore = this._dataStores.get(i).value;
             dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this.onLoadComplete, this);
@@ -106,9 +106,9 @@ class BulkLoader extends EventDispatcher
      */
     public clear():void
     {
-        var dataStore:IDataStore;
+        let dataStore:IDataStore;
 
-        for (var i:number = 0; i < this._dataStores.length; i++)
+        for (let i:number = 0; i < this._dataStores.length; i++)
         {
             dataStore = this._dataStores.get(i).value;
             dataStore.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
@@ -128,11 +128,11 @@ class BulkLoader extends EventDispatcher
      */
     protected onLoadComplete(event:LoaderEvent):void
     {
-        var dataStore:IDataStore = event.target;
+        let dataStore:IDataStore = event.target;
 
         this._totalComplete++;
 
-        var bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.COMPLETE);
+        let bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.COMPLETE);
         bulkLoaderEvent.total = this._dataStores.length;
         bulkLoaderEvent.totalComplete = this._totalComplete;
         bulkLoaderEvent.percentComplete = (this._totalComplete / this._dataStores.length) * 100;
@@ -142,7 +142,7 @@ class BulkLoader extends EventDispatcher
         this.dispatchEvent(bulkLoaderEvent);
 
         // Loop through and check if all IDataStore have been loaded.
-        for (var i:number = 0; i < this._dataStores.length; i++)
+        for (let i:number = 0; i < this._dataStores.length; i++)
         {
             dataStore = this._dataStores.get(i).value;
 
@@ -152,9 +152,9 @@ class BulkLoader extends EventDispatcher
             }
         }
 
-        var model;
-        var dataStoreList = [];
-        for (var i:number = 0; i < this._dataStores.length; i++)
+        let model;
+        let dataStoreList = [];
+        for (let i:number = 0; i < this._dataStores.length; i++)
         {
             model = this._dataStores.get(i);
             dataStoreList.push(model.value);

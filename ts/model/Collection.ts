@@ -17,14 +17,14 @@ import Util = require('../util/Util');
  * @param baseModelType {BaseModel} Pass a class that extends BaseModel and the data added to the collection will be created as that type.
  * @author Robert S. (www.codeBelt.com)
  * @example
- *     var data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
+ *     let data = [{ make: 'Tesla', model: 'Model S', year: 2014 }, { make: 'Tesla', model: 'Model X', year: 2016 }];
  *
  *     // Example of adding data to a collection
- *     var collection = new Collection();
+ *     let collection = new Collection();
  *     collection.add(data);
  *
  *     // Example of adding data to a collection that will create a CarModel model for each data object passed in.
- *     var collection = new Collection(CarModel);
+ *     let collection = new Collection(CarModel);
  *     collection.add(data);
  */
 class Collection extends EventDispatcher
@@ -74,16 +74,19 @@ class Collection extends EventDispatcher
      * @public
      * @chainable
      * @example
-     *      collection.add(vo);
-     *      collection.add(vo, true);
+     *      collection.add(model);
+     *
+     *      collection.add([model, model, model, model]);
+     *
+     *      collection.add(model, true);
      */
     public add(model:any, silent:boolean = false):any
     {
         // If the model passed in is not an array then make it.
-        var models:any = (model instanceof Array) ? model : [model];
+        let models:any = (model instanceof Array) ? model : [model];
 
-        var len:number = models.length;
-        for (var i:number = 0; i < len; i++)
+        let len:number = models.length;
+        for (let i:number = 0; i < len; i++)
         {
             // Only add the model if it does not exist in the the collection.
             if (this.has(models[i]) === false)
@@ -121,16 +124,18 @@ class Collection extends EventDispatcher
      * @public
      * @chainable
      * @example
-     *      collection.remove(vo);
+     *      collection.remove(model);
      *
-     *      collection.remove(vo, true);
+     *      collection.remove([model, model, model, model]);
+     *
+     *      collection.remove(model, true);
      */
     public remove(model:any, silent:boolean = false):any
     {
         // If the model passed in is not an array then make it.
-        var models:any = (model instanceof Array) ? model : [model];
+        let models:any = (model instanceof Array) ? model : [model];
 
-        for (var i:number = models.length - 1; i >= 0; i--)
+        for (let i:number = models.length - 1; i >= 0; i--)
         {
             // Only remove the model if it exists in the the collection.
             if (this.has(models[i]) === true)
@@ -156,7 +161,7 @@ class Collection extends EventDispatcher
      * @return {boolean}
      * @public
      * @example
-     *      collection.has(vo);
+     *      collection.has(model);
      */
     public has(model:any):boolean
     {
@@ -171,7 +176,7 @@ class Collection extends EventDispatcher
      * @return {int}
      * @public
      * @example
-     *      collection.indexOf(vo);
+     *      collection.indexOf(model);
      */
     public indexOf(model:any):number
     {
@@ -214,23 +219,23 @@ class Collection extends EventDispatcher
      * @public
      * @example
      *      // Finds all  Base Model that has 'Robert' in it.
-     *      this._collection.findBy("Robert");
+     *      collection.findBy("Robert");
      *      // Finds any  Base Model that has 'Robert' or 'Heater' or 23 in it.
-     *      this._collection.findBy(["Robert", "Heather", 32]);
+     *      collection.findBy(["Robert", "Heather", 32]);
      *
      *      // Finds all  Base Models that same key and value you are searching for.
-     *      this._collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
-     *      this._collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
+     *      collection.findBy({ name: 'apple', organic: false, type: 'fruit' });
+     *      collection.findBy([{ type: 'vegetable' }, { name: 'apple', 'organic: false, type': 'fruit' }]);
      */
     public findBy(arg:any):Array<any>
     {
         // If properties is not an array then make it an array object.
-        var list:Array<any> = (arg instanceof Array) ? arg : [arg];
-        var foundItems:Array<any> = [];
-        var len:number = list.length;
-        var prop:any;
+        let list:Array<any> = (arg instanceof Array) ? arg : [arg];
+        let foundItems:Array<any> = [];
+        let len:number = list.length;
+        let prop:any;
 
-        for (var i:number = 0; i < len; i++)
+        for (let i:number = 0; i < len; i++)
         {
             prop = list[i];
             // Adds found  Base Model to the foundItems array.
@@ -247,7 +252,7 @@ class Collection extends EventDispatcher
         }
 
         // Removes all duplicated objects found in the temp array.
-        return this._unique(foundItems);
+        return Util.unique(foundItems);
     }
 
     /**
@@ -261,18 +266,18 @@ class Collection extends EventDispatcher
     protected _where(propList:any):Array<any>
     {
         // If properties is not an array then make it an array object.
-        var list:Array<any> = (propList instanceof Array) ? propList : [propList];
-        var foundItems:Array<any> = [];
-        var itemsLength:number = this.models.length;
-        var itemsToFindLength:number = list.length;
-        var hasMatchingProperty:boolean = false;
-        var doesModelMatch:boolean = false;
-        var model:any;
-        var obj:any;
-        var key:any;
-        var j:number;
+        let list:Array<any> = (propList instanceof Array) ? propList : [propList];
+        let foundItems:Array<any> = [];
+        let itemsLength:number = this.models.length;
+        let itemsToFindLength:number = list.length;
+        let hasMatchingProperty:boolean = false;
+        let doesModelMatch:boolean = false;
+        let model:any;
+        let obj:any;
+        let key:any;
+        let j:number;
 
-        for (var i:number = 0; i < itemsToFindLength; i++)
+        for (let i:number = 0; i < itemsToFindLength; i++)
         {
             obj = list[i];
 
@@ -318,17 +323,17 @@ class Collection extends EventDispatcher
     protected _findPropertyValue(arg):Array<any>
     {
         // If properties is not an array then make it an array object.
-        var list = (arg instanceof Array) ? arg : [arg];
-        var foundItems:Array<any> = [];
-        var itemsLength:number = this.models.length;
-        var itemsToFindLength:number = list.length;
-        var propertyValue:any;
-        var value:any;
-        var model:any;
-        var key:any;
-        var j:any;
+        let list = (arg instanceof Array) ? arg : [arg];
+        let foundItems:Array<any> = [];
+        let itemsLength:number = this.models.length;
+        let itemsToFindLength:number = list.length;
+        let propertyValue:any;
+        let value:any;
+        let model:any;
+        let key:any;
+        let j:any;
 
-        for (var i:number = 0; i < itemsLength; i++)
+        for (let i:number = 0; i < itemsLength; i++)
         {
             model = this.models[i];
 
@@ -388,11 +393,11 @@ class Collection extends EventDispatcher
      * @returns {Collection}
      * @public
      * @example
-     *     var clone = collection.clone();
+     *     let clone = collection.clone();
      */
     public clone():Collection
     {
-        var clonedBaseModel:Collection = new (<any>this).constructor(this._modelType);
+        let clonedBaseModel:Collection = new (<any>this).constructor(this._modelType);
         clonedBaseModel.add(this.models.slice(0));
 
         return clonedBaseModel;
@@ -405,16 +410,16 @@ class Collection extends EventDispatcher
      * @returns {Array.<any>}
      * @public
      * @example
-     *     var arrayOfObjects = collection.toJSON();
+     *     let arrayOfObjects = collection.toJSON();
      */
     public toJSON():Array<any>
     {
         if (this._modelType !== null)
         {
-            var list:Array<any> = [];
-            var len:number = this.length;
+            let list:Array<any> = [];
+            let len:number = this.length;
 
-            for (var i:number = 0; i < len; i++)
+            for (let i:number = 0; i < len; i++)
             {
                 list[i] = this.models[i].toJSON();
             }
@@ -434,7 +439,7 @@ class Collection extends EventDispatcher
      * @returns {string}
      * @public
      * @example
-     *     var str = collection.toJSONString();
+     *     let str = collection.toJSONString();
      */
     public toJSONString():string
     {
@@ -453,7 +458,7 @@ class Collection extends EventDispatcher
      */
     public fromJSON(json):any
     {
-        var parsedData:any = JSON.parse(json);
+        let parsedData:any = JSON.parse(json);
 
         this.add(parsedData);
 
@@ -519,7 +524,7 @@ class Collection extends EventDispatcher
      * @public
      * @return {Array.<any>} Returns the list of models in the collection.
      * @example
-     *      var sortByDate = function(a, b){
+     *      let sortByDate = function(a, b){
      *          return new Date(a.date) - new Date(b.date)
      *      }
      *
@@ -541,11 +546,11 @@ class Collection extends EventDispatcher
      * @public
      * @return {Array.<any>} Returns the list of models in the collection.
      * @example
-     *      var isOldEnough = function(model){
+     *      let isOldEnough = function(model){
      *          return model.age >= 21;
      *      }
      *
-     *      var list = collection.filter(isOldEnough);
+     *      let list = collection.filter(isOldEnough);
      */
     public filter(callback:any, callbackScope:any = null):Array<any>
     {
@@ -563,24 +568,24 @@ class Collection extends EventDispatcher
      * @example
      *      collection.add([{name: 'Robert'}, {name: 'Robert'}, {name: 'Chris'}]);
      *
-     *      var list = collection.pluck('name');
+     *      let list = collection.pluck('name');
      *      // ['Robert', 'Robert', 'Chris']
      *
-     *      var list = collection.pluck('name', true);
+     *      let list = collection.pluck('name', true);
      *      // ['Robert', 'Chris']
      */
     public pluck(propertyName:string, unique:boolean = false):Array<any>
     {
-        var list:Array<any> = [];
+        let list:Array<any> = [];
 
-        for (var i = 0; i < this.length; i++) {
+        for (let i = 0; i < this.length; i++) {
             if (this.models[i].hasOwnProperty(propertyName) === true) {
                 list[i] = this.models[i][propertyName];
             }
         }
 
         if (unique === true) {
-            list = this._unique(list);
+            list = Util.unique(list);
         }
 
         return list;
@@ -596,7 +601,7 @@ class Collection extends EventDispatcher
      * @example
      *      collection.add([{name: 'Robert', id: 0}, {name: 'Robert', id: 1}, {name: 'Chris', id: 2}]);
      *
-     *      var list = collection.groupBy('name');
+     *      let list = collection.groupBy('name');
      *
      *      // {
      *      //    Robert: [{name: 'Robert', id: 0}, {name: 'Robert', id: 1}]
@@ -605,12 +610,12 @@ class Collection extends EventDispatcher
      */
     public groupBy(propertyName):any
     {
-        var model:any;
-        var groupName:string;
-        var groupList:any = {};
+        let model:any;
+        let groupName:string;
+        let groupList:any = {};
 
         // Loop through all the models in this collection.
-        for (var i:number = 0; i < this.length; i++) {
+        for (let i:number = 0; i < this.length; i++) {
             model = this.models[i];
             // Get the value from the property name passed in and uses that as the group name.
             groupName = model[propertyName];
@@ -637,28 +642,6 @@ class Collection extends EventDispatcher
         return this.models.reverse();
     }
 
-    /**
-     * Returns a new array of models with duplicates removed.
-     *
-     * @method _unique
-     * @param list {Array.<any>} The array you want to use to generate the unique array.
-     * @return {Array<any>} Returns a new array list of models in the collection with duplicates removed.
-     * @protected
-     */
-    protected _unique(list:Array<any>):Array<any>
-    {
-        var unique:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
-        {
-            if (previousValue.indexOf(currentValue) === -1)
-            {
-                previousValue.push(currentValue);
-            }
-
-            return previousValue;
-        }, []);
-
-        return unique;
-    }
 }
 
 export = Collection;

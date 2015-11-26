@@ -14,64 +14,53 @@ import DOMElement = require('./DOMElement');
  * @requires jQuery
  * @example
  *     // This example illustrates how to setup your main application or root class when extending the {{#crossLink "Stage"}}{{/crossLink}} class.
- *     define(function (require, exports, module) {
- *         'use strict';
+ *         class MainClass extends Stage {
  *
- *         var Extend = require('structurejs/util/Extend');
- *         var Stage = require('replace/path/Stage');
- *
- *         var MainClass = (function () {
- *
- *         var _super = Extend(MainClass, Stage);
- *
- *             function MainClass() {
- *                 _super.call(this);
+ *             constructor() {
+ *                 super();
  *             }
  *
- *             MainClass.prototype.create = function () {
- *                 _super.prototype.create.call(this);
+ *             create() {
+ *                 super.create();
  *
  *                 // Create and add your child objects to this parent class.
  *             }
  *
- *             MainClass.prototype.layout = function () {
+ *             layout() {
  *                 // Layout or update the child objects in this parent class.
  *
  *                 return this;
  *             }
  *
- *             MainClass.prototype.enable = function () {
+ *             enable() {
  *                 if (this.isEnabled === true) { return this };
  *
  *                 // Enable the child objects and add any event listeners.
  *
- *                 return _super.prototype.enable.call(this);
+ *                 return super.enable();
  *             }
  *
- *             MainClass.prototype.disable = function () {
+ *             disable() {
  *                 if (this.isEnabled === false) { return this };
  *
  *                 // Disable the child objects and remove any event listeners.
  *
- *                 return _super.prototype.disable.call(this);
+ *                 return super.disable();
  *             }
  *
- *             MainClass.prototype.destroy = function () {
+ *             destroy() {
  *                 // Destroy the child objects and references in this parent class to prepare for garbage collection.
  *
- *                 _super.prototype.destroy.call(this);
+ *                 super.destroy();
  *             }
  *
- *             return MainClass;
- *         })();
+ *         }
  *
- *         module.exports = MainClass;
- *     });
  *
  * <b>Instantiation Example</b><br>
  * This example illustrates how to instantiate your main application or root class.
  *
- *      var app = new MainClass();
+ *      let app = new MainClass();
  *      app.appendTo('body');
  *
  */

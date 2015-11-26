@@ -20,7 +20,7 @@ import Util = require('../util/Util');
  * @author Robert S. (www.codeBelt.com)
  * @example
  *      // Example how to extend the BaseModel class.
- *      var data = {
+ *      let data = {
  *              make: 'Tesla',
  *              model: 'Model S',
  *              YeAr: 2014,
@@ -29,28 +29,28 @@ import Util = require('../util/Util');
  *                  airbags: true
  *              }
  *      }
- *      var carModel = new CarModel(data);
+ *      let carModel = new CarModel(data);
  *
  *
  *      // Example how to extend the BaseModel class.
- *      var CarModel = (function () {
- *          var _super = Extend(CarModel, BaseModel);
- *          function CarModel(data) {
- *              _super.call(this);
+ *      class CarModel extends BaseModel {
  *
- *              // You need to have properties so the data will get assigned.
- *              // If not the data will not get assigned to the vo.
- *              this.make = null;
- *              this.model = null;
- *              this.year = null;
- *              this.allWheel = false; // Set a default value.
+ *          // You need to have properties so the data will get assigned.
+ *          // If not the data will not get assigned to the model.
+ *          make = null;
+ *          model = null;
+ *          year = null;
+ *          allWheel = false; // Set a default value
  *
- *              // You can assign BaseModel to a property which will
- *              // automatically created it and pass the data to it.
- *              this.feature = FeatureModel;
+ *          // You can assign BaseModel to a property which will
+ *          // automatically created it and pass the data to it.
+ *          feature = FeatureModel
  *
- *              // If you have an array of data and want them assign to a BaseModel.
- *              this.feature = [FeatureModel];
+ *          // If you have an array of data and want them assign to a BaseModel.
+ *          feature = [FeatureModel];
+ *
+ *          constructor(data) {
+ *              super();
  *
  *              if (data) {
  *                  this.update(data);
@@ -58,16 +58,14 @@ import Util = require('../util/Util');
  *          }
  *
  *          // @overridden BaseModel.update
- *          CarModel.prototype.update = function (data) {
- *              _super.prototype.update.call(this, data);
+ *          update(data) {
+ *              super.update(data);
  *
  *              // If the data doesn't match the property name.
  *              // You can set the value(s) manually after the update super method has been called.
  *              this.year = data.YeAr;
- *          };
- *
- *          return CarModel;
- *      })();
+ *          }
+ *      }
  */
 class BaseModel extends BaseObject implements IBaseModel
 {
@@ -92,9 +90,9 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     public update(data:any):any
     {
-        var propertyData:any;
+        let propertyData:any;
 
-        for (var propertyKey in this)
+        for (let propertyKey in this)
         {
             // If this class has a property that matches a property on the data being passed in then set it.
             // Also don't set the sjsId data value because it is automatically set in the constructor and
@@ -126,13 +124,13 @@ class BaseModel extends BaseObject implements IBaseModel
         // If the data is an array and if the property its being assigned to is an array.
         if (data instanceof Array && this[key] instanceof Array)
         {
-            var temp:Array<any> = [];
-            var len:number = data.length;
+            let temp:Array<any> = [];
+            let len:number = data.length;
 
             if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false)
             {
-                var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
-                for (var i:number = 0; i < len; i++)
+                let baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                for (let i:number = 0; i < len; i++)
                 {
                     temp[i] = this._updateData(baseModelOrOther, data[i]);
                 }
@@ -184,11 +182,11 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {any}
      * @public
      * @example
-     *     var obj = carModel.toJSON();
+     *     let obj = carModel.toJSON();
      */
     public toJSON():any
     {
-        var clone:any = Util.clone(this);
+        let clone:any = Util.clone(this);
         return Util.deletePropertyFromObject(clone, ['sjsId']);
     }
 
@@ -199,7 +197,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {string}
      * @public
      * @example
-     *     var str = carModel.toJSONString();
+     *     let str = carModel.toJSONString();
      */
     public toJSONString():string
     {
@@ -213,13 +211,13 @@ class BaseModel extends BaseObject implements IBaseModel
      * @param json {string}
      * @public
      * @example
-     *      var str = '{"make":"Tesla","model":"Model S","year":2014}'
-     *      var carModel = new CarModel();
+     *      let str = '{"make":"Tesla","model":"Model S","year":2014}'
+     *      let carModel = new CarModel();
      *      carModel.fromJSON(str);
      */
     public fromJSON(json:string):any
     {
-        var parsedData:any = JSON.parse(json);
+        let parsedData:any = JSON.parse(json);
 
         this.update(parsedData);
 
@@ -233,11 +231,11 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {BaseModel}
      * @public
      * @example
-     *     var clone = carModel.clone();
+     *     let clone = carModel.clone();
      */
     public clone():BaseModel
     {
-        var clonedBaseModel:BaseModel = new (<any>this).constructor(this);
+        let clonedBaseModel:BaseModel = new (<any>this).constructor(this);
 
         return clonedBaseModel;
     }

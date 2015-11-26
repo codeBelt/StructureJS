@@ -141,8 +141,8 @@ class CanvasElement extends DOMElement
      */
     public swapChildren(child1:DisplayObject, child2:DisplayObject):any
     {
-        var child1Index = this.children.indexOf(child1);
-        var child2Index = this.children.indexOf(child2);
+        let child1Index = this.children.indexOf(child1);
+        let child2Index = this.children.indexOf(child2);
 
         this.addChildAt(child1, child2Index);
         this.addChildAt(child2, child1Index);
@@ -163,7 +163,7 @@ class CanvasElement extends DOMElement
      */
     public removeChild(child:DisplayObject, destroy:boolean = true):any
     {
-        var index = this.getChildIndex(child);
+        let index = this.getChildIndex(child);
         if (index !== -1)
         {
             // Removes the child object from the parent.
@@ -215,7 +215,7 @@ class CanvasElement extends DOMElement
     {
         this.ctx.clearRect(0, 0, this.width, this.height);
 
-        for (var i:number = 0; i < this.numChildren; i++)
+        for (let i:number = 0; i < this.numChildren; i++)
         {
             this.children[i].renderCanvas();
         }
@@ -223,17 +223,17 @@ class CanvasElement extends DOMElement
 
     public getMousePos(event:MouseEvent|JQueryEventObject):Point
     {
-        var rect = this.canvas.getBoundingClientRect();
+        let rect = this.canvas.getBoundingClientRect();
 
         return new Point(event.clientX - rect.left, event.clientY - rect.top);
     }
 
     public getObjectUnderPoint(x:number, y:number):DisplayObject
     {
-        var foundItem:DisplayObject = null;
-        var sprite:DisplayObject;
+        let foundItem:DisplayObject = null;
+        let sprite:DisplayObject;
 
-        for (var i = this.numChildren - 1; i >= 0; i--)
+        for (let i = this.numChildren - 1; i >= 0; i--)
         {
             sprite = this.children[i];
             if (sprite.visible === true && sprite.mouseEnabled === true)
@@ -251,10 +251,10 @@ class CanvasElement extends DOMElement
 
     public getObjectsUnderPoint(x:number, y:number):Array<DisplayObject>
     {
-        var list:Array<DisplayObject> = [];
-        var sprite:DisplayObject;
+        let list:Array<DisplayObject> = [];
+        let sprite:DisplayObject;
 
-        for (var i = this.numChildren - 1; i >= 0; i--)
+        for (let i = this.numChildren - 1; i >= 0; i--)
         {
             sprite = this.children[i];
             if (this.hitTest(sprite, x, y))
@@ -289,7 +289,7 @@ class CanvasElement extends DOMElement
 
     protected onPointerMove(event:MouseEvent|JQueryEventObject):void
     {
-        var displayObject:DisplayObject = this._sendEvent(event);
+        let displayObject:DisplayObject = this._sendEvent(event);
 
         if (displayObject != null && displayObject.useHandCursor === true && displayObject.visible === true)
         {
@@ -309,8 +309,8 @@ class CanvasElement extends DOMElement
 
     protected _sendEvent(event:MouseEvent|JQueryEventObject):DisplayObject
     {
-        var mousePos:Point = this.getMousePos(event);
-        var displayObject:DisplayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
+        let mousePos:Point = this.getMousePos(event);
+        let displayObject:DisplayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
 
         if (displayObject === null)
         {
@@ -343,12 +343,12 @@ class CanvasElement extends DOMElement
 
     protected getActualClickedOnChild(displayObject:DisplayObjectContainer, x:number, y:number):any
     {
-        var item;
-        var newX:number;
-        var newY:number;
+        let item;
+        let newX:number;
+        let newY:number;
         if (displayObject.numChildren > 0)
         {
-            for (var i = displayObject.numChildren - 1; i >= 0; i--)
+            for (let i = displayObject.numChildren - 1; i >= 0; i--)
             {
                 item = displayObject.children[i];
                 if (item.visible === true)
