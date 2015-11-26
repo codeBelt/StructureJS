@@ -29,11 +29,11 @@ class TextField extends DisplayObject
 
         if (this.text.indexOf('\n') !== -1)
         {
-            this.wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
+            this._wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
         }
         else if (this.width > 0)
         {
-            this.wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
+            this._wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
         }
         else
         {
@@ -41,7 +41,7 @@ class TextField extends DisplayObject
         }
     }
 
-    protected wrapTextByWidth(context, text, x, y, maxWidth, lineHeight):void
+    protected _wrapTextByWidth(context, text, x, y, maxWidth, lineHeight):void
     {
         let wordList:Array<string> = text.split(' ');
         let line:string = '';
@@ -71,7 +71,7 @@ class TextField extends DisplayObject
         context.fillText(line, x, y);
     }
 
-    protected wrapTextOnLineBreak(context, text, x, y, lineHeight):void
+    protected _wrapTextOnLineBreak(context, text, x, y, lineHeight):void
     {
         let wordList:Array<string> = text.split('\n');
         let length:number = wordList.length;

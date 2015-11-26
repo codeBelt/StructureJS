@@ -374,7 +374,7 @@ class BrowserUtil
      *      _onBreakpointChange(baseEvent) {
      *          console.log(baseEvent.data);
      *          // 'screen_sm'
-     *      };
+     *      }
      */
     public static getBreakpoint()
     {

@@ -39,16 +39,16 @@ class CanvasElement extends DOMElement
         }
 
         // Add mouse event listeners to $canvas element
-        this.$canvas.addEventListener('mousedown', this.onPointerDown, this);
-        this.$canvas.addEventListener('mousemove', this.onPointerMove, this);
-        this.$canvas.addEventListener('mouseup', this.onPointerUp, this);
-        this.$canvas.addEventListener('mouseout', this.onPointerOut, this);
+        this.$canvas.addEventListener('mousedown', this._onPointerDown, this);
+        this.$canvas.addEventListener('mousemove', this._onPointerMove, this);
+        this.$canvas.addEventListener('mouseup', this._onPointerUp, this);
+        this.$canvas.addEventListener('mouseout', this._onPointerOut, this);
 
         // Add touch event listeners to $canvas element
-        this.$canvas.addEventListener('touchstart', this.onPointerDown, this);
-        this.$canvas.addEventListener('touchmove', this.onPointerMove, this);
-        this.$canvas.addEventListener('touchend', this.onPointerUp, this);
-        this.$canvas.addEventListener('touchcancel', this.onPointerOut, this);
+        this.$canvas.addEventListener('touchstart', this._onPointerDown, this);
+        this.$canvas.addEventListener('touchmove', this._onPointerMove, this);
+        this.$canvas.addEventListener('touchend', this._onPointerUp, this);
+        this.$canvas.addEventListener('touchcancel', this._onPointerOut, this);
 
         super.enable();
     }
@@ -64,16 +64,16 @@ class CanvasElement extends DOMElement
         }
 
         // Remove mouse event listeners on $canvas element
-        this.$canvas.removeEventListener('mousedown', this.onPointerDown, this);
-        this.$canvas.removeEventListener('mousemove', this.onPointerMove, this);
-        this.$canvas.removeEventListener('mouseup', this.onPointerUp, this);
-        this.$canvas.removeEventListener('mouseout', this.onPointerOut, this);
+        this.$canvas.removeEventListener('mousedown', this._onPointerDown, this);
+        this.$canvas.removeEventListener('mousemove', this._onPointerMove, this);
+        this.$canvas.removeEventListener('mouseup', this._onPointerUp, this);
+        this.$canvas.removeEventListener('mouseout', this._onPointerOut, this);
 
         // Remove touch event listeners on $canvas element
-        this.$canvas.removeEventListener('touchstart', this.onPointerDown, this);
-        this.$canvas.removeEventListener('touchmove', this.onPointerMove, this);
-        this.$canvas.removeEventListener('touchend', this.onPointerUp, this);
-        this.$canvas.removeEventListener('touchcancel', this.onPointerOut, this);
+        this.$canvas.removeEventListener('touchstart', this._onPointerDown, this);
+        this.$canvas.removeEventListener('touchmove', this._onPointerMove, this);
+        this.$canvas.removeEventListener('touchend', this._onPointerUp, this);
+        this.$canvas.removeEventListener('touchcancel', this._onPointerOut, this);
 
         super.disable();
     }
@@ -277,17 +277,17 @@ class CanvasElement extends DOMElement
         }
     }
 
-    protected onPointerDown(event:MouseEvent|JQueryEventObject):void
+    protected _onPointerDown(event:MouseEvent|JQueryEventObject):void
     {
         this._sendEvent(event);
     }
 
-    protected onPointerUp(event:MouseEvent|JQueryEventObject):void
+    protected _onPointerUp(event:MouseEvent|JQueryEventObject):void
     {
         this._sendEvent(event);
     }
 
-    protected onPointerMove(event:MouseEvent|JQueryEventObject):void
+    protected _onPointerMove(event:MouseEvent|JQueryEventObject):void
     {
         let displayObject:DisplayObject = this._sendEvent(event);
 
@@ -301,7 +301,7 @@ class CanvasElement extends DOMElement
         }
     }
 
-    protected onPointerOut(event:MouseEvent|JQueryEventObject):void
+    protected _onPointerOut(event:MouseEvent|JQueryEventObject):void
     {
         this._sendEvent(event);
     }
@@ -323,7 +323,7 @@ class CanvasElement extends DOMElement
         {
             event.currentTarget = <any>displayObject;
 
-            displayObject = this.getActualClickedOnChild(<DisplayObjectContainer>displayObject, mousePos.x, mousePos.y);
+            displayObject = this._getActualClickedOnChild(<DisplayObjectContainer>displayObject, mousePos.x, mousePos.y);
             event.bubbles = true;
             event.target = <any>displayObject;
 
@@ -341,7 +341,7 @@ class CanvasElement extends DOMElement
         return displayObject;
     }
 
-    protected getActualClickedOnChild(displayObject:DisplayObjectContainer, x:number, y:number):any
+    protected _getActualClickedOnChild(displayObject:DisplayObjectContainer, x:number, y:number):any
     {
         let item;
         let newX:number;
@@ -357,7 +357,7 @@ class CanvasElement extends DOMElement
                     newY = y - item.parent.y;
                     if (this.hitTest(item, newX, newY))
                     {
-                        return this.getActualClickedOnChild(item, newX, newY);
+                        return this._getActualClickedOnChild(item, newX, newY);
                     }
                 }
             }

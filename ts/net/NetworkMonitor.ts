@@ -60,10 +60,10 @@ class NetworkMonitor
             NetworkMonitor._initialized = true;
         }
 
-        window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor.onNetworkMonitorEvent, false);
-        window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor.onNetworkMonitorEvent, false);
+        window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor._onNetworkMonitorEvent, false);
+        window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor._onNetworkMonitorEvent, false);
 
-        NetworkMonitor.onNetworkMonitorEvent(null);
+        NetworkMonitor._onNetworkMonitorEvent(null);
     }
 
 
@@ -102,12 +102,12 @@ class NetworkMonitor
     /**
      * TODO: YUIDoc_comment
      *
-     * @method onNetworkMonitorEvent
+     * @method _onNetworkMonitorEvent
      * @param event
      * @private
      * @static
      */
-    private static onNetworkMonitorEvent(event):void
+    private static _onNetworkMonitorEvent(event):void
     {
         let type:string = (event) ? event.type : NetworkMonitor.getStatus();
         let networkMonitorEvent:NetworkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);

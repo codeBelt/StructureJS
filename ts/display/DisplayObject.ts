@@ -228,7 +228,7 @@ class DisplayObject extends EventDispatcher
         return this;
     }
 
-    protected readerStart():void
+    protected _readerStart():void
     {
         this.ctx.save();
     }
@@ -237,13 +237,13 @@ class DisplayObject extends EventDispatcher
     {
         if (this.ctx === null || this.alpha <= 0 || this.visible === false) return false;
 
-        this.readerStart();
+        this._readerStart();
         this.ctx.globalAlpha = this.alpha;
         this.layout();
-        this.renderEnd();
+        this._renderEnd();
     }
 
-    protected renderEnd():void
+    protected _renderEnd():void
     {
         this.ctx.restore();
     }

@@ -106,7 +106,7 @@ class Route
     constructor(routePattern:string, callback:Function, scope:any)
     {
         this.routePattern = routePattern;
-        this.regex = this.routePatternToRegexp(routePattern);
+        this.regex = this._routePatternToRegexp(routePattern);
         this.callback = callback;
         this.callbackScope = scope;
     }
@@ -114,12 +114,12 @@ class Route
     /**
      * Converts the routePattern that was passed into the constructor to a regexp object.
      *
-     * @method routePatternToRegexp
+     * @method _routePatternToRegexp
      * @param {String} routePattern
      * @returns {RegExp}
      * @protected
      */
-    protected routePatternToRegexp(routePattern):RegExp
+    protected _routePatternToRegexp(routePattern):RegExp
     {
         let findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
         let findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
@@ -151,7 +151,6 @@ class Route
      * @example
      *     let route = new Route('/games/{gameName}/:level:/', this.method, this);
      *     console.log( route.match('/games/asteroids/2/') );
-     *     // true
      */
     public match(route):Array<any>
     {

@@ -26,14 +26,14 @@ class ImageLoader extends EventDispatcher implements IDataStore
         super();
 
         this.src = path;
-        this.init();
+        this._init();
     }
 
-    protected init():void
+    protected _init():void
     {
         this._image = new Image();
         this._image.onload = (event:Event) => {
-            this.onImageLoad();
+            this._onImageLoad();
         }
     }
 
@@ -42,7 +42,7 @@ class ImageLoader extends EventDispatcher implements IDataStore
         this._image.src = this.src;
     }
 
-    protected onImageLoad():void
+    protected _onImageLoad():void
     {
         this.data = this._image;
         this.complete = true;

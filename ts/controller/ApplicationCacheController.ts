@@ -61,14 +61,14 @@ class ApplicationCacheController
         }
 
         // Native Browser Event Listener
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CACHED, this.onCached.bind(this), false);
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CHECKING, this.onChecking.bind(this), false);
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.DOWNLOADING, this.onDownloading.bind(this), false);
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.NO_UPDATE, this.onNoUpdate.bind(this), false);
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.OBSOLETE, this.onObsolete.bind(this), false);
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.PROGRESS, this.onProgress.bind(this), false);
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.onUpdateReady.bind(this), false);
-        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.ERROR, this.onError.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CACHED, this._onCached.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CHECKING, this._onChecking.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.DOWNLOADING, this._onDownloading.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.NO_UPDATE, this._onNoUpdate.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.OBSOLETE, this._onObsolete.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.PROGRESS, this._onProgress.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._onUpdateReady.bind(this), false);
+        ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.ERROR, this._onError.bind(this), false);
 
         ApplicationCacheController.isEnabled = true;
     }
@@ -83,14 +83,14 @@ class ApplicationCacheController
             return;
         }
 
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CACHED, ApplicationCacheController.onCached.bind(this), false);
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CHECKING, ApplicationCacheController.onChecking.bind(this), false);
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.DOWNLOADING, ApplicationCacheController.onDownloading.bind(this), false);
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.NO_UPDATE, ApplicationCacheController.onNoUpdate.bind(this), false);
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.OBSOLETE, ApplicationCacheController.onObsolete.bind(this), false);
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.PROGRESS, ApplicationCacheController.onProgress.bind(this), false);
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.UPDATE_READY, ApplicationCacheController.onUpdateReady.bind(this), false);
-        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.ERROR, ApplicationCacheController.onError.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CACHED, ApplicationCacheController._onCached.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CHECKING, ApplicationCacheController._onChecking.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.DOWNLOADING, ApplicationCacheController._onDownloading.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.NO_UPDATE, ApplicationCacheController._onNoUpdate.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.OBSOLETE, ApplicationCacheController._onObsolete.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.PROGRESS, ApplicationCacheController._onProgress.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.UPDATE_READY, ApplicationCacheController._onUpdateReady.bind(this), false);
+        ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.ERROR, ApplicationCacheController._onError.bind(this), false);
 
         ApplicationCacheController.isEnabled = true;
     }
@@ -132,12 +132,12 @@ class ApplicationCacheController
      * The resources listed in the manifest have been fully downloaded, and the application is
      * now cached locally.
      *
-     * @method onCached
+     * @method _onCached
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onCached(event)
+    private static _onCached(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CACHED, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CACHED, false, false, event));
@@ -148,12 +148,12 @@ class ApplicationCacheController
      * the cache manifest for the first time. This is always the first event
      * in the sequence.
      *
-     * @method onChecking
+     * @method _onChecking
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onChecking(event)
+    private static _onChecking(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CHECKING, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CHECKING, false, false, event));
@@ -163,12 +163,12 @@ class ApplicationCacheController
      * The browser has started to download the cache manifest, either for the
      * first time or because changes have been detected.
      *
-     * @method onDownloading
+     * @method _onDownloading
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onDownloading(event)
+    private static _onDownloading(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.DOWNLOADING, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.DOWNLOADING, false, false, event));
@@ -178,12 +178,12 @@ class ApplicationCacheController
      * An error occurred at some point - this could be caused by a number of things. This will
      * always be the last event in the sequence.
      *
-     * @method onError
+     * @method _onError
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onError(event)
+    private static _onError(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.ERROR, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.ERROR, false, false, event));
@@ -192,12 +192,12 @@ class ApplicationCacheController
     /**
      * The cache manifest hadn't changed.
      *
-     * @method onNoUpdate
+     * @method _onNoUpdate
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onNoUpdate(event)
+    private static _onNoUpdate(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.NO_UPDATE, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.NO_UPDATE, false, false, event));
@@ -207,12 +207,12 @@ class ApplicationCacheController
      * The cache manifest file could not be found, indicating that the cache is no longer needed.
      * The application cache is being deleted.
      *
-     * @method onObsolete
+     * @method _onObsolete
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onObsolete(event)
+    private static _onObsolete(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.OBSOLETE, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.OBSOLETE, false, false, event));
@@ -222,12 +222,12 @@ class ApplicationCacheController
      * The browser had downloaded and cached an asset. This is fired once for
      * every file that is downloaded (including the current page which is cached implicitly).
      *
-     * @method onProgress
+     * @method _onProgress
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onProgress(event)
+    private static _onProgress(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.PROGRESS, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.PROGRESS, false, false, event));
@@ -237,12 +237,12 @@ class ApplicationCacheController
      * The resources listed in the manifest have been newly re-downloaded, and the script can
      * use swapCache() to switch to the new cache.
      *
-     * @method onUpdateReady
+     * @method _onUpdateReady
      * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
      * @private
      * @static
      */
-    private static onUpdateReady(event)
+    private static _onUpdateReady(event)
     {
         //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.UPDATE_READY, event);
         ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY, false, false, event));

@@ -338,11 +338,11 @@ class Router
 
         if (Router._window.addEventListener)
         {
-            Router._window.addEventListener('hashchange', Router.onHashChange, false);
+            Router._window.addEventListener('hashchange', Router._onHashChange, false);
         }
         else
         {
-            Router._window.attachEvent('onhashchange', Router.onHashChange);
+            Router._window.attachEvent('onhashchange', Router._onHashChange);
         }
 
         Router.isEnabled = true;
@@ -366,11 +366,11 @@ class Router
 
         if (Router._window.removeEventListener)
         {
-            Router._window.removeEventListener('hashchange', Router.onHashChange);
+            Router._window.removeEventListener('hashchange', Router._onHashChange);
         }
         else
         {
-            Router._window.detachEvent('onhashchange', Router.onHashChange);
+            Router._window.detachEvent('onhashchange', Router._onHashChange);
         }
 
         Router.isEnabled = false;
@@ -393,7 +393,7 @@ class Router
      */
     public static start():void
     {
-        setTimeout(Router.onHashChange, 1);
+        setTimeout(Router._onHashChange, 1);
     }
 
     /**
@@ -439,7 +439,7 @@ class Router
 
         if (disableHistory === true)
         {
-            Router.changeRoute(route);
+            Router._changeRoute(route);
             return;
         }
 
@@ -464,7 +464,7 @@ class Router
         }
         else
         {
-            Router.changeRoute(route);
+            Router._changeRoute(route);
         }
     }
 
@@ -521,7 +521,7 @@ class Router
     }
 
     /**
-     * Returns the current router event that was recently triggered.
+     * Returns the current router event that was last triggered.
      *
      * @method getCurrentRoute
      * @public
@@ -537,12 +537,12 @@ class Router
      * This method will be called if the Window object dispatches a HashChangeEvent.
      * This method will not be called if the Router is disabled.
      *
-     * @method onHashChange
+     * @method _onHashChange
      * @param event {HashChangeEvent}
      * @private
      * @static
      */
-    private static onHashChange(event):void
+    private static _onHashChange(event):void
     {
         if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false)
         {
@@ -553,18 +553,18 @@ class Router
 
         let hash = Router.getHash();
 
-        Router.changeRoute(hash);
+        Router._changeRoute(hash);
     }
 
     /**
      * The method is responsible for check if one of the routes matches the string value passed in.
      *
-     * @method changeRoute
+     * @method _changeRoute
      * @param hash {string}
      * @private
      * @static
      */
-    private static changeRoute(hash:string):void
+    private static _changeRoute(hash:string):void
     {
         let route:Route;
         let match:any;

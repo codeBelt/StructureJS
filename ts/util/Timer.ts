@@ -162,7 +162,7 @@ class Timer extends EventDispatcher
 
         this._timer = setInterval(() =>
         {
-            this.decrementCounter();
+            this._decrementCounter();
         }, this._delay);
 
         this.running = true;
@@ -185,10 +185,10 @@ class Timer extends EventDispatcher
 
     /**
      *
-     * @method decrementCounter
+     * @method _decrementCounter
      * @protected
      */
-    protected decrementCounter()
+    protected _decrementCounter()
     {
         if (this._currentCount > 0)
         {

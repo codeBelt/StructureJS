@@ -83,7 +83,7 @@ class Stage extends DOMElement
     {
         this.$element = (type instanceof jQuery) ? type : jQuery(type);
 
-        this.addClientSideId(this);
+        this._addClientSideId(this);
 
         if (this.isCreated === false)
         {

@@ -91,7 +91,7 @@ class BulkLoader extends EventDispatcher
         for (let i:number = 0; i < this._dataStores.length; i++)
         {
             dataStore = this._dataStores.get(i).value;
-            dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+            dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this._onLoadComplete, this);
             dataStore.load();
         }
 
@@ -111,7 +111,7 @@ class BulkLoader extends EventDispatcher
         for (let i:number = 0; i < this._dataStores.length; i++)
         {
             dataStore = this._dataStores.get(i).value;
-            dataStore.removeEventListener(LoaderEvent.COMPLETE, this.onLoadComplete, this);
+            dataStore.removeEventListener(LoaderEvent.COMPLETE, this._onLoadComplete, this);
         }
 
         this._totalComplete = 0;
@@ -122,11 +122,11 @@ class BulkLoader extends EventDispatcher
     /**
      * TODO: YUIDoc_comment
      *
-     * @method onLoadComplete
+     * @method _onLoadComplete
      * @param event {LoaderEvent}
      * @protected
      */
-    protected onLoadComplete(event:LoaderEvent):void
+    protected _onLoadComplete(event:LoaderEvent):void
     {
         let dataStore:IDataStore = event.target;
 

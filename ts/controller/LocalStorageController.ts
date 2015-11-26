@@ -44,7 +44,7 @@ class LocalStorageController extends EventDispatcher
 
         this._localStorage = window.localStorage;
 
-        window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
+        window.addEventListener('storage', this._onLocalStorageEvent.bind(this));
     }
 
     /**
@@ -257,11 +257,11 @@ class LocalStorageController extends EventDispatcher
     /**
      *
      *
-     * @method onLocalStorageEvent
+     * @method _onLocalStorageEvent
      * @param event {StorageEvent} The native browser event for Web Storage.
      * @protected
      */
-    protected onLocalStorageEvent(event:StorageEvent)
+    protected _onLocalStorageEvent(event:StorageEvent)
     {
         this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
     }
