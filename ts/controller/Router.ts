@@ -139,6 +139,16 @@ class Router
      */
     public static allowMultipleMatches:boolean = true;
 
+    /**
+     * A reference to the current {{#crossLink "RouterEvent"}}{{/crossLink}} that was triggered.
+     *
+     * @property _currentRoute
+     * @type {RouterEvent}
+     * @private
+     * @static
+     */
+    private static _currentRoute:RouterEvent = null;
+
     constructor()
     {
         throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
@@ -510,6 +520,18 @@ class Router
     }
 
     /**
+     * Returns the current router event that was recently triggered.
+     *
+     * @method getCurrentRoute
+     * @public
+     * @static
+     *      Router.getCurrentRoute();
+     */
+    public static getCurrentRoute():RouterEvent {
+        return this._currentRoute;
+    }
+
+    /**
      * This method will be called if the Window object dispatches a HashChangeEvent.
      * This method will not be called if the Router is disabled.
      *
@@ -618,6 +640,7 @@ class Router
         }
 
         Router._hashChangeEvent = null;
+        Router._currentRoute = routerEvent;
     }
 }
 
