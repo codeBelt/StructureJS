@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -215,6 +217,14 @@
         <ul class="index-list properties">
             
                 <li class="index-item property private">
+                    <a href="#property__currentRoute">_currentRoute</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property private">
                     <a href="#property__defaultRoute">_defaultRoute</a>
 
                     
@@ -302,6 +312,24 @@
             
 
             
+                <li class="index-item method private">
+                    <a href="#method__changeRoute">_changeRoute</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onHashChange">_onHashChange</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_add">add</a>
 
@@ -320,8 +348,8 @@
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_changeRoute">changeRoute</a>
+                <li class="index-item method public">
+                    <a href="#method_buildRoute">buildRoute</a>
 
                     
                         <span class="flag static">static</span>
@@ -366,6 +394,15 @@
                 </li>
             
                 <li class="index-item method public">
+                    <a href="#method_getCurrentRoute">getCurrentRoute</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
                     <a href="#method_getHash">getHash</a>
 
                     
@@ -376,15 +413,6 @@
             
                 <li class="index-item method public">
                     <a href="#method_navigateTo">navigateTo</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onHashChange">onHashChange</a>
 
                     
                         <span class="flag static">static</span>
@@ -434,6 +462,60 @@
         <h2>Properties</h2>
 
         
+            <a name="property__currentRoute" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_currentRoute</code>
+    <span class="type"><a href="../classes/RouterEvent.html" class="crosslink">RouterEvent</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_Router.js.html#l558"><code>js&#x2F;controller&#x2F;Router.js:558</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the current <a href="../classes/RouterEvent.html" class="crosslink">RouterEvent</a> that was triggered.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property__defaultRoute" class="anchor-link"></a>
 <div class="property item private">
     <h3 class="name"><code>_defaultRoute</code>
@@ -464,7 +546,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l425"><code>js&#x2F;controller&#x2F;Router.js:425</code></a>
+        <a href="../files/js_controller_Router.js.html#l462"><code>js&#x2F;controller&#x2F;Router.js:462</code></a>
         
         </p>
 
@@ -518,7 +600,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l434"><code>js&#x2F;controller&#x2F;Router.js:434</code></a>
+        <a href="../files/js_controller_Router.js.html#l471"><code>js&#x2F;controller&#x2F;Router.js:471</code></a>
         
         </p>
 
@@ -572,7 +654,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l416"><code>js&#x2F;controller&#x2F;Router.js:416</code></a>
+        <a href="../files/js_controller_Router.js.html#l453"><code>js&#x2F;controller&#x2F;Router.js:453</code></a>
         
         </p>
 
@@ -626,7 +708,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l407"><code>js&#x2F;controller&#x2F;Router.js:407</code></a>
+        <a href="../files/js_controller_Router.js.html#l444"><code>js&#x2F;controller&#x2F;Router.js:444</code></a>
         
         </p>
 
@@ -680,7 +762,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l472"><code>js&#x2F;controller&#x2F;Router.js:472</code></a>
+        <a href="../files/js_controller_Router.js.html#l509"><code>js&#x2F;controller&#x2F;Router.js:509</code></a>
         
         </p>
 
@@ -751,7 +833,7 @@ Router.allowManualDeepLinking = false;</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l508"><code>js&#x2F;controller&#x2F;Router.js:508</code></a>
+        <a href="../files/js_controller_Router.js.html#l545"><code>js&#x2F;controller&#x2F;Router.js:545</code></a>
         
         </p>
 
@@ -817,7 +899,7 @@ Router.allowMultipleMatches = false;</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l491"><code>js&#x2F;controller&#x2F;Router.js:491</code></a>
+        <a href="../files/js_controller_Router.js.html#l528"><code>js&#x2F;controller&#x2F;Router.js:528</code></a>
         
         </p>
 
@@ -887,7 +969,7 @@ Router.forceSlash = true;
             
         
         
-        <a href="../files/js_controller_Router.js.html#l443"><code>js&#x2F;controller&#x2F;Router.js:443</code></a>
+        <a href="../files/js_controller_Router.js.html#l480"><code>js&#x2F;controller&#x2F;Router.js:480</code></a>
         
         </p>
 
@@ -951,7 +1033,7 @@ console.log(Router.isEnabled);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l456"><code>js&#x2F;controller&#x2F;Router.js:456</code></a>
+        <a href="../files/js_controller_Router.js.html#l493"><code>js&#x2F;controller&#x2F;Router.js:493</code></a>
         
         </p>
 
@@ -1005,6 +1087,203 @@ from relying on the hash url to an internal state controller.</p>
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method__changeRoute" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_changeRoute</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>hash</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_Router.js.html#l377"><code>js&#x2F;controller&#x2F;Router.js:377</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The method is responsible for check if one of the routes matches the string value passed in.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">hash</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onHashChange" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onHashChange</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_Router.js.html#l360"><code>js&#x2F;controller&#x2F;Router.js:360</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>This method will be called if the Window object dispatches a HashChangeEvent.
+This method will not be called if the Router is disabled.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">HashChangeEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="method_add" class="anchor-link"></a>
@@ -1151,54 +1430,54 @@ from relying on the hash url to an internal state controller.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// Example of adding a route listener and the function callback below.
-Router.add(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);
+Router.add(&#39;/games/{gameName}/:level:/&#39;, this._method, this);
 
 // The above route listener would match the below url:
 // www.site.com/#/games/asteroids/2/
 
 // The Call back receives a RouterEvent object.
-ClassName.prototype.onRouteHandler = function (routerEvent) {
+_onRouteHandler(routerEvent) {
     console.log(routerEvent.params);
 }</code></pre>
 <h2 id="route-pattern-options-">Route Pattern Options:</h2>
 <p><strong>:optional:</strong> The two colons <strong>::</strong> means a part of the hash url is optional for the match. The text between can be anything you want it to be.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;/contact/:name:/&#39;, this.method, this);
+<pre class="code prettyprint"><code>Router.add(&#39;/contact/:name:/&#39;, this._method, this);
 
 // Will match one of the following:
 // www.site.com/#/contact/
 // www.site.com/#/contact/heather/
 // www.site.com/#/contact/john/</code></pre>
 <p><strong>{required}</strong> The two curly brackets <strong>{}</strong> means a part of the hash url is required for the match. The text between can be anything you want it to be.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;/product/{productName}/&#39;, this.method, this);
+<pre class="code prettyprint"><code>Router.add(&#39;/product/{productName}/&#39;, this._method, this);
 
 // Will match one of the following:
 // www.site.com/#/product/shoes/
 // www.site.com/#/product/jackets/</code></pre>
 <p><strong>*</strong> The asterisk character means it will match all or part of part the hash url.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;*&#39;, this.method, this);
+<pre class="code prettyprint"><code>Router.add(&#39;*&#39;, this._method, this);
 
 // Will match one of the following:
 // www.site.com/#/anything/
 // www.site.com/#/matches/any/hash/url/
 // www.site.com/#/really/it/matches/any/and/all/hash/urls/</code></pre>
 <p><strong>?</strong> The question mark character means it will match a query string for the hash url.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;?&#39;, this.method, this);
+<pre class="code prettyprint"><code>Router.add(&#39;?&#39;, this._method, this);
 
 // Will match one of the following:
 // www.site.com/#/?one=1&amp;two=2&amp;three=3
 // www.site.com/#?one=1&amp;two=2&amp;three=3</code></pre>
 <p><strong>&#39;&#39;</strong> The empty string means it will match when there are no hash url.</p>
-<pre class="code prettyprint"><code>Router.add(&#39;&#39;, this.method, this);
-Router.add(&#39;/&#39;, this.method, this);
+<pre class="code prettyprint"><code>Router.add(&#39;&#39;, this._method, this);
+Router.add(&#39;/&#39;, this._method, this);
 
 // Will match one of the following:
 // www.site.com/
 // www.site.com/#/</code></pre>
 <p>Other possible combinations but not limited too:</p>
-<pre class="code prettyprint"><code>Router.add(&#39;/games/{gameName}/:level:/&#39;, this.method1, this);
-Router.add(&#39;/{category}/blog/&#39;, this.method2, this);
-Router.add(&#39;/home/?&#39;, this.method3, this);
-Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
+<pre class="code prettyprint"><code>Router.add(&#39;/games/{gameName}/:level:/&#39;, this._method1, this);
+Router.add(&#39;/{category}/blog/&#39;, this._method2, this);
+Router.add(&#39;/home/?&#39;, this._method3, this);
+Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
 
                 </div>
             </div>
@@ -1326,7 +1605,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>Router.addDefault(this.noRoutesFoundHandler, this);</code></pre>
+                    <pre class="code prettyprint"><code>Router.addDefault(this._noRoutesFoundHandler, this);</code></pre>
 
                 </div>
             </div>
@@ -1335,9 +1614,9 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
 </div>
 
         
-            <a name="method_changeRoute" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>changeRoute</code>
+            <a name="method_buildRoute" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>buildRoute</code>
 
     
         <div class="args">
@@ -1345,7 +1624,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
                 <li class="arg">
                     
-                        <code>hash</code>
+                        <code>...rest</code>
                     
                 </li>
             
@@ -1354,11 +1633,15 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
     
 
     
-
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
     
 
     
-        <span class="flag private">private</span>
+
+    
+        <span class="flag public">public</span>
     
 
     
@@ -1384,7 +1667,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l343"><code>js&#x2F;controller&#x2F;Router.js:343</code></a>
+        <a href="../files/js_controller_Router.js.html#l326"><code>js&#x2F;controller&#x2F;Router.js:326</code></a>
         
         </p>
 
@@ -1397,7 +1680,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The method is responsible for check if one of the routes matches the string value passed in.</p>
+            <p>A simple helper method to create a url route from an unlimited number of arguments.</p>
 
         </div>
 
@@ -1409,8 +1692,8 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
                 
                     <li class="param">
                         
-                            <code class="param-name">hash</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            <code class="param-name">...rest</code>
+                            <span class="type">...rest</span>
                         
 
                         
@@ -1427,7 +1710,32 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
         
 
         
+            <div class="returns">
+                <h4>Returns:</h4>
 
+                <div class="returns-description">
+                    
+                        
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> let someProperty = &#39;api/endpoint&#39;;
+
+ Router.buildRoute(someProperty, &#39;path&#39;, 7);
+
+ //Creates &#39;api/endpoint/path/7&#39;</code></pre>
+
+                </div>
+            </div>
         
     </div>
 </div>
@@ -1620,7 +1928,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l199"><code>js&#x2F;controller&#x2F;Router.js:199</code></a>
+        <a href="../files/js_controller_Router.js.html#l200"><code>js&#x2F;controller&#x2F;Router.js:200</code></a>
         
         </p>
 
@@ -1729,6 +2037,80 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
 </div>
 
         
+            <a name="method_getCurrentRoute" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>getCurrentRoute</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_Router.js.html#l348"><code>js&#x2F;controller&#x2F;Router.js:348</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Returns the current router event that was last triggered.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> Router.getCurrentRoute();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_getHash" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>getHash</code>
@@ -1812,7 +2194,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>var str = Router.getHash();</code></pre>
+                    <pre class="code prettyprint"><code>let str = Router.getHash();</code></pre>
 
                 </div>
             </div>
@@ -1882,7 +2264,7 @@ Router.add(&#39;/about/*&#39;, this.method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l237"><code>js&#x2F;controller&#x2F;Router.js:237</code></a>
+        <a href="../files/js_controller_Router.js.html#l239"><code>js&#x2F;controller&#x2F;Router.js:239</code></a>
         
         </p>
 
@@ -1977,105 +2359,6 @@ Router.navigateTo(&#39;/games/asteroids/2/&#39;, true, true);</code></pre>
 
                 </div>
             </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_onHashChange" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onHashChange</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_Router.js.html#l326"><code>js&#x2F;controller&#x2F;Router.js:326</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>This method will be called if the Window object dispatches a HashChangeEvent.
-This method will not be called if the Router is disabled.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">HashChangeEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
         
     </div>
 </div>
@@ -2225,10 +2508,10 @@ This method will not be called if the Router is disabled.</p>
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// Example of adding a route listener.
-Router.add(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);
+Router.add(&#39;/games/{gameName}/:level:/&#39;, this._method, this);
 
 // Example of removing the same added route listener above.
-Router.remove(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);</code></pre>
+Router.remove(&#39;/games/{gameName}/:level:/&#39;, this._method, this);</code></pre>
 
                 </div>
             </div>
@@ -2350,7 +2633,7 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this.onRouteHandler, this);<
             
         
         
-        <a href="../files/js_controller_Router.js.html#l219"><code>js&#x2F;controller&#x2F;Router.js:219</code></a>
+        <a href="../files/js_controller_Router.js.html#l221"><code>js&#x2F;controller&#x2F;Router.js:221</code></a>
         
         </p>
 
@@ -2379,8 +2662,8 @@ It is recommend you only call this once per page or application instantiation.</
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// Example of adding routes and calling the start method.
-Router.add(&#39;/games/{gameName}/:level:/&#39;, this.method1, this);
-Router.add(&#39;/{category}/blog/&#39;, this.method2, this);
+Router.add(&#39;/games/{gameName}/:level:/&#39;, this._method1, this);
+Router.add(&#39;/{category}/blog/&#39;, this._method2, this);
 
 Router.start();</code></pre>
 

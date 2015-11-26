@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -254,6 +256,78 @@
             
 
             
+                <li class="index-item method private">
+                    <a href="#method__onCached">_onCached</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onChecking">_onChecking</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onDownloading">_onDownloading</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onError">_onError</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onNoUpdate">_onNoUpdate</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onObsolete">_onObsolete</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onProgress">_onProgress</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onUpdateReady">_onUpdateReady</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
                 <li class="index-item method">
                     <a href="#method_addEventListener">addEventListener</a>
 
@@ -265,78 +339,6 @@
             
                 <li class="index-item method">
                     <a href="#method_dispatchEvent">dispatchEvent</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onCached">onCached</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onChecking">onChecking</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onDownloading">onDownloading</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onError">onError</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onNoUpdate">onNoUpdate</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onObsolete">onObsolete</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onProgress">onProgress</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method private">
-                    <a href="#method_onUpdateReady">onUpdateReady</a>
 
                     
                         <span class="flag static">static</span>
@@ -398,7 +400,7 @@
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l249"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:249</code></a>
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l247"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:247</code></a>
         
         </p>
 
@@ -452,7 +454,7 @@
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l258"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:258</code></a>
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l256"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:256</code></a>
         
         </p>
 
@@ -506,7 +508,7 @@
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l267"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:267</code></a>
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l265"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:265</code></a>
         
         </p>
 
@@ -547,6 +549,806 @@
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method__onCached" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onCached</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l89"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:89</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The resources listed in the manifest have been fully downloaded, and the application is
+now cached locally.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onChecking" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onChecking</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l102"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:102</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The browser is checking for an update, or is attempting to download
+the cache manifest for the first time. This is always the first event
+in the sequence.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onDownloading" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onDownloading</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l116"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:116</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The browser has started to download the cache manifest, either for the
+first time or because changes have been detected.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onError" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onError</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l129"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:129</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>An error occurred at some point - this could be caused by a number of things. This will
+always be the last event in the sequence.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onNoUpdate" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onNoUpdate</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l142"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:142</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The cache manifest hadn&#39;t changed.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onObsolete" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onObsolete</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l154"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:154</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The cache manifest file could not be found, indicating that the cache is no longer needed.
+The application cache is being deleted.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onProgress" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onProgress</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l167"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:167</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The browser had downloaded and cached an asset. This is fired once for
+every file that is downloaded (including the current page which is cached implicitly).</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onUpdateReady" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onUpdateReady</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l180"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:180</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>The resources listed in the manifest have been newly re-downloaded, and the script can
+use swapCache() to switch to the new cache.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">DOMApplicationCacheEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The native browser event from the DOMApplicationCache.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="method_addEventListener" class="anchor-link"></a>
@@ -713,8 +1515,8 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
- ClassName.prototype.handlerMethod = function(event) {
+                    <pre class="code prettyprint"><code> ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+ _handlerMethod(event) {
      console.log(event.target + &quot; sent the event.&quot;);
  }</code></pre>
 
@@ -772,7 +1574,7 @@
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l232"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:232</code></a>
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l230"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:230</code></a>
         
         </p>
 
@@ -822,7 +1624,7 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> var event:ApplicationCacheEvent = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
+                    <pre class="code prettyprint"><code> let event = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
  ApplicationCacheController.dispatchEvent(event);
 
  // Here is a common inline event being dispatched
@@ -830,806 +1632,6 @@ extend the <a href="../classes/ApplicationCacheEvent.html" class="crosslink">App
 
                 </div>
             </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_onCached" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onCached</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l89"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:89</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The resources listed in the manifest have been fully downloaded, and the application is
-now cached locally.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onChecking" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onChecking</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l102"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:102</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The browser is checking for an update, or is attempting to download
-the cache manifest for the first time. This is always the first event
-in the sequence.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onDownloading" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onDownloading</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l116"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:116</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The browser has started to download the cache manifest, either for the
-first time or because changes have been detected.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onError" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onError</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l129"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:129</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>An error occurred at some point - this could be caused by a number of things. This will
-always be the last event in the sequence.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onNoUpdate" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onNoUpdate</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l142"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:142</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The cache manifest hadn&#39;t changed.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onObsolete" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onObsolete</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l154"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:154</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The cache manifest file could not be found, indicating that the cache is no longer needed.
-The application cache is being deleted.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onProgress" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onProgress</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l167"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:167</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The browser had downloaded and cached an asset. This is fired once for
-every file that is downloaded (including the current page which is cached implicitly).</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_onUpdateReady" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>onUpdateReady</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l180"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:180</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>The resources listed in the manifest have been newly re-downloaded, and the script can
-use swapCache() to switch to the new cache.</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type">DOMApplicationCacheEvent</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The native browser event from the DOMApplicationCache.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
         
     </div>
 </div>
@@ -1694,7 +1696,7 @@ use swapCache() to switch to the new cache.</p>
             
         
         
-        <a href="../files/js_controller_ApplicationCacheController.js.html#l214"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:214</code></a>
+        <a href="../files/js_controller_ApplicationCacheController.js.html#l212"><code>js&#x2F;controller&#x2F;ApplicationCacheController.js:212</code></a>
         
         </p>
 
@@ -1777,8 +1779,8 @@ To keep things consistent this parameter is required.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this.handlerMethod, this);
- ClassName.prototype.handlerMethod = function(event) {
+                    <pre class="code prettyprint"><code> ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+ _handlerMethod(event) {
      console.log(event.target + &quot; sent the event.&quot;);
  }</code></pre>
 

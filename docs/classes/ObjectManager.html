@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.8.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -58,6 +58,8 @@
                 <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
             
                 <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
             
                 <li><a class="type" href="../classes/Collection.html">Collection</a></li>
             
@@ -160,7 +162,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_ObjectManager.js.html#l20"><code>js&#x2F;ObjectManager.js:20</code></a>
+            Defined in: <a href="../files/js_ObjectManager.js.html#l15"><code>js&#x2F;ObjectManager.js:15</code></a>
         </div>
     
 
@@ -326,7 +328,7 @@
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l37"><code>js&#x2F;ObjectManager.js:37</code></a>
+        <a href="../files/js_ObjectManager.js.html#l31"><code>js&#x2F;ObjectManager.js:31</code></a>
         
         </p>
 
@@ -451,7 +453,7 @@
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l20"><code>js&#x2F;ObjectManager.js:20</code></a>
+        <a href="../files/js_ObjectManager.js.html#l15"><code>js&#x2F;ObjectManager.js:15</code></a>
         
         </p>
 
@@ -521,7 +523,7 @@
             
         
         
-        <a href="../files/js_BaseObject.js.html#l52"><code>js&#x2F;BaseObject.js:52</code></a>
+        <a href="../files/js_BaseObject.js.html#l55"><code>js&#x2F;BaseObject.js:55</code></a>
         
         </p>
 
@@ -565,10 +567,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.destroy = function() {
+                    <pre class="code prettyprint"><code>destroy() {
      this._childInstance.destroy();
 
-     _super.prototype.destroy.call(this);
+     super.destroy();
 }</code></pre>
 
                 </div>
@@ -617,7 +619,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l70"><code>js&#x2F;ObjectManager.js:70</code></a>
+        <a href="../files/js_ObjectManager.js.html#l64"><code>js&#x2F;ObjectManager.js:64</code></a>
         
         </p>
 
@@ -643,13 +645,13 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> ClassName.prototype.disable = function() {
+                    <pre class="code prettyprint"><code> disable() {
      if (this.isEnabled === false) { return this; }
 
      this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.disable();
 
-     return _super.prototype.disable.call(this);
+     return super.disable();
  }</code></pre>
 
                 </div>
@@ -698,7 +700,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l47"><code>js&#x2F;ObjectManager.js:47</code></a>
+        <a href="../files/js_ObjectManager.js.html#l41"><code>js&#x2F;ObjectManager.js:41</code></a>
         
         </p>
 
@@ -724,13 +726,13 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>ClassName.prototype.enable = function() {
+                    <pre class="code prettyprint"><code>enable() {
      if (this.isEnabled === true) { return this; }
 
      this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      this._childInstance.enable();
 
-     return _super.prototype.enable.call(this);
+     return super.enable();
 }</code></pre>
 
                 </div>
@@ -818,7 +820,10 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>instance.getQualifiedClassName();</code></pre>
+                    <pre class="code prettyprint"><code>let someClass = new SomeClass();
+someClass.getQualifiedClassName();
+
+// SomeClass</code></pre>
 
                 </div>
             </div>
