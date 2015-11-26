@@ -365,6 +365,29 @@ class Util
         });
     }
 
+    /**
+     * Returns a new array with duplicates removed.
+     *
+     * @method unique
+     * @param list {Array.<any>} The array you want to use to generate the unique array.
+     * @return {Array<any>} Returns a new array list of unique items.
+     * @protected
+     */
+    public static unique(list:Array<any>):Array<any>
+    {
+        var uniqueList:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
+        {
+            if (previousValue.indexOf(currentValue) === -1)
+            {
+                previousValue.push(currentValue);
+            }
+
+            return previousValue;
+        }, []);
+
+        return uniqueList;
+    }
+
 }
 
 export = Util;

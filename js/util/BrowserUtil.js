@@ -90,7 +90,7 @@
          * Gets the browser name a user agent.
          *
          * @method getBrowser
-         * @private
+         * @public
          * @return {Array.<string>}
          * @static
          * @example
@@ -105,9 +105,7 @@
             if (M && tem != null) {
                 M[2] = tem[1];
             }
-            else {
-                M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
-            }
+            M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
             return M;
         };
         /**

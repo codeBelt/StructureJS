@@ -302,6 +302,23 @@
             });
         };
         /**
+         * Returns a new array with duplicates removed.
+         *
+         * @method unique
+         * @param list {Array.<any>} The array you want to use to generate the unique array.
+         * @return {Array<any>} Returns a new array list of unique items.
+         * @protected
+         */
+        Util.unique = function (list) {
+            var uniqueList = list.reduce(function (previousValue, currentValue) {
+                if (previousValue.indexOf(currentValue) === -1) {
+                    previousValue.push(currentValue);
+                }
+                return previousValue;
+            }, []);
+            return uniqueList;
+        };
+        /**
          * Keeps track of the count for the uniqueId method.
          *
          * @property _idCounter
