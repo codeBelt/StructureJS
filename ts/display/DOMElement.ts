@@ -221,7 +221,7 @@ class DOMElement extends DisplayObjectContainer
      * @method create
      * @param type [string=div] The HTML tag you want to create or the id/class selector of the template or the pre-compiled path to a template.
      * @param params [any=null] Any data you would like to pass into the jQuery element or template that is being created.
-     * @returns {DOMElement} Returns an instance of itself.
+     * @returns {any} Returns an instance of itself.
      * @public
      * @chainable
      * @example
@@ -317,7 +317,7 @@ class DOMElement extends DisplayObjectContainer
      * @overridden DisplayObjectContainer.addChild
      * @method addChild
      * @param child {DOMElement} The DOMElement instance to add as a child of this object instance.
-     * @returns {DOMElement} Returns an instance of itself.
+     * @returns {any} Returns an instance of itself.
      * @chainable
      * @example
      *     container.addChild(domElementInstance);
@@ -594,7 +594,7 @@ class DOMElement extends DisplayObjectContainer
      *
      * @method removeChild
      * @param child {DOMElement} The DisplayObjectContainer instance to remove.
-     * @returns {DOMElement} Returns an instance of itself.
+     * @returns {any} Returns an instance of itself.
      * @override
      * @public
      * @chainable

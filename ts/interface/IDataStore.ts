@@ -11,7 +11,6 @@ import IEventDispatcher = require('./IEventDispatcher');
  */
 interface IDataStore extends IEventDispatcher
 {
-
     /**
      * @property data
      */
@@ -31,6 +30,7 @@ interface IDataStore extends IEventDispatcher
      * @method load
      */
     load():any;
+
 }
 
 export = IDataStore;

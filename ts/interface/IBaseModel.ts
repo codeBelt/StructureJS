@@ -1,37 +1,41 @@
+import IBaseObject = require('./IBaseObject');
+
 /**
  * TODO: YUIDoc_comment
  *
  * @class IBaseModel
+ * @extends IBaseObject
  * @module StructureJS
  * @submodule interface
  * @interface
  */
-interface IBaseModel
+interface IBaseModel extends IBaseObject
 {
     /**
-     * @method clone
+     * @method update
      */
-    clone():Object;
+    update(data: any): any;
 
     /**
      * @method toJSON
      */
-    toJSON():any;
+    toJSON(): any;
 
     /**
      * @method toJSONString
      */
-    toJSONString():string
+    toJSONString(): string;
 
     /**
      * @method fromJSON
      */
-    fromJSON(json:Object):any;
+    fromJSON(json: string): any;
 
     /**
-     * @method destroy
+     * @method clone
      */
-    destroy():void;
+    clone(): IBaseModel;
+
 }
 
 export = IBaseModel;

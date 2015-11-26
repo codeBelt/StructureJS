@@ -178,15 +178,15 @@ class BaseModel extends BaseObject implements IBaseModel
     }
 
     /**
-     * Converts the  Base Model data into a JSON object and deletes the sjsId property.
+     * Converts the Base Model data into a JSON object and deletes the sjsId property.
      *
      * @method toJSON
-     * @returns {BaseModel}
+     * @returns {any}
      * @public
      * @example
      *     var obj = carModel.toJSON();
      */
-    public toJSON():BaseModel
+    public toJSON():any
     {
         var clone:any = Util.clone(this);
         return Util.deletePropertyFromObject(clone, ['sjsId']);
