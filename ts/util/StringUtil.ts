@@ -168,18 +168,18 @@ class StringUtil
      *
      * @method queryStringToObject
      * @param queryString {string}
-     * @param [useParseFloat=true] {boolean}
+     * @param [useParseFloat=false] {boolean} If true converts strings to numbers.
      * @returns {Object|Null}
      * @public
      * @static
      * @example
      *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');
-     *      // {name: 'Robert', age: 23, gender: 'male'}
-     *
-     *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
      *      // {name: 'Robert', age: '23', gender: 'male'}
+     *
+     *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', true);
+     *      // {name: 'Robert', age: 23, gender: 'male'}
      */
-    public static queryStringToObject(queryString:string, useParseFloat:boolean = true):any
+    public static queryStringToObject(queryString:string, useParseFloat:boolean = false):any
     {
         let params:any = {};
         let temp:any = null;
