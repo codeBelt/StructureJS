@@ -121,11 +121,11 @@ class Route
      */
     protected _routePatternToRegexp(routePattern):RegExp
     {
-        let findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
-        let findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
-        let findRequiredBrackets:RegExp = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
-        let optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
-        let optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
+        const findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
+        const findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
+        const findRequiredBrackets:RegExp = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+        const optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
+        const optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
 
         // Remove first and last forward slash.
         routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
@@ -155,7 +155,7 @@ class Route
     public match(route):Array<any>
     {
         // Remove the query string before matching against the route pattern.
-        let routeWithoutQueryString:string = route.replace(/\?.*/, '');
+        const routeWithoutQueryString:string = route.replace(/\?.*/, '');
 
         return routeWithoutQueryString.match(this.regex);
     }

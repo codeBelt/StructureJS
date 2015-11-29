@@ -1,6 +1,6 @@
 import $ = require('jquery');
 
-let $eventListener = $;
+const $eventListener = $;
 
 /**
  * A bind polyfill for browsers that don't support the bind method.

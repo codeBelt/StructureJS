@@ -83,9 +83,9 @@ class Collection extends EventDispatcher
     public add(model:any, silent:boolean = false):any
     {
         // If the model passed in is not an array then make it.
-        let models:any = (model instanceof Array) ? model : [model];
+        const models:any = (model instanceof Array) ? model : [model];
 
-        let len:number = models.length;
+        const len:number = models.length;
         for (let i:number = 0; i < len; i++)
         {
             // Only add the model if it does not exist in the the collection.
@@ -133,7 +133,7 @@ class Collection extends EventDispatcher
     public remove(model:any, silent:boolean = false):any
     {
         // If the model passed in is not an array then make it.
-        let models:any = (model instanceof Array) ? model : [model];
+        const models:any = (model instanceof Array) ? model : [model];
 
         for (let i:number = models.length - 1; i >= 0; i--)
         {
@@ -230,9 +230,9 @@ class Collection extends EventDispatcher
     public findBy(arg:any):Array<any>
     {
         // If properties is not an array then make it an array object.
-        let list:Array<any> = (arg instanceof Array) ? arg : [arg];
+        const list:Array<any> = (arg instanceof Array) ? arg : [arg];
         let foundItems:Array<any> = [];
-        let len:number = list.length;
+        const len:number = list.length;
         let prop:any;
 
         for (let i:number = 0; i < len; i++)
@@ -266,10 +266,10 @@ class Collection extends EventDispatcher
     protected _where(propList:any):Array<any>
     {
         // If properties is not an array then make it an array object.
-        let list:Array<any> = (propList instanceof Array) ? propList : [propList];
-        let foundItems:Array<any> = [];
-        let itemsLength:number = this.models.length;
-        let itemsToFindLength:number = list.length;
+        const list:Array<any> = (propList instanceof Array) ? propList : [propList];
+        const foundItems:Array<any> = [];
+        const itemsLength:number = this.models.length;
+        const itemsToFindLength:number = list.length;
         let hasMatchingProperty:boolean = false;
         let doesModelMatch:boolean = false;
         let model:any;
@@ -323,10 +323,10 @@ class Collection extends EventDispatcher
     protected _findPropertyValue(arg):Array<any>
     {
         // If properties is not an array then make it an array object.
-        let list = (arg instanceof Array) ? arg : [arg];
-        let foundItems:Array<any> = [];
-        let itemsLength:number = this.models.length;
-        let itemsToFindLength:number = list.length;
+        const list = (arg instanceof Array) ? arg : [arg];
+        const foundItems:Array<any> = [];
+        const itemsLength:number = this.models.length;
+        const itemsToFindLength:number = list.length;
         let propertyValue:any;
         let value:any;
         let model:any;
@@ -397,7 +397,7 @@ class Collection extends EventDispatcher
      */
     public clone():Collection
     {
-        let clonedBaseModel:Collection = new (<any>this).constructor(this._modelType);
+        const clonedBaseModel:Collection = new (<any>this).constructor(this._modelType);
         clonedBaseModel.add(this.models.slice(0));
 
         return clonedBaseModel;
@@ -416,8 +416,8 @@ class Collection extends EventDispatcher
     {
         if (this._modelType !== null)
         {
-            let list:Array<any> = [];
-            let len:number = this.length;
+            const list:Array<any> = [];
+            const len:number = this.length;
 
             for (let i:number = 0; i < len; i++)
             {
@@ -458,7 +458,7 @@ class Collection extends EventDispatcher
      */
     public fromJSON(json):any
     {
-        let parsedData:any = JSON.parse(json);
+        const parsedData:any = JSON.parse(json);
 
         this.add(parsedData);
 

@@ -149,19 +149,19 @@
          *
          * @method queryStringToObject
          * @param queryString {string}
-         * @param [useParseFloat=true] {boolean}
+         * @param [useParseFloat=false] {boolean} If true converts strings to numbers.
          * @returns {Object|Null}
          * @public
          * @static
          * @example
          *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');
-         *      // {name: 'Robert', age: 23, gender: 'male'}
-         *
-         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
          *      // {name: 'Robert', age: '23', gender: 'male'}
+         *
+         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', true);
+         *      // {name: 'Robert', age: 23, gender: 'male'}
          */
         StringUtil.queryStringToObject = function (queryString, useParseFloat) {
-            if (useParseFloat === void 0) { useParseFloat = true; }
+            if (useParseFloat === void 0) { useParseFloat = false; }
             var params = {};
             var temp = null;
             var str = queryString.substring(queryString.indexOf('?') + 1);

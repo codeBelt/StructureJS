@@ -77,10 +77,10 @@ class TemplateFactory
     public static create(templatePath:any, data:any = null):string
     {
         //Checks the first character to see if it is a '.' or '#'.
-        let regex = /^([.#])(.+)/;
+        const regex = /^([.#])(.+)/;
         let template:string = null;
-        let isFunctionTemplate = typeof templatePath === 'function';
-        let isClassOrIdName:boolean = regex.test(templatePath);
+        const isFunctionTemplate = typeof templatePath === 'function';
+        const isClassOrIdName:boolean = regex.test(templatePath);
 
         if (isFunctionTemplate)
         {
@@ -96,26 +96,26 @@ class TemplateFactory
             if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE)
             {
                 // Underscore Template:
-                let templateMethod:Function = window['_'].template(htmlString);
+                const templateMethod:Function = window['_'].template(htmlString);
                 template = templateMethod(data);
             }
             else
             {
                 // Handlebars Template
-                let templateMethod:Function = Handlebars.compile(htmlString);
+                const templateMethod:Function = Handlebars.compile(htmlString);
                 template = templateMethod(data);
             }
         }
         else
         {
-            let templateObj:Object = window[TemplateFactory.templateNamespace];
+            const templateObj:Object = window[TemplateFactory.templateNamespace];
             if (!templateObj)
             {
                 // Returns null because the template namespace is not found.
                 return null;
             }
 
-            let templateFunction:Function = templateObj[templatePath];
+            const templateFunction:Function = templateObj[templatePath];
             if (templateFunction)
             {
                 // The templatePath gets a function storage in the associative array.

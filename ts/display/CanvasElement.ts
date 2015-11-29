@@ -141,8 +141,8 @@ class CanvasElement extends DOMElement
      */
     public swapChildren(child1:DisplayObject, child2:DisplayObject):any
     {
-        let child1Index = this.children.indexOf(child1);
-        let child2Index = this.children.indexOf(child2);
+        const child1Index = this.children.indexOf(child1);
+        const child2Index = this.children.indexOf(child2);
 
         this.addChildAt(child1, child2Index);
         this.addChildAt(child2, child1Index);
@@ -163,7 +163,7 @@ class CanvasElement extends DOMElement
      */
     public removeChild(child:DisplayObject, destroy:boolean = true):any
     {
-        let index = this.getChildIndex(child);
+        const index = this.getChildIndex(child);
         if (index !== -1)
         {
             // Removes the child object from the parent.
@@ -223,7 +223,7 @@ class CanvasElement extends DOMElement
 
     public getMousePos(event:MouseEvent|JQueryEventObject):Point
     {
-        let rect = this.canvas.getBoundingClientRect();
+        const rect = this.canvas.getBoundingClientRect();
 
         return new Point(event.clientX - rect.left, event.clientY - rect.top);
     }
@@ -251,7 +251,7 @@ class CanvasElement extends DOMElement
 
     public getObjectsUnderPoint(x:number, y:number):Array<DisplayObject>
     {
-        let list:Array<DisplayObject> = [];
+        const list:Array<DisplayObject> = [];
         let sprite:DisplayObject;
 
         for (let i = this.numChildren - 1; i >= 0; i--)
@@ -289,7 +289,7 @@ class CanvasElement extends DOMElement
 
     protected _onPointerMove(event:MouseEvent|JQueryEventObject):void
     {
-        let displayObject:DisplayObject = this._sendEvent(event);
+        const displayObject:DisplayObject = this._sendEvent(event);
 
         if (displayObject != null && displayObject.useHandCursor === true && displayObject.visible === true)
         {
@@ -309,7 +309,7 @@ class CanvasElement extends DOMElement
 
     protected _sendEvent(event:MouseEvent|JQueryEventObject):DisplayObject
     {
-        let mousePos:Point = this.getMousePos(event);
+        const mousePos:Point = this.getMousePos(event);
         let displayObject:DisplayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
 
         if (displayObject === null)

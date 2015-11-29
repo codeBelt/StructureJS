@@ -43,7 +43,7 @@ class BulkLoader extends EventDispatcher
             key = String(dataStore.sjsId);
         }
 
-        let model = {
+        const model = {
             key: key,
             value: dataStore
         };
@@ -60,7 +60,7 @@ class BulkLoader extends EventDispatcher
      */
     public getFile(key:string):IDataStore
     {
-        let model = this._dataStores.findBy({key: key})[0];
+        const model = this._dataStores.findBy({key: key})[0];
         return model.value;
     }
 
@@ -74,7 +74,7 @@ class BulkLoader extends EventDispatcher
      */
     public getImage(key:string):HTMLImageElement
     {
-        let imageLoader:IDataStore = this.getFile(key);
+        const imageLoader:IDataStore = this.getFile(key);
         return (imageLoader !== null) ? imageLoader.data : null;
     }
 
@@ -153,7 +153,7 @@ class BulkLoader extends EventDispatcher
         }
 
         let model;
-        let dataStoreList = [];
+        const dataStoreList = [];
         for (let i:number = 0; i < this._dataStores.length; i++)
         {
             model = this._dataStores.get(i);

@@ -109,8 +109,8 @@ class NetworkMonitor
      */
     private static _onNetworkMonitorEvent(event):void
     {
-        let type:string = (event) ? event.type : NetworkMonitor.getStatus();
-        let networkMonitorEvent:NetworkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
+        const type:string = (event) ? event.type : NetworkMonitor.getStatus();
+        const networkMonitorEvent:NetworkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
         NetworkMonitor.dispatchEvent(networkMonitorEvent);
     }
 

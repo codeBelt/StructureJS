@@ -41,7 +41,7 @@ class Util
      */
     public static uniqueId(prefix:string = null):any
     {
-        let id:number = ++Util._idCounter;
+        const id:number = ++Util._idCounter;
 
         if (prefix != null)
         {
@@ -72,7 +72,7 @@ class Util
     public static deletePropertyFromObject(object:any, value:any):any
     {
         // If properties is not an array then make it an array object.
-        let list:any = (value instanceof Array) ? value : [value];
+        const list:any = (value instanceof Array) ? value : [value];
 
         // Loop through the object properties.
         for (let key in object)
@@ -173,7 +173,7 @@ class Util
         // Handle Date
         if (obj instanceof Date)
         {
-            let date:Date = new Date();
+            const date:Date = new Date();
             date.setTime(obj.getTime());
             return date;
         }
@@ -181,7 +181,7 @@ class Util
         // Handle Array
         if (obj instanceof Array)
         {
-            let array:Array<any> = [];
+            const array:Array<any> = [];
             for (let i = 0, len = obj.length; i < len; i++)
             {
                 array[i] = Util.clone(obj[i]);
@@ -226,7 +226,7 @@ class Util
      */
     public static toBoolean(strNum:any):boolean
     {
-        let value:any = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
+        const value:any = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
         return (value > 0 || value == 'true' || value == 'yes');
     }
@@ -247,19 +247,19 @@ class Util
      */
     public static getName(classObject:any):string
     {
-        let type:string = typeof classObject;
+        const type:string = typeof classObject;
         let value:string;
-        let funcNameRegex:RegExp = /function ([^\(]+)/;
+        const funcNameRegex:RegExp = /function ([^\(]+)/;
 
         if (type === 'object') {
             // Gets the name of the object.
-            let results:RegExpExecArray = (<any>classObject).constructor.toString().match(funcNameRegex);
+            const results:RegExpExecArray = (<any>classObject).constructor.toString().match(funcNameRegex);
             value = results[1];
         } else {
             // This else code is mainly for Internet Explore.
-            let isFunction:boolean = (type === 'function');
+            const isFunction:boolean = (type === 'function');
             // TODO: figure out how to explain this
-            let name:any = isFunction && ((classObject.name && ['', classObject.name]) || (<any>classObject).toString().match(funcNameRegex));
+            const name:any = isFunction && ((classObject.name && ['', classObject.name]) || (<any>classObject).toString().match(funcNameRegex));
 
             if (isFunction === false) {
                 value = type;
@@ -375,7 +375,7 @@ class Util
      */
     public static unique(list:Array<any>):Array<any>
     {
-        let uniqueList:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
+        const uniqueList:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
         {
             if (previousValue.indexOf(currentValue) === -1)
             {

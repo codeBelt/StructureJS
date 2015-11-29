@@ -148,7 +148,7 @@ class BrowserUtil
      */
     public static browserVersion(majorVersion:boolean = true):any
     {
-        let version:string = BrowserUtil.getBrowser()[1];
+        const version:string = BrowserUtil.getBrowser()[1];
 
         if (majorVersion === true)
         {
@@ -173,9 +173,9 @@ class BrowserUtil
      */
     public static getBrowser():Array<string>
     {
-        let N = navigator.appName;
-        let ua = navigator.userAgent;
-        let tem = ua.match(/version\/([\.\d]+)/i);
+        const N = navigator.appName;
+        const ua = navigator.userAgent;
+        const tem = ua.match(/version\/([\.\d]+)/i);
         let M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
 
         if (M && tem != null)

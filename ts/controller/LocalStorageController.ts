@@ -145,8 +145,8 @@ class LocalStorageController extends EventDispatcher
      */
     public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
-        let list:Array<any> = [];
-        let length:number = this.getLength();
+        const list:Array<any> = [];
+        const length:number = this.getLength();
         for (let i:number = 0; i < length; i++)
         {
             let key:string = this._localStorage.key(i);
@@ -172,8 +172,8 @@ class LocalStorageController extends EventDispatcher
      */
     public getAllItems():Array<any>
     {
-        let list:Array<any> = [];
-        let length:number = this.getLength();
+        const list:Array<any> = [];
+        const length:number = this.getLength();
         for (let i:number = 0; i < length; i++)
         {
             let key:string = this._localStorage.key(i);
