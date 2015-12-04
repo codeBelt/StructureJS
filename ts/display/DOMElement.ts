@@ -66,6 +66,8 @@ import jQuery = require('../plugin/jquery.eventListener');
  *          }
  *
  *          destroy() {
+ *              this.disable();
+ *
  *              // Destroy the child objects and references in this parent class to prevent memory leaks.
  *
  *              super.destroy();
@@ -109,6 +111,8 @@ import jQuery = require('../plugin/jquery.eventListener');
  *          }
  *
  *          destroy() {
+ *              this.disable();
+ *
  *              // Destroy the child objects and references in this parent class to prepare for garbage collection.
  *
  *              super.destroy();

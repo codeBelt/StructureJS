@@ -49,6 +49,8 @@ import DOMElement = require('./DOMElement');
  *             }
  *
  *             destroy() {
+ *                 this.disable();
+ *
  *                 // Destroy the child objects and references in this parent class to prepare for garbage collection.
  *
  *                 super.destroy();
