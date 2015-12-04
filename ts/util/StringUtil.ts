@@ -246,7 +246,6 @@ class StringUtil
      * @method truncate
      * @param text {string}
      * @param length {int}
-     * @param indicator {string}
      * @returns {string}
      * @public
      * @static
@@ -254,7 +253,7 @@ class StringUtil
      *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
      *      // 'Robert is cool...'
      */
-    public static truncate(text:string, length:number, indicator:string = '...'):string
+    public static truncate(text:string, length:number):string
     {
         if (text.length <= length)
         {
@@ -262,7 +261,7 @@ class StringUtil
         }
         else
         {
-            return text.substr(0, length) + indicator;
+            return text.substr(0, length) + '...';
         }
     }
 
