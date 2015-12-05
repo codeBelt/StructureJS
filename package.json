@@ -13,6 +13,8 @@
     "grunt-contrib-uglify": "^0.11.0",
     "grunt-contrib-yuidoc": "0.5.2",
     "grunt-ts": "^5.2.0",
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.9.2",
     "matchdep": "^1.0.0",
     "typescript": "^1.6.2"
   }
