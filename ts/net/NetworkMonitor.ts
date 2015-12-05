@@ -3,7 +3,7 @@ import NetworkMonitorEvent = require('../event/NetworkMonitorEvent');
 import NavigatorEvents = require('../event/native/NavigatorEvents');
 
 /**
- * TODO: YUIDoc_comment
+ * A helper class to detect network changes.
  *
  * @class NetworkMonitor
  * @constructor
@@ -26,7 +26,7 @@ class NetworkMonitor
     private static _eventDispatcher:EventDispatcher = new EventDispatcher();
 
     /**
-     * TODO: YUIDoc_comment
+     * A flag to determine if this class has already been initialized.
      *
      * @property _initialized
      * @type {boolean}
@@ -40,34 +40,6 @@ class NetworkMonitor
     }
 
     /**
-     * Adds the necessary event listeners to listen for the 'online' and 'offline' events.
-     * Also dispatches a {{#crossLink "NetworkMonitorEvent"}}{{/crossLink}} right away with the status of the network connection.
-     * It is recommended you call NetworkMonitor.start(); when your application starts up.
-     * @example
-     *      NetworkMonitor.start();
-     * @method start
-     * @static
-     * @public
-     */
-    public static start():void
-    {
-        if (NetworkMonitor._initialized === true)
-        {
-            return;
-        }
-        else
-        {
-            NetworkMonitor._initialized = true;
-        }
-
-        window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor._onNetworkMonitorEvent, false);
-        window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor._onNetworkMonitorEvent, false);
-
-        NetworkMonitor._onNetworkMonitorEvent(null);
-    }
-
-
-    /**
      * Returns the online status of the browser. The property returns a boolean value, with true for being online and false for being offline.
      * @example
      *      NetworkMonitor.connected();
@@ -78,8 +50,8 @@ class NetworkMonitor
      */
     public static connected():boolean
     {
-        // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
-        NetworkMonitor.start();
+        NetworkMonitor._start();
+
         return window.navigator.onLine;
     }
 
@@ -94,24 +66,9 @@ class NetworkMonitor
      */
     public static getStatus():string
     {
-        // Calling start as a backup if the developer forgets to call NetworkMonitor.start() at the startup of the application.
-        NetworkMonitor.start();
-        return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
-    }
+        NetworkMonitor._start();
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @method _onNetworkMonitorEvent
-     * @param event
-     * @private
-     * @static
-     */
-    private static _onNetworkMonitorEvent(event):void
-    {
-        const type:string = (event) ? event.type : NetworkMonitor.getStatus();
-        const networkMonitorEvent:NetworkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
-        NetworkMonitor.dispatchEvent(networkMonitorEvent);
+        return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
     }
 
     /**
@@ -131,6 +88,8 @@ class NetworkMonitor
      */
     public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):void
     {
+        NetworkMonitor._start();
+
         NetworkMonitor._eventDispatcher.addEventListener(type, callback, scope, priority);
     }
 
@@ -155,14 +114,52 @@ class NetworkMonitor
     }
 
     /**
+     * Adds the necessary event listeners to listen for the 'online' and 'offline' events.
+     *
+     * @method _start
+     * @static
+     * @private
+     */
+    private static _start():void
+    {
+        if (NetworkMonitor._initialized === true)
+        {
+            return;
+        }
+        else
+        {
+            NetworkMonitor._initialized = true;
+        }
+
+        window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor._onNetworkMonitorEvent, false);
+        window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor._onNetworkMonitorEvent, false);
+    }
+
+    /**
+     * An event handler method when the native Window 'online' and 'offline' events are triggered.
+     *
+     * @method _onNetworkMonitorEvent
+     * @param event
+     * @private
+     * @static
+     */
+    private static _onNetworkMonitorEvent(event):void
+    {
+        const type:string = (event) ? event.type : NetworkMonitor.getStatus();
+        const networkMonitorEvent:NetworkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
+
+        NetworkMonitor._dispatchEvent(networkMonitorEvent);
+    }
+
+    /**
      * <p>Dispatches an event within the NetworkMonitorEvent object.</p>
-     * @method dispatchEvent
+     * @method _dispatchEvent
      * @param event {NetworkMonitorEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
      * extend the {{#crossLink "NetworkMonitorEvent"}}{{/crossLink}}.
      * @static
      * @private
      */
-    private static dispatchEvent(event:NetworkMonitorEvent):void
+    private static _dispatchEvent(event:NetworkMonitorEvent):void
     {
         NetworkMonitor._eventDispatcher.dispatchEvent(event);
     }

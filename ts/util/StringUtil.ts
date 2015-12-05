@@ -253,6 +253,9 @@ class StringUtil
      * @example
      *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
      *      // 'Robert is cool...'
+     *
+     *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14, '!!!'));
+     *      // 'Robert is cool!!!'
      */
     public static truncate(text:string, length:number, indicator:string = '...'):string
     {
