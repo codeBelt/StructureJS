@@ -129,6 +129,7 @@ class ExampleView extends DOMElement {
     }
     
     destroy() {
+        this.disable();
         // Call destroy on any child objects.
         // This super method will also null out your properties for garbage collection.
         super.destroy();
@@ -254,7 +255,7 @@ _onClickHandler(event) {
 
 ## Release History
 
- * ??????????? v0.9.2 Allow a custom indicator with StringUtil.truncate(). Update ide-snippets. Made the start method private in NetworkMonitor.
+ * 2015-12-05 v0.9.2 Allow a custom indicator with StringUtil.truncate(). Update ide-snippets. Made the start method private in NetworkMonitor.
  
   * 2015-11-25 v0.9.1 Add Router.getCurrentRoute, Add Util.unique, Fix BrowserUtil.getBrowser and make public. Update docs to ES6/Typescript. Rename all private and protected method to have an underscore in front.
 

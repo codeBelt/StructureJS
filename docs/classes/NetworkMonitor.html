@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.2</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -174,7 +174,7 @@
 
 
 <div class="box intro">
-    <p>TODO: YUIDoc_comment</p>
+    <p>A helper class to detect network changes.</p>
 
 </div>
 
@@ -257,7 +257,25 @@
 
             
                 <li class="index-item method private">
+                    <a href="#method__dispatchEvent">_dispatchEvent</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
                     <a href="#method__onNetworkMonitorEvent">_onNetworkMonitorEvent</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__start">_start</a>
 
                     
                         <span class="flag static">static</span>
@@ -283,15 +301,6 @@
                     
                 </li>
             
-                <li class="index-item method private">
-                    <a href="#method_dispatchEvent">dispatchEvent</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
                 <li class="index-item method public">
                     <a href="#method_getStatus">getStatus</a>
 
@@ -303,15 +312,6 @@
             
                 <li class="index-item method public">
                     <a href="#method_removeEventListener">removeEventListener</a>
-
-                    
-                        <span class="flag static">static</span>
-                    
-                    
-                </li>
-            
-                <li class="index-item method public">
-                    <a href="#method_start">start</a>
 
                     
                         <span class="flag static">static</span>
@@ -364,7 +364,7 @@
             
         
         
-        <a href="../files/js_net_NetworkMonitor.js.html#l137"><code>js&#x2F;net&#x2F;NetworkMonitor.js:137</code></a>
+        <a href="../files/js_net_NetworkMonitor.js.html#l132"><code>js&#x2F;net&#x2F;NetworkMonitor.js:132</code></a>
         
         </p>
 
@@ -416,7 +416,7 @@
             
         
         
-        <a href="../files/js_net_NetworkMonitor.js.html#l146"><code>js&#x2F;net&#x2F;NetworkMonitor.js:146</code></a>
+        <a href="../files/js_net_NetworkMonitor.js.html#l141"><code>js&#x2F;net&#x2F;NetworkMonitor.js:141</code></a>
         
         </p>
 
@@ -427,7 +427,7 @@
 
     <div class="extended-detail">
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>A flag to determine if this class has already been initialized.</p>
 
         </div>
 
@@ -522,6 +522,105 @@
         <h2>Methods</h2>
 
         
+            <a name="method__dispatchEvent" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_dispatchEvent</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_net_NetworkMonitor.js.html#l121"><code>js&#x2F;net&#x2F;NetworkMonitor.js:121</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Dispatches an event within the NetworkMonitorEvent object.</p>
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type"><a href="../classes/NetworkMonitorEvent.html" class="crosslink">NetworkMonitorEvent</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
+extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">NetworkMonitorEvent</a>.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="method__onNetworkMonitorEvent" class="anchor-link"></a>
 <div class="method item private">
     <h3 class="name"><code>_onNetworkMonitorEvent</code>
@@ -571,7 +670,7 @@
             
         
         
-        <a href="../files/js_net_NetworkMonitor.js.html#l76"><code>js&#x2F;net&#x2F;NetworkMonitor.js:76</code></a>
+        <a href="../files/js_net_NetworkMonitor.js.html#l108"><code>js&#x2F;net&#x2F;NetworkMonitor.js:108</code></a>
         
         </p>
 
@@ -584,7 +683,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>An event handler method when the native Window &#39;online&#39; and &#39;offline&#39; events are triggered.</p>
 
         </div>
 
@@ -611,6 +710,71 @@
                 
                 </ul>
             </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__start" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_start</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_net_NetworkMonitor.js.html#l91"><code>js&#x2F;net&#x2F;NetworkMonitor.js:91</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Adds the necessary event listeners to listen for the &#39;online&#39; and &#39;offline&#39; events.</p>
+
+        </div>
+
         
 
         
@@ -687,7 +851,7 @@
             
         
         
-        <a href="../files/js_net_NetworkMonitor.js.html#l89"><code>js&#x2F;net&#x2F;NetworkMonitor.js:89</code></a>
+        <a href="../files/js_net_NetworkMonitor.js.html#l53"><code>js&#x2F;net&#x2F;NetworkMonitor.js:53</code></a>
         
         </p>
 
@@ -841,7 +1005,7 @@
             
         
         
-        <a href="../files/js_net_NetworkMonitor.js.html#l48"><code>js&#x2F;net&#x2F;NetworkMonitor.js:48</code></a>
+        <a href="../files/js_net_NetworkMonitor.js.html#l27"><code>js&#x2F;net&#x2F;NetworkMonitor.js:27</code></a>
         
         </p>
 
@@ -883,105 +1047,6 @@
 
                 </div>
             </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_dispatchEvent" class="anchor-link"></a>
-<div class="method item private">
-    <h3 class="name"><code>dispatchEvent</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>event</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_net_NetworkMonitor.js.html#l126"><code>js&#x2F;net&#x2F;NetworkMonitor.js:126</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Dispatches an event within the NetworkMonitorEvent object.</p>
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">event</code>
-                            <span class="type"><a href="../classes/NetworkMonitorEvent.html" class="crosslink">NetworkMonitorEvent</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                            <p>The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
-extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">NetworkMonitorEvent</a>.</p>
-
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
         
     </div>
 </div>
@@ -1030,7 +1095,7 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
             
         
         
-        <a href="../files/js_net_NetworkMonitor.js.html#l62"><code>js&#x2F;net&#x2F;NetworkMonitor.js:62</code></a>
+        <a href="../files/js_net_NetworkMonitor.js.html#l40"><code>js&#x2F;net&#x2F;NetworkMonitor.js:40</code></a>
         
         </p>
 
@@ -1140,7 +1205,7 @@ extend the <a href="../classes/NetworkMonitorEvent.html" class="crosslink">Netwo
             
         
         
-        <a href="../files/js_net_NetworkMonitor.js.html#l108"><code>js&#x2F;net&#x2F;NetworkMonitor.js:108</code></a>
+        <a href="../files/js_net_NetworkMonitor.js.html#l73"><code>js&#x2F;net&#x2F;NetworkMonitor.js:73</code></a>
         
         </p>
 
@@ -1227,82 +1292,6 @@ To keep things consistent this parameter is required.</p>
  _handlerMethod(event) {
      console.log(event.status, event.connected);
  }</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_start" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>start</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_net_NetworkMonitor.js.html#l27"><code>js&#x2F;net&#x2F;NetworkMonitor.js:27</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>Adds the necessary event listeners to listen for the &#39;online&#39; and &#39;offline&#39; events.
-Also dispatches a <a href="../classes/NetworkMonitorEvent.html" class="crosslink">NetworkMonitorEvent</a> right away with the status of the network connection.
-It is recommended you call NetworkMonitor.start(); when your application starts up.</p>
-
-        </div>
-
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code> NetworkMonitor.start();</code></pre>
 
                 </div>
             </div>

@@ -67,6 +67,8 @@
          * @public
          * @example
          *     destroy() {
+         *          this.disable();
+         *
          *          this._childInstance.destroy();
          *
          *          super.destroy();

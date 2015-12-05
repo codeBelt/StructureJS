@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.9.1",
+        "version": "0.9.2",
         "url": ""
     },
     "files": {
@@ -680,7 +680,7 @@
             "is_constructor": 1,
             "author": "Robert S. (www.codeBelt.com)",
             "example": [
-                "\n    // Example: Using DOMElement without extending it.\n    let aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example: A view passing in a jQuery object.\n    let view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example: A view extending DOMElement while passing in a jQuery object.\n    class ClassName extends DOMElement {\n\n         constructor($element) {\n             super($element);\n         }\n\n         create() {\n             super.create();\n\n             // Create and add your child objects to this parent class.\n         }\n\n         enable() {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return super.enable();\n         }\n\n         disable() {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return super.disable();\n         }\n\n         layout() {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         }\n\n         destroy() {\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             super.destroy();\n         }\n\n    }\n\n    // Example: A view extending DOMElement with a precompiled JavaScript template reference passed in.\n    class ClassName extends DOMElement {\n\n         constructor() {\n             _super();\n         }\n\n         create() {\n             super.create('templates/home/homeTemplate', {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         }\n\n         enable() {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return super.enable();\n         }\n\n         disable() {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return super.disable();\n         }\n\n         layout() {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         }\n\n         destroy() {\n             // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n             super.destroy();\n         }\n\n    }"
+                "\n    // Example: Using DOMElement without extending it.\n    let aLink = new DOMElement('a', {text: 'Google', href: 'http://www.google.com', 'class': 'externalLink'});\n    this.addChild(aLink);\n\n    // Example: A view passing in a jQuery object.\n    let view = new CustomView($('.selector'));\n    this.addChild(view);\n\n    // Example: A view extending DOMElement while passing in a jQuery object.\n    class ClassName extends DOMElement {\n\n         constructor($element) {\n             super($element);\n         }\n\n         create() {\n             super.create();\n\n             // Create and add your child objects to this parent class.\n         }\n\n         enable() {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return super.enable();\n         }\n\n         disable() {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return super.disable();\n         }\n\n         layout() {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         }\n\n         destroy() {\n             this.disable();\n\n             // Destroy the child objects and references in this parent class to prevent memory leaks.\n\n             super.destroy();\n         }\n\n    }\n\n    // Example: A view extending DOMElement with a precompiled JavaScript template reference passed in.\n    class ClassName extends DOMElement {\n\n         constructor() {\n             _super();\n         }\n\n         create() {\n             super.create('templates/home/homeTemplate', {data: 'some data'});\n\n             // Create and add your child objects to this parent class.\n         }\n\n         enable() {\n             if (this.isEnabled === true) { return this; }\n\n             // Enable the child objects and add any event listeners.\n\n             return super.enable();\n         }\n\n         disable() {\n             if (this.isEnabled === false) { return this; }\n\n             // Disable the child objects and remove any event listeners.\n\n             return super.disable();\n         }\n\n         layout() {\n             // Layout or update the child objects in this parent class.\n\n             return this;\n         }\n\n         destroy() {\n             this.disable();\n\n             // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n             super.destroy();\n         }\n\n    }"
             ]
         },
         "DisplayObject": {
@@ -750,7 +750,7 @@
                 "jQuery"
             ],
             "example": [
-                "\n    // This example illustrates how to setup your main application or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n        class MainClass extends Stage {\n\n            constructor() {\n                super();\n            }\n\n            create() {\n                super.create();\n\n                // Create and add your child objects to this parent class.\n            }\n\n            layout() {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            enable() {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return super.enable();\n            }\n\n            disable() {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return super.disable();\n            }\n\n            destroy() {\n                // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n                super.destroy();\n            }\n\n        }\n\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiate your main application or root class.\n\n     let app = new MainClass();\n     app.appendTo('body');\n"
+                "\n    // This example illustrates how to setup your main application or root class when extending the {{#crossLink \"Stage\"}}{{/crossLink}} class.\n        class MainClass extends Stage {\n\n            constructor() {\n                super();\n            }\n\n            create() {\n                super.create();\n\n                // Create and add your child objects to this parent class.\n            }\n\n            layout() {\n                // Layout or update the child objects in this parent class.\n\n                return this;\n            }\n\n            enable() {\n                if (this.isEnabled === true) { return this };\n\n                // Enable the child objects and add any event listeners.\n\n                return super.enable();\n            }\n\n            disable() {\n                if (this.isEnabled === false) { return this };\n\n                // Disable the child objects and remove any event listeners.\n\n                return super.disable();\n            }\n\n            destroy() {\n                this.disable();\n\n                // Destroy the child objects and references in this parent class to prepare for garbage collection.\n\n                super.destroy();\n            }\n\n        }\n\n\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiate your main application or root class.\n\n     let app = new MainClass();\n     app.appendTo('body');\n"
             ]
         },
         "ApplicationCacheEvent": {
@@ -1334,7 +1334,7 @@
             "namespace": "",
             "file": "js/net/NetworkMonitor.js",
             "line": 12,
-            "description": "TODO: YUIDoc_comment",
+            "description": "A helper class to detect network changes.",
             "is_constructor": 1,
             "requires": [
                 "EventDispatcher",
@@ -2192,14 +2192,6 @@
         {
             "file": "js/controller/LocalStorageController.js",
             "line": 217,
-            "overridden": "EventDispatcher.destroy",
-            "class": "LocalStorageController",
-            "module": "StructureJS",
-            "submodule": "controller"
-        },
-        {
-            "file": "js/controller/LocalStorageController.js",
-            "line": 223,
             "itemtype": "method",
             "name": "_onLocalStorageEvent",
             "params": [
@@ -2777,7 +2769,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 137,
+            "line": 141,
             "description": "Tracks number of times an element's width has been checked\nin order to determine if the element has been added\nto the DOM.",
             "itemtype": "property",
             "name": "checkCount",
@@ -2790,7 +2782,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 147,
+            "line": 151,
             "description": "A cached reference to the DOM Element",
             "itemtype": "property",
             "name": "element",
@@ -2804,7 +2796,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 156,
+            "line": 160,
             "description": "A cached reference to the jQuery DOM element",
             "itemtype": "property",
             "name": "$element",
@@ -2818,7 +2810,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 165,
+            "line": 169,
             "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try to add the view to the DOM since it already exists.",
             "itemtype": "property",
             "name": "_isReference",
@@ -2831,7 +2823,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 174,
+            "line": 178,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_type",
@@ -2845,7 +2837,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 183,
+            "line": 187,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_params",
@@ -2859,7 +2851,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 202,
+            "line": 206,
             "description": "The create function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called once when the child view is added to another view. If the child view is removed\nand added to another view the create method will not be called again.",
             "itemtype": "method",
             "name": "create",
@@ -2889,7 +2881,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 287,
+            "line": 291,
             "overridden": "DisplayObjectContainer.addChild",
             "itemtype": "method",
             "name": "addChild",
@@ -2914,7 +2906,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 316,
+            "line": 320,
             "description": "Adds the sjsId to the DOM element so we can know what what Class object the HTMLElement belongs too.",
             "itemtype": "method",
             "name": "_addClientSideId",
@@ -2933,7 +2925,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 342,
+            "line": 346,
             "description": "Removes the sjsId and class type from the HTMLElement.",
             "itemtype": "method",
             "name": "_removeClientSideId",
@@ -2956,7 +2948,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 367,
+            "line": 371,
             "description": "Called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layout:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.",
             "itemtype": "method",
             "name": "_onAddedToDom",
@@ -2968,7 +2960,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 391,
+            "line": 395,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2976,7 +2968,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 424,
+            "line": 428,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2984,7 +2976,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 434,
+            "line": 438,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2992,7 +2984,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 440,
+            "line": 444,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -3015,7 +3007,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 471,
+            "line": 475,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -3039,7 +3031,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 503,
+            "line": 507,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null and the object is garbage collected if there are no other references\nto the child. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -3064,7 +3056,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 530,
+            "line": 534,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -3084,7 +3076,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 543,
+            "line": 547,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -3102,7 +3094,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 562,
+            "line": 566,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -3110,7 +3102,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 573,
+            "line": 577,
             "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.",
             "itemtype": "method",
             "name": "createComponents",
@@ -3711,7 +3703,7 @@
         },
         {
             "file": "js/display/Stage.js",
-            "line": 84,
+            "line": 86,
             "description": "The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.",
             "itemtype": "method",
             "name": "appendTo",
@@ -6053,21 +6045,6 @@
         {
             "file": "js/net/NetworkMonitor.js",
             "line": 27,
-            "description": "Adds the necessary event listeners to listen for the 'online' and 'offline' events.\nAlso dispatches a {{#crossLink \"NetworkMonitorEvent\"}}{{/crossLink}} right away with the status of the network connection.\nIt is recommended you call NetworkMonitor.start(); when your application starts up.",
-            "example": [
-                "\n     NetworkMonitor.start();"
-            ],
-            "itemtype": "method",
-            "name": "start",
-            "static": 1,
-            "access": "public",
-            "tagname": "",
-            "class": "NetworkMonitor",
-            "module": "StructureJS"
-        },
-        {
-            "file": "js/net/NetworkMonitor.js",
-            "line": 48,
             "description": "Returns the online status of the browser. The property returns a boolean value, with true for being online and false for being offline.",
             "example": [
                 "\n     NetworkMonitor.connected();"
@@ -6086,7 +6063,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 62,
+            "line": 40,
             "description": "Returns if the status type ('online' or 'offline') if computer or device is connected to the internet.",
             "example": [
                 "\n     NetworkMonitor.getStatus();"
@@ -6105,25 +6082,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 76,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "_onNetworkMonitorEvent",
-            "params": [
-                {
-                    "name": "event",
-                    "description": ""
-                }
-            ],
-            "access": "private",
-            "tagname": "",
-            "static": 1,
-            "class": "NetworkMonitor",
-            "module": "StructureJS"
-        },
-        {
-            "file": "js/net/NetworkMonitor.js",
-            "line": 89,
+            "line": 53,
             "description": "Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.",
             "example": [
                 "\n     NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.status, event.connected);\n     }"
@@ -6162,7 +6121,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 108,
+            "line": 73,
             "description": "Removes a specified listener from the NetworkMonitor object.",
             "example": [
                 "\n     NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.status, event.connected);\n     }"
@@ -6194,10 +6153,40 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 126,
+            "line": 91,
+            "description": "Adds the necessary event listeners to listen for the 'online' and 'offline' events.",
+            "itemtype": "method",
+            "name": "_start",
+            "static": 1,
+            "access": "private",
+            "tagname": "",
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "js/net/NetworkMonitor.js",
+            "line": 108,
+            "description": "An event handler method when the native Window 'online' and 'offline' events are triggered.",
+            "itemtype": "method",
+            "name": "_onNetworkMonitorEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "NetworkMonitor",
+            "module": "StructureJS"
+        },
+        {
+            "file": "js/net/NetworkMonitor.js",
+            "line": 121,
             "description": "<p>Dispatches an event within the NetworkMonitorEvent object.</p>",
             "itemtype": "method",
-            "name": "dispatchEvent",
+            "name": "_dispatchEvent",
             "params": [
                 {
                     "name": "event",
@@ -6213,7 +6202,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 137,
+            "line": 132,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -6226,8 +6215,8 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 146,
-            "description": "TODO: YUIDoc_comment",
+            "line": 141,
+            "description": "A flag to determine if this class has already been initialized.",
             "itemtype": "property",
             "name": "_initialized",
             "type": "{boolean}",
@@ -8001,10 +7990,10 @@
                 },
                 {
                     "name": "useParseFloat",
-                    "description": "",
+                    "description": "If true converts strings to numbers.",
                     "type": "Boolean",
                     "optional": true,
-                    "optdefault": "true"
+                    "optdefault": "false"
                 }
             ],
             "return": {
@@ -8015,7 +8004,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');\n     // {name: 'Robert', age: 23, gender: 'male'}\n\n     StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);\n     // {name: 'Robert', age: '23', gender: 'male'}"
+                "\n     StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');\n     // {name: 'Robert', age: '23', gender: 'male'}\n\n     StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', true);\n     // {name: 'Robert', age: 23, gender: 'male'}"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -8090,6 +8079,11 @@
                     "name": "length",
                     "description": "",
                     "type": "Int"
+                },
+                {
+                    "name": "indicator",
+                    "description": "",
+                    "type": "String"
                 }
             ],
             "return": {
@@ -8100,7 +8094,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));\n      // 'Robert is cool...'"
+                "\n      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));\n      // 'Robert is cool...'\n     StringUtil.truncate('Robert is cool and he likes bruschetta.', 14, '!!!'));\n      // 'Robert is cool!!!'"
             ],
             "class": "StringUtil",
             "module": "StructureJS",
@@ -8108,7 +8102,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 233,
+            "line": 238,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
             "itemtype": "method",
             "name": "format",
@@ -8140,7 +8134,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 259,
+            "line": 264,
             "description": "Updates a value in the query string by its key name.",
             "itemtype": "method",
             "name": "paramReplace",
@@ -8972,7 +8966,7 @@
             "access": "public",
             "tagname": "",
             "example": [
-                "\n    destroy() {\n         this._childInstance.destroy();\n\n         super.destroy();\n    }"
+                "\n    destroy() {\n         this.disable();\n\n         this._childInstance.destroy();\n\n         super.destroy();\n    }"
             ],
             "class": "BaseObject",
             "module": "StructureJS",
@@ -9056,10 +9050,6 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/controller/LocalStorageController.js:217"
-        },
-        {
-            "message": "unknown tag: overridden",
             "line": " js/display/CanvasElement.js:27"
         },
         {
@@ -9100,55 +9090,55 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:202"
+            "line": " js/display/DOMElement.js:206"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:287"
+            "line": " js/display/DOMElement.js:291"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:287"
+            "line": " js/display/DOMElement.js:291"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:391"
+            "line": " js/display/DOMElement.js:395"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:424"
+            "line": " js/display/DOMElement.js:428"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:434"
+            "line": " js/display/DOMElement.js:438"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:440"
+            "line": " js/display/DOMElement.js:444"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:471"
+            "line": " js/display/DOMElement.js:475"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:503"
+            "line": " js/display/DOMElement.js:507"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:503"
+            "line": " js/display/DOMElement.js:507"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:543"
+            "line": " js/display/DOMElement.js:547"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:543"
+            "line": " js/display/DOMElement.js:547"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:562"
+            "line": " js/display/DOMElement.js:566"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9252,11 +9242,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/net/NetworkMonitor.js:48"
+            "line": " js/net/NetworkMonitor.js:27"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/net/NetworkMonitor.js:62"
+            "line": " js/net/NetworkMonitor.js:40"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9404,11 +9394,11 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:233"
+            "line": " js/util/StringUtil.js:238"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:259"
+            "line": " js/util/StringUtil.js:264"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9496,10 +9486,6 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/controller/LocalStorageController.js:217"
-        },
-        {
-            "message": "Missing item type",
             "line": " js/display/CanvasElement.js:27"
         },
         {
@@ -9540,19 +9526,19 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:391"
+            "line": " js/display/DOMElement.js:395"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:424"
+            "line": " js/display/DOMElement.js:428"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:434"
+            "line": " js/display/DOMElement.js:438"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:562"
+            "line": " js/display/DOMElement.js:566"
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObject would like that component to lay itself out.",

@@ -215,19 +215,24 @@
          * @method truncate
          * @param text {string}
          * @param length {int}
+         * @param indicator {string}
          * @returns {string}
          * @public
          * @static
          * @example
          *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
          *      // 'Robert is cool...'
+         *
+         *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14, '!!!'));
+         *      // 'Robert is cool!!!'
          */
-        StringUtil.truncate = function (text, length) {
+        StringUtil.truncate = function (text, length, indicator) {
+            if (indicator === void 0) { indicator = '...'; }
             if (text.length <= length) {
                 return text;
             }
             else {
-                return text.substr(0, length) + '...';
+                return text.substr(0, length) + indicator;
             }
         };
         /**

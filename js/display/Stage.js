@@ -61,6 +61,8 @@ var __extends = (this && this.__extends) || function (d, b) {
      *             }
      *
      *             destroy() {
+     *                 this.disable();
+     *
      *                 // Destroy the child objects and references in this parent class to prepare for garbage collection.
      *
      *                 super.destroy();

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.2</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -305,19 +305,19 @@
          *
          * @method queryStringToObject
          * @param queryString {string}
-         * @param [useParseFloat=true] {boolean}
+         * @param [useParseFloat=false] {boolean} If true converts strings to numbers.
          * @returns {Object|Null}
          * @public
          * @static
          * @example
          *      StringUtil.queryStringToObject(&#x27;?name=Robert&amp;age=23&amp;gender=male&#x27;);
-         *      // {name: &#x27;Robert&#x27;, age: 23, gender: &#x27;male&#x27;}
-         *
-         *      StringUtil.queryStringToObject(&#x27;?name=Robert&amp;age=23&amp;gender=male&#x27;, false);
          *      // {name: &#x27;Robert&#x27;, age: &#x27;23&#x27;, gender: &#x27;male&#x27;}
+         *
+         *      StringUtil.queryStringToObject(&#x27;?name=Robert&amp;age=23&amp;gender=male&#x27;, true);
+         *      // {name: &#x27;Robert&#x27;, age: 23, gender: &#x27;male&#x27;}
          */
         StringUtil.queryStringToObject = function (queryString, useParseFloat) {
-            if (useParseFloat === void 0) { useParseFloat = true; }
+            if (useParseFloat === void 0) { useParseFloat = false; }
             var params = {};
             var temp = null;
             var str = queryString.substring(queryString.indexOf(&#x27;?&#x27;) + 1);
@@ -371,19 +371,24 @@
          * @method truncate
          * @param text {string}
          * @param length {int}
+         * @param indicator {string}
          * @returns {string}
          * @public
          * @static
          * @example
          *      StringUtil.truncate(&#x27;Robert is cool and he likes bruschetta.&#x27;, 14));
          *      // &#x27;Robert is cool...&#x27;
+         *
+         *      StringUtil.truncate(&#x27;Robert is cool and he likes bruschetta.&#x27;, 14, &#x27;!!!&#x27;));
+         *      // &#x27;Robert is cool!!!&#x27;
          */
-        StringUtil.truncate = function (text, length) {
+        StringUtil.truncate = function (text, length, indicator) {
+            if (indicator === void 0) { indicator = &#x27;...&#x27;; }
             if (text.length &lt;= length) {
                 return text;
             }
             else {
-                return text.substr(0, length) + &#x27;...&#x27;;
+                return text.substr(0, length) + indicator;
             }
         };
         /**
