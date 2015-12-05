@@ -237,7 +237,7 @@ class Router
     {
         Router.enable();
 
-        let route:Route = new Route(routePattern, callback, callbackScope);
+        const route:Route = new Route(routePattern, callback, callbackScope);
 
         Router._routes.push(route);
     }
@@ -314,8 +314,8 @@ class Router
      */
     public static getHash():string
     {
-        let hash:string = Router._window.location.hash;
-        let strIndex:number = (hash.substr(0, 2) === '#!') ? 2 : 1;
+        const hash:string = Router._window.location.hash;
+        const strIndex:number = (hash.substr(0, 2) === '#!') ? 2 : 1;
 
         return hash.substring(strIndex); // Return everything after # or #!
     }
@@ -427,7 +427,7 @@ class Router
 
         if (route.charAt(0) === '#')
         {
-            let strIndex = (route.substr(0, 2) === '#!') ? 2 : 1;
+            const strIndex = (route.substr(0, 2) === '#!') ? 2 : 1;
             route = route.substring(strIndex);
         }
 
@@ -551,7 +551,7 @@ class Router
 
         Router._hashChangeEvent = event;
 
-        let hash = Router.getHash();
+        const hash = Router.getHash();
 
         Router._changeRoute(hash);
     }

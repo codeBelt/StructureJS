@@ -66,6 +66,8 @@ import jQuery = require('../plugin/jquery.eventListener');
  *          }
  *
  *          destroy() {
+ *              this.disable();
+ *
  *              // Destroy the child objects and references in this parent class to prevent memory leaks.
  *
  *              super.destroy();
@@ -109,6 +111,8 @@ import jQuery = require('../plugin/jquery.eventListener');
  *          }
  *
  *          destroy() {
+ *              this.disable();
+ *
  *              // Destroy the child objects and references in this parent class to prepare for garbage collection.
  *
  *              super.destroy();
@@ -270,7 +274,7 @@ class DOMElement extends DisplayObjectContainer
 
         if (this.$element == null)
         {
-            let html:string = TemplateFactory.create(type, params);
+            const html:string = TemplateFactory.create(type, params);
             if (html)
             {
                 this.$element = jQuery(html);
@@ -370,13 +374,13 @@ class DOMElement extends DisplayObjectContainer
      */
     protected _removeClientSideId(child):boolean
     {
-        let type:string = child.$element.attr('data-sjs-type');
-        let id:string = child.$element.attr('data-sjs-id');
+        const type:string = child.$element.attr('data-sjs-type');
+        const id:string = child.$element.attr('data-sjs-id');
 
         // Split them so we can remove the child sjsId and type.
-        let typeList:Array<string> = type.split(',');
-        let idList:Array<number> = id.split(',').map(Number);// Convert each item into a number.
-        let index:number = idList.indexOf(child.sjsId);
+        const typeList:Array<string> = type.split(',');
+        const idList:Array<number> = id.split(',').map(Number);// Convert each item into a number.
+        const index:number = idList.indexOf(child.sjsId);
 
         if (index > -1) {
             // Remove the id and type from the array.
@@ -425,8 +429,8 @@ class DOMElement extends DisplayObjectContainer
      */
     public addChildAt(child:DOMElement, index:number):any
     {
-        let children = this.$element.children();
-        let length = children.length;
+        const children = this.$element.children();
+        const length = children.length;
 
         // If an empty jQuery object is passed into the constructor then don't run the code below.
         if (child._isReference === true && child.$element.length === 0)
@@ -471,8 +475,8 @@ class DOMElement extends DisplayObjectContainer
      */
     public swapChildren(child1:DOMElement, child2:DOMElement):any
     {
-        let child1Index = child1.$element.index();
-        let child2Index = child2.$element.index();
+        const child1Index = child1.$element.index();
+        const child2Index = child2.$element.index();
 
         this.addChildAt(child1, child2Index);
         this.addChildAt(child2, child1Index);
@@ -499,14 +503,14 @@ class DOMElement extends DisplayObjectContainer
     public getChild(selector:string):DOMElement
     {
         // Get the first match from the selector passed in.
-        let jQueryElement:JQuery = this.$element.find(selector).first();
+        const jQueryElement:JQuery = this.$element.find(selector).first();
         if (jQueryElement.length === 0)
         {
             throw new TypeError('[' + this.getQualifiedClassName() + '] getChild(' + selector + ') Cannot find DOM $element');
         }
 
         // Check to see if the element has a sjsId value and is a child of this parent object.
-        let sjsId:number = parseInt(jQueryElement.attr('data-sjs-id'));
+        const sjsId:number = parseInt(jQueryElement.attr('data-sjs-id'));
         let domElement:DOMElement = <DOMElement>this.getChildByCid(sjsId);
 
         // Creates a DOMElement from the jQueryElement.
@@ -541,9 +545,9 @@ class DOMElement extends DisplayObjectContainer
         //TODO: Make sure the index of the children added is the same as the what is in the actual DOM.
         let $child:JQuery;
         let domElement:DOMElement;
-        let $list:JQuery = this.$element.children(selector);
+        const $list:JQuery = this.$element.children(selector);
 
-        let listLength:number = $list.length;
+        const listLength:number = $list.length;
         for (let i:number = 0; i < listLength; i++)
         {
             $child = $list.eq(i);
@@ -578,7 +582,7 @@ class DOMElement extends DisplayObjectContainer
      */
     public removeChild(child:DOMElement, destroy:boolean = true):any
     {
-        let remove:boolean = this._removeClientSideId(child);
+        const remove:boolean = this._removeClientSideId(child);
 
         child.disable();
 
@@ -675,7 +679,7 @@ class DOMElement extends DisplayObjectContainer
     {
         let list:Array<DOMElement>;
         let createdChildren:Array<DOMElement> = [];
-        let length:number = componentList.length;
+        const length:number = componentList.length;
         let obj:any;
         for (let i = 0; i < length; i++)
         {

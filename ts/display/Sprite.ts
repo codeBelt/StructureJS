@@ -19,7 +19,7 @@ class Sprite extends DisplayObjectContainer
 
     public renderCanvas():any
     {
-        let isRendable:boolean = super.renderCanvas();
+        const isRendable:boolean = super.renderCanvas();
 
         if (isRendable === false) return;
 
@@ -66,7 +66,7 @@ class Sprite extends DisplayObjectContainer
 
     public removeChild(child:any, destroy:boolean = true):any
     {
-        let index = this.getChildIndex(child);
+        const index = this.getChildIndex(child);
         if (index !== -1)
         {
             // Removes the child object from the parent.

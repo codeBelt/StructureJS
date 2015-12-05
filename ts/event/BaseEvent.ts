@@ -455,7 +455,7 @@ class BaseEvent extends BaseObject
      */
     public clone():BaseEvent
     {
-        let clonedBaseModel:BaseEvent = new (<any>this).constructor(this.type, this.bubbles, this.cancelable, this.data);
+        const clonedBaseModel:BaseEvent = new (<any>this).constructor(this.type, this.bubbles, this.cancelable, this.data);
 
         for (let key in this)
         {

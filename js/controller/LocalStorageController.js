@@ -215,12 +215,6 @@ var __extends = (this && this.__extends) || function (d, b) {
             this._localStorage.clear();
         };
         /**
-         * @overridden EventDispatcher.destroy
-         */
-        LocalStorageController.prototype.destroy = function () {
-            _super.prototype.destroy.call(this);
-        };
-        /**
          *
          *
          * @method _onLocalStorageEvent

@@ -34,10 +34,10 @@ class ComponentFactory
      */
     public static create ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
     {
-        let list:Array<DisplayObject> = [];
+        const list:Array<DisplayObject> = [];
         let component:DisplayObject;
         let $element:JQuery;
-        let length:number = $elements.length;
+        const length:number = $elements.length;
         let types:any;
         let componentName:string;
 
@@ -77,7 +77,7 @@ class ComponentFactory
      * @private
      */
     private static _createComponent($element:JQuery, ComponentClass:any, scope:DisplayObjectContainer):any {
-        let component = new ComponentClass($element);
+        const component = new ComponentClass($element);
 
         // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.
         if (scope !== null && component.hasOwnProperty('sjsId') === true)

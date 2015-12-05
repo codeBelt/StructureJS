@@ -66,7 +66,7 @@ class ValidationUtil
      */
     public static isValidEmailAddress(email:string):boolean
     {
-        let expression:RegExp = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+        const expression:RegExp = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
         return expression.test(email);
     }
 
@@ -84,7 +84,7 @@ class ValidationUtil
      */
     public static isValidPhoneNumber(phoneNumber:string):boolean
     {
-        let expression:RegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
+        const expression:RegExp = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})$/;
         return expression.test(phoneNumber);
     }
 
@@ -102,7 +102,7 @@ class ValidationUtil
      */
     public static isZipCode(zipCode:string):boolean
     {
-        let expression:RegExp = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
+        const expression:RegExp = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/;
         return expression.test(zipCode);
     }
 
@@ -120,7 +120,7 @@ class ValidationUtil
      */
     public static isPostalCode(postalCode:string):boolean
     {
-        let expression:RegExp = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
+        const expression:RegExp = /^([A-Z][0-9][A-Z])\s*([0-9][A-Z][0-9])$/i;
         return expression.test(postalCode);
     }
 
@@ -138,7 +138,7 @@ class ValidationUtil
      */
     public static isSocialSecurityNumber(ssn:string):boolean
     {
-        let expression:RegExp = /^\d{3}-?\d{2}-?\d{4}$/;
+        const expression:RegExp = /^\d{3}-?\d{2}-?\d{4}$/;
         return expression.test(ssn);
     }
 }

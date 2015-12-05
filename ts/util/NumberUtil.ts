@@ -97,11 +97,11 @@ class NumberUtil
      */
     public static convertToHHMMSS(seconds:number, showHours:boolean = true):string
     {
-        let sec:number = isNaN(seconds) ? 0 : seconds;//Changes NaN to 0
+        const sec:number = isNaN(seconds) ? 0 : seconds;//Changes NaN to 0
 
-        let s:number = sec % 60;
-        let m:number = Math.floor((sec % 3600 ) / 60);
-        let h:number = Math.floor(sec / (60 * 60));
+        const s:number = sec % 60;
+        const m:number = Math.floor((sec % 3600 ) / 60);
+        const h:number = Math.floor(sec / (60 * 60));
 
         let hourStr:string;
         if (showHours === false) {
@@ -110,8 +110,8 @@ class NumberUtil
             hourStr = NumberUtil.doubleDigitFormat(h) + ':';
         }
 
-        let minuteStr:string = NumberUtil.doubleDigitFormat(m) + ':';
-        let secondsStr:string = NumberUtil.doubleDigitFormat(s);
+        const minuteStr:string = NumberUtil.doubleDigitFormat(m) + ':';
+        const secondsStr:string = NumberUtil.doubleDigitFormat(s);
 
         return hourStr + minuteStr + secondsStr;
     }
@@ -168,7 +168,7 @@ class NumberUtil
 
         // Gets the index where the decimal placement is located.
         let decimalIndex:number = withoutSpecialCharacters.length - 3;
-        let decimalSeparator:string = withoutSpecialCharacters.charAt(decimalIndex);
+        const decimalSeparator:string = withoutSpecialCharacters.charAt(decimalIndex);
         if (decimalSeparator === '.')
         {
             // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).

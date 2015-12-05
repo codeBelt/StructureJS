@@ -124,12 +124,12 @@ class BaseModel extends BaseObject implements IBaseModel
         // If the data is an array and if the property its being assigned to is an array.
         if (data instanceof Array && this[key] instanceof Array)
         {
-            let temp:Array<any> = [];
-            let len:number = data.length;
+            const temp:Array<any> = [];
+            const len:number = data.length;
 
             if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false)
             {
-                let baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
+                const baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
                 for (let i:number = 0; i < len; i++)
                 {
                     temp[i] = this._updateData(baseModelOrOther, data[i]);
@@ -186,7 +186,7 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     public toJSON():any
     {
-        let clone:any = Util.clone(this);
+        const clone:any = Util.clone(this);
         return Util.deletePropertyFromObject(clone, ['sjsId']);
     }
 
@@ -217,7 +217,7 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     public fromJSON(json:string):any
     {
-        let parsedData:any = JSON.parse(json);
+        const parsedData:any = JSON.parse(json);
 
         this.update(parsedData);
 
@@ -235,7 +235,7 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     public clone():BaseModel
     {
-        let clonedBaseModel:BaseModel = new (<any>this).constructor(this);
+        const clonedBaseModel:BaseModel = new (<any>this).constructor(this);
 
         return clonedBaseModel;
     }

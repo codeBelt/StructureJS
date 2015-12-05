@@ -32,7 +32,7 @@ class StringUtil
      */
     public static getExtension(filename:string, withDot:boolean = false):string
     {
-        let num:number = (withDot === true) ? 0 : 1;
+        const num:number = (withDot === true) ? 0 : 1;
         return filename.slice(filename.lastIndexOf('.') + num, filename.length);
     }
 
@@ -153,7 +153,7 @@ class StringUtil
      */
     public static createUUID():string
     {
-        let uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function (c)
+        const uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function (c)
         {
             let r = Math.random() * 16 | 0;
             let v = (c == 'x') ? r : (r & 0x3 | 0x8);
@@ -168,23 +168,23 @@ class StringUtil
      *
      * @method queryStringToObject
      * @param queryString {string}
-     * @param [useParseFloat=true] {boolean}
+     * @param [useParseFloat=false] {boolean} If true converts strings to numbers.
      * @returns {Object|Null}
      * @public
      * @static
      * @example
      *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');
-     *      // {name: 'Robert', age: 23, gender: 'male'}
-     *
-     *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
      *      // {name: 'Robert', age: '23', gender: 'male'}
+     *
+     *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', true);
+     *      // {name: 'Robert', age: 23, gender: 'male'}
      */
-    public static queryStringToObject(queryString:string, useParseFloat:boolean = true):any
+    public static queryStringToObject(queryString:string, useParseFloat:boolean = false):any
     {
         let params:any = {};
         let temp:any = null;
 
-        let str:string = queryString.substring(queryString.indexOf('?') + 1);
+        const str:string = queryString.substring(queryString.indexOf('?') + 1);
 
         if (str === '')
         {
@@ -192,10 +192,10 @@ class StringUtil
         }
 
         // Split into key/value pairs
-        let queries = str.split('&');
+        const queries = str.split('&');
 
         // Convert the array of strings into an object
-        let len:number = queries.length;
+        const len:number = queries.length;
         for (let i = 0; i < len; i++)
         {
             temp = queries[i].split('=');
@@ -253,6 +253,9 @@ class StringUtil
      * @example
      *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
      *      // 'Robert is cool...'
+     *
+     *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14, '!!!'));
+     *      // 'Robert is cool!!!'
      */
     public static truncate(text:string, length:number, indicator:string = '...'):string
     {
@@ -281,7 +284,7 @@ class StringUtil
      */
     public static format(str:string, ...rest:Array<any>):string
     {
-        let length = rest.length;
+        const length = rest.length;
         let value:string = str;
         for (let i:number = 0; i < length; i++)
         {
@@ -309,8 +312,8 @@ class StringUtil
         // Find the param with regex
         // Grab the first character in the returned string (should be ? or &)
         // Replace our href string with our new value, passing on the name and delimiter
-        let re = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        let delimiter = re.exec(queryString)[0].charAt(0);
+        const re = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const delimiter = re.exec(queryString)[0].charAt(0);
         return queryString.replace(re, delimiter + name + '=' + value);
     }
 }

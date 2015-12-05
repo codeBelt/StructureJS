@@ -143,9 +143,9 @@ class MerchantUtil
      */
     public static isValidExpirationDate(month:number, year:number):boolean
     {
-        let d:Date = new Date();
-        let currentMonth:number = d.getMonth() + 1;
-        let currentYear:number = d.getFullYear();
+        const d:Date = new Date();
+        const currentMonth:number = d.getMonth() + 1;
+        const currentYear:number = d.getFullYear();
         if ((year > currentYear) || (year == currentYear && month >= currentMonth))
         {
             return true;

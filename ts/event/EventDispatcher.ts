@@ -122,8 +122,8 @@ class EventDispatcher extends ObjectManager
         this.addEventListener(type, callback, scope, priority);
 
         // Get the event listeners we just added.
-        let list = this._listeners[type];
-        let listener = list[0];
+        const list = this._listeners[type];
+        const listener = list[0];
 
         // Change the value to true so it will be remove after dispatchEvent is called.
         listener.once = true;
@@ -147,7 +147,7 @@ class EventDispatcher extends ObjectManager
     public removeEventListener(type:string, callback:Function, scope:any):EventDispatcher
     {
         // Get the list of event listeners by the associated type value that is passed in.
-        let list:Array<any> = this._listeners[type];
+        const list:Array<any> = this._listeners[type];
         if (list !== void 0)
         {
             let i = list.length;
@@ -204,7 +204,7 @@ class EventDispatcher extends ObjectManager
         }
 
         // Get the list of event listener by the associated type value.
-        let list:Array<any> = this._listeners[event.type];
+        const list:Array<any> = this._listeners[event.type];
         if (list !== void 0)
         {
             let i:number = list.length;
@@ -264,7 +264,7 @@ class EventDispatcher extends ObjectManager
         if (this._listeners[type] !== void 0)
         {
             let listener:any;
-            let numOfCallbacks:number = this._listeners[type].length;
+            const numOfCallbacks:number = this._listeners[type].length;
             for (let i:number = 0; i < numOfCallbacks; i++)
             {
                 listener = this._listeners[type][i];
