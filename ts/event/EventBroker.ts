@@ -105,6 +105,7 @@ class EventBroker
      * @method dispatchEvent
      * @param event {string|BaseEvent} The Event object or event type string you want to dispatch.
      * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink "BaseEvent"}}{{/crossLink}}.
+     * @param [scope=null] {any} You can optionally pass in the target of the object that dispatched the global event. Since {{#crossLink "EventBroker"}}{{/crossLink}}
      * @static
      * @public
      * @example
@@ -118,7 +119,7 @@ class EventBroker
      *      event.data = {some: 'data'};
      *      EventBroker.dispatchEvent(event);
      */
-    public static dispatchEvent(type:any, data:any = null):void
+    public static dispatchEvent(type:any, data:any = null, scope:any = EventBroker):void
     {
         let event:any = type;
 
@@ -127,8 +128,8 @@ class EventBroker
             event = new BaseEvent(type, false, false, data);
         }
 
-        event.target = EventBroker;
-        event.currentTarget = EventBroker;
+        event.target = scope;
+        event.currentTarget = scope;
 
         EventBroker._eventDispatcher.dispatchEvent(event);
     }

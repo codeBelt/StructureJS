@@ -255,6 +255,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * ????-??-?? v0.9.3 Add third optional parameter to EventBroker so you can pass the scope of the object that dispatched the event. Update EventDispatcher to always update the currentTarget property.
+ 
  * 2015-12-05 v0.9.2 Allow a custom indicator with StringUtil.truncate(). Update ide-snippets. Made the start method private in NetworkMonitor.
  
  * 2015-11-25 v0.9.1 Add Router.getCurrentRoute, Add Util.unique, Fix BrowserUtil.getBrowser and make public. Update docs to ES6/Typescript. Rename all private and protected method to have an underscore in front.
