@@ -1,18 +1,57 @@
-var $ = require('../libs/jquery');
+jest
+    .dontMock('jquery')
+    .dontMock('../../js/display/Stage')
+    .dontMock('../../js/display/DOMElement')
+;
 
-$.fn.appendInput = function(id) {
-    $(id).append("<input type='text' id='module' />");
-};
 
-describe('AppendInput jquery plugin', function() {
-    beforeEach(function(){
-        $(document.body).append('<div id="content"></div>');
+//var jQuery = require('jquery');
+//
+//jQuery.fn.appendInput = function(id) {
+//    jQuery(id).append("<input type='text' id='module' />");
+//};
+//
+//describe('AppendInput jquery plugin', function() {
+//    beforeEach(function(){
+//        jQuery(document.body).append('<div id="content"></div>');
+//    });
+//    it("append input into content", function(){
+//        jQuery.fn.appendInput("#content");
+//        expect(jQuery('#content').find('#module').length).toBe(1);
+//    });
+//});
+
+describe("DOMElement", function() {
+
+    it("Added to DOM", function() {
+// Set up our document body
+        document.body.innerHTML =
+            '<div class="js-stage">' +
+            '  <span id="username" />' +
+            '  <button id="button" />' +
+            '</div>';
+
+
+        //var html = require('fs').readFileSync('__tests__/display/app.html').toString();//http://www.phpied.com/jest-jquery-testing-vanilla-app/
+        //console.log("html", html);
+
+
+        //var jQuery = require('jquery');
+        //var DOMElement = require('../../js/display/DOMElement');
+        //var Stage = require('../../js/display/Stage');
+        //
+        //var app = new Stage();
+        //app.appendTo('.js-stage');
+
+        //console.log("app", app);
+        console.log("document.body.innerHTML", document.body.innerHTML);
+
     });
-    it("append input into content", function(){
-        $.fn.appendInput("#content");
-        expect($('#content').find('#module').length).toBe(1);
-    });
+
 });
+
+
+
 
 //
 //var DOMElement = require('../../js/display/DOMElement');

@@ -181,4 +181,8 @@ module.exports = function(grunt) {
         'uglify'
     ]);
 
+    grunt.registerTask('test', [
+        'jest'
+    ]);
+
 };
