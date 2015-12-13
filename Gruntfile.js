@@ -152,6 +152,13 @@ module.exports = function(grunt) {
                     comments: true
                 }
             }
+        },
+
+        jest: {
+            options: {
+                coverage: true,
+                testPathPattern: /.\/__tests__\/.*-test.js/
+            }
         }
 
     });
