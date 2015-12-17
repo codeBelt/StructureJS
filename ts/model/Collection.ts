@@ -397,10 +397,7 @@ class Collection extends EventDispatcher
      */
     public clone():Collection
     {
-        const clonedBaseModel:Collection = new (<any>this).constructor(this._modelType);
-        clonedBaseModel.add(this.models.slice(0));
-
-        return clonedBaseModel;
+        return new (<any>this).constructor();
     }
 
     /**
