@@ -185,28 +185,16 @@ class Collection extends EventDispatcher
 
     /**
      * Finds an object by an index value.
-     * If the index is out of bounds, the collection will clamp it.
      *
      * @method get
      * @param index {int} The index integer of the model to get
-     * @return {Object} model to find
+     * @return {Object} the model
      * @public
      * @example
-     *      collection.get(1);
+     *      let model = collection.get(1);
      */
     public get(index:number):any
     {
-        if (index < 0)
-        {
-            index = 0;
-        }
-
-        if (index >= this.models.length)
-        {
-            index = this.models.length - 1;
-        }
-
-        // Return the model by the index. It will return null if the array is empty.
         return this.models[index] || null;
     }
 

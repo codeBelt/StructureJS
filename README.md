@@ -255,7 +255,7 @@ _onClickHandler(event) {
 
 ## Release History
 
- * ????-??-?? v0.9.3 Add third optional parameter to EventBroker so you can pass the scope of the object that dispatched the event. Update EventDispatcher to always update the currentTarget property. Add EventBroker.waitFor, EventBroker.waitForOnce, EventBroker.removeWaitFor.
+ * ????-??-?? v0.9.3 Add third optional parameter to EventBroker so you can pass the scope of the object that dispatched the event. Update EventDispatcher to always update the currentTarget property. Add EventBroker.waitFor, EventBroker.waitForOnce, EventBroker.removeWaitFor. Collection.get() remove clamping if index is out of bounds.
  
  * 2015-12-05 v0.9.2 Allow a custom indicator with StringUtil.truncate(). Update ide-snippets. Made the start method private in NetworkMonitor.
  
