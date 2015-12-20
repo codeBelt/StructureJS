@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.9.2",
+        "version": "0.9.3",
         "url": ""
     },
     "files": {
@@ -4677,6 +4677,105 @@
         {
             "file": "js/event/EventBroker.js",
             "line": 92,
+            "description": "A way to listen for multiple events.\n\nIf only listening for one event use {{#crossLink \"EventBroker/addEventListener:method\"}}{{/crossLink}}.",
+            "itemtype": "method",
+            "name": "waitFor",
+            "params": [
+                {
+                    "name": "eventTypes",
+                    "description": "A list of event types you are waiting for.",
+                    "type": "Array<string>"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback function that will be triggered when all event types are",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "The scope of the callback function.",
+                    "type": "Any"
+                }
+            ],
+            "static": 1,
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    EventBroker.waitFor(['someEvent', 'anotherEvent', CustomEvent.CHANGE], this._handlerMethod, this);\n\n    _handlerMethod(events) {\n         // An array of the event objects you waited for.\n    }"
+            ],
+            "class": "EventBroker",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "js/event/EventBroker.js",
+            "line": 119,
+            "description": "A way to listen for multiple events. Once all events all are triggered this listener will be removed.\n\nIf only listening for one event use {{#crossLink \"EventBroker/addEventListenerOnce:method\"}}{{/crossLink}}.",
+            "itemtype": "method",
+            "name": "waitForOnce",
+            "params": [
+                {
+                    "name": "eventTypes",
+                    "description": "A list of event types you are waiting for.",
+                    "type": "Array<string>"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback function that will be triggered when all event types are",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "The scope of the callback function.",
+                    "type": "Any"
+                }
+            ],
+            "static": 1,
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    EventBroker.waitForOnce(['someEvent', 'anotherEvent', CustomEvent.CHANGE], this._handlerMethod, this);\n\n    _handlerMethod(events) {\n         // An array of the event objects you waited for.\n    }"
+            ],
+            "class": "EventBroker",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "js/event/EventBroker.js",
+            "line": 146,
+            "description": "A way to listen for multiple events. Once all events all are triggered it will no longer",
+            "itemtype": "method",
+            "name": "removeWaitFor",
+            "params": [
+                {
+                    "name": "eventTypes",
+                    "description": "A list of event types you are waiting for.",
+                    "type": "Array<string>"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback function that will be triggered when all event types are",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "The scope of the callback function.",
+                    "type": "Any"
+                }
+            ],
+            "static": 1,
+            "access": "public",
+            "tagname": "",
+            "example": [
+                "\n    EventBroker.removeWaitFor(['someEvent', 'anotherEvent', CustomEvent.CHANGE], this._handlerMethod, this);"
+            ],
+            "class": "EventBroker",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "js/event/EventBroker.js",
+            "line": 167,
             "description": "Dispatches an event within the EventBroker object.",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -4689,6 +4788,13 @@
                 {
                     "name": "data",
                     "description": "The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink \"BaseEvent\"}}{{/crossLink}}.",
+                    "type": "Any",
+                    "optional": true,
+                    "optdefault": "null"
+                },
+                {
+                    "name": "scope",
+                    "description": "You can optionally pass in the target of the object that dispatched the global event. Since {{#crossLink \"EventBroker\"}}{{/crossLink}}",
                     "type": "Any",
                     "optional": true,
                     "optdefault": "null"
@@ -4706,7 +4812,20 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 121,
+            "line": 199,
+            "description": "Helper method to dispatch events on the waitForObject objects.",
+            "itemtype": "method",
+            "name": "_dispatchWaitFor",
+            "static": 1,
+            "access": "private",
+            "tagname": "",
+            "class": "EventBroker",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "js/event/EventBroker.js",
+            "line": 225,
             "description": "Check if EventBroker has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -4743,7 +4862,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 137,
+            "line": 241,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -4763,11 +4882,25 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 152,
+            "line": 256,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
             "type": "{EventDispatcher}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "EventBroker",
+            "module": "StructureJS",
+            "submodule": "event"
+        },
+        {
+            "file": "js/event/EventBroker.js",
+            "line": 265,
+            "description": "A list of wait for objects.",
+            "itemtype": "property",
+            "name": "_waitForList",
+            "type": "{Array<{eventTypes:Array<string>, callback:Function, callbackScope:any, events:Array<any>, once:boolean}>}",
             "access": "private",
             "tagname": "",
             "static": 1,
@@ -4947,7 +5080,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 223,
+            "line": 222,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -4983,7 +5116,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 248,
+            "line": 247,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -5002,7 +5135,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 278,
+            "line": 277,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -5571,7 +5704,7 @@
         {
             "file": "js/model/Collection.js",
             "line": 171,
-            "description": "Finds an object by an index value.\nIf the index is out of bounds, the collection will clamp it.",
+            "description": "Finds an object by an index value.",
             "itemtype": "method",
             "name": "get",
             "params": [
@@ -5582,13 +5715,13 @@
                 }
             ],
             "return": {
-                "description": "model to find",
+                "description": "the model",
                 "type": "Object"
             },
             "access": "public",
             "tagname": "",
             "example": [
-                "\n     collection.get(1);"
+                "\n     let model = collection.get(1);"
             ],
             "class": "Collection",
             "module": "StructureJS",
@@ -5596,7 +5729,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 192,
+            "line": 184,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
             "itemtype": "method",
             "name": "findBy",
@@ -5622,7 +5755,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 230,
+            "line": 222,
             "description": "Loops through the models array and creates a new array of models that match all the properties on the object passed in.",
             "itemtype": "method",
             "name": "_where",
@@ -5645,7 +5778,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 273,
+            "line": 265,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
             "name": "_findPropertyValue",
@@ -5668,7 +5801,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 312,
+            "line": 304,
             "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
@@ -5693,7 +5826,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 331,
+            "line": 323,
             "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
             "itemtype": "method",
             "name": "clone",
@@ -5712,7 +5845,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 345,
+            "line": 337,
             "description": "Creates a JSON object of the collection.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5731,7 +5864,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 367,
+            "line": 359,
             "description": "Creates a JSON string of the collection.",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5750,7 +5883,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 379,
+            "line": 371,
             "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5773,7 +5906,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 394,
+            "line": 386,
             "description": "Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys",
             "itemtype": "method",
             "name": "sortOn",
@@ -5806,7 +5939,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 431,
+            "line": 423,
             "description": "Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code\npoint value, according to the string conversion of each element.",
             "itemtype": "method",
             "name": "sort",
@@ -5834,7 +5967,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 451,
+            "line": 443,
             "description": "The filter method creates a new array with all elements that pass the test implemented by the provided function.",
             "itemtype": "method",
             "name": "filter",
@@ -5866,7 +5999,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 470,
+            "line": 462,
             "description": "Convenient way to get a list of property values.",
             "itemtype": "method",
             "name": "pluck",
@@ -5899,7 +6032,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 500,
+            "line": 492,
             "description": "Convenient way to group models into categories/groups by a property name.",
             "itemtype": "method",
             "name": "groupBy",
@@ -5925,7 +6058,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 533,
+            "line": 525,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -9206,7 +9339,7 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/event/EventDispatcher.js:278"
+            "line": " js/event/EventDispatcher.js:277"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9222,15 +9355,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:331"
+            "line": " js/model/Collection.js:323"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:345"
+            "line": " js/model/Collection.js:337"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:367"
+            "line": " js/model/Collection.js:359"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9546,7 +9679,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/event/EventDispatcher.js:278"
+            "line": " js/event/EventDispatcher.js:277"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",

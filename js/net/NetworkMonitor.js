@@ -1,11 +1,11 @@
-(function (deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        define(["require", "exports", '../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], factory);
     }
-})(["require", "exports", '../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], function (require, exports) {
+})(function (require, exports) {
     var EventDispatcher = require('../event/EventDispatcher');
     var NetworkMonitorEvent = require('../event/NetworkMonitorEvent');
     var NavigatorEvents = require('../event/native/NavigatorEvents');

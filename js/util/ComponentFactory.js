@@ -1,11 +1,11 @@
-(function (deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        define(["require", "exports", '../util/Util'], factory);
     }
-})(["require", "exports", '../util/Util'], function (require, exports) {
+})(function (require, exports) {
     var Util = require('../util/Util');
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
