@@ -1,3 +1,6 @@
+// Load the file that exports the functionality to test
+jest.dontMock('../../js/util/NumberUtil');  // Don't create mock functions
+
 var NumberUtil = require('../../js/util/NumberUtil');
 
 describe("NumberUtil", function() {

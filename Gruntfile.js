@@ -38,8 +38,9 @@ module.exports = function(grunt) {
          * Cleans or deletes our production folder before we create a new production build.
          */
         clean: {
-            ts: ['ts/**/*.js']
+            ts: ['ts/**/*.js'],
             //js: ['js/**/*']
+            interface: ['js/interface']
         },
 
         concat: {
@@ -152,6 +153,13 @@ module.exports = function(grunt) {
                     comments: true
                 }
             }
+        },
+
+        jest: {
+            options: {
+                coverage: true,
+                testPathPattern: /.\/__tests__\/.*-test.js/
+            }
         }
 
     });
@@ -165,13 +173,24 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('docs', [
-        'default',
         'yuidoc'
     ]);
 
     grunt.registerTask('all', [
         'concat',
         'uglify'
+    ]);
+
+    grunt.registerTask('test', [
+        'jest'
+    ]);
+
+    grunt.registerTask('release', [
+        'default',
+        'clean:interface',
+        // TODO: update version number in bower.json and package.json
+        'yuidoc',
+        'jest'
     ]);
 
 };

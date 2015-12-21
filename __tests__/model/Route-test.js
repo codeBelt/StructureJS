@@ -1,3 +1,5 @@
+// Load the file that exports the functionality to test
+jest.dontMock('../../js/model/Route');  // Don't create mock functions
 
 var Route = require('../../js/model/Route');
 

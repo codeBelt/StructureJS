@@ -1,11 +1,11 @@
-(function (deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        define(["require", "exports", './StringUtil'], factory);
     }
-})(["require", "exports", './StringUtil'], function (require, exports) {
+})(function (require, exports) {
     var StringUtil = require('./StringUtil');
     /**
      * A helper class to provide a convenient and consistent way to render templates.

@@ -3,14 +3,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function (deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        define(["require", "exports", '../event/EventDispatcher', '../event/TimerEvent'], factory);
     }
-})(["require", "exports", '../event/EventDispatcher', '../event/TimerEvent'], function (require, exports) {
+})(function (require, exports) {
     var EventDispatcher = require('../event/EventDispatcher');
     var TimerEvent = require('../event/TimerEvent');
     /**

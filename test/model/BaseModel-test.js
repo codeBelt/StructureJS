@@ -1,3 +1,7 @@
+// Load the file that exports the functionality to test
+jest.dontMock('../../js/model/BaseModel');  // Don't create mock functions
+jest.dontMock('./models/MovieModel');  // Don't create mock functions
+
 var movies = [
     {
         "id": "770678819",
@@ -61,7 +65,7 @@ var movies = [
 
 
 var BaseModel = require('../../js/model/BaseModel');
-var MovieModel = require('./basemodels/MovieModel');
+var MovieModel = require('./models/MovieModel');
 
 describe("BaseModel", function() {
 

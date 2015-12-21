@@ -25,6 +25,16 @@ class EventBroker
      */
     private static _eventDispatcher:EventDispatcher = new EventDispatcher();
 
+    /**
+     * A list of wait for objects.
+     *
+     * @property _waitForList
+     * @type {Array<{eventTypes:Array<string>, callback:Function, callbackScope:any, events:Array<any>, once:boolean}>}
+     * @private
+     * @static
+     */
+    private static _waitForList:Array<{eventTypes:Array<string>, callback:Function, callbackScope:any, events:Array<any>, once:boolean}> = [];
+
     constructor()
     {
         throw new Error('[EventBroker] Do not instantiate the EventBroker class because it is a static class.');
@@ -100,11 +110,96 @@ class EventBroker
     }
 
     /**
+     * A way to listen for multiple events.
+     *
+     * If only listening for one event use {{#crossLink "EventBroker/addEventListener:method"}}{{/crossLink}}.
+     *
+     * @method waitFor
+     * @param eventTypes {Array<string>} A list of event types you are waiting for.
+     * @param callback {Function} The callback function that will be triggered when all event types are
+     * @param scope {any} The scope of the callback function.
+     * @static
+     * @public
+     * @example
+     *     EventBroker.waitFor(['someEvent', 'anotherEvent', CustomEvent.CHANGE], this._handlerMethod, this);
+     *
+     *     _handlerMethod(events) {
+     *          // An array of the event objects you waited for.
+     *     }
+     */
+    public static waitFor(eventTypes:Array<string>, callback:Function, scope:any):void
+    {
+        EventBroker._waitForList.push({
+            eventTypes: eventTypes,
+            callback: callback,
+            callbackScope: scope,
+            events: [],
+            once: false
+        });
+    }
+
+    /**
+     * A way to listen for multiple events. Once all events all are triggered this listener will be removed.
+     *
+     * If only listening for one event use {{#crossLink "EventBroker/addEventListenerOnce:method"}}{{/crossLink}}.
+     *
+     * @method waitForOnce
+     * @param eventTypes {Array<string>} A list of event types you are waiting for.
+     * @param callback {Function} The callback function that will be triggered when all event types are
+     * @param scope {any} The scope of the callback function.
+     * @static
+     * @public
+     * @example
+     *     EventBroker.waitForOnce(['someEvent', 'anotherEvent', CustomEvent.CHANGE], this._handlerMethod, this);
+     *
+     *     _handlerMethod(events) {
+     *          // An array of the event objects you waited for.
+     *     }
+     */
+    public static waitForOnce(eventTypes:Array<string>, callback:Function, scope:any):void
+    {
+        EventBroker._waitForList.push({
+            eventTypes: eventTypes,
+            callback: callback,
+            callbackScope: scope,
+            events: [],
+            once: true
+        });
+    }
+
+    /**
+     * A way to listen for multiple events. Once all events all are triggered it will no longer
+     *
+     * @method removeWaitFor
+     * @param eventTypes {Array<string>} A list of event types you are waiting for.
+     * @param callback {Function} The callback function that will be triggered when all event types are
+     * @param scope {any} The scope of the callback function.
+     * @static
+     * @public
+     * @example
+     *     EventBroker.removeWaitFor(['someEvent', 'anotherEvent', CustomEvent.CHANGE], this._handlerMethod, this);
+     */
+    public static removeWaitFor(eventTypes:Array<string>, callback:Function, scope:any):void
+    {
+        let waitForObject:any;
+        for (let i = EventBroker._waitForList.length - 1; i >= 0; i--)
+        {
+            waitForObject = EventBroker._waitForList[i];
+
+            if (waitForObject.eventTypes.toString() === eventTypes.toString() && waitForObject.callback === callback && waitForObject.callbackScope === scope)
+            {
+                EventBroker._waitForList.splice(i, 1);
+            }
+        }
+    }
+
+    /**
      * Dispatches an event within the EventBroker object.
      *
      * @method dispatchEvent
      * @param event {string|BaseEvent} The Event object or event type string you want to dispatch.
      * @param [data=null] {any} The optional data you want to send with the event. Do not use this parameter if you are passing in a {{#crossLink "BaseEvent"}}{{/crossLink}}.
+     * @param [scope=null] {any} You can optionally pass in the target of the object that dispatched the global event. Since {{#crossLink "EventBroker"}}{{/crossLink}}
      * @static
      * @public
      * @example
@@ -118,7 +213,7 @@ class EventBroker
      *      event.data = {some: 'data'};
      *      EventBroker.dispatchEvent(event);
      */
-    public static dispatchEvent(type:any, data:any = null):void
+    public static dispatchEvent(type:any, data:any = null, scope:any = EventBroker):void
     {
         let event:any = type;
 
@@ -127,10 +222,49 @@ class EventBroker
             event = new BaseEvent(type, false, false, data);
         }
 
-        event.target = EventBroker;
-        event.currentTarget = EventBroker;
+        event.target = scope;
+        event.currentTarget = scope;
 
         EventBroker._eventDispatcher.dispatchEvent(event);
+
+        EventBroker._dispatchWaitFor(event);
+    }
+
+    /**
+     * Helper method to dispatch events on the waitForObject objects.
+     *
+     * @method _dispatchWaitFor
+     * @static
+     * @private
+     */
+    private static _dispatchWaitFor(event:BaseEvent):void
+    {
+        let waitForObject:any;
+        let eventTypeIndex:number;
+        for (let i = EventBroker._waitForList.length - 1; i >= 0; i--)
+        {
+            waitForObject = EventBroker._waitForList[i];
+
+            eventTypeIndex = waitForObject.eventTypes.indexOf(event.type);
+
+            if (eventTypeIndex > -1)
+            {
+                waitForObject.events[eventTypeIndex] = event;
+            }
+
+            if (waitForObject.eventTypes.length === Object.keys(waitForObject.events).length)
+            {
+                waitForObject.callback.call(waitForObject.scope, waitForObject.events);
+
+                waitForObject.events = [];
+
+                // If the once value is true we want to remove the listener right after this callback was called.
+                if (waitForObject.once === true)
+                {
+                    EventBroker._waitForList.splice(i, 1);
+                }
+            }
+        }
     }
 
     /**

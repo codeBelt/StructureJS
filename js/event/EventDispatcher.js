@@ -3,14 +3,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function (deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        define(["require", "exports", '../ObjectManager', './BaseEvent'], factory);
     }
-})(["require", "exports", '../ObjectManager', './BaseEvent'], function (require, exports) {
+})(function (require, exports) {
     var ObjectManager = require('../ObjectManager');
     var BaseEvent = require('./BaseEvent');
     /**
@@ -187,8 +187,9 @@ var __extends = (this && this.__extends) || function (d, b) {
             // If target is null then set it to the object that dispatched the event.
             if (event.target == null) {
                 event.target = this;
-                event.currentTarget = this;
             }
+            // Assign the current object that is currently processing the event (i.e. event bubbling at).
+            event.currentTarget = this;
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
@@ -213,8 +214,6 @@ var __extends = (this && this.__extends) || function (d, b) {
                 if (event.cancelable === true && event.isPropagationStopped === true) {
                     return this;
                 }
-                // Assign the current object that is currently processing the event (i.e. bubbling at) in the display list hierarchy.
-                event.currentTarget = this;
                 // Pass the event to the parent (event bubbling).
                 this.parent.dispatchEvent(event);
             }

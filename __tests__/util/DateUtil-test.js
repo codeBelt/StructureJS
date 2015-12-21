@@ -1,3 +1,6 @@
+// Load the file that exports the functionality to test
+jest.dontMock('../../js/util/DateUtil');  // Don't create mock functions
+
 var DateUtil = require('../../js/util/DateUtil');
 
 describe("DateUtil", function() {

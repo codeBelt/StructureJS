@@ -1,3 +1,6 @@
+// Load the file that exports the functionality to test
+jest.dontMock('../../js/util/MerchantUtil');  // Don't create mock functions
+
 var MerchantUtil = require('../../js/util/MerchantUtil');
 
 describe("MerchantUtil", function() {

@@ -1,3 +1,6 @@
+// Load the file that exports the functionality to test
+jest.dontMock('../js/ObjectManager');  // Don't create mock functions
+
 var ObjectManager = require('../js/ObjectManager');
 
 describe("ObjectManager", function() {
