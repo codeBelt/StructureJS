@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-us">
+
+    <head>
+        <!-- META DATA -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- SEO -->
+        <title>StructureJS Boilerplate (RequireJS)</title>
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <!-- STYLESHEETS -->
+        <!-- build:css assets/styles/head.css -->
+        <!-- endbuild -->
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
+    </head>
+
+    <body>
+    <!-- CONTENT -->
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/vendor/requirejs/require.js"></script>
+    <script src="assets/scripts/config.js"></script>
+    <script>
+        /**
+         * Set route and kick off RequireJs, which begins loading of scripts
+         * starting from main.js.
+         */
+        require(['main']);
+    </script>
+
+    </body>
+
+</html>

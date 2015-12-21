@@ -1,0 +1,28 @@
+{
+  "name": "StructureJS Boilerplate (TypeScript)",
+  "version": "(1.0.0)",
+  "homepage": "https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs",
+  "authors": [
+    "(Robert S. <code@codeBelt.com>"
+  ],
+  "keywords": [
+    "StructureJS",
+    "structurejs",
+    "boilerplate",
+    "JavaScript",
+    "TypeScript"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./src/assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "structurejs": "~0.9.0"
+  }
+}
