@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.2</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -154,14 +154,14 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
-(function (deps, factory) {
+(function (factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define(deps, factory);
+        define([&quot;require&quot;, &quot;exports&quot;], factory);
     }
-})([&quot;require&quot;, &quot;exports&quot;], function (require, exports) {
+})(function (require, exports) {
     var NavigatorEvents = (function () {
         function NavigatorEvents() {
         }
