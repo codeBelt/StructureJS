@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
-    var BaseEvent = require('./BaseEvent');
+    var BaseEvent_1 = require('./BaseEvent');
     /**
      * The NetworkMonitorEvent...
      *
@@ -83,6 +83,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         NetworkMonitorEvent.OFFLINE = "NetworkMonitorEvent.offline";
         return NetworkMonitorEvent;
-    })(BaseEvent);
-    return NetworkMonitorEvent;
+    })(BaseEvent_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = NetworkMonitorEvent;
 });

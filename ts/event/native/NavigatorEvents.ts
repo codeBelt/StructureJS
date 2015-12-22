@@ -19,4 +19,4 @@ class NavigatorEvents
     public static OFFLINE:string = "offline";
 }
 
-export = NavigatorEvents;
+export default NavigatorEvents;

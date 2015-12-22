@@ -1,6 +1,6 @@
-import DisplayObjectContainer = require('../display/DisplayObjectContainer');
-import DisplayObject = require('../display/DisplayObject');
-import Util = require('../util/Util');
+import DisplayObjectContainer from '../display/DisplayObjectContainer';
+import DisplayObject from '../display/DisplayObject';
+import Util from '../util/Util';
 
 
 /**
@@ -90,4 +90,4 @@ class ComponentFactory
 
 }
 
-export = ComponentFactory;
+export default ComponentFactory;

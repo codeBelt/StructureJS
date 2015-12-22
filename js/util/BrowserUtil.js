@@ -6,9 +6,9 @@
         define(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require('../event/EventDispatcher');
-    var BaseEvent = require('../event/BaseEvent');
-    var Util = require('../util/Util');
+    var EventDispatcher_1 = require('../event/EventDispatcher');
+    var BaseEvent_1 = require('../event/BaseEvent');
+    var Util_1 = require('../util/Util');
     /**
      * A helper class to detect OS and browsers.
      *
@@ -33,7 +33,7 @@
             if (BrowserUtil.isEnabled === true) {
                 return;
             }
-            BrowserUtil._onBreakpointChangeHandler = Util.debounce(BrowserUtil._onBreakpointChange, BrowserUtil.debounceDelay, false, BrowserUtil);
+            BrowserUtil._onBreakpointChangeHandler = Util_1.default.debounce(BrowserUtil._onBreakpointChange, BrowserUtil.debounceDelay, false, BrowserUtil);
             BrowserUtil._window.addEventListener('resize', BrowserUtil._onBreakpointChangeHandler);
             BrowserUtil.isEnabled = true;
         };
@@ -310,7 +310,7 @@
             if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === 'string') {
-                event = new BaseEvent(type, false, false, data);
+                event = new BaseEvent_1.default(type, false, false, data);
             }
             event.target = BrowserUtil;
             event.currentTarget = BrowserUtil;
@@ -324,7 +324,7 @@
          * @static
          */
         BrowserUtil._onBreakpointChange = function (event) {
-            BrowserUtil.dispatchEvent(new BaseEvent(BaseEvent.RESIZE, true, false, BrowserUtil.getBreakpoint()));
+            BrowserUtil.dispatchEvent(new BaseEvent_1.default(BaseEvent_1.default.RESIZE, true, false, BrowserUtil.getBreakpoint()));
         };
         /**
          * A reference to the EventDispatcher object.
@@ -334,7 +334,7 @@
          * @private
          * @static
          */
-        BrowserUtil._eventDispatcher = new EventDispatcher();
+        BrowserUtil._eventDispatcher = new EventDispatcher_1.default();
         /**
          * A reference to the browser window object.
          *
@@ -384,5 +384,6 @@
         BrowserUtil.isEnabled = false;
         return BrowserUtil;
     })();
-    return BrowserUtil;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = BrowserUtil;
 });

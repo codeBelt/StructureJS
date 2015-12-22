@@ -1,4 +1,4 @@
-import BaseEvent = require('./BaseEvent');
+import BaseEvent from './BaseEvent';
 
 /**
  * The ApplicationCacheEvent ....
@@ -107,4 +107,4 @@ class ApplicationCacheEvent extends BaseEvent
 
 }
 
-export = ApplicationCacheEvent;
+export default ApplicationCacheEvent;

@@ -19,5 +19,6 @@
         WindowEvents.CHANGE = "change";
         return WindowEvents;
     })();
-    return WindowEvents;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = WindowEvents;
 });

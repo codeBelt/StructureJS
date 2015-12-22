@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -167,9 +167,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;./DisplayObjectContainer&#x27;, &#x27;./DOMElement&#x27;, &#x27;../geom/Point&#x27;], factory);
     }
 })(function (require, exports) {
-    var DisplayObjectContainer = require(&#x27;./DisplayObjectContainer&#x27;);
-    var DOMElement = require(&#x27;./DOMElement&#x27;);
-    var Point = require(&#x27;../geom/Point&#x27;);
+    var DisplayObjectContainer_1 = require(&#x27;./DisplayObjectContainer&#x27;);
+    var DOMElement_1 = require(&#x27;./DOMElement&#x27;);
+    var Point_1 = require(&#x27;../geom/Point&#x27;);
     var CanvasElement = (function (_super) {
         __extends(CanvasElement, _super);
         // Notice the capital W and H. That sets the attributes not the styles.
@@ -331,7 +331,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         };
         CanvasElement.prototype.getMousePos = function (event) {
             var rect = this.canvas.getBoundingClientRect();
-            return new Point(event.clientX - rect.left, event.clientY - rect.top);
+            return new Point_1.default(event.clientX - rect.left, event.clientY - rect.top);
         };
         CanvasElement.prototype.getObjectUnderPoint = function (x, y) {
             var foundItem = null;
@@ -393,7 +393,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
                 event.currentTarget = this;
                 this.dispatchEvent(event);
             }
-            else if (displayObject !== null &amp;&amp; displayObject instanceof DisplayObjectContainer &amp;&amp; displayObject.mouseChildren === true) {
+            else if (displayObject !== null &amp;&amp; displayObject instanceof DisplayObjectContainer_1.default &amp;&amp; displayObject.mouseChildren === true) {
                 event.currentTarget = displayObject;
                 displayObject = this._getActualClickedOnChild(displayObject, mousePos.x, mousePos.y);
                 event.bubbles = true;
@@ -429,8 +429,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             }
         };
         return CanvasElement;
-    })(DOMElement);
-    return CanvasElement;
+    })(DOMElement_1.default);
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = CanvasElement;
 });
 
     </pre>

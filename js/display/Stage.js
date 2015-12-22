@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DOMElement'], factory);
     }
 })(function (require, exports) {
-    var DOMElement = require('./DOMElement');
+    var DOMElement_1 = require('./DOMElement');
     /**
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
      *
@@ -109,6 +109,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return this;
         };
         return Stage;
-    })(DOMElement);
-    return Stage;
+    })(DOMElement_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = Stage;
 });

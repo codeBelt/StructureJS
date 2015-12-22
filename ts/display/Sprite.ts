@@ -1,5 +1,5 @@
-import DisplayObject = require('./DisplayObject');
-import DisplayObjectContainer = require('./DisplayObjectContainer');
+import DisplayObject from './DisplayObject';
+import DisplayObjectContainer from './DisplayObjectContainer';
 
 class Sprite extends DisplayObjectContainer
 {
@@ -93,4 +93,4 @@ class Sprite extends DisplayObjectContainer
 
 }
 
-export = Sprite;
+export default Sprite;

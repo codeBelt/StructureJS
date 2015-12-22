@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObjectContainer'], factory);
     }
 })(function (require, exports) {
-    var DisplayObjectContainer = require('./DisplayObjectContainer');
+    var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
     var Sprite = (function (_super) {
         __extends(Sprite, _super);
         function Sprite() {
@@ -75,6 +75,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return this;
         };
         return Sprite;
-    })(DisplayObjectContainer);
-    return Sprite;
+    })(DisplayObjectContainer_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = Sprite;
 });

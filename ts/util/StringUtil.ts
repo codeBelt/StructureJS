@@ -318,4 +318,4 @@ class StringUtil
     }
 }
 
-export = StringUtil;
+export default StringUtil;

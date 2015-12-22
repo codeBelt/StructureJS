@@ -380,4 +380,4 @@ class MathUtil
 
 }
 
-export = MathUtil;
+export default MathUtil;

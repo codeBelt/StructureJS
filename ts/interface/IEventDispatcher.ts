@@ -1,4 +1,4 @@
-import IObjectManager = require('./IObjectManager');
+import IObjectManager from './IObjectManager' ;
 
 /**
  * TODO: YUIDoc_comment
@@ -48,4 +48,4 @@ interface IEventDispatcher extends IObjectManager
 
 }
 
-export = IEventDispatcher;
+export default IEventDispatcher;

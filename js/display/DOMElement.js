@@ -11,11 +11,11 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', '../plugin/jquery.eventListener'], factory);
     }
 })(function (require, exports) {
-    var DisplayObjectContainer = require('./DisplayObjectContainer');
-    var BaseEvent = require('../event/BaseEvent');
-    var TemplateFactory = require('../util/TemplateFactory');
-    var ComponentFactory = require('../util/ComponentFactory');
-    var jQuery = require('../plugin/jquery.eventListener');
+    var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
+    var BaseEvent_1 = require('../event/BaseEvent');
+    var TemplateFactory_1 = require('../util/TemplateFactory');
+    var ComponentFactory_1 = require('../util/ComponentFactory');
+    var jquery_eventListener_1 = require('../plugin/jquery.eventListener');
     /**
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
      *
@@ -193,7 +193,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @protected
              */
             this._params = null;
-            if (type instanceof jQuery) {
+            if (type instanceof jquery_eventListener_1.default) {
                 this.$element = type;
                 this.element = this.$element[0];
                 this._isReference = true;
@@ -274,12 +274,12 @@ var __extends = (this && this.__extends) || function (d, b) {
                 throw new Error('[' + this.getQualifiedClassName() + '] You cannot call the create method manually. It is only called once automatically during the view lifecycle and should only be called once.');
             }
             if (this.$element == null) {
-                var html_1 = TemplateFactory.create(type, params);
+                var html_1 = TemplateFactory_1.default.create(type, params);
                 if (html_1) {
-                    this.$element = jQuery(html_1);
+                    this.$element = jquery_eventListener_1.default(html_1);
                 }
                 else {
-                    this.$element = jQuery("<" + type + "/>", params);
+                    this.$element = jquery_eventListener_1.default("<" + type + "/>", params);
                 }
             }
             this.element = this.$element[0];
@@ -390,7 +390,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             child.setSize(child.width, child.height);
             child.enable();
             child.layout();
-            child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));
+            child.dispatchEvent(new BaseEvent_1.default(BaseEvent_1.default.ADDED_TO_STAGE));
         };
         /**
          * @overridden DisplayObjectContainer.addChildAt
@@ -420,7 +420,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 this.numChildren = this.children.length;
                 child.parent = this;
                 // Adds the child before any child already added in the DOM.
-                jQuery(children.get(index)).before(child.$element);
+                jquery_eventListener_1.default(children.get(index)).before(child.$element);
                 this._onAddedToDom(child);
             }
             return this;
@@ -603,12 +603,13 @@ var __extends = (this && this.__extends) || function (d, b) {
             var obj;
             for (var i_2 = 0; i_2 < length; i_2++) {
                 obj = componentList[i_2];
-                list = ComponentFactory.create(this.$element.find(obj.selector), obj.component, this);
+                list = ComponentFactory_1.default.create(this.$element.find(obj.selector), obj.component, this);
                 createdChildren = createdChildren.concat(list);
             }
             return createdChildren;
         };
         return DOMElement;
-    })(DisplayObjectContainer);
-    return DOMElement;
+    })(DisplayObjectContainer_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = DOMElement;
 });

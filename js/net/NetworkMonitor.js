@@ -6,9 +6,9 @@
         define(["require", "exports", '../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require('../event/EventDispatcher');
-    var NetworkMonitorEvent = require('../event/NetworkMonitorEvent');
-    var NavigatorEvents = require('../event/native/NavigatorEvents');
+    var EventDispatcher_1 = require('../event/EventDispatcher');
+    var NetworkMonitorEvent_1 = require('../event/NetworkMonitorEvent');
+    var NavigatorEvents_1 = require('../event/native/NavigatorEvents');
     /**
      * A helper class to detect network changes.
      *
@@ -48,7 +48,7 @@
          */
         NetworkMonitor.getStatus = function () {
             NetworkMonitor._start();
-            return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
+            return (this.connected()) ? NavigatorEvents_1.default.ONLINE : NavigatorEvents_1.default.OFFLINE;
         };
         /**
          * Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.
@@ -102,8 +102,8 @@
             else {
                 NetworkMonitor._initialized = true;
             }
-            window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor._onNetworkMonitorEvent, false);
-            window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor._onNetworkMonitorEvent, false);
+            window.addEventListener(NavigatorEvents_1.default.ONLINE, NetworkMonitor._onNetworkMonitorEvent, false);
+            window.addEventListener(NavigatorEvents_1.default.OFFLINE, NetworkMonitor._onNetworkMonitorEvent, false);
         };
         /**
          * An event handler method when the native Window 'online' and 'offline' events are triggered.
@@ -115,7 +115,7 @@
          */
         NetworkMonitor._onNetworkMonitorEvent = function (event) {
             var type = (event) ? event.type : NetworkMonitor.getStatus();
-            var networkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
+            var networkMonitorEvent = new NetworkMonitorEvent_1.default(NetworkMonitorEvent_1.default.STATUS, false, false, type, NetworkMonitor.connected(), event);
             NetworkMonitor._dispatchEvent(networkMonitorEvent);
         };
         /**
@@ -137,7 +137,7 @@
          * @private
          * @static
          */
-        NetworkMonitor._eventDispatcher = new EventDispatcher();
+        NetworkMonitor._eventDispatcher = new EventDispatcher_1.default();
         /**
          * A flag to determine if this class has already been initialized.
          *
@@ -148,5 +148,6 @@
         NetworkMonitor._initialized = false;
         return NetworkMonitor;
     })();
-    return NetworkMonitor;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = NetworkMonitor;
 });

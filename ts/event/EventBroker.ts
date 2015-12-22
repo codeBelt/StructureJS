@@ -1,5 +1,5 @@
-import EventDispatcher = require('./EventDispatcher');
-import BaseEvent = require('./BaseEvent');
+import EventDispatcher from './EventDispatcher';
+import BaseEvent from './BaseEvent';
 
 /**
  * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
@@ -304,4 +304,4 @@ class EventBroker
 
 }
 
-export = EventBroker;
+export default EventBroker;

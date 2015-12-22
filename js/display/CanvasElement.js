@@ -11,9 +11,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObjectContainer', './DOMElement', '../geom/Point'], factory);
     }
 })(function (require, exports) {
-    var DisplayObjectContainer = require('./DisplayObjectContainer');
-    var DOMElement = require('./DOMElement');
-    var Point = require('../geom/Point');
+    var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
+    var DOMElement_1 = require('./DOMElement');
+    var Point_1 = require('../geom/Point');
     var CanvasElement = (function (_super) {
         __extends(CanvasElement, _super);
         // Notice the capital W and H. That sets the attributes not the styles.
@@ -175,7 +175,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         CanvasElement.prototype.getMousePos = function (event) {
             var rect = this.canvas.getBoundingClientRect();
-            return new Point(event.clientX - rect.left, event.clientY - rect.top);
+            return new Point_1.default(event.clientX - rect.left, event.clientY - rect.top);
         };
         CanvasElement.prototype.getObjectUnderPoint = function (x, y) {
             var foundItem = null;
@@ -237,7 +237,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 event.currentTarget = this;
                 this.dispatchEvent(event);
             }
-            else if (displayObject !== null && displayObject instanceof DisplayObjectContainer && displayObject.mouseChildren === true) {
+            else if (displayObject !== null && displayObject instanceof DisplayObjectContainer_1.default && displayObject.mouseChildren === true) {
                 event.currentTarget = displayObject;
                 displayObject = this._getActualClickedOnChild(displayObject, mousePos.x, mousePos.y);
                 event.bubbles = true;
@@ -273,6 +273,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
         };
         return CanvasElement;
-    })(DOMElement);
-    return CanvasElement;
+    })(DOMElement_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = CanvasElement;
 });

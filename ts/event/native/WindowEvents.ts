@@ -10,4 +10,4 @@ class WindowEvents
     public static CHANGE:string = "change";
 }
 
-export = WindowEvents;
+export default WindowEvents;

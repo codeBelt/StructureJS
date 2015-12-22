@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -167,11 +167,11 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;./DisplayObjectContainer&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/TemplateFactory&#x27;, &#x27;../util/ComponentFactory&#x27;, &#x27;../plugin/jquery.eventListener&#x27;], factory);
     }
 })(function (require, exports) {
-    var DisplayObjectContainer = require(&#x27;./DisplayObjectContainer&#x27;);
-    var BaseEvent = require(&#x27;../event/BaseEvent&#x27;);
-    var TemplateFactory = require(&#x27;../util/TemplateFactory&#x27;);
-    var ComponentFactory = require(&#x27;../util/ComponentFactory&#x27;);
-    var jQuery = require(&#x27;../plugin/jquery.eventListener&#x27;);
+    var DisplayObjectContainer_1 = require(&#x27;./DisplayObjectContainer&#x27;);
+    var BaseEvent_1 = require(&#x27;../event/BaseEvent&#x27;);
+    var TemplateFactory_1 = require(&#x27;../util/TemplateFactory&#x27;);
+    var ComponentFactory_1 = require(&#x27;../util/ComponentFactory&#x27;);
+    var jquery_eventListener_1 = require(&#x27;../plugin/jquery.eventListener&#x27;);
     /**
      * The {{#crossLink &quot;DOMElement&quot;}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
      *
@@ -349,7 +349,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
              * @protected
              */
             this._params = null;
-            if (type instanceof jQuery) {
+            if (type instanceof jquery_eventListener_1.default) {
                 this.$element = type;
                 this.element = this.$element[0];
                 this._isReference = true;
@@ -430,12 +430,12 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
                 throw new Error(&#x27;[&#x27; + this.getQualifiedClassName() + &#x27;] You cannot call the create method manually. It is only called once automatically during the view lifecycle and should only be called once.&#x27;);
             }
             if (this.$element == null) {
-                var html_1 = TemplateFactory.create(type, params);
+                var html_1 = TemplateFactory_1.default.create(type, params);
                 if (html_1) {
-                    this.$element = jQuery(html_1);
+                    this.$element = jquery_eventListener_1.default(html_1);
                 }
                 else {
-                    this.$element = jQuery(&quot;&lt;&quot; + type + &quot;/&gt;&quot;, params);
+                    this.$element = jquery_eventListener_1.default(&quot;&lt;&quot; + type + &quot;/&gt;&quot;, params);
                 }
             }
             this.element = this.$element[0];
@@ -546,7 +546,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             child.setSize(child.width, child.height);
             child.enable();
             child.layout();
-            child.dispatchEvent(new BaseEvent(BaseEvent.ADDED_TO_STAGE));
+            child.dispatchEvent(new BaseEvent_1.default(BaseEvent_1.default.ADDED_TO_STAGE));
         };
         /**
          * @overridden DisplayObjectContainer.addChildAt
@@ -576,7 +576,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
                 this.numChildren = this.children.length;
                 child.parent = this;
                 // Adds the child before any child already added in the DOM.
-                jQuery(children.get(index)).before(child.$element);
+                jquery_eventListener_1.default(children.get(index)).before(child.$element);
                 this._onAddedToDom(child);
             }
             return this;
@@ -759,14 +759,15 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var obj;
             for (var i_2 = 0; i_2 &lt; length; i_2++) {
                 obj = componentList[i_2];
-                list = ComponentFactory.create(this.$element.find(obj.selector), obj.component, this);
+                list = ComponentFactory_1.default.create(this.$element.find(obj.selector), obj.component, this);
                 createdChildren = createdChildren.concat(list);
             }
             return createdChildren;
         };
         return DOMElement;
-    })(DisplayObjectContainer);
-    return DOMElement;
+    })(DisplayObjectContainer_1.default);
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = DOMElement;
 });
 
     </pre>

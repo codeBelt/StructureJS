@@ -75,5 +75,6 @@
         MouseEvents.TAP = 'tap';
         return MouseEvents;
     })();
-    return MouseEvents;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = MouseEvents;
 });

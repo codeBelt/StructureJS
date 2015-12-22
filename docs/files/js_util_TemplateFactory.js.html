@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -162,7 +162,7 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;./StringUtil&#x27;], factory);
     }
 })(function (require, exports) {
-    var StringUtil = require(&#x27;./StringUtil&#x27;);
+    var StringUtil_1 = require(&#x27;./StringUtil&#x27;);
     /**
      * A helper class to provide a convenient and consistent way to render templates.
      *
@@ -204,7 +204,7 @@
                 // Remove pound sign from the id name.
                 templatePath = templatePath.substring(1);
                 var htmlString = document.getElementById(templatePath).innerHTML;
-                htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
+                htmlString = StringUtil_1.default.removeLeadingTrailingWhitespace(htmlString);
                 if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE) {
                     // Underscore Template:
                     var templateMethod = window[&#x27;_&#x27;].template(htmlString);
@@ -273,7 +273,8 @@
         TemplateFactory.templateNamespace = &#x27;JST&#x27;;
         return TemplateFactory;
     })();
-    return TemplateFactory;
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = TemplateFactory;
 });
 
     </pre>

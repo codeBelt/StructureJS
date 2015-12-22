@@ -1,5 +1,5 @@
-import ApplicationCacheEvent = require('../event/ApplicationCacheEvent');
-import EventDispatcher = require('../event/EventDispatcher');
+import ApplicationCacheEvent from '../event/ApplicationCacheEvent';
+import EventDispatcher from '../event/EventDispatcher';
 
 /**
  * The ApplicationCacheController is a static class works with the window applicationCache object.
@@ -308,4 +308,4 @@ class ApplicationCacheController
     }
 }
 
-export = ApplicationCacheController;
+export default ApplicationCacheController;

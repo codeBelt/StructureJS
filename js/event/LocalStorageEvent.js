@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
-    var BaseEvent = require('./BaseEvent');
+    var BaseEvent_1 = require('./BaseEvent');
     /**
      * The LocalStorageEvent ....
      * Note: the event only dispatches in other browser windows and does not show up in the window where you made a change to the local storage.
@@ -60,6 +60,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         LocalStorageEvent.STORAGE = 'storage';
         return LocalStorageEvent;
-    })(BaseEvent);
-    return LocalStorageEvent;
+    })(BaseEvent_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = LocalStorageEvent;
 });

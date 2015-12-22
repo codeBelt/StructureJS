@@ -1,6 +1,6 @@
-import StringUtil = require('../util/StringUtil');
-import RouterEvent = require('../event/RouterEvent');
-import Route = require('../model/Route');
+import StringUtil from '../util/StringUtil';
+import RouterEvent from '../event/RouterEvent';
+import Route from '../model/Route';
 
 /**
  * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
@@ -646,4 +646,4 @@ class Router
     }
 }
 
-export = Router;
+export default Router;

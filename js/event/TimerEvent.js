@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
-    var BaseEvent = require('./BaseEvent');
+    var BaseEvent_1 = require('./BaseEvent');
     /**
      * The TimerEvent...
      *
@@ -55,6 +55,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         TimerEvent.TIMER_COMPLETE = 'TimerEvent.timerComplete';
         return TimerEvent;
-    })(BaseEvent);
-    return TimerEvent;
+    })(BaseEvent_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = TimerEvent;
 });

@@ -6,7 +6,7 @@
         define(["require", "exports", '../util/Util'], factory);
     }
 })(function (require, exports) {
-    var Util = require('../util/Util');
+    var Util_1 = require('../util/Util');
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
@@ -52,7 +52,7 @@
                 else {
                     // Else if there is already a 'data-sjs-type' attribute then get the type(s).
                     types = types.split(',');
-                    componentName = Util.getName(ComponentClass);
+                    componentName = Util_1.default.getName(ComponentClass);
                     // Only create the component if the component type does not already exist.
                     if (types.indexOf(componentName) === -1) {
                         component = ComponentFactory._createComponent($element, ComponentClass, scope);
@@ -78,5 +78,6 @@
         };
         return ComponentFactory;
     })();
-    return ComponentFactory;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = ComponentFactory;
 });

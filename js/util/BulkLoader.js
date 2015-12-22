@@ -11,10 +11,10 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../event/EventDispatcher', '../event/LoaderEvent', '../event/BulkLoaderEvent', '../model/Collection'], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require('../event/EventDispatcher');
-    var LoaderEvent = require('../event/LoaderEvent');
-    var BulkLoaderEvent = require('../event/BulkLoaderEvent');
-    var Collection = require('../model/Collection');
+    var EventDispatcher_1 = require('../event/EventDispatcher');
+    var LoaderEvent_1 = require('../event/LoaderEvent');
+    var BulkLoaderEvent_1 = require('../event/BulkLoaderEvent');
+    var Collection_1 = require('../model/Collection');
     /**
      * TODO: YUIDoc_comment
      *
@@ -33,7 +33,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             _super.call(this);
             this._dataStores = null;
             this._totalComplete = 0;
-            this._dataStores = new Collection();
+            this._dataStores = new Collection_1.default();
         }
         /**
          * TODO: YUIDoc_comment
@@ -87,7 +87,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             var dataStore;
             for (var i_1 = 0; i_1 < this._dataStores.length; i_1++) {
                 dataStore = this._dataStores.get(i_1).value;
-                dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this._onLoadComplete, this);
+                dataStore.addEventListenerOnce(LoaderEvent_1.default.COMPLETE, this._onLoadComplete, this);
                 dataStore.load();
             }
             return this;
@@ -102,10 +102,10 @@ var __extends = (this && this.__extends) || function (d, b) {
             var dataStore;
             for (var i_2 = 0; i_2 < this._dataStores.length; i_2++) {
                 dataStore = this._dataStores.get(i_2).value;
-                dataStore.removeEventListener(LoaderEvent.COMPLETE, this._onLoadComplete, this);
+                dataStore.removeEventListener(LoaderEvent_1.default.COMPLETE, this._onLoadComplete, this);
             }
             this._totalComplete = 0;
-            this._dataStores = new Collection();
+            this._dataStores = new Collection_1.default();
         };
         /**
          * TODO: YUIDoc_comment
@@ -117,7 +117,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         BulkLoader.prototype._onLoadComplete = function (event) {
             var dataStore = event.target;
             this._totalComplete++;
-            var bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.COMPLETE);
+            var bulkLoaderEvent = new BulkLoaderEvent_1.default(BulkLoaderEvent_1.default.COMPLETE);
             bulkLoaderEvent.total = this._dataStores.length;
             bulkLoaderEvent.totalComplete = this._totalComplete;
             bulkLoaderEvent.percentComplete = (this._totalComplete / this._dataStores.length) * 100;
@@ -138,7 +138,7 @@ var __extends = (this && this.__extends) || function (d, b) {
                 dataStoreList.push(model.value);
             }
             // Add the whole list because all are completed.
-            bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.LOAD_COMPLETE);
+            bulkLoaderEvent = new BulkLoaderEvent_1.default(BulkLoaderEvent_1.default.LOAD_COMPLETE);
             bulkLoaderEvent.total = this._dataStores.length;
             bulkLoaderEvent.totalComplete = this._totalComplete;
             bulkLoaderEvent.percentComplete = (this._totalComplete / this._dataStores.length) * 100;
@@ -147,6 +147,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.dispatchEvent(bulkLoaderEvent);
         };
         return BulkLoader;
-    })(EventDispatcher);
-    return BulkLoader;
+    })(EventDispatcher_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = BulkLoader;
 });

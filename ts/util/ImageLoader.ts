@@ -1,6 +1,6 @@
-import IDataStore = require('../interface/IDataStore');
-import EventDispatcher = require('../event/EventDispatcher');
-import LoaderEvent = require('../event/LoaderEvent');
+import IDataStore from '../interface/IDataStore';
+import EventDispatcher from '../event/EventDispatcher';
+import LoaderEvent from '../event/LoaderEvent';
 
 /**
  * The ImageLoader...
@@ -50,4 +50,4 @@ class ImageLoader extends EventDispatcher implements IDataStore
     }
 }
 
-export = ImageLoader;
+export default ImageLoader;
