@@ -25,4 +25,4 @@ interface ICore
     destroy():void
 }
 
-export = ICore;
+export default ICore;

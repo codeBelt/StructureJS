@@ -1,4 +1,4 @@
-import BaseEvent = require('./BaseEvent');
+import BaseEvent from './BaseEvent';
 
 /**
  * The LocalStorageEvent ....
@@ -88,4 +88,4 @@ class LocalStorageEvent extends BaseEvent
 
 }
 
-export = LocalStorageEvent;
+export default LocalStorageEvent;

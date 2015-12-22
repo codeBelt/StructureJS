@@ -315,4 +315,4 @@ class NumberUtil
 
 }
 
-export = NumberUtil;
+export default NumberUtil;

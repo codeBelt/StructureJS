@@ -1,6 +1,6 @@
-import EventDispatcher = require('../event/EventDispatcher');
-import BaseEvent = require('../event/BaseEvent');
-import Util = require('../util/Util');
+import EventDispatcher from '../event/EventDispatcher';
+import BaseEvent from '../event/BaseEvent';
+import Util from '../util/Util';
 
 /**
  * A helper class to detect OS and browsers.
@@ -442,4 +442,4 @@ class BrowserUtil
 
 }
 
-export = BrowserUtil;
+export default BrowserUtil;

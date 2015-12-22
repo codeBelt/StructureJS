@@ -1,4 +1,4 @@
-import EventDispatcher = require('../event/EventDispatcher');
+import EventDispatcher from '../event/EventDispatcher';
 
 /**
  * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -250,4 +250,4 @@ class DisplayObject extends EventDispatcher
 
 }
 
-export = DisplayObject;
+export default DisplayObject;

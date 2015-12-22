@@ -6,8 +6,8 @@
         define(["require", "exports", '../event/ApplicationCacheEvent', '../event/EventDispatcher'], factory);
     }
 })(function (require, exports) {
-    var ApplicationCacheEvent = require('../event/ApplicationCacheEvent');
-    var EventDispatcher = require('../event/EventDispatcher');
+    var ApplicationCacheEvent_1 = require('../event/ApplicationCacheEvent');
+    var EventDispatcher_1 = require('../event/EventDispatcher');
     /**
      * The ApplicationCacheController is a static class works with the window applicationCache object.
      *
@@ -31,14 +31,14 @@
                 return;
             }
             // Native Browser Event Listener
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CACHED, this._onCached.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.CHECKING, this._onChecking.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.DOWNLOADING, this._onDownloading.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.NO_UPDATE, this._onNoUpdate.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.OBSOLETE, this._onObsolete.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.PROGRESS, this._onProgress.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._onUpdateReady.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent.ERROR, this._onError.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.CACHED, this._onCached.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.CHECKING, this._onChecking.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.DOWNLOADING, this._onDownloading.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.NO_UPDATE, this._onNoUpdate.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.OBSOLETE, this._onObsolete.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.PROGRESS, this._onProgress.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.UPDATE_READY, this._onUpdateReady.bind(this), false);
+            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.ERROR, this._onError.bind(this), false);
             ApplicationCacheController.isEnabled = true;
         };
         /**
@@ -48,14 +48,14 @@
             if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === false) {
                 return;
             }
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CACHED, ApplicationCacheController._onCached.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.CHECKING, ApplicationCacheController._onChecking.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.DOWNLOADING, ApplicationCacheController._onDownloading.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.NO_UPDATE, ApplicationCacheController._onNoUpdate.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.OBSOLETE, ApplicationCacheController._onObsolete.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.PROGRESS, ApplicationCacheController._onProgress.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.UPDATE_READY, ApplicationCacheController._onUpdateReady.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent.ERROR, ApplicationCacheController._onError.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.CACHED, ApplicationCacheController._onCached.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.CHECKING, ApplicationCacheController._onChecking.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.DOWNLOADING, ApplicationCacheController._onDownloading.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.NO_UPDATE, ApplicationCacheController._onNoUpdate.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.OBSOLETE, ApplicationCacheController._onObsolete.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.PROGRESS, ApplicationCacheController._onProgress.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.UPDATE_READY, ApplicationCacheController._onUpdateReady.bind(this), false);
+            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.ERROR, ApplicationCacheController._onError.bind(this), false);
             ApplicationCacheController.isEnabled = true;
         };
         ApplicationCacheController.update = function () {
@@ -97,7 +97,7 @@
          */
         ApplicationCacheController._onCached = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CACHED, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CACHED, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.CACHED, false, false, event));
         };
         /**
          * The browser is checking for an update, or is attempting to download
@@ -111,7 +111,7 @@
          */
         ApplicationCacheController._onChecking = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.CHECKING, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CHECKING, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.CHECKING, false, false, event));
         };
         /**
          * The browser has started to download the cache manifest, either for the
@@ -124,7 +124,7 @@
          */
         ApplicationCacheController._onDownloading = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.DOWNLOADING, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.DOWNLOADING, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.DOWNLOADING, false, false, event));
         };
         /**
          * An error occurred at some point - this could be caused by a number of things. This will
@@ -137,7 +137,7 @@
          */
         ApplicationCacheController._onError = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.ERROR, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.ERROR, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.ERROR, false, false, event));
         };
         /**
          * The cache manifest hadn't changed.
@@ -149,7 +149,7 @@
          */
         ApplicationCacheController._onNoUpdate = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.NO_UPDATE, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.NO_UPDATE, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.NO_UPDATE, false, false, event));
         };
         /**
          * The cache manifest file could not be found, indicating that the cache is no longer needed.
@@ -162,7 +162,7 @@
          */
         ApplicationCacheController._onObsolete = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.OBSOLETE, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.OBSOLETE, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.OBSOLETE, false, false, event));
         };
         /**
          * The browser had downloaded and cached an asset. This is fired once for
@@ -175,7 +175,7 @@
          */
         ApplicationCacheController._onProgress = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.PROGRESS, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.PROGRESS, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.PROGRESS, false, false, event));
         };
         /**
          * The resources listed in the manifest have been newly re-downloaded, and the script can
@@ -188,7 +188,7 @@
          */
         ApplicationCacheController._onUpdateReady = function (event) {
             //console.log('[ApplicationCacheController]', 'ApplicationCacheEvent:',ApplicationCacheEvent.UPDATE_READY, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY, false, false, event));
+            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.UPDATE_READY, false, false, event));
         };
         /**
          * Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.
@@ -261,7 +261,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController._eventDispatcher = new EventDispatcher();
+        ApplicationCacheController._eventDispatcher = new EventDispatcher_1.default();
         /**
          * The isEnabled property is used to keep track of the enabled state.
          *
@@ -274,5 +274,6 @@
         ApplicationCacheController.isEnabled = false;
         return ApplicationCacheController;
     })();
-    return ApplicationCacheController;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = ApplicationCacheController;
 });

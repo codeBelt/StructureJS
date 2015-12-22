@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -167,8 +167,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../BaseObject&#x27;, &#x27;../util/Util&#x27;], factory);
     }
 })(function (require, exports) {
-    var BaseObject = require(&#x27;../BaseObject&#x27;);
-    var Util = require(&#x27;../util/Util&#x27;);
+    var BaseObject_1 = require(&#x27;../BaseObject&#x27;);
+    var Util_1 = require(&#x27;../util/Util&#x27;);
     /**
      *  Base Model is a design pattern used to transfer data between software application subsystems.
      *
@@ -329,8 +329,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          *     let obj = carModel.toJSON();
          */
         BaseModel.prototype.toJSON = function () {
-            var clone = Util.clone(this);
-            return Util.deletePropertyFromObject(clone, [&#x27;sjsId&#x27;]);
+            var clone = Util_1.default.clone(this);
+            return Util_1.default.deletePropertyFromObject(clone, [&#x27;sjsId&#x27;]);
         };
         /**
          * Converts a  Base Model to a JSON string,
@@ -374,8 +374,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             return clonedBaseModel;
         };
         return BaseModel;
-    })(BaseObject);
-    return BaseModel;
+    })(BaseObject_1.default);
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = BaseModel;
 });
 
     </pre>

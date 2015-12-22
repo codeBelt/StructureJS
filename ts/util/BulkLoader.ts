@@ -1,8 +1,8 @@
-import IDataStore = require('../interface/IDataStore');
-import EventDispatcher = require('../event/EventDispatcher');
-import LoaderEvent = require('../event/LoaderEvent');
-import BulkLoaderEvent = require('../event/BulkLoaderEvent');
-import Collection = require('../model/Collection');
+import IDataStore from '../interface/IDataStore';
+import EventDispatcher from '../event/EventDispatcher';
+import LoaderEvent from '../event/LoaderEvent';
+import BulkLoaderEvent from '../event/BulkLoaderEvent';
+import Collection from '../model/Collection';
 
 /**
  * TODO: YUIDoc_comment
@@ -173,4 +173,4 @@ class BulkLoader extends EventDispatcher
 
 }
 
-export = BulkLoader;
+export default BulkLoader;

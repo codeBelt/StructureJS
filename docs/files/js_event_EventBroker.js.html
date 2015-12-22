@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.0</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -162,8 +162,8 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;./EventDispatcher&#x27;, &#x27;./BaseEvent&#x27;], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require(&#x27;./EventDispatcher&#x27;);
-    var BaseEvent = require(&#x27;./BaseEvent&#x27;);
+    var EventDispatcher_1 = require(&#x27;./EventDispatcher&#x27;);
+    var BaseEvent_1 = require(&#x27;./BaseEvent&#x27;);
     /**
      * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
      * Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.
@@ -345,7 +345,7 @@
             if (scope === void 0) { scope = EventBroker; }
             var event = type;
             if (typeof event === &#x27;string&#x27;) {
-                event = new BaseEvent(type, false, false, data);
+                event = new BaseEvent_1.default(type, false, false, data);
             }
             event.target = scope;
             event.currentTarget = scope;
@@ -417,7 +417,7 @@
          * @private
          * @static
          */
-        EventBroker._eventDispatcher = new EventDispatcher();
+        EventBroker._eventDispatcher = new EventDispatcher_1.default();
         /**
          * A list of wait for objects.
          *
@@ -429,7 +429,8 @@
         EventBroker._waitForList = [];
         return EventBroker;
     })();
-    return EventBroker;
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = EventBroker;
 });
 
     </pre>

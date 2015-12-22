@@ -25,4 +25,4 @@ interface IBaseObject
 
 }
 
-export = IBaseObject;
+export default IBaseObject;

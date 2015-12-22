@@ -1,7 +1,7 @@
-import BaseModel = require('../model/BaseModel');
-import EventDispatcher = require('../event/EventDispatcher');
-import BaseEvent = require('../event/BaseEvent');
-import Util = require('../util/Util');
+import BaseModel from '../model/BaseModel';
+import EventDispatcher from '../event/EventDispatcher';
+import BaseEvent from '../event/BaseEvent';
+import Util from '../util/Util';
 
 /**
  * The Collection class provides a way for you to manage your models.
@@ -632,4 +632,4 @@ class Collection extends EventDispatcher
 
 }
 
-export = Collection;
+export default Collection;

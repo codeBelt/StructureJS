@@ -143,4 +143,4 @@ class ValidationUtil
     }
 }
 
-export = ValidationUtil;
+export default ValidationUtil;

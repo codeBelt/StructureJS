@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObject'], factory);
     }
 })(function (require, exports) {
-    var DisplayObject = require('./DisplayObject');
+    var DisplayObject_1 = require('./DisplayObject');
     var TextField = (function (_super) {
         __extends(TextField, _super);
         function TextField() {
@@ -73,6 +73,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
         };
         return TextField;
-    })(DisplayObject);
-    return TextField;
+    })(DisplayObject_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = TextField;
 });

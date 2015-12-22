@@ -1,6 +1,6 @@
-import EventDispatcher = require('../event/EventDispatcher');
-import NetworkMonitorEvent = require('../event/NetworkMonitorEvent');
-import NavigatorEvents = require('../event/native/NavigatorEvents');
+import EventDispatcher from '../event/EventDispatcher';
+import NetworkMonitorEvent from '../event/NetworkMonitorEvent';
+import NavigatorEvents from '../event/native/NavigatorEvents';
 
 /**
  * A helper class to detect network changes.
@@ -165,4 +165,4 @@ class NetworkMonitor
     }
 }
 
-export = NetworkMonitor;
+export default NetworkMonitor;
