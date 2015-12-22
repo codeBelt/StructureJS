@@ -17,6 +17,8 @@
     "homepage": "https://github.com/codeBelt/StructureJS",
     "ignore": [
         "node_modules",
+        "__tests__",
+        "gulpfile.js",
         "examples",
         "friendly-theme",
         "js/config.js",

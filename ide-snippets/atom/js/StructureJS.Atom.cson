@@ -56,7 +56,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         ${1:Class}.prototype.enable = function () {
-            if (this.isEnabled === true) { return this; }
+            if (this.isEnabled === true) { return; }
 
             // Enable the child objects and/or add any event listeners.
 
@@ -67,7 +67,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         ${1:Class}.prototype.disable = function () {
-            if (this.isEnabled === false) { return this; }
+            if (this.isEnabled === false) { return; }
 
             // Disable the child objects and/or remove any event listeners.
 
@@ -79,8 +79,6 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         ${1:Class}.prototype.layout = function () {
             // Layout or update the child objects in this parent class.
-
-            return this;
         };
 
         /**
@@ -189,7 +187,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden Stage.enable
          */
         ${1:Class}.prototype.enable = function () {
-            if (this.isEnabled === true) { return this; }
+            if (this.isEnabled === true) { return; }
 
             // Enable the child objects and/or add any event listeners.
 
@@ -200,7 +198,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden Stage.disable
          */
         ${1:Class}.prototype.disable = function () {
-            if (this.isEnabled === false) { return this; }
+            if (this.isEnabled === false) { return; }
 
             // Disable the child objects and/or remove any event listeners.
 
@@ -212,8 +210,6 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         ${1:Class}.prototype.layout = function () {
             // Layout or update the objects in this parent class.
-
-            return this;
         };
 
         /**

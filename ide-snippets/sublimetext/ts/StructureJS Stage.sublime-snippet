@@ -1,14 +1,15 @@
-// Imports
-import DOMElement from 'structurejs/display/DOMElement';
+<snippet>
+	<content><![CDATA[
+import Stage from 'structurejs/display/Stage';
 
 /**
  * TODO: YUIDoc_comment
  *
- * @class ${NAME}
- * @extends DOMElement
+ * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
+ * @extends Stage
  * @constructor
  **/
-class ${NAME} extends DOMElement {
+class ${TM_FILENAME/(.*)[.](.*)/$1/g} extends Stage {
 
     constructor() {
         super();
@@ -17,7 +18,7 @@ class ${NAME} extends DOMElement {
     /**
      * @overridden DOMElement.create
      */
-    create() {
+    public create():void {
         super.create();
 
         // Create or setup objects in this parent class.
@@ -26,8 +27,8 @@ class ${NAME} extends DOMElement {
     /**
      * @overridden DOMElement.enable
      */
-    enable() {
-        if (this.isEnabled === true) { return this; }
+    public enable():void {
+        if (this.isEnabled === true) { return; }
 
         // Enable the child objects and/or add any event listeners.
 
@@ -37,8 +38,8 @@ class ${NAME} extends DOMElement {
     /**
      * @overridden DOMElement.disable
      */
-    disable() {
-        if (this.isEnabled === false) { return this; }
+    public disable():void {
+        if (this.isEnabled === false) { return; }
 
         // Disable the child objects and/or remove any event listeners.
 
@@ -48,16 +49,14 @@ class ${NAME} extends DOMElement {
     /**
      * @overridden DOMElement.layout
      */
-    layout() {
+    public layout():void {
         // Layout or update the objects in this parent class.
-
-        return this;
     }
 
     /**
      * @overridden DOMElement.destroy
      */
-    destroy() {
+    public destroy():void {
         this.disable();
 
         // Call destroy on any child objects.
@@ -68,4 +67,10 @@ class ${NAME} extends DOMElement {
 
 }
 
-export default ${NAME};
+export default ${TM_FILENAME/(.*)[.](.*)/$1/g};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>stageClass</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

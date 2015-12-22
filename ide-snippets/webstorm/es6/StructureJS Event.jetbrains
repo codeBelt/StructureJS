@@ -1,4 +1,3 @@
-// Imports
 import BaseEvent from 'structurejs/event/BaseEvent';
 
 /**

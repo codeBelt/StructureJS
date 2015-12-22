@@ -1,22 +1,22 @@
 <snippet>
-	<content><![CDATA[
+    <content><![CDATA[
 define(function(require, exports, module) { // jshint ignore:line
     'use strict';
  
     // Imports
     var Extend = require('structurejs/util/Extend');
-    var Stage = require('structurejs/display/Stage');
+    var DOMElement = require('structurejs/display/DOMElement');
  
     /**
      * TODO: YUIDoc_comment
      *
      * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
-     * @extends Stage
+     * @extends DOMElement
      * @constructor
      **/
     var ${TM_FILENAME/(.*)[.](.*)/$1/g} = (function () {
  
-        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, Stage);
+        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, DOMElement);
  
         function ${TM_FILENAME/(.*)[.](.*)/$1/g}() {
             _super.call(this);
@@ -25,7 +25,7 @@ define(function(require, exports, module) { // jshint ignore:line
         }
  
         /**
-         * @overridden Stage.create
+         * @overridden DOMElement.create
          */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.create = function () {
             _super.prototype.create.call(this);
@@ -34,10 +34,10 @@ define(function(require, exports, module) { // jshint ignore:line
         };
  
         /**
-         * @overridden Stage.enable
+         * @overridden DOMElement.enable
          */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.enable = function () {
-            if (this.isEnabled === true) { return this; }
+            if (this.isEnabled === true) { return; }
  
             // Enable the child objects and/or add any event listeners.
  
@@ -45,10 +45,10 @@ define(function(require, exports, module) { // jshint ignore:line
         };
  
         /**
-         * @overridden Stage.disable
+         * @overridden DOMElement.disable
          */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.disable = function () {
-            if (this.isEnabled === false) { return this; }
+            if (this.isEnabled === false) { return; }
  
             // Disable the child objects and/or remove any event listeners.
  
@@ -56,16 +56,14 @@ define(function(require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden Stage.layout
-         */
+        * @overridden DOMElement.layout
+        */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.layout = function () {
             // Layout or update the objects in this parent class.
-
-            return this;
         };
- 
+
         /**
-         * @overridden Stage.destroy
+         * @overridden DOMElement.destroy
          */
         ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.destroy = function () {
             this.disable();
@@ -83,8 +81,8 @@ define(function(require, exports, module) { // jshint ignore:line
  
 });
 ]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>stageClass</tabTrigger>
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>source.js</scope>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>viewClass</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.js</scope>
 </snippet>
