@@ -1,7 +1,7 @@
 // Load the file that exports the functionality to test
 jest.dontMock('../../js/util/ValidationUtil');  // Don't create mock functions
 
-var ValidationUtil = require('../../js/util/ValidationUtil');
+var ValidationUtil = require('../../js/util/ValidationUtil').default;
 
 describe("ValidationUtil", function() {
     it("isValidEmailAddress()", function() {

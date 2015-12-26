@@ -2,7 +2,7 @@
 jest.dontMock('../js/util/Util');  // Don't create mock functions
 jest.dontMock('../js/BaseObject');  // Don't create mock functions
 
-var BaseObject = require('../js/BaseObject');
+var BaseObject = require('../js/BaseObject').default;
 
 describe("BaseObject", function() {
 

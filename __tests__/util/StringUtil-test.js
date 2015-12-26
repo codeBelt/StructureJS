@@ -1,7 +1,7 @@
 // Load the file that exports the functionality to test
 jest.dontMock('../../js/util/StringUtil');  // Don't create mock functions
 
-var StringUtil = require('../../js/util/StringUtil');
+var StringUtil = require('../../js/util/StringUtil').default;
 
 describe("StringUtil", function() {
     it("getExtension()", function() {
