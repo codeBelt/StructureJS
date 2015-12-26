@@ -97,7 +97,7 @@ var movies = [
     }
 ];
 
-var Collection = require('../../js/model/Collection');
+var Collection = require('../../js/model/Collection').default;
 
 describe('Collection', function() {
     var collection = new Collection();

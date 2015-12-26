@@ -1,7 +1,7 @@
 // Load the file that exports the functionality to test
 jest.dontMock('../../js/util/Util');  // Don't create mock functions
 
-var Util = require('../../js/util/Util');
+var Util = require('../../js/util/Util').default;
 
 describe("Util", function() {
 

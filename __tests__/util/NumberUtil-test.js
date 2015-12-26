@@ -1,7 +1,7 @@
 // Load the file that exports the functionality to test
 jest.dontMock('../../js/util/NumberUtil');  // Don't create mock functions
 
-var NumberUtil = require('../../js/util/NumberUtil');
+var NumberUtil = require('../../js/util/NumberUtil').default;
 
 describe("NumberUtil", function() {
     it("centimeterToInch() 1 centimeter should be 0.3937 inches", function() {

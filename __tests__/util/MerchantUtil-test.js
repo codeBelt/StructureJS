@@ -1,7 +1,7 @@
 // Load the file that exports the functionality to test
 jest.dontMock('../../js/util/MerchantUtil');  // Don't create mock functions
 
-var MerchantUtil = require('../../js/util/MerchantUtil');
+var MerchantUtil = require('../../js/util/MerchantUtil').default;
 
 describe("MerchantUtil", function() {
     //http://www.freeformatter.com/credit-card-number-generator-validator.html

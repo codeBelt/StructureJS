@@ -27,8 +27,8 @@ describe("DOMElement", function() {
 
     it("Added to DOM", function() {
         var jQuery = require('jquery');
-        var DOMElement = require('../../js/display/DOMElement');
-        var Stage = require('../../js/display/Stage');
+        var DOMElement = require('../../js/display/DOMElement').default;
+        var Stage = require('../../js/display/Stage').default;
 
         // Set up our document body
         document.body.innerHTML = require('fs').readFileSync('__tests__/display/app.html').toString();
