@@ -1,4 +1,4 @@
-import DisplayObject = require('./DisplayObject');
+import DisplayObject from './DisplayObject';
 
 class TextField extends DisplayObject
 {
@@ -29,11 +29,11 @@ class TextField extends DisplayObject
 
         if (this.text.indexOf('\n') !== -1)
         {
-            this.wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
+            this._wrapTextOnLineBreak(this.ctx, this.text, 0, 0, this.lineHeight);
         }
         else if (this.width > 0)
         {
-            this.wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
+            this._wrapTextByWidth(this.ctx, this.text, 0, 0, this.width, this.lineHeight);
         }
         else
         {
@@ -41,16 +41,16 @@ class TextField extends DisplayObject
         }
     }
 
-    protected wrapTextByWidth(context, text, x, y, maxWidth, lineHeight):void
+    protected _wrapTextByWidth(context, text, x, y, maxWidth, lineHeight):void
     {
-        var wordList:Array<string> = text.split(' ');
-        var line:string = '';
-        var testLine:string;
-        var metrics:{width: number};
-        var testWidth:number;
-        var length:number = wordList.length;
+        const wordList:Array<string> = text.split(' ');
+        let line:string = '';
+        let testLine:string;
+        let metrics:{width: number};
+        let testWidth:number;
+        const length:number = wordList.length;
 
-        for (var i:number = 0; i < length; i++)
+        for (let i:number = 0; i < length; i++)
         {
             testLine = line + wordList[i] + ' ';
             metrics = context.measureText(testLine);
@@ -71,12 +71,12 @@ class TextField extends DisplayObject
         context.fillText(line, x, y);
     }
 
-    protected wrapTextOnLineBreak(context, text, x, y, lineHeight):void
+    protected _wrapTextOnLineBreak(context, text, x, y, lineHeight):void
     {
-        var wordList:Array<string> = text.split('\n');
-        var length:number = wordList.length;
+        const wordList:Array<string> = text.split('\n');
+        const length:number = wordList.length;
 
-        for (var i:number = 0; i < length; i++)
+        for (let i:number = 0; i < length; i++)
         {
             context.fillText(wordList[i], x, y);
 
@@ -86,4 +86,4 @@ class TextField extends DisplayObject
 
 }
 
-export = TextField;
+export default TextField;

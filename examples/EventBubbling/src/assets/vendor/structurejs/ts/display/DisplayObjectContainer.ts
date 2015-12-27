@@ -1,4 +1,4 @@
-import DisplayObject = require('./DisplayObject');
+import DisplayObject from './DisplayObject';
 
 /**
  * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -119,7 +119,7 @@ class DisplayObjectContainer extends DisplayObject
      */
     public removeChild(child:DisplayObject):any
     {
-        var index = this.getChildIndex(child);
+        const index = this.getChildIndex(child);
         if (index !== -1)
         {
             // Removes the child object from the parent.
@@ -165,8 +165,8 @@ class DisplayObjectContainer extends DisplayObject
      */
     public swapChildren(child1:DisplayObject, child2:DisplayObject):any
     {
-        var child1Index = this.getChildIndex(child1);
-        var child2Index = this.getChildIndex(child2);
+        const child1Index = this.getChildIndex(child1);
+        const child2Index = this.getChildIndex(child2);
 
         this.addChildAt(child1, child2Index);
         this.addChildAt(child2, child1Index);
@@ -189,8 +189,8 @@ class DisplayObjectContainer extends DisplayObject
             throw new TypeError('[' + this.getQualifiedClassName() + '] index value(s) cannot be out of bounds. index1 value is ' + index1 + ' index2 value is ' + index2);
         }
 
-        var child1:DisplayObject = this.getChildAt(index1);
-        var child2:DisplayObject = this.getChildAt(index2);
+        const child1:DisplayObject = this.getChildAt(index1);
+        const child2:DisplayObject = this.getChildAt(index2);
 
         this.swapChildren(child1, child2);
 
@@ -246,9 +246,9 @@ class DisplayObjectContainer extends DisplayObject
      */
     public getChildByCid(sjsId:number):DisplayObject
     {
-        var child:DisplayObject = null;
+        let child:DisplayObject = null;
 
-        for (var i:number = this.numChildren - 1; i >= 0; i--)
+        for (let i:number = this.numChildren - 1; i >= 0; i--)
         {
             if (this.children[i].sjsId == sjsId)
             {
@@ -262,4 +262,4 @@ class DisplayObjectContainer extends DisplayObject
 
 }
 
-export = DisplayObjectContainer;
+export default DisplayObjectContainer;

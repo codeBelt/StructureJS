@@ -1,36 +1,51 @@
-import ICore = require('./ICore');
-import BaseEvent = require('../event/BaseEvent');
+import IObjectManager from './IObjectManager' ;
 
 /**
  * TODO: YUIDoc_comment
  *
- * @class IBaseModel
- * @extends ICore
+ * @class IEventDispatcher
+ * @extends IObjectManager
  * @module StructureJS
  * @submodule interface
  * @interface
  */
-interface IEventDispatcher extends ICore
+interface IEventDispatcher extends IObjectManager
 {
     /**
      * @property parent
      */
-    parent:any;
+    parent: any;
 
     /**
      * @method addEventListener
      */
-    addEventListener(type:string, func:Function, scope:any, priority?:number):any;
+    addEventListener(type: string, callback: Function, scope: any, priority?: number): any;
+
+    /**
+     * @method addEventListenerOnce
+     */
+    addEventListenerOnce(type: string, callback: Function, scope: any, priority?: number): any;
 
     /**
      * @method removeEventListener
      */
-    removeEventListener(type:string, func:Function, scope:any):any;
+    removeEventListener(type: string, callback: Function, scope: any): any;
 
     /**
      * @method dispatchEvent
      */
-    dispatchEvent(event:BaseEvent):any;
+    dispatchEvent(type: any, data?: any): any;
+
+    /**
+     * @method hasEventListener
+     */
+    hasEventListener(type: string, callback: Function, scope: any): boolean;
+
+    /**
+     * @method getEventListeners
+     */
+    getEventListeners(): string;
+
 }
 
-export = IEventDispatcher;
+export default IEventDispatcher;

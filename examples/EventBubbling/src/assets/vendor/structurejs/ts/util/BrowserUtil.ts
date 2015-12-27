@@ -1,6 +1,6 @@
-import EventDispatcher = require('../event/EventDispatcher');
-import BaseEvent = require('../event/BaseEvent');
-import Util = require('../util/Util');
+import EventDispatcher from '../event/EventDispatcher';
+import BaseEvent from '../event/BaseEvent';
+import Util from '../util/Util';
 
 /**
  * A helper class to detect OS and browsers.
@@ -148,7 +148,7 @@ class BrowserUtil
      */
     public static browserVersion(majorVersion:boolean = true):any
     {
-        var version:string = BrowserUtil.getBrowser()[1];
+        const version:string = BrowserUtil.getBrowser()[1];
 
         if (majorVersion === true)
         {
@@ -164,28 +164,26 @@ class BrowserUtil
      * Gets the browser name a user agent.
      *
      * @method getBrowser
-     * @private
+     * @public
      * @return {Array.<string>}
      * @static
      * @example
      *      BrowserUtil.getBrowser();
      *      // ["Chrome", "39.0.2171.99"]
      */
-    private static getBrowser():Array<string>
+    public static getBrowser():Array<string>
     {
-        var N = navigator.appName;
-        var ua = navigator.userAgent;
-        var tem = ua.match(/version\/([\.\d]+)/i);
-        var M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
+        const N = navigator.appName;
+        const ua = navigator.userAgent;
+        const tem = ua.match(/version\/([\.\d]+)/i);
+        let M = ua.match(/(opera|chrome|safari|firefox|msie)\/?\s*(\.?\d+(\.\d+)*)/i);
 
         if (M && tem != null)
         {
             M[2] = tem[1];
         }
-        else
-        {
-            M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
-        }
+
+        M = M ? [M[1], M[2]] : [N, navigator.appVersion, '-?'];
 
         return M;
     }
@@ -373,10 +371,10 @@ class BrowserUtil
      *      // Add a listener to get notified when the browser is resized:
      *      BrowserUtil.addEventListener(BaseEvent.RESIZE, this._onBreakpointChange, this);
      *      ...
-     *      ClassName.prototype._onBreakpointChange = function (baseEvent) {
+     *      _onBreakpointChange(baseEvent) {
      *          console.log(baseEvent.data);
      *          // 'screen_sm'
-     *      };
+     *      }
      */
     public static getBreakpoint()
     {
@@ -417,7 +415,7 @@ class BrowserUtil
      */
     public static dispatchEvent(type:any, data:any = null):void
     {
-        var event:any = type;
+        let event:any = type;
 
         if (typeof event === 'string')
         {
@@ -444,4 +442,4 @@ class BrowserUtil
 
 }
 
-export = BrowserUtil;
+export default BrowserUtil;

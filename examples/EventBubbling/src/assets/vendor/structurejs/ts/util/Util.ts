@@ -33,15 +33,15 @@ class Util
      * @public
      * @static
      * @example
-     *      var property = Util.uniqueId();
+     *      let property = Util.uniqueId();
      *      // 1
      *
-     *      var property = Util.uniqueId('prefixName_');
+     *      let property = Util.uniqueId('prefixName_');
      *      // prefixName_1
      */
     public static uniqueId(prefix:string = null):any
     {
-        var id:number = ++Util._idCounter;
+        const id:number = ++Util._idCounter;
 
         if (prefix != null)
         {
@@ -63,7 +63,7 @@ class Util
      * @public
      * @static
      * @example
-     *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+     *      let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
      *
      *      Util.deletePropertyFromObject(obj, ['phone', 'gender']);
      *
@@ -72,21 +72,21 @@ class Util
     public static deletePropertyFromObject(object:any, value:any):any
     {
         // If properties is not an array then make it an array object.
-        var list:any = (value instanceof Array) ? value : [value];
+        const list:any = (value instanceof Array) ? value : [value];
 
         // Loop through the object properties.
-        for (var key in object)
+        for (let key in object)
         {
             // If the key is a property and not function.
             if (object.hasOwnProperty(key))
             {
-                var value:any = object[key];
+                let value:any = object[key];
                 // If the property is an Array.
                 if (value instanceof Array)
                 {
                     // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                    var array:Array<any> = value;
-                    for (var index in array)
+                    let array:Array<any> = value;
+                    for (let index in array)
                     {
                         // Recursive function call.
                         Util.deletePropertyFromObject(array[index], list);
@@ -99,7 +99,7 @@ class Util
                 else
                 {
                     // Loop through the list of property name.
-                    for (var listIndex in list)
+                    for (let listIndex in list)
                     {
                         // If the key(property name) equals the property name in the list array.
                         if (key === list[listIndex])
@@ -127,7 +127,7 @@ class Util
      * @public
      * @static
      * @example
-     *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+     *      let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
      *
      *      Util.renamePropertyOnObject(obj, 'gender', 'sex');
      *
@@ -154,7 +154,7 @@ class Util
      * @public
      * @static
      * @example
-     *      var cloneOfObject = Util.clone(obj);
+     *      let cloneOfObject = Util.clone(obj);
      */
     public static clone(obj:any):any
     {
@@ -173,7 +173,7 @@ class Util
         // Handle Date
         if (obj instanceof Date)
         {
-            var date:Date = new Date();
+            const date:Date = new Date();
             date.setTime(obj.getTime());
             return date;
         }
@@ -181,8 +181,8 @@ class Util
         // Handle Array
         if (obj instanceof Array)
         {
-            var array:Array<any> = [];
-            for (var i = 0, len = obj.length; i < len; i++)
+            const array:Array<any> = [];
+            for (let i = 0, len = obj.length; i < len; i++)
             {
                 array[i] = Util.clone(obj[i]);
             }
@@ -192,8 +192,8 @@ class Util
         // Handle Object
         if (obj instanceof Object)
         {
-            var copy:any = {};
-            for (var attr in obj)
+            let copy:any = {};
+            for (let attr in obj)
             {
                 if (obj.hasOwnProperty(attr))
                 {
@@ -226,7 +226,7 @@ class Util
      */
     public static toBoolean(strNum:any):boolean
     {
-        var value:any = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
+        const value:any = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
 
         return (value > 0 || value == 'true' || value == 'yes');
     }
@@ -239,7 +239,7 @@ class Util
      * @returns {string} Returns the name of the function or object.
      * @static
      * @example
-     *      var someClass = new SomeClass();
+     *      let someClass = new SomeClass();
      *      Util.getName(someClass);            // 'SomeClass'
      *
      *      Util.getName(function Test(){});    // 'Test'
@@ -247,19 +247,19 @@ class Util
      */
     public static getName(classObject:any):string
     {
-        var type:string = typeof classObject;
-        var value:string;
-        var funcNameRegex:RegExp = /function ([^\(]+)/;
+        const type:string = typeof classObject;
+        let value:string;
+        const funcNameRegex:RegExp = /function ([^\(]+)/;
 
         if (type === 'object') {
             // Gets the name of the object.
-            var results:RegExpExecArray = (<any>classObject).constructor.toString().match(funcNameRegex);
+            const results:RegExpExecArray = (<any>classObject).constructor.toString().match(funcNameRegex);
             value = results[1];
         } else {
             // This else code is mainly for Internet Explore.
-            var isFunction:boolean = (type === 'function');
+            const isFunction:boolean = (type === 'function');
             // TODO: figure out how to explain this
-            var name:any = isFunction && ((classObject.name && ['', classObject.name]) || (<any>classObject).toString().match(funcNameRegex));
+            const name:any = isFunction && ((classObject.name && ['', classObject.name]) || (<any>classObject).toString().match(funcNameRegex));
 
             if (isFunction === false) {
                 value = type;
@@ -289,12 +289,12 @@ class Util
      */
     public static debounce(callback:Function, wait:number, immediate:boolean, callbackScope:any):Function
     {
-        var timeout:any;
-        var result:any;
+        let timeout:any;
+        let result:any;
 
-        var debounced:any = function ()
+        let debounced:any = function ()
         {
-            var args:any = arguments;
+            let args:any = arguments;
 
             function delayed()
             {
@@ -326,6 +326,68 @@ class Util
 
         return debounced;
     }
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method applyMixins
+     * @param derivedCtor {any}
+     * @param baseCtors {any}
+     * @public
+     * @static
+     * @example
+     *
+            class Flies {
+                fly() {
+                    alert('Is it a bird? Is it a plane?');
+                }
+            }
+
+            class Climbs {
+                climb() {
+                    alert('My spider-sense is tingling.');
+                }
+            }
+
+            class HorseflyWoman implements Climbs, Flies {
+                climb: () => void;
+                fly: () => void;
+            }
+
+            Util.applyMixins(HorseflyWoman, [Climbs, Flies]);
+     */
+    public static applyMixins(derivedCtor: any, baseCtors: any[]):void
+    {
+        baseCtors.forEach(baseCtor => {
+            Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+                derivedCtor.prototype[name] = baseCtor.prototype[name];
+            })
+        });
+    }
+
+    /**
+     * Returns a new array with duplicates removed.
+     *
+     * @method unique
+     * @param list {Array.<any>} The array you want to use to generate the unique array.
+     * @return {Array<any>} Returns a new array list of unique items.
+     * @protected
+     */
+    public static unique(list:Array<any>):Array<any>
+    {
+        const uniqueList:Array<any> = list.reduce(function (previousValue:any, currentValue:any)
+        {
+            if (previousValue.indexOf(currentValue) === -1)
+            {
+                previousValue.push(currentValue);
+            }
+
+            return previousValue;
+        }, []);
+
+        return uniqueList;
+    }
+
 }
 
-export = Util;
+export default Util;

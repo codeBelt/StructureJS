@@ -1,14 +1,14 @@
-(function(deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
-})(["require", "exports", '../util/StringUtil', '../event/RouterEvent', '../model/Route'], function(require, exports) {
-    var StringUtil = require('../util/StringUtil');
-    var RouterEvent = require('../event/RouterEvent');
-    var Route = require('../model/Route');
+    else if (typeof define === 'function' && define.amd) {
+        define(["require", "exports", '../util/StringUtil', '../event/RouterEvent', '../model/Route'], factory);
+    }
+})(function (require, exports) {
+    var StringUtil_1 = require('../util/StringUtil');
+    var RouterEvent_1 = require('../event/RouterEvent');
+    var Route_1 = require('../model/Route');
     /**
      * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
      *
@@ -21,92 +21,92 @@
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
-    var Router = (function() {
+    var Router = (function () {
         function Router() {
-                throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
-            }
-            /**
-             * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouterEvent"}}{{/crossLink}}.
-             *
-             * @method add
-             * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
-             * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouterEvent"}}{{/crossLink}} object.
-             * @param callbackScope {any} The scope of the callback function that should be executed.
-             * @public
-             * @static
-             * @example
-             *     // Example of adding a route listener and the function callback below.
-             *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
-             *
-             *     // The above route listener would match the below url:
-             *     // www.site.com/#/games/asteroids/2/
-             *
-             *     // The Call back receives a RouterEvent object.
-             *     ClassName.prototype.onRouteHandler = function (routerEvent) {
-             *         console.log(routerEvent.params);
-             *     }
-             *
-             * Route Pattern Options:
-             * ----------------------
-             * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
-             *
-             *     Router.add('/contact/:name:/', this.method, this);
-             *
-             *     // Will match one of the following:
-             *     // www.site.com/#/contact/
-             *     // www.site.com/#/contact/heather/
-             *     // www.site.com/#/contact/john/
-             *
-             *
-             * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
-             *
-             *     Router.add('/product/{productName}/', this.method, this);
-             *
-             *     // Will match one of the following:
-             *     // www.site.com/#/product/shoes/
-             *     // www.site.com/#/product/jackets/
-             *
-             *
-             * **\*** The asterisk character means it will match all or part of part the hash url.
-             *
-             *     Router.add('*', this.method, this);
-             *
-             *     // Will match one of the following:
-             *     // www.site.com/#/anything/
-             *     // www.site.com/#/matches/any/hash/url/
-             *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
-             *
-             *
-             * **?** The question mark character means it will match a query string for the hash url.
-             *
-             *     Router.add('?', this.method, this);
-             *
-             *     // Will match one of the following:
-             *     // www.site.com/#/?one=1&two=2&three=3
-             *     // www.site.com/#?one=1&two=2&three=3
-             *
-             *
-             * **''** The empty string means it will match when there are no hash url.
-             *
-             *     Router.add('', this.method, this);
-             *     Router.add('/', this.method, this);
-             *
-             *     // Will match one of the following:
-             *     // www.site.com/
-             *     // www.site.com/#/
-             *
-             *
-             * Other possible combinations but not limited too:
-             *
-             *     Router.add('/games/{gameName}/:level:/', this.method1, this);
-             *     Router.add('/{category}/blog/', this.method2, this);
-             *     Router.add('/home/?', this.method3, this);
-             *     Router.add('/about/*', this.method4, this);
-             *
-             */
-        Router.add = function(routePattern, callback, callbackScope) {
+            throw new Error('[Router] Do not instantiate the Router class because it is a static class.');
+        }
+        /**
+         * The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink "RouterEvent"}}{{/crossLink}}.
+         *
+         * @method add
+         * @param routePattern {string} The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, ''. See the examples below for more details.
+         * @param callback {Function} The function that should be executed when a request matches the routePattern. It will receive a {{#crossLink "RouterEvent"}}{{/crossLink}} object.
+         * @param callbackScope {any} The scope of the callback function that should be executed.
+         * @public
+         * @static
+         * @example
+         *     // Example of adding a route listener and the function callback below.
+         *     Router.add('/games/{gameName}/:level:/', this._method, this);
+         *
+         *     // The above route listener would match the below url:
+         *     // www.site.com/#/games/asteroids/2/
+         *
+         *     // The Call back receives a RouterEvent object.
+         *     _onRouteHandler(routerEvent) {
+         *         console.log(routerEvent.params);
+         *     }
+         *
+         * Route Pattern Options:
+         * ----------------------
+         * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
+         *
+         *     Router.add('/contact/:name:/', this._method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/contact/
+         *     // www.site.com/#/contact/heather/
+         *     // www.site.com/#/contact/john/
+         *
+         *
+         * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
+         *
+         *     Router.add('/product/{productName}/', this._method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/product/shoes/
+         *     // www.site.com/#/product/jackets/
+         *
+         *
+         * **\*** The asterisk character means it will match all or part of part the hash url.
+         *
+         *     Router.add('*', this._method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/anything/
+         *     // www.site.com/#/matches/any/hash/url/
+         *     // www.site.com/#/really/it/matches/any/and/all/hash/urls/
+         *
+         *
+         * **?** The question mark character means it will match a query string for the hash url.
+         *
+         *     Router.add('?', this._method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/#/?one=1&two=2&three=3
+         *     // www.site.com/#?one=1&two=2&three=3
+         *
+         *
+         * **''** The empty string means it will match when there are no hash url.
+         *
+         *     Router.add('', this._method, this);
+         *     Router.add('/', this._method, this);
+         *
+         *     // Will match one of the following:
+         *     // www.site.com/
+         *     // www.site.com/#/
+         *
+         *
+         * Other possible combinations but not limited too:
+         *
+         *     Router.add('/games/{gameName}/:level:/', this._method1, this);
+         *     Router.add('/{category}/blog/', this._method2, this);
+         *     Router.add('/home/?', this._method3, this);
+         *     Router.add('/about/*', this._method4, this);
+         *
+         */
+        Router.add = function (routePattern, callback, callbackScope) {
             Router.enable();
-            var route = new Route(routePattern, callback, callbackScope);
+            var route = new Route_1.default(routePattern, callback, callbackScope);
             Router._routes.push(route);
         };
         /**
@@ -120,18 +120,18 @@
          * @static
          * @example
          *     // Example of adding a route listener.
-         *     Router.add('/games/{gameName}/:level:/', this.onRouteHandler, this);
+         *     Router.add('/games/{gameName}/:level:/', this._method, this);
          *
          *     // Example of removing the same added route listener above.
-         *     Router.remove('/games/{gameName}/:level:/', this.onRouteHandler, this);
+         *     Router.remove('/games/{gameName}/:level:/', this._method, this);
          */
-        Router.remove = function(routePattern, callback, callbackScope) {
+        Router.remove = function (routePattern, callback, callbackScope) {
             var route;
             // Since we are removing (splice) from routes we need to check the length every iteration.
-            for (var i = Router._routes.length - 1; i >= 0; i--) {
-                route = Router._routes[i];
+            for (var i_1 = Router._routes.length - 1; i_1 >= 0; i_1--) {
+                route = Router._routes[i_1];
                 if (route.routePattern === routePattern && route.callback === callback && route.callbackScope === callbackScope) {
-                    Router._routes.splice(i, 1);
+                    Router._routes.splice(i_1, 1);
                 }
             }
         };
@@ -144,10 +144,10 @@
          * @public
          * @static
          * @example
-         *     Router.addDefault(this.noRoutesFoundHandler, this);
+         *     Router.addDefault(this._noRoutesFoundHandler, this);
          */
-        Router.addDefault = function(callback, callbackScope) {
-            Router._defaultRoute = new Route('', callback, callbackScope);
+        Router.addDefault = function (callback, callbackScope) {
+            Router._defaultRoute = new Route_1.default('', callback, callbackScope);
         };
         /**
          * The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.
@@ -158,7 +158,7 @@
          * @example
          *     Router.removeDefault();
          */
-        Router.removeDefault = function() {
+        Router.removeDefault = function () {
             Router._defaultRoute = null;
         };
         /**
@@ -169,9 +169,9 @@
          * @static
          * @return {string} Returns current hash url minus the # or #! symbol(s).
          * @example
-         *     var str = Router.getHash();
+         *     let str = Router.getHash();
          */
-        Router.getHash = function() {
+        Router.getHash = function () {
             var hash = Router._window.location.hash;
             var strIndex = (hash.substr(0, 2) === '#!') ? 2 : 1;
             return hash.substring(strIndex); // Return everything after # or #!
@@ -185,14 +185,15 @@
          * @example
          *     Router.enable();
          */
-        Router.enable = function() {
+        Router.enable = function () {
             if (Router.isEnabled === true) {
                 return;
             }
             if (Router._window.addEventListener) {
-                Router._window.addEventListener('hashchange', Router.onHashChange, false);
-            } else {
-                Router._window.attachEvent('onhashchange', Router.onHashChange);
+                Router._window.addEventListener('hashchange', Router._onHashChange, false);
+            }
+            else {
+                Router._window.attachEvent('onhashchange', Router._onHashChange);
             }
             Router.isEnabled = true;
         };
@@ -205,14 +206,15 @@
          * @example
          *     Router.disable();
          */
-        Router.disable = function() {
+        Router.disable = function () {
             if (Router.isEnabled === false) {
                 return;
             }
             if (Router._window.removeEventListener) {
-                Router._window.removeEventListener('hashchange', Router.onHashChange);
-            } else {
-                Router._window.detachEvent('onhashchange', Router.onHashChange);
+                Router._window.removeEventListener('hashchange', Router._onHashChange);
+            }
+            else {
+                Router._window.detachEvent('onhashchange', Router._onHashChange);
             }
             Router.isEnabled = false;
         };
@@ -226,13 +228,13 @@
          * @static
          * @example
          *     // Example of adding routes and calling the start method.
-         *     Router.add('/games/{gameName}/:level:/', this.method1, this);
-         *     Router.add('/{category}/blog/', this.method2, this);
+         *     Router.add('/games/{gameName}/:level:/', this._method1, this);
+         *     Router.add('/{category}/blog/', this._method2, this);
          *
          *     Router.start();
          */
-        Router.start = function() {
-            setTimeout(Router.onHashChange, 1);
+        Router.start = function () {
+            setTimeout(Router._onHashChange, 1);
         };
         /**
          * The **Router.navigateTo** method allows you to change the hash url and to trigger a route
@@ -256,13 +258,9 @@
          *     // This will not update the hash url but will trigger the matching route.
          *     Router.navigateTo('/games/asteroids/2/', true, true);
          */
-        Router.navigateTo = function(route, silent, disableHistory) {
-            if (silent === void 0) {
-                silent = false;
-            }
-            if (disableHistory === void 0) {
-                disableHistory = false;
-            }
+        Router.navigateTo = function (route, silent, disableHistory) {
+            if (silent === void 0) { silent = false; }
+            if (disableHistory === void 0) { disableHistory = false; }
             if (Router.isEnabled === false) {
                 return;
             }
@@ -275,23 +273,25 @@
                 route = '/' + route;
             }
             if (disableHistory === true) {
-                Router.changeRoute(route);
+                Router._changeRoute(route);
                 return;
             }
             if (Router.useDeepLinking === true) {
                 if (silent === true) {
                     Router.disable();
-                    setTimeout(function() {
+                    setTimeout(function () {
                         window.location.hash = route;
                         setTimeout(Router.enable, 1);
                     }, 1);
-                } else {
-                    setTimeout(function() {
+                }
+                else {
+                    setTimeout(function () {
                         window.location.hash = route;
                     }, 1);
                 }
-            } else {
-                Router.changeRoute(route);
+            }
+            else {
+                Router._changeRoute(route);
             }
         };
         /**
@@ -303,7 +303,7 @@
          * @example
          *     Router.clear();
          */
-        Router.prototype.clear = function() {
+        Router.prototype.clear = function () {
             Router._routes = [];
             Router._defaultRoute = null;
             Router._hashChangeEvent = null;
@@ -317,52 +317,86 @@
          * @example
          *     Router.destroy();
          */
-        Router.prototype.destroy = function() {
+        Router.prototype.destroy = function () {
             Router._window = null;
             Router._routes = null;
             Router._defaultRoute = null;
             Router._hashChangeEvent = null;
         };
         /**
+         * A simple helper method to create a url route from an unlimited number of arguments.
+         *
+         * @method buildRoute
+         * @param ...rest {...rest}
+         * @return {string}
+         * @public
+         * @static
+         * @example
+         *      let someProperty = 'api/endpoint';
+         *
+         *      Router.buildRoute(someProperty, 'path', 7);
+         *
+         *      //Creates 'api/endpoint/path/7'
+         */
+        Router.buildRoute = function () {
+            var rest = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                rest[_i - 0] = arguments[_i];
+            }
+            return rest.join('/');
+        };
+        /**
+         * Returns the current router event that was last triggered.
+         *
+         * @method getCurrentRoute
+         * @public
+         * @static
+         * @example
+         *      Router.getCurrentRoute();
+         */
+        Router.getCurrentRoute = function () {
+            return this._currentRoute;
+        };
+        /**
          * This method will be called if the Window object dispatches a HashChangeEvent.
          * This method will not be called if the Router is disabled.
          *
-         * @method onHashChange
+         * @method _onHashChange
          * @param event {HashChangeEvent}
          * @private
          * @static
          */
-        Router.onHashChange = function(event) {
+        Router._onHashChange = function (event) {
             if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false) {
                 return;
             }
             Router._hashChangeEvent = event;
             var hash = Router.getHash();
-            Router.changeRoute(hash);
+            Router._changeRoute(hash);
         };
         /**
          * The method is responsible for check if one of the routes matches the string value passed in.
          *
-         * @method changeRoute
+         * @method _changeRoute
          * @param hash {string}
          * @private
          * @static
          */
-        Router.changeRoute = function(hash) {
+        Router._changeRoute = function (hash) {
             var route;
             var match;
             var routerEvent = null;
             // Loop through all the route's. Note: we need to check the length every loop in case one was removed.
-            for (var i = 0; i < Router._routes.length; i++) {
-                route = Router._routes[i];
+            for (var i_2 = 0; i_2 < Router._routes.length; i_2++) {
+                route = Router._routes[i_2];
                 match = route.match(hash);
                 // If there is a match.
                 if (match !== null) {
-                    routerEvent = new RouterEvent();
+                    routerEvent = new RouterEvent_1.default();
                     routerEvent.route = match.shift();
                     routerEvent.params = match.slice(0, match.length);
                     routerEvent.routePattern = route.routePattern;
-                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil_1.default.queryStringToObject(hash) : null;
                     routerEvent.target = Router;
                     routerEvent.currentTarget = Router;
                     // Remove any empty strings in the array due to the :optional: route pattern.
@@ -376,7 +410,8 @@
                     if (Router._hashChangeEvent != null) {
                         routerEvent.newURL = Router._hashChangeEvent.newURL;
                         routerEvent.oldURL = Router._hashChangeEvent.oldURL;
-                    } else {
+                    }
+                    else {
                         routerEvent.newURL = window.location.href;
                     }
                     // Execute the callback function and pass the route event.
@@ -389,20 +424,22 @@
             }
             // If there are no route's matched and there is a default route. Then call that default route.
             if (routerEvent === null && Router._defaultRoute !== null) {
-                routerEvent = new RouterEvent();
+                routerEvent = new RouterEvent_1.default();
                 routerEvent.route = hash;
-                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil_1.default.queryStringToObject(hash) : null;
                 routerEvent.target = Router;
                 routerEvent.currentTarget = Router;
                 if (Router._hashChangeEvent != null) {
                     routerEvent.newURL = Router._hashChangeEvent.newURL;
                     routerEvent.oldURL = Router._hashChangeEvent.oldURL;
-                } else {
+                }
+                else {
                     routerEvent.newURL = window.location.href;
                 }
                 Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
             }
             Router._hashChangeEvent = null;
+            Router._currentRoute = routerEvent;
         };
         /**
          * A reference to the browser Window Object.
@@ -518,7 +555,17 @@
          *     Router.allowMultipleMatches = false;
          */
         Router.allowMultipleMatches = true;
+        /**
+         * A reference to the current {{#crossLink "RouterEvent"}}{{/crossLink}} that was triggered.
+         *
+         * @property _currentRoute
+         * @type {RouterEvent}
+         * @private
+         * @static
+         */
+        Router._currentRoute = null;
         return Router;
     })();
-    return Router;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = Router;
 });

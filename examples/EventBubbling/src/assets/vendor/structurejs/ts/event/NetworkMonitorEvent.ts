@@ -1,4 +1,4 @@
-import BaseEvent = require('./BaseEvent');
+import BaseEvent from './BaseEvent';
 
 /**
  * The NetworkMonitorEvent...
@@ -75,4 +75,4 @@ class NetworkMonitorEvent extends BaseEvent
 
 }
 
-export = NetworkMonitorEvent;
+export default NetworkMonitorEvent;

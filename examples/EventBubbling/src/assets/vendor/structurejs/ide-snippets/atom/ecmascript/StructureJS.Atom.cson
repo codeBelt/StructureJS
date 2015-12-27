@@ -1,0 +1,265 @@
+# StructureJS Snippets
+# for Atom
+# .js filetype
+#
+# Paste into:
+# Atom > Open Your Snippets
+#
+# Shortcuts
+# DOMElement: viewClass
+# Model: modelClass
+# Stage: stageClass
+# Property: property
+# Method: method
+# Extend: extendClass
+# Event: eventClass
+".source.js":
+  "Model":
+   prefix: "modelClass"
+   body: """
+import BaseModel = require('../vendor/structurejs/ts/model/BaseModel');
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${1:Model}
+ * @param [data] {any} Provide a way to update the  Base Model upon initialization.
+ * @extends BaseModel
+ * @constructor
+ **/
+class ${1:Model} extends BaseModel {
+
+    constructor(data) {
+        super();
+
+        if (data) {
+            this.update(data);
+        }
+    }
+
+    /**
+     * @overridden BaseModel.update
+     */
+    public update(data) {
+        super.update(data);
+
+        // Override any values after the default super update method has set the values.
+    }
+
+}
+
+export default ${1:Model};
+   """
+  "Event":
+   prefix: "eventClass"
+   body: """
+import BaseEvent = require('../vendor/structurejs/ts/event/BaseEvent');
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${1:Event}
+ * @extends BaseEvent
+ * @constructor
+ **/
+class ${1:Event} extends BaseEvent {
+
+    constructor(type, bubbles, cancelable, data) {
+        super(type, bubbles, cancelable, data);
+    }
+
+}
+
+export default ${1:Event};
+   """
+  "Stage":
+   prefix: "stageClass"
+   body: """
+import ${1:Extends} = require('replace/path/${1:Extends}');
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${2:Extend}
+ * @extends ${1:Extends}
+ * @constructor
+ **/
+class ${1:Extend} extends ${Extends} {
+
+    constructor() {
+        super();
+    }
+
+}
+
+export default ${2:Extend};
+"""
+  "Method":
+    prefix: "method"
+    body: """
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @method ${1:name}
+ * @${2:type}
+ */
+${2:type} ${1:name}(${3:param}) {
+    ${4}
+}
+    """
+  "Property":
+    prefix: "property"
+    body: """
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @property ${1:name}
+ * @type ${2:type}
+ * @${3:access}
+ */
+${3:access} ${1:name} = null;
+    """
+  "Stage":
+    prefix: "stageClass"
+    body: """
+import Stage = require('../vendor/structurejs/ts/display/Stage');
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${1:App}
+ * @extends Stage
+ * @constructor
+ **/
+class ${1:App} extends Stage {
+
+    constructor() {
+        super();
+    }
+
+    /**
+     * @overridden Stage.create
+     */
+    public create() {
+        super.create();
+
+        // Create or setup objects in this parent class.
+    }
+
+    /**
+     * @overridden Stage.enable
+     */
+    public enable() {
+        if (this.isEnabled === true) { return; }
+
+        // Enable the child objects and/or add any event listeners.
+
+        super.enable();
+    }
+
+    /**
+     * @overridden Stage.disable
+     */
+    public disable() {
+        if (this.isEnabled === false) { return; }
+
+        // Disable the child objects and/or remove any event listeners.
+
+        super.disable();
+    }
+
+    /**
+     * @overridden Stage.layout
+     */
+    public layout():void {
+        // Layout or update the objects in this parent class.
+    }
+
+    /**
+     * @overridden Stage.destroy
+     */
+    public destroy() {
+        this.disable();
+
+        // Call destroy on any child objects.
+        // This super method will also null out your properties for garbage collection.
+
+        super.destroy();
+    }
+
+}
+
+export default ${1:App};
+        """
+  "View":
+    prefix: "viewClass"
+    body: """
+import DOMElement = require('../vendor/structurejs/display/DOMElement');
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${NAME}
+ * @extends DOMElement
+ * @constructor
+ **/
+class ${1:View} extends DOMElement {
+
+    constructor() {
+        super();
+    }
+
+    /**
+     * @overridden DOMElement.create
+     */
+    public create() {
+        super.create();
+
+        // Create or setup objects in this parent class.
+    }
+
+    /**
+     * @overridden DOMElement.enable
+     */
+    public enable() {
+        if (this.isEnabled === true) { return; }
+
+        // Enable the child objects and/or add any event listeners.
+
+        super.enable();
+    }
+
+    /**
+     * @overridden DOMElement.disable
+     */
+    public disable() {
+        if (this.isEnabled === false) { return; }
+
+        // Disable the child objects and/or remove any event listeners.
+
+        super.disable();
+    }
+
+    /**
+     * @overridden DOMElement.layout
+     */
+    public layout() {
+        // Layout or update the objects in this parent class.
+    }
+
+    /**
+     * @overridden DOMElement.destroy
+     */
+    public destroy() {
+        this.disable();
+
+        // Call destroy on any child objects.
+        // This super method will also null out your properties for garbage collection.
+
+        super.destroy();
+    }
+
+}
+
+export default ${1:View};
+        """

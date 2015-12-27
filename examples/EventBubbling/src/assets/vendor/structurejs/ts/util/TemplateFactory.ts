@@ -1,4 +1,4 @@
-import StringUtil = require('./StringUtil');
+import StringUtil from './StringUtil';
 
 /**
  * A helper class to provide a convenient and consistent way to render templates.
@@ -77,10 +77,10 @@ class TemplateFactory
     public static create(templatePath:any, data:any = null):string
     {
         //Checks the first character to see if it is a '.' or '#'.
-        var regex = /^([.#])(.+)/;
-        var template:string = null;
-        var isFunctionTemplate = typeof templatePath === 'function';
-        var isClassOrIdName:boolean = regex.test(templatePath);
+        const regex = /^([.#])(.+)/;
+        let template:string = null;
+        const isFunctionTemplate = typeof templatePath === 'function';
+        const isClassOrIdName:boolean = regex.test(templatePath);
 
         if (isFunctionTemplate)
         {
@@ -90,32 +90,32 @@ class TemplateFactory
         {
             // Remove pound sign from the id name.
             templatePath = templatePath.substring(1);
-            var htmlString:string = document.getElementById(templatePath).innerHTML;
+            let htmlString:string = document.getElementById(templatePath).innerHTML;
             htmlString = StringUtil.removeLeadingTrailingWhitespace(htmlString);
 
             if (TemplateFactory.templateEngine == TemplateFactory.UNDERSCORE)
             {
                 // Underscore Template:
-                var templateMethod:Function = window['_'].template(htmlString);
+                const templateMethod:Function = window['_'].template(htmlString);
                 template = templateMethod(data);
             }
             else
             {
                 // Handlebars Template
-                var templateMethod:Function = Handlebars.compile(htmlString);
+                const templateMethod:Function = Handlebars.compile(htmlString);
                 template = templateMethod(data);
             }
         }
         else
         {
-            var templateObj:Object = window[TemplateFactory.templateNamespace];
+            const templateObj:Object = window[TemplateFactory.templateNamespace];
             if (!templateObj)
             {
                 // Returns null because the template namespace is not found.
                 return null;
             }
 
-            var templateFunction:Function = templateObj[templatePath];
+            const templateFunction:Function = templateObj[templatePath];
             if (templateFunction)
             {
                 // The templatePath gets a function storage in the associative array.
@@ -128,4 +128,4 @@ class TemplateFactory
     }
 }
 
-export = TemplateFactory;
+export default TemplateFactory;

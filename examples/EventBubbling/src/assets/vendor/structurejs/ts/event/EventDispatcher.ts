@@ -1,5 +1,5 @@
-import ObjectManager = require('../ObjectManager');
-import BaseEvent = require('./BaseEvent');
+import ObjectManager from '../ObjectManager';
+import BaseEvent from './BaseEvent';
 
 /**
  * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
@@ -15,12 +15,9 @@ import BaseEvent = require('./BaseEvent');
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example
- *      // Extending EventDispatcher. See DisplayObjectContainer as an example that extends EventDispatcher.
- *      var _super = Extend(ClassExtendingEventDispatcher, EventDispatcher);
- *
  *      // Another way to use the EventDispatcher.
- *      var eventDispatcher = new EventDispatcher();
- *      eventDispatcher.addEventListener('change', this.handlerMethod, this);
+ *      let eventDispatcher = new EventDispatcher();
+ *      eventDispatcher.addEventListener('change', this._handlerMethod, this);
  *      eventDispatcher.dispatchEvent('change');
  */
 class EventDispatcher extends ObjectManager
@@ -63,9 +60,9 @@ class EventDispatcher extends ObjectManager
      * @public
      * @chainable
      * @example
-     *      this.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *      this.addEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
      *
-     *      ClassName.prototype.handlerMethod = function (event) {
+     *      _handlerMethod(event) {
      *          console.log(event.target + " sent the event.");
      *          console.log(event.type, event.data);
      *      }
@@ -73,15 +70,15 @@ class EventDispatcher extends ObjectManager
     public addEventListener(type:string, callback:Function, scope:any, priority:number = 0):EventDispatcher
     {
         // Get the list of event listeners by the associated type value that is passed in.
-        var list = this._listeners[type];
+        let list = this._listeners[type];
         if (list == null)
         {
             // If a list of event listeners do not exist for the type value passed in then create a new empty array.
             this._listeners[type] = list = [];
         }
-        var index:number = 0;
-        var listener;
-        var i:number = list.length;
+        let index:number = 0;
+        let listener;
+        let i:number = list.length;
         while (--i > -1)
         {
             listener = list[i];
@@ -112,9 +109,9 @@ class EventDispatcher extends ObjectManager
      * @public
      * @chainable
      * @example
-     *      this.addEventListenerOnce(BaseEvent.CHANGE, this.handlerMethod, this);
+     *      this.addEventListenerOnce(BaseEvent.CHANGE, this._handlerMethod, this);
      *
-     *      ClassName.prototype.handlerMethod = function (event) {
+     *      _handlerMethod(event) {
      *          console.log(event.target + " sent the event.");
      *          console.log(event.type, event.data);
      *      }
@@ -125,8 +122,8 @@ class EventDispatcher extends ObjectManager
         this.addEventListener(type, callback, scope, priority);
 
         // Get the event listeners we just added.
-        var list = this._listeners[type];
-        var listener = list[0];
+        const list = this._listeners[type];
+        const listener = list[0];
 
         // Change the value to true so it will be remove after dispatchEvent is called.
         listener.once = true;
@@ -146,17 +143,14 @@ class EventDispatcher extends ObjectManager
      * @chainable
      * @example
      *      this.removeEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
-     *
-     *      ClassName.prototype._handlerMethod = function (event) {
-     *      };
      */
     public removeEventListener(type:string, callback:Function, scope:any):EventDispatcher
     {
         // Get the list of event listeners by the associated type value that is passed in.
-        var list:Array<any> = this._listeners[type];
+        const list:Array<any> = this._listeners[type];
         if (list !== void 0)
         {
-            var i = list.length;
+            let i = list.length;
             while (--i > -1)
             {
                 // If the callback and scope are the same then remove the event listener.
@@ -187,7 +181,7 @@ class EventDispatcher extends ObjectManager
      *
      *      // Example: With an event object
      *      // (event type, bubbling set to true, cancelable set to true and passing data) :
-     *      var event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
+     *      let event = new BaseEvent(BaseEvent.CHANGE, true, true, {some: 'data'});
      *      this.dispatchEvent(event);
      *
      *      // Here is a common inline event object being dispatched:
@@ -195,7 +189,7 @@ class EventDispatcher extends ObjectManager
      */
     public dispatchEvent(type:any, data:any = null):EventDispatcher
     {
-        var event = type;
+        let event = type;
 
         if (typeof event === 'string')
         {
@@ -206,15 +200,17 @@ class EventDispatcher extends ObjectManager
         if (event.target == null)
         {
             event.target = this;
-            event.currentTarget = this;
         }
 
+        // Assign the current object that is currently processing the event (i.e. event bubbling at).
+        event.currentTarget = this;
+
         // Get the list of event listener by the associated type value.
-        var list:Array<any> = this._listeners[event.type];
+        const list:Array<any> = this._listeners[event.type];
         if (list !== void 0)
         {
-            var i:number = list.length;
-            var listener:any;
+            let i:number = list.length;
+            let listener:any;
             while (--i > -1)
             {
                 // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
@@ -243,9 +239,6 @@ class EventDispatcher extends ObjectManager
                 return this;
             }
 
-            // Assign the current object that is currently processing the event (i.e. bubbling at) in the display list hierarchy.
-            event.currentTarget = this;
-
             // Pass the event to the parent (event bubbling).
             this.parent.dispatchEvent(event);
         }
@@ -263,15 +256,15 @@ class EventDispatcher extends ObjectManager
      * @return {boolean}
      * @public
      * @example
-     *      this.hasEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *      this.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);
      */
     public hasEventListener(type:string, callback:Function, scope:any):boolean
     {
         if (this._listeners[type] !== void 0)
         {
-            var listener:any;
-            var numOfCallbacks:number = this._listeners[type].length;
-            for (var i:number = 0; i < numOfCallbacks; i++)
+            let listener:any;
+            const numOfCallbacks:number = this._listeners[type].length;
+            for (let i:number = 0; i < numOfCallbacks; i++)
             {
                 listener = this._listeners[type][i];
                 if (listener.callback === callback && listener.scope === scope)
@@ -297,14 +290,14 @@ class EventDispatcher extends ObjectManager
      */
     public getEventListeners():string
     {
-        var str:string = '';
-        var numOfCallbacks:number;
-        var listener:any;
+        let str:string = '';
+        let numOfCallbacks:number;
+        let listener:any;
 
-        for (var type in this._listeners)
+        for (let type in this._listeners)
         {
             numOfCallbacks = this._listeners[type].length;
-            for (var i:number = 0; i < numOfCallbacks; i++)
+            for (let i:number = 0; i < numOfCallbacks; i++)
             {
                 listener = this._listeners[type][i];
 
@@ -336,4 +329,4 @@ class EventDispatcher extends ObjectManager
 
 }
 
-export = EventDispatcher;
+export default EventDispatcher;

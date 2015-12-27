@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
-})(["require", "exports"], function(require, exports) {
+    else if (typeof define === 'function' && define.amd) {
+        define(["require", "exports"], factory);
+    }
+})(function (require, exports) {
     /**
      * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
      *
@@ -19,7 +19,7 @@
      * @author Robert S. (www.codeBelt.com)
      * @example
      *     // Example of adding a route listener and the function callback below.
-     *     var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);
+     *     let route = new Route('/games/{gameName}/:level:/', this._method, this);
      *
      *     // The above route would match the string below:
      *     route.match('/games/asteroids/2/');
@@ -28,7 +28,7 @@
      * ----------------------
      * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
      *
-     *     var route = new Route('/contact/:name:/', this.method, this);
+     *     let route = new Route('/contact/:name:/', this._method, this);
      *
      *     // Will match one of the following:
      *     route.match('/contact/');
@@ -38,7 +38,7 @@
      *
      * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
      *
-     *     var route = new Route('/product/{productName}/', this.method, this);
+     *     let route = new Route('/product/{productName}/', this._method, this);
      *
      *     // Will match one of the following:
      *     route.match('/product/shoes/');
@@ -47,7 +47,7 @@
      *
      * **\*** The asterisk character means it will match all or part of part the hash url.
      *
-     *     var route = new Route('*', this.method, this);
+     *     let route = new Route('*', this._method, this);
      *
      *     // Will match one of the following:
      *     route.match('/anything/');
@@ -57,8 +57,8 @@
      *
      * **''** The empty string means it will match when there are no hash url.
      *
-     *     var route = new Route('', this.method, this);
-     *     var route = new Route('/', this.method, this);
+     *     let route = new Route('', this._method, this);
+     *     let route = new Route('/', this._method, this);
      *
      *     // Will match one of the following:
      *     route.match('');
@@ -67,60 +67,60 @@
      *
      * Other possible combinations but not limited too:
      *
-     *     var route = new Route('/games/{gameName}/:level:/', this.method1, this);
-     *     var route = new Route('/{category}/blog/', this.method2, this);
-     *     var route = new Route('/about/*', this.method4, this);
+     *     let route = new Route('/games/{gameName}/:level:/', this._method1, this);
+     *     let route = new Route('/{category}/blog/', this._method2, this);
+     *     let route = new Route('/about/*', this._method3, this);
      *
      */
-    var Route = (function() {
+    var Route = (function () {
         function Route(routePattern, callback, scope) {
-                /**
-                 * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
-                 *
-                 * @property routePattern
-                 * @type String
-                 * @public
-                 */
-                this.routePattern = '';
-                /**
-                 * The regex representation for the routePattern that was passed into the constructor.
-                 *
-                 * @property regex
-                 * @type RegExp
-                 * @public
-                 * @readOnly
-                 */
-                this.regex = null;
-                /**
-                 * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-                 *
-                 * @property callback
-                 * @type {Function}
-                 * @public
-                 */
-                this.callback = null;
-                /**
-                 * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
-                 *
-                 * @property callbackScope
-                 * @type {any}
-                 * @public
-                 */
-                this.callbackScope = null;
-                this.routePattern = routePattern;
-                this.regex = this.routePatternToRegexp(routePattern);
-                this.callback = callback;
-                this.callbackScope = scope;
-            }
             /**
-             * Converts the routePattern that was passed into the constructor to a regexp object.
+             * The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, "". See below for examples.
              *
-             * @method routePatternToRegexp
-             * @param {String} routePattern
-             * @returns {RegExp}
-             * @protected
+             * @property routePattern
+             * @type String
+             * @public
              */
-        Route.prototype.routePatternToRegexp = function(routePattern) {
+            this.routePattern = '';
+            /**
+             * The regex representation for the routePattern that was passed into the constructor.
+             *
+             * @property regex
+             * @type RegExp
+             * @public
+             * @readOnly
+             */
+            this.regex = null;
+            /**
+             * The function that should be executed when a request matches the routePattern. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+             *
+             * @property callback
+             * @type {Function}
+             * @public
+             */
+            this.callback = null;
+            /**
+             * The scope of the callback function that should be executed. The {{#crossLink "Router"}}{{/crossLink}} class will be using this property.
+             *
+             * @property callbackScope
+             * @type {any}
+             * @public
+             */
+            this.callbackScope = null;
+            this.routePattern = routePattern;
+            this.regex = this._routePatternToRegexp(routePattern);
+            this.callback = callback;
+            this.callbackScope = scope;
+        }
+        /**
+         * Converts the routePattern that was passed into the constructor to a regexp object.
+         *
+         * @method _routePatternToRegexp
+         * @param {String} routePattern
+         * @returns {RegExp}
+         * @protected
+         */
+        Route.prototype._routePatternToRegexp = function (routePattern) {
             var findFirstOrLastForwardSlash = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
             var findOptionalColons = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
             var findRequiredBrackets = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
@@ -143,15 +143,16 @@
          * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
          * @returns {Array.<any>}
          * @example
-         *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
+         *     let route = new Route('/games/{gameName}/:level:/', this.method, this);
          *     console.log( route.match('/games/asteroids/2/') );
          */
-        Route.prototype.match = function(route) {
+        Route.prototype.match = function (route) {
             // Remove the query string before matching against the route pattern.
             var routeWithoutQueryString = route.replace(/\?.*/, '');
             return routeWithoutQueryString.match(this.regex);
         };
         return Route;
     })();
-    return Route;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = Route;
 });

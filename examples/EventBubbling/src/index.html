@@ -11,10 +11,9 @@
         <meta name="author" content=""/>
 
         <!-- STYLESHEETS -->
-        <!-- build:css assets/styles/screen.css -->
-        <link rel="stylesheet" media="screen, projection" href="assets/styles/reset.css"/>
-        <link rel="stylesheet" media="screen, projection" href="assets/styles/eventBubbling.css"/>
+        <!-- build:css assets/styles/head.css -->
         <!-- endbuild -->
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
     </head>
     <body>
         <!-- CONTENT -->
@@ -61,8 +60,13 @@
         </div>
 
         <!-- JAVASCRIPT -->
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!-- build:js assets/scripts/vendor.js -->
+        <script src="assets/vendor/jquery/dist/jquery.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js assets/scripts/main.js -->
         <script src="assets/scripts/main.js"></script>
+        <!-- endbuild -->
 
     </body>
 </html>

@@ -32,7 +32,7 @@ class StringUtil
      */
     public static getExtension(filename:string, withDot:boolean = false):string
     {
-        var num:number = (withDot === true) ? 0 : 1;
+        const num:number = (withDot === true) ? 0 : 1;
         return filename.slice(filename.lastIndexOf('.') + num, filename.length);
     }
 
@@ -153,10 +153,10 @@ class StringUtil
      */
     public static createUUID():string
     {
-        var uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function (c)
+        const uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function (c)
         {
-            var r = Math.random() * 16 | 0;
-            var v = (c == 'x') ? r : (r & 0x3 | 0x8);
+            let r = Math.random() * 16 | 0;
+            let v = (c == 'x') ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
 
@@ -168,23 +168,23 @@ class StringUtil
      *
      * @method queryStringToObject
      * @param queryString {string}
-     * @param [useParseFloat=true] {boolean}
+     * @param [useParseFloat=false] {boolean} If true converts strings to numbers.
      * @returns {Object|Null}
      * @public
      * @static
      * @example
      *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');
-     *      // {name: 'Robert', age: 23, gender: 'male'}
-     *
-     *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
      *      // {name: 'Robert', age: '23', gender: 'male'}
+     *
+     *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', true);
+     *      // {name: 'Robert', age: 23, gender: 'male'}
      */
-    public static queryStringToObject(queryString:string, useParseFloat:boolean = true):any
+    public static queryStringToObject(queryString:string, useParseFloat:boolean = false):any
     {
-        var params:any = {};
-        var temp:any = null;
+        let params:any = {};
+        let temp:any = null;
 
-        var str:string = queryString.substring(queryString.indexOf('?') + 1);
+        const str:string = queryString.substring(queryString.indexOf('?') + 1);
 
         if (str === '')
         {
@@ -192,11 +192,11 @@ class StringUtil
         }
 
         // Split into key/value pairs
-        var queries = str.split('&');
+        const queries = str.split('&');
 
         // Convert the array of strings into an object
-        var len:number = queries.length;
-        for (var i = 0; i < len; i++)
+        const len:number = queries.length;
+        for (let i = 0; i < len; i++)
         {
             temp = queries[i].split('=');
             params[temp[0]] = (useParseFloat === true && isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
@@ -214,7 +214,7 @@ class StringUtil
      * @public
      * @static
      * @example
-     *      var str = '   a b    c d e f g ';
+     *      let str = '   a b    c d e f g ';
      *      StringUtil.removeAllWhitespace(str);
      *      // 'abcdefg'
      */
@@ -232,7 +232,7 @@ class StringUtil
      * @public
      * @static
      * @example
-     *      var str = '   a b    c d e f g ';
+     *      let str = '   a b    c d e f g ';
      *      StringUtil.removeLeadingTrailingWhitespace(str);
      *      // 'a b    c d e f g'
      */
@@ -246,14 +246,18 @@ class StringUtil
      * @method truncate
      * @param text {string}
      * @param length {int}
+     * @param indicator {string}
      * @returns {string}
      * @public
      * @static
      * @example
      *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
      *      // 'Robert is cool...'
+     *
+     *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14, '!!!'));
+     *      // 'Robert is cool!!!'
      */
-    public static truncate(text:string, length:number):string
+    public static truncate(text:string, length:number, indicator:string = '...'):string
     {
         if (text.length <= length)
         {
@@ -261,7 +265,7 @@ class StringUtil
         }
         else
         {
-            return text.substr(0, length) + '...';
+            return text.substr(0, length) + indicator;
         }
     }
 
@@ -280,11 +284,11 @@ class StringUtil
      */
     public static format(str:string, ...rest:Array<any>):string
     {
-        var length = rest.length;
-        var value:string = str;
-        for (var i:number = 0; i < length; i++)
+        const length = rest.length;
+        let value:string = str;
+        for (let i:number = 0; i < length; i++)
         {
-            var reg = new RegExp('\\{' + i + '\\}', 'gm');
+            let reg = new RegExp('\\{' + i + '\\}', 'gm');
             value = value.replace(reg, rest[i]);
         }
 
@@ -308,10 +312,10 @@ class StringUtil
         // Find the param with regex
         // Grab the first character in the returned string (should be ? or &)
         // Replace our href string with our new value, passing on the name and delimiter
-        var re = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var delimiter = re.exec(queryString)[0].charAt(0);
+        const re = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        const delimiter = re.exec(queryString)[0].charAt(0);
         return queryString.replace(re, delimiter + name + '=' + value);
     }
 }
 
-export = StringUtil;
+export default StringUtil;

@@ -1,18 +1,24 @@
 module.exports = function(grunt) {
 
-    var remapify = require('remapify');
-
+    // -- Plugins --------------------------------------------------------------
     // Uncomment the next line to report the Grunt execution time (for optimization, etc)
     //require('time-grunt')(grunt);
 
     // Intelligently lazy-loads tasks and plugins as needed at runtime.
-    require('jit-grunt')(grunt);
+    require('jit-grunt')(grunt)({ customTasksDir: 'tasks' });
 
-    // Project configuration.
+    // -- Options --------------------------------------------------------------
+    // All builds are considered to be development builds, unless they're not.
+    grunt.option('dev', !grunt.option('prod'));
+
+    // -- Configuration --------------------------------------------------------
     grunt.initConfig({
 
-        //Read the package.json
+        // Load `package.json`so we have access to the project metadata such as name and version number.
         pkg: grunt.file.readJSON('package.json'),
+
+        // Load `build-env.js`so we have access to the project environment configuration and constants.
+        env: require('./build-env'),
 
         /**
          * A code block that will be added to our minified code files.
@@ -36,114 +42,23 @@ module.exports = function(grunt) {
          * Deletes our production folder before we create a new build.
          */
         clean: {
-            web: ['web']
-        },
-
-        /**
-         * Takes our CommonJS files and compiles them together.
-         */
-        browserify: {
-            web: {
-                options: {
-                    preBundleCB: function(bundle) {
-                        bundle.plugin('tsify', {
-                            removeComments: false,
-                            noImplicitAny: false,
-                            target: 'ES3'
-                        });
-                    }
-                },
-                files: {
-                    'web/assets/scripts/main.js': ['src/assets/scripts/main.ts']
-                }
-            }
-        },
-
-        /**
-         * Compiles the Handlebars templates into pre-compiled handlebars templates
-         */
-        handlebars: {
-            compile: {
-                options: {
-                    //amd: ['handlebars'],
-                    namespace: 'JST',
-                    // Registers all files that start with '_' as a partial.
-                    partialRegex: /^_/,
-                    // Shortens the file path for the templates.
-                    processName: function(filePath) { // input:  src/templates/_header.hbs
-                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
-                    },
-                    // Shortens the file path for the partials.
-                    processPartialName: function(filePath) { // input:  src/templates/_header.hbs
-                        return filePath.slice(filePath.indexOf('template'), filePath.lastIndexOf('.')); // output: templates/_header
-                    }
-                },
-                files: {
-                    'src/assets/scripts/templates.js': 'src/assets/templates/**/*.hbs'
-                }
-            }
+            before: ['web', '.tmp']
         },
 
         /**
          * Copy and needed files to the web folder.
          */
         copy: {
-            styles: {
+            data: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
-                    dest: 'web/',
+                    cwd: '<%= env.DIR_SRC %>',
+                    dest: '<%= env.DIR_DEST %>',
                     src: [
-                        'index.html',
-                        'assets/media/**',
-                        'assets/vendor/todomvc-common/bg.png',
-                        'assets/{styles,vendor}/**/*.css',
-                        'assets/vendor/jquery/dist/jquery.js',
-                        '!assets/vendor/structurejs/**'
+                        'assets/data/**/*',
+                        'assets/media/**'
                     ]
                 }]
-            }
-        },
-
-        /**
-         * Merge and files with the generated Browserify file.
-         */
-        concat: {
-            options: {
-                separator: ';'
-            },
-            dist: {
-                src: [
-                    'src/assets/vendor/handlebars/handlebars.runtime.min.js',
-                    'src/assets/scripts/templates.js',
-                    'web/assets/scripts/main.js'
-                ],
-                dest: 'web/assets/scripts/main.js'
-            }
-        },
-
-        /**
-         * Creates a node.js Express Server to test our code in a server like environment.
-         * Note: We are using the watch task to keep the server running.
-         */
-        express: {
-            web: {
-                options: {
-                    port: 8000,
-                    hostname: "0.0.0.0",
-                    bases: ['web/'],
-                    livereload: true
-                }
-            }
-        },
-
-        /**
-         * Opens the index.html file in the default browser after the node.js Express Server is running.
-         */
-        open: {
-            web: {
-                // Gets the port from the connect configuration
-                path: 'http://localhost:<%= express.web.options.port%>'
             }
         },
 
@@ -155,22 +70,22 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true
                 },
-                files: ['src/**/*.html', 'src/**/*.css'],
+                files: ['<%= env.DIR_SRC %>/**/*.html', '<%= env.DIR_SRC %>/**/*.css'],
                 tasks: ['copy']
             },
             script: {
                 options: {
                     livereload: true
                 },
-                files: ['src/**/*.ts'],
-                tasks: ['browserify', 'copy', 'concat']
+                files: ['<%= env.DIR_SRC %>/**/*.js'],
+                tasks: ['buildBabel']
             },
             templates: {
                 options: {
                     livereload: true
                 },
-                files: ['src/**/*.hbs'],
-                tasks: ['handlebars']
+                files: ['<%= env.DIR_SRC %>/**/*.hbs'],
+                tasks: ['precompileJst']
             }
         }
     });
@@ -178,22 +93,25 @@ module.exports = function(grunt) {
     /**
      * Grunt tasks:
      *
-     * grunt            (Will build code for production)
-     * grunt launch     (Will build code for production and open the browser with the application)
+     * grunt                (Will build code for production)
+     * grunt launch         (Will build code for production and watch files)
+     * grunt launch --open  (Will build code for production and watch files then opens a tab in your default browser)
      */
     grunt.registerTask('default', [
-        'clean',
-        'browserify',
-        'handlebars',
-        'copy',
-        'concat'
+        'clean:before',
+        'buildMarkup',
+        'precompileJst',
+        'buildStyles',
+        'buildBabel',
+        'copy:data'
     ]);
 
-    grunt.registerTask('launch', [
+    grunt.registerTask('launch', 'Runs build, launches http-server, watches for file changes', [
         'default',
-        'express',
-        'open',
+        'connectHttp',
         'watch'
     ]);
+
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
 };

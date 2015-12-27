@@ -1,5 +1,5 @@
-import DisplayObject = require('./DisplayObject');
-import DisplayObjectContainer = require('./DisplayObjectContainer');
+import DisplayObject from './DisplayObject';
+import DisplayObjectContainer from './DisplayObjectContainer';
 
 class Sprite extends DisplayObjectContainer
 {
@@ -17,19 +17,19 @@ class Sprite extends DisplayObjectContainer
         this.mouseEnabled = true;
     }
 
-    public update():any
+    public renderCanvas():any
     {
-        var isRendable:boolean = super.update();
+        const isRendable:boolean = super.renderCanvas();
 
         if (isRendable === false) return;
 
-        var newWidth:number;
-        var newHeight:number;
-        var child:DisplayObject;
-        for (var i:number = 0; i < this.numChildren; i++)
+        let newWidth:number;
+        let newHeight:number;
+        let child:DisplayObject;
+        for (let i:number = 0; i < this.numChildren; i++)
         {
             child = this.children[i];
-            child.update();
+            child.renderCanvas();
 
             newWidth = child.x + child.width;
             newHeight = child.y + child.height;
@@ -66,7 +66,7 @@ class Sprite extends DisplayObjectContainer
 
     public removeChild(child:any, destroy:boolean = true):any
     {
-        var index = this.getChildIndex(child);
+        const index = this.getChildIndex(child);
         if (index !== -1)
         {
             // Removes the child object from the parent.
@@ -93,4 +93,4 @@ class Sprite extends DisplayObjectContainer
 
 }
 
-export = Sprite;
+export default Sprite;

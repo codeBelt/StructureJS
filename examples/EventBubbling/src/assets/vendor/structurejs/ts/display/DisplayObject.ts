@@ -1,4 +1,4 @@
-import EventDispatcher = require('../event/EventDispatcher');
+import EventDispatcher from '../event/EventDispatcher';
 
 /**
  * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -228,26 +228,26 @@ class DisplayObject extends EventDispatcher
         return this;
     }
 
-    protected readerStart():void
+    protected _readerStart():void
     {
         this.ctx.save();
     }
 
-    public update():boolean
+    public renderCanvas():boolean
     {
         if (this.ctx === null || this.alpha <= 0 || this.visible === false) return false;
 
-        this.readerStart();
+        this._readerStart();
         this.ctx.globalAlpha = this.alpha;
         this.layout();
-        this.renderEnd();
+        this._renderEnd();
     }
 
-    protected renderEnd():void
+    protected _renderEnd():void
     {
         this.ctx.restore();
     }
 
 }
 
-export = DisplayObject;
+export default DisplayObject;

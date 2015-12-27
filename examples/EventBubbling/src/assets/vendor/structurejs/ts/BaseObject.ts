@@ -3,7 +3,7 @@
 ///<reference path='_declare/greensock.d.ts'/>
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>
-import Util = require('./util/Util');
+import Util from './util/Util';
 
 /**
  * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -41,7 +41,10 @@ class BaseObject
      * @returns {string} Returns the class name.
      * @public
      * @example
-     *     instance.getQualifiedClassName();
+     *     let someClass = new SomeClass();
+     *     someClass.getQualifiedClassName();
+     *
+     *     // SomeClass
      */
     public getQualifiedClassName():string
     {
@@ -62,15 +65,17 @@ class BaseObject
      * @return {void}
      * @public
      * @example
-     *     ClassName.prototype.destroy = function() {
+     *     destroy() {
+     *          this.disable();
+     *
      *          this._childInstance.destroy();
      *
-     *          _super.prototype.destroy.call(this);
+     *          super.destroy();
      *     }
      */
     public destroy():void
     {
-        for (var key in this)
+        for (let key in this)
         {
             if (this.hasOwnProperty(key))
             {
@@ -80,4 +85,4 @@ class BaseObject
     }
 }
 
-export = BaseObject;
+export default BaseObject;

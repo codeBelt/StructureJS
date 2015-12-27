@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
-})(["require", "exports"], function(require, exports) {
+    else if (typeof define === 'function' && define.amd) {
+        define(["require", "exports"], factory);
+    }
+})(function (require, exports) {
     /**
      * The StringUtil...
      *
@@ -15,30 +15,28 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var StringUtil = (function() {
+    var StringUtil = (function () {
         function StringUtil() {
-                throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
-            }
-            /**
-             * Gets the extension name off the string being passed in.
-             *
-             * @method getExtension
-             * @param filename {string}
-             * @param withDot {boolean} If you want the period to be included in the extension name.
-             * @returns {string}
-             * @public
-             * @static
-             * @example
-             *      StringUtil.getExtension('file.exe');
-             *      // 'exe'
-             *
-             *      StringUtil.getExtension('file.exe', true);
-             *      // '.exe'
-             */
-        StringUtil.getExtension = function(filename, withDot) {
-            if (withDot === void 0) {
-                withDot = false;
-            }
+            throw new Error('[StringUtil] Do not instantiate the StringUtil class because it is a static class.');
+        }
+        /**
+         * Gets the extension name off the string being passed in.
+         *
+         * @method getExtension
+         * @param filename {string}
+         * @param withDot {boolean} If you want the period to be included in the extension name.
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *      StringUtil.getExtension('file.exe');
+         *      // 'exe'
+         *
+         *      StringUtil.getExtension('file.exe', true);
+         *      // '.exe'
+         */
+        StringUtil.getExtension = function (filename, withDot) {
+            if (withDot === void 0) { withDot = false; }
             var num = (withDot === true) ? 0 : 1;
             return filename.slice(filename.lastIndexOf('.') + num, filename.length);
         };
@@ -64,10 +62,8 @@
          *      StringUtil.toSentence("liveDown_by-the.River", '/');
          *      // 'live/down/by/the/river'
          */
-        StringUtil.toSentence = function(str, separator) {
-            if (separator === void 0) {
-                separator = ' ';
-            }
+        StringUtil.toSentence = function (str, separator) {
+            if (separator === void 0) { separator = ' '; }
             return String(str)
                 .replace(/(\d)/g, '$1 ')
                 .replace(/([a-z](?=[A-Z]))/g, '$1 ')
@@ -89,11 +85,11 @@
          *      StringUtil.toCamelCase("liveDown_by-the.River");
          *      // 'liveDownByTheRiver'
          */
-        StringUtil.toCamelCase = function(str) {
+        StringUtil.toCamelCase = function (str) {
             return StringUtil.toSentence(str)
-                .replace(/ (\w)/g, function(_, $1) {
-                    return $1.toUpperCase();
-                });
+                .replace(/ (\w)/g, function (_, $1) {
+                return $1.toUpperCase();
+            });
         };
         /**
          * Converts a hyphen string to a pascal case string.
@@ -107,11 +103,11 @@
          *      StringUtil.toPascalCase("liveDown_by-the.River");
          *      // 'LiveDownByTheRiver'
          */
-        StringUtil.toPascalCase = function(str) {
+        StringUtil.toPascalCase = function (str) {
             return StringUtil.toCamelCase(str)
-                .replace(/^[a-zA-Z]/, function(a, b, c) {
-                    return a.toUpperCase();
-                });
+                .replace(/^[a-zA-Z]/, function (a, b, c) {
+                return a.toUpperCase();
+            });
         };
         /**
          * Converts a string to a constant case string.
@@ -125,7 +121,7 @@
          *      StringUtil.toConstantCase("liveDown_by-the.River");
          *      // 'LIVE_DOWN_BY_THE_RIVER'
          */
-        StringUtil.toConstantCase = function(str) {
+        StringUtil.toConstantCase = function (str) {
             return StringUtil.toSentence(str, '_')
                 .toUpperCase();
         };
@@ -140,8 +136,8 @@
          *      StringUtil.createUUID();
          *      // 'a95d7134-3342-4001-bcea-cc0371b70dec'
          */
-        StringUtil.createUUID = function() {
-            var uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function(c) {
+        StringUtil.createUUID = function () {
+            var uuid = ('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g, function (c) {
                 var r = Math.random() * 16 | 0;
                 var v = (c == 'x') ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
@@ -153,21 +149,19 @@
          *
          * @method queryStringToObject
          * @param queryString {string}
-         * @param [useParseFloat=true] {boolean}
+         * @param [useParseFloat=false] {boolean} If true converts strings to numbers.
          * @returns {Object|Null}
          * @public
          * @static
          * @example
          *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male');
-         *      // {name: 'Robert', age: 23, gender: 'male'}
-         *
-         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', false);
          *      // {name: 'Robert', age: '23', gender: 'male'}
+         *
+         *      StringUtil.queryStringToObject('?name=Robert&age=23&gender=male', true);
+         *      // {name: 'Robert', age: 23, gender: 'male'}
          */
-        StringUtil.queryStringToObject = function(queryString, useParseFloat) {
-            if (useParseFloat === void 0) {
-                useParseFloat = true;
-            }
+        StringUtil.queryStringToObject = function (queryString, useParseFloat) {
+            if (useParseFloat === void 0) { useParseFloat = false; }
             var params = {};
             var temp = null;
             var str = queryString.substring(queryString.indexOf('?') + 1);
@@ -178,8 +172,8 @@
             var queries = str.split('&');
             // Convert the array of strings into an object
             var len = queries.length;
-            for (var i = 0; i < len; i++) {
-                temp = queries[i].split('=');
+            for (var i_1 = 0; i_1 < len; i_1++) {
+                temp = queries[i_1].split('=');
                 params[temp[0]] = (useParseFloat === true && isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
             return params;
@@ -193,11 +187,11 @@
          * @public
          * @static
          * @example
-         *      var str = '   a b    c d e f g ';
+         *      let str = '   a b    c d e f g ';
          *      StringUtil.removeAllWhitespace(str);
          *      // 'abcdefg'
          */
-        StringUtil.removeAllWhitespace = function(str) {
+        StringUtil.removeAllWhitespace = function (str) {
             return str.replace(/\s+/g, '');
         };
         /**
@@ -209,11 +203,11 @@
          * @public
          * @static
          * @example
-         *      var str = '   a b    c d e f g ';
+         *      let str = '   a b    c d e f g ';
          *      StringUtil.removeLeadingTrailingWhitespace(str);
          *      // 'a b    c d e f g'
          */
-        StringUtil.removeLeadingTrailingWhitespace = function(str) {
+        StringUtil.removeLeadingTrailingWhitespace = function (str) {
             return str.replace(/(^\s+|\s+$)/g, '');
         };
         /**
@@ -221,18 +215,24 @@
          * @method truncate
          * @param text {string}
          * @param length {int}
+         * @param indicator {string}
          * @returns {string}
          * @public
          * @static
          * @example
          *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14));
          *      // 'Robert is cool...'
+         *
+         *      StringUtil.truncate('Robert is cool and he likes bruschetta.', 14, '!!!'));
+         *      // 'Robert is cool!!!'
          */
-        StringUtil.truncate = function(text, length) {
+        StringUtil.truncate = function (text, length, indicator) {
+            if (indicator === void 0) { indicator = '...'; }
             if (text.length <= length) {
                 return text;
-            } else {
-                return text.substr(0, length) + '...';
+            }
+            else {
+                return text.substr(0, length) + indicator;
             }
         };
         /**
@@ -248,16 +248,16 @@
          *      StringUtil.format('Robert is {0}. Very {0} and {1}!', 'cool', 'smart');
          *      // 'Robert is cool. Very cool and smart!'
          */
-        StringUtil.format = function(str) {
+        StringUtil.format = function (str) {
             var rest = [];
             for (var _i = 1; _i < arguments.length; _i++) {
                 rest[_i - 1] = arguments[_i];
             }
             var length = rest.length;
             var value = str;
-            for (var i = 0; i < length; i++) {
-                var reg = new RegExp('\\{' + i + '\\}', 'gm');
-                value = value.replace(reg, rest[i]);
+            for (var i_2 = 0; i_2 < length; i_2++) {
+                var reg = new RegExp('\\{' + i_2 + '\\}', 'gm');
+                value = value.replace(reg, rest[i_2]);
             }
             return value;
         };
@@ -273,7 +273,7 @@
          *      StringUtil.paramReplace('?name=Robert&age=23&gender=male', 'gender', 'female');
          *      // '?name=Robert&age=23&gender=female'
          */
-        StringUtil.paramReplace = function(queryString, name, value) {
+        StringUtil.paramReplace = function (queryString, name, value) {
             // Find the param with regex
             // Grab the first character in the returned string (should be ? or &)
             // Replace our href string with our new value, passing on the name and delimiter
@@ -283,5 +283,6 @@
         };
         return StringUtil;
     })();
-    return StringUtil;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = StringUtil;
 });

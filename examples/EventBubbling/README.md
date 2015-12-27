@@ -1,8 +1,8 @@
-# StructureJS Boilerplate (TypeScript)
+# StructureJS Boilerplate (BabelJS)
 
 Download dependencies and build:
 
     npm install
     bower install
 
-    grunt launch
+    grunt launch --open

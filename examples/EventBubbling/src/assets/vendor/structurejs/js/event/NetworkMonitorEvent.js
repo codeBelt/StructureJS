@@ -1,22 +1,17 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
-})(["require", "exports", './BaseEvent'], function(require, exports) {
-    var BaseEvent = require('./BaseEvent');
+    else if (typeof define === 'function' && define.amd) {
+        define(["require", "exports", './BaseEvent'], factory);
+    }
+})(function (require, exports) {
+    var BaseEvent_1 = require('./BaseEvent');
     /**
      * The NetworkMonitorEvent...
      *
@@ -35,52 +30,41 @@ var __extends = (this && this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var NetworkMonitorEvent = (function(_super) {
+    var NetworkMonitorEvent = (function (_super) {
         __extends(NetworkMonitorEvent, _super);
-
         function NetworkMonitorEvent(type, bubbles, cancelable, status, connected, data) {
-                if (bubbles === void 0) {
-                    bubbles = false;
-                }
-                if (cancelable === void 0) {
-                    cancelable = false;
-                }
-                if (status === void 0) {
-                    status = null;
-                }
-                if (connected === void 0) {
-                    connected = null;
-                }
-                if (data === void 0) {
-                    data = null;
-                }
-                _super.call(this, type, bubbles, cancelable, data);
-                /**
-                 * TODO: YUIDoc_comment
-                 *
-                 * @property status
-                 * @type {string}
-                 * @public
-                 */
-                this.status = null;
-                /**
-                 * TODO: YUIDoc_comment
-                 *
-                 * @property connected
-                 * @type {boolean}
-                 * @public
-                 */
-                this.connected = false;
-                this.status = status;
-                this.connected = connected;
-            }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (status === void 0) { status = null; }
+            if (connected === void 0) { connected = null; }
+            if (data === void 0) { data = null; }
+            _super.call(this, type, bubbles, cancelable, data);
             /**
              * TODO: YUIDoc_comment
              *
-             * @event STATUS
+             * @property status
              * @type {string}
-             * @static
+             * @public
              */
+            this.status = null;
+            /**
+             * TODO: YUIDoc_comment
+             *
+             * @property connected
+             * @type {boolean}
+             * @public
+             */
+            this.connected = false;
+            this.status = status;
+            this.connected = connected;
+        }
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @event STATUS
+         * @type {string}
+         * @static
+         */
         NetworkMonitorEvent.STATUS = "NetworkMonitorEvent.status";
         /**
          * TODO: YUIDoc_comment
@@ -99,6 +83,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          */
         NetworkMonitorEvent.OFFLINE = "NetworkMonitorEvent.offline";
         return NetworkMonitorEvent;
-    })(BaseEvent);
-    return NetworkMonitorEvent;
+    })(BaseEvent_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = NetworkMonitorEvent;
 });

@@ -1,5 +1,5 @@
-import EventDispatcher = require('../event/EventDispatcher');
-import TimerEvent = require('../event/TimerEvent');
+import EventDispatcher from '../event/EventDispatcher';
+import TimerEvent from '../event/TimerEvent';
 
 /**
  * Constructs a new Timer object with the specified delay and repeatCount states.
@@ -162,7 +162,7 @@ class Timer extends EventDispatcher
 
         this._timer = setInterval(() =>
         {
-            this.decrementCounter();
+            this._decrementCounter();
         }, this._delay);
 
         this.running = true;
@@ -185,10 +185,10 @@ class Timer extends EventDispatcher
 
     /**
      *
-     * @method decrementCounter
+     * @method _decrementCounter
      * @protected
      */
-    protected decrementCounter()
+    protected _decrementCounter()
     {
         if (this._currentCount > 0)
         {
@@ -218,4 +218,4 @@ class Timer extends EventDispatcher
     }
 }
 
-export = Timer;
+export default Timer;

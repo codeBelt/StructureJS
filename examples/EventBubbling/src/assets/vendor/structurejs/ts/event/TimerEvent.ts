@@ -1,4 +1,4 @@
-import BaseEvent = require('./BaseEvent');
+import BaseEvent from './BaseEvent';
 
 /**
  * The TimerEvent...
@@ -45,4 +45,4 @@ class TimerEvent extends BaseEvent
 
 }
 
-export = TimerEvent;
+export default TimerEvent;

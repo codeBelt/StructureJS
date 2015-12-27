@@ -1,6 +1,6 @@
-import LocalStorageEvent = require('../event/LocalStorageEvent');
-import EventDispatcher = require('../event/EventDispatcher');
-import BaseModel = require('../model/BaseModel');
+import LocalStorageEvent from '../event/LocalStorageEvent';
+import EventDispatcher from '../event/EventDispatcher';
+import BaseModel from '../model/BaseModel';
 
 /**
  * The LocalStorageController...
@@ -44,7 +44,7 @@ class LocalStorageController extends EventDispatcher
 
         this._localStorage = window.localStorage;
 
-        window.addEventListener('storage', this.onLocalStorageEvent.bind(this));
+        window.addEventListener('storage', this._onLocalStorageEvent.bind(this));
     }
 
     /**
@@ -119,7 +119,7 @@ class LocalStorageController extends EventDispatcher
             key = this.getNamespace() + key;
         }
 
-        var value = this._localStorage.getItem(key);
+        let value = this._localStorage.getItem(key);
         if (value)
         {
             try
@@ -145,15 +145,15 @@ class LocalStorageController extends EventDispatcher
      */
     public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
-        var list:Array<any> = [];
-        var length:number = this.getLength();
-        for (var i:number = 0; i < length; i++)
+        const list:Array<any> = [];
+        const length:number = this.getLength();
+        for (let i:number = 0; i < length; i++)
         {
-            var key:string = this._localStorage.key(i);
+            let key:string = this._localStorage.key(i);
             if (key.indexOf(namespace) > -1)
             {
-                var value:any = this.getItem(key);
-                var obj:any = {
+                let value:any = this.getItem(key);
+                let obj:any = {
                     key: key,
                     value: value
                 }
@@ -172,13 +172,13 @@ class LocalStorageController extends EventDispatcher
      */
     public getAllItems():Array<any>
     {
-        var list:Array<any> = [];
-        var length:number = this.getLength();
-        for (var i:number = 0; i < length; i++)
+        const list:Array<any> = [];
+        const length:number = this.getLength();
+        for (let i:number = 0; i < length; i++)
         {
-            var key:string = this._localStorage.key(i);
-            var value:any = this.getItem(key);
-            var obj:any = {
+            let key:string = this._localStorage.key(i);
+            let value:any = this.getItem(key);
+            let obj:any = {
                 key: key,
                 value: value
             };
@@ -247,24 +247,16 @@ class LocalStorageController extends EventDispatcher
     }
 
     /**
-     * @overridden EventDispatcher.destroy
-     */
-    public destroy():void
-    {
-        super.destroy();
-    }
-
-    /**
      *
      *
-     * @method onLocalStorageEvent
+     * @method _onLocalStorageEvent
      * @param event {StorageEvent} The native browser event for Web Storage.
      * @protected
      */
-    protected onLocalStorageEvent(event:StorageEvent)
+    protected _onLocalStorageEvent(event:StorageEvent)
     {
         this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
     }
 }
 
-export = LocalStorageController;
+export default LocalStorageController;

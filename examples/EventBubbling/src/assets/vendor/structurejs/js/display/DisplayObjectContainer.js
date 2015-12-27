@@ -1,22 +1,17 @@
-var __extends = (this && this.__extends) || function(d, b) {
-    for (var p in b)
-        if (b.hasOwnProperty(p)) d[p] = b[p];
-
-    function __() {
-        this.constructor = d;
-    }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-(function(deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
-})(["require", "exports", './DisplayObject'], function(require, exports) {
-    var DisplayObject = require('./DisplayObject');
+    else if (typeof define === 'function' && define.amd) {
+        define(["require", "exports", './DisplayObject'], factory);
+    }
+})(function (require, exports) {
+    var DisplayObject_1 = require('./DisplayObject');
     /**
      * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -29,53 +24,52 @@ var __extends = (this && this.__extends) || function(d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      */
-    var DisplayObjectContainer = (function(_super) {
+    var DisplayObjectContainer = (function (_super) {
         __extends(DisplayObjectContainer, _super);
-
         function DisplayObjectContainer() {
-                _super.call(this);
-                /**
-                 * Returns the number of children of this object.
-                 *
-                 * @property numChildren
-                 * @type {int}
-                 * @default 0
-                 * @readOnly
-                 * @public
-                 */
-                this.numChildren = 0;
-                /**
-                 * A reference to the child DisplayObject instances to this parent object instance.
-                 *
-                 * @property children
-                 * @type {Array.<DisplayObject>}
-                 * @readOnly
-                 * @public
-                 */
-                this.children = [];
-                /**
-                 * Determines whether or not the children of the object are mouse enabled.
-                 *
-                 * @property mouseChildren
-                 * @type {boolean}
-                 * @public
-                 */
-                this.mouseChildren = false;
-            }
+            _super.call(this);
             /**
-             * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
-             * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
+             * Returns the number of children of this object.
              *
-             * If you add a child object that already has a different parent, the object is removed from the child
-             * list of the other parent object.
-             *
-             * @method addChild
-             * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
-             * @returns {DisplayObjectContainer} Returns an instance of itself.
+             * @property numChildren
+             * @type {int}
+             * @default 0
+             * @readOnly
              * @public
-             * @chainable
              */
-        DisplayObjectContainer.prototype.addChild = function(child) {
+            this.numChildren = 0;
+            /**
+             * A reference to the child DisplayObject instances to this parent object instance.
+             *
+             * @property children
+             * @type {Array.<DisplayObject>}
+             * @readOnly
+             * @public
+             */
+            this.children = [];
+            /**
+             * Determines whether or not the children of the object are mouse enabled.
+             *
+             * @property mouseChildren
+             * @type {boolean}
+             * @public
+             */
+            this.mouseChildren = false;
+        }
+        /**
+         * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other
+         * children in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)
+         *
+         * If you add a child object that already has a different parent, the object is removed from the child
+         * list of the other parent object.
+         *
+         * @method addChild
+         * @param child {DisplayObject} The DisplayObject instance to add as a child of this DisplayObjectContainer instance.
+         * @returns {DisplayObjectContainer} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObjectContainer.prototype.addChild = function (child) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child);
@@ -97,7 +91,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.addChildAt = function(child, index) {
+        DisplayObjectContainer.prototype.addChildAt = function (child, index) {
             //If the child being passed in already has a parent then remove the reference from there.
             if (child.parent) {
                 child.parent.removeChild(child);
@@ -118,7 +112,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChild = function(child) {
+        DisplayObjectContainer.prototype.removeChild = function (child) {
             var index = this.getChildIndex(child);
             if (index !== -1) {
                 // Removes the child object from the parent.
@@ -138,7 +132,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.removeChildren = function() {
+        DisplayObjectContainer.prototype.removeChildren = function () {
             while (this.children.length > 0) {
                 this.removeChild(this.children.pop());
             }
@@ -154,7 +148,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.swapChildren = function(child1, child2) {
+        DisplayObjectContainer.prototype.swapChildren = function (child1, child2) {
             var child1Index = this.getChildIndex(child1);
             var child2Index = this.getChildIndex(child2);
             this.addChildAt(child1, child2Index);
@@ -170,7 +164,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @public
          * @chainable
          */
-        DisplayObjectContainer.prototype.swapChildrenAt = function(index1, index2) {
+        DisplayObjectContainer.prototype.swapChildrenAt = function (index1, index2) {
             if (index1 < 0 || index1 < 0 || index1 >= this.numChildren || index2 >= this.numChildren) {
                 throw new TypeError('[' + this.getQualifiedClassName() + '] index value(s) cannot be out of bounds. index1 value is ' + index1 + ' index2 value is ' + index2);
             }
@@ -187,7 +181,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @returns {int} The index position of the child display object to identify.
          * @public
          */
-        DisplayObjectContainer.prototype.getChildIndex = function(child) {
+        DisplayObjectContainer.prototype.getChildIndex = function (child) {
             return this.children.indexOf(child);
         };
         /**
@@ -198,7 +192,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @returns {boolean}  true if the child object is a child of the DisplayObject or the container itself; otherwise false.
          * @public
          */
-        DisplayObjectContainer.prototype.contains = function(child) {
+        DisplayObjectContainer.prototype.contains = function (child) {
             return this.children.indexOf(child) >= 0;
         };
         /**
@@ -208,7 +202,7 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @param index {int} The index position of the child object.
          * @returns {DisplayObject} The child display object at the specified index position.
          */
-        DisplayObjectContainer.prototype.getChildAt = function(index) {
+        DisplayObjectContainer.prototype.getChildAt = function (index) {
             return this.children[index];
         };
         /**
@@ -220,17 +214,18 @@ var __extends = (this && this.__extends) || function(d, b) {
          * @override
          * @public
          */
-        DisplayObjectContainer.prototype.getChildByCid = function(sjsId) {
+        DisplayObjectContainer.prototype.getChildByCid = function (sjsId) {
             var child = null;
-            for (var i = this.numChildren - 1; i >= 0; i--) {
-                if (this.children[i].sjsId == sjsId) {
-                    child = this.children[i];
+            for (var i_1 = this.numChildren - 1; i_1 >= 0; i_1--) {
+                if (this.children[i_1].sjsId == sjsId) {
+                    child = this.children[i_1];
                     break;
                 }
             }
             return child;
         };
         return DisplayObjectContainer;
-    })(DisplayObject);
-    return DisplayObjectContainer;
+    })(DisplayObject_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = DisplayObjectContainer;
 });

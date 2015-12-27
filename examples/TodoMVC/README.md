@@ -1,9 +1,8 @@
-# Grunt-Browserify-Example
-An example how to get Browserify working with Grunt.
+# StructureJS Boilerplate (TypeScript)
 
 Download dependencies and build:
 
     npm install
     bower install
 
-    grunt launch
+    grunt launch --open

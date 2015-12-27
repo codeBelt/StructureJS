@@ -11,7 +11,7 @@
  * @author Robert S. (www.codeBelt.com)
  * @example
  *     // Example of adding a route listener and the function callback below.
- *     var route = new Route('/games/{gameName}/:level:/', this.onRouteHandler, this);
+ *     let route = new Route('/games/{gameName}/:level:/', this._method, this);
  *
  *     // The above route would match the string below:
  *     route.match('/games/asteroids/2/');
@@ -20,7 +20,7 @@
  * ----------------------
  * **:optional:** The two colons **::** means a part of the hash url is optional for the match. The text between can be anything you want it to be.
  *
- *     var route = new Route('/contact/:name:/', this.method, this);
+ *     let route = new Route('/contact/:name:/', this._method, this);
  *
  *     // Will match one of the following:
  *     route.match('/contact/');
@@ -30,7 +30,7 @@
  *
  * **{required}** The two curly brackets **{}** means a part of the hash url is required for the match. The text between can be anything you want it to be.
  *
- *     var route = new Route('/product/{productName}/', this.method, this);
+ *     let route = new Route('/product/{productName}/', this._method, this);
  *
  *     // Will match one of the following:
  *     route.match('/product/shoes/');
@@ -39,7 +39,7 @@
  *
  * **\*** The asterisk character means it will match all or part of part the hash url.
  *
- *     var route = new Route('*', this.method, this);
+ *     let route = new Route('*', this._method, this);
  *
  *     // Will match one of the following:
  *     route.match('/anything/');
@@ -49,8 +49,8 @@
  *
  * **''** The empty string means it will match when there are no hash url.
  *
- *     var route = new Route('', this.method, this);
- *     var route = new Route('/', this.method, this);
+ *     let route = new Route('', this._method, this);
+ *     let route = new Route('/', this._method, this);
  *
  *     // Will match one of the following:
  *     route.match('');
@@ -59,9 +59,9 @@
  *
  * Other possible combinations but not limited too:
  *
- *     var route = new Route('/games/{gameName}/:level:/', this.method1, this);
- *     var route = new Route('/{category}/blog/', this.method2, this);
- *     var route = new Route('/about/*', this.method4, this);
+ *     let route = new Route('/games/{gameName}/:level:/', this._method1, this);
+ *     let route = new Route('/{category}/blog/', this._method2, this);
+ *     let route = new Route('/about/*', this._method3, this);
  *
  */
 class Route
@@ -106,7 +106,7 @@ class Route
     constructor(routePattern:string, callback:Function, scope:any)
     {
         this.routePattern = routePattern;
-        this.regex = this.routePatternToRegexp(routePattern);
+        this.regex = this._routePatternToRegexp(routePattern);
         this.callback = callback;
         this.callbackScope = scope;
     }
@@ -114,18 +114,18 @@ class Route
     /**
      * Converts the routePattern that was passed into the constructor to a regexp object.
      *
-     * @method routePatternToRegexp
+     * @method _routePatternToRegexp
      * @param {String} routePattern
      * @returns {RegExp}
      * @protected
      */
-    protected routePatternToRegexp(routePattern):RegExp
+    protected _routePatternToRegexp(routePattern):RegExp
     {
-        var findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
-        var findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
-        var findRequiredBrackets:RegExp = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
-        var optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
-        var optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
+        const findFirstOrLastForwardSlash:RegExp = new RegExp('^\/|\/$', 'g'); // Finds if the first character OR if the last character is a forward slash
+        const findOptionalColons:RegExp = new RegExp(':([^:]*):', 'g'); // Finds the colons : :
+        const findRequiredBrackets:RegExp = new RegExp('{([^}]+)}', 'g'); // Finds the brackets { }
+        const optionalFirstCharSlash = '^/?';// Allows the first character to be if a forward slash to be optional.
+        const optionalLastCharSlash = '/?$';// Allows the last character to be if a forward slash to be optional.
 
         // Remove first and last forward slash.
         routePattern = routePattern.replace(findFirstOrLastForwardSlash, '');
@@ -149,18 +149,18 @@ class Route
      * @param route {String} The route or path to match against the routePattern that was passed into the constructor.
      * @returns {Array.<any>}
      * @example
-     *     var route = new Route('/games/{gameName}/:level:/', this.method, this);
+     *     let route = new Route('/games/{gameName}/:level:/', this.method, this);
      *     console.log( route.match('/games/asteroids/2/') );
      */
     public match(route):Array<any>
     {
         // Remove the query string before matching against the route pattern.
-        var routeWithoutQueryString:string = route.replace(/\?.*/, '');
+        const routeWithoutQueryString:string = route.replace(/\?.*/, '');
 
         return routeWithoutQueryString.match(this.regex);
     }
 
 }
 
-export = Route;
+export default Route;
 

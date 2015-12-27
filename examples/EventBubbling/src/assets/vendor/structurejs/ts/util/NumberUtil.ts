@@ -97,21 +97,21 @@ class NumberUtil
      */
     public static convertToHHMMSS(seconds:number, showHours:boolean = true):string
     {
-        var sec:number = isNaN(seconds) ? 0 : seconds;//Changes NaN to 0
+        const sec:number = isNaN(seconds) ? 0 : seconds;//Changes NaN to 0
 
-        var s:number = sec % 60;
-        var m:number = Math.floor((sec % 3600 ) / 60);
-        var h:number = Math.floor(sec / (60 * 60));
+        const s:number = sec % 60;
+        const m:number = Math.floor((sec % 3600 ) / 60);
+        const h:number = Math.floor(sec / (60 * 60));
 
-        var hourStr:string;
+        let hourStr:string;
         if (showHours === false) {
             hourStr = (h == 0) ? '' : NumberUtil.doubleDigitFormat(h) + ':';
         } else {
             hourStr = NumberUtil.doubleDigitFormat(h) + ':';
         }
 
-        var minuteStr:string = NumberUtil.doubleDigitFormat(m) + ':';
-        var secondsStr:string = NumberUtil.doubleDigitFormat(s);
+        const minuteStr:string = NumberUtil.doubleDigitFormat(m) + ':';
+        const secondsStr:string = NumberUtil.doubleDigitFormat(s);
 
         return hourStr + minuteStr + secondsStr;
     }
@@ -164,11 +164,11 @@ class NumberUtil
     public static unformatUnit(value:string):number
     {
         // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
-        var withoutSpecialCharacters:string = value.replace(/[^\d.,-]/g, '');
+        let withoutSpecialCharacters:string = value.replace(/[^\d.,-]/g, '');
 
         // Gets the index where the decimal placement is located.
-        var decimalIndex:number = withoutSpecialCharacters.length - 3;
-        var decimalSeparator:string = withoutSpecialCharacters.charAt(decimalIndex);
+        let decimalIndex:number = withoutSpecialCharacters.length - 3;
+        const decimalSeparator:string = withoutSpecialCharacters.charAt(decimalIndex);
         if (decimalSeparator === '.')
         {
             // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
@@ -210,8 +210,8 @@ class NumberUtil
      */
     public static formatUnit(value:number, decimalPlacement:number = 2, decimalSeparator:string = '.', thousandsSeparator:string = ',', currencySymbol:string = '', currencySymbolPlacement:number = 0):string
     {
-        var str:string = String(Number(value).toFixed(decimalPlacement));
-        var result:string = '';
+        let str:string = String(Number(value).toFixed(decimalPlacement));
+        let result:string = '';
         if (decimalPlacement != 0)
         {
             result = str.slice(-1 - decimalPlacement);
@@ -257,23 +257,23 @@ class NumberUtil
      */
     public static fahrenheitToCelsius(fahrenheit:number, decimals:number = 2):number
     {
-        var d:string = '';
-        var r:number = (5 / 9) * (fahrenheit - 32);
-        var s:Array<string> = r.toString().split('.');
+        let d:string = '';
+        let r:number = (5 / 9) * (fahrenheit - 32);
+        let s:Array<string> = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);
         }
         else
         {
-            var i:number = decimals;
+            let i:number = decimals;
             while (i > 0)
             {
                 d += '0';
                 i--;
             }
         }
-        var c:string = s[0] + '.' + d;
+        let c:string = s[0] + '.' + d;
         return Number(c);
     }
 
@@ -293,26 +293,26 @@ class NumberUtil
      */
     public static celsiusToFahrenheit(celsius:number, decimals:number = 2):number
     {
-        var d:string = '';
-        var r:number = (celsius / (5 / 9)) + 32;
-        var s:Array<string> = r.toString().split('.');
+        let d:string = '';
+        let r:number = (celsius / (5 / 9)) + 32;
+        let s:Array<string> = r.toString().split('.');
         if (s[1] != undefined)
         {
             d = s[1].substr(0, decimals);
         }
         else
         {
-            var i:number = decimals;
+            let i:number = decimals;
             while (i > 0)
             {
                 d += '0';
                 i--;
             }
         }
-        var f:string = s[0] + '.' + d;
+        let f:string = s[0] + '.' + d;
         return Number(f);
     }
 
 }
 
-export = NumberUtil;
+export default NumberUtil;

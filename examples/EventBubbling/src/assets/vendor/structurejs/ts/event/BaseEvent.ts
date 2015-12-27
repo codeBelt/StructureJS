@@ -1,4 +1,4 @@
-import BaseObject = require('../BaseObject');
+import BaseObject from '../BaseObject';
 
 /**
  * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
@@ -23,26 +23,20 @@ import BaseObject = require('../BaseObject');
  * @author Robert S. (www.codeBelt.com)
  * @example
  *     // Example: how to create a custom event by extending BaseEvent.
- *     var Extend = require('structurejs/util/Extend');
- *     var BaseEvent = require('structurejs/event/BaseEvent');
  *
- *     var CountryEvent = (function () {
+ *     class CountryEvent extends BaseEvent {
  *
- *          var _super = Extend(CountryEvent, BaseEvent);
+ *          CHANGE_COUNTRY = 'CountryEvent.changeCountry';
  *
- *          CountryEvent.CHANGE_COUNTRY = "CountryEvent.changeCountry";
- *
- *          function CountryEvent(type, bubbles, cancelable, data) {
- *              _super.call(this, type, bubbles, cancelable, data);
+ *          constructor(type, bubbles = false, cancelable = false, data = null) {
+ *              super(type, bubbles, cancelable, data);
  *
  *              this.countryName = null;
  *          }
- *
- *           return CountryEvent;
- *      })();
+ *      }
  *
  *     // Example: how to use the custom event.
- *     var event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
+ *     let event = new CountryEvent(CountryEvent.CHANGE_COUNTRY);
  *     event.countryName = 'Canada';
  *     this.dispatchEvent(event);
  */
@@ -457,13 +451,13 @@ class BaseEvent extends BaseObject
      * @returns {BaseEvent}
      * @public
      * @example
-     *     var cloneOfEvent = event.clone();
+     *     let cloneOfEvent = event.clone();
      */
     public clone():BaseEvent
     {
-        var clonedBaseModel:BaseEvent = new (<any>this).constructor(this.type, this.bubbles, this.cancelable, this.data);
+        const clonedBaseModel:BaseEvent = new (<any>this).constructor(this.type, this.bubbles, this.cancelable, this.data);
 
-        for (var key in this)
+        for (let key in this)
         {
             if (this.hasOwnProperty(key))
             {
@@ -476,4 +470,4 @@ class BaseEvent extends BaseObject
 
 }
 
-export = BaseEvent;
+export default BaseEvent;

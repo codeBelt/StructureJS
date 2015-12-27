@@ -1,6 +1,6 @@
-import DisplayObjectContainer = require('../display/DisplayObjectContainer');
-import DisplayObject = require('../display/DisplayObject');
-import Util = require('../util/Util');
+import DisplayObjectContainer from '../display/DisplayObjectContainer';
+import DisplayObject from '../display/DisplayObject';
+import Util from '../util/Util';
 
 
 /**
@@ -34,14 +34,14 @@ class ComponentFactory
      */
     public static create ($elements:JQuery, ComponentClass:any, scope:DisplayObjectContainer = null):Array<any>
     {
-        var list:Array<DisplayObject> = [];
-        var component:DisplayObject;
-        var $element:JQuery;
-        var length:number = $elements.length;
-        var types:any;
-        var componentName:string;
+        const list:Array<DisplayObject> = [];
+        let component:DisplayObject;
+        let $element:JQuery;
+        const length:number = $elements.length;
+        let types:any;
+        let componentName:string;
 
-        for (var i:number = 0; i < length; i++)
+        for (let i:number = 0; i < length; i++)
         {
             $element = $elements.eq(i);
             types = $element.attr('data-sjs-type');
@@ -77,7 +77,7 @@ class ComponentFactory
      * @private
      */
     private static _createComponent($element:JQuery, ComponentClass:any, scope:DisplayObjectContainer):any {
-        var component = new ComponentClass($element);
+        const component = new ComponentClass($element);
 
         // If the class object has the sjsId property then I am assuming it is an instance of the DisplayObject class.
         if (scope !== null && component.hasOwnProperty('sjsId') === true)
@@ -90,4 +90,4 @@ class ComponentFactory
 
 }
 
-export = ComponentFactory;
+export default ComponentFactory;

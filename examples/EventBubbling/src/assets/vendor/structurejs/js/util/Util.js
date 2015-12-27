@@ -1,11 +1,11 @@
-(function(deps, factory) {
+(function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    } else if (typeof define === 'function' && define.amd) {
-        define(deps, factory);
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
-})(["require", "exports"], function(require, exports) {
+    else if (typeof define === 'function' && define.amd) {
+        define(["require", "exports"], factory);
+    }
+})(function (require, exports) {
     /**
      * A Utility class that has several static methods to assist in development.
      *
@@ -15,33 +15,32 @@
      * @author Robert S. (www.codeBelt.com)
      * @static
      */
-    var Util = (function() {
+    var Util = (function () {
         function Util() {
-                throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
-            }
-            /**
-             * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
-             *
-             * @method uniqueId
-             * @param [prefix] {string} The string value used for the prefix.
-             * @returns {init|string} Returns the unique identifier.
-             * @public
-             * @static
-             * @example
-             *      var property = Util.uniqueId();
-             *      // 1
-             *
-             *      var property = Util.uniqueId('prefixName_');
-             *      // prefixName_1
-             */
-        Util.uniqueId = function(prefix) {
-            if (prefix === void 0) {
-                prefix = null;
-            }
+            throw new Error('[Util] Do not instantiate the Util class because it is a static class.');
+        }
+        /**
+         * Generates a unique ID. If a prefix is passed in, the value will be appended to it.
+         *
+         * @method uniqueId
+         * @param [prefix] {string} The string value used for the prefix.
+         * @returns {init|string} Returns the unique identifier.
+         * @public
+         * @static
+         * @example
+         *      let property = Util.uniqueId();
+         *      // 1
+         *
+         *      let property = Util.uniqueId('prefixName_');
+         *      // prefixName_1
+         */
+        Util.uniqueId = function (prefix) {
+            if (prefix === void 0) { prefix = null; }
             var id = ++Util._idCounter;
             if (prefix != null) {
                 return String(prefix + id);
-            } else {
+            }
+            else {
                 return id;
             }
         };
@@ -55,31 +54,33 @@
          * @public
          * @static
          * @example
-         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *      let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
          *
          *      Util.deletePropertyFromObject(obj, ['phone', 'gender']);
          *
          *      // { name: 'Robert' }
          */
-        Util.deletePropertyFromObject = function(object, value) {
+        Util.deletePropertyFromObject = function (object, value) {
             // If properties is not an array then make it an array object.
             var list = (value instanceof Array) ? value : [value];
             // Loop through the object properties.
             for (var key in object) {
                 // If the key is a property and not function.
                 if (object.hasOwnProperty(key)) {
-                    var value = object[key];
+                    var value_1 = object[key];
                     // If the property is an Array.
-                    if (value instanceof Array) {
+                    if (value_1 instanceof Array) {
                         // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                        var array = value;
+                        var array = value_1;
                         for (var index in array) {
                             // Recursive function call.
                             Util.deletePropertyFromObject(array[index], list);
                         }
-                    } else if (value instanceof Object) {
-                        Util.deletePropertyFromObject(value, list);
-                    } else {
+                    }
+                    else if (value_1 instanceof Object) {
+                        Util.deletePropertyFromObject(value_1, list);
+                    }
+                    else {
                         // Loop through the list of property name.
                         for (var listIndex in list) {
                             // If the key(property name) equals the property name in the list array.
@@ -104,13 +105,13 @@
          * @public
          * @static
          * @example
-         *      var obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
+         *      let obj = { name: 'Robert', gender: 'male', phone: '555-555-5555' }
          *
          *      Util.renamePropertyOnObject(obj, 'gender', 'sex');
          *
          *      // { name: 'Robert', sex: 'male', phone: '555-555-5555' }
          */
-        Util.renamePropertyOnObject = function(object, oldName, newName) {
+        Util.renamePropertyOnObject = function (object, oldName, newName) {
             // Check for the old property name to avoid a ReferenceError in strict mode.
             if (object.hasOwnProperty(oldName)) {
                 object[newName] = object[oldName];
@@ -127,9 +128,9 @@
          * @public
          * @static
          * @example
-         *      var cloneOfObject = Util.clone(obj);
+         *      let cloneOfObject = Util.clone(obj);
          */
-        Util.clone = function(obj) {
+        Util.clone = function (obj) {
             //other scripts: http://davidwalsh.name/javascript-clone
             //http://oranlooney.com/functional-javascript/
             //http://oranlooney.com/deep-copy-javascript/
@@ -146,8 +147,8 @@
             // Handle Array
             if (obj instanceof Array) {
                 var array = [];
-                for (var i = 0, len = obj.length; i < len; i++) {
-                    array[i] = Util.clone(obj[i]);
+                for (var i_1 = 0, len = obj.length; i_1 < len; i_1++) {
+                    array[i_1] = Util.clone(obj[i_1]);
                 }
                 return array;
             }
@@ -181,7 +182,7 @@
          *      Util.toBoolean(undefined);
          *      // false
          */
-        Util.toBoolean = function(strNum) {
+        Util.toBoolean = function (strNum) {
             var value = (typeof strNum === 'string') ? strNum.toLowerCase() : strNum;
             return (value > 0 || value == 'true' || value == 'yes');
         };
@@ -193,13 +194,13 @@
          * @returns {string} Returns the name of the function or object.
          * @static
          * @example
-         *      var someClass = new SomeClass();
+         *      let someClass = new SomeClass();
          *      Util.getName(someClass);            // 'SomeClass'
          *
          *      Util.getName(function Test(){});    // 'Test'
          *      Util.getName(function (){});        // 'anonymous'
          */
-        Util.getName = function(classObject) {
+        Util.getName = function (classObject) {
             var type = typeof classObject;
             var value;
             var funcNameRegex = /function ([^\(]+)/;
@@ -207,16 +208,19 @@
                 // Gets the name of the object.
                 var results = classObject.constructor.toString().match(funcNameRegex);
                 value = results[1];
-            } else {
+            }
+            else {
                 // This else code is mainly for Internet Explore.
                 var isFunction = (type === 'function');
                 // TODO: figure out how to explain this
-                var name = isFunction && ((classObject.name && ['', classObject.name]) || classObject.toString().match(funcNameRegex));
+                var name_1 = isFunction && ((classObject.name && ['', classObject.name]) || classObject.toString().match(funcNameRegex));
                 if (isFunction === false) {
                     value = type;
-                } else if (name && name[1]) {
-                    value = name[1];
-                } else {
+                }
+                else if (name_1 && name_1[1]) {
+                    value = name_1[1];
+                }
+                else {
                     value = 'anonymous';
                 }
             }
@@ -236,12 +240,11 @@
          * @example
          *      Util.debounce(this._onBreakpointChange, 250, false, this);
          */
-        Util.debounce = function(callback, wait, immediate, callbackScope) {
+        Util.debounce = function (callback, wait, immediate, callbackScope) {
             var timeout;
             var result;
-            var debounced = function() {
+            var debounced = function () {
                 var args = arguments;
-
                 function delayed() {
                     if (immediate == false) {
                         result = callback.apply(callbackScope, args);
@@ -250,16 +253,70 @@
                 }
                 if (timeout) {
                     clearTimeout(timeout);
-                } else if (immediate === true) {
+                }
+                else if (immediate === true) {
                     result = callback.apply(callbackScope, args);
                 }
                 timeout = setTimeout(delayed, wait);
                 return result;
             };
-            debounced.cancel = function() {
+            debounced.cancel = function () {
                 clearTimeout(timeout);
             };
             return debounced;
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method applyMixins
+         * @param derivedCtor {any}
+         * @param baseCtors {any}
+         * @public
+         * @static
+         * @example
+         *
+                class Flies {
+                    fly() {
+                        alert('Is it a bird? Is it a plane?');
+                    }
+                }
+    
+                class Climbs {
+                    climb() {
+                        alert('My spider-sense is tingling.');
+                    }
+                }
+    
+                class HorseflyWoman implements Climbs, Flies {
+                    climb: () => void;
+                    fly: () => void;
+                }
+    
+                Util.applyMixins(HorseflyWoman, [Climbs, Flies]);
+         */
+        Util.applyMixins = function (derivedCtor, baseCtors) {
+            baseCtors.forEach(function (baseCtor) {
+                Object.getOwnPropertyNames(baseCtor.prototype).forEach(function (name) {
+                    derivedCtor.prototype[name] = baseCtor.prototype[name];
+                });
+            });
+        };
+        /**
+         * Returns a new array with duplicates removed.
+         *
+         * @method unique
+         * @param list {Array.<any>} The array you want to use to generate the unique array.
+         * @return {Array<any>} Returns a new array list of unique items.
+         * @protected
+         */
+        Util.unique = function (list) {
+            var uniqueList = list.reduce(function (previousValue, currentValue) {
+                if (previousValue.indexOf(currentValue) === -1) {
+                    previousValue.push(currentValue);
+                }
+                return previousValue;
+            }, []);
+            return uniqueList;
         };
         /**
          * Keeps track of the count for the uniqueId method.
@@ -272,5 +329,6 @@
         Util._idCounter = 0;
         return Util;
     })();
-    return Util;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = Util;
 });

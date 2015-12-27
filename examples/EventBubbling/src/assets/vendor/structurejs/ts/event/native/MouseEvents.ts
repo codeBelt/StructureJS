@@ -73,4 +73,4 @@ class MouseEvents
     public static TAP:string = 'tap';
 }
 
-export = MouseEvents;
+export default MouseEvents;
