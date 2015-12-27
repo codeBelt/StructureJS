@@ -1,6 +1,6 @@
-import DOMElement from 'structuresjs/display/DOMElement';
-import BaseEvent from 'structuresjs/event/BaseEvent';
-import EventBroker from 'structuresjs/event/EventBroker';
+import DOMElement from 'structurejs/display/DOMElement';
+import BaseEvent from 'structurejs/event/BaseEvent';
+import EventBroker from 'structurejs/event/EventBroker';
 
 /**
  * TODO: YUIDoc_comment

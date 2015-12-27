@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../event/EventDispatcher'], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require('../event/EventDispatcher');
+    var EventDispatcher_1 = require('../event/EventDispatcher');
     /**
      * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -227,6 +227,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.ctx.restore();
         };
         return DisplayObject;
-    })(EventDispatcher);
-    return DisplayObject;
+    })(EventDispatcher_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = DisplayObject;
 });

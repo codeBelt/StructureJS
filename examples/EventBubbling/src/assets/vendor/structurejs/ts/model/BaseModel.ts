@@ -1,6 +1,6 @@
-import IBaseModel = require('../interface/IBaseModel');
-import BaseObject = require('../BaseObject');
-import Util = require('../util/Util');
+import IBaseModel from '../interface/IBaseModel';
+import BaseObject from '../BaseObject';
+import Util from '../util/Util';
 
 /**
  *  Base Model is a design pattern used to transfer data between software application subsystems.
@@ -241,4 +241,4 @@ class BaseModel extends BaseObject implements IBaseModel
     }
 }
 
-export = BaseModel;
+export default BaseModel;

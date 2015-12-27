@@ -1,4 +1,4 @@
-import DisplayObject = require('./DisplayObject');
+import DisplayObject from './DisplayObject';
 
 class TextField extends DisplayObject
 {
@@ -86,4 +86,4 @@ class TextField extends DisplayObject
 
 }
 
-export = TextField;
+export default TextField;

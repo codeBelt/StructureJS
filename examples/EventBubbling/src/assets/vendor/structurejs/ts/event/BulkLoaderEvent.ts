@@ -1,4 +1,4 @@
-import BaseEvent = require('./BaseEvent');
+import BaseEvent from './BaseEvent';
 
 /**
  * The BulkLoaderEvent...
@@ -81,4 +81,4 @@ class BulkLoaderEvent extends BaseEvent
 
 }
 
-export = BulkLoaderEvent;
+export default BulkLoaderEvent;

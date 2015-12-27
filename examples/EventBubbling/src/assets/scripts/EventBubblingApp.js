@@ -1,6 +1,6 @@
-import Stage from 'structuresjs/display/Stage';
-import BaseEvent from 'structuresjs/event/BaseEvent';
-import EventBroker from 'structuresjs/event/EventBroker';
+import Stage from 'structurejs/display/Stage';
+import BaseEvent from 'structurejs/event/BaseEvent';
+import EventBroker from 'structurejs/event/EventBroker';
 import GrandparentView from './view/GrandparentView';
 
 /**

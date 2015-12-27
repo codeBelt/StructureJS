@@ -154,4 +154,4 @@ class MerchantUtil
     }
 }
 
-export = MerchantUtil;
+export default MerchantUtil;

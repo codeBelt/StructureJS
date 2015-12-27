@@ -1,4 +1,4 @@
-import IEventDispatcher = require('./IEventDispatcher');
+import IEventDispatcher from './IEventDispatcher' ;
 
 /**
  * TODO: YUIDoc_comment
@@ -118,4 +118,4 @@ interface IDisplayObject extends IEventDispatcher
 
 }
 
-export = IDisplayObject;
+export default IDisplayObject;

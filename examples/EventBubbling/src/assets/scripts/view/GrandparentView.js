@@ -1,5 +1,5 @@
-import DOMElement from 'structuresjs/display/DOMElement';
-import BaseEvent from 'structuresjs/event/BaseEvent';
+import DOMElement from 'structurejs/display/DOMElement';
+import BaseEvent from 'structurejs/event/BaseEvent';
 import ParentView from './ParentView';
 
 /**

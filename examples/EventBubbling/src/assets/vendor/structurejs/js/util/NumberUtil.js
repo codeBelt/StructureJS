@@ -289,5 +289,6 @@
         };
         return NumberUtil;
     })();
-    return NumberUtil;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = NumberUtil;
 });

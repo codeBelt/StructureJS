@@ -1,4 +1,4 @@
-import IBaseObject = require('./IBaseObject');
+import IBaseObject from './IBaseObject' ;
 
 /**
  * TODO: YUIDoc_comment
@@ -38,4 +38,4 @@ interface IBaseModel extends IBaseObject
 
 }
 
-export = IBaseModel;
+export default IBaseModel;

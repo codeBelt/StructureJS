@@ -42,8 +42,7 @@ module.exports = function(grunt) {
          * Deletes our production folder before we create a new build.
          */
         clean: {
-            before: ['web'],
-            after: ['.tmp']
+            before: ['web', '.tmp']
         },
 
         /**
@@ -78,15 +77,15 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true
                 },
-                files: ['<%= env.DIR_SRC %>/**/*.ts'],
-                tasks: ['buildTypeScript', 'clean:after']
+                files: ['<%= env.DIR_SRC %>/**/*.js'],
+                tasks: ['buildBabel']
             },
             templates: {
                 options: {
                     livereload: true
                 },
                 files: ['<%= env.DIR_SRC %>/**/*.hbs'],
-                tasks: ['precompileJst',  'clean:after']
+                tasks: ['precompileJst']
             }
         }
     });
@@ -103,9 +102,8 @@ module.exports = function(grunt) {
         'buildMarkup',
         'precompileJst',
         'buildStyles',
-        'buildTypeScript',
-        'copy:data',
-        'clean:after'
+        'buildBabel',
+        'copy:data'
     ]);
 
     grunt.registerTask('launch', 'Runs build, launches http-server, watches for file changes', [

@@ -1,4 +1,4 @@
-import StringUtil = require('./StringUtil');
+import StringUtil from './StringUtil';
 
 /**
  * A helper class to provide a convenient and consistent way to render templates.
@@ -128,4 +128,4 @@ class TemplateFactory
     }
 }
 
-export = TemplateFactory;
+export default TemplateFactory;

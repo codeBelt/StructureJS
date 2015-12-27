@@ -1,6 +1,6 @@
-import LocalStorageEvent = require('../event/LocalStorageEvent');
-import EventDispatcher = require('../event/EventDispatcher');
-import BaseModel = require('../model/BaseModel');
+import LocalStorageEvent from '../event/LocalStorageEvent';
+import EventDispatcher from '../event/EventDispatcher';
+import BaseModel from '../model/BaseModel';
 
 /**
  * The LocalStorageController...
@@ -259,4 +259,4 @@ class LocalStorageController extends EventDispatcher
     }
 }
 
-export = LocalStorageController;
+export default LocalStorageController;

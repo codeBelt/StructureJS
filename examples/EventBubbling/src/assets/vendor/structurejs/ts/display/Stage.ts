@@ -1,4 +1,4 @@
-import DOMElement = require('./DOMElement');
+import DOMElement from './DOMElement';
 
 /**
  * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
@@ -108,4 +108,4 @@ class Stage extends DOMElement
     }
 }
 
-export = Stage;
+export default Stage;

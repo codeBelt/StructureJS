@@ -1,4 +1,4 @@
-import IBaseObject = require('./IBaseObject');
+import IBaseObject from './IBaseObject' ;
 
 /**
  * TODO: YUIDoc_comment
@@ -28,4 +28,4 @@ interface IObjectManager extends IBaseObject
 
 }
 
-export = IObjectManager;
+export default IObjectManager;

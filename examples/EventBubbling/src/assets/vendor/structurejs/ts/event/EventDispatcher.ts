@@ -1,5 +1,5 @@
-import ObjectManager = require('../ObjectManager');
-import BaseEvent = require('./BaseEvent');
+import ObjectManager from '../ObjectManager';
+import BaseEvent from './BaseEvent';
 
 /**
  * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
@@ -329,4 +329,4 @@ class EventDispatcher extends ObjectManager
 
 }
 
-export = EventDispatcher;
+export default EventDispatcher;
