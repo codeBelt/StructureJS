@@ -28,6 +28,7 @@ class ListView extends DOMElement {
         let templateHtml = TemplateFactory.create('templates/precompile/ItemTemplate', movieModels);
 
         this.$element.html(templateHtml);
+
     }
 
 }

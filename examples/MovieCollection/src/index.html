@@ -17,16 +17,16 @@
     </head>
     <body>
         <!-- CONTENT -->
-        <div class="page js-list">
+        <div class="page">
             <div class="page-hd">
                 <h1 class="hdg hdg_1">Movie Listing</h1>
             </div>
-            <form class="page-controls js-pageControls">
+            <form class="page-controls js-pageControlView">
                 <fieldset>
                     <legend class="isVisuallyHidden">Sort Movies</legend>
                     <ol class="hList hList_spaced">
                         <li>
-                            <select class="js-listSort" disabled>
+                            <select class="js-pageControlView-listSort" disabled>
                                 <option value="critic-desc">Critics Score Descending</option>
                                 <option value="critic-asc">Critics Score Ascending</option>
                                 <option value="audience-desc">Audience Score Descending</option>
@@ -36,7 +36,7 @@
                             </select>
                         </li>
                         <li>
-                            <select class="js-listLimit" disabled>
+                            <select class="js-pageControlView-listLimit" disabled>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
                                 <option value="20">20</option>
@@ -44,13 +44,13 @@
                             </select>
                         </li>
                         <li>
-                            <button class="js-listUpdate" disabled>Update</button>
+                            <button class="js-pageControlView-listUpdate" disabled>Update</button>
                         </li>
                     </ol>
                 </fieldset>
             </form>
             <div class="page-bd">
-                <ol class="vList mix-vList_shaded js-listOutput"></ol>
+                <ol class="vList mix-vList_shaded js-listView"></ol>
             </div>
         </div>
 

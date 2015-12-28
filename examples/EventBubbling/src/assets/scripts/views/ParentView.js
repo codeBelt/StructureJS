@@ -26,10 +26,10 @@ class ParentView extends DOMElement {
     create() {
         super.create();
 
-        this._childView = new ChildView(this.$element.find('.js-childContent'));
+        this._childView = new ChildView(this.$element.find('.js-childView'));
         this.addChild(this._childView);
 
-        this._$parentMessage = this.$element.find('.js-parentMessage');
+        this._$parentMessage = this.$element.find('.js-parentView-message');
 
         this._$checkbox = this.$element.find('[type=checkbox]').first();
     }

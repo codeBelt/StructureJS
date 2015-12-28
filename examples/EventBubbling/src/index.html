@@ -19,7 +19,7 @@
         <!-- CONTENT -->
         <h1>Event Bubbling/Canceling Example</h1>
 
-        <div class="eventBubblingApp js-eventBubblingApp">
+        <div class="eventBubblingApp">
             <div class="splitPair">
                 <span class="message message_stage js-stageMessage"></span>
                 <button class="js-clearButton" type="button">Clear</button>
@@ -28,27 +28,27 @@
                 <div class="container-hd">
                     <p>GrandparentView</p>
                 </div>
-                <div class="container-bd js-grandParentContent">
+                <div class="container-bd js-grandparentView">
                     <div class="splitPair">
-                        <span class="message js-grandparentMessage"></span>
+                        <span class="message js-grandparentView-message"></span>
                         <input type="checkbox" class="splitPair-input">
                     </div>
                     <div class="container">
                         <div class="container-hd">
                             <p>ParentView</p>
                         </div>
-                        <div class="container-bd js-parentContent">
+                        <div class="container-bd js-parentView">
                             <div class="splitPair">
-                                <span class="message js-parentMessage"></span>
+                                <span class="message js-parentView-message"></span>
                                 <input type="checkbox" class="splitPair-input">
                             </div>
                             <div class="container">
                                 <div class="container-hd">
                                     <p>ChildView</p>
                                 </div>
-                                <div class="container-bd js-childContent">
+                                <div class="container-bd js-childView">
                                     <div class="splitPair">
-                                        <span class="message js-childMessage"></span>
+                                        <span class="message js-childView-message"></span>
                                     </div>
                                     <button class="button_dispatch js-dispatchButton">Dispatch Event</button>
                                 </div>

@@ -26,10 +26,10 @@ class GrandparentView extends DOMElement {
     create() {
         super.create();
 
-        this._parentView = new ParentView(this.$element.find('.js-parentContent'));
+        this._parentView = new ParentView(this.$element.find('.js-parentView'));
         this.addChild(this._parentView);
 
-        this._$grandparentMessage = this.$element.find('.js-grandparentMessage');
+        this._$grandparentMessage = this.$element.find('.js-grandparentView-message');
 
         this._$checkbox = this.$element.find('[type=checkbox]').first();
     }

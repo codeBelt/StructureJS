@@ -27,7 +27,7 @@ class ChildView extends DOMElement {
 
         this._$dispatchButton = this.$element.find('.js-dispatchButton');
 
-        this._$sonMessage = this.$element.find('.js-childMessage');
+        this._$sonMessage = this.$element.find('.js-childView-message');
 
         this._$checkbox = this.$element.find('[type=checkbox]').first();
     }

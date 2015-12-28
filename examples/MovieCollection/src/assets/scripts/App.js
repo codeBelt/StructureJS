@@ -40,11 +40,11 @@ class App extends Stage {
     create() {
         super.create();
 
-        this._pageControls = new PageControlView(this.$element.find('.js-pageControls'));
+        this._pageControls = new PageControlView(this.$element.find('.js-pageControlView'));
         this.addChild(this._pageControls);
         this._pageControls.disable();// Disable right away because by default the view is enabled once passed to the addChild method.
 
-        this._listContainer = new ListView(this.$element.find('.js-listOutput'));
+        this._listContainer = new ListView(this.$element.find('.js-listView'));
         this.addChild(this._listContainer);
 
         //let modal = new ErrorModal();

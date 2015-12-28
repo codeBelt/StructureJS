@@ -1,3 +1,4 @@
+import HandlebarsHelpers from './utils/HandlebarsHelpers';
 import App from './App';
 
 var app = new App();

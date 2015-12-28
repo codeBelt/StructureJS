@@ -44,8 +44,8 @@ class PageControlView extends DOMElement {
      */
     _$listUpdate = null;
 
-    constructor() {
-        super();
+    constructor($element) {
+        super($element);
     }
 
     /**
@@ -54,9 +54,9 @@ class PageControlView extends DOMElement {
     create() {
         super.create();
 
-        this._$listSort = this.$element.find('.js-listSort');
-        this._$listLimit = this.$element.find('.js-listLimit');
-        this._$listUpdate = this.$element.find('.js-listUpdate');
+        this._$listSort = this.$element.find('.js-pageControlView-listSort');
+        this._$listLimit = this.$element.find('.js-pageControlView-listLimit');
+        this._$listUpdate = this.$element.find('.js-pageControlView-listUpdate');
     }
 
     /**
@@ -154,7 +154,6 @@ class PageControlView extends DOMElement {
     _onUpdateClick(event) {
         event.preventDefault();
 
-        console.log("_onUpdateClick", this.sortType, this.displayLimit);
         this.dispatchEvent('update', {sortType: this.sortType, displayLimit: this.displayLimit});
     }
 

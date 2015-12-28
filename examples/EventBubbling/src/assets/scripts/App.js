@@ -27,7 +27,7 @@ class EventBubblingApp extends Stage {
     create() {
         super.create();
 
-        this._grandpaView = new GrandparentView(this.$element.find('.js-grandParentContent'));
+        this._grandpaView = new GrandparentView(this.$element.find('.js-grandparentView'));
         this.addChild(this._grandpaView);
 
         this._$clearButton = this.$element.find('.js-clearButton');

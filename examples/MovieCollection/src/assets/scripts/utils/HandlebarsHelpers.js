@@ -1,5 +1,4 @@
 import NumberUtil from 'structurejs/util/NumberUtil';
-import Handlebars from 'Handlebars';
 
 /**
  * removeSpaces
