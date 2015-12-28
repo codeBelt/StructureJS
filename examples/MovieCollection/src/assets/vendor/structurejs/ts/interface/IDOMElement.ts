@@ -1,4 +1,4 @@
-import IDisplayObjectContainer = require('./IDisplayObjectContainer');
+import IDisplayObjectContainer from './IDisplayObjectContainer' ;
 
 /**
  * TODO: YUIDoc_comment
@@ -53,4 +53,4 @@ interface IDOMElement
 
 }
 
-export = IDOMElement;
+export default IDOMElement;

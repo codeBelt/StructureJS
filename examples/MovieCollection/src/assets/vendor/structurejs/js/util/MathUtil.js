@@ -334,5 +334,6 @@
         };
         return MathUtil;
     })();
-    return MathUtil;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = MathUtil;
 });

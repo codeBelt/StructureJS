@@ -1,5 +1,5 @@
 {
-  "name": "StructureJS-Boilerplate-TypeScript",
+  "name": "StructureJS-Boilerplate-BabelJS",
   "version": "1.0.0",
   "description": "",
   "developedBy": "codeBelt.com",
@@ -8,10 +8,12 @@
   "author": "",
   "license": "ISC",
   "browser": {
-    "jquery": "./src/assets/vendor/jquery/dist/jquery.js"
+    "jquery": "./src/assets/vendor/jquery/dist/jquery.js",
+    "handlebars": "./src/assets/vendor/handlebars/handlebars.min.js"
   },
   "browserify-shim": {
-    "jquery": "global:$"
+    "jquery": "global:$",
+    "handlebars": "global:Handlebars"
   },
   "browserify": {
     "transform": [
@@ -19,6 +21,7 @@
     ]
   },
   "devDependencies": {
+      "babelify": "6.4.0",
     "autoprefixer": "^6.1.2",
     "browserify": "^12.0.1",
     "browserify-shim": "^3.8.11",

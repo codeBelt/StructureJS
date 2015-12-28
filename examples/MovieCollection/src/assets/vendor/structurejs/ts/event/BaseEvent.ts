@@ -1,4 +1,4 @@
-import BaseObject = require('../BaseObject');
+import BaseObject from '../BaseObject';
 
 /**
  * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
@@ -470,4 +470,4 @@ class BaseEvent extends BaseObject
 
 }
 
-export = BaseEvent;
+export default BaseEvent;

@@ -1,7 +1,8 @@
 import Stage from 'structurejs/display/Stage';
 import BaseEvent from 'structurejs/event/BaseEvent';
 import EventBroker from 'structurejs/event/EventBroker';
-import GrandparentView from './view/GrandparentView';
+
+import GrandparentView from './views/GrandparentView';
 
 /**
  * TODO: YUIDoc_comment

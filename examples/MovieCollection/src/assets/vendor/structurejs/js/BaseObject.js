@@ -11,7 +11,7 @@
     ///<reference path='_declare/greensock.d.ts'/>
     ///<reference path='_declare/jquery.eventListener.d.ts'/>
     ///<reference path='_declare/log.d.ts'/>
-    var Util = require('./util/Util');
+    var Util_1 = require('./util/Util');
     /**
      * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
      *
@@ -35,7 +35,7 @@
              * @public
              */
             this.sjsId = null;
-            this.sjsId = Util.uniqueId();
+            this.sjsId = Util_1.default.uniqueId();
         }
         /**
          * Returns the fully qualified class name of an object.
@@ -50,7 +50,7 @@
          *     // SomeClass
          */
         BaseObject.prototype.getQualifiedClassName = function () {
-            return Util.getName(this);
+            return Util_1.default.getName(this);
         };
         /**
          * The purpose of the destroy method is to make an object ready for garbage collection. This
@@ -83,5 +83,6 @@
         };
         return BaseObject;
     })();
-    return BaseObject;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = BaseObject;
 });

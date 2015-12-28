@@ -1,4 +1,4 @@
-import BaseEvent = require('./BaseEvent');
+import BaseEvent from './BaseEvent';
 
 /**
  * The LoaderEvent...
@@ -54,4 +54,4 @@ class LoaderEvent extends BaseEvent
 
 }
 
-export = LoaderEvent;
+export default LoaderEvent;

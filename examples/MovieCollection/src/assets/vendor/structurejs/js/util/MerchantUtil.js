@@ -136,5 +136,6 @@
         };
         return MerchantUtil;
     })();
-    return MerchantUtil;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = MerchantUtil;
 });

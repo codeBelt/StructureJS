@@ -1,7 +1,7 @@
-import DisplayObjectContainer = require('./DisplayObjectContainer');
-import DOMElement = require('./DOMElement');
-import DisplayObject = require('./DisplayObject');
-import Point = require('../geom/Point');
+import DisplayObjectContainer from './DisplayObjectContainer';
+import DOMElement from './DOMElement';
+import DisplayObject from './DisplayObject';
+import Point from '../geom/Point';
 
 class CanvasElement extends DOMElement
 {
@@ -370,4 +370,4 @@ class CanvasElement extends DOMElement
 
 }
 
-export = CanvasElement;
+export default CanvasElement;

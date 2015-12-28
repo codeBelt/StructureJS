@@ -1,5 +1,5 @@
-import EventDispatcher = require('../event/EventDispatcher');
-import TimerEvent = require('../event/TimerEvent');
+import EventDispatcher from '../event/EventDispatcher';
+import TimerEvent from '../event/TimerEvent';
 
 /**
  * Constructs a new Timer object with the specified delay and repeatCount states.
@@ -218,4 +218,4 @@ class Timer extends EventDispatcher
     }
 }
 
-export = Timer;
+export default Timer;

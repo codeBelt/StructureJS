@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
-    var BaseEvent = require('./BaseEvent');
+    var BaseEvent_1 = require('./BaseEvent');
     /**
      * The ApplicationCacheEvent ....
      *
@@ -111,6 +111,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         ApplicationCacheEvent.ERROR = 'error';
         return ApplicationCacheEvent;
-    })(BaseEvent);
-    return ApplicationCacheEvent;
+    })(BaseEvent_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = ApplicationCacheEvent;
 });

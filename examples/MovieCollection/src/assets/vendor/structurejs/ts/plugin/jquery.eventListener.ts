@@ -1,4 +1,4 @@
-import $ = require('jquery');
+import * as $ from 'jquery';
 
 const $eventListener = $;
 
@@ -132,4 +132,4 @@ $eventListener.fn.removeEventListener = function (type, selector, callback, scop
 }
 
 
-export = $eventListener;
+export default $eventListener;

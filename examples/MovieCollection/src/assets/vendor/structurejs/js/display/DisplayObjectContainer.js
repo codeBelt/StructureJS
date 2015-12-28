@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObject'], factory);
     }
 })(function (require, exports) {
-    var DisplayObject = require('./DisplayObject');
+    var DisplayObject_1 = require('./DisplayObject');
     /**
      * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -225,6 +225,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return child;
         };
         return DisplayObjectContainer;
-    })(DisplayObject);
-    return DisplayObjectContainer;
+    })(DisplayObject_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = DisplayObjectContainer;
 });

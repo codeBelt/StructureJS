@@ -11,8 +11,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../event/EventDispatcher', '../event/TimerEvent'], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require('../event/EventDispatcher');
-    var TimerEvent = require('../event/TimerEvent');
+    var EventDispatcher_1 = require('../event/EventDispatcher');
+    var TimerEvent_1 = require('../event/TimerEvent');
     /**
      * Constructs a new Timer object with the specified delay and repeatCount states.
      *
@@ -174,12 +174,12 @@ var __extends = (this && this.__extends) || function (d, b) {
                 this._currentCount--;
             }
             if (this._delay && this._currentCount > 0 || this._repeatCount === 0) {
-                this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
+                this.dispatchEvent(new TimerEvent_1.default(TimerEvent_1.default.TIMER));
             }
             else {
                 this.stop();
-                this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
-                this.dispatchEvent(new TimerEvent(TimerEvent.TIMER_COMPLETE));
+                this.dispatchEvent(new TimerEvent_1.default(TimerEvent_1.default.TIMER));
+                this.dispatchEvent(new TimerEvent_1.default(TimerEvent_1.default.TIMER_COMPLETE));
             }
         };
         /**
@@ -190,6 +190,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             _super.prototype.destroy.call(this);
         };
         return Timer;
-    })(EventDispatcher);
-    return Timer;
+    })(EventDispatcher_1.default);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = Timer;
 });

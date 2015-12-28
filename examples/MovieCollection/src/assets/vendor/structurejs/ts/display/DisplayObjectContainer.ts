@@ -1,4 +1,4 @@
-import DisplayObject = require('./DisplayObject');
+import DisplayObject from './DisplayObject';
 
 /**
  * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -262,4 +262,4 @@ class DisplayObjectContainer extends DisplayObject
 
 }
 
-export = DisplayObjectContainer;
+export default DisplayObjectContainer;

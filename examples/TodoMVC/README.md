@@ -1,4 +1,4 @@
-# StructureJS Boilerplate (TypeScript)
+# StructureJS Boilerplate (BabelJS)
 
 Download dependencies and build:
 

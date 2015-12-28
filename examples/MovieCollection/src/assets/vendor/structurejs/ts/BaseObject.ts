@@ -3,7 +3,7 @@
 ///<reference path='_declare/greensock.d.ts'/>
 ///<reference path='_declare/jquery.eventListener.d.ts'/>
 ///<reference path='_declare/log.d.ts'/>
-import Util = require('./util/Util');
+import Util from './util/Util';
 
 /**
  * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -85,4 +85,4 @@ class BaseObject
     }
 }
 
-export = BaseObject;
+export default BaseObject;

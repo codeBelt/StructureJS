@@ -6,9 +6,9 @@
         define(["require", "exports", '../util/StringUtil', '../event/RouterEvent', '../model/Route'], factory);
     }
 })(function (require, exports) {
-    var StringUtil = require('../util/StringUtil');
-    var RouterEvent = require('../event/RouterEvent');
-    var Route = require('../model/Route');
+    var StringUtil_1 = require('../util/StringUtil');
+    var RouterEvent_1 = require('../event/RouterEvent');
+    var Route_1 = require('../model/Route');
     /**
      * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
      *
@@ -106,7 +106,7 @@
          */
         Router.add = function (routePattern, callback, callbackScope) {
             Router.enable();
-            var route = new Route(routePattern, callback, callbackScope);
+            var route = new Route_1.default(routePattern, callback, callbackScope);
             Router._routes.push(route);
         };
         /**
@@ -147,7 +147,7 @@
          *     Router.addDefault(this._noRoutesFoundHandler, this);
          */
         Router.addDefault = function (callback, callbackScope) {
-            Router._defaultRoute = new Route('', callback, callbackScope);
+            Router._defaultRoute = new Route_1.default('', callback, callbackScope);
         };
         /**
          * The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.
@@ -392,11 +392,11 @@
                 match = route.match(hash);
                 // If there is a match.
                 if (match !== null) {
-                    routerEvent = new RouterEvent();
+                    routerEvent = new RouterEvent_1.default();
                     routerEvent.route = match.shift();
                     routerEvent.params = match.slice(0, match.length);
                     routerEvent.routePattern = route.routePattern;
-                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil_1.default.queryStringToObject(hash) : null;
                     routerEvent.target = Router;
                     routerEvent.currentTarget = Router;
                     // Remove any empty strings in the array due to the :optional: route pattern.
@@ -424,9 +424,9 @@
             }
             // If there are no route's matched and there is a default route. Then call that default route.
             if (routerEvent === null && Router._defaultRoute !== null) {
-                routerEvent = new RouterEvent();
+                routerEvent = new RouterEvent_1.default();
                 routerEvent.route = hash;
-                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil.queryStringToObject(hash) : null;
+                routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil_1.default.queryStringToObject(hash) : null;
                 routerEvent.target = Router;
                 routerEvent.currentTarget = Router;
                 if (Router._hashChangeEvent != null) {
@@ -566,5 +566,6 @@
         Router._currentRoute = null;
         return Router;
     })();
-    return Router;
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.default = Router;
 });

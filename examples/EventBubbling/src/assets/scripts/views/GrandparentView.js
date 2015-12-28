@@ -1,18 +1,19 @@
 import DOMElement from 'structurejs/display/DOMElement';
 import BaseEvent from 'structurejs/event/BaseEvent';
-import ChildView from './ChildView';
+
+import ParentView from './ParentView';
 
 /**
  * TODO: YUIDoc_comment
  *
- * @class ParentView
+ * @class GrandparentView
  * @extends DOMElement
  * @constructor
  **/
-class ParentView extends DOMElement {
+class GrandparentView extends DOMElement {
 
-    _childView = null;
-    _$parentMessage = null;
+    _parentView = null;
+    _$grandparentMessage = null;
     _$checkbox = null;
 
     constructor($element) {
@@ -25,10 +26,10 @@ class ParentView extends DOMElement {
     create() {
         super.create();
 
-        this._childView = new ChildView(this.$element.find('.js-childContent'));
-        this.addChild(this._childView);
+        this._parentView = new ParentView(this.$element.find('.js-parentContent'));
+        this.addChild(this._parentView);
 
-        this._$parentMessage = this.$element.find('.js-parentMessage');
+        this._$grandparentMessage = this.$element.find('.js-grandparentMessage');
 
         this._$checkbox = this.$element.find('[type=checkbox]').first();
     }
@@ -41,7 +42,7 @@ class ParentView extends DOMElement {
 
         this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
-        this._childView.enable();
+        this._parentView.enable();
 
         super.enable();
     }
@@ -54,7 +55,7 @@ class ParentView extends DOMElement {
 
         this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
-        this._childView.disable();
+        this._parentView.disable();
 
         super.disable();
     }
@@ -63,16 +64,16 @@ class ParentView extends DOMElement {
      * @overridden DOMElement.layout
      */
     layout() {
-        this._$parentMessage.text('');
+        this._$grandparentMessage.text('');
         this._$checkbox.prop('checked', false);
-        this._childView.layout();
+        this._parentView.layout();
     }
 
     /**
      * @overridden DOMElement.destroy
      */
     destroy() {
-        this._childView.destroy();
+        this._parentView.destroy();
 
         super.destroy();
     }
@@ -92,9 +93,9 @@ class ParentView extends DOMElement {
         text += '<strong>' + baseEvent.currentTarget.getQualifiedClassName() + '</strong> last touched the event.<br/ >';
         text += '<strong>' + baseEvent.target.getQualifiedClassName() + '</strong> sent the event.';
 
-        this._$parentMessage.html(text);
+        this._$grandparentMessage.html(text);
     }
 
 }
 
-export default ParentView;
+export default GrandparentView;

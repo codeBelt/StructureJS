@@ -1,4 +1,4 @@
-import BaseEvent = require('./BaseEvent');
+import BaseEvent from './BaseEvent';
 
 /**
  * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
@@ -91,4 +91,4 @@ class RouterEvent extends BaseEvent
 
 }
 
-export = RouterEvent;
+export default RouterEvent;

@@ -1,5 +1,5 @@
-import DisplayObject = require('./DisplayObject');
-import MathUtil = require('../util/MathUtil');
+import DisplayObject from './DisplayObject';
+import MathUtil from '../util/MathUtil';
 
 class Bitmap extends DisplayObject
 {
@@ -37,4 +37,4 @@ class Bitmap extends DisplayObject
 
 }
 
-export = Bitmap;
+export default Bitmap;
