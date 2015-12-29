@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="en-us">
-
     <head>
         <!-- META DATA -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!-- SEO -->
-        <title>StructureJS Boilerplate (RequireJS)</title>
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <title>Single Page Website</title>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
 
         <!-- STYLESHEETS -->
         <!-- build:css assets/styles/head.css -->
@@ -20,17 +19,47 @@
     <body>
     <!-- CONTENT -->
 
+    <div id="pageWrapper">
+        <div id="header" class="js-headerView">
+            <div class="background">
+                <h1><a href="#">DelliStore</a></h1>
+                <ul id="js-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#/menu/">Menu</a></li>
+                    <li><a href="#/about/">About Us</a></li>
+                    <li><a href="#/services/">Services</a></li>
+                    <li><a href="#/contact/?name=robert&email=email@email.com&message=Robert is so cool.">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="js-pageContainer">
+            <!--Pages will be added here dynamically with JavaScript-->
+        </div>
+
+        <div id="footer" class="js-footerView">
+            <p>©2009 The DelliStore. Design by <a href="http://www.dellustrations.com/templates.html">Dellustrations.com</a> for <a href="http://www.smashingmagazine.com">Smashing Magazine</a></p>
+            <ul>
+                <li><a href="/" class="js-href">Home</a></li>
+                <li><a href="/menu/" class="js-href">Menu</a></li>
+                <li><a href="/about/" class="js-href">About Us</a></li>
+                <li><a href="/services/" class="js-href">Services</a></li>
+                <li><a href="/contact/?name=robert&email=email@email.com&message=Robert is so cool."" class="js-href">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- JAVASCRIPT -->
-    <script src="assets/vendor/requirejs/require.js"></script>
-    <script src="assets/scripts/config.js"></script>
-    <script>
-        /**
-         * Set route and kick off RequireJs, which begins loading of scripts
-         * starting from main.js.
-         */
-        require(['main']);
-    </script>
+    <!-- build:js assets/scripts/vendor.js -->
+    <script src="assets/vendor/jquery/dist/jquery.js"></script>
+    <script src="assets/vendor/handlebars/handlebars.runtime.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js assets/scripts/main.js -->
+    <script src="assets/scripts/precompiledJst.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    <!-- endbuild -->
 
     </body>
-
 </html>
+
