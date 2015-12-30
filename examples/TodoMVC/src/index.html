@@ -1,79 +1,88 @@
 <!doctype html>
-<html class="no-js" lang="en-us">
-<head>
-    <!-- META DATA -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+<html lang="en-us">
+    <head>
+        <!-- META DATA -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!-- SEO -->
-    <title>StructureJS • TodoMVC</title>
+        <!-- SEO -->
+        <title>StructureJS • TodoMVC</title>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
 
-    <!-- STYLESHEETS -->
-    <!-- build:css assets/styles/screen.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <link rel="stylesheet" href="assets/vendor/todomvc-common/base.css">
-    <!-- endbuild -->
-</head>
-<body>
-    <!-- CONTENT -->
-    <section id="todoapp">
-        <header id="header">
-            <h1>todos</h1>
-            <input id="new-todo" class="js-addInput" placeholder="What needs to be done?" autofocus>
-        </header>
-        <!-- This section should be hidden by default and shown when there are todos -->
-        <section id="main" class="js-mainView">
-            <input id="toggle-all" class="js-markAllComplete" type="checkbox">
-            <label for="toggle-all">Mark all as complete</label>
-            <ul id="todo-list" class="js-todoList">
+        <!-- STYLESHEETS -->
+        <!-- build:css assets/styles/head.css -->
+        <!-- endbuild -->
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
+        <!--<link rel="stylesheet" href="assets/vendor/todomvc-common/base.css">-->
+    </head>
 
-            </ul>
+    <body>
+        <!-- CONTENT -->
+        <section id="todoapp">
+            <header id="header">
+                <h1>todos</h1>
+                <input id="new-todo" class="js-addInput" placeholder="What needs to be done?" autofocus>
+            </header>
+            <!-- This section should be hidden by default and shown when there are todos -->
+            <section id="main" class="js-mainView">
+                <input id="toggle-all" class="js-markAllComplete" type="checkbox">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="todo-list" class="js-todoList">
+
+                </ul>
+            </section>
+            <!-- This footer should hidden by default and shown when there are todos -->
+            <footer id="footer" class="js-footerView">
+                <!-- This should be `0 items left` by default -->
+                <span id="todo-count"><strong class="js-itemsRemaining">0</strong> item left</span>
+                <!-- Remove this if you don't implement routing -->
+                <ul id="filters">
+                    <li>
+                        <a class="selected" href="#/">All</a>
+                    </li>
+                    <li>
+                        <a href="#/active">Active</a>
+                    </li>
+                    <li>
+                        <a href="#/completed">Completed</a>
+                    </li>
+                </ul>
+                <!-- Hidden if no completed items are left ↓ -->
+                <button id="clear-completed" class="js-clearCompleteButton">Clear completed (<span class="js-itemsComplete">0</span>)</button>
+            </footer>
         </section>
-        <!-- This footer should hidden by default and shown when there are todos -->
-        <footer id="footer" class="js-footerView">
-            <!-- This should be `0 items left` by default -->
-            <span id="todo-count"><strong class="js-itemsRemaining">0</strong> item left</span>
-            <!-- Remove this if you don't implement routing -->
-            <ul id="filters">
-                <li>
-                    <a class="selected" href="#/">All</a>
-                </li>
-                <li>
-                    <a href="#/active">Active</a>
-                </li>
-                <li>
-                    <a href="#/completed">Completed</a>
-                </li>
-            </ul>
-            <!-- Hidden if no completed items are left ↓ -->
-            <button id="clear-completed" class="js-clearCompleteButton">Clear completed (<span class="js-itemsComplete">0</span>)</button>
+
+        <footer id="info">
+            <p>Double-click to edit a todo</p>
+            <!-- Remove the below line ↓ -->
+            <p>Template by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
+            <!-- Change this out with your name and url ↓ -->
+            <p>Created by <a href="http://www.codebelt.com/">codeBelt</a></p>
+            <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
         </footer>
-    </section>
-
-    <footer id="info">
-        <p>Double-click to edit a todo</p>
-        <!-- Remove the below line ↓ -->
-        <p>Template by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
-        <!-- Change this out with your name and url ↓ -->
-        <p>Created by <a href="http://www.codebelt.com/">codeBelt</a></p>
-        <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-    </footer>
 
 
-    <script id="listItemTemplate" type="text/template">
-        <li>
-            <div class="view">
-                <input class="toggle js-markComplete" type="checkbox">
-                <label class="js-editTodo">{{text}}</label>
-                <button class="destroy js-removeTodo"></button>
-            </div>
-            <input class="edit js-itemText" value="{{text}}">
-        </li>
-    </script>
+        <script id="listItemTemplate" type="text/x-handlebars-template">
+            <li>
+                <div class="view">
+                    <input class="toggle js-markComplete" type="checkbox">
+                    <label class="js-editTodo">{{text}}</label>
+                    <button class="destroy js-removeTodo"></button>
+                </div>
+                <input class="edit js-itemText" value="{{text}}">
+            </li>
+        </script>
 
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="assets/scripts/main.js"></script>
-</body>
+        <!-- JAVASCRIPT -->
+        <!-- build:js assets/scripts/vendor.js -->
+        <script src="assets/vendor/jquery/dist/jquery.js"></script>
+        <script src="assets/vendor/handlebars/handlebars.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js assets/scripts/main.js -->
+        <script src="assets/scripts/main.js"></script>
+        <!-- endbuild -->
+
+    </body>
 </html>

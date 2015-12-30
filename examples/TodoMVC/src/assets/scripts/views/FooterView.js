@@ -1,92 +1,103 @@
-var Extend = require('structurejs/util/Extend');
-var DOMElement = require('structurejs/display/DOMElement');
-var BaseEvent = require('structurejs/event/BaseEvent');
+import DOMElement from 'structurejs/display/DOMElement';
+import BaseEvent from 'structurejs/event/BaseEvent';
 
 /**
- * This class is responsible for hand the display and interactions for the footer HTML.
+ * TODO: YUIDoc_comment
  *
  * @class FooterView
  * @extends DOMElement
  * @constructor
  **/
-var FooterView = (function () {
+class FooterView extends DOMElement {
 
-    var _super = Extend(FooterView, DOMElement);
+    /**
+     * @property _$itemsCompleteText
+     * @type {jQuery}
+     * @private
+     */
+    _$itemsCompleteText = null;
 
-    function FooterView($element) {
-        _super.call(this, $element);
+    /**
+     * @property _$itemsRemainingText
+     * @type {jQuery}
+     * @private
+     */
+    _$itemsRemainingText = null;
 
-        /**
-         * @property _$itemsCompleteText
-         * @type {jQuery}
-         * @private
-         */
-        this._$itemsCompleteText = null;
+    /**
+     * @property _$clearCompleteButton
+     * @type {jQuery}
+     * @private
+     */
+    _$clearCompleteButton = null;
 
-        /**
-         * @property _$itemsRemainingText
-         * @type {jQuery}
-         * @private
-         */
-        this._$itemsRemainingText = null;
+    /**
+     * @property _$navLinks
+     * @type {jQuery}
+     * @private
+     */
+    _$navLinks = null;
 
-        /**
-         * @property _$clearCompleteButton
-         * @type {jQuery}
-         * @private
-         */
-        this._$clearCompleteButton = null;
-
-        /**
-         * @property _$navLinks
-         * @type {jQuery}
-         * @private
-         */
-        this._$navLinks = null;
+    constructor($element) {
+        super($element);
     }
 
     /**
      * @overridden DOMElement.create
      */
-    FooterView.prototype.create = function () {
-        _super.prototype.create.call(this);
+    create() {
+        super.create();
 
         this._$itemsCompleteText = this.$element.find('.js-itemsComplete');
         this._$itemsRemainingText = this.$element.find('.js-itemsRemaining');
         this._$clearCompleteButton = this.$element.find('.js-clearCompleteButton');
         this._$navLinks = this.$element.find('#filters li a');
-    };
+    }
 
     /**
      * @overridden DOMElement.enable
      */
-    FooterView.prototype.enable = function () {
+    enable() {
         if (this.isEnabled === true) { return this; }
 
         this._$clearCompleteButton.addEventListener('click', this._onClear, this);
 
-        return _super.prototype.enable.call(this);
-    };
+        super.enable();
+    }
 
     /**
      * @overridden DOMElement.disable
      */
-    FooterView.prototype.disable = function () {
+    disable() {
         if (this.isEnabled === false) { return this; }
 
         this._$clearCompleteButton.removeEventListener('click', this._onClear, this);
 
-        return _super.prototype.disable.call(this);
-    };
+        super.disable();
+    }
+
+    /**
+     * @overridden DOMElement.layout
+     */
+    layout() {
+        // Layout or update the objects in this parent class.
+    }
 
     /**
      * @overridden DOMElement.destroy
      */
-    FooterView.prototype.destroy = function () {
-        // Destroy the child objects and references in this parent class to prevent memory leaks.
+    destroy() {
+        this.disable();
 
-        _super.prototype.destroy.call(this);
-    };
+        // Call destroy on any child objects.
+        // This super method will also null out your properties for garbage collection.
+
+        super.destroy();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    // HELPER METHOD
+    //////////////////////////////////////////////////////////////////////////////////
 
     /**
      * This method will update the footer display count for both completed and remaining items.
@@ -94,10 +105,10 @@ var FooterView = (function () {
      * @method updateCounts
      * @public
      */
-    FooterView.prototype.updateCounts = function(completedCount, remainingCount) {
+    updateCounts(completedCount, remainingCount) {
         this._$itemsCompleteText.text(completedCount);
         this._$itemsRemainingText.text(remainingCount);
-    };
+    }
 
     /**
      * This will remove the "selected" style class on all nav links and then add the
@@ -106,11 +117,16 @@ var FooterView = (function () {
      * @method updateNav
      * @public
      */
-    FooterView.prototype.updateNav = function(hashName) {
-        this._$navLinks.removeClass('selected')
+    updateNav(hashName) {
+        this._$navLinks
+            .removeClass('selected')
             .filter('[href="#/' + (hashName || '') + '"]')
             .addClass('selected');
-    };
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    // EVENT HANDLERS
+    //////////////////////////////////////////////////////////////////////////////////
 
     /**
      * When the user clicks the "clear completed" button this method will be called and will dispatch an event
@@ -120,14 +136,13 @@ var FooterView = (function () {
      * @param event {jQueryEventObject}
      * @private
      */
-    FooterView.prototype._onClear = function(event) {
+    _onClear(event) {
         // Take note this is not dispatching a BaseEvent object but just the string value constant. The only time you need to dispatch
         // an BaseEvent object or a custom event that extends BaseEvent is when you want to use event bubbling or have custom properties
         // on the event that you want to set.
         this.dispatchEvent(BaseEvent.CLEAR);
-    };
+    }
 
-    return FooterView;
-})();
+}
 
-module.exports = FooterView;
+export default FooterView;
