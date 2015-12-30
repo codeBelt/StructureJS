@@ -200,10 +200,8 @@ class EventDispatcher extends ObjectManager
         if (event.target == null)
         {
             event.target = this;
+            event.currentTarget = this;
         }
-
-        // Assign the current object that is currently processing the event (i.e. event bubbling at).
-        event.currentTarget = this;
 
         // Get the list of event listener by the associated type value.
         const list:Array<any> = this._listeners[event.type];
@@ -238,6 +236,9 @@ class EventDispatcher extends ObjectManager
             {
                 return this;
             }
+
+            // Assign the current object that is currently processing the event (i.e. event bubbling at).
+            event.currentTarget = this;
 
             // Pass the event to the parent (event bubbling).
             this.parent.dispatchEvent(event);

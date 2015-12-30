@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -343,9 +343,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             // If target is null then set it to the object that dispatched the event.
             if (event.target == null) {
                 event.target = this;
+                event.currentTarget = this;
             }
-            // Assign the current object that is currently processing the event (i.e. event bubbling at).
-            event.currentTarget = this;
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
@@ -370,6 +369,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
                 if (event.cancelable === true &amp;&amp; event.isPropagationStopped === true) {
                     return this;
                 }
+                // Assign the current object that is currently processing the event (i.e. event bubbling at).
+                event.currentTarget = this;
                 // Pass the event to the parent (event bubbling).
                 this.parent.dispatchEvent(event);
             }

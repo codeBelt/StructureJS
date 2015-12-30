@@ -1,14 +1,13 @@
-var $ = require('jquery');
-var Extend = require('structurejs/util/Extend');
-var Stage = require('structurejs/display/Stage');
-var BaseEvent = require('structurejs/event/BaseEvent');
-var Router = require('structurejs/controller/Router');
-var StringUtil = require('structurejs/util/StringUtil');
-var ListItemCollection = require('./model/ListItemCollection');
-var ListItemComponent = require('./component/ListItemComponent');
-var ListItemModel = require('./model/ListItemModel');
-var Key = require('./constant/Key');
-var FooterView = require('./view/FooterView');
+import Stage from 'structurejs/display/Stage';
+import BaseEvent from 'structurejs/event/BaseEvent';
+import Router from 'structurejs/controller/Router';
+import StringUtil from 'structurejs/util/StringUtil';
+
+import ListItemCollection from './collections/ListItemCollection';
+import ListItemModel from './models/ListItemModel';
+import ListItemComponent from './views/components/ListItemComponent';
+import FooterView from './views/FooterView';
+import Key from './constants/Key';
 
 /**
  * TODO: YUIDoc_comment
@@ -17,61 +16,59 @@ var FooterView = require('./view/FooterView');
  * @extends Stage
  * @constructor
  **/
-var App = (function () {
+class App extends Stage {
 
-    var _super = Extend(App, Stage);
+    /**
+     * @property _listItemCollection
+     * @type {ListItemCollection}
+     * @private
+     */
+    _listItemCollection = null;
 
-    function App() {
-        _super.call(this);
+    /**
+     * @property _$addTodoInput
+     * @type {HTMLInputElement}
+     * @private
+     */
+    _$addTodoInput = null;
 
-        /**
-         * @property _listItemCollection
-         * @type {ListItemCollection}
-         * @private
-         */
-        this._listItemCollection = null;
+    /**
+     * @property _$markAllCompleteCheckbox
+     * @type {HTMLInputElement}
+     * @private
+     */
+    _$markAllCompleteCheckbox = null;
 
-        /**
-         * @property _$addTodoInput
-         * @type {HTMLInputElement}
-         * @private
-         */
-        this._$addTodoInput = null;
+    /**
+     * @property _todoListContainer
+     * @type {DOMElement}
+     * @private
+     */
+    _todoListContainer = null;
 
-        /**
-         * @property _$markAllCompleteCheckbox
-         * @type {HTMLInputElement}
-         * @private
-         */
-        this._$markAllCompleteCheckbox = null;
+    /**
+     * @property _$mainView
+     * @type {jQuery}
+     * @private
+     */
+    _$mainView = null;
 
-        /**
-         * @property _todoListContainer
-         * @type {DOMElement}
-         * @private
-         */
-        this._todoListContainer = null;
+    /**
+     * @property _footerView
+     * @type {FooterView}
+     * @private
+     */
+    _footerView = null;
 
-        /**
-         * @property _$mainView
-         * @type {jQuery}
-         * @private
-         */
-        this._$mainView = null;
-
-        /**
-         * @property _footerView
-         * @type {FooterView}
-         * @private
-         */
-        this._footerView = null;
+    constructor() {
+        super();
     }
 
     /**
      * @overridden DOMElement.create
      */
-    App.prototype.create = function () {
-        _super.prototype.create.call(this);
+    create() {
+        super.create();
 
         this._listItemCollection = new ListItemCollection();
 
@@ -85,34 +82,12 @@ var App = (function () {
 
         this._footerView = new FooterView(this.$element.find('.js-footerView'));
         this.addChild(this._footerView);
-    };
-
-    /**
-     * @overridden DOMElement.layout
-     */
-    App.prototype.layout = function () {
-
-        this._footerView.updateCounts(this._listItemCollection.getCompletedCount(), this._listItemCollection.getRemainingCount());
-
-        if (this._listItemCollection.length > 0) {
-            // Take note we are working with the FooterView class jQuery view object "$element" directly.
-            // All classes that extend the DOMElement class has a "$element" property which is the main view/markup the class controls.
-            // If you wanted to encapsulate this more you could create a show/hide method in the FooterView class to handle it.
-            this._footerView.$element.show();
-
-            this._$mainView.show();
-        } else {
-            this._$mainView.hide();
-            this._footerView.$element.hide();
-        }
-
-        return this;
-    };
+    }
 
     /**
      * @overridden DOMElement.enable
      */
-    App.prototype.enable = function () {
+    enable() {
         if (this.isEnabled === true) { return this; }
 
         // Class Events
@@ -128,13 +103,13 @@ var App = (function () {
         // Load and parse the data in the browsers local storage.
         this._listItemCollection.loadStoredItems();
 
-        return _super.prototype.enable.call(this);
-    };
+        super.enable();
+    }
 
     /**
      * @overridden DOMElement.disable
      */
-    App.prototype.disable = function () {
+    disable() {
         if (this.isEnabled === false) { return this; }
 
         // Class Events
@@ -147,18 +122,43 @@ var App = (function () {
         this._$addTodoInput.removeEventListener('keypress', this._onCreateTodo, this);
         this._$markAllCompleteCheckbox.removeEventListener('change', this._onAllCompleteChange, this);
 
-        return _super.prototype.disable.call(this);
-    };
+        return super.disable();
+    }
+
+    /**
+     * @overridden DOMElement.layout
+     */
+    layout() {
+        this._footerView.updateCounts(this._listItemCollection.getCompletedCount(), this._listItemCollection.getRemainingCount());
+
+        if (this._listItemCollection.length > 0) {
+            // Take note we are working with the FooterView class jQuery view object "$element" directly.
+            // All classes that extend the DOMElement class has a "$element" property which is the main view/markup the class controls.
+            // If you wanted to encapsulate this more you could create a show/hide method in the FooterView class to handle it.
+            this._footerView.$element.show();
+
+            this._$mainView.show();
+        } else {
+            this._$mainView.hide();
+            this._footerView.$element.hide();
+        }
+    }
 
     /**
      * @overridden DOMElement.destroy
      */
-    App.prototype.destroy = function () {
-        this._todoListContainer.destroy();
-        this._listItemCollection.destroy();
+    destroy() {
+        this.disable();
 
-        _super.prototype.destroy.call(this);
-    };
+        // Call destroy on any child objects.
+        // This super method will also null out your properties for garbage collection.
+
+        super.destroy();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    // EVENT HANDLERS
+    //////////////////////////////////////////////////////////////////////////////////
 
     /**
      * TODO: YUIDoc_comment
@@ -166,13 +166,13 @@ var App = (function () {
      * @method _onCreateTodo
      * @private
      */
-    App.prototype._onCreateTodo = function(event) {
-        var todoText = this._$addTodoInput.val().trim();
+    _onCreateTodo = function(event) {
+        let todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
-            var baseModel = new ListItemModel({text: todoText});
+            let baseModel = new ListItemModel({text: todoText});
             baseModel.id = StringUtil.createUUID();
-            var childItem = new ListItemComponent(baseModel);
+            let childItem = new ListItemComponent(baseModel);
 
             this._listItemCollection.add(baseModel);
             this._todoListContainer.addChild(childItem);
@@ -180,7 +180,7 @@ var App = (function () {
         }
 
         this.layout();
-    };
+    }
 
     /**
      * TODO: YUIDoc_comment
@@ -188,22 +188,22 @@ var App = (function () {
      * @method _onAllCompleteChange
      * @private
      */
-    App.prototype._onAllCompleteChange = function(event) {
-        var $target = $(event.target);
+    _onAllCompleteChange = function(event) {
+        let $target = $(event.target);
 
-        var listItemComponent;
+        let listItemComponent;
         if ($target.prop("checked") === true) {
-            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
+            for (let i = 0; i < this._todoListContainer.numChildren; i++) {
                 listItemComponent = this._todoListContainer.getChildAt(i);
                 listItemComponent.setCompleted();
             }
         } else {
-            for (var j = 0; j < this._todoListContainer.numChildren; j++) {
+            for (let j = 0; j < this._todoListContainer.numChildren; j++) {
                 listItemComponent = this._todoListContainer.getChildAt(j);
                 listItemComponent.setUnCompleted();
             }
         }
-    };
+    }
 
     /**
      * TODO: YUIDoc_comment
@@ -212,15 +212,15 @@ var App = (function () {
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype._onItemRemove = function(event) {
-        var listItemComponent = event.target;
-        var listItemModel = listItemComponent.model;
+    _onItemRemove = function(event) {
+        let listItemComponent = event.target;
+        let listItemModel = listItemComponent.model;
 
         this._listItemCollection.remove(listItemModel);
         this._todoListContainer.removeChild(listItemComponent);
 
         this.layout();
-    };
+    }
 
     /**
      * TODO: YUIDoc_comment
@@ -229,11 +229,11 @@ var App = (function () {
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype._onItemChange = function(event) {
+    _onItemChange = function(event) {
         this._listItemCollection.save();
 
         this.layout();
-    };
+    }
 
     /**
      * TODO: YUIDoc_comment
@@ -242,18 +242,18 @@ var App = (function () {
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype._onLoadedItems = function(event) {
-        var items = this._listItemCollection.models;
-        var length = items.length;
+    _onLoadedItems = function(event) {
+        let items = this._listItemCollection.models;
+        let length = items.length;
 
         // Create ListItemComponent view items from the stored ListItemModel  Base Models.
-        for (var i = 0; i < length; i++) {
-            var childItem = new ListItemComponent(items[i]);
+        for (let i = 0; i < length; i++) {
+            let childItem = new ListItemComponent(items[i]);
             this._todoListContainer.addChild(childItem);
         }
 
         // When the app loads we need to check if all stored items are all completed or not.
-        var isAllCompleted = this._listItemCollection.length === this._listItemCollection.getCompletedCount();
+        let isAllCompleted = this._listItemCollection.length === this._listItemCollection.getCompletedCount();
         this._$markAllCompleteCheckbox.prop('checked', isAllCompleted);
 
         // Setup the router/deeplink handlers
@@ -263,7 +263,7 @@ var App = (function () {
         Router.start();
 
         this.layout();
-    };
+    }
 
     /**
      * This method is called when the BaseEvent.CLEAR event is dispatched from the FooterView.
@@ -272,11 +272,11 @@ var App = (function () {
      * @param event {BaseEvent}
      * @private
      */
-    App.prototype._onClearCompleted = function(event) {
-        var listItemModel;
-        var listItemComponent;
+    _onClearCompleted = function(event) {
+        let listItemModel;
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemModel = listItemComponent.model;
 
@@ -287,7 +287,7 @@ var App = (function () {
         }
 
         this.layout();
-    };
+    }
 
     /**
      * When the deep link "#/active" tag is triggered this method will hide all items and show only items that are not completed.
@@ -296,10 +296,10 @@ var App = (function () {
      * @method _onActiveHandler
      * @private
      */
-    App.prototype._onActiveHandler = function() {
-        var listItemComponent;
+    _onActiveHandler() {
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
@@ -311,7 +311,7 @@ var App = (function () {
         this._footerView.updateNav('active');
 
         this.layout();
-    };
+    }
 
     /**
      * When the deep link "#/completed" tag is triggered this method will hide all items and show only items that are completed.
@@ -320,10 +320,10 @@ var App = (function () {
      * @method _onCompletedHandler
      * @private
      */
-    App.prototype._onCompletedHandler = function() {
-        var listItemComponent;
+    _onCompletedHandler() {
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
@@ -335,7 +335,7 @@ var App = (function () {
         this._footerView.updateNav('completed');
 
         this.layout();
-    };
+    }
 
     /**
      *  When the deep link "#/" tag is triggered this method will show all items.
@@ -344,10 +344,10 @@ var App = (function () {
      * @method _onDefaultHandler
      * @private
      */
-    App.prototype._onDefaultHandler = function() {
-        var listItemComponent;
+    _onDefaultHandler() {
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.show();
         }
@@ -355,9 +355,8 @@ var App = (function () {
         this._footerView.updateNav('');
 
         this.layout();
-    };
+    }
 
-    return App;
-})();
+}
 
-module.exports = App;
+export default App;

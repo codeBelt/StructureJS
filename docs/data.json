@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "Code and documentation for the StructureJS library.",
-        "version": "0.10.0",
+        "version": "0.10.1",
         "url": ""
     },
     "files": {
@@ -5080,7 +5080,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 222,
+            "line": 223,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -5116,7 +5116,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 247,
+            "line": 248,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -5135,7 +5135,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 277,
+            "line": 278,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -9339,7 +9339,7 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/event/EventDispatcher.js:277"
+            "line": " js/event/EventDispatcher.js:278"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9679,7 +9679,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/event/EventDispatcher.js:277"
+            "line": " js/event/EventDispatcher.js:278"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",
