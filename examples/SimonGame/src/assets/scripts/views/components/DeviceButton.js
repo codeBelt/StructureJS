@@ -118,7 +118,7 @@ class DeviceButton extends DOMElement {
 
         this.animate();
 
-        var gameModel = new GameModel();
+        let gameModel = new GameModel();
         gameModel.buttonIndex = this._indexId;
 
         this.dispatchEvent(new BaseEvent(BaseEvent.CHANGE, true, true, gameModel));

@@ -83,13 +83,13 @@ class GrandparentView extends DOMElement {
     //////////////////////////////////////////////////////////////////////////////////
 
     _onBubbled(baseEvent) {
-        var checkbox = this.$element.find('[type=checkbox]').first().prop('checked');
+        let checkbox = this.$element.find('[type=checkbox]').first().prop('checked');
 
         if (checkbox === true) {
             baseEvent.stopPropagation();
         }
 
-        var text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
+        let text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
         text += '<strong>' + baseEvent.currentTarget.getQualifiedClassName() + '</strong> last touched the event.<br/ >';
         text += '<strong>' + baseEvent.target.getQualifiedClassName() + '</strong> sent the event.';
 

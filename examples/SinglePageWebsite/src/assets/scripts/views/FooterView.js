@@ -91,7 +91,7 @@ class FooterView extends DOMElement {
         Router.useDeepLinking = false;
         //Router.allowManualDeepLinking = false;
 
-        var $target = $(event.target);
+        let $target = $(event.target);
 
         Router.navigateTo($target.attr('href'));
     }

@@ -92,7 +92,7 @@ class EventBubblingApp extends Stage {
     }
 
     _onBubbled(baseEvent) {
-        var text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
+        let text = '<strong>' + this.getQualifiedClassName() + '</strong> recevied a event.<br/ >';
         text += '<strong>' + baseEvent.currentTarget.getQualifiedClassName() + '</strong> last touched the event.<br/ >';
         text += '<strong>' + baseEvent.target.getQualifiedClassName() + '</strong> sent the event.';
 

@@ -181,7 +181,7 @@ class ListItemComponent extends DOMElement {
      * @private
      */
     _onItemToggleComplete(event) {
-        var isChecked = $(event.target).prop('checked');
+        let isChecked = $(event.target).prop('checked');
 
         this.model.isComplete = isChecked;
 
@@ -221,7 +221,7 @@ class ListItemComponent extends DOMElement {
      * @private
      */
     _onInputBlur(event) {
-        var todoText = this._$itemInput.val().trim();
+        let todoText = this._$itemInput.val().trim();
 
         if (todoText != '') {
             this.model.text = todoText;
@@ -273,7 +273,7 @@ class ListItemComponent extends DOMElement {
      * @private
      */
     _onEnterKey(event) {
-        var todoText = this._$itemInput.val().trim();
+        let todoText = this._$itemInput.val().trim();
 
         if (event.which === Key.ENTER) {
             if (todoText != '') {

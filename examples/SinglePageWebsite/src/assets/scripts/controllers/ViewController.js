@@ -84,7 +84,7 @@ class ViewController extends EventDispatcher {
      * @privates
      */
     _onRouteChange(routerEvent) {
-        var ClassObject = this._viewDictionary[routerEvent.routePattern];
+        let ClassObject = this._viewDictionary[routerEvent.routePattern];
 
         if ((this._currentView instanceof ClassObject) === false) {
 

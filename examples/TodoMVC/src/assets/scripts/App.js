@@ -167,12 +167,12 @@ class App extends Stage {
      * @private
      */
     _onCreateTodo = function(event) {
-        var todoText = this._$addTodoInput.val().trim();
+        let todoText = this._$addTodoInput.val().trim();
 
         if (event.which === Key.ENTER && todoText != '') {
-            var baseModel = new ListItemModel({text: todoText});
+            let baseModel = new ListItemModel({text: todoText});
             baseModel.id = StringUtil.createUUID();
-            var childItem = new ListItemComponent(baseModel);
+            let childItem = new ListItemComponent(baseModel);
 
             this._listItemCollection.add(baseModel);
             this._todoListContainer.addChild(childItem);
@@ -189,16 +189,16 @@ class App extends Stage {
      * @private
      */
     _onAllCompleteChange = function(event) {
-        var $target = $(event.target);
+        let $target = $(event.target);
 
-        var listItemComponent;
+        let listItemComponent;
         if ($target.prop("checked") === true) {
-            for (var i = 0; i < this._todoListContainer.numChildren; i++) {
+            for (let i = 0; i < this._todoListContainer.numChildren; i++) {
                 listItemComponent = this._todoListContainer.getChildAt(i);
                 listItemComponent.setCompleted();
             }
         } else {
-            for (var j = 0; j < this._todoListContainer.numChildren; j++) {
+            for (let j = 0; j < this._todoListContainer.numChildren; j++) {
                 listItemComponent = this._todoListContainer.getChildAt(j);
                 listItemComponent.setUnCompleted();
             }
@@ -213,8 +213,8 @@ class App extends Stage {
      * @private
      */
     _onItemRemove = function(event) {
-        var listItemComponent = event.target;
-        var listItemModel = listItemComponent.model;
+        let listItemComponent = event.target;
+        let listItemModel = listItemComponent.model;
 
         this._listItemCollection.remove(listItemModel);
         this._todoListContainer.removeChild(listItemComponent);
@@ -243,17 +243,17 @@ class App extends Stage {
      * @private
      */
     _onLoadedItems = function(event) {
-        var items = this._listItemCollection.models;
-        var length = items.length;
+        let items = this._listItemCollection.models;
+        let length = items.length;
 
         // Create ListItemComponent view items from the stored ListItemModel  Base Models.
-        for (var i = 0; i < length; i++) {
-            var childItem = new ListItemComponent(items[i]);
+        for (let i = 0; i < length; i++) {
+            let childItem = new ListItemComponent(items[i]);
             this._todoListContainer.addChild(childItem);
         }
 
         // When the app loads we need to check if all stored items are all completed or not.
-        var isAllCompleted = this._listItemCollection.length === this._listItemCollection.getCompletedCount();
+        let isAllCompleted = this._listItemCollection.length === this._listItemCollection.getCompletedCount();
         this._$markAllCompleteCheckbox.prop('checked', isAllCompleted);
 
         // Setup the router/deeplink handlers
@@ -273,10 +273,10 @@ class App extends Stage {
      * @private
      */
     _onClearCompleted = function(event) {
-        var listItemModel;
-        var listItemComponent;
+        let listItemModel;
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemModel = listItemComponent.model;
 
@@ -297,9 +297,9 @@ class App extends Stage {
      * @private
      */
     _onActiveHandler() {
-        var listItemComponent;
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
@@ -321,9 +321,9 @@ class App extends Stage {
      * @private
      */
     _onCompletedHandler() {
-        var listItemComponent;
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.hide();
 
@@ -345,9 +345,9 @@ class App extends Stage {
      * @private
      */
     _onDefaultHandler() {
-        var listItemComponent;
+        let listItemComponent;
 
-        for (var i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
+        for (let i = this._todoListContainer.numChildren - 1; i >= 0; i--) {
             listItemComponent = this._todoListContainer.getChildAt(i);
             listItemComponent.show();
         }

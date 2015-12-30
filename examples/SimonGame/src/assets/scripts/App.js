@@ -52,7 +52,7 @@ class App extends Stage {
     create() {
         super.create();
 
-        var $device = this.$element.find('.js-simonApp-device');
+        let $device = this.$element.find('.js-simonApp-device');
 
         this._deviceView = new DeviceView($device);
         this.addChild(this._deviceView);
@@ -124,10 +124,10 @@ class App extends Stage {
      * @private
      */
     _onTimer(event) {
-        var timer = event.target;
-        var sequenceSteps = this._memoryOrder.length - 1;
-        var currentIndex = sequenceSteps - timer.getCurrentCount();
-        var showItem = this._memoryOrder[currentIndex];
+        let timer = event.target;
+        let sequenceSteps = this._memoryOrder.length - 1;
+        let currentIndex = sequenceSteps - timer.getCurrentCount();
+        let showItem = this._memoryOrder[currentIndex];
 
         this._deviceView.animateButton(showItem);
     }
@@ -157,11 +157,11 @@ class App extends Stage {
      * @private
      */
     _onClickColorBtn(event) {
-        var gameModel = event.data;
+        let gameModel = event.data;
         this._userSequence.push(gameModel.buttonIndex);
 
         if (this._userSequence.length === this._memoryOrder.length) {
-            var isMatch = this._userSequence.toString() === this._memoryOrder.toString();
+            let isMatch = this._userSequence.toString() === this._memoryOrder.toString();
             if (isMatch) {
                 alert('You did it!');
             } else {

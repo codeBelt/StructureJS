@@ -77,7 +77,7 @@ class ChildView extends DOMElement {
     _onButtonClick(event) {
         event.preventDefault();
 
-        var text = '<strong>' + this.getQualifiedClassName() + '</strong> sent the event.';
+        let text = '<strong>' + this.getQualifiedClassName() + '</strong> sent the event.';
 
         this._$sonMessage.html(text);
 

@@ -48,11 +48,11 @@ class ListItemCollection extends Collection {
      * @public
      */
     loadStoredItems() {
-        var items = this._localStorageController.getItem('todos');
+        let items = this._localStorageController.getItem('todos');
 
         if (items != null) {
-            var length = items.length;
-            for (var i = 0; i < length; i++) {
+            let length = items.length;
+            for (let i = 0; i < length; i++) {
                 this.add(items[i]);
             }
 

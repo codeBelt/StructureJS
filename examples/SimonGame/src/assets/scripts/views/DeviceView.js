@@ -144,7 +144,7 @@ class DeviceView extends DOMElement {
      * @public
      */
     animateButton(buttonIndex) {
-        var deviceButton = this._buttonList[buttonIndex];
+        let deviceButton = this._buttonList[buttonIndex];
         deviceButton.animate();
     }
 

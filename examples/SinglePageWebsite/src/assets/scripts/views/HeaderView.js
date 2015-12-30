@@ -1,4 +1,5 @@
 import DOMElement from 'structurejs/display/DOMElement';
+import Router from 'structurejs/controller/Router';
 
 /**
  * TODO: YUIDoc_comment
@@ -35,7 +36,7 @@ class HeaderView extends DOMElement {
     enable() {
         if (this.isEnabled === true) { return; }
 
-        // Enable the child objects and add any event listeners.
+        Router.add('*', this._allRouterHandler, this);
 
         super.enable();
     }
@@ -46,7 +47,7 @@ class HeaderView extends DOMElement {
     disable() {
         if (this.isEnabled === false) { return; }
 
-        // Disable the child objects and remove any event listeners.
+        Router.remove('*', this._allRouterHandler, this);
 
         super.disable();
     }
@@ -73,14 +74,15 @@ class HeaderView extends DOMElement {
     //////////////////////////////////////////////////////////////////////////////////
     // HELPER METHOD
     //////////////////////////////////////////////////////////////////////////////////
+
     /**
      * TODO: YUIDoc_comment
      *
      * @method updateNavigation
-     * @public
+     * @protected
      */
-    updateNavigation(pageId) {
-        var $navItem = this._$navLinks.find('a[href*="' + pageId + '"]');
+    _updateNavigation(pageId) {
+        let $navItem = this._$navLinks.find('a[href*="' + pageId + '"]');
 
         // Make all nav item not active.
         this._$navLinks.removeClass('active');
@@ -96,6 +98,22 @@ class HeaderView extends DOMElement {
                 .first()
                 .addClass('active');
         }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////
+    // EVENT HANDLERS
+    //////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method _allRouterHandler
+     * @param routerEvent {RouterEvent}
+     * @protected
+     */
+    _allRouterHandler(routerEvent) {
+        var pageId = routerEvent.params[0];
+        this._updateNavigation(pageId);
     }
 
 }
