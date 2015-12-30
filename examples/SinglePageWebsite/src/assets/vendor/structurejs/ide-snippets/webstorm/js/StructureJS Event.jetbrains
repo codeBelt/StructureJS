@@ -1,0 +1,38 @@
+define(function (require, exports, module) { // jshint ignore:line
+    'use strict';
+
+    // Imports
+    var Extend = require('structurejs/util/Extend');
+    var BaseEvent = require('structurejs/event/BaseEvent');
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @class ${NAME}
+     * @extends BaseEvent
+     * @constructor
+     **/
+    var ${NAME} = (function () {
+
+        /**
+         * This is an example of an event type.
+         * Go ahead and rename or remove this.
+         *
+         * @event EXAMPLE
+         * @type {string}
+         * @static
+         */
+        ${NAME}.EXAMPLE = '${NAME}.example';
+
+        var _super = Extend(${NAME}, BaseEvent); // jshint ignore:line
+
+        function ${NAME}(type, bubbles, cancelable, data) { // jshint ignore:line
+            _super.call(this, type, bubbles, cancelable, data);
+        }
+
+        return ${NAME};
+    })();
+
+    module.exports = ${NAME};
+
+});

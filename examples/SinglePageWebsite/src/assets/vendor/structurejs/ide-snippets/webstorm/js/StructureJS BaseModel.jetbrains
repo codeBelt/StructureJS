@@ -1,0 +1,41 @@
+define(function(require, exports, module) { // jshint ignore:line
+    'use strict';
+
+    // Imports
+    var Extend = require('structurejs/util/Extend');
+    var BaseModel = require('structurejs/model/BaseModel');
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @class ${NAME}
+     * @extends BaseModel
+     * @constructor
+     **/
+    var ${NAME} = (function () {
+
+        var _super = Extend(${NAME}, BaseModel); // jshint ignore:line
+
+        function ${NAME}(data) { // jshint ignore:line
+            _super.call(this);
+
+            if (data) {
+                this.update(data);
+            }
+        }
+
+        /**
+         * @overridden BaseModel.update
+         */
+        ${NAME}.prototype.update = function (data) {
+             _super.prototype.update.call(this, data);
+
+            // Override any values after the default super update method has set the values.
+        };
+
+        return ${NAME};
+    })();
+
+    module.exports = ${NAME};
+
+});

@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @property ${1:propertyName}
+ * @type {${2:propertyType}}
+ * @${3:accessType}
+ */
+this.${1} = null;
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>property</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>
