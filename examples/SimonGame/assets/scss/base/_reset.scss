@@ -1,12 +1,3 @@
-/*csslint box-sizing: false, compatible-vendor-prefixes: false */
-/* ---------------------------------------------------------------------
-RESET CSS
-
-Target Browsers: All
-Media Type: Screen, Projection
-Width: All Sizes
------------------------------------------------------------------------- */
-
 /* ---------------------------------------------------------------------
 RESET CSS (thanks Eric Meyer)
 ------------------------------------------------------------------------ */
@@ -60,9 +51,8 @@ table {
     outline: 0;
 }
 
-/* Always show a vertical scrollbar, even when there is no scrolling */
 html {
-    overflow-y: scroll;
+    overflow-y: scroll; /* Always show a vertical scrollbar, even when there is no scrolling */
 }
 
 html {
@@ -71,28 +61,32 @@ html {
 }
 
 /* ---------------------------------------------------------------------
- HTML5 Block / Inline Block declarations
+ HTML5 Element Reset
 ------------------------------------------------------------------------ */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, main {
     display: block;
 }
 
-audio, canvas, video {
+audio, canvas, video, progress, picture {
     display: inline-block;
+}
+
+template {
+    display: none;
 }
 
 /* ---------------------------------------------------------------------
  Form Reset Styles
 ------------------------------------------------------------------------ */
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration,
-input[type=search]::-webkit-search-results-button,
-input[type=search]::-webkit-search-results-decoration {
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance: none;
 }
 
-input[type=search] {
+input[type="search"] {
     -webkit-appearance: none;
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;

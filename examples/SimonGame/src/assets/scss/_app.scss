@@ -1,0 +1,136 @@
+/* ---------------------------------------------------------------------
+ Base Styles
+------------------------------------------------------------------------ */
+body {
+    background-color: #666;
+}
+.simonApp {
+    width: 400px;
+    margin: 0 auto;
+}
+.simonApp h1 {
+    text-align: center;
+    font-size: 3em;
+    padding: .2em 0 0 0;
+    margin: 0;
+}
+.pad.red {
+    /*left:15px;*/
+    /*top:15px;*/
+    background:rgb(255,0,0);
+    -webkit-border-radius:320px 20px 20px;
+    -moz-border-radius:320px 20px 20px;
+    -o-border-radius:320px 20px 20px;
+    border-radius:320px 20px 20px;
+}
+.pad.green {
+    /*right:15px;*/
+    /*top:15px;*/
+    background:rgb(0,255,0);
+    -webkit-border-radius:20px 320px 20px 20px;
+    -moz-border-radius:20px 320px 20px 20px;
+    -o-border-radius:20px 320px 20px 20px;
+    border-radius:20px 320px 20px 20px;
+}
+.pad.yellow {
+    /*bottom:15px;*/
+    /*right:15px;*/
+    background:rgb(255,255,0);
+    -webkit-border-radius:20px 20px 320px 20px;
+    -moz-border-radius:20px 20px 320px 20px;
+    -o-border-radius:20px 20px 320px 20px;
+    border-radius:20px 20px 320px 20px;
+}
+.pad.blue {
+    /*bottom:15px;*/
+    /*left:15px;*/
+    background:rgb(0,0,255);
+    -webkit-border-radius:20px 20px 20px 320px;
+    -moz-border-radius:20px 20px 20px 320px;
+    -o-border-radius:20px 20px 20px 320px;
+    border-radius:20px 20px 20px 320px;
+}
+.simonApp-device {
+    position:relative;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -o-border-radius:50%;
+    border-radius:50%;
+    width: 390px;
+    height: 390px;
+    padding-left: 20px;
+    padding-top: 15px;
+    background:#000;
+    background:rgb(0,0,0);
+    background:-moz-linear-gradient(45deg,rgba(0,0,0,1) 0%,rgba(28,36,45,1) 100%);
+    background:-webkit-gradient(linear,left bottom,right top,color-stop(0%,rgba(0,0,0,1)),color-stop(100%,rgba(28,36,45,1)));
+    background:-webkit-linear-gradient(45deg,rgba(0,0,0,1) 0%,rgba(28,36,45,1) 100%);
+    background:-o-linear-gradient(45deg,rgba(0,0,0,1) 0%,rgba(28,36,45,1) 100%);
+    background:-ms-linear-gradient(45deg,rgba(0,0,0,1) 0%,rgba(28,36,45,1) 100%);
+    background:linear-gradient(45deg,rgba(0,0,0,1) 0%,rgba(28,36,45,1) 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000',endColorstr='#1c242d',GradientType=1 );
+}
+.simonApp-device::before {
+    content:' ';
+    left:50%;
+    top:50%;
+    -webkit-border-radius:85px;
+    -moz-border-radius:85px;
+    -o-border-radius:85px;
+    border-radius:85px;
+    position:absolute;
+    display:block;
+    width:170px;
+    height:170px;
+    background:#000;
+    z-index:99;
+    margin: -85px;
+}
+.simonApp-device .display {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 17px;
+    line-height: 160%;
+    position:absolute;
+    cursor: pointer;
+    display:block;
+    background:rgb(255,255,255);
+    background:-moz-radial-gradient(center,ellipse cover,rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%);
+    background:-webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(255,255,255,1)),color-stop(47%,rgba(246,246,246,1)),color-stop(100%,rgba(237,237,237,1)));
+    background:-webkit-radial-gradient(center,ellipse cover,rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%);
+    background:-o-radial-gradient(center,ellipse cover,rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%);
+    background:-ms-radial-gradient(center,ellipse cover,rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%);
+    background:radial-gradient(center,ellipse cover,rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff',endColorstr='#ededed',GradientType=1 );
+    width:120px;
+    padding-top:40px;/* dont remove */
+    height:80px;
+    -webkit-border-radius:60px;
+    -moz-border-radius:60px;
+    -o-border-radius:60px;
+    border-radius:60px;
+    left:50%;
+    top:50%;
+    text-align:center;
+    z-index:100;
+    margin:-60px;
+}
+.pad {
+    position:relative;
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 5px;
+    width:180px;
+    height:180px;
+    background:rgba(20,20,20,1);
+    opacity: 0.5;
+    -webkit-transition:all 300ms ease;
+    -moz-transition:all 300ms ease;
+    -o-transition:all 300ms ease;
+    transition:all 300ms ease;
+}
+.pad.hover {
+    opacity: 0.7;
+}
+.pad.active {
+    opacity: 1;
+}
