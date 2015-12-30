@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -167,7 +167,7 @@
     ///&lt;reference path=&#x27;_declare/greensock.d.ts&#x27;/&gt;
     ///&lt;reference path=&#x27;_declare/jquery.eventListener.d.ts&#x27;/&gt;
     ///&lt;reference path=&#x27;_declare/log.d.ts&#x27;/&gt;
-    var Util = require(&#x27;./util/Util&#x27;);
+    var Util_1 = require(&#x27;./util/Util&#x27;);
     /**
      * The {{#crossLink &quot;BaseObject&quot;}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
      *
@@ -191,7 +191,7 @@
              * @public
              */
             this.sjsId = null;
-            this.sjsId = Util.uniqueId();
+            this.sjsId = Util_1.default.uniqueId();
         }
         /**
          * Returns the fully qualified class name of an object.
@@ -206,7 +206,7 @@
          *     // SomeClass
          */
         BaseObject.prototype.getQualifiedClassName = function () {
-            return Util.getName(this);
+            return Util_1.default.getName(this);
         };
         /**
          * The purpose of the destroy method is to make an object ready for garbage collection. This
@@ -239,7 +239,8 @@
         };
         return BaseObject;
     })();
-    return BaseObject;
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = BaseObject;
 });
 
     </pre>

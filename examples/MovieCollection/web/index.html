@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <!-- META DATA -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- SEO -->
+        <title>Collection BaseModel Example</title>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <!-- STYLESHEETS -->
+        <!-- build:css assets/styles/head.css -->
+        <!-- endbuild -->
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
+    </head>
+    <body>
+        <!-- CONTENT -->
+        <div class="page">
+            <div class="page-hd">
+                <h1 class="hdg hdg_1">Movie Listing</h1>
+            </div>
+            <form class="page-controls js-pageControlView">
+                <fieldset>
+                    <legend class="isVisuallyHidden">Sort Movies</legend>
+                    <ol class="hList hList_spaced">
+                        <li>
+                            <select class="js-pageControlView-listSort" disabled>
+                                <option value="critic-desc">Critics Score Descending</option>
+                                <option value="critic-asc">Critics Score Ascending</option>
+                                <option value="audience-desc">Audience Score Descending</option>
+                                <option value="audience-asc">Audience Score Ascending</option>
+                                <option value="theater-asc">Most Recent Theater Date</option>
+                                <option value="theater-desc">Oldest Theater Date</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select class="js-pageControlView-listLimit" disabled>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
+                            </select>
+                        </li>
+                        <li>
+                            <button class="js-pageControlView-listUpdate" disabled>Update</button>
+                        </li>
+                    </ol>
+                </fieldset>
+            </form>
+            <div class="page-bd">
+                <ol class="vList mix-vList_shaded js-listView"></ol>
+            </div>
+        </div>
+
+
+        <!-- JAVASCRIPT -->
+        <!-- build:js assets/scripts/vendor.js -->
+        <script src="assets/vendor/jquery/dist/jquery.js"></script>
+        <script src="assets/vendor/handlebars/handlebars.runtime.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js assets/scripts/main.js -->
+        <script src="assets/scripts/precompiledJst.js"></script>
+        <script src="assets/scripts/main.js"></script>
+        <!-- endbuild -->
+
+    </body>
+</html>

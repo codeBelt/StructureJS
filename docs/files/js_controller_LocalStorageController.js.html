@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -167,9 +167,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/LocalStorageEvent&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../model/BaseModel&#x27;], factory);
     }
 })(function (require, exports) {
-    var LocalStorageEvent = require(&#x27;../event/LocalStorageEvent&#x27;);
-    var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
-    var BaseModel = require(&#x27;../model/BaseModel&#x27;);
+    var LocalStorageEvent_1 = require(&#x27;../event/LocalStorageEvent&#x27;);
+    var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
+    var BaseModel_1 = require(&#x27;../model/BaseModel&#x27;);
     /**
      * The LocalStorageController...
      *
@@ -242,7 +242,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             if (useNamespace) {
                 key = this.getNamespace() + key;
             }
-            if (data instanceof BaseModel) {
+            if (data instanceof BaseModel_1.default) {
                 data = data.toJSON();
             }
             data = JSON.stringify(data);
@@ -378,11 +378,12 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @protected
          */
         LocalStorageController.prototype._onLocalStorageEvent = function (event) {
-            this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
+            this.dispatchEvent(new LocalStorageEvent_1.default(LocalStorageEvent_1.default.STORAGE, false, false, event));
         };
         return LocalStorageController;
-    })(EventDispatcher);
-    return LocalStorageController;
+    })(EventDispatcher_1.default);
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = LocalStorageController;
 });
 
     </pre>

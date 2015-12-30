@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -162,9 +162,9 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/NetworkMonitorEvent&#x27;, &#x27;../event/native/NavigatorEvents&#x27;], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
-    var NetworkMonitorEvent = require(&#x27;../event/NetworkMonitorEvent&#x27;);
-    var NavigatorEvents = require(&#x27;../event/native/NavigatorEvents&#x27;);
+    var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
+    var NetworkMonitorEvent_1 = require(&#x27;../event/NetworkMonitorEvent&#x27;);
+    var NavigatorEvents_1 = require(&#x27;../event/native/NavigatorEvents&#x27;);
     /**
      * A helper class to detect network changes.
      *
@@ -204,7 +204,7 @@
          */
         NetworkMonitor.getStatus = function () {
             NetworkMonitor._start();
-            return (this.connected()) ? NavigatorEvents.ONLINE : NavigatorEvents.OFFLINE;
+            return (this.connected()) ? NavigatorEvents_1.default.ONLINE : NavigatorEvents_1.default.OFFLINE;
         };
         /**
          * Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.
@@ -258,8 +258,8 @@
             else {
                 NetworkMonitor._initialized = true;
             }
-            window.addEventListener(NavigatorEvents.ONLINE, NetworkMonitor._onNetworkMonitorEvent, false);
-            window.addEventListener(NavigatorEvents.OFFLINE, NetworkMonitor._onNetworkMonitorEvent, false);
+            window.addEventListener(NavigatorEvents_1.default.ONLINE, NetworkMonitor._onNetworkMonitorEvent, false);
+            window.addEventListener(NavigatorEvents_1.default.OFFLINE, NetworkMonitor._onNetworkMonitorEvent, false);
         };
         /**
          * An event handler method when the native Window &#x27;online&#x27; and &#x27;offline&#x27; events are triggered.
@@ -271,7 +271,7 @@
          */
         NetworkMonitor._onNetworkMonitorEvent = function (event) {
             var type = (event) ? event.type : NetworkMonitor.getStatus();
-            var networkMonitorEvent = new NetworkMonitorEvent(NetworkMonitorEvent.STATUS, false, false, type, NetworkMonitor.connected(), event);
+            var networkMonitorEvent = new NetworkMonitorEvent_1.default(NetworkMonitorEvent_1.default.STATUS, false, false, type, NetworkMonitor.connected(), event);
             NetworkMonitor._dispatchEvent(networkMonitorEvent);
         };
         /**
@@ -293,7 +293,7 @@
          * @private
          * @static
          */
-        NetworkMonitor._eventDispatcher = new EventDispatcher();
+        NetworkMonitor._eventDispatcher = new EventDispatcher_1.default();
         /**
          * A flag to determine if this class has already been initialized.
          *
@@ -304,7 +304,8 @@
         NetworkMonitor._initialized = false;
         return NetworkMonitor;
     })();
-    return NetworkMonitor;
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = NetworkMonitor;
 });
 
     </pre>

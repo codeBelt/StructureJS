@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -162,9 +162,9 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../util/StringUtil&#x27;, &#x27;../event/RouterEvent&#x27;, &#x27;../model/Route&#x27;], factory);
     }
 })(function (require, exports) {
-    var StringUtil = require(&#x27;../util/StringUtil&#x27;);
-    var RouterEvent = require(&#x27;../event/RouterEvent&#x27;);
-    var Route = require(&#x27;../model/Route&#x27;);
+    var StringUtil_1 = require(&#x27;../util/StringUtil&#x27;);
+    var RouterEvent_1 = require(&#x27;../event/RouterEvent&#x27;);
+    var Route_1 = require(&#x27;../model/Route&#x27;);
     /**
      * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink &quot;Router/add:method&quot;}}{{/crossLink}} method for more details and examples.
      *
@@ -262,7 +262,7 @@
          */
         Router.add = function (routePattern, callback, callbackScope) {
             Router.enable();
-            var route = new Route(routePattern, callback, callbackScope);
+            var route = new Route_1.default(routePattern, callback, callbackScope);
             Router._routes.push(route);
         };
         /**
@@ -303,7 +303,7 @@
          *     Router.addDefault(this._noRoutesFoundHandler, this);
          */
         Router.addDefault = function (callback, callbackScope) {
-            Router._defaultRoute = new Route(&#x27;&#x27;, callback, callbackScope);
+            Router._defaultRoute = new Route_1.default(&#x27;&#x27;, callback, callbackScope);
         };
         /**
          * The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.
@@ -548,11 +548,11 @@
                 match = route.match(hash);
                 // If there is a match.
                 if (match !== null) {
-                    routerEvent = new RouterEvent();
+                    routerEvent = new RouterEvent_1.default();
                     routerEvent.route = match.shift();
                     routerEvent.params = match.slice(0, match.length);
                     routerEvent.routePattern = route.routePattern;
-                    routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
+                    routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil_1.default.queryStringToObject(hash) : null;
                     routerEvent.target = Router;
                     routerEvent.currentTarget = Router;
                     // Remove any empty strings in the array due to the :optional: route pattern.
@@ -580,9 +580,9 @@
             }
             // If there are no route&#x27;s matched and there is a default route. Then call that default route.
             if (routerEvent === null &amp;&amp; Router._defaultRoute !== null) {
-                routerEvent = new RouterEvent();
+                routerEvent = new RouterEvent_1.default();
                 routerEvent.route = hash;
-                routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil.queryStringToObject(hash) : null;
+                routerEvent.query = (hash.indexOf(&#x27;?&#x27;) &gt; -1) ? StringUtil_1.default.queryStringToObject(hash) : null;
                 routerEvent.target = Router;
                 routerEvent.currentTarget = Router;
                 if (Router._hashChangeEvent != null) {
@@ -722,7 +722,8 @@
         Router._currentRoute = null;
         return Router;
     })();
-    return Router;
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = Router;
 });
 
     </pre>

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -167,8 +167,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/LoaderEvent&#x27;], factory);
     }
 })(function (require, exports) {
-    var EventDispatcher = require(&#x27;../event/EventDispatcher&#x27;);
-    var LoaderEvent = require(&#x27;../event/LoaderEvent&#x27;);
+    var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
+    var LoaderEvent_1 = require(&#x27;../event/LoaderEvent&#x27;);
     /**
      * The ImageLoader...
      *
@@ -200,11 +200,12 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         ImageLoader.prototype._onImageLoad = function () {
             this.data = this._image;
             this.complete = true;
-            this.dispatchEvent(LoaderEvent.COMPLETE);
+            this.dispatchEvent(LoaderEvent_1.default.COMPLETE);
         };
         return ImageLoader;
-    })(EventDispatcher);
-    return ImageLoader;
+    })(EventDispatcher_1.default);
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = ImageLoader;
 });
 
     </pre>

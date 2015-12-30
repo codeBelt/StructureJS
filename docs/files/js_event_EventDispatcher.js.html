@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -167,8 +167,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../ObjectManager&#x27;, &#x27;./BaseEvent&#x27;], factory);
     }
 })(function (require, exports) {
-    var ObjectManager = require(&#x27;../ObjectManager&#x27;);
-    var BaseEvent = require(&#x27;./BaseEvent&#x27;);
+    var ObjectManager_1 = require(&#x27;../ObjectManager&#x27;);
+    var BaseEvent_1 = require(&#x27;./BaseEvent&#x27;);
     /**
      * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} class.
      * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
@@ -338,14 +338,13 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             if (data === void 0) { data = null; }
             var event = type;
             if (typeof event === &#x27;string&#x27;) {
-                event = new BaseEvent(type, false, true, data);
+                event = new BaseEvent_1.default(type, false, true, data);
             }
             // If target is null then set it to the object that dispatched the event.
             if (event.target == null) {
                 event.target = this;
+                event.currentTarget = this;
             }
-            // Assign the current object that is currently processing the event (i.e. event bubbling at).
-            event.currentTarget = this;
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
@@ -370,6 +369,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
                 if (event.cancelable === true &amp;&amp; event.isPropagationStopped === true) {
                     return this;
                 }
+                // Assign the current object that is currently processing the event (i.e. event bubbling at).
+                event.currentTarget = this;
                 // Pass the event to the parent (event bubbling).
                 this.parent.dispatchEvent(event);
             }
@@ -438,8 +439,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;
-    })(ObjectManager);
-    return EventDispatcher;
+    })(ObjectManager_1.default);
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = EventDispatcher;
 });
 
     </pre>

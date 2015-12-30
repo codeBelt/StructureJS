@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.9.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
                 
                 
                     <p class="description">Code and documentation for the StructureJS library.</p>
@@ -162,7 +162,7 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../util/Util&#x27;], factory);
     }
 })(function (require, exports) {
-    var Util = require(&#x27;../util/Util&#x27;);
+    var Util_1 = require(&#x27;../util/Util&#x27;);
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *
@@ -208,7 +208,7 @@
                 else {
                     // Else if there is already a &#x27;data-sjs-type&#x27; attribute then get the type(s).
                     types = types.split(&#x27;,&#x27;);
-                    componentName = Util.getName(ComponentClass);
+                    componentName = Util_1.default.getName(ComponentClass);
                     // Only create the component if the component type does not already exist.
                     if (types.indexOf(componentName) === -1) {
                         component = ComponentFactory._createComponent($element, ComponentClass, scope);
@@ -234,7 +234,8 @@
         };
         return ComponentFactory;
     })();
-    return ComponentFactory;
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = ComponentFactory;
 });
 
     </pre>
