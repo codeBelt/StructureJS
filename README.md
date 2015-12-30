@@ -16,20 +16,24 @@ A class based utility library for building modular and scalable web platform app
 * [Atom](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/atom)
 
 ## Boilerplate
-[StructureJS Boilerplate (RequireJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
+[StructureJS Boilerplate (Babel ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
+
+[StructureJS Boilerplate (TypeScript - ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-es6)
+
+[StructureJS Boilerplate (TypeScript - CommonJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
 
 [StructureJS Boilerplate (Browserify)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
 
-[StructureJS Boilerplate (TypeScript)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
+[StructureJS Boilerplate (RequireJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
 
-[StructureJS Boilerplate (Babel ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
+
 
 ## Examples
-* Event Bubbling [Demo](http://codebelt.github.io/StructureJS/examples/EventBubbling/src/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
-* Movie Collection [Demo](http://codebelt.github.io/StructureJS/examples/MovieCollection/src/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/MovieCollection)
-* Single Page Application [Demo](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/SinglePageWebsite)
+* Event Bubbling [Demo](http://codebelt.github.io/StructureJS/examples/EventBubbling/web/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/EventBubbling)
+* Movie Collection [Demo](http://codebelt.github.io/StructureJS/examples/MovieCollection/web/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/MovieCollection)
+* Single Page Application [Demo](http://codebelt.github.io/StructureJS/examples/SinglePageWebsite/web/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/SinglePageWebsite)
 * TodoMVC [Demo](http://codebelt.github.io/StructureJS/examples/TodoMVC/web/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/TodoMVC)
-* Simon Game [Demo](http://codebelt.github.io/StructureJS/examples/SimonGame/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/SimonGame)
+* Simon Game [Demo](http://codebelt.github.io/StructureJS/examples/SimonGame/web/) [Code](https://github.com/codeBelt/StructureJS/tree/master/examples/SimonGame)
 
 ## Core Classes
 
@@ -70,7 +74,7 @@ class App extends Stage {
 export default App;
 ```
 
-[Example `Stage` Class](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/MovieCollectionApp.js)
+[Example `Stage` Class](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/App.js)
 
 [Read more about `Stage`](http://codebelt.github.io/StructureJS/docs/classes/Stage.html)
 
@@ -140,7 +144,7 @@ class ExampleView extends DOMElement {
 export default ExampleView;
 ```
 
-[Example `DOMElement` View](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/view/ListView.js)
+[Example `DOMElement` View](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/views/ListView.js)
 
 [Read more about `DOMElement`](http://codebelt.github.io/StructureJS/docs/classes/DOMElement.html)
 
