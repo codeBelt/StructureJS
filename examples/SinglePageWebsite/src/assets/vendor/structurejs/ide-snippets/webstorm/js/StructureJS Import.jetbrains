@@ -1,0 +1,1 @@
+var $ClassName$ = require('$PATH$/$ClassName$');

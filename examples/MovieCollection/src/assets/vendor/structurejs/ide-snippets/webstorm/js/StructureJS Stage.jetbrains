@@ -33,7 +33,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.enable
          */
         ${NAME}.prototype.enable = function () {
-            if (this.isEnabled === true) { return this; }
+            if (this.isEnabled === true) { return; }
 
             // Enable the child objects and/or add any event listeners.
 
@@ -44,7 +44,7 @@ define(function(require, exports, module) { // jshint ignore:line
          * @overridden DOMElement.disable
          */
         ${NAME}.prototype.disable = function () {
-            if (this.isEnabled === false) { return this; }
+            if (this.isEnabled === false) { return; }
 
             // Disable the child objects and/or remove any event listeners.
 
@@ -56,8 +56,6 @@ define(function(require, exports, module) { // jshint ignore:line
          */
         ${NAME}.prototype.layout = function () {
             // Layout or update the objects in this parent class.
-
-            return this;
         };
 
         /**

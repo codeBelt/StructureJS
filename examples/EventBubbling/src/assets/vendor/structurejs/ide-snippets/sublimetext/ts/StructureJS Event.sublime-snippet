@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[
+import BaseEvent from 'structurejs/event/BaseEvent';
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
+ * @extends BaseEvent
+ * @constructor
+ **/
+class ${TM_FILENAME/(.*)[.](.*)/$1/g} extends BaseEvent {
+
+     /**
+     * This is an example of an event type.
+     * Go ahead and rename or remove this.
+     *
+     * @event EXAMPLE
+     * @type {string}
+     * @static
+     */
+    static EXAMPLE:string = '${TM_FILENAME/(.*)[.](.*)/$1/g}.example';
+
+    constructor(type:string, bubbles:boolean = false, cancelable:boolean = false, data:any = null) {
+        super(type, bubbles, cancelable, data);
+    }
+
+}
+
+export default ${TM_FILENAME/(.*)[.](.*)/$1/g};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>baseModel</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+import ${1:Extends} from '${path}/${1}';
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
+ * @extends ${1}
+ * @constructor
+ **/
+class ${TM_FILENAME/(.*)[.](.*)/$1/g} extends ${1} {
+
+    constructor() {
+        super();
+    }
+
+}
+
+export default ${TM_FILENAME/(.*)[.](.*)/$1/g};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>extendClass</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

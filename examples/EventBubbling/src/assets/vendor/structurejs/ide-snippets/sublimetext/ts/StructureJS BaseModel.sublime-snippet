@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[
+import BaseModel from 'structurejs/model/BaseModel';
+
+/**
+ * TODO: YUIDoc_comment
+ *
+ * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
+ * @extends BaseModel
+ * @constructor
+ **/
+class ${TM_FILENAME/(.*)[.](.*)/$1/g} extends BaseModel {
+
+    constructor(data:any = null) {
+        super();
+
+        if (data) {
+            this.update(data);
+        }
+    }
+
+    /**
+     * @overridden BaseModel.update
+     */
+    public update(data:any):void {
+        super.update(data);
+
+        // Override any values after the default super update method has set the values.
+    }
+
+}
+
+export default ${TM_FILENAME/(.*)[.](.*)/$1/g};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>baseModel</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

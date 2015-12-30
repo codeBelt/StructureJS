@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[
+define(function(require, exports, module) { // jshint ignore:line
+    'use strict';
+
+    // Imports
+    var Extend = require('structurejs/util/Extend');
+    var BaseModel = require('structurejs/model/BaseModel');
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @class ${TM_FILENAME/(.*)[.](.*)/$1/g}
+     * @extends BaseModel
+     * @constructor
+     **/
+    var ${TM_FILENAME/(.*)[.](.*)/$1/g} = (function () {
+
+        var _super = Extend(${TM_FILENAME/(.*)[.](.*)/$1/g}, BaseModel);
+
+        function ${TM_FILENAME/(.*)[.](.*)/$1/g}() {
+            _super.call(this);
+
+            if (data) {
+                this.update(data);
+            }
+        }
+
+        /**
+        * @overridden BaseModel.update
+        */
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.update = function (data) {
+            _super.prototype.update.call(this, data);
+            
+            // Override any values after the default super update method has set the values.
+        };
+
+        return ${TM_FILENAME/(.*)[.](.*)/$1/g};
+    })();
+
+    module.exports = ${TM_FILENAME/(.*)[.](.*)/$1/g};
+
+});
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>baseModel</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.js</scope>
+</snippet>

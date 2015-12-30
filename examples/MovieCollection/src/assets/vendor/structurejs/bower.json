@@ -1,6 +1,6 @@
 {
     "name": "structurejs",
-    "version": "0.10.0",
+    "version": "0.10.1",
     "dependencies": {
         "jquery": "*",
         "handlebars": "*"
@@ -17,6 +17,8 @@
     "homepage": "https://github.com/codeBelt/StructureJS",
     "ignore": [
         "node_modules",
+        "__tests__",
+        "gulpfile.js",
         "examples",
         "friendly-theme",
         "js/config.js",
