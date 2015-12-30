@@ -187,9 +187,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             // If target is null then set it to the object that dispatched the event.
             if (event.target == null) {
                 event.target = this;
+                event.currentTarget = this;
             }
-            // Assign the current object that is currently processing the event (i.e. event bubbling at).
-            event.currentTarget = this;
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
@@ -214,6 +213,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                 if (event.cancelable === true && event.isPropagationStopped === true) {
                     return this;
                 }
+                // Assign the current object that is currently processing the event (i.e. event bubbling at).
+                event.currentTarget = this;
                 // Pass the event to the parent (event bubbling).
                 this.parent.dispatchEvent(event);
             }
