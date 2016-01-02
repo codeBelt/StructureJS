@@ -86,4 +86,4 @@ class DateUtil
     }
 }
 
-export = DateUtil;
+export default DateUtil;
