@@ -1,0 +1,15 @@
+node_modules
+__tests__
+gulpfile.js
+examples
+friendly-theme
+js/config.js
+test
+LICENSE
+Gruntfile.js
+karma.conf.js
+package.json
+.jshintrc
+umd.template
+.gitignore
+.bower.json
