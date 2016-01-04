@@ -266,6 +266,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2015-12-30 v0.10.2 Publishing to NPM https://www.npmjs.com/package/structure-js
+ 
  * 2015-12-30 v0.10.1 EventDispatcher - Fix currentTarget when event is bubbling. Update IDE Snippets.
  
  * 2015-12-21 v0.10.0 Change TypeScript from CommonJS to ES6 modules.
