@@ -29,5 +29,22 @@
     "jquery": "^2.1.4",
     "matchdep": "^1.0.0",
     "typescript": "^1.6.2"
-  }
+  },
+  "ignore": [
+    "node_modules",
+    "__tests__",
+    "gulpfile.js",
+    "examples",
+    "friendly-theme",
+    "js/config.js",
+    "test",
+    "LICENSE",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json",
+    ".jshintrc",
+    "umd.template",
+    ".gitignore",
+    ".bower.json"
+  ]
 }
