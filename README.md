@@ -7,8 +7,15 @@ A class based utility library for building modular and scalable web platform app
 * [Overview Video](http://www.codebelt.com/javascript/StructureJS_web.mp4)
 
 ## Install
-    $ bower install --save structurejs
 
+With [Node.js](http://nodejs.org):
+
+    $ npm install structure-js
+
+With [Bower](http://bower.io):
+
+    $ bower install structurejs
+    
 ## IDE Snippets
 * [Webstorm JS](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/webstorm/js)
 * [Webstorm TS](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/webstorm/ts)
