@@ -23,15 +23,15 @@ With [Bower](http://bower.io):
 * [Atom](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/atom)
 
 ## Boilerplate
-[StructureJS Boilerplate (Babel ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
+[StructureJS Boilerplate (Babel - ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
 
-[StructureJS Boilerplate (TypeScript - ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-es6)
+[StructureJS Boilerplate (TypeScript - ES6 Modules)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-es6)
 
-[StructureJS Boilerplate (TypeScript - CommonJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
+[StructureJS Boilerplate (TypeScript - CommonJS Modules)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
 
-[StructureJS Boilerplate (Browserify)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
+[StructureJS Boilerplate (Browserify - ES5)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
 
-[StructureJS Boilerplate (RequireJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
+[StructureJS Boilerplate (RequireJS - ES5)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
 
 
 
