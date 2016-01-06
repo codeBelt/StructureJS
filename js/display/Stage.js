@@ -38,26 +38,16 @@ var __extends = (this && this.__extends) || function (d, b) {
      *                 // Create and add your child objects to this parent class.
      *             }
      *
+     *             onEnabled() {
+     *                 // Enable the child objects and add any event listeners.
+     *             }
+     *
+     *             onDisabled() {
+     *                 // Disable the child objects and remove any event listeners.
+     *             }
+     *
      *             layout() {
      *                 // Layout or update the child objects in this parent class.
-     *
-     *                 return this;
-     *             }
-     *
-     *             enable() {
-     *                 if (this.isEnabled === true) { return this };
-     *
-     *                 // Enable the child objects and add any event listeners.
-     *
-     *                 return super.enable();
-     *             }
-     *
-     *             disable() {
-     *                 if (this.isEnabled === false) { return this };
-     *
-     *                 // Disable the child objects and remove any event listeners.
-     *
-     *                 return super.disable();
      *             }
      *
      *             destroy() {

@@ -85,11 +85,9 @@ class App extends Stage {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden DOMElement.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return this; }
-
+    onEnabled() {
         // Class Events
         this._listItemCollection.addEventListener('loadComplete', this._onLoadedItems, this);//
         this._footerView.addEventListener(BaseEvent.CLEAR, this._onClearCompleted, this);
@@ -102,16 +100,12 @@ class App extends Stage {
 
         // Load and parse the data in the browsers local storage.
         this._listItemCollection.loadStoredItems();
-
-        super.enable();
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden DOMElement.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return this; }
-
+    onDisabled() {
         // Class Events
         this._listItemCollection.removeEventListener('loadComplete', this._onLoadedItems, this);// Example of plan string event.
         this._footerView.removeEventListener(BaseEvent.CLEAR, this._onClearCompleted, this);
@@ -121,8 +115,6 @@ class App extends Stage {
         // DOM Events
         this._$addTodoInput.removeEventListener('keypress', this._onCreateTodo, this);
         this._$markAllCompleteCheckbox.removeEventListener('change', this._onAllCompleteChange, this);
-
-        return super.disable();
     }
 
     /**

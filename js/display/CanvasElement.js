@@ -34,12 +34,9 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.ctx = this.canvas.getContext('2d');
         };
         /**
-         * @overridden CanvasElement.enable
+         * @overridden CanvasElement.onEnabled
          */
-        CanvasElement.prototype.enable = function () {
-            if (this.isEnabled === true) {
-                return;
-            }
+        CanvasElement.prototype.onEnabled = function () {
             // Add mouse event listeners to $canvas element
             this.$canvas.addEventListener('mousedown', this._onPointerDown, this);
             this.$canvas.addEventListener('mousemove', this._onPointerMove, this);
@@ -50,15 +47,11 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.$canvas.addEventListener('touchmove', this._onPointerMove, this);
             this.$canvas.addEventListener('touchend', this._onPointerUp, this);
             this.$canvas.addEventListener('touchcancel', this._onPointerOut, this);
-            _super.prototype.enable.call(this);
         };
         /**
-         * @overridden CanvasElement.disable
+         * @overridden CanvasElement.onDisabled
          */
-        CanvasElement.prototype.disable = function () {
-            if (this.isEnabled === false) {
-                return;
-            }
+        CanvasElement.prototype.onDisabled = function () {
             // Remove mouse event listeners on $canvas element
             this.$canvas.removeEventListener('mousedown', this._onPointerDown, this);
             this.$canvas.removeEventListener('mousemove', this._onPointerMove, this);
@@ -69,7 +62,6 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.$canvas.removeEventListener('touchmove', this._onPointerMove, this);
             this.$canvas.removeEventListener('touchend', this._onPointerUp, this);
             this.$canvas.removeEventListener('touchcancel', this._onPointerOut, this);
-            _super.prototype.disable.call(this);
         };
         /**
          * @overridden DOMElement.addChild

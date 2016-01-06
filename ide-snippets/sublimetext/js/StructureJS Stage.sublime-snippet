@@ -34,25 +34,17 @@ define(function(require, exports, module) { // jshint ignore:line
         };
  
         /**
-         * @overridden Stage.enable
+         * @overridden Stage.onEnabled
          */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.enable = function () {
-            if (this.isEnabled === true) { return; }
- 
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.onEnabled = function () {
             // Enable the child objects and/or add any event listeners.
- 
-            return _super.prototype.enable.call(this);
         };
  
         /**
-         * @overridden Stage.disable
+         * @overridden Stage.onDisabled
          */
-        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.disable = function () {
-            if (this.isEnabled === false) { return; }
- 
+        ${TM_FILENAME/(.*)[.](.*)/$1/g}.prototype.onDisabled = function () {
             // Disable the child objects and/or remove any event listeners.
- 
-            return _super.prototype.disable.call(this);
         };
 
         /**

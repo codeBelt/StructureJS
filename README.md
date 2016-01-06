@@ -107,7 +107,7 @@ export default ExampleView;
 
 `DOMElement` provides helper methods and adds the following lifecycle to your class, these methods get called in this order:
 * `create()`
-* `enable()`
+* `onEnabled()`
 * `layout()`
 
 ```js
@@ -122,16 +122,12 @@ class ExampleView extends DOMElement {
         // Create or setup objects in this parent class.
     }
 
-    enable() {
-        if (this.isEnabled === true) { return this; }
+    onEnabled() {
         // Enable the child objects and/or add any event listeners.
-        return super.enable();
     }
 
-    disable() {
-        if (this.isEnabled === false) { return this; }
+    onDisabled() {
         // Disable the child objects and/or remove any event listeners.
-        return super.disable();
     }
 
     layout() {
@@ -239,22 +235,14 @@ Similar to the `.on()` & `.off()` jQuery methods, this plugin allows you to bind
 * scope
 
 ```js
-enable() {
-    if (this.isEnabled === true) { return this; }
-
+onEnabled() {
     this._$element.addEventListener('click', this._onClickHandler, this);
     this._$element.addEventListener('click', 'button', this._onClickHandler, this); // event delegation
-
-    return super.enable();
 }
 
-disable() {
-    if (this.isEnabled === false) { return this; }
-
+onDisabled() {
     this._$element.removeEventListener('click', this._onClickHandler, this);
     this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
-
-    return super.disable();
 }
 
 _onClickHandler(event) {
@@ -266,6 +254,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * ????-??-?? v0.10.3 Add onEnabled and onDisabled methods. Removed enable and disable methods from Examples and IDE Snippets.
+ 
  * 2015-12-30 v0.10.2 Publishing to NPM https://www.npmjs.com/package/structure-js
  
  * 2015-12-30 v0.10.1 EventDispatcher - Fix currentTarget when event is bubbling. Update IDE Snippets.

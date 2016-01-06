@@ -35,35 +35,25 @@ class EventBubblingApp extends Stage {
     }
 
     /**
-     * @overridden Stage.enable
+     * @overridden Stage.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return; }
-
+    onEnabled() {
         this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
         EventBroker.addEventListener(BaseEvent.CHANGE, this._onGlobalEvent, this);
 
         this._$clearButton.addEventListener('click', this._onClearClick, this);
-
-        this._grandpaView.enable();
-
-        super.enable();
     }
 
     /**
-     * @overridden Stage.disable
+     * @overridden Stage.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return; }
-
+    onDisabled() {
         this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
 
+        EventBroker.removeEventListener(BaseEvent.CHANGE, this._onGlobalEvent, this);
+
         this._$clearButton.removeEventListener('click', this._onClearClick, this);
-
-        this._grandpaView.disable();
-
-        super.disable();
     }
 
     /**
@@ -78,6 +68,8 @@ class EventBubblingApp extends Stage {
      * @overridden Stage.destroy
      */
     destroy() {
+        this.disable();
+
         this._grandpaView.destroy();
 
         super.destroy();

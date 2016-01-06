@@ -35,29 +35,17 @@ class ParentView extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden DOMElement.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return; }
-
+    onEnabled() {
         this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
-
-        this._childView.enable();
-
-        super.enable();
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden DOMElement.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return; }
-
+    onDisabled() {
         this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
-
-        this._childView.disable();
-
-        super.disable();
     }
 
     /**
@@ -73,6 +61,8 @@ class ParentView extends DOMElement {
      * @overridden DOMElement.destroy
      */
     destroy() {
+        this.disable();
+
         this._childView.destroy();
 
         super.destroy();
