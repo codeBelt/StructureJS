@@ -132,7 +132,6 @@ class ExampleView extends DOMElement {
 
     layout() {
         // Layout or update the objects in this parent class.
-        return this;
     }
     
     destroy() {
