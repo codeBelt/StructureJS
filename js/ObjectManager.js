@@ -39,13 +39,14 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.isEnabled = false;
         }
         /**
-         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
+         * The enable method is responsible for enabling object.
+         * After this method is called it will trigger the {{#crossLink "ObjectManager/onEnabled:method"}}{{/crossLink}} method.
          *
          * @method enable
          * @public
          * @chainable
          * @example
-         *      this._exampleObject.enable();
+         *      this._childInstance.enable();
          */
         ObjectManager.prototype.enable = function () {
             if (this.isEnabled === true) {
@@ -64,21 +65,22 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @chainable
          * @example
          *     onEnabled() {
-         *          this._exampleObject.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *          this._exampleObject.enable();
+         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.enable();
          *     }
          */
         ObjectManager.prototype.onEnabled = function () {
             return this;
         };
         /**
-         * The disable method is responsible for disabling event listeners and/or children of the containing objects.
+         * The disable method is responsible for disabling the object.
+         * After this method is called it will trigger the {{#crossLink "ObjectManager/onDisabled:method"}}{{/crossLink}} method.
          *
          * @method disable
          * @public
          * @chainable
          * @example
-         *      this._exampleObject.disable();
+         *      this._childInstance.disable();
          */
         ObjectManager.prototype.disable = function () {
             if (this.isEnabled === false) {
@@ -97,8 +99,8 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @chainable
          * @example
          *     onDisabled() {
-         *          this._exampleObject.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *          this._exampleObject.disable();
+         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.disable();
          *     }
          */
         ObjectManager.prototype.onDisabled = function () {

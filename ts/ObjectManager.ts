@@ -30,13 +30,14 @@ class ObjectManager extends BaseObject
     }
 
     /**
-     * The enable method is responsible for enabling event listeners and/or children of the containing objects.
+     * The enable method is responsible for enabling object.
+     * After this method is called it will trigger the {{#crossLink "ObjectManager/onEnabled:method"}}{{/crossLink}} method.
      *
      * @method enable
      * @public
      * @chainable
      * @example
-     *      this._exampleObject.enable();
+     *      this._childInstance.enable();
      */
     public enable():any
     {
@@ -61,8 +62,8 @@ class ObjectManager extends BaseObject
      * @chainable
      * @example
      *     onEnabled() {
-     *          this._exampleObject.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     *          this._exampleObject.enable();
+     *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *          this._childInstance.enable();
      *     }
      */
     public onEnabled():any {
@@ -70,13 +71,14 @@ class ObjectManager extends BaseObject
     }
 
     /**
-     * The disable method is responsible for disabling event listeners and/or children of the containing objects.
+     * The disable method is responsible for disabling the object.
+     * After this method is called it will trigger the {{#crossLink "ObjectManager/onDisabled:method"}}{{/crossLink}} method.
      *
      * @method disable
      * @public
      * @chainable
      * @example
-     *      this._exampleObject.disable();
+     *      this._childInstance.disable();
      */
     public disable():any
     {
@@ -101,8 +103,8 @@ class ObjectManager extends BaseObject
      * @chainable
      * @example
      *     onDisabled() {
-     *          this._exampleObject.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     *          this._exampleObject.disable();
+     *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *          this._childInstance.disable();
      *     }
      */
     public onDisabled():any {
