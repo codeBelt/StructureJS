@@ -55,25 +55,17 @@ class App extends Stage {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden DOMElement.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return; }
-
+    onEnabled() {
         this._pageControls.addEventListener('update', this._onUpdate, this);
-
-        return super.enable();
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden DOMElement.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return; }
-
+    onDisabled() {
         this._pageControls.removeEventListener('update', this._onUpdate, this);
-
-        return super.disable();
     }
 
     /**

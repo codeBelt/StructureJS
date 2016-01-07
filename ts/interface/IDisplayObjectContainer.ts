@@ -27,52 +27,52 @@ interface IDisplayObjectContainer extends IDisplayObject
     mouseChildren: boolean;
 
     /**
-     * @method enable
+     * @method addChild
      */
     addChild(child: any): any;
 
     /**
-     * @method enable
+     * @method addChildAt
      */
     addChildAt(child: any, index: number): any;
 
     /**
-     * @method enable
+     * @method removeChild
      */
     removeChild(child: any): any;
 
     /**
-     * @method enable
+     * @method removeChildren
      */
     removeChildren(): any;
 
     /**
-     * @method enable
+     * @method swapChildren
      */
     swapChildren(child1: any, child2: any): any;
 
     /**
-     * @method enable
+     * @method swapChildrenAt
      */
     swapChildrenAt(index1: number, index2: number): any;
 
     /**
-     * @method enable
+     * @method getChildIndex
      */
     getChildIndex(child: any): number;
 
     /**
-     * @method enable
+     * @method contains
      */
     contains(child: any): boolean;
 
     /**
-     * @method enable
+     * @method getChildAt
      */
     getChildAt(index: number): any;
 
     /**
-     * @method enable
+     * @method getChildByCid
      */
     getChildByCid(sjsId: number): any;
 

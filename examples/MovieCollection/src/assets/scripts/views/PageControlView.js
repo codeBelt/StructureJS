@@ -60,11 +60,9 @@ class PageControlView extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden DOMElement.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return; }
-
+    onEnabled() {
         this._$listSort.prop('disabled', false);
         this._$listLimit.prop('disabled', false);
         this._$listUpdate.prop('disabled', false);
@@ -72,17 +70,12 @@ class PageControlView extends DOMElement {
         this._$listSort.addEventListener('change', this._onSortChange, this);
         this._$listLimit.addEventListener('change', this._onLimitChange, this);
         this._$listUpdate.addEventListener('click', this._onUpdateClick, this);
-
-
-        return super.enable();
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden DOMElement.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return; }
-
+    onDisabled() {
         this._$listSort.prop('disabled', true);
         this._$listLimit.prop('disabled', true);
         this._$listUpdate.prop('disabled', true);
@@ -90,8 +83,6 @@ class PageControlView extends DOMElement {
         this._$listSort.removeEventListener('change', this._onSortChange, this);
         this._$listLimit.removeEventListener('change', this._onLimitChange, this);
         this._$listUpdate.removeEventListener('click', this._onUpdateClick, this);
-
-        return super.disable();
     }
 
     /**

@@ -16,10 +16,10 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
                 
                 
-                    <p class="description">Code and documentation for the StructureJS library.</p>
+                    <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
                 
             </div>
             <ul class="jump-links">
@@ -587,6 +587,20 @@
                 </li>
             
                 <li class="index-item method public inherited">
+                    <a href="#method_onDisabled">onDisabled</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
+                    <a href="#method_onEnabled">onEnabled</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method public inherited">
                     <a href="#method_removeChild">removeChild</a>
 
                     
@@ -671,7 +685,7 @@
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l160"><code>js&#x2F;display&#x2F;DOMElement.js:160</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l140"><code>js&#x2F;display&#x2F;DOMElement.js:140</code></a>
         
         </p>
 
@@ -725,7 +739,7 @@
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l169"><code>js&#x2F;display&#x2F;DOMElement.js:169</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l149"><code>js&#x2F;display&#x2F;DOMElement.js:149</code></a>
         
         </p>
 
@@ -827,7 +841,7 @@ this class will not try to add the view to the DOM since it already exists.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l187"><code>js&#x2F;display&#x2F;DOMElement.js:187</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l167"><code>js&#x2F;display&#x2F;DOMElement.js:167</code></a>
         
         </p>
 
@@ -881,7 +895,7 @@ this class will not try to add the view to the DOM since it already exists.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l178"><code>js&#x2F;display&#x2F;DOMElement.js:178</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l158"><code>js&#x2F;display&#x2F;DOMElement.js:158</code></a>
         
         </p>
 
@@ -984,7 +998,7 @@ this class will not try to add the view to the DOM since it already exists.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l141"><code>js&#x2F;display&#x2F;DOMElement.js:141</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l121"><code>js&#x2F;display&#x2F;DOMElement.js:121</code></a>
         
         </p>
 
@@ -1137,7 +1151,7 @@ This property is only used with the canvas specific display objects.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l151"><code>js&#x2F;display&#x2F;DOMElement.js:151</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l131"><code>js&#x2F;display&#x2F;DOMElement.js:131</code></a>
         
         </p>
 
@@ -2315,26 +2329,16 @@ class ClassName extends DOMElement {
          // Create and add your child objects to this parent class.
      }
 
-     enable() {
-         if (this.isEnabled === true) { return this; }
-
+     onEnabled() {
          // Enable the child objects and add any event listeners.
-
-         return super.enable();
      }
 
-     disable() {
-         if (this.isEnabled === false) { return this; }
-
+     onDisabled() {
          // Disable the child objects and remove any event listeners.
-
-         return super.disable();
      }
 
      layout() {
          // Layout or update the child objects in this parent class.
-
-         return this;
      }
 
      destroy() {
@@ -2360,26 +2364,16 @@ class ClassName extends DOMElement {
          // Create and add your child objects to this parent class.
      }
 
-     enable() {
-         if (this.isEnabled === true) { return this; }
-
+     onEnabled() {
          // Enable the child objects and add any event listeners.
-
-         return super.enable();
      }
 
-     disable() {
-         if (this.isEnabled === false) { return this; }
-
+     onDisabled() {
          // Disable the child objects and remove any event listeners.
-
-         return super.disable();
      }
 
      layout() {
          // Layout or update the child objects in this parent class.
-
-         return this;
      }
 
      destroy() {
@@ -2453,7 +2447,7 @@ class ClassName extends DOMElement {
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l320"><code>js&#x2F;display&#x2F;DOMElement.js:320</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l300"><code>js&#x2F;display&#x2F;DOMElement.js:300</code></a>
         
         </p>
 
@@ -2540,7 +2534,7 @@ class ClassName extends DOMElement {
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l371"><code>js&#x2F;display&#x2F;DOMElement.js:371</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l351"><code>js&#x2F;display&#x2F;DOMElement.js:351</code></a>
         
         </p>
 
@@ -2618,7 +2612,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l346"><code>js&#x2F;display&#x2F;DOMElement.js:346</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l326"><code>js&#x2F;display&#x2F;DOMElement.js:326</code></a>
         
         </p>
 
@@ -2731,7 +2725,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l291"><code>js&#x2F;display&#x2F;DOMElement.js:291</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l271"><code>js&#x2F;display&#x2F;DOMElement.js:271</code></a>
         
         </p>
 
@@ -3466,7 +3460,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l206"><code>js&#x2F;display&#x2F;DOMElement.js:206</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l186"><code>js&#x2F;display&#x2F;DOMElement.js:186</code></a>
         
         </p>
 
@@ -3656,7 +3650,7 @@ create() {
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l577"><code>js&#x2F;display&#x2F;DOMElement.js:577</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l557"><code>js&#x2F;display&#x2F;DOMElement.js:557</code></a>
         
         </p>
 
@@ -3872,7 +3866,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l64"><code>js&#x2F;ObjectManager.js:64</code></a>
+        <a href="../files/js_ObjectManager.js.html#l75"><code>js&#x2F;ObjectManager.js:75</code></a>
         
         </p>
 
@@ -3885,7 +3879,8 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
+            <p>The disable method is responsible for disabling the object.
+After this method is called it will trigger the <a href="../classes/ObjectManager.html#method_onDisabled" class="crosslink">onDisabled</a> method.</p>
 
         </div>
 
@@ -3898,14 +3893,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> disable() {
-     if (this.isEnabled === false) { return this; }
-
-     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.disable();
-
-     return super.disable();
- }</code></pre>
+                    <pre class="code prettyprint"><code> this._childInstance.disable();</code></pre>
 
                 </div>
             </div>
@@ -4101,7 +4089,8 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
+            <p>The enable method is responsible for enabling object.
+After this method is called it will trigger the <a href="../classes/ObjectManager.html#method_onEnabled" class="crosslink">onEnabled</a> method.</p>
 
         </div>
 
@@ -4114,14 +4103,7 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>enable() {
-     if (this.isEnabled === true) { return this; }
-
-     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.enable();
-
-     return super.enable();
-}</code></pre>
+                    <pre class="code prettyprint"><code> this._childInstance.enable();</code></pre>
 
                 </div>
             </div>
@@ -4181,7 +4163,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l444"><code>js&#x2F;display&#x2F;DOMElement.js:444</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l424"><code>js&#x2F;display&#x2F;DOMElement.js:424</code></a>
         
         </p>
 
@@ -4625,7 +4607,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l475"><code>js&#x2F;display&#x2F;DOMElement.js:475</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l455"><code>js&#x2F;display&#x2F;DOMElement.js:455</code></a>
         
         </p>
 
@@ -5111,6 +5093,156 @@ someClass.getQualifiedClassName();
 </div>
 
         
+            <a name="method_onDisabled" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>onDisabled</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_onDisabled" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/js_ObjectManager.js.html#l93"><code>js&#x2F;ObjectManager.js:93</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>This method is automatically called after the disable method is called on the object.
+The onDisabled method is responsible for disabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>onDisabled() {
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_onEnabled" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>onEnabled</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/ObjectManager.html#method_onEnabled" class="type">ObjectManager</a>:
+            
+        
+        
+        <a href="../files/js_ObjectManager.js.html#l59"><code>js&#x2F;ObjectManager.js:59</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>This method is automatically called after the enable method is called on the object.
+The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>onEnabled() {
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+}</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
             <a name="method_removeChild" class="anchor-link"></a>
 <div class="method item public inherited">
     <h3 class="name"><code>removeChild</code>
@@ -5164,7 +5296,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l507"><code>js&#x2F;display&#x2F;DOMElement.js:507</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l487"><code>js&#x2F;display&#x2F;DOMElement.js:487</code></a>
         
         </p>
 
@@ -5279,7 +5411,7 @@ to the child. The index positions of any objects above the child in the parent o
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l534"><code>js&#x2F;display&#x2F;DOMElement.js:534</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l514"><code>js&#x2F;display&#x2F;DOMElement.js:514</code></a>
         
         </p>
 
@@ -5372,7 +5504,7 @@ to the child. The index positions of any objects above the child in the parent o
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l547"><code>js&#x2F;display&#x2F;DOMElement.js:547</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l527"><code>js&#x2F;display&#x2F;DOMElement.js:527</code></a>
         
         </p>
 
