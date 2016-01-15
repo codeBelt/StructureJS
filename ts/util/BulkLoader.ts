@@ -18,8 +18,41 @@ import Collection from '../model/Collection';
  */
 class BulkLoader extends EventDispatcher
 {
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _dataStores
+     * @type {Collection}
+     * @protected
+     */
     protected _dataStores:Collection = null;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _totalComplete
+     * @type {number}
+     * @protected
+     */
     protected _totalComplete:number = 0;
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _queue
+     * @type {Array<{key:any, value:any}>}
+     * @protected
+     */
+    protected _queue:Array<{key:any, value:any}> = [];
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property maxConnections
+     * @type {number}
+     * @public
+     */
+    public maxConnections:number = 3;
 
     constructor()
     {
@@ -60,7 +93,7 @@ class BulkLoader extends EventDispatcher
      */
     public getFile(key:string):IDataStore
     {
-        const model = this._dataStores.findBy({key: key})[0];
+        const model:{key:any, value:any} = this._dataStores.findBy({key: key})[0];
         return model.value;
     }
 
@@ -75,6 +108,7 @@ class BulkLoader extends EventDispatcher
     public getImage(key:string):HTMLImageElement
     {
         const imageLoader:IDataStore = this.getFile(key);
+
         return (imageLoader !== null) ? imageLoader.data : null;
     }
 
@@ -88,10 +122,14 @@ class BulkLoader extends EventDispatcher
     {
         let dataStore:IDataStore;
 
-        for (let i:number = 0; i < this._dataStores.length; i++)
+        this._queue = this._dataStores.models.slice(0);
+
+        const length:number = (this.maxConnections > this._queue.length) ? this._queue.length : this.maxConnections;
+
+        for (let i:number = 0; i < length; i++)
         {
-            dataStore = this._dataStores.get(i).value;
-            dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this._onLoadComplete, this);
+            dataStore = this._queue.shift().value;
+            dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this._onComplete, this);
             dataStore.load();
         }
 
@@ -106,33 +144,34 @@ class BulkLoader extends EventDispatcher
      */
     public clear():void
     {
+        this._queue = [];
+
         let dataStore:IDataStore;
 
         for (let i:number = 0; i < this._dataStores.length; i++)
         {
             dataStore = this._dataStores.get(i).value;
-            dataStore.removeEventListener(LoaderEvent.COMPLETE, this._onLoadComplete, this);
+            dataStore.removeEventListener(LoaderEvent.COMPLETE, this._onComplete, this);
         }
 
         this._totalComplete = 0;
-
         this._dataStores = new Collection();
     }
 
     /**
      * TODO: YUIDoc_comment
      *
-     * @method _onLoadComplete
+     * @method _onComplete
      * @param event {LoaderEvent}
      * @protected
      */
-    protected _onLoadComplete(event:LoaderEvent):void
+    protected _onComplete(event:LoaderEvent):void
     {
         let dataStore:IDataStore = event.target;
 
         this._totalComplete++;
 
-        let bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.COMPLETE);
+        const bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.COMPLETE);
         bulkLoaderEvent.total = this._dataStores.length;
         bulkLoaderEvent.totalComplete = this._totalComplete;
         bulkLoaderEvent.percentComplete = (this._totalComplete / this._dataStores.length) * 100;
@@ -141,17 +180,22 @@ class BulkLoader extends EventDispatcher
         // Dispatch the IDataStore that was just completed.
         this.dispatchEvent(bulkLoaderEvent);
 
-        // Loop through and check if all IDataStore have been loaded.
-        for (let i:number = 0; i < this._dataStores.length; i++)
-        {
-            dataStore = this._dataStores.get(i).value;
-
-            if (dataStore.complete === false)
-            {
-                return;
-            }
+        if (this._queue.length !== 0) {
+            const dataStore = this._queue.shift().value;
+            dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this._onComplete, this);
+            dataStore.load();
+        } else {
+            this._onLoadComplete();
         }
+    }
 
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method _onLoadComplete
+     * @protected
+     */
+    protected _onLoadComplete():void {
         let model;
         const dataStoreList = [];
         for (let i:number = 0; i < this._dataStores.length; i++)
@@ -161,12 +205,12 @@ class BulkLoader extends EventDispatcher
         }
 
         // Add the whole list because all are completed.
-        bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.LOAD_COMPLETE);
+        const bulkLoaderEvent = new BulkLoaderEvent(BulkLoaderEvent.LOAD_COMPLETE);
         bulkLoaderEvent.total = this._dataStores.length;
         bulkLoaderEvent.totalComplete = this._totalComplete;
         bulkLoaderEvent.percentComplete = (this._totalComplete / this._dataStores.length) * 100;
         bulkLoaderEvent.data = dataStoreList;
-        
+
         // Only dispatch when all the IDataStore are load complete.
         this.dispatchEvent(bulkLoaderEvent);
     }
