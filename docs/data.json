@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.10.3",
+        "version": "0.10.4",
         "url": ""
     },
     "files": {
@@ -1373,7 +1373,7 @@
             "namespace": "",
             "file": "js/util/BulkLoader.js",
             "line": 18,
-            "description": "TODO: YUIDoc_comment",
+            "description": "A class to help with loading IDataStore's.",
             "submodule": "util",
             "extends": "EventDispatcher",
             "requires": [
@@ -6825,8 +6825,60 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 38,
-            "description": "TODO: YUIDoc_comment",
+            "line": 34,
+            "description": "A collection to store all the IDataStore's.",
+            "itemtype": "property",
+            "name": "_dataStores",
+            "type": "{Collection}",
+            "access": "protected",
+            "tagname": "",
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/BulkLoader.js",
+            "line": 42,
+            "description": "The total number of items that have been loaded.",
+            "itemtype": "property",
+            "name": "_totalComplete",
+            "type": "{number}",
+            "access": "protected",
+            "tagname": "",
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/BulkLoader.js",
+            "line": 50,
+            "description": "A queue of IDataStore's that need to be loaded still.",
+            "itemtype": "property",
+            "name": "_queue",
+            "type": "{Array<{key:any, value:any}>}",
+            "access": "protected",
+            "tagname": "",
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/BulkLoader.js",
+            "line": 58,
+            "description": "Set the maximum number of simultaneous connections (default is 3).",
+            "itemtype": "property",
+            "name": "maxConnections",
+            "type": "[number=3]",
+            "access": "public",
+            "tagname": "",
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/BulkLoader.js",
+            "line": 68,
+            "description": "Helper method to add IDataStore's.",
             "itemtype": "method",
             "name": "addFile",
             "params": [
@@ -6837,8 +6889,7 @@
                 },
                 {
                     "name": "key",
-                    "description": "",
-                    "type": "String"
+                    "description": "[string=null]"
                 }
             ],
             "access": "public",
@@ -6849,8 +6900,8 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 57,
-            "description": "TODO: YUIDoc_comment",
+            "line": 87,
+            "description": "Helper method to get IDataStore's.",
             "itemtype": "method",
             "name": "getFile",
             "params": [
@@ -6868,31 +6919,8 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 68,
-            "description": "TODO: YUIDoc_comment",
-            "itemtype": "method",
-            "name": "getImage",
-            "params": [
-                {
-                    "name": "key",
-                    "description": "",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Image"
-            },
-            "access": "public",
-            "tagname": "",
-            "class": "BulkLoader",
-            "module": "StructureJS",
-            "submodule": "util"
-        },
-        {
-            "file": "js/util/BulkLoader.js",
-            "line": 80,
-            "description": "TODO: YUIDoc_comment",
+            "line": 98,
+            "description": "Helper method to start the loading process.",
             "itemtype": "method",
             "name": "start",
             "access": "public",
@@ -6903,8 +6931,8 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 95,
-            "description": "TODO: YUIDoc_comment",
+            "line": 115,
+            "description": "Helper method to stop/clear the loader.",
             "itemtype": "method",
             "name": "clear",
             "access": "public",
@@ -6915,10 +6943,10 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 110,
-            "description": "TODO: YUIDoc_comment",
+            "line": 131,
+            "description": "Event handler method called every time a IDataStore's is completely loaded.",
             "itemtype": "method",
-            "name": "_onLoadComplete",
+            "name": "_onComplete",
             "params": [
                 {
                     "name": "event",
@@ -6926,6 +6954,18 @@
                     "type": "LoaderEvent"
                 }
             ],
+            "access": "protected",
+            "tagname": "",
+            "class": "BulkLoader",
+            "module": "StructureJS",
+            "submodule": "util"
+        },
+        {
+            "file": "js/util/BulkLoader.js",
+            "line": 157,
+            "description": "Event handler method called once all IDataStore's are completely loaded.",
+            "itemtype": "method",
+            "name": "_onLoadComplete",
             "access": "protected",
             "tagname": "",
             "class": "BulkLoader",

@@ -253,6 +253,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-01-19 v0.10.4 Add maxConnections to BulkLoader to set the maximum number of simultaneous connections.
+ 
  * 2016-01-06 v0.10.3 Add onEnabled and onDisabled methods. Removed enable and disable methods from Examples and IDE Snippets.
  
  * 2015-12-30 v0.10.2 Publishing to NPM https://www.npmjs.com/package/structure-js
