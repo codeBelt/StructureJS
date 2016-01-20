@@ -5,7 +5,7 @@ import BulkLoaderEvent from '../event/BulkLoaderEvent';
 import Collection from '../model/Collection';
 
 /**
- * TODO: YUIDoc_comment
+ * A class to help with loading IDataStore's.
  *
  * @class BulkLoader
  * @extends EventDispatcher
@@ -19,7 +19,7 @@ import Collection from '../model/Collection';
 class BulkLoader extends EventDispatcher
 {
     /**
-     * TODO: YUIDoc_comment
+     * A collection to store all the IDataStore's.
      *
      * @property _dataStores
      * @type {Collection}
@@ -28,7 +28,7 @@ class BulkLoader extends EventDispatcher
     protected _dataStores:Collection = null;
 
     /**
-     * TODO: YUIDoc_comment
+     * The total number of items that have been loaded.
      *
      * @property _totalComplete
      * @type {number}
@@ -37,7 +37,7 @@ class BulkLoader extends EventDispatcher
     protected _totalComplete:number = 0;
 
     /**
-     * TODO: YUIDoc_comment
+     * A queue of IDataStore's that need to be loaded still.
      *
      * @property _queue
      * @type {Array<{key:any, value:any}>}
@@ -46,10 +46,10 @@ class BulkLoader extends EventDispatcher
     protected _queue:Array<{key:any, value:any}> = [];
 
     /**
-     * TODO: YUIDoc_comment
+     * Set the maximum number of simultaneous connections (default is 3).
      *
      * @property maxConnections
-     * @type {number}
+     * @type [number=3]
      * @public
      */
     public maxConnections:number = 3;
@@ -62,11 +62,11 @@ class BulkLoader extends EventDispatcher
     }
 
     /**
-     * TODO: YUIDoc_comment
+     * Helper method to add IDataStore's.
      *
      * @method addFile
      * @param dataStore {IDataStore}
-     * @param key {string}
+     * @param key [string=null]
      * @public
      */
     public addFile(dataStore:IDataStore, key:string = null):void
@@ -85,7 +85,7 @@ class BulkLoader extends EventDispatcher
     }
 
     /**
-     * TODO: YUIDoc_comment
+     * Helper method to get IDataStore's.
      *
      * @method getFile
      * @param key {string}
@@ -98,22 +98,7 @@ class BulkLoader extends EventDispatcher
     }
 
     /**
-     * TODO: YUIDoc_comment
-     *
-     * @method getImage
-     * @param key {string}
-     * @return {Image}
-     * @public
-     */
-    public getImage(key:string):HTMLImageElement
-    {
-        const imageLoader:IDataStore = this.getFile(key);
-
-        return (imageLoader !== null) ? imageLoader.data : null;
-    }
-
-    /**
-     * TODO: YUIDoc_comment
+     * Helper method to start the loading process.
      *
      * @method start
      * @public
@@ -137,7 +122,7 @@ class BulkLoader extends EventDispatcher
     }
 
     /**
-     * TODO: YUIDoc_comment
+     * Helper method to stop/clear the loader.
      *
      * @method clear
      * @public
@@ -159,7 +144,7 @@ class BulkLoader extends EventDispatcher
     }
 
     /**
-     * TODO: YUIDoc_comment
+     * Event handler method called every time a IDataStore's is completely loaded.
      *
      * @method _onComplete
      * @param event {LoaderEvent}
@@ -184,13 +169,15 @@ class BulkLoader extends EventDispatcher
             const dataStore = this._queue.shift().value;
             dataStore.addEventListenerOnce(LoaderEvent.COMPLETE, this._onComplete, this);
             dataStore.load();
-        } else {
+        }
+
+        if (this._totalComplete === this._dataStores.length) {
             this._onLoadComplete();
         }
     }
 
     /**
-     * TODO: YUIDoc_comment
+     * Event handler method called once all IDataStore's are completely loaded.
      *
      * @method _onLoadComplete
      * @protected
@@ -201,7 +188,7 @@ class BulkLoader extends EventDispatcher
         for (let i:number = 0; i < this._dataStores.length; i++)
         {
             model = this._dataStores.get(i);
-            dataStoreList.push(model.value);
+            dataStoreList[i] = model.value;
         }
 
         // Add the whole list because all are completed.
