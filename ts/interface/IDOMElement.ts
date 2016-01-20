@@ -32,22 +32,22 @@ interface IDOMElement
     isReference: boolean;
 
     /**
-     * @method enable
+     * @method getChild
      */
     getChild(selector: string): any;
 
     /**
-     * @method enable
+     * @method getChildren
      */
     getChildren(selector?: string): Array<any>;
 
     /**
-     * @method enable
+     * @method removeChildAt
      */
     removeChildAt(index: number, destroy?: boolean): any;
 
     /**
-     * @method enable
+     * @method createComponents
      */
     createComponents(componentList: Array<any>): Array<any>;
 

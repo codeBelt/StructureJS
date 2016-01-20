@@ -124,12 +124,12 @@ module.exports = function(grunt) {
          */
         yuidoc: {
             compile: {
-                name: '<%= pkg.name %>',
+                name: 'StructureJS',
                 description: '<%= pkg.description %>',
                 version: '<%= pkg.version %>',
                 url: '<%= pkg.homepage %>',
                 options: {
-                    'linkNatives': 'true',
+                    linkNatives: 'true',
                     paths: '<%= DEVELOPMENT_PATH %>',
                     outdir: '<%= BASE_PATH %>docs',
                     themedir: 'friendly-theme',

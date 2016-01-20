@@ -23,15 +23,15 @@ With [Bower](http://bower.io):
 * [Atom](https://github.com/codebelt/StructureJS/tree/master/ide-snippets/atom)
 
 ## Boilerplate
-[StructureJS Boilerplate (Babel ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
+[StructureJS Boilerplate (Babel - ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/babel)
 
-[StructureJS Boilerplate (TypeScript - ES6)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-es6)
+[StructureJS Boilerplate (TypeScript - ES6 Modules)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-es6)
 
-[StructureJS Boilerplate (TypeScript - CommonJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
+[StructureJS Boilerplate (TypeScript - CommonJS Modules)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/typescript-commonjs)
 
-[StructureJS Boilerplate (Browserify)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
+[StructureJS Boilerplate (Browserify - ES5)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/browserify)
 
-[StructureJS Boilerplate (RequireJS)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
+[StructureJS Boilerplate (RequireJS - ES5)](https://github.com/codeBelt/StructureJS-Boilerplate/tree/requirejs)
 
 
 
@@ -107,7 +107,7 @@ export default ExampleView;
 
 `DOMElement` provides helper methods and adds the following lifecycle to your class, these methods get called in this order:
 * `create()`
-* `enable()`
+* `onEnabled()`
 * `layout()`
 
 ```js
@@ -122,21 +122,16 @@ class ExampleView extends DOMElement {
         // Create or setup objects in this parent class.
     }
 
-    enable() {
-        if (this.isEnabled === true) { return this; }
+    onEnabled() {
         // Enable the child objects and/or add any event listeners.
-        return super.enable();
     }
 
-    disable() {
-        if (this.isEnabled === false) { return this; }
+    onDisabled() {
         // Disable the child objects and/or remove any event listeners.
-        return super.disable();
     }
 
     layout() {
         // Layout or update the objects in this parent class.
-        return this;
     }
     
     destroy() {
@@ -239,22 +234,14 @@ Similar to the `.on()` & `.off()` jQuery methods, this plugin allows you to bind
 * scope
 
 ```js
-enable() {
-    if (this.isEnabled === true) { return this; }
-
+onEnabled() {
     this._$element.addEventListener('click', this._onClickHandler, this);
     this._$element.addEventListener('click', 'button', this._onClickHandler, this); // event delegation
-
-    return super.enable();
 }
 
-disable() {
-    if (this.isEnabled === false) { return this; }
-
+onDisabled() {
     this._$element.removeEventListener('click', this._onClickHandler, this);
     this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
-
-    return super.disable();
 }
 
 _onClickHandler(event) {
@@ -266,6 +253,10 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-01-19 v0.10.4 Add maxConnections to BulkLoader to set the maximum number of simultaneous connections.
+ 
+ * 2016-01-06 v0.10.3 Add onEnabled and onDisabled methods. Removed enable and disable methods from Examples and IDE Snippets.
+ 
  * 2015-12-30 v0.10.2 Publishing to NPM https://www.npmjs.com/package/structure-js
  
  * 2015-12-30 v0.10.1 EventDispatcher - Fix currentTarget when event is bubbling. Update IDE Snippets.

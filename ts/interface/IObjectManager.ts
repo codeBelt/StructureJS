@@ -26,6 +26,16 @@ interface IObjectManager extends IBaseObject
      */
     disable(): any;
 
+    /**
+     * @method onEnabled
+     */
+    onEnabled(): any;
+
+    /**
+     * @method onDisabled
+     */
+    onDisabled(): any;
+
 }
 
 export default IObjectManager;

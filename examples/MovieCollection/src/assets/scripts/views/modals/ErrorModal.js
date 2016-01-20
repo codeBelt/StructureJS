@@ -23,25 +23,17 @@ class ErrorModal extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden DOMElement.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return; }
-
+    onEnabled() {
         // Enable the child objects and/or add any event listeners.
-
-        return super.enable();
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden DOMElement.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return; }
-
+    onDisabled() {
         // Disable the child objects and/or remove any event listeners.
-
-        return super.disable();
     }
 
     /**

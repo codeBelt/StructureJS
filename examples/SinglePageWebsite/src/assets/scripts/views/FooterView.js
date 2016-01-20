@@ -33,25 +33,17 @@ class FooterView extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden DOMElement.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return; }
-
+    onEnabled() {
         this._$footerLinks.addEventListener('click', this._onClick, this);
-
-        return super.enable();
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden DOMElement.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return; }
-
+    onDisabled() {
         this._$footerLinks.removeEventListener('click', this._onClick, this);
-
-        return super.disable();
     }
 
     /**

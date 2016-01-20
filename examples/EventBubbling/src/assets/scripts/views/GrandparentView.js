@@ -35,29 +35,17 @@ class GrandparentView extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.enable
+     * @overridden DOMElement.onEnabled
      */
-    enable() {
-        if (this.isEnabled === true) { return; }
-
+    onEnabled() {
         this.addEventListener(BaseEvent.CHANGE, this._onBubbled, this);
-
-        this._parentView.enable();
-
-        super.enable();
     }
 
     /**
-     * @overridden DOMElement.disable
+     * @overridden DOMElement.onDisabled
      */
-    disable() {
-        if (this.isEnabled === false) { return; }
-
+    onDisabled() {
         this.removeEventListener(BaseEvent.CHANGE, this._onBubbled, this);
-
-        this._parentView.disable();
-
-        super.disable();
     }
 
     /**
@@ -73,6 +61,8 @@ class GrandparentView extends DOMElement {
      * @overridden DOMElement.destroy
      */
     destroy() {
+        this.disable();
+
         this._parentView.destroy();
 
         super.destroy();
