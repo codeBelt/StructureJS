@@ -43,12 +43,20 @@ import jQuery from '../plugin/jquery.eventListener';
  *              // Create and add your child objects to this parent class.
  *          }
  *
- *          onEnabled() {
+ *          enable() {
+ *              if (this.isEnabled === true) { return; }
+ *
  *              // Enable the child objects and add any event listeners.
+ *
+ *              super.enable();
  *          }
  *
- *          onDisabled() {
+ *          disable() {
+ *              if (this.isEnabled === false) { return; }
+ *
  *              // Disable the child objects and remove any event listeners.
+ *
+ *              super.disable();
  *          }
  *
  *          layout() {
@@ -78,12 +86,20 @@ import jQuery from '../plugin/jquery.eventListener';
  *              // Create and add your child objects to this parent class.
  *          }
  *
- *          onEnabled() {
+ *          enable() {
+ *              if (this.isEnabled === true) { return; }
+ *
  *              // Enable the child objects and add any event listeners.
+ *
+ *              super.enable();
  *          }
  *
- *          onDisabled() {
+ *          disable() {
+ *              if (this.isEnabled === false) { return; }
+ *
  *              // Disable the child objects and remove any event listeners.
+ *
+ *              super.disable();
  *          }
  *
  *          layout() {

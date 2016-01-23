@@ -30,17 +30,25 @@ define(function(require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden DOMElement.onEnabled
+         * @overridden DOMElement.enable
          */
-        ${NAME}.prototype.onEnabled = function () {
+        ${NAME}.prototype.enable = function () {
+            if (this.isEnabled === true) { return; }
+
             // Enable the child objects and/or add any event listeners.
+
+            _super.prototype.enable.call(this);
         };
 
         /**
-         * @overridden DOMElement.onDisabled
+         * @overridden DOMElement.disable
          */
-        ${NAME}.prototype.onDisabled = function () {
+        ${NAME}.prototype.disable = function () {
+            if (this.isEnabled === false) { return; }
+
             // Disable the child objects and/or remove any event listeners.
+
+            _super.prototype.disable.call(this);
         };
 
         /**

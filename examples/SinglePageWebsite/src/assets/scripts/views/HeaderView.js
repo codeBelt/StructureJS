@@ -31,17 +31,25 @@ class HeaderView extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.onEnabled
+     * @overridden DOMElement.enable
      */
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
+
         Router.add('*', this._allRouterHandler, this);
+
+        super.enable();
     }
 
     /**
-     * @overridden DOMElement.onDisabled
+     * @overridden DOMElement.disable
      */
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
+
         Router.remove('*', this._allRouterHandler, this);
+
+        super.disable();
     }
 
     /**

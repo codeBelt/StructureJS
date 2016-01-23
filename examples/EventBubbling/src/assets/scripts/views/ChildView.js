@@ -33,17 +33,25 @@ class ChildView extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.onEnabled
+     * @overridden DOMElement.enable
      */
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
+
         this._$dispatchButton.addEventListener('click', this._onButtonClick, this);
+
+        super.enable();
     }
 
     /**
-     * @overridden DOMElement.onDisabled
+     * @overridden DOMElement.disable
      */
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
+
         this._$dispatchButton.removeEventListener('click', this._onButtonClick, this);
+
+        super.disable();
     }
 
     /**

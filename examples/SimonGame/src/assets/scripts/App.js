@@ -63,21 +63,29 @@ class App extends Stage {
     }
 
     /**
-     * @overridden DOMElement.onEnabled
+     * @overridden DOMElement.enable
      */
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
+
         this.addEventListener(BaseEvent.CHANGE, this._onClickColorBtn, this);
 
         this._centerDisplay.$element.addEventListener('click', this._onClick, this);
+
+        super.enable();
     }
 
     /**
-     * @overridden DOMElement.onDisabled
+     * @overridden DOMElement.disable
      */
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
+
         this.removeEventListener(BaseEvent.CHANGE, this._onClickColorBtn, this);
 
         this._centerDisplay.$element.removeEventListener('click', this._onClick, this);
+
+        super.disable();
     }
 
     /**
