@@ -53,17 +53,25 @@ define(function(require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden DOMElement.onEnabled
+         * @overridden DOMElement.enable
          */
-        ${1:Class}.prototype.onEnabled = function () {
+        ${1:Class}.prototype.enable = function () {
+            if (this.isEnabled === true) { return; }
+
             // Enable the child objects and/or add any event listeners.
+
+            _super.prototype.enable.call(this);
         };
 
         /**
-         * @overridden DOMElement.onDisabled
+         * @overridden DOMElement.disable
          */
-        ${1:Class}.prototype.onDisabled = function () {
+        ${1:Class}.prototype.disable = function () {
+            if (this.isEnabled === false) { return; }
+
             // Disable the child objects and/or remove any event listeners.
+
+            _super.prototype.disable.call(this);
         };
 
         /**
@@ -176,17 +184,25 @@ define(function(require, exports, module) { // jshint ignore:line
         };
 
         /**
-         * @overridden Stage.onEnabled
+         * @overridden Stage.enable
          */
-        ${1:Class}.prototype.onEnabled = function () {
+        ${1:Class}.prototype.enable = function () {
+            if (this.isEnabled === true) { return; }
+
             // Enable the child objects and/or add any event listeners.
+
+            _super.prototype.enable.call(this);
         };
 
         /**
-         * @overridden Stage.onDisabled
+         * @overridden Stage.disable
          */
-        ${1:Class}.prototype.onDisabled = function () {
+        ${1:Class}.prototype.disable = function () {
+            if (this.isEnabled === false) { return; }
+
             // Disable the child objects and/or remove any event listeners.
+
+            _super.prototype.disable.call(this);
         };
 
         /**

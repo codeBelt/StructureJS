@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.5</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -179,7 +179,7 @@
 
 
 <div class="box intro">
-    <p>TODO: YUIDoc_comment</p>
+    <p>A class to help with loading IDataStore&#39;s.</p>
 
 </div>
 
@@ -220,14 +220,38 @@
 
         <ul class="index-list properties extends">
             
+                <li class="index-item property protected">
+                    <a href="#property__dataStores">_dataStores</a>
+
+                    
+                </li>
+            
                 <li class="index-item property protected inherited">
                     <a href="#property__listeners">_listeners</a>
 
                     
                 </li>
             
+                <li class="index-item property protected">
+                    <a href="#property__queue">_queue</a>
+
+                    
+                </li>
+            
+                <li class="index-item property protected">
+                    <a href="#property__totalComplete">_totalComplete</a>
+
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_isEnabled">isEnabled</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_maxConnections">maxConnections</a>
 
                     
                 </li>
@@ -268,6 +292,13 @@
                 </li>
             
 
+            
+                <li class="index-item method protected">
+                    <a href="#method__onComplete">_onComplete</a>
+
+                    
+                    
+                </li>
             
                 <li class="index-item method protected">
                     <a href="#method__onLoadComplete">_onLoadComplete</a>
@@ -346,13 +377,6 @@
                     
                 </li>
             
-                <li class="index-item method public">
-                    <a href="#method_getImage">getImage</a>
-
-                    
-                    
-                </li>
-            
                 <li class="index-item method public inherited">
                     <a href="#method_getQualifiedClassName">getQualifiedClassName</a>
 
@@ -410,6 +434,58 @@
         <h2>Properties</h2>
 
         
+            <a name="property__dataStores" class="anchor-link"></a>
+<div class="property item protected">
+    <h3 class="name"><code>_dataStores</code>
+    <span class="type"><a href="../classes/Collection.html" class="crosslink">Collection</a></span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_BulkLoader.js.html#l34"><code>js&#x2F;util&#x2F;BulkLoader.js:34</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A collection to store all the IDataStore&#39;s.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property__listeners" class="anchor-link"></a>
 <div class="property item protected inherited">
     <h3 class="name"><code>_listeners</code>
@@ -447,6 +523,110 @@
     <div class="extended-detail">
         <div class="description">
             <p>Holds a reference to added listeners.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__queue" class="anchor-link"></a>
+<div class="property item protected">
+    <h3 class="name"><code>_queue</code>
+    <span class="type">Array<key:any, value:any></span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_BulkLoader.js.html#l50"><code>js&#x2F;util&#x2F;BulkLoader.js:50</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A queue of IDataStore&#39;s that need to be loaded still.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__totalComplete" class="anchor-link"></a>
+<div class="property item protected">
+    <h3 class="name"><code>_totalComplete</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_BulkLoader.js.html#l42"><code>js&#x2F;util&#x2F;BulkLoader.js:42</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>The total number of items that have been loaded.</p>
 
         </div>
 
@@ -501,6 +681,58 @@
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_maxConnections" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>maxConnections</code>
+    <span class="type">number=3</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_BulkLoader.js.html#l58"><code>js&#x2F;util&#x2F;BulkLoader.js:58</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Set the maximum number of simultaneous connections (default is 3).</p>
+
+        </div>
+
         
 
         
@@ -692,9 +924,9 @@ list hierarchy and helps facilitate event bubbling.</p>
         <h2>Methods</h2>
 
         
-            <a name="method__onLoadComplete" class="anchor-link"></a>
+            <a name="method__onComplete" class="anchor-link"></a>
 <div class="method item protected">
-    <h3 class="name"><code>_onLoadComplete</code>
+    <h3 class="name"><code>_onComplete</code>
 
     
         <div class="args">
@@ -739,7 +971,7 @@ list hierarchy and helps facilitate event bubbling.</p>
             
         
         
-        <a href="../files/js_util_BulkLoader.js.html#l110"><code>js&#x2F;util&#x2F;BulkLoader.js:110</code></a>
+        <a href="../files/js_util_BulkLoader.js.html#l131"><code>js&#x2F;util&#x2F;BulkLoader.js:131</code></a>
         
         </p>
 
@@ -752,7 +984,7 @@ list hierarchy and helps facilitate event bubbling.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Event handler method called every time a IDataStore&#39;s is completely loaded.</p>
 
         </div>
 
@@ -779,6 +1011,69 @@ list hierarchy and helps facilitate event bubbling.</p>
                 
                 </ul>
             </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onLoadComplete" class="anchor-link"></a>
+<div class="method item protected">
+    <h3 class="name"><code>_onLoadComplete</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_util_BulkLoader.js.html#l157"><code>js&#x2F;util&#x2F;BulkLoader.js:157</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Event handler method called once all IDataStore&#39;s are completely loaded.</p>
+
+        </div>
+
         
 
         
@@ -1195,7 +1490,7 @@ list hierarchy and helps facilitate event bubbling.</p>
             
         
         
-        <a href="../files/js_util_BulkLoader.js.html#l38"><code>js&#x2F;util&#x2F;BulkLoader.js:38</code></a>
+        <a href="../files/js_util_BulkLoader.js.html#l68"><code>js&#x2F;util&#x2F;BulkLoader.js:68</code></a>
         
         </p>
 
@@ -1208,7 +1503,7 @@ list hierarchy and helps facilitate event bubbling.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Helper method to add IDataStore&#39;s.</p>
 
         </div>
 
@@ -1236,13 +1531,14 @@ list hierarchy and helps facilitate event bubbling.</p>
                     <li class="param">
                         
                             <code class="param-name">key</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
 
                         <div class="param-description">
-                             
+                            <p>[string=null]</p>
+
                         </div>
 
                         
@@ -1296,7 +1592,7 @@ list hierarchy and helps facilitate event bubbling.</p>
             
         
         
-        <a href="../files/js_util_BulkLoader.js.html#l95"><code>js&#x2F;util&#x2F;BulkLoader.js:95</code></a>
+        <a href="../files/js_util_BulkLoader.js.html#l115"><code>js&#x2F;util&#x2F;BulkLoader.js:115</code></a>
         
         </p>
 
@@ -1309,7 +1605,7 @@ list hierarchy and helps facilitate event bubbling.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Helper method to stop/clear the loader.</p>
 
         </div>
 
@@ -1455,7 +1751,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l75"><code>js&#x2F;ObjectManager.js:75</code></a>
+        <a href="../files/js_ObjectManager.js.html#l85"><code>js&#x2F;ObjectManager.js:85</code></a>
         
         </p>
 
@@ -1482,7 +1778,17 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.disable();</code></pre>
+                    <pre class="code prettyprint"><code> disable() {
+     if (this.isEnabled === false) { return; }
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     super.disable();
+ }
+
+ // Example on how to disable a view.
+ this._childInstance.disable();</code></pre>
 
                 </div>
             </div>
@@ -1692,7 +1998,17 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.enable();</code></pre>
+                    <pre class="code prettyprint"><code>enable() {
+     if (this.isEnabled === true) { return; }
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     super.enable();
+}
+
+ // Example on how to enable a view.
+ this._childInstance.enable();</code></pre>
 
                 </div>
             </div>
@@ -1835,7 +2151,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
             
         
         
-        <a href="../files/js_util_BulkLoader.js.html#l57"><code>js&#x2F;util&#x2F;BulkLoader.js:57</code></a>
+        <a href="../files/js_util_BulkLoader.js.html#l87"><code>js&#x2F;util&#x2F;BulkLoader.js:87</code></a>
         
         </p>
 
@@ -1848,7 +2164,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Helper method to get IDataStore&#39;s.</p>
 
         </div>
 
@@ -1877,118 +2193,6 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
             </div>
         
 
-        
-
-        
-    </div>
-</div>
-
-        
-            <a name="method_getImage" class="anchor-link"></a>
-<div class="method item public">
-    <h3 class="name"><code>getImage</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>key</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Image</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/js_util_BulkLoader.js.html#l68"><code>js&#x2F;util&#x2F;BulkLoader.js:68</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">key</code>
-                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-            <div class="returns">
-                <h4>Returns:</h4>
-
-                <div class="returns-description">
-                    
-                        
-                            <span class="type">Image</span>:
-                        
-                    
-                </div>
-            </div>
         
 
         
@@ -2285,7 +2489,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l93"><code>js&#x2F;ObjectManager.js:93</code></a>
+        <a href="../files/js_ObjectManager.js.html#l113"><code>js&#x2F;ObjectManager.js:113</code></a>
         
         </p>
 
@@ -2360,7 +2564,7 @@ The onDisabled method is responsible for disabling event listeners and/or childr
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l59"><code>js&#x2F;ObjectManager.js:59</code></a>
+        <a href="../files/js_ObjectManager.js.html#l69"><code>js&#x2F;ObjectManager.js:69</code></a>
         
         </p>
 
@@ -2585,7 +2789,7 @@ The enable method is responsible for enabling event listeners and/or children of
             
         
         
-        <a href="../files/js_util_BulkLoader.js.html#l80"><code>js&#x2F;util&#x2F;BulkLoader.js:80</code></a>
+        <a href="../files/js_util_BulkLoader.js.html#l98"><code>js&#x2F;util&#x2F;BulkLoader.js:98</code></a>
         
         </p>
 
@@ -2598,7 +2802,7 @@ The enable method is responsible for enabling event listeners and/or children of
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Helper method to start the loading process.</p>
 
         </div>
 

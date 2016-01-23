@@ -83,23 +83,31 @@ class DeviceView extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.onEnabled
+     * @overridden DOMElement.enable
      */
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
+
         this._redButton.enable();
         this._greenButton.enable();
         this._blueButton.enable();
         this._yellowButton.enable();
+
+        super.enable();
     }
 
     /**
-     * @overridden DOMElement.onDisabled
+     * @overridden DOMElement.disable
      */
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
+
         this._redButton.disable();
         this._greenButton.disable();
         this._blueButton.disable();
         this._yellowButton.disable();
+
+        super.disable();
     }
 
     /**

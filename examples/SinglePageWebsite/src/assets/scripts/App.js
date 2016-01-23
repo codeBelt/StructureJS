@@ -71,17 +71,25 @@ class App extends Stage {
     }
 
     /**
-     * @overridden Stage.onEnabled
+     * @overridden Stage.enable
      */
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
+
         NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this._onNetworkChange, this);
+
+        super.enable();
     }
 
     /**
-     * @overridden Stage.onDisabled
+     * @overridden Stage.disable
      */
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
+
         NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this._onNetworkChange, this);
+
+        super.disable();
     }
 
     /**
@@ -89,8 +97,6 @@ class App extends Stage {
      */
     layout() {
         // Layout or update the objects in this parent class.
-
-        return this;
     }
 
     /**

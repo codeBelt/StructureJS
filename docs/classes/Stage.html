@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.5</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -689,7 +689,7 @@
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l140"><code>js&#x2F;display&#x2F;DOMElement.js:140</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l156"><code>js&#x2F;display&#x2F;DOMElement.js:156</code></a>
         
         </p>
 
@@ -740,7 +740,7 @@
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l149"><code>js&#x2F;display&#x2F;DOMElement.js:149</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l165"><code>js&#x2F;display&#x2F;DOMElement.js:165</code></a>
         
         </p>
 
@@ -839,7 +839,7 @@ this class will not try to add the view to the DOM since it already exists.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l167"><code>js&#x2F;display&#x2F;DOMElement.js:167</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l183"><code>js&#x2F;display&#x2F;DOMElement.js:183</code></a>
         
         </p>
 
@@ -890,7 +890,7 @@ this class will not try to add the view to the DOM since it already exists.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l158"><code>js&#x2F;display&#x2F;DOMElement.js:158</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l174"><code>js&#x2F;display&#x2F;DOMElement.js:174</code></a>
         
         </p>
 
@@ -990,7 +990,7 @@ this class will not try to add the view to the DOM since it already exists.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l121"><code>js&#x2F;display&#x2F;DOMElement.js:121</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l137"><code>js&#x2F;display&#x2F;DOMElement.js:137</code></a>
         
         </p>
 
@@ -1140,7 +1140,7 @@ This property is only used with the canvas specific display objects.</p>
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l131"><code>js&#x2F;display&#x2F;DOMElement.js:131</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l147"><code>js&#x2F;display&#x2F;DOMElement.js:147</code></a>
         
         </p>
 
@@ -2254,12 +2254,20 @@ list hierarchy and helps facilitate event bubbling.</p>
             // Create and add your child objects to this parent class.
         }
 
-        onEnabled() {
+        enable() {
+            if (this.isEnabled === true) { return; };
+
             // Enable the child objects and add any event listeners.
+
+            super.enable();
         }
 
-        onDisabled() {
+        disable() {
+            if (this.isEnabled === false) { return; };
+
             // Disable the child objects and remove any event listeners.
+
+            super.disable();
         }
 
         layout() {
@@ -2338,7 +2346,7 @@ This example illustrates how to instantiate your main application or root class.
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l300"><code>js&#x2F;display&#x2F;DOMElement.js:300</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l316"><code>js&#x2F;display&#x2F;DOMElement.js:316</code></a>
         
         </p>
 
@@ -2422,7 +2430,7 @@ This example illustrates how to instantiate your main application or root class.
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l351"><code>js&#x2F;display&#x2F;DOMElement.js:351</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l367"><code>js&#x2F;display&#x2F;DOMElement.js:367</code></a>
         
         </p>
 
@@ -2497,7 +2505,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l326"><code>js&#x2F;display&#x2F;DOMElement.js:326</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l342"><code>js&#x2F;display&#x2F;DOMElement.js:342</code></a>
         
         </p>
 
@@ -2610,7 +2618,7 @@ The method will call DOMElement/layout:method and dispatch the BaseEvent.ADDED_T
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l271"><code>js&#x2F;display&#x2F;DOMElement.js:271</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l287"><code>js&#x2F;display&#x2F;DOMElement.js:287</code></a>
         
         </p>
 
@@ -3227,7 +3235,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/js_display_Stage.js.html#l76"><code>js&#x2F;display&#x2F;Stage.js:76</code></a>
+        <a href="../files/js_display_Stage.js.html#l84"><code>js&#x2F;display&#x2F;Stage.js:84</code></a>
         
         </p>
 
@@ -3465,7 +3473,7 @@ The child is added at the index position specified. An index of 0 represents the
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l186"><code>js&#x2F;display&#x2F;DOMElement.js:186</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l202"><code>js&#x2F;display&#x2F;DOMElement.js:202</code></a>
         
         </p>
 
@@ -3652,7 +3660,7 @@ create() {
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l557"><code>js&#x2F;display&#x2F;DOMElement.js:557</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l573"><code>js&#x2F;display&#x2F;DOMElement.js:573</code></a>
         
         </p>
 
@@ -3868,7 +3876,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l75"><code>js&#x2F;ObjectManager.js:75</code></a>
+        <a href="../files/js_ObjectManager.js.html#l85"><code>js&#x2F;ObjectManager.js:85</code></a>
         
         </p>
 
@@ -3895,7 +3903,17 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.disable();</code></pre>
+                    <pre class="code prettyprint"><code> disable() {
+     if (this.isEnabled === false) { return; }
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     super.disable();
+ }
+
+ // Example on how to disable a view.
+ this._childInstance.disable();</code></pre>
 
                 </div>
             </div>
@@ -4105,7 +4123,17 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.enable();</code></pre>
+                    <pre class="code prettyprint"><code>enable() {
+     if (this.isEnabled === true) { return; }
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     super.enable();
+}
+
+ // Example on how to enable a view.
+ this._childInstance.enable();</code></pre>
 
                 </div>
             </div>
@@ -4162,7 +4190,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l424"><code>js&#x2F;display&#x2F;DOMElement.js:424</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l440"><code>js&#x2F;display&#x2F;DOMElement.js:440</code></a>
         
         </p>
 
@@ -4603,7 +4631,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l455"><code>js&#x2F;display&#x2F;DOMElement.js:455</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l471"><code>js&#x2F;display&#x2F;DOMElement.js:471</code></a>
         
         </p>
 
@@ -5125,7 +5153,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l93"><code>js&#x2F;ObjectManager.js:93</code></a>
+        <a href="../files/js_ObjectManager.js.html#l113"><code>js&#x2F;ObjectManager.js:113</code></a>
         
         </p>
 
@@ -5200,7 +5228,7 @@ The onDisabled method is responsible for disabling event listeners and/or childr
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l59"><code>js&#x2F;ObjectManager.js:59</code></a>
+        <a href="../files/js_ObjectManager.js.html#l69"><code>js&#x2F;ObjectManager.js:69</code></a>
         
         </p>
 
@@ -5292,7 +5320,7 @@ The enable method is responsible for enabling event listeners and/or children of
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l487"><code>js&#x2F;display&#x2F;DOMElement.js:487</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l503"><code>js&#x2F;display&#x2F;DOMElement.js:503</code></a>
         
         </p>
 
@@ -5404,7 +5432,7 @@ to the child. The index positions of any objects above the child in the parent o
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l514"><code>js&#x2F;display&#x2F;DOMElement.js:514</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l530"><code>js&#x2F;display&#x2F;DOMElement.js:530</code></a>
         
         </p>
 
@@ -5497,7 +5525,7 @@ to the child. The index positions of any objects above the child in the parent o
             
         
         
-        <a href="../files/js_display_DOMElement.js.html#l527"><code>js&#x2F;display&#x2F;DOMElement.js:527</code></a>
+        <a href="../files/js_display_DOMElement.js.html#l543"><code>js&#x2F;display&#x2F;DOMElement.js:543</code></a>
         
         </p>
 
