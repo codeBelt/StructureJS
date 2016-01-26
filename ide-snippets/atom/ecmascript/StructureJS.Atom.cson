@@ -147,17 +147,25 @@ class ${1:App} extends Stage {
     }
 
     /**
-     * @overridden Stage.onEnabled
+     * @overridden Stage.enable
      */
-    public onEnabled() {
+    public enable() {
+        if (this.isEnabled === true) { return; }
+
         // Enable the child objects and/or add any event listeners.
+
+        super.enable();
     }
 
     /**
-     * @overridden Stage.onDisabled
+     * @overridden Stage.disable
      */
-    public onDisabled() {
+    public disable() {
+        if (this.isEnabled === false) { return; }
+
         // Disable the child objects and/or remove any event listeners.
+
+        super.disable();
     }
 
     /**
@@ -211,25 +219,25 @@ class ${1:View} extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.onEnabled
+     * @overridden DOMElement.enable
      */
-    public onEnabled() {
+    public enable() {
         if (this.isEnabled === true) { return; }
 
         // Enable the child objects and/or add any event listeners.
 
-        super.onEnabled();
+        super.enable();
     }
 
     /**
-     * @overridden DOMElement.onDisabled
+     * @overridden DOMElement.disable
      */
-    public onDisabled() {
+    public disable() {
         if (this.isEnabled === false) { return; }
 
         // Disable the child objects and/or remove any event listeners.
 
-        super.onDisabled();
+        super.disable();
     }
 
     /**
@@ -243,7 +251,7 @@ class ${1:View} extends DOMElement {
      * @overridden DOMElement.destroy
      */
     public destroy() {
-        this.onDisabled();
+        this.disable();
 
         // Call destroy on any child objects.
         // This super method will also null out your properties for garbage collection.

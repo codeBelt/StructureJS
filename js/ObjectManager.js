@@ -46,6 +46,16 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
+         *     enable() {
+         *          if (this.isEnabled === true) { return; }
+         *
+         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.enable();
+         *
+         *          super.enable();
+         *     }
+         *
+         *      // Example on how to enable a view.
          *      this._childInstance.enable();
          */
         ObjectManager.prototype.enable = function () {
@@ -80,6 +90,16 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @public
          * @chainable
          * @example
+         *      disable() {
+         *          if (this.isEnabled === false) { return; }
+         *
+         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.disable();
+         *
+         *          super.disable();
+         *      }
+         *
+         *      // Example on how to disable a view.
          *      this._childInstance.disable();
          */
         ObjectManager.prototype.disable = function () {

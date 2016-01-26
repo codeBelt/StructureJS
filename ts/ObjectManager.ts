@@ -37,7 +37,14 @@ class ObjectManager extends BaseObject
      * @public
      * @chainable
      * @example
-     *      this._childInstance.enable();
+     *     enable() {
+     *          if (this.isEnabled === true) { return; }
+     *
+     *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *          this._childInstance.enable();
+     *
+     *          super.enable();
+     *     }
      */
     public enable():any
     {
@@ -78,7 +85,14 @@ class ObjectManager extends BaseObject
      * @public
      * @chainable
      * @example
-     *      this._childInstance.disable();
+     *      disable() {
+     *          if (this.isEnabled === false) { return; }
+     *
+     *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     *          this._childInstance.disable();
+     *
+     *          super.disable();
+     *      }
      */
     public disable():any
     {

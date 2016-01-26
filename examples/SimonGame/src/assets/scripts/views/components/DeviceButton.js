@@ -41,19 +41,27 @@ class DeviceButton extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.onEnabled
+     * @overridden DOMElement.enable
      */
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
+
         this.$element.addEventListener('click', this._onClick, this);
         this.$element.css('cursor','pointer');
+
+        super.enable();
     }
 
     /**
-     * @overridden DOMElement.onDisabled
+     * @overridden DOMElement.disable
      */
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
+
         this.$element.removeEventListener('click', this._onClick, this);
         this.$element.css('cursor','default');
+
+        super.disable();
     }
 
     /**

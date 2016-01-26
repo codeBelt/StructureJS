@@ -107,7 +107,7 @@ export default ExampleView;
 
 `DOMElement` provides helper methods and adds the following lifecycle to your class, these methods get called in this order:
 * `create()`
-* `onEnabled()`
+* `enable()`
 * `layout()`
 
 ```js
@@ -122,12 +122,16 @@ class ExampleView extends DOMElement {
         // Create or setup objects in this parent class.
     }
 
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
         // Enable the child objects and/or add any event listeners.
+        super.enable();
     }
 
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
         // Disable the child objects and/or remove any event listeners.
+        super.disable();
     }
 
     layout() {
@@ -234,14 +238,22 @@ Similar to the `.on()` & `.off()` jQuery methods, this plugin allows you to bind
 * scope
 
 ```js
-onEnabled() {
+enable() {
+    if (this.isEnabled === true) { return; }
+
     this._$element.addEventListener('click', this._onClickHandler, this);
     this._$element.addEventListener('click', 'button', this._onClickHandler, this); // event delegation
+
+    super.enable();
 }
 
-onDisabled() {
+disable() {
+    if (this.isEnabled === false) { return; }
+
     this._$element.removeEventListener('click', this._onClickHandler, this);
     this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
+
+    super.disable();
 }
 
 _onClickHandler(event) {
@@ -253,6 +265,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-01-22 v0.10.5 Change examples and IDE snippets back to the show the enable and disable way rather than the onEnabled or onDisabled way.
+ 
  * 2016-01-19 v0.10.4 Add maxConnections to BulkLoader to set the maximum number of simultaneous connections.
  
  * 2016-01-06 v0.10.3 Add onEnabled and onDisabled methods. Removed enable and disable methods from Examples and IDE Snippets.

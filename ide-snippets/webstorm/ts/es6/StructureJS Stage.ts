@@ -23,17 +23,25 @@ class ${NAME} extends Stage {
     }
 
     /**
-     * @overridden Stage.onEnabled
+     * @overridden Stage.enable
      */
-    public onEnabled():void {
+    public enable():void {
+        if (this.isEnabled === true) { return; }
+
         // Enable the child objects and/or add any event listeners.
+
+        super.enable();
     }
 
     /**
-     * @overridden Stage.onDisabled
+     * @overridden Stage.disable
      */
-    public onDisabled():void {
+    public disable():void {
+        if (this.isEnabled === false) { return; }
+
         // Disable the child objects and/or remove any event listeners.
+
+        super.disable();
     }
 
     /**

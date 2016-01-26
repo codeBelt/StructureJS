@@ -60,9 +60,11 @@ class ListItemComponent extends DOMElement {
     }
 
     /**
-     * @overridden DOMElement.onEnabled
+     * @overridden DOMElement.enable
      */
-    onEnabled() {
+    enable() {
+        if (this.isEnabled === true) { return; }
+
         this.$element.addEventListener('click', '.js-markComplete', this._onItemToggleComplete, this);
         this.$element.addEventListener('click', '.js-removeTodo', this._onItemRemove, this);
         this.$element.addEventListener('dblclick', '.js-editTodo', this._onItemEdit, this);
@@ -70,12 +72,16 @@ class ListItemComponent extends DOMElement {
         this.$element.addEventListener('keydown', this._onEscapeKey, this);
         this.$element.addEventListener('keypress', this._onEnterKey, this);
         this._$itemInput.addEventListener('blur', this._onInputBlur, this);
+
+        super.enable();
     }
 
     /**
-     * @overridden DOMElement.onDisabled
+     * @overridden DOMElement.disable
      */
-    onDisabled() {
+    disable() {
+        if (this.isEnabled === false) { return; }
+
         this.$element.removeEventListener('click', '.js-markComplete', this._onItemToggleComplete, this);
         this.$element.removeEventListener('click', '.js-removeTodo', this._onItemRemove, this);
         this.$element.removeEventListener('dblclick', '.js-editTodo', this._onItemEdit, this);
@@ -83,6 +89,8 @@ class ListItemComponent extends DOMElement {
         this.$element.removeEventListener('keydown', this._onEscapeKey, this);
         this.$element.removeEventListener('keypress', this._onEnterKey, this);
         this._$itemInput.removeEventListener('blur', this._onInputBlur, this);
+
+        super.disable();
     }
 
     /**

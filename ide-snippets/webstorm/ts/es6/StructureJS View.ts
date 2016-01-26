@@ -23,17 +23,25 @@ class ${NAME} extends ${Extends} {
     }
 
     /**
-     * @overridden ${Extends}.onEnabled
+     * @overridden ${Extends}.enable
      */
-    public onEnabled():void {
+    public enable():void {
+        if (this.isEnabled === true) { return; }
+
         // Enable the child objects and/or add any event listeners.
+
+        super.enable();
     }
 
     /**
-     * @overridden ${Extends}.onDisabled
+     * @overridden ${Extends}.disable
      */
-    public onDisabled():void {
+    public disable():void {
+        if (this.isEnabled === false) { return; }
+
         // Disable the child objects and/or remove any event listeners.
+
+        super.disable();
     }
 
     /**
