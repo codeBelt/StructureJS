@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -204,40 +204,51 @@
          * A list of day names.
          *
          * @property LONG_DAY_LABELS
-         * @type {Array.&lt;any&gt;}
+         * @type [Array=[&#x27;Sunday&#x27;, &#x27;Monday&#x27;, &#x27;Tuesday&#x27;, &#x27;Wednesday&#x27;, &#x27;Thursday&#x27;, &#x27;Friday&#x27;, &#x27;Saturday&#x27;]]
          * @public
          * @static
          * @final
+         * @example
+         *      DateUtil.LONG_DAY_LABELS[1];
+         *      // &#x27;Monday&#x27;
          */
         DateUtil.LONG_DAY_LABELS = [&#x27;Sunday&#x27;, &#x27;Monday&#x27;, &#x27;Tuesday&#x27;, &#x27;Wednesday&#x27;, &#x27;Thursday&#x27;, &#x27;Friday&#x27;, &#x27;Saturday&#x27;];
         /**
-         * TODO: YUIDoc_comment
+         * A list of short day names
          *
          * @property SHORT_DAY_LABELS
-         * @type {Array.&lt;any&gt;}
+         * @type [Array=[&#x27;Sun&#x27;, &#x27;Mon&#x27;, &#x27;Tue&#x27;, &#x27;Wed&#x27;, &#x27;Thu&#x27;, &#x27;Fri&#x27;, &#x27;Sat&#x27;, &#x27;Sun&#x27;]]
          * @public
          * @static
          * @final
+         * @example
+         *      DateUtil.SHORT_DAY_LABELS[1];
+         *      // &#x27;Mon&#x27;
          */
         DateUtil.SHORT_DAY_LABELS = [&#x27;Sun&#x27;, &#x27;Mon&#x27;, &#x27;Tue&#x27;, &#x27;Wed&#x27;, &#x27;Thu&#x27;, &#x27;Fri&#x27;, &#x27;Sat&#x27;, &#x27;Sun&#x27;];
         /**
          * A list of month names.
          *
          * @property LONG_MONTH_LABELS
-         * @type {Array.&lt;any&gt;}
+         * @type [Array=[&#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June&#x27;, &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#x27;]]
          * @public
          * @static
          * @final
+         * @example
+         *      DateUtil.LONG_MONTH_LABELS[1];
+         *      // &#x27;February&#x27;
          */
         DateUtil.LONG_MONTH_LABELS = [&#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June&#x27;, &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#x27;];
         /**
-         * TODO: YUIDoc_comment
+         * A list of short month names.
          *
          * @property SHORT_MONTH_LABELS
-         * @type {Array.&lt;any&gt;}
+         * @type [Array=[&#x27;Jan&#x27;, &#x27;Feb&#x27;, &#x27;Mar&#x27;, &#x27;Apr&#x27;, &#x27;May&#x27;, &#x27;Jun&#x27;, &#x27;Jul&#x27;, &#x27;Aug&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;Dec&#x27;]]
          * @public
-         * @static
          * @final
+         * @example
+         *      DateUtil.SHORT_MONTH_LABELS[1];
+         *      // &#x27;Feb&#x27;
          */
         DateUtil.SHORT_MONTH_LABELS = [&#x27;Jan&#x27;, &#x27;Feb&#x27;, &#x27;Mar&#x27;, &#x27;Apr&#x27;, &#x27;May&#x27;, &#x27;Jun&#x27;, &#x27;Jul&#x27;, &#x27;Aug&#x27;, &#x27;Sep&#x27;, &#x27;Oct&#x27;, &#x27;Nov&#x27;, &#x27;Dec&#x27;];
         return DateUtil;

@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.10.5",
+        "version": "0.11.0",
         "url": ""
     },
     "files": {
@@ -2707,62 +2707,62 @@
         {
             "file": "js/display/CanvasElement.js",
             "line": 36,
-            "overridden": "CanvasElement.onEnabled",
+            "overridden": "CanvasElement.enable",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 51,
-            "overridden": "CanvasElement.onDisabled",
+            "line": 55,
+            "overridden": "CanvasElement.disable",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 66,
+            "line": 74,
             "overridden": "DOMElement.addChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 86,
+            "line": 94,
             "overridden": "DOMElement.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 106,
+            "line": 114,
             "overridden": "DOMElement.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 116,
+            "line": 124,
             "overridden": "DOMElement.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 122,
+            "line": 130,
             "overridden": "DOMElement.removeChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 144,
+            "line": 152,
             "overridden": "DOMElement.removeChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 152,
+            "line": 160,
             "overridden": "DOMElement.removeChildren",
             "class": "DOMElement",
             "module": "StructureJS"
@@ -5621,7 +5621,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 114,
+            "line": 117,
             "description": "Removes a model or an array of models from the collection.",
             "itemtype": "method",
             "name": "remove",
@@ -5651,7 +5651,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 145,
+            "line": 148,
             "description": "Checks if a collection has an model.",
             "itemtype": "method",
             "name": "has",
@@ -5677,7 +5677,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 158,
+            "line": 161,
             "description": "Returns the array index position of the  Base Model.",
             "itemtype": "method",
             "name": "indexOf",
@@ -5703,7 +5703,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 171,
+            "line": 174,
             "description": "Finds an object by an index value.",
             "itemtype": "method",
             "name": "get",
@@ -5729,7 +5729,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 184,
+            "line": 187,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
             "itemtype": "method",
             "name": "findBy",
@@ -5755,7 +5755,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 222,
+            "line": 225,
             "description": "Loops through the models array and creates a new array of models that match all the properties on the object passed in.",
             "itemtype": "method",
             "name": "_where",
@@ -5778,7 +5778,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 265,
+            "line": 268,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
             "name": "_findPropertyValue",
@@ -5801,7 +5801,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 304,
+            "line": 307,
             "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
@@ -5826,7 +5826,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 323,
+            "line": 326,
             "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
             "itemtype": "method",
             "name": "clone",
@@ -5845,7 +5845,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 337,
+            "line": 340,
             "description": "Creates a JSON object of the collection.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5864,7 +5864,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 359,
+            "line": 362,
             "description": "Creates a JSON string of the collection.",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5883,7 +5883,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 371,
+            "line": 374,
             "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5906,7 +5906,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 386,
+            "line": 389,
             "description": "Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys",
             "itemtype": "method",
             "name": "sortOn",
@@ -5939,7 +5939,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 423,
+            "line": 426,
             "description": "Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code\npoint value, according to the string conversion of each element.",
             "itemtype": "method",
             "name": "sort",
@@ -5967,7 +5967,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 443,
+            "line": 446,
             "description": "The filter method creates a new array with all elements that pass the test implemented by the provided function.",
             "itemtype": "method",
             "name": "filter",
@@ -5999,7 +5999,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 462,
+            "line": 465,
             "description": "Convenient way to get a list of property values.",
             "itemtype": "method",
             "name": "pluck",
@@ -6032,7 +6032,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 492,
+            "line": 495,
             "description": "Convenient way to group models into categories/groups by a property name.",
             "itemtype": "method",
             "name": "groupBy",
@@ -6058,7 +6058,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 525,
+            "line": 528,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -7056,56 +7056,67 @@
             "description": "A list of day names.",
             "itemtype": "property",
             "name": "LONG_DAY_LABELS",
-            "type": "{Array.<any>}",
+            "type": "[Array=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']]",
             "access": "public",
             "tagname": "",
             "static": 1,
             "final": 1,
+            "example": [
+                "\n     DateUtil.LONG_DAY_LABELS[1];\n     // 'Monday'"
+            ],
             "class": "DateUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 57,
-            "description": "TODO: YUIDoc_comment",
+            "line": 60,
+            "description": "A list of short day names",
             "itemtype": "property",
             "name": "SHORT_DAY_LABELS",
-            "type": "{Array.<any>}",
+            "type": "[Array=['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']]",
             "access": "public",
             "tagname": "",
             "static": 1,
             "final": 1,
+            "example": [
+                "\n     DateUtil.SHORT_DAY_LABELS[1];\n     // 'Mon'"
+            ],
             "class": "DateUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 67,
+            "line": 73,
             "description": "A list of month names.",
             "itemtype": "property",
             "name": "LONG_MONTH_LABELS",
-            "type": "{Array.<any>}",
+            "type": "[Array=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']]",
             "access": "public",
             "tagname": "",
             "static": 1,
             "final": 1,
+            "example": [
+                "\n     DateUtil.LONG_MONTH_LABELS[1];\n     // 'February'"
+            ],
             "class": "DateUtil",
             "module": "StructureJS",
             "submodule": "util"
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 77,
-            "description": "TODO: YUIDoc_comment",
+            "line": 86,
+            "description": "A list of short month names.",
             "itemtype": "property",
             "name": "SHORT_MONTH_LABELS",
-            "type": "{Array.<any>}",
+            "type": "[Array=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]",
             "access": "public",
             "tagname": "",
-            "static": 1,
             "final": 1,
+            "example": [
+                "\n     DateUtil.SHORT_MONTH_LABELS[1];\n     // 'Feb'"
+            ],
             "class": "DateUtil",
             "module": "StructureJS",
             "submodule": "util"
@@ -9162,14 +9173,14 @@
         {
             "file": "js/ObjectManager.js",
             "line": 41,
-            "description": "The enable method is responsible for enabling object.\nAfter this method is called it will trigger the {{#crossLink \"ObjectManager/onEnabled:method\"}}{{/crossLink}} method.",
+            "description": "The enable method is responsible for enabling event listeners and/or children of the containing objects.",
             "itemtype": "method",
             "name": "enable",
             "access": "public",
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n    enable() {\n         if (this.isEnabled === true) { return; }\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         super.enable();\n    }\n\n     // Example on how to enable a view.\n     this._childInstance.enable();"
+                "\n    enable() {\n         if (this.isEnabled === true) { return; }\n\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n\n         super.enable();\n    }"
             ],
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -9177,47 +9188,15 @@
         },
         {
             "file": "js/ObjectManager.js",
-            "line": 69,
-            "description": "This method is automatically called after the enable method is called on the object.\nThe enable method is responsible for enabling event listeners and/or children of the containing objects.",
-            "itemtype": "method",
-            "name": "onEnabled",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
-            "example": [
-                "\n    onEnabled() {\n         this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.enable();\n    }"
-            ],
-            "class": "ObjectManager",
-            "module": "StructureJS",
-            "submodule": "core"
-        },
-        {
-            "file": "js/ObjectManager.js",
-            "line": 85,
-            "description": "The disable method is responsible for disabling the object.\nAfter this method is called it will trigger the {{#crossLink \"ObjectManager/onDisabled:method\"}}{{/crossLink}} method.",
+            "line": 64,
+            "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
             "itemtype": "method",
             "name": "disable",
             "access": "public",
             "tagname": "",
             "chainable": 1,
             "example": [
-                "\n     disable() {\n         if (this.isEnabled === false) { return; }\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         super.disable();\n     }\n\n     // Example on how to disable a view.\n     this._childInstance.disable();"
-            ],
-            "class": "ObjectManager",
-            "module": "StructureJS",
-            "submodule": "core"
-        },
-        {
-            "file": "js/ObjectManager.js",
-            "line": 113,
-            "description": "This method is automatically called after the disable method is called on the object.\nThe onDisabled method is responsible for disabling event listeners and/or children of the containing objects.",
-            "itemtype": "method",
-            "name": "onDisabled",
-            "access": "public",
-            "tagname": "",
-            "chainable": 1,
-            "example": [
-                "\n    onDisabled() {\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n    }"
+                "\n     disable() {\n         if (this.isEnabled === false) { return; }\n\n         this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);\n         this._childInstance.disable();\n\n         super.disable();\n     }"
             ],
             "class": "ObjectManager",
             "module": "StructureJS",
@@ -9263,35 +9242,35 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:51"
+            "line": " js/display/CanvasElement.js:55"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:66"
+            "line": " js/display/CanvasElement.js:74"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:86"
+            "line": " js/display/CanvasElement.js:94"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:106"
+            "line": " js/display/CanvasElement.js:114"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:116"
+            "line": " js/display/CanvasElement.js:124"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:122"
-        },
-        {
-            "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:144"
+            "line": " js/display/CanvasElement.js:130"
         },
         {
             "message": "unknown tag: overridden",
             "line": " js/display/CanvasElement.js:152"
+        },
+        {
+            "message": "unknown tag: overridden",
+            "line": " js/display/CanvasElement.js:160"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9427,15 +9406,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:323"
+            "line": " js/model/Collection.js:326"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:337"
+            "line": " js/model/Collection.js:340"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:359"
+            "line": " js/model/Collection.js:362"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9699,35 +9678,35 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:51"
+            "line": " js/display/CanvasElement.js:55"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:66"
+            "line": " js/display/CanvasElement.js:74"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:86"
+            "line": " js/display/CanvasElement.js:94"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:106"
+            "line": " js/display/CanvasElement.js:114"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:116"
+            "line": " js/display/CanvasElement.js:124"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:122"
-        },
-        {
-            "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:144"
+            "line": " js/display/CanvasElement.js:130"
         },
         {
             "message": "Missing item type",
             "line": " js/display/CanvasElement.js:152"
+        },
+        {
+            "message": "Missing item type",
+            "line": " js/display/CanvasElement.js:160"
         },
         {
             "message": "Missing item type",

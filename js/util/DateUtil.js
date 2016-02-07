@@ -48,40 +48,51 @@
          * A list of day names.
          *
          * @property LONG_DAY_LABELS
-         * @type {Array.<any>}
+         * @type [Array=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']]
          * @public
          * @static
          * @final
+         * @example
+         *      DateUtil.LONG_DAY_LABELS[1];
+         *      // 'Monday'
          */
         DateUtil.LONG_DAY_LABELS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         /**
-         * TODO: YUIDoc_comment
+         * A list of short day names
          *
          * @property SHORT_DAY_LABELS
-         * @type {Array.<any>}
+         * @type [Array=['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']]
          * @public
          * @static
          * @final
+         * @example
+         *      DateUtil.SHORT_DAY_LABELS[1];
+         *      // 'Mon'
          */
         DateUtil.SHORT_DAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         /**
          * A list of month names.
          *
          * @property LONG_MONTH_LABELS
-         * @type {Array.<any>}
+         * @type [Array=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']]
          * @public
          * @static
          * @final
+         * @example
+         *      DateUtil.LONG_MONTH_LABELS[1];
+         *      // 'February'
          */
         DateUtil.LONG_MONTH_LABELS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         /**
-         * TODO: YUIDoc_comment
+         * A list of short month names.
          *
          * @property SHORT_MONTH_LABELS
-         * @type {Array.<any>}
+         * @type [Array=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
          * @public
-         * @static
          * @final
+         * @example
+         *      DateUtil.SHORT_MONTH_LABELS[1];
+         *      // 'Feb'
          */
         DateUtil.SHORT_MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         return DateUtil;

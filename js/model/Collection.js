@@ -88,6 +88,9 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         Collection.prototype.add = function (model, silent) {
             if (silent === void 0) { silent = false; }
+            if (model == null) {
+                return;
+            }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
             var len = models.length;
