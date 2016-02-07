@@ -29,10 +29,15 @@ class CanvasElement extends DOMElement
     }
 
     /**
-     * @overridden CanvasElement.onEnabled
+     * @overridden CanvasElement.enable
      */
-    public onEnabled():void
+    public enable():void
     {
+        if (this.isEnabled === true)
+        {
+            return;
+        }
+
         // Add mouse event listeners to $canvas element
         this.$canvas.addEventListener('mousedown', this._onPointerDown, this);
         this.$canvas.addEventListener('mousemove', this._onPointerMove, this);
@@ -44,13 +49,20 @@ class CanvasElement extends DOMElement
         this.$canvas.addEventListener('touchmove', this._onPointerMove, this);
         this.$canvas.addEventListener('touchend', this._onPointerUp, this);
         this.$canvas.addEventListener('touchcancel', this._onPointerOut, this);
+
+        super.enable();
     }
 
     /**
-     * @overridden CanvasElement.onDisabled
+     * @overridden CanvasElement.disable
      */
-    public onDisabled():void
+    public disable():void
     {
+        if (this.isEnabled === false)
+        {
+            return;
+        }
+
         // Remove mouse event listeners on $canvas element
         this.$canvas.removeEventListener('mousedown', this._onPointerDown, this);
         this.$canvas.removeEventListener('mousemove', this._onPointerMove, this);
@@ -62,6 +74,8 @@ class CanvasElement extends DOMElement
         this.$canvas.removeEventListener('touchmove', this._onPointerMove, this);
         this.$canvas.removeEventListener('touchend', this._onPointerUp, this);
         this.$canvas.removeEventListener('touchcancel', this._onPointerOut, this);
+
+        super.disable();
     }
 
     /**
