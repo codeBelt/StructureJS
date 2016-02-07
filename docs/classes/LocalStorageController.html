@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -402,20 +402,6 @@
             
                 <li class="index-item method public inherited">
                     <a href="#method_hasEventListener">hasEventListener</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public inherited">
-                    <a href="#method_onDisabled">onDisabled</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public inherited">
-                    <a href="#method_onEnabled">onEnabled</a>
 
                     
                     
@@ -1641,7 +1627,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l75"><code>js&#x2F;ObjectManager.js:75</code></a>
+        <a href="../files/js_ObjectManager.js.html#l64"><code>js&#x2F;ObjectManager.js:64</code></a>
         
         </p>
 
@@ -1654,8 +1640,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The disable method is responsible for disabling the object.
-After this method is called it will trigger the <a href="../classes/ObjectManager.html#method_onDisabled" class="crosslink">onDisabled</a> method.</p>
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
 
         </div>
 
@@ -1668,7 +1653,14 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.disable();</code></pre>
+                    <pre class="code prettyprint"><code> disable() {
+     if (this.isEnabled === false) { return; }
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     super.disable();
+ }</code></pre>
 
                 </div>
             </div>
@@ -1864,8 +1856,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
     <div class="extended-detail">
 
         <div class="description">
-            <p>The enable method is responsible for enabling object.
-After this method is called it will trigger the <a href="../classes/ObjectManager.html#method_onEnabled" class="crosslink">onEnabled</a> method.</p>
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
 
         </div>
 
@@ -1878,7 +1869,14 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.enable();</code></pre>
+                    <pre class="code prettyprint"><code>enable() {
+     if (this.isEnabled === true) { return; }
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     super.enable();
+}</code></pre>
 
                 </div>
             </div>
@@ -2770,156 +2768,6 @@ someClass.getQualifiedClassName();
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code> this.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_onDisabled" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>onDisabled</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/ObjectManager.html#method_onDisabled" class="type">ObjectManager</a>:
-            
-        
-        
-        <a href="../files/js_ObjectManager.js.html#l93"><code>js&#x2F;ObjectManager.js:93</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>This method is automatically called after the disable method is called on the object.
-The onDisabled method is responsible for disabling event listeners and/or children of the containing objects.</p>
-
-        </div>
-
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>onDisabled() {
-     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.disable();
-}</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_onEnabled" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>onEnabled</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/ObjectManager.html#method_onEnabled" class="type">ObjectManager</a>:
-            
-        
-        
-        <a href="../files/js_ObjectManager.js.html#l59"><code>js&#x2F;ObjectManager.js:59</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>This method is automatically called after the enable method is called on the object.
-The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
-
-        </div>
-
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>onEnabled() {
-     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.enable();
-}</code></pre>
 
                 </div>
             </div>

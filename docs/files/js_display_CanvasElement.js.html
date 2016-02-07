@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -190,9 +190,12 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             this.ctx = this.canvas.getContext(&#x27;2d&#x27;);
         };
         /**
-         * @overridden CanvasElement.onEnabled
+         * @overridden CanvasElement.enable
          */
-        CanvasElement.prototype.onEnabled = function () {
+        CanvasElement.prototype.enable = function () {
+            if (this.isEnabled === true) {
+                return;
+            }
             // Add mouse event listeners to $canvas element
             this.$canvas.addEventListener(&#x27;mousedown&#x27;, this._onPointerDown, this);
             this.$canvas.addEventListener(&#x27;mousemove&#x27;, this._onPointerMove, this);
@@ -203,11 +206,15 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             this.$canvas.addEventListener(&#x27;touchmove&#x27;, this._onPointerMove, this);
             this.$canvas.addEventListener(&#x27;touchend&#x27;, this._onPointerUp, this);
             this.$canvas.addEventListener(&#x27;touchcancel&#x27;, this._onPointerOut, this);
+            _super.prototype.enable.call(this);
         };
         /**
-         * @overridden CanvasElement.onDisabled
+         * @overridden CanvasElement.disable
          */
-        CanvasElement.prototype.onDisabled = function () {
+        CanvasElement.prototype.disable = function () {
+            if (this.isEnabled === false) {
+                return;
+            }
             // Remove mouse event listeners on $canvas element
             this.$canvas.removeEventListener(&#x27;mousedown&#x27;, this._onPointerDown, this);
             this.$canvas.removeEventListener(&#x27;mousemove&#x27;, this._onPointerMove, this);
@@ -218,6 +225,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             this.$canvas.removeEventListener(&#x27;touchmove&#x27;, this._onPointerMove, this);
             this.$canvas.removeEventListener(&#x27;touchend&#x27;, this._onPointerUp, this);
             this.$canvas.removeEventListener(&#x27;touchcancel&#x27;, this._onPointerOut, this);
+            _super.prototype.disable.call(this);
         };
         /**
          * @overridden DOMElement.addChild

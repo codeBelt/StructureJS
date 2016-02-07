@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -429,20 +429,6 @@
             
                 <li class="index-item method public">
                     <a href="#method_indexOf">indexOf</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public inherited">
-                    <a href="#method_onDisabled">onDisabled</a>
-
-                    
-                    
-                </li>
-            
-                <li class="index-item method public inherited">
-                    <a href="#method_onEnabled">onEnabled</a>
 
                     
                     
@@ -1059,7 +1045,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l265"><code>js&#x2F;model&#x2F;Collection.js:265</code></a>
+        <a href="../files/js_model_Collection.js.html#l268"><code>js&#x2F;model&#x2F;Collection.js:268</code></a>
         
         </p>
 
@@ -1173,7 +1159,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l222"><code>js&#x2F;model&#x2F;Collection.js:222</code></a>
+        <a href="../files/js_model_Collection.js.html#l225"><code>js&#x2F;model&#x2F;Collection.js:225</code></a>
         
         </p>
 
@@ -1774,7 +1760,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l304"><code>js&#x2F;model&#x2F;Collection.js:304</code></a>
+        <a href="../files/js_model_Collection.js.html#l307"><code>js&#x2F;model&#x2F;Collection.js:307</code></a>
         
         </p>
 
@@ -1875,7 +1861,7 @@ collection.add(data);</code></pre>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l323"><code>js&#x2F;model&#x2F;Collection.js:323</code></a>
+        <a href="../files/js_model_Collection.js.html#l326"><code>js&#x2F;model&#x2F;Collection.js:326</code></a>
         
         </p>
 
@@ -2055,7 +2041,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/js_ObjectManager.js.html#l75"><code>js&#x2F;ObjectManager.js:75</code></a>
+        <a href="../files/js_ObjectManager.js.html#l64"><code>js&#x2F;ObjectManager.js:64</code></a>
         
         </p>
 
@@ -2068,8 +2054,7 @@ on other objects before calling the super.</p>
     <div class="extended-detail">
 
         <div class="description">
-            <p>The disable method is responsible for disabling the object.
-After this method is called it will trigger the <a href="../classes/ObjectManager.html#method_onDisabled" class="crosslink">onDisabled</a> method.</p>
+            <p>The disable method is responsible for disabling event listeners and/or children of the containing objects.</p>
 
         </div>
 
@@ -2082,7 +2067,14 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.disable();</code></pre>
+                    <pre class="code prettyprint"><code> disable() {
+     if (this.isEnabled === false) { return; }
+
+     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.disable();
+
+     super.disable();
+ }</code></pre>
 
                 </div>
             </div>
@@ -2278,8 +2270,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
     <div class="extended-detail">
 
         <div class="description">
-            <p>The enable method is responsible for enabling object.
-After this method is called it will trigger the <a href="../classes/ObjectManager.html#method_onEnabled" class="crosslink">onEnabled</a> method.</p>
+            <p>The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
 
         </div>
 
@@ -2292,7 +2283,14 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this._childInstance.enable();</code></pre>
+                    <pre class="code prettyprint"><code>enable() {
+     if (this.isEnabled === true) { return; }
+
+     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+     this._childInstance.enable();
+
+     super.enable();
+}</code></pre>
 
                 </div>
             </div>
@@ -2358,7 +2356,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
             
         
         
-        <a href="../files/js_model_Collection.js.html#l443"><code>js&#x2F;model&#x2F;Collection.js:443</code></a>
+        <a href="../files/js_model_Collection.js.html#l446"><code>js&#x2F;model&#x2F;Collection.js:446</code></a>
         
         </p>
 
@@ -2503,7 +2501,7 @@ After this method is called it will trigger the <a href="../classes/ObjectManage
             
         
         
-        <a href="../files/js_model_Collection.js.html#l184"><code>js&#x2F;model&#x2F;Collection.js:184</code></a>
+        <a href="../files/js_model_Collection.js.html#l187"><code>js&#x2F;model&#x2F;Collection.js:187</code></a>
         
         </p>
 
@@ -2632,7 +2630,7 @@ When checking properties, this method performs a deep comparison between values 
             
         
         
-        <a href="../files/js_model_Collection.js.html#l371"><code>js&#x2F;model&#x2F;Collection.js:371</code></a>
+        <a href="../files/js_model_Collection.js.html#l374"><code>js&#x2F;model&#x2F;Collection.js:374</code></a>
         
         </p>
 
@@ -2741,7 +2739,7 @@ When checking properties, this method performs a deep comparison between values 
             
         
         
-        <a href="../files/js_model_Collection.js.html#l171"><code>js&#x2F;model&#x2F;Collection.js:171</code></a>
+        <a href="../files/js_model_Collection.js.html#l174"><code>js&#x2F;model&#x2F;Collection.js:174</code></a>
         
         </p>
 
@@ -3042,7 +3040,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/js_model_Collection.js.html#l492"><code>js&#x2F;model&#x2F;Collection.js:492</code></a>
+        <a href="../files/js_model_Collection.js.html#l495"><code>js&#x2F;model&#x2F;Collection.js:495</code></a>
         
         </p>
 
@@ -3173,7 +3171,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/js_model_Collection.js.html#l145"><code>js&#x2F;model&#x2F;Collection.js:145</code></a>
+        <a href="../files/js_model_Collection.js.html#l148"><code>js&#x2F;model&#x2F;Collection.js:148</code></a>
         
         </p>
 
@@ -3458,7 +3456,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/js_model_Collection.js.html#l158"><code>js&#x2F;model&#x2F;Collection.js:158</code></a>
+        <a href="../files/js_model_Collection.js.html#l161"><code>js&#x2F;model&#x2F;Collection.js:161</code></a>
         
         </p>
 
@@ -3529,156 +3527,6 @@ someClass.getQualifiedClassName();
 </div>
 
         
-            <a name="method_onDisabled" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>onDisabled</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/ObjectManager.html#method_onDisabled" class="type">ObjectManager</a>:
-            
-        
-        
-        <a href="../files/js_ObjectManager.js.html#l93"><code>js&#x2F;ObjectManager.js:93</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>This method is automatically called after the disable method is called on the object.
-The onDisabled method is responsible for disabling event listeners and/or children of the containing objects.</p>
-
-        </div>
-
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>onDisabled() {
-     this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.disable();
-}</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
-            <a name="method_onEnabled" class="anchor-link"></a>
-<div class="method item public inherited">
-    <h3 class="name"><code>onEnabled</code>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/ObjectManager.html#method_onEnabled" class="type">ObjectManager</a>:
-            
-        
-        
-        <a href="../files/js_ObjectManager.js.html#l59"><code>js&#x2F;ObjectManager.js:59</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>This method is automatically called after the enable method is called on the object.
-The enable method is responsible for enabling event listeners and/or children of the containing objects.</p>
-
-        </div>
-
-        
-
-        
-
-        
-            <div class="example">
-                <h4>Example:</h4>
-
-                <div class="example-content">
-                    <pre class="code prettyprint"><code>onEnabled() {
-     this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-     this._childInstance.enable();
-}</code></pre>
-
-                </div>
-            </div>
-        
-    </div>
-</div>
-
-        
             <a name="method_pluck" class="anchor-link"></a>
 <div class="method item public">
     <h3 class="name"><code>pluck</code>
@@ -3736,7 +3584,7 @@ The enable method is responsible for enabling event listeners and/or children of
             
         
         
-        <a href="../files/js_model_Collection.js.html#l462"><code>js&#x2F;model&#x2F;Collection.js:462</code></a>
+        <a href="../files/js_model_Collection.js.html#l465"><code>js&#x2F;model&#x2F;Collection.js:465</code></a>
         
         </p>
 
@@ -3885,7 +3733,7 @@ The enable method is responsible for enabling event listeners and/or children of
             
         
         
-        <a href="../files/js_model_Collection.js.html#l114"><code>js&#x2F;model&#x2F;Collection.js:114</code></a>
+        <a href="../files/js_model_Collection.js.html#l117"><code>js&#x2F;model&#x2F;Collection.js:117</code></a>
         
         </p>
 
@@ -4155,7 +4003,7 @@ The enable method is responsible for enabling event listeners and/or children of
             
         
         
-        <a href="../files/js_model_Collection.js.html#l525"><code>js&#x2F;model&#x2F;Collection.js:525</code></a>
+        <a href="../files/js_model_Collection.js.html#l528"><code>js&#x2F;model&#x2F;Collection.js:528</code></a>
         
         </p>
 
@@ -4255,7 +4103,7 @@ The enable method is responsible for enabling event listeners and/or children of
             
         
         
-        <a href="../files/js_model_Collection.js.html#l423"><code>js&#x2F;model&#x2F;Collection.js:423</code></a>
+        <a href="../files/js_model_Collection.js.html#l426"><code>js&#x2F;model&#x2F;Collection.js:426</code></a>
         
         </p>
 
@@ -4390,7 +4238,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l386"><code>js&#x2F;model&#x2F;Collection.js:386</code></a>
+        <a href="../files/js_model_Collection.js.html#l389"><code>js&#x2F;model&#x2F;Collection.js:389</code></a>
         
         </p>
 
@@ -4520,7 +4368,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l337"><code>js&#x2F;model&#x2F;Collection.js:337</code></a>
+        <a href="../files/js_model_Collection.js.html#l340"><code>js&#x2F;model&#x2F;Collection.js:340</code></a>
         
         </p>
 
@@ -4608,7 +4456,7 @@ point value, according to the string conversion of each element.</p>
             
         
         
-        <a href="../files/js_model_Collection.js.html#l359"><code>js&#x2F;model&#x2F;Collection.js:359</code></a>
+        <a href="../files/js_model_Collection.js.html#l362"><code>js&#x2F;model&#x2F;Collection.js:362</code></a>
         
         </p>
 

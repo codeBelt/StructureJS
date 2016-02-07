@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -194,12 +194,20 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
      *                 // Create and add your child objects to this parent class.
      *             }
      *
-     *             onEnabled() {
+     *             enable() {
+     *                 if (this.isEnabled === true) { return; };
+     *
      *                 // Enable the child objects and add any event listeners.
+     *
+     *                 super.enable();
      *             }
      *
-     *             onDisabled() {
+     *             disable() {
+     *                 if (this.isEnabled === false) { return; };
+     *
      *                 // Disable the child objects and remove any event listeners.
+     *
+     *                 super.disable();
      *             }
      *
      *             layout() {

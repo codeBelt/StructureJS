@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.10.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -195,71 +195,49 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             this.isEnabled = false;
         }
         /**
-         * The enable method is responsible for enabling object.
-         * After this method is called it will trigger the {{#crossLink &quot;ObjectManager/onEnabled:method&quot;}}{{/crossLink}} method.
+         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
          *
          * @method enable
          * @public
          * @chainable
          * @example
-         *      this._childInstance.enable();
+         *     enable() {
+         *          if (this.isEnabled === true) { return; }
+         *
+         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.enable();
+         *
+         *          super.enable();
+         *     }
          */
         ObjectManager.prototype.enable = function () {
             if (this.isEnabled === true) {
                 return this;
             }
             this.isEnabled = true;
-            this.onEnabled();
             return this;
         };
         /**
-         * This method is automatically called after the enable method is called on the object.
-         * The enable method is responsible for enabling event listeners and/or children of the containing objects.
-         *
-         * @method onEnabled
-         * @public
-         * @chainable
-         * @example
-         *     onEnabled() {
-         *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *          this._childInstance.enable();
-         *     }
-         */
-        ObjectManager.prototype.onEnabled = function () {
-            return this;
-        };
-        /**
-         * The disable method is responsible for disabling the object.
-         * After this method is called it will trigger the {{#crossLink &quot;ObjectManager/onDisabled:method&quot;}}{{/crossLink}} method.
+         * The disable method is responsible for disabling event listeners and/or children of the containing objects.
          *
          * @method disable
          * @public
          * @chainable
          * @example
-         *      this._childInstance.disable();
+         *      disable() {
+         *          if (this.isEnabled === false) { return; }
+         *
+         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
+         *          this._childInstance.disable();
+         *
+         *          super.disable();
+         *      }
          */
         ObjectManager.prototype.disable = function () {
             if (this.isEnabled === false) {
                 return this;
             }
             this.isEnabled = false;
-            this.onDisabled();
-            return this;
-        };
-        /**
-         * This method is automatically called after the disable method is called on the object.
-         * The onDisabled method is responsible for disabling event listeners and/or children of the containing objects.
-         *
-         * @method onDisabled
-         * @public
-         * @chainable
-         * @example
-         *     onDisabled() {
-         *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
-         *          this._childInstance.disable();
-         *     }
-         */
-        ObjectManager.prototype.onDisabled = function () {
             return this;
         };
         return ObjectManager;
