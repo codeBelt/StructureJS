@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.11.0",
+        "version": "0.11.1",
         "url": ""
     },
     "files": {
@@ -2475,7 +2475,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     let someProperty = 'api/endpoint';\n\n     Router.buildRoute(someProperty, 'path', 7);\n\n     //Creates 'api/endpoint/path/7'"
+                "\n     const someProperty = 'api/endpoint';\n     const queryObject = {type: 'car', name: encodeURIComponent('Telsa Motors')};\n\n     Router.buildRoute(someProperty, 'path', 7, queryObject);\n\n     //Creates 'api/endpoint/path/7/?type=car&name=Telsa%20Motors'"
             ],
             "class": "Router",
             "module": "StructureJS",
@@ -2483,7 +2483,19 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 348,
+            "line": 354,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "_toQueryString",
+            "access": "private",
+            "tagname": "",
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 369,
             "description": "Returns the current router event that was last triggered.",
             "itemtype": "method",
             "name": "getCurrentRoute",
@@ -2499,7 +2511,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 360,
+            "line": 381,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "_onHashChange",
@@ -2519,7 +2531,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 377,
+            "line": 398,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "_changeRoute",
@@ -2539,7 +2551,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 444,
+            "line": 465,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2553,7 +2565,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 453,
+            "line": 474,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2567,7 +2579,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 462,
+            "line": 483,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2581,7 +2593,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 471,
+            "line": 492,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2595,7 +2607,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 480,
+            "line": 501,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2613,7 +2625,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 493,
+            "line": 514,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2631,7 +2643,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 509,
+            "line": 530,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful if want to use your added routes but don't want any external forces trigger your routes.\n\nTypically what I do for games is during development/testing I allow the hash url to change the states so testers can jump\nto sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump\naround if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2649,7 +2661,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 528,
+            "line": 549,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2667,7 +2679,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 545,
+            "line": 566,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2685,7 +2697,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 558,
+            "line": 579,
             "description": "A reference to the current {{#crossLink \"RouterEvent\"}}{{/crossLink}} that was triggered.",
             "itemtype": "property",
             "name": "_currentRoute",
