@@ -510,14 +510,40 @@ class Router
      * @public
      * @static
      * @example
-     *      let someProperty = 'api/endpoint';
+     *      const someProperty = 'api/endpoint';
+     *      const queryObject = {type: 'car', name: encodeURIComponent('Telsa Motors')};
      *
-     *      Router.buildRoute(someProperty, 'path', 7);
+     *      Router.buildRoute(someProperty, 'path', 7, queryObject);
      *
-     *      //Creates 'api/endpoint/path/7'
+     *      //Creates 'api/endpoint/path/7/?type=car&name=Telsa%20Motors'
      */
     public static buildRoute(...rest):string {
+
+        rest.forEach((value, index, array) => {
+            if (typeof value === 'object') {
+                array[index] = '?' + Router._toQueryString(value);
+            }
+        });
+
         return rest.join('/');
+    }
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method _toQueryString
+     * @private
+     */
+    private static _toQueryString(obj:any):string {
+        const str = [];
+
+        for(let property in obj) {
+            if (obj.hasOwnProperty(property)) {
+                str.push(`${property}=${obj[property]}`);
+            }
+        }
+
+        return str.join("&");
     }
 
     /**

@@ -332,18 +332,39 @@
          * @public
          * @static
          * @example
-         *      let someProperty = 'api/endpoint';
+         *      const someProperty = 'api/endpoint';
+         *      const queryObject = {type: 'car', name: encodeURIComponent('Telsa Motors')};
          *
-         *      Router.buildRoute(someProperty, 'path', 7);
+         *      Router.buildRoute(someProperty, 'path', 7, queryObject);
          *
-         *      //Creates 'api/endpoint/path/7'
+         *      //Creates 'api/endpoint/path/7/?type=car&name=Telsa%20Motors'
          */
         Router.buildRoute = function () {
             var rest = [];
             for (var _i = 0; _i < arguments.length; _i++) {
                 rest[_i - 0] = arguments[_i];
             }
+            rest.forEach(function (value, index, array) {
+                if (typeof value === 'object') {
+                    array[index] = '?' + Router._toQueryString(value);
+                }
+            });
             return rest.join('/');
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _toQueryString
+         * @private
+         */
+        Router._toQueryString = function (obj) {
+            var str = [];
+            for (var property in obj) {
+                if (obj.hasOwnProperty(property)) {
+                    str.push(property + "=" + obj[property]);
+                }
+            }
+            return str.join("&");
         };
         /**
          * Returns the current router event that was last triggered.

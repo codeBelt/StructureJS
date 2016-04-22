@@ -265,6 +265,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-02-29 v0.11.1 Update Router.buildRoute to turn an object passed in to query string.
+ 
  * 2016-02-06 v0.11.0 Prevent Collection.add from allowing null and undefined. Remove onEnabled and onDisabled methods.
  
  * 2016-01-22 v0.10.5 Change examples and IDE snippets back to the show the enable and disable way rather than the onEnabled or onDisabled way.
