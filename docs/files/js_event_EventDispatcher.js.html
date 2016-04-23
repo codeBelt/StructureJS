@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -167,6 +167,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../ObjectManager&#x27;, &#x27;./BaseEvent&#x27;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     var ObjectManager_1 = require(&#x27;../ObjectManager&#x27;);
     var BaseEvent_1 = require(&#x27;./BaseEvent&#x27;);
     /**
@@ -301,11 +302,11 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list !== void 0) {
-                var i_1 = list.length;
-                while (--i_1 &gt; -1) {
+                var i = list.length;
+                while (--i &gt; -1) {
                     // If the callback and scope are the same then remove the event listener.
-                    if (list[i_1].callback === callback &amp;&amp; list[i_1].scope === scope) {
-                        list.splice(i_1, 1);
+                    if (list[i].callback === callback &amp;&amp; list[i].scope === scope) {
+                        list.splice(i, 1);
                         break;
                     }
                 }
@@ -348,14 +349,14 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
-                var i_2 = list.length;
-                var listener;
-                while (--i_2 &gt; -1) {
+                var i = list.length;
+                var listener = void 0;
+                while (--i &gt; -1) {
                     // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
                     if (event.cancelable === true &amp;&amp; event.isImmediatePropagationStopped === true) {
                         break;
                     }
-                    listener = list[i_2];
+                    listener = list[i];
                     listener.callback.call(listener.scope, event);
                     // If the once value is true we want to remove the listener right after this callback was called.
                     if (listener.once === true) {
@@ -390,10 +391,10 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          */
         EventDispatcher.prototype.hasEventListener = function (type, callback, scope) {
             if (this._listeners[type] !== void 0) {
-                var listener;
+                var listener = void 0;
                 var numOfCallbacks = this._listeners[type].length;
-                for (var i_3 = 0; i_3 &lt; numOfCallbacks; i_3++) {
-                    listener = this._listeners[type][i_3];
+                for (var i = 0; i &lt; numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
                     if (listener.callback === callback &amp;&amp; listener.scope === scope) {
                         return true;
                     }
@@ -418,8 +419,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var listener;
             for (var type in this._listeners) {
                 numOfCallbacks = this._listeners[type].length;
-                for (var i_4 = 0; i_4 &lt; numOfCallbacks; i_4++) {
-                    listener = this._listeners[type][i_4];
+                for (var i = 0; i &lt; numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
                     if (listener.scope &amp;&amp; (typeof listener.scope.getQualifiedClassName === &#x27;function&#x27;)) {
                         str += &#x27;[&#x27; + listener.scope.getQualifiedClassName() + &#x27;]&#x27;;
                     }
@@ -439,7 +440,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;
-    })(ObjectManager_1.default);
+    }(ObjectManager_1.default));
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = EventDispatcher;
 });

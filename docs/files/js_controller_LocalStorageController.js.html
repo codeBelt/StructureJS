@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -167,6 +167,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/LocalStorageEvent&#x27;, &#x27;../event/EventDispatcher&#x27;, &#x27;../model/BaseModel&#x27;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     var LocalStorageEvent_1 = require(&#x27;../event/LocalStorageEvent&#x27;);
     var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
     var BaseModel_1 = require(&#x27;../model/BaseModel&#x27;);
@@ -290,8 +291,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             if (namespace === void 0) { namespace = this._namespace; }
             var list = [];
             var length = this.getLength();
-            for (var i_1 = 0; i_1 &lt; length; i_1++) {
-                var key = this._localStorage.key(i_1);
+            for (var i = 0; i &lt; length; i++) {
+                var key = this._localStorage.key(i);
                 if (key.indexOf(namespace) &gt; -1) {
                     var value = this.getItem(key);
                     var obj = {
@@ -312,8 +313,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         LocalStorageController.prototype.getAllItems = function () {
             var list = [];
             var length = this.getLength();
-            for (var i_2 = 0; i_2 &lt; length; i_2++) {
-                var key = this._localStorage.key(i_2);
+            for (var i = 0; i &lt; length; i++) {
+                var key = this._localStorage.key(i);
                 var value = this.getItem(key);
                 var obj = {
                     key: key,
@@ -381,7 +382,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             this.dispatchEvent(new LocalStorageEvent_1.default(LocalStorageEvent_1.default.STORAGE, false, false, event));
         };
         return LocalStorageController;
-    })(EventDispatcher_1.default);
+    }(EventDispatcher_1.default));
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = LocalStorageController;
 });

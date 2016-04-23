@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,6 +162,7 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../util/StringUtil&#x27;, &#x27;../event/RouterEvent&#x27;, &#x27;../model/Route&#x27;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     var StringUtil_1 = require(&#x27;../util/StringUtil&#x27;);
     var RouterEvent_1 = require(&#x27;../event/RouterEvent&#x27;);
     var Route_1 = require(&#x27;../model/Route&#x27;);
@@ -284,10 +285,10 @@
         Router.remove = function (routePattern, callback, callbackScope) {
             var route;
             // Since we are removing (splice) from routes we need to check the length every iteration.
-            for (var i_1 = Router._routes.length - 1; i_1 &gt;= 0; i_1--) {
-                route = Router._routes[i_1];
+            for (var i = Router._routes.length - 1; i &gt;= 0; i--) {
+                route = Router._routes[i];
                 if (route.routePattern === routePattern &amp;&amp; route.callback === callback &amp;&amp; route.callbackScope === callbackScope) {
-                    Router._routes.splice(i_1, 1);
+                    Router._routes.splice(i, 1);
                 }
             }
         };
@@ -488,18 +489,39 @@
          * @public
          * @static
          * @example
-         *      let someProperty = &#x27;api/endpoint&#x27;;
+         *      const someProperty = &#x27;api/endpoint&#x27;;
+         *      const queryObject = {type: &#x27;car&#x27;, name: encodeURIComponent(&#x27;Telsa Motors&#x27;)};
          *
-         *      Router.buildRoute(someProperty, &#x27;path&#x27;, 7);
+         *      Router.buildRoute(someProperty, &#x27;path&#x27;, 7, queryObject);
          *
-         *      //Creates &#x27;api/endpoint/path/7&#x27;
+         *      //Creates &#x27;api/endpoint/path/7/?type=car&amp;name=Telsa%20Motors&#x27;
          */
         Router.buildRoute = function () {
             var rest = [];
             for (var _i = 0; _i &lt; arguments.length; _i++) {
                 rest[_i - 0] = arguments[_i];
             }
+            rest.forEach(function (value, index, array) {
+                if (typeof value === &#x27;object&#x27;) {
+                    array[index] = &#x27;?&#x27; + Router._toQueryString(value);
+                }
+            });
             return rest.join(&#x27;/&#x27;);
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _toQueryString
+         * @private
+         */
+        Router._toQueryString = function (obj) {
+            var str = [];
+            for (var property in obj) {
+                if (obj.hasOwnProperty(property)) {
+                    str.push(property + &quot;=&quot; + obj[property]);
+                }
+            }
+            return str.join(&quot;&amp;&quot;);
         };
         /**
          * Returns the current router event that was last triggered.
@@ -543,8 +565,8 @@
             var match;
             var routerEvent = null;
             // Loop through all the route&#x27;s. Note: we need to check the length every loop in case one was removed.
-            for (var i_2 = 0; i_2 &lt; Router._routes.length; i_2++) {
-                route = Router._routes[i_2];
+            for (var i = 0; i &lt; Router._routes.length; i++) {
+                route = Router._routes[i];
                 match = route.match(hash);
                 // If there is a match.
                 if (match !== null) {
@@ -721,7 +743,7 @@
          */
         Router._currentRoute = null;
         return Router;
-    })();
+    }());
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = Router;
 });

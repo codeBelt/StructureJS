@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,6 +162,7 @@
         define([&quot;require&quot;, &quot;exports&quot;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     var MouseEvents = (function () {
         function MouseEvents() {
         }
@@ -230,7 +231,7 @@
          */
         MouseEvents.TAP = &#x27;tap&#x27;;
         return MouseEvents;
-    })();
+    }());
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = MouseEvents;
 });

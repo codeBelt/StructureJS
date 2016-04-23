@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -154,6 +154,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
+///&lt;reference path=&#x27;_declare/jquery.eventListener.d.ts&#x27;/&gt;
 (function (factory) {
     if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
@@ -162,11 +163,7 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;./util/Util&#x27;], factory);
     }
 })(function (require, exports) {
-    ///&lt;reference path=&#x27;_declare/jquery.d.ts&#x27;/&gt;
-    ///&lt;reference path=&#x27;_declare/handlebars.d.ts&#x27;/&gt;
-    ///&lt;reference path=&#x27;_declare/greensock.d.ts&#x27;/&gt;
-    ///&lt;reference path=&#x27;_declare/jquery.eventListener.d.ts&#x27;/&gt;
-    ///&lt;reference path=&#x27;_declare/log.d.ts&#x27;/&gt;
+    &quot;use strict&quot;;
     var Util_1 = require(&#x27;./util/Util&#x27;);
     /**
      * The {{#crossLink &quot;BaseObject&quot;}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -238,7 +235,7 @@
             }
         };
         return BaseObject;
-    })();
+    }());
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = BaseObject;
 });
