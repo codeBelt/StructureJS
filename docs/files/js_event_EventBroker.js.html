@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,7 +162,6 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;./EventDispatcher&#x27;, &#x27;./BaseEvent&#x27;], factory);
     }
 })(function (require, exports) {
-    &quot;use strict&quot;;
     var EventDispatcher_1 = require(&#x27;./EventDispatcher&#x27;);
     var BaseEvent_1 = require(&#x27;./BaseEvent&#x27;);
     /**
@@ -314,10 +313,10 @@
          */
         EventBroker.removeWaitFor = function (eventTypes, callback, scope) {
             var waitForObject;
-            for (var i = EventBroker._waitForList.length - 1; i &gt;= 0; i--) {
-                waitForObject = EventBroker._waitForList[i];
+            for (var i_1 = EventBroker._waitForList.length - 1; i_1 &gt;= 0; i_1--) {
+                waitForObject = EventBroker._waitForList[i_1];
                 if (waitForObject.eventTypes.toString() === eventTypes.toString() &amp;&amp; waitForObject.callback === callback &amp;&amp; waitForObject.callbackScope === scope) {
-                    EventBroker._waitForList.splice(i, 1);
+                    EventBroker._waitForList.splice(i_1, 1);
                 }
             }
         };
@@ -363,8 +362,8 @@
         EventBroker._dispatchWaitFor = function (event) {
             var waitForObject;
             var eventTypeIndex;
-            for (var i = EventBroker._waitForList.length - 1; i &gt;= 0; i--) {
-                waitForObject = EventBroker._waitForList[i];
+            for (var i_2 = EventBroker._waitForList.length - 1; i_2 &gt;= 0; i_2--) {
+                waitForObject = EventBroker._waitForList[i_2];
                 eventTypeIndex = waitForObject.eventTypes.indexOf(event.type);
                 if (eventTypeIndex &gt; -1) {
                     waitForObject.events[eventTypeIndex] = event;
@@ -374,7 +373,7 @@
                     waitForObject.events = [];
                     // If the once value is true we want to remove the listener right after this callback was called.
                     if (waitForObject.once === true) {
-                        EventBroker._waitForList.splice(i, 1);
+                        EventBroker._waitForList.splice(i_2, 1);
                     }
                 }
             }
@@ -429,7 +428,7 @@
          */
         EventBroker._waitForList = [];
         return EventBroker;
-    }());
+    })();
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = EventBroker;
 });

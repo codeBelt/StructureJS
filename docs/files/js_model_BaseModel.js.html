@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -167,7 +167,6 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../BaseObject&#x27;, &#x27;../util/Util&#x27;], factory);
     }
 })(function (require, exports) {
-    &quot;use strict&quot;;
     var BaseObject_1 = require(&#x27;../BaseObject&#x27;);
     var Util_1 = require(&#x27;../util/Util&#x27;);
     /**
@@ -285,8 +284,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
                 var len = data.length;
                 if ((this[key][0] instanceof BaseModel.constructor &amp;&amp; data[0] instanceof BaseModel.constructor) === false) {
                     var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
-                    for (var i = 0; i &lt; len; i++) {
-                        temp[i] = this._updateData(baseModelOrOther, data[i]);
+                    for (var i_1 = 0; i_1 &lt; len; i_1++) {
+                        temp[i_1] = this._updateData(baseModelOrOther, data[i_1]);
                     }
                 }
                 this[key] = temp;
@@ -375,7 +374,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             return clonedBaseModel;
         };
         return BaseModel;
-    }(BaseObject_1.default));
+    })(BaseObject_1.default);
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = BaseModel;
 });

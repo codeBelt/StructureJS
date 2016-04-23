@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,7 +162,6 @@
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../util/StringUtil&#x27;, &#x27;../event/RouterEvent&#x27;, &#x27;../model/Route&#x27;], factory);
     }
 })(function (require, exports) {
-    &quot;use strict&quot;;
     var StringUtil_1 = require(&#x27;../util/StringUtil&#x27;);
     var RouterEvent_1 = require(&#x27;../event/RouterEvent&#x27;);
     var Route_1 = require(&#x27;../model/Route&#x27;);
@@ -285,10 +284,10 @@
         Router.remove = function (routePattern, callback, callbackScope) {
             var route;
             // Since we are removing (splice) from routes we need to check the length every iteration.
-            for (var i = Router._routes.length - 1; i &gt;= 0; i--) {
-                route = Router._routes[i];
+            for (var i_1 = Router._routes.length - 1; i_1 &gt;= 0; i_1--) {
+                route = Router._routes[i_1];
                 if (route.routePattern === routePattern &amp;&amp; route.callback === callback &amp;&amp; route.callbackScope === callbackScope) {
-                    Router._routes.splice(i, 1);
+                    Router._routes.splice(i_1, 1);
                 }
             }
         };
@@ -565,8 +564,8 @@
             var match;
             var routerEvent = null;
             // Loop through all the route&#x27;s. Note: we need to check the length every loop in case one was removed.
-            for (var i = 0; i &lt; Router._routes.length; i++) {
-                route = Router._routes[i];
+            for (var i_2 = 0; i_2 &lt; Router._routes.length; i_2++) {
+                route = Router._routes[i_2];
                 match = route.match(hash);
                 // If there is a match.
                 if (match !== null) {
@@ -743,7 +742,7 @@
          */
         Router._currentRoute = null;
         return Router;
-    }());
+    })();
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = Router;
 });

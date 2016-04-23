@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,7 +162,6 @@
         define([&quot;require&quot;, &quot;exports&quot;], factory);
     }
 })(function (require, exports) {
-    &quot;use strict&quot;;
     /**
      * The NumberUtil class has many helper methods to work with number data.
      *
@@ -403,10 +402,10 @@
                 d = s[1].substr(0, decimals);
             }
             else {
-                var i = decimals;
-                while (i &gt; 0) {
+                var i_1 = decimals;
+                while (i_1 &gt; 0) {
                     d += &#x27;0&#x27;;
-                    i--;
+                    i_1--;
                 }
             }
             var c = s[0] + &#x27;.&#x27; + d;
@@ -435,17 +434,17 @@
                 d = s[1].substr(0, decimals);
             }
             else {
-                var i = decimals;
-                while (i &gt; 0) {
+                var i_2 = decimals;
+                while (i_2 &gt; 0) {
                     d += &#x27;0&#x27;;
-                    i--;
+                    i_2--;
                 }
             }
             var f = s[0] + &#x27;.&#x27; + d;
             return Number(f);
         };
         return NumberUtil;
-    }());
+    })();
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = NumberUtil;
 });

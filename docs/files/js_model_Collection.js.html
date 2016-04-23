@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -167,7 +167,6 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/BaseEvent&#x27;, &#x27;../util/Util&#x27;], factory);
     }
 })(function (require, exports) {
-    &quot;use strict&quot;;
     var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
     var BaseEvent_1 = require(&#x27;../event/BaseEvent&#x27;);
     var Util_1 = require(&#x27;../util/Util&#x27;);
@@ -251,17 +250,17 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
             var len = models.length;
-            for (var i = 0; i &lt; len; i++) {
+            for (var i_1 = 0; i_1 &lt; len; i_1++) {
                 // Only add the model if it does not exist in the the collection.
-                if (this.has(models[i]) === false) {
-                    if (this._modelType !== null &amp;&amp; (models[i] instanceof this._modelType) === false) {
+                if (this.has(models[i_1]) === false) {
+                    if (this._modelType !== null &amp;&amp; (models[i_1] instanceof this._modelType) === false) {
                         // If the modelType is set and the data is not already a instance of the modelType
                         // then instantiate it and pass the data into the constructor.
-                        this.models.push(new this._modelType(models[i]));
+                        this.models.push(new this._modelType(models[i_1]));
                     }
                     else {
                         // Pass the data object to the array.
-                        this.models.push(models[i]);
+                        this.models.push(models[i_1]);
                     }
                     this.length = this.models.length;
                 }
@@ -290,10 +289,10 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
-            for (var i = models.length - 1; i &gt;= 0; i--) {
+            for (var i_2 = models.length - 1; i_2 &gt;= 0; i_2--) {
                 // Only remove the model if it exists in the the collection.
-                if (this.has(models[i]) === true) {
-                    this.models.splice(this.indexOf(models[i]), 1);
+                if (this.has(models[i_2]) === true) {
+                    this.models.splice(this.indexOf(models[i_2]), 1);
                     this.length = this.models.length;
                 }
             }
@@ -364,8 +363,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var foundItems = [];
             var len = list.length;
             var prop;
-            for (var i = 0; i &lt; len; i++) {
-                prop = list[i];
+            for (var i_3 = 0; i_3 &lt; len; i_3++) {
+                prop = list[i_3];
                 // Adds found  Base Model to the foundItems array.
                 if ((typeof prop === &#x27;string&#x27;) || (typeof prop === &#x27;number&#x27;) || (typeof prop === &#x27;boolean&#x27;)) {
                     // If the model is not an object.
@@ -399,8 +398,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var obj;
             var key;
             var j;
-            for (var i = 0; i &lt; itemsToFindLength; i++) {
-                obj = list[i];
+            for (var i_4 = 0; i_4 &lt; itemsToFindLength; i_4++) {
+                obj = list[i_4];
                 for (j = 0; j &lt; itemsLength; j++) {
                     hasMatchingProperty = false;
                     doesModelMatch = true;
@@ -441,8 +440,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var model;
             var key;
             var j;
-            for (var i = 0; i &lt; itemsLength; i++) {
-                model = this.models[i];
+            for (var i_5 = 0; i_5 &lt; itemsLength; i_5++) {
+                model = this.models[i_5];
                 for (key in model) {
                     // Check if the key value is a property.
                     if (model.hasOwnProperty(key)) {
@@ -507,8 +506,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             if (this._modelType !== null) {
                 var list = [];
                 var len = this.length;
-                for (var i = 0; i &lt; len; i++) {
-                    list[i] = this.models[i].toJSON();
+                for (var i_6 = 0; i_6 &lt; len; i_6++) {
+                    list[i_6] = this.models[i_6].toJSON();
                 }
                 return list;
             }
@@ -639,9 +638,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         Collection.prototype.pluck = function (propertyName, unique) {
             if (unique === void 0) { unique = false; }
             var list = [];
-            for (var i = 0; i &lt; this.length; i++) {
-                if (this.models[i].hasOwnProperty(propertyName) === true) {
-                    list[i] = this.models[i][propertyName];
+            for (var i_7 = 0; i_7 &lt; this.length; i_7++) {
+                if (this.models[i_7].hasOwnProperty(propertyName) === true) {
+                    list[i_7] = this.models[i_7][propertyName];
                 }
             }
             if (unique === true) {
@@ -671,8 +670,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var groupName;
             var groupList = {};
             // Loop through all the models in this collection.
-            for (var i = 0; i &lt; this.length; i++) {
-                model = this.models[i];
+            for (var i_8 = 0; i_8 &lt; this.length; i_8++) {
+                model = this.models[i_8];
                 // Get the value from the property name passed in and uses that as the group name.
                 groupName = model[propertyName];
                 if (groupList[groupName] == null) {
@@ -695,7 +694,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             return this.models.reverse();
         };
         return Collection;
-    }(EventDispatcher_1.default));
+    })(EventDispatcher_1.default);
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = Collection;
 });

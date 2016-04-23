@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.12.0",
+        "version": "0.11.1",
         "url": ""
     },
     "files": {
@@ -439,7 +439,7 @@
             "fors": {},
             "namespaces": {},
             "file": "js/ObjectManager.js",
-            "line": 16
+            "line": 15
         },
         "controller": {
             "name": "controller",
@@ -456,7 +456,7 @@
             "namespace": "",
             "description": "The ApplicationCacheController is a static class works with the window applicationCache object.",
             "file": "js/controller/Router.js",
-            "line": 13
+            "line": 12
         },
         "view": {
             "name": "view",
@@ -474,7 +474,7 @@
             "namespace": "",
             "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
             "file": "js/display/Stage.js",
-            "line": 16
+            "line": 15
         },
         "event": {
             "name": "event",
@@ -498,7 +498,7 @@
             "namespace": "",
             "description": "The ApplicationCacheEvent ....",
             "file": "js/event/TimerEvent.js",
-            "line": 16
+            "line": 15
         },
         "geom": {
             "name": "geom",
@@ -513,7 +513,7 @@
             "namespace": "",
             "description": "The Point object represents a location in a two-dimensional coordinate system, where x represents the horizontal axis and y represents the vertical axis.",
             "file": "js/geom/Point.js",
-            "line": 10
+            "line": 9
         },
         "model": {
             "name": "model",
@@ -530,7 +530,7 @@
             "namespace": "",
             "description": "Base Model is a design pattern used to transfer data between software application subsystems.\n\n Note: If the data doesn't match the property names you can set the value manually after update super method has been called.\nAlso in the class you inherit BaseModel from you can override the update method to handle the data how you want.",
             "file": "js/model/Route.js",
-            "line": 10
+            "line": 9
         },
         "util": {
             "name": "util",
@@ -558,7 +558,7 @@
             "namespace": "",
             "description": "A helper class to detect OS and browsers.",
             "file": "js/util/ValidationUtil.js",
-            "line": 10
+            "line": 9
         },
         "core": {
             "name": "core",
@@ -574,7 +574,7 @@
             "namespace": "",
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.",
             "file": "js/ObjectManager.js",
-            "line": 16
+            "line": 15
         }
     },
     "classes": {
@@ -588,7 +588,7 @@
             "extension_for": [],
             "module": "StructureJS",
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 12,
+            "line": 11,
             "description": "The ApplicationCacheController is a static class works with the window applicationCache object.",
             "submodule": "controller",
             "requires": [
@@ -609,7 +609,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/controller/LocalStorageController.js",
-            "line": 18,
+            "line": 17,
             "description": "The LocalStorageController...",
             "submodule": "controller",
             "extends": "EventDispatcher",
@@ -633,7 +633,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/controller/Router.js",
-            "line": 13,
+            "line": 12,
             "description": "The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink \"Router/add:method\"}}{{/crossLink}} method for more details and examples.",
             "submodule": "controller",
             "requires": [
@@ -655,7 +655,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/display/DOMElement.js",
-            "line": 20,
+            "line": 19,
             "description": "The {{#crossLink \"DOMElement\"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.",
             "submodule": "view",
             "params": [
@@ -694,7 +694,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/display/DisplayObject.js",
-            "line": 16,
+            "line": 15,
             "description": "The {{#crossLink \"DisplayObject\"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.",
             "submodule": "view",
             "extends": "EventDispatcher",
@@ -716,7 +716,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 16,
+            "line": 15,
             "description": "The {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.",
             "submodule": "view",
             "extends": "DisplayObject",
@@ -738,8 +738,8 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/display/Stage.js",
-            "line": 16,
-            "description": "<b>DEPRECATED</b>: This {{#crossLink \"Stage\"}}{{/crossLink}} class has be deprecated. The <b>appendTo</b> method has been moved to\nthe {{#crossLink \"DOMElement\"}}{{/crossLink}} class.\n\nThe {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main application or root class.",
+            "line": 15,
+            "description": "The {{#crossLink \"Stage\"}}{{/crossLink}} class should be extended by your main application or root class.",
             "submodule": "view",
             "extends": "DOMElement",
             "is_constructor": 1,
@@ -764,7 +764,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The ApplicationCacheEvent ....",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -814,7 +814,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/BaseEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The {{#crossLink \"BaseEvent\"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.\n\nThe properties of the {{#crossLink \"BaseEvent\"}}{{/crossLink}} class carry basic information about an event, such as the event's type or whether the event's default behavior can be canceled.\n\nFor many events, such as the events represented by the Event class constants, this basic information is sufficient. Other events, however, may require more\ndetailed information.",
             "submodule": "event",
             "extends": "BaseObject",
@@ -867,7 +867,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/BulkLoaderEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The BulkLoaderEvent...",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -917,7 +917,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/EventBroker.js",
-            "line": 12,
+            "line": 11,
             "description": "EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.\nLoosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.",
             "submodule": "event",
             "requires": [
@@ -938,7 +938,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/EventDispatcher.js",
-            "line": 17,
+            "line": 16,
             "description": "EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} class.\nEventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.",
             "submodule": "event",
             "extends": "ObjectManager",
@@ -964,7 +964,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/LoaderEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The LoaderEvent...",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -1014,7 +1014,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/LocalStorageEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The LocalStorageEvent ....\nNote: the event only dispatches in other browser windows and does not show up in the window where you made a change to the local storage.",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -1062,7 +1062,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/NetworkMonitorEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The NetworkMonitorEvent...",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -1112,7 +1112,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/RouterEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The RouterEvent is used in the {{#crossLink \"Router\"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink \"Route\"}}{{/crossLink}} class.",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -1162,7 +1162,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/event/TimerEvent.js",
-            "line": 16,
+            "line": 15,
             "description": "The TimerEvent...",
             "submodule": "event",
             "extends": "BaseEvent",
@@ -1212,7 +1212,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/geom/Point.js",
-            "line": 10,
+            "line": 9,
             "description": "The Point object represents a location in a two-dimensional coordinate system, where x represents the horizontal axis and y represents the vertical axis.",
             "submodule": "geom",
             "is_constructor": 1,
@@ -1229,7 +1229,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/model/BaseModel.js",
-            "line": 17,
+            "line": 16,
             "description": "Base Model is a design pattern used to transfer data between software application subsystems.\n\n Note: If the data doesn't match the property names you can set the value manually after update super method has been called.\nAlso in the class you inherit BaseModel from you can override the update method to handle the data how you want.",
             "submodule": "model",
             "extends": "BaseObject",
@@ -1263,7 +1263,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/model/Collection.js",
-            "line": 18,
+            "line": 17,
             "description": "The Collection class provides a way for you to manage your models.",
             "submodule": "model",
             "extends": "EventDispatcher",
@@ -1296,7 +1296,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/model/Route.js",
-            "line": 10,
+            "line": 9,
             "description": "The **Route** class is a model that keeps track of a specific route for the {{#crossLink \"Router\"}}{{/crossLink}} class.",
             "submodule": "model",
             "params": [
@@ -1333,7 +1333,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/net/NetworkMonitor.js",
-            "line": 13,
+            "line": 12,
             "description": "A helper class to detect network changes.",
             "is_constructor": 1,
             "requires": [
@@ -1355,7 +1355,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/BrowserUtil.js",
-            "line": 13,
+            "line": 12,
             "description": "A helper class to detect OS and browsers.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1372,7 +1372,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/BulkLoader.js",
-            "line": 19,
+            "line": 18,
             "description": "A class to help with loading IDataStore's.",
             "submodule": "util",
             "extends": "EventDispatcher",
@@ -1394,7 +1394,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/ComponentFactory.js",
-            "line": 11,
+            "line": 10,
             "description": "A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1411,7 +1411,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/DateUtil.js",
-            "line": 10,
+            "line": 9,
             "description": "A helper class that deals with dates.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1461,7 +1461,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/ImageLoader.js",
-            "line": 17,
+            "line": 16,
             "description": "The ImageLoader...",
             "submodule": "util",
             "extends": "EventDispatcher",
@@ -1479,7 +1479,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/MathUtil.js",
-            "line": 10,
+            "line": 9,
             "description": "A helper class to do calculations and conversions.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1496,7 +1496,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/MerchantUtil.js",
-            "line": 10,
+            "line": 9,
             "description": "A MerchantUtility class that has several static methods to assist in development.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1513,7 +1513,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/NumberUtil.js",
-            "line": 10,
+            "line": 9,
             "description": "The NumberUtil class has many helper methods to work with number data.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1530,7 +1530,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/StringUtil.js",
-            "line": 10,
+            "line": 9,
             "description": "The StringUtil...",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1547,7 +1547,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/TemplateFactory.js",
-            "line": 11,
+            "line": 10,
             "description": "A helper class to provide a convenient and consistent way to render templates.",
             "submodule": "util",
             "requires": [
@@ -1568,7 +1568,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/Timer.js",
-            "line": 17,
+            "line": 16,
             "description": "Constructs a new Timer object with the specified delay and repeatCount states.",
             "submodule": "util",
             "extends": "EventDispatcher",
@@ -1591,7 +1591,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/Util.js",
-            "line": 10,
+            "line": 9,
             "description": "A Utility class that has several static methods to assist in development.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1608,7 +1608,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/util/ValidationUtil.js",
-            "line": 10,
+            "line": 9,
             "description": "A ValidationUtility class that has several static methods to assist in development.",
             "submodule": "util",
             "author": "Robert S. (www.codeBelt.com)",
@@ -1625,7 +1625,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/BaseObject.js",
-            "line": 12,
+            "line": 15,
             "description": "The {{#crossLink \"BaseObject\"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.",
             "submodule": "core",
             "requires": [
@@ -1645,7 +1645,7 @@
             "module": "StructureJS",
             "namespace": "",
             "file": "js/ObjectManager.js",
-            "line": 16,
+            "line": 15,
             "description": "The {{#crossLink \"ObjectManager\"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.",
             "submodule": "core",
             "extends": "BaseObject",
@@ -1660,7 +1660,7 @@
     "classitems": [
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 27,
+            "line": 26,
             "overridden": "BaseObject.enable",
             "class": "ApplicationCacheController",
             "module": "StructureJS",
@@ -1668,7 +1668,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 45,
+            "line": 44,
             "overridden": "BaseObject.disable",
             "class": "ApplicationCacheController",
             "module": "StructureJS",
@@ -1676,7 +1676,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 90,
+            "line": 89,
             "description": "The resources listed in the manifest have been fully downloaded, and the application is\nnow cached locally.",
             "itemtype": "method",
             "name": "_onCached",
@@ -1696,7 +1696,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 103,
+            "line": 102,
             "description": "The browser is checking for an update, or is attempting to download\nthe cache manifest for the first time. This is always the first event\nin the sequence.",
             "itemtype": "method",
             "name": "_onChecking",
@@ -1716,7 +1716,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 117,
+            "line": 116,
             "description": "The browser has started to download the cache manifest, either for the\nfirst time or because changes have been detected.",
             "itemtype": "method",
             "name": "_onDownloading",
@@ -1736,7 +1736,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 130,
+            "line": 129,
             "description": "An error occurred at some point - this could be caused by a number of things. This will\nalways be the last event in the sequence.",
             "itemtype": "method",
             "name": "_onError",
@@ -1756,7 +1756,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 143,
+            "line": 142,
             "description": "The cache manifest hadn't changed.",
             "itemtype": "method",
             "name": "_onNoUpdate",
@@ -1776,7 +1776,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 155,
+            "line": 154,
             "description": "The cache manifest file could not be found, indicating that the cache is no longer needed.\nThe application cache is being deleted.",
             "itemtype": "method",
             "name": "_onObsolete",
@@ -1796,7 +1796,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 168,
+            "line": 167,
             "description": "The browser had downloaded and cached an asset. This is fired once for\nevery file that is downloaded (including the current page which is cached implicitly).",
             "itemtype": "method",
             "name": "_onProgress",
@@ -1816,7 +1816,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 181,
+            "line": 180,
             "description": "The resources listed in the manifest have been newly re-downloaded, and the script can\nuse swapCache() to switch to the new cache.",
             "itemtype": "method",
             "name": "_onUpdateReady",
@@ -1836,7 +1836,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 194,
+            "line": 193,
             "description": "Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
@@ -1874,7 +1874,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 213,
+            "line": 212,
             "description": "Removes a specified listener from the ApplicationCacheController object.",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -1905,7 +1905,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 231,
+            "line": 230,
             "description": "<p>Dispatches an event within the ApplicationCacheController object.</p>",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -1926,7 +1926,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 248,
+            "line": 247,
             "description": "A reference to the applicationCache property on the window object.",
             "itemtype": "property",
             "name": "_appCache",
@@ -1940,7 +1940,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 257,
+            "line": 256,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -1954,7 +1954,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 266,
+            "line": 265,
             "description": "The isEnabled property is used to keep track of the enabled state.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -1969,7 +1969,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 36,
+            "line": 35,
             "description": "Current user namespace. The namespace is optional.",
             "itemtype": "property",
             "name": "_namespace",
@@ -1984,7 +1984,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 46,
+            "line": 45,
             "description": "A reference to window.localStorage for faster access.",
             "itemtype": "property",
             "name": "_localStorage",
@@ -1997,7 +1997,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 57,
+            "line": 56,
             "description": "Set storage namespace",
             "itemtype": "method",
             "name": "setNamespace",
@@ -2017,7 +2017,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 67,
+            "line": 66,
             "description": "Get storage namespace",
             "itemtype": "method",
             "name": "getNamespace",
@@ -2031,7 +2031,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 76,
+            "line": 75,
             "description": "Add a key/value pair to localStorage.",
             "itemtype": "method",
             "name": "addItem",
@@ -2062,7 +2062,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 102,
+            "line": 101,
             "description": "Retrieves the current value associated with the Local Storage key.",
             "itemtype": "method",
             "name": "getItem",
@@ -2090,7 +2090,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 127,
+            "line": 126,
             "description": "Returns all items in local storage as an Object with key and value properties that has a certain namespace.",
             "itemtype": "method",
             "name": "getItemsWithNamespace",
@@ -2111,7 +2111,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 151,
+            "line": 150,
             "description": "Returns all items in local storage as an Object with key and value properties.",
             "itemtype": "method",
             "name": "getAllItems",
@@ -2125,7 +2125,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 171,
+            "line": 170,
             "description": "Deletes a key/value pair from the Local Storage collection.",
             "itemtype": "method",
             "name": "removeItem",
@@ -2153,7 +2153,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 192,
+            "line": 191,
             "description": "Returns the number of items storage in local storage.",
             "itemtype": "method",
             "name": "getLength",
@@ -2167,7 +2167,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 201,
+            "line": 200,
             "description": "Returns the size of the Local Storage.",
             "itemtype": "method",
             "name": "getSize",
@@ -2181,7 +2181,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 210,
+            "line": 209,
             "description": "Removes all key/value pairs from the Local Storage area.",
             "itemtype": "method",
             "name": "clear",
@@ -2191,7 +2191,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 218,
+            "line": 217,
             "itemtype": "method",
             "name": "_onLocalStorageEvent",
             "params": [
@@ -2209,7 +2209,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 29,
+            "line": 28,
             "description": "The **Router.add** method allows you to listen for route patterns to be matched. When a match is found the callback will be executed passing a {{#crossLink \"RouterEvent\"}}{{/crossLink}}.",
             "itemtype": "method",
             "name": "add",
@@ -2242,7 +2242,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 113,
+            "line": 112,
             "description": "The **Router.remove** method will remove one of the added routes.",
             "itemtype": "method",
             "name": "remove",
@@ -2275,7 +2275,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 139,
+            "line": 138,
             "description": "The **Router.addDefault** method is meant to trigger a callback function if there are no route matches are found.",
             "itemtype": "method",
             "name": "addDefault",
@@ -2303,7 +2303,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 153,
+            "line": 152,
             "description": "The **Router.removeDefault** method will remove the default callback that was added by the **Router.addDefault** method.",
             "itemtype": "method",
             "name": "removeDefault",
@@ -2319,7 +2319,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 165,
+            "line": 164,
             "description": "Gets the current hash url minus the # or #! symbol(s).",
             "itemtype": "method",
             "name": "getHash",
@@ -2339,7 +2339,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 180,
+            "line": 179,
             "description": "The **Router.enable** method will allow the Router class to listen for the hashchange event. By default the Router class is enabled.",
             "itemtype": "method",
             "name": "enable",
@@ -2355,7 +2355,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 201,
+            "line": 200,
             "description": "The **Router.disable** method will stop the Router class from listening for the hashchange event.",
             "itemtype": "method",
             "name": "disable",
@@ -2371,7 +2371,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 222,
+            "line": 221,
             "description": "The **Router.start** method is meant to trigger or check the hash url on page load.\nEither you can call this method after you add all your routers or after all data is loaded.\nIt is recommend you only call this once per page or application instantiation.",
             "itemtype": "method",
             "name": "start",
@@ -2387,7 +2387,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 240,
+            "line": 239,
             "description": "The **Router.navigateTo** method allows you to change the hash url and to trigger a route\nthat matches the string value. The second parameter is **silent** and is **false** by\ndefault. This allows you to update the hash url without causing a route callback to be\nexecuted.",
             "itemtype": "method",
             "name": "navigateTo",
@@ -2424,7 +2424,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 298,
+            "line": 297,
             "description": "The **Router.clear** will remove all route's and the default route from the Router class.",
             "itemtype": "method",
             "name": "clear",
@@ -2440,7 +2440,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 312,
+            "line": 311,
             "description": "The **Router.destroy** method will null out all references to other objects in the Router class.",
             "itemtype": "method",
             "name": "destroy",
@@ -2456,7 +2456,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 327,
+            "line": 326,
             "description": "A simple helper method to create a url route from an unlimited number of arguments.",
             "itemtype": "method",
             "name": "buildRoute",
@@ -2483,7 +2483,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 355,
+            "line": 354,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_toQueryString",
@@ -2495,7 +2495,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 370,
+            "line": 369,
             "description": "Returns the current router event that was last triggered.",
             "itemtype": "method",
             "name": "getCurrentRoute",
@@ -2511,7 +2511,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 382,
+            "line": 381,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "_onHashChange",
@@ -2531,7 +2531,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 399,
+            "line": 398,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "_changeRoute",
@@ -2551,7 +2551,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 466,
+            "line": 465,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2565,7 +2565,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 475,
+            "line": 474,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2579,7 +2579,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 484,
+            "line": 483,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2593,7 +2593,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 493,
+            "line": 492,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2607,7 +2607,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 502,
+            "line": 501,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2625,7 +2625,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 515,
+            "line": 514,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2643,7 +2643,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 531,
+            "line": 530,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful if want to use your added routes but don't want any external forces trigger your routes.\n\nTypically what I do for games is during development/testing I allow the hash url to change the states so testers can jump\nto sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump\naround if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2661,7 +2661,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 550,
+            "line": 549,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2679,7 +2679,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 567,
+            "line": 566,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2697,7 +2697,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 580,
+            "line": 579,
             "description": "A reference to the current {{#crossLink \"RouterEvent\"}}{{/crossLink}} that was triggered.",
             "itemtype": "property",
             "name": "_currentRoute",
@@ -2711,77 +2711,77 @@
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 28,
+            "line": 27,
             "overridden": "CanvasElement.create",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 37,
+            "line": 36,
             "overridden": "CanvasElement.enable",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 56,
+            "line": 55,
             "overridden": "CanvasElement.disable",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 75,
+            "line": 74,
             "overridden": "DOMElement.addChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 95,
+            "line": 94,
             "overridden": "DOMElement.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 115,
+            "line": 114,
             "overridden": "DOMElement.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 125,
+            "line": 124,
             "overridden": "DOMElement.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 131,
+            "line": 130,
             "overridden": "DOMElement.removeChild",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 153,
+            "line": 152,
             "overridden": "DOMElement.removeChildAt",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/CanvasElement.js",
-            "line": 161,
+            "line": 160,
             "overridden": "DOMElement.removeChildren",
             "class": "DOMElement",
             "module": "StructureJS"
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 138,
+            "line": 137,
             "description": "Tracks number of times an element's width has been checked\nin order to determine if the element has been added\nto the DOM.",
             "itemtype": "property",
             "name": "checkCount",
@@ -2794,7 +2794,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 148,
+            "line": 147,
             "description": "A cached reference to the DOM Element",
             "itemtype": "property",
             "name": "element",
@@ -2808,7 +2808,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 157,
+            "line": 156,
             "description": "A cached reference to the jQuery DOM element",
             "itemtype": "property",
             "name": "$element",
@@ -2822,7 +2822,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 166,
+            "line": 165,
             "description": "If a jQuery object was passed into the constructor this will be set as true and\nthis class will not try to add the view to the DOM since it already exists.",
             "itemtype": "property",
             "name": "_isReference",
@@ -2835,7 +2835,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 175,
+            "line": 174,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_type",
@@ -2849,7 +2849,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 184,
+            "line": 183,
             "description": "Holds onto the value passed into the constructor.",
             "itemtype": "property",
             "name": "_params",
@@ -2863,7 +2863,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 203,
+            "line": 202,
             "description": "The create function is intended to provide a consistent place for the creation and adding\nof children to the view. It will automatically be called the first time that the view is added\nto another DisplayObjectContainer. It is critical that all subclasses call the super for this function in\ntheir overridden methods.\n\nThis method gets called once when the child view is added to another view. If the child view is removed\nand added to another view the create method will not be called again.",
             "itemtype": "method",
             "name": "create",
@@ -2893,7 +2893,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 288,
+            "line": 287,
             "overridden": "DisplayObjectContainer.addChild",
             "itemtype": "method",
             "name": "addChild",
@@ -2918,7 +2918,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 317,
+            "line": 316,
             "description": "Adds the sjsId to the DOM element so we can know what what Class object the HTMLElement belongs too.",
             "itemtype": "method",
             "name": "_addClientSideId",
@@ -2937,7 +2937,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 343,
+            "line": 342,
             "description": "Removes the sjsId and class type from the HTMLElement.",
             "itemtype": "method",
             "name": "_removeClientSideId",
@@ -2960,7 +2960,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 368,
+            "line": 367,
             "description": "Called when the child object is added to the DOM.\nThe method will call {{#crossLink \"DOMElement/layout:method\"}}{{/crossLink}} and dispatch the BaseEvent.ADDED_TO_STAGE event.",
             "itemtype": "method",
             "name": "_onAddedToDom",
@@ -2972,7 +2972,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 392,
+            "line": 391,
             "overridden": "DisplayObjectContainer.addChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2980,7 +2980,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 425,
+            "line": 424,
             "overridden": "DisplayObjectContainer.swapChildren",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2988,7 +2988,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 435,
+            "line": 434,
             "overridden": "DisplayObjectContainer.getChildAt",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -2996,7 +2996,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 441,
+            "line": 440,
             "description": "Returns a DOMElement object with the first found DOM element by the passed in selector.",
             "itemtype": "method",
             "name": "getChild",
@@ -3019,7 +3019,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 472,
+            "line": 471,
             "description": "Gets all the HTML elements children of this object.",
             "itemtype": "method",
             "name": "getChildren",
@@ -3043,7 +3043,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 504,
+            "line": 503,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null and the object is garbage collected if there are no other references\nto the child. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -3068,7 +3068,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 531,
+            "line": 530,
             "description": "Removes the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "removeChildAt",
@@ -3088,7 +3088,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 544,
+            "line": 543,
             "description": "Removes all child object instances from the child list of the parent object instance.\nThe parent property of the removed children is set to null and the objects are garbage collected if no other\nreferences to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -3106,7 +3106,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 563,
+            "line": 562,
             "overridden": "DisplayObjectContainer.destroy",
             "class": "DOMElement",
             "module": "StructureJS",
@@ -3114,7 +3114,7 @@
         },
         {
             "file": "js/display/DOMElement.js",
-            "line": 574,
+            "line": 573,
             "description": "A way to instantiate view classes by found html selectors.\n\nExample: It will find all children elements of the {{#crossLink \"DOMElement/$element:property\"}}{{/crossLink}} property with the 'js-shareEmail' selector.\nIf any selectors are found the EmailShareComponent class will be instantiated and pass the found jQuery element into the contructor.",
             "itemtype": "method",
             "name": "createComponents",
@@ -3140,35 +3140,8 @@
             "submodule": "view"
         },
         {
-            "file": "js/display/DOMElement.js",
-            "line": 608,
-            "description": "Only use this once per application and use used on your main application Class.\nThis selects HTML element that you want the application to have control over.\nThis method starts the lifecycle of the application.",
-            "itemtype": "method",
-            "name": "appendTo",
-            "params": [
-                {
-                    "name": "type",
-                    "description": "A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).",
-                    "type": "Any"
-                },
-                {
-                    "name": "enabled",
-                    "description": "Sets the enabled state of the object.",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "true"
-                }
-            ],
-            "example": [
-                "\n<b>Instantiation Example</b><br>\nThis example illustrates how to instantiate your main application or root class.\n\n     const app = new MainClass();\n     app.appendTo('body');\n"
-            ],
-            "class": "DOMElement",
-            "module": "StructureJS",
-            "submodule": "view"
-        },
-        {
             "file": "js/display/DisplayObject.js",
-            "line": 32,
+            "line": 31,
             "description": "The Stage of the display object.",
             "itemtype": "property",
             "name": "stage",
@@ -3181,7 +3154,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 40,
+            "line": 39,
             "description": "The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a canvas element.\nThis property is only used with the canvas specific display objects.",
             "itemtype": "property",
             "name": "ctx",
@@ -3194,7 +3167,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 49,
+            "line": 48,
             "description": "A property providing access to the x position.",
             "itemtype": "property",
             "name": "x",
@@ -3208,7 +3181,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 58,
+            "line": 57,
             "description": "A property providing access to the y position.",
             "itemtype": "property",
             "name": "y",
@@ -3222,7 +3195,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 67,
+            "line": 66,
             "description": "Indicates the width of the display object, in pixels.",
             "itemtype": "property",
             "name": "width",
@@ -3236,7 +3209,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 76,
+            "line": 75,
             "description": "Indicates the height of the display object, in pixels.",
             "itemtype": "property",
             "name": "height",
@@ -3250,7 +3223,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 85,
+            "line": 84,
             "description": "A property providing access to the unscaledWidth.",
             "itemtype": "property",
             "name": "unscaledWidth",
@@ -3264,7 +3237,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 94,
+            "line": 93,
             "description": "A property providing access to the unscaledHeight.",
             "itemtype": "property",
             "name": "unscaledHeight",
@@ -3278,7 +3251,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 103,
+            "line": 102,
             "description": "Indicates the horizontal scale (percentage) of the object as applied from the registration point.",
             "itemtype": "property",
             "name": "scaleX",
@@ -3291,7 +3264,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 111,
+            "line": 110,
             "description": "Indicates the vertical scale (percentage) of an object as applied from the registration point of the object.",
             "itemtype": "property",
             "name": "scaleY",
@@ -3304,7 +3277,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 119,
+            "line": 118,
             "description": "Indicates the rotation of the DisplayObject instance, in degrees, from its original orientation.",
             "itemtype": "property",
             "name": "rotation",
@@ -3317,7 +3290,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 127,
+            "line": 126,
             "description": "Indicates the alpha transparency value of the object specified.",
             "itemtype": "property",
             "name": "alpha",
@@ -3330,7 +3303,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 135,
+            "line": 134,
             "description": "Whether or not the display object is visible.",
             "itemtype": "property",
             "name": "visible",
@@ -3343,7 +3316,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 143,
+            "line": 142,
             "description": "Specifies whether this object receives mouse",
             "itemtype": "property",
             "name": "mouseEnabled",
@@ -3356,7 +3329,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 151,
+            "line": 150,
             "description": "A Boolean value that indicates whether the pointing hand (hand cursor) appears when the pointer rolls over a display object.",
             "itemtype": "property",
             "name": "useHandCursor",
@@ -3369,7 +3342,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 159,
+            "line": 158,
             "description": "The isCreated property is used to keep track if it is the first time this DisplayObject is created.",
             "itemtype": "property",
             "name": "isCreated",
@@ -3383,7 +3356,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 168,
+            "line": 167,
             "description": "Indicates the instance name of the DisplayObject.",
             "itemtype": "property",
             "name": "name",
@@ -3396,7 +3369,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 177,
+            "line": 176,
             "description": "The create function is intended to provide a consistent place for the creation or initializing the view.\nIt will automatically be called the first time that the view is added to a DisplayObjectContainer.\nIt is critical that all subclasses call the super for this function in their overridden methods.",
             "itemtype": "method",
             "name": "create",
@@ -3413,7 +3386,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 191,
+            "line": 190,
             "description": "The layout method provides a common function to handle updating objects in the view.",
             "itemtype": "method",
             "name": "layout",
@@ -3430,7 +3403,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 202,
+            "line": 201,
             "description": "The setSize method sets the bounds within which the containing DisplayObject would like that component to lay itself out.",
             "params": [
                 {
@@ -3457,7 +3430,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 32,
+            "line": 31,
             "description": "Returns the number of children of this object.",
             "itemtype": "property",
             "name": "numChildren",
@@ -3472,7 +3445,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 42,
+            "line": 41,
             "description": "A reference to the child DisplayObject instances to this parent object instance.",
             "itemtype": "property",
             "name": "children",
@@ -3486,7 +3459,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 51,
+            "line": 50,
             "description": "Determines whether or not the children of the object are mouse enabled.",
             "itemtype": "property",
             "name": "mouseChildren",
@@ -3499,7 +3472,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 60,
+            "line": 59,
             "description": "Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other\nchildren in this parent object instance. (To add a child to a specific index position, use the addChildAt() method.)\n\nIf you add a child object that already has a different parent, the object is removed from the child\nlist of the other parent object.",
             "itemtype": "method",
             "name": "addChild",
@@ -3523,7 +3496,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 83,
+            "line": 82,
             "description": "Adds a child DisplayObject instance to this DisplayObjectContainerContainer instance.\nThe child is added at the index position specified. An index of 0 represents the back\n(bottom) of the display list for this DisplayObjectContainerContainer object.",
             "itemtype": "method",
             "name": "addChildAt",
@@ -3552,7 +3525,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 105,
+            "line": 104,
             "description": "Removes the specified child object instance from the child list of the parent object instance.\nThe parent property of the removed child is set to null , and the object is garbage collected if no other references\nto the child exist. The index positions of any objects above the child in the parent object are decreased by 1.",
             "itemtype": "method",
             "name": "removeChild",
@@ -3576,7 +3549,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 126,
+            "line": 125,
             "description": "Removes all child DisplayObject instances from the child list of the DisplayObjectContainerContainer instance.\nThe parent property of the removed children is set to null , and the objects are garbage collected if\nno other references to the children exist.",
             "itemtype": "method",
             "name": "removeChildren",
@@ -3593,7 +3566,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 142,
+            "line": 141,
             "description": "Swaps two DisplayObject's with each other.",
             "itemtype": "method",
             "name": "swapChildren",
@@ -3622,7 +3595,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 158,
+            "line": 157,
             "description": "Swaps child objects at the two specified index positions in the child list. All other child objects in the display object container remain in the same index positions.",
             "itemtype": "method",
             "name": "swapChildrenAt",
@@ -3651,7 +3624,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 177,
+            "line": 176,
             "description": "Returns the index position of a child DisplayObject instance.",
             "itemtype": "method",
             "name": "getChildIndex",
@@ -3674,7 +3647,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 188,
+            "line": 187,
             "description": "Determines whether the specified display object is a child of the DisplayObject instance or the instance itself. The search includes the entire display list including this DisplayObject instance.",
             "itemtype": "method",
             "name": "contains",
@@ -3697,7 +3670,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 199,
+            "line": 198,
             "description": "Returns the child display object instance that exists at the specified index.",
             "itemtype": "method",
             "name": "getChildAt",
@@ -3718,7 +3691,7 @@
         },
         {
             "file": "js/display/DisplayObjectContainer.js",
-            "line": 209,
+            "line": 208,
             "description": "Gets a DisplayObject by its sjsId.",
             "itemtype": "method",
             "name": "getChildByCid",
@@ -3742,8 +3715,8 @@
         },
         {
             "file": "js/display/Stage.js",
-            "line": 88,
-            "description": "<b>DEPRECATED</b>: This <b>appendTo</b> method has been deprecated and moved to DOMElement.{{#crossLink \"DOMElement/appendTo:method\"}}{{/crossLink}}.\n\nThe selected HTML element that the application should have control over. This method starts the lifecycle of the application.",
+            "line": 84,
+            "description": "The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.",
             "itemtype": "method",
             "name": "appendTo",
             "params": [
@@ -3767,7 +3740,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 13,
+            "line": 12,
             "description": "The event occurs when the user clicks on an element.",
             "itemtype": "property",
             "name": "CLICK",
@@ -3778,7 +3751,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 21,
+            "line": 20,
             "description": "The event occurs when the user double-clicks on an element.",
             "itemtype": "property",
             "name": "DBL_CLICK",
@@ -3789,7 +3762,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 29,
+            "line": 28,
             "description": "The event occurs when a user presses a mouse button over an element.",
             "itemtype": "property",
             "name": "MOUSE_DOWN",
@@ -3800,7 +3773,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 37,
+            "line": 36,
             "description": "The event occurs when the pointer is moving while it is over an element.",
             "itemtype": "property",
             "name": "MOUSE_MOVE",
@@ -3811,7 +3784,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 45,
+            "line": 44,
             "description": "The event occurs when the pointer is moved onto an element.",
             "itemtype": "property",
             "name": "MOUSE_OVER",
@@ -3822,7 +3795,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 53,
+            "line": 52,
             "description": "The event occurs when a user moves the mouse pointer out of an element.",
             "itemtype": "property",
             "name": "MOUSE_OUT",
@@ -3833,7 +3806,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 61,
+            "line": 60,
             "description": "The event occurs when a user releases a mouse button over an element",
             "itemtype": "property",
             "name": "MOUSE_UP",
@@ -3844,7 +3817,7 @@
         },
         {
             "file": "js/event/native/MouseEvents.js",
-            "line": 69,
+            "line": 68,
             "itemtype": "property",
             "name": "TAP",
             "type": "{string}",
@@ -3854,7 +3827,7 @@
         },
         {
             "file": "js/event/native/NavigatorEvents.js",
-            "line": 13,
+            "line": 12,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "event",
             "name": "ONLINE",
@@ -3865,7 +3838,7 @@
         },
         {
             "file": "js/event/native/NavigatorEvents.js",
-            "line": 21,
+            "line": 20,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "event",
             "name": "OFFLINE",
@@ -3876,7 +3849,7 @@
         },
         {
             "file": "js/event/native/WindowEvents.js",
-            "line": 13,
+            "line": 12,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "CHANGE",
@@ -3887,7 +3860,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 42,
+            "line": 41,
             "description": "The browser is checking for an update, or is attempting to download\nthe cache manifest for the first time. This is always the first event\nin the sequence.",
             "itemtype": "event",
             "name": "CHECKING",
@@ -3899,7 +3872,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 52,
+            "line": 51,
             "description": "The cache manifest hadn't changed.",
             "itemtype": "event",
             "name": "NO_UPDATE",
@@ -3911,7 +3884,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 60,
+            "line": 59,
             "description": "The browser has started to download the cache manifest, either for the\nfirst time or because changes have been detected.",
             "itemtype": "event",
             "name": "DOWNLOADING",
@@ -3923,7 +3896,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 69,
+            "line": 68,
             "description": "The browser had downloaded and cached an asset. This is fired once for\nevery file that is downloaded (including the current page which is cached implicitly).",
             "itemtype": "event",
             "name": "PROGRESS",
@@ -3935,7 +3908,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 78,
+            "line": 77,
             "description": "The resources listed in the manifest have been fully downloaded, and the application is\nnow cached locally.",
             "itemtype": "event",
             "name": "CACHED",
@@ -3947,7 +3920,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 87,
+            "line": 86,
             "description": "The resources listed in the manifest have been newly re-downloaded, and the script can\nuse swapCache() to switch to the new cache.",
             "itemtype": "event",
             "name": "UPDATE_READY",
@@ -3959,7 +3932,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 96,
+            "line": 95,
             "description": "The cache manifest file could not be found, indicating that the cache is no longer needed.\nThe application cache is being deleted.",
             "itemtype": "event",
             "name": "OBSOLETE",
@@ -3971,7 +3944,7 @@
         },
         {
             "file": "js/event/ApplicationCacheEvent.js",
-            "line": 105,
+            "line": 104,
             "description": "An error occurred at some point - this could be caused by a number of things. This will\nalways be the last event in the sequence.",
             "itemtype": "event",
             "name": "ERROR",
@@ -3983,7 +3956,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 63,
+            "line": 62,
             "description": "The type of event.",
             "itemtype": "property",
             "name": "type",
@@ -3998,7 +3971,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 73,
+            "line": 72,
             "description": "A reference to the object that originally dispatched the event.",
             "itemtype": "property",
             "name": "target",
@@ -4013,7 +3986,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 83,
+            "line": 82,
             "description": "The currentTarget property always points to the {{#crossLink \"DisplayObjectContainer\"}}{{/crossLink}} that the event is currently processing (i.e. bubbling at).",
             "itemtype": "property",
             "name": "currentTarget",
@@ -4028,7 +4001,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 93,
+            "line": 92,
             "description": "Used to pass any type of data with the event.",
             "itemtype": "property",
             "name": "data",
@@ -4042,7 +4015,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 102,
+            "line": 101,
             "description": "Indicates whether an event is a bubbling event.",
             "itemtype": "property",
             "name": "bubbles",
@@ -4056,7 +4029,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 111,
+            "line": 110,
             "description": "Indicates whether the behavior associated with the event can be prevented.",
             "itemtype": "property",
             "name": "cancelable",
@@ -4070,7 +4043,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 120,
+            "line": 119,
             "description": "Indicates if the {{#crossLink \"BaseEvent/stopPropagation:method\"}}{{/crossLink}} was called on the event object.",
             "itemtype": "property",
             "name": "isPropagationStopped",
@@ -4085,7 +4058,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 130,
+            "line": 129,
             "description": "Indicates if the {{#crossLink \"BaseEvent/stopImmediatePropagation:method\"}}{{/crossLink}} was called on the event object.",
             "itemtype": "property",
             "name": "isImmediatePropagationStopped",
@@ -4100,7 +4073,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 145,
+            "line": 144,
             "description": "Prevents processing of any event listeners in nodes subsequent to the current node in the event flow.\nThis method does not affect any event listeners in the current node (currentTarget). In contrast,\nthe {{#crossLink \"BaseEvent/stopImmediatePropagation:method\"}}{{/crossLink}} method prevents processing\nof event listeners in both the current node and subsequent nodes. Additional calls to this method have no effect.",
             "itemtype": "method",
             "name": "stopPropagation",
@@ -4115,7 +4088,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 159,
+            "line": 158,
             "description": "Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.\nThis method takes effect immediately, and it affects event listeners in the current node. In contrast,\nthe {{#crossLink \"BaseEvent/stopPropagation:method\"}}{{/crossLink}} method doesn't take effect until\nall the event listeners in the current node finish processing.",
             "itemtype": "method",
             "name": "stopImmediatePropagation",
@@ -4130,7 +4103,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 174,
+            "line": 173,
             "description": "Duplicates an instance of an BaseEvent subclass.\n\nReturns a new BaseEvent object that is a copy of the original instance of the BaseEvent object.\n\nThe new BaseEvent object includes all the properties of the original.",
             "itemtype": "method",
             "name": "clone",
@@ -4149,7 +4122,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 196,
+            "line": 195,
             "description": "The BaseEvent.ACTIVATE constant defines the value of the type property of an activate event object.",
             "itemtype": "event",
             "name": "ACTIVATE",
@@ -4163,7 +4136,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 205,
+            "line": 204,
             "description": "The BaseEvent.ADDED constant defines the value of the type property of an added event object.",
             "itemtype": "event",
             "name": "ADDED",
@@ -4177,7 +4150,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 214,
+            "line": 213,
             "description": "The BaseEvent.ADDED_TO_STAGE constant defines the value of the type property of an addedToStage event object.",
             "itemtype": "event",
             "name": "ADDED_TO_STAGE",
@@ -4191,7 +4164,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 223,
+            "line": 222,
             "description": "The BaseEvent.CANCEL constant defines the value of the type property of a cancel event object.",
             "itemtype": "event",
             "name": "CANCEL",
@@ -4205,7 +4178,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 232,
+            "line": 231,
             "description": "The BaseEvent.CHANGE constant defines the value of the type property of a change event object.",
             "itemtype": "event",
             "name": "CHANGE",
@@ -4219,7 +4192,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 241,
+            "line": 240,
             "description": "The BaseEvent.CLEAR constant defines the value of the type property of a clear event object.",
             "itemtype": "event",
             "name": "CLEAR",
@@ -4233,7 +4206,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 250,
+            "line": 249,
             "description": "The BaseEvent.CLOSE constant defines the value of the type property of a close event object.",
             "itemtype": "event",
             "name": "CLOSE",
@@ -4247,7 +4220,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 259,
+            "line": 258,
             "description": "The BaseEvent.CLOSING constant defines the value of the type property of a closing event object.",
             "itemtype": "event",
             "name": "CLOSING",
@@ -4261,7 +4234,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 268,
+            "line": 267,
             "description": "The BaseEvent.COMPLETE constant defines the value of the type property of a complete event object.",
             "itemtype": "event",
             "name": "COMPLETE",
@@ -4275,7 +4248,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 277,
+            "line": 276,
             "description": "The BaseEvent.CONNECT constant defines the value of the type property of a connect event object.",
             "itemtype": "event",
             "name": "CONNECT",
@@ -4289,7 +4262,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 286,
+            "line": 285,
             "description": "Defines the value of the type property of a copy event object.",
             "itemtype": "event",
             "name": "COPY",
@@ -4303,7 +4276,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 295,
+            "line": 294,
             "description": "Defines the value of the type property of a cut event object.",
             "itemtype": "event",
             "name": "CUT",
@@ -4317,7 +4290,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 304,
+            "line": 303,
             "description": "The BaseEvent.DEACTIVATE constant defines the value of the type property of a deactivate event object.",
             "itemtype": "event",
             "name": "DEACTIVATE",
@@ -4331,7 +4304,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 313,
+            "line": 312,
             "description": "The BaseEvent.DISPLAYING constant defines the value of the type property of a displaying event object.",
             "itemtype": "event",
             "name": "DISPLAYING",
@@ -4345,7 +4318,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 322,
+            "line": 321,
             "description": "The BaseEvent.ENTER_FRAME constant defines the value of the type property of an enterFrame event object.",
             "itemtype": "event",
             "name": "ENTER_FRAME",
@@ -4359,7 +4332,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 331,
+            "line": 330,
             "description": "The BaseEvent.EXIT_FRAME constant defines the value of the type property of an exitFrame event object.",
             "itemtype": "event",
             "name": "EXIT_FRAME",
@@ -4373,7 +4346,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 340,
+            "line": 339,
             "description": "The BaseEvent.EXITING constant defines the value of the type property of an exiting event object.",
             "itemtype": "event",
             "name": "EXITING",
@@ -4387,7 +4360,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 349,
+            "line": 348,
             "description": "The BaseEvent.FULL_SCREEN constant defines the value of the type property of a fullScreen event object.",
             "itemtype": "event",
             "name": "FULLSCREEN",
@@ -4401,7 +4374,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 358,
+            "line": 357,
             "description": "The BaseEvent.INIT constant defines the value of the type property of an init event object.",
             "itemtype": "event",
             "name": "INIT",
@@ -4415,7 +4388,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 367,
+            "line": 366,
             "description": "The BaseEvent.NETWORK_CHANGE constant defines the value of the type property of a networkChange event object.",
             "itemtype": "event",
             "name": "NETWORK_CHANGE",
@@ -4429,7 +4402,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 376,
+            "line": 375,
             "description": "The BaseEvent.OPEN constant defines the value of the type property of an open event object.",
             "itemtype": "event",
             "name": "OPEN",
@@ -4443,7 +4416,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 385,
+            "line": 384,
             "description": "The BaseEvent.PASTE constant defines the value of the type property of a paste event object.",
             "itemtype": "event",
             "name": "PASTE",
@@ -4457,7 +4430,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 394,
+            "line": 393,
             "description": "The BaseEvent.PREPARING constant defines the value of the type property of a preparing event object.",
             "itemtype": "event",
             "name": "PREPARING",
@@ -4471,7 +4444,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 403,
+            "line": 402,
             "description": "The BaseEvent.REMOVED constant defines the value of the type property of a removed event object.",
             "itemtype": "event",
             "name": "REMOVED",
@@ -4485,7 +4458,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 412,
+            "line": 411,
             "description": "The BaseEvent.RENDER constant defines the value of the type property of a render event object.",
             "itemtype": "event",
             "name": "RENDER",
@@ -4499,7 +4472,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 421,
+            "line": 420,
             "description": "The BaseEvent.RESIZE constant defines the value of the type property of a resize event object.",
             "itemtype": "event",
             "name": "RESIZE",
@@ -4513,7 +4486,7 @@
         },
         {
             "file": "js/event/BaseEvent.js",
-            "line": 430,
+            "line": 429,
             "description": "The BaseEvent.SELECTED constant defines the value of the type property of a selected event object.",
             "itemtype": "event",
             "name": "SELECTED",
@@ -4527,7 +4500,7 @@
         },
         {
             "file": "js/event/BulkLoaderEvent.js",
-            "line": 41,
+            "line": 40,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "total",
@@ -4540,7 +4513,7 @@
         },
         {
             "file": "js/event/BulkLoaderEvent.js",
-            "line": 49,
+            "line": 48,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "totalComplete",
@@ -4553,7 +4526,7 @@
         },
         {
             "file": "js/event/BulkLoaderEvent.js",
-            "line": 57,
+            "line": 56,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "percentComplete",
@@ -4566,7 +4539,7 @@
         },
         {
             "file": "js/event/BulkLoaderEvent.js",
-            "line": 66,
+            "line": 65,
             "description": "The BulkLoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "COMPLETE",
@@ -4578,7 +4551,7 @@
         },
         {
             "file": "js/event/BulkLoaderEvent.js",
-            "line": 74,
+            "line": 73,
             "description": "The BulkLoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "LOAD_COMPLETE",
@@ -4590,7 +4563,7 @@
         },
         {
             "file": "js/event/BulkLoaderEvent.js",
-            "line": 82,
+            "line": 81,
             "description": "The BulkLoaderEvent.ERROR constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "ERROR",
@@ -4602,7 +4575,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 28,
+            "line": 27,
             "description": "Registers an event listener object with an EventBroker object so that the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
@@ -4642,7 +4615,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 52,
+            "line": 51,
             "description": "Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.",
             "itemtype": "method",
             "name": "addEventListenerOnce",
@@ -4682,7 +4655,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 76,
+            "line": 75,
             "description": "Removes a specified listener from the EventBroker object.",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -4715,7 +4688,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 93,
+            "line": 92,
             "description": "A way to listen for multiple events.\n\nIf only listening for one event use {{#crossLink \"EventBroker/addEventListener:method\"}}{{/crossLink}}.",
             "itemtype": "method",
             "name": "waitFor",
@@ -4748,7 +4721,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 120,
+            "line": 119,
             "description": "A way to listen for multiple events. Once all events all are triggered this listener will be removed.\n\nIf only listening for one event use {{#crossLink \"EventBroker/addEventListenerOnce:method\"}}{{/crossLink}}.",
             "itemtype": "method",
             "name": "waitForOnce",
@@ -4781,7 +4754,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 147,
+            "line": 146,
             "description": "A way to listen for multiple events. Once all events all are triggered it will no longer",
             "itemtype": "method",
             "name": "removeWaitFor",
@@ -4814,7 +4787,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 168,
+            "line": 167,
             "description": "Dispatches an event within the EventBroker object.",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -4851,7 +4824,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 200,
+            "line": 199,
             "description": "Helper method to dispatch events on the waitForObject objects.",
             "itemtype": "method",
             "name": "_dispatchWaitFor",
@@ -4864,7 +4837,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 226,
+            "line": 225,
             "description": "Check if EventBroker has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -4901,7 +4874,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 242,
+            "line": 241,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -4921,7 +4894,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 257,
+            "line": 256,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -4935,7 +4908,7 @@
         },
         {
             "file": "js/event/EventBroker.js",
-            "line": 266,
+            "line": 265,
             "description": "A list of wait for objects.",
             "itemtype": "property",
             "name": "_waitForList",
@@ -4949,7 +4922,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 40,
+            "line": 39,
             "description": "Holds a reference to added listeners.",
             "itemtype": "property",
             "name": "_listeners",
@@ -4962,7 +4935,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 48,
+            "line": 47,
             "description": "Indicates the object that contains a child object. Uses the parent property\nto specify a relative path to display objects that are above the current display object in the display\nlist hierarchy and helps facilitate event bubbling.",
             "itemtype": "property",
             "name": "parent",
@@ -4975,7 +4948,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 60,
+            "line": 59,
             "description": "Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
@@ -5015,7 +4988,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 103,
+            "line": 102,
             "description": "Registers an event listener object once with an EventDispatcher object so the listener will receive the notification of an event.",
             "itemtype": "method",
             "name": "addEventListenerOnce",
@@ -5055,7 +5028,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 132,
+            "line": 131,
             "description": "Removes a specified listener from the EventDispatcher object.",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -5089,7 +5062,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 160,
+            "line": 159,
             "description": "<p>Dispatches an event into the event flow. The event target is the EventDispatcher object upon which the dispatchEvent() method is called.</p>",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -5119,7 +5092,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 224,
+            "line": 223,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -5155,7 +5128,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 249,
+            "line": 248,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -5174,7 +5147,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 279,
+            "line": 278,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -5182,7 +5155,7 @@
         },
         {
             "file": "js/event/LoaderEvent.js",
-            "line": 42,
+            "line": 41,
             "description": "The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "COMPLETE",
@@ -5194,7 +5167,7 @@
         },
         {
             "file": "js/event/LoaderEvent.js",
-            "line": 50,
+            "line": 49,
             "description": "The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "LOAD_COMPLETE",
@@ -5206,7 +5179,7 @@
         },
         {
             "file": "js/event/LoaderEvent.js",
-            "line": 58,
+            "line": 57,
             "description": "The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.",
             "itemtype": "event",
             "name": "ERROR",
@@ -5218,7 +5191,7 @@
         },
         {
             "file": "js/event/LocalStorageEvent.js",
-            "line": 39,
+            "line": 38,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "originalEvent",
@@ -5231,7 +5204,7 @@
         },
         {
             "file": "js/event/LocalStorageEvent.js",
-            "line": 55,
+            "line": 54,
             "description": "The storage event is fired on a Document's Window object when a storage area changes.",
             "itemtype": "event",
             "name": "STORAGE",
@@ -5243,7 +5216,7 @@
         },
         {
             "file": "js/event/NetworkMonitorEvent.js",
-            "line": 43,
+            "line": 42,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "status",
@@ -5256,7 +5229,7 @@
         },
         {
             "file": "js/event/NetworkMonitorEvent.js",
-            "line": 51,
+            "line": 50,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "connected",
@@ -5269,7 +5242,7 @@
         },
         {
             "file": "js/event/NetworkMonitorEvent.js",
-            "line": 62,
+            "line": 61,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "event",
             "name": "STATUS",
@@ -5281,7 +5254,7 @@
         },
         {
             "file": "js/event/NetworkMonitorEvent.js",
-            "line": 70,
+            "line": 69,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "event",
             "name": "ONLINE",
@@ -5293,7 +5266,7 @@
         },
         {
             "file": "js/event/NetworkMonitorEvent.js",
-            "line": 78,
+            "line": 77,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "event",
             "name": "OFFLINE",
@@ -5305,7 +5278,7 @@
         },
         {
             "file": "js/event/RouterEvent.js",
-            "line": 42,
+            "line": 41,
             "description": "The route that was matched against {{#crossLink \"RouterEvent/routePattern:property\"}}{{/crossLink}} property.",
             "itemtype": "property",
             "name": "route",
@@ -5318,7 +5291,7 @@
         },
         {
             "file": "js/event/RouterEvent.js",
-            "line": 50,
+            "line": 49,
             "description": "The new URL to which the window is navigating.",
             "itemtype": "property",
             "name": "newURL",
@@ -5331,7 +5304,7 @@
         },
         {
             "file": "js/event/RouterEvent.js",
-            "line": 58,
+            "line": 57,
             "description": "The previous URL from which the window was navigated.",
             "itemtype": "property",
             "name": "oldURL",
@@ -5344,7 +5317,7 @@
         },
         {
             "file": "js/event/RouterEvent.js",
-            "line": 66,
+            "line": 65,
             "description": "The route pattern that matched the {{#crossLink \"RouterEvent/route:property\"}}{{/crossLink}} property.",
             "itemtype": "property",
             "name": "routePattern",
@@ -5357,7 +5330,7 @@
         },
         {
             "file": "js/event/RouterEvent.js",
-            "line": 74,
+            "line": 73,
             "description": "An array containing the parameters captured from the Route.{{#crossLink \"Route/match:method\"}}{{/crossLink}}\nbeing called with the {{#crossLink \"RouterEvent/routePattern:property\"}}{{/crossLink}} property.",
             "itemtype": "property",
             "name": "params",
@@ -5370,7 +5343,7 @@
         },
         {
             "file": "js/event/RouterEvent.js",
-            "line": 83,
+            "line": 82,
             "description": "A query object the represents the query string in the hash url.",
             "itemtype": "property",
             "name": "query",
@@ -5383,7 +5356,7 @@
         },
         {
             "file": "js/event/RouterEvent.js",
-            "line": 92,
+            "line": 91,
             "description": "The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.",
             "itemtype": "event",
             "name": "CHANGE",
@@ -5395,7 +5368,7 @@
         },
         {
             "file": "js/event/TimerEvent.js",
-            "line": 42,
+            "line": 41,
             "description": "Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.",
             "itemtype": "event",
             "name": "TIMER",
@@ -5407,7 +5380,7 @@
         },
         {
             "file": "js/event/TimerEvent.js",
-            "line": 50,
+            "line": 49,
             "description": "Dispatched whenever it has completed the number of requests set by Timer.repeatCount.",
             "itemtype": "event",
             "name": "TIMER_COMPLETE",
@@ -5419,7 +5392,7 @@
         },
         {
             "file": "js/geom/Point.js",
-            "line": 23,
+            "line": 22,
             "description": "The horizontal coordinate of the point.",
             "itemtype": "property",
             "name": "x",
@@ -5432,7 +5405,7 @@
         },
         {
             "file": "js/geom/Point.js",
-            "line": 31,
+            "line": 30,
             "description": "The vertical coordinate of the point.",
             "itemtype": "property",
             "name": "y",
@@ -5445,7 +5418,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 87,
+            "line": 86,
             "description": "Provide a way to update the  Base Model.",
             "itemtype": "method",
             "name": "update",
@@ -5467,7 +5440,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 117,
+            "line": 116,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_setData",
@@ -5489,7 +5462,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 142,
+            "line": 141,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_updateData",
@@ -5511,7 +5484,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 167,
+            "line": 166,
             "description": "Converts the Base Model data into a JSON object and deletes the sjsId property.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5530,7 +5503,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 180,
+            "line": 179,
             "description": "Converts a  Base Model to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5549,7 +5522,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 192,
+            "line": 191,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"BaseModel/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5571,7 +5544,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 208,
+            "line": 207,
             "description": "Create a clone/copy of the  Base Model.",
             "itemtype": "method",
             "name": "clone",
@@ -5590,7 +5563,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 47,
+            "line": 46,
             "description": "The list of models in the collection.",
             "itemtype": "property",
             "name": "models",
@@ -5602,7 +5575,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 55,
+            "line": 54,
             "description": "The count of how many models are in the collection.",
             "itemtype": "property",
             "name": "length",
@@ -5617,7 +5590,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 65,
+            "line": 64,
             "description": "A reference to a BaseModel type that will be used in the collection.",
             "itemtype": "property",
             "name": "_modelType",
@@ -5630,7 +5603,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 75,
+            "line": 74,
             "description": "Adds model or an array of models to the collection.",
             "itemtype": "method",
             "name": "add",
@@ -5660,7 +5633,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 118,
+            "line": 117,
             "description": "Removes a model or an array of models from the collection.",
             "itemtype": "method",
             "name": "remove",
@@ -5690,7 +5663,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 149,
+            "line": 148,
             "description": "Checks if a collection has an model.",
             "itemtype": "method",
             "name": "has",
@@ -5716,7 +5689,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 162,
+            "line": 161,
             "description": "Returns the array index position of the  Base Model.",
             "itemtype": "method",
             "name": "indexOf",
@@ -5742,7 +5715,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 175,
+            "line": 174,
             "description": "Finds an object by an index value.",
             "itemtype": "method",
             "name": "get",
@@ -5768,7 +5741,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 188,
+            "line": 187,
             "description": "Examines each element in a collection, returning an array of all elements that have the given properties.\nWhen checking properties, this method performs a deep comparison between values to determine if they are equivalent to each other.",
             "itemtype": "method",
             "name": "findBy",
@@ -5794,7 +5767,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 226,
+            "line": 225,
             "description": "Loops through the models array and creates a new array of models that match all the properties on the object passed in.",
             "itemtype": "method",
             "name": "_where",
@@ -5817,7 +5790,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 269,
+            "line": 268,
             "description": "Loops through all properties of an object and check to see if the value matches the argument passed in.",
             "itemtype": "method",
             "name": "_findPropertyValue",
@@ -5840,7 +5813,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 308,
+            "line": 307,
             "description": "Clears or remove all the models from the collection.",
             "itemtype": "method",
             "name": "clear",
@@ -5865,7 +5838,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 327,
+            "line": 326,
             "description": "Creates and returns a new collection object that contains a reference to the models in the collection cloned from.",
             "itemtype": "method",
             "name": "clone",
@@ -5884,7 +5857,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 341,
+            "line": 340,
             "description": "Creates a JSON object of the collection.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5903,7 +5876,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 363,
+            "line": 362,
             "description": "Creates a JSON string of the collection.",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5922,7 +5895,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 375,
+            "line": 374,
             "description": "Converts the string json data into an Objects and calls the {{#crossLink \"Collection/add:method\"}}{{/crossLink}} method to add the objects to the collection.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5945,7 +5918,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 390,
+            "line": 389,
             "description": "Allows you to sort models that have one or more common properties, specifying the property or properties to use as the sort keys",
             "itemtype": "method",
             "name": "sortOn",
@@ -5978,7 +5951,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 427,
+            "line": 426,
             "description": "Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code\npoint value, according to the string conversion of each element.",
             "itemtype": "method",
             "name": "sort",
@@ -6006,7 +5979,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 447,
+            "line": 446,
             "description": "The filter method creates a new array with all elements that pass the test implemented by the provided function.",
             "itemtype": "method",
             "name": "filter",
@@ -6038,7 +6011,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 466,
+            "line": 465,
             "description": "Convenient way to get a list of property values.",
             "itemtype": "method",
             "name": "pluck",
@@ -6071,7 +6044,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 496,
+            "line": 495,
             "description": "Convenient way to group models into categories/groups by a property name.",
             "itemtype": "method",
             "name": "groupBy",
@@ -6097,7 +6070,7 @@
         },
         {
             "file": "js/model/Collection.js",
-            "line": 529,
+            "line": 528,
             "description": "Changes the order of the models so that the last model becomes the first model, the penultimate model becomes the second, and so on.",
             "itemtype": "method",
             "name": "reverse",
@@ -6116,7 +6089,7 @@
         },
         {
             "file": "js/model/Route.js",
-            "line": 78,
+            "line": 77,
             "description": "The string pattern you want to have match, which can be any of the following combinations {}, ::, *, ?, \"\". See below for examples.",
             "itemtype": "property",
             "name": "routePattern",
@@ -6129,7 +6102,7 @@
         },
         {
             "file": "js/model/Route.js",
-            "line": 86,
+            "line": 85,
             "description": "The regex representation for the routePattern that was passed into the constructor.",
             "itemtype": "property",
             "name": "regex",
@@ -6143,7 +6116,7 @@
         },
         {
             "file": "js/model/Route.js",
-            "line": 95,
+            "line": 94,
             "description": "The function that should be executed when a request matches the routePattern. The {{#crossLink \"Router\"}}{{/crossLink}} class will be using this property.",
             "itemtype": "property",
             "name": "callback",
@@ -6156,7 +6129,7 @@
         },
         {
             "file": "js/model/Route.js",
-            "line": 103,
+            "line": 102,
             "description": "The scope of the callback function that should be executed. The {{#crossLink \"Router\"}}{{/crossLink}} class will be using this property.",
             "itemtype": "property",
             "name": "callbackScope",
@@ -6169,7 +6142,7 @@
         },
         {
             "file": "js/model/Route.js",
-            "line": 116,
+            "line": 115,
             "description": "Converts the routePattern that was passed into the constructor to a regexp object.",
             "itemtype": "method",
             "name": "_routePatternToRegexp",
@@ -6192,7 +6165,7 @@
         },
         {
             "file": "js/model/Route.js",
-            "line": 140,
+            "line": 139,
             "description": "Determine if a route matches a routePattern.",
             "itemtype": "method",
             "name": "match",
@@ -6216,7 +6189,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 28,
+            "line": 27,
             "description": "Returns the online status of the browser. The property returns a boolean value, with true for being online and false for being offline.",
             "example": [
                 "\n     NetworkMonitor.connected();"
@@ -6235,7 +6208,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 41,
+            "line": 40,
             "description": "Returns if the status type ('online' or 'offline') if computer or device is connected to the internet.",
             "example": [
                 "\n     NetworkMonitor.getStatus();"
@@ -6254,7 +6227,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 54,
+            "line": 53,
             "description": "Registers an event listener object with an NetworkMonitor object so that the listener receives notification of an event.",
             "example": [
                 "\n     NetworkMonitor.addEventListener(NetworkMonitorEvent.STATUS, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.status, event.connected);\n     }"
@@ -6293,7 +6266,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 74,
+            "line": 73,
             "description": "Removes a specified listener from the NetworkMonitor object.",
             "example": [
                 "\n     NetworkMonitor.removeEventListener(NetworkMonitorEvent.STATUS, this._handlerMethod, this);\n     _handlerMethod(event) {\n         console.log(event.status, event.connected);\n     }"
@@ -6325,7 +6298,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 92,
+            "line": 91,
             "description": "Adds the necessary event listeners to listen for the 'online' and 'offline' events.",
             "itemtype": "method",
             "name": "_start",
@@ -6337,7 +6310,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 109,
+            "line": 108,
             "description": "An event handler method when the native Window 'online' and 'offline' events are triggered.",
             "itemtype": "method",
             "name": "_onNetworkMonitorEvent",
@@ -6355,7 +6328,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 122,
+            "line": 121,
             "description": "<p>Dispatches an event within the NetworkMonitorEvent object.</p>",
             "itemtype": "method",
             "name": "_dispatchEvent",
@@ -6374,7 +6347,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 133,
+            "line": 132,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -6387,7 +6360,7 @@
         },
         {
             "file": "js/net/NetworkMonitor.js",
-            "line": 142,
+            "line": 141,
             "description": "A flag to determine if this class has already been initialized.",
             "itemtype": "property",
             "name": "_initialized",
@@ -6399,14 +6372,14 @@
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 12,
+            "line": 11,
             "description": "A bind polyfill for browsers that don't support the bind method.",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 32,
+            "line": 31,
             "description": "Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
             "params": [
                 {
@@ -6423,21 +6396,21 @@
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 53,
+            "line": 52,
             "description": "The jQuery addEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 87,
+            "line": 86,
             "description": "The jQuery removeEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 26,
+            "line": 25,
             "description": "Dispatches a breakpoint event.",
             "itemtype": "method",
             "name": "enable",
@@ -6450,7 +6423,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 41,
+            "line": 40,
             "overridden": "EventDispatcher.disable",
             "class": "BrowserUtil",
             "module": "StructureJS",
@@ -6458,7 +6431,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 51,
+            "line": 50,
             "description": "Returns the name of the browser.",
             "itemtype": "method",
             "name": "browserName",
@@ -6478,7 +6451,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 65,
+            "line": 64,
             "description": "Returns the version of the browser.",
             "itemtype": "method",
             "name": "browserVersion",
@@ -6507,7 +6480,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 90,
+            "line": 89,
             "description": "Gets the browser name a user agent.",
             "itemtype": "method",
             "name": "getBrowser",
@@ -6527,7 +6500,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 112,
+            "line": 111,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isAndroid",
@@ -6547,7 +6520,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 126,
+            "line": 125,
             "description": "Determines if the device OS is Android.",
             "itemtype": "method",
             "name": "isBlackBerry",
@@ -6567,7 +6540,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 140,
+            "line": 139,
             "description": "Determines if the device OS is IOS.",
             "itemtype": "method",
             "name": "isIOS",
@@ -6587,7 +6560,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 154,
+            "line": 153,
             "description": "Determines if the device OS is Opera Mini.",
             "itemtype": "method",
             "name": "isOperaMini",
@@ -6607,7 +6580,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 168,
+            "line": 167,
             "description": "Determines if the device OS is IE Mobile.",
             "itemtype": "method",
             "name": "isIEMobile",
@@ -6627,7 +6600,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 182,
+            "line": 181,
             "description": "Determines if the it is run on a mobile or desktop device.",
             "itemtype": "method",
             "name": "isMobile",
@@ -6647,7 +6620,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 196,
+            "line": 195,
             "description": "Determines if the browser can you Browser History push states.",
             "itemtype": "method",
             "name": "hasBrowserHistory",
@@ -6667,7 +6640,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 210,
+            "line": 209,
             "description": "Determines if the browser can you Local Storage.",
             "itemtype": "method",
             "name": "hasLocalStorage",
@@ -6687,7 +6660,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 229,
+            "line": 228,
             "description": "Determines if the browser can you Session Storage.",
             "itemtype": "method",
             "name": "hasSessionStorage",
@@ -6707,7 +6680,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 248,
+            "line": 247,
             "description": "Get the current breakpoint from the style sheets. You must add a body:after property with a specific content\nin each of your style sheets for this functionality to work.",
             "itemtype": "method",
             "name": "getBreakpoint",
@@ -6727,7 +6700,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 281,
+            "line": 280,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "addEventListener",
@@ -6740,7 +6713,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 293,
+            "line": 292,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -6753,7 +6726,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 303,
+            "line": 302,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -6766,7 +6739,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 320,
+            "line": 319,
             "description": "Dispatches a breakpoint event.",
             "itemtype": "method",
             "name": "_onBreakpointChange",
@@ -6779,7 +6752,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 330,
+            "line": 329,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -6793,7 +6766,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 339,
+            "line": 338,
             "description": "A reference to the browser window object.",
             "itemtype": "property",
             "name": "_window",
@@ -6807,7 +6780,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 348,
+            "line": 347,
             "description": "A reference to the getComputedStyle method.",
             "itemtype": "property",
             "name": "_styleDeclaration",
@@ -6821,7 +6794,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 357,
+            "line": 356,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_onBreakpointChangeHandler",
@@ -6835,7 +6808,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 366,
+            "line": 365,
             "description": "The delay in milliseconds for the Util.{{#crossLink \"Util/debounce:method\"}}{{/crossLink}} method that dispatches\nthe BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink \"BrowserUtil/getBreakpoint:method\"}}{{/crossLink}}.",
             "itemtype": "property",
             "name": "debounceDelay",
@@ -6850,7 +6823,7 @@
         },
         {
             "file": "js/util/BrowserUtil.js",
-            "line": 377,
+            "line": 376,
             "description": "The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -6864,7 +6837,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 35,
+            "line": 34,
             "description": "A collection to store all the IDataStore's.",
             "itemtype": "property",
             "name": "_dataStores",
@@ -6877,7 +6850,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 43,
+            "line": 42,
             "description": "The total number of items that have been loaded.",
             "itemtype": "property",
             "name": "_totalComplete",
@@ -6890,7 +6863,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 51,
+            "line": 50,
             "description": "A queue of IDataStore's that need to be loaded still.",
             "itemtype": "property",
             "name": "_queue",
@@ -6903,7 +6876,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 59,
+            "line": 58,
             "description": "Set the maximum number of simultaneous connections (default is 3).",
             "itemtype": "property",
             "name": "maxConnections",
@@ -6916,7 +6889,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 69,
+            "line": 68,
             "description": "Helper method to add IDataStore's.",
             "itemtype": "method",
             "name": "addFile",
@@ -6939,7 +6912,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 88,
+            "line": 87,
             "description": "Helper method to get IDataStore's.",
             "itemtype": "method",
             "name": "getFile",
@@ -6958,7 +6931,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 99,
+            "line": 98,
             "description": "Helper method to start the loading process.",
             "itemtype": "method",
             "name": "start",
@@ -6970,7 +6943,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 116,
+            "line": 115,
             "description": "Helper method to stop/clear the loader.",
             "itemtype": "method",
             "name": "clear",
@@ -6982,7 +6955,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 132,
+            "line": 131,
             "description": "Event handler method called every time a IDataStore's is completely loaded.",
             "itemtype": "method",
             "name": "_onComplete",
@@ -7001,7 +6974,7 @@
         },
         {
             "file": "js/util/BulkLoader.js",
-            "line": 158,
+            "line": 157,
             "description": "Event handler method called once all IDataStore's are completely loaded.",
             "itemtype": "method",
             "name": "_onLoadComplete",
@@ -7013,7 +6986,7 @@
         },
         {
             "file": "js/util/ComponentFactory.js",
-            "line": 24,
+            "line": 23,
             "description": "Takes a jQuery object that has one or more elements in it and passes a single jQuery element into the constructor of the class that is also being passed in.",
             "itemtype": "method",
             "name": "create",
@@ -7052,7 +7025,7 @@
         },
         {
             "file": "js/util/ComponentFactory.js",
-            "line": 66,
+            "line": 65,
             "description": "Helper method to create the component.",
             "itemtype": "method",
             "name": "_createComponent",
@@ -7064,7 +7037,7 @@
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 23,
+            "line": 22,
             "description": "Returns the suffix of a given day.",
             "itemtype": "method",
             "name": "getDaySuffix",
@@ -7091,7 +7064,7 @@
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 48,
+            "line": 47,
             "description": "A list of day names.",
             "itemtype": "property",
             "name": "LONG_DAY_LABELS",
@@ -7109,7 +7082,7 @@
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 61,
+            "line": 60,
             "description": "A list of short day names",
             "itemtype": "property",
             "name": "SHORT_DAY_LABELS",
@@ -7127,7 +7100,7 @@
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 74,
+            "line": 73,
             "description": "A list of month names.",
             "itemtype": "property",
             "name": "LONG_MONTH_LABELS",
@@ -7145,7 +7118,7 @@
         },
         {
             "file": "js/util/DateUtil.js",
-            "line": 87,
+            "line": 86,
             "description": "A list of short month names.",
             "itemtype": "property",
             "name": "SHORT_MONTH_LABELS",
@@ -7169,7 +7142,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 23,
+            "line": 22,
             "description": "Returns a number constrained between min and max.",
             "itemtype": "method",
             "name": "constrain",
@@ -7203,7 +7176,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 52,
+            "line": 51,
             "description": "Returns a random number between min and max.",
             "itemtype": "method",
             "name": "randomRange",
@@ -7239,7 +7212,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 71,
+            "line": 70,
             "description": "Returns the percentage of a number in a given range.\nExample: num = 15 range 10 to 20 // outputs 0.5",
             "itemtype": "method",
             "name": "rangeToPercent",
@@ -7283,7 +7256,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 97,
+            "line": 96,
             "description": "Returns the number that corresponds to the percentage in a given range.\nExample: percent = 0.5 range 10 to 20 // outputs 15",
             "itemtype": "method",
             "name": "percentToRange",
@@ -7317,7 +7290,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 113,
+            "line": 112,
             "description": "Re-maps a number from one range to another. The output is the same as inputing the result of rangeToPercent() numbero percentToRange().\nExample: num = 10, min1 = 0, max1 = 100, min2 = 0, max2 = 50 // outputs 5",
             "itemtype": "method",
             "name": "map",
@@ -7361,7 +7334,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 145,
+            "line": 144,
             "description": "Converts radians to degrees.",
             "itemtype": "method",
             "name": "radiansToDegrees",
@@ -7385,7 +7358,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 161,
+            "line": 160,
             "description": "Converts degrees to radians.",
             "itemtype": "method",
             "name": "degreesToRadians",
@@ -7409,7 +7382,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 177,
+            "line": 176,
             "description": "Returns 1 if the value is >= 0. Returns -1 if the value is < 0.",
             "itemtype": "method",
             "name": "sign",
@@ -7433,7 +7406,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 196,
+            "line": 195,
             "description": "Check if number is positive (zero is positive).",
             "itemtype": "method",
             "name": "isPositive",
@@ -7457,7 +7430,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 212,
+            "line": 211,
             "description": "Check if number is negative.",
             "itemtype": "method",
             "name": "isNegative",
@@ -7481,7 +7454,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 228,
+            "line": 227,
             "description": "Check if number is odd (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isOdd",
@@ -7505,7 +7478,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 246,
+            "line": 245,
             "description": "Check if number is even (convert to Integer if necessary).",
             "itemtype": "method",
             "name": "isEven",
@@ -7529,7 +7502,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 264,
+            "line": 263,
             "description": "Check if number is Prime (divisible only by itself and one).",
             "itemtype": "method",
             "name": "isPrime",
@@ -7553,7 +7526,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 290,
+            "line": 289,
             "description": "Calculate the factorial of the integer.",
             "itemtype": "method",
             "name": "factorial",
@@ -7577,7 +7550,7 @@
         },
         {
             "file": "js/util/MathUtil.js",
-            "line": 315,
+            "line": 314,
             "description": "Return an array of divisors of the integer.",
             "itemtype": "method",
             "name": "getDivisors",
@@ -7601,7 +7574,7 @@
         },
         {
             "file": "js/util/MerchantUtil.js",
-            "line": 23,
+            "line": 22,
             "description": "Determines if credit card is valid using the Luhn formula.",
             "itemtype": "method",
             "name": "isCreditCard",
@@ -7628,7 +7601,7 @@
         },
         {
             "file": "js/util/MerchantUtil.js",
-            "line": 55,
+            "line": 54,
             "description": "Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.",
             "itemtype": "method",
             "name": "encodeCreditCardNumber",
@@ -7669,7 +7642,7 @@
         },
         {
             "file": "js/util/MerchantUtil.js",
-            "line": 82,
+            "line": 81,
             "description": "Returns a credit card provider name from the credit card number passed in.",
             "itemtype": "method",
             "name": "getCreditCardProvider",
@@ -7693,7 +7666,7 @@
         },
         {
             "file": "js/util/MerchantUtil.js",
-            "line": 118,
+            "line": 117,
             "description": "Validate a credit card's expiration date.",
             "itemtype": "method",
             "name": "isValidExpirationDate",
@@ -7722,7 +7695,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 23,
+            "line": 22,
             "description": "Converts bytes into megabytes.",
             "itemtype": "method",
             "name": "bytesToMegabytes",
@@ -7749,7 +7722,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 37,
+            "line": 36,
             "description": "Converts centimeters into inches.",
             "itemtype": "method",
             "name": "centimeterToInch",
@@ -7776,7 +7749,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 52,
+            "line": 51,
             "description": "Converts inches into centimeters.",
             "itemtype": "method",
             "name": "inchToCentimeter",
@@ -7803,7 +7776,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 67,
+            "line": 66,
             "description": "Converts feet into meters.",
             "itemtype": "method",
             "name": "feetToMeter",
@@ -7830,7 +7803,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 83,
+            "line": 82,
             "description": "Converts seconds into hour, minutes, seconds.",
             "itemtype": "method",
             "name": "convertToHHMMSS",
@@ -7861,7 +7834,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 113,
+            "line": 112,
             "description": "Formats a number from 0-9 to display with 2 digits.",
             "itemtype": "method",
             "name": "doubleDigitFormat",
@@ -7888,7 +7861,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 137,
+            "line": 136,
             "description": "Formats a currency string as a number.",
             "itemtype": "method",
             "name": "unformatUnit",
@@ -7915,7 +7888,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 174,
+            "line": 173,
             "description": "Formats a number as a currency string.",
             "itemtype": "method",
             "name": "formatUnit",
@@ -7977,7 +7950,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 227,
+            "line": 226,
             "description": "Convert Fahrenheit to Celsius.",
             "itemtype": "method",
             "name": "fahrenheitToCelsius",
@@ -8006,7 +7979,7 @@
         },
         {
             "file": "js/util/NumberUtil.js",
-            "line": 259,
+            "line": 258,
             "description": "Convert Celsius to Fahrenheit.",
             "itemtype": "method",
             "name": "celsiusToFahrenheit",
@@ -8035,7 +8008,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 23,
+            "line": 22,
             "description": "Gets the extension name off the string being passed in.",
             "itemtype": "method",
             "name": "getExtension",
@@ -8067,7 +8040,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 44,
+            "line": 43,
             "description": "Converts a string to a sentence case string.",
             "itemtype": "method",
             "name": "toSentence",
@@ -8100,7 +8073,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 77,
+            "line": 76,
             "description": "Converts a string to a camel case string.",
             "itemtype": "method",
             "name": "toCamelCase",
@@ -8127,7 +8100,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 95,
+            "line": 94,
             "description": "Converts a hyphen string to a pascal case string.",
             "itemtype": "method",
             "name": "toPascalCase",
@@ -8154,7 +8127,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 113,
+            "line": 112,
             "description": "Converts a string to a constant case string.",
             "itemtype": "method",
             "name": "toConstantCase",
@@ -8181,7 +8154,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 129,
+            "line": 128,
             "description": "Creates a universally unique identifier.",
             "itemtype": "method",
             "name": "createUUID",
@@ -8201,7 +8174,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 148,
+            "line": 147,
             "description": "Converts a query string to an object.",
             "itemtype": "method",
             "name": "queryStringToObject",
@@ -8235,7 +8208,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 182,
+            "line": 181,
             "description": "Remove all whitespace from the string passed in.",
             "itemtype": "method",
             "name": "removeAllWhitespace",
@@ -8262,7 +8235,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 198,
+            "line": 197,
             "description": "Remove leading and trailing whitespace.",
             "itemtype": "method",
             "name": "removeLeadingTrailingWhitespace",
@@ -8289,7 +8262,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 214,
+            "line": 213,
             "itemtype": "method",
             "name": "truncate",
             "params": [
@@ -8325,7 +8298,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 239,
+            "line": 238,
             "description": "Replaces each format item in a specified string with the text equivalent of a corresponding object's value.",
             "itemtype": "method",
             "name": "format",
@@ -8357,7 +8330,7 @@
         },
         {
             "file": "js/util/StringUtil.js",
-            "line": 265,
+            "line": 264,
             "description": "Updates a value in the query string by its key name.",
             "itemtype": "method",
             "name": "paramReplace",
@@ -8388,7 +8361,7 @@
         },
         {
             "file": "js/util/TemplateFactory.js",
-            "line": 26,
+            "line": 25,
             "description": "Creates a template.",
             "itemtype": "method",
             "name": "create",
@@ -8421,7 +8394,7 @@
         },
         {
             "file": "js/util/TemplateFactory.js",
-            "line": 79,
+            "line": 78,
             "description": "A constant value for using Underscore or Lodash templates.",
             "itemtype": "property",
             "name": "UNDERSCORE",
@@ -8436,7 +8409,7 @@
         },
         {
             "file": "js/util/TemplateFactory.js",
-            "line": 89,
+            "line": 88,
             "description": "A constant value for using Handlebars templates. This is the default template engine.",
             "itemtype": "property",
             "name": "HANDLEBARS",
@@ -8451,7 +8424,7 @@
         },
         {
             "file": "js/util/TemplateFactory.js",
-            "line": 99,
+            "line": 98,
             "description": "Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS",
             "itemtype": "property",
             "name": "templateEngine",
@@ -8466,7 +8439,7 @@
         },
         {
             "file": "js/util/TemplateFactory.js",
-            "line": 109,
+            "line": 108,
             "description": "The global namespace for pre-compiled templates.",
             "itemtype": "property",
             "name": "templateNamespace",
@@ -8481,7 +8454,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 35,
+            "line": 34,
             "description": "A reference to the setInterval object.",
             "itemtype": "property",
             "name": "_timer",
@@ -8494,7 +8467,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 43,
+            "line": 42,
             "description": "The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.",
             "itemtype": "property",
             "name": "currentCount",
@@ -8507,7 +8480,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 51,
+            "line": 50,
             "description": "The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.\n<strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.",
             "itemtype": "property",
             "name": "delay",
@@ -8520,7 +8493,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 60,
+            "line": 59,
             "description": "The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.",
             "itemtype": "property",
             "name": "repeatCount",
@@ -8533,7 +8506,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 68,
+            "line": 67,
             "description": "The timer's current state; true if the timer is running, otherwise false.",
             "itemtype": "property",
             "name": "running",
@@ -8545,7 +8518,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 80,
+            "line": 79,
             "description": "Returns the total number of times the timer has fired since it started at zero.",
             "itemtype": "method",
             "name": "getCurrentCount",
@@ -8559,7 +8532,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 89,
+            "line": 88,
             "description": "Returns the delay time in milliseconds.",
             "itemtype": "method",
             "name": "getDelay",
@@ -8573,7 +8546,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 98,
+            "line": 97,
             "description": "Sets the delay, in milliseconds, between timer events.",
             "itemtype": "method",
             "name": "setDelay",
@@ -8590,7 +8563,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 110,
+            "line": 109,
             "description": "Returns the total number of times the timer is set to run.",
             "itemtype": "method",
             "name": "getRepeatCount",
@@ -8604,7 +8577,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 119,
+            "line": 118,
             "description": "Set the total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.",
             "itemtype": "method",
             "name": "setRepeatCount",
@@ -8621,7 +8594,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 132,
+            "line": 131,
             "description": "Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.",
             "itemtype": "method",
             "name": "reset",
@@ -8631,7 +8604,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 142,
+            "line": 141,
             "description": "Starts the timer, if it is not already running.",
             "itemtype": "method",
             "name": "start",
@@ -8641,7 +8614,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 158,
+            "line": 157,
             "description": "Stops the timer.",
             "itemtype": "method",
             "name": "stop",
@@ -8651,7 +8624,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 168,
+            "line": 167,
             "itemtype": "method",
             "name": "_decrementCounter",
             "access": "protected",
@@ -8662,7 +8635,7 @@
         },
         {
             "file": "js/util/Timer.js",
-            "line": 186,
+            "line": 185,
             "overridden": "EventDispatcher.destroy",
             "class": "Timer",
             "module": "StructureJS",
@@ -8670,7 +8643,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 23,
+            "line": 22,
             "description": "Generates a unique ID. If a prefix is passed in, the value will be appended to it.",
             "itemtype": "method",
             "name": "uniqueId",
@@ -8698,7 +8671,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 48,
+            "line": 47,
             "description": "Removes a list of properties from an object.",
             "itemtype": "method",
             "name": "deletePropertyFromObject",
@@ -8730,7 +8703,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 98,
+            "line": 97,
             "description": "Renames a property name on an object.",
             "itemtype": "method",
             "name": "renamePropertyOnObject",
@@ -8767,7 +8740,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 123,
+            "line": 122,
             "description": "Makes a clone of an object.",
             "itemtype": "method",
             "name": "clone",
@@ -8794,7 +8767,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 168,
+            "line": 167,
             "description": "Converts a string or number to a boolean.",
             "itemtype": "method",
             "name": "toBoolean",
@@ -8821,7 +8794,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 190,
+            "line": 189,
             "description": "Returns the name of the function/object passed in.",
             "itemtype": "method",
             "name": "getName",
@@ -8846,7 +8819,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 230,
+            "line": 229,
             "description": "Creates and returns a new debounced version of the passed function which will postpone its execution until after\nwait milliseconds have elapsed since the last time it was invoked.",
             "itemtype": "method",
             "name": "debounce",
@@ -8884,7 +8857,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 269,
+            "line": 268,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "applyMixins",
@@ -8912,7 +8885,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 305,
+            "line": 304,
             "description": "Returns a new array with duplicates removed.",
             "itemtype": "method",
             "name": "unique",
@@ -8935,7 +8908,7 @@
         },
         {
             "file": "js/util/Util.js",
-            "line": 322,
+            "line": 321,
             "description": "Keeps track of the count for the uniqueId method.",
             "itemtype": "property",
             "name": "_idCounter",
@@ -8949,7 +8922,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 23,
+            "line": 22,
             "description": "Determines if the String passed has a length.",
             "itemtype": "method",
             "name": "isEmpty",
@@ -8976,7 +8949,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 41,
+            "line": 40,
             "description": "Determines if the two values passed in are the same.",
             "itemtype": "method",
             "name": "isMatch",
@@ -9008,7 +8981,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 57,
+            "line": 56,
             "description": "Determines if the String passed in is a valid email address.",
             "itemtype": "method",
             "name": "isValidEmailAddress",
@@ -9035,7 +9008,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 73,
+            "line": 72,
             "description": "Determines if the String passed in is a phone number.",
             "itemtype": "method",
             "name": "isValidPhoneNumber",
@@ -9062,7 +9035,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 89,
+            "line": 88,
             "description": "Determines if the String passed in is a zip code.",
             "itemtype": "method",
             "name": "isZipCode",
@@ -9089,7 +9062,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 105,
+            "line": 104,
             "description": "Determines if the String passed in is a postal code.",
             "itemtype": "method",
             "name": "isPostalCode",
@@ -9116,7 +9089,7 @@
         },
         {
             "file": "js/util/ValidationUtil.js",
-            "line": 121,
+            "line": 120,
             "description": "Determines if the String passed in is a Social Security Number.",
             "itemtype": "method",
             "name": "isSocialSecurityNumber",
@@ -9143,7 +9116,7 @@
         },
         {
             "file": "js/BaseObject.js",
-            "line": 24,
+            "line": 27,
             "description": "The sjsId (StructureJS ID) is a unique identifier automatically assigned to most StructureJS objects upon instantiation.",
             "itemtype": "property",
             "name": "sjsId",
@@ -9159,7 +9132,7 @@
         },
         {
             "file": "js/BaseObject.js",
-            "line": 37,
+            "line": 40,
             "description": "Returns the fully qualified class name of an object.",
             "itemtype": "method",
             "name": "getQualifiedClassName",
@@ -9178,7 +9151,7 @@
         },
         {
             "file": "js/BaseObject.js",
-            "line": 52,
+            "line": 55,
             "description": "The purpose of the destroy method is to make an object ready for garbage collection. This\nshould be thought of as a one way function. Once destroy is called no further methods should be\ncalled on the object or properties accessed. It is the responsibility of those who implement this\nfunction to stop all running Timers, all running Sounds, and take any other steps necessary to make an\nobject eligible for garbage collection.\n\nBy default the destroy method will null out all properties of the class automatically. You should call destroy\non other objects before calling the super.",
             "itemtype": "method",
             "name": "destroy",
@@ -9197,7 +9170,7 @@
         },
         {
             "file": "js/ObjectManager.js",
-            "line": 32,
+            "line": 31,
             "description": "The isEnabled property is used to keep track of the enabled state of the object.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -9211,7 +9184,7 @@
         },
         {
             "file": "js/ObjectManager.js",
-            "line": 42,
+            "line": 41,
             "description": "The enable method is responsible for enabling event listeners and/or children of the containing objects.",
             "itemtype": "method",
             "name": "enable",
@@ -9227,7 +9200,7 @@
         },
         {
             "file": "js/ObjectManager.js",
-            "line": 65,
+            "line": 64,
             "description": "The disable method is responsible for disabling event listeners and/or children of the containing objects.",
             "itemtype": "method",
             "name": "disable",
@@ -9245,283 +9218,283 @@
     "warnings": [
         {
             "message": "unknown tag: overridden",
-            "line": " js/controller/ApplicationCacheController.js:27"
+            "line": " js/controller/ApplicationCacheController.js:26"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/controller/ApplicationCacheController.js:45"
+            "line": " js/controller/ApplicationCacheController.js:44"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:57"
+            "line": " js/controller/LocalStorageController.js:56"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:67"
+            "line": " js/controller/LocalStorageController.js:66"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:102"
+            "line": " js/controller/LocalStorageController.js:101"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:192"
+            "line": " js/controller/LocalStorageController.js:191"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:201"
+            "line": " js/controller/LocalStorageController.js:200"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:28"
+            "line": " js/display/CanvasElement.js:27"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:37"
+            "line": " js/display/CanvasElement.js:36"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:56"
+            "line": " js/display/CanvasElement.js:55"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:75"
+            "line": " js/display/CanvasElement.js:74"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:95"
+            "line": " js/display/CanvasElement.js:94"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:115"
+            "line": " js/display/CanvasElement.js:114"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:125"
+            "line": " js/display/CanvasElement.js:124"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:131"
+            "line": " js/display/CanvasElement.js:130"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:153"
+            "line": " js/display/CanvasElement.js:152"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/CanvasElement.js:161"
+            "line": " js/display/CanvasElement.js:160"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:203"
+            "line": " js/display/DOMElement.js:202"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:288"
+            "line": " js/display/DOMElement.js:287"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:288"
+            "line": " js/display/DOMElement.js:287"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:392"
+            "line": " js/display/DOMElement.js:391"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:425"
+            "line": " js/display/DOMElement.js:424"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:435"
+            "line": " js/display/DOMElement.js:434"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:441"
+            "line": " js/display/DOMElement.js:440"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:472"
+            "line": " js/display/DOMElement.js:471"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:504"
+            "line": " js/display/DOMElement.js:503"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:504"
+            "line": " js/display/DOMElement.js:503"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DOMElement.js:544"
+            "line": " js/display/DOMElement.js:543"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DOMElement.js:544"
+            "line": " js/display/DOMElement.js:543"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/display/DOMElement.js:563"
+            "line": " js/display/DOMElement.js:562"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObject.js:177"
+            "line": " js/display/DisplayObject.js:176"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObject.js:191"
+            "line": " js/display/DisplayObject.js:190"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObject.js:202"
+            "line": " js/display/DisplayObject.js:201"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:60"
+            "line": " js/display/DisplayObjectContainer.js:59"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:83"
+            "line": " js/display/DisplayObjectContainer.js:82"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:105"
+            "line": " js/display/DisplayObjectContainer.js:104"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:126"
+            "line": " js/display/DisplayObjectContainer.js:125"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:142"
+            "line": " js/display/DisplayObjectContainer.js:141"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:158"
+            "line": " js/display/DisplayObjectContainer.js:157"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:177"
+            "line": " js/display/DisplayObjectContainer.js:176"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:188"
+            "line": " js/display/DisplayObjectContainer.js:187"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:199"
+            "line": " js/display/DisplayObjectContainer.js:198"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObjectContainer.js:209"
+            "line": " js/display/DisplayObjectContainer.js:208"
         },
         {
             "message": "unknown tag: override",
-            "line": " js/display/DisplayObjectContainer.js:209"
+            "line": " js/display/DisplayObjectContainer.js:208"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/event/BaseEvent.js:174"
+            "line": " js/event/BaseEvent.js:173"
         },
         {
             "message": "unknown tag: hide",
-            "line": " js/event/EventDispatcher.js:132"
+            "line": " js/event/EventDispatcher.js:131"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/event/EventDispatcher.js:279"
+            "line": " js/event/EventDispatcher.js:278"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:167"
+            "line": " js/model/BaseModel.js:166"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:180"
+            "line": " js/model/BaseModel.js:179"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:208"
+            "line": " js/model/BaseModel.js:207"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:327"
+            "line": " js/model/Collection.js:326"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:341"
+            "line": " js/model/Collection.js:340"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Collection.js:363"
+            "line": " js/model/Collection.js:362"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Route.js:116"
+            "line": " js/model/Route.js:115"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/Route.js:140"
+            "line": " js/model/Route.js:139"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/net/NetworkMonitor.js:28"
+            "line": " js/net/NetworkMonitor.js:27"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/net/NetworkMonitor.js:41"
+            "line": " js/net/NetworkMonitor.js:40"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/plugin/jquery.eventListener.js:32"
+            "line": " js/plugin/jquery.eventListener.js:31"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/util/BrowserUtil.js:41"
+            "line": " js/util/BrowserUtil.js:40"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:112"
+            "line": " js/util/BrowserUtil.js:111"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:126"
+            "line": " js/util/BrowserUtil.js:125"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:140"
+            "line": " js/util/BrowserUtil.js:139"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:154"
+            "line": " js/util/BrowserUtil.js:153"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:168"
+            "line": " js/util/BrowserUtil.js:167"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:182"
+            "line": " js/util/BrowserUtil.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:196"
+            "line": " js/util/BrowserUtil.js:195"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:210"
+            "line": " js/util/BrowserUtil.js:209"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:229"
+            "line": " js/util/BrowserUtil.js:228"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/BrowserUtil.js:248"
+            "line": " js/util/BrowserUtil.js:247"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/DateUtil.js:23"
+            "line": " js/util/DateUtil.js:22"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9529,267 +9502,267 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/MerchantUtil.js:23"
+            "line": " js/util/MerchantUtil.js:22"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/MerchantUtil.js:55"
+            "line": " js/util/MerchantUtil.js:54"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/MerchantUtil.js:82"
+            "line": " js/util/MerchantUtil.js:81"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/MerchantUtil.js:118"
+            "line": " js/util/MerchantUtil.js:117"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:23"
+            "line": " js/util/NumberUtil.js:22"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:37"
+            "line": " js/util/NumberUtil.js:36"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:52"
+            "line": " js/util/NumberUtil.js:51"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:67"
+            "line": " js/util/NumberUtil.js:66"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:83"
+            "line": " js/util/NumberUtil.js:82"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:113"
+            "line": " js/util/NumberUtil.js:112"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:137"
+            "line": " js/util/NumberUtil.js:136"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/NumberUtil.js:174"
+            "line": " js/util/NumberUtil.js:173"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:23"
+            "line": " js/util/StringUtil.js:22"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:44"
+            "line": " js/util/StringUtil.js:43"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:77"
+            "line": " js/util/StringUtil.js:76"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:95"
+            "line": " js/util/StringUtil.js:94"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:113"
+            "line": " js/util/StringUtil.js:112"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:129"
+            "line": " js/util/StringUtil.js:128"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:148"
+            "line": " js/util/StringUtil.js:147"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:182"
+            "line": " js/util/StringUtil.js:181"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:198"
+            "line": " js/util/StringUtil.js:197"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:214"
+            "line": " js/util/StringUtil.js:213"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:239"
+            "line": " js/util/StringUtil.js:238"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/StringUtil.js:265"
+            "line": " js/util/StringUtil.js:264"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/TemplateFactory.js:26"
+            "line": " js/util/TemplateFactory.js:25"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Timer.js:80"
+            "line": " js/util/Timer.js:79"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Timer.js:89"
+            "line": " js/util/Timer.js:88"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Timer.js:110"
+            "line": " js/util/Timer.js:109"
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/util/Timer.js:186"
+            "line": " js/util/Timer.js:185"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:23"
+            "line": " js/util/Util.js:22"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:48"
+            "line": " js/util/Util.js:47"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:98"
+            "line": " js/util/Util.js:97"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:123"
+            "line": " js/util/Util.js:122"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:168"
+            "line": " js/util/Util.js:167"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/Util.js:190"
+            "line": " js/util/Util.js:189"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:23"
+            "line": " js/util/ValidationUtil.js:22"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:41"
+            "line": " js/util/ValidationUtil.js:40"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:57"
+            "line": " js/util/ValidationUtil.js:56"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:73"
+            "line": " js/util/ValidationUtil.js:72"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:89"
+            "line": " js/util/ValidationUtil.js:88"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:105"
+            "line": " js/util/ValidationUtil.js:104"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/util/ValidationUtil.js:121"
+            "line": " js/util/ValidationUtil.js:120"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/BaseObject.js:37"
+            "line": " js/BaseObject.js:40"
         },
         {
             "message": "Missing item type",
-            "line": " js/controller/ApplicationCacheController.js:27"
+            "line": " js/controller/ApplicationCacheController.js:26"
         },
         {
             "message": "Missing item type",
-            "line": " js/controller/ApplicationCacheController.js:45"
+            "line": " js/controller/ApplicationCacheController.js:44"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:28"
+            "line": " js/display/CanvasElement.js:27"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:37"
+            "line": " js/display/CanvasElement.js:36"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:56"
+            "line": " js/display/CanvasElement.js:55"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:75"
+            "line": " js/display/CanvasElement.js:74"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:95"
+            "line": " js/display/CanvasElement.js:94"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:115"
+            "line": " js/display/CanvasElement.js:114"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:125"
+            "line": " js/display/CanvasElement.js:124"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:131"
+            "line": " js/display/CanvasElement.js:130"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:153"
+            "line": " js/display/CanvasElement.js:152"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/CanvasElement.js:161"
+            "line": " js/display/CanvasElement.js:160"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:392"
+            "line": " js/display/DOMElement.js:391"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:425"
+            "line": " js/display/DOMElement.js:424"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:435"
+            "line": " js/display/DOMElement.js:434"
         },
         {
             "message": "Missing item type",
-            "line": " js/display/DOMElement.js:563"
+            "line": " js/display/DOMElement.js:562"
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObject would like that component to lay itself out.",
-            "line": " js/display/DisplayObject.js:202"
+            "line": " js/display/DisplayObject.js:201"
         },
         {
             "message": "Missing item type",
-            "line": " js/event/EventDispatcher.js:279"
+            "line": " js/event/EventDispatcher.js:278"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",
-            "line": " js/plugin/jquery.eventListener.js:12"
+            "line": " js/plugin/jquery.eventListener.js:11"
         },
         {
             "message": "Missing item type\nGenerates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
-            "line": " js/plugin/jquery.eventListener.js:32"
+            "line": " js/plugin/jquery.eventListener.js:31"
         },
         {
             "message": "Missing item type\nThe jQuery addEventListener plugin",
-            "line": " js/plugin/jquery.eventListener.js:53"
+            "line": " js/plugin/jquery.eventListener.js:52"
         },
         {
             "message": "Missing item type\nThe jQuery removeEventListener plugin",
-            "line": " js/plugin/jquery.eventListener.js:87"
+            "line": " js/plugin/jquery.eventListener.js:86"
         },
         {
             "message": "Missing item type",
-            "line": " js/util/BrowserUtil.js:41"
+            "line": " js/util/BrowserUtil.js:40"
         },
         {
             "message": "Missing item type\nUMD (Universal Module Definition) wrapper.",
@@ -9797,7 +9770,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/util/Timer.js:186"
+            "line": " js/util/Timer.js:185"
         }
     ]
 }
