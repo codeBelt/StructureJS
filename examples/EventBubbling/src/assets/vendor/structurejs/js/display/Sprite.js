@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObjectContainer'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
     var Sprite = (function (_super) {
         __extends(Sprite, _super);
@@ -29,8 +30,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var newWidth;
             var newHeight;
             var child;
-            for (var i_1 = 0; i_1 < this.numChildren; i_1++) {
-                child = this.children[i_1];
+            for (var i = 0; i < this.numChildren; i++) {
+                child = this.children[i];
                 child.renderCanvas();
                 newWidth = child.x + child.width;
                 newHeight = child.y + child.height;
@@ -75,7 +76,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return this;
         };
         return Sprite;
-    })(DisplayObjectContainer_1.default);
+    }(DisplayObjectContainer_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Sprite;
 });

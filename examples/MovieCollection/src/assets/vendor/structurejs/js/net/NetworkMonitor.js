@@ -6,6 +6,7 @@
         define(["require", "exports", '../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var EventDispatcher_1 = require('../event/EventDispatcher');
     var NetworkMonitorEvent_1 = require('../event/NetworkMonitorEvent');
     var NavigatorEvents_1 = require('../event/native/NavigatorEvents');
@@ -147,7 +148,7 @@
          */
         NetworkMonitor._initialized = false;
         return NetworkMonitor;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = NetworkMonitor;
 });

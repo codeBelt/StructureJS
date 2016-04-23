@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var WindowEvents = (function () {
         function WindowEvents() {
         }
@@ -18,7 +19,7 @@
          */
         WindowEvents.CHANGE = "change";
         return WindowEvents;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = WindowEvents;
 });

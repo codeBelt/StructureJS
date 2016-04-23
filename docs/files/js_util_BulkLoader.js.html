@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -167,6 +167,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;, &#x27;../event/LoaderEvent&#x27;, &#x27;../event/BulkLoaderEvent&#x27;, &#x27;../model/Collection&#x27;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
     var LoaderEvent_1 = require(&#x27;../event/LoaderEvent&#x27;);
     var BulkLoaderEvent_1 = require(&#x27;../event/BulkLoaderEvent&#x27;);
@@ -261,7 +262,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var dataStore;
             this._queue = this._dataStores.models.slice(0);
             var length = (this.maxConnections &gt; this._queue.length) ? this._queue.length : this.maxConnections;
-            for (var i_1 = 0; i_1 &lt; length; i_1++) {
+            for (var i = 0; i &lt; length; i++) {
                 dataStore = this._queue.shift().value;
                 dataStore.addEventListenerOnce(LoaderEvent_1.default.COMPLETE, this._onComplete, this);
                 dataStore.load();
@@ -277,8 +278,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         BulkLoader.prototype.clear = function () {
             this._queue = [];
             var dataStore;
-            for (var i_2 = 0; i_2 &lt; this._dataStores.length; i_2++) {
-                dataStore = this._dataStores.get(i_2).value;
+            for (var i = 0; i &lt; this._dataStores.length; i++) {
+                dataStore = this._dataStores.get(i).value;
                 dataStore.removeEventListener(LoaderEvent_1.default.COMPLETE, this._onComplete, this);
             }
             this._totalComplete = 0;
@@ -319,9 +320,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         BulkLoader.prototype._onLoadComplete = function () {
             var model;
             var dataStoreList = [];
-            for (var i_3 = 0; i_3 &lt; this._dataStores.length; i_3++) {
-                model = this._dataStores.get(i_3);
-                dataStoreList[i_3] = model.value;
+            for (var i = 0; i &lt; this._dataStores.length; i++) {
+                model = this._dataStores.get(i);
+                dataStoreList[i] = model.value;
             }
             // Add the whole list because all are completed.
             var bulkLoaderEvent = new BulkLoaderEvent_1.default(BulkLoaderEvent_1.default.LOAD_COMPLETE);
@@ -333,7 +334,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             this.dispatchEvent(bulkLoaderEvent);
         };
         return BulkLoader;
-    })(EventDispatcher_1.default);
+    }(EventDispatcher_1.default));
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = BulkLoader;
 });

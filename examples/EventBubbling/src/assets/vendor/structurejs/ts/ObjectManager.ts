@@ -37,12 +37,12 @@ class ObjectManager extends BaseObject
      * @chainable
      * @example
      *     enable() {
-     *          if (this.isEnabled === true) { return this; }
+     *          if (this.isEnabled === true) { return; }
      *
      *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      *          this._childInstance.enable();
      *
-     *          return super.enable();
+     *          super.enable();
      *     }
      */
     public enable():any
@@ -53,6 +53,7 @@ class ObjectManager extends BaseObject
         }
 
         this.isEnabled = true;
+
         return this;
     }
 
@@ -64,12 +65,12 @@ class ObjectManager extends BaseObject
      * @chainable
      * @example
      *      disable() {
-     *          if (this.isEnabled === false) { return this; }
+     *          if (this.isEnabled === false) { return; }
      *
      *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
      *          this._childInstance.disable();
      *
-     *          return super.disable();
+     *          super.disable();
      *      }
      */
     public disable():any
@@ -80,8 +81,10 @@ class ObjectManager extends BaseObject
         }
 
         this.isEnabled = false;
+
         return this;
     }
+
 }
 
 export default ObjectManager;

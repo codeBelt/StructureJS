@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../ObjectManager', './BaseEvent'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var ObjectManager_1 = require('../ObjectManager');
     var BaseEvent_1 = require('./BaseEvent');
     /**
@@ -145,11 +146,11 @@ var __extends = (this && this.__extends) || function (d, b) {
             // Get the list of event listeners by the associated type value that is passed in.
             var list = this._listeners[type];
             if (list !== void 0) {
-                var i_1 = list.length;
-                while (--i_1 > -1) {
+                var i = list.length;
+                while (--i > -1) {
                     // If the callback and scope are the same then remove the event listener.
-                    if (list[i_1].callback === callback && list[i_1].scope === scope) {
-                        list.splice(i_1, 1);
+                    if (list[i].callback === callback && list[i].scope === scope) {
+                        list.splice(i, 1);
                         break;
                     }
                 }
@@ -192,14 +193,14 @@ var __extends = (this && this.__extends) || function (d, b) {
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
-                var i_2 = list.length;
-                var listener;
-                while (--i_2 > -1) {
+                var i = list.length;
+                var listener = void 0;
+                while (--i > -1) {
                     // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
                     if (event.cancelable === true && event.isImmediatePropagationStopped === true) {
                         break;
                     }
-                    listener = list[i_2];
+                    listener = list[i];
                     listener.callback.call(listener.scope, event);
                     // If the once value is true we want to remove the listener right after this callback was called.
                     if (listener.once === true) {
@@ -234,10 +235,10 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         EventDispatcher.prototype.hasEventListener = function (type, callback, scope) {
             if (this._listeners[type] !== void 0) {
-                var listener;
+                var listener = void 0;
                 var numOfCallbacks = this._listeners[type].length;
-                for (var i_3 = 0; i_3 < numOfCallbacks; i_3++) {
-                    listener = this._listeners[type][i_3];
+                for (var i = 0; i < numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
                     if (listener.callback === callback && listener.scope === scope) {
                         return true;
                     }
@@ -262,8 +263,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var listener;
             for (var type in this._listeners) {
                 numOfCallbacks = this._listeners[type].length;
-                for (var i_4 = 0; i_4 < numOfCallbacks; i_4++) {
-                    listener = this._listeners[type][i_4];
+                for (var i = 0; i < numOfCallbacks; i++) {
+                    listener = this._listeners[type][i];
                     if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
                         str += '[' + listener.scope.getQualifiedClassName() + ']';
                     }
@@ -283,7 +284,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             _super.prototype.destroy.call(this);
         };
         return EventDispatcher;
-    })(ObjectManager_1.default);
+    }(ObjectManager_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = EventDispatcher;
 });

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -167,6 +167,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         define([&quot;require&quot;, &quot;exports&quot;, &#x27;./DisplayObjectContainer&#x27;, &#x27;./DOMElement&#x27;, &#x27;../geom/Point&#x27;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     var DisplayObjectContainer_1 = require(&#x27;./DisplayObjectContainer&#x27;);
     var DOMElement_1 = require(&#x27;./DOMElement&#x27;);
     var Point_1 = require(&#x27;../geom/Point&#x27;);
@@ -325,8 +326,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         };
         CanvasElement.prototype.renderCanvas = function () {
             this.ctx.clearRect(0, 0, this.width, this.height);
-            for (var i_1 = 0; i_1 &lt; this.numChildren; i_1++) {
-                this.children[i_1].renderCanvas();
+            for (var i = 0; i &lt; this.numChildren; i++) {
+                this.children[i].renderCanvas();
             }
         };
         CanvasElement.prototype.getMousePos = function (event) {
@@ -336,8 +337,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         CanvasElement.prototype.getObjectUnderPoint = function (x, y) {
             var foundItem = null;
             var sprite;
-            for (var i_2 = this.numChildren - 1; i_2 &gt;= 0; i_2--) {
-                sprite = this.children[i_2];
+            for (var i = this.numChildren - 1; i &gt;= 0; i--) {
+                sprite = this.children[i];
                 if (sprite.visible === true &amp;&amp; sprite.mouseEnabled === true) {
                     if (this.hitTest(sprite, x, y)) {
                         foundItem = sprite;
@@ -350,8 +351,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         CanvasElement.prototype.getObjectsUnderPoint = function (x, y) {
             var list = [];
             var sprite;
-            for (var i_3 = this.numChildren - 1; i_3 &gt;= 0; i_3--) {
-                sprite = this.children[i_3];
+            for (var i = this.numChildren - 1; i &gt;= 0; i--) {
+                sprite = this.children[i];
                 if (this.hitTest(sprite, x, y)) {
                     list.push(sprite);
                 }
@@ -413,8 +414,8 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             var newX;
             var newY;
             if (displayObject.numChildren &gt; 0) {
-                for (var i_4 = displayObject.numChildren - 1; i_4 &gt;= 0; i_4--) {
-                    item = displayObject.children[i_4];
+                for (var i = displayObject.numChildren - 1; i &gt;= 0; i--) {
+                    item = displayObject.children[i];
                     if (item.visible === true) {
                         newX = x - item.parent.x;
                         newY = y - item.parent.y;
@@ -429,7 +430,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             }
         };
         return CanvasElement;
-    })(DOMElement_1.default);
+    }(DOMElement_1.default));
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = CanvasElement;
 });

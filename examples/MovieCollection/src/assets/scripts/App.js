@@ -1,4 +1,4 @@
-import Stage from 'structurejs/display/Stage';
+import DOMElement from 'structurejs/display/DOMElement';
 
 import PageControlView from './views/PageControlView';
 import ListView from './views/ListView';
@@ -11,10 +11,10 @@ import MovieModel from './models/MovieModel';
  * TODO: YUIDoc_comment
  *
  * @class App
- * @extends Stage
+ * @extends DOMElement
  * @constructor
  **/
-class App extends Stage {
+class App extends DOMElement {
 
     /**
      * @property _pageControls

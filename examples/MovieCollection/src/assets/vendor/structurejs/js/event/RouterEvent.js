@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var BaseEvent_1 = require('./BaseEvent');
     /**
      * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
@@ -97,7 +98,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         RouterEvent.CHANGE = 'RouterEvent.change';
         return RouterEvent;
-    })(BaseEvent_1.default);
+    }(BaseEvent_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = RouterEvent;
 });

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,6 +162,7 @@
         define([&quot;require&quot;, &quot;exports&quot;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     /**
      * A Utility class that has several static methods to assist in development.
      *
@@ -303,8 +304,8 @@
             // Handle Array
             if (obj instanceof Array) {
                 var array = [];
-                for (var i_1 = 0, len = obj.length; i_1 &lt; len; i_1++) {
-                    array[i_1] = Util.clone(obj[i_1]);
+                for (var i = 0, len = obj.length; i &lt; len; i++) {
+                    array[i] = Util.clone(obj[i]);
                 }
                 return array;
             }
@@ -484,7 +485,7 @@
          */
         Util._idCounter = 0;
         return Util;
-    })();
+    }());
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = Util;
 });

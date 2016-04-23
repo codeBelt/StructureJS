@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var BaseEvent_1 = require('./BaseEvent');
     /**
      * The BulkLoaderEvent...
@@ -87,7 +88,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         BulkLoaderEvent.ERROR = 'BulkLoaderEvent.error';
         return BulkLoaderEvent;
-    })(BaseEvent_1.default);
+    }(BaseEvent_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BulkLoaderEvent;
 });

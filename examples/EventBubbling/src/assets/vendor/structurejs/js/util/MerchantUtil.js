@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     /**
      * A MerchantUtility class that has several static methods to assist in development.
      *
@@ -72,7 +73,7 @@
             if (digitsShown === void 0) { digitsShown = 4; }
             if (encodeChar === void 0) { encodeChar = '*'; }
             var encoded = '';
-            for (var i_1 = 0; i_1 < strNumber.length - digitsShown; i_1++) {
+            for (var i = 0; i < strNumber.length - digitsShown; i++) {
                 encoded += encodeChar;
             }
             encoded += strNumber.slice(-digitsShown);
@@ -135,7 +136,7 @@
             return false;
         };
         return MerchantUtil;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MerchantUtil;
 });

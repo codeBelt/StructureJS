@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     /**
      * A helper class to do calculations and conversions.
      *
@@ -322,9 +323,9 @@
          */
         MathUtil.getDivisors = function (num) {
             var r = [];
-            for (var i_1 = 1, e = num / 2; i_1 <= e; i_1++) {
-                if (num % i_1 == 0) {
-                    r.push(i_1);
+            for (var i = 1, e = num / 2; i <= e; i++) {
+                if (num % i == 0) {
+                    r.push(i);
                 }
             }
             if (num != 0) {
@@ -333,7 +334,7 @@
             return r;
         };
         return MathUtil;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MathUtil;
 });

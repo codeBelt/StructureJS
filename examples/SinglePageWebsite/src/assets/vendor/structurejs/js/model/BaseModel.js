@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../BaseObject', '../util/Util'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var BaseObject_1 = require('../BaseObject');
     var Util_1 = require('../util/Util');
     /**
@@ -128,8 +129,8 @@ var __extends = (this && this.__extends) || function (d, b) {
                 var len = data.length;
                 if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false) {
                     var baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
-                    for (var i_1 = 0; i_1 < len; i_1++) {
-                        temp[i_1] = this._updateData(baseModelOrOther, data[i_1]);
+                    for (var i = 0; i < len; i++) {
+                        temp[i] = this._updateData(baseModelOrOther, data[i]);
                     }
                 }
                 this[key] = temp;
@@ -218,7 +219,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return clonedBaseModel;
         };
         return BaseModel;
-    })(BaseObject_1.default);
+    }(BaseObject_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BaseModel;
 });

@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../BaseObject'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var BaseObject_1 = require('../BaseObject');
     /**
      * The {{#crossLink "BaseEvent"}}{{/crossLink}} class is used as the base class for the creation of Event objects, which are passed as parameters to event listeners when an event occurs.
@@ -436,7 +437,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         BaseEvent.SELECTED = 'BaseEvent.selected';
         return BaseEvent;
-    })(BaseObject_1.default);
+    }(BaseObject_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BaseEvent;
 });

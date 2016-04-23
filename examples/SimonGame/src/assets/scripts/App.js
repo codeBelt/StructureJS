@@ -1,4 +1,3 @@
-import Stage from 'structurejs/display/Stage';
 import DOMElement from 'structurejs/display/DOMElement';
 import BaseEvent from 'structurejs/event/BaseEvent';
 import Timer from 'structurejs/util/Timer';
@@ -10,10 +9,10 @@ import DeviceView from './views/DeviceView';
  * TODO: YUIDoc_comment
  *
  * @class App
- * @extends Stage
+ * @extends DOMElement
  * @constructor
  **/
-class App extends Stage {
+class App extends DOMElement {
 
     /**
      * A view that contains the color buttons.

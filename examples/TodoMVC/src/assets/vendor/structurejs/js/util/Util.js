@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     /**
      * A Utility class that has several static methods to assist in development.
      *
@@ -147,8 +148,8 @@
             // Handle Array
             if (obj instanceof Array) {
                 var array = [];
-                for (var i_1 = 0, len = obj.length; i_1 < len; i_1++) {
-                    array[i_1] = Util.clone(obj[i_1]);
+                for (var i = 0, len = obj.length; i < len; i++) {
+                    array[i] = Util.clone(obj[i]);
                 }
                 return array;
             }
@@ -328,7 +329,7 @@
          */
         Util._idCounter = 0;
         return Util;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Util;
 });

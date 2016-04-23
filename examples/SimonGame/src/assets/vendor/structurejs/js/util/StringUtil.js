@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     /**
      * The StringUtil...
      *
@@ -172,8 +173,8 @@
             var queries = str.split('&');
             // Convert the array of strings into an object
             var len = queries.length;
-            for (var i_1 = 0; i_1 < len; i_1++) {
-                temp = queries[i_1].split('=');
+            for (var i = 0; i < len; i++) {
+                temp = queries[i].split('=');
                 params[temp[0]] = (useParseFloat === true && isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
             return params;
@@ -255,9 +256,9 @@
             }
             var length = rest.length;
             var value = str;
-            for (var i_2 = 0; i_2 < length; i_2++) {
-                var reg = new RegExp('\\{' + i_2 + '\\}', 'gm');
-                value = value.replace(reg, rest[i_2]);
+            for (var i = 0; i < length; i++) {
+                var reg = new RegExp('\\{' + i + '\\}', 'gm');
+                value = value.replace(reg, rest[i]);
             }
             return value;
         };
@@ -282,7 +283,7 @@
             return queryString.replace(re, delimiter + name + '=' + value);
         };
         return StringUtil;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = StringUtil;
 });

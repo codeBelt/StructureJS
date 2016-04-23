@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObject', '../util/MathUtil'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var DisplayObject_1 = require('./DisplayObject');
     var MathUtil_1 = require('../util/MathUtil');
     var Bitmap = (function (_super) {
@@ -37,7 +38,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.ctx.drawImage(this._image, 0, 0);
         };
         return Bitmap;
-    })(DisplayObject_1.default);
+    }(DisplayObject_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Bitmap;
 });

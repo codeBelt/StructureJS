@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     /**
      * The NumberUtil class has many helper methods to work with number data.
      *
@@ -246,10 +247,10 @@
                 d = s[1].substr(0, decimals);
             }
             else {
-                var i_1 = decimals;
-                while (i_1 > 0) {
+                var i = decimals;
+                while (i > 0) {
                     d += '0';
-                    i_1--;
+                    i--;
                 }
             }
             var c = s[0] + '.' + d;
@@ -278,17 +279,17 @@
                 d = s[1].substr(0, decimals);
             }
             else {
-                var i_2 = decimals;
-                while (i_2 > 0) {
+                var i = decimals;
+                while (i > 0) {
                     d += '0';
-                    i_2--;
+                    i--;
                 }
             }
             var f = s[0] + '.' + d;
             return Number(f);
         };
         return NumberUtil;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = NumberUtil;
 });

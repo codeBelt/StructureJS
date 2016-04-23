@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var EventDispatcher_1 = require('../event/EventDispatcher');
     var BaseEvent_1 = require('../event/BaseEvent');
     var Util_1 = require('../util/Util');
@@ -94,17 +95,17 @@ var __extends = (this && this.__extends) || function (d, b) {
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
             var len = models.length;
-            for (var i_1 = 0; i_1 < len; i_1++) {
+            for (var i = 0; i < len; i++) {
                 // Only add the model if it does not exist in the the collection.
-                if (this.has(models[i_1]) === false) {
-                    if (this._modelType !== null && (models[i_1] instanceof this._modelType) === false) {
+                if (this.has(models[i]) === false) {
+                    if (this._modelType !== null && (models[i] instanceof this._modelType) === false) {
                         // If the modelType is set and the data is not already a instance of the modelType
                         // then instantiate it and pass the data into the constructor.
-                        this.models.push(new this._modelType(models[i_1]));
+                        this.models.push(new this._modelType(models[i]));
                     }
                     else {
                         // Pass the data object to the array.
-                        this.models.push(models[i_1]);
+                        this.models.push(models[i]);
                     }
                     this.length = this.models.length;
                 }
@@ -133,10 +134,10 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (silent === void 0) { silent = false; }
             // If the model passed in is not an array then make it.
             var models = (model instanceof Array) ? model : [model];
-            for (var i_2 = models.length - 1; i_2 >= 0; i_2--) {
+            for (var i = models.length - 1; i >= 0; i--) {
                 // Only remove the model if it exists in the the collection.
-                if (this.has(models[i_2]) === true) {
-                    this.models.splice(this.indexOf(models[i_2]), 1);
+                if (this.has(models[i]) === true) {
+                    this.models.splice(this.indexOf(models[i]), 1);
                     this.length = this.models.length;
                 }
             }
@@ -207,8 +208,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var foundItems = [];
             var len = list.length;
             var prop;
-            for (var i_3 = 0; i_3 < len; i_3++) {
-                prop = list[i_3];
+            for (var i = 0; i < len; i++) {
+                prop = list[i];
                 // Adds found  Base Model to the foundItems array.
                 if ((typeof prop === 'string') || (typeof prop === 'number') || (typeof prop === 'boolean')) {
                     // If the model is not an object.
@@ -242,8 +243,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var obj;
             var key;
             var j;
-            for (var i_4 = 0; i_4 < itemsToFindLength; i_4++) {
-                obj = list[i_4];
+            for (var i = 0; i < itemsToFindLength; i++) {
+                obj = list[i];
                 for (j = 0; j < itemsLength; j++) {
                     hasMatchingProperty = false;
                     doesModelMatch = true;
@@ -284,8 +285,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var model;
             var key;
             var j;
-            for (var i_5 = 0; i_5 < itemsLength; i_5++) {
-                model = this.models[i_5];
+            for (var i = 0; i < itemsLength; i++) {
+                model = this.models[i];
                 for (key in model) {
                     // Check if the key value is a property.
                     if (model.hasOwnProperty(key)) {
@@ -350,8 +351,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (this._modelType !== null) {
                 var list = [];
                 var len = this.length;
-                for (var i_6 = 0; i_6 < len; i_6++) {
-                    list[i_6] = this.models[i_6].toJSON();
+                for (var i = 0; i < len; i++) {
+                    list[i] = this.models[i].toJSON();
                 }
                 return list;
             }
@@ -482,9 +483,9 @@ var __extends = (this && this.__extends) || function (d, b) {
         Collection.prototype.pluck = function (propertyName, unique) {
             if (unique === void 0) { unique = false; }
             var list = [];
-            for (var i_7 = 0; i_7 < this.length; i_7++) {
-                if (this.models[i_7].hasOwnProperty(propertyName) === true) {
-                    list[i_7] = this.models[i_7][propertyName];
+            for (var i = 0; i < this.length; i++) {
+                if (this.models[i].hasOwnProperty(propertyName) === true) {
+                    list[i] = this.models[i][propertyName];
                 }
             }
             if (unique === true) {
@@ -514,8 +515,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var groupName;
             var groupList = {};
             // Loop through all the models in this collection.
-            for (var i_8 = 0; i_8 < this.length; i_8++) {
-                model = this.models[i_8];
+            for (var i = 0; i < this.length; i++) {
+                model = this.models[i];
                 // Get the value from the property name passed in and uses that as the group name.
                 groupName = model[propertyName];
                 if (groupList[groupName] == null) {
@@ -538,7 +539,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return this.models.reverse();
         };
         return Collection;
-    })(EventDispatcher_1.default);
+    }(EventDispatcher_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Collection;
 });

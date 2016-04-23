@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseObject'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var BaseObject_1 = require('./BaseObject');
     /**
      * The {{#crossLink "ObjectManager"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
@@ -46,12 +47,12 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @chainable
          * @example
          *     enable() {
-         *          if (this.isEnabled === true) { return this; }
+         *          if (this.isEnabled === true) { return; }
          *
          *          this._childInstance.addEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *          this._childInstance.enable();
          *
-         *          return super.enable();
+         *          super.enable();
          *     }
          */
         ObjectManager.prototype.enable = function () {
@@ -69,12 +70,12 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @chainable
          * @example
          *      disable() {
-         *          if (this.isEnabled === false) { return this; }
+         *          if (this.isEnabled === false) { return; }
          *
          *          this._childInstance.removeEventListener(BaseEvent.CHANGE, this.handlerMethod, this);
          *          this._childInstance.disable();
          *
-         *          return super.disable();
+         *          super.disable();
          *      }
          */
         ObjectManager.prototype.disable = function () {
@@ -85,7 +86,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return this;
         };
         return ObjectManager;
-    })(BaseObject_1.default);
+    }(BaseObject_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = ObjectManager;
 });

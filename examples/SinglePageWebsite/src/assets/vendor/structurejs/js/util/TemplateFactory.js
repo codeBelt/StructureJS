@@ -6,6 +6,7 @@
         define(["require", "exports", './StringUtil'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var StringUtil_1 = require('./StringUtil');
     /**
      * A helper class to provide a convenient and consistent way to render templates.
@@ -116,7 +117,7 @@
          */
         TemplateFactory.templateNamespace = 'JST';
         return TemplateFactory;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = TemplateFactory;
 });

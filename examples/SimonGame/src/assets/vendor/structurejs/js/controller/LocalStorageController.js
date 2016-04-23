@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var LocalStorageEvent_1 = require('../event/LocalStorageEvent');
     var EventDispatcher_1 = require('../event/EventDispatcher');
     var BaseModel_1 = require('../model/BaseModel');
@@ -134,8 +135,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (namespace === void 0) { namespace = this._namespace; }
             var list = [];
             var length = this.getLength();
-            for (var i_1 = 0; i_1 < length; i_1++) {
-                var key = this._localStorage.key(i_1);
+            for (var i = 0; i < length; i++) {
+                var key = this._localStorage.key(i);
                 if (key.indexOf(namespace) > -1) {
                     var value = this.getItem(key);
                     var obj = {
@@ -156,8 +157,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         LocalStorageController.prototype.getAllItems = function () {
             var list = [];
             var length = this.getLength();
-            for (var i_2 = 0; i_2 < length; i_2++) {
-                var key = this._localStorage.key(i_2);
+            for (var i = 0; i < length; i++) {
+                var key = this._localStorage.key(i);
                 var value = this.getItem(key);
                 var obj = {
                     key: key,
@@ -225,7 +226,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.dispatchEvent(new LocalStorageEvent_1.default(LocalStorageEvent_1.default.STORAGE, false, false, event));
         };
         return LocalStorageController;
-    })(EventDispatcher_1.default);
+    }(EventDispatcher_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = LocalStorageController;
 });

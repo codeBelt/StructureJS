@@ -1,4 +1,4 @@
-import Stage from 'structurejs/display/Stage';
+import DOMElement from 'structurejs/display/DOMElement';
 import BaseEvent from 'structurejs/event/BaseEvent';
 import Router from 'structurejs/controller/Router';
 import StringUtil from 'structurejs/util/StringUtil';
@@ -13,10 +13,10 @@ import Key from './constants/Key';
  * TODO: YUIDoc_comment
  *
  * @class App
- * @extends Stage
+ * @extends DOMElement
  * @constructor
  **/
-class App extends Stage {
+class App extends DOMElement {
 
     /**
      * @property _listItemCollection

@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     /**
      * The **Route** class is a model that keeps track of a specific route for the {{#crossLink "Router"}}{{/crossLink}} class.
      *
@@ -152,7 +153,7 @@
             return routeWithoutQueryString.match(this.regex);
         };
         return Route;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Route;
 });

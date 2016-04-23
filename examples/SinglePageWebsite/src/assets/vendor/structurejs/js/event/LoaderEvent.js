@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var BaseEvent_1 = require('./BaseEvent');
     /**
      * The LoaderEvent...
@@ -63,7 +64,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         LoaderEvent.ERROR = 'LoaderEvent.error';
         return LoaderEvent;
-    })(BaseEvent_1.default);
+    }(BaseEvent_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = LoaderEvent;
 });

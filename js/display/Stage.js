@@ -11,8 +11,12 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DOMElement'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var DOMElement_1 = require('./DOMElement');
     /**
+     * <b>DEPRECATED</b>: This {{#crossLink "Stage"}}{{/crossLink}} class has be deprecated. The <b>appendTo</b> method has been moved to
+     * the {{#crossLink "DOMElement"}}{{/crossLink}} class.
+     *
      * The {{#crossLink "Stage"}}{{/crossLink}} class should be extended by your main application or root class.
      *
      * @class Stage
@@ -82,7 +86,9 @@ var __extends = (this && this.__extends) || function (d, b) {
             _super.call(this);
         }
         /**
-         * The selected HTML element where the child elements will be created. This method starts the lifecycle of the application.
+         * <b>DEPRECATED</b>: This <b>appendTo</b> method has been deprecated and moved to DOMElement.{{#crossLink "DOMElement/appendTo:method"}}{{/crossLink}}.
+         *
+         * The selected HTML element that the application should have control over. This method starts the lifecycle of the application.
          *
          * @method appendTo
          * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
@@ -107,7 +113,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             return this;
         };
         return Stage;
-    })(DOMElement_1.default);
+    }(DOMElement_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Stage;
 });

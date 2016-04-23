@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObject'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var DisplayObject_1 = require('./DisplayObject');
     /**
      * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
@@ -216,16 +217,16 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         DisplayObjectContainer.prototype.getChildByCid = function (sjsId) {
             var child = null;
-            for (var i_1 = this.numChildren - 1; i_1 >= 0; i_1--) {
-                if (this.children[i_1].sjsId == sjsId) {
-                    child = this.children[i_1];
+            for (var i = this.numChildren - 1; i >= 0; i--) {
+                if (this.children[i].sjsId == sjsId) {
+                    child = this.children[i];
                     break;
                 }
             }
             return child;
         };
         return DisplayObjectContainer;
-    })(DisplayObject_1.default);
+    }(DisplayObject_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = DisplayObjectContainer;
 });

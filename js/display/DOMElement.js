@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', '../plugin/jquery.eventListener'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
     var BaseEvent_1 = require('../event/BaseEvent');
     var TemplateFactory_1 = require('../util/TemplateFactory');
@@ -270,9 +271,9 @@ var __extends = (this && this.__extends) || function (d, b) {
                 throw new Error('[' + this.getQualifiedClassName() + '] You cannot call the create method manually. It is only called once automatically during the view lifecycle and should only be called once.');
             }
             if (this.$element == null) {
-                var html_1 = TemplateFactory_1.default.create(type, params);
-                if (html_1) {
-                    this.$element = jquery_eventListener_1.default(html_1);
+                var html = TemplateFactory_1.default.create(type, params);
+                if (html) {
+                    this.$element = jquery_eventListener_1.default(html);
                 }
                 else {
                     this.$element = jquery_eventListener_1.default("<" + type + "/>", params);
@@ -484,8 +485,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var domElement;
             var $list = this.$element.children(selector);
             var listLength = $list.length;
-            for (var i_1 = 0; i_1 < listLength; i_1++) {
-                $child = $list.eq(i_1);
+            for (var i = 0; i < listLength; i++) {
+                $child = $list.eq(i);
                 // If the jQuery element already has sjsId data property then it must be an existing DisplayObjectContainer (DOMElement) in the children array.
                 if ($child.attr('data-sjs-id') === void 0) {
                     domElement = new DOMElement();
@@ -597,15 +598,48 @@ var __extends = (this && this.__extends) || function (d, b) {
             var createdChildren = [];
             var length = componentList.length;
             var obj;
-            for (var i_2 = 0; i_2 < length; i_2++) {
-                obj = componentList[i_2];
+            for (var i = 0; i < length; i++) {
+                obj = componentList[i];
                 list = ComponentFactory_1.default.create(this.$element.find(obj.selector), obj.component, this);
                 createdChildren = createdChildren.concat(list);
             }
             return createdChildren;
         };
+        /**
+         * Only use this once per application and use used on your main application Class.
+         * This selects HTML element that you want the application to have control over.
+         * This method starts the lifecycle of the application.
+         *
+         * @method appendTo
+         * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+         * @param [enabled=true] {boolean} Sets the enabled state of the object.
+         * @example
+         * <b>Instantiation Example</b><br>
+         * This example illustrates how to instantiate your main application or root class.
+         *
+         *      const app = new MainClass();
+         *      app.appendTo('body');
+         *
+         */
+        DOMElement.prototype.appendTo = function (type, enabled) {
+            if (enabled === void 0) { enabled = true; }
+            this.$element = (type instanceof jquery_eventListener_1.default) ? type : jquery_eventListener_1.default(type);
+            this._addClientSideId(this);
+            if (this.isCreated === false) {
+                this.create();
+                this.isCreated = true;
+                if (enabled === false) {
+                    this.disable();
+                }
+                else {
+                    this.enable();
+                }
+                this.layout();
+            }
+            return this;
+        };
         return DOMElement;
-    })(DisplayObjectContainer_1.default);
+    }(DisplayObjectContainer_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = DOMElement;
 });

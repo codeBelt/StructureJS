@@ -1,4 +1,4 @@
-import Stage from 'structurejs/display/Stage';
+import DOMElement from 'structurejs/display/DOMElement';
 import NetworkMonitor from 'structurejs/net/NetworkMonitor';
 import NetworkMonitorEvent from 'structurejs/event/NetworkMonitorEvent';
 
@@ -15,10 +15,10 @@ import FooterView from './views/FooterView';
  * TODO: YUIDoc_comment
  *
  * @class App
- * @extends Stage
+ * @extends DOMElement
  * @constructor
  **/
-class App extends Stage {
+class App extends DOMElement {
 
     /**
      * @property _headerView
@@ -48,7 +48,7 @@ class App extends Stage {
     }
 
     /**
-     * @overridden Stage.create
+     * @overridden DOMElement.create
      */
     create() {
         super.create();
@@ -71,7 +71,7 @@ class App extends Stage {
     }
 
     /**
-     * @overridden Stage.enable
+     * @overridden DOMElement.enable
      */
     enable() {
         if (this.isEnabled === true) { return; }
@@ -82,7 +82,7 @@ class App extends Stage {
     }
 
     /**
-     * @overridden Stage.disable
+     * @overridden DOMElement.disable
      */
     disable() {
         if (this.isEnabled === false) { return; }
@@ -93,14 +93,14 @@ class App extends Stage {
     }
 
     /**
-     * @overridden Stage.layout
+     * @overridden DOMElement.layout
      */
     layout() {
         // Layout or update the objects in this parent class.
     }
 
     /**
-     * @overridden Stage.destroy
+     * @overridden DOMElement.destroy
      */
     destroy() {
         this.disable();

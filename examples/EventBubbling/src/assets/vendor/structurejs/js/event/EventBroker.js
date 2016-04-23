@@ -6,6 +6,7 @@
         define(["require", "exports", './EventDispatcher', './BaseEvent'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var EventDispatcher_1 = require('./EventDispatcher');
     var BaseEvent_1 = require('./BaseEvent');
     /**
@@ -157,10 +158,10 @@
          */
         EventBroker.removeWaitFor = function (eventTypes, callback, scope) {
             var waitForObject;
-            for (var i_1 = EventBroker._waitForList.length - 1; i_1 >= 0; i_1--) {
-                waitForObject = EventBroker._waitForList[i_1];
+            for (var i = EventBroker._waitForList.length - 1; i >= 0; i--) {
+                waitForObject = EventBroker._waitForList[i];
                 if (waitForObject.eventTypes.toString() === eventTypes.toString() && waitForObject.callback === callback && waitForObject.callbackScope === scope) {
-                    EventBroker._waitForList.splice(i_1, 1);
+                    EventBroker._waitForList.splice(i, 1);
                 }
             }
         };
@@ -206,8 +207,8 @@
         EventBroker._dispatchWaitFor = function (event) {
             var waitForObject;
             var eventTypeIndex;
-            for (var i_2 = EventBroker._waitForList.length - 1; i_2 >= 0; i_2--) {
-                waitForObject = EventBroker._waitForList[i_2];
+            for (var i = EventBroker._waitForList.length - 1; i >= 0; i--) {
+                waitForObject = EventBroker._waitForList[i];
                 eventTypeIndex = waitForObject.eventTypes.indexOf(event.type);
                 if (eventTypeIndex > -1) {
                     waitForObject.events[eventTypeIndex] = event;
@@ -217,7 +218,7 @@
                     waitForObject.events = [];
                     // If the once value is true we want to remove the listener right after this callback was called.
                     if (waitForObject.once === true) {
-                        EventBroker._waitForList.splice(i_2, 1);
+                        EventBroker._waitForList.splice(i, 1);
                     }
                 }
             }
@@ -272,7 +273,7 @@
          */
         EventBroker._waitForList = [];
         return EventBroker;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = EventBroker;
 });

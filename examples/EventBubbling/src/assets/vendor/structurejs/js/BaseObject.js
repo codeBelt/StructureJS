@@ -1,3 +1,4 @@
+///<reference path='_declare/jquery.eventListener.d.ts'/>
 (function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
@@ -6,11 +7,7 @@
         define(["require", "exports", './util/Util'], factory);
     }
 })(function (require, exports) {
-    ///<reference path='_declare/jquery.d.ts'/>
-    ///<reference path='_declare/handlebars.d.ts'/>
-    ///<reference path='_declare/greensock.d.ts'/>
-    ///<reference path='_declare/jquery.eventListener.d.ts'/>
-    ///<reference path='_declare/log.d.ts'/>
+    "use strict";
     var Util_1 = require('./util/Util');
     /**
      * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -82,7 +79,7 @@
             }
         };
         return BaseObject;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BaseObject;
 });

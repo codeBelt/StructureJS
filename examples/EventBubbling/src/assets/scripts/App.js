@@ -1,4 +1,4 @@
-import Stage from 'structurejs/display/Stage';
+import DOMElement from 'structurejs/display/DOMElement';
 import BaseEvent from 'structurejs/event/BaseEvent';
 import EventBroker from 'structurejs/event/EventBroker';
 
@@ -8,10 +8,10 @@ import GrandparentView from './views/GrandparentView';
  * TODO: YUIDoc_comment
  *
  * @class EventBubblingApp
- * @extends Stage
+ * @extends DOMElement
  * @constructor
  **/
-class EventBubblingApp extends Stage {
+class EventBubblingApp extends DOMElement {
 
     _grandpaView = null;
     _$clearButton = null;
@@ -35,7 +35,7 @@ class EventBubblingApp extends Stage {
     }
 
     /**
-     * @overridden Stage.enable
+     * @overridden DOMElement.enable
      */
     enable() {
         if (this.isEnabled === true) { return; }
@@ -52,7 +52,7 @@ class EventBubblingApp extends Stage {
     }
 
     /**
-     * @overridden Stage.disable
+     * @overridden DOMElement.disable
      */
     disable() {
         if (this.isEnabled === false) { return; }
@@ -67,7 +67,7 @@ class EventBubblingApp extends Stage {
     }
 
     /**
-     * @overridden Stage.layout
+     * @overridden DOMElement.layout
      */
     layout() {
         this._$stageMessage.text('');
@@ -75,7 +75,7 @@ class EventBubblingApp extends Stage {
     }
 
     /**
-     * @overridden Stage.destroy
+     * @overridden DOMElement.destroy
      */
     destroy() {
         this.disable();

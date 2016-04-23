@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './BaseEvent'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var BaseEvent_1 = require('./BaseEvent');
     /**
      * The LocalStorageEvent ....
@@ -60,7 +61,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         LocalStorageEvent.STORAGE = 'storage';
         return LocalStorageEvent;
-    })(BaseEvent_1.default);
+    }(BaseEvent_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = LocalStorageEvent;
 });

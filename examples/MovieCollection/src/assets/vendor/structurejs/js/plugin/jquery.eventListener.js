@@ -6,6 +6,7 @@
         define(["require", "exports", 'jquery'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var $ = require('jquery');
     var $eventListener = $;
     /**
@@ -42,8 +43,8 @@
         var strLength = str.length;
         if (strLength == 0)
             return hash;
-        for (var i_1 = 0; i_1 < strLength; i_1++) {
-            character = str.charCodeAt(i_1);
+        for (var i = 0; i < strLength; i++) {
+            character = str.charCodeAt(i);
             hash = ((hash << 5) - hash) + character;
             hash = hash & hash; // Convert to 32bit integer
         }

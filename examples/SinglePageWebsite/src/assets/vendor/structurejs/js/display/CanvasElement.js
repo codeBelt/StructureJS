@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObjectContainer', './DOMElement', '../geom/Point'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
     var DOMElement_1 = require('./DOMElement');
     var Point_1 = require('../geom/Point');
@@ -169,8 +170,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         CanvasElement.prototype.renderCanvas = function () {
             this.ctx.clearRect(0, 0, this.width, this.height);
-            for (var i_1 = 0; i_1 < this.numChildren; i_1++) {
-                this.children[i_1].renderCanvas();
+            for (var i = 0; i < this.numChildren; i++) {
+                this.children[i].renderCanvas();
             }
         };
         CanvasElement.prototype.getMousePos = function (event) {
@@ -180,8 +181,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         CanvasElement.prototype.getObjectUnderPoint = function (x, y) {
             var foundItem = null;
             var sprite;
-            for (var i_2 = this.numChildren - 1; i_2 >= 0; i_2--) {
-                sprite = this.children[i_2];
+            for (var i = this.numChildren - 1; i >= 0; i--) {
+                sprite = this.children[i];
                 if (sprite.visible === true && sprite.mouseEnabled === true) {
                     if (this.hitTest(sprite, x, y)) {
                         foundItem = sprite;
@@ -194,8 +195,8 @@ var __extends = (this && this.__extends) || function (d, b) {
         CanvasElement.prototype.getObjectsUnderPoint = function (x, y) {
             var list = [];
             var sprite;
-            for (var i_3 = this.numChildren - 1; i_3 >= 0; i_3--) {
-                sprite = this.children[i_3];
+            for (var i = this.numChildren - 1; i >= 0; i--) {
+                sprite = this.children[i];
                 if (this.hitTest(sprite, x, y)) {
                     list.push(sprite);
                 }
@@ -257,8 +258,8 @@ var __extends = (this && this.__extends) || function (d, b) {
             var newX;
             var newY;
             if (displayObject.numChildren > 0) {
-                for (var i_4 = displayObject.numChildren - 1; i_4 >= 0; i_4--) {
-                    item = displayObject.children[i_4];
+                for (var i = displayObject.numChildren - 1; i >= 0; i--) {
+                    item = displayObject.children[i];
                     if (item.visible === true) {
                         newX = x - item.parent.x;
                         newY = y - item.parent.y;
@@ -273,7 +274,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             }
         };
         return CanvasElement;
-    })(DOMElement_1.default);
+    }(DOMElement_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = CanvasElement;
 });

@@ -84,7 +84,6 @@ module.exports = function(grunt) {
                     'js/display/Bitmap.js',
                     'js/display/CanvasElement.js',
                     'js/display/Sprite.js',
-                    'js/display/Stage.js',
                     'js/display/TextField.js'
                 ],
                 dest: './structurejs.js'

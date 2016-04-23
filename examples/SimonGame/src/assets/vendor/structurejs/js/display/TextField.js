@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", './DisplayObject'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var DisplayObject_1 = require('./DisplayObject');
     var TextField = (function (_super) {
         __extends(TextField, _super);
@@ -49,13 +50,13 @@ var __extends = (this && this.__extends) || function (d, b) {
             var metrics;
             var testWidth;
             var length = wordList.length;
-            for (var i_1 = 0; i_1 < length; i_1++) {
-                testLine = line + wordList[i_1] + ' ';
+            for (var i = 0; i < length; i++) {
+                testLine = line + wordList[i] + ' ';
                 metrics = context.measureText(testLine);
                 testWidth = metrics.width;
-                if (testWidth > maxWidth && i_1 > 0) {
+                if (testWidth > maxWidth && i > 0) {
                     context.fillText(line, x, y);
-                    line = wordList[i_1] + ' ';
+                    line = wordList[i] + ' ';
                     y += lineHeight;
                 }
                 else {
@@ -67,13 +68,13 @@ var __extends = (this && this.__extends) || function (d, b) {
         TextField.prototype._wrapTextOnLineBreak = function (context, text, x, y, lineHeight) {
             var wordList = text.split('\n');
             var length = wordList.length;
-            for (var i_2 = 0; i_2 < length; i_2++) {
-                context.fillText(wordList[i_2], x, y);
+            for (var i = 0; i < length; i++) {
+                context.fillText(wordList[i], x, y);
                 y += lineHeight;
             }
         };
         return TextField;
-    })(DisplayObject_1.default);
+    }(DisplayObject_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = TextField;
 });

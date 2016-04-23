@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../event/EventDispatcher', '../event/TimerEvent'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var EventDispatcher_1 = require('../event/EventDispatcher');
     var TimerEvent_1 = require('../event/TimerEvent');
     /**
@@ -190,7 +191,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             _super.prototype.destroy.call(this);
         };
         return Timer;
-    })(EventDispatcher_1.default);
+    }(EventDispatcher_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Timer;
 });

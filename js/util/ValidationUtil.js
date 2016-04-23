@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     /**
      * A ValidationUtility class that has several static methods to assist in development.
      *
@@ -134,7 +135,7 @@
             return expression.test(ssn);
         };
         return ValidationUtil;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = ValidationUtil;
 });

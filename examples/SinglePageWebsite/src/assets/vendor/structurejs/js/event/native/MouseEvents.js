@@ -6,6 +6,7 @@
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var MouseEvents = (function () {
         function MouseEvents() {
         }
@@ -74,7 +75,7 @@
          */
         MouseEvents.TAP = 'tap';
         return MouseEvents;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MouseEvents;
 });

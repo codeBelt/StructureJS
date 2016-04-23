@@ -6,6 +6,7 @@
         define(["require", "exports", '../util/StringUtil', '../event/RouterEvent', '../model/Route'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var StringUtil_1 = require('../util/StringUtil');
     var RouterEvent_1 = require('../event/RouterEvent');
     var Route_1 = require('../model/Route');
@@ -128,10 +129,10 @@
         Router.remove = function (routePattern, callback, callbackScope) {
             var route;
             // Since we are removing (splice) from routes we need to check the length every iteration.
-            for (var i_1 = Router._routes.length - 1; i_1 >= 0; i_1--) {
-                route = Router._routes[i_1];
+            for (var i = Router._routes.length - 1; i >= 0; i--) {
+                route = Router._routes[i];
                 if (route.routePattern === routePattern && route.callback === callback && route.callbackScope === callbackScope) {
-                    Router._routes.splice(i_1, 1);
+                    Router._routes.splice(i, 1);
                 }
             }
         };
@@ -408,8 +409,8 @@
             var match;
             var routerEvent = null;
             // Loop through all the route's. Note: we need to check the length every loop in case one was removed.
-            for (var i_2 = 0; i_2 < Router._routes.length; i_2++) {
-                route = Router._routes[i_2];
+            for (var i = 0; i < Router._routes.length; i++) {
+                route = Router._routes[i];
                 match = route.match(hash);
                 // If there is a match.
                 if (match !== null) {
@@ -586,7 +587,7 @@
          */
         Router._currentRoute = null;
         return Router;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Router;
 });

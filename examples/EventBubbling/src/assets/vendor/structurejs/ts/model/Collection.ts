@@ -82,6 +82,11 @@ class Collection extends EventDispatcher
      */
     public add(model:any, silent:boolean = false):any
     {
+        if (model == null)
+        {
+            return;
+        }
+
         // If the model passed in is not an array then make it.
         const models:any = (model instanceof Array) ? model : [model];
 

@@ -6,6 +6,7 @@
         define(["require", "exports", '../event/ApplicationCacheEvent', '../event/EventDispatcher'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var ApplicationCacheEvent_1 = require('../event/ApplicationCacheEvent');
     var EventDispatcher_1 = require('../event/EventDispatcher');
     /**
@@ -273,7 +274,7 @@
          */
         ApplicationCacheController.isEnabled = false;
         return ApplicationCacheController;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = ApplicationCacheController;
 });

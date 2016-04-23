@@ -4,7 +4,6 @@ A class based utility library for building modular and scalable web platform app
 
 ## Documentation
 * [Documentation](http://codebelt.github.io/StructureJS/docs/)
-* [Overview Video](http://www.codebelt.com/javascript/StructureJS_web.mp4)
 
 ## Install
 
@@ -44,18 +43,18 @@ With [Bower](http://bower.io):
 
 ## Core Classes
 
-### `Stage`
+### `DOMElement`
 
-A base application class for your project. `Stage` allows you to set DOM references for your application to control.
+All view classes will extend the `DOMElement` class. Here is an example how you would setup your main applicaiton class.
 
 ```js
-import FooView from 'views/FooView';
-import BarView from 'views/BarView';
-import FooBarView from 'views/FooBarView';
+import FooView from './views/FooView';
+import BarView from './views/BarView';
+import ExampleView from './views/ExampleView';
 
-class App extends Stage {
+class App extends DOMElement {
 
-    _fooBarView = null;
+    _exampleView = null;
 
     constructor() {
         super()
@@ -65,14 +64,15 @@ class App extends Stage {
         super.create();
 
         // single instance of a component
-        let $fooBar = this.$element.find('#js-fooBar');
-		this._fooBarView = new FooBarView($fooBar);
-		this.addChild(this._fooBarView);
+        const $exampleView = this.$element.find('#js-ExampleView');
+        
+		this._exampleView = new ExampleView($exampleView);
+		this.addChild(this._exampleView);
 
 		// multiple instances of a component
 		this.createComponents([
-			{ selector: '.js-foo', component: FooView },
-			{ selector: '.js-bar', component: BarView }
+			{ selector: '.js-FooView', component: FooView },
+			{ selector: '.js-BarView', component: BarView }
 		]);
     }
 
@@ -81,29 +81,14 @@ class App extends Stage {
 export default App;
 ```
 
-[Example `Stage` Class](https://github.com/codeBelt/StructureJS/blob/master/examples/MovieCollection/src/assets/scripts/App.js)
+To start the application you would use ```appendTo``` method on the main application class to attach it to the DOM. Only use ```appendTo``` once per application. After that you will use the ```addChild``` methed for child views like in the above example. Example of using ```appendTo```:
 
-[Read more about `Stage`](http://codebelt.github.io/StructureJS/docs/classes/Stage.html)
-
-### `DOMElement`
-
-A base view class for objects that control the DOM. Your View classes will extend this `DOMElement` class.
 
 ```js
-class ExampleView extends DOMElement {
-
-    constructor() {
-        super();
-    }
-
-    create() {
-        super.create();
-    }
-
-}
-
-export default ExampleView;
+const app = new App();
+app.appendTo('body');
 ```
+
 
 `DOMElement` provides helper methods and adds the following lifecycle to your class, these methods get called in this order:
 * `create()`
@@ -113,24 +98,24 @@ export default ExampleView;
 ```js
 class ExampleView extends DOMElement {
 
-    constructor() {
-        super();
+    constructor($element) {
+        super($element);
     }
 
     create() {
         super.create();
-        // Create or setup objects in this parent class.
+        // Create or setup child objects in this parent class.
     }
 
     enable() {
         if (this.isEnabled === true) { return; }
-        // Enable the child objects and/or add any event listeners.
+        // Add any event listeners and/or enable the child objects.
         super.enable();
     }
 
     disable() {
         if (this.isEnabled === false) { return; }
-        // Disable the child objects and/or remove any event listeners.
+        // Remove any event listeners and/or disable the child objects.
         super.disable();
     }
 
@@ -241,8 +226,8 @@ Similar to the `.on()` & `.off()` jQuery methods, this plugin allows you to bind
 enable() {
     if (this.isEnabled === true) { return; }
 
-    this._$element.addEventListener('click', this._onClickHandler, this);
-    this._$element.addEventListener('click', 'button', this._onClickHandler, this); // event delegation
+    this.$element.addEventListener('click', this._onClickHandler, this);
+    this.$element.addEventListener('click', 'button', this._onClickHandler, this); // event delegation
 
     super.enable();
 }
@@ -250,8 +235,8 @@ enable() {
 disable() {
     if (this.isEnabled === false) { return; }
 
-    this._$element.removeEventListener('click', this._onClickHandler, this);
-    this._$element.removeEventListener('click', 'button', this._onClickHandler, this);
+    this.$element.removeEventListener('click', this._onClickHandler, this);
+    this.$element.removeEventListener('click', 'button', this._onClickHandler, this);
 
     super.disable();
 }
@@ -265,6 +250,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-04-23 v0.12.0 Deprecated Stage class and the appendTo method. Copied the appendTo method to the DOMElement class.
+ 
  * 2016-02-29 v0.11.1 Update Router.buildRoute to turn an object passed in to query string.
  
  * 2016-02-06 v0.11.0 Prevent Collection.add from allowing null and undefined. Remove onEnabled and onDisabled methods.

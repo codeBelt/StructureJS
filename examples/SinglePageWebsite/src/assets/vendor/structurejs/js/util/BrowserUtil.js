@@ -6,6 +6,7 @@
         define(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var EventDispatcher_1 = require('../event/EventDispatcher');
     var BaseEvent_1 = require('../event/BaseEvent');
     var Util_1 = require('../util/Util');
@@ -383,7 +384,7 @@
          */
         BrowserUtil.isEnabled = false;
         return BrowserUtil;
-    })();
+    }());
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BrowserUtil;
 });

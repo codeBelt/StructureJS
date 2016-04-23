@@ -11,12 +11,13 @@ var __extends = (this && this.__extends) || function (d, b) {
         define(["require", "exports", '../event/EventDispatcher', '../event/LoaderEvent', '../event/BulkLoaderEvent', '../model/Collection'], factory);
     }
 })(function (require, exports) {
+    "use strict";
     var EventDispatcher_1 = require('../event/EventDispatcher');
     var LoaderEvent_1 = require('../event/LoaderEvent');
     var BulkLoaderEvent_1 = require('../event/BulkLoaderEvent');
     var Collection_1 = require('../model/Collection');
     /**
-     * TODO: YUIDoc_comment
+     * A class to help with loading IDataStore's.
      *
      * @class BulkLoader
      * @extends EventDispatcher
@@ -31,16 +32,46 @@ var __extends = (this && this.__extends) || function (d, b) {
         __extends(BulkLoader, _super);
         function BulkLoader() {
             _super.call(this);
+            /**
+             * A collection to store all the IDataStore's.
+             *
+             * @property _dataStores
+             * @type {Collection}
+             * @protected
+             */
             this._dataStores = null;
+            /**
+             * The total number of items that have been loaded.
+             *
+             * @property _totalComplete
+             * @type {number}
+             * @protected
+             */
             this._totalComplete = 0;
+            /**
+             * A queue of IDataStore's that need to be loaded still.
+             *
+             * @property _queue
+             * @type {Array<{key:any, value:any}>}
+             * @protected
+             */
+            this._queue = [];
+            /**
+             * Set the maximum number of simultaneous connections (default is 3).
+             *
+             * @property maxConnections
+             * @type [number=3]
+             * @public
+             */
+            this.maxConnections = 3;
             this._dataStores = new Collection_1.default();
         }
         /**
-         * TODO: YUIDoc_comment
+         * Helper method to add IDataStore's.
          *
          * @method addFile
          * @param dataStore {IDataStore}
-         * @param key {string}
+         * @param key [string=null]
          * @public
          */
         BulkLoader.prototype.addFile = function (dataStore, key) {
@@ -55,7 +86,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this._dataStores.add(model);
         };
         /**
-         * TODO: YUIDoc_comment
+         * Helper method to get IDataStore's.
          *
          * @method getFile
          * @param key {string}
@@ -66,55 +97,46 @@ var __extends = (this && this.__extends) || function (d, b) {
             return model.value;
         };
         /**
-         * TODO: YUIDoc_comment
-         *
-         * @method getImage
-         * @param key {string}
-         * @return {Image}
-         * @public
-         */
-        BulkLoader.prototype.getImage = function (key) {
-            var imageLoader = this.getFile(key);
-            return (imageLoader !== null) ? imageLoader.data : null;
-        };
-        /**
-         * TODO: YUIDoc_comment
+         * Helper method to start the loading process.
          *
          * @method start
          * @public
          */
         BulkLoader.prototype.start = function () {
             var dataStore;
-            for (var i_1 = 0; i_1 < this._dataStores.length; i_1++) {
-                dataStore = this._dataStores.get(i_1).value;
-                dataStore.addEventListenerOnce(LoaderEvent_1.default.COMPLETE, this._onLoadComplete, this);
+            this._queue = this._dataStores.models.slice(0);
+            var length = (this.maxConnections > this._queue.length) ? this._queue.length : this.maxConnections;
+            for (var i = 0; i < length; i++) {
+                dataStore = this._queue.shift().value;
+                dataStore.addEventListenerOnce(LoaderEvent_1.default.COMPLETE, this._onComplete, this);
                 dataStore.load();
             }
             return this;
         };
         /**
-         * TODO: YUIDoc_comment
+         * Helper method to stop/clear the loader.
          *
          * @method clear
          * @public
          */
         BulkLoader.prototype.clear = function () {
+            this._queue = [];
             var dataStore;
-            for (var i_2 = 0; i_2 < this._dataStores.length; i_2++) {
-                dataStore = this._dataStores.get(i_2).value;
-                dataStore.removeEventListener(LoaderEvent_1.default.COMPLETE, this._onLoadComplete, this);
+            for (var i = 0; i < this._dataStores.length; i++) {
+                dataStore = this._dataStores.get(i).value;
+                dataStore.removeEventListener(LoaderEvent_1.default.COMPLETE, this._onComplete, this);
             }
             this._totalComplete = 0;
             this._dataStores = new Collection_1.default();
         };
         /**
-         * TODO: YUIDoc_comment
+         * Event handler method called every time a IDataStore's is completely loaded.
          *
-         * @method _onLoadComplete
+         * @method _onComplete
          * @param event {LoaderEvent}
          * @protected
          */
-        BulkLoader.prototype._onLoadComplete = function (event) {
+        BulkLoader.prototype._onComplete = function (event) {
             var dataStore = event.target;
             this._totalComplete++;
             var bulkLoaderEvent = new BulkLoaderEvent_1.default(BulkLoaderEvent_1.default.COMPLETE);
@@ -124,21 +146,30 @@ var __extends = (this && this.__extends) || function (d, b) {
             bulkLoaderEvent.data = dataStore;
             // Dispatch the IDataStore that was just completed.
             this.dispatchEvent(bulkLoaderEvent);
-            // Loop through and check if all IDataStore have been loaded.
-            for (var i_3 = 0; i_3 < this._dataStores.length; i_3++) {
-                dataStore = this._dataStores.get(i_3).value;
-                if (dataStore.complete === false) {
-                    return;
-                }
+            if (this._queue.length !== 0) {
+                var dataStore_1 = this._queue.shift().value;
+                dataStore_1.addEventListenerOnce(LoaderEvent_1.default.COMPLETE, this._onComplete, this);
+                dataStore_1.load();
             }
+            if (this._totalComplete === this._dataStores.length) {
+                this._onLoadComplete();
+            }
+        };
+        /**
+         * Event handler method called once all IDataStore's are completely loaded.
+         *
+         * @method _onLoadComplete
+         * @protected
+         */
+        BulkLoader.prototype._onLoadComplete = function () {
             var model;
             var dataStoreList = [];
-            for (var i_4 = 0; i_4 < this._dataStores.length; i_4++) {
-                model = this._dataStores.get(i_4);
-                dataStoreList.push(model.value);
+            for (var i = 0; i < this._dataStores.length; i++) {
+                model = this._dataStores.get(i);
+                dataStoreList[i] = model.value;
             }
             // Add the whole list because all are completed.
-            bulkLoaderEvent = new BulkLoaderEvent_1.default(BulkLoaderEvent_1.default.LOAD_COMPLETE);
+            var bulkLoaderEvent = new BulkLoaderEvent_1.default(BulkLoaderEvent_1.default.LOAD_COMPLETE);
             bulkLoaderEvent.total = this._dataStores.length;
             bulkLoaderEvent.totalComplete = this._totalComplete;
             bulkLoaderEvent.percentComplete = (this._totalComplete / this._dataStores.length) * 100;
@@ -147,7 +178,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             this.dispatchEvent(bulkLoaderEvent);
         };
         return BulkLoader;
-    })(EventDispatcher_1.default);
+    }(EventDispatcher_1.default));
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BulkLoader;
 });

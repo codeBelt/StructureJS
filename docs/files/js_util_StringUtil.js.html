@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.11.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,6 +162,7 @@
         define([&quot;require&quot;, &quot;exports&quot;], factory);
     }
 })(function (require, exports) {
+    &quot;use strict&quot;;
     /**
      * The StringUtil...
      *
@@ -328,8 +329,8 @@
             var queries = str.split(&#x27;&amp;&#x27;);
             // Convert the array of strings into an object
             var len = queries.length;
-            for (var i_1 = 0; i_1 &lt; len; i_1++) {
-                temp = queries[i_1].split(&#x27;=&#x27;);
+            for (var i = 0; i &lt; len; i++) {
+                temp = queries[i].split(&#x27;=&#x27;);
                 params[temp[0]] = (useParseFloat === true &amp;&amp; isNaN(parseFloat(temp[1])) === false) ? parseFloat(temp[1]) : temp[1];
             }
             return params;
@@ -411,9 +412,9 @@
             }
             var length = rest.length;
             var value = str;
-            for (var i_2 = 0; i_2 &lt; length; i_2++) {
-                var reg = new RegExp(&#x27;\\{&#x27; + i_2 + &#x27;\\}&#x27;, &#x27;gm&#x27;);
-                value = value.replace(reg, rest[i_2]);
+            for (var i = 0; i &lt; length; i++) {
+                var reg = new RegExp(&#x27;\\{&#x27; + i + &#x27;\\}&#x27;, &#x27;gm&#x27;);
+                value = value.replace(reg, rest[i]);
             }
             return value;
         };
@@ -438,7 +439,7 @@
             return queryString.replace(re, delimiter + name + &#x27;=&#x27; + value);
         };
         return StringUtil;
-    })();
+    }());
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
     exports.default = StringUtil;
 });
