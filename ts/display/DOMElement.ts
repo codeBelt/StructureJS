@@ -686,6 +686,49 @@ class DOMElement extends DisplayObjectContainer
 
         return createdChildren;
     }
+
+    /**
+     * Only use this once per application and use used on your main application Class.
+     * This selects HTML element that you want the application to have control over.
+     * This method starts the lifecycle of the application.
+     *
+     * @method appendTo
+     * @param type {any} A string value where your application will be appended. This can be an element id (#some-id), element class (.some-class) or a element tag (body).
+     * @param [enabled=true] {boolean} Sets the enabled state of the object.
+     * @example
+     * <b>Instantiation Example</b><br>
+     * This example illustrates how to instantiate your main application or root class.
+     *
+     *      const app = new MainClass();
+     *      app.appendTo('body');
+     *
+     */
+    public appendTo(type:any, enabled:boolean = true):any
+    {
+        this.$element = (type instanceof jQuery) ? type : jQuery(type);
+
+        this._addClientSideId(this);
+
+        if (this.isCreated === false)
+        {
+            this.create();
+            this.isCreated = true;
+
+            if (enabled === false)
+            {
+                this.disable();
+            }
+            else
+            {
+                this.enable();
+            }
+
+            this.layout();
+        }
+
+        return this;
+    }
+
 }
 
 export default DOMElement;
