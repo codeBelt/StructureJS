@@ -515,7 +515,7 @@ class Router
      *
      *      Router.buildRoute(someProperty, 'path', 7, queryObject);
      *
-     *      //Creates 'api/endpoint/path/7/?type=car&name=Telsa%20Motors'
+     *      //Creates 'api/endpoint/path/7?type=car&name=Telsa%20Motors'
      */
     public static buildRoute(...rest):string {
 
@@ -525,7 +525,9 @@ class Router
             }
         });
 
-        return rest.join('/');
+        const route:string = rest.join('/');
+
+        return route.replace('/?', '?');
     }
 
     /**
