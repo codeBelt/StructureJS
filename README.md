@@ -250,6 +250,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-05-11 v0.12.3 Remove jquery import and make it global for the eventListener plugin..
+ 
  * 2016-05-11 v0.12.2 Allow passing of arguments to the layout method. Fix Router.getCurrentRoute being null right after callback.
  
  * 2016-04-23 v0.12.0 Deprecated Stage class and the appendTo method. Copied the appendTo method to the DOMElement class.
