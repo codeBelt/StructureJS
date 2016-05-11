@@ -634,6 +634,8 @@ class Router
                     routerEvent.newURL = window.location.href;
                 }
 
+                Router._currentRoute = routerEvent;
+
                 // Execute the callback function and pass the route event.
                 route.callback.call(route.callbackScope, routerEvent);
 
@@ -664,11 +666,12 @@ class Router
                 routerEvent.newURL = window.location.href;
             }
 
+            Router._currentRoute = routerEvent;
+
             Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
         }
 
         Router._hashChangeEvent = null;
-        Router._currentRoute = routerEvent;
     }
 }
 
