@@ -202,11 +202,12 @@ class DisplayObject extends EventDispatcher
      * The layout method provides a common function to handle updating objects in the view.
      *
      * @method layout
+     * @param ...rest {Array<any>}
      * @returns {DisplayObject} Returns an instance of itself.
      * @public
      * @chainable
      */
-    public layout():any
+    public layout(...rest:Array<any>):any
     {
         return this;
     }
