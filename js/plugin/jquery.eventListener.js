@@ -3,12 +3,11 @@
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", 'jquery'], factory);
+        define(["require", "exports"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var $ = require('jquery');
-    var $eventListener = $;
+    var $eventListener = window['jQuery'];
     /**
      * A bind polyfill for browsers that don't support the bind method.
      */

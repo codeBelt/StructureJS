@@ -1,6 +1,4 @@
-import * as $ from 'jquery';
-
-const $eventListener = $;
+const $eventListener = window['jQuery'];
 
 /**
  * A bind polyfill for browsers that don't support the bind method.
@@ -129,7 +127,7 @@ $eventListener.fn.removeEventListener = function (type, selector, callback, scop
             throw new Error('jQuery removeEventListener plugin requires at least 3 arguments.')
     }
     return this;
-}
+};
 
 
 export default $eventListener;
