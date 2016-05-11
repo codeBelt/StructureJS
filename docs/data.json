@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.12.0",
+        "version": "0.12.2",
         "url": ""
     },
     "files": {
@@ -2551,7 +2551,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 466,
+            "line": 467,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2565,7 +2565,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 475,
+            "line": 476,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2579,7 +2579,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 484,
+            "line": 485,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2593,7 +2593,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 493,
+            "line": 494,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2607,7 +2607,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 502,
+            "line": 503,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2625,7 +2625,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 515,
+            "line": 516,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2643,7 +2643,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 531,
+            "line": 532,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful if want to use your added routes but don't want any external forces trigger your routes.\n\nTypically what I do for games is during development/testing I allow the hash url to change the states so testers can jump\nto sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump\naround if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2661,7 +2661,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 550,
+            "line": 551,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2679,7 +2679,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 567,
+            "line": 568,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2697,7 +2697,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 580,
+            "line": 581,
             "description": "A reference to the current {{#crossLink \"RouterEvent\"}}{{/crossLink}} that was triggered.",
             "itemtype": "property",
             "name": "_currentRoute",
@@ -3417,6 +3417,13 @@
             "description": "The layout method provides a common function to handle updating objects in the view.",
             "itemtype": "method",
             "name": "layout",
+            "params": [
+                {
+                    "name": "...rest",
+                    "description": "",
+                    "type": "Array<any>"
+                }
+            ],
             "return": {
                 "description": "Returns an instance of itself.",
                 "type": "DisplayObject"
@@ -3430,7 +3437,7 @@
         },
         {
             "file": "js/display/DisplayObject.js",
-            "line": 202,
+            "line": 207,
             "description": "The setSize method sets the bounds within which the containing DisplayObject would like that component to lay itself out.",
             "params": [
                 {
@@ -9373,7 +9380,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/display/DisplayObject.js:202"
+            "line": " js/display/DisplayObject.js:207"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9765,7 +9772,7 @@
         },
         {
             "message": "Missing item type\nThe setSize method sets the bounds within which the containing DisplayObject would like that component to lay itself out.",
-            "line": " js/display/DisplayObject.js:202"
+            "line": " js/display/DisplayObject.js:207"
         },
         {
             "message": "Missing item type",

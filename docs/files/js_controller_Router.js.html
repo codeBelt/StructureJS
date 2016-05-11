@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.2</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -592,6 +592,7 @@
                     else {
                         routerEvent.newURL = window.location.href;
                     }
+                    Router._currentRoute = routerEvent;
                     // Execute the callback function and pass the route event.
                     route.callback.call(route.callbackScope, routerEvent);
                     // Only trigger the first route and stop checking.
@@ -614,10 +615,10 @@
                 else {
                     routerEvent.newURL = window.location.href;
                 }
+                Router._currentRoute = routerEvent;
                 Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
             }
             Router._hashChangeEvent = null;
-            Router._currentRoute = routerEvent;
         };
         /**
          * A reference to the browser Window Object.

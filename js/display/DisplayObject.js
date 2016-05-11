@@ -192,11 +192,16 @@ var __extends = (this && this.__extends) || function (d, b) {
          * The layout method provides a common function to handle updating objects in the view.
          *
          * @method layout
+         * @param ...rest {Array<any>}
          * @returns {DisplayObject} Returns an instance of itself.
          * @public
          * @chainable
          */
         DisplayObject.prototype.layout = function () {
+            var rest = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                rest[_i - 0] = arguments[_i];
+            }
             return this;
         };
         /**

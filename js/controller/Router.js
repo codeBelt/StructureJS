@@ -436,6 +436,7 @@
                     else {
                         routerEvent.newURL = window.location.href;
                     }
+                    Router._currentRoute = routerEvent;
                     // Execute the callback function and pass the route event.
                     route.callback.call(route.callbackScope, routerEvent);
                     // Only trigger the first route and stop checking.
@@ -458,10 +459,10 @@
                 else {
                     routerEvent.newURL = window.location.href;
                 }
+                Router._currentRoute = routerEvent;
                 Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
             }
             Router._hashChangeEvent = null;
-            Router._currentRoute = routerEvent;
         };
         /**
          * A reference to the browser Window Object.
