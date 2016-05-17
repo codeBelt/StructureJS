@@ -250,7 +250,9 @@ _onClickHandler(event) {
 
 ## Release History
 
- * 2016-05-11 v0.12.3 Remove jquery import and make it global for the eventListener plugin..
+ * 2016-05-17 v0.12.4 Remove break; to stop TypeScript warning in ApplicationCacheController.getStatus method. Fix issue with Router.buildRoute method putting '/' in front of '?'. Rename snippet extensions.
+ 
+ * 2016-05-11 v0.12.3 Remove jquery import and make it global for the eventListener plugin.
  
  * 2016-05-11 v0.12.2 Allow passing of arguments to the layout method. Fix Router.getCurrentRoute being null right after callback.
  

@@ -66,25 +66,18 @@
             switch (ApplicationCacheController._appCache.status) {
                 case ApplicationCacheController._appCache.UNCACHED:
                     return 'UNCACHED';
-                    break;
                 case ApplicationCacheController._appCache.IDLE:
                     return 'IDLE';
-                    break;
                 case ApplicationCacheController._appCache.CHECKING:
                     return 'CHECKING';
-                    break;
                 case ApplicationCacheController._appCache.DOWNLOADING:
                     return 'DOWNLOADING';
-                    break;
                 case ApplicationCacheController._appCache.UPDATEREADY:
                     return 'UPDATEREADY';
-                    break;
                 case ApplicationCacheController._appCache.OBSOLETE:
                     return 'OBSOLETE';
-                    break;
                 default:
                     return 'UKNOWN CACHE STATUS';
-                    break;
             }
         };
         /**

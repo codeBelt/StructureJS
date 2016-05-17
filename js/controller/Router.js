@@ -338,7 +338,7 @@
          *
          *      Router.buildRoute(someProperty, 'path', 7, queryObject);
          *
-         *      //Creates 'api/endpoint/path/7/?type=car&name=Telsa%20Motors'
+         *      //Creates 'api/endpoint/path/7?type=car&name=Telsa%20Motors'
          */
         Router.buildRoute = function () {
             var rest = [];
@@ -350,7 +350,8 @@
                     array[index] = '?' + Router._toQueryString(value);
                 }
             });
-            return rest.join('/');
+            var route = rest.join('/');
+            return route.replace('/?', '?');
         };
         /**
          * TODO: YUIDoc_comment
