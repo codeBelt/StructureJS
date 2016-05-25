@@ -2,6 +2,8 @@
 
 A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.
 
+Developers accustomed to ActionScript will immediately find themselves at home.
+
 ## Documentation
 * [Documentation](http://codebelt.github.io/StructureJS/docs/)
 
