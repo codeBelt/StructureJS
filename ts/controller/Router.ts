@@ -1,7 +1,7 @@
+import StringUtil from '../util/StringUtil';
+import RouterEvent from '../event/RouterEvent';
+import Route from '../model/Route';
 
-import Route from '../../../../../vendor/structurejs/ts/model/Route';
-import RouterEvent from '../../../../../vendor/structurejs/ts/event/RouterEvent';
-import StringUtil from '../../../../../vendor/structurejs/ts/util/StringUtil';
 /**
  * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
  *

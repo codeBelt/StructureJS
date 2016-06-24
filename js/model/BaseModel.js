@@ -123,8 +123,11 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @protected
          */
         BaseModel.prototype._setData = function (key, data) {
+            /*if ((this[key] instanceof Array === true) && (data !== null) && (data instanceof Array === false)) {
+             throw new TypeError(`[${this.getQualifiedClassName()}] The "${key}" property was originally assigned as an Array and now your assigning it as something else. Not going to happen!`);
+             }*/
             // If the data is an array and if the property its being assigned to is an array.
-            if (data instanceof Array && this[key] instanceof Array) {
+            if ((data instanceof Array === true) && (this[key] instanceof Array === true)) {
                 var temp = [];
                 var len = data.length;
                 if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false) {
@@ -148,6 +151,11 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @protected
          */
         BaseModel.prototype._updateData = function (keyValue, data) {
+            if (typeof data === 'function') {
+                // If data is a function then it must be a child model and we need to return null.
+                // Note to self if we want it to create an empty model of then remove the return and do `data = {}`.
+                return null;
+            }
             if (keyValue instanceof BaseModel.constructor) {
                 // If the property is an instance of a BaseModel class and has not been created yet.
                 // Then instantiate it and pass in the data to the constructor.

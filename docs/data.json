@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.12.2",
+        "version": "0.12.5",
         "url": ""
     },
     "files": {
@@ -620,7 +620,10 @@
                 "BaseModel"
             ],
             "is_constructor": 1,
-            "author": "Robert S. (www.codeBelt.com)"
+            "author": "Robert S. (www.codeBelt.com)",
+            "example": [
+                "\n    this._localStorageController = new LocalStorageController();\n    this._localStorageController.addItem('someName', { value: 'something'});"
+            ]
         },
         "Router": {
             "name": "Router",
@@ -1676,7 +1679,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 90,
+            "line": 83,
             "description": "The resources listed in the manifest have been fully downloaded, and the application is\nnow cached locally.",
             "itemtype": "method",
             "name": "_onCached",
@@ -1696,7 +1699,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 103,
+            "line": 96,
             "description": "The browser is checking for an update, or is attempting to download\nthe cache manifest for the first time. This is always the first event\nin the sequence.",
             "itemtype": "method",
             "name": "_onChecking",
@@ -1716,7 +1719,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 117,
+            "line": 110,
             "description": "The browser has started to download the cache manifest, either for the\nfirst time or because changes have been detected.",
             "itemtype": "method",
             "name": "_onDownloading",
@@ -1736,7 +1739,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 130,
+            "line": 123,
             "description": "An error occurred at some point - this could be caused by a number of things. This will\nalways be the last event in the sequence.",
             "itemtype": "method",
             "name": "_onError",
@@ -1756,7 +1759,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 143,
+            "line": 136,
             "description": "The cache manifest hadn't changed.",
             "itemtype": "method",
             "name": "_onNoUpdate",
@@ -1776,7 +1779,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 155,
+            "line": 148,
             "description": "The cache manifest file could not be found, indicating that the cache is no longer needed.\nThe application cache is being deleted.",
             "itemtype": "method",
             "name": "_onObsolete",
@@ -1796,7 +1799,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 168,
+            "line": 161,
             "description": "The browser had downloaded and cached an asset. This is fired once for\nevery file that is downloaded (including the current page which is cached implicitly).",
             "itemtype": "method",
             "name": "_onProgress",
@@ -1816,7 +1819,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 181,
+            "line": 174,
             "description": "The resources listed in the manifest have been newly re-downloaded, and the script can\nuse swapCache() to switch to the new cache.",
             "itemtype": "method",
             "name": "_onUpdateReady",
@@ -1836,7 +1839,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 194,
+            "line": 187,
             "description": "Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.",
             "itemtype": "method",
             "name": "addEventListener",
@@ -1874,7 +1877,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 213,
+            "line": 206,
             "description": "Removes a specified listener from the ApplicationCacheController object.",
             "itemtype": "method",
             "name": "removeEventListener",
@@ -1905,7 +1908,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 231,
+            "line": 224,
             "description": "<p>Dispatches an event within the ApplicationCacheController object.</p>",
             "itemtype": "method",
             "name": "dispatchEvent",
@@ -1926,7 +1929,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 248,
+            "line": 241,
             "description": "A reference to the applicationCache property on the window object.",
             "itemtype": "property",
             "name": "_appCache",
@@ -1940,7 +1943,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 257,
+            "line": 250,
             "description": "A reference to the EventDispatcher object.",
             "itemtype": "property",
             "name": "_eventDispatcher",
@@ -1954,7 +1957,7 @@
         },
         {
             "file": "js/controller/ApplicationCacheController.js",
-            "line": 266,
+            "line": 259,
             "description": "The isEnabled property is used to keep track of the enabled state.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -1969,7 +1972,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 36,
+            "line": 39,
             "description": "Current user namespace. The namespace is optional.",
             "itemtype": "property",
             "name": "_namespace",
@@ -1984,7 +1987,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 46,
+            "line": 49,
             "description": "A reference to window.localStorage for faster access.",
             "itemtype": "property",
             "name": "_localStorage",
@@ -1997,7 +2000,7 @@
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 57,
+            "line": 60,
             "description": "Set storage namespace",
             "itemtype": "method",
             "name": "setNamespace",
@@ -2011,13 +2014,16 @@
                 "description": "",
                 "type": "String"
             },
+            "example": [
+                "\n    this._localStorageController.setNamespace('myNamespace-');"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 67,
+            "line": 72,
             "description": "Get storage namespace",
             "itemtype": "method",
             "name": "getNamespace",
@@ -2025,13 +2031,16 @@
                 "description": "",
                 "type": "String"
             },
+            "example": [
+                "\n    const currentSetNamespace = this._localStorageController.getNamespace();"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 76,
+            "line": 83,
             "description": "Add a key/value pair to localStorage.",
             "itemtype": "method",
             "name": "addItem",
@@ -2056,13 +2065,16 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n    this._localStorageController.addItem('someName', { value: 'something'});\n\n    // If you set a namespace you would pass 'true' into the third parameter.\n    this._localStorageController.addItem('someName', { value: 'something'}, true);"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 102,
+            "line": 114,
             "description": "Retrieves the current value associated with the Local Storage key.",
             "itemtype": "method",
             "name": "getItem",
@@ -2084,13 +2096,16 @@
                 "description": "",
                 "type": "Any"
             },
+            "example": [
+                "\n    this._localStorageController.setNamespace('myNamespace-');"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 127,
+            "line": 141,
             "description": "Returns all items in local storage as an Object with key and value properties that has a certain namespace.",
             "itemtype": "method",
             "name": "getItemsWithNamespace",
@@ -2105,13 +2120,16 @@
                 "description": "",
                 "type": "Array"
             },
+            "example": [
+                "\n    this._localStorageController.getItemsWithNamespace('myNamespace-');"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 151,
+            "line": 167,
             "description": "Returns all items in local storage as an Object with key and value properties.",
             "itemtype": "method",
             "name": "getAllItems",
@@ -2119,13 +2137,16 @@
                 "description": "",
                 "type": "Array"
             },
+            "example": [
+                "\n    this._localStorageController.getAllItems();"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 171,
+            "line": 189,
             "description": "Deletes a key/value pair from the Local Storage collection.",
             "itemtype": "method",
             "name": "removeItem",
@@ -2147,13 +2168,16 @@
                 "description": "",
                 "type": "Boolean"
             },
+            "example": [
+                "\n    this._localStorageController.removeItem('someName');\n\n    // If you set a namespace you would pass 'true' into the second parameter.\n    this._localStorageController.removeItem('someName', true);"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 192,
+            "line": 215,
             "description": "Returns the number of items storage in local storage.",
             "itemtype": "method",
             "name": "getLength",
@@ -2161,13 +2185,16 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n    const numberOfItemsInLocalStorage = this._localStorageController.getLength();"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 201,
+            "line": 226,
             "description": "Returns the size of the Local Storage.",
             "itemtype": "method",
             "name": "getSize",
@@ -2175,23 +2202,29 @@
                 "description": "",
                 "type": "Number"
             },
+            "example": [
+                "\n    const sizeOfLocalStorage = this._localStorageController.getSize();"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 210,
+            "line": 237,
             "description": "Removes all key/value pairs from the Local Storage area.",
             "itemtype": "method",
             "name": "clear",
+            "example": [
+                "\n    this._localStorageController.clear();"
+            ],
             "class": "LocalStorageController",
             "module": "StructureJS",
             "submodule": "controller"
         },
         {
             "file": "js/controller/LocalStorageController.js",
-            "line": 218,
+            "line": 247,
             "itemtype": "method",
             "name": "_onLocalStorageEvent",
             "params": [
@@ -2475,7 +2508,7 @@
             "tagname": "",
             "static": 1,
             "example": [
-                "\n     const someProperty = 'api/endpoint';\n     const queryObject = {type: 'car', name: encodeURIComponent('Telsa Motors')};\n\n     Router.buildRoute(someProperty, 'path', 7, queryObject);\n\n     //Creates 'api/endpoint/path/7/?type=car&name=Telsa%20Motors'"
+                "\n     const someProperty = 'api/endpoint';\n     const queryObject = {type: 'car', name: encodeURIComponent('Telsa Motors')};\n\n     Router.buildRoute(someProperty, 'path', 7, queryObject);\n\n     //Creates 'api/endpoint/path/7?type=car&name=Telsa%20Motors'"
             ],
             "class": "Router",
             "module": "StructureJS",
@@ -2483,7 +2516,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 355,
+            "line": 356,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_toQueryString",
@@ -2495,7 +2528,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 370,
+            "line": 371,
             "description": "Returns the current router event that was last triggered.",
             "itemtype": "method",
             "name": "getCurrentRoute",
@@ -2511,7 +2544,30 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 382,
+            "line": 383,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "validate",
+            "params": [
+                {
+                    "name": "func",
+                    "description": "The function you wanted called if the validation failed.",
+                    "type": "Function"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n        Router.validate((routerEvent, next) => {\n             const allowRouteChange = this._someMethodCheck();\n\n             if (allowRouteChange == false) {\n                 next(() => {\n                     // Do something here.\n                     // For example you can call Router.navigateTo to change the route.\n                 });\n             } else {\n                 next();\n             }\n        });"
+            ],
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 407,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "_onHashChange",
@@ -2531,7 +2587,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 399,
+            "line": 424,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "_changeRoute",
@@ -2551,7 +2607,20 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 467,
+            "line": 506,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "method",
+            "name": "_allowRouteChange",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 528,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2565,7 +2634,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 476,
+            "line": 537,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2579,7 +2648,35 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 485,
+            "line": 546,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "_validators",
+            "type": "{Array<Function>}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 555,
+            "description": "TODO: YUIDoc_comment",
+            "itemtype": "property",
+            "name": "_validatorFunc",
+            "type": "{Function}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 564,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2593,7 +2690,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 494,
+            "line": 573,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2607,7 +2704,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 503,
+            "line": 582,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2625,7 +2722,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 516,
+            "line": 595,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2643,7 +2740,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 532,
+            "line": 611,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful if want to use your added routes but don't want any external forces trigger your routes.\n\nTypically what I do for games is during development/testing I allow the hash url to change the states so testers can jump\nto sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump\naround if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2661,7 +2758,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 551,
+            "line": 630,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2679,7 +2776,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 568,
+            "line": 647,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2697,7 +2794,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 581,
+            "line": 660,
             "description": "A reference to the current {{#crossLink \"RouterEvent\"}}{{/crossLink}} that was triggered.",
             "itemtype": "property",
             "name": "_currentRoute",
@@ -5496,7 +5593,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 142,
+            "line": 145,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_updateData",
@@ -5518,7 +5615,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 167,
+            "line": 175,
             "description": "Converts the Base Model data into a JSON object and deletes the sjsId property.",
             "itemtype": "method",
             "name": "toJSON",
@@ -5537,7 +5634,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 180,
+            "line": 188,
             "description": "Converts a  Base Model to a JSON string,",
             "itemtype": "method",
             "name": "toJSONString",
@@ -5556,7 +5653,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 192,
+            "line": 200,
             "description": "Converts the string json data into an Object and calls the {{#crossLink \"BaseModel/update:method\"}}{{/crossLink}} method with the converted Object.",
             "itemtype": "method",
             "name": "fromJSON",
@@ -5578,7 +5675,7 @@
         },
         {
             "file": "js/model/BaseModel.js",
-            "line": 208,
+            "line": 216,
             "description": "Create a clone/copy of the  Base Model.",
             "itemtype": "method",
             "name": "clone",
@@ -6406,14 +6503,14 @@
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 12,
+            "line": 11,
             "description": "A bind polyfill for browsers that don't support the bind method.",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 32,
+            "line": 31,
             "description": "Generates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
             "params": [
                 {
@@ -6430,14 +6527,14 @@
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 53,
+            "line": 52,
             "description": "The jQuery addEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
         },
         {
             "file": "js/plugin/jquery.eventListener.js",
-            "line": 87,
+            "line": 86,
             "description": "The jQuery removeEventListener plugin",
             "class": "BrowserUtil",
             "module": "StructureJS"
@@ -9260,23 +9357,23 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:57"
+            "line": " js/controller/LocalStorageController.js:60"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:67"
+            "line": " js/controller/LocalStorageController.js:72"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:102"
+            "line": " js/controller/LocalStorageController.js:114"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:192"
+            "line": " js/controller/LocalStorageController.js:215"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/controller/LocalStorageController.js:201"
+            "line": " js/controller/LocalStorageController.js:226"
         },
         {
             "message": "unknown tag: overridden",
@@ -9440,15 +9537,15 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:167"
+            "line": " js/model/BaseModel.js:175"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:180"
+            "line": " js/model/BaseModel.js:188"
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/model/BaseModel.js:208"
+            "line": " js/model/BaseModel.js:216"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9480,7 +9577,7 @@
         },
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " js/plugin/jquery.eventListener.js:32"
+            "line": " js/plugin/jquery.eventListener.js:31"
         },
         {
             "message": "unknown tag: overridden",
@@ -9780,19 +9877,19 @@
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",
-            "line": " js/plugin/jquery.eventListener.js:12"
+            "line": " js/plugin/jquery.eventListener.js:11"
         },
         {
             "message": "Missing item type\nGenerates a hash string from the string being passed in. In this case it is a function that is casted as string value.",
-            "line": " js/plugin/jquery.eventListener.js:32"
+            "line": " js/plugin/jquery.eventListener.js:31"
         },
         {
             "message": "Missing item type\nThe jQuery addEventListener plugin",
-            "line": " js/plugin/jquery.eventListener.js:53"
+            "line": " js/plugin/jquery.eventListener.js:52"
         },
         {
             "message": "Missing item type\nThe jQuery removeEventListener plugin",
-            "line": " js/plugin/jquery.eventListener.js:87"
+            "line": " js/plugin/jquery.eventListener.js:86"
         },
         {
             "message": "Missing item type",

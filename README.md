@@ -252,6 +252,10 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-06-24 v0.12.5 BaseModel - fix issue if object was passed in with messing property and the property was assigned a BaseModel class it would keep reference to the class. Now it sets it to null.
+                      Router - validate method to allow validation checks before the Router class triggers the next route.
+                      LocalStorageController - Add example comments.
+ 
  * 2016-05-17 v0.12.4 Remove break; to stop TypeScript warning in ApplicationCacheController.getStatus method. Fix issue with Router.buildRoute method putting '/' in front of '?'. Rename snippet extensions.
  
  * 2016-05-11 v0.12.3 Remove jquery import and make it global for the eventListener plugin.

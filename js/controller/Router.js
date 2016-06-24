@@ -381,6 +381,30 @@
             return this._currentRoute;
         };
         /**
+         * TODO: YUIDoc_comment
+         *
+         * @method validate
+         * @param func {Function} The function you wanted called if the validation failed.
+         * @public
+         * @static
+         * @example
+         *         Router.validate((routerEvent, next) => {
+         *              const allowRouteChange = this._someMethodCheck();
+         *
+         *              if (allowRouteChange == false) {
+         *                  next(() => {
+         *                      // Do something here.
+         *                      // For example you can call Router.navigateTo to change the route.
+         *                  });
+         *              } else {
+         *                  next();
+         *              }
+         *         });
+         */
+        Router.validate = function (func) {
+            Router._validators.push(func);
+        };
+        /**
          * This method will be called if the Window object dispatches a HashChangeEvent.
          * This method will not be called if the Router is disabled.
          *
@@ -437,17 +461,23 @@
                     else {
                         routerEvent.newURL = window.location.href;
                     }
-                    Router._currentRoute = routerEvent;
-                    // Execute the callback function and pass the route event.
-                    route.callback.call(route.callbackScope, routerEvent);
-                    // Only trigger the first route and stop checking.
-                    if (Router.allowMultipleMatches === false) {
+                    var allowRouteChange = Router._allowRouteChange(routerEvent);
+                    if (allowRouteChange === true) {
+                        Router._currentRoute = routerEvent;
+                        // Execute the callback function and pass the route event.
+                        route.callback.call(route.callbackScope, routerEvent);
+                        // Only trigger the first route and stop checking.
+                        if (Router.allowMultipleMatches === false) {
+                            break;
+                        }
+                    }
+                    else {
                         break;
                     }
                 }
             }
             // If there are no route's matched and there is a default route. Then call that default route.
-            if (routerEvent === null && Router._defaultRoute !== null) {
+            if (routerEvent === null) {
                 routerEvent = new RouterEvent_1.default();
                 routerEvent.route = hash;
                 routerEvent.query = (hash.indexOf('?') > -1) ? StringUtil_1.default.queryStringToObject(hash) : null;
@@ -460,10 +490,40 @@
                 else {
                     routerEvent.newURL = window.location.href;
                 }
-                Router._currentRoute = routerEvent;
-                Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
+                var allowRouteChange = Router._allowRouteChange(routerEvent);
+                if (allowRouteChange === true) {
+                    Router._currentRoute = routerEvent;
+                    if (Router._defaultRoute !== null) {
+                        Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
+                    }
+                }
             }
             Router._hashChangeEvent = null;
+            if (Router._validatorFunc != null) {
+                Router._validatorFunc();
+            }
+        };
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @method _allowRouteChange
+         * @private
+         * @static
+         */
+        Router._allowRouteChange = function (routerEvent) {
+            Router._validatorFunc = null;
+            for (var i = 0; i < Router._validators.length; i++) {
+                var func = Router._validators[i];
+                if (Router._validatorFunc != null) {
+                    break;
+                }
+                var callback = function (back) {
+                    if (back === void 0) { back = null; }
+                    Router._validatorFunc = back;
+                };
+                func(routerEvent, callback);
+            }
+            return Router._validatorFunc == null;
         };
         /**
          * A reference to the browser Window Object.
@@ -483,6 +543,24 @@
          * @static
          */
         Router._routes = [];
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property _validators
+         * @type {Array<Function>}
+         * @private
+         * @static
+         */
+        Router._validators = [];
+        /**
+         * TODO: YUIDoc_comment
+         *
+         * @property _validatorFunc
+         * @type {Function}
+         * @private
+         * @static
+         */
+        Router._validatorFunc = null;
         /**
          * A reference to default route object.
          *
