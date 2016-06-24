@@ -121,8 +121,12 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     protected _setData(key:any, data:any):void
     {
+        /*if ((this[key] instanceof Array === true) && (data !== null) && (data instanceof Array === false)) {
+         throw new TypeError(`[${this.getQualifiedClassName()}] The "${key}" property was originally assigned as an Array and now your assigning it as something else. Not going to happen!`);
+         }*/
+
         // If the data is an array and if the property its being assigned to is an array.
-        if (data instanceof Array && this[key] instanceof Array)
+        if ((data instanceof Array === true) && (this[key] instanceof Array === true))
         {
             const temp:Array<any> = [];
             const len:number = data.length;
@@ -154,6 +158,13 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     protected _updateData(keyValue:any, data:any):any
     {
+        if (typeof data === 'function')
+        {
+            // If data is a function then it must be a child model and we need to return null.
+            // Note to self if we want it to create an empty model of then remove the return and do `data = {}`.
+            return null;
+        }
+
         if (keyValue instanceof BaseModel.constructor)
         {
             // If the property is an instance of a BaseModel class and has not been created yet.

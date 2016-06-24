@@ -1,7 +1,7 @@
-import StringUtil from '../util/StringUtil';
-import RouterEvent from '../event/RouterEvent';
-import Route from '../model/Route';
 
+import Route from '../../../../../vendor/structurejs/ts/model/Route';
+import RouterEvent from '../../../../../vendor/structurejs/ts/event/RouterEvent';
+import StringUtil from '../../../../../vendor/structurejs/ts/util/StringUtil';
 /**
  * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
  *
@@ -35,6 +35,26 @@ class Router
      * @static
      */
     private static _routes:Array<Route> = [];
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _validators
+     * @type {Array<Function>}
+     * @private
+     * @static
+     */
+    private static _validators:Array<Function> = [];
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _validatorFunc
+     * @type {Function}
+     * @private
+     * @static
+     */
+    private static _validatorFunc:Function = null;
 
     /**
      * A reference to default route object.
@@ -562,6 +582,31 @@ class Router
     }
 
     /**
+     * TODO: YUIDoc_comment
+     *
+     * @method validate
+     * @param func {Function} The function you wanted called if the validation failed.
+     * @public
+     * @static
+     * @example
+     *         Router.validate((routerEvent, next) => {
+     *              const allowRouteChange = this._someMethodCheck();
+     *
+     *              if (allowRouteChange == false) {
+     *                  next(() => {
+     *                      // Do something here.
+     *                      // For example you can call Router.navigateTo to change the route.
+     *                  });
+     *              } else {
+     *                  next();
+     *              }
+     *         });
+     */
+    public static validate(func:Function):void {
+        Router._validators.push(func);
+    }
+
+    /**
      * This method will be called if the Window object dispatches a HashChangeEvent.
      * This method will not be called if the Router is disabled.
      *
@@ -636,13 +681,22 @@ class Router
                     routerEvent.newURL = window.location.href;
                 }
 
-                Router._currentRoute = routerEvent;
+                const allowRouteChange:boolean = Router._allowRouteChange(routerEvent);
 
-                // Execute the callback function and pass the route event.
-                route.callback.call(route.callbackScope, routerEvent);
+                if (allowRouteChange === true)
+                {
+                    Router._currentRoute = routerEvent;
 
-                // Only trigger the first route and stop checking.
-                if (Router.allowMultipleMatches === false)
+                    // Execute the callback function and pass the route event.
+                    route.callback.call(route.callbackScope, routerEvent);
+
+                    // Only trigger the first route and stop checking.
+                    if (Router.allowMultipleMatches === false)
+                    {
+                        break;
+                    }
+                }
+                else
                 {
                     break;
                 }
@@ -650,7 +704,7 @@ class Router
         }
 
         // If there are no route's matched and there is a default route. Then call that default route.
-        if (routerEvent === null && Router._defaultRoute !== null)
+        if (routerEvent === null)
         {
             routerEvent = new RouterEvent();
             routerEvent.route = hash;
@@ -668,13 +722,52 @@ class Router
                 routerEvent.newURL = window.location.href;
             }
 
-            Router._currentRoute = routerEvent;
+            const allowRouteChange:boolean = Router._allowRouteChange(routerEvent);
 
-            Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
+            if (allowRouteChange === true)
+            {
+                Router._currentRoute = routerEvent;
+
+                if (Router._defaultRoute !== null)
+                {
+                    Router._defaultRoute.callback.call(Router._defaultRoute.callbackScope, routerEvent);
+                }
+            }
         }
 
         Router._hashChangeEvent = null;
+        if (Router._validatorFunc != null) {
+            Router._validatorFunc();
+        }
     }
+
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @method _allowRouteChange
+     * @private
+     * @static
+     */
+    private static _allowRouteChange(routerEvent:RouterEvent):boolean {
+        Router._validatorFunc = null;
+
+        for (let i:number = 0; i < Router._validators.length; i++) {
+            const func:Function = Router._validators[i];
+
+            if (Router._validatorFunc != null) {
+                break;
+            }
+
+            const callback:Function = (back:Function = null) => {
+                Router._validatorFunc = back;
+            };
+
+            func(routerEvent, callback);
+        }
+
+        return Router._validatorFunc == null;
+    }
+
 }
 
 export default Router;

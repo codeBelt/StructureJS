@@ -9,20 +9,20 @@ import BaseModel from 'structurejs/model/BaseModel';
  **/
 class ${NAME} extends BaseModel {
 
-    constructor(data) {
+    constructor(data = {}) {
         super();
 
         if (data) {
             this.update(data);
         }
     }
-    
+
     /**
      * @overridden BaseModel.update
      */
     update(data) {
         super.update(data);
-        
+
         // Override any values after the default super update method has set the values.
     }
 

@@ -11,7 +11,7 @@ import BaseModel from 'structurejs/model/BaseModel';
  **/
 class ${TM_FILENAME/(.*)[.](.*)/$1/g} extends BaseModel {
 
-    constructor(data) {
+    constructor(data = {}) {
         super();
 
         if (data) {

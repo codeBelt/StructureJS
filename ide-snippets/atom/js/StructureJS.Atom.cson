@@ -236,8 +236,6 @@ define(function(require, exports, module) { // jshint ignore:line
     prefix: "property"
     body: """
 /**
- * TODO: YUIDoc_comment
- *
  * @property ${1:propertyName}
  * @type {${2:propertyType}}
  * @${3:accessType}

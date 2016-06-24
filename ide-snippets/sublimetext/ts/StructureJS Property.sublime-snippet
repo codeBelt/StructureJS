@@ -1,8 +1,6 @@
 <snippet>
 	<content><![CDATA[
 /**
- * TODO: YUIDoc_comment
- *
  * @property ${1:propertyName}
  * @type {${2:propertyType}}
  * @${3:accessType}

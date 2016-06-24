@@ -10,7 +10,7 @@ import BaseModel = require('../vendor/structurejs/ts/model/BaseModel');
  **/
 class ${NAME} extends BaseModel {
 
-    constructor(data:any = null) {
+    constructor(data:any = {}) {
         super();
 
         if (data) {

@@ -15,6 +15,9 @@ import BaseModel from '../model/BaseModel';
  * @requires BaseModel
  * @constructor
  * @author Robert S. (www.codeBelt.com)
+ * @example
+ *     this._localStorageController = new LocalStorageController();
+ *     this._localStorageController.addItem('someName', { value: 'something'});
  */
 class LocalStorageController extends EventDispatcher
 {
@@ -27,7 +30,7 @@ class LocalStorageController extends EventDispatcher
      * @optional
      * @protected
      */
-    protected _namespace:string = 'defaultNamespace';
+    protected _namespace:string = 'defaultNamespace-';
 
     /**
      * A reference to window.localStorage for faster access.
@@ -53,6 +56,8 @@ class LocalStorageController extends EventDispatcher
      * @method setNamespace
      * @param namespace
      * @returns {string}
+     * @example
+     *     this._localStorageController.setNamespace('myNamespace-');
      */
     public setNamespace(namespace:string):void
     {
@@ -64,6 +69,8 @@ class LocalStorageController extends EventDispatcher
      *
      * @method getNamespace
      * @returns {string}
+     * @example
+     *     const currentSetNamespace = this._localStorageController.getNamespace();
      */
     public getNamespace():string
     {
@@ -78,6 +85,11 @@ class LocalStorageController extends EventDispatcher
      * @param data {Object}
      * @param useNamespace {boolean}
      * @return {boolean}
+     * @example
+     *     this._localStorageController.addItem('someName', { value: 'something'});
+     *
+     *     // If you set a namespace you would pass 'true' into the third parameter.
+     *     this._localStorageController.addItem('someName', { value: 'something'}, true);
      */
     public addItem(key:string, data:any, useNamespace:boolean = false):boolean
     {
@@ -111,6 +123,8 @@ class LocalStorageController extends EventDispatcher
      * @param key {string}
      * @param [useNamespace=false] {string}
      * @returns {any}
+     * @example
+     *     this._localStorageController.setNamespace('myNamespace-');
      */
     public getItem(key:string, useNamespace:boolean = false):any
     {
@@ -142,6 +156,8 @@ class LocalStorageController extends EventDispatcher
      * @method getItemsWithNamespace
      * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
      * @return {Array}
+     * @example
+     *     this._localStorageController.getItemsWithNamespace('myNamespace-');
      */
     public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
@@ -156,7 +172,7 @@ class LocalStorageController extends EventDispatcher
                 let obj:any = {
                     key: key,
                     value: value
-                }
+                };
 
                 list.push(obj);
             }
@@ -169,6 +185,8 @@ class LocalStorageController extends EventDispatcher
      *
      * @method getAllItems
      * @return {Array}
+     * @example
+     *     this._localStorageController.getAllItems();
      */
     public getAllItems():Array<any>
     {
@@ -195,6 +213,11 @@ class LocalStorageController extends EventDispatcher
      * @param key {string}
      * @param [useNamespace=false] {string}
      * @return {boolean}
+     * @example
+     *     this._localStorageController.removeItem('someName');
+     *
+     *     // If you set a namespace you would pass 'true' into the second parameter.
+     *     this._localStorageController.removeItem('someName', true);
      */
     public removeItem(key:string, useNamespace:boolean = false):boolean
     {
@@ -219,6 +242,8 @@ class LocalStorageController extends EventDispatcher
      *
      * @method getLength
      * @returns {number}
+     * @example
+     *     const numberOfItemsInLocalStorage = this._localStorageController.getLength();
      */
     public getLength():number
     {
@@ -230,6 +255,8 @@ class LocalStorageController extends EventDispatcher
      *
      * @method getSize
      * @returns {number}
+     * @example
+     *     const sizeOfLocalStorage = this._localStorageController.getSize();
      */
     public getSize():number
     {
@@ -240,6 +267,8 @@ class LocalStorageController extends EventDispatcher
      * Removes all key/value pairs from the Local Storage area.
      *
      * @method clear
+     * @example
+     *     this._localStorageController.clear();
      */
     public clear():void
     {
