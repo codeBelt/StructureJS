@@ -207,8 +207,12 @@ class EventDispatcher extends ObjectManager
         const list:Array<any> = this._listeners[event.type];
         if (list !== void 0)
         {
-            let i:number = list.length;
+            // Cache to prevent the edge case were another listener is added during the dispatch loop.
+            const cachedList:Array<any> = list.slice();
+
+            let i:number = cachedList.length;
             let listener:any;
+
             while (--i > -1)
             {
                 // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
@@ -217,7 +221,7 @@ class EventDispatcher extends ObjectManager
                     break;
                 }
 
-                listener = list[i];
+                listener = cachedList[i];
                 listener.callback.call(listener.scope, event);
 
                 // If the once value is true we want to remove the listener right after this callback was called.
