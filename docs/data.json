@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.12.5",
+        "version": "0.12.6",
         "url": ""
     },
     "files": {
@@ -5223,7 +5223,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 224,
+            "line": 226,
             "description": "Check if an object has a specific event listener already added.",
             "itemtype": "method",
             "name": "hasEventListener",
@@ -5259,7 +5259,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 249,
+            "line": 251,
             "description": "Generates a string output of event listeners for a given object.",
             "itemtype": "method",
             "name": "getEventListeners",
@@ -5278,7 +5278,7 @@
         },
         {
             "file": "js/event/EventDispatcher.js",
-            "line": 279,
+            "line": 281,
             "overridden": "BaseObject.destroy",
             "class": "EventDispatcher",
             "module": "StructureJS",
@@ -9533,7 +9533,7 @@
         },
         {
             "message": "unknown tag: overridden",
-            "line": " js/event/EventDispatcher.js:279"
+            "line": " js/event/EventDispatcher.js:281"
         },
         {
             "message": "replacing incorrect tag: returns with return",
@@ -9873,7 +9873,7 @@
         },
         {
             "message": "Missing item type",
-            "line": " js/event/EventDispatcher.js:279"
+            "line": " js/event/EventDispatcher.js:281"
         },
         {
             "message": "Missing item type\nA bind polyfill for browsers that don't support the bind method.",
