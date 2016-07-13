@@ -193,14 +193,16 @@ var __extends = (this && this.__extends) || function (d, b) {
             // Get the list of event listener by the associated type value.
             var list = this._listeners[event.type];
             if (list !== void 0) {
-                var i = list.length;
+                // Cache to prevent the edge case were another listener is added during the dispatch loop.
+                var cachedList = list.slice();
+                var i = cachedList.length;
                 var listener = void 0;
                 while (--i > -1) {
                     // If cancelable and isImmediatePropagationStopped are true then break out of the while loop.
                     if (event.cancelable === true && event.isImmediatePropagationStopped === true) {
                         break;
                     }
-                    listener = list[i];
+                    listener = cachedList[i];
                     listener.callback.call(listener.scope, event);
                     // If the once value is true we want to remove the listener right after this callback was called.
                     if (listener.once === true) {

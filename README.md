@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-07-13 v0.12.6 BaseModel - Fix EventDispatcher.dispatchEvent issue Needed to cache current listener objects to prevent the edge case were another listener is added during the dispatch loop.
+ 
  * 2016-06-24 v0.12.5 BaseModel - fix issue if object was passed in with messing property and the property was assigned a BaseModel class it would keep reference to the class. Now it sets it to null.
                       Router - validate method to allow validation checks before the Router class triggers the next route.
                       LocalStorageController - Add example comments.
