@@ -95,7 +95,7 @@ class BrowserUtil
         }
 
         BrowserUtil._onBreakpointChangeHandler = Util.debounce(BrowserUtil._onBreakpointChange, BrowserUtil.debounceDelay, false, BrowserUtil);
-        BrowserUtil._window.addEventListener('resize', BrowserUtil._onBreakpointChangeHandler);
+        BrowserUtil._window.addEventListener('resize.needNamespaceToRemoveEvent', BrowserUtil._onBreakpointChangeHandler);
 
         BrowserUtil.isEnabled = true;
     }
@@ -110,7 +110,7 @@ class BrowserUtil
             return;
         }
 
-        BrowserUtil._window.removeEventListener('resize', BrowserUtil._onBreakpointChangeHandler);
+        BrowserUtil._window.removeEventListener('resize.needNamespaceToRemoveEvent', BrowserUtil._onBreakpointChangeHandler);
 
         BrowserUtil.isEnabled = false;
     }
