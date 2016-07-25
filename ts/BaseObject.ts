@@ -74,7 +74,7 @@ class BaseObject
     {
         for (let key in this)
         {
-            if (this.hasOwnProperty(key))
+            if (this.hasOwnProperty(key) && key !== 'sjsId')
             {
                 this[key] = null;
             }
