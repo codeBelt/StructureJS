@@ -2,7 +2,7 @@
     "project": {
         "name": "StructureJS",
         "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
-        "version": "0.12.6",
+        "version": "0.12.7",
         "url": ""
     },
     "files": {
@@ -2388,7 +2388,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 201,
+            "line": 203,
             "description": "The **Router.disable** method will stop the Router class from listening for the hashchange event.",
             "itemtype": "method",
             "name": "disable",
@@ -2404,7 +2404,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 222,
+            "line": 226,
             "description": "The **Router.start** method is meant to trigger or check the hash url on page load.\nEither you can call this method after you add all your routers or after all data is loaded.\nIt is recommend you only call this once per page or application instantiation.",
             "itemtype": "method",
             "name": "start",
@@ -2420,7 +2420,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 240,
+            "line": 250,
             "description": "The **Router.navigateTo** method allows you to change the hash url and to trigger a route\nthat matches the string value. The second parameter is **silent** and is **false** by\ndefault. This allows you to update the hash url without causing a route callback to be\nexecuted.",
             "itemtype": "method",
             "name": "navigateTo",
@@ -2457,7 +2457,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 298,
+            "line": 317,
             "description": "The **Router.clear** will remove all route's and the default route from the Router class.",
             "itemtype": "method",
             "name": "clear",
@@ -2473,7 +2473,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 312,
+            "line": 331,
             "description": "The **Router.destroy** method will null out all references to other objects in the Router class.",
             "itemtype": "method",
             "name": "destroy",
@@ -2489,7 +2489,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 327,
+            "line": 346,
             "description": "A simple helper method to create a url route from an unlimited number of arguments.",
             "itemtype": "method",
             "name": "buildRoute",
@@ -2516,7 +2516,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 356,
+            "line": 375,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_toQueryString",
@@ -2528,7 +2528,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 371,
+            "line": 390,
             "description": "Returns the current router event that was last triggered.",
             "itemtype": "method",
             "name": "getCurrentRoute",
@@ -2544,7 +2544,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 383,
+            "line": 402,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "validate",
@@ -2567,7 +2567,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 407,
+            "line": 426,
             "description": "This method will be called if the Window object dispatches a HashChangeEvent.\nThis method will not be called if the Router is disabled.",
             "itemtype": "method",
             "name": "_onHashChange",
@@ -2587,7 +2587,27 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 424,
+            "line": 445,
+            "description": "This method will be called if the Window object dispatches a popstate event.\nThis method will not be called if the Router is disabled.",
+            "itemtype": "method",
+            "name": "_onHistoryChange",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "HashChangeEvent"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 475,
             "description": "The method is responsible for check if one of the routes matches the string value passed in.",
             "itemtype": "method",
             "name": "_changeRoute",
@@ -2607,7 +2627,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 506,
+            "line": 562,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "method",
             "name": "_allowRouteChange",
@@ -2620,7 +2640,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 528,
+            "line": 584,
             "description": "A reference to the browser Window Object.",
             "itemtype": "property",
             "name": "_window",
@@ -2634,7 +2654,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 537,
+            "line": 593,
             "description": "A list of the added Route objects.",
             "itemtype": "property",
             "name": "_routes",
@@ -2648,7 +2668,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 546,
+            "line": 602,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_validators",
@@ -2662,7 +2682,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 555,
+            "line": 611,
             "description": "TODO: YUIDoc_comment",
             "itemtype": "property",
             "name": "_validatorFunc",
@@ -2676,7 +2696,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 564,
+            "line": 620,
             "description": "A reference to default route object.",
             "itemtype": "property",
             "name": "_defaultRoute",
@@ -2690,7 +2710,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 573,
+            "line": 629,
             "description": "A reference to the hash change event that was sent from the Window Object.",
             "itemtype": "property",
             "name": "_hashChangeEvent",
@@ -2704,7 +2724,53 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 582,
+            "line": 638,
+            "description": "A reference to the current {{#crossLink \"RouterEvent\"}}{{/crossLink}} that was triggered.",
+            "itemtype": "property",
+            "name": "_currentRoute",
+            "type": "{RouterEvent}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 647,
+            "description": "A reference to the last state object this {{#crossLink \"Router\"}}{{/crossLink}} creates when this\nusing the HTML5 History API.",
+            "itemtype": "property",
+            "name": "_lastHistoryState",
+            "type": "{RouterEvent}",
+            "access": "private",
+            "tagname": "",
+            "static": 1,
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 657,
+            "description": "Determines if the {{#crossLink \"Router\"}}{{/crossLink}} should use hash or history routing.",
+            "itemtype": "property",
+            "name": "forceHashRouting",
+            "type": "{boolean}",
+            "default": "false",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "example": [
+                "\n    Router.forceHashRouting = true;"
+            ],
+            "class": "Router",
+            "module": "StructureJS",
+            "submodule": "controller"
+        },
+        {
+            "file": "js/controller/Router.js",
+            "line": 669,
             "description": "Determines if the Router class is enabled or disabled.",
             "itemtype": "property",
             "name": "isEnabled",
@@ -2722,7 +2788,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 595,
+            "line": 682,
             "description": "The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.\nBy **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**\nmethod the hash url will not change. This can be useful if you are making an application or game and you don't want the user\nto know how to jump to other sections directly. See the **Router.{{#crossLink \"Router/allowManualDeepLinking:property\"}}{{/crossLink}}** to fully change the Router class\nfrom relying on the hash url to an internal state controller.",
             "itemtype": "property",
             "name": "useDeepLinking",
@@ -2740,7 +2806,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 611,
+            "line": 698,
             "description": "The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the\nhash url changes in the browser. This property only works if the **Router. {{#crossLink \"Router/useDeepLinking:property\"}}{{/crossLink}}** is set to **false**.\nThis is useful if want to use your added routes but don't want any external forces trigger your routes.\n\nTypically what I do for games is during development/testing I allow the hash url to change the states so testers can jump\nto sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump\naround if they figure out the url schema.",
             "itemtype": "property",
             "name": "allowManualDeepLinking",
@@ -2758,7 +2824,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 630,
+            "line": 717,
             "description": "The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink \"Router/navigateTo:method\"}}{{/crossLink}}** method is called to\nmake sure the hash url has a forward slash after the **#** character like this **#/**.",
             "itemtype": "property",
             "name": "forceSlash",
@@ -2776,7 +2842,7 @@
         },
         {
             "file": "js/controller/Router.js",
-            "line": 647,
+            "line": 734,
             "description": "The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.",
             "itemtype": "property",
             "name": "allowMultipleMatches",
@@ -2788,20 +2854,6 @@
             "example": [
                 "\n    // Only allow the first route matched to be triggered.\n    Router.allowMultipleMatches = false;"
             ],
-            "class": "Router",
-            "module": "StructureJS",
-            "submodule": "controller"
-        },
-        {
-            "file": "js/controller/Router.js",
-            "line": 660,
-            "description": "A reference to the current {{#crossLink \"RouterEvent\"}}{{/crossLink}} that was triggered.",
-            "itemtype": "property",
-            "name": "_currentRoute",
-            "type": "{RouterEvent}",
-            "access": "private",
-            "tagname": "",
-            "static": 1,
             "class": "Router",
             "module": "StructureJS",
             "submodule": "controller"

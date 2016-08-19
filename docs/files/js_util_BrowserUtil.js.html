@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.7</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -191,7 +191,7 @@
                 return;
             }
             BrowserUtil._onBreakpointChangeHandler = Util_1.default.debounce(BrowserUtil._onBreakpointChange, BrowserUtil.debounceDelay, false, BrowserUtil);
-            BrowserUtil._window.addEventListener(&#x27;resize&#x27;, BrowserUtil._onBreakpointChangeHandler);
+            BrowserUtil._window.addEventListener(&#x27;resize.needNamespaceToRemoveEvent&#x27;, BrowserUtil._onBreakpointChangeHandler);
             BrowserUtil.isEnabled = true;
         };
         /**
@@ -201,7 +201,7 @@
             if (BrowserUtil.isEnabled === false) {
                 return;
             }
-            BrowserUtil._window.removeEventListener(&#x27;resize&#x27;, BrowserUtil._onBreakpointChangeHandler);
+            BrowserUtil._window.removeEventListener(&#x27;resize.needNamespaceToRemoveEvent&#x27;, BrowserUtil._onBreakpointChangeHandler);
             BrowserUtil.isEnabled = false;
         };
         /**

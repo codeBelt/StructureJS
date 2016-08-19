@@ -73,7 +73,7 @@
          */
         BaseObject.prototype.destroy = function () {
             for (var key in this) {
-                if (this.hasOwnProperty(key)) {
+                if (this.hasOwnProperty(key) && key !== 'sjsId') {
                     this[key] = null;
                 }
             }
