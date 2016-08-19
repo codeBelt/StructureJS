@@ -77,6 +77,40 @@ class Router
     private static _hashChangeEvent:any = null;
 
     /**
+     * A reference to the current {{#crossLink "RouterEvent"}}{{/crossLink}} that was triggered.
+     *
+     * @property _currentRoute
+     * @type {RouterEvent}
+     * @private
+     * @static
+     */
+    private static _currentRoute:RouterEvent = null;
+
+    /**
+     * A reference to the last state object this {{#crossLink "Router"}}{{/crossLink}} creates when this
+     * using the HTML5 History API.
+     *
+     * @property _lastHistoryState
+     * @type {RouterEvent}
+     * @private
+     * @static
+     */
+    private static _lastHistoryState:{ route:string } = null;
+
+    /**
+     * Determines if the {{#crossLink "Router"}}{{/crossLink}} should use hash or history routing.
+     *
+     * @property forceHashRouting
+     * @type {boolean}
+     * @default false
+     * @public
+     * @static
+     * @example
+     *     Router.forceHashRouting = true;
+     */
+    public static forceHashRouting:boolean = false;
+
+    /**
      * Determines if the Router class is enabled or disabled.
      *
      * @property isEnabled
@@ -158,16 +192,6 @@ class Router
      *     Router.allowMultipleMatches = false;
      */
     public static allowMultipleMatches:boolean = true;
-
-    /**
-     * A reference to the current {{#crossLink "RouterEvent"}}{{/crossLink}} that was triggered.
-     *
-     * @property _currentRoute
-     * @type {RouterEvent}
-     * @private
-     * @static
-     */
-    private static _currentRoute:RouterEvent = null;
 
     constructor()
     {
@@ -359,10 +383,12 @@ class Router
         if (Router._window.addEventListener)
         {
             Router._window.addEventListener('hashchange', Router._onHashChange, false);
+            Router._window.addEventListener('popstate', Router._onHistoryChange, false);
         }
         else
         {
             Router._window.attachEvent('onhashchange', Router._onHashChange);
+            Router._window.attachEvent('onpopstate', Router._onHistoryChange);
         }
 
         Router.isEnabled = true;
@@ -387,10 +413,12 @@ class Router
         if (Router._window.removeEventListener)
         {
             Router._window.removeEventListener('hashchange', Router._onHashChange);
+            Router._window.removeEventListener('popstate', Router._onHistoryChange);
         }
         else
         {
             Router._window.detachEvent('onhashchange', Router._onHashChange);
+            Router._window.detachEvent('onpopstate', Router._onHistoryChange);
         }
 
         Router.isEnabled = false;
@@ -413,7 +441,13 @@ class Router
      */
     public static start():void
     {
-        setTimeout(Router._onHashChange, 1);
+        Router.forceHashRouting = (window.history && window.history.pushState) ? Router.forceHashRouting : true;
+
+        if (Router.forceHashRouting === true) {
+            setTimeout(Router._onHashChange, 1);
+        } else {
+            setTimeout(Router._onHistoryChange, 1);
+        }
     }
 
     /**
@@ -451,39 +485,53 @@ class Router
             route = route.substring(strIndex);
         }
 
-        // Enforce starting slash
-        if (route.charAt(0) !== '/' && Router.forceSlash === true)
+        if (Router.forceHashRouting === true)
         {
-            route = '/' + route;
-        }
-
-        if (disableHistory === true)
-        {
-            Router._changeRoute(route);
-            return;
-        }
-
-        if (Router.useDeepLinking === true)
-        {
-            if (silent === true)
+            // Enforce starting slash
+            if (route.charAt(0) !== '/' && Router.forceSlash === true)
             {
-                Router.disable();
-                setTimeout(function ()
+                route = '/' + route;
+            }
+
+            if (disableHistory === true)
+            {
+                Router._changeRoute(route);
+                return;
+            }
+
+            if (Router.useDeepLinking === true)
+            {
+                if (silent === true)
                 {
-                    window.location.hash = route;
-                    setTimeout(Router.enable, 1);
-                }, 1);
+                    Router.disable();
+                    setTimeout(function ()
+                    {
+                        window.location.hash = route;
+                        setTimeout(Router.enable, 1);
+                    }, 1);
+                }
+                else
+                {
+                    setTimeout(function ()
+                    {
+                        window.location.hash = route;
+                    }, 1);
+                }
             }
             else
             {
-                setTimeout(function ()
-                {
-                    window.location.hash = route;
-                }, 1);
+                Router._changeRoute(route);
             }
         }
         else
         {
+            Router._lastHistoryState = window.history.state;
+
+            if (Router.useDeepLinking === true)
+            {
+                window.history.pushState({ route: route }, null, route);
+            }
+
             Router._changeRoute(route);
         }
     }
@@ -617,16 +665,49 @@ class Router
      */
     private static _onHashChange(event):void
     {
-        if (Router.allowManualDeepLinking === false && Router.useDeepLinking === false)
+        if (Router.allowManualDeepLinking !== false && Router.useDeepLinking !== false)
+        {
+            Router._hashChangeEvent = event;
+            var hash = Router.getHash();
+            Router._changeRoute(hash);
+        }
+        else
+        {
+            Router._changeRoute('');
+        }
+    }
+
+    /**
+     * This method will be called if the Window object dispatches a popstate event.
+     * This method will not be called if the Router is disabled.
+     *
+     * @method _onHistoryChange
+     * @param event {HashChangeEvent}
+     * @private
+     * @static
+     */
+    private static _onHistoryChange(event) {
+        if (Router.forceHashRouting === true)
         {
             return;
         }
 
-        Router._hashChangeEvent = event;
+        if (Router.allowManualDeepLinking !== false && Router.useDeepLinking !== false) {
+            if (event != null) {
+                const state:any = event.state;
+                Router._changeRoute(state.route);
+            } else {
+                const route = '';
 
-        const hash = Router.getHash();
+                if (Router.useDeepLinking === true) {
+                    window.history.replaceState({ route: route }, null, null);
+                }
 
-        Router._changeRoute(hash);
+                Router._changeRoute(route);
+            }
+        } else {
+            Router._changeRoute('');
+        }
     }
 
     /**
@@ -675,6 +756,13 @@ class Router
                 {
                     routerEvent.newURL = Router._hashChangeEvent.newURL;
                     routerEvent.oldURL = Router._hashChangeEvent.oldURL;
+                }
+                else if (window.history && window.history.state)
+                {
+                    routerEvent.newURL = hash;
+                    routerEvent.oldURL = (Router._lastHistoryState === null) ? null : Router._lastHistoryState.route;
+
+                    Router._lastHistoryState = { route: routerEvent.newURL }
                 }
                 else
                 {
