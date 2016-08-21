@@ -10,6 +10,7 @@ module.exports = {
 
     // Controllers
     LocalStorageController: require('./js/controller/LocalStorageController').default,
+    Router: require('./js/controller/Router').default,
 
     // Display
     DisplayObject: require('./js/display/DisplayObject').default,
