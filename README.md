@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-08-26 v0.13.1 Fix npm index class path issues.
+ 
  * 2016-08-26 v0.13.0 Rename ApplicationCacheController to ApplicationCacheService and move to service directory. Rename LocalStorageController to LocalStorageService and move to service directory. Move Router to service directory.
 
  * 2016-08-20 v0.12.8 Router - Add Router to npm index file.

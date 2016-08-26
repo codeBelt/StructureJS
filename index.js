@@ -8,9 +8,10 @@ module.exports = {
     BaseObject: require('./js/BaseObject').default,
     ObjectManager: require('./js/ObjectManager').default,
 
-    // Controllers
-    LocalStorageController: require('./js/controller/LocalStorageController').default,
-    Router: require('./js/controller/Router').default,
+    // Services
+    ApplicationCacheService: require('./js/service/ApplicationCacheService').default,
+    LocalStorageService: require('./js/service/LocalStorageService').default,
+    Router: require('./js/service/Router').default,
 
     // Display
     DisplayObject: require('./js/display/DisplayObject').default,
