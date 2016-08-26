@@ -1,8 +1,8 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
-        "ApplicationCacheController",
         "ApplicationCacheEvent",
+        "ApplicationCacheService",
         "BaseEvent",
         "BaseModel",
         "BaseObject",
@@ -20,8 +20,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "Extend",
         "ImageLoader",
         "LoaderEvent",
-        "LocalStorageController",
         "LocalStorageEvent",
+        "LocalStorageService",
         "MathUtil",
         "MerchantUtil",
         "NetworkMonitor",
@@ -54,7 +54,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "controller",
             "name": "controller",
-            "description": "The ApplicationCacheController is a static class works with the window applicationCache object."
+            "description": "The ApplicationCacheService is a static class works with the window applicationCache object."
         },
         {
             "displayName": "core",

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/controller/ApplicationCacheController.js - StructureJS</title>
+    <title>js/service/ApplicationCacheService.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.13.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -45,9 +45,9 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
-            
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -83,9 +83,9 @@
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
-                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
-            
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
             
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
@@ -150,7 +150,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/controller/ApplicationCacheController.js</h1>
+                <h1 class="file-heading">File: js/service/ApplicationCacheService.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -166,9 +166,9 @@
     var ApplicationCacheEvent_1 = require(&#x27;../event/ApplicationCacheEvent&#x27;);
     var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
     /**
-     * The ApplicationCacheController is a static class works with the window applicationCache object.
+     * The ApplicationCacheService is a static class works with the window applicationCache object.
      *
-     * @class ApplicationCacheController
+     * @class ApplicationCacheService
      * @module StructureJS
      * @submodule controller
      * @requires ApplicationCacheEvent
@@ -176,71 +176,64 @@
      * @static
      * @author Robert S. (www.codeBelt.com)
      */
-    var ApplicationCacheController = (function () {
-        function ApplicationCacheController() {
-            throw new Error(&#x27;[ApplicationCacheController] Do not instantiate the ApplicationCacheController class because it is a static class.&#x27;);
+    var ApplicationCacheService = (function () {
+        function ApplicationCacheService() {
+            throw new Error(&#x27;[ApplicationCacheService] Do not instantiate the ApplicationCacheService class because it is a static class.&#x27;);
         }
         /**
          * @overridden BaseObject.enable
          */
-        ApplicationCacheController.enable = function () {
-            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === true) {
+        ApplicationCacheService.enable = function () {
+            if (ApplicationCacheService._appCache == null || ApplicationCacheService.isEnabled === true) {
                 return;
             }
             // Native Browser Event Listener
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.CACHED, this._onCached.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.CHECKING, this._onChecking.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.DOWNLOADING, this._onDownloading.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.NO_UPDATE, this._onNoUpdate.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.OBSOLETE, this._onObsolete.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.PROGRESS, this._onProgress.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.UPDATE_READY, this._onUpdateReady.bind(this), false);
-            ApplicationCacheController._appCache.addEventListener(ApplicationCacheEvent_1.default.ERROR, this._onError.bind(this), false);
-            ApplicationCacheController.isEnabled = true;
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.CACHED, this._onCached.bind(this), false);
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.CHECKING, this._onChecking.bind(this), false);
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.DOWNLOADING, this._onDownloading.bind(this), false);
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.NO_UPDATE, this._onNoUpdate.bind(this), false);
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.OBSOLETE, this._onObsolete.bind(this), false);
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.PROGRESS, this._onProgress.bind(this), false);
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.UPDATE_READY, this._onUpdateReady.bind(this), false);
+            ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent_1.default.ERROR, this._onError.bind(this), false);
+            ApplicationCacheService.isEnabled = true;
         };
         /**
          * @overridden BaseObject.disable
          */
-        ApplicationCacheController.disable = function () {
-            if (ApplicationCacheController._appCache == null || ApplicationCacheController.isEnabled === false) {
+        ApplicationCacheService.disable = function () {
+            if (ApplicationCacheService._appCache == null || ApplicationCacheService.isEnabled === false) {
                 return;
             }
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.CACHED, ApplicationCacheController._onCached.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.CHECKING, ApplicationCacheController._onChecking.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.DOWNLOADING, ApplicationCacheController._onDownloading.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.NO_UPDATE, ApplicationCacheController._onNoUpdate.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.OBSOLETE, ApplicationCacheController._onObsolete.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.PROGRESS, ApplicationCacheController._onProgress.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.UPDATE_READY, ApplicationCacheController._onUpdateReady.bind(this), false);
-            ApplicationCacheController._appCache.removeEventListener(ApplicationCacheEvent_1.default.ERROR, ApplicationCacheController._onError.bind(this), false);
-            ApplicationCacheController.isEnabled = true;
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.CACHED, ApplicationCacheService._onCached.bind(this), false);
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.CHECKING, ApplicationCacheService._onChecking.bind(this), false);
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.DOWNLOADING, ApplicationCacheService._onDownloading.bind(this), false);
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.NO_UPDATE, ApplicationCacheService._onNoUpdate.bind(this), false);
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.OBSOLETE, ApplicationCacheService._onObsolete.bind(this), false);
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.PROGRESS, ApplicationCacheService._onProgress.bind(this), false);
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.UPDATE_READY, ApplicationCacheService._onUpdateReady.bind(this), false);
+            ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent_1.default.ERROR, ApplicationCacheService._onError.bind(this), false);
+            ApplicationCacheService.isEnabled = true;
         };
-        ApplicationCacheController.update = function () {
-            ApplicationCacheController._appCache.update();
+        ApplicationCacheService.update = function () {
+            ApplicationCacheService._appCache.update();
         };
-        ApplicationCacheController.getStatus = function () {
-            switch (ApplicationCacheController._appCache.status) {
-                case ApplicationCacheController._appCache.UNCACHED:
+        ApplicationCacheService.getStatus = function () {
+            switch (ApplicationCacheService._appCache.status) {
+                case ApplicationCacheService._appCache.UNCACHED:
                     return &#x27;UNCACHED&#x27;;
-                    break;
-                case ApplicationCacheController._appCache.IDLE:
+                case ApplicationCacheService._appCache.IDLE:
                     return &#x27;IDLE&#x27;;
-                    break;
-                case ApplicationCacheController._appCache.CHECKING:
+                case ApplicationCacheService._appCache.CHECKING:
                     return &#x27;CHECKING&#x27;;
-                    break;
-                case ApplicationCacheController._appCache.DOWNLOADING:
+                case ApplicationCacheService._appCache.DOWNLOADING:
                     return &#x27;DOWNLOADING&#x27;;
-                    break;
-                case ApplicationCacheController._appCache.UPDATEREADY:
+                case ApplicationCacheService._appCache.UPDATEREADY:
                     return &#x27;UPDATEREADY&#x27;;
-                    break;
-                case ApplicationCacheController._appCache.OBSOLETE:
+                case ApplicationCacheService._appCache.OBSOLETE:
                     return &#x27;OBSOLETE&#x27;;
-                    break;
                 default:
                     return &#x27;UKNOWN CACHE STATUS&#x27;;
-                    break;
             }
         };
         /**
@@ -252,9 +245,9 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onCached = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.CACHED, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.CACHED, false, false, event));
+        ApplicationCacheService._onCached = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.CACHED, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.CACHED, false, false, event));
         };
         /**
          * The browser is checking for an update, or is attempting to download
@@ -266,9 +259,9 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onChecking = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.CHECKING, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.CHECKING, false, false, event));
+        ApplicationCacheService._onChecking = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.CHECKING, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.CHECKING, false, false, event));
         };
         /**
          * The browser has started to download the cache manifest, either for the
@@ -279,9 +272,9 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onDownloading = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.DOWNLOADING, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.DOWNLOADING, false, false, event));
+        ApplicationCacheService._onDownloading = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.DOWNLOADING, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.DOWNLOADING, false, false, event));
         };
         /**
          * An error occurred at some point - this could be caused by a number of things. This will
@@ -292,9 +285,9 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onError = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.ERROR, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.ERROR, false, false, event));
+        ApplicationCacheService._onError = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.ERROR, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.ERROR, false, false, event));
         };
         /**
          * The cache manifest hadn&#x27;t changed.
@@ -304,9 +297,9 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onNoUpdate = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.NO_UPDATE, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.NO_UPDATE, false, false, event));
+        ApplicationCacheService._onNoUpdate = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.NO_UPDATE, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.NO_UPDATE, false, false, event));
         };
         /**
          * The cache manifest file could not be found, indicating that the cache is no longer needed.
@@ -317,9 +310,9 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onObsolete = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.OBSOLETE, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.OBSOLETE, false, false, event));
+        ApplicationCacheService._onObsolete = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.OBSOLETE, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.OBSOLETE, false, false, event));
         };
         /**
          * The browser had downloaded and cached an asset. This is fired once for
@@ -330,9 +323,9 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onProgress = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.PROGRESS, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.PROGRESS, false, false, event));
+        ApplicationCacheService._onProgress = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.PROGRESS, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.PROGRESS, false, false, event));
         };
         /**
          * The resources listed in the manifest have been newly re-downloaded, and the script can
@@ -343,12 +336,12 @@
          * @private
          * @static
          */
-        ApplicationCacheController._onUpdateReady = function (event) {
-            //console.log(&#x27;[ApplicationCacheController]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.UPDATE_READY, event);
-            ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.UPDATE_READY, false, false, event));
+        ApplicationCacheService._onUpdateReady = function (event) {
+            //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.UPDATE_READY, event);
+            ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent_1.default(ApplicationCacheEvent_1.default.UPDATE_READY, false, false, event));
         };
         /**
-         * Registers an event listener object with an ApplicationCacheController object so that the listener receives notification of an event.
+         * Registers an event listener object with an ApplicationCacheService object so that the listener receives notification of an event.
          *
          * @method addEventListener
          * @param type {String} The type of event.
@@ -357,35 +350,35 @@
          * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
          * @static
          * @example
-         *      ApplicationCacheController.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+         *      ApplicationCacheService.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
          *      _handlerMethod(event) {
          *          console.log(event.target + &quot; sent the event.&quot;);
          *      }
          */
-        ApplicationCacheController.addEventListener = function (type, callback, scope, priority) {
+        ApplicationCacheService.addEventListener = function (type, callback, scope, priority) {
             if (priority === void 0) { priority = 0; }
-            ApplicationCacheController._eventDispatcher.addEventListener(type, callback, scope, priority);
+            ApplicationCacheService._eventDispatcher.addEventListener(type, callback, scope, priority);
         };
         /**
-         * Removes a specified listener from the ApplicationCacheController object.
+         * Removes a specified listener from the ApplicationCacheService object.
          *
          * @method removeEventListener
          * @param type {String} The type of event.
          * @param callback {Function} The listener object to remove.
-         * @param scope {any} The scope of the listener object to be removed. This was added because it was need for the {{#crossLink &quot;ApplicationCacheController&quot;}}{{/crossLink}} class.
+         * @param scope {any} The scope of the listener object to be removed. This was added because it was need for the {{#crossLink &quot;ApplicationCacheService&quot;}}{{/crossLink}} class.
          * To keep things consistent this parameter is required.
          * @static
          * @example
-         *      ApplicationCacheController.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+         *      ApplicationCacheService.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
          *      _handlerMethod(event) {
          *          console.log(event.target + &quot; sent the event.&quot;);
          *      }
          */
-        ApplicationCacheController.removeEventListener = function (type, callback, scope) {
-            ApplicationCacheController._eventDispatcher.removeEventListener(type, callback, scope);
+        ApplicationCacheService.removeEventListener = function (type, callback, scope) {
+            ApplicationCacheService._eventDispatcher.removeEventListener(type, callback, scope);
         };
         /**
-         * &lt;p&gt;Dispatches an event within the ApplicationCacheController object.&lt;/p&gt;
+         * &lt;p&gt;Dispatches an event within the ApplicationCacheService object.&lt;/p&gt;
          *
          * @method dispatchEvent
          * @param event {ApplicationCacheEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
@@ -393,13 +386,13 @@
          * @static
          * @example
          *      let event = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
-         *      ApplicationCacheController.dispatchEvent(event);
+         *      ApplicationCacheService.dispatchEvent(event);
          *
          *      // Here is a common inline event being dispatched
-         *      ApplicationCacheController.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
+         *      ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
          */
-        ApplicationCacheController.dispatchEvent = function (event) {
-            ApplicationCacheController._eventDispatcher.dispatchEvent(event);
+        ApplicationCacheService.dispatchEvent = function (event) {
+            ApplicationCacheService._eventDispatcher.dispatchEvent(event);
         };
         /**
          * A reference to the applicationCache property on the window object.
@@ -409,7 +402,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController._appCache = window.applicationCache;
+        ApplicationCacheService._appCache = window.applicationCache;
         /**
          * A reference to the EventDispatcher object.
          *
@@ -418,7 +411,7 @@
          * @private
          * @static
          */
-        ApplicationCacheController._eventDispatcher = new EventDispatcher_1.default();
+        ApplicationCacheService._eventDispatcher = new EventDispatcher_1.default();
         /**
          * The isEnabled property is used to keep track of the enabled state.
          *
@@ -428,11 +421,11 @@
          * @public
          * @static
          */
-        ApplicationCacheController.isEnabled = false;
-        return ApplicationCacheController;
+        ApplicationCacheService.isEnabled = false;
+        return ApplicationCacheService;
     }());
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
-    exports.default = ApplicationCacheController;
+    exports.default = ApplicationCacheService;
 });
 
     </pre>

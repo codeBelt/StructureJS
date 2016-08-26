@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.13.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -45,9 +45,9 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
-            
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -83,9 +83,9 @@
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
-                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
-            
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
             
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
@@ -158,7 +158,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/js_controller_Router.js.html#l13"><code>js&#x2F;controller&#x2F;Router.js:13</code></a>
+            Defined in: <a href="../files/js_service_Router.js.html#l13"><code>js&#x2F;service&#x2F;Router.js:13</code></a>
         </div>
     
 
@@ -241,7 +241,31 @@
                 </li>
             
                 <li class="index-item property private">
+                    <a href="#property__lastHistoryState">_lastHistoryState</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property private">
                     <a href="#property__routes">_routes</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property private">
+                    <a href="#property__validatorFunc">_validatorFunc</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property private">
+                    <a href="#property__validators">_validators</a>
 
                     
                         <span class="flag static">static</span>
@@ -266,6 +290,14 @@
             
                 <li class="index-item property public">
                     <a href="#property_allowMultipleMatches">allowMultipleMatches</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_forceHashRouting">forceHashRouting</a>
 
                     
                         <span class="flag static">static</span>
@@ -313,6 +345,15 @@
 
             
                 <li class="index-item method private">
+                    <a href="#method__allowRouteChange">_allowRouteChange</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
                     <a href="#method__changeRoute">_changeRoute</a>
 
                     
@@ -323,6 +364,15 @@
             
                 <li class="index-item method private">
                     <a href="#method__onHashChange">_onHashChange</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method private">
+                    <a href="#method__onHistoryChange">_onHistoryChange</a>
 
                     
                         <span class="flag static">static</span>
@@ -454,6 +504,15 @@
                     
                 </li>
             
+                <li class="index-item method public">
+                    <a href="#method_validate">validate</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
         </ul>
     </div>
 
@@ -499,7 +558,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l580"><code>js&#x2F;controller&#x2F;Router.js:580</code></a>
+        <a href="../files/js_service_Router.js.html#l638"><code>js&#x2F;service&#x2F;Router.js:638</code></a>
         
         </p>
 
@@ -553,7 +612,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l484"><code>js&#x2F;controller&#x2F;Router.js:484</code></a>
+        <a href="../files/js_service_Router.js.html#l620"><code>js&#x2F;service&#x2F;Router.js:620</code></a>
         
         </p>
 
@@ -607,7 +666,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l493"><code>js&#x2F;controller&#x2F;Router.js:493</code></a>
+        <a href="../files/js_service_Router.js.html#l629"><code>js&#x2F;service&#x2F;Router.js:629</code></a>
         
         </p>
 
@@ -619,6 +678,61 @@
     <div class="extended-detail">
         <div class="description">
             <p>A reference to the hash change event that was sent from the Window Object.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__lastHistoryState" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_lastHistoryState</code>
+    <span class="type"><a href="../classes/RouterEvent.html" class="crosslink">RouterEvent</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_service_Router.js.html#l647"><code>js&#x2F;service&#x2F;Router.js:647</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>A reference to the last state object this <a href="../classes/Router.html" class="crosslink">Router</a> creates when this
+using the HTML5 History API.</p>
 
         </div>
 
@@ -661,7 +775,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l475"><code>js&#x2F;controller&#x2F;Router.js:475</code></a>
+        <a href="../files/js_service_Router.js.html#l593"><code>js&#x2F;service&#x2F;Router.js:593</code></a>
         
         </p>
 
@@ -673,6 +787,114 @@
     <div class="extended-detail">
         <div class="description">
             <p>A list of the added Route objects.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__validatorFunc" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_validatorFunc</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_service_Router.js.html#l611"><code>js&#x2F;service&#x2F;Router.js:611</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property__validators" class="anchor-link"></a>
+<div class="property item private">
+    <h3 class="name"><code>_validators</code>
+    <span class="type">Array<Function></span>
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_service_Router.js.html#l602"><code>js&#x2F;service&#x2F;Router.js:602</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
 
         </div>
 
@@ -715,7 +937,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l466"><code>js&#x2F;controller&#x2F;Router.js:466</code></a>
+        <a href="../files/js_service_Router.js.html#l584"><code>js&#x2F;service&#x2F;Router.js:584</code></a>
         
         </p>
 
@@ -769,7 +991,7 @@
             
         
         
-        <a href="../files/js_controller_Router.js.html#l531"><code>js&#x2F;controller&#x2F;Router.js:531</code></a>
+        <a href="../files/js_service_Router.js.html#l698"><code>js&#x2F;service&#x2F;Router.js:698</code></a>
         
         </p>
 
@@ -840,7 +1062,7 @@ Router.allowManualDeepLinking = false;</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l567"><code>js&#x2F;controller&#x2F;Router.js:567</code></a>
+        <a href="../files/js_service_Router.js.html#l734"><code>js&#x2F;service&#x2F;Router.js:734</code></a>
         
         </p>
 
@@ -866,6 +1088,71 @@ Router.allowManualDeepLinking = false;</code></pre>
                 <div class="example-content">
                     <pre class="code prettyprint"><code>// Only allow the first route matched to be triggered.
 Router.allowMultipleMatches = false;</code></pre>
+
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_forceHashRouting" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>forceHashRouting</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_service_Router.js.html#l657"><code>js&#x2F;service&#x2F;Router.js:657</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>Determines if the <a href="../classes/Router.html" class="crosslink">Router</a> should use hash or history routing.</p>
+
+        </div>
+
+        
+            <p class="default"><strong>Default:</strong> <span class="default-value">false</span></p>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>Router.forceHashRouting = true;</code></pre>
 
                 </div>
             </div>
@@ -906,7 +1193,7 @@ Router.allowMultipleMatches = false;</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l550"><code>js&#x2F;controller&#x2F;Router.js:550</code></a>
+        <a href="../files/js_service_Router.js.html#l717"><code>js&#x2F;service&#x2F;Router.js:717</code></a>
         
         </p>
 
@@ -976,7 +1263,7 @@ Router.forceSlash = true;
             
         
         
-        <a href="../files/js_controller_Router.js.html#l502"><code>js&#x2F;controller&#x2F;Router.js:502</code></a>
+        <a href="../files/js_service_Router.js.html#l669"><code>js&#x2F;service&#x2F;Router.js:669</code></a>
         
         </p>
 
@@ -1040,7 +1327,7 @@ console.log(Router.isEnabled);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l515"><code>js&#x2F;controller&#x2F;Router.js:515</code></a>
+        <a href="../files/js_service_Router.js.html#l682"><code>js&#x2F;service&#x2F;Router.js:682</code></a>
         
         </p>
 
@@ -1055,7 +1342,7 @@ console.log(Router.isEnabled);</code></pre>
 By <strong>default</strong> this property is set to <strong>true</strong>. If you set the property to <strong>false</strong> and using the <strong>Router.navigateTo</strong>
 method the hash url will not change. This can be useful if you are making an application or game and you don&#39;t want the user
 to know how to jump to other sections directly. See the <strong>Router.<a href="../classes/Router.html#property_allowManualDeepLinking" class="crosslink">allowManualDeepLinking</a></strong> to fully change the Router class
-from relying on the hash url to an internal state controller.</p>
+from relying on the hash url to an internal state service.</p>
 
         </div>
 
@@ -1094,6 +1381,71 @@ from relying on the hash url to an internal state controller.</p>
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method__allowRouteChange" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_allowRouteChange</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_service_Router.js.html#l562"><code>js&#x2F;service&#x2F;Router.js:562</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="method__changeRoute" class="anchor-link"></a>
@@ -1145,7 +1497,7 @@ from relying on the hash url to an internal state controller.</p>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l399"><code>js&#x2F;controller&#x2F;Router.js:399</code></a>
+        <a href="../files/js_service_Router.js.html#l475"><code>js&#x2F;service&#x2F;Router.js:475</code></a>
         
         </p>
 
@@ -1243,7 +1595,7 @@ from relying on the hash url to an internal state controller.</p>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l382"><code>js&#x2F;controller&#x2F;Router.js:382</code></a>
+        <a href="../files/js_service_Router.js.html#l426"><code>js&#x2F;service&#x2F;Router.js:426</code></a>
         
         </p>
 
@@ -1257,6 +1609,105 @@ from relying on the hash url to an internal state controller.</p>
 
         <div class="description">
             <p>This method will be called if the Window object dispatches a HashChangeEvent.
+This method will not be called if the Router is disabled.</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">event</code>
+                            <span class="type">HashChangeEvent</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__onHistoryChange" class="anchor-link"></a>
+<div class="method item private">
+    <h3 class="name"><code>_onHistoryChange</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_service_Router.js.html#l445"><code>js&#x2F;service&#x2F;Router.js:445</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>This method will be called if the Window object dispatches a popstate event.
 This method will not be called if the Router is disabled.</p>
 
         </div>
@@ -1330,7 +1781,7 @@ This method will not be called if the Router is disabled.</p>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l355"><code>js&#x2F;controller&#x2F;Router.js:355</code></a>
+        <a href="../files/js_service_Router.js.html#l375"><code>js&#x2F;service&#x2F;Router.js:375</code></a>
         
         </p>
 
@@ -1417,7 +1868,7 @@ This method will not be called if the Router is disabled.</p>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l29"><code>js&#x2F;controller&#x2F;Router.js:29</code></a>
+        <a href="../files/js_service_Router.js.html#l29"><code>js&#x2F;service&#x2F;Router.js:29</code></a>
         
         </p>
 
@@ -1611,7 +2062,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l139"><code>js&#x2F;controller&#x2F;Router.js:139</code></a>
+        <a href="../files/js_service_Router.js.html#l139"><code>js&#x2F;service&#x2F;Router.js:139</code></a>
         
         </p>
 
@@ -1737,7 +2188,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l327"><code>js&#x2F;controller&#x2F;Router.js:327</code></a>
+        <a href="../files/js_service_Router.js.html#l346"><code>js&#x2F;service&#x2F;Router.js:346</code></a>
         
         </p>
 
@@ -1803,7 +2254,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
 
  Router.buildRoute(someProperty, &#39;path&#39;, 7, queryObject);
 
- //Creates &#39;api/endpoint/path/7/?type=car&amp;name=Telsa%20Motors&#39;</code></pre>
+ //Creates &#39;api/endpoint/path/7?type=car&amp;name=Telsa%20Motors&#39;</code></pre>
 
                 </div>
             </div>
@@ -1851,7 +2302,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l298"><code>js&#x2F;controller&#x2F;Router.js:298</code></a>
+        <a href="../files/js_service_Router.js.html#l317"><code>js&#x2F;service&#x2F;Router.js:317</code></a>
         
         </p>
 
@@ -1925,7 +2376,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l312"><code>js&#x2F;controller&#x2F;Router.js:312</code></a>
+        <a href="../files/js_service_Router.js.html#l331"><code>js&#x2F;service&#x2F;Router.js:331</code></a>
         
         </p>
 
@@ -1999,7 +2450,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l201"><code>js&#x2F;controller&#x2F;Router.js:201</code></a>
+        <a href="../files/js_service_Router.js.html#l203"><code>js&#x2F;service&#x2F;Router.js:203</code></a>
         
         </p>
 
@@ -2073,7 +2524,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l180"><code>js&#x2F;controller&#x2F;Router.js:180</code></a>
+        <a href="../files/js_service_Router.js.html#l180"><code>js&#x2F;service&#x2F;Router.js:180</code></a>
         
         </p>
 
@@ -2147,7 +2598,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l370"><code>js&#x2F;controller&#x2F;Router.js:370</code></a>
+        <a href="../files/js_service_Router.js.html#l390"><code>js&#x2F;service&#x2F;Router.js:390</code></a>
         
         </p>
 
@@ -2225,7 +2676,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l165"><code>js&#x2F;controller&#x2F;Router.js:165</code></a>
+        <a href="../files/js_service_Router.js.html#l165"><code>js&#x2F;service&#x2F;Router.js:165</code></a>
         
         </p>
 
@@ -2335,7 +2786,7 @@ Router.add(&#39;/about/*&#39;, this._method4, this);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l240"><code>js&#x2F;controller&#x2F;Router.js:240</code></a>
+        <a href="../files/js_service_Router.js.html#l250"><code>js&#x2F;service&#x2F;Router.js:250</code></a>
         
         </p>
 
@@ -2496,7 +2947,7 @@ Router.navigateTo(&#39;/games/asteroids/2/&#39;, true, true);</code></pre>
             
         
         
-        <a href="../files/js_controller_Router.js.html#l113"><code>js&#x2F;controller&#x2F;Router.js:113</code></a>
+        <a href="../files/js_service_Router.js.html#l113"><code>js&#x2F;service&#x2F;Router.js:113</code></a>
         
         </p>
 
@@ -2630,7 +3081,7 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this._method, this);</code><
             
         
         
-        <a href="../files/js_controller_Router.js.html#l153"><code>js&#x2F;controller&#x2F;Router.js:153</code></a>
+        <a href="../files/js_service_Router.js.html#l153"><code>js&#x2F;service&#x2F;Router.js:153</code></a>
         
         </p>
 
@@ -2704,7 +3155,7 @@ Router.remove(&#39;/games/{gameName}/:level:/&#39;, this._method, this);</code><
             
         
         
-        <a href="../files/js_controller_Router.js.html#l222"><code>js&#x2F;controller&#x2F;Router.js:222</code></a>
+        <a href="../files/js_service_Router.js.html#l226"><code>js&#x2F;service&#x2F;Router.js:226</code></a>
         
         </p>
 
@@ -2737,6 +3188,125 @@ Router.add(&#39;/games/{gameName}/:level:/&#39;, this._method1, this);
 Router.add(&#39;/{category}/blog/&#39;, this._method2, this);
 
 Router.start();</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_validate" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>validate</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>func</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/js_service_Router.js.html#l402"><code>js&#x2F;service&#x2F;Router.js:402</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>TODO: YUIDoc_comment</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">func</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>The function you wanted called if the validation failed.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code>    Router.validate((routerEvent, next) =&gt; {
+         const allowRouteChange = this._someMethodCheck();
+
+         if (allowRouteChange == false) {
+             next(() =&gt; {
+                 // Do something here.
+                 // For example you can call Router.navigateTo to change the route.
+             });
+         } else {
+             next();
+         }
+    });</code></pre>
 
                 </div>
             </div>

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.13.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -45,9 +45,9 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
-            
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -83,9 +83,9 @@
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
-                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
-            
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
             
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
@@ -348,11 +348,16 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * The layout method provides a common function to handle updating objects in the view.
          *
          * @method layout
+         * @param ...rest {Array&lt;any&gt;}
          * @returns {DisplayObject} Returns an instance of itself.
          * @public
          * @chainable
          */
         DisplayObject.prototype.layout = function () {
+            var rest = [];
+            for (var _i = 0; _i &lt; arguments.length; _i++) {
+                rest[_i - 0] = arguments[_i];
+            }
             return this;
         };
         /**
