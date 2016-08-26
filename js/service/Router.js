@@ -684,7 +684,7 @@
          * By **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**
          * method the hash url will not change. This can be useful if you are making an application or game and you don't want the user
          * to know how to jump to other sections directly. See the **Router.{{#crossLink "Router/allowManualDeepLinking:property"}}{{/crossLink}}** to fully change the Router class
-         * from relying on the hash url to an internal state controller.
+         * from relying on the hash url to an internal state service.
          *
          * @property useDeepLinking
          * @type {boolean}

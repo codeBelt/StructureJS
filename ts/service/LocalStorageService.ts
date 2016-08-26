@@ -3,9 +3,9 @@ import EventDispatcher from '../event/EventDispatcher';
 import BaseModel from '../model/BaseModel';
 
 /**
- * The LocalStorageController...
+ * The LocalStorageService...
  *
- * @class LocalStorageController
+ * @class LocalStorageService
  * @extends EventDispatcher
  * @module StructureJS
  * @submodule controller
@@ -16,10 +16,10 @@ import BaseModel from '../model/BaseModel';
  * @constructor
  * @author Robert S. (www.codeBelt.com)
  * @example
- *     this._localStorageController = new LocalStorageController();
+ *     this._localStorageController = new LocalStorageService();
  *     this._localStorageController.addItem('someName', { value: 'something'});
  */
-class LocalStorageController extends EventDispatcher
+class LocalStorageService extends EventDispatcher
 {
     /**
      * Current user namespace. The namespace is optional.
@@ -288,4 +288,4 @@ class LocalStorageController extends EventDispatcher
     }
 }
 
-export default LocalStorageController;
+export default LocalStorageService;
