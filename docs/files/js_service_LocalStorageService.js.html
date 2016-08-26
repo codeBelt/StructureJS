@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>js/controller/LocalStorageController.js - StructureJS</title>
+    <title>js/service/LocalStorageService.js - StructureJS</title>
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.12.7</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.13.0</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -45,9 +45,9 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a class="type" href="../classes/ApplicationCacheController.html">ApplicationCacheController</a></li>
-            
                 <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
             
                 <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
             
@@ -83,9 +83,9 @@
             
                 <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
             
-                <li><a class="type" href="../classes/LocalStorageController.html">LocalStorageController</a></li>
-            
                 <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
             
                 <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
             
@@ -150,7 +150,7 @@
 
         <div id="docs-main" class="apidocs">
             <div class="content container">
-                <h1 class="file-heading">File: js/controller/LocalStorageController.js</h1>
+                <h1 class="file-heading">File: js/service/LocalStorageService.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -172,9 +172,9 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
     var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
     var BaseModel_1 = require(&#x27;../model/BaseModel&#x27;);
     /**
-     * The LocalStorageController...
+     * The LocalStorageService...
      *
-     * @class LocalStorageController
+     * @class LocalStorageService
      * @extends EventDispatcher
      * @module StructureJS
      * @submodule controller
@@ -185,12 +185,12 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
      * @constructor
      * @author Robert S. (www.codeBelt.com)
      * @example
-     *     this._localStorageController = new LocalStorageController();
+     *     this._localStorageController = new LocalStorageService();
      *     this._localStorageController.addItem(&#x27;someName&#x27;, { value: &#x27;something&#x27;});
      */
-    var LocalStorageController = (function (_super) {
-        __extends(LocalStorageController, _super);
-        function LocalStorageController() {
+    var LocalStorageService = (function (_super) {
+        __extends(LocalStorageService, _super);
+        function LocalStorageService() {
             _super.call(this);
             /**
              * Current user namespace. The namespace is optional.
@@ -222,7 +222,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     this._localStorageController.setNamespace(&#x27;myNamespace-&#x27;);
          */
-        LocalStorageController.prototype.setNamespace = function (namespace) {
+        LocalStorageService.prototype.setNamespace = function (namespace) {
             this._namespace = namespace;
         };
         /**
@@ -233,7 +233,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     const currentSetNamespace = this._localStorageController.getNamespace();
          */
-        LocalStorageController.prototype.getNamespace = function () {
+        LocalStorageService.prototype.getNamespace = function () {
             return this._namespace;
         };
         /**
@@ -250,7 +250,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          *     // If you set a namespace you would pass &#x27;true&#x27; into the third parameter.
          *     this._localStorageController.addItem(&#x27;someName&#x27;, { value: &#x27;something&#x27;}, true);
          */
-        LocalStorageController.prototype.addItem = function (key, data, useNamespace) {
+        LocalStorageService.prototype.addItem = function (key, data, useNamespace) {
             if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
@@ -277,7 +277,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     this._localStorageController.setNamespace(&#x27;myNamespace-&#x27;);
          */
-        LocalStorageController.prototype.getItem = function (key, useNamespace) {
+        LocalStorageService.prototype.getItem = function (key, useNamespace) {
             if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
@@ -303,7 +303,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     this._localStorageController.getItemsWithNamespace(&#x27;myNamespace-&#x27;);
          */
-        LocalStorageController.prototype.getItemsWithNamespace = function (namespace) {
+        LocalStorageService.prototype.getItemsWithNamespace = function (namespace) {
             if (namespace === void 0) { namespace = this._namespace; }
             var list = [];
             var length = this.getLength();
@@ -328,7 +328,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     this._localStorageController.getAllItems();
          */
-        LocalStorageController.prototype.getAllItems = function () {
+        LocalStorageService.prototype.getAllItems = function () {
             var list = [];
             var length = this.getLength();
             for (var i = 0; i &lt; length; i++) {
@@ -355,7 +355,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          *     // If you set a namespace you would pass &#x27;true&#x27; into the second parameter.
          *     this._localStorageController.removeItem(&#x27;someName&#x27;, true);
          */
-        LocalStorageController.prototype.removeItem = function (key, useNamespace) {
+        LocalStorageService.prototype.removeItem = function (key, useNamespace) {
             if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
@@ -376,7 +376,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     const numberOfItemsInLocalStorage = this._localStorageController.getLength();
          */
-        LocalStorageController.prototype.getLength = function () {
+        LocalStorageService.prototype.getLength = function () {
             return this._localStorage.length;
         };
         /**
@@ -387,7 +387,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     const sizeOfLocalStorage = this._localStorageController.getSize();
          */
-        LocalStorageController.prototype.getSize = function () {
+        LocalStorageService.prototype.getSize = function () {
             return encodeURIComponent(JSON.stringify(this._localStorage)).length;
         };
         /**
@@ -397,7 +397,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @example
          *     this._localStorageController.clear();
          */
-        LocalStorageController.prototype.clear = function () {
+        LocalStorageService.prototype.clear = function () {
             this._localStorage.clear();
         };
         /**
@@ -407,13 +407,13 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
          * @param event {StorageEvent} The native browser event for Web Storage.
          * @protected
          */
-        LocalStorageController.prototype._onLocalStorageEvent = function (event) {
+        LocalStorageService.prototype._onLocalStorageEvent = function (event) {
             this.dispatchEvent(new LocalStorageEvent_1.default(LocalStorageEvent_1.default.STORAGE, false, false, event));
         };
-        return LocalStorageController;
+        return LocalStorageService;
     }(EventDispatcher_1.default));
     Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
-    exports.default = LocalStorageController;
+    exports.default = LocalStorageService;
 });
 
     </pre>
