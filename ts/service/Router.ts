@@ -697,7 +697,7 @@ class Router
                 const state:any = event.state;
                 Router._changeRoute(state.route);
             } else {
-                const route = '';
+                const route = location.pathname + location.search + location.hash;
 
                 if (Router.useDeepLinking === true) {
                     window.history.replaceState({ route: route }, null, null);

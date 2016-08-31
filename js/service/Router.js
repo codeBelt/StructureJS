@@ -461,7 +461,7 @@
                     Router._changeRoute(state.route);
                 }
                 else {
-                    var route = '';
+                    var route = location.pathname + location.search + location.hash;
                     if (Router.useDeepLinking === true) {
                         window.history.replaceState({ route: route }, null, null);
                     }
