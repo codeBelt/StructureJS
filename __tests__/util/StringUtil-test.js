@@ -13,8 +13,12 @@ describe("StringUtil", function() {
     it("toSentence()", function() {
         expect(StringUtil.toSentence("liveDown_by/the.River")).toEqual("live down by the river");
         expect(StringUtil.toSentence("liveDown_by-the.River", '-')).toEqual("live-down-by-the-river");
+        expect(StringUtil.toSentence("Under 6 00 Calories", '-')).toEqual("under-6-00-calories");
+        expect(StringUtil.toSentence("Under 600 Calories", '-')).toEqual("under-600-calories");
         expect(StringUtil.toSentence("hyphenToCamelCase", '/')).toEqual("hyphen/to/camel/case");
         expect(StringUtil.toSentence("HyphenToCamelCase", '_')).toEqual("hyphen_to_camel_case");
+        expect(StringUtil.toSentence("Hyphen8to~Camel_Case", ' ')).toEqual("hyphen 8 to camel case");
+        expect(StringUtil.toSentence("Hyphen.To~Camel_Case", '~')).toEqual("hyphen~to~camel~case");
         expect(StringUtil.toSentence("Hyphen.To~Camel_Case", '~')).toEqual("hyphen~to~camel~case");
         expect(StringUtil.toSentence(" hyphen To Camel Case ", '.')).toEqual("hyphen.to.camel.case");
     });
