@@ -1,0 +1,20 @@
+{
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "compilerOptions": {
+    "target": "es5",
+    "module": "umd",
+    "sourceMap": false,
+    "declaration": false
+  },
+  "compileOnSave": false,
+  "filesGlob": [
+  ],
+  "files": [
+    "typings/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
