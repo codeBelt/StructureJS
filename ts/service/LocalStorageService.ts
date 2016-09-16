@@ -252,7 +252,7 @@ class LocalStorageService extends EventDispatcher
         items.forEach(data => {
             const { key } = data;
 
-            this.removeItem(key, true);
+            this.removeItem(key, false); // False because key already has the namespace in it.
         });
     }
 
