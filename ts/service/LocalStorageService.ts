@@ -41,9 +41,11 @@ class LocalStorageService extends EventDispatcher
      */
     protected _localStorage:Storage = null;
 
-    constructor()
+    constructor(namespace:string = this._namespace)
     {
         super();
+
+        this._namespace = namespace;
 
         this._localStorage = window.localStorage;
 
@@ -235,6 +237,23 @@ class LocalStorageService extends EventDispatcher
         {
             return false;
         }
+    }
+
+
+    /**
+     * @method removeItemsWithNamespace
+     * @param namespace {string}
+     * @public
+     */
+    public removeItemsWithNamespace(namespace:string = this._namespace):void
+    {
+        const items = this.getItemsWithNamespace(namespace);
+
+        items.forEach(data => {
+            const { key } = data;
+
+            this.removeItem(key, true);
+        });
     }
 
     /**
