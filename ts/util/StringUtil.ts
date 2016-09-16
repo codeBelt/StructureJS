@@ -62,13 +62,13 @@ class StringUtil
     {
         return String(str)
             // Add a space after any digits.
-            .replace(/(\d)/g, '$1 ')
+            .replace(/(\d+)/g, ' $1 ')
             // Add a space before any upper case characters.
             .replace(/([a-z](?=[A-Z]))/g, '$1 ')
             // Remove all non-word characters and replace with a single space.
             .replace(/[^a-zA-Z0-9 ]/g, ' ')
             // Replace multiple Spaces with a single space.
-            .replace(/\s{2,}/g, ' ')
+            .replace(/\s+/g, ' ')
             // Trim whitespace around the string.
             .replace(/^ | $/g, '')
             // Lower case the entire string.
