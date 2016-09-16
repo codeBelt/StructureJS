@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-09-16 v0.13.3 StringUtil - fix toSentence issue with grouped numbers. LocalStorageService - Allow namespace to be set in the constructor and add removeItemsWithNamespace method.
+ 
  * 2016-08-26 v0.13.2 Fix Router class where on load it would not navigate to the proper history route.
  
  * 2016-08-26 v0.13.1 Fix npm index class path issues.

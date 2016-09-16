@@ -30,7 +30,7 @@ class LocalStorageService extends EventDispatcher
      * @optional
      * @protected
      */
-    protected _namespace:string = 'defaultNamespace-';
+    protected _namespace:string = '';
 
     /**
      * A reference to window.localStorage for faster access.
@@ -41,7 +41,7 @@ class LocalStorageService extends EventDispatcher
      */
     protected _localStorage:Storage = null;
 
-    constructor(namespace:string = this._namespace)
+    constructor(namespace:string = '')
     {
         super();
 
@@ -59,7 +59,7 @@ class LocalStorageService extends EventDispatcher
      * @param namespace
      * @returns {string}
      * @example
-     *     this._localStorageController.setNamespace('myNamespace-');
+     *     this._localStorageController.setNamespace('myNamespace~');
      */
     public setNamespace(namespace:string):void
     {
@@ -126,7 +126,7 @@ class LocalStorageService extends EventDispatcher
      * @param [useNamespace=false] {string}
      * @returns {any}
      * @example
-     *     this._localStorageController.setNamespace('myNamespace-');
+     *     this._localStorageController.setNamespace('myNamespace~');
      */
     public getItem(key:string, useNamespace:boolean = false):any
     {
@@ -159,7 +159,7 @@ class LocalStorageService extends EventDispatcher
      * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
      * @return {Array}
      * @example
-     *     this._localStorageController.getItemsWithNamespace('myNamespace-');
+     *     this._localStorageController.getItemsWithNamespace('myNamespace~');
      */
     public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
     {
@@ -241,9 +241,13 @@ class LocalStorageService extends EventDispatcher
 
 
     /**
+     * Deletes all key/value pairs with a certain namespace.
+     *
      * @method removeItemsWithNamespace
      * @param namespace {string}
      * @public
+     * @example
+     *     this._localStorageController.removeItemsWithNamespace('myNamespace~');
      */
     public removeItemsWithNamespace(namespace:string = this._namespace):void
     {

@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.13.2</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.13.3</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -222,10 +222,10 @@
         StringUtil.toSentence = function (str, separator) {
             if (separator === void 0) { separator = &#x27; &#x27;; }
             return String(str)
-                .replace(/(\d)/g, &#x27;$1 &#x27;)
+                .replace(/(\d+)/g, &#x27; $1 &#x27;)
                 .replace(/([a-z](?=[A-Z]))/g, &#x27;$1 &#x27;)
                 .replace(/[^a-zA-Z0-9 ]/g, &#x27; &#x27;)
-                .replace(/\s{2,}/g, &#x27; &#x27;)
+                .replace(/\s+/g, &#x27; &#x27;)
                 .replace(/^ | $/g, &#x27;&#x27;)
                 .toLowerCase()
                 .replace(/\s+/g, separator);

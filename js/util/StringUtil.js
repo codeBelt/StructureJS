@@ -66,10 +66,10 @@
         StringUtil.toSentence = function (str, separator) {
             if (separator === void 0) { separator = ' '; }
             return String(str)
-                .replace(/(\d)/g, '$1 ')
+                .replace(/(\d+)/g, ' $1 ')
                 .replace(/([a-z](?=[A-Z]))/g, '$1 ')
                 .replace(/[^a-zA-Z0-9 ]/g, ' ')
-                .replace(/\s{2,}/g, ' ')
+                .replace(/\s+/g, ' ')
                 .replace(/^ | $/g, '')
                 .toLowerCase()
                 .replace(/\s+/g, separator);
