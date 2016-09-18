@@ -587,7 +587,7 @@ class Router
      */
     public static buildRoute(...rest):string
     {
-        const clone = rest.slice(0);
+        let clone = rest.slice(0);
 
         clone.forEach((value, index) => {
             if (typeof value === 'object')
@@ -597,9 +597,9 @@ class Router
         });
 
         // Remove any empty strings from the array
-        rest = rest.filter(Boolean);
+        clone = clone.filter(Boolean);
 
-        let route = rest.join('/');
+        let route = clone.join('/');
         // Remove extra back slashes
         route = route.replace(/\/\//g, '/');
         // Add back slash since we remove it from the "http://"
