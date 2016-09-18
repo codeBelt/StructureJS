@@ -585,35 +585,29 @@ class Router
      *
      *      //Creates 'api/endpoint/path/7?type=car&name=Telsa%20Motors'
      */
-    public static buildRoute(...rest):string {
+    public static buildRoute(...rest):string
+    {
+        const clone = rest.slice(0);
 
-        rest.forEach((value, index, array) => {
-            if (typeof value === 'object') {
-                array[index] = '?' + Router._toQueryString(value);
+        clone.forEach((value, index) => {
+            if (typeof value === 'object')
+            {
+                clone[index] = `?${StringUtil.toQueryString(value)}`;
             }
         });
 
-        const route:string = rest.join('/');
+        // Remove any empty strings from the array
+        rest = rest.filter(Boolean);
 
-        return route.replace('/?', '?');
-    }
+        let route = rest.join('/');
+        // Remove extra back slashes
+        route = route.replace(/\/\//g, '/');
+        // Add back slash since we remove it from the "http://"
+        route = route.replace(':/', '://');
+        // Remove the back slash in front of a question mark
+        route = route.replace('/?', '?');
 
-    /**
-     * TODO: YUIDoc_comment
-     *
-     * @method _toQueryString
-     * @private
-     */
-    private static _toQueryString(obj:any):string {
-        const str = [];
-
-        for(let property in obj) {
-            if (obj.hasOwnProperty(property)) {
-                str.push(`${property}=${obj[property]}`);
-            }
-        }
-
-        return str.join("&");
+        return route
     }
 
     /**
@@ -625,7 +619,8 @@ class Router
      * @example
      *      Router.getCurrentRoute();
      */
-    public static getCurrentRoute():RouterEvent {
+    public static getCurrentRoute():RouterEvent
+    {
         return this._currentRoute;
     }
 
@@ -650,7 +645,8 @@ class Router
      *              }
      *         });
      */
-    public static validate(func:Function):void {
+    public static validate(func:Function):void
+    {
         Router._validators.push(func);
     }
 
@@ -686,26 +682,34 @@ class Router
      * @private
      * @static
      */
-    private static _onHistoryChange(event) {
+    private static _onHistoryChange(event)
+    {
         if (Router.forceHashRouting === true)
         {
             return;
         }
 
-        if (Router.allowManualDeepLinking !== false && Router.useDeepLinking !== false) {
-            if (event != null) {
+        if (Router.allowManualDeepLinking !== false && Router.useDeepLinking !== false)
+        {
+            if (event != null)
+            {
                 const state:any = event.state;
                 Router._changeRoute(state.route);
-            } else {
+            }
+            else
+            {
                 const route = location.pathname + location.search + location.hash;
 
-                if (Router.useDeepLinking === true) {
+                if (Router.useDeepLinking === true)
+                {
                     window.history.replaceState({ route: route }, null, null);
                 }
 
                 Router._changeRoute(route);
             }
-        } else {
+        }
+        else
+        {
             Router._changeRoute('');
         }
     }
@@ -824,7 +828,8 @@ class Router
         }
 
         Router._hashChangeEvent = null;
-        if (Router._validatorFunc != null) {
+        if (Router._validatorFunc != null)
+        {
             Router._validatorFunc();
         }
     }
@@ -836,17 +841,21 @@ class Router
      * @private
      * @static
      */
-    private static _allowRouteChange(routerEvent:RouterEvent):boolean {
+    private static _allowRouteChange(routerEvent:RouterEvent):boolean
+    {
         Router._validatorFunc = null;
 
-        for (let i:number = 0; i < Router._validators.length; i++) {
+        for (let i:number = 0; i < Router._validators.length; i++)
+        {
             const func:Function = Router._validators[i];
 
-            if (Router._validatorFunc != null) {
+            if (Router._validatorFunc != null)
+            {
                 break;
             }
 
-            const callback:Function = (back:Function = null) => {
+            const callback:Function = (back:Function = null) =>
+            {
                 Router._validatorFunc = back;
             };
 
