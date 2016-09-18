@@ -364,28 +364,22 @@
             for (var _i = 0; _i < arguments.length; _i++) {
                 rest[_i - 0] = arguments[_i];
             }
-            rest.forEach(function (value, index, array) {
+            var clone = rest.slice(0);
+            clone.forEach(function (value, index) {
                 if (typeof value === 'object') {
-                    array[index] = '?' + Router._toQueryString(value);
+                    clone[index] = "?" + StringUtil_1.default.toQueryString(value);
                 }
             });
-            var route = rest.join('/');
-            return route.replace('/?', '?');
-        };
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @method _toQueryString
-         * @private
-         */
-        Router._toQueryString = function (obj) {
-            var str = [];
-            for (var property in obj) {
-                if (obj.hasOwnProperty(property)) {
-                    str.push(property + "=" + obj[property]);
-                }
-            }
-            return str.join("&");
+            // Remove any empty strings from the array
+            clone = clone.filter(Boolean);
+            var route = clone.join('/');
+            // Remove extra back slashes
+            route = route.replace(/\/\//g, '/');
+            // Add back slash since we remove it from the "http://"
+            route = route.replace(':/', '://');
+            // Remove the back slash in front of a question mark
+            route = route.replace('/?', '?');
+            return route;
         };
         /**
          * Returns the current router event that was last triggered.

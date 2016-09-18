@@ -180,6 +180,26 @@
             return params;
         };
         /**
+         * Converts a query string to an object.
+         *
+         * @method toQueryString
+         * @param obj {Object}
+         * @public
+         * @static
+         * @example
+         *      StringUtil.toQueryString({name: 'Robert', age: '23', gender: 'male'});
+         *      // name=Robert&age=23&gender=male'
+         */
+        StringUtil.toQueryString = function (obj) {
+            var str = [];
+            for (var property in obj) {
+                if (obj.hasOwnProperty(property)) {
+                    str.push(property + "=" + obj[property]);
+                }
+            }
+            return str.join("&");
+        };
+        /**
          * Remove all whitespace from the string passed in.
          *
          * @method removeAllWhitespace
