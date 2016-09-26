@@ -1,6 +1,6 @@
 {
   "name": "structure-js",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
   "url": "https://github.com/codeBelt/StructureJS",
   "repository": "https://github.com/codeBelt/StructureJS",
