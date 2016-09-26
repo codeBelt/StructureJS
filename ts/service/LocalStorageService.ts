@@ -17,7 +17,7 @@ import BaseModel from '../model/BaseModel';
  * @author Robert S. (www.codeBelt.com)
  * @example
  *     this._localStorageController = new LocalStorageService();
- *     this._localStorageController.addItem('someName', { value: 'something'});
+ *     this._localStorageController.set('someName', { value: 'something'});
  */
 class LocalStorageService extends EventDispatcher
 {
@@ -82,18 +82,18 @@ class LocalStorageService extends EventDispatcher
     /**
      * Add a key/value pair to localStorage.
      *
-     * @method addItem
+     * @method set
      * @param key {string}
      * @param data {Object}
-     * @param useNamespace {boolean}
+     * @param [useNamespace=false] {boolean}
      * @return {boolean}
      * @example
-     *     this._localStorageController.addItem('someName', { value: 'something'});
+     *     this._localStorageController.set('someName', { value: 'something'});
      *
      *     // If you set a namespace you would pass 'true' into the third parameter.
-     *     this._localStorageController.addItem('someName', { value: 'something'}, true);
+     *     this._localStorageController.set('someName', { value: 'something'}, true);
      */
-    public addItem(key:string, data:any, useNamespace:boolean = false):boolean
+    public set(key:string, data:any, useNamespace:boolean = false):boolean
     {
         if (useNamespace)
         {
@@ -121,14 +121,14 @@ class LocalStorageService extends EventDispatcher
     /**
      * Retrieves the current value associated with the Local Storage key.
      *
-     * @method getItem
+     * @method get
      * @param key {string}
      * @param [useNamespace=false] {string}
      * @returns {any}
      * @example
      *     this._localStorageController.setNamespace('myNamespace~');
      */
-    public getItem(key:string, useNamespace:boolean = false):any
+    public get(key:string, useNamespace:boolean = false):any
     {
         if (useNamespace)
         {
@@ -153,75 +153,52 @@ class LocalStorageService extends EventDispatcher
     }
 
     /**
-     * Returns all items in local storage as an Object with key and value properties that has a certain namespace.
+     * Returns all items in local storage as an Object with key and value properties or
+     * returns all items with a certain namespace.
      *
-     * @method getItemsWithNamespace
-     * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
+     * @method getAll
+     * @param [namespace=null] {string} The namespace that is used to items.
      * @return {Array}
      * @example
-     *     this._localStorageController.getItemsWithNamespace('myNamespace~');
+     *     this._localStorageController.getAll();
+     *     this._localStorageController.getAll('myNamespace~');
      */
-    public getItemsWithNamespace(namespace:string = this._namespace):Array<any>
+    public getAll(namespace:string = null):Array<any>
     {
-        const list:Array<any> = [];
+        let list:Array<{ key:string, value:any }> = [];
         const length:number = this.getLength();
         for (let i:number = 0; i < length; i++)
         {
             let key:string = this._localStorage.key(i);
-            if (key.indexOf(namespace) > -1)
-            {
-                let value:any = this.getItem(key);
-                let obj:any = {
-                    key: key,
-                    value: value
-                };
+            let value:any = this.get(key);
 
-                list.push(obj);
-            }
-        }
-        return list;
-    }
-
-    /**
-     * Returns all items in local storage as an Object with key and value properties.
-     *
-     * @method getAllItems
-     * @return {Array}
-     * @example
-     *     this._localStorageController.getAllItems();
-     */
-    public getAllItems():Array<any>
-    {
-        const list:Array<any> = [];
-        const length:number = this.getLength();
-        for (let i:number = 0; i < length; i++)
-        {
-            let key:string = this._localStorage.key(i);
-            let value:any = this.getItem(key);
-            let obj:any = {
+            list.push({
                 key: key,
                 value: value
-            };
-
-            list.push(obj);
+            });
         }
+
+        if (namespace != null) {
+            list = list.filter(obj => obj.key.indexOf(namespace) >= 0);
+        }
+
         return list;
     }
 
     /**
      * Deletes a key/value pair from the Local Storage collection.
      *
-     * @method removeItem
+     * @method remove
      * @param key {string}
      * @param [useNamespace=false] {string}
      * @return {boolean}
      * @example
-     *     this._localStorageController.removeItem('someName');
+     *     this._localStorageController.remove('someName');
      *
      *     // If you set a namespace you would pass 'true' into the second parameter.
-     *     this._localStorageController.removeItem('someName', true);
+     *     this._localStorageController.remove('someName', true);
      */
-    public removeItem(key:string, useNamespace:boolean = false):boolean
+    public remove(key:string, useNamespace:boolean = false):boolean
     {
         if (useNamespace)
         {
@@ -237,27 +214,6 @@ class LocalStorageService extends EventDispatcher
         {
             return false;
         }
-    }
-
-
-    /**
-     * Deletes all key/value pairs with a certain namespace.
-     *
-     * @method removeItemsWithNamespace
-     * @param namespace {string}
-     * @public
-     * @example
-     *     this._localStorageController.removeItemsWithNamespace('myNamespace~');
-     */
-    public removeItemsWithNamespace(namespace:string = this._namespace):void
-    {
-        const items = this.getItemsWithNamespace(namespace);
-
-        items.forEach(data => {
-            const { key } = data;
-
-            this.removeItem(key, false); // False because key already has the namespace in it.
-        });
     }
 
     /**
@@ -289,18 +245,22 @@ class LocalStorageService extends EventDispatcher
     /**
      * Removes all key/value pairs from the Local Storage area.
      *
-     * @method clear
+     * @method removeAll
+     * @param [namespace=null] {string}
      * @example
-     *     this._localStorageController.clear();
+     *     this._localStorageController.removeAll();
+     *     this._localStorageController.removeAll('myNamespace~');
      */
-    public clear():void
+    public removeAll(namespace:string = null):void
     {
-        this._localStorage.clear();
+        if (namespace == null) {
+            this._localStorage.clear();
+        } else {
+            this._removeItemsWithNamespace(namespace);
+        }
     }
 
     /**
-     *
-     *
      * @method _onLocalStorageEvent
      * @param event {StorageEvent} The native browser event for Web Storage.
      * @protected
@@ -309,6 +269,25 @@ class LocalStorageService extends EventDispatcher
     {
         this.dispatchEvent(new LocalStorageEvent(LocalStorageEvent.STORAGE, false, false, event));
     }
+
+    /**
+     * Deletes all key/value pairs with a certain namespace.
+     *
+     * @method removeItemsWithNamespace
+     * @param namespace {string}
+     * @protected
+     */
+    protected _removeItemsWithNamespace(namespace:string = this._namespace):void
+    {
+        const items = this.getAll(namespace);
+
+        items.forEach(data => {
+            const { key } = data;
+
+            this.remove(key, false); // False because key already has the namespace in it.
+        });
+    }
+
 }
 
 export default LocalStorageService;
