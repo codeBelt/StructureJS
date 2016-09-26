@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>/Users/rsavian/Sites/StructureJS/js/display/DisplayObject.js - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.1</span>
+                
+                
+                    <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: /Users/rsavian/Sites/StructureJS/js/display/DisplayObject.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+(function (factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&quot;require&quot;, &quot;exports&quot;, &#x27;../event/EventDispatcher&#x27;], factory);
+    }
+})(function (require, exports) {
+    &quot;use strict&quot;;
+    var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
+    /**
+     * The {{#crossLink &quot;DisplayObject&quot;}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
+     *
+     * @class DisplayObject
+     * @extends EventDispatcher
+     * @module StructureJS
+     * @submodule view
+     * @requires Extend
+     * @requires EventDispatcher
+     * @constructor
+     * @author Robert S. (www.codeBelt.com)
+     */
+    var DisplayObject = (function (_super) {
+        __extends(DisplayObject, _super);
+        function DisplayObject() {
+            _super.call(this);
+            /**
+             * The Stage of the display object.
+             *
+             * @property stage
+             * @type {any}
+             * @public
+             */
+            this.stage = null;
+            /**
+             * The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a canvas element.
+             * This property is only used with the canvas specific display objects.
+             *
+             * @property ctx
+             * @type {CanvasRenderingContext2D}
+             * @public
+             */
+            this.ctx = null;
+            /**
+             * A property providing access to the x position.
+             *
+             * @property x
+             * @type {number}
+             * @default 0
+             * @public
+             */
+            this.x = 0;
+            /**
+             * A property providing access to the y position.
+             *
+             * @property y
+             * @type {number}
+             * @default 0
+             * @public
+             */
+            this.y = 0;
+            /**
+             * Indicates the width of the display object, in pixels.
+             *
+             * @property width
+             * @type {number}
+             * @default 0
+             * @public
+             */
+            this.width = 0;
+            /**
+             * Indicates the height of the display object, in pixels.
+             *
+             * @property height
+             * @type {number}
+             * @default 0
+             * @public
+             */
+            this.height = 0;
+            /**
+             * A property providing access to the unscaledWidth.
+             *
+             * @property unscaledWidth
+             * @type {number}
+             * @default 100
+             * @public
+             */
+            this.unscaledWidth = 100;
+            /**
+             * A property providing access to the unscaledHeight.
+             *
+             * @property unscaledHeight
+             * @type {number}
+             * @default 100
+             * @public
+             */
+            this.unscaledHeight = 100;
+            /**
+             * Indicates the horizontal scale (percentage) of the object as applied from the registration point.
+             *
+             * @property scaleX
+             * @type {number}
+             * @public
+             */
+            this.scaleX = 1;
+            /**
+             * Indicates the vertical scale (percentage) of an object as applied from the registration point of the object.
+             *
+             * @property scaleY
+             * @type {number}
+             * @public
+             */
+            this.scaleY = 1;
+            /**
+             * Indicates the rotation of the DisplayObject instance, in degrees, from its original orientation.
+             *
+             * @property rotation
+             * @type {number}
+             * @public
+             */
+            this.rotation = 0;
+            /**
+             * Indicates the alpha transparency value of the object specified.
+             *
+             * @property alpha
+             * @type {number}
+             * @public
+             */
+            this.alpha = 1;
+            /**
+             * Whether or not the display object is visible.
+             *
+             * @property visible
+             * @type {boolean}
+             * @public
+             */
+            this.visible = true;
+            /**
+             * Specifies whether this object receives mouse
+             *
+             * @property mouseEnabled
+             * @type {boolean}
+             * @public
+             */
+            this.mouseEnabled = false;
+            /**
+             * A Boolean value that indicates whether the pointing hand (hand cursor) appears when the pointer rolls over a display object.
+             *
+             * @property useHandCursor
+             * @type {boolean}
+             * @public
+             */
+            this.useHandCursor = false;
+            /**
+             * The isCreated property is used to keep track if it is the first time this DisplayObject is created.
+             *
+             * @property isCreated
+             * @type {boolean}
+             * @default false
+             * @public
+             */
+            this.isCreated = false;
+            /**
+             * Indicates the instance name of the DisplayObject.
+             *
+             * @property name
+             * @type {string}
+             * @public
+             */
+            this.name = null;
+        }
+        /**
+         * The create function is intended to provide a consistent place for the creation or initializing the view.
+         * It will automatically be called the first time that the view is added to a DisplayObjectContainer.
+         * It is critical that all subclasses call the super for this function in their overridden methods.
+         *
+         * @method create
+         * @returns {DisplayObject} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObject.prototype.create = function () {
+            this.isCreated = true;
+            return this;
+        };
+        /**
+         * The layout method provides a common function to handle updating objects in the view.
+         *
+         * @method layout
+         * @param ...rest {Array&lt;any&gt;}
+         * @returns {DisplayObject} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObject.prototype.layout = function () {
+            var rest = [];
+            for (var _i = 0; _i &lt; arguments.length; _i++) {
+                rest[_i - 0] = arguments[_i];
+            }
+            return this;
+        };
+        /**
+         * The setSize method sets the bounds within which the containing DisplayObject would like that component to lay itself out.
+         *
+         * @param unscaledWidth {number} The width within which the component should lay itself out.
+         * @param unscaledHeight {number} The height within which the component should lay itself out.
+         * @returns {DisplayObject} Returns an instance of itself.
+         * @public
+         * @chainable
+         */
+        DisplayObject.prototype.setSize = function (unscaledWidth, unscaledHeight) {
+            this.unscaledWidth = unscaledWidth;
+            this.unscaledHeight = unscaledHeight;
+            return this;
+        };
+        DisplayObject.prototype._readerStart = function () {
+            this.ctx.save();
+        };
+        DisplayObject.prototype.renderCanvas = function () {
+            if (this.ctx === null || this.alpha &lt;= 0 || this.visible === false)
+                return false;
+            this._readerStart();
+            this.ctx.globalAlpha = this.alpha;
+            this.layout();
+            this._renderEnd();
+        };
+        DisplayObject.prototype._renderEnd = function () {
+            this.ctx.restore();
+        };
+        return DisplayObject;
+    }(EventDispatcher_1.default));
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = DisplayObject;
+});
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
