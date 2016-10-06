@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-10-06 v0.14.2 EventDispatcher - add printEventListeners method and now getEventListeners returns the object of event listeners.
+ 
  * 2016-09-26 v0.14.1 LocalStorageService - rename method names.
  
  * 2016-09-17 v0.14.0 StringUtil - added toQueryString. Router - remove _toQueryString and fix buildRoute to remove extra back slashes.
