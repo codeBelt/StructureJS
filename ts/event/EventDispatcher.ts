@@ -1,5 +1,6 @@
 import ObjectManager from '../ObjectManager';
 import BaseEvent from './BaseEvent';
+import Util from '../util/Util';
 
 /**
  * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
@@ -26,10 +27,10 @@ class EventDispatcher extends ObjectManager
      * Holds a reference to added listeners.
      *
      * @property _listeners
-     * @type {Array.<any>}
+     * @type {any}
      * @protected
      */
-    protected _listeners:Array<any> = null;
+    protected _listeners:any = {};
 
     /**
      * Indicates the object that contains a child object. Uses the parent property
@@ -45,8 +46,6 @@ class EventDispatcher extends ObjectManager
     constructor()
     {
         super();
-
-        this._listeners = [];
     }
 
     /**
@@ -283,19 +282,33 @@ class EventDispatcher extends ObjectManager
     }
 
     /**
-     * Generates a string output of event listeners for a given object.
+     * Returns and array of all current event types and there current listeners.
      *
      * @method getEventListeners
-     * @return {string}
+     * @return {Array<any>}
      * @public
      * @example
      *      this.getEventListeners();
+     */
+    public getEventListeners():Array<any>
+    {
+        return this._listeners;
+    }
+
+    /**
+     * Prints out each event listener in the console.log
+     *
+     * @method print
+     * @return {string}
+     * @public
+     * @example
+     *      this.printEventListeners();
      *
      *      // [ClassName] is listening for the 'BaseEvent.change' event.
+     *      // [AnotherClassName] is listening for the 'BaseEvent.refresh' event.
      */
-    public getEventListeners():string
+    public printEventListeners():void
     {
-        let str:string = '';
         let numOfCallbacks:number;
         let listener:any;
 
@@ -306,20 +319,20 @@ class EventDispatcher extends ObjectManager
             {
                 listener = this._listeners[type][i];
 
-                if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function'))
+                let name;
+
+                if (listener.scope)
                 {
-                    str += '[' + listener.scope.getQualifiedClassName() + ']';
+                    name = '[' + Util.getName(listener.scope) + ']';
                 }
                 else
                 {
-                    str += '[Unknown]';
+                    name ='[Unknown]';
                 }
 
-                str += " is listen for '" + type + "' event.\n";
+                console.log(`${name} is listen for "${type}" event.`, listener.scope);
             }
         }
-
-        return str;
     }
 
     /**

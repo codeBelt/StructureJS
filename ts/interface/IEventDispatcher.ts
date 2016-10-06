@@ -44,7 +44,7 @@ interface IEventDispatcher extends IObjectManager
     /**
      * @method getEventListeners
      */
-    getEventListeners(): string;
+    getEventListeners(): Array<any>;
 
 }
 

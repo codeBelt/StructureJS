@@ -286,20 +286,36 @@ class EventBroker
     }
 
     /**
-     * Generates a string output of event listeners for a given object.
+     * Returns and array of all current event types and there current listeners.
      *
      * @method getEventListeners
+     * @return {Array<any>}
+     * @static
+     * @public
+     * @example
+     *      const listenerList = this.getEventListeners();
+     */
+    public static getEventListeners():Array<any>
+    {
+        return EventBroker._eventDispatcher.getEventListeners();
+    }
+
+    /**
+     * Prints out each event listener in the console.log
+     *
+     * @method print
      * @return {string}
      * @static
      * @public
      * @example
-     *      EventBroker.getEventListeners();
+     *      this.printEventListeners();
      *
-     *      // [ClassName] is listen for 'BaseEvent.change' event.
+     *      // [ClassName] is listening for the 'BaseEvent.change' event.
+     *      // [AnotherClassName] is listening for the 'BaseEvent.refresh' event.
      */
-    public static getEventListeners():string
+    public static printEventListeners():void
     {
-        return EventBroker._eventDispatcher.getEventListeners();
+        EventBroker._eventDispatcher.printEventListeners();
     }
 
 }

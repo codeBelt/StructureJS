@@ -8,12 +8,13 @@ var __extends = (this && this.__extends) || function (d, b) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../ObjectManager', './BaseEvent'], factory);
+        define(["require", "exports", '../ObjectManager', './BaseEvent', '../util/Util'], factory);
     }
 })(function (require, exports) {
     "use strict";
     var ObjectManager_1 = require('../ObjectManager');
     var BaseEvent_1 = require('./BaseEvent');
+    var Util_1 = require('../util/Util');
     /**
      * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
      * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
@@ -41,10 +42,10 @@ var __extends = (this && this.__extends) || function (d, b) {
              * Holds a reference to added listeners.
              *
              * @property _listeners
-             * @type {Array.<any>}
+             * @type {any}
              * @protected
              */
-            this._listeners = null;
+            this._listeners = {};
             /**
              * Indicates the object that contains a child object. Uses the parent property
              * to specify a relative path to display objects that are above the current display object in the display
@@ -55,7 +56,6 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @public
              */
             this.parent = null;
-            this._listeners = [];
         }
         /**
          * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
@@ -249,34 +249,46 @@ var __extends = (this && this.__extends) || function (d, b) {
             return false;
         };
         /**
-         * Generates a string output of event listeners for a given object.
+         * Returns and array of all current event types and there current listeners.
          *
          * @method getEventListeners
-         * @return {string}
+         * @return {Array<any>}
          * @public
          * @example
          *      this.getEventListeners();
-         *
-         *      // [ClassName] is listening for the 'BaseEvent.change' event.
          */
         EventDispatcher.prototype.getEventListeners = function () {
-            var str = '';
+            return this._listeners;
+        };
+        /**
+         * Prints out each event listener in the console.log
+         *
+         * @method print
+         * @return {string}
+         * @public
+         * @example
+         *      this.printEventListeners();
+         *
+         *      // [ClassName] is listening for the 'BaseEvent.change' event.
+         *      // [AnotherClassName] is listening for the 'BaseEvent.refresh' event.
+         */
+        EventDispatcher.prototype.printEventListeners = function () {
             var numOfCallbacks;
             var listener;
             for (var type in this._listeners) {
                 numOfCallbacks = this._listeners[type].length;
                 for (var i = 0; i < numOfCallbacks; i++) {
                     listener = this._listeners[type][i];
-                    if (listener.scope && (typeof listener.scope.getQualifiedClassName === 'function')) {
-                        str += '[' + listener.scope.getQualifiedClassName() + ']';
+                    var name_1 = void 0;
+                    if (listener.scope) {
+                        name_1 = '[' + Util_1.default.getName(listener.scope) + ']';
                     }
                     else {
-                        str += '[Unknown]';
+                        name_1 = '[Unknown]';
                     }
-                    str += " is listen for '" + type + "' event.\n";
+                    console.log(name_1 + " is listen for \"" + type + "\" event.", listener.scope);
                 }
             }
-            return str;
         };
         /**
          * @overridden BaseObject.destroy

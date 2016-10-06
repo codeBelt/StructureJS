@@ -240,19 +240,33 @@
             return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
         };
         /**
-         * Generates a string output of event listeners for a given object.
+         * Returns and array of all current event types and there current listeners.
          *
          * @method getEventListeners
+         * @return {Array<any>}
+         * @static
+         * @public
+         * @example
+         *      const listenerList = this.getEventListeners();
+         */
+        EventBroker.getEventListeners = function () {
+            return EventBroker._eventDispatcher.getEventListeners();
+        };
+        /**
+         * Prints out each event listener in the console.log
+         *
+         * @method print
          * @return {string}
          * @static
          * @public
          * @example
-         *      EventBroker.getEventListeners();
+         *      this.printEventListeners();
          *
-         *      // [ClassName] is listen for 'BaseEvent.change' event.
+         *      // [ClassName] is listening for the 'BaseEvent.change' event.
+         *      // [AnotherClassName] is listening for the 'BaseEvent.refresh' event.
          */
-        EventBroker.getEventListeners = function () {
-            return EventBroker._eventDispatcher.getEventListeners();
+        EventBroker.printEventListeners = function () {
+            EventBroker._eventDispatcher.printEventListeners();
         };
         /**
          * A reference to the EventDispatcher object.
