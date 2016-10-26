@@ -15,6 +15,35 @@ var __extends = (this && this.__extends) || function (d, b) {
     var LocalStorageEvent_1 = require('../event/LocalStorageEvent');
     var EventDispatcher_1 = require('../event/EventDispatcher');
     var BaseModel_1 = require('../model/BaseModel');
+    var LocalStorageFallback = (function () {
+        function LocalStorageFallback() {
+            this._data = {};
+            console.warn("window.localStorage is not working. StructureJS LocalStorageService will use an in memory version.");
+        }
+        LocalStorageFallback.prototype.setItem = function (key, value) {
+            return this._data[key] = String(value);
+        };
+        LocalStorageFallback.prototype.getItem = function (key) {
+            return (this._data.hasOwnProperty(key) === true) ? this._data[key] : null;
+        };
+        LocalStorageFallback.prototype.removeItem = function (key) {
+            return delete this._data[key];
+        };
+        LocalStorageFallback.prototype.clear = function () {
+            return this._data = {};
+        };
+        LocalStorageFallback.prototype.key = function (index) {
+            return Object.keys(this._data)[index];
+        };
+        Object.defineProperty(LocalStorageFallback.prototype, "length", {
+            get: function () {
+                return Object.keys(this._data).length;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return LocalStorageFallback;
+    }());
     /**
      * The LocalStorageService...
      *
@@ -56,7 +85,13 @@ var __extends = (this && this.__extends) || function (d, b) {
              */
             this._localStorage = null;
             this._namespace = namespace;
-            this._localStorage = window.localStorage;
+            try {
+                this._localStorage = window.localStorage;
+            }
+            catch (error) {
+                window['StructureJS_localStorageServiceFallback'] = window['StructureJS_localStorageServiceFallback'] || new LocalStorageFallback();
+                this._localStorage = window['StructureJS_localStorageServiceFallback'];
+            }
             window.addEventListener('storage', this._onLocalStorageEvent.bind(this));
         }
         /**
