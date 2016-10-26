@@ -47,7 +47,24 @@ class LocalStorageService extends EventDispatcher
 
         this._namespace = namespace;
 
-        this._localStorage = window.localStorage;
+        try {
+            this._localStorage = window.localStorage;
+        } catch (error) {
+            this._localStorage = <any>(function() {
+                window['_localStorageServiceFallback'] = window['_localStorageServiceFallback'] || {};
+                let data:any = window['_localStorageServiceFallback'];
+
+                return {
+                    length: 0,
+
+                    setItem     : (key:string, value:string):any => { return data[key] = value; },
+                    getItem     : (key:string):any => { return data.hasOwnProperty(key) ? data[key] : null; },
+                    removeItem  : (key:string):any => { return delete data[key]; },
+                    clear       : ():any => { return data = {}; }
+                    key         : (key):any => { return data = {}; }
+                }
+            }());
+        }
 
         window.addEventListener('storage', this._onLocalStorageEvent.bind(this));
     }
