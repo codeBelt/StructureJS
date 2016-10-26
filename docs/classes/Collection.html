@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.3</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -441,6 +441,13 @@
                     
                 </li>
             
+                <li class="index-item method public inherited">
+                    <a href="#method_print">print</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_remove">remove</a>
 
@@ -508,7 +515,7 @@
             <a name="property__listeners" class="anchor-link"></a>
 <div class="property item protected inherited">
     <h3 class="name"><code>_listeners</code>
-    <span class="type">Array.<any></span>
+    <span class="type">Any</span>
 
     
 
@@ -530,7 +537,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_event_EventDispatcher.js.html#l40"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventDispatcher.js:40</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_event_EventDispatcher.js.html#l41"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventDispatcher.js:41</code></a>
         
         </p>
 
@@ -786,7 +793,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_event_EventDispatcher.js.html#l48"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventDispatcher.js:48</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_event_EventDispatcher.js.html#l49"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventDispatcher.js:49</code></a>
         
         </p>
 
@@ -2822,7 +2829,7 @@ When checking properties, this method performs a deep comparison between values 
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type">Array<any></span>
         </span>
     
 
@@ -2863,7 +2870,7 @@ When checking properties, this method performs a deep comparison between values 
     <div class="extended-detail">
 
         <div class="description">
-            <p>Generates a string output of event listeners for a given object.</p>
+            <p>Returns and array of all current event types and there current listeners.</p>
 
         </div>
 
@@ -2876,7 +2883,7 @@ When checking properties, this method performs a deep comparison between values 
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type">Array<any></span>:
                         
                     
                 </div>
@@ -2888,9 +2895,7 @@ When checking properties, this method performs a deep comparison between values 
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> this.getEventListeners();
-
- // [ClassName] is listening for the &#39;BaseEvent.change&#39; event.</code></pre>
+                    <pre class="code prettyprint"><code> this.getEventListeners();</code></pre>
 
                 </div>
             </div>
@@ -3670,6 +3675,94 @@ someClass.getQualifiedClassName();
 
  let list = collection.pluck(&#39;name&#39;, true);
  // [&#39;Robert&#39;, &#39;Chris&#39;]</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_print" class="anchor-link"></a>
+<div class="method item public inherited">
+    <h3 class="name"><code>print</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/EventDispatcher.html#method_print" class="type">EventDispatcher</a>:
+            
+        
+        
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_event_EventDispatcher.js.html#l263"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventDispatcher.js:263</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Prints out each event listener in the console.log</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">String</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.printEventListeners();
+
+ // [ClassName] is listening for the &#39;BaseEvent.change&#39; event.
+ // [AnotherClassName] is listening for the &#39;BaseEvent.refresh&#39; event.</code></pre>
 
                 </div>
             </div>

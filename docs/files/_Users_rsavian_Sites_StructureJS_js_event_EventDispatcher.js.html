@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.1</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.3</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -164,12 +164,13 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;
     }
     else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
-        define([&quot;require&quot;, &quot;exports&quot;, &#x27;../ObjectManager&#x27;, &#x27;./BaseEvent&#x27;], factory);
+        define([&quot;require&quot;, &quot;exports&quot;, &#x27;../ObjectManager&#x27;, &#x27;./BaseEvent&#x27;, &#x27;../util/Util&#x27;], factory);
     }
 })(function (require, exports) {
     &quot;use strict&quot;;
     var ObjectManager_1 = require(&#x27;../ObjectManager&#x27;);
     var BaseEvent_1 = require(&#x27;./BaseEvent&#x27;);
+    var Util_1 = require(&#x27;../util/Util&#x27;);
     /**
      * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink &quot;DisplayObjectContainer&quot;}}{{/crossLink}} class.
      * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
@@ -197,10 +198,10 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
              * Holds a reference to added listeners.
              *
              * @property _listeners
-             * @type {Array.&lt;any&gt;}
+             * @type {any}
              * @protected
              */
-            this._listeners = null;
+            this._listeners = {};
             /**
              * Indicates the object that contains a child object. Uses the parent property
              * to specify a relative path to display objects that are above the current display object in the display
@@ -211,7 +212,6 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
              * @public
              */
             this.parent = null;
-            this._listeners = [];
         }
         /**
          * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.
@@ -405,34 +405,46 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             return false;
         };
         /**
-         * Generates a string output of event listeners for a given object.
+         * Returns and array of all current event types and there current listeners.
          *
          * @method getEventListeners
-         * @return {string}
+         * @return {Array&lt;any&gt;}
          * @public
          * @example
          *      this.getEventListeners();
-         *
-         *      // [ClassName] is listening for the &#x27;BaseEvent.change&#x27; event.
          */
         EventDispatcher.prototype.getEventListeners = function () {
-            var str = &#x27;&#x27;;
+            return this._listeners;
+        };
+        /**
+         * Prints out each event listener in the console.log
+         *
+         * @method print
+         * @return {string}
+         * @public
+         * @example
+         *      this.printEventListeners();
+         *
+         *      // [ClassName] is listening for the &#x27;BaseEvent.change&#x27; event.
+         *      // [AnotherClassName] is listening for the &#x27;BaseEvent.refresh&#x27; event.
+         */
+        EventDispatcher.prototype.printEventListeners = function () {
             var numOfCallbacks;
             var listener;
             for (var type in this._listeners) {
                 numOfCallbacks = this._listeners[type].length;
                 for (var i = 0; i &lt; numOfCallbacks; i++) {
                     listener = this._listeners[type][i];
-                    if (listener.scope &amp;&amp; (typeof listener.scope.getQualifiedClassName === &#x27;function&#x27;)) {
-                        str += &#x27;[&#x27; + listener.scope.getQualifiedClassName() + &#x27;]&#x27;;
+                    var name_1 = void 0;
+                    if (listener.scope) {
+                        name_1 = &#x27;[&#x27; + Util_1.default.getName(listener.scope) + &#x27;]&#x27;;
                     }
                     else {
-                        str += &#x27;[Unknown]&#x27;;
+                        name_1 = &#x27;[Unknown]&#x27;;
                     }
-                    str += &quot; is listen for &#x27;&quot; + type + &quot;&#x27; event.\n&quot;;
+                    console.log(name_1 + &quot; is listen for \&quot;&quot; + type + &quot;\&quot; event.&quot;, listener.scope);
                 }
             }
-            return str;
         };
         /**
          * @overridden BaseObject.destroy
