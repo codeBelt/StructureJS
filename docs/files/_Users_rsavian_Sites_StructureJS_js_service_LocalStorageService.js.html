@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.2</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.4</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -171,6 +171,35 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
     var LocalStorageEvent_1 = require(&#x27;../event/LocalStorageEvent&#x27;);
     var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
     var BaseModel_1 = require(&#x27;../model/BaseModel&#x27;);
+    var LocalStorageFallback = (function () {
+        function LocalStorageFallback() {
+            this._data = {};
+            console.warn(&quot;window.localStorage is not working. StructureJS LocalStorageService will use an in memory version.&quot;);
+        }
+        LocalStorageFallback.prototype.setItem = function (key, value) {
+            return this._data[key] = String(value);
+        };
+        LocalStorageFallback.prototype.getItem = function (key) {
+            return (this._data.hasOwnProperty(key) === true) ? this._data[key] : null;
+        };
+        LocalStorageFallback.prototype.removeItem = function (key) {
+            return delete this._data[key];
+        };
+        LocalStorageFallback.prototype.clear = function () {
+            return this._data = {};
+        };
+        LocalStorageFallback.prototype.key = function (index) {
+            return Object.keys(this._data)[index];
+        };
+        Object.defineProperty(LocalStorageFallback.prototype, &quot;length&quot;, {
+            get: function () {
+                return Object.keys(this._data).length;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return LocalStorageFallback;
+    }());
     /**
      * The LocalStorageService...
      *
@@ -212,7 +241,13 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
              */
             this._localStorage = null;
             this._namespace = namespace;
-            this._localStorage = window.localStorage;
+            try {
+                this._localStorage = window.localStorage;
+            }
+            catch (error) {
+                window[&#x27;StructureJS_localStorageServiceFallback&#x27;] = window[&#x27;StructureJS_localStorageServiceFallback&#x27;] || new LocalStorageFallback();
+                this._localStorage = window[&#x27;StructureJS_localStorageServiceFallback&#x27;];
+            }
             window.addEventListener(&#x27;storage&#x27;, this._onLocalStorageEvent.bind(this));
         }
         /**
