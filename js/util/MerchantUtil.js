@@ -21,38 +21,6 @@
             throw new Error('[MerchantUtil] Do not instantiate the MerchantUtil class because it is a static class.');
         }
         /**
-         * Determines if credit card is valid using the Luhn formula.
-         *
-         * @method isCreditCard
-         * @param cardNumber {string} The credit card number.
-         * @returns {boolean} <code>true</code> if String is a valid credit card number; otherwise <code>false</code>.
-         * @public
-         * @static
-         * @example
-         *      MerchantUtil.isCreditCard('4556106734384949');
-         *      // true
-         */
-        MerchantUtil.isCreditCard = function (cardNumber) {
-            if (cardNumber.length < 7 || cardNumber.length > 19 || Number(cardNumber) < 1000000) {
-                return false;
-            }
-            var pre;
-            var sum = 0;
-            var alt = true;
-            var i = cardNumber.length;
-            while (--i > -1) {
-                if (alt) {
-                    sum += Number(cardNumber.substr(i, 1));
-                }
-                else {
-                    pre = Number(cardNumber.substr(i, 1)) * 2;
-                    sum += (pre > 8) ? pre -= 9 : pre;
-                }
-                alt = !alt;
-            }
-            return sum % 10 == 0;
-        };
-        /**
          * Encode a credit card number as a string and encode all digits except the last <code>digitsShown</code>.
          *
          * @method encodeCreditCardNumber
@@ -83,9 +51,10 @@
          * Returns a credit card provider name from the credit card number passed in.
          *
          * @method getCreditCardProvider
-         * @param cardNumber {string}
+         * @param cardNumber {string|number}
          * @returns {string}
          * @example
+         *      MerchantUtil.getCreditCardProvider("4");
          *      MerchantUtil.getCreditCardProvider("4556106734384949");
          *      // visa
          *
@@ -93,27 +62,19 @@
          *      // mastercard
          */
         MerchantUtil.getCreditCardProvider = function (cardNumber) {
-            if (MerchantUtil.isCreditCard(cardNumber) == false) {
-                return 'invalid';
+            // Remove all non-numeric chars.
+            var stringNumber = String(cardNumber).replace(/[^0-9]/g, '');
+            for (var _i = 0, _a = MerchantUtil.CARD_TYPES; _i < _a.length; _i++) {
+                var cardType = _a[_i];
+                for (var _b = 0, _c = cardType.range; _b < _c.length; _b++) {
+                    var num = _c[_b];
+                    var regex = new RegExp("^" + num + "+");
+                    if (regex.test(stringNumber) === true) {
+                        return cardType.name;
+                    }
+                }
             }
-            if (cardNumber.length == 13 || cardNumber.length == 16 && cardNumber.indexOf('4') == 0) {
-                return 'visa';
-            }
-            else if (cardNumber.indexOf('51') == 0 || cardNumber.indexOf('52') == 0 || cardNumber.indexOf('53') == 0 || cardNumber.indexOf('54') == 0 || cardNumber.indexOf('55') == 0 && cardNumber.length == 16) {
-                return 'mastercard';
-            }
-            else if (cardNumber.length == 16 && cardNumber.indexOf('6011') == 0) {
-                return 'discover';
-            }
-            else if (cardNumber.indexOf('34') == 0 || cardNumber.indexOf('37') == 0 && cardNumber.length == 15) {
-                return 'amex';
-            }
-            else if (cardNumber.indexOf('300') == 0 || cardNumber.indexOf('301') == 0 || cardNumber.indexOf('302') == 0 || cardNumber.indexOf('303') == 0 || cardNumber.indexOf('304') == 0 || cardNumber.indexOf('305') == 0 || cardNumber.indexOf('36') == 0 || cardNumber.indexOf('38') == 0 && cardNumber.length == 14) {
-                return 'diners';
-            }
-            else {
-                return 'other';
-            }
+            return null;
         };
         /**
          * Validate a credit card's expiration date.
@@ -135,8 +96,142 @@
             }
             return false;
         };
+        /**
+         * Determines if credit card is valid
+         *
+         * @method isCreditCard
+         * @param cardNumber {string|number} The credit card number.
+         * @returns {boolean}
+         * @public
+         * @static
+         * @example
+         *      MerchantUtil.isCreditCard('4556106734384949');
+         *      // true
+         */
+        MerchantUtil.isCreditCard = function (cardNumber) {
+            if (this._validateCreditCard(cardNumber) === true) {
+                return this._validateStructure(cardNumber);
+            }
+            return false;
+        };
+        /**
+         * https://davidwalsh.name/validate-credit-cards
+         *
+         * @method _validateStructure
+         * @param cardNumber {string|number}
+         * @return {boolean}
+         */
+        MerchantUtil._validateStructure = function (cardNumber) {
+            // Remove all non-numeric chars.
+            var stringNumber = String(cardNumber).replace(/[^0-9]/g, '');
+            var results = [];
+            for (var _i = 0, _a = MerchantUtil.CARD_TYPES; _i < _a.length; _i++) {
+                var cardType = _a[_i];
+                if (stringNumber.match('^' + cardType.regex + '$')) {
+                    results.push(cardType.name);
+                }
+            }
+            return results.length ? true : false;
+        };
+        /**
+         * Determines if credit card is valid using the Luhn formula.
+         * https://gist.github.com/ShirtlessKirk/2134376
+         *
+         * @method _validateCreditCard
+         * @param cardNumber {string|number}
+         * @return {boolean}
+         */
+        MerchantUtil._validateCreditCard = function (cardNumber) {
+            // Remove all non-numeric chars.
+            var stringNumber = String(cardNumber).replace(/[^0-9]/g, '');
+            var prodArr = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [0, 2, 4, 6, 8, 1, 3, 5, 7, 9]];
+            var len = stringNumber.length;
+            var mul = 0;
+            var sum = 0;
+            while (len--) {
+                sum += prodArr[mul][parseInt(stringNumber.charAt(len), 10)];
+                mul ^= 1;
+            }
+            return sum % 10 === 0 && sum > 0;
+        };
+        /**
+         * @method _updateRanges
+         * @protected
+         */
+        MerchantUtil._updateRanges = function () {
+            MerchantUtil
+                .CARD_TYPES
+                .forEach(function (cardType) {
+                cardType.range = cardType.range.reduce(function (previous, current) {
+                    if (current.indexOf('-') >= 0) {
+                        var rangeArray = current.split('-');
+                        for (var i = rangeArray[0]; i <= rangeArray[1]; i++) {
+                            previous.push(String(i));
+                        }
+                    }
+                    else {
+                        previous.push(current);
+                    }
+                    return previous;
+                }, []);
+            });
+        };
+        // https://davidwalsh.name/validate-credit-cards
+        // http://www.freeformatter.com/credit-card-number-generator-validator.html
+        // http://www.validcreditcardnumber.com/
+        MerchantUtil.CARD_TYPES = [
+            {
+                name: 'American Express',
+                range: ['34', '37'],
+                validLength: [15],
+                regex: '3[47][0-9]{13}',
+            },
+            {
+                name: 'Diners Club - Carte Blanche',
+                range: ['300-305'],
+                validLength: [14],
+                regex: '3(?:0[0-5][0-9]{11}|[68][0-9]{12})',
+            },
+            {
+                name: 'Diners Club - International',
+                range: ['36'],
+                validLength: [14],
+                regex: '3(?:0[0-5][0-9]{11}|[68][0-9]{12})',
+            },
+            {
+                name: 'JCB',
+                range: ['3528-3589'],
+                validLength: [16],
+                regex: '(?:3[0-9]{15}|(2131|1800)[0-9]{11})',
+            },
+            {
+                name: 'Visa Electron',
+                range: ['4026', '417500', '4508', '4844', '4913', '4917'],
+                validLength: [16],
+                regex: '4(?:[0-9]{12}|[0-9]{15})',
+            },
+            {
+                name: 'Visa',
+                range: ['4'],
+                validLength: [13, 14, 15, 16, 17, 18, 19],
+                regex: '4(?:[0-9]{12}|[0-9]{15})',
+            },
+            {
+                name: 'MasterCard',
+                range: ['51-55', '2221-2720'],
+                validLength: [16],
+                regex: '5[1-5][0-9]{14}',
+            },
+            {
+                name: 'Discover',
+                range: ['6011', '622126-622925', '644-649', '65'],
+                validLength: [16],
+                regex: '6011[0-9]{12}',
+            },
+        ];
         return MerchantUtil;
     }());
+    MerchantUtil._updateRanges();
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MerchantUtil;
 });
