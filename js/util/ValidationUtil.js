@@ -67,7 +67,7 @@
          *      // true
          */
         ValidationUtil.isValidEmailAddress = function (email) {
-            var expression = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+            var expression = /^[-a-zA-Z0-9+_\'][-.a-zA-Z0-9+_\']*@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)*\.([a-zA-Z]{2,})$/;
             return expression.test(email);
         };
         /**

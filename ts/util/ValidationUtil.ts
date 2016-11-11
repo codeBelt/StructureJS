@@ -66,7 +66,7 @@ class ValidationUtil
      */
     public static isValidEmailAddress(email:string):boolean
     {
-        const expression:RegExp = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+        const expression:RegExp = /^[-a-zA-Z0-9+_\'][-.a-zA-Z0-9+_\']*@[-.a-zA-Z0-9]+(\.[-.a-zA-Z0-9]+)*\.([a-zA-Z]{2,})$/;
         return expression.test(email);
     }
 
