@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.4</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.5</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -224,6 +224,27 @@
             
 
             
+                <li class="index-item method protected">
+                    <a href="#method__updateRanges">_updateRanges</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method__validateCreditCard">_validateCreditCard</a>
+
+                    
+                    
+                </li>
+            
+                <li class="index-item method">
+                    <a href="#method__validateStructure">_validateStructure</a>
+
+                    
+                    
+                </li>
+            
                 <li class="index-item method public">
                     <a href="#method_encodeCreditCardNumber">encodeCreditCardNumber</a>
 
@@ -275,6 +296,289 @@
 
     <div class="methods-detail">
         <h2>Methods</h2>
+
+        
+            <a name="method__updateRanges" class="anchor-link"></a>
+<div class="method item protected">
+    <h3 class="name"><code>_updateRanges</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l157"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:157</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__validateCreditCard" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>_validateCreditCard</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>cardNumber</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l136"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:136</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Determines if credit card is valid using the Luhn formula.
+<a href="https://gist.github.com/ShirtlessKirk/2134376">https://gist.github.com/ShirtlessKirk/2134376</a></p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">cardNumber</code>
+                            <span class="type">String | Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__validateStructure" class="anchor-link"></a>
+<div class="method item">
+    <h3 class="name"><code>_validateStructure</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>cardNumber</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Boolean</span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l117"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:117</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p><a href="https://davidwalsh.name/validate-credit-cards">https://davidwalsh.name/validate-credit-cards</a></p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">cardNumber</code>
+                            <span class="type">String | Number</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">Boolean</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+    </div>
+</div>
 
         
             <a name="method_encodeCreditCardNumber" class="anchor-link"></a>
@@ -342,7 +646,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l55"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:55</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l23"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:23</code></a>
         
         </p>
 
@@ -500,7 +804,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l82"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:82</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l50"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:50</code></a>
         
         </p>
 
@@ -526,7 +830,7 @@
                     <li class="param">
                         
                             <code class="param-name">cardNumber</code>
-                            <span class="type">String</span>
+                            <span class="type">String | Number</span>
                         
 
                         
@@ -561,7 +865,8 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> MerchantUtil.getCreditCardProvider("4556106734384949");
+                    <pre class="code prettyprint"><code> MerchantUtil.getCreditCardProvider("4");
+ MerchantUtil.getCreditCardProvider("4556106734384949");
  // visa
 
  MerchantUtil.getCreditCardProvider("5428070016026573");
@@ -627,7 +932,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l23"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:23</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l99"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:99</code></a>
         
         </p>
 
@@ -640,7 +945,7 @@
     <div class="extended-detail">
 
         <div class="description">
-            <p>Determines if credit card is valid using the Luhn formula.</p>
+            <p>Determines if credit card is valid</p>
 
         </div>
 
@@ -653,7 +958,7 @@
                     <li class="param">
                         
                             <code class="param-name">cardNumber</code>
-                            <span class="type">String</span>
+                            <span class="type">String | Number</span>
                         
 
                         
@@ -679,8 +984,6 @@
                         
                             <span class="type">Boolean</span>:
                         
-                        <p><code>true</code> if String is a valid credit card number; otherwise <code>false</code>.</p>
-
                     
                 </div>
             </div>
@@ -756,7 +1059,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l118"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:118</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_MerchantUtil.js.html#l79"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;MerchantUtil.js:79</code></a>
         
         </p>
 
