@@ -52,7 +52,9 @@ import Util from '../util/Util';
  *          constructor(data = {}) {
  *              super();
  *
- *              this.update(data);
+ *              if (data) {
+ *                  this.update(data);
+ *              }
  *          }
  *
  *          // @overridden BaseModel.update
