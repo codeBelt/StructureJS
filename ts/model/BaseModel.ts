@@ -69,6 +69,17 @@ import Util from '../util/Util';
  */
 class BaseModel extends BaseObject implements IBaseModel
 {
+    /**
+     * This property helps in the
+     *
+     * @property IS_BASE_MODEL
+     * @type {boolean}
+     * @public
+     * @static
+     * @readonly
+     */
+    public static IS_BASE_MODEL:boolean = true;
+
     constructor()
     {
         super();
@@ -90,61 +101,54 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     public update(data:any):any
     {
-        let propertyData:any;
-
-        for (let propertyKey in this)
-        {
-            // If this class has a property that matches a property on the data being passed in then set it.
-            // Also don't set the sjsId data value because it is automatically set in the constructor and
-            // we do want it to be overridden when the clone method has been called.
-            if (this.hasOwnProperty(propertyKey) && propertyKey !== 'sjsId')
+        Object
+            .keys(this)
+            .forEach(propertyName =>
             {
-                // If the data passed in does not have a property that matches a property on the  Base Model then
-                // use the default value/data that was assigned to the property.
-                // Else use the data that was passed in.
-                propertyData = (data[propertyKey] === void 0) ? this[propertyKey] : data[propertyKey];
+                // Ignore the sjsId property because it is set in the BaseObject constructor and we don't want to update it.
+                if (propertyName !== 'sjsId')
+                {
+                    const currentData = this[propertyName];
+                    const newData = data[propertyName];
+                    const propertyData = (newData !== void 0) ? newData : currentData;
 
-                this._setData(propertyKey, propertyData);
-            }
-        }
+                    this._updatePropertyWithNewData(propertyName, propertyData);
+                }
+            });
 
         return this;
     }
 
     /**
-     * TODO: YUIDoc_comment
+     * Add the newData to the property
      *
-     * @method _setData
-     * @param key
-     * @param data
+     * @method _updatePropertyWithNewData
+     * @param propertyName
+     * @param newData
      * @protected
      */
-    protected _setData(key:any, data:any):void
+    protected _updatePropertyWithNewData(propertyName:any, newData:any):void
     {
-        /*if ((this[key] instanceof Array === true) && (data !== null) && (data instanceof Array === false)) {
-         throw new TypeError(`[${this.getQualifiedClassName()}] The "${key}" property was originally assigned as an Array and now your assigning it as something else. Not going to happen!`);
-         }*/
-
-        // If the data is an array and if the property its being assigned to is an array.
-        if ((data instanceof Array === true) && (this[key] instanceof Array === true))
+        // If the current property on the model is an array and the newData is an array.
+        if ((this[propertyName] instanceof Array === true) && (newData instanceof Array === true))
         {
-            const temp:Array<any> = [];
-            const len:number = data.length;
+            const isCurrentValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
+            const isNewValueAnUninstantiatedBaseModel = (typeof newData[0] === 'function' && newData[0].IS_BASE_MODEL === true);
 
-            if ((this[key][0] instanceof BaseModel.constructor && data[0] instanceof BaseModel.constructor) === false)
+            if ((isCurrentValueAnUninstantiatedBaseModel === true && isNewValueAnUninstantiatedBaseModel === true) === false)
             {
-                const baseModelOrOther = (this[key] instanceof Array) ? this[key][0] : this[key];
-                for (let i:number = 0; i < len; i++)
-                {
-                    temp[i] = this._updateData(baseModelOrOther, data[i]);
-                }
-            }
+                const baseModelOrUndefined = this[propertyName][0];
 
-            this[key] = temp;
+                this[propertyName] = newData.map(data => this._updateData(baseModelOrUndefined, data));
+            }
+            else
+            {
+                this[propertyName] = [];
+            }
         }
         else
         {
-            this[key] = this._updateData(this[key], data);
+            this[propertyName] = this._updateData(this[propertyName], newData);
         }
     }
 
@@ -153,34 +157,34 @@ class BaseModel extends BaseObject implements IBaseModel
      *
      * @method _updateData
      * @param keyValue
-     * @param data
+     * @param newData
      * @protected
      */
-    protected _updateData(keyValue:any, data:any):any
+    protected _updateData(keyValue:any, newData:any):any
     {
-        if (typeof data === 'function')
+        if (typeof newData === 'function' && newData.IS_BASE_MODEL === true)
         {
-            // If data is a function then it must be a child model and we need to return null.
-            // Note to self if we want it to create an empty model of then remove the return and do `data = {}`.
+            // If newData is a function and has a IS_BASE_MODEL static property then it must be a child model and we need to return null.
+            // Note to self if we want to create an empty model then remove the return and do `data = {}`.
             return null;
         }
 
-        if (keyValue instanceof BaseModel.constructor)
+        if ((keyValue instanceof BaseModel.constructor) === true)
         {
             // If the property is an instance of a BaseModel class and has not been created yet.
-            // Then instantiate it and pass in the data to the constructor.
-            keyValue = new keyValue(data);
+            // Then instantiate it and pass in the newData to the constructor.
+            keyValue = new keyValue(newData);
         }
-        else if (keyValue instanceof BaseModel)
+        else if ((keyValue instanceof BaseModel) === true)
         {
             // If property is an instance of a BaseModel class and has already been created.
-            // Then call the update method and pass in the data.
-            keyValue.update(data);
+            // Then call the update method and pass in the newData.
+            keyValue.update(newData);
         }
         else
         {
-            // Else just assign the data to the property.
-            keyValue = data;
+            // Else just assign the newData to the property.
+            keyValue = newData;
         }
 
         return keyValue;
