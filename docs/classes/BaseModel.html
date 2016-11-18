@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.5</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.6</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -222,6 +222,14 @@ Also in the class you inherit BaseModel from you can override the update method 
 
         <ul class="index-list properties extends">
             
+                <li class="index-item property public">
+                    <a href="#property_IS_BASE_MODEL">IS_BASE_MODEL</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_sjsId">sjsId</a>
 
@@ -254,14 +262,14 @@ Also in the class you inherit BaseModel from you can override the update method 
 
             
                 <li class="index-item method protected">
-                    <a href="#method__setData">_setData</a>
+                    <a href="#method__updateData">_updateData</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method protected">
-                    <a href="#method__updateData">_updateData</a>
+                    <a href="#method__updatePropertyWithNewData">_updatePropertyWithNewData</a>
 
                     
                     
@@ -329,6 +337,60 @@ Also in the class you inherit BaseModel from you can override the update method 
 
     <div class="properties-detail">
         <h2>Properties</h2>
+
+        
+            <a name="property_IS_BASE_MODEL" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>IS_BASE_MODEL</code>
+    <span class="type">Boolean</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l227"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:227</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>This property helps distinguish a BaseModel from other functions.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
 
         
             <a name="property_sjsId" class="anchor-link"></a>
@@ -520,12 +582,10 @@ class CarModel extends BaseModel {
     // If you have an array of data and want them assign to a BaseModel.
     feature = [FeatureModel];
 
-    constructor(data) {
+    constructor(data = {}) {
         super();
 
-        if (data) {
-            this.update(data);
-        }
+        this.update(data);
     }
 
     // @overridden BaseModel.update
@@ -552,123 +612,6 @@ class CarModel extends BaseModel {
         <h2>Methods</h2>
 
         
-            <a name="method__setData" class="anchor-link"></a>
-<div class="method item protected">
-    <h3 class="name"><code>_setData</code>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>key</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>data</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    </h3>
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l117"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:117</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="extended-detail">
-
-        <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
-        </div>
-
-        
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                
-                    <li class="param">
-                        
-                            <code class="param-name">key</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                    <li class="param">
-                        
-                            <code class="param-name">data</code>
-                            <span class="type">Object</span>
-                        
-
-                        
-
-                        <div class="param-description">
-                             
-                        </div>
-
-                        
-                    </li>
-                
-                </ul>
-            </div>
-        
-
-        
-
-        
-    </div>
-</div>
-
-        
             <a name="method__updateData" class="anchor-link"></a>
 <div class="method item protected">
     <h3 class="name"><code>_updateData</code>
@@ -685,7 +628,7 @@ class CarModel extends BaseModel {
             
                 <li class="arg">
                     
-                        <code>data</code>
+                        <code>newData</code>
                     
                 </li>
             
@@ -722,7 +665,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l145"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:145</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l142"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:142</code></a>
         
         </p>
 
@@ -762,7 +705,124 @@ class CarModel extends BaseModel {
                 
                     <li class="param">
                         
-                            <code class="param-name">data</code>
+                            <code class="param-name">newData</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                </ul>
+            </div>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="method__updatePropertyWithNewData" class="anchor-link"></a>
+<div class="method item protected">
+    <h3 class="name"><code>_updatePropertyWithNewData</code>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>propertyName</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>newData</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l115"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:115</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Add the newData to the property</p>
+
+        </div>
+
+        
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                
+                    <li class="param">
+                        
+                            <code class="param-name">propertyName</code>
+                            <span class="type">Object</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                             
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name">newData</code>
                             <span class="type">Object</span>
                         
 
@@ -827,7 +887,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l216"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:216</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l214"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:214</code></a>
         
         </p>
 
@@ -1018,7 +1078,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l200"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:200</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l198"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:198</code></a>
         
         </p>
 
@@ -1209,7 +1269,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l175"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:175</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l173"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:173</code></a>
         
         </p>
 
@@ -1297,7 +1357,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l188"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:188</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l186"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:186</code></a>
         
         </p>
 
@@ -1354,7 +1414,7 @@ someClass.getQualifiedClassName();
             
                 <li class="arg">
                     
-                        <code>data</code>
+                        <code class="optional">[data]</code>
                     
                 </li>
             
@@ -1391,7 +1451,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l87"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:87</code></a>
+        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l85"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:85</code></a>
         
         </p>
 
@@ -1416,14 +1476,16 @@ someClass.getQualifiedClassName();
                 
                     <li class="param">
                         
-                            <code class="param-name">data</code>
-                            <span class="type">Any</span>
+                            <code class="param-name optional">[data]</code>
+                            <span class="type">Object</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
 
                         <div class="param-description">
-                             
+                            <p>{any}</p>
+
                         </div>
 
                         
