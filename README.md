@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-11-18 v0.14.6 BaseModel - Fix issue with properties having a function as it data.
+ 
  * 2016-10-26 v0.14.5 ValidationUtil - Update isValidEmailAddress regex. BrowserUtil - fix issue with event listener name.
  
  * 2016-10-26 v0.14.4 MerchantUtil - Update getCreditCardProvider method to work with only a few numbers.

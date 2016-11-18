@@ -49,12 +49,10 @@ import Util from '../util/Util';
  *          // If you have an array of data and want them assign to a BaseModel.
  *          feature = [FeatureModel];
  *
- *          constructor(data) {
+ *          constructor(data = {}) {
  *              super();
  *
- *              if (data) {
- *                  this.update(data);
- *              }
+ *              this.update(data);
  *          }
  *
  *          // @overridden BaseModel.update
@@ -70,7 +68,7 @@ import Util from '../util/Util';
 class BaseModel extends BaseObject implements IBaseModel
 {
     /**
-     * This property helps in the
+     * This property helps distinguish a BaseModel from other functions.
      *
      * @property IS_BASE_MODEL
      * @type {boolean}
@@ -89,7 +87,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * Provide a way to update the  Base Model.
      *
      * @method update
-     * @param data {any}
+     * @param [data={}] {any}
      * @public
      * @example
      *     // Example of updating some of the data:
@@ -99,7 +97,7 @@ class BaseModel extends BaseObject implements IBaseModel
      *     carModel.year = 2015;
      *     carModel.allWheel = false;
      */
-    public update(data:any):any
+    public update(data:any = {}):any
     {
         Object
             .keys(this)
@@ -135,6 +133,7 @@ class BaseModel extends BaseObject implements IBaseModel
             const isCurrentValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
             const isNewValueAnUninstantiatedBaseModel = (typeof newData[0] === 'function' && newData[0].IS_BASE_MODEL === true);
 
+            // If the current data and the new data are both uninstantiated BaseModel we don't want to continue.
             if ((isCurrentValueAnUninstantiatedBaseModel === true && isNewValueAnUninstantiatedBaseModel === true) === false)
             {
                 const baseModelOrUndefined = this[propertyName][0];
@@ -164,21 +163,22 @@ class BaseModel extends BaseObject implements IBaseModel
     {
         if (typeof newData === 'function' && newData.IS_BASE_MODEL === true)
         {
-            // If newData is a function and has a IS_BASE_MODEL static property then it must be a child model and we need to return null.
-            // Note to self if we want to create an empty model then remove the return and do `data = {}`.
+            // If newData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
+            // so it cleans up the BaseModel functions on the property.
+            // Note to self if we want to create an empty model then return "new newData()".
             return null;
         }
 
-        if ((keyValue instanceof BaseModel.constructor) === true)
+        if (typeof keyValue === 'function' && keyValue.IS_BASE_MODEL === true)
         {
             // If the property is an instance of a BaseModel class and has not been created yet.
-            // Then instantiate it and pass in the newData to the constructor.
+            // Instantiate it and pass in the newData to the constructor.
             keyValue = new keyValue(newData);
         }
         else if ((keyValue instanceof BaseModel) === true)
         {
             // If property is an instance of a BaseModel class and has already been created.
-            // Then call the update method and pass in the newData.
+            // Call the update method and pass in the newData.
             keyValue.update(newData);
         }
         else
