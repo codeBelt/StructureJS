@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.7</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -396,19 +396,33 @@
             return EventBroker._eventDispatcher.hasEventListener(type, callback, scope);
         };
         /**
-         * Generates a string output of event listeners for a given object.
+         * Returns and array of all current event types and there current listeners.
          *
          * @method getEventListeners
+         * @return {Array&lt;any&gt;}
+         * @static
+         * @public
+         * @example
+         *      const listenerList = this.getEventListeners();
+         */
+        EventBroker.getEventListeners = function () {
+            return EventBroker._eventDispatcher.getEventListeners();
+        };
+        /**
+         * Prints out each event listener in the console.log
+         *
+         * @method print
          * @return {string}
          * @static
          * @public
          * @example
-         *      EventBroker.getEventListeners();
+         *      this.printEventListeners();
          *
-         *      // [ClassName] is listen for &#x27;BaseEvent.change&#x27; event.
+         *      // [ClassName] is listening for the &#x27;BaseEvent.change&#x27; event.
+         *      // [AnotherClassName] is listening for the &#x27;BaseEvent.refresh&#x27; event.
          */
-        EventBroker.getEventListeners = function () {
-            return EventBroker._eventDispatcher.getEventListeners();
+        EventBroker.printEventListeners = function () {
+            EventBroker._eventDispatcher.printEventListeners();
         };
         /**
          * A reference to the EventDispatcher object.

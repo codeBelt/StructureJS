@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.7</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -304,6 +304,15 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
                 </li>
             
                 <li class="index-item method public">
+                    <a href="#method_print">print</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                    
+                </li>
+            
+                <li class="index-item method public">
                     <a href="#method_removeEventListener">removeEventListener</a>
 
                     
@@ -384,7 +393,7 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
             
         
         
-        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_event_EventBroker.js.html#l257"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventBroker.js:257</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_event_EventBroker.js.html#l271"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventBroker.js:271</code></a>
         
         </p>
 
@@ -438,7 +447,7 @@ Loosely coupled event handling, the subscriber does not know the publisher. Both
             
         
         
-        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_event_EventBroker.js.html#l266"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventBroker.js:266</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_event_EventBroker.js.html#l280"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventBroker.js:280</code></a>
         
         </p>
 
@@ -1080,7 +1089,7 @@ _handlerMethod(event) {
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type">Array<any></span>
         </span>
     
 
@@ -1126,7 +1135,7 @@ _handlerMethod(event) {
     <div class="extended-detail">
 
         <div class="description">
-            <p>Generates a string output of event listeners for a given object.</p>
+            <p>Returns and array of all current event types and there current listeners.</p>
 
         </div>
 
@@ -1139,7 +1148,7 @@ _handlerMethod(event) {
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type">Array<any></span>:
                         
                     
                 </div>
@@ -1151,9 +1160,7 @@ _handlerMethod(event) {
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> EventBroker.getEventListeners();
-
- // [ClassName] is listen for &#39;BaseEvent.change&#39; event.</code></pre>
+                    <pre class="code prettyprint"><code> const listenerList = this.getEventListeners();</code></pre>
 
                 </div>
             </div>
@@ -1322,6 +1329,99 @@ _handlerMethod(event) {
 
                 <div class="example-content">
                     <pre class="code prettyprint"><code> EventBroker.hasEventListener(BaseEvent.CHANGE, this._handlerMethod, this);</code></pre>
+
+                </div>
+            </div>
+        
+    </div>
+</div>
+
+        
+            <a name="method_print" class="anchor-link"></a>
+<div class="method item public">
+    <h3 class="name"><code>print</code>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_event_EventBroker.js.html#l255"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;event&#x2F;EventBroker.js:255</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+
+        <div class="description">
+            <p>Prints out each event listener in the console.log</p>
+
+        </div>
+
+        
+
+        
+            <div class="returns">
+                <h4>Returns:</h4>
+
+                <div class="returns-description">
+                    
+                        
+                            <span class="type">String</span>:
+                        
+                    
+                </div>
+            </div>
+        
+
+        
+            <div class="example">
+                <h4>Example:</h4>
+
+                <div class="example-content">
+                    <pre class="code prettyprint"><code> this.printEventListeners();
+
+ // [ClassName] is listening for the &#39;BaseEvent.change&#39; event.
+ // [AnotherClassName] is listening for the &#39;BaseEvent.refresh&#39; event.</code></pre>
 
                 </div>
             </div>

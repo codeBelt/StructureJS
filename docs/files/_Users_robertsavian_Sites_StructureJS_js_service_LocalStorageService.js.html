@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.0</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.7</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -171,6 +171,35 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
     var LocalStorageEvent_1 = require(&#x27;../event/LocalStorageEvent&#x27;);
     var EventDispatcher_1 = require(&#x27;../event/EventDispatcher&#x27;);
     var BaseModel_1 = require(&#x27;../model/BaseModel&#x27;);
+    var LocalStorageFallback = (function () {
+        function LocalStorageFallback() {
+            this._data = {};
+            console.warn(&quot;window.localStorage is not working. StructureJS LocalStorageService will use an in memory version.&quot;);
+        }
+        LocalStorageFallback.prototype.setItem = function (key, value) {
+            return this._data[key] = String(value);
+        };
+        LocalStorageFallback.prototype.getItem = function (key) {
+            return (this._data.hasOwnProperty(key) === true) ? this._data[key] : null;
+        };
+        LocalStorageFallback.prototype.removeItem = function (key) {
+            return delete this._data[key];
+        };
+        LocalStorageFallback.prototype.clear = function () {
+            return this._data = {};
+        };
+        LocalStorageFallback.prototype.key = function (index) {
+            return Object.keys(this._data)[index];
+        };
+        Object.defineProperty(LocalStorageFallback.prototype, &quot;length&quot;, {
+            get: function () {
+                return Object.keys(this._data).length;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        return LocalStorageFallback;
+    }());
     /**
      * The LocalStorageService...
      *
@@ -186,7 +215,7 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
      * @author Robert S. (www.codeBelt.com)
      * @example
      *     this._localStorageController = new LocalStorageService();
-     *     this._localStorageController.addItem(&#x27;someName&#x27;, { value: &#x27;something&#x27;});
+     *     this._localStorageController.set(&#x27;someName&#x27;, { value: &#x27;something&#x27;});
      */
     var LocalStorageService = (function (_super) {
         __extends(LocalStorageService, _super);
@@ -212,7 +241,13 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
              */
             this._localStorage = null;
             this._namespace = namespace;
-            this._localStorage = window.localStorage;
+            try {
+                this._localStorage = window.localStorage;
+            }
+            catch (error) {
+                window[&#x27;StructureJS_localStorageServiceFallback&#x27;] = window[&#x27;StructureJS_localStorageServiceFallback&#x27;] || new LocalStorageFallback();
+                this._localStorage = window[&#x27;StructureJS_localStorageServiceFallback&#x27;];
+            }
             window.addEventListener(&#x27;storage&#x27;, this._onLocalStorageEvent.bind(this));
         }
         /**
@@ -241,18 +276,18 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         /**
          * Add a key/value pair to localStorage.
          *
-         * @method addItem
+         * @method set
          * @param key {string}
          * @param data {Object}
-         * @param useNamespace {boolean}
+         * @param [useNamespace=false] {boolean}
          * @return {boolean}
          * @example
-         *     this._localStorageController.addItem(&#x27;someName&#x27;, { value: &#x27;something&#x27;});
+         *     this._localStorageController.set(&#x27;someName&#x27;, { value: &#x27;something&#x27;});
          *
          *     // If you set a namespace you would pass &#x27;true&#x27; into the third parameter.
-         *     this._localStorageController.addItem(&#x27;someName&#x27;, { value: &#x27;something&#x27;}, true);
+         *     this._localStorageController.set(&#x27;someName&#x27;, { value: &#x27;something&#x27;}, true);
          */
-        LocalStorageService.prototype.addItem = function (key, data, useNamespace) {
+        LocalStorageService.prototype.set = function (key, data, useNamespace) {
             if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
@@ -272,14 +307,14 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         /**
          * Retrieves the current value associated with the Local Storage key.
          *
-         * @method getItem
+         * @method get
          * @param key {string}
          * @param [useNamespace=false] {string}
          * @returns {any}
          * @example
          *     this._localStorageController.setNamespace(&#x27;myNamespace~&#x27;);
          */
-        LocalStorageService.prototype.getItem = function (key, useNamespace) {
+        LocalStorageService.prototype.get = function (key, useNamespace) {
             if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
@@ -297,67 +332,47 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             return value;
         };
         /**
-         * Returns all items in local storage as an Object with key and value properties that has a certain namespace.
+         * Returns all items in local storage as an Object with key and value properties or
+         * returns all items with a certain namespace.
          *
-         * @method getItemsWithNamespace
-         * @param namespace {string} The namespace that is used to items. If a namespace is not passed in then the current set namespace will be used.
+         * @method getAll
+         * @param [namespace=null] {string} The namespace that is used to items.
          * @return {Array}
          * @example
-         *     this._localStorageController.getItemsWithNamespace(&#x27;myNamespace~&#x27;);
+         *     this._localStorageController.getAll();
+         *     this._localStorageController.getAll(&#x27;myNamespace~&#x27;);
          */
-        LocalStorageService.prototype.getItemsWithNamespace = function (namespace) {
-            if (namespace === void 0) { namespace = this._namespace; }
+        LocalStorageService.prototype.getAll = function (namespace) {
+            if (namespace === void 0) { namespace = null; }
             var list = [];
             var length = this.getLength();
             for (var i = 0; i &lt; length; i++) {
                 var key = this._localStorage.key(i);
-                if (key.indexOf(namespace) &gt; -1) {
-                    var value = this.getItem(key);
-                    var obj = {
-                        key: key,
-                        value: value
-                    };
-                    list.push(obj);
-                }
-            }
-            return list;
-        };
-        /**
-         * Returns all items in local storage as an Object with key and value properties.
-         *
-         * @method getAllItems
-         * @return {Array}
-         * @example
-         *     this._localStorageController.getAllItems();
-         */
-        LocalStorageService.prototype.getAllItems = function () {
-            var list = [];
-            var length = this.getLength();
-            for (var i = 0; i &lt; length; i++) {
-                var key = this._localStorage.key(i);
-                var value = this.getItem(key);
-                var obj = {
+                var value = this.get(key);
+                list.push({
                     key: key,
                     value: value
-                };
-                list.push(obj);
+                });
+            }
+            if (namespace != null) {
+                list = list.filter(function (obj) { return obj.key.indexOf(namespace) &gt;= 0; });
             }
             return list;
         };
         /**
          * Deletes a key/value pair from the Local Storage collection.
          *
-         * @method removeItem
+         * @method remove
          * @param key {string}
          * @param [useNamespace=false] {string}
          * @return {boolean}
          * @example
-         *     this._localStorageController.removeItem(&#x27;someName&#x27;);
+         *     this._localStorageController.remove(&#x27;someName&#x27;);
          *
          *     // If you set a namespace you would pass &#x27;true&#x27; into the second parameter.
-         *     this._localStorageController.removeItem(&#x27;someName&#x27;, true);
+         *     this._localStorageController.remove(&#x27;someName&#x27;, true);
          */
-        LocalStorageService.prototype.removeItem = function (key, useNamespace) {
+        LocalStorageService.prototype.remove = function (key, useNamespace) {
             if (useNamespace === void 0) { useNamespace = false; }
             if (useNamespace) {
                 key = this.getNamespace() + key;
@@ -369,24 +384,6 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
             catch (error) {
                 return false;
             }
-        };
-        /**
-         * Deletes all key/value pairs with a certain namespace.
-         *
-         * @method removeItemsWithNamespace
-         * @param namespace {string}
-         * @public
-         * @example
-         *     this._localStorageController.removeItemsWithNamespace(&#x27;myNamespace~&#x27;);
-         */
-        LocalStorageService.prototype.removeItemsWithNamespace = function (namespace) {
-            var _this = this;
-            if (namespace === void 0) { namespace = this._namespace; }
-            var items = this.getItemsWithNamespace(namespace);
-            items.forEach(function (data) {
-                var key = data.key;
-                _this.removeItem(key, false); // False because key already has the namespace in it.
-            });
         };
         /**
          * Returns the number of items storage in local storage.
@@ -413,22 +410,44 @@ var __extends = (this &amp;&amp; this.__extends) || function (d, b) {
         /**
          * Removes all key/value pairs from the Local Storage area.
          *
-         * @method clear
+         * @method removeAll
+         * @param [namespace=null] {string}
          * @example
-         *     this._localStorageController.clear();
+         *     this._localStorageController.removeAll();
+         *     this._localStorageController.removeAll(&#x27;myNamespace~&#x27;);
          */
-        LocalStorageService.prototype.clear = function () {
-            this._localStorage.clear();
+        LocalStorageService.prototype.removeAll = function (namespace) {
+            if (namespace === void 0) { namespace = null; }
+            if (namespace == null) {
+                this._localStorage.clear();
+            }
+            else {
+                this._removeItemsWithNamespace(namespace);
+            }
         };
         /**
-         *
-         *
          * @method _onLocalStorageEvent
          * @param event {StorageEvent} The native browser event for Web Storage.
          * @protected
          */
         LocalStorageService.prototype._onLocalStorageEvent = function (event) {
             this.dispatchEvent(new LocalStorageEvent_1.default(LocalStorageEvent_1.default.STORAGE, false, false, event));
+        };
+        /**
+         * Deletes all key/value pairs with a certain namespace.
+         *
+         * @method removeItemsWithNamespace
+         * @param namespace {string}
+         * @protected
+         */
+        LocalStorageService.prototype._removeItemsWithNamespace = function (namespace) {
+            var _this = this;
+            if (namespace === void 0) { namespace = this._namespace; }
+            var items = this.getAll(namespace);
+            items.forEach(function (data) {
+                var key = data.key;
+                _this.remove(key, false); // False because key already has the namespace in it.
+            });
         };
         return LocalStorageService;
     }(EventDispatcher_1.default));
