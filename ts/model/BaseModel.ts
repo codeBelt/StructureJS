@@ -1,4 +1,5 @@
 import IBaseModel from '../interface/IBaseModel';
+import IBaseModelOptions from '../interface/IBaseModelOptions';
 import BaseObject from '../BaseObject';
 import Util from '../util/Util';
 
@@ -10,7 +11,8 @@ import Util from '../util/Util';
  *
  * @class BaseModel
  * @extends BaseObject
- * @param [data] {any} Provide a way to update the  Base Model upon initialization.
+ * @param [data] {any} Provide a way to update the base model upon initialization.
+ * @param [opts] {{ expand:boolean }} Options for the base model.
  * @module StructureJS
  * @submodule model
  * @requires Extend
@@ -49,8 +51,8 @@ import Util from '../util/Util';
  *          // If you have an array of data and want them assign to a BaseModel.
  *          feature = [FeatureModel];
  *
- *          constructor(data = {}) {
- *              super();
+ *          constructor(data = {}, opts = {}) {
+ *              super(opts);
  *
  *              if (data) {
  *                  this.update(data);
@@ -80,9 +82,21 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     public static IS_BASE_MODEL:boolean = true;
 
-    constructor()
+    /**
+     * @property sjsOptions
+     * @type {IBaseModelOptions}}
+     * @readonly
+     * @public
+     */
+    protected sjsOptions:IBaseModelOptions = {
+        expand: false,
+    };
+
+    constructor(opts:IBaseModelOptions = {})
     {
         super();
+
+        this.sjsOptions.expand = opts.expand === true;
     }
 
     /**
@@ -163,11 +177,11 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     protected _updateData(keyValue:any, newData:any):any
     {
-        if (typeof newData === 'function' && newData.IS_BASE_MODEL === true)
+        if (this.sjsOptions.expand === false && typeof newData === 'function' && newData.IS_BASE_MODEL === true)
         {
             // If newData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
             // so it cleans up the BaseModel functions on the property.
-            // Note to self if we want to create an empty model then return "new newData()".
+            // To create empty model(s) pass { expand: true } for the options.
             return null;
         }
 
@@ -175,7 +189,7 @@ class BaseModel extends BaseObject implements IBaseModel
         {
             // If the property is an instance of a BaseModel class and has not been created yet.
             // Instantiate it and pass in the newData to the constructor.
-            keyValue = new keyValue(newData);
+            keyValue = new keyValue(newData, this.sjsOptions);
         }
         else if ((keyValue instanceof BaseModel) === true)
         {
@@ -204,7 +218,7 @@ class BaseModel extends BaseObject implements IBaseModel
     public toJSON():any
     {
         const clone:any = Util.clone(this);
-        return Util.deletePropertyFromObject(clone, ['sjsId']);
+        return Util.deletePropertyFromObject(clone, ['sjsId', 'sjsOptions']);
     }
 
     /**
