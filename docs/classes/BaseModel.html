@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.6</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.7</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -162,7 +162,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l17"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:17</code></a>
+            Defined in: <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l17"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:17</code></a>
         </div>
     
 
@@ -232,6 +232,12 @@ Also in the class you inherit BaseModel from you can override the update method 
             
                 <li class="index-item property public inherited">
                     <a href="#property_sjsId">sjsId</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_sjsOptions">sjsOptions</a>
 
                     
                 </li>
@@ -369,7 +375,7 @@ Also in the class you inherit BaseModel from you can override the update method 
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l227"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:227</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l241"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:241</code></a>
         
         </p>
 
@@ -418,7 +424,7 @@ Also in the class you inherit BaseModel from you can override the update method 
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_BaseObject.js.html#l24"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:24</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_BaseObject.js.html#l24"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:24</code></a>
         
         </p>
 
@@ -435,6 +441,57 @@ Also in the class you inherit BaseModel from you can override the update method 
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_sjsOptions" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>sjsOptions</code>
+    <span class="type">IBaseModelOptions</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l88"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:88</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
         
 
         
@@ -471,6 +528,12 @@ Also in the class you inherit BaseModel from you can override the update method 
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[opts]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -502,7 +565,7 @@ Also in the class you inherit BaseModel from you can override the update method 
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l17"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:17</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l17"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:17</code></a>
         
         </p>
 
@@ -534,7 +597,24 @@ Also in the class you inherit BaseModel from you can override the update method 
                         
 
                         <div class="param-description">
-                            <p>Provide a way to update the  Base Model upon initialization.</p>
+                            <p>Provide a way to update the base model upon initialization.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[opts]</code>
+                            <span class="type">expand:boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>} Options for the base model.</p>
 
                         </div>
 
@@ -582,10 +662,12 @@ class CarModel extends BaseModel {
     // If you have an array of data and want them assign to a BaseModel.
     feature = [FeatureModel];
 
-    constructor(data = {}) {
-        super();
+    constructor(data = {}, opts = {}) {
+        super(opts);
 
-        this.update(data);
+        if (data) {
+            this.update(data);
+        }
     }
 
     // @overridden BaseModel.update
@@ -665,7 +747,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l142"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:142</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l156"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:156</code></a>
         
         </p>
 
@@ -782,7 +864,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l115"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:115</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l129"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:129</code></a>
         
         </p>
 
@@ -887,7 +969,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l214"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:214</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l228"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:228</code></a>
         
         </p>
 
@@ -972,7 +1054,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_BaseObject.js.html#l52"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:52</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_BaseObject.js.html#l52"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:52</code></a>
         
         </p>
 
@@ -1078,7 +1160,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l198"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:198</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l212"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:212</code></a>
         
         </p>
 
@@ -1176,7 +1258,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_BaseObject.js.html#l37"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:37</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_BaseObject.js.html#l37"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:37</code></a>
         
         </p>
 
@@ -1269,7 +1351,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l173"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:173</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l187"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:187</code></a>
         
         </p>
 
@@ -1357,7 +1439,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l186"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:186</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l200"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:200</code></a>
         
         </p>
 
@@ -1451,7 +1533,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l85"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:85</code></a>
+        <a href="../files/_Users_robertsavian_Sites_StructureJS_js_model_BaseModel.js.html#l99"><code>&#x2F;Users&#x2F;robertsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:99</code></a>
         
         </p>
 

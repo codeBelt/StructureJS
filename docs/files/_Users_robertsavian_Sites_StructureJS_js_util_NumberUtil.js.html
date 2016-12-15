@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>/Users/robertsavian/Sites/StructureJS/js/util/NumberUtil.js - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.7</span>
+                
+                
+                    <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: /Users/robertsavian/Sites/StructureJS/js/util/NumberUtil.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+(function (factory) {
+    if (typeof module === &#x27;object&#x27; &amp;&amp; typeof module.exports === &#x27;object&#x27;) {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === &#x27;function&#x27; &amp;&amp; define.amd) {
+        define([&quot;require&quot;, &quot;exports&quot;], factory);
+    }
+})(function (require, exports) {
+    &quot;use strict&quot;;
+    /**
+     * The NumberUtil class has many helper methods to work with number data.
+     *
+     * @class NumberUtil
+     * @module StructureJS
+     * @submodule util
+     * @author Robert S. (www.codeBelt.com)
+     * @static
+     */
+    var NumberUtil = (function () {
+        function NumberUtil() {
+            throw new Error(&#x27;[NumberUtil] Do not instantiate the NumberUtil class because it is a static class.&#x27;);
+        }
+        /**
+         * Converts bytes into megabytes.
+         *
+         * @method bytesToMegabytes
+         * @param bytes {number}
+         * @returns {number}
+         * @public
+         * @static
+         * @example
+         *
+         */
+        NumberUtil.bytesToMegabytes = function (bytes) {
+            return bytes / 1048576;
+        };
+        /**
+         * Converts centimeters into inches.
+         *
+         * @method centimeterToInch
+         * @param cm {number}
+         * @public
+         * @static
+         * @returns {number}
+         * @example
+         *     NumberUtil.centimeterToInch(1);
+         *     // 0.3937
+         */
+        NumberUtil.centimeterToInch = function (cm) {
+            return cm * 0.39370;
+        };
+        /**
+         * Converts inches into centimeters.
+         *
+         * @method inchToCentimeter
+         * @param inch {number}
+         * @public
+         * @static
+         * @returns {number}
+         * @example
+         *     NumberUtil.inchToCentimeter(1);
+         *     // 2.54
+         */
+        NumberUtil.inchToCentimeter = function (inch) {
+            return inch * 2.54;
+        };
+        /**
+         * Converts feet into meters.
+         *
+         * @method feetToMeter
+         * @param feet {number}
+         * @public
+         * @static
+         * @returns {number}
+         * @example
+         *     NumberUtil.feetToMeter(1);
+         *     // 0.3048
+         *
+         */
+        NumberUtil.feetToMeter = function (feet) {
+            return feet / 3.2808;
+        };
+        /**
+         * Converts seconds into hour, minutes, seconds.
+         *
+         * @method convertToHHMMSS
+         * @param seconds {number}
+         * @param showHours [boolean=true] By default if the time does not pass one hour it will show 00:05:34. Pass false to display the time as 05:34 until it gets pass one hour and then it will show 01:00:00
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.convertToHHMMSS(33333);
+         *     // &#x27;09:15:33&#x27;
+         */
+        NumberUtil.convertToHHMMSS = function (seconds, showHours) {
+            if (showHours === void 0) { showHours = true; }
+            var sec = isNaN(seconds) ? 0 : seconds; //Changes NaN to 0
+            var s = sec % 60;
+            var m = Math.floor((sec % 3600) / 60);
+            var h = Math.floor(sec / (60 * 60));
+            var hourStr;
+            if (showHours === false) {
+                hourStr = (h == 0) ? &#x27;&#x27; : NumberUtil.doubleDigitFormat(h) + &#x27;:&#x27;;
+            }
+            else {
+                hourStr = NumberUtil.doubleDigitFormat(h) + &#x27;:&#x27;;
+            }
+            var minuteStr = NumberUtil.doubleDigitFormat(m) + &#x27;:&#x27;;
+            var secondsStr = NumberUtil.doubleDigitFormat(s);
+            return hourStr + minuteStr + secondsStr;
+        };
+        /**
+         * Formats a number from 0-9 to display with 2 digits.
+         *
+         * @method doubleDigitFormat
+         * @param num {number}
+         * @returns {string}
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.doubleDigitFormat(0);
+         *     // &#x27;00&#x27;
+         *
+         *     NumberUtil.doubleDigitFormat(5);
+         *     // &#x27;05&#x27;
+         *
+         *     NumberUtil.doubleDigitFormat(9);
+         *     // &#x27;09&#x27;
+         */
+        NumberUtil.doubleDigitFormat = function (num) {
+            if (num &lt; 10) {
+                return (&#x27;0&#x27; + num);
+            }
+            return String(num);
+        };
+        /**
+         * Formats a currency string as a number.
+         *
+         * @method unformatUnit
+         * @param value {string} The string currency that you want converted into a number.
+         * @returns {number} Returns the number value of the currency string.
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.unformatUnit(&#x27;$1,234,567.89&#x27;);
+         *     // 1234567.89
+         *
+         *     NumberUtil.unformatUnit(&#x27;1.234.567,89 €&#x27;);
+         *     // 1234567.89
+         *
+         *     NumberUtil.unformatUnit(&#x27;$-123,456,789.99&#x27;);
+         *     // -123456789.99
+         */
+        NumberUtil.unformatUnit = function (value) {
+            // Removes all characters and spaces except the period (.), comma (,) and the negative symbol (-).
+            var withoutSpecialCharacters = value.replace(/[^\d.,-]/g, &#x27;&#x27;);
+            // Gets the index where the decimal placement is located.
+            var decimalIndex = withoutSpecialCharacters.length - 3;
+            var decimalSeparator = withoutSpecialCharacters.charAt(decimalIndex);
+            if (decimalSeparator === &#x27;.&#x27;) {
+                // Removes all comma (,) characters and leaves the period (.) and the negative symbol (-).
+                withoutSpecialCharacters = value.replace(/[^\d.-]/g, &#x27;&#x27;);
+            }
+            else {
+                // Removes all period (.) characters and leaves the comma (,) and the negative symbol (-).
+                withoutSpecialCharacters = value.replace(/[^\d,-]/g, &#x27;&#x27;);
+                decimalIndex = withoutSpecialCharacters.length - 3;
+                //Replaces the comma (,) to a period (.).
+                withoutSpecialCharacters = withoutSpecialCharacters.replace(&#x27;,&#x27;, &#x27;.&#x27;);
+            }
+            return parseFloat(withoutSpecialCharacters);
+        };
+        /**
+         * Formats a number as a currency string.
+         *
+         * @method formatUnit
+         * @param value {number} The number value you want formatted.
+         * @param [decimalPlacement=2] {number} How many decimal placements you want to show.
+         * @param [decimalSeparator=&#x27;.&#x27;] {string} The character you want to use as the thousands separator.
+         * @param [thousandsSeparator=&#x27;,&#x27;] {string} The character you want to use as the thousands separator.
+         * @param [currencySymbol=&#x27;&#x27;] {string} The symbol you would like to add.
+         * @param [currencySymbolPlacement=0] {number} The placement of the symbol. Use 0 to place in front or 1 to place at the end.
+         * @returns {string} Returns the formatted currency.
+         * @public
+         * @static
+         * @example
+         *     NumberUtil.formatUnit(1234567.89, 2, &quot;.&quot;, &quot;,&quot;, &quot;$&quot;, 0);
+         *     // &#x27;$1,234,567.89&#x27;
+         *
+         *     NumberUtil.formatUnit(12341234.56, 2, &quot;*&quot;, &quot;,&quot;, &quot; €&quot;, 1);
+         *     // &#x27;12,341,234*56 €&#x27;
+         *
+         *     NumberUtil.formatUnit(-1900.24, 1);
+         *     // &#x27;-1,900.2&#x27;
+         */
+        NumberUtil.formatUnit = function (value, decimalPlacement, decimalSeparator, thousandsSeparator, currencySymbol, currencySymbolPlacement) {
+            if (decimalPlacement === void 0) { decimalPlacement = 2; }
+            if (decimalSeparator === void 0) { decimalSeparator = &#x27;.&#x27;; }
+            if (thousandsSeparator === void 0) { thousandsSeparator = &#x27;,&#x27;; }
+            if (currencySymbol === void 0) { currencySymbol = &#x27;&#x27;; }
+            if (currencySymbolPlacement === void 0) { currencySymbolPlacement = 0; }
+            var str = String(Number(value).toFixed(decimalPlacement));
+            var result = &#x27;&#x27;;
+            if (decimalPlacement != 0) {
+                result = str.slice(-1 - decimalPlacement);
+                result = result.replace(&#x27;.&#x27;, decimalSeparator);
+                str = str.slice(0, str.length - 1 - decimalPlacement);
+            }
+            while (str.length &gt; 3) {
+                result = thousandsSeparator + str.slice(-3) + result;
+                str = str.slice(0, str.length - 3);
+            }
+            if (str.length &gt; 0) {
+                if (currencySymbolPlacement === 0) {
+                    result = currencySymbol + str + result;
+                }
+                else if (currencySymbolPlacement === 1) {
+                    result = str + result + currencySymbol;
+                }
+                else {
+                    result = str + result;
+                }
+            }
+            return result;
+        };
+        /**
+         * Convert Fahrenheit to Celsius.
+         *
+         * @method fahrenheitToCelsius
+         * @param fahrenheit {number} The fahrenheit value.
+         * @param decimals {number} The number of decimals.
+         * @return {number}
+         * @example
+         *      MathUtil.fahrenheitToCelsius(32);
+         *      // 0
+         *
+         *      MathUtil.fahrenheitToCelsius(212);
+         *      // 100
+         */
+        NumberUtil.fahrenheitToCelsius = function (fahrenheit, decimals) {
+            if (decimals === void 0) { decimals = 2; }
+            var d = &#x27;&#x27;;
+            var r = (5 / 9) * (fahrenheit - 32);
+            var s = r.toString().split(&#x27;.&#x27;);
+            if (s[1] != undefined) {
+                d = s[1].substr(0, decimals);
+            }
+            else {
+                var i = decimals;
+                while (i &gt; 0) {
+                    d += &#x27;0&#x27;;
+                    i--;
+                }
+            }
+            var c = s[0] + &#x27;.&#x27; + d;
+            return Number(c);
+        };
+        /**
+         * Convert Celsius to Fahrenheit.
+         *
+         * @method celsiusToFahrenheit
+         * @param celsius {number} The celsius value.
+         * @param decimals {number} The number of decimals.
+         * @return {number}
+         * @example
+         *      MathUtil.celsiusToFahrenheit(0);
+         *      // 32
+         *
+         *      MathUtil.celsiusToFahrenheit(100);
+         *      // 212
+         */
+        NumberUtil.celsiusToFahrenheit = function (celsius, decimals) {
+            if (decimals === void 0) { decimals = 2; }
+            var d = &#x27;&#x27;;
+            var r = (celsius / (5 / 9)) + 32;
+            var s = r.toString().split(&#x27;.&#x27;);
+            if (s[1] != undefined) {
+                d = s[1].substr(0, decimals);
+            }
+            else {
+                var i = decimals;
+                while (i &gt; 0) {
+                    d += &#x27;0&#x27;;
+                    i--;
+                }
+            }
+            var f = s[0] + &#x27;.&#x27; + d;
+            return Number(f);
+        };
+        return NumberUtil;
+    }());
+    Object.defineProperty(exports, &quot;__esModule&quot;, { value: true });
+    exports.default = NumberUtil;
+});
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

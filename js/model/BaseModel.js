@@ -22,7 +22,8 @@ var __extends = (this && this.__extends) || function (d, b) {
      *
      * @class BaseModel
      * @extends BaseObject
-     * @param [data] {any} Provide a way to update the  Base Model upon initialization.
+     * @param [data] {any} Provide a way to update the base model upon initialization.
+     * @param [opts] {{ expand:boolean }} Options for the base model.
      * @module StructureJS
      * @submodule model
      * @requires Extend
@@ -61,10 +62,12 @@ var __extends = (this && this.__extends) || function (d, b) {
      *          // If you have an array of data and want them assign to a BaseModel.
      *          feature = [FeatureModel];
      *
-     *          constructor(data = {}) {
-     *              super();
+     *          constructor(data = {}, opts = {}) {
+     *              super(opts);
      *
-     *              this.update(data);
+     *              if (data) {
+     *                  this.update(data);
+     *              }
      *          }
      *
      *          // @overridden BaseModel.update
@@ -79,8 +82,19 @@ var __extends = (this && this.__extends) || function (d, b) {
      */
     var BaseModel = (function (_super) {
         __extends(BaseModel, _super);
-        function BaseModel() {
+        function BaseModel(opts) {
+            if (opts === void 0) { opts = {}; }
             _super.call(this);
+            /**
+             * @property sjsOptions
+             * @type {IBaseModelOptions}}
+             * @readonly
+             * @public
+             */
+            this.sjsOptions = {
+                expand: false,
+            };
+            this.sjsOptions.expand = opts.expand === true;
         }
         /**
          * Provide a way to update the  Base Model.
@@ -148,16 +162,16 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @protected
          */
         BaseModel.prototype._updateData = function (keyValue, newData) {
-            if (typeof newData === 'function' && newData.IS_BASE_MODEL === true) {
+            if (this.sjsOptions.expand === false && typeof newData === 'function' && newData.IS_BASE_MODEL === true) {
                 // If newData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
                 // so it cleans up the BaseModel functions on the property.
-                // Note to self if we want to create an empty model then return "new newData()".
+                // To create empty model(s) pass { expand: true } for the options.
                 return null;
             }
             if (typeof keyValue === 'function' && keyValue.IS_BASE_MODEL === true) {
                 // If the property is an instance of a BaseModel class and has not been created yet.
                 // Instantiate it and pass in the newData to the constructor.
-                keyValue = new keyValue(newData);
+                keyValue = new keyValue(newData, this.sjsOptions);
             }
             else if ((keyValue instanceof BaseModel) === true) {
                 // If property is an instance of a BaseModel class and has already been created.
@@ -181,7 +195,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          */
         BaseModel.prototype.toJSON = function () {
             var clone = Util_1.default.clone(this);
-            return Util_1.default.deletePropertyFromObject(clone, ['sjsId']);
+            return Util_1.default.deletePropertyFromObject(clone, ['sjsId', 'sjsOptions']);
         };
         /**
          * Converts a  Base Model to a JSON string,
