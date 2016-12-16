@@ -69,49 +69,30 @@ class Util
      *
      *      // { name: 'Robert' }
      */
-    public static deletePropertyFromObject(object:any, value:any):any
+    public static deletePropertyFromObject(object:any, value:string|Array<string>):any
     {
         // If properties is not an array then make it an array object.
         const list:any = (value instanceof Array) ? value : [value];
 
-        // Loop through the object properties.
-        for (let key in object)
-        {
-            // If the key is a property and not function.
-            if (object.hasOwnProperty(key))
+        Object
+            .keys(object)
+            .forEach(key =>
             {
-                let value:any = object[key];
-                // If the property is an Array.
-                if (value instanceof Array)
+                const value:any = object[key];
+
+                if (list.includes(key) === true)
                 {
-                    // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                    let array:Array<any> = value;
-                    for (let index in array)
-                    {
-                        // Recursive function call.
-                        Util.deletePropertyFromObject(array[index], list);
-                    }
+                    delete object[key];
+                }
+                else if (value instanceof Array)
+                {
+                    value.forEach(item => Util.deletePropertyFromObject(item, list));
                 }
                 else if (value instanceof Object)
                 {
                     Util.deletePropertyFromObject(value, list);
                 }
-                else
-                {
-                    // Loop through the list of property name.
-                    for (let listIndex in list)
-                    {
-                        // If the key(property name) equals the property name in the list array.
-                        if (key === list[listIndex])
-                        {
-                            // Delete the property from the object.
-                            delete object[key];
-                        }
-                    }
-
-                }
-            }
-        }
+            });
 
         return object;
     }
@@ -337,24 +318,24 @@ class Util
      * @static
      * @example
      *
-            class Flies {
+     class Flies {
                 fly() {
                     alert('Is it a bird? Is it a plane?');
                 }
             }
 
-            class Climbs {
+     class Climbs {
                 climb() {
                     alert('My spider-sense is tingling.');
                 }
             }
 
-            class HorseflyWoman implements Climbs, Flies {
+     class HorseflyWoman implements Climbs, Flies {
                 climb: () => void;
                 fly: () => void;
             }
 
-            Util.applyMixins(HorseflyWoman, [Climbs, Flies]);
+     Util.applyMixins(HorseflyWoman, [Climbs, Flies]);
      */
     public static applyMixins(derivedCtor: any, baseCtors: any[]):void
     {

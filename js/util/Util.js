@@ -64,35 +64,20 @@
         Util.deletePropertyFromObject = function (object, value) {
             // If properties is not an array then make it an array object.
             var list = (value instanceof Array) ? value : [value];
-            // Loop through the object properties.
-            for (var key in object) {
-                // If the key is a property and not function.
-                if (object.hasOwnProperty(key)) {
-                    var value_1 = object[key];
-                    // If the property is an Array.
-                    if (value_1 instanceof Array) {
-                        // Loop through the Array and call the Util.deletePropertyFromObject method on each object in the array.
-                        var array = value_1;
-                        for (var index in array) {
-                            // Recursive function call.
-                            Util.deletePropertyFromObject(array[index], list);
-                        }
-                    }
-                    else if (value_1 instanceof Object) {
-                        Util.deletePropertyFromObject(value_1, list);
-                    }
-                    else {
-                        // Loop through the list of property name.
-                        for (var listIndex in list) {
-                            // If the key(property name) equals the property name in the list array.
-                            if (key === list[listIndex]) {
-                                // Delete the property from the object.
-                                delete object[key];
-                            }
-                        }
-                    }
+            Object
+                .keys(object)
+                .forEach(function (key) {
+                var value = object[key];
+                if (list.includes(key) === true) {
+                    delete object[key];
                 }
-            }
+                else if (value instanceof Array) {
+                    value.forEach(function (item) { return Util.deletePropertyFromObject(item, list); });
+                }
+                else if (value instanceof Object) {
+                    Util.deletePropertyFromObject(value, list);
+                }
+            });
             return object;
         };
         /**
@@ -276,24 +261,24 @@
          * @static
          * @example
          *
-                class Flies {
+         class Flies {
                     fly() {
                         alert('Is it a bird? Is it a plane?');
                     }
                 }
     
-                class Climbs {
+         class Climbs {
                     climb() {
                         alert('My spider-sense is tingling.');
                     }
                 }
     
-                class HorseflyWoman implements Climbs, Flies {
+         class HorseflyWoman implements Climbs, Flies {
                     climb: () => void;
                     fly: () => void;
                 }
     
-                Util.applyMixins(HorseflyWoman, [Climbs, Flies]);
+         Util.applyMixins(HorseflyWoman, [Climbs, Flies]);
          */
         Util.applyMixins = function (derivedCtor, baseCtors) {
             baseCtors.forEach(function (baseCtor) {
