@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-13-15 v0.14.8 Util - Fix issue with deletePropertyFromObject.
+
  * 2016-12-15 v0.14.7 BaseModel - Add the ability to pass options in as a second parameter. Supports { expand: true } so nested base model class will be instantiated instead of nulled out.
  
  * 2016-11-18 v0.14.6 BaseModel - Fix issue with properties having a function as it data.
