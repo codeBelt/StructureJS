@@ -1,4 +1,3 @@
-///<reference path='_declare/jquery.eventListener.d.ts'/>
 (function (factory) {
     if (typeof module === 'object' && typeof module.exports === 'object') {
         var v = factory(require, exports); if (v !== undefined) module.exports = v;

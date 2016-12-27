@@ -461,7 +461,7 @@ class BaseEvent extends BaseObject
         {
             if (this.hasOwnProperty(key))
             {
-                clonedBaseModel[key] = this[key];
+                (<any>clonedBaseModel)[key] = this[key];
             }
         }
 

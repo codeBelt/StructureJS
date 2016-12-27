@@ -1,5 +1,3 @@
-///<reference path='_declare/jquery.eventListener.d.ts'/>
-
 import Util from './util/Util';
 
 /**
