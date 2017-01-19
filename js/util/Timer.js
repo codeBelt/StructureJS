@@ -4,16 +4,17 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/EventDispatcher', '../event/TimerEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/EventDispatcher", "../event/TimerEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('../event/EventDispatcher');
-    var TimerEvent_1 = require('../event/TimerEvent');
+    var EventDispatcher_1 = require("../event/EventDispatcher");
+    var TimerEvent_1 = require("../event/TimerEvent");
     /**
      * Constructs a new Timer object with the specified delay and repeatCount states.
      *
@@ -31,7 +32,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         __extends(Timer, _super);
         function Timer(delay, repeatCount) {
             if (repeatCount === void 0) { repeatCount = 0; }
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * A reference to the setInterval object.
              *
@@ -39,7 +40,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {Function}
              * @protected
              */
-            this._timer = null;
+            _this._timer = null;
             /**
              * The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.
              *
@@ -47,7 +48,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {int}
              * @protected
              */
-            this._currentCount = 0;
+            _this._currentCount = 0;
             /**
              * The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
              * <strong>Note:</strong> A delay lower than 20 milliseconds is not recommended.
@@ -56,7 +57,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @protected
              */
-            this._delay = null;
+            _this._delay = null;
             /**
              * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
              *
@@ -64,7 +65,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {int}
              * @protected
              */
-            this._repeatCount = 0;
+            _this._repeatCount = 0;
             /**
              * The timer's current state; true if the timer is running, otherwise false.
              *
@@ -72,10 +73,11 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {boolean}
              * @readOnly
              */
-            this.running = false;
-            this._delay = delay;
-            this._repeatCount = repeatCount;
-            this._currentCount = repeatCount;
+            _this.running = false;
+            _this._delay = delay;
+            _this._repeatCount = repeatCount;
+            _this._currentCount = repeatCount;
+            return _this;
         }
         /**
          * Returns the total number of times the timer has fired since it started at zero.

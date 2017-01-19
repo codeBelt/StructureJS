@@ -4,18 +4,19 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/EventDispatcher', '../event/LoaderEvent', '../event/BulkLoaderEvent', '../model/Collection'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/EventDispatcher", "../event/LoaderEvent", "../event/BulkLoaderEvent", "../model/Collection"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('../event/EventDispatcher');
-    var LoaderEvent_1 = require('../event/LoaderEvent');
-    var BulkLoaderEvent_1 = require('../event/BulkLoaderEvent');
-    var Collection_1 = require('../model/Collection');
+    var EventDispatcher_1 = require("../event/EventDispatcher");
+    var LoaderEvent_1 = require("../event/LoaderEvent");
+    var BulkLoaderEvent_1 = require("../event/BulkLoaderEvent");
+    var Collection_1 = require("../model/Collection");
     /**
      * A class to help with loading IDataStore's.
      *
@@ -31,7 +32,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var BulkLoader = (function (_super) {
         __extends(BulkLoader, _super);
         function BulkLoader() {
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * A collection to store all the IDataStore's.
              *
@@ -39,7 +40,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {Collection}
              * @protected
              */
-            this._dataStores = null;
+            _this._dataStores = null;
             /**
              * The total number of items that have been loaded.
              *
@@ -47,7 +48,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @protected
              */
-            this._totalComplete = 0;
+            _this._totalComplete = 0;
             /**
              * A queue of IDataStore's that need to be loaded still.
              *
@@ -55,7 +56,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {Array<{key:any, value:any}>}
              * @protected
              */
-            this._queue = [];
+            _this._queue = [];
             /**
              * Set the maximum number of simultaneous connections (default is 3).
              *
@@ -63,8 +64,9 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type [number=3]
              * @public
              */
-            this.maxConnections = 3;
-            this._dataStores = new Collection_1.default();
+            _this.maxConnections = 3;
+            _this._dataStores = new Collection_1.default();
+            return _this;
         }
         /**
          * Helper method to add IDataStore's.

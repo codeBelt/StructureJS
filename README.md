@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2016-13-15 v0.15.0 Add *.d.ts files and update TypeScript compiler version.
+ 
  * 2016-13-15 v0.14.9 Fix TypeScript file issues.
  
  * 2016-13-15 v0.14.8 Util - Fix issue with deletePropertyFromObject.

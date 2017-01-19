@@ -4,16 +4,17 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../BaseObject', '../util/Util'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../BaseObject", "../util/Util"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseObject_1 = require('../BaseObject');
-    var Util_1 = require('../util/Util');
+    var BaseObject_1 = require("../BaseObject");
+    var Util_1 = require("../util/Util");
     /**
      *  Base Model is a design pattern used to transfer data between software application subsystems.
      *
@@ -84,17 +85,18 @@ var __extends = (this && this.__extends) || function (d, b) {
         __extends(BaseModel, _super);
         function BaseModel(opts) {
             if (opts === void 0) { opts = {}; }
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * @property sjsOptions
              * @type {IBaseModelOptions}}
              * @readonly
              * @public
              */
-            this.sjsOptions = {
+            _this.sjsOptions = {
                 expand: false,
             };
-            this.sjsOptions.expand = opts.expand === true;
+            _this.sjsOptions.expand = opts.expand === true;
+            return _this;
         }
         /**
          * Provide a way to update the  Base Model.
@@ -238,18 +240,18 @@ var __extends = (this && this.__extends) || function (d, b) {
             var clonedBaseModel = new this.constructor(this);
             return clonedBaseModel;
         };
-        /**
-         * This property helps distinguish a BaseModel from other functions.
-         *
-         * @property IS_BASE_MODEL
-         * @type {boolean}
-         * @public
-         * @static
-         * @readonly
-         */
-        BaseModel.IS_BASE_MODEL = true;
         return BaseModel;
     }(BaseObject_1.default));
+    /**
+     * This property helps distinguish a BaseModel from other functions.
+     *
+     * @property IS_BASE_MODEL
+     * @type {boolean}
+     * @public
+     * @static
+     * @readonly
+     */
+    BaseModel.IS_BASE_MODEL = true;
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BaseModel;
 });

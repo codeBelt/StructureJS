@@ -1,6 +1,6 @@
 {
     "name": "structurejs",
-    "version": "0.14.9",
+    "version": "0.15.0",
     "dependencies": {
         "jquery": "*",
         "handlebars": "*"
@@ -16,6 +16,9 @@
     "license": "MIT",
     "homepage": "https://github.com/codeBelt/StructureJS",
     "ignore": [
+        ".idea",
+        "coverage",
+        "old-test",
         "node_modules",
         "index.js",
         "__tests__",

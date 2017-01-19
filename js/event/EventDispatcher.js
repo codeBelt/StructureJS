@@ -4,17 +4,18 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../ObjectManager', './BaseEvent', '../util/Util'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../ObjectManager", "./BaseEvent", "../util/Util"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var ObjectManager_1 = require('../ObjectManager');
-    var BaseEvent_1 = require('./BaseEvent');
-    var Util_1 = require('../util/Util');
+    var ObjectManager_1 = require("../ObjectManager");
+    var BaseEvent_1 = require("./BaseEvent");
+    var Util_1 = require("../util/Util");
     /**
      * EventDispatcher is the base class for all classes that dispatch events. It is the base class for the {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class.
      * EventDispatcher provides methods for managing prioritized queues of event listeners and dispatching events.
@@ -37,7 +38,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var EventDispatcher = (function (_super) {
         __extends(EventDispatcher, _super);
         function EventDispatcher() {
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * Holds a reference to added listeners.
              *
@@ -45,7 +46,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {any}
              * @protected
              */
-            this._listeners = {};
+            _this._listeners = {};
             /**
              * Indicates the object that contains a child object. Uses the parent property
              * to specify a relative path to display objects that are above the current display object in the display
@@ -55,7 +56,8 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {any}
              * @public
              */
-            this.parent = null;
+            _this.parent = null;
+            return _this;
         }
         /**
          * Registers an event listener object with an EventDispatcher object so the listener receives notification of an event.

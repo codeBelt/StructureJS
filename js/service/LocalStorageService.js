@@ -4,17 +4,18 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/LocalStorageEvent', '../event/EventDispatcher', '../model/BaseModel'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/LocalStorageEvent", "../event/EventDispatcher", "../model/BaseModel"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var LocalStorageEvent_1 = require('../event/LocalStorageEvent');
-    var EventDispatcher_1 = require('../event/EventDispatcher');
-    var BaseModel_1 = require('../model/BaseModel');
+    var LocalStorageEvent_1 = require("../event/LocalStorageEvent");
+    var EventDispatcher_1 = require("../event/EventDispatcher");
+    var BaseModel_1 = require("../model/BaseModel");
     var LocalStorageFallback = (function () {
         function LocalStorageFallback() {
             this._data = {};
@@ -65,7 +66,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         __extends(LocalStorageService, _super);
         function LocalStorageService(namespace) {
             if (namespace === void 0) { namespace = ''; }
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * Current user namespace. The namespace is optional.
              *
@@ -75,7 +76,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @optional
              * @protected
              */
-            this._namespace = '';
+            _this._namespace = '';
             /**
              * A reference to window.localStorage for faster access.
              *
@@ -83,16 +84,17 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {Storage}
              * @protected
              */
-            this._localStorage = null;
-            this._namespace = namespace;
+            _this._localStorage = null;
+            _this._namespace = namespace;
             try {
-                this._localStorage = window.localStorage;
+                _this._localStorage = window.localStorage;
             }
             catch (error) {
                 window['StructureJS_localStorageServiceFallback'] = window['StructureJS_localStorageServiceFallback'] || new LocalStorageFallback();
-                this._localStorage = window['StructureJS_localStorageServiceFallback'];
+                _this._localStorage = window['StructureJS_localStorageServiceFallback'];
             }
-            window.addEventListener('storage', this._onLocalStorageEvent.bind(this));
+            window.addEventListener('storage', _this._onLocalStorageEvent.bind(_this));
+            return _this;
         }
         /**
          * Set storage namespace

@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseEvent_1 = require('./BaseEvent');
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * The TimerEvent...
      *
@@ -37,26 +38,26 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = false; }
             if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+            return _super.call(this, type, bubbles, cancelable, data) || this;
         }
-        /**
-         * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
-         *
-         * @event TIMER
-         * @type {string}
-         * @static
-         */
-        TimerEvent.TIMER = 'TimerEvent.timer';
-        /**
-         * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
-         *
-         * @event TIMER_COMPLETE
-         * @type {string}
-         * @static
-         */
-        TimerEvent.TIMER_COMPLETE = 'TimerEvent.timerComplete';
         return TimerEvent;
     }(BaseEvent_1.default));
+    /**
+     * Dispatched whenever a Timer object reaches an interval specified according to the Timer.delay property.
+     *
+     * @event TIMER
+     * @type {string}
+     * @static
+     */
+    TimerEvent.TIMER = 'TimerEvent.timer';
+    /**
+     * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
+     *
+     * @event TIMER_COMPLETE
+     * @type {string}
+     * @static
+     */
+    TimerEvent.TIMER_COMPLETE = 'TimerEvent.timerComplete';
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = TimerEvent;
 });

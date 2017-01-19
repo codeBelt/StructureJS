@@ -4,26 +4,28 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './DisplayObjectContainer', './DOMElement', '../geom/Point'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./DisplayObjectContainer", "./DOMElement", "../geom/Point"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
-    var DOMElement_1 = require('./DOMElement');
-    var Point_1 = require('../geom/Point');
+    var DisplayObjectContainer_1 = require("./DisplayObjectContainer");
+    var DOMElement_1 = require("./DOMElement");
+    var Point_1 = require("../geom/Point");
     var CanvasElement = (function (_super) {
         __extends(CanvasElement, _super);
         // Notice the capital W and H. That sets the attributes not the styles.
         function CanvasElement(type, params) {
             if (type === void 0) { type = 'canvas'; }
             if (params === void 0) { params = { Width: 100, Height: 100 }; }
-            _super.call(this, type, params);
-            this.$canvas = null;
-            this.canvas = null;
+            var _this = _super.call(this, type, params) || this;
+            _this.$canvas = null;
+            _this.canvas = null;
+            return _this;
         }
         /**
          * @overridden CanvasElement.create

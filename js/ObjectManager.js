@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseObject'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseObject"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseObject_1 = require('./BaseObject');
+    var BaseObject_1 = require("./BaseObject");
     /**
      * The {{#crossLink "ObjectManager"}}{{/crossLink}} class is an abstract class that provides enabling and disabling functionality for most StructureJS classes.
      *
@@ -28,7 +29,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var ObjectManager = (function (_super) {
         __extends(ObjectManager, _super);
         function ObjectManager() {
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * The isEnabled property is used to keep track of the enabled state of the object.
              *
@@ -37,7 +38,8 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default false
              * @public
              */
-            this.isEnabled = false;
+            _this.isEnabled = false;
+            return _this;
         }
         /**
          * The enable method is responsible for enabling event listeners and/or children of the containing objects.

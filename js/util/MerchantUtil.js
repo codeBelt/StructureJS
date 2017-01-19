@@ -1,8 +1,9 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
+    else if (typeof define === "function" && define.amd) {
         define(["require", "exports"], factory);
     }
 })(function (require, exports) {
@@ -176,61 +177,61 @@
                 }, []);
             });
         };
-        // https://davidwalsh.name/validate-credit-cards
-        // http://www.freeformatter.com/credit-card-number-generator-validator.html
-        // http://www.validcreditcardnumber.com/
-        MerchantUtil.CARD_TYPES = [
-            {
-                name: 'American Express',
-                range: ['34', '37'],
-                validLength: [15],
-                regex: '3[47][0-9]{13}',
-            },
-            {
-                name: 'Diners Club - Carte Blanche',
-                range: ['300-305'],
-                validLength: [14],
-                regex: '3(?:0[0-5][0-9]{11}|[68][0-9]{12})',
-            },
-            {
-                name: 'Diners Club - International',
-                range: ['36'],
-                validLength: [14],
-                regex: '3(?:0[0-5][0-9]{11}|[68][0-9]{12})',
-            },
-            {
-                name: 'JCB',
-                range: ['3528-3589'],
-                validLength: [16],
-                regex: '(?:3[0-9]{15}|(2131|1800)[0-9]{11})',
-            },
-            {
-                name: 'Visa Electron',
-                range: ['4026', '417500', '4508', '4844', '4913', '4917'],
-                validLength: [16],
-                regex: '4(?:[0-9]{12}|[0-9]{15})',
-            },
-            {
-                name: 'Visa',
-                range: ['4'],
-                validLength: [13, 14, 15, 16, 17, 18, 19],
-                regex: '4(?:[0-9]{12}|[0-9]{15})',
-            },
-            {
-                name: 'MasterCard',
-                range: ['51-55', '2221-2720'],
-                validLength: [16],
-                regex: '5[1-5][0-9]{14}',
-            },
-            {
-                name: 'Discover',
-                range: ['6011', '622126-622925', '644-649', '65'],
-                validLength: [16],
-                regex: '6011[0-9]{12}',
-            },
-        ];
         return MerchantUtil;
     }());
+    // https://davidwalsh.name/validate-credit-cards
+    // http://www.freeformatter.com/credit-card-number-generator-validator.html
+    // http://www.validcreditcardnumber.com/
+    MerchantUtil.CARD_TYPES = [
+        {
+            name: 'American Express',
+            range: ['34', '37'],
+            validLength: [15],
+            regex: '3[47][0-9]{13}',
+        },
+        {
+            name: 'Diners Club - Carte Blanche',
+            range: ['300-305'],
+            validLength: [14],
+            regex: '3(?:0[0-5][0-9]{11}|[68][0-9]{12})',
+        },
+        {
+            name: 'Diners Club - International',
+            range: ['36'],
+            validLength: [14],
+            regex: '3(?:0[0-5][0-9]{11}|[68][0-9]{12})',
+        },
+        {
+            name: 'JCB',
+            range: ['3528-3589'],
+            validLength: [16],
+            regex: '(?:3[0-9]{15}|(2131|1800)[0-9]{11})',
+        },
+        {
+            name: 'Visa Electron',
+            range: ['4026', '417500', '4508', '4844', '4913', '4917'],
+            validLength: [16],
+            regex: '4(?:[0-9]{12}|[0-9]{15})',
+        },
+        {
+            name: 'Visa',
+            range: ['4'],
+            validLength: [13, 14, 15, 16, 17, 18, 19],
+            regex: '4(?:[0-9]{12}|[0-9]{15})',
+        },
+        {
+            name: 'MasterCard',
+            range: ['51-55', '2221-2720'],
+            validLength: [16],
+            regex: '5[1-5][0-9]{14}',
+        },
+        {
+            name: 'Discover',
+            range: ['6011', '622126-622925', '644-649', '65'],
+            validLength: [16],
+            regex: '6011[0-9]{12}',
+        },
+    ];
     MerchantUtil._updateRanges();
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MerchantUtil;

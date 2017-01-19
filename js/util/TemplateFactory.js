@@ -1,13 +1,14 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './StringUtil'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./StringUtil"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var StringUtil_1 = require('./StringUtil');
+    var StringUtil_1 = require("./StringUtil");
     /**
      * A helper class to provide a convenient and consistent way to render templates.
      *
@@ -76,48 +77,48 @@
             }
             return template;
         };
-        /**
-         * A constant value for using Underscore or Lodash templates.
-         *
-         * @property UNDERSCORE
-         * @type {string}
-         * @public
-         * @final
-         * @static
-         */
-        TemplateFactory.UNDERSCORE = 'underscore';
-        /**
-         * A constant value for using Handlebars templates. This is the default template engine.
-         *
-         * @property HANDLEBARS
-         * @type {string}
-         * @public
-         * @final
-         * @static
-         */
-        TemplateFactory.HANDLEBARS = 'handlebars';
-        /**
-         * Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS
-         *
-         * @property templateEngine
-         * @type {string}
-         * @default TemplateFactory.HANDLEBARS
-         * @public
-         * @static
-         */
-        TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
-        /**
-         * The global namespace for pre-compiled templates.
-         *
-         * @property templateNamespace
-         * @type {string}
-         * @default 'JST'
-         * @public
-         * @static
-         */
-        TemplateFactory.templateNamespace = 'JST';
         return TemplateFactory;
     }());
+    /**
+     * A constant value for using Underscore or Lodash templates.
+     *
+     * @property UNDERSCORE
+     * @type {string}
+     * @public
+     * @final
+     * @static
+     */
+    TemplateFactory.UNDERSCORE = 'underscore';
+    /**
+     * A constant value for using Handlebars templates. This is the default template engine.
+     *
+     * @property HANDLEBARS
+     * @type {string}
+     * @public
+     * @final
+     * @static
+     */
+    TemplateFactory.HANDLEBARS = 'handlebars';
+    /**
+     * Sets the template engine type for this TemplateFactory class. The default is TemplateFactory.HANDLEBARS
+     *
+     * @property templateEngine
+     * @type {string}
+     * @default TemplateFactory.HANDLEBARS
+     * @public
+     * @static
+     */
+    TemplateFactory.templateEngine = TemplateFactory.HANDLEBARS;
+    /**
+     * The global namespace for pre-compiled templates.
+     *
+     * @property templateNamespace
+     * @type {string}
+     * @default 'JST'
+     * @public
+     * @static
+     */
+    TemplateFactory.templateNamespace = 'JST';
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = TemplateFactory;
 });

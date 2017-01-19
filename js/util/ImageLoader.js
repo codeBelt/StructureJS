@@ -4,16 +4,17 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/EventDispatcher', '../event/LoaderEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/EventDispatcher", "../event/LoaderEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('../event/EventDispatcher');
-    var LoaderEvent_1 = require('../event/LoaderEvent');
+    var EventDispatcher_1 = require("../event/EventDispatcher");
+    var LoaderEvent_1 = require("../event/LoaderEvent");
     /**
      * The ImageLoader...
      *
@@ -27,10 +28,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     var ImageLoader = (function (_super) {
         __extends(ImageLoader, _super);
         function ImageLoader(path) {
-            _super.call(this);
-            this.complete = false;
-            this.src = path;
-            this._init();
+            var _this = _super.call(this) || this;
+            _this.complete = false;
+            _this.src = path;
+            _this._init();
+            return _this;
         }
         ImageLoader.prototype._init = function () {
             var _this = this;

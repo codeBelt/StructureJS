@@ -1,15 +1,16 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/EventDispatcher", "../event/BaseEvent", "../util/Util"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('../event/EventDispatcher');
-    var BaseEvent_1 = require('../event/BaseEvent');
-    var Util_1 = require('../util/Util');
+    var EventDispatcher_1 = require("../event/EventDispatcher");
+    var BaseEvent_1 = require("../event/BaseEvent");
+    var Util_1 = require("../util/Util");
     /**
      * A helper class to detect OS and browsers.
      *
@@ -327,64 +328,64 @@
         BrowserUtil._onBreakpointChange = function (event) {
             BrowserUtil.dispatchEvent(new BaseEvent_1.default(BaseEvent_1.default.RESIZE, true, false, BrowserUtil.getBreakpoint()));
         };
-        /**
-         * A reference to the EventDispatcher object.
-         *
-         * @property _eventDispatcher
-         * @type {EventDispatcher}
-         * @private
-         * @static
-         */
-        BrowserUtil._eventDispatcher = new EventDispatcher_1.default();
-        /**
-         * A reference to the browser window object.
-         *
-         * @property _window
-         * @type {Window}
-         * @private
-         * @static
-         */
-        BrowserUtil._window = window;
-        /**
-         * A reference to the getComputedStyle method.
-         *
-         * @property _styleDeclaration
-         * @type {any}
-         * @private
-         * @static
-         */
-        BrowserUtil._styleDeclaration = window.getComputedStyle(document.querySelector('body'), ':after');
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @property _onBreakpointChangeHandler
-         * @type {any}
-         * @private
-         * @static
-         */
-        BrowserUtil._onBreakpointChangeHandler = null;
-        /**
-         * The delay in milliseconds for the Util.{{#crossLink "Util/debounce:method"}}{{/crossLink}} method that dispatches
-         * the BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink "BrowserUtil/getBreakpoint:method"}}{{/crossLink}}.
-         *
-         * @property debounceDelay
-         * @type {number}
-         * @default 250
-         * @public
-         * @static
-         */
-        BrowserUtil.debounceDelay = 250;
-        /**
-         * The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.
-         *
-         * @property isEnabled
-         * @type {boolean}
-         * @public
-         * @static
-         */
-        BrowserUtil.isEnabled = false;
         return BrowserUtil;
     }());
+    /**
+     * A reference to the EventDispatcher object.
+     *
+     * @property _eventDispatcher
+     * @type {EventDispatcher}
+     * @private
+     * @static
+     */
+    BrowserUtil._eventDispatcher = new EventDispatcher_1.default();
+    /**
+     * A reference to the browser window object.
+     *
+     * @property _window
+     * @type {Window}
+     * @private
+     * @static
+     */
+    BrowserUtil._window = window;
+    /**
+     * A reference to the getComputedStyle method.
+     *
+     * @property _styleDeclaration
+     * @type {any}
+     * @private
+     * @static
+     */
+    BrowserUtil._styleDeclaration = window.getComputedStyle(document.querySelector('body'), ':after');
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _onBreakpointChangeHandler
+     * @type {any}
+     * @private
+     * @static
+     */
+    BrowserUtil._onBreakpointChangeHandler = null;
+    /**
+     * The delay in milliseconds for the Util.{{#crossLink "Util/debounce:method"}}{{/crossLink}} method that dispatches
+     * the BaseEvent.RESIZE event to get the your browser breakpoints. See {{#crossLink "BrowserUtil/getBreakpoint:method"}}{{/crossLink}}.
+     *
+     * @property debounceDelay
+     * @type {number}
+     * @default 250
+     * @public
+     * @static
+     */
+    BrowserUtil.debounceDelay = 250;
+    /**
+     * The isEnabled property is used to keep track of the enabled state of listening for Breakpoint changes.
+     *
+     * @property isEnabled
+     * @type {boolean}
+     * @public
+     * @static
+     */
+    BrowserUtil.isEnabled = false;
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BrowserUtil;
 });

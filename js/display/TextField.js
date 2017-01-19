@@ -4,25 +4,27 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './DisplayObject'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./DisplayObject"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var DisplayObject_1 = require('./DisplayObject');
+    var DisplayObject_1 = require("./DisplayObject");
     var TextField = (function (_super) {
         __extends(TextField, _super);
         function TextField() {
-            _super.call(this);
-            this.text = '';
-            this.style = 'normal';
-            this.font = 'Verdana';
-            this.size = '14px';
-            this.color = '#000000';
-            this.lineHeight = 14;
+            var _this = _super.call(this) || this;
+            _this.text = '';
+            _this.style = 'normal';
+            _this.font = 'Verdana';
+            _this.size = '14px';
+            _this.color = '#000000';
+            _this.lineHeight = 14;
+            return _this;
         }
         TextField.prototype.create = function () {
             _super.prototype.create.call(this);

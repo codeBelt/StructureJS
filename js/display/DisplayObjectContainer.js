@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './DisplayObject'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./DisplayObject"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var DisplayObject_1 = require('./DisplayObject');
+    var DisplayObject_1 = require("./DisplayObject");
     /**
      * The {{#crossLink "DisplayObjectContainer"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -28,7 +29,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var DisplayObjectContainer = (function (_super) {
         __extends(DisplayObjectContainer, _super);
         function DisplayObjectContainer() {
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * Returns the number of children of this object.
              *
@@ -38,7 +39,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @readOnly
              * @public
              */
-            this.numChildren = 0;
+            _this.numChildren = 0;
             /**
              * A reference to the child DisplayObject instances to this parent object instance.
              *
@@ -47,7 +48,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @readOnly
              * @public
              */
-            this.children = [];
+            _this.children = [];
             /**
              * Determines whether or not the children of the object are mouse enabled.
              *
@@ -55,7 +56,8 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {boolean}
              * @public
              */
-            this.mouseChildren = false;
+            _this.mouseChildren = false;
+            return _this;
         }
         /**
          * Adds a child DisplayObject instance to this parent object instance. The child is added to the front (top) of all other

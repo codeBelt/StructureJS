@@ -1,15 +1,16 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/EventDispatcher', '../event/NetworkMonitorEvent', '../event/native/NavigatorEvents'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/EventDispatcher", "../event/NetworkMonitorEvent", "../event/native/NavigatorEvents"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('../event/EventDispatcher');
-    var NetworkMonitorEvent_1 = require('../event/NetworkMonitorEvent');
-    var NavigatorEvents_1 = require('../event/native/NavigatorEvents');
+    var EventDispatcher_1 = require("../event/EventDispatcher");
+    var NetworkMonitorEvent_1 = require("../event/NetworkMonitorEvent");
+    var NavigatorEvents_1 = require("../event/native/NavigatorEvents");
     /**
      * A helper class to detect network changes.
      *
@@ -130,25 +131,25 @@
         NetworkMonitor._dispatchEvent = function (event) {
             NetworkMonitor._eventDispatcher.dispatchEvent(event);
         };
-        /**
-         * A reference to the EventDispatcher object.
-         *
-         * @property _eventDispatcher
-         * @type {EventDispatcher}
-         * @private
-         * @static
-         */
-        NetworkMonitor._eventDispatcher = new EventDispatcher_1.default();
-        /**
-         * A flag to determine if this class has already been initialized.
-         *
-         * @property _initialized
-         * @type {boolean}
-         * @private
-         */
-        NetworkMonitor._initialized = false;
         return NetworkMonitor;
     }());
+    /**
+     * A reference to the EventDispatcher object.
+     *
+     * @property _eventDispatcher
+     * @type {EventDispatcher}
+     * @private
+     * @static
+     */
+    NetworkMonitor._eventDispatcher = new EventDispatcher_1.default();
+    /**
+     * A flag to determine if this class has already been initialized.
+     *
+     * @property _initialized
+     * @type {boolean}
+     * @private
+     */
+    NetworkMonitor._initialized = false;
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = NetworkMonitor;
 });

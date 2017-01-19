@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseEvent_1 = require('./BaseEvent');
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * The BulkLoaderEvent...
      *
@@ -37,7 +38,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = false; }
             if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+            var _this = _super.call(this, type, bubbles, cancelable, data) || this;
             /**
              * TODO: YUIDoc_comment
              *
@@ -45,7 +46,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.total = 0;
+            _this.total = 0;
             /**
              * TODO: YUIDoc_comment
              *
@@ -53,7 +54,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.totalComplete = 0;
+            _this.totalComplete = 0;
             /**
              * TODO: YUIDoc_comment
              *
@@ -61,34 +62,35 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.percentComplete = 0;
+            _this.percentComplete = 0;
+            return _this;
         }
-        /**
-         * The BulkLoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        BulkLoaderEvent.COMPLETE = 'BulkLoaderEvent.complete';
-        /**
-         * The BulkLoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event LOAD_COMPLETE
-         * @type {string}
-         * @static
-         */
-        BulkLoaderEvent.LOAD_COMPLETE = 'BulkLoaderEvent.loadComplete';
-        /**
-         * The BulkLoaderEvent.ERROR constant defines the value of the type property of an loader event object.
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        BulkLoaderEvent.ERROR = 'BulkLoaderEvent.error';
         return BulkLoaderEvent;
     }(BaseEvent_1.default));
+    /**
+     * The BulkLoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    BulkLoaderEvent.COMPLETE = 'BulkLoaderEvent.complete';
+    /**
+     * The BulkLoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event LOAD_COMPLETE
+     * @type {string}
+     * @static
+     */
+    BulkLoaderEvent.LOAD_COMPLETE = 'BulkLoaderEvent.loadComplete';
+    /**
+     * The BulkLoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    BulkLoaderEvent.ERROR = 'BulkLoaderEvent.error';
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BulkLoaderEvent;
 });

@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './DOMElement'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./DOMElement"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var DOMElement_1 = require('./DOMElement');
+    var DOMElement_1 = require("./DOMElement");
     /**
      * <b>DEPRECATED</b>: This {{#crossLink "Stage"}}{{/crossLink}} class has be deprecated. The <b>appendTo</b> method has been moved to
      * the {{#crossLink "DOMElement"}}{{/crossLink}} class.
@@ -83,7 +84,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var Stage = (function (_super) {
         __extends(Stage, _super);
         function Stage() {
-            _super.call(this);
+            return _super.call(this) || this;
         }
         /**
          * <b>DEPRECATED</b>: This <b>appendTo</b> method has been deprecated and moved to DOMElement.{{#crossLink "DOMElement/appendTo:method"}}{{/crossLink}}.

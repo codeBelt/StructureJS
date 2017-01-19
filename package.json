@@ -1,6 +1,6 @@
 {
   "name": "structure-js",
-  "version": "0.14.9",
+  "version": "0.15.0",
   "description": "A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.",
   "url": "https://github.com/codeBelt/StructureJS",
   "repository": "https://github.com/codeBelt/StructureJS",
@@ -26,11 +26,11 @@
     "grunt-ts": "^5.5.1",
     "gulp": "3.9.1",
     "gulp-jest": "0.5.2",
-    "gulp-typescript": "^2.13.6",
+    "gulp-typescript": "^3.1.4",
     "gulp-yuidoc": "0.1.2",
     "jest-cli": "15.1.1",
     "jquery": "^2.1.4",
     "matchdep": "^1.0.0",
-    "typescript": "^2.0.6"
+    "typescript": "^2.1.5"
   }
 }

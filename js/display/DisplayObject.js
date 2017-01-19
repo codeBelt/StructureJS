@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/EventDispatcher'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/EventDispatcher"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('../event/EventDispatcher');
+    var EventDispatcher_1 = require("../event/EventDispatcher");
     /**
      * The {{#crossLink "DisplayObject"}}{{/crossLink}} class is the base class for all objects that can be placed on the display list.
      *
@@ -28,7 +29,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var DisplayObject = (function (_super) {
         __extends(DisplayObject, _super);
         function DisplayObject() {
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * The Stage of the display object.
              *
@@ -36,7 +37,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {any}
              * @public
              */
-            this.stage = null;
+            _this.stage = null;
             /**
              * The CanvasRenderingContext2D interface provides the 2D rendering context for the drawing surface of a canvas element.
              * This property is only used with the canvas specific display objects.
@@ -45,7 +46,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {CanvasRenderingContext2D}
              * @public
              */
-            this.ctx = null;
+            _this.ctx = null;
             /**
              * A property providing access to the x position.
              *
@@ -54,7 +55,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default 0
              * @public
              */
-            this.x = 0;
+            _this.x = 0;
             /**
              * A property providing access to the y position.
              *
@@ -63,7 +64,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default 0
              * @public
              */
-            this.y = 0;
+            _this.y = 0;
             /**
              * Indicates the width of the display object, in pixels.
              *
@@ -72,7 +73,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default 0
              * @public
              */
-            this.width = 0;
+            _this.width = 0;
             /**
              * Indicates the height of the display object, in pixels.
              *
@@ -81,7 +82,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default 0
              * @public
              */
-            this.height = 0;
+            _this.height = 0;
             /**
              * A property providing access to the unscaledWidth.
              *
@@ -90,7 +91,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default 100
              * @public
              */
-            this.unscaledWidth = 100;
+            _this.unscaledWidth = 100;
             /**
              * A property providing access to the unscaledHeight.
              *
@@ -99,7 +100,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default 100
              * @public
              */
-            this.unscaledHeight = 100;
+            _this.unscaledHeight = 100;
             /**
              * Indicates the horizontal scale (percentage) of the object as applied from the registration point.
              *
@@ -107,7 +108,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.scaleX = 1;
+            _this.scaleX = 1;
             /**
              * Indicates the vertical scale (percentage) of an object as applied from the registration point of the object.
              *
@@ -115,7 +116,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.scaleY = 1;
+            _this.scaleY = 1;
             /**
              * Indicates the rotation of the DisplayObject instance, in degrees, from its original orientation.
              *
@@ -123,7 +124,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.rotation = 0;
+            _this.rotation = 0;
             /**
              * Indicates the alpha transparency value of the object specified.
              *
@@ -131,7 +132,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.alpha = 1;
+            _this.alpha = 1;
             /**
              * Whether or not the display object is visible.
              *
@@ -139,7 +140,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {boolean}
              * @public
              */
-            this.visible = true;
+            _this.visible = true;
             /**
              * Specifies whether this object receives mouse
              *
@@ -147,7 +148,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {boolean}
              * @public
              */
-            this.mouseEnabled = false;
+            _this.mouseEnabled = false;
             /**
              * A Boolean value that indicates whether the pointing hand (hand cursor) appears when the pointer rolls over a display object.
              *
@@ -155,7 +156,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {boolean}
              * @public
              */
-            this.useHandCursor = false;
+            _this.useHandCursor = false;
             /**
              * The isCreated property is used to keep track if it is the first time this DisplayObject is created.
              *
@@ -164,7 +165,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default false
              * @public
              */
-            this.isCreated = false;
+            _this.isCreated = false;
             /**
              * Indicates the instance name of the DisplayObject.
              *
@@ -172,7 +173,8 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {string}
              * @public
              */
-            this.name = null;
+            _this.name = null;
+            return _this;
         }
         /**
          * The create function is intended to provide a consistent place for the creation or initializing the view.
@@ -200,7 +202,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         DisplayObject.prototype.layout = function () {
             var rest = [];
             for (var _i = 0; _i < arguments.length; _i++) {
-                rest[_i - 0] = arguments[_i];
+                rest[_i] = arguments[_i];
             }
             return this;
         };

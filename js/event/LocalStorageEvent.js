@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseEvent_1 = require('./BaseEvent');
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * The LocalStorageEvent ....
      * Note: the event only dispatches in other browser windows and does not show up in the window where you made a change to the local storage.
@@ -35,7 +36,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     var LocalStorageEvent = (function (_super) {
         __extends(LocalStorageEvent, _super);
         function LocalStorageEvent(type, bubbles, cancelable, nativeEvent) {
-            _super.call(this, type, bubbles, cancelable, nativeEvent);
+            var _this = _super.call(this, type, bubbles, cancelable, nativeEvent) || this;
             /**
              * TODO: YUIDoc_comment
              *
@@ -43,25 +44,26 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {any}
              * @public
              */
-            this.originalEvent = null;
+            _this.originalEvent = null;
             if (nativeEvent) {
-                this.key = nativeEvent.key;
-                this.oldValue = nativeEvent.oldValue;
-                this.newValue = nativeEvent.newValue;
-                this.url = nativeEvent.url;
+                _this.key = nativeEvent.key;
+                _this.oldValue = nativeEvent.oldValue;
+                _this.newValue = nativeEvent.newValue;
+                _this.url = nativeEvent.url;
             }
-            this.originalEvent = nativeEvent;
+            _this.originalEvent = nativeEvent;
+            return _this;
         }
-        /**
-         * The storage event is fired on a Document's Window object when a storage area changes.
-         *
-         * @event STORAGE
-         * @type {string}
-         * @static
-         */
-        LocalStorageEvent.STORAGE = 'storage';
         return LocalStorageEvent;
     }(BaseEvent_1.default));
+    /**
+     * The storage event is fired on a Document's Window object when a storage area changes.
+     *
+     * @event STORAGE
+     * @type {string}
+     * @static
+     */
+    LocalStorageEvent.STORAGE = 'storage';
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = LocalStorageEvent;
 });

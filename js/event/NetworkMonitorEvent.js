@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseEvent_1 = require('./BaseEvent');
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * The NetworkMonitorEvent...
      *
@@ -39,7 +40,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (status === void 0) { status = null; }
             if (connected === void 0) { connected = null; }
             if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+            var _this = _super.call(this, type, bubbles, cancelable, data) || this;
             /**
              * TODO: YUIDoc_comment
              *
@@ -47,7 +48,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {string}
              * @public
              */
-            this.status = null;
+            _this.status = null;
             /**
              * TODO: YUIDoc_comment
              *
@@ -55,36 +56,37 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {boolean}
              * @public
              */
-            this.connected = false;
-            this.status = status;
-            this.connected = connected;
+            _this.connected = false;
+            _this.status = status;
+            _this.connected = connected;
+            return _this;
         }
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event STATUS
-         * @type {string}
-         * @static
-         */
-        NetworkMonitorEvent.STATUS = "NetworkMonitorEvent.status";
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event ONLINE
-         * @type {string}
-         * @static
-         */
-        NetworkMonitorEvent.ONLINE = "NetworkMonitorEvent.online";
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @event OFFLINE
-         * @type {string}
-         * @static
-         */
-        NetworkMonitorEvent.OFFLINE = "NetworkMonitorEvent.offline";
         return NetworkMonitorEvent;
     }(BaseEvent_1.default));
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event STATUS
+     * @type {string}
+     * @static
+     */
+    NetworkMonitorEvent.STATUS = "NetworkMonitorEvent.status";
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event ONLINE
+     * @type {string}
+     * @static
+     */
+    NetworkMonitorEvent.ONLINE = "NetworkMonitorEvent.online";
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @event OFFLINE
+     * @type {string}
+     * @static
+     */
+    NetworkMonitorEvent.OFFLINE = "NetworkMonitorEvent.offline";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = NetworkMonitorEvent;
 });

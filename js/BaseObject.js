@@ -1,13 +1,14 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './util/Util'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./util/Util"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var Util_1 = require('./util/Util');
+    var Util_1 = require("./util/Util");
     /**
      * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
      *

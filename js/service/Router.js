@@ -1,15 +1,16 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../util/StringUtil', '../event/RouterEvent', '../model/Route'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../util/StringUtil", "../event/RouterEvent", "../model/Route"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var StringUtil_1 = require('../util/StringUtil');
-    var RouterEvent_1 = require('../event/RouterEvent');
-    var Route_1 = require('../model/Route');
+    var StringUtil_1 = require("../util/StringUtil");
+    var RouterEvent_1 = require("../event/RouterEvent");
+    var Route_1 = require("../model/Route");
     /**
      * The **Router** class is a static class allows you to add different route patterns that can be matched to help control your application. Look at the Router.{{#crossLink "Router/add:method"}}{{/crossLink}} method for more details and examples.
      *
@@ -362,7 +363,7 @@
         Router.buildRoute = function () {
             var rest = [];
             for (var _i = 0; _i < arguments.length; _i++) {
-                rest[_i - 0] = arguments[_i];
+                rest[_i] = arguments[_i];
             }
             var clone = rest.slice(0);
             clone.forEach(function (value, index) {
@@ -575,171 +576,171 @@
             }
             return Router._validatorFunc == null;
         };
-        /**
-         * A reference to the browser Window Object.
-         *
-         * @property _window
-         * @type {Window}
-         * @private
-         * @static
-         */
-        Router._window = window;
-        /**
-         * A list of the added Route objects.
-         *
-         * @property _routes
-         * @type {Array<Route>}
-         * @private
-         * @static
-         */
-        Router._routes = [];
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @property _validators
-         * @type {Array<Function>}
-         * @private
-         * @static
-         */
-        Router._validators = [];
-        /**
-         * TODO: YUIDoc_comment
-         *
-         * @property _validatorFunc
-         * @type {Function}
-         * @private
-         * @static
-         */
-        Router._validatorFunc = null;
-        /**
-         * A reference to default route object.
-         *
-         * @property _defaultRoute
-         * @type {Route}
-         * @private
-         * @static
-         */
-        Router._defaultRoute = null;
-        /**
-         * A reference to the hash change event that was sent from the Window Object.
-         *
-         * @property _hashChangeEvent
-         * @type {any}
-         * @private
-         * @static
-         */
-        Router._hashChangeEvent = null;
-        /**
-         * A reference to the current {{#crossLink "RouterEvent"}}{{/crossLink}} that was triggered.
-         *
-         * @property _currentRoute
-         * @type {RouterEvent}
-         * @private
-         * @static
-         */
-        Router._currentRoute = null;
-        /**
-         * A reference to the last state object this {{#crossLink "Router"}}{{/crossLink}} creates when this
-         * using the HTML5 History API.
-         *
-         * @property _lastHistoryState
-         * @type {RouterEvent}
-         * @private
-         * @static
-         */
-        Router._lastHistoryState = null;
-        /**
-         * Determines if the {{#crossLink "Router"}}{{/crossLink}} should use hash or history routing.
-         *
-         * @property forceHashRouting
-         * @type {boolean}
-         * @default false
-         * @public
-         * @static
-         * @example
-         *     Router.forceHashRouting = true;
-         */
-        Router.forceHashRouting = false;
-        /**
-         * Determines if the Router class is enabled or disabled.
-         *
-         * @property isEnabled
-         * @type {boolean}
-         * @readOnly
-         * @public
-         * @static
-         * @example
-         *     // Read only.
-         *     console.log(Router.isEnabled);
-         */
-        Router.isEnabled = false;
-        /**
-         * The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.
-         * By **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**
-         * method the hash url will not change. This can be useful if you are making an application or game and you don't want the user
-         * to know how to jump to other sections directly. See the **Router.{{#crossLink "Router/allowManualDeepLinking:property"}}{{/crossLink}}** to fully change the Router class
-         * from relying on the hash url to an internal state service.
-         *
-         * @property useDeepLinking
-         * @type {boolean}
-         * @default true
-         * @public
-         * @static
-         * @example
-         *     Router.useDeepLinking = true;
-         */
-        Router.useDeepLinking = true;
-        /**
-         * The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the
-         * hash url changes in the browser. This property only works if the **Router. {{#crossLink "Router/useDeepLinking:property"}}{{/crossLink}}** is set to **false**.
-         * This is useful if want to use your added routes but don't want any external forces trigger your routes.
-         *
-         * Typically what I do for games is during development/testing I allow the hash url to change the states so testers can jump
-         * to sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump
-         * around if they figure out the url schema.
-         *
-         * @property allowManualDeepLinking
-         * @type {boolean}
-         * @default true
-         * @public
-         * @static
-         * @example
-         *     Router.useDeepLinking = false;
-         *     Router.allowManualDeepLinking = false;
-         */
-        Router.allowManualDeepLinking = true;
-        /**
-         * The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink "Router/navigateTo:method"}}{{/crossLink}}** method is called to
-         * make sure the hash url has a forward slash after the **#** character like this **#/**.
-         *
-         * @property forceSlash
-         * @type {boolean}
-         * @default false
-         * @public
-         * @static
-         * @example
-         *     // To turn on forcing the forward slash
-         *     Router.forceSlash = true;
-         *
-         *     // If forceSlash is set to true it will change the url from #contact/bob/ to #/contact/bob/
-         *     // when using the navigateTo method.
-         */
-        Router.forceSlash = false;
-        /**
-         * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
-         *
-         * @property allowMultipleMatches
-         * @type {boolean}
-         * @default true
-         * @public
-         * @static
-         * @example
-         *     // Only allow the first route matched to be triggered.
-         *     Router.allowMultipleMatches = false;
-         */
-        Router.allowMultipleMatches = true;
         return Router;
     }());
+    /**
+     * A reference to the browser Window Object.
+     *
+     * @property _window
+     * @type {Window}
+     * @private
+     * @static
+     */
+    Router._window = window;
+    /**
+     * A list of the added Route objects.
+     *
+     * @property _routes
+     * @type {Array<Route>}
+     * @private
+     * @static
+     */
+    Router._routes = [];
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _validators
+     * @type {Array<Function>}
+     * @private
+     * @static
+     */
+    Router._validators = [];
+    /**
+     * TODO: YUIDoc_comment
+     *
+     * @property _validatorFunc
+     * @type {Function}
+     * @private
+     * @static
+     */
+    Router._validatorFunc = null;
+    /**
+     * A reference to default route object.
+     *
+     * @property _defaultRoute
+     * @type {Route}
+     * @private
+     * @static
+     */
+    Router._defaultRoute = null;
+    /**
+     * A reference to the hash change event that was sent from the Window Object.
+     *
+     * @property _hashChangeEvent
+     * @type {any}
+     * @private
+     * @static
+     */
+    Router._hashChangeEvent = null;
+    /**
+     * A reference to the current {{#crossLink "RouterEvent"}}{{/crossLink}} that was triggered.
+     *
+     * @property _currentRoute
+     * @type {RouterEvent}
+     * @private
+     * @static
+     */
+    Router._currentRoute = null;
+    /**
+     * A reference to the last state object this {{#crossLink "Router"}}{{/crossLink}} creates when this
+     * using the HTML5 History API.
+     *
+     * @property _lastHistoryState
+     * @type {RouterEvent}
+     * @private
+     * @static
+     */
+    Router._lastHistoryState = null;
+    /**
+     * Determines if the {{#crossLink "Router"}}{{/crossLink}} should use hash or history routing.
+     *
+     * @property forceHashRouting
+     * @type {boolean}
+     * @default false
+     * @public
+     * @static
+     * @example
+     *     Router.forceHashRouting = true;
+     */
+    Router.forceHashRouting = false;
+    /**
+     * Determines if the Router class is enabled or disabled.
+     *
+     * @property isEnabled
+     * @type {boolean}
+     * @readOnly
+     * @public
+     * @static
+     * @example
+     *     // Read only.
+     *     console.log(Router.isEnabled);
+     */
+    Router.isEnabled = false;
+    /**
+     * The **Router.useDeepLinking** property tells the Router class weather it should change the hash url or not.
+     * By **default** this property is set to **true**. If you set the property to **false** and using the **Router.navigateTo**
+     * method the hash url will not change. This can be useful if you are making an application or game and you don't want the user
+     * to know how to jump to other sections directly. See the **Router.{{#crossLink "Router/allowManualDeepLinking:property"}}{{/crossLink}}** to fully change the Router class
+     * from relying on the hash url to an internal state service.
+     *
+     * @property useDeepLinking
+     * @type {boolean}
+     * @default true
+     * @public
+     * @static
+     * @example
+     *     Router.useDeepLinking = true;
+     */
+    Router.useDeepLinking = true;
+    /**
+     * The **Router.allowManualDeepLinking** property tells the Router class weather it should check for route matches if the
+     * hash url changes in the browser. This property only works if the **Router. {{#crossLink "Router/useDeepLinking:property"}}{{/crossLink}}** is set to **false**.
+     * This is useful if want to use your added routes but don't want any external forces trigger your routes.
+     *
+     * Typically what I do for games is during development/testing I allow the hash url to change the states so testers can jump
+     * to sections or levels easily but then when it is ready for production I set the property to **false** so users cannot jump
+     * around if they figure out the url schema.
+     *
+     * @property allowManualDeepLinking
+     * @type {boolean}
+     * @default true
+     * @public
+     * @static
+     * @example
+     *     Router.useDeepLinking = false;
+     *     Router.allowManualDeepLinking = false;
+     */
+    Router.allowManualDeepLinking = true;
+    /**
+     * The **Router.forceSlash** property tells the Router class if the **Router.{{#crossLink "Router/navigateTo:method"}}{{/crossLink}}** method is called to
+     * make sure the hash url has a forward slash after the **#** character like this **#/**.
+     *
+     * @property forceSlash
+     * @type {boolean}
+     * @default false
+     * @public
+     * @static
+     * @example
+     *     // To turn on forcing the forward slash
+     *     Router.forceSlash = true;
+     *
+     *     // If forceSlash is set to true it will change the url from #contact/bob/ to #/contact/bob/
+     *     // when using the navigateTo method.
+     */
+    Router.forceSlash = false;
+    /**
+     * The **Router.allowMultipleMatches** property tells the Router class if it should trigger one or all routes that match a route pattern.
+     *
+     * @property allowMultipleMatches
+     * @type {boolean}
+     * @default true
+     * @public
+     * @static
+     * @example
+     *     // Only allow the first route matched to be triggered.
+     *     Router.allowMultipleMatches = false;
+     */
+    Router.allowMultipleMatches = true;
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Router;
 });

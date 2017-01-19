@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseEvent_1 = require('./BaseEvent');
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * The ApplicationCacheEvent ....
      *
@@ -37,82 +38,82 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = false; }
             if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+            return _super.call(this, type, bubbles, cancelable, data) || this;
         }
-        /**
-         * The browser is checking for an update, or is attempting to download
-         * the cache manifest for the first time. This is always the first event
-         * in the sequence.
-         *
-         * @event CHECKING
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.CHECKING = 'checking';
-        /**
-         * The cache manifest hadn't changed.
-         *
-         * @event NO_UPDATE
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.NO_UPDATE = 'noupdate';
-        /**
-         * The browser has started to download the cache manifest, either for the
-         * first time or because changes have been detected.
-         *
-         * @event DOWNLOADING
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.DOWNLOADING = 'downloading';
-        /**
-         * The browser had downloaded and cached an asset. This is fired once for
-         * every file that is downloaded (including the current page which is cached implicitly).
-         *
-         * @event PROGRESS
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.PROGRESS = 'progress';
-        /**
-         * The resources listed in the manifest have been fully downloaded, and the application is
-         * now cached locally.
-         *
-         * @event CACHED
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.CACHED = 'cached';
-        /**
-         * The resources listed in the manifest have been newly re-downloaded, and the script can
-         * use swapCache() to switch to the new cache.
-         *
-         * @event UPDATE_READY
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.UPDATE_READY = 'updateready';
-        /**
-         * The cache manifest file could not be found, indicating that the cache is no longer needed.
-         * The application cache is being deleted.
-         *
-         * @event OBSOLETE
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.OBSOLETE = 'obsolete';
-        /**
-         * An error occurred at some point - this could be caused by a number of things. This will
-         * always be the last event in the sequence.
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        ApplicationCacheEvent.ERROR = 'error';
         return ApplicationCacheEvent;
     }(BaseEvent_1.default));
+    /**
+     * The browser is checking for an update, or is attempting to download
+     * the cache manifest for the first time. This is always the first event
+     * in the sequence.
+     *
+     * @event CHECKING
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.CHECKING = 'checking';
+    /**
+     * The cache manifest hadn't changed.
+     *
+     * @event NO_UPDATE
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.NO_UPDATE = 'noupdate';
+    /**
+     * The browser has started to download the cache manifest, either for the
+     * first time or because changes have been detected.
+     *
+     * @event DOWNLOADING
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.DOWNLOADING = 'downloading';
+    /**
+     * The browser had downloaded and cached an asset. This is fired once for
+     * every file that is downloaded (including the current page which is cached implicitly).
+     *
+     * @event PROGRESS
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.PROGRESS = 'progress';
+    /**
+     * The resources listed in the manifest have been fully downloaded, and the application is
+     * now cached locally.
+     *
+     * @event CACHED
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.CACHED = 'cached';
+    /**
+     * The resources listed in the manifest have been newly re-downloaded, and the script can
+     * use swapCache() to switch to the new cache.
+     *
+     * @event UPDATE_READY
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.UPDATE_READY = 'updateready';
+    /**
+     * The cache manifest file could not be found, indicating that the cache is no longer needed.
+     * The application cache is being deleted.
+     *
+     * @event OBSOLETE
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.OBSOLETE = 'obsolete';
+    /**
+     * An error occurred at some point - this could be caused by a number of things. This will
+     * always be the last event in the sequence.
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    ApplicationCacheEvent.ERROR = 'error';
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = ApplicationCacheEvent;
 });

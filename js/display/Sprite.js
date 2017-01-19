@@ -4,19 +4,20 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './DisplayObjectContainer'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./DisplayObjectContainer"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
+    var DisplayObjectContainer_1 = require("./DisplayObjectContainer");
     var Sprite = (function (_super) {
         __extends(Sprite, _super);
         function Sprite() {
-            _super.call(this);
+            return _super.call(this) || this;
         }
         Sprite.prototype.create = function () {
             _super.prototype.create.call(this);

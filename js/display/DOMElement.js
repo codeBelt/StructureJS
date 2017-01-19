@@ -4,19 +4,20 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './DisplayObjectContainer', '../event/BaseEvent', '../util/TemplateFactory', '../util/ComponentFactory', '../plugin/jquery.eventListener'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./DisplayObjectContainer", "../event/BaseEvent", "../util/TemplateFactory", "../util/ComponentFactory", "../plugin/jquery.eventListener"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var DisplayObjectContainer_1 = require('./DisplayObjectContainer');
-    var BaseEvent_1 = require('../event/BaseEvent');
-    var TemplateFactory_1 = require('../util/TemplateFactory');
-    var ComponentFactory_1 = require('../util/ComponentFactory');
-    var jquery_eventListener_1 = require('../plugin/jquery.eventListener');
+    var DisplayObjectContainer_1 = require("./DisplayObjectContainer");
+    var BaseEvent_1 = require("../event/BaseEvent");
+    var TemplateFactory_1 = require("../util/TemplateFactory");
+    var ComponentFactory_1 = require("../util/ComponentFactory");
+    var jquery_eventListener_1 = require("../plugin/jquery.eventListener");
     /**
      * The {{#crossLink "DOMElement"}}{{/crossLink}} class is the base view class for all objects that can be placed into the HTML DOM.
      *
@@ -134,7 +135,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         function DOMElement(type, params) {
             if (type === void 0) { type = null; }
             if (params === void 0) { params = null; }
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * Tracks number of times an element's width has been checked
              * in order to determine if the element has been added
@@ -144,7 +145,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {number}
              * @public
              */
-            this.checkCount = 0;
+            _this.checkCount = 0;
             /**
              * A cached reference to the DOM Element
              *
@@ -153,7 +154,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default null
              * @public
              */
-            this.element = null;
+            _this.element = null;
             /**
              * A cached reference to the jQuery DOM element
              *
@@ -162,7 +163,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default null
              * @public
              */
-            this.$element = null;
+            _this.$element = null;
             /**
              * If a jQuery object was passed into the constructor this will be set as true and
              * this class will not try to add the view to the DOM since it already exists.
@@ -171,7 +172,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {boolean}
              * @protected
              */
-            this._isReference = false;
+            _this._isReference = false;
             /**
              * Holds onto the value passed into the constructor.
              *
@@ -180,7 +181,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default null
              * @protected
              */
-            this._type = null;
+            _this._type = null;
             /**
              * Holds onto the value passed into the constructor.
              *
@@ -189,16 +190,17 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @default null
              * @protected
              */
-            this._params = null;
+            _this._params = null;
             if (type instanceof jquery_eventListener_1.default) {
-                this.$element = type;
-                this.element = this.$element[0];
-                this._isReference = true;
+                _this.$element = type;
+                _this.element = _this.$element[0];
+                _this._isReference = true;
             }
             else if (type) {
-                this._type = type;
-                this._params = params;
+                _this._type = type;
+                _this._params = params;
             }
+            return _this;
         }
         /**
          * The create function is intended to provide a consistent place for the creation and adding

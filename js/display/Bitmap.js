@@ -4,25 +4,27 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './DisplayObject', '../util/MathUtil'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./DisplayObject", "../util/MathUtil"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var DisplayObject_1 = require('./DisplayObject');
-    var MathUtil_1 = require('../util/MathUtil');
+    var DisplayObject_1 = require("./DisplayObject");
+    var MathUtil_1 = require("../util/MathUtil");
     var Bitmap = (function (_super) {
         __extends(Bitmap, _super);
         function Bitmap(image) {
-            _super.call(this);
-            this.ready = false;
-            this._image = image;
-            this.width = this._image.width;
-            this.height = this._image.height;
-            this.setSize(this.width, this.height);
+            var _this = _super.call(this) || this;
+            _this.ready = false;
+            _this._image = image;
+            _this.width = _this._image.width;
+            _this.height = _this._image.height;
+            _this.setSize(_this.width, _this.height);
+            return _this;
         }
         Bitmap.prototype.create = function () {
             _super.prototype.create.call(this);

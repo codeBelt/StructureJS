@@ -1,14 +1,15 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './EventDispatcher', './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./EventDispatcher", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('./EventDispatcher');
-    var BaseEvent_1 = require('./BaseEvent');
+    var EventDispatcher_1 = require("./EventDispatcher");
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * EventBroker is a simple publish and subscribe static class that you can use to fire and receive notifications.
      * Loosely coupled event handling, the subscriber does not know the publisher. Both of them only need to know the event type.
@@ -268,26 +269,26 @@
         EventBroker.printEventListeners = function () {
             EventBroker._eventDispatcher.printEventListeners();
         };
-        /**
-         * A reference to the EventDispatcher object.
-         *
-         * @property _eventDispatcher
-         * @type {EventDispatcher}
-         * @private
-         * @static
-         */
-        EventBroker._eventDispatcher = new EventDispatcher_1.default();
-        /**
-         * A list of wait for objects.
-         *
-         * @property _waitForList
-         * @type {Array<{eventTypes:Array<string>, callback:Function, callbackScope:any, events:Array<any>, once:boolean}>}
-         * @private
-         * @static
-         */
-        EventBroker._waitForList = [];
         return EventBroker;
     }());
+    /**
+     * A reference to the EventDispatcher object.
+     *
+     * @property _eventDispatcher
+     * @type {EventDispatcher}
+     * @private
+     * @static
+     */
+    EventBroker._eventDispatcher = new EventDispatcher_1.default();
+    /**
+     * A list of wait for objects.
+     *
+     * @property _waitForList
+     * @type {Array<{eventTypes:Array<string>, callback:Function, callbackScope:any, events:Array<any>, once:boolean}>}
+     * @private
+     * @static
+     */
+    EventBroker._waitForList = [];
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = EventBroker;
 });

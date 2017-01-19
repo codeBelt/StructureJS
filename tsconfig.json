@@ -6,7 +6,7 @@
     "target": "es5",
     "module": "umd",
     "sourceMap": false,
-    "declaration": false
+    "declaration": true
   },
   "compileOnSave": false,
   "filesGlob": [

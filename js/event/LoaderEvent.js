@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseEvent_1 = require('./BaseEvent');
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * The LoaderEvent...
      *
@@ -37,34 +38,34 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = false; }
             if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+            return _super.call(this, type, bubbles, cancelable, data) || this;
         }
-        /**
-         * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event COMPLETE
-         * @type {string}
-         * @static
-         */
-        LoaderEvent.COMPLETE = 'LoaderEvent.complete';
-        /**
-         * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
-         *
-         * @event LOAD_COMPLETE
-         * @type {string}
-         * @static
-         */
-        LoaderEvent.LOAD_COMPLETE = 'LoaderEvent.loadComplete';
-        /**
-         * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
-         *
-         * @event ERROR
-         * @type {string}
-         * @static
-         */
-        LoaderEvent.ERROR = 'LoaderEvent.error';
         return LoaderEvent;
     }(BaseEvent_1.default));
+    /**
+     * The LoaderEvent.COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event COMPLETE
+     * @type {string}
+     * @static
+     */
+    LoaderEvent.COMPLETE = 'LoaderEvent.complete';
+    /**
+     * The LoaderEvent.LOAD_COMPLETE constant defines the value of the type property of an loader event object.
+     *
+     * @event LOAD_COMPLETE
+     * @type {string}
+     * @static
+     */
+    LoaderEvent.LOAD_COMPLETE = 'LoaderEvent.loadComplete';
+    /**
+     * The LoaderEvent.ERROR constant defines the value of the type property of an loader event object.
+     *
+     * @event ERROR
+     * @type {string}
+     * @static
+     */
+    LoaderEvent.ERROR = 'LoaderEvent.error';
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = LoaderEvent;
 });

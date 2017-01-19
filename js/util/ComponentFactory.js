@@ -1,13 +1,14 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../util/Util'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../util/Util"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var Util_1 = require('../util/Util');
+    var Util_1 = require("../util/Util");
     /**
      * A helper class to create multiple instances of the same Component Class from jQuery object that has one or more elements in it.
      *

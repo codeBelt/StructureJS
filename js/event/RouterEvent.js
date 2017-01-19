@@ -4,15 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", './BaseEvent'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./BaseEvent"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var BaseEvent_1 = require('./BaseEvent');
+    var BaseEvent_1 = require("./BaseEvent");
     /**
      * The RouterEvent is used in the {{#crossLink "Router"}}{{/crossLink}} class and gets passed to the callback in the {{#crossLink "Route"}}{{/crossLink}} class.
      *
@@ -38,7 +39,7 @@ var __extends = (this && this.__extends) || function (d, b) {
             if (bubbles === void 0) { bubbles = false; }
             if (cancelable === void 0) { cancelable = false; }
             if (data === void 0) { data = null; }
-            _super.call(this, type, bubbles, cancelable, data);
+            var _this = _super.call(this, type, bubbles, cancelable, data) || this;
             /**
              * The route that was matched against {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
              *
@@ -46,7 +47,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {string}
              * @public
              */
-            this.route = null;
+            _this.route = null;
             /**
              * The new URL to which the window is navigating.
              *
@@ -54,7 +55,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {string}
              * @public
              */
-            this.newURL = null;
+            _this.newURL = null;
             /**
              * The previous URL from which the window was navigated.
              *
@@ -62,7 +63,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {string}
              * @public
              */
-            this.oldURL = null;
+            _this.oldURL = null;
             /**
              * The route pattern that matched the {{#crossLink "RouterEvent/route:property"}}{{/crossLink}} property.
              *
@@ -70,7 +71,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {string}
              * @public
              */
-            this.routePattern = null;
+            _this.routePattern = null;
             /**
              * An array containing the parameters captured from the Route.{{#crossLink "Route/match:method"}}{{/crossLink}}
              * being called with the {{#crossLink "RouterEvent/routePattern:property"}}{{/crossLink}} property.
@@ -79,7 +80,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {Array.<string>}
              * @public
              */
-            this.params = [];
+            _this.params = [];
             /**
              * A query object the represents the query string in the hash url.
              *
@@ -87,18 +88,19 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {any}
              * @public
              */
-            this.query = null;
+            _this.query = null;
+            return _this;
         }
-        /**
-         * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
-         *
-         * @event CHANGE
-         * @type {string}
-         * @static
-         */
-        RouterEvent.CHANGE = 'RouterEvent.change';
         return RouterEvent;
     }(BaseEvent_1.default));
+    /**
+     * The RouterEvent.CHANGE constant defines the value of the type property of an change route event object.
+     *
+     * @event CHANGE
+     * @type {string}
+     * @static
+     */
+    RouterEvent.CHANGE = 'RouterEvent.change';
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = RouterEvent;
 });

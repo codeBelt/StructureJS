@@ -1,14 +1,15 @@
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/ApplicationCacheEvent', '../event/EventDispatcher'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/ApplicationCacheEvent", "../event/EventDispatcher"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var ApplicationCacheEvent_1 = require('../event/ApplicationCacheEvent');
-    var EventDispatcher_1 = require('../event/EventDispatcher');
+    var ApplicationCacheEvent_1 = require("../event/ApplicationCacheEvent");
+    var EventDispatcher_1 = require("../event/EventDispatcher");
     /**
      * The ApplicationCacheService is a static class works with the window applicationCache object.
      *
@@ -238,36 +239,36 @@
         ApplicationCacheService.dispatchEvent = function (event) {
             ApplicationCacheService._eventDispatcher.dispatchEvent(event);
         };
-        /**
-         * A reference to the applicationCache property on the window object.
-         *
-         * @property _appCache
-         * @type {ApplicationCache}
-         * @private
-         * @static
-         */
-        ApplicationCacheService._appCache = window.applicationCache;
-        /**
-         * A reference to the EventDispatcher object.
-         *
-         * @property _eventDispatcher
-         * @type {EventDispatcher}
-         * @private
-         * @static
-         */
-        ApplicationCacheService._eventDispatcher = new EventDispatcher_1.default();
-        /**
-         * The isEnabled property is used to keep track of the enabled state.
-         *
-         * @property isEnabled
-         * @type {boolean}
-         * @default false
-         * @public
-         * @static
-         */
-        ApplicationCacheService.isEnabled = false;
         return ApplicationCacheService;
     }());
+    /**
+     * A reference to the applicationCache property on the window object.
+     *
+     * @property _appCache
+     * @type {ApplicationCache}
+     * @private
+     * @static
+     */
+    ApplicationCacheService._appCache = window.applicationCache;
+    /**
+     * A reference to the EventDispatcher object.
+     *
+     * @property _eventDispatcher
+     * @type {EventDispatcher}
+     * @private
+     * @static
+     */
+    ApplicationCacheService._eventDispatcher = new EventDispatcher_1.default();
+    /**
+     * The isEnabled property is used to keep track of the enabled state.
+     *
+     * @property isEnabled
+     * @type {boolean}
+     * @default false
+     * @public
+     * @static
+     */
+    ApplicationCacheService.isEnabled = false;
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = ApplicationCacheService;
 });

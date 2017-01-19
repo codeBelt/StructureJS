@@ -4,17 +4,18 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 (function (factory) {
-    if (typeof module === 'object' && typeof module.exports === 'object') {
-        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    else if (typeof define === 'function' && define.amd) {
-        define(["require", "exports", '../event/EventDispatcher', '../event/BaseEvent', '../util/Util'], factory);
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "../event/EventDispatcher", "../event/BaseEvent", "../util/Util"], factory);
     }
 })(function (require, exports) {
     "use strict";
-    var EventDispatcher_1 = require('../event/EventDispatcher');
-    var BaseEvent_1 = require('../event/BaseEvent');
-    var Util_1 = require('../util/Util');
+    var EventDispatcher_1 = require("../event/EventDispatcher");
+    var BaseEvent_1 = require("../event/BaseEvent");
+    var Util_1 = require("../util/Util");
     /**
      * The Collection class provides a way for you to manage your models.
      *
@@ -43,7 +44,7 @@ var __extends = (this && this.__extends) || function (d, b) {
         __extends(Collection, _super);
         function Collection(baseModelType) {
             if (baseModelType === void 0) { baseModelType = null; }
-            _super.call(this);
+            var _this = _super.call(this) || this;
             /**
              * The list of models in the collection.
              *
@@ -51,7 +52,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {Array.<any>}
              * @readOnly
              */
-            this.models = [];
+            _this.models = [];
             /**
              * The count of how many models are in the collection.
              *
@@ -61,7 +62,7 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @readOnly
              * @public
              */
-            this.length = 0;
+            _this.length = 0;
             /**
              * A reference to a BaseModel type that will be used in the collection.
              *
@@ -69,8 +70,9 @@ var __extends = (this && this.__extends) || function (d, b) {
              * @type {any}
              * @protected
              */
-            this._modelType = null;
-            this._modelType = baseModelType;
+            _this._modelType = null;
+            _this._modelType = baseModelType;
+            return _this;
         }
         /**
          * Adds model or an array of models to the collection.

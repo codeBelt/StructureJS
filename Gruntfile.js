@@ -147,7 +147,7 @@ module.exports = function(grunt) {
                     module: 'umd',
                     basePath: '',
                     sourceMap: false,
-                    declaration: false,
+                    declaration: true,
                     nolib: false,
                     comments: true
                 }
