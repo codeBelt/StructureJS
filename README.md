@@ -252,11 +252,11 @@ _onClickHandler(event) {
 
 ## Release History
 
- * 2016-13-15 v0.15.0 Add *.d.ts files and update TypeScript compiler version.
+ * 2017-01-19 v0.15.0 Add *.d.ts files and update TypeScript compiler version.
  
- * 2016-13-15 v0.14.9 Fix TypeScript file issues.
+ * 2016-12-27 v0.14.9 Fix TypeScript file issues.
  
- * 2016-13-15 v0.14.8 Util - Fix issue with deletePropertyFromObject.
+ * 2016-12-16 v0.14.8 Util - Fix issue with deletePropertyFromObject.
 
  * 2016-12-15 v0.14.7 BaseModel - Add the ability to pass options in as a second parameter. Supports { expand: true } so nested base model class will be instantiated instead of nulled out.
  
