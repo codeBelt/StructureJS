@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2017-01-19 v0.15.1 Add missing Interface *.d.ts files.
+ 
  * 2017-01-19 v0.15.0 Add *.d.ts files and update TypeScript compiler version.
  
  * 2016-12-27 v0.14.9 Fix TypeScript file issues.
