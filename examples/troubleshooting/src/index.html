@@ -1,0 +1,91 @@
+<!doctype html>
+<html class="no-js" lang="en-us">
+
+    <head>
+        <!-- META DATA -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if IE]><meta http-equiv="cleartype" content="on" /><![endif]-->
+        <!-- SEO -->
+        <title>CLIENT.Project</title>
+        <!-- STYLESHEETS -->
+        <!-- build:css assets/styles/screen.css -->
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
+        <!-- endbuild -->
+        <!-- POLYFILLS -->
+        <!-- build:js assets/scripts/head.js -->
+        <!-- endbuild -->
+    </head>
+
+    <body>
+        <!-- CONTENT -->
+        <h1>Welcome</h1> <p>
+                Star my project <a href="https://github.com/codeBelt/slush-project" target="_blank">slush project</a>
+            </p>
+        <!-- JAVASCRIPT -->
+        <script>
+            /**
+             * Global constants
+             *
+             * TODO: ideally these values would be filled in from the server side
+             *
+             * @class SETTINGS
+             * @static
+             */
+            window.SETTINGS = {};
+            /**
+             * Indicates whether we are running on a production environment
+             *
+             * @property IS_PRODUCTION
+             * @type Boolean
+             * @final
+             */
+            SETTINGS.IS_PRODUCTION = false;
+            /**
+             * Appended to query string for versioning of network resources (CSS,
+             * JavaScript, etc). This version number should be updated in production
+             * for every release.
+             *
+             * @property APP_VERSION
+             * @type {String}
+             * @final
+             */
+            SETTINGS.APP_VERSION = '@@version';
+            /**
+             * Set to true to allow application to output to browser console, false
+             * to silence all console output. This should be set to `false` on
+             * production.
+             *
+             * @property LOG_CONSOLE
+             * @type Boolean
+             * @final
+             */
+            SETTINGS.LOG_CONSOLE = !SETTINGS.IS_PRODUCTION;
+            /**
+             * Appended to query string to defeat caching of network resources (CSS,
+             * JavaScript, etc). Should be set to '' on production
+             *
+             * @property CACHE_BUSTER
+             * @type String
+             * @final
+             */
+            SETTINGS.CACHE_BUSTER = SETTINGS.IS_PRODUCTION ? '' : '&bust=' + Math.random();
+            /**
+             * Root path for all JavaScript files
+             *
+             * @property SCRIPT_PATH
+             * @type String
+             * @final
+             */
+            SETTINGS.SCRIPT_PATH = 'assets/scripts/';
+        </script>
+        <!-- build:js assets/scripts/vendor.js -->
+        <script src="assets/vendor/handlebars/handlebars.runtime.min.js"></script>
+        <!-- endbuild -->
+        <!-- build:js assets/scripts/main.js -->
+        <script src="assets/scripts/precompiledJst.js"></script>
+        <script src="assets/scripts/main.js"></script>
+        <!-- endbuild -->
+    </body>
+
+</html>

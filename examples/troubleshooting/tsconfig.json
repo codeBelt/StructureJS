@@ -1,0 +1,18 @@
+{
+    "atom": {
+        "rewriteTsconfig": false
+    },
+    "externalTranspiler": "babel",
+    "compilerOptions": {
+        "target": "es6"
+    },
+    "compileOnSave": false,
+    "filesGlob": [
+    ],
+    "files": [
+      "typings/index.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
