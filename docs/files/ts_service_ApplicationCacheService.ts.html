@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ts/service/ApplicationCacheService.ts - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.15.2</span>
+                
+                
+                    <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: ts/service/ApplicationCacheService.ts</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+import ApplicationCacheEvent from &#x27;../event/ApplicationCacheEvent&#x27;;
+import EventDispatcher from &#x27;../event/EventDispatcher&#x27;;
+
+/**
+ * The ApplicationCacheService is a static class works with the window applicationCache object.
+ *
+ * @class ApplicationCacheService
+ * @module StructureJS
+ * @submodule controller
+ * @requires ApplicationCacheEvent
+ * @requires EventDispatcher
+ * @static
+ * @author Robert S. (www.codeBelt.com)
+ */
+class ApplicationCacheService
+{
+    /**
+     * A reference to the applicationCache property on the window object.
+     *
+     * @property _appCache
+     * @type {ApplicationCache}
+     * @private
+     * @static
+     */
+    private static _appCache:ApplicationCache = window.applicationCache;
+
+    /**
+     * A reference to the EventDispatcher object.
+     *
+     * @property _eventDispatcher
+     * @type {EventDispatcher}
+     * @private
+     * @static
+     */
+    private static _eventDispatcher:EventDispatcher = new EventDispatcher();
+
+    /**
+     * The isEnabled property is used to keep track of the enabled state.
+     *
+     * @property isEnabled
+     * @type {boolean}
+     * @default false
+     * @public
+     * @static
+     */
+    public static isEnabled:boolean = false;
+
+    constructor()
+    {
+        throw new Error(&#x27;[ApplicationCacheService] Do not instantiate the ApplicationCacheService class because it is a static class.&#x27;);
+    }
+
+    /**
+     * @overridden BaseObject.enable
+     */
+    public static enable():void
+    {
+        if (ApplicationCacheService._appCache == null || ApplicationCacheService.isEnabled === true)
+        {
+            return;
+        }
+
+        // Native Browser Event Listener
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.CACHED, this._onCached.bind(this), false);
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.CHECKING, this._onChecking.bind(this), false);
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.DOWNLOADING, this._onDownloading.bind(this), false);
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.NO_UPDATE, this._onNoUpdate.bind(this), false);
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.OBSOLETE, this._onObsolete.bind(this), false);
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.PROGRESS, this._onProgress.bind(this), false);
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._onUpdateReady.bind(this), false);
+        ApplicationCacheService._appCache.addEventListener(ApplicationCacheEvent.ERROR, this._onError.bind(this), false);
+
+        ApplicationCacheService.isEnabled = true;
+    }
+
+    /**
+     * @overridden BaseObject.disable
+     */
+    public static disable():void
+    {
+        if (ApplicationCacheService._appCache == null || ApplicationCacheService.isEnabled === false)
+        {
+            return;
+        }
+
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.CACHED, ApplicationCacheService._onCached.bind(this), false);
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.CHECKING, ApplicationCacheService._onChecking.bind(this), false);
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.DOWNLOADING, ApplicationCacheService._onDownloading.bind(this), false);
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.NO_UPDATE, ApplicationCacheService._onNoUpdate.bind(this), false);
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.OBSOLETE, ApplicationCacheService._onObsolete.bind(this), false);
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.PROGRESS, ApplicationCacheService._onProgress.bind(this), false);
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.UPDATE_READY, ApplicationCacheService._onUpdateReady.bind(this), false);
+        ApplicationCacheService._appCache.removeEventListener(ApplicationCacheEvent.ERROR, ApplicationCacheService._onError.bind(this), false);
+
+        ApplicationCacheService.isEnabled = true;
+    }
+
+    public static update()
+    {
+        ApplicationCacheService._appCache.update();
+    }
+
+    public static getStatus():string
+    {
+        switch (ApplicationCacheService._appCache.status)
+        {
+            case ApplicationCacheService._appCache.UNCACHED:    // UNCACHED === 0
+                return &#x27;UNCACHED&#x27;;
+            case ApplicationCacheService._appCache.IDLE:        // IDLE === 1
+                return &#x27;IDLE&#x27;;
+            case ApplicationCacheService._appCache.CHECKING:    // CHECKING === 2
+                return &#x27;CHECKING&#x27;;
+            case ApplicationCacheService._appCache.DOWNLOADING: // DOWNLOADING === 3
+                return &#x27;DOWNLOADING&#x27;;
+            case ApplicationCacheService._appCache.UPDATEREADY: // UPDATEREADY === 4
+                return &#x27;UPDATEREADY&#x27;;
+            case ApplicationCacheService._appCache.OBSOLETE:    // OBSOLETE === 5
+                return &#x27;OBSOLETE&#x27;;
+            default:
+                return &#x27;UKNOWN CACHE STATUS&#x27;;
+        }
+    }
+
+    /**
+     * The resources listed in the manifest have been fully downloaded, and the application is
+     * now cached locally.
+     *
+     * @method _onCached
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onCached(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.CACHED, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CACHED, false, false, event));
+    }
+
+    /**
+     * The browser is checking for an update, or is attempting to download
+     * the cache manifest for the first time. This is always the first event
+     * in the sequence.
+     *
+     * @method _onChecking
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onChecking(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.CHECKING, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.CHECKING, false, false, event));
+    }
+
+    /**
+     * The browser has started to download the cache manifest, either for the
+     * first time or because changes have been detected.
+     *
+     * @method _onDownloading
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onDownloading(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.DOWNLOADING, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.DOWNLOADING, false, false, event));
+    }
+
+    /**
+     * An error occurred at some point - this could be caused by a number of things. This will
+     * always be the last event in the sequence.
+     *
+     * @method _onError
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onError(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.ERROR, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.ERROR, false, false, event));
+    }
+
+    /**
+     * The cache manifest hadn&#x27;t changed.
+     *
+     * @method _onNoUpdate
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onNoUpdate(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.NO_UPDATE, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.NO_UPDATE, false, false, event));
+    }
+
+    /**
+     * The cache manifest file could not be found, indicating that the cache is no longer needed.
+     * The application cache is being deleted.
+     *
+     * @method _onObsolete
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onObsolete(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.OBSOLETE, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.OBSOLETE, false, false, event));
+    }
+
+    /**
+     * The browser had downloaded and cached an asset. This is fired once for
+     * every file that is downloaded (including the current page which is cached implicitly).
+     *
+     * @method _onProgress
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onProgress(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.PROGRESS, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.PROGRESS, false, false, event));
+    }
+
+    /**
+     * The resources listed in the manifest have been newly re-downloaded, and the script can
+     * use swapCache() to switch to the new cache.
+     *
+     * @method _onUpdateReady
+     * @param event {DOMApplicationCacheEvent} The native browser event from the DOMApplicationCache.
+     * @private
+     * @static
+     */
+    private static _onUpdateReady(event)
+    {
+        //console.log(&#x27;[ApplicationCacheService]&#x27;, &#x27;ApplicationCacheEvent:&#x27;,ApplicationCacheEvent.UPDATE_READY, event);
+        ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY, false, false, event));
+    }
+
+    /**
+     * Registers an event listener object with an ApplicationCacheService object so that the listener receives notification of an event.
+     *
+     * @method addEventListener
+     * @param type {String} The type of event.
+     * @param callback {Function} The listener function that processes the event. This function must accept an Event object as its only parameter and must return nothing, as this example shows. @example function(event:Event):void
+     * @param scope {any} Binds the scope to a particular object (scope is basically what &quot;this&quot; refers to in your function). This can be very useful in JavaScript because scope isn&#x27;t generally maintained.
+     * @param [priority=0] {int} Influences the order in which the listeners are called. Listeners with lower priorities are called after ones with higher priorities.
+     * @static
+     * @example
+     *      ApplicationCacheService.addEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+     *      _handlerMethod(event) {
+     *          console.log(event.target + &quot; sent the event.&quot;);
+     *      }
+     */
+    public static addEventListener(type:string, callback:Function, scope:any, priority:number = 0):any
+    {
+        ApplicationCacheService._eventDispatcher.addEventListener(type, callback, scope, priority);
+    }
+
+    /**
+     * Removes a specified listener from the ApplicationCacheService object.
+     *
+     * @method removeEventListener
+     * @param type {String} The type of event.
+     * @param callback {Function} The listener object to remove.
+     * @param scope {any} The scope of the listener object to be removed. This was added because it was need for the {{#crossLink &quot;ApplicationCacheService&quot;}}{{/crossLink}} class.
+     * To keep things consistent this parameter is required.
+     * @static
+     * @example
+     *      ApplicationCacheService.removeEventListener(ApplicationCacheEvent.UPDATE_READY, this._handlerMethod, this);
+     *      _handlerMethod(event) {
+     *          console.log(event.target + &quot; sent the event.&quot;);
+     *      }
+     */
+    public static removeEventListener(type:string, callback:Function, scope:any):any
+    {
+        ApplicationCacheService._eventDispatcher.removeEventListener(type, callback, scope);
+    }
+
+    /**
+     * &lt;p&gt;Dispatches an event within the ApplicationCacheService object.&lt;/p&gt;
+     *
+     * @method dispatchEvent
+     * @param event {ApplicationCacheEvent} The Event object that is dispatched into the event flow. You can create custom events, the only requirement is all events must
+     * extend the {{#crossLink &quot;ApplicationCacheEvent&quot;}}{{/crossLink}}.
+     * @static
+     * @example
+     *      let event = new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY);
+     *      ApplicationCacheService.dispatchEvent(event);
+     *
+     *      // Here is a common inline event being dispatched
+     *      ApplicationCacheService.dispatchEvent(new ApplicationCacheEvent(ApplicationCacheEvent.UPDATE_READY));
+     */
+    public static dispatchEvent(event:ApplicationCacheEvent):any
+    {
+        ApplicationCacheService._eventDispatcher.dispatchEvent(event);
+    }
+}
+
+export default ApplicationCacheService;
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

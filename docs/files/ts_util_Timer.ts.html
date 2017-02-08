@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ts/util/Timer.ts - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.15.2</span>
+                
+                
+                    <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: ts/util/Timer.ts</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+import EventDispatcher from &#x27;../event/EventDispatcher&#x27;;
+import TimerEvent from &#x27;../event/TimerEvent&#x27;;
+
+/**
+ * Constructs a new Timer object with the specified delay and repeatCount states.
+ *
+ * @class Timer
+ * @extends EventDispatcher
+ * @module StructureJS
+ * @submodule util
+ * @requires Extend
+ * @requires EventDispatcher
+ * @requires TimerEvent
+ * @constructor
+ * @author Robert S. (www.codeBelt.com)
+ */
+class Timer extends EventDispatcher
+{
+    /**
+     * A reference to the setInterval object.
+     *
+     * @property _timer
+     * @type {Function}
+     * @protected
+     */
+    protected _timer:any = null;
+
+    /**
+     * The total number of times the timer has fired since it started at zero. If the timer has been reset, only the fires since the reset are counted.
+     *
+     * @property currentCount
+     * @type {int}
+     * @protected
+     */
+    protected _currentCount:number = 0;
+
+    /**
+     * The delay, in milliseconds, between timer events. If you set the delay interval while the timer is running, the timer will restart at the same repeatCount iteration.
+     * &lt;strong&gt;Note:&lt;/strong&gt; A delay lower than 20 milliseconds is not recommended.
+     *
+     * @property delay
+     * @type {number}
+     * @protected
+     */
+    protected _delay:number = null;
+
+    /**
+     * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
+     *
+     * @property repeatCount
+     * @type {int}
+     * @protected
+     */
+    protected _repeatCount:number = 0;
+
+    /**
+     * The timer&#x27;s current state; true if the timer is running, otherwise false.
+     *
+     * @property running
+     * @type {boolean}
+     * @readOnly
+     */
+    public running:boolean = false;
+
+    constructor(delay:number, repeatCount:number = 0)
+    {
+        super();
+
+        this._delay = delay;
+        this._repeatCount = repeatCount;
+        this._currentCount = repeatCount;
+    }
+
+    /**
+     * Returns the total number of times the timer has fired since it started at zero.
+     *
+     * @method getCurrentCount
+     * @returns {number} The total number of times the timer has fired since it started at zero.
+     */
+    public getCurrentCount():number
+    {
+        return this._currentCount;
+    }
+
+    /**
+     * Returns the delay time in milliseconds.
+     *
+     * @method getDelay
+     * @returns {number} Returns the delay time in milliseconds.
+     */
+    public getDelay():number
+    {
+        return this._delay;
+    }
+
+    /**
+     * Sets the delay, in milliseconds, between timer events.
+     *
+     * @method setDelay
+     * @param value {number}
+     */
+    public setDelay(value:number):any
+    {
+        this.stop();
+        this._delay = value;
+        this.start();
+
+        return this;
+    }
+
+    /**
+     * Returns the total number of times the timer is set to run.
+     *
+     * @method getRepeatCount
+     * @returns {number} Returns the total number of times the timer is set to run.
+     */
+    public getRepeatCount():number
+    {
+        return this._repeatCount;
+    }
+
+    /**
+     * Set the total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely. If the repeat count is nonzero, the timer runs the specified number of times. If repeatCount is set to a total that is the same or less then currentCount the timer stops and will not fire again.
+     *
+     * @method setRepeatCount
+     * @param value {number}
+     */
+    public setRepeatCount(value:number):any
+    {
+        this.stop();
+        this._repeatCount = value;
+        this._currentCount = value;
+        this.start();
+
+        return this;
+    }
+
+    /**
+     * Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.
+     *
+     * @method reset
+     */
+    public reset():any
+    {
+        this.stop();
+        this._currentCount = this._repeatCount;
+
+        return this;
+    }
+
+    /**
+     * Starts the timer, if it is not already running.
+     *
+     * @method start
+     */
+    public start():any
+    {
+        if (this.running)
+        {
+            return this;
+        }
+
+        this._timer = setInterval(() =&gt;
+        {
+            this._decrementCounter();
+        }, this._delay);
+
+        this.running = true;
+
+        return this;
+    }
+
+    /**
+     * Stops the timer.
+     *
+     * @method stop
+     */
+    public stop():any
+    {
+        clearInterval(this._timer);
+        this.running = false;
+
+        return this;
+    }
+
+    /**
+     *
+     * @method _decrementCounter
+     * @protected
+     */
+    protected _decrementCounter()
+    {
+        if (this._currentCount &gt; 0)
+        {
+            this._currentCount--;
+        }
+
+        if (this._delay &amp;&amp; this._currentCount &gt; 0 || this._repeatCount === 0)
+        {
+            this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
+        }
+        else
+        {
+            this.stop();
+            this.dispatchEvent(new TimerEvent(TimerEvent.TIMER));
+            this.dispatchEvent(new TimerEvent(TimerEvent.TIMER_COMPLETE));
+        }
+    }
+
+    /**
+     * @overridden EventDispatcher.destroy
+     */
+    public destroy():void
+    {
+        this.stop();
+
+        super.destroy();
+    }
+}
+
+export default Timer;
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
