@@ -16,15 +16,7 @@ gulp.task('buildScripts', (done) => {
             target: 'es6'
         })
         .transform('babelify', {
-            presets: ['es2015'],
-            extensions: ['.js', '.ts'],
-            // https://github.com/HenriqueLimas/gulp-babelify-starter-kit/blob/master/.babelrc
-            // http://babeljs.io/docs/usage/babelrc/
-            plugins: [
-                'transform-class-properties',
-                'transform-async-to-generator',
-                'transform-runtime'
-            ]
+            extensions: ['.js', '.ts']
         })
         .bundle()
         .on('error', function(error) {
