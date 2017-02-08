@@ -22,6 +22,9 @@ class CheckoutViewModel extends BaseModel {
         }),
     ];
 
+    test = InputModel;
+    testArray = [InputModel];
+
     constructor(data={}, opts = {}) {
         super(opts);
 

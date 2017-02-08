@@ -49,7 +49,7 @@ if (argv.prod === true || argv.dev === true) {
  */
 gulp.task('default', (done) => {
     runSequence(
-        (isDev === true) ? ['lint', 'build'] :
+        (isDev === true) ? ['build'] :
         (isProd === true) ? ['build'] : [],
         done
     );

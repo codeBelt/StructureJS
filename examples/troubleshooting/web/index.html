@@ -9,9 +9,12 @@
         <!-- SEO -->
         <title>CLIENT.Project</title>
         <!-- STYLESHEETS -->
-        <link rel="stylesheet" href="assets/styles/screen.css">
+        <!-- build:css assets/styles/screen.css -->
+        <link rel="stylesheet" media="screen, projection" href="assets/styles/modern.css" />
+        <!-- endbuild -->
         <!-- POLYFILLS -->
-        
+        <!-- build:js assets/scripts/head.js -->
+        <!-- endbuild -->
     </head>
 
     <body>
@@ -76,8 +79,13 @@
              */
             SETTINGS.SCRIPT_PATH = 'assets/scripts/';
         </script>
-        <script src="assets/scripts/vendor.js"></script>
+        <!-- build:js assets/scripts/vendor.js -->
+        <script src="assets/vendor/handlebars/handlebars.runtime.min.js"></script>
+        <!-- endbuild -->
+        <!-- build:js assets/scripts/main.js -->
+        <script src="assets/scripts/precompiledJst.js"></script>
         <script src="assets/scripts/main.js"></script>
+        <!-- endbuild -->
     </body>
 
 </html>

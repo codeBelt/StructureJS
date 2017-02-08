@@ -123,7 +123,7 @@ class BaseModel extends BaseObject implements IBaseModel
                 {
                     const propertyData = this[propertyName];
                     const updateData = data[propertyName];
-                    const dataToUse = (updateData === void 0) ? propertyData : updateData;
+                    const dataToUse = (updateData !== void 0) ? updateData : propertyData;
 
                     this._updatePropertyWithDataPassedIn(propertyName, dataToUse);
                 }
@@ -142,34 +142,22 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     protected _updatePropertyWithDataPassedIn(propertyName:any, updateData:any):void
     {
-        console.log(`propertyName`, propertyName);
         // If the current property on the model is an array and the updateData is an array.
         if ((this[propertyName] instanceof Array === true) && (updateData instanceof Array === true))
         {
             const isPropertyDataValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
             const isUpdateDataValueAnUninstantiatedBaseModel = (typeof updateData[0] === 'function' && updateData[0].IS_BASE_MODEL === true);
 
-            // if (isPropertyDataValueAnUninstantiatedBaseModel === false)
-            // {
-            //     this[propertyName] = updateData.map(data => this._updateData(null, data));
-            // }
-            // else if (isPropertyDataValueAnUninstantiatedBaseModel === true && isUpdateDataValueAnUninstantiatedBaseModel === false)
-            // {
-            //     const baseModelOrUndefined = this[propertyName][0];
-            //     this[propertyName] = updateData.map(data => this._updateData(baseModelOrUndefined, data));
-            // }
-            // else
-            // {
-            //     this[propertyName] = [];
-            // }
-
-
-
-            // If the current data and the new data are both uninstantiated BaseModel we don't want to continue.
-            if ((isPropertyDataValueAnUninstantiatedBaseModel === true && isUpdateDataValueAnUninstantiatedBaseModel === true) === false)
+            if (isPropertyDataValueAnUninstantiatedBaseModel === false)
             {
-                const baseModelOrUndefined = this[propertyName][0];
-                this[propertyName] = updateData.map(data => this._updateData(baseModelOrUndefined, data));
+                this[propertyName] = updateData.map(data => this._updateData(null, data));
+            }
+            else if (isPropertyDataValueAnUninstantiatedBaseModel === true && isUpdateDataValueAnUninstantiatedBaseModel === false)
+            {
+                // If the property data is an uninstantiated BaseModel then we assume the update data passed in
+                // needs to be create as that BaseModel Class.
+                const baseModel = this[propertyName][0];
+                this[propertyName] = updateData.map(data => this._updateData(baseModel, data));
             }
             else
             {
@@ -190,9 +178,8 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     protected _updateData(propertyData:any, updateData:any):any
     {
-        let returnData: any = null;
-        console.log(`_updateData`, propertyData, updateData);
-        // debugger;
+        let returnData:any = null;
+
         if (this.sjsOptions.expand === false && typeof updateData === 'function' && updateData.IS_BASE_MODEL === true)
         {
             // If updateData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
@@ -201,23 +188,24 @@ class BaseModel extends BaseObject implements IBaseModel
             return null;
         }
 
-        if (typeof propertyData === 'function' && propertyData.IS_BASE_MODEL === true)
+        if (typeof propertyData === 'function' && propertyData.IS_BASE_MODEL === true && updateData)
         {
-            console.log(`1`);
             // If the propertyData is an instance of a BaseModel class and has not been created yet.
             // Instantiate it and pass in the updateData to the constructor.
             returnData = new propertyData(updateData, this.sjsOptions);
         }
         else if ((propertyData instanceof BaseModel) === true)
         {
-            console.log(`2`);
             // If propertyData is an instance of a BaseModel class and has already been created.
             // Call the update method and pass in the updateData.
             returnData = propertyData.update(updateData);
         }
+        else if ((updateData instanceof BaseModel) === true)
+        {
+            returnData = updateData.clone();
+        }
         else
         {
-            console.log(`3`);
             // Else just return the updateData to the property.
             returnData = updateData;
         }

@@ -17,8 +17,11 @@ var App = (function () {
      */
     App.prototype.init = function () {
         // Create your views here
-        // console.log(`CheckoutViewModel`, new CheckoutViewModel().pickHowOptions);
-        new CheckoutViewModel_1["default"]().pickHowOptions;
+        var asdf = new CheckoutViewModel_1["default"]({ test: { id: -1 } }, { expand: false });
+        console.log("CheckoutViewModel", asdf);
+        console.log("!!!!!!! clone");
+        var clone = asdf.clone();
+        console.log("clone", clone);
     };
     return App;
 }());

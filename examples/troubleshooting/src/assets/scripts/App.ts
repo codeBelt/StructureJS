@@ -18,8 +18,15 @@ class App {
      */
     init() {
         // Create your views here
-        // console.log(`CheckoutViewModel`, new CheckoutViewModel().pickHowOptions);
-        new CheckoutViewModel().pickHowOptions
+        const asdf = new CheckoutViewModel({test: {id:-1}}, { expand: false });
+        console.log(`CheckoutViewModel`, asdf);
+
+
+
+
+        console.log(`!!!!!!! clone`);
+        const clone = asdf.clone();
+        console.log(`clone`, clone);
     }
 
 }

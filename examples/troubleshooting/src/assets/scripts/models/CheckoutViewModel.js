@@ -30,6 +30,8 @@ var CheckoutViewModel = (function (_super) {
                 id: 'two'
             }),
         ];
+        _this.test = InputModel_1["default"];
+        _this.testArray = [InputModel_1["default"]];
         if (data) {
             _this.update(data);
         }
