@@ -122,11 +122,11 @@ class BaseModel extends BaseObject implements IBaseModel
                 // Ignore the sjsId property because it is set in the BaseObject constructor and we don't want to update it.
                 if (propertyName !== 'sjsId')
                 {
-                    const currentData = this[propertyName];
-                    const newData = data[propertyName];
-                    const propertyData = (newData !== void 0) ? newData : currentData;
+                    const propertyData = this[propertyName];
+                    const updateData = data[propertyName];
+                    const currentData = (updateData === void 0) ? propertyData : updateData;
 
-                    this._updatePropertyWithNewData(propertyName, propertyData);
+                    this._updatePropertyWithDataPassedIn(propertyName, currentData);
                 }
             });
 
@@ -134,34 +134,27 @@ class BaseModel extends BaseObject implements IBaseModel
     }
 
     /**
-     * Add the newData to the property
+     * Add the updateData to the property
      *
-     * @method _updatePropertyWithNewData
+     * @method _updatePropertyWithDataPassedIn
      * @param propertyName
-     * @param newData
+     * @param updateData
      * @protected
      */
-    protected _updatePropertyWithNewData(propertyName:any, newData:any):void
+    protected _updatePropertyWithDataPassedIn(propertyName:any, updateData:any):void
     {
         console.log(`propertyName`, propertyName);
-        // If the current property on the model is an array and the newData is an array.
-        if ((this[propertyName] instanceof Array === true) && (newData instanceof Array === true))
+        // If the current property on the model is an array and the updateData is an array.
+        if ((this[propertyName] instanceof Array === true) && (updateData instanceof Array === true))
         {
-            const isCurrentValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
-            const isNewValueAnUninstantiatedBaseModel = (typeof newData[0] === 'function' && newData[0].IS_BASE_MODEL === true);
-// console.log(`isCurrentValueAnUninstantiatedBaseModel`, isCurrentValueAnUninstantiatedBaseModel);
-// console.log(`isNewValueAnUninstantiatedBaseModel`, isNewValueAnUninstantiatedBaseModel);
+            const isPropertyDataValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
+            const isUpdateDataValueAnUninstantiatedBaseModel = (typeof updateData[0] === 'function' && updateData[0].IS_BASE_MODEL === true);
+
             // If the current data and the new data are both uninstantiated BaseModel we don't want to continue.
-            if ((isCurrentValueAnUninstantiatedBaseModel === true && isNewValueAnUninstantiatedBaseModel === true) === false)
+            if ((isPropertyDataValueAnUninstantiatedBaseModel === true && isUpdateDataValueAnUninstantiatedBaseModel === true) === false)
             {
-                // console.log(`propertyName`, propertyName);
                 const baseModelOrUndefined = this[propertyName][0];
-console.log(`baseModelOrUndefined`, baseModelOrUndefined);
-console.log(`newData`, newData);
-// debugger;
-                this[propertyName] = newData.map(data => this._updateData(baseModelOrUndefined, data));
-                // console.log(`this[propertyName]`, this[propertyName]);
-                // debugger;
+                this[propertyName] = updateData.map(data => this._updateData(baseModelOrUndefined, data));
             }
             else
             {
@@ -170,7 +163,7 @@ console.log(`newData`, newData);
         }
         else
         {
-            this[propertyName] = this._updateData(this[propertyName], newData);
+            this[propertyName] = this._updateData(this[propertyName], updateData);
         }
     }
 
