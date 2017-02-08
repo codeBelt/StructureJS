@@ -77,11 +77,10 @@ declare class BaseModel extends BaseObject implements IBaseModel {
      * @static
      * @readonly
      */
-    static IS_BASE_MODEL: boolean;
+    static readonly IS_BASE_MODEL: boolean;
     /**
      * @property sjsOptions
      * @type {IBaseModelOptions}}
-     * @readonly
      * @public
      */
     protected sjsOptions: IBaseModelOptions;
@@ -102,23 +101,21 @@ declare class BaseModel extends BaseObject implements IBaseModel {
      */
     update(data?: any): any;
     /**
-     * Add the newData to the property
+     * Adds the updateData to the property
      *
-     * @method _updatePropertyWithNewData
+     * @method _updatePropertyWithDataPassedIn
      * @param propertyName
-     * @param newData
+     * @param updateData
      * @protected
      */
-    protected _updatePropertyWithNewData(propertyName: any, newData: any): void;
+    protected _updatePropertyWithDataPassedIn(propertyName: any, updateData: any): void;
     /**
-     * TODO: YUIDoc_comment
-     *
      * @method _updateData
-     * @param keyValue
-     * @param newData
+     * @param propertyData
+     * @param updateData
      * @protected
      */
-    protected _updateData(keyValue: any, newData: any): any;
+    protected _updateData(propertyData: any, updateData: any): any;
     /**
      * Converts the Base Model data into a JSON object and deletes the sjsId property.
      *
@@ -126,7 +123,7 @@ declare class BaseModel extends BaseObject implements IBaseModel {
      * @returns {any}
      * @public
      * @example
-     *     let obj = carModel.toJSON();
+     *     const obj = carModel.toJSON();
      */
     toJSON(): any;
     /**
@@ -136,7 +133,7 @@ declare class BaseModel extends BaseObject implements IBaseModel {
      * @returns {string}
      * @public
      * @example
-     *     let str = carModel.toJSONString();
+     *     const str = carModel.toJSONString();
      */
     toJSONString(): string;
     /**
@@ -146,8 +143,8 @@ declare class BaseModel extends BaseObject implements IBaseModel {
      * @param json {string}
      * @public
      * @example
-     *      let str = '{"make":"Tesla","model":"Model S","year":2014}'
-     *      let carModel = new CarModel();
+     *      const str = '{"make":"Tesla","model":"Model S","year":2014}'
+     *      const carModel = new CarModel();
      *      carModel.fromJSON(str);
      */
     fromJSON(json: string): any;
@@ -158,7 +155,7 @@ declare class BaseModel extends BaseObject implements IBaseModel {
      * @returns {BaseModel}
      * @public
      * @example
-     *     let clone = carModel.clone();
+     *     const clone = carModel.clone();
      */
     clone(): BaseModel;
 }

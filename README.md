@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2017-02-08 v0.15.2 BaseModel - Fixed issue with arrays having the same data for every item in the array when instantiated directly on the property. Fixed issue with child models not actually being cloned into new objects when .clone() is called on the parent model. 
+ 
  * 2017-01-19 v0.15.1 Add missing Interface *.d.ts files.
  
  * 2017-01-19 v0.15.0 Add *.d.ts files and update TypeScript compiler version.

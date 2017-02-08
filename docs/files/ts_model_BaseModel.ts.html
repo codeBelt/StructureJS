@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ts/model/BaseModel.ts - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.15.2</span>
+                
+                
+                    <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: ts/model/BaseModel.ts</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+import IBaseModel from &#x27;../interface/IBaseModel&#x27;;
+import IBaseModelOptions from &#x27;../interface/IBaseModelOptions&#x27;;
+import BaseObject from &#x27;../BaseObject&#x27;;
+import Util from &#x27;../util/Util&#x27;;
+
+/**
+ *  Base Model is a design pattern used to transfer data between software application subsystems.
+ *
+ * Note: If the data doesn&#x27;t match the property names you can set the value manually after update super method has been called.
+ *  Also in the class you inherit BaseModel from you can override the update method to handle the data how you want.
+ *
+ * @class BaseModel
+ * @extends BaseObject
+ * @param [data] {any} Provide a way to update the base model upon initialization.
+ * @param [opts] {{ expand:boolean }} Options for the base model.
+ * @module StructureJS
+ * @submodule model
+ * @requires Extend
+ * @requires BaseObject
+ * @requires Util
+ * @constructor
+ * @author Robert S. (www.codeBelt.com)
+ * @example
+ *      // Example how to extend the BaseModel class.
+ *      let data = {
+ *              make: &#x27;Tesla&#x27;,
+ *              model: &#x27;Model S&#x27;,
+ *              YeAr: 2014,
+ *              feature: {
+ *                  abs: true,
+ *                  airbags: true
+ *              }
+ *      }
+ *      let carModel = new CarModel(data);
+ *
+ *
+ *      // Example how to extend the BaseModel class.
+ *      class CarModel extends BaseModel {
+ *
+ *          // You need to have properties so the data will get assigned.
+ *          // If not the data will not get assigned to the model.
+ *          make = null;
+ *          model = null;
+ *          year = null;
+ *          allWheel = false; // Set a default value
+ *
+ *          // You can assign BaseModel to a property which will
+ *          // automatically created it and pass the data to it.
+ *          feature = FeatureModel
+ *
+ *          // If you have an array of data and want them assign to a BaseModel.
+ *          feature = [FeatureModel];
+ *
+ *          constructor(data = {}, opts = {}) {
+ *              super(opts);
+ *
+ *              if (data) {
+ *                  this.update(data);
+ *              }
+ *          }
+ *
+ *          // @overridden BaseModel.update
+ *          update(data) {
+ *              super.update(data);
+ *
+ *              // If the data doesn&#x27;t match the property name.
+ *              // You can set the value(s) manually after the update super method has been called.
+ *              this.year = data.YeAr;
+ *          }
+ *      }
+ */
+class BaseModel extends BaseObject implements IBaseModel
+{
+    /**
+     * This property helps distinguish a BaseModel from other functions.
+     *
+     * @property IS_BASE_MODEL
+     * @type {boolean}
+     * @public
+     * @static
+     * @readonly
+     */
+    public static readonly IS_BASE_MODEL:boolean = true;
+
+    /**
+     * @property sjsOptions
+     * @type {IBaseModelOptions}}
+     * @public
+     */
+    protected sjsOptions:IBaseModelOptions = {
+        expand: false,
+    };
+
+    constructor(opts:IBaseModelOptions = {})
+    {
+        super();
+
+        this.sjsOptions.expand = opts.expand === true;
+    }
+
+    /**
+     * Provide a way to update the  Base Model.
+     *
+     * @method update
+     * @param [data={}] {any}
+     * @public
+     * @example
+     *     // Example of updating some of the data:
+     *     carModel.update({ year: 2015, allWheel: true});
+     *
+     *     // Of course you can also do it the following way:
+     *     carModel.year = 2015;
+     *     carModel.allWheel = false;
+     */
+    public update(data:any = {}):any
+    {
+        Object
+            .keys(this)
+            .forEach(propertyName =&gt;
+            {
+                // Ignore the sjsId property because it is set in the BaseObject constructor and we don&#x27;t want to update it.
+                if (propertyName !== &#x27;sjsId&#x27;)
+                {
+                    const propertyData = this[propertyName];
+                    const updateData = data[propertyName];
+                    const dataToUse = (updateData !== void 0) ? updateData : propertyData;
+
+                    this._updatePropertyWithDataPassedIn(propertyName, dataToUse);
+                }
+            });
+
+        return this;
+    }
+
+    /**
+     * Adds the updateData to the property
+     *
+     * @method _updatePropertyWithDataPassedIn
+     * @param propertyName
+     * @param updateData
+     * @protected
+     */
+    protected _updatePropertyWithDataPassedIn(propertyName:any, updateData:any):void
+    {
+        // If the current property on the model is an array and the updateData is an array.
+        if ((this[propertyName] instanceof Array === true) &amp;&amp; (updateData instanceof Array === true))
+        {
+            const isPropertyDataValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === &#x27;function&#x27; &amp;&amp; this[propertyName][0].IS_BASE_MODEL === true);
+            const isUpdateDataValueAnUninstantiatedBaseModel = (typeof updateData[0] === &#x27;function&#x27; &amp;&amp; updateData[0].IS_BASE_MODEL === true);
+
+            if (isPropertyDataValueAnUninstantiatedBaseModel === false)
+            {
+                this[propertyName] = updateData.map(data =&gt; this._updateData(null, data));
+            }
+            else if (isPropertyDataValueAnUninstantiatedBaseModel === true &amp;&amp; isUpdateDataValueAnUninstantiatedBaseModel === false)
+            {
+                // If the property data is an uninstantiated BaseModel then we assume the update data passed in
+                // needs to be create as that BaseModel Class.
+                const baseModel = this[propertyName][0];
+                this[propertyName] = updateData.map(data =&gt; this._updateData(baseModel, data));
+            }
+            else
+            {
+                this[propertyName] = [];
+            }
+        }
+        else
+        {
+            this[propertyName] = this._updateData(this[propertyName], updateData);
+        }
+    }
+
+    /**
+     * @method _updateData
+     * @param propertyData
+     * @param updateData
+     * @protected
+     */
+    protected _updateData(propertyData:any, updateData:any):any
+    {
+        let returnData:any = null;
+
+        if (this.sjsOptions.expand === false &amp;&amp; typeof updateData === &#x27;function&#x27; &amp;&amp; updateData.IS_BASE_MODEL === true)
+        {
+            // If updateData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
+            // so it cleans up the BaseModel functions on the property.
+            // To create empty model(s) pass { expand: true } for the options.
+            return null;
+        }
+
+        if (typeof propertyData === &#x27;function&#x27; &amp;&amp; propertyData.IS_BASE_MODEL === true &amp;&amp; updateData)
+        {
+            // If the propertyData is an instance of a BaseModel class and has not been created yet.
+            // Instantiate it and pass in the updateData to the constructor.
+            returnData = new propertyData(updateData, this.sjsOptions);
+        }
+        else if ((propertyData instanceof BaseModel) === true)
+        {
+            // If propertyData is an instance of a BaseModel class and has already been created.
+            // Call the update method and pass in the updateData.
+            returnData = propertyData.update(updateData);
+        }
+        else if ((updateData instanceof BaseModel) === true)
+        {
+            returnData = updateData.clone();
+        }
+        else
+        {
+            // Else just return the updateData to the property.
+            returnData = updateData;
+        }
+
+        return returnData;
+    }
+
+    /**
+     * Converts the Base Model data into a JSON object and deletes the sjsId property.
+     *
+     * @method toJSON
+     * @returns {any}
+     * @public
+     * @example
+     *     const obj = carModel.toJSON();
+     */
+    public toJSON():any
+    {
+        const clone:any = Util.clone(this);
+        return Util.deletePropertyFromObject(clone, [&#x27;sjsId&#x27;, &#x27;sjsOptions&#x27;]);
+    }
+
+    /**
+     * Converts a  Base Model to a JSON string,
+     *
+     * @method toJSONString
+     * @returns {string}
+     * @public
+     * @example
+     *     const str = carModel.toJSONString();
+     */
+    public toJSONString():string
+    {
+        return JSON.stringify(this.toJSON());
+    }
+
+    /**
+     * Converts the string json data into an Object and calls the {{#crossLink &quot;BaseModel/update:method&quot;}}{{/crossLink}} method with the converted Object.
+     *
+     * @method fromJSON
+     * @param json {string}
+     * @public
+     * @example
+     *      const str = &#x27;{&quot;make&quot;:&quot;Tesla&quot;,&quot;model&quot;:&quot;Model S&quot;,&quot;year&quot;:2014}&#x27;
+     *      const carModel = new CarModel();
+     *      carModel.fromJSON(str);
+     */
+    public fromJSON(json:string):any
+    {
+        const parsedData:any = JSON.parse(json);
+
+        this.update(parsedData);
+
+        return this;
+    }
+
+    /**
+     * Create a clone/copy of the  Base Model.
+     *
+     * @method clone
+     * @returns {BaseModel}
+     * @public
+     * @example
+     *     const clone = carModel.clone();
+     */
+    public clone():BaseModel
+    {
+        const clonedBaseModel:BaseModel = new (&lt;any&gt;this).constructor(this);
+
+        return clonedBaseModel;
+    }
+
+}
+
+export default BaseModel;
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

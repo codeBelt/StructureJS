@@ -17,7 +17,7 @@ gulp.task('ts', function () {
     const tsProject = ts.createProject('tsconfig.json');
 
     return gulp.src('ts/**/*.ts')
-        .pipe(ts(tsProject))
+        .pipe(tsProject())
         .pipe(gulp.dest('js/'));
 });
 
@@ -47,11 +47,11 @@ gulp.task('docs', ['clean:docs'], (done) => {
         //exclude: env.DIR_SRC + '/assets/vendor',
         helpers: [],
         themedir: 'friendly-theme',
-        extension: '.ts'
+        extension: '.ts',
     };
 
     return gulp
-        .src('js/**/*.{js,ts}')
+        .src('ts/**/*.ts')
         .pipe(yuidoc.parser(parserOptions))
         //.pipe(yuidoc.reporter())
         .pipe(yuidoc.generator(generatorOptions))

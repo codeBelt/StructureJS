@@ -89,7 +89,6 @@ var __extends = (this && this.__extends) || function (d, b) {
             /**
              * @property sjsOptions
              * @type {IBaseModelOptions}}
-             * @readonly
              * @public
              */
             _this.sjsOptions = {
@@ -120,71 +119,77 @@ var __extends = (this && this.__extends) || function (d, b) {
                 .forEach(function (propertyName) {
                 // Ignore the sjsId property because it is set in the BaseObject constructor and we don't want to update it.
                 if (propertyName !== 'sjsId') {
-                    var currentData = _this[propertyName];
-                    var newData = data[propertyName];
-                    var propertyData = (newData !== void 0) ? newData : currentData;
-                    _this._updatePropertyWithNewData(propertyName, propertyData);
+                    var propertyData = _this[propertyName];
+                    var updateData = data[propertyName];
+                    var dataToUse = (updateData !== void 0) ? updateData : propertyData;
+                    _this._updatePropertyWithDataPassedIn(propertyName, dataToUse);
                 }
             });
             return this;
         };
         /**
-         * Add the newData to the property
+         * Adds the updateData to the property
          *
-         * @method _updatePropertyWithNewData
+         * @method _updatePropertyWithDataPassedIn
          * @param propertyName
-         * @param newData
+         * @param updateData
          * @protected
          */
-        BaseModel.prototype._updatePropertyWithNewData = function (propertyName, newData) {
+        BaseModel.prototype._updatePropertyWithDataPassedIn = function (propertyName, updateData) {
             var _this = this;
-            // If the current property on the model is an array and the newData is an array.
-            if ((this[propertyName] instanceof Array === true) && (newData instanceof Array === true)) {
-                var isCurrentValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
-                var isNewValueAnUninstantiatedBaseModel = (typeof newData[0] === 'function' && newData[0].IS_BASE_MODEL === true);
-                // If the current data and the new data are both uninstantiated BaseModel we don't want to continue.
-                if ((isCurrentValueAnUninstantiatedBaseModel === true && isNewValueAnUninstantiatedBaseModel === true) === false) {
-                    var baseModelOrUndefined_1 = this[propertyName][0];
-                    this[propertyName] = newData.map(function (data) { return _this._updateData(baseModelOrUndefined_1, data); });
+            // If the current property on the model is an array and the updateData is an array.
+            if ((this[propertyName] instanceof Array === true) && (updateData instanceof Array === true)) {
+                var isPropertyDataValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
+                var isUpdateDataValueAnUninstantiatedBaseModel = (typeof updateData[0] === 'function' && updateData[0].IS_BASE_MODEL === true);
+                if (isPropertyDataValueAnUninstantiatedBaseModel === false) {
+                    this[propertyName] = updateData.map(function (data) { return _this._updateData(null, data); });
+                }
+                else if (isPropertyDataValueAnUninstantiatedBaseModel === true && isUpdateDataValueAnUninstantiatedBaseModel === false) {
+                    // If the property data is an uninstantiated BaseModel then we assume the update data passed in
+                    // needs to be create as that BaseModel Class.
+                    var baseModel_1 = this[propertyName][0];
+                    this[propertyName] = updateData.map(function (data) { return _this._updateData(baseModel_1, data); });
                 }
                 else {
                     this[propertyName] = [];
                 }
             }
             else {
-                this[propertyName] = this._updateData(this[propertyName], newData);
+                this[propertyName] = this._updateData(this[propertyName], updateData);
             }
         };
         /**
-         * TODO: YUIDoc_comment
-         *
          * @method _updateData
-         * @param keyValue
-         * @param newData
+         * @param propertyData
+         * @param updateData
          * @protected
          */
-        BaseModel.prototype._updateData = function (keyValue, newData) {
-            if (this.sjsOptions.expand === false && typeof newData === 'function' && newData.IS_BASE_MODEL === true) {
-                // If newData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
+        BaseModel.prototype._updateData = function (propertyData, updateData) {
+            var returnData = null;
+            if (this.sjsOptions.expand === false && typeof updateData === 'function' && updateData.IS_BASE_MODEL === true) {
+                // If updateData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
                 // so it cleans up the BaseModel functions on the property.
                 // To create empty model(s) pass { expand: true } for the options.
                 return null;
             }
-            if (typeof keyValue === 'function' && keyValue.IS_BASE_MODEL === true) {
-                // If the property is an instance of a BaseModel class and has not been created yet.
-                // Instantiate it and pass in the newData to the constructor.
-                keyValue = new keyValue(newData, this.sjsOptions);
+            if (typeof propertyData === 'function' && propertyData.IS_BASE_MODEL === true && updateData) {
+                // If the propertyData is an instance of a BaseModel class and has not been created yet.
+                // Instantiate it and pass in the updateData to the constructor.
+                returnData = new propertyData(updateData, this.sjsOptions);
             }
-            else if ((keyValue instanceof BaseModel) === true) {
-                // If property is an instance of a BaseModel class and has already been created.
-                // Call the update method and pass in the newData.
-                keyValue.update(newData);
+            else if ((propertyData instanceof BaseModel) === true) {
+                // If propertyData is an instance of a BaseModel class and has already been created.
+                // Call the update method and pass in the updateData.
+                returnData = propertyData.update(updateData);
+            }
+            else if ((updateData instanceof BaseModel) === true) {
+                returnData = updateData.clone();
             }
             else {
-                // Else just assign the newData to the property.
-                keyValue = newData;
+                // Else just return the updateData to the property.
+                returnData = updateData;
             }
-            return keyValue;
+            return returnData;
         };
         /**
          * Converts the Base Model data into a JSON object and deletes the sjsId property.
@@ -193,7 +198,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {any}
          * @public
          * @example
-         *     let obj = carModel.toJSON();
+         *     const obj = carModel.toJSON();
          */
         BaseModel.prototype.toJSON = function () {
             var clone = Util_1.default.clone(this);
@@ -206,7 +211,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {string}
          * @public
          * @example
-         *     let str = carModel.toJSONString();
+         *     const str = carModel.toJSONString();
          */
         BaseModel.prototype.toJSONString = function () {
             return JSON.stringify(this.toJSON());
@@ -218,8 +223,8 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @param json {string}
          * @public
          * @example
-         *      let str = '{"make":"Tesla","model":"Model S","year":2014}'
-         *      let carModel = new CarModel();
+         *      const str = '{"make":"Tesla","model":"Model S","year":2014}'
+         *      const carModel = new CarModel();
          *      carModel.fromJSON(str);
          */
         BaseModel.prototype.fromJSON = function (json) {
@@ -234,7 +239,7 @@ var __extends = (this && this.__extends) || function (d, b) {
          * @returns {BaseModel}
          * @public
          * @example
-         *     let clone = carModel.clone();
+         *     const clone = carModel.clone();
          */
         BaseModel.prototype.clone = function () {
             var clonedBaseModel = new this.constructor(this);

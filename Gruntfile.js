@@ -129,11 +129,11 @@ module.exports = function(grunt) {
                 url: '<%= pkg.homepage %>',
                 options: {
                     linkNatives: 'true',
-                    paths: '<%= DEVELOPMENT_PATH %>',
+                    paths: 'ts/',
                     outdir: '<%= BASE_PATH %>docs',
                     themedir: 'friendly-theme',
-                    extension: '.js',                                   // Default '.js' <comma-separated list of file extensions>
-                    exclude: ''
+                    extension: '.ts',                                   // Default '.js' <comma-separated list of file extensions>
+                    exclude: 'interface'
                 }
             }
         },

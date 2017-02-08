@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ts/display/CanvasElement.ts - StructureJS</title>
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="../assets/vendor/yui-min.js"></script>
+</head>
+<body>
+
+<div id="doc">
+    <header class="main-header">
+        <div class="content">
+            <div class="project-title">
+                
+                
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.15.2</span>
+                
+                
+                    <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
+                
+            </div>
+            <ul class="jump-links">
+                <li><a href="#index" class="index-jump-link">index</a></li>
+                <li><a href="#top" class="top-jump-link">top</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="bd" class="main-body">
+
+        <div id="docs-sidebar" class="sidebar apidocs">
+            <div id="api-list">
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a class="type" href="../classes/ApplicationCacheEvent.html">ApplicationCacheEvent</a></li>
+            
+                <li><a class="type" href="../classes/ApplicationCacheService.html">ApplicationCacheService</a></li>
+            
+                <li><a class="type" href="../classes/BaseEvent.html">BaseEvent</a></li>
+            
+                <li><a class="type" href="../classes/BaseModel.html">BaseModel</a></li>
+            
+                <li><a class="type" href="../classes/BaseObject.html">BaseObject</a></li>
+            
+                <li><a class="type" href="../classes/BrowserUtil.html">BrowserUtil</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoader.html">BulkLoader</a></li>
+            
+                <li><a class="type" href="../classes/BulkLoaderEvent.html">BulkLoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/Collection.html">Collection</a></li>
+            
+                <li><a class="type" href="../classes/ComponentFactory.html">ComponentFactory</a></li>
+            
+                <li><a class="type" href="../classes/DateUtil.html">DateUtil</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObject.html">DisplayObject</a></li>
+            
+                <li><a class="type" href="../classes/DisplayObjectContainer.html">DisplayObjectContainer</a></li>
+            
+                <li><a class="type" href="../classes/DOMElement.html">DOMElement</a></li>
+            
+                <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
+            
+                <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
+            
+                <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
+            
+                <li><a class="type" href="../classes/LoaderEvent.html">LoaderEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageEvent.html">LocalStorageEvent</a></li>
+            
+                <li><a class="type" href="../classes/LocalStorageService.html">LocalStorageService</a></li>
+            
+                <li><a class="type" href="../classes/MathUtil.html">MathUtil</a></li>
+            
+                <li><a class="type" href="../classes/MerchantUtil.html">MerchantUtil</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitor.html">NetworkMonitor</a></li>
+            
+                <li><a class="type" href="../classes/NetworkMonitorEvent.html">NetworkMonitorEvent</a></li>
+            
+                <li><a class="type" href="../classes/NumberUtil.html">NumberUtil</a></li>
+            
+                <li><a class="type" href="../classes/ObjectManager.html">ObjectManager</a></li>
+            
+                <li><a class="type" href="../classes/Point.html">Point</a></li>
+            
+                <li><a class="type" href="../classes/Route.html">Route</a></li>
+            
+                <li><a class="type" href="../classes/Router.html">Router</a></li>
+            
+                <li><a class="type" href="../classes/RouterEvent.html">RouterEvent</a></li>
+            
+                <li><a class="type" href="../classes/Stage.html">Stage</a></li>
+            
+                <li><a class="type" href="../classes/StringUtil.html">StringUtil</a></li>
+            
+                <li><a class="type" href="../classes/TemplateFactory.html">TemplateFactory</a></li>
+            
+                <li><a class="type" href="../classes/Timer.html">Timer</a></li>
+            
+                <li><a class="type" href="../classes/TimerEvent.html">TimerEvent</a></li>
+            
+                <li><a class="type" href="../classes/Util.html">Util</a></li>
+            
+                <li><a class="type" href="../classes/ValidationUtil.html">ValidationUtil</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a class="module" href="../modules/controller.html">controller</a></li>
+            
+                <li><a class="module" href="../modules/core.html">core</a></li>
+            
+                <li><a class="module" href="../modules/event.html">event</a></li>
+            
+                <li><a class="module" href="../modules/geom.html">geom</a></li>
+            
+                <li><a class="module" href="../modules/model.html">model</a></li>
+            
+                <li><a class="module" href="../modules/StructureJS.html">StructureJS</a></li>
+            
+                <li><a class="module" href="../modules/util.html">util</a></li>
+            
+                <li><a class="module" href="../modules/view.html">view</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div id="docs-main" class="apidocs">
+            <div class="content container">
+                <h1 class="file-heading">File: ts/display/CanvasElement.ts</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+import DisplayObjectContainer from &#x27;./DisplayObjectContainer&#x27;;
+import DOMElement from &#x27;./DOMElement&#x27;;
+import DisplayObject from &#x27;./DisplayObject&#x27;;
+import Point from &#x27;../geom/Point&#x27;;
+
+class CanvasElement extends DOMElement
+{
+
+    public $canvas:JQuery = null;
+
+    public canvas:HTMLCanvasElement = null;
+
+    // Notice the capital W and H. That sets the attributes not the styles.
+    constructor(type:any = &#x27;canvas&#x27;, params:any = {Width: 100, Height: 100})
+    {
+        super(type, params);
+    }
+
+    /**
+     * @overridden CanvasElement.create
+     */
+    public create():void
+    {
+        super.create();
+
+        this.$canvas = this.$element;
+        this.canvas = &lt;HTMLCanvasElement&gt;this.element;
+        this.ctx = this.canvas.getContext(&#x27;2d&#x27;);
+    }
+
+    /**
+     * @overridden CanvasElement.enable
+     */
+    public enable():void
+    {
+        if (this.isEnabled === true)
+        {
+            return;
+        }
+
+        // Add mouse event listeners to $canvas element
+        this.$canvas.addEventListener(&#x27;mousedown&#x27;, this._onPointerDown, this);
+        this.$canvas.addEventListener(&#x27;mousemove&#x27;, this._onPointerMove, this);
+        this.$canvas.addEventListener(&#x27;mouseup&#x27;, this._onPointerUp, this);
+        this.$canvas.addEventListener(&#x27;mouseout&#x27;, this._onPointerOut, this);
+
+        // Add touch event listeners to $canvas element
+        this.$canvas.addEventListener(&#x27;touchstart&#x27;, this._onPointerDown, this);
+        this.$canvas.addEventListener(&#x27;touchmove&#x27;, this._onPointerMove, this);
+        this.$canvas.addEventListener(&#x27;touchend&#x27;, this._onPointerUp, this);
+        this.$canvas.addEventListener(&#x27;touchcancel&#x27;, this._onPointerOut, this);
+
+        super.enable();
+    }
+
+    /**
+     * @overridden CanvasElement.disable
+     */
+    public disable():void
+    {
+        if (this.isEnabled === false)
+        {
+            return;
+        }
+
+        // Remove mouse event listeners on $canvas element
+        this.$canvas.removeEventListener(&#x27;mousedown&#x27;, this._onPointerDown, this);
+        this.$canvas.removeEventListener(&#x27;mousemove&#x27;, this._onPointerMove, this);
+        this.$canvas.removeEventListener(&#x27;mouseup&#x27;, this._onPointerUp, this);
+        this.$canvas.removeEventListener(&#x27;mouseout&#x27;, this._onPointerOut, this);
+
+        // Remove touch event listeners on $canvas element
+        this.$canvas.removeEventListener(&#x27;touchstart&#x27;, this._onPointerDown, this);
+        this.$canvas.removeEventListener(&#x27;touchmove&#x27;, this._onPointerMove, this);
+        this.$canvas.removeEventListener(&#x27;touchend&#x27;, this._onPointerUp, this);
+        this.$canvas.removeEventListener(&#x27;touchcancel&#x27;, this._onPointerOut, this);
+
+        super.disable();
+    }
+
+    /**
+     * @overridden DOMElement.addChild
+     */
+    public addChild(child:DisplayObject):any
+    {
+        //If the child being passed in already has a parent then remove the reference from there.
+        if (child.parent)
+        {
+            child.parent.removeChild(child, false);
+        }
+
+        this.children.push(child);
+        this.numChildren = this.children.length;
+
+        child.ctx = this.ctx;
+        child.stage = this;
+        child.parent = this;
+
+        if (child.isCreated === false)
+        {
+            child.create();
+            child.isCreated = true;
+        }
+
+        child.enable();
+
+        return this;
+    }
+
+    /**
+     * @overridden DOMElement.addChildAt
+     */
+    public addChildAt(child:DisplayObject, index:number):any
+    {
+        //If the child being passed in already has a parent then remove the reference from there.
+        if (child.parent)
+        {
+            child.parent.removeChild(child, false);
+        }
+
+        this.children.splice(index, 0, child);
+        this.numChildren = this.children.length;
+
+        child.ctx = this.ctx;
+        child.stage = this;
+        child.parent = this;
+
+        if (child.isCreated === false)
+        {
+            child.create();
+            child.isCreated = true;
+        }
+
+        child.enable();
+
+        return this;
+    }
+
+    /**
+     * @overridden DOMElement.swapChildren
+     */
+    public swapChildren(child1:DisplayObject, child2:DisplayObject):any
+    {
+        const child1Index = this.children.indexOf(child1);
+        const child2Index = this.children.indexOf(child2);
+
+        this.addChildAt(child1, child2Index);
+        this.addChildAt(child2, child1Index);
+
+        return this;
+    }
+
+    /**
+     * @overridden DOMElement.getChildAt
+     */
+    public getChildAt(index:number):any
+    {
+        return &lt;any&gt;super.getChildAt(index);
+    }
+
+    /**
+     * @overridden DOMElement.removeChild
+     */
+    public removeChild(child:DisplayObject, destroy:boolean = true):any
+    {
+        const index = this.getChildIndex(child);
+        if (index !== -1)
+        {
+            // Removes the child object from the parent.
+            this.children.splice(index, 1);
+        }
+
+        this.numChildren = this.children.length;
+
+        if (destroy === true)
+        {
+            child.destroy();
+        }
+        else
+        {
+            child.disable();
+        }
+
+        child.ctx = null;
+        child.stage = null;
+        child.parent = null;
+
+        return this;
+    }
+
+    /**
+     * @overridden DOMElement.removeChildAt
+     */
+    public removeChildAt(index:number, destroy:boolean = true):any
+    {
+        this.removeChild(this.getChildAt(index), destroy);
+
+        return this;
+    }
+
+    /**
+     * @overridden DOMElement.removeChildren
+     */
+    public removeChildren(destroy:boolean = true):any
+    {
+        while (this.children.length &gt; 0)
+        {
+            this.removeChild(this.children.pop(), destroy);
+        }
+
+        return this;
+    }
+
+    public renderCanvas():any
+    {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+
+        for (let i:number = 0; i &lt; this.numChildren; i++)
+        {
+            this.children[i].renderCanvas();
+        }
+    }
+
+    public getMousePos(event:MouseEvent|JQueryEventObject):Point
+    {
+        const rect = this.canvas.getBoundingClientRect();
+
+        return new Point(event.clientX - rect.left, event.clientY - rect.top);
+    }
+
+    public getObjectUnderPoint(x:number, y:number):DisplayObject
+    {
+        let foundItem:DisplayObject = null;
+        let sprite:DisplayObject;
+
+        for (let i = this.numChildren - 1; i &gt;= 0; i--)
+        {
+            sprite = this.children[i];
+            if (sprite.visible === true &amp;&amp; sprite.mouseEnabled === true)
+            {
+                if (this.hitTest(sprite, x, y))
+                {
+                    foundItem = sprite;
+                    break;
+                }
+            }
+        }
+
+        return foundItem;
+    }
+
+    public getObjectsUnderPoint(x:number, y:number):Array&lt;DisplayObject&gt;
+    {
+        const list:Array&lt;DisplayObject&gt; = [];
+        let sprite:DisplayObject;
+
+        for (let i = this.numChildren - 1; i &gt;= 0; i--)
+        {
+            sprite = this.children[i];
+            if (this.hitTest(sprite, x, y))
+            {
+                list.push(sprite);
+            }
+        }
+        return list;
+    }
+
+    public hitTest(sprite:DisplayObject, mouseX:number, mouseY:number):boolean
+    {
+        if (mouseX &gt;= sprite.x &amp;&amp; mouseX &lt;= sprite.x + sprite.width &amp;&amp; mouseY &gt;= sprite.y &amp;&amp; mouseY &lt;= sprite.y + sprite.height)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    protected _onPointerDown(event:MouseEvent|JQueryEventObject):void
+    {
+        this._sendEvent(event);
+    }
+
+    protected _onPointerUp(event:MouseEvent|JQueryEventObject):void
+    {
+        this._sendEvent(event);
+    }
+
+    protected _onPointerMove(event:MouseEvent|JQueryEventObject):void
+    {
+        const displayObject:DisplayObject = this._sendEvent(event);
+
+        if (displayObject != null &amp;&amp; displayObject.useHandCursor === true &amp;&amp; displayObject.visible === true)
+        {
+            document.body.style.cursor = &#x27;pointer&#x27;;
+        }
+        else
+        {
+            document.body.style.cursor = &#x27;default&#x27;;
+        }
+    }
+
+    protected _onPointerOut(event:MouseEvent|JQueryEventObject):void
+    {
+        this._sendEvent(event);
+    }
+
+
+    protected _sendEvent(event:MouseEvent|JQueryEventObject):DisplayObject
+    {
+        const mousePos:Point = this.getMousePos(event);
+        let displayObject:DisplayObject = this.getObjectUnderPoint(mousePos.x, mousePos.y);
+
+        if (displayObject === null)
+        {
+            event.bubbles = true;
+            event.target = &lt;any&gt;this;
+            event.currentTarget = &lt;any&gt;this;
+            this.dispatchEvent(event);
+        }
+        else if (displayObject !== null &amp;&amp; displayObject instanceof DisplayObjectContainer &amp;&amp; (&lt;DisplayObjectContainer&gt;displayObject).mouseChildren === true)
+        {
+            event.currentTarget = &lt;any&gt;displayObject;
+
+            displayObject = this._getActualClickedOnChild(&lt;DisplayObjectContainer&gt;displayObject, mousePos.x, mousePos.y);
+            event.bubbles = true;
+            event.target = &lt;any&gt;displayObject;
+
+            displayObject.dispatchEvent(event);
+        }
+        else
+        {
+            event.bubbles = true;
+            event.target = &lt;any&gt;displayObject;
+            event.currentTarget = &lt;any&gt;this;
+
+            displayObject.dispatchEvent(event);
+        }
+
+        return displayObject;
+    }
+
+    protected _getActualClickedOnChild(displayObject:DisplayObjectContainer, x:number, y:number):any
+    {
+        let item;
+        let newX:number;
+        let newY:number;
+        if (displayObject.numChildren &gt; 0)
+        {
+            for (let i = displayObject.numChildren - 1; i &gt;= 0; i--)
+            {
+                item = displayObject.children[i];
+                if (item.visible === true)
+                {
+                    newX = x - item.parent.x;
+                    newY = y - item.parent.y;
+                    if (this.hitTest(item, newX, newY))
+                    {
+                        return this._getActualClickedOnChild(item, newX, newY);
+                    }
+                }
+            }
+        }
+        else
+        {
+            return displayObject;
+        }
+    }
+
+}
+
+export default CanvasElement;
+
+    </pre>
+</div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/vendor/jquery.min.js"></script>
+<script src="../assets/js/jquery-offscreen-trigger.js"></script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
