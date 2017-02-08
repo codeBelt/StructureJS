@@ -18,15 +18,16 @@ class App {
      */
     init() {
         // Create your views here
-        const asdf = new CheckoutViewModel({test: {id:-1}}, { expand: false });
-        console.log(`CheckoutViewModel`, asdf);
+        let checkoutViewModel = new CheckoutViewModel({test: {id:-1}}, { expand: false });
+        console.log(`1`, checkoutViewModel);
 
+        checkoutViewModel = <CheckoutViewModel>checkoutViewModel.clone();
+        console.log(`2`, checkoutViewModel);
 
+        checkoutViewModel = <CheckoutViewModel>checkoutViewModel.clone();
+        checkoutViewModel.update({pick: {id: 'asdfasdfas'}});
+        console.log(`3`, checkoutViewModel);
 
-
-        console.log(`!!!!!!! clone`);
-        const clone = asdf.clone();
-        console.log(`clone`, clone);
     }
 
 }

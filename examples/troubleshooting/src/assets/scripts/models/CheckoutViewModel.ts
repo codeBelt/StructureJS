@@ -22,6 +22,10 @@ class CheckoutViewModel extends BaseModel {
         }),
     ];
 
+    pick = new InputModel({
+        id: 'three',
+    });
+
     test = InputModel;
     testArray = [InputModel];
 

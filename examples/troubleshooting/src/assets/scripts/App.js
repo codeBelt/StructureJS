@@ -17,11 +17,13 @@ var App = (function () {
      */
     App.prototype.init = function () {
         // Create your views here
-        var asdf = new CheckoutViewModel_1["default"]({ test: { id: -1 } }, { expand: false });
-        console.log("CheckoutViewModel", asdf);
-        console.log("!!!!!!! clone");
-        var clone = asdf.clone();
-        console.log("clone", clone);
+        var checkoutViewModel = new CheckoutViewModel_1["default"]({ test: { id: -1 } }, { expand: false });
+        console.log("1", checkoutViewModel);
+        checkoutViewModel = checkoutViewModel.clone();
+        console.log("2", checkoutViewModel);
+        checkoutViewModel = checkoutViewModel.clone();
+        checkoutViewModel.update({ pick: { id: 'asdfasdfas' } });
+        console.log("3", checkoutViewModel);
     };
     return App;
 }());

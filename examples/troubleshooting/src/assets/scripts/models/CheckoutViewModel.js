@@ -30,6 +30,9 @@ var CheckoutViewModel = (function (_super) {
                 id: 'two'
             }),
         ];
+        _this.pick = new InputModel_1["default"]({
+            id: 'three'
+        });
         _this.test = InputModel_1["default"];
         _this.testArray = [InputModel_1["default"]];
         if (data) {
