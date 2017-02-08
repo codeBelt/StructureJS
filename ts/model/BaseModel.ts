@@ -149,6 +149,22 @@ class BaseModel extends BaseObject implements IBaseModel
             const isPropertyDataValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
             const isUpdateDataValueAnUninstantiatedBaseModel = (typeof updateData[0] === 'function' && updateData[0].IS_BASE_MODEL === true);
 
+            // if (isPropertyDataValueAnUninstantiatedBaseModel === false)
+            // {
+            //     this[propertyName] = updateData.map(data => this._updateData(null, data));
+            // }
+            // else if (isPropertyDataValueAnUninstantiatedBaseModel === true && isUpdateDataValueAnUninstantiatedBaseModel === false)
+            // {
+            //     const baseModelOrUndefined = this[propertyName][0];
+            //     this[propertyName] = updateData.map(data => this._updateData(baseModelOrUndefined, data));
+            // }
+            // else
+            // {
+            //     this[propertyName] = [];
+            // }
+
+
+
             // If the current data and the new data are both uninstantiated BaseModel we don't want to continue.
             if ((isPropertyDataValueAnUninstantiatedBaseModel === true && isUpdateDataValueAnUninstantiatedBaseModel === true) === false)
             {
@@ -187,18 +203,21 @@ class BaseModel extends BaseObject implements IBaseModel
 
         if (typeof propertyData === 'function' && propertyData.IS_BASE_MODEL === true)
         {
+            console.log(`1`);
             // If the propertyData is an instance of a BaseModel class and has not been created yet.
             // Instantiate it and pass in the updateData to the constructor.
             returnData = new propertyData(updateData, this.sjsOptions);
         }
         else if ((propertyData instanceof BaseModel) === true)
         {
+            console.log(`2`);
             // If propertyData is an instance of a BaseModel class and has already been created.
             // Call the update method and pass in the updateData.
             returnData = propertyData.update(updateData);
         }
         else
         {
+            console.log(`3`);
             // Else just return the updateData to the property.
             returnData = updateData;
         }
