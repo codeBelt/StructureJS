@@ -140,6 +140,7 @@ gulp.task('watch', (done) => {
     });
 
     // Watch and trigger tasks on file changes
+    gulp.watch('../../ts/**/*', ['buildScripts']);
     gulp.watch(env.DIR_SRC + '/assets/scripts/**/*', ['buildScripts']);
     gulp.watch(env.DIR_SRC + '/assets/styles/**/*', ['buildStyles']);
     gulp.watch(env.DIR_SRC + '/**/*.{hbs,html}', ['buildMarkup']);
