@@ -80,12 +80,11 @@ class BaseModel extends BaseObject implements IBaseModel
      * @static
      * @readonly
      */
-    public static IS_BASE_MODEL:boolean = true;
+    public static readonly IS_BASE_MODEL:boolean = true;
 
     /**
      * @property sjsOptions
      * @type {IBaseModelOptions}}
-     * @readonly
      * @public
      */
     protected sjsOptions:IBaseModelOptions = {
@@ -124,9 +123,9 @@ class BaseModel extends BaseObject implements IBaseModel
                 {
                     const propertyData = this[propertyName];
                     const updateData = data[propertyName];
-                    const currentData = (updateData === void 0) ? propertyData : updateData;
+                    const dataToUse = (updateData === void 0) ? propertyData : updateData;
 
-                    this._updatePropertyWithDataPassedIn(propertyName, currentData);
+                    this._updatePropertyWithDataPassedIn(propertyName, dataToUse);
                 }
             });
 
@@ -134,7 +133,7 @@ class BaseModel extends BaseObject implements IBaseModel
     }
 
     /**
-     * Add the updateData to the property
+     * Adds the updateData to the property
      *
      * @method _updatePropertyWithDataPassedIn
      * @param propertyName
@@ -168,47 +167,43 @@ class BaseModel extends BaseObject implements IBaseModel
     }
 
     /**
-     * TODO: YUIDoc_comment
-     *
      * @method _updateData
-     * @param keyValue
-     * @param newData
+     * @param propertyData
+     * @param updateData
      * @protected
      */
-    protected _updateData(keyValue:any, newData:any):any
+    protected _updateData(propertyData:any, updateData:any):any
     {
-        console.log(`_updateData`, keyValue, newData);
+        let returnData: any = null;
+        console.log(`_updateData`, propertyData, updateData);
         // debugger;
-        if (this.sjsOptions.expand === false && typeof newData === 'function' && newData.IS_BASE_MODEL === true)
+        if (this.sjsOptions.expand === false && typeof updateData === 'function' && updateData.IS_BASE_MODEL === true)
         {
-            // If newData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
+            // If updateData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
             // so it cleans up the BaseModel functions on the property.
             // To create empty model(s) pass { expand: true } for the options.
             return null;
         }
 
-        if (typeof keyValue === 'function' && keyValue.IS_BASE_MODEL === true)
+        if (typeof propertyData === 'function' && propertyData.IS_BASE_MODEL === true)
         {
-            console.log(`1`);
-            // If the property is an instance of a BaseModel class and has not been created yet.
-            // Instantiate it and pass in the newData to the constructor.
-            keyValue = new keyValue(newData, this.sjsOptions);
+            // If the propertyData is an instance of a BaseModel class and has not been created yet.
+            // Instantiate it and pass in the updateData to the constructor.
+            returnData = new propertyData(updateData, this.sjsOptions);
         }
-        else if ((keyValue instanceof BaseModel) === true)
+        else if ((propertyData instanceof BaseModel) === true)
         {
-            console.log(`2`);
-            // If property is an instance of a BaseModel class and has already been created.
-            // Call the update method and pass in the newData.
-            keyValue.update(newData);
+            // If propertyData is an instance of a BaseModel class and has already been created.
+            // Call the update method and pass in the updateData.
+            returnData = propertyData.update(updateData);
         }
         else
         {
-            console.log(`3`);
-            // Else just assign the newData to the property.
-            keyValue = newData;
+            // Else just return the updateData to the property.
+            returnData = updateData;
         }
 
-        return keyValue;
+        return returnData;
     }
 
     /**
@@ -218,7 +213,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {any}
      * @public
      * @example
-     *     let obj = carModel.toJSON();
+     *     const obj = carModel.toJSON();
      */
     public toJSON():any
     {
@@ -233,7 +228,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {string}
      * @public
      * @example
-     *     let str = carModel.toJSONString();
+     *     const str = carModel.toJSONString();
      */
     public toJSONString():string
     {
@@ -247,8 +242,8 @@ class BaseModel extends BaseObject implements IBaseModel
      * @param json {string}
      * @public
      * @example
-     *      let str = '{"make":"Tesla","model":"Model S","year":2014}'
-     *      let carModel = new CarModel();
+     *      const str = '{"make":"Tesla","model":"Model S","year":2014}'
+     *      const carModel = new CarModel();
      *      carModel.fromJSON(str);
      */
     public fromJSON(json:string):any
@@ -267,7 +262,7 @@ class BaseModel extends BaseObject implements IBaseModel
      * @returns {BaseModel}
      * @public
      * @example
-     *     let clone = carModel.clone();
+     *     const clone = carModel.clone();
      */
     public clone():BaseModel
     {
@@ -275,6 +270,7 @@ class BaseModel extends BaseObject implements IBaseModel
 
         return clonedBaseModel;
     }
+
 }
 
 export default BaseModel;
