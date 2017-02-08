@@ -143,18 +143,25 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     protected _updatePropertyWithNewData(propertyName:any, newData:any):void
     {
+        console.log(`propertyName`, propertyName);
         // If the current property on the model is an array and the newData is an array.
         if ((this[propertyName] instanceof Array === true) && (newData instanceof Array === true))
         {
             const isCurrentValueAnUninstantiatedBaseModel = (typeof this[propertyName][0] === 'function' && this[propertyName][0].IS_BASE_MODEL === true);
             const isNewValueAnUninstantiatedBaseModel = (typeof newData[0] === 'function' && newData[0].IS_BASE_MODEL === true);
-
+// console.log(`isCurrentValueAnUninstantiatedBaseModel`, isCurrentValueAnUninstantiatedBaseModel);
+// console.log(`isNewValueAnUninstantiatedBaseModel`, isNewValueAnUninstantiatedBaseModel);
             // If the current data and the new data are both uninstantiated BaseModel we don't want to continue.
             if ((isCurrentValueAnUninstantiatedBaseModel === true && isNewValueAnUninstantiatedBaseModel === true) === false)
             {
+                // console.log(`propertyName`, propertyName);
                 const baseModelOrUndefined = this[propertyName][0];
-
+console.log(`baseModelOrUndefined`, baseModelOrUndefined);
+console.log(`newData`, newData);
+// debugger;
                 this[propertyName] = newData.map(data => this._updateData(baseModelOrUndefined, data));
+                // console.log(`this[propertyName]`, this[propertyName]);
+                // debugger;
             }
             else
             {
@@ -177,6 +184,8 @@ class BaseModel extends BaseObject implements IBaseModel
      */
     protected _updateData(keyValue:any, newData:any):any
     {
+        console.log(`_updateData`, keyValue, newData);
+        // debugger;
         if (this.sjsOptions.expand === false && typeof newData === 'function' && newData.IS_BASE_MODEL === true)
         {
             // If newData is a function and has an IS_BASE_MODEL static property then it must be a child model and we need to return null
@@ -187,18 +196,21 @@ class BaseModel extends BaseObject implements IBaseModel
 
         if (typeof keyValue === 'function' && keyValue.IS_BASE_MODEL === true)
         {
+            console.log(`1`);
             // If the property is an instance of a BaseModel class and has not been created yet.
             // Instantiate it and pass in the newData to the constructor.
             keyValue = new keyValue(newData, this.sjsOptions);
         }
         else if ((keyValue instanceof BaseModel) === true)
         {
+            console.log(`2`);
             // If property is an instance of a BaseModel class and has already been created.
             // Call the update method and pass in the newData.
             keyValue.update(newData);
         }
         else
         {
+            console.log(`3`);
             // Else just assign the newData to the property.
             keyValue = newData;
         }
