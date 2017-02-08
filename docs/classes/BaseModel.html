@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.15.2</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -76,8 +76,6 @@
                 <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
-            
-                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
             
                 <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
             
@@ -162,7 +160,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l17"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:17</code></a>
+            Defined in: <a href="../files/ts_model_BaseModel.ts.html#l6"><code>ts&#x2F;model&#x2F;BaseModel.ts:6</code></a>
         </div>
     
 
@@ -222,8 +220,22 @@ Also in the class you inherit BaseModel from you can override the update method 
 
         <ul class="index-list properties extends">
             
+                <li class="index-item property public">
+                    <a href="#property_IS_BASE_MODEL">IS_BASE_MODEL</a>
+
+                    
+                        <span class="flag static">static</span>
+                    
+                </li>
+            
                 <li class="index-item property public inherited">
                     <a href="#property_sjsId">sjsId</a>
+
+                    
+                </li>
+            
+                <li class="index-item property public">
+                    <a href="#property_sjsOptions">sjsOptions</a>
 
                     
                 </li>
@@ -254,14 +266,14 @@ Also in the class you inherit BaseModel from you can override the update method 
 
             
                 <li class="index-item method protected">
-                    <a href="#method__setData">_setData</a>
+                    <a href="#method__updateData">_updateData</a>
 
                     
                     
                 </li>
             
                 <li class="index-item method protected">
-                    <a href="#method__updateData">_updateData</a>
+                    <a href="#method__updatePropertyWithDataPassedIn">_updatePropertyWithDataPassedIn</a>
 
                     
                     
@@ -331,6 +343,60 @@ Also in the class you inherit BaseModel from you can override the update method 
         <h2>Properties</h2>
 
         
+            <a name="property_IS_BASE_MODEL" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>IS_BASE_MODEL</code>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+        <span class="flag static">static</span>
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/ts_model_BaseModel.ts.html#l74"><code>ts&#x2F;model&#x2F;BaseModel.ts:74</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            <p>This property helps distinguish a BaseModel from other functions.</p>
+
+        </div>
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
             <a name="property_sjsId" class="anchor-link"></a>
 <div class="property item public inherited">
     <h3 class="name"><code>sjsId</code>
@@ -356,7 +422,7 @@ Also in the class you inherit BaseModel from you can override the update method 
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_BaseObject.js.html#l24"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:24</code></a>
+        <a href="../files/ts_BaseObject.ts.html#l15"><code>ts&#x2F;BaseObject.ts:15</code></a>
         
         </p>
 
@@ -373,6 +439,57 @@ Also in the class you inherit BaseModel from you can override the update method 
 
         
             <p class="default"><strong>Default:</strong> <span class="default-value">null</span></p>
+        
+
+        
+
+        
+    </div>
+</div>
+
+        
+            <a name="property_sjsOptions" class="anchor-link"></a>
+<div class="property item public">
+    <h3 class="name"><code>sjsOptions</code>
+    <span class="type">IBaseModelOptions</span>
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    </h3>
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/ts_model_BaseModel.ts.html#l85"><code>ts&#x2F;model&#x2F;BaseModel.ts:85</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="extended-detail">
+        <div class="description">
+            
+        </div>
+
         
 
         
@@ -409,6 +526,12 @@ Also in the class you inherit BaseModel from you can override the update method 
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code class="optional">[opts]</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -440,7 +563,7 @@ Also in the class you inherit BaseModel from you can override the update method 
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l17"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:17</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l6"><code>ts&#x2F;model&#x2F;BaseModel.ts:6</code></a>
         
         </p>
 
@@ -472,7 +595,24 @@ Also in the class you inherit BaseModel from you can override the update method 
                         
 
                         <div class="param-description">
-                            <p>Provide a way to update the  Base Model upon initialization.</p>
+                            <p>Provide a way to update the base model upon initialization.</p>
+
+                        </div>
+
+                        
+                    </li>
+                
+                    <li class="param">
+                        
+                            <code class="param-name optional">[opts]</code>
+                            <span class="type">expand:boolean</span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
+                        
+
+                        
+
+                        <div class="param-description">
+                            <p>} Options for the base model.</p>
 
                         </div>
 
@@ -520,8 +660,8 @@ class CarModel extends BaseModel {
     // If you have an array of data and want them assign to a BaseModel.
     feature = [FeatureModel];
 
-    constructor(data) {
-        super();
+    constructor(data = {}, opts = {}) {
+        super(opts);
 
         if (data) {
             this.update(data);
@@ -552,9 +692,9 @@ class CarModel extends BaseModel {
         <h2>Methods</h2>
 
         
-            <a name="method__setData" class="anchor-link"></a>
+            <a name="method__updateData" class="anchor-link"></a>
 <div class="method item protected">
-    <h3 class="name"><code>_setData</code>
+    <h3 class="name"><code>_updateData</code>
 
     
         <div class="args">
@@ -562,13 +702,13 @@ class CarModel extends BaseModel {
             
                 <li class="arg">
                     
-                        <code>key</code>
+                        <code>propertyData</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>data</code>
+                        <code>updateData</code>
                     
                 </li>
             
@@ -605,7 +745,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l117"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:117</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l173"><code>ts&#x2F;model&#x2F;BaseModel.ts:173</code></a>
         
         </p>
 
@@ -618,8 +758,7 @@ class CarModel extends BaseModel {
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
-
+            
         </div>
 
         
@@ -630,8 +769,8 @@ class CarModel extends BaseModel {
                 
                     <li class="param">
                         
-                            <code class="param-name">key</code>
-                            <span class="type">Object</span>
+                            <code class="param-name">propertyData</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -645,8 +784,8 @@ class CarModel extends BaseModel {
                 
                     <li class="param">
                         
-                            <code class="param-name">data</code>
-                            <span class="type">Object</span>
+                            <code class="param-name">updateData</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -669,9 +808,9 @@ class CarModel extends BaseModel {
 </div>
 
         
-            <a name="method__updateData" class="anchor-link"></a>
+            <a name="method__updatePropertyWithDataPassedIn" class="anchor-link"></a>
 <div class="method item protected">
-    <h3 class="name"><code>_updateData</code>
+    <h3 class="name"><code>_updatePropertyWithDataPassedIn</code>
 
     
         <div class="args">
@@ -679,13 +818,13 @@ class CarModel extends BaseModel {
             
                 <li class="arg">
                     
-                        <code>keyValue</code>
+                        <code>propertyName</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>data</code>
+                        <code>updateData</code>
                     
                 </li>
             
@@ -722,7 +861,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l145"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:145</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l135"><code>ts&#x2F;model&#x2F;BaseModel.ts:135</code></a>
         
         </p>
 
@@ -735,7 +874,7 @@ class CarModel extends BaseModel {
     <div class="extended-detail">
 
         <div class="description">
-            <p>TODO: YUIDoc_comment</p>
+            <p>Adds the updateData to the property</p>
 
         </div>
 
@@ -747,8 +886,8 @@ class CarModel extends BaseModel {
                 
                     <li class="param">
                         
-                            <code class="param-name">keyValue</code>
-                            <span class="type">Object</span>
+                            <code class="param-name">propertyName</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -762,8 +901,8 @@ class CarModel extends BaseModel {
                 
                     <li class="param">
                         
-                            <code class="param-name">data</code>
-                            <span class="type">Object</span>
+                            <code class="param-name">updateData</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -827,7 +966,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l216"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:216</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l265"><code>ts&#x2F;model&#x2F;BaseModel.ts:265</code></a>
         
         </p>
 
@@ -865,7 +1004,7 @@ class CarModel extends BaseModel {
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>let clone = carModel.clone();</code></pre>
+                    <pre class="code prettyprint"><code>const clone = carModel.clone();</code></pre>
 
                 </div>
             </div>
@@ -912,7 +1051,7 @@ class CarModel extends BaseModel {
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_BaseObject.js.html#l52"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:52</code></a>
+        <a href="../files/ts_BaseObject.ts.html#l49"><code>ts&#x2F;BaseObject.ts:49</code></a>
         
         </p>
 
@@ -1018,7 +1157,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l200"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:200</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l245"><code>ts&#x2F;model&#x2F;BaseModel.ts:245</code></a>
         
         </p>
 
@@ -1044,7 +1183,7 @@ on other objects before calling the super.</p>
                     <li class="param">
                         
                             <code class="param-name">json</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1067,8 +1206,8 @@ on other objects before calling the super.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> let str = &#39;{"make":"Tesla","model":"Model S","year":2014}&#39;
- let carModel = new CarModel();
+                    <pre class="code prettyprint"><code> const str = &#39;{&quot;make&quot;:&quot;Tesla&quot;,&quot;model&quot;:&quot;Model S&quot;,&quot;year&quot;:2014}&#39;
+ const carModel = new CarModel();
  carModel.fromJSON(str);</code></pre>
 
                 </div>
@@ -1088,7 +1227,7 @@ on other objects before calling the super.</p>
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1116,7 +1255,7 @@ on other objects before calling the super.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_BaseObject.js.html#l37"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;BaseObject.js:37</code></a>
+        <a href="../files/ts_BaseObject.ts.html#l32"><code>ts&#x2F;BaseObject.ts:32</code></a>
         
         </p>
 
@@ -1142,7 +1281,7 @@ on other objects before calling the super.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                         <p>Returns the class name.</p>
 
@@ -1209,7 +1348,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l175"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:175</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l216"><code>ts&#x2F;model&#x2F;BaseModel.ts:216</code></a>
         
         </p>
 
@@ -1247,7 +1386,7 @@ someClass.getQualifiedClassName();
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>let obj = carModel.toJSON();</code></pre>
+                    <pre class="code prettyprint"><code>const obj = carModel.toJSON();</code></pre>
 
                 </div>
             </div>
@@ -1266,7 +1405,7 @@ someClass.getQualifiedClassName();
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1297,7 +1436,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l188"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:188</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l231"><code>ts&#x2F;model&#x2F;BaseModel.ts:231</code></a>
         
         </p>
 
@@ -1323,7 +1462,7 @@ someClass.getQualifiedClassName();
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                     
                 </div>
@@ -1335,7 +1474,7 @@ someClass.getQualifiedClassName();
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>let str = carModel.toJSONString();</code></pre>
+                    <pre class="code prettyprint"><code>const str = carModel.toJSONString();</code></pre>
 
                 </div>
             </div>
@@ -1354,7 +1493,7 @@ someClass.getQualifiedClassName();
             
                 <li class="arg">
                     
-                        <code>data</code>
+                        <code class="optional">[data]</code>
                     
                 </li>
             
@@ -1391,7 +1530,7 @@ someClass.getQualifiedClassName();
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_model_BaseModel.js.html#l87"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;model&#x2F;BaseModel.js:87</code></a>
+        <a href="../files/ts_model_BaseModel.ts.html#l101"><code>ts&#x2F;model&#x2F;BaseModel.ts:101</code></a>
         
         </p>
 
@@ -1416,14 +1555,16 @@ someClass.getQualifiedClassName();
                 
                     <li class="param">
                         
-                            <code class="param-name">data</code>
-                            <span class="type">Any</span>
+                            <code class="param-name optional">[data]</code>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                            <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
                         
 
                         <div class="param-description">
-                             
+                            <p>{any}</p>
+
                         </div>
 
                         

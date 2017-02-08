@@ -16,7 +16,7 @@
             <div class="project-title">
                 
                 
-                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.14.3</span>
+                    <h1 class="project-name">StructureJS</h1> <span class="project-version">0.15.2</span>
                 
                 
                     <p class="description">A class based utility library for building modular and scalable web platform applications. Features opt-in classes and utilities which provide a solid foundation and toolset to build your next project.</p>
@@ -76,8 +76,6 @@
                 <li><a class="type" href="../classes/EventBroker.html">EventBroker</a></li>
             
                 <li><a class="type" href="../classes/EventDispatcher.html">EventDispatcher</a></li>
-            
-                <li><a class="type" href="../classes/Extend.html">Extend</a></li>
             
                 <li><a class="type" href="../classes/ImageLoader.html">ImageLoader</a></li>
             
@@ -158,7 +156,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l10"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:10</code></a>
+            Defined in: <a href="../files/ts_util_Util.ts.html#l1"><code>ts&#x2F;util&#x2F;Util.ts:1</code></a>
         </div>
     
 
@@ -364,7 +362,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l322"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:322</code></a>
+        <a href="../files/ts_util_Util.ts.html#l12"><code>ts&#x2F;util&#x2F;Util.ts:12</code></a>
         
         </p>
 
@@ -460,7 +458,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l269"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:269</code></a>
+        <a href="../files/ts_util_Util.ts.html#l311"><code>ts&#x2F;util&#x2F;Util.ts:311</code></a>
         
         </p>
 
@@ -524,24 +522,24 @@
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code>           class Flies {
-               fly() {
-                   alert(&#39;Is it a bird? Is it a plane?&#39;);
-               }
+                    <pre class="code prettyprint"><code>class Flies {
+           fly() {
+               alert(&#39;Is it a bird? Is it a plane?&#39;);
            }
+       }
 
-           class Climbs {
-               climb() {
-                   alert(&#39;My spider-sense is tingling.&#39;);
-               }
+class Climbs {
+           climb() {
+               alert(&#39;My spider-sense is tingling.&#39;);
            }
+       }
 
-           class HorseflyWoman implements Climbs, Flies {
-               climb: () =&gt; void;
-               fly: () =&gt; void;
-           }
+class HorseflyWoman implements Climbs, Flies {
+           climb: () =&gt; void;
+           fly: () =&gt; void;
+       }
 
-           Util.applyMixins(HorseflyWoman, [Climbs, Flies]);</code></pre>
+Util.applyMixins(HorseflyWoman, [Climbs, Flies]);</code></pre>
 
                 </div>
             </div>
@@ -603,7 +601,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l123"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:123</code></a>
+        <a href="../files/ts_util_Util.ts.html#l129"><code>ts&#x2F;util&#x2F;Util.ts:129</code></a>
         
         </p>
 
@@ -629,7 +627,7 @@
                     <li class="param">
                         
                             <code class="param-name">obj</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -743,7 +741,7 @@
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l230"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:230</code></a>
+        <a href="../files/ts_util_Util.ts.html#l257"><code>ts&#x2F;util&#x2F;Util.ts:257</code></a>
         
         </p>
 
@@ -770,7 +768,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">callback</code>
-                            <span class="type">Function</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
                         
 
                         
@@ -786,7 +784,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">wait</code>
-                            <span class="type">Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -802,13 +800,13 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">immediate</code>
-                            <span class="type">Boolean</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
                         
 
                         
 
                         <div class="param-description">
-                            <p>Pass true for the immediate parameter to cause debounce to trigger the function on the leading instead of the trailing edge of the wait interval. Useful in circumstances like preventing accidental double-clicks on a "submit" button from firing a second time.</p>
+                            <p>Pass true for the immediate parameter to cause debounce to trigger the function on the leading instead of the trailing edge of the wait interval. Useful in circumstances like preventing accidental double-clicks on a &quot;submit&quot; button from firing a second time.</p>
 
                         </div>
 
@@ -910,7 +908,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l48"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:48</code></a>
+        <a href="../files/ts_util_Util.ts.html#l56"><code>ts&#x2F;util&#x2F;Util.ts:56</code></a>
         
         </p>
 
@@ -936,7 +934,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">object</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -952,7 +950,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">value</code>
-                            <span class="type">String | Array.<string></span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | Array.<string></span>
                         
 
                         
@@ -1023,7 +1021,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 
     
         <span class="returns-inline">
-            <span class="type">String</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1054,7 +1052,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l190"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:190</code></a>
+        <a href="../files/ts_util_Util.ts.html#l215"><code>ts&#x2F;util&#x2F;Util.ts:215</code></a>
         
         </p>
 
@@ -1103,7 +1101,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">String</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                         <p>Returns the name of the function or object.</p>
 
@@ -1195,7 +1193,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l98"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:98</code></a>
+        <a href="../files/ts_util_Util.ts.html#l100"><code>ts&#x2F;util&#x2F;Util.ts:100</code></a>
         
         </p>
 
@@ -1221,7 +1219,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">object</code>
-                            <span class="type">Object</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
                         
 
                         
@@ -1237,7 +1235,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">oldName</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1252,7 +1250,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">newName</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                         
 
                         
@@ -1322,7 +1320,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 
     
         <span class="returns-inline">
-            <span class="type">Boolean</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -1355,7 +1353,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l168"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:168</code></a>
+        <a href="../files/ts_util_Util.ts.html#l190"><code>ts&#x2F;util&#x2F;Util.ts:190</code></a>
         
         </p>
 
@@ -1381,7 +1379,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name">strNum</code>
-                            <span class="type">String | Number</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
                         
 
                         
@@ -1404,7 +1402,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Boolean</span>:
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                         
                     
                 </div>
@@ -1416,7 +1414,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                 <h4>Example:</h4>
 
                 <div class="example-content">
-                    <pre class="code prettyprint"><code> Util.toBoolean("TRUE");
+                    <pre class="code prettyprint"><code> Util.toBoolean(&quot;TRUE&quot;);
  // true
 
  Util.toBoolean(0);
@@ -1483,7 +1481,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l305"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:305</code></a>
+        <a href="../files/ts_util_Util.ts.html#l349"><code>ts&#x2F;util&#x2F;Util.ts:349</code></a>
         
         </p>
 
@@ -1567,7 +1565,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
 
     
         <span class="returns-inline">
-            <span class="type">Init | String</span>
+            <span class="type">Init | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
         </span>
     
 
@@ -1600,7 +1598,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
             
         
         
-        <a href="../files/_Users_rsavian_Sites_StructureJS_js_util_Util.js.html#l23"><code>&#x2F;Users&#x2F;rsavian&#x2F;Sites&#x2F;StructureJS&#x2F;js&#x2F;util&#x2F;Util.js:23</code></a>
+        <a href="../files/ts_util_Util.ts.html#l27"><code>ts&#x2F;util&#x2F;Util.ts:27</code></a>
         
         </p>
 
@@ -1626,7 +1624,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                     <li class="param">
                         
                             <code class="param-name optional">[prefix]</code>
-                            <span class="type">String</span>
+                            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                             <span class="flag optional" title="This parameter is optional.">optional</span>
                         
 
@@ -1651,7 +1649,7 @@ wait milliseconds have elapsed since the last time it was invoked.</p>
                 <div class="returns-description">
                     
                         
-                            <span class="type">Init | String</span>:
+                            <span class="type">Init | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                         
                         <p>Returns the unique identifier.</p>
 

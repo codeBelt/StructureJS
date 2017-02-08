@@ -17,7 +17,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "DisplayObjectContainer",
         "EventBroker",
         "EventDispatcher",
-        "Extend",
         "ImageLoader",
         "LoaderEvent",
         "LocalStorageEvent",
