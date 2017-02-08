@@ -177,13 +177,14 @@ var __extends = (this && this.__extends) || function (d, b) {
                 // Instantiate it and pass in the updateData to the constructor.
                 returnData = new propertyData(updateData, this.sjsOptions);
             }
+            else if ((updateData instanceof BaseModel) === true) {
+                returnData = updateData.clone();
+            }
             else if ((propertyData instanceof BaseModel) === true) {
                 // If propertyData is an instance of a BaseModel class and has already been created.
                 // Call the update method and pass in the updateData.
-                returnData = propertyData.update(updateData);
-            }
-            else if ((updateData instanceof BaseModel) === true) {
-                returnData = updateData.clone();
+                propertyData.update(updateData);
+                returnData = propertyData;
             }
             else {
                 // Else just return the updateData to the property.

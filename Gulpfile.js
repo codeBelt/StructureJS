@@ -73,4 +73,4 @@ gulp.task('test', () => {
 });
 
 gulp.task('default', ['clean', 'ts']);
-gulp.task('release', ['default', 'docs']);
+gulp.task('release', ['default']);
