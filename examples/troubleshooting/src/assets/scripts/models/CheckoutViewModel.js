@@ -17,11 +17,6 @@ var CheckoutViewModel = (function (_super) {
         if (data === void 0) { data = {}; }
         if (opts === void 0) { opts = {}; }
         var _this = _super.call(this, opts) || this;
-        /**
-         * @property pickHowOptions
-         * @type {Array<{}>}
-         * @public
-         */
         _this.pickHowOptions = [
             new InputModel_1["default"]({
                 id: 'one'

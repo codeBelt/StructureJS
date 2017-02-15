@@ -8,11 +8,6 @@ import InputModel from './form/InputModel';
  **/
 class CheckoutViewModel extends BaseModel {
 
-    /**
-     * @property pickHowOptions
-     * @type {Array<{}>}
-     * @public
-     */
     pickHowOptions = [
         new InputModel({
             id: 'one',

@@ -1,5 +1,5 @@
 "use strict";
-var CheckoutViewModel_1 = require("./models/CheckoutViewModel");
+var GuestViewModel_1 = require("./models/GuestViewModel");
 /**
  * Initial application setup. Runs once upon every page load.
  *
@@ -17,13 +17,19 @@ var App = (function () {
      */
     App.prototype.init = function () {
         // Create your views here
-        var checkoutViewModel = new CheckoutViewModel_1["default"]({ test: { id: -1 } }, { expand: false });
-        console.log("1", checkoutViewModel);
-        checkoutViewModel = checkoutViewModel.clone();
-        console.log("2", checkoutViewModel);
-        checkoutViewModel = checkoutViewModel.clone();
-        checkoutViewModel.update({ pick: { id: 'asdfasdfas' } });
-        console.log("3", checkoutViewModel);
+        // let checkoutViewModel = new CheckoutViewModel({test: {id:-1}}, { expand: false });
+        // console.log(`1`, checkoutViewModel);
+        //
+        // checkoutViewModel = <CheckoutViewModel>checkoutViewModel.clone();
+        // console.log(`2`, checkoutViewModel);
+        //
+        // checkoutViewModel = <CheckoutViewModel>checkoutViewModel.clone();
+        // checkoutViewModel.update({pick: {id: 'asdfasdfas'}});
+        // console.log(`3`, checkoutViewModel);
+        var guestViewModel = new GuestViewModel_1["default"]();
+        guestViewModel.validate();
+        console.log("guestViewModel", guestViewModel);
+        console.log("clone", guestViewModel.clone());
     };
     return App;
 }());

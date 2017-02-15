@@ -52,7 +52,7 @@
   },
   "babel": {
     "presets": [
-      "es2015-riot"
+      "es2015"
     ],
     "plugins": [
       "transform-class-properties",
