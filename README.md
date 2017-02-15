@@ -252,6 +252,8 @@ _onClickHandler(event) {
 
 ## Release History
 
+ * 2017-02-15 v0.15.4 BaseModel - remove logic that was cloning children BaseModel's.
+ 
  * 2017-02-08 v0.15.3 BaseModel - Wasn't really fixed. Now it is fixed. Fingers crossed!
  
  * 2017-02-08 v0.15.2 BaseModel - Fixed issue with arrays having the same data for every item in the array when instantiated directly on the property. Fixed issue with child models not actually being cloned into new objects when .clone() is called on the parent model. 
