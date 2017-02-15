@@ -194,10 +194,6 @@ class BaseModel extends BaseObject implements IBaseModel
             // Instantiate it and pass in the updateData to the constructor.
             returnData = new propertyData(updateData, this.sjsOptions);
         }
-        else if ((updateData instanceof BaseModel) === true)
-        {
-            returnData = updateData.clone();
-        }
         else if ((propertyData instanceof BaseModel) === true)
         {
             // If propertyData is an instance of a BaseModel class and has already been created.
