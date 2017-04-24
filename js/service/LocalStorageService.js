@@ -24,9 +24,7 @@ var __extends = (this && this.__extends) || (function () {
     var BaseModel_1 = require("../model/BaseModel");
     var LocalStorageFallback = (function () {
         function LocalStorageFallback() {
-            this._data = null;
-            window['StructureJS_localStorageFallback'] = window['StructureJS_localStorageFallback'] || {};
-            this._data = window['StructureJS_localStorageFallback'];
+            this._data = {};
             console.warn("window.localStorage is not working. StructureJS LocalStorageService will use an in memory version.");
         }
         LocalStorageFallback.prototype.setItem = function (key, value) {
@@ -96,12 +94,10 @@ var __extends = (this && this.__extends) || (function () {
             _this._namespace = namespace;
             try {
                 _this._localStorage = window.localStorage;
-                var test = 'isLocalStorageSupported';
-                _this._localStorage.setItem(test, test);
-                _this._localStorage.removeItem(test);
             }
             catch (error) {
-                _this._localStorage = new LocalStorageFallback();
+                window['StructureJS_localStorageServiceFallback'] = window['StructureJS_localStorageServiceFallback'] || new LocalStorageFallback();
+                _this._localStorage = window['StructureJS_localStorageServiceFallback'];
             }
             window.addEventListener('storage', _this._onLocalStorageEvent.bind(_this));
             return _this;
