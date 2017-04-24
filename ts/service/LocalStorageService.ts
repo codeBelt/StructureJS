@@ -4,9 +4,13 @@ import BaseModel from '../model/BaseModel';
 
 class LocalStorageFallback {
 
-    private _data:any = window['sjsLocalStorageFallback'] = {};
+    private _data:any = null;
 
     constructor() {
+        window['StructureJS_localStorageFallback'] = window['StructureJS_localStorageFallback'] || {};
+
+        this._data = window['StructureJS_localStorageFallback'];
+
         console.warn(`window.localStorage is not working. StructureJS LocalStorageService will use an in memory version.`);
     }
 
@@ -89,10 +93,7 @@ class LocalStorageService extends EventDispatcher
             this._localStorage.setItem(test, test);
             this._localStorage.removeItem(test);
         } catch (error) {
-            // Fix if multiple
-            window['StructureJS_localStorageServiceFallback'] = window['StructureJS_localStorageServiceFallback'] || new LocalStorageFallback();
-
-            this._localStorage = window['StructureJS_localStorageServiceFallback'];
+            this._localStorage = new LocalStorageFallback();
         }
 
         window.addEventListener('storage', this._onLocalStorageEvent.bind(this));
