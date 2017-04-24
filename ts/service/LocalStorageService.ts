@@ -4,7 +4,7 @@ import BaseModel from '../model/BaseModel';
 
 class LocalStorageFallback {
 
-    private _data:any = {};
+    private _data:any = window['sjsLocalStorageFallback'] = {};
 
     constructor() {
         console.warn(`window.localStorage is not working. StructureJS LocalStorageService will use an in memory version.`);
@@ -83,7 +83,13 @@ class LocalStorageService extends EventDispatcher
 
         try {
             this._localStorage = window.localStorage;
+
+            const test = 'isLocalStorageSupported';
+
+            this._localStorage.setItem(test, test);
+            this._localStorage.removeItem(test);
         } catch (error) {
+            // Fix if multiple
             window['StructureJS_localStorageServiceFallback'] = window['StructureJS_localStorageServiceFallback'] || new LocalStorageFallback();
 
             this._localStorage = window['StructureJS_localStorageServiceFallback'];
