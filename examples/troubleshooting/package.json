@@ -43,7 +43,7 @@
     "time-require": "0.1.2",
     "tsify": "3.0.1",
     "tslint": "4.4.2",
-    "typescript": "2.1.5",
+    "typescript": "^2.2.2",
     "vinyl-source-stream": "1.1.0",
     "yargs": "6.6.0"
   },
