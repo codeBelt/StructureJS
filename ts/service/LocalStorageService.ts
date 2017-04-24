@@ -77,7 +77,7 @@ class LocalStorageService extends EventDispatcher
      * @type {Storage}
      * @protected
      */
-    protected _localStorage:Storage = null;
+    protected _localStorage:Storage | LocalStorageFallback = null;
 
     constructor(namespace:string = '')
     {
