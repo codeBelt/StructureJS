@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * A helper class that deals with dates.
      *
@@ -99,6 +100,5 @@
      *      // 'Feb'
      */
     DateUtil.SHORT_MONTH_LABELS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = DateUtil;
 });

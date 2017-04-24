@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var EventDispatcher_1 = require("./EventDispatcher");
     var BaseEvent_1 = require("./BaseEvent");
     /**
@@ -289,6 +290,5 @@
      * @static
      */
     EventBroker._waitForList = [];
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = EventBroker;
 });

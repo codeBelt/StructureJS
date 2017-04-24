@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var StringUtil_1 = require("../util/StringUtil");
     var RouterEvent_1 = require("../event/RouterEvent");
     var Route_1 = require("../model/Route");
@@ -741,6 +742,5 @@
      *     Router.allowMultipleMatches = false;
      */
     Router.allowMultipleMatches = true;
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Router;
 });

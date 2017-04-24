@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * A Utility class that has several static methods to assist in development.
      *
@@ -316,6 +317,5 @@
      * @static
      */
     Util._idCounter = 0;
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Util;
 });

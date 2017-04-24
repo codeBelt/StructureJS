@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var EventDispatcher_1 = require("../event/EventDispatcher");
     var BaseEvent_1 = require("../event/BaseEvent");
     var Util_1 = require("../util/Util");
@@ -386,6 +387,5 @@
      * @static
      */
     BrowserUtil.isEnabled = false;
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BrowserUtil;
 });

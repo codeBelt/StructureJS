@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var ApplicationCacheEvent_1 = require("../event/ApplicationCacheEvent");
     var EventDispatcher_1 = require("../event/EventDispatcher");
     /**
@@ -269,6 +270,5 @@
      * @static
      */
     ApplicationCacheService.isEnabled = false;
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = ApplicationCacheService;
 });

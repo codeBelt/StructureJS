@@ -1,8 +1,13 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 (function (factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         var v = factory(require, exports);
@@ -13,12 +18,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var LocalStorageEvent_1 = require("../event/LocalStorageEvent");
     var EventDispatcher_1 = require("../event/EventDispatcher");
     var BaseModel_1 = require("../model/BaseModel");
     var LocalStorageFallback = (function () {
         function LocalStorageFallback() {
-            this._data = {};
+            this._data = null;
+            window['StructureJS_localStorageFallback'] = window['StructureJS_localStorageFallback'] || {};
+            this._data = window['StructureJS_localStorageFallback'];
             console.warn("window.localStorage is not working. StructureJS LocalStorageService will use an in memory version.");
         }
         LocalStorageFallback.prototype.setItem = function (key, value) {
@@ -88,10 +96,12 @@ var __extends = (this && this.__extends) || function (d, b) {
             _this._namespace = namespace;
             try {
                 _this._localStorage = window.localStorage;
+                var test = 'isLocalStorageSupported';
+                _this._localStorage.setItem(test, test);
+                _this._localStorage.removeItem(test);
             }
             catch (error) {
-                window['StructureJS_localStorageServiceFallback'] = window['StructureJS_localStorageServiceFallback'] || new LocalStorageFallback();
-                _this._localStorage = window['StructureJS_localStorageServiceFallback'];
+                _this._localStorage = new LocalStorageFallback();
             }
             window.addEventListener('storage', _this._onLocalStorageEvent.bind(_this));
             return _this;
@@ -297,6 +307,5 @@ var __extends = (this && this.__extends) || function (d, b) {
         };
         return LocalStorageService;
     }(EventDispatcher_1.default));
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = LocalStorageService;
 });

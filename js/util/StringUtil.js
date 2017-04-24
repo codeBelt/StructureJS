@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * The StringUtil...
      *
@@ -305,6 +306,5 @@
         };
         return StringUtil;
     }());
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = StringUtil;
 });

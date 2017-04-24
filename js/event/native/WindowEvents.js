@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var WindowEvents = (function () {
         function WindowEvents() {
         }
@@ -21,6 +22,5 @@
      * @static
      */
     WindowEvents.CHANGE = "change";
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = WindowEvents;
 });

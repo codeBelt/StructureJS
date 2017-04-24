@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var NavigatorEvents = (function () {
         function NavigatorEvents() {
         }
@@ -29,6 +30,5 @@
      * @static
      */
     NavigatorEvents.OFFLINE = "offline";
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = NavigatorEvents;
 });

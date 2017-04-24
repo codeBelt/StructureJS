@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var MouseEvents = (function () {
         function MouseEvents() {
         }
@@ -77,6 +78,5 @@
      * @static
      */
     MouseEvents.TAP = 'tap';
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MouseEvents;
 });

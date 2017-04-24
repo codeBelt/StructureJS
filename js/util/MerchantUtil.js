@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * A MerchantUtility class that has several static methods to assist in development.
      *
@@ -233,6 +234,5 @@
         },
     ];
     MerchantUtil._updateRanges();
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MerchantUtil;
 });

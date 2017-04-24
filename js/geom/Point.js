@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * The Point object represents a location in a two-dimensional coordinate system, where x represents the horizontal axis and y represents the vertical axis.
      *
@@ -42,6 +43,5 @@
         }
         return Point;
     }());
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Point;
 });

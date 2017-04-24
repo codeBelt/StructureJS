@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Util_1 = require("./util/Util");
     /**
      * The {{#crossLink "BaseObject"}}{{/crossLink}} class is an abstract class that provides common properties and functionality for all StructureJS classes.
@@ -80,6 +81,5 @@
         };
         return BaseObject;
     }());
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = BaseObject;
 });

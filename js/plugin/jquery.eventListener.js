@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var $eventListener = window['jQuery'];
     /**
      * A bind polyfill for browsers that don't support the bind method.
@@ -113,6 +114,5 @@
         }
         return this;
     };
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = $eventListener;
 });

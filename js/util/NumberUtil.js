@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * The NumberUtil class has many helper methods to work with number data.
      *
@@ -291,6 +292,5 @@
         };
         return NumberUtil;
     }());
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = NumberUtil;
 });

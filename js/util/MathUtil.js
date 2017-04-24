@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * A helper class to do calculations and conversions.
      *
@@ -336,6 +337,5 @@
         };
         return MathUtil;
     }());
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = MathUtil;
 });

@@ -8,6 +8,7 @@
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * A ValidationUtility class that has several static methods to assist in development.
      *
@@ -137,6 +138,5 @@
         };
         return ValidationUtil;
     }());
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = ValidationUtil;
 });
