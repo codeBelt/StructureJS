@@ -47,7 +47,7 @@ With [Bower](http://bower.io):
 
 ### `DOMElement`
 
-All view classes will extend the `DOMElement` class. Here is an example how you would setup your main applicaiton class.
+All view classes will extend the `DOMElement` class. Here is an example how you would setup your main application class.
 
 ```js
 import FooView from './views/FooView';
